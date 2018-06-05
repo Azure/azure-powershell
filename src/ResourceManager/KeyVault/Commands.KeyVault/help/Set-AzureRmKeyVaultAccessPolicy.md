@@ -151,21 +151,95 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : create, import, delete, list
+                                   Permissions to Secrets                     : set, delete
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
+
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : create, import, delete, list
+                                   Permissions to Secrets                     : set, delete, get
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
+
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        :
+                                   Permissions to Secrets                     : set, delete, get
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
 ```
 
-The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault.
+The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault. The *PassThru* parameter results in the updated object being returned by the cmdlet.
 
-The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command. The *PassThru* parameter results in the updated object being returned by the cmdlet.
+The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command.
 
-The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. The *PassThru* parameter results in the updated object being returned by the cmdlet.
+The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. 
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
 This command grants permissions for an application for a key vault named Contoso03Vault. 
@@ -175,8 +249,8 @@ The *ServicePrincipalName* parameter specifies the application. The application 
 This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
 
 ### Example 3: Grant permissions for an application using its object ID
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
 ```
 
 This command grants the application permissions to read and write secrets.
@@ -184,28 +258,23 @@ This command grants the application permissions to read and write secrets.
 This example specifies the application using the object ID of the service principal of the application.
 
 ### Example 4: Grant permissions for a user principal name
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
 ```
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
 ### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource provider
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
 
 This command grants the permissions for secrets to be retrieved from the Contoso03Vault key vault by the Microsoft.Compute resource provider.
 
 ### Example 6: Grant permissions to a security group
-```
-PS C:\>Get-AzureRmADGroup
-PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys All -PermissionsToSecrets All
-DisplayName                    Type                           ObjectId
------------                    ----                           --------
-group1                                                        96a0daa6-9841-4a9c-bdeb-e7062276c688
-group2                                                        b8a401eb-63ad-4a30-b0e1-a7461969fe54
-group3                                                        da07a6be-2c1e-4e42-934d-ceb57cf652b4
+```powershell
+PS C:\> Get-AzureRmADGroup
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys get, set -PermissionsToSecrets get, set
 ```
 
 The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named **group1**, **group2**, and **group3**. Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
@@ -216,8 +285,8 @@ There may be multiple groups in the returned list that are named 'group2'.
 This example picks the first one, indicated by index \[0\] in the returned list.
 
 ### Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
 ```
 
 This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key.
@@ -607,7 +676,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String, Guid, String[], Switch
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
