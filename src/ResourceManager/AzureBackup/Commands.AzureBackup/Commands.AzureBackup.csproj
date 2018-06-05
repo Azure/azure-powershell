@@ -77,8 +77,8 @@
     <Compile Include="Cmdlets\Container\GetAzureRMBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureRMBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRMBackupContainer.cs" />
-    <Compile Include="Cmdlets\Item\Disable-AzureRmBackupProtection .cs" />
-    <Compile Include="Cmdlets\Item\Enable-AzureRmBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Disable-AzureRmBackupProtection.cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureRmBackupProtection.cs" />
     <Compile Include="Cmdlets\Item\GetAzureRMBackupItem.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRMBackupJob.cs" />

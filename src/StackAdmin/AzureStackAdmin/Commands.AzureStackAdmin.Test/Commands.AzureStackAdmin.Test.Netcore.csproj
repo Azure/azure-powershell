@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>Microsoft.AzureStack.Commands.Admin.Test</AssemblyName>
+    <RootNamespace>Microsoft.AzureStack.Commands.Admin.Test</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Management.Automation" Version="3.0.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\ResourceManager\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\ResourceManager\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+    <ProjectReference Include="..\Commands.AzureStackAdmin\Commands.AzureStackAdmin.csproj" />
+    <ProjectReference Include="Common\Commands.AzureStackAdmin.Test.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SessionRecords\**\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

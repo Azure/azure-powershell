@@ -13,20 +13,20 @@ Creates a secondary database for an existing database and starts data replicatio
 
 ## SYNTAX
 
-### DtuBasedDatabase
+### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveName <String>]
  [-SecondaryElasticPoolName <String>] [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-LicenseType <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
  -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob]
- -SecondaryComputeGeneration <String> -SecondaryVcore <Int32> [-ServerName] <String>
+ -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-LicenseType <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -102,6 +102,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -200,7 +215,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryVcore
+### -SecondaryVCore
 The Vcore numbers of the Azure Sql Database secondary.
 
 ```yaml
