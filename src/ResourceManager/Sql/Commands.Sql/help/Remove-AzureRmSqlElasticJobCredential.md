@@ -38,7 +38,8 @@ The **Remove-AzureRmSqlElasticJobCredential** cmdlet removes a job credential
 
 ### Example 1
 ```powershell
-PS C:\>  $agent | Remove-AzureRmSqlElasticJobCredential -Name cred1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Remove-AzureRmSqlElasticJobCredential -Name cred1
 
 CredentialName UserName
 -------------- --------

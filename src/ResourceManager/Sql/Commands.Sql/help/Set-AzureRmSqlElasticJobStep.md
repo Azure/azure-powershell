@@ -109,7 +109,8 @@ The **Set-AzureRmSqlElasticJobStep** cmdlet updates a job step
 
 ### Example 1 - Updates a job step's target group for a job
 ```powershell
-PS C:\> $jobStep | Set-AzureRmSqlElasticJobStep -TargetGroupName tg2
+PS C:\> $jobStep = Get-AzureRmSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
+$jobStep | Set-AzureRmSqlElasticJobStep -TargetGroupName tg2
 
 JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
 ------- -------- ------ --------------- -------------- ------ ----------------   -----------
@@ -118,7 +119,8 @@ job1    step1    1      tg2             cred1                 (43200,10,1,120,2)
 
 ### Example 2 - Updates a job step's T-SQL script for a job
 ```powershell
-PS C:\> $jobStep | Set-AzureRmSqlElasticJobStep -CommandText "SELECT 2"
+PS C:\> $jobStep = Get-AzureRmSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -StepName step1
+$jobStep | Set-AzureRmSqlElasticJobStep -CommandText "SELECT 2"
 
 JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
 ------- -------- ------ --------------- -------------- ------ ----------------   -----------

@@ -38,7 +38,8 @@ The **Remove-AzureRmSqlElasticJobTargetGroup** cmdlet removes a target group and
 
 ### Example 1
 ```powershell
-PS C:\> $agent | Remove-AzureRmSqlElasticJobTargetGroup -Name tg1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent 
+$agent | Remove-AzureRmSqlElasticJobTargetGroup -Name tg1
 
 TargetGroupName Targets
 --------------- -------

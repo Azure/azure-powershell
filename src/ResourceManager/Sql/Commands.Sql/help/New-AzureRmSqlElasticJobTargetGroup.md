@@ -37,7 +37,8 @@ The **New-AzureRmSqlElasticJobTargetGroup** cmdlet creates a new target group
 
 ### Example 1
 ```powershell
-PS C:\> $agent | New-AzureRmSqlElasticJobTargetGroup -Name tg1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | New-AzureRmSqlElasticJobTargetGroup -Name tg1
 
 TargetGroupName Targets
 --------------- -------

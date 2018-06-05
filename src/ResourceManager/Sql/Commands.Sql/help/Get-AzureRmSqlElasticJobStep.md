@@ -57,7 +57,8 @@ The **Get-AzureRmSqlElasticJobStep** cmdlet gets one or more job steps from a jo
 
 ### Example 1 - Gets a job step from a job
 ```powershell
-PS C:\> $job | Get-AzureRmSqlElasticJobStep -Name step1
+PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name job1
+$job | Get-AzureRmSqlElasticJobStep -Name step1
 
 JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
 ------- -------- ------ --------------- -------------- ------ ----------------   -----------

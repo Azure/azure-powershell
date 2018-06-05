@@ -62,7 +62,8 @@ The **Get-AzureRmSqlElasticJobStepExecution** cmdlet gets one or more job step e
 
 ### Example 1 - Gets one or more job step executions from a job executions
 ```powershell
-PS C:\> $je | Get-AzureRmSqlElasticJobStepExecution
+PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
+$je | Get-AzureRmSqlElasticJobStepExecution
 
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle StartTime            EndTime
 ------- ---------- -------- ------ --------------                       --------- ---------            -------
@@ -71,7 +72,8 @@ job1    1          step1    1      3bcfc912-20b2-411d-a2b7-6265d13fe272 Succeede
 
 ### Example 2 - Gets one or more job step executions from a job execution, filtering by step name
 ```powershell
-PS C:\> $je | Get-AzureRmSqlElasticJobStepExecution -StepName step1
+PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
+$je | Get-AzureRmSqlElasticJobStepExecution -StepName step1
 
 JobName JobVersion StepName StepId JobExecutionId                       Lifecycle StartTime            EndTime
 ------- ---------- -------- ------ --------------                       --------- ---------            -------

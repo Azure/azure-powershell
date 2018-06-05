@@ -109,11 +109,12 @@ The **Add-AzureRmSqlElasticJobStep** cmdlet adds a job step to a job
 
 ### Example 1 - Adds a step to a job
 ```powershell
-PS C:\> > $job | Add-AzureRmSqlElasticJobStep -Name step1 -TargetGroupName tg1 -CredentialName cred1 -CommandText "SELECT 1"
+PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -Name job1
+$job | Add-AzureRmSqlElasticJobStep -Name step1 -TargetGroupName tg1 -CredentialName cred1 -CommandText "SELECT 1"
 
-JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
-------- -------- ------ --------------- -------------- ------ ----------------   -----------
-job1    step1    1      tg1             cred1                 (43200,10,1,120,2) SELECT 1
+JobName StepName StepId TargetGroupName CredentialName Output CommandText
+------- -------- ------ --------------- -------------- ------ -----------
+job1    step1    1      tg1             cred1                 SELECT 1
 ```
 
 Adds a job step to a job

@@ -38,7 +38,8 @@ The **Stop-AzureRmSqlElasticJob** cmdlet stops a job's with a running execution.
 
 ### Example 1 - Stops a job with a running job execution
 ```powershell
-PS C:\> $je | Stop-AzureRmSqlElasticJob
+PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
+$je | Stop-AzureRmSqlElasticJob
 JobName JobExecutionId                       Lifecycle                    StartTime            EndTime
 ------- --------------                       ---------                    ---------            -------
 job1    dab0ebe8-fd52-42e9-bacf-e5f27577039b WaitingForChildJobExecutions 6/1/2018 10:13:56 PM

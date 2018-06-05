@@ -37,7 +37,8 @@ The **Get-AzureRmSqlElasticJob** cmdlet gets one or more jobs
 
 ### Example 1 - Gets a job
 ```powershell
-PS C:\> $agent | Get-AzureRmSqlElasticJob -Name job1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Get-AzureRmSqlElasticJob -Name job1
 
 JobName Version Description StartTime           EndTime                ScheduleType Interval Enabled
 ------- ------- ----------- ---------           -------                ------------ -------- -------

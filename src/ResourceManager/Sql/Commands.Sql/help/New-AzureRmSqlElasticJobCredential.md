@@ -39,7 +39,8 @@ The **New-AzureRmSqlElasticJobCredential** cmdlet creates a new job credential
 
 ### Example 1
 ```powershell
-PS C:\>  $agent | New-AzureRmSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | New-AzureRmSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
 
 CredentialName UserName
 -------------- --------

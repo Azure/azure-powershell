@@ -82,7 +82,8 @@ The **New-AzureRmSqlElasticJob** cmdlet creates a new job
 
 ### Example 1 - Creates a new job
 ```powershell
-PS C:\> $agent | New-AzureRmSqlElasticJob -Name job1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | New-AzureRmSqlElasticJob -Name job1
 
 JobName Version Description StartTime           EndTime                ScheduleType Interval Enabled
 ------- ------- ----------- ---------           -------                ------------ -------- -------

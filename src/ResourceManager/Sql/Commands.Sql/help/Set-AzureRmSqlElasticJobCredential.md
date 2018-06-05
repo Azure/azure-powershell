@@ -39,7 +39,8 @@ The **Set-AzureRmSqlElasticJobCredential** cmdlet updates a job credential
 
 ### Example 1
 ```powershell
-PS C:\>  $agent | Set-AzureRmSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
+PS C:\> $cred = Get-AzureRmSqlElasticJobCredential -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name cred1
+$cred | Set-AzureRmSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
 
 CredentialName UserName
 -------------- --------

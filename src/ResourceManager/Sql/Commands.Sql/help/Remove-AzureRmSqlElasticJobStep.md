@@ -38,11 +38,12 @@ The **Remove-AzureRmSqlElasticJobStep** cmdlet removes a job step from a job
 
 ### Example 1 - Removes a job step from a job
 ```powershell
-PS C:\> $jobStep | Remove-AzureRmSqlElasticJobStep
+PS C:\> $jobStep = Get-AzureRmSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -Name step1
+$jobStep | Remove-AzureRmSqlElasticJobStep
 
-JobName StepName StepId TargetGroupName CredentialName Output ExecutionOptions   CommandText
-------- -------- ------ --------------- -------------- ------ ----------------   -----------
-job1    step1    1      tg1             cred1                 (43200,10,1,120,2) SELECT 1
+JobName StepName StepId TargetGroupName CredentialName Output CommandText
+------- -------- ------ --------------- -------------- ------ -----------
+job1    step1    1      tg1             cred1                 SELECT 1
 ```
 
 Removes a job step from a job

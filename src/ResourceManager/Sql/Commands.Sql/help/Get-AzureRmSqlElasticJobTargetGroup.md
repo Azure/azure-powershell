@@ -37,7 +37,8 @@ The **Get-AzureRmSqlElasticJobTargetGroup** cmdlet gets a target group and it's 
 
 ### Example 1
 ```powershell
-PS C:\> $agent | Get-AzureRmSqlElasticJobTargetGroup -Name tg1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Get-AzureRmSqlElasticJobTargetGroup -Name tg1
 
 TargetGroupName Targets
 --------------- -------

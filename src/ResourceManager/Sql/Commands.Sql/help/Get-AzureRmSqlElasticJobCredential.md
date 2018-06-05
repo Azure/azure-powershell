@@ -37,7 +37,8 @@ The **Get-AzureRmSqlElasticJobCredential** cmdlet gets one or more job credentia
 
 ### Example 1
 ```powershell
-PS C:\>  $agent | Get-AzureRmSqlElasticJobCredential -Name cred1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Get-AzureRmSqlElasticJobCredential -Name cred1
 
 CredentialName UserName
 -------------- --------

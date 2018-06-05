@@ -38,7 +38,8 @@ The **Start-AzureRmSqlElasticJob** cmdlet starts a job returning a new job execu
 
 ### Example 1 - Starts a job returning a new job execution
 ```powershell
-PS C:\> $job | Start-AzureRmSqlElasticJob
+PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name job1
+$job | Start-AzureRmSqlElasticJob
 
 JobName JobExecutionId                       Lifecycle StartTime EndTime
 ------- --------------                       --------- --------- -------

@@ -37,7 +37,8 @@ The **Remove-AzureRmSqlElasticJob** cmdlet removes a job
 
 ### Example 1 - Removes a job
 ```powershell
-PS C:\> $agent | Remove-AzureRmSqlElasticJob -Name job1
+PS C:\> $agent = Get-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+$agent | Remove-AzureRmSqlElasticJob -Name job1
 
 JobName Version Description StartTime           EndTime                ScheduleType Interval Enabled
 ------- ------- ----------- ---------           -------                ------------ -------- -------
