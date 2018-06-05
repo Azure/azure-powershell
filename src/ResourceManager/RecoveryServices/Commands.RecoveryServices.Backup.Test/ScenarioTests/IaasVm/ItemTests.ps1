@@ -322,3 +322,47 @@ function Test-AzureVMBackup
 		Cleanup-ResourceGroup $resourceGroupName
 	}
 }
+
+function Test-AzureVMSetVaultContext
+{
+	$location = Get-ResourceGroupLocation
+	$resourceGroupName = Create-ResourceGroup $location
+
+	try
+	{
+		# Setup
+		$vm = Create-VM $resourceGroupName $location
+		$vault = Create-RecoveryServicesVault $resourceGroupName $location
+
+		Set-AzureRmRecoveryServicesVaultContext -Vault $vault
+
+		# Get default policy
+		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-Name "DefaultPolicy";
+	
+		# Enable protection
+		Enable-AzureRmRecoveryServicesBackupProtection `
+			-Policy $policy `
+			-Name $vm.Name `
+			-ResourceGroupName $vm.ResourceGroupName;
+
+		$container = Get-AzureRmRecoveryServicesBackupContainer `
+			-ContainerType AzureVM `
+			-Status Registered;
+
+		$item = Get-AzureRmRecoveryServicesBackupItem `
+			-Container $container `
+			-WorkloadType AzureVM
+
+		# Disable protection
+		Disable-AzureRmRecoveryServicesBackupProtection `
+			-Item $item `
+			-RemoveRecoveryPoints `
+			-Force;
+	}
+	finally
+	{
+		# Cleanup
+		Cleanup-ResourceGroup $resourceGroupName
+	}
+}
