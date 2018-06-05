@@ -121,7 +121,9 @@ function Test-CreateVcoreDatabaseCopy()
 function Test-CreateSecondaryDatabase()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    # https://github.com/Azure/azure-powershell/issues/6382
+	#$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = 'Southeast Asia'
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -162,7 +164,9 @@ function Test-CreateSecondaryDatabase()
 function Test-GetReplicationLink()
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    # https://github.com/Azure/azure-powershell/issues/6382
+	#$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = 'Southeast Asia'
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server

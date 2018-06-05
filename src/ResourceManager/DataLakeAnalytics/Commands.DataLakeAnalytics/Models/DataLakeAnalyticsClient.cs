@@ -491,23 +491,41 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+#if NETSTANDARD
             _catalogClient.Catalog.CreateCredential(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogCredentialCreateParameters
                 {
                     Password = password,
                     Uri = hostUri
                 });
+#else
+            _catalogClient.Catalog.CreateSecret(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
+                {
+                    Password = password,
+                    Uri = hostUri
+                });
+#endif
         }
 
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+#if NETSTANDARD
             _catalogClient.Catalog.UpdateCredential(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogCredentialUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
                 });
+#else
+            _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
+                {
+                    Password = password,
+                    Uri = hostUri
+                });
+#endif
 
             // TODO: Remove this during the next breaking change release.
             return null;
@@ -515,6 +533,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
         {
+#if NETSTANDARD
             if (string.IsNullOrEmpty(secretName))
             {
                 var credentials = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
@@ -527,6 +546,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 _catalogClient.Catalog.DeleteCredential(accountName, databaseName, secretName);
             }
+#else
+            if (string.IsNullOrEmpty(secretName))
+            {
+                _catalogClient.Catalog.DeleteAllSecrets(accountName, databaseName);
+            }
+            else
+            {
+                _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
+            }
+#endif
         }
 
 
