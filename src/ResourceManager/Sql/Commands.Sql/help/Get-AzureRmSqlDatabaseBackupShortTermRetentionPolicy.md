@@ -12,22 +12,22 @@ Gets a backup short term retention policy.
 
 ## SYNTAX
 
-### PolicyByInputObject
+### PolicyByResourceServerDatabaseSet (Default)
 ```
-Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject <AzureSqlDatabaseModel>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-ResourceGroupName] <String> [-ServerName] <String>
+ [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### PolicyByInputObjectSet
+```
+Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase <AzureSqlDatabaseModel>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyByResourceIdSet
 ```
-Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId <String> [-ResourceGroupName] <String>
+Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -ResourceId <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### PolicyByResourceServerDatabase
-```
-Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy [-ServerName] <String> [-DatabaseName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,12 +60,27 @@ This command gets the short term retention policy for database01.
 
 ## PARAMETERS
 
+### -AzureSqlDatabase
+The database object to get the policy for.
+
+```yaml
+Type: AzureSqlDatabaseModel
+Parameter Sets: PolicyByInputObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DatabaseName
 The name of the Azure SQL Database to use.
 
 ```yaml
 Type: String
-Parameter Sets: PolicyByResourceServerDatabase
+Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
@@ -90,27 +105,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The database object to get the policy for.
-
-```yaml
-Type: AzureSqlDatabaseModel
-Parameter Sets: PolicyByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True
@@ -140,7 +140,7 @@ The name of the Azure SQL Server the database is in.
 
 ```yaml
 Type: String
-Parameter Sets: PolicyByResourceServerDatabase
+Parameter Sets: PolicyByResourceServerDatabaseSet
 Aliases:
 
 Required: True

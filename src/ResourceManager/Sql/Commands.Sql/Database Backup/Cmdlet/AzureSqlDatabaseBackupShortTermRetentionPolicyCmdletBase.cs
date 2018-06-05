@@ -20,12 +20,12 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// <summary>
         /// Parameter set with ResourceGroup name, Server name and Database name.
         /// </summary>
-        protected const string PolicyByResourceServerDatabaseSet = "PolicyByResourceServerDatabase";
+        protected const string PolicyByResourceServerDatabaseSet = "PolicyByResourceServerDatabaseSet";
 
         /// <summary>
         /// Parameter set for using a Database Input Object.
         /// </summary>
-        private const string PolicyByInputObjectSet = "PolicyByInputObject";
+        private const string PolicyByInputObjectSet = "PolicyByInputObjectSet";
 
         /// <summary>
         /// Parameter set for using a resource Id.
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "The database object to get the policy for.")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel InputObject { get; set; }
+        public AzureSqlDatabaseModel AzureSqlDatabase { get; set; }
 
         /// <summary>
         /// Gets or sets the Database object to get the policy for.
@@ -102,11 +102,11 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            if (InputObject != null)
+            if (AzureSqlDatabase != null)
             {
-                this.ResourceGroupName = InputObject.ResourceGroupName;
-                this.ServerName = InputObject.ServerName;
-                this.DatabaseName = InputObject.DatabaseName;
+                this.ResourceGroupName = AzureSqlDatabase.ResourceGroupName;
+                this.ServerName = AzureSqlDatabase.ServerName;
+                this.DatabaseName = AzureSqlDatabase.DatabaseName;
             }
             else if (!string.IsNullOrEmpty(ResourceId))
             {
