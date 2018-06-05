@@ -43,8 +43,48 @@ The **Update-AzureRmKeyVaultNetworkRuleSet** command updates the network rules i
 
 ### Example 1
 ```powershell
-PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
-PS C:\>Update-AzureRmKeyVaultNetworkRuleSet -VaultName 'myVault' -ResourceGroupName myRG -Bypass AzureServices -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+PS C:\> $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
+PS C:\> $virtualNetwork = New-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+PS C:\> $myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> Update-AzureRmKeyVaultNetworkRuleSet -VaultName 'myVault' -ResourceGroupName myRG -Bypass AzureServices -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
+
+Vault Name                       : myVault
+Resource Group Name              : myRG
+Location                         : West US
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/myvault
+Vault URI                        : https://myvault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : get, create, delete, list, update,
+                                   import, backup, restore, recover
+                                   Permissions to Secrets                     : get, list, set, delete, backup,
+                                   restore, recover
+                                   Permissions to Certificates                : get, delete, list, create, import,
+                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
+                                   setissuers, recover, backup, restore
+                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
+                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+
+
+Network Rule Set                 :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   : 10.0.1.0/24
+                                   Virtual Network Rules                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-
+                                   xxxxxxxxxxxxx/resourcegroups/myrg/providers/microsoft.network/virtualnetworks/myvn
+                                   et/subnets/frontendsubnet
+
+Tags                             :
 ```
 
 This command updates the network ruleset on the vault named 'myVault' for the specified IP range and the virtual network, allowing bypassing of the network rule for Azure services.
