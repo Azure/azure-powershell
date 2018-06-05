@@ -71,6 +71,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             serviceProperties.DeleteRetentionPolicy = new DeleteRetentionPolicy();
             serviceProperties.DeleteRetentionPolicy.Enabled = true;
             serviceProperties.DeleteRetentionPolicy.RetentionDays = 5;
+            serviceProperties.StaticWebsite = new StaticWebsiteProperties();
+            serviceProperties.StaticWebsite.Enabled = true;
+            serviceProperties.StaticWebsite.IndexDocument = "IndexDocument";
+            serviceProperties.StaticWebsite.ErrorDocument404Path = "ErrorDocument404Path";
             PSSeriviceProperties pSSeriviceProperties = new PSSeriviceProperties(serviceProperties);
             CompareServiceProperties(pSSeriviceProperties, serviceProperties);
 
@@ -118,6 +122,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Test.Common
             {
                 Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.Enabled, pSSeriviceProperties.DeleteRetentionPolicy.Enabled);
                 Assert.AreEqual(serviceProperties.DeleteRetentionPolicy.RetentionDays, pSSeriviceProperties.DeleteRetentionPolicy.RetentionDays);
+            }
+            if ((pSSeriviceProperties != null && pSSeriviceProperties.StaticWebsite != null) || (serviceProperties != null && serviceProperties.StaticWebsite != null))
+            {
+                Assert.AreEqual(serviceProperties.StaticWebsite.Enabled, pSSeriviceProperties.StaticWebsite.Enabled);
+                Assert.AreEqual(serviceProperties.StaticWebsite.IndexDocument, pSSeriviceProperties.StaticWebsite.IndexDocument);
+                Assert.AreEqual(serviceProperties.StaticWebsite.ErrorDocument404Path, pSSeriviceProperties.StaticWebsite.ErrorDocument404Path);
             }
         }
 
