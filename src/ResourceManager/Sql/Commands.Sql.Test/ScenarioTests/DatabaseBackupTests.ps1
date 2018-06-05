@@ -412,10 +412,10 @@ function Test-ShortTermRetentionPolicy
 
 		# Test InputObject
 		$retention = 21
-		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db -RetentionDays $retention
+		$policy = Set-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db -RetentionDays $retention
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
-		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -InputObject $db
+		$policy = Get-AzureRmSqlDatabaseBackupShortTermRetentionPolicy -AzureSqlDatabase $db
 		Assert-AreEqual 1 $policy.Count
 		Assert-AreEqual $retention $policy[0].RetentionDays
 
