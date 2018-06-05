@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The name of the Azure SQL Server the database is in.")]
         [ValidateNotNullOrEmpty]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Database_Backup.Cmdlet
         [Parameter(
             ParameterSetName = PolicyByResourceServerDatabaseSet,
             Mandatory = true,
-            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The name of the Azure SQL Database to use.")]
         [ValidateNotNullOrEmpty]
