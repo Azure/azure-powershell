@@ -8,17 +8,24 @@ schema: 2.0.0
 # Invoke-AzureRmStorageSyncCompatibilityCheck
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+This cmdlet checks for potential compatibility issues between your system and Azure File Sync.
 
 ## SYNTAX
 
+### PathBased (Default)
 ```
-Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>]
- [-ComputerName <String>] [-SkipSystemChecks] [-SkipNamespaceChecks] [<CommonParameters>]
+Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCredential>] [-SkipSystemChecks]
+ [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
+```
+
+### ComputerNameBased
+```
+Invoke-AzureRmStorageSyncCompatibilityCheck [-Credential <PSCredential>] -ComputerName <String>
+ [-SkipSystemChecks] [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+This cmdlet checks for potential compatibility issues between your system and Azure File Sync. Given a local or remote path, it performs a set of validations on the system and file namespace, and then returns any compatibility issues it finds.
 
 ## EXAMPLES
 
@@ -32,14 +39,14 @@ Performs compatibility check of files and folders in C:\DATA.
 ## PARAMETERS
 
 ### -ComputerName
-{{Fill ComputerName Description}}
+The server you are performing this check on.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ComputerNameBased
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -47,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-{{Fill Credential Description}}
+Your credentials for the share you are validating.
 
 ```yaml
 Type: PSCredential
@@ -62,11 +69,11 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-{{Fill Path Description}}
+The UNC path of the share you are validating.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: PathBased
 Aliases:
 
 Required: True
@@ -76,8 +83,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Quiet
+Suppresses writing output report to console.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SkipNamespaceChecks
-{{Fill SkipNamespaceChecks Description}}
+Set this flag to skip file namespace validations and only perform system validations.
 
 ```yaml
 Type: SwitchParameter
@@ -92,7 +114,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkipSystemChecks
-{{Fill SkipSystemChecks Description}}
+Set this flag to skip system validations and only perform file namespace validations.
 
 ```yaml
 Type: SwitchParameter
