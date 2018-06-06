@@ -211,18 +211,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-<<<<<<< HEAD
-                MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null
-            };
-
-            
-=======
                 MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
                 LicenseType = LicenseType
             };
 
 
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
             if (ParameterSetName == DtuPoolParameterSet)
             {
                 string edition = string.IsNullOrWhiteSpace(Edition) ? null : Edition;
@@ -235,11 +228,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 }
 
                 newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
-<<<<<<< HEAD
-                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;              
-=======
                 newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
             }
             else
             {

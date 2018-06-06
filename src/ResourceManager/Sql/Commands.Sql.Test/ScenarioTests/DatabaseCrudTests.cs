@@ -49,8 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-<<<<<<< HEAD
-=======
         public void TestVcoreDatabaseCreateWithLicenseType()
         {
             RunPowerShellTest("Test-CreateVcoreDatabaseWithLicenseType");
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
         public void TestDatabaseCreateWithSampleName()
         {
             RunPowerShellTest("Test-CreateDatabaseWithSampleName");
@@ -87,8 +84,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-<<<<<<< HEAD
-=======
         public void TestVcoreDatabaseUpdateWithLicenseType()
         {
             RunPowerShellTest("Test-UpdateVcoreDatabaseLicenseType");
@@ -96,7 +91,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
         public void TestDatabaseUpdateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundant");

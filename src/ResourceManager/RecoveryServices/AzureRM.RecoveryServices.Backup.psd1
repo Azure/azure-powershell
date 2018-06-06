@@ -51,11 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-<<<<<<< HEAD:src/ResourceManager/RecoveryServices.Backup/AzureRM.RecoveryServices.Backup.psd1
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
-=======
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.2.0'; })
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6:src/ResourceManager/RecoveryServices/AzureRM.RecoveryServices.Backup.psd1
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll', 
