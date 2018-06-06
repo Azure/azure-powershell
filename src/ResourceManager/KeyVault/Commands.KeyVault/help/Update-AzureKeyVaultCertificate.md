@@ -32,11 +32,11 @@ The **Update-AzureKeyVaultCertificate** cmdlet modifies the editable attributes 
 ## EXAMPLES
 
 ### Example 1: Modify the tags associated with a certificate
-```
-PS C:\>$Tags = @{ "Team" = "Azure" ; "Role" = "Engg" }
-PS C:\> Update-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags
-PS C:\> Get-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
-Name        : "TestCert01"
+```powershell
+PS C:\> $Tags = @{ "Team" = "Azure" ; "Role" = "Engg" }
+PS C:\> Update-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01" -Tag $Tags -PassThru
+
+Name        : TestCert01
 Certificate : [Subject]
                 CN=AZURE
 
@@ -44,7 +44,7 @@ Certificate : [Subject]
                 CN=AZURE
 
               [Serial Number]
-                5A2EF60501F241D6A4336841B36FEA41
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
               [Not Before]
                 7/27/2016 6:50:01 PM
@@ -53,12 +53,12 @@ Certificate : [Subject]
                 7/27/2018 7:00:01 PM
 
               [Thumbprint]
-                A565D568082FEE2BE33B356ECC3703C2E9886555
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Id          : https://ContosoKV01.vault.azure.net:443/certificates/tt02
-KeyId       : https://ContosoKV01.vault.azure.net:443/keys/tt02
-SecretId    : https://ContosoKV01.vault.azure.net:443/secrets/tt02
-Thumbprint  : A565D568082FEE2BE33B356ECC3703C2E9886555
+Id          : https://ContosoKV01.vault.azure.net:443/certificates/TestCert01
+KeyId       : https://ContosoKV01.vault.azure.net:443/keys/TestCert01
+SecretId    : https://ContosoKV01.vault.azure.net:443/secrets/TestCert01
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        : {[Role, Engg], [Team, Azure]}
 Enabled     : True
 Created     : 7/28/2016 2:00:01 AM
@@ -68,8 +68,6 @@ Updated     : 8/1/2016 5:37:48 PM
 The first command assigns an array of key/value pairs to the $Tags variable.
 
 The second command sets the tags value of the certificate named TestCert01 to be $Tags.
-
-The final command displays the TestCert01 certificate by using the Get-AzureKeyVaultCertificate cmdlet to verify the operation.
 
 ## PARAMETERS
 

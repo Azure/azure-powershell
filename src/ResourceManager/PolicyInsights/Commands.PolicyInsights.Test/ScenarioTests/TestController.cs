@@ -14,24 +14,21 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.PolicyInsights;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 {
     public class TestController : RMTestBase
     {
-        private CSMTestEnvironmentFactory _csmTestFactory;
-
         private readonly EnvironmentSetupHelper _helper;
 
         public PolicyInsightsClient PolicyInsightsClient { get; private set; }
@@ -45,25 +42,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
         public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
-            RunPsTestWorkflow(
-                scriptBuilder: () => scripts,
-                initialize: null,
-                cleanup: null,
-                callingClassType: callingClassType,
-                mockName: mockName);
-        }
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
             var providers = new Dictionary<string, string>
             {
                 { "Microsoft.Resources", null },
@@ -76,18 +59,11 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
 
             using (var context = MockContext.Start(callingClassType, mockName))
             {
-                _csmTestFactory = new CSMTestEnvironmentFactory();
-
-                initialize?.Invoke(_csmTestFactory);
-
                 SetupManagementClients(context);
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                var callingClassName = callingClassType
-                    .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                    .Last();
-
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
                 _helper.SetupModules(
                     AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
@@ -95,18 +71,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
 
-                try
-                {
-                    var psScripts = scriptBuilder?.Invoke();
-                    if (null != psScripts)
-                    {
-                        _helper.RunPowerShellTest(psScripts);
-                    }
-                }
-                finally
-                {
-                    cleanup?.Invoke();
-                }
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
@@ -116,7 +81,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Test.ScenarioTests
             _helper.SetupManagementClients(PolicyInsightsClient);
         }
 
-        private PolicyInsightsClient GetPolicyInsightsClient(MockContext context)
+        private static PolicyInsightsClient GetPolicyInsightsClient(MockContext context)
         {
             return context.GetServiceClient<PolicyInsightsClient>(TestEnvironmentFactory.GetTestEnvironment());
         }

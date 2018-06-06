@@ -37,8 +37,13 @@ The **Get-AzureKeyVaultCertificateContact** cmdlet gets contacts that are regist
 ## EXAMPLES
 
 ### Example 1: Get all certificate contacts
-```
-PS C:\>$Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+```powershell
+PS C:\> $Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+
+Email                   VaultName
+-----                   ---------
+username@microsoft.com  Contoso
+username1@microsoft.com Contoso
 ```
 
 This command gets all of the contacts for the certificate objects in the Contoso key vault, and then stores them in the $Contacts variable.
@@ -110,12 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact>
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 

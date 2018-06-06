@@ -19,6 +19,8 @@
 -->
 
 ## Current Release
+
+## Version 0.5.5
 * Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:
     - Added Configure factory repository operation
     - Updated QuickBooks LinkedService to expose consumerKey and consumerSecret properties
