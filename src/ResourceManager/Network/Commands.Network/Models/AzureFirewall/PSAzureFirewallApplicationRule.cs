@@ -26,12 +26,20 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
 
+        public List<string> SourceAddresses { get; set; }
+
         public List<string> TargetUrls { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText
         {
             get { return JsonConvert.SerializeObject(Protocols, Formatting.Indented); }
+        }
+
+        [JsonIgnore]
+        public string SourceAddressesText
+        {
+            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]

@@ -2805,6 +2805,10 @@
                 <Label>Priority</Label>
                 <PropertyName>Priority</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>Rules</Label>
                 <PropertyName>RulesText</PropertyName>
@@ -2828,16 +2832,12 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Priority</Label>
-                <PropertyName>Priority</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Description</Label>
                 <PropertyName>Description</PropertyName>
               </ListItem>
-              <ListItem>
-                <Label>Direction</Label>
-                <PropertyName>Direction</PropertyName>
+			  <ListItem>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Protocols</Label>
@@ -2846,10 +2846,6 @@
               <ListItem>
                 <Label>TargetUrls</Label>
                 <PropertyName>TargetUrlsText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Actions</Label>
-                <PropertyName>ActionsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2881,6 +2877,10 @@
                 <Label>Priority</Label>
                 <PropertyName>Priority</PropertyName>
               </ListItem>
+			  <ListItem>
+                <Label>Action</Label>
+                <PropertyName>ActionText</PropertyName>
+              </ListItem>
               <ListItem>
                 <Label>Rules</Label>
                 <PropertyName>RulesText</PropertyName>
@@ -2904,16 +2904,8 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Priority</Label>
-                <PropertyName>Priority</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Description</Label>
                 <PropertyName>Description</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Direction</Label>
-                <PropertyName>Direction</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Protocols</Label>
@@ -2928,16 +2920,8 @@
                 <PropertyName>DestinationIpsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>SourcePorts</Label>
-                <PropertyName>SourcePortsText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>DestinationPorts</Label>
                 <PropertyName>DestinationPortsText</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Actions</Label>
-                <PropertyName>ActionsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
