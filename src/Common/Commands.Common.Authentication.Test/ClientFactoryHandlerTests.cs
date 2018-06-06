@@ -98,7 +98,6 @@ namespace Common.Authentication.Test
                 account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             );
-
             AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(userAccount, Guid.NewGuid().ToString());
             var factory = new ClientFactory();
             factory.AddHandler(new RetryTestHandler());
@@ -116,8 +115,6 @@ namespace Common.Authentication.Test
             autoRestHandler.MaxTries = 0;
             task = autorestClient.ResourceGroups.ListWithHttpMessagesAsync();
             Assert.Throws<TaskCanceledException>(() => task.ConfigureAwait(false).GetAwaiter().GetResult());
-
-
         }
 
         private CancelRetryHandler EnsureHyakRetryPolicy<T>( Hyak.Common.ServiceClient<T> client) where T: Hyak.Common.ServiceClient<T>

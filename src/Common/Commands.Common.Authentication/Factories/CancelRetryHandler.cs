@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
     /// </summary>
     public class CancelRetryHandler : DelegatingHandler, ICloneable
     {
+        const string TestModeVariableKey = "Azure_Test_Mode", TestModeVariableValue="Record";
         public CancelRetryHandler()
         {
             WaitInterval = TimeSpan.Zero;
@@ -53,11 +54,20 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
                     }
                     catch (TaskCanceledException) when (tries++ < MaxTries)
                     {
-                        Thread.Sleep(WaitInterval);
+                        SleepIfRunningLive(WaitInterval);
                     }
                 }
             }
             while (true);
+        }
+
+        void SleepIfRunningLive(TimeSpan timeSpan)
+        {
+            var testModeSetting = Environment.GetEnvironmentVariable(TestModeVariableKey);
+            if (string.IsNullOrWhiteSpace(testModeSetting) || !string.Equals(TestModeVariableValue, testModeSetting, StringComparison.OrdinalIgnoreCase))
+            {
+                Thread.Sleep(timeSpan);
+            }
         }
 
         public object Clone()
