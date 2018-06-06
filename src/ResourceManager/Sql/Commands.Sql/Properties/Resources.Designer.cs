@@ -691,7 +691,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment policy is not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentPolicy first..
+        ///   Looks up a localized string similar to Vulnerability assessment policy is not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first..
         /// </summary>
         internal static string RunSetVulnerabilityAssementPolicy {
             get {
@@ -700,7 +700,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server Advanced Threat Protection is not defined. Please run Set-AzureRmSqlServerAdvancedThreatProtectionPolicy first..
+        ///   Looks up a localized string similar to Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first..
         /// </summary>
         internal static string ServerAdvancedThreatProtectionIsNotDefined {
             get {
