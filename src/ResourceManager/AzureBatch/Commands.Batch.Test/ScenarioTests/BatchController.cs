@@ -13,23 +13,18 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using TestBase = Microsoft.Azure.Test.TestBase;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -37,37 +32,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         internal static string BatchAccount, BatchAccountKey, BatchAccountUrl, BatchResourceGroup;
 
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
-
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
+        private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public Management.Resources.ResourceManagementClient OldResourceManagementClient { get; private set; }
-
         public BatchManagementClient BatchManagementClient { get; private set; }
 
-        public static BatchController NewInstance
-        {
-            get
-            {
-                return new BatchController();
-            }
-        }
+        public static BatchController NewInstance => new BatchController();
 
         public BatchController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
         {
             TestExecutionHelpers.SetUpSessionAndProfile();
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 () => scripts,
@@ -97,21 +80,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = SetupCSMTestEnvironmentFactory();
                 SetupManagementClients(context);
 
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "Microsoft.Azure.Commands.Batch.Test.dll",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.Batch.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule,
+                    _helper.GetRMModulePath("AzureRM.Batch.psd1"),
                     "AzureRM.Resources.ps1");
 
                 try
@@ -127,56 +109,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
                         if (psScripts != null)
                         {
-                            helper.RunPowerShellTest(psScripts);
+                            _helper.RunPowerShellTest(psScripts);
                         }
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
-        private CSMTestEnvironmentFactory SetupCSMTestEnvironmentFactory()
-        {
-            CSMTestEnvironmentFactory factory = new CSMTestEnvironmentFactory();
-            // to set test environment to Current add Environment=Current in TEST_CSM_ORGID_AUTHENTICATION env. variable
-            // available configurations are: Prod/Dogfood/Next/Current
-            return factory;
-        }
-
         private void SetupManagementClients(MockContext context)
         {
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
-            GalleryClient = GetGalleryClient();
             ResourceManagementClient = GetResourceManagementClient(context);
-            OldResourceManagementClient = GetResourceManagementClient();
             BatchManagementClient = GetBatchManagementClient(context);
 
-            helper.SetupManagementClients(AuthorizationManagementClient,
-                                          GalleryClient,
-                                          ResourceManagementClient,
-                                          OldResourceManagementClient,
-                                          BatchManagementClient);
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private Management.Resources.ResourceManagementClient GetResourceManagementClient()
-        {
-            return TestBase.GetServiceClient<Management.Resources.ResourceManagementClient>(this.csmTestFactory);
+            _helper.SetupManagementClients(ResourceManagementClient, BatchManagementClient);
         }
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
