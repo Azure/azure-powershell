@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
 
         public static ResourceManagementClient GetResourceManagementClient()
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
         }
 
         private static void ThrowIfTrue(bool condition, string message)

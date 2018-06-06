@@ -223,12 +223,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                     newModel.Edition = edition;
                     newModel.Capacity = MyInvocation.BoundParameters.ContainsKey("Dtu") ? (int?)Dtu : null;
                 }
+
                 if(MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") || MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax"))
                 {
                     newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
                     newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;
                 }
+            }
+            else
+            {
                 if(!string.IsNullOrWhiteSpace(Edition) || MyInvocation.BoundParameters.ContainsKey("VCore") || !string.IsNullOrWhiteSpace(ComputeGeneration))
+                {
                     string skuTier = string.IsNullOrWhiteSpace(Edition) ? poolCurrentSku.Tier : Edition;
 
                     newModel.SkuName = AzureSqlElasticPoolAdapter.GetPoolSkuName(skuTier);

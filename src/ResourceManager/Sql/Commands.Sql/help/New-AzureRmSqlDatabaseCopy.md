@@ -30,14 +30,6 @@ New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyRe
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### VcoreBasedDatabase
-```
-New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
- [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String>
- -Vcore <Int32> [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **New-AzureRmSqlDatabaseCopy** cmdlet creates a copy of an Azure SQL Database that uses the
 snapshot of the data at the current time. Use this cmdlet instead of the Start-AzureSqlDatabaseCopy
@@ -119,21 +111,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Vcore
-The Vcore numbers of the Azure Sql Database copy.
-
-```yaml
-Type: Int32
-Parameter Sets: VcoreBasedDatabase
-Aliases: Capacity
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

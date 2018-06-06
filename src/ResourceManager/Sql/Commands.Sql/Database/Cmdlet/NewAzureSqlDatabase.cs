@@ -249,6 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             // Use AutoRest Sdk
             AzureSqlDatabaseModel upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
+            
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
                 Database = upsertedDatabase

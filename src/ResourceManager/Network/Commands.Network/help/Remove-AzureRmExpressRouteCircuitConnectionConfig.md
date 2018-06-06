@@ -5,6 +5,7 @@ ms.assetid: cc944e06-4fa0-4ce5-88e9-ea6454b41d55
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
+
 # Remove-AzureRmExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
@@ -12,6 +13,8 @@ Removes an ExpressRoute circuit connection configuration.
 
 ## SYNTAX
 
+```
+Remove-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String>
  [-ExpressRouteCircuit] <PSExpressRouteCircuit> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -19,13 +22,16 @@ Removes an ExpressRoute circuit connection configuration.
 ## DESCRIPTION
 The **Remove-AzureRmExpressRouteCircuitConnectionConfig** cmdlet removes an ExpressRoute circuit
 connection configuration associated with a given Express Route Circuit.
+
 ## EXAMPLES
+
 ### Example 1: Remove a circuit connection configuration from an ExpressRoute circuit
 ```
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
+
 ### Example 2: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit
 ```
 Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzureRmExpressRouteCircuit

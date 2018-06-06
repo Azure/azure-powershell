@@ -111,11 +111,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-<<<<<<< HEAD:src/ResourceManager/Maps/AzureRM.Maps.psd1
-        ReleaseNotes = 'Service rename of Location Based Services to Maps'
-=======
         ReleaseNotes = '* First release of Maps management cmdlets'
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6:src/ResourceManager/Maps/AzureRM.Maps.psd1
 
         # Prerelease string of this module
         # Prerelease = ''

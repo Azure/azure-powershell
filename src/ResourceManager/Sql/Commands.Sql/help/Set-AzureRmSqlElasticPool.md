@@ -314,7 +314,7 @@ Specifies the storage limit, in megabytes, for the elastic pool. For more inform
 New-AzureRmSqlElasticPool cmdlet.
 
 ```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
