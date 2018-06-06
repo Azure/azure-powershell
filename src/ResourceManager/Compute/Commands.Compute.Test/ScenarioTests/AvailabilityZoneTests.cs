@@ -19,7 +19,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class AvailabilityZoneTests
     {
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineZone()
         {

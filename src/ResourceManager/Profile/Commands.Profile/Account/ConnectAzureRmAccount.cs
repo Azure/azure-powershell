@@ -50,11 +50,12 @@ namespace Microsoft.Azure.Commands.Profile
         [Alias("EnvironmentName")]
         [ValidateNotNullOrEmpty]
         public string Environment { get; set; }
-
-
-        [Parameter(ParameterSetName = UserParameterSet,
+        
+#if !NETSTANDARD
+        [Parameter(ParameterSetName = UserParameterSet, 
                     Mandatory = false, HelpMessage = "Optional credential", Position = 0)]
-        [Parameter(ParameterSetName = ServicePrincipalParameterSet,
+#endif
+        [Parameter(ParameterSetName = ServicePrincipalParameterSet, 
                     Mandatory = true, HelpMessage = "Credential")]
         public PSCredential Credential { get; set; }
 
