@@ -222,10 +222,14 @@ namespace Microsoft.Azure.Commands.Network
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSFlowLog, MNM.FlowLogInformation>();
                 cfg.CreateMap<CNM.PSRetentionPolicyParameters, MNM.RetentionPolicyParameters>();
+                cfg.CreateMap<CNM.PSTrafficAnalyticsProperties, MNM.TrafficAnalyticsProperties>();
+                cfg.CreateMap<CNM.PSTrafficAnalyticsConfigurationProperties, MNM.TrafficAnalyticsConfigurationProperties>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.FlowLogInformation, CNM.PSFlowLog>();
                 cfg.CreateMap<MNM.RetentionPolicyParameters, CNM.PSRetentionPolicyParameters>();
+                cfg.CreateMap<MNM.TrafficAnalyticsProperties, CNM.PSTrafficAnalyticsProperties>();
+                cfg.CreateMap<MNM.TrafficAnalyticsConfigurationProperties, CNM.PSTrafficAnalyticsConfigurationProperties>();
 
                 // CheckConnectivity
                 // CNM to MNM
@@ -549,6 +553,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSTunnelConnectionHealth, MNM.TunnelConnectionHealth>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewaySku, MNM.VirtualNetworkGatewaySku>();
                 cfg.CreateMap<CNM.PSVpnClientConfiguration, MNM.VpnClientConfiguration>();
+		cfg.CreateMap<CNM.PSVpnClientIPsecParameters, MNM.VpnClientIPsecParameters>();
                 cfg.CreateMap<CNM.PSVpnClientParameters, MNM.VpnClientParameters>();
                 cfg.CreateMap<CNM.PSVpnClientRevokedCertificate, MNM.VpnClientRevokedCertificate>();
                 cfg.CreateMap<CNM.PSVpnClientRootCertificate, MNM.VpnClientRootCertificate>();
@@ -567,6 +572,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.TunnelConnectionHealth, CNM.PSTunnelConnectionHealth>();
                 cfg.CreateMap<MNM.VirtualNetworkGatewaySku, CNM.PSVirtualNetworkGatewaySku>();
                 cfg.CreateMap<MNM.VpnClientConfiguration, CNM.PSVpnClientConfiguration>();
+		cfg.CreateMap<MNM.VpnClientIPsecParameters, CNM.PSVpnClientIPsecParameters>();
                 cfg.CreateMap<MNM.VpnClientParameters, CNM.PSVpnClientParameters>();
                 cfg.CreateMap<MNM.VpnClientRevokedCertificate, CNM.PSVpnClientRevokedCertificate>();
                 cfg.CreateMap<MNM.VpnClientRootCertificate, CNM.PSVpnClientRootCertificate>();

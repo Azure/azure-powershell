@@ -27,7 +27,7 @@ namespace Commands.Network.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkExpressRouteGatewayCRUD()
@@ -43,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayCRUD");
         }
 
-        [Fact(Skip = "Need to record afterwards, failing due to product issue.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayP2SAndSKU()
@@ -65,15 +65,14 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayActiveActiveFeatureOperations");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait("Re-record", "ClientRuntime changes")]
+        [Fact]
         [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayRouteApiTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayBgpRouteApi");
         }
 
-        [Fact(Skip ="Recorded with an older version of network, rerecord #4631")]
+        [Fact]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
@@ -87,6 +86,13 @@ namespace Commands.Network.Test.ScenarioTests
         public void VirtualNetworkGatewayIkeV2Test()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayIkeV2");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");
         }
     }
 }

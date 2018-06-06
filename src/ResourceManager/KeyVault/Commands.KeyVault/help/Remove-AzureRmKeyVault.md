@@ -58,15 +58,19 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Remove a key vault
-```
-PS C:\>Remove-AzureRmKeyVault -VaultName "Contoso03Vault"
+```powershell
+PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -PassThru
+
+True
 ```
 
 This command removes the key vault named Contoso03Vault from your current subscription.
 
 ### Example 2: Remove a key vault from a specified resource group
-```
-PS C:\>Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14"
+```powershell
+PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+
+True
 ```
 
 This command removes the key vault named Contoso03Vault from the named resource group.
@@ -274,8 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
