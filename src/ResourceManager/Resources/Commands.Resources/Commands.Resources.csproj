@@ -146,7 +146,6 @@
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataHttpRequest.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
-    <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
         }
 
-        public void Cleanup()
+        private void Cleanup()
         {
             currentProfile = null;
         }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), dict["PublishSettingsFileUrl"]);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement), dict["ServiceEndpoint"]);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl), dict["ManagementPortalUrl"]);
-            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.Gallery), "http://galleryendpoint.com");
+            Assert.Equal("http://galleryendpoint.com", env.GetEndpoint(AzureEnvironment.Endpoint.Gallery));
         }
 
         [Fact]
@@ -522,7 +522,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(1, environments.Count);
+            Assert.Single(environments);
         }
 
         [Fact]
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
         }
 
-        public void Dispose()
+        private void Dispose()
         {
             Cleanup();
         }
