@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobschedules?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
+      "RequestUri": "/jobschedules?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"schedule\": {},\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
@@ -13,32 +13,32 @@
           "157"
         ],
         "client-request-id": [
-          "2c4200f1-1468-47af-9692-86515b718750"
+          "a94c22cd-2462-4f04-9ee7-6e8862b00858"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "53386dbe-0cf1-4da1-9d22-1cf276f8903f"
+          "ecadd9d8-ebf2-4484-b86c-e21d650a6172"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,16 +50,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "ETag": [
-          "0x8D50C67B07F4DAF"
+          "0x8D5C26F0E8E132D"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -68,26 +68,26 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "44ea985f-5b21-46bf-ab27-fcfc57609c9a"
+          "c9d6cf71-9267-47cd-8620-788924b91f27"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -96,10 +96,10 @@
           "0"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "request-id": [
-          "8e20ad61-bf00-4c35-bf46-3c9a05863002"
+          "4c35df08-091a-4192-b0b9-440dd325f507"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,13 +111,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
+          "https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "ETag": [
-          "0x8D50C67B0B9F5A5"
+          "0x8D5C26F0EE0D325"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -126,41 +126,41 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "892f4494-0fdb-4fec-9b43-02e104b99e9e"
+          "7a9bad6b-11ac-4ee5-94a8-c7aaa8987d35"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D50C67B0B9F5A5\",\r\n  \"lastModified\": \"2017-10-06T03:09:42.8935077Z\",\r\n  \"creationTime\": \"2017-10-06T03:09:42.5090991Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:09:42.8935077Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2017-10-06T03:09:42.5090991Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D5C26F0EE0D325\",\r\n  \"lastModified\": \"2018-05-25T18:40:58.9566757Z\",\r\n  \"creationTime\": \"2018-05-25T18:40:58.4143661Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2018-05-25T18:40:58.9566757Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2018-05-25T18:40:58.4143661Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:58 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "788dd7af-c661-4fac-93f6-ae8228d67543"
+          "8b26422e-9af6-453a-b7eb-d82fb6e92e55"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -172,10 +172,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "ETag": [
-          "0x8D50C67B0B9F5A5"
+          "0x8D5C26F0EE0D325"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -184,41 +184,41 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "9a1ad066-bd50-4294-a3c1-556cbd08a00c"
+          "a30b3158-ec90-46ce-a73a-968f734ef495"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D50C67B0E66B25\",\r\n  \"lastModified\": \"2017-10-06T03:09:43.1848741Z\",\r\n  \"creationTime\": \"2017-10-06T03:09:42.5090991Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:09:43.1848741Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2017-10-06T03:09:43.0403959Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8D5C26F0F3431D4\",\r\n  \"lastModified\": \"2018-05-25T18:40:59.5030484Z\",\r\n  \"creationTime\": \"2018-05-25T18:40:58.4143661Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2018-05-25T18:40:59.5030484Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2018-05-25T18:40:59.2186777Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:43 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "df91c09a-d2cd-4eda-bc62-475c48dd71ee"
+          "914cb3c1-71f1-4cfa-9561-4fdb4db96b16"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -230,10 +230,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "ETag": [
-          "0x8D50C67B0E66B25"
+          "0x8D5C26F0F3431D4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -242,26 +242,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "ef83c605-c0e2-4571-8d31-e54d688dc047"
+          "9625fe87-6694-4c9c-bd18-8720df0f93c2"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -270,10 +270,10 @@
           "0"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:43 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "request-id": [
-          "2c61d2d7-d97b-46b0-adc5-f2ff07d8092e"
+          "e74a6b6f-ef3b-4879-b3cf-1ac26565d7c3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -285,13 +285,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
+          "https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "ETag": [
-          "0x8D50C67B0D05F77"
+          "0x8D5C26F0F08CD99"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -300,29 +300,29 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules?api-version=2017-09-01.6.0&$filter=id%20eq%20'testDisableEnableTerminateJobSchedule'",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMCYkZmlsdGVyPWlkJTIwZXElMjAlMjd0ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlJTI3",
+      "RequestUri": "/jobschedules?api-version=2018-03-01.6.1&$filter=id%20eq%20'testDisableEnableTerminateJobSchedule'",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMSYkZmlsdGVyPWlkJTIwZXElMjAlMjd0ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlJTI3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e1dbe596-b8ea-456e-84b6-58ce71905e3b"
+          "9c3415b7-4ecb-4701-9476-053d091b9c14"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8D50C67B0D05F77\",\r\n      \"lastModified\": \"2017-10-06T03:09:43.0403959Z\",\r\n      \"creationTime\": \"2017-10-06T03:09:42.5090991Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:09:43.0403959Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2017-10-06T03:09:42.8935077Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8D5C26F0F08CD99\",\r\n      \"lastModified\": \"2018-05-25T18:40:59.2186777Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:58.4143661Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:59.2186777Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2018-05-25T18:40:58.9566757Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://batchtestaccount.westus.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -331,7 +331,7 @@
           "chunked"
         ],
         "request-id": [
-          "20d366ea-87e3-4520-835b-930467b06ee9"
+          "38ee446a-41e6-43cc-91ce-16c300564a31"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -343,7 +343,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -352,38 +352,38 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDE4LTAzLTAxLjYuMQ==",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "803038b0-e737-4867-9be6-03b265cd9d82"
+          "4471448c-3e42-4cee-955f-84e48ee5d8bc"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:09:43 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "1b091ca5-77ee-4849-b433-24405708083f"
+          "93b3e9d6-4863-46d3-9fce-4914c8059b81"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -395,13 +395,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
+          "https://batchtestaccount.westus.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "ETag": [
-          "0x8D50C67B0E66B25"
+          "0x8D5C26F0F3431D4"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -410,26 +410,26 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "74614107-d124-4521-bc3f-c7d1dcd96775"
+          "bce846e9-58ff-4b98-9f62-fadca5e92538"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:09:42 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -438,7 +438,7 @@
           "chunked"
         ],
         "request-id": [
-          "f7ee445f-827d-4bc8-8e0f-1be871033cb1"
+          "e990672f-1fcb-4e54-adaa-869df86011e2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -450,7 +450,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:09:44 GMT"
+          "Fri, 25 May 2018 18:40:59 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -461,9 +461,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "ac86108b-e8ec-4858-8603-2f80105f96db",
+    "AZURE_BATCH_ACCOUNT": "batchtestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://batchtestaccount.westus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "antoniowtestbatchrg"
   }
 }

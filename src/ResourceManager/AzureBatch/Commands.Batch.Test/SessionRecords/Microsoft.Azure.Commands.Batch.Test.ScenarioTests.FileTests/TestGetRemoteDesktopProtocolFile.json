@@ -1,38 +1,38 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools/testPool/nodes?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/testPool/nodes?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "0d5a2ea0-5513-4399-96fd-e6f7a318f671"
+          "042e1fba-3fa1-4b8a-8a62-e49b50e66311"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
+          "Fri, 25 May 2018 18:59:08 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"tvm-892191217_1-20171006t025921z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvm-892191217_1-20171006t025921z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:08:30.280407Z\",\r\n      \"lastBootTime\": \"2017-10-06T03:08:27.8246934Z\",\r\n      \"allocationTime\": \"2017-10-06T02:59:21.803234Z\",\r\n      \"ipAddress\": \"100.77.180.43\",\r\n      \"affinityId\": \"TVM:tvm-892191217_1-20171006t025921z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 1,\r\n      \"totalTasksSucceeded\": 1,\r\n      \"runningTasksCount\": 0,\r\n      \"isDedicated\": true\r\n    },\r\n    {\r\n      \"id\": \"tvm-892191217_2-20171006t025921z\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvm-892191217_2-20171006t025921z\",\r\n      \"state\": \"idle\",\r\n      \"schedulingState\": \"enabled\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:10:19.346011Z\",\r\n      \"lastBootTime\": \"2017-10-06T03:10:18.7690398Z\",\r\n      \"allocationTime\": \"2017-10-06T02:59:21.803234Z\",\r\n      \"ipAddress\": \"100.77.184.70\",\r\n      \"affinityId\": \"TVM:tvm-892191217_2-20171006t025921z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"totalTasksRun\": 0,\r\n      \"totalTasksSucceeded\": 0,\r\n      \"runningTasksCount\": 0,\r\n      \"isDedicated\": true\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"PoolNotFound\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified pool does not exist.\\nRequestId:98f61a9c-be6e-41df-9758-5160a58aa18b\\nTime:2018-05-25T18:59:08.7280454Z\"\r\n  }\r\n}",
       "ResponseHeaders": {
+        "Content-Length": [
+          "337"
+        ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
         "request-id": [
-          "cdba7ec6-9b0d-4363-b61c-fbb970e46cfa"
+          "98f61a9c-be6e-41df-9758-5160a58aa18b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -44,124 +44,20 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
+          "Fri, 25 May 2018 18:59:08 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ]
       },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6P2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "027f2d54-c8ae-42be-b6fd-1647fc5bbc1c"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2110.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#nodes/@Element\",\r\n  \"id\": \"tvm-892191217_1-20171006t025921z\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testPool/nodes/tvm-892191217_1-20171006t025921z\",\r\n  \"state\": \"idle\",\r\n  \"schedulingState\": \"enabled\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:08:30.280407Z\",\r\n  \"lastBootTime\": \"2017-10-06T03:08:27.8246934Z\",\r\n  \"allocationTime\": \"2017-10-06T02:59:21.803234Z\",\r\n  \"ipAddress\": \"100.77.180.43\",\r\n  \"affinityId\": \"TVM:tvm-892191217_1-20171006t025921z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"totalTasksRun\": 1,\r\n  \"totalTasksSucceeded\": 1,\r\n  \"runningTasksCount\": 0,\r\n  \"isDedicated\": true\r\n}",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/json; odata=minimalmetadata"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "64d54ca1-4ba1-4ca7-8908-eb2f5b8fcb3b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/pools/testPool/nodes/tvm-892191217_1-20171006t025921z/rdp?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sL25vZGVzL3R2bS04OTIxOTEyMTdfMS0yMDE3MTAwNnQwMjU5MjF6L3JkcD9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLjYuMA==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "client-request-id": [
-          "9f724c02-a5dc-4bc9-a476-2fe368a2a2b9"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "ocp-date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.2110.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
-        ]
-      },
-      "ResponseBody": "full address:s:52.161.109.189\r\nLoadBalanceInfo:s:Cookie: mstshash=TVM#TVM_IN_0",
-      "ResponseHeaders": {
-        "Content-Type": [
-          "application/octet-stream"
-        ],
-        "Transfer-Encoding": [
-          "chunked"
-        ],
-        "request-id": [
-          "1266dd08-f969-4591-8d06-eabed027d426"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "DataServiceVersion": [
-          "3.0"
-        ],
-        "Date": [
-          "Fri, 06 Oct 2017 03:11:54 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
+      "StatusCode": 404
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "ac86108b-e8ec-4858-8603-2f80105f96db",
+    "AZURE_BATCH_ACCOUNT": "batchtestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://batchtestaccount.westus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "antoniowtestbatchrg"
   }
 }
