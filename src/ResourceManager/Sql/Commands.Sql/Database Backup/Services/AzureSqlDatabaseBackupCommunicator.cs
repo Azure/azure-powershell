@@ -380,7 +380,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        public BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
+        public Management.Sql.Models.BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
             string resourceGroupName,
             string serverName,
             string databaseName)
