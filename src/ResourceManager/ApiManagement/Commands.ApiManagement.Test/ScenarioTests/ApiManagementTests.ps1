@@ -246,7 +246,7 @@ Then updates the service by removing all but just one proxy hostname and adding 
 function Test-ApiManagementHostnamesCRUD {
     # Setup
     $location = "North Central US"
-    $certFilePath = "$TestOutputRoot\powershelltest.pfx";
+    $certFilePath = "$TestOutputRoot/powershelltest.pfx";
     $certPassword = "Password";
     $certSubject = "CN=*.msitesting.net"
     $certThumbprint = "8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2"
@@ -445,7 +445,7 @@ Tests SetApiManagementHostnames.
 function Test-SetApiManagementHostnames {
     # Setup
     $location = "North Central US"
-    $certFilePath = "$TestOutputRoot\powershelltest.pfx";
+    $certFilePath = "$TestOutputRoot/powershelltest.pfx";
     $certPassword = "Password";
     $certSubject = "CN=*.msitesting.net"
     $certThumbprint = "8E989652CABCF585ACBFCB9C2C91F1D174FDB3A2"
