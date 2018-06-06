@@ -32,12 +32,26 @@ The **Update-AzureKeyVaultSecret** cmdlet updates editable attributes of a secre
 ## EXAMPLES
 
 ### Example 1: Modify the attributes of a secret
-```
+```powershell
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Nbf = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = null}
+PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
 PS C:\> $ContentType= 'xml'
 PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+
+Vault Name   : ContosoVault
+Name         : HR
+Version      : d476edfcd3544017a03bc49c1f3abec0
+Id           : https://ContosoVault.vault.azure.net:443/secrets/HR/d476edfcd3544017a03bc49c1f3abec0
+Enabled      : True
+Expires      : 5/25/2020 8:01:58 PM
+Not Before   : 5/25/2018 8:02:02 PM
+Created      : 4/11/2018 11:45:06 PM
+Updated      : 5/25/2018 8:02:45 PM
+Content Type : xml
+Tags         : Name      Value
+               Severity  medium
+               HR        true
 ```
 
 The first four commands define attributes for the expiry date, the NotBefore date, tags, and

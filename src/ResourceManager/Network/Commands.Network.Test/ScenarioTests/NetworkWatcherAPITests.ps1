@@ -94,7 +94,7 @@ function Get-TestResourcesDeployment([string]$rgn)
 "@;
 
         $st = Set-Content -Path $paramFile -Value $paramContent -Force;
-        AzureRm.Resources\New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
+        New-AzureRmResourceGroupDeployment -ResourceGroupName "$rgn" -TemplateFile "$templateFile" -TemplateParameterFile $paramFile
 }
 
 <#
@@ -503,24 +503,23 @@ function Test-FlowLog
     # Setup
     $resourceGroupName = Get-ResourceGroupName
     $nwName = Get-ResourceName
-    $location = "eastus"
+	#Since Traffic Analytics is not available in all Azure regions, hardcoded locations are used
+    #Once Traffic Analytics is available in all Azure regions, the below two location variables should be updated to Get-Location
+    $location = "eastus2euap"
+	$workspaceLocation = "eastus"
     $resourceTypeParent = "Microsoft.Network/networkWatchers"
     $nwLocation = Get-ProviderLocation $resourceTypeParent
     $nwRgName = Get-ResourceGroupName
     $domainNameLabel = Get-ResourceName
-    $vnetName = Get-ResourceName
-    $subnetName = Get-ResourceName
     $nsgName = Get-ResourceName
+	$stoname =  Get-ResourceName
+	$workspaceName = Get-ResourceName
     
     try 
     {
         # Create Resource group
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
 
-        # Create the Virtual Network
-        $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.1.0/24
-        $vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-        
         # Create NetworkSecurityGroup
         $nsg = New-AzureRmNetworkSecurityGroup -name $nsgName -ResourceGroupName $resourceGroupName -Location $location
 
@@ -534,14 +533,20 @@ function Test-FlowLog
         $nw = New-AzureRmNetworkWatcher -Name $nwName -ResourceGroupName $nwRgName -Location $location
  
         # Create storage
-        $stoname = 'sto' + $resourceGroupName
+		$stoname = 'sto' + $stoname
         $stotype = 'Standard_GRS'
-        $containerName = 'cont' + $resourceGroupName
 
         New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
         $sto = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
 
-        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -AsJob
+		# create workspace
+		$workspaceName = 'tawspace' + $workspaceName
+		$workspaceSku = 'free'
+
+		New-AzureRmOperationalInsightsWorkspace -ResourceGroupName $resourceGroupName -Name $workspaceName -Location $workspaceLocation -Sku $workspaceSku;
+		$workspace = Get-AzureRmOperationalInsightsWorkspace -Name $workspaceName -ResourceGroupName $resourceGroupName
+
+        $job = Set-AzureRmNetworkWatcherConfigFlowLog -NetworkWatcher $nw -TargetResourceId $getNsg.Id -EnableFlowLog $true -StorageAccountId $sto.Id -EnableTrafficAnalytics:$true -Workspace $workspace -AsJob
         $job | Wait-Job
         $config = $job | Receive-Job
         $job = Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $nw -TargetResourceId $getNsg.Id -AsJob
@@ -554,11 +559,19 @@ function Test-FlowLog
         Assert-AreEqual $config.Enabled $true
         Assert-AreEqual $config.RetentionPolicy.Days 0
         Assert-AreEqual $config.RetentionPolicy.Enabled $false
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.ResourceId
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId.ToString()
+		Assert-AreEqual $config.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
         Assert-AreEqual $status.TargetResourceId $getNsg.Id
         Assert-AreEqual $status.StorageId $sto.Id
         Assert-AreEqual $status.Enabled $true
         Assert-AreEqual $status.RetentionPolicy.Days 0
         Assert-AreEqual $status.RetentionPolicy.Enabled $false
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.Enabled $true
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceResourceId $workspace.ResourceId
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceId $workspace.CustomerId.ToString()
+		Assert-AreEqual $status.FlowAnalyticsConfiguration.NetworkWatcherFlowAnalyticsConfiguration.WorkspaceRegion $workspace.Location
     }
     finally
     {
