@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
             get { return JsonConvert.SerializeObject(Statuses, Formatting.Indented); }
         }
 
-        // Gets or sets a list containing reference to all Virtual Machines created under this Availability Set.
+        // Gets or sets a list containing references to all Virtual Machines created under this Availability Set.
         public IList<SubResource> VirtualMachinesReferences { get; set; }
 
         [JsonIgnore]
