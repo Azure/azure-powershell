@@ -38,7 +38,7 @@ Specifies the number of instances of an application gateway.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -76,7 +76,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
 
 Required: True
@@ -96,7 +96,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard, WAF
 
 Required: True

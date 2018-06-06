@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: 2CED21D6-4BEF-423B-A04A-5B812CEB975D
@@ -39,7 +39,7 @@ Specifies the name of the Batch account from which this cmdlet removes an applic
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -54,7 +54,7 @@ Specifies the ID of the application.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -84,7 +84,7 @@ Specifies the name of the resource group that contains the Batch account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

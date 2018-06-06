@@ -24,6 +24,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     public abstract class AzureSqlElasticPoolCmdletBase : AzureSqlCmdletBase<IEnumerable<AzureSqlElasticPoolModel>, AzureSqlElasticPoolAdapter>
     {
+        // Some const variables used by SetAzureSqlElasticPool and NewAzureSqlElasticPool cmdlet
+        public const string DtuPoolParameterSet = "DtuBasedPool";
+        public const string VcorePoolParameterSet = "VcoreBasedPool";
+
+        public long Megabytes = 1024L * 1024L;
+
         /// <summary>
         /// Gets or sets the name of the server to use.
         /// </summary>

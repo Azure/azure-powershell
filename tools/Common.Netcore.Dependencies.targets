@@ -3,7 +3,7 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.4.0" />
     <PackageReference Include="Microsoft.Azure.Common" Version="2.2.0" />
-     <PackageReference Include="Hyak.Common" Version="1.2.0" />
+    <PackageReference Include="Hyak.Common" Version="1.2.0" />
     <PackageReference Include="System.Management.Automation" Version="6.0.1.1" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
