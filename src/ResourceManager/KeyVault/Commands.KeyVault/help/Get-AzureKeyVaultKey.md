@@ -74,47 +74,145 @@ This cmdlet gets a specific **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle
 ## EXAMPLES
 
 ### Example 1: Get all the keys in a key vault
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso'
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso'
+
+Vault Name     : contoso
+Name           : test1
+Version        :
+Id             : https://contoso.vault.azure.net:443/keys/test1
+Enabled        : True
+Expires        : 11/24/2018 6:08:13 PM
+Not Before     : 5/24/2018 5:58:13 PM
+Created        : 5/24/2018 6:08:13 PM
+Updated        : 5/24/2018 6:08:13 PM
+Purge Disabled : False
+Tags           :
+
+Vault Name     : contoso
+Name           : test2
+Version        :
+Id             : https://contoso.vault.azure.net:443/keys/test2
+Enabled        : True
+Expires        : 11/24/2018 6:09:44 PM
+Not Before     : 5/24/2018 5:59:44 PM
+Created        : 5/24/2018 6:09:44 PM
+Updated        : 5/24/2018 6:09:44 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command gets all the keys in the key vault named Contoso.
 
 ### Example 2: Get the current version of a key
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx'
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1'
+
+Vault Name     : contoso
+Name           : test1
+Version        : 7fe415d5518240c1a6fce89986b8d334
+Id             : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
+Enabled        : True
+Expires        : 11/24/2018 6:08:13 PM
+Not Before     : 5/24/2018 5:58:13 PM
+Created        : 5/24/2018 6:08:13 PM
+Updated        : 5/24/2018 6:08:13 PM
+Purge Disabled : False
+Tags           :
 ```
 
-This command gets the current version of the key named ITPfx in the key vault named Contoso.
+This command gets the current version of the key named test1 in the key vault named Contoso.
 
 ### Example 3: Get all versions of a key
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx' -IncludeVersions
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -IncludeVersions
+
+Vault Name     : contoso
+Name           : test1
+Version        : 7fe415d5518240c1a6fce89986b8d334
+Id             : https://contoso.vault.azure.net:443/keys/test1/7fe415d5518240c1a6fce89986b8d334
+Enabled        : True
+Expires        : 11/24/2018 6:08:13 PM
+Not Before     : 5/24/2018 5:58:13 PM
+Created        : 5/24/2018 6:08:13 PM
+Updated        : 5/24/2018 6:08:13 PM
+Purge Disabled : False
+Tags           :
+
+Vault Name     : contoso
+Name           : test1
+Version        : e4e95940e669407fbdb4298bc21a3e1d
+Id             : https://contoso.vault.azure.net:443/keys/test1/e4e95940e669407fbdb4298bc21a3e1d
+Enabled        : False
+Expires        : 11/24/2018 6:08:08 PM
+Not Before     : 5/24/2018 5:58:08 PM
+Created        : 5/24/2018 6:08:08 PM
+Updated        : 5/24/2018 6:08:08 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command gets all versions the key named ITPfx in the key vaultnamed Contoso.
 
 ### Example 4: Get a specific version of a key
-```
-PS C:\>$Key = Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx' -Version '5A12A276385949DB8B5F82AFEE85CAED'
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test1' -Version 'e4e95940e669407fbdb4298bc21a3e1d'
+
+Vault Name     : contoso
+Name           : test1
+Version        : e4e95940e669407fbdb4298bc21a3e1d
+Id             : https://contoso.vault.azure.net:443/keys/test1/e4e95940e669407fbdb4298bc21a3e1d
+Enabled        : False
+Expires        : 11/24/2018 6:08:08 PM
+Not Before     : 5/24/2018 5:58:08 PM
+Created        : 5/24/2018 6:08:08 PM
+Updated        : 5/24/2018 6:08:08 PM
+Purge Disabled : False
+Tags           :
 ```
 
-This command gets a specific version of the key named ITPfx in the key vault named Contoso.
+This command gets a specific version of the key named test1 in the key vault named Contoso.
 After running this command, you can inspect various properties of the key by navigating the $Key object.
 
 ### Example 5: Get all the keys that have been deleted but not purged for this key vault.
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' -InRemovedState
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -InRemovedState
+
+Vault Name           : contoso
+Name                 : test3
+Id                   : https://contoso.vault.azure.net:443/keys/test3
+Deleted Date         : 5/24/2018 8:32:42 PM
+Scheduled Purge Date : 8/22/2018 8:32:42 PM
+Enabled              : True
+Expires              :
+Not Before           :
+Created              : 5/24/2018 8:32:27 PM
+Updated              : 5/24/2018 8:32:27 PM
+Purge Disabled       : False
+Tags                 :
 ```
 
 This command gets all the keys that have been previously deleted, but not purged, in the key vault named Contoso.
 
 ### Example 6: Gets the key ITPfx that has been deleted but not purged for this key vault.
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' -KeyName 'ITPfx' -InRemovedState
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'contoso' -KeyName 'test3' -InRemovedState
+
+Vault Name           : contoso
+Name                 : test3
+Id                   : https://contoso.vault.azure.net:443/keys/test3/1af807cc331a49d0b52b7c75e1b2366e
+Deleted Date         : 5/24/2018 8:32:42 PM
+Scheduled Purge Date : 8/22/2018 8:32:42 PM
+Enabled              : True
+Expires              :
+Not Before           :
+Created              : 5/24/2018 8:32:27 PM
+Updated              : 5/24/2018 8:32:27 PM
+Purge Disabled       : False
+Tags                 :
 ```
 
-This command gets the key ITPfx that has been previously deleted, but not purged, in the key vault named Contoso.
+This command gets the key test3 that has been previously deleted, but not purged, in the key vault named Contoso.
 This command will return metadata such as the deletion date, and the scheduled purging date of this deleted key.
 
 ## PARAMETERS
@@ -262,11 +360,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey, List<Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem>, Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 
 ## NOTES
 

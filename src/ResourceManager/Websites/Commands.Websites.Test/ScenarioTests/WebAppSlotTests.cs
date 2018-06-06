@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
         }
 
-        [Fact]
+        [Fact(Skip = "iss#6044 The test needs to be re-written")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSwapWithPreviewResetSlotSwap()
         {

@@ -30,6 +30,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteCRUDMinimalParameters()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDMinimalParameters"));
@@ -37,6 +38,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteCRUDAllParameters()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDAllParameters"));
@@ -44,6 +46,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteTableCRUDMinimalParameters()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDMinimalParameters"));
@@ -51,6 +54,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteTableCRUDAllParameters()
         {
             NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDAllParameters"));

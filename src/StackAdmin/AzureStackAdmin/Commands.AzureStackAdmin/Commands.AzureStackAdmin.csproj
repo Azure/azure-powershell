@@ -242,9 +242,6 @@
       <Link>AzureRM.AzureStackAdmin.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.AzureStack.Commands.dll-help.psd1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <Compile Include="CommonPSConst.cs" />
     <Compile Include="Microsoft.Subscriptions\Locations\GetLocation.cs" />
     <Compile Include="Microsoft.Subscriptions\Locations\NewLocation.cs" />

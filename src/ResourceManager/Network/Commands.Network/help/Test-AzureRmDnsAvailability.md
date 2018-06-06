@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 556A9F12-DF72-468F-9C3F-A747CC70BD2F
@@ -9,6 +9,7 @@ schema: 2.0.0
 # Test-AzureRmDnsAvailability
 
 ## SYNOPSIS
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## SYNTAX
 
@@ -18,12 +19,13 @@ Test-AzureRmDnsAvailability -DomainNameLabel <String> -Location <String>
 ```
 
 ## DESCRIPTION
+Checks whether a domain name in the cloudapp.azure.com zone is available for use.
 
 ## EXAMPLES
 
-### 1:
+### --- Example 1: Check if contoso.cloudapp.azure.com is available for use. ---
 ```
-
+Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 ```
 
 ## PARAMETERS
@@ -60,7 +62,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -84,4 +86,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-
