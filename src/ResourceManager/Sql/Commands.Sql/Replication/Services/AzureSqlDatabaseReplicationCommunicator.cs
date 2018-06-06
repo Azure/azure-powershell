@@ -14,12 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-<<<<<<< HEAD
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
-using Microsoft.Azure.Management.Internal.Resources;
-=======
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;

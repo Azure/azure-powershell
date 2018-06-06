@@ -119,8 +119,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public int SecondaryVCore { get; set; }
 
         /// <summary>
-<<<<<<< HEAD
-=======
         /// Gets or sets the license type for the Azure Sql database
         /// </summary>
         [Parameter(Mandatory = false,
@@ -131,7 +129,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public string LicenseType { get; set; }
 
         /// <summary>
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -178,10 +175,6 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
             string location = ModelAdapter.GetServerLocation(this.PartnerResourceGroupName, this.PartnerServerName);
             List<Model.AzureReplicationLinkModel> newEntity = new List<AzureReplicationLinkModel>();
             Database.Model.AzureSqlDatabaseModel primaryDb = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
-<<<<<<< HEAD
-=======
-
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
             AzureReplicationLinkModel linkModel = new AzureReplicationLinkModel()
             {
                 PartnerLocation = location,
@@ -193,10 +186,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 SecondaryElasticPoolName = this.SecondaryElasticPoolName,
                 AllowConnections = this.AllowConnections,
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
-<<<<<<< HEAD
-=======
                 LicenseType = LicenseType
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)

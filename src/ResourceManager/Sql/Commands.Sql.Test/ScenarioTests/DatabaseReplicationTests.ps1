@@ -16,20 +16,7 @@
 	.SYNOPSIS
 	Tests creating a database copy
 #>
-<<<<<<< HEAD
-function Test-CreateDatabaseCopy
-{
-	Test-CreateCopyInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests creating a database copy
-#>
-function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
-=======
 function Test-CreateDatabaseCopy()
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
@@ -79,9 +66,6 @@ function Test-CreateDatabaseCopy()
 #>
 function Test-CreateVcoreDatabaseCopy()
 {
-<<<<<<< HEAD
-	Test-CreateSecondaryDatabaseInternal "12.0" "Southeast Asia"
-=======
 	# Setup
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
@@ -128,7 +112,6 @@ function Test-CreateVcoreDatabaseCopy()
 	{
 		Remove-ResourceGroupForTest $rg
 	}
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 }
 
 <#
@@ -178,20 +161,7 @@ function Test-CreateSecondaryDatabase()
 	.SYNOPSIS
 	Tests getting a secondary database
 #>
-<<<<<<< HEAD
-function Test-GetReplicationLink
-{
-	Test-GetReplicationLinkInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests getting a secondary database
-#>
-function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
-=======
 function Test-GetReplicationLink()
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
     # https://github.com/Azure/azure-powershell/issues/6382
@@ -238,20 +208,7 @@ function Test-GetReplicationLink()
 	.SYNOPSIS
 	Tests removing a secondary database
 #>
-<<<<<<< HEAD
-function Test-RemoveSecondaryDatabase
-{
-	Test-RemoveSecondaryDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-	Tests removing a secondary database
-#>
-function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
-=======
 function Test-RemoveSecondaryDatabase()
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
@@ -280,19 +237,6 @@ function Test-RemoveSecondaryDatabase()
 
 <#
 	.SYNOPSIS
-<<<<<<< HEAD
-	Tests removing a secondary database
-#>
-function Test-FailoverSecondaryDatabase
-{
-	#v12 only
-	Test-FailoverSecondaryDatabaseInternal "12.0" "Southeast Asia"
-}
-
-<#
-	.SYNOPSIS
-=======
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	Tests failing over a secondary database
 #>
 function Test-FailoverSecondaryDatabase()

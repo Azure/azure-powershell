@@ -39,11 +39,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-<<<<<<< HEAD
-		Assert-AreEqual $databaseName $db.DatabaseName 
-=======
 		Assert-AreEqual $databaseName $db.DatabaseName
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.CurrentServiceObjectiveName
@@ -111,11 +107,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 #>
 function Test-CreateVcoreDatabase
 {
-<<<<<<< HEAD
-	# Setup 
-=======
 	# Setup
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
@@ -128,11 +120,7 @@ function Test-CreateVcoreDatabase
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-<<<<<<< HEAD
-		Assert-AreEqual $databaseName $db.DatabaseName 
-=======
 		Assert-AreEqual $databaseName $db.DatabaseName
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
@@ -144,11 +132,7 @@ function Test-CreateVcoreDatabase
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-<<<<<<< HEAD
-		Assert-AreEqual $databaseName $db.DatabaseName 
-=======
 		Assert-AreEqual $databaseName $db.DatabaseName
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
 		Assert-AreEqual 2 $db.Capacity
@@ -162,8 +146,6 @@ function Test-CreateVcoreDatabase
 
 <#
 	.SYNOPSIS
-<<<<<<< HEAD
-=======
 	Tests creating a database with license type.
 #>
 function Test-CreateVcoreDatabaseWithLicenseType
@@ -203,7 +185,6 @@ function Test-CreateVcoreDatabaseWithLicenseType
 
 <#
 	.SYNOPSIS
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	Tests creating a database with sample name.
 #>
 function Test-CreateDatabaseWithSampleName
@@ -365,19 +346,11 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 
 <#
 	.SYNOPSIS
-<<<<<<< HEAD
-	Tests updating a vcore database 
-#>
-function Test-UpdateVcoreDatabase ()
-{
-	# Setup 
-=======
 	Tests updating a vcore database
 #>
 function Test-UpdateVcoreDatabase()
 {
 	# Setup
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
@@ -453,8 +426,6 @@ function Test-UpdateVcoreDatabase()
 
 <#
 	.SYNOPSIS
-<<<<<<< HEAD
-=======
 	Tests updating a vcore database license type
 #>
 function Test-UpdateVcoreDatabaseLicenseType()
@@ -496,7 +467,6 @@ function Test-UpdateVcoreDatabaseLicenseType()
 
 <#
 	.SYNOPSIS
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	Tests updating a database with zone redundancy
 #>
 function Test-UpdateDatabaseWithZoneRedundant ()

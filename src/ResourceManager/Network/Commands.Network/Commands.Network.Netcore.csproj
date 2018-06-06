@@ -32,11 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.0.0-preview" />
-=======
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.0.2-preview" />
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
   </ItemGroup>
 
   <ItemGroup>

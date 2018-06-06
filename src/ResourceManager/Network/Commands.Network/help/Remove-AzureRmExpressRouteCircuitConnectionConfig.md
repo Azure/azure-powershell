@@ -5,45 +5,27 @@ ms.assetid: cc944e06-4fa0-4ce5-88e9-ea6454b41d55
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/remove-azurermexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
-<<<<<<< HEAD
-=======
-
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 # Remove-AzureRmExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
 Removes an ExpressRoute circuit connection configuration.
 
-<<<<<<< HEAD
-=======
 ## SYNTAX
 
-```
-Remove-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String>
  [-ExpressRouteCircuit] <PSExpressRouteCircuit> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 ## DESCRIPTION
 The **Remove-AzureRmExpressRouteCircuitConnectionConfig** cmdlet removes an ExpressRoute circuit
 connection configuration associated with a given Express Route Circuit.
-
 ## EXAMPLES
-<<<<<<< HEAD
-=======
-
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 ### Example 1: Remove a circuit connection configuration from an ExpressRoute circuit
 ```
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
-<<<<<<< HEAD
-=======
-
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 ### Example 2: Remove a circuit connection configuration using Piping from an ExpressRoute Circuit
 ```
 Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName|Set-AzureRmExpressRouteCircuit
@@ -72,17 +54,10 @@ The ExpressRoute circuit containing the peering configuration to be removed.
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-<<<<<<< HEAD
-Aliases: 
-
-Required: True
-Position: Named
-=======
 Aliases:
 
 Required: True
 Position: 1
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -94,9 +69,6 @@ The name of the circuit connection configuration to be removed.
 ```yaml
 Type: String
 Parameter Sets: (All)
-<<<<<<< HEAD
-Aliases: 
-=======
 Aliases:
 
 Required: True
@@ -128,7 +100,6 @@ Shows what would happen if the cmdlet runs. The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 
 Required: False
 Position: Named

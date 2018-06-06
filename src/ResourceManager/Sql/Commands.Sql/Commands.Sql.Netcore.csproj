@@ -33,11 +33,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Sql" Version="1.15.0-preview" />
-<<<<<<< HEAD
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
-    <PackageReference Include="Microsoft.WindowsAzure.Management.Storage" Version="5.1.1" />
-=======
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
   </ItemGroup>
 
   <ItemGroup>

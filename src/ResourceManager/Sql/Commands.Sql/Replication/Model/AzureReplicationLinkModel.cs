@@ -101,13 +101,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the Capacity of the database
         /// </summary>
         public int? Capacity { get; set; }
-<<<<<<< HEAD
-=======
 
         /// <summary>
         /// Gets or sets the license type of the database
         /// </summary>
         public string LicenseType { get; set; }
->>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
     }
 }
