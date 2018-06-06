@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.Compute.dll","Microsoft.Azure.Commands.Compute.AddAzureVMDataDiskCommand","Add-AzureRmVMDataDisk","0","1050","The parameter set '__AllParameterSets' for cmdlet 'Add-AzureRmVMDataDisk' has been removed.","Add parameter set '__AllParameterSets' back to cmdlet 'Add-AzureRmVMDataDisk'."

@@ -14,7 +14,6 @@
 
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
