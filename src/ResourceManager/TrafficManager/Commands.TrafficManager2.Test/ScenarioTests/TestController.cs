@@ -15,12 +15,12 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Test.HttpRecorder;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.TrafficManager;
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient();
+            this.ResourceManagementClient = this.GetResourceManagementClient(context);
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
@@ -155,9 +155,9 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             }
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
