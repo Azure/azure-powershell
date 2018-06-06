@@ -18,7 +18,7 @@ Get-AzureRmVpnClientConfiguration [-Name <String>] -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-The #Get-AzureRmVpnClientConfiguration returns the URL where the VPN client can be downloaded from.
+The Get-AzureRmVpnClientConfiguration returns the URL where the VPN client can be downloaded from.
 
 ## EXAMPLES
 
