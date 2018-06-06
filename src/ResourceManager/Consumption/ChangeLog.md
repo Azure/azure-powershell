@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.3
+* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
+
+## Version 0.3.2
 * Set minimum dependency of module to PowerShell 5.0
 
 ## Version 0.3.1

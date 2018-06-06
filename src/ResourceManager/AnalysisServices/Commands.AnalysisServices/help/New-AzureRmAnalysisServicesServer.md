@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AnalysisServices.dll-Help.xml
 Module Name: AzureRM.AnalysisServices
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/new-azurermanalysisservicesserver
@@ -15,6 +15,8 @@ Creates a new Analysis Services server
 ```
 New-AzureRmAnalysisServicesServer [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-Sku] <String> [[-Tag] <Hashtable>] [[-Administrator] <String>] [[-BackupBlobContainerUri] <String>]
+ [-ReadonlyReplicaCount <Int32>] [-DefaultConnectionMode <String>]
+ [-FirewallConfig <PsAzureAnalysisServicesFirewallConfig>] [-GatewayResourceId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,6 +64,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DefaultConnectionMode
+Default connection mode of an Analysis service server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: All, Readonly
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -77,6 +95,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FirewallConfig
+Firewall config of an Analysis server
+
+```yaml
+Type: PsAzureAnalysisServicesFirewallConfig
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GatewayResourceId
+Gateway resource Id for assocaite to an Analysis server
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Location
 The Azure region where the Analysis Services server is hosted
 
@@ -84,7 +132,6 @@ The Azure region where the Analysis Services server is hosted
 Type: String
 Parameter Sets: (All)
 Aliases: 
-Accepted values: North Central US, South Central US, Central US, West Europe, North Europe, West US, East US, East US 2, Japan East, Japan West, Brazil South, Southeast Asia, East Asia, Australia East, Australia Southeast
 
 Required: True
 Position: 2
@@ -103,6 +150,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ReadonlyReplicaCount
+Read only replica count of an Analysis service server
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -149,51 +211,6 @@ Aliases:
 
 Required: False
 Position: 4
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ReadonlyReplicaCount
-Read only replica count of an Analysis service server
-
-```yaml
-Type: Integer
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 7
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultConnectionMode
-Default connection mode of an Analysis service server
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -FirewallConfig
-Firewall config of an Analysis server
-
-```yaml
-Type: Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallConfig
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: 9
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

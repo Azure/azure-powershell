@@ -32,23 +32,51 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 ## EXAMPLES
 
 ### Example 1: Remove a secret from a key vault
-```
-PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret'
+```powershell
+PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru
+
+Vault Name           : Contoso
+Name                 : FinanceSecret
+Version              : f622abc7b1394092812f1eb0f85dc91c
+Id                   : https://contoso.vault.azure.net:443/secrets/financesecret/f622abc7b1394092812f1eb0f85dc91c
+Deleted Date         : 5/25/2018 4:45:34 PM
+Scheduled Purge Date : 8/23/2018 4:45:34 PM
+Enabled              : True
+Expires              :
+Not Before           :
+Created              : 4/19/2018 5:56:02 PM
+Updated              : 4/26/2018 7:48:40 PM
+Content Type         :
+Tags                 : 
 ```
 
 This command removes the secret named FinanceSecret from the key vault named Contoso.'
 
 ### Example 2: Remove a secret from a key vault without user confirmation
-```
-PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -PassThru -Force
+
+Vault Name           : Contoso
+Name                 : FinanceSecret
+Version              : f622abc7b1394092812f1eb0f85dc91c
+Id                   : https://contoso.vault.azure.net:443/secrets/financesecret/f622abc7b1394092812f1eb0f85dc91c
+Deleted Date         : 5/25/2018 4:45:34 PM
+Scheduled Purge Date : 8/23/2018 4:45:34 PM
+Enabled              : True
+Expires              :
+Not Before           :
+Created              : 4/19/2018 5:56:02 PM
+Updated              : 4/26/2018 7:48:40 PM
+Content Type         :
+Tags                 : 
 ```
 
 This command removes the secret named FinanceSecret from the key vault named Contoso.
 The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 3: Purge deleted secret from the key vault permanently
-```
-PS C:\>Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
+```powershell
+PS C:\> Remove-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'FinanceSecret' -InRemovedState
 ```
 
 This command premoves the secret named FinanceSecret from the key vault named Contoso permanently.
@@ -201,7 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 
 ## OUTPUTS
 

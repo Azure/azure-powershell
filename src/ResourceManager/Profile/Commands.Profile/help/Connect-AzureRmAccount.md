@@ -124,14 +124,14 @@ This command connects to an Azure account and configured AzureRM PowerShell to r
 
 ### Example 5: Add an Account Using Managed Service Identity Login
 ```
-PS C:\>Add-AzureRmAccount -MSI
+PS C:\> Connect-AzureRmAccount -MSI
 Account: MSI@50342
 Environment: AzureCloud
 Subscription: yyyy-yyyy-yyyy-yyyy
 Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
-This command logs in using the managed service identity of the host environment (for example, if executed on a 
+This command connects using the managed service identity of the host environment (for example, if executed on a 
 VirtualMachine with an assigned Managed Service Identity, this will allow the code to login using that assigned identity)
 
 ## PARAMETERS

@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var resourceTypeLocationDictionary = SetMockDictionary();
 
             var ex = Assert.Throws<Exception>(() => LocationCompleterAttribute.FindLocations(new string[] { }, resourceTypeLocationDictionary));
-            Assert.Equal(ex.Message, "No valid ResourceType given to LocationCompleter.");
+            Assert.Equal("No valid ResourceType given to LocationCompleter.", ex.Message);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var resourceTypeLocationDictionary = SetMockDictionary();
 
             var ex = Assert.Throws<Exception>(() => LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.InvalidResourceType/operations" }, resourceTypeLocationDictionary));
-            Assert.Equal(ex.Message, "ResourceType name: 'Microsoft.InvalidResourceType/operations' is invalid.");
+            Assert.Equal("ResourceType name: 'Microsoft.InvalidResourceType/operations' is invalid.", ex.Message);
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var resourceTypeLocationDictionary = SetMockDictionary();
 
             var ex = Assert.Throws<Exception>(() => LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock1" }, resourceTypeLocationDictionary));
-            Assert.Equal(ex.Message, "No locations exist for all of the given ResourceTypes.");
+            Assert.Equal("No locations exist for all of the given ResourceTypes.", ex.Message);
         }
 
         [Fact]
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var resourceTypeLocationDictionary = SetMockDictionary();
 
             var ex = Assert.Throws<Exception>(() => LocationCompleterAttribute.FindLocations(new string[] { "Microsoft.Mock/mock3", "Microsoft.Mock/mock5" }, resourceTypeLocationDictionary));
-            Assert.Equal(ex.Message, "No locations exist for all of the given ResourceTypes.");
+            Assert.Equal("No locations exist for all of the given ResourceTypes.", ex.Message);
         }
 
         [Fact]

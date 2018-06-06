@@ -26,6 +26,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.DataLake.Store;
 using Microsoft.Azure.DataLake.Store.Acl;
+using Microsoft.Azure.DataLake.Store.AclTools;
 using Microsoft.Azure.DataLake.Store.FileTransfer;
 using NLog;
 using NLog.Config;
@@ -150,6 +151,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).SetOwner(path, owner, group);
         }
+
         /// <summary>
         /// Sets specific Acl entries
         /// </summary>
@@ -159,6 +161,20 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         public void SetAcl(string path, string accountName, List<AclEntry> aclToSet)
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).SetAcl(path, aclToSet);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <param name="accountName"></param>
+        /// <param name="aclToSet"></param>
+        /// <param name="aclChangeType"></param>
+        /// <param name="concurrency"></param>
+        public AclProcessorStats ChangeAclRecursively(string path, string accountName, List<AclEntry> aclToSet,
+            RequestedAclType aclChangeType, int concurrency = -1)
+        {
+            return AdlsClientFactory.GetAdlsClient(accountName, _context).ChangeAcl(path, aclToSet, aclChangeType, concurrency);
         }
         /// <summary>
         /// Add specific Acl entries
@@ -189,6 +205,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             AdlsClientFactory.GetAdlsClient(accountName, _context).RemoveAclEntries(path, aclsToRemove);
         }
+
         /// <summary>
         /// Remove all the ACLs
         /// </summary>
@@ -446,15 +463,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         {
             return AdlsClientFactory.GetAdlsClient(accountName, _context).GetDirectoryEntry(filePath);
         }
+
         /// <summary>
         /// Obtains the content summary recursively
         /// </summary>
         /// <param name="path">File Path</param>
         /// <param name="accountName">Account name</param>
+        /// <param name="numThreads">Concurrency</param>
+        /// <param name="cancelToken">Cancelation token</param>
         /// <returns></returns>
-        public ContentSummary GetContentSummary(string path, string accountName)
+        public ContentSummary GetContentSummary(string path, string accountName, int numThreads, CancellationToken cancelToken)
         {
-            return AdlsClientFactory.GetAdlsClient(accountName, _context).GetContentSummary(path);
+            return AdlsClientFactory.GetAdlsClient(accountName, _context).GetContentSummary(path, numThreads, cancelToken);
         }
         /// <summary>
         ///  Deletes the file or folder.
@@ -629,7 +649,24 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         }
 
-
+        /// <summary>
+        /// Get file properties
+        /// </summary>
+        /// <param name="accountName">Account name</param>
+        /// <param name="path">Path</param>
+        /// <param name="getAclUsage">Get Acl usage</param>
+        /// <param name="dumpFileName">Dump file name</param>
+        /// <param name="getDiskUsage">GetDisk usage</param>
+        /// <param name="saveToLocal">Save to local</param>
+        /// <param name="numThreads">Number of threads</param>
+        /// <param name="displayFiles">Display files</param>
+        /// <param name="hideConsistentAcl">Hide consistent Acl</param>
+        /// <param name="maxDepth">Maximum depth</param>
+        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth )
+        {
+            AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(path, getAclUsage, dumpFileName,
+                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth);
+        }
 
         #endregion
 

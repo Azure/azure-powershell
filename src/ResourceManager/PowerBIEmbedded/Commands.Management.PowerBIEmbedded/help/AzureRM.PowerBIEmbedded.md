@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.PowerBIEmbedded
 Module Guid: 868389ce-dd36-4f57-a674-0970db085d9a
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.powerbiembedded
+Help Version: 4.1.4.0
 Locale: en-US
 ---
 

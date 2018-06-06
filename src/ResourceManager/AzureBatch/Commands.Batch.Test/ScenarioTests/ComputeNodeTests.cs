@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestRemoveComputeNodes()
         {
@@ -47,11 +47,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeletePool(controller, context, removeNodePoolId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestRebootAndReimageComputeNode()
         {
@@ -70,11 +70,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId2);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
@@ -90,11 +90,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, iaasPoolId);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

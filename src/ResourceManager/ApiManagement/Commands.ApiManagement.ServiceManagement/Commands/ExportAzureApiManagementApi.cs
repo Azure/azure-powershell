@@ -21,6 +21,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.IO;
     using System.Management.Automation;
     using System.Text;
+    using Management.ApiManagement.Models;
 
     [Cmdlet(VerbsData.Export, Constants.ApiManagementApi, DefaultParameterSetName = ExportContentToPipeline, 
         SupportsShouldProcess = true)]
@@ -46,8 +47,15 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Identifier of API Revision. This parameter is optional. If not specified, the export will be " +
+            "done for the currently active api revision.")]
+        public String ApiRevision { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = true,
-            HelpMessage = "Specification format (Wadl or Swagger). This parameter is required.")]
+            HelpMessage = "Specification format (Wadl, Swagger or Wsdl). This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public PsApiManagementApiFormat SpecificationFormat { get; set; }
 
@@ -75,7 +83,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            var result = Client.ApiExportToFile(Context, ApiId, SpecificationFormat, SaveAs);
+            string apiId = ApiId;
+            if (!string.IsNullOrEmpty(ApiRevision))
+            {
+                apiId = ApiId.ApiRevisionIdentifier(ApiRevision);
+            }
+
+            var result = Client.ApiExportToFile(Context, apiId, SpecificationFormat, SaveAs);
 
             if (ParameterSetName.Equals(ExportContentToPipeline))
             {
@@ -90,11 +104,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             }
             else if (ParameterSetName.Equals(ExportToFile))
             {
-                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportDescription, ApiId, SaveAs);
+                var actionDescription = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportDescription, apiId, SaveAs);
                 var actionWarning = string.Format(CultureInfo.CurrentCulture, Resources.ApiExportWarning, SaveAs);
 
                 // Do nothing if force is not specified and user cancelled the operation
-                if (!ShouldProcess(ApiId,
+                if (!ShouldProcess(apiId,
                         actionDescription) || (File.Exists(SaveAs) &&
                     !Force.IsPresent && !ShouldContinue(actionWarning, Resources.ShouldProcessCaption)))
                 {

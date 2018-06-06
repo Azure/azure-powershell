@@ -82,7 +82,7 @@ Specifies the ExpressRoute circuit authorization.
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Specifies the name of the ExpressRoute circuit authorization that this cmdlet ge
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
