@@ -31,8 +31,9 @@ The **Get-AzureKeyVaultCertificatePolicy** cmdlet gets the policy for a certific
 ## EXAMPLES
 
 ### Example 1: Get a certificate policy
-```
-PS C:\>Get-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01"
+```powershell
+PS C:\ >Get-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01"
+
 SecretContentType               : application/x-pkcs12
 Kty                             : RSA
 KeySize                         : 2048
@@ -43,9 +44,11 @@ DnsNames                        :
 Ekus                            : {1.3.6.1.5.5.7.3.1, 1.3.6.1.5.5.7.3.2}
 ValidityInMonths                : 6
 IssuerName                      : Self
+CertificateType                 :
 RenewAtNumberOfDaysBeforeExpiry : 
 RenewAtPercentageLifetime       : 80
-EmailOnly                       : False
+EmailAtNumberOfDaysBeforeExpiry :
+EmailAtPercentageLifetime       :
 Enabled                         : True
 Created                         : 2/8/2016 11:10:29 PM
 Updated                         : 2/8/2016 11:10:29 PM
@@ -120,8 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 
 ## OUTPUTS
 

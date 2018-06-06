@@ -12,55 +12,32 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+
 namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.ScenarioTests
 {
-    using Management.ApiManagement;
-    using Management.Resources;
-    using Rest.ClientRuntime.Azure.TestFramework;
-    using WindowsAzure.Management;
-
     public class ApiManagementTestsFixture : TestsFixture
     {
-        private ManagementClient _managmentClient;
-        private ResourceManagementClient _resourceManagementClient;
-
         public string Location { get; set; }
         public string ResourceGroupName { get; set; }
         public string ApiManagementServiceName { get; set; }
 
-        public ManagementClient ManagmentClient
-        {
-            get { return _managmentClient ?? (_managmentClient = ApiManagementHelper.GetManagementClient()); }
-        }
-
-        public ResourceManagementClient ResourceManagementClient
-        {
-            get { return _resourceManagementClient ?? (_resourceManagementClient = ApiManagementHelper.GetResourceManagementClient()); }
-        }
-
-        public ApiManagementClient GetApiManagementClient(MockContext context)
-        {
-            return ApiManagementHelper.GetApiManagementClient(context); 
-        }
-
         public ApiManagementTestsFixture()
         {
-            using (MockContext context = MockContext.Start(
-                "ApiManagementTests",
-                "CreateApiManagementService"))
+            using (MockContext context = MockContext.Start("ApiManagementTests", "CreateApiManagementService"))
             {
-                this.ResourceGroupName = "powershelltest";
-                this.Location = "West US";
+                var resourceManagementClient = ApiManagementHelper.GetResourceManagementClient();
+                ResourceGroupName = "powershelltest";
+                Location = "West US";
 
                 if (string.IsNullOrWhiteSpace(ResourceGroupName))
                 {
                     ResourceGroupName = Azure.Test.TestUtilities.GenerateName("Api-Default");
-                    this.ResourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
+                    resourceManagementClient.TryRegisterResourceGroup(Location, ResourceGroupName);
                 }
 
                 ApiManagementServiceName = "powershellsdkservice";
-                var apiManagementClient = GetApiManagementClient(context);
-                apiManagementClient.TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
+                ApiManagementHelper.GetApiManagementClient(context).TryCreateApiService(ResourceGroupName, ApiManagementServiceName, Location);
             }
         }
     }

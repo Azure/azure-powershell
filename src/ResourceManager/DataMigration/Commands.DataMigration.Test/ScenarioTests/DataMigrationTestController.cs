@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.DataMigration.Test;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataMigration;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
         private void SetupManagementClients(MockContext context)
         {
             helper.SetupManagementClients(
-                GetResourceManagementClient(),
+                GetResourceManagementClient(context),
                 GetDmsClient(context),
                 GetAuthorizationManagementClient(context)
                 );
@@ -151,9 +151,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
             return client;
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return Microsoft.Azure.Test.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
