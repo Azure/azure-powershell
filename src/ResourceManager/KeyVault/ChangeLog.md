@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Update documentation with example output
+
 ## Version 5.0.0
 * Breaking changes to support piping scenarios
 * Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
