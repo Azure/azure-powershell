@@ -119,6 +119,16 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         public int VCore { get; set; }
 
         /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
+
+        /// <summary>
         /// Overriding to add warning message
         /// </summary>
         public override void ExecuteCmdlet()
@@ -185,7 +195,8 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 CopyLocation = copyLocation,
                 ServiceObjectiveName = ServiceObjectiveName,
                 ElasticPoolName = ElasticPoolName,
-                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true)
+                Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
+                LicenseType = LicenseType // note: default license type is LicenseIncluded
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -208,7 +219,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
                 copyModel.Edition = sourceDb.Edition;
                 copyModel.Capacity = VCore;
                 copyModel.Family = ComputeGeneration;
-            }           
+            }
 
             newEntity.Add(copyModel);
             return newEntity;
