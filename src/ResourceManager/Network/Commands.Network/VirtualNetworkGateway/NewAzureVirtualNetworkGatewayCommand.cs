@@ -265,19 +265,8 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                // If gateway sku param value is not passed, set gateway sku to VpnGw1 if VpnType is RouteBased and Basic if VpnType is PolicyBased
-                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                }
-                else
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                }
+                // If gateway sku param value is not passed,  - Let NRP make the decision, just pass it as null here
+                vnetGateway.Sku = null;
             }
 
             if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))

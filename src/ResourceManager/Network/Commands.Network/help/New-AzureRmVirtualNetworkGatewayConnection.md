@@ -9,7 +9,7 @@ schema: 2.0.0
 # New-AzureRmVirtualNetworkGatewayConnection
 
 ## SYNOPSIS
-
+Creates the Site-to-Site VPN connection between the virtual network gateway and the on-prem VPN device.
 ## SYNTAX
 
 ### SetByResource (Default)
@@ -35,7 +35,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name <String> -ResourceGroupName <St
 ```
 
 ## DESCRIPTION
-
+Creates the Site-to-Site VPN connection between the virtual network gateway and the on-prem VPN device.
 ## EXAMPLES
 
 ### 1:
