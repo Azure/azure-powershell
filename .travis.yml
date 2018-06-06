@@ -1,7 +1,7 @@
 sudo: required
 language: csharp
 mono: none
-dotnet: 2.1.2
+dotnet: 2.1.200
 dist: trusty
 
 env:
@@ -19,9 +19,11 @@ before_install:
  - sudo apt-get install -y powershell
  - sudo pwsh -NonInteractive -NoLogo -NoProfile -Command "Install-Module platyPS -Force -Confirm:\$false -Scope CurrentUser"
 
+ # https://github.com/travis-ci/travis-ci/issues/1066#issuecomment-383489298
 script:
- - dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG
- - dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter="AcceptanceType=CheckIn" --configuration $CONFIG
+ - sudo dotnet msbuild build.proj /t:BuildNetcore /p:Configuration=$CONFIG || travis_terminate 1
+ - sudo pwsh -NonInteractive -NoLogo -NoProfile -File tools/TestModuleLoading.ps1 || travis_terminate 1
+ - sudo dotnet test src/Azure.PowerShell.Netcore.Test.sln --filter "AcceptanceType=CheckIn&RunType!=DesktopOnly" --configuration $CONFIG
  
 after_success:
  - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then

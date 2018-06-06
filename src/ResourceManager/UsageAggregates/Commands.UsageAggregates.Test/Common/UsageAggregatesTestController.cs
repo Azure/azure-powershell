@@ -13,111 +13,47 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commerce.UsageAggregates;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.UsageAggregates.Test.ScenarioTests
 {
     public sealed class UsageAggregatesTestController
     {
-        private CSMTestEnvironmentFactory csmTestFactory;
-        private readonly EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
-        public static UsageAggregatesTestController NewInstance
-        {
-            get
-            {
-                return new UsageAggregatesTestController();
-            }
-        }
+        public static UsageAggregatesTestController NewInstance => new UsageAggregatesTestController();
 
         public UsageAggregatesTestController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action<CSMTestEnvironmentFactory> initialize,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
-            using (UndoContext context = UndoContext.Current)
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext.Start(callingClassType, mockName))
             {
-                context.Start(callingClassType, mockName);
+                _helper.SetupSomeOfManagementClients();
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                csmTestFactory = new CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(csmTestFactory);
-                }
-
-                SetupManagementClients();
-
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                var callingClassName = callingClassType
-                                        .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
-                                        .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                var callingClassName = callingClassType?.Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries).Last();
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.UsageAggregates.psd1"));
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.UsageAggregates.psd1"));
 
-                try
-                {
-                    if (scriptBuilder != null)
-                    {
-                        var psScripts = scriptBuilder();
-
-                        if (psScripts != null)
-                        {
-                            helper.RunPowerShellTest(psScripts);
-                        }
-                    }
-                }
-                finally
-                {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
-                }
+                _helper.RunPowerShellTest(scripts);
             }
         }
-
-        private void SetupManagementClients()
-        {
-            var usageManagementClient = GetUsageAggregatesManagementClient();
-
-            helper.SetupManagementClients(usageManagementClient);
-        }
-
-        private UsageAggregationManagementClient GetUsageAggregatesManagementClient()
-        {
-            return TestBase.GetServiceClient<UsageAggregationManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-
     }
 }
