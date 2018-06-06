@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -26,6 +27,7 @@ namespace Microsoft.Azure.Commands.Network
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
         private PSVirtualNetwork virtualNetwork;
+        private PSPublicIpAddress publicIpAddress;
 
         [Alias("ResourceName")]
         [Parameter(
@@ -56,6 +58,13 @@ namespace Microsoft.Azure.Commands.Network
         public string VirtualNetworkName { get; set; }
 
         [Parameter(
+         Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "Public Ip Name")]
+        [ValidateNotNullOrEmpty]
+        public string PublicIpName { get; set; }
+
+        [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
@@ -80,13 +89,25 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            // Get the virtual network and build ipConfiguration
-            if (!string.IsNullOrEmpty(VirtualNetworkName))
+            var isVnetPresent = !string.IsNullOrEmpty(VirtualNetworkName);
+            var isPublicIpPresent = !string.IsNullOrEmpty(PublicIpName);
+
+            if ((isVnetPresent && !isPublicIpPresent) || (!isVnetPresent && isPublicIpPresent))
+            {
+                var msg = (isVnetPresent && !isPublicIpPresent) ? $"Virtual Network provided, but Public IP Address was not provided." : $"Public IP Address provided, but Virtual Network name was not provided.";
+                throw new ArgumentException(msg);
+            }
+
+            // Get the virtual network, get the public IP address
+            if (isVnetPresent)
             {
                 var vnet = this.VirtualNetworkClient.Get(this.ResourceGroupName, VirtualNetworkName);
                 this.virtualNetwork = NetworkResourceManagerProfile.Mapper.Map<PSVirtualNetwork>(vnet);
+                
+                var publicIp = this.PublicIPAddressesClient.Get(this.ResourceGroupName, PublicIpName);
+                this.publicIpAddress = NetworkResourceManagerProfile.Mapper.Map<PSPublicIpAddress>(publicIp);
             }
-
+            
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
             var present = this.IsAzureFirewallPresent(this.ResourceGroupName, this.Name);
@@ -112,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.virtualNetwork != null)
             {
-                firewall.AttachToVirtualNetwork(this.virtualNetwork);
+                firewall.SetIpConfiguration(this.virtualNetwork, this.publicIpAddress);
             }
 
             // Map to the sdk object

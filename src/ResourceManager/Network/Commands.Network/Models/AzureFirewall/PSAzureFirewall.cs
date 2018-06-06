@@ -17,15 +17,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewall : PSTopLevelResource
     {
-        private const string AzureFirewallSubnetName = "SecureGatewaySubnet";
+        private const string AzureFirewallSubnetName = "SecureGatewaySubnet"; // todo: change to "AzureFirewallSubnet";
         private const int AzureFirewallSubnetMinSize = 25;
-        private const string AzureFirewallIpConfigurationName = "SecureGatewayIpConfiguration";
-
+        private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
+        
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
 
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollections { get; set; }
@@ -52,13 +54,18 @@ namespace Microsoft.Azure.Commands.Network.Models
             get { return JsonConvert.SerializeObject(NetworkRuleCollections, Formatting.Indented); }
         }
 
-        #region Virtual Network Operations
+        #region Ip Configuration Operations
 
-        public void AttachToVirtualNetwork(PSVirtualNetwork virtualNetwork)
+        public void SetIpConfiguration(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
         {
             if (virtualNetwork == null)
             {
                 throw new ArgumentNullException(nameof(virtualNetwork), $"Virtual Network cannot be null!");
+            }
+
+            if (publicIpAddress == null)
+            {
+                throw new ArgumentNullException(nameof(publicIpAddress), $"Public IP Address cannot be null!");
             }
 
             PSSubnet firewallSubnet = null;
@@ -76,23 +83,24 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 throw new ArgumentException($"The AddressPrefix ({firewallSubnet.AddressPrefix}) of the {AzureFirewallSubnetName} of the referenced Virtual Network must be at least /{AzureFirewallSubnetMinSize}");
             }
-
+            
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>
                 {
                     new PSAzureFirewallIpConfiguration
                     {
                         Name = AzureFirewallIpConfigurationName,
-                        Subnet = new PSResourceId { Id = firewallSubnet.Id }
+                        Subnet = new PSResourceId { Id = firewallSubnet.Id },
+                        PublicIPAddress = new PSResourceId {Id =  publicIpAddress.Id}
                     }
                 };
         }
 
-        public void DetachFromVirtualNetwork()
+        public void RemoveIpConfiguration()
         {
             this.IpConfigurations = null;
         }
 
-        #endregion // Virtual Network Operations
+        #endregion // Ip Configuration Operations
 
         #region Application Rule Collections Operations
 
