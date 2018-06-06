@@ -54,7 +54,7 @@ The DH Groups used in IKE Phase 1 for initial SA
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, DHGroup1, DHGroup14, DHGroup2, DHGroup2048, DHGroup24, ECP256, ECP384
 
 Required: True
@@ -70,7 +70,7 @@ The IKE encryption algorithm (IKE Phase 2)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: DES, DES3, AES128, AES192, AES256
 
 Required: True
@@ -86,7 +86,7 @@ The IKE integrity algorithm (IKE Phase 2)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: MD5, SHA1, SHA256, SHA384
 
 Required: True
@@ -102,7 +102,7 @@ The IPSec encryption algorithm (IKE Phase 1)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, DES, DES3, AES128, AES192, AES256, GCMAES128, GCMAES192, GCMAES256
 
 Required: True
@@ -118,7 +118,7 @@ The IPSec integrity algorithm (IKE Phase 1)
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: MD5, SHA1, SHA256, GCMAES128, GCMAES192, GCMAES256
 
 Required: True
@@ -134,7 +134,7 @@ The DH Groups used in IKE Phase 2 for new child SA
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, PFS1, PFS2, PFS2048, PFS24, ECP256, ECP384
 
 Required: True
@@ -150,7 +150,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload si
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -165,7 +165,7 @@ The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime i
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -188,4 +188,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

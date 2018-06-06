@@ -269,6 +269,8 @@ $job | Wait-Job
 $subcriptions = $job | Receive-Job
 ````
 
+To set a custom job name, please use [SetBackgroupJobDescription(string name)](https://github.com/Azure/azure-powershell/blob/preview/src/Common/Commands.Common/AzurePSCmdlet.cs#L761).  The default job description is: "Long Running Operation for '{cmdlet name}' on resource '{resource name}'"
+
 ## Argument Completers
 
 PowerShell uses Argument Completers to provide tab completion for users.  At the moment, Azure PowerShell has two specific argument completers that should be applied to relevant parameters, and one generic argument completer that can be used to tab complete with a given list of values.

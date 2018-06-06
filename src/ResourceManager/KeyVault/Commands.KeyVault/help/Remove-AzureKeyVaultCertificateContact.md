@@ -37,11 +37,18 @@ The **Remove-AzureKeyVaultCertificateContact** cmdlet deletes a contact that is 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate contact
-```
-PS C:\>Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com"
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificateContact -VaultName "Contoso01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+
+Email               VaultName
+-----               ---------
+user1@microsoft.com mvault2
+user2@microsoft.com mvault2
+user3@microsoft.com mvault2
+user4@microsoft.com mvault2
 ```
 
-This command removes Patti Fuller as a certificate contact for the Contoso01 key vault.
+This command removes Patti Fuller as a certificate contact for the Contoso01 key vault.  If PassThru is specified, the cmdlet returns the list of remaining certificate contacts.
 
 ## PARAMETERS
 
@@ -172,12 +179,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 
