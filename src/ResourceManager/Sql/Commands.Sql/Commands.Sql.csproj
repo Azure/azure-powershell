@@ -51,8 +51,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdvancedThreatProtection\Cmdlet\RemoveAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\SetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\DisableAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\EnableAzureSqlServerAdvancedThreatProtection.cs" />
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />

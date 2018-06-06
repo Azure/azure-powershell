@@ -18,12 +18,36 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Removes the AdvancedThreatProtection policy of a specific server.
+    /// Enables the Advanced Threat Protection of a specific server.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServerAdvancedThreatProtectionPolicy", SupportsShouldProcess = true), 
+    [Cmdlet("Enable", "AzureRmSqlServerAdvancedThreatProtection", SupportsShouldProcess = true), 
         OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class RemoveAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerThreatDetectionCmdletBase
+    public class EnableAzureSqlServerAdvancedThreatProtection : SqlServerThreatDetectionCmdletBase
     {
+        /// <summary>
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
+        {
+            ServerAdvancedThreatProtectionPolicyModel model;
+            try
+            {
+                model = ModelAdapter.GetServerAdvancedThreatProtectionPolicy(ResourceGroupName, ServerName);
+            }
+            catch
+            {
+                // For set policy if get returns not found we don't want to expose it to the user.
+                model = new ServerAdvancedThreatProtectionPolicyModel()
+                {
+                    ResourceGroupName = ResourceGroupName,
+                    ServerName = ServerName
+                };
+            }
+
+            return model;
+        }
+
         /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
@@ -31,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
-            ModelAdapter.RemoveServerAdvancedThreatProtectionPolicy(model);
+            ModelAdapter.EnableServerAdvancedThreatProtection(model);
             return null;
         }
     }

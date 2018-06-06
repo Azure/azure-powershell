@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Sets a server Advanced Threat Protection policy model for the given database
         /// </summary>
-        public ServerAdvancedThreatProtectionPolicyModel SetServerAdvancedThreatProtectionPolicy(ServerAdvancedThreatProtectionPolicyModel model)
+        public ServerAdvancedThreatProtectionPolicyModel EnableServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         }
 
         /// <summary>
-        /// Removes the server Advanced Threat Protection policy model for the given database
+        /// Disables the server Advanced Threat Protection policy model for the given database
         /// </summary>
-        public ServerAdvancedThreatProtectionPolicyModel RemoveServerAdvancedThreatProtectionPolicy(ServerAdvancedThreatProtectionPolicyModel model)
+        public ServerAdvancedThreatProtectionPolicyModel DisableServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var updateParameters = new ServerSecurityAlertPolicyCreateOrUpdateParameters();
