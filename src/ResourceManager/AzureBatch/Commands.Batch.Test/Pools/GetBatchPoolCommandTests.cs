@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the pool returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
         }
 
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             int poolCount = 0;
             foreach (PSCloudPool p in pipeline)
             {
-                Assert.True(idsOfConstructedPools.Contains(p.Id));
+                Assert.Contains(p.Id, idsOfConstructedPools);
                 poolCount++;
             }
             Assert.Equal(idsOfConstructedPools.Length, poolCount);

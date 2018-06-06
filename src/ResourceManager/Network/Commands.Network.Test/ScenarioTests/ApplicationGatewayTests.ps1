@@ -56,7 +56,7 @@ function Test-ApplicationGatewayCRUD
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -123,7 +123,7 @@ function Test-ApplicationGatewayCRUD
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
 
-		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authCertFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		
 		# Create match with undefined statuscode list
@@ -330,7 +330,7 @@ function Test-ApplicationGatewayCRUD2
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -388,7 +388,7 @@ function Test-ApplicationGatewayCRUD2
 
 		# frontend part
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert1.pfx"
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
@@ -451,7 +451,7 @@ function Test-ApplicationGatewayCRUD2
 		Assert-NotNull $getgw.SslCertificates[0].Password
 
 		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert02Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert2.pfx"
+		$sslCert02Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert2.pfx"
 		$getgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert02Name -CertificateFile $sslCert02Path -Password $pw02
 
 		# Modify existing application gateway with new configuration
