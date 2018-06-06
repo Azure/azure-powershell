@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public bool? ZoneRedundant { get; set; }
 
         /// <summary>
-        /// Gets or sets the capacity of the database. 
+        /// Gets or sets the capacity of the database.
         ///    The capacity is Dtu number if the database is dtu based database; capacity is Vcore number if the database is vcore based database.
         /// </summary>
         public int? Capacity { get; set; }
@@ -159,6 +159,11 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the SkuName of the database.
         /// </summary>
         public string SkuName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the LicenseType of the database
+        /// </summary>
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Construct AzureSqlDatabaseModel
@@ -252,6 +257,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
             Family = database.Sku == null ? null : database.Sku.Family;
 
             SkuName = database.Sku == null ? null : database.Sku.Name;
+
+            LicenseType = database.LicenseType;
         }
     }
 }
