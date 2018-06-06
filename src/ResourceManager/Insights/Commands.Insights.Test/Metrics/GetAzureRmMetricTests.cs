@@ -80,14 +80,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.MetricName = new[] { "n1", "n2" };
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
-            Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));
+            Assert.Contains("(name.value eq 'n1' or name.value eq 'n2')", filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             cmdlet.AggregationType = AggregationType.Total;
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
-            Assert.True(filter.Filter.Contains("aggregationType eq 'Total'"));
-            Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));
+            Assert.Contains("aggregationType eq 'Total'", filter.Filter);
+            Assert.Contains("(name.value eq 'n1' or name.value eq 'n2')", filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             var endDate = DateTime.UtcNow.AddMinutes(-1);
@@ -99,31 +99,31 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
 
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
-            Assert.True(filter.Filter.Contains("aggregationType eq 'Average'"));
-            Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));
-            Assert.True(filter.Filter.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O")));
-            Assert.True(filter.Filter.Contains("endTime eq " + endDate.ToString("O")));
+            Assert.Contains("aggregationType eq 'Average'", filter.Filter);
+            Assert.Contains("(name.value eq 'n1' or name.value eq 'n2')", filter.Filter);
+            Assert.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O"), filter.Filter);
+            Assert.Contains("endTime eq " + endDate.ToString("O"), filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             cmdlet.StartTime = endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).Subtract(GetAzureRmMetricCommand.DefaultTimeRange);
 
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
-            Assert.True(filter.Filter.Contains("aggregationType eq 'Average'"));
-            Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));
-            Assert.True(filter.Filter.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O")));
-            Assert.True(filter.Filter.Contains("endTime eq " + endDate.ToString("O")));
+            Assert.Contains("aggregationType eq 'Average'", filter.Filter);
+            Assert.Contains("(name.value eq 'n1' or name.value eq 'n2')", filter.Filter);
+            Assert.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O"), filter.Filter);
+            Assert.Contains("endTime eq " + endDate.ToString("O"), filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
 
             cmdlet.AggregationType = AggregationType.Maximum;
             cmdlet.TimeGrain = TimeSpan.FromMinutes(5);
             cmdlet.ExecuteCmdlet();
             Assert.True(filter != null);
-            Assert.True(filter.Filter.Contains("aggregationType eq 'Maximum'"));
-            Assert.True(filter.Filter.Contains("(name.value eq 'n1' or name.value eq 'n2')"));
-            Assert.True(filter.Filter.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O")));
-            Assert.True(filter.Filter.Contains("endTime eq " + endDate.ToString("O")));
-            Assert.True(filter.Filter.Contains("timeGrain eq duration'" + XmlConvert.ToString(cmdlet.TimeGrain) + "'"));
+            Assert.Contains("aggregationType eq 'Maximum'", filter.Filter);
+            Assert.Contains("(name.value eq 'n1' or name.value eq 'n2')", filter.Filter);
+            Assert.Contains("startTime eq " + endDate.Subtract(GetAzureRmMetricCommand.DefaultTimeRange).Subtract(GetAzureRmMetricCommand.DefaultTimeRange).ToString("O"), filter.Filter);
+            Assert.Contains("endTime eq " + endDate.ToString("O"), filter.Filter);
+            Assert.Contains("timeGrain eq duration'" + XmlConvert.ToString(cmdlet.TimeGrain) + "'", filter.Filter);
             Assert.Equal(Utilities.ResourceUri, resourceId);
         }
     }
