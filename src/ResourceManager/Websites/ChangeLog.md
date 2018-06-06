@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update to the latest version of Stategy library.
 
 ## Version 5.0.2
 * `New-AzureRMWebApp` is updated to use common algorithms from the Strategy library.
