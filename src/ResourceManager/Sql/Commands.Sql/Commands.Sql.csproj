@@ -64,9 +64,13 @@
     <Compile Include="Common\Iso8601DurationHelper.cs" />
     <Compile Include="Elastic Jobs\Cmdlet\Common\AzureSqlElasticJobsCmdletBase.cs" />
     <Compile Include="Common\ResourceIdentityHelper.cs" />
+    <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseBackupShortTermRetentionPolicyCmdletBase.cs" />
     <Compile Include="Database Backup\Cmdlet\AzureSqlDatabaseLongTermRetentionBackupCmdletBase.cs" />
+    <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseBackupShortTermRetentionPolicy.cs" />
     <Compile Include="Database Backup\Cmdlet\RemoveAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
     <Compile Include="Database Backup\Cmdlet\GetAzureRmSqlDatabaseLongTermRetentionBackup.cs" />
+    <Compile Include="Database Backup\Cmdlet\SetAzureRmSqlDatabaseBackupShortTermRetentionPolicy.cs" />
+    <Compile Include="Database Backup\Model\AzureSqlDatabaseBackupShortTermRetentionPolicyModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionBackupModel.cs" />
     <Compile Include="Database Backup\Model\AzureSqlDatabaseLongTermRetentionPolicyModel.cs" />
     <Compile Include="Database\Cmdlet\StopAzureSqlDatabaseActivity.cs" />
