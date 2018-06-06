@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 null);
 
             var tenantsInAccount = azureRmProfile.DefaultContext.Account.GetPropertyAsArray(AzureAccount.Property.Tenants);
-            Assert.Equal(1, tenantsInAccount.Length);
+            Assert.Single(tenantsInAccount);
             Assert.Equal(tenants.First(), tenantsInAccount[0]);
         }
 
@@ -411,7 +411,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenantResults = client.ListTenants();
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
@@ -434,9 +434,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
             var tenantResults = client.ListTenants();
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             tenantResults = client.ListTenants(DefaultTenant.ToString());
-            Assert.Equal(1, tenantResults.Count());
+            Assert.Single(tenantResults);
             IAzureSubscription subValue;
             Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
@@ -474,8 +474,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var tenants = new List<string> { };
             var subscriptions = new List<string> { Guid.NewGuid().ToString() };
             var client = SetupTestEnvironment(tenants, subscriptions);
-            Assert.Equal(0, client.ListSubscriptions().Count());
-            Assert.Equal(0, client.ListTenants().Count());
+            Assert.Empty(client.ListSubscriptions());
+            Assert.Empty(client.ListTenants());
         }
 
         [Fact]
@@ -487,7 +487,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             var client = SetupTestEnvironment(tenants, subscriptions, subscriptions,
                                                        subscriptions, subscriptions,
                                                        subscriptions, subscriptions);
-            Assert.Equal(0, client.ListSubscriptions().Count());
+            Assert.Empty(client.ListSubscriptions());
             IAzureSubscription subValue;
             Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName(DefaultTenant.ToString(), "random-name", out subValue));
@@ -658,9 +658,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(tenants[1], resultSubscription.TenantId);
         }
 
-#if !NETSTANDARD
-
+#if NETSTANDARD
+        [Fact(Skip = "ConcurrentDictionary is not marked as Serializable")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileSerializeDeserializeWorks()
         {
@@ -723,9 +726,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal("http://contoso.io", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint));
             Assert.Equal("http://insights.contoso.io/", deserializedProfile.DefaultContext.Environment.GetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId));
         }
-#endif
 
+#if NETSTANDARD
+        [Fact(Skip = "Serialized property order changes from NetCore 2.1.2 -> 2.1.200")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SavingProfileWorks()
         {

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = @()
@@ -72,9 +72,9 @@ NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
 FunctionsToExport = '*'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureAnalysisServicesAccount',
-    'Restart-AzureAnalysisServicesInstance',
-    'Export-AzureAnalysisServicesInstanceLog',
+CmdletsToExport = 'Add-AzureAnalysisServicesAccount', 
+    'Restart-AzureAnalysisServicesInstance', 
+    'Export-AzureAnalysisServicesInstanceLog', 
     'Sync-AzureAnalysisServicesInstance'
 
 # Variables to export from this module
@@ -90,7 +90,7 @@ AliasesToExport = '*'
 # ModuleList = @()
 
 # List of all files packaged with this module
-# FileList =  @()
+# FileList = @()
 
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
@@ -98,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = "Azure", "AzureAS", "AS"
+        Tags = 'Azure', 'AzureAS', 'AS'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
