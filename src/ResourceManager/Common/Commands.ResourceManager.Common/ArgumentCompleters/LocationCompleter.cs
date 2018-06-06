@@ -49,14 +49,25 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                     {
                         try
                         {
-                            var instance = AzureSession.Instance;
-                            IResourceManagementClient client = instance.ClientFactory.CreateCustomArmClient<ResourceManagementClient>(
-                                context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager),
-                                instance.AuthenticationFactory.GetServiceClientCredentials(context, AzureEnvironment.Endpoint.ResourceManager),
-                                instance.ClientFactory.GetCustomHandlers());
-                            client.SubscriptionId = context.Subscription.Id;
+                            IResourceManagementClient client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
                             var allProviders = client.Providers.ListAsync();
-                            if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
+                            if (_timeout == -1)
+                            {
+                                allProviders.Wait();
+                                if (allProviders.Result != null)
+                                {
+                                    _resourceTypeLocationDictionary[contextHash] = CreateLocationDictionary(allProviders.Result.ToList());
+                                    output = _resourceTypeLocationDictionary[contextHash];
+                                }
+                                else
+                                {
+                                    output = CreateLocationDictionary(new List<Provider>());
+#if DEBUG
+                                    throw new InvalidOperationException("Result from client.Providers is null");
+#endif
+                                }
+                            }
+                            else if (allProviders.Wait(TimeSpan.FromSeconds(_timeout)))
                             {
                                 if (allProviders.Result != null)
                                 {

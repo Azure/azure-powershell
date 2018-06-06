@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 236B4436-E8AD-42B4-922C-E2E1406CAFC2
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementtenantaccess
 schema: 2.0.0
@@ -25,7 +26,7 @@ The **Get-AzureRmApiManagementTenantAccess** cmdlet gets the tenant access confi
 ### Example 1: Get tenant access configuration
 ```
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-PS C:\>Get-AzureRmApiManagementTenantAccess -Context $apimContext 
+PS C:\>Get-AzureRmApiManagementTenantAccess -Context $apimContext
 ```
 
 This command gets the tenant access configuration for the specified context.
@@ -38,7 +39,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

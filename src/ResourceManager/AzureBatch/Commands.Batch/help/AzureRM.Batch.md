@@ -1,7 +1,7 @@
-﻿---
+---
 Module Name: AzureRM.Batch
 Module Guid: a8f00f40-1c1a-49b5-9db3-24076b75c3cf
-Download Help Link: http://go.microsoft.com/fwlink/?linkid=390762
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.batch
 Help Version: 4.0.0.0
 Locale: en-US
 ---
@@ -68,6 +68,9 @@ Gets a Batch node file.
 ### [Get-AzureBatchPool](Get-AzureBatchPool.md)
 Gets Batch pools under the specified Batch account.
 
+### [Get-AzureBatchPoolNodeCounts](Get-AzureBatchPoolNodeCounts.md)
+Gets Batch node counts per node state grouped by pool id.
+
 ### [Get-AzureBatchPoolStatistics](Get-AzureBatchPoolStatistics.md)
 Gets pool summary statistics for a Batch account.
 
@@ -85,6 +88,9 @@ Gets the subtask information of the specified task.
 
 ### [Get-AzureBatchTask](Get-AzureBatchTask.md)
 Gets the Batch tasks for a job.
+
+### [Get-AzureBatchTaskCounts](Get-AzureBatchTaskCounts.md)
+Gets the task counts for the specified job.
 
 ### [Get-AzureRmBatchAccount](Get-AzureRmBatchAccount.md)
 Gets a Batch account in the current subscription.
@@ -193,6 +199,9 @@ Updates a Batch account.
 
 ### [Set-AzureRmBatchApplication](Set-AzureRmBatchApplication.md)
 Updates settings for the specified application.
+
+### [Start-AzureBatchComputeNodeServiceLogUpload](Start-AzureBatchComputeNodeServiceLogUpload.md)
+Upload compute node service log files to an Azure Storage container.
 
 ### [Start-AzureBatchPoolResize](Start-AzureBatchPoolResize.md)
 Starts to resize a pool.

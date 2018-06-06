@@ -14,17 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
@@ -375,76 +370,11 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <param name="parameters">Parameters describing the database restore request</param>
+        /// <param name="model">Sql Database Model with required parameters</param>
         /// <returns>Restored database object</returns>
-        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, string resourceId, AzureSqlDatabaseModel model)
+        public Management.Sql.Models.Database RestoreDatabase(string resourceGroupName, string serverName, string databaseName, Management.Sql.Models.Database model)
         {
-            GenericResource resource = new GenericResource
-            {
-                Location = model.Location,
-                Properties = new Dictionary<string, object>
-                {
-                    { "LongTermRetentionBackupResourceId", resourceId },
-                    { "CreateMode", model.CreateMode },
-                    { "ElasticPoolName", model.ElasticPoolName },
-                }
-            };
-
-            Sku sku = new Sku();
-            if (!string.IsNullOrWhiteSpace(model.RequestedServiceObjectiveName))
-            {
-                sku.Name = model.RequestedServiceObjectiveName;
-            }
-
-            if (model.Edition != Database.Model.DatabaseEdition.None)
-            {
-                sku.Tier = model.Edition.ToString();
-                if (string.IsNullOrWhiteSpace(model.RequestedServiceObjectiveName))
-                {
-                    // If the customer only provided Edition, map to the default SLO.
-                    //
-                    switch (model.Edition)
-                    {
-                        case Database.Model.DatabaseEdition.Free:
-                            sku.Name = "Free";
-                            break;
-                        case Database.Model.DatabaseEdition.Basic:
-                            sku.Name = "Basic";
-                            break;
-                        case Database.Model.DatabaseEdition.Standard:
-                            sku.Name = "S0";
-                            break;
-                        case Database.Model.DatabaseEdition.Premium:
-                            sku.Name = "P1";
-                            break;
-                        case Database.Model.DatabaseEdition.PremiumRS:
-                            sku.Name = "PRS1";
-                            break;
-                        case Database.Model.DatabaseEdition.DataWarehouse:
-                            sku.Name = "DW100";
-                            break;
-                        case Database.Model.DatabaseEdition.Stretch:
-                            sku.Name = "DS100";
-                            break;
-                    }
-                }
-            }
-
-            if (!string.IsNullOrWhiteSpace(sku.Name) || !string.IsNullOrWhiteSpace(sku.Tier))
-            {
-                resource.Sku = sku;
-            }
-
-            GenericResource database = GetCurrentResourcesClient().Resources.CreateOrUpdate(resourceGroupName, "Microsoft.Sql", string.Format("servers/{0}", serverName), "databases", databaseName, "2017-03-01-preview", resource);
-
-            if (database != null)
-            {
-                return GetCurrentSqlClient().Databases.Get(resourceGroupName, serverName, databaseName);
-            }
-            else
-            {
-                return null;
-            }
+            return GetCurrentSqlClient().Databases.CreateOrUpdate(resourceGroupName, serverName, databaseName, model);
         }
 
         /// <summary>

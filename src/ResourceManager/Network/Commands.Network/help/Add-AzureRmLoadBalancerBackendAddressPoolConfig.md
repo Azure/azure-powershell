@@ -53,7 +53,7 @@ Specifies a **LoadBalancer** object.
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,7 +68,7 @@ Specifies the name of the backend address pool configuration to add.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

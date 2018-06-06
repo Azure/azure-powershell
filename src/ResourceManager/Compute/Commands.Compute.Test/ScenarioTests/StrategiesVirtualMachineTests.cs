@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Moq;
 using System;
+using System.Diagnostics;
 using System.Reflection;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         public StrategiesVirtualMachineTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(
-                new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
         [Fact]
@@ -52,7 +51,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmSystemAssignedIdentity");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity()
         {
@@ -83,10 +87,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
         }
 
-        public static void TestDomainName(string psTest, Func<string> getUniqueId)
+        internal static void TestDomainName(string psTest, Func<string> getUniqueId)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
             var oldCreate = create.GetValue(null);

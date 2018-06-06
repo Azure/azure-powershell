@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.DataFactories
 Module Guid: e3c0f6bc-fe96-41a0-88f4-5e490a91f05d
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories
+Help Version: 4.2.2.0
 Locale: en-US
 ---
 

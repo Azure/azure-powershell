@@ -23,22 +23,37 @@ namespace Microsoft.Azure.Commands.TrafficManager
     [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "The name of the profile.")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
+        protected const string AccountNameParameterSet = "AccountNameParameterSet";
 
-        [Parameter(Mandatory = false, HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            ParameterSetName = ResourceGroupParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group to which the profile belongs.")]
+        [Parameter(
+            Position = 0,
+            Mandatory = true,
+            ParameterSetName = AccountNameParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource group to which the profile belongs.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Position = 1,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = AccountNameParameterSet,
+            HelpMessage = "The name of the profile.")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            if (this.ResourceGroupName == null && this.Name != null)
-            {
-                // Throw an error
-            }
-            else if (this.ResourceGroupName != null && this.Name != null)
+            if (this.ResourceGroupName != null && this.Name != null)
             {
                 TrafficManagerProfile profile = this.TrafficManagerClient.GetTrafficManagerProfile(this.ResourceGroupName, this.Name);
 

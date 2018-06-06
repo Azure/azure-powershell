@@ -1,7 +1,7 @@
 ﻿---
 Module Name: AzureRM.Billing
 Module Guid: a1f34ce9-bf46-4180-b36c-be232a1f8f63
-Download Help Link: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing
 Help Version: 2.0.0.0
 Locale: en-US
 ---

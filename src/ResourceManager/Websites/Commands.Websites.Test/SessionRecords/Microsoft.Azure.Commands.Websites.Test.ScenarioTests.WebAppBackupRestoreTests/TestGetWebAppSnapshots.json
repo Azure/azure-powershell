@@ -1,0 +1,575 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL3NuYXBzaG90cz9hcGktdmVyc2lvbj0yMDE2LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "23d78f43-8601-482e-a7c0-5b7275bc33bd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_19_12_9724295\",\r\n      \"name\": \"2017-10-27T01:19:12.9724295\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:19:12.9724295\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_23_36_4452294\",\r\n      \"name\": \"2017-10-27T01:23:36.4452294\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:23:36.4452294\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_19_12_8813722\",\r\n      \"name\": \"2017-10-27T02:19:12.8813722\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:19:12.8813722\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_23_36_2711353\",\r\n      \"name\": \"2017-10-27T02:23:36.2711353\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:23:36.2711353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_19_17_1792390\",\r\n      \"name\": \"2017-10-27T03:19:17.179239\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:19:17.179239\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_23_36_6635273\",\r\n      \"name\": \"2017-10-27T03:23:36.6635273\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:23:36.6635273\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_19_12_9481680\",\r\n      \"name\": \"2017-10-27T04:19:12.948168\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:19:12.948168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_23_36_5171278\",\r\n      \"name\": \"2017-10-27T04:23:36.5171278\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:23:36.5171278\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_19_13_3286788\",\r\n      \"name\": \"2017-10-27T05:19:13.3286788\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:19:13.3286788\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_23_35_9219200\",\r\n      \"name\": \"2017-10-27T05:23:35.92192\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:23:35.92192\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_19_13_0687182\",\r\n      \"name\": \"2017-10-27T06:19:13.0687182\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:19:13.0687182\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_23_36_7707754\",\r\n      \"name\": \"2017-10-27T06:23:36.7707754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:23:36.7707754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_19_13_2600954\",\r\n      \"name\": \"2017-10-27T07:19:13.2600954\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:19:13.2600954\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_23_36_8898326\",\r\n      \"name\": \"2017-10-27T07:23:36.8898326\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:23:36.8898326\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_19_13_2261241\",\r\n      \"name\": \"2017-10-27T08:19:13.2261241\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:19:13.2261241\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_23_36_5554377\",\r\n      \"name\": \"2017-10-27T08:23:36.5554377\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:23:36.5554377\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_19_13_5215065\",\r\n      \"name\": \"2017-10-27T09:19:13.5215065\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:19:13.5215065\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_23_36_5958336\",\r\n      \"name\": \"2017-10-27T09:23:36.5958336\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:23:36.5958336\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_19_13_2112484\",\r\n      \"name\": \"2017-10-27T10:19:13.2112484\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:19:13.2112484\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_23_36_6454676\",\r\n      \"name\": \"2017-10-27T10:23:36.6454676\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:23:36.6454676\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_19_13_2363036\",\r\n      \"name\": \"2017-10-27T11:19:13.2363036\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:19:13.2363036\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_23_36_5891519\",\r\n      \"name\": \"2017-10-27T11:23:36.5891519\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:23:36.5891519\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_19_13_0572883\",\r\n      \"name\": \"2017-10-27T12:19:13.0572883\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:19:13.0572883\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_23_36_7130444\",\r\n      \"name\": \"2017-10-27T12:23:36.7130444\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:23:36.7130444\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_19_13_2300286\",\r\n      \"name\": \"2017-10-27T13:19:13.2300286\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:19:13.2300286\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_23_36_3023626\",\r\n      \"name\": \"2017-10-27T13:23:36.3023626\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:23:36.3023626\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_19_13_3517337\",\r\n      \"name\": \"2017-10-27T14:19:13.3517337\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:19:13.3517337\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_23_36_8293592\",\r\n      \"name\": \"2017-10-27T14:23:36.8293592\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:23:36.8293592\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_19_12_4987298\",\r\n      \"name\": \"2017-10-27T15:19:12.4987298\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:19:12.4987298\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_23_36_9160368\",\r\n      \"name\": \"2017-10-27T15:23:36.9160368\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:23:36.9160368\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_19_13_8523253\",\r\n      \"name\": \"2017-10-27T16:19:13.8523253\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:19:13.8523253\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_23_37_0967833\",\r\n      \"name\": \"2017-10-27T16:23:37.0967833\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:23:37.0967833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_19_13_5993859\",\r\n      \"name\": \"2017-10-27T17:19:13.5993859\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:19:13.5993859\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_23_36_9377034\",\r\n      \"name\": \"2017-10-27T17:23:36.9377034\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:23:36.9377034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_19_13_7476754\",\r\n      \"name\": \"2017-10-27T18:19:13.7476754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:19:13.7476754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_23_36_7056109\",\r\n      \"name\": \"2017-10-27T18:23:36.7056109\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:23:36.7056109\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "10909"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "aaeb88aa-d336-4f12-9f8f-9a2ce3557301"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14843"
+        ],
+        "x-ms-correlation-request-id": [
+          "39d1cb5a-6662-4c6a-a8d1-a41c479d8da2"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185659Z:39d1cb5a-6662-4c6a-a8d1-a41c479d8da2"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:56:58 GMT"
+        ],
+        "ETag": [
+          "\"1D34EBD73E2B860\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL3NuYXBzaG90cz9hcGktdmVyc2lvbj0yMDE2LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "daae656e-c740-4229-92a7-9a7d5b514768"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_19_12_9724295\",\r\n      \"name\": \"2017-10-27T01:19:12.9724295\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:19:12.9724295\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_23_36_4452294\",\r\n      \"name\": \"2017-10-27T01:23:36.4452294\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:23:36.4452294\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_19_12_8813722\",\r\n      \"name\": \"2017-10-27T02:19:12.8813722\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:19:12.8813722\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_23_36_2711353\",\r\n      \"name\": \"2017-10-27T02:23:36.2711353\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:23:36.2711353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_19_17_1792390\",\r\n      \"name\": \"2017-10-27T03:19:17.179239\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:19:17.179239\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_23_36_6635273\",\r\n      \"name\": \"2017-10-27T03:23:36.6635273\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:23:36.6635273\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_19_12_9481680\",\r\n      \"name\": \"2017-10-27T04:19:12.948168\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:19:12.948168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_23_36_5171278\",\r\n      \"name\": \"2017-10-27T04:23:36.5171278\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:23:36.5171278\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_19_13_3286788\",\r\n      \"name\": \"2017-10-27T05:19:13.3286788\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:19:13.3286788\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_23_35_9219200\",\r\n      \"name\": \"2017-10-27T05:23:35.92192\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:23:35.92192\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_19_13_0687182\",\r\n      \"name\": \"2017-10-27T06:19:13.0687182\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:19:13.0687182\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_23_36_7707754\",\r\n      \"name\": \"2017-10-27T06:23:36.7707754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:23:36.7707754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_19_13_2600954\",\r\n      \"name\": \"2017-10-27T07:19:13.2600954\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:19:13.2600954\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_23_36_8898326\",\r\n      \"name\": \"2017-10-27T07:23:36.8898326\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:23:36.8898326\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_19_13_2261241\",\r\n      \"name\": \"2017-10-27T08:19:13.2261241\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:19:13.2261241\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_23_36_5554377\",\r\n      \"name\": \"2017-10-27T08:23:36.5554377\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:23:36.5554377\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_19_13_5215065\",\r\n      \"name\": \"2017-10-27T09:19:13.5215065\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:19:13.5215065\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_23_36_5958336\",\r\n      \"name\": \"2017-10-27T09:23:36.5958336\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:23:36.5958336\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_19_13_2112484\",\r\n      \"name\": \"2017-10-27T10:19:13.2112484\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:19:13.2112484\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_23_36_6454676\",\r\n      \"name\": \"2017-10-27T10:23:36.6454676\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:23:36.6454676\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_19_13_2363036\",\r\n      \"name\": \"2017-10-27T11:19:13.2363036\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:19:13.2363036\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_23_36_5891519\",\r\n      \"name\": \"2017-10-27T11:23:36.5891519\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:23:36.5891519\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_19_13_0572883\",\r\n      \"name\": \"2017-10-27T12:19:13.0572883\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:19:13.0572883\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_23_36_7130444\",\r\n      \"name\": \"2017-10-27T12:23:36.7130444\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:23:36.7130444\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_19_13_2300286\",\r\n      \"name\": \"2017-10-27T13:19:13.2300286\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:19:13.2300286\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_23_36_3023626\",\r\n      \"name\": \"2017-10-27T13:23:36.3023626\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:23:36.3023626\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_19_13_3517337\",\r\n      \"name\": \"2017-10-27T14:19:13.3517337\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:19:13.3517337\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_23_36_8293592\",\r\n      \"name\": \"2017-10-27T14:23:36.8293592\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:23:36.8293592\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_19_12_4987298\",\r\n      \"name\": \"2017-10-27T15:19:12.4987298\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:19:12.4987298\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_23_36_9160368\",\r\n      \"name\": \"2017-10-27T15:23:36.9160368\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:23:36.9160368\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_19_13_8523253\",\r\n      \"name\": \"2017-10-27T16:19:13.8523253\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:19:13.8523253\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_23_37_0967833\",\r\n      \"name\": \"2017-10-27T16:23:37.0967833\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:23:37.0967833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_19_13_5993859\",\r\n      \"name\": \"2017-10-27T17:19:13.5993859\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:19:13.5993859\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_23_36_9377034\",\r\n      \"name\": \"2017-10-27T17:23:36.9377034\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:23:36.9377034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_19_13_7476754\",\r\n      \"name\": \"2017-10-27T18:19:13.7476754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:19:13.7476754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_23_36_7056109\",\r\n      \"name\": \"2017-10-27T18:23:36.7056109\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:23:36.7056109\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "10909"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "25840edc-5f4b-47c3-83c3-f861851b3c61"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14842"
+        ],
+        "x-ms-correlation-request-id": [
+          "f90b0562-33c2-467a-b14e-c4a0fb7931c6"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185710Z:f90b0562-33c2-467a-b14e-c4a0fb7931c6"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:09 GMT"
+        ],
+        "ETag": [
+          "\"1D34EBD73E2B860\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL3NuYXBzaG90cz9hcGktdmVyc2lvbj0yMDE2LTA4LTAx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "13638181-6194-499d-9a46-a471e2072c7d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_19_12_9724295\",\r\n      \"name\": \"2017-10-27T01:19:12.9724295\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:19:12.9724295\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T01_23_36_4452294\",\r\n      \"name\": \"2017-10-27T01:23:36.4452294\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:23:36.4452294\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_19_12_8813722\",\r\n      \"name\": \"2017-10-27T02:19:12.8813722\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:19:12.8813722\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T02_23_36_2711353\",\r\n      \"name\": \"2017-10-27T02:23:36.2711353\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:23:36.2711353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_19_17_1792390\",\r\n      \"name\": \"2017-10-27T03:19:17.179239\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:19:17.179239\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T03_23_36_6635273\",\r\n      \"name\": \"2017-10-27T03:23:36.6635273\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:23:36.6635273\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_19_12_9481680\",\r\n      \"name\": \"2017-10-27T04:19:12.948168\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:19:12.948168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T04_23_36_5171278\",\r\n      \"name\": \"2017-10-27T04:23:36.5171278\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:23:36.5171278\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_19_13_3286788\",\r\n      \"name\": \"2017-10-27T05:19:13.3286788\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:19:13.3286788\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T05_23_35_9219200\",\r\n      \"name\": \"2017-10-27T05:23:35.92192\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:23:35.92192\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_19_13_0687182\",\r\n      \"name\": \"2017-10-27T06:19:13.0687182\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:19:13.0687182\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T06_23_36_7707754\",\r\n      \"name\": \"2017-10-27T06:23:36.7707754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:23:36.7707754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_19_13_2600954\",\r\n      \"name\": \"2017-10-27T07:19:13.2600954\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:19:13.2600954\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T07_23_36_8898326\",\r\n      \"name\": \"2017-10-27T07:23:36.8898326\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:23:36.8898326\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_19_13_2261241\",\r\n      \"name\": \"2017-10-27T08:19:13.2261241\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:19:13.2261241\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T08_23_36_5554377\",\r\n      \"name\": \"2017-10-27T08:23:36.5554377\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:23:36.5554377\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_19_13_5215065\",\r\n      \"name\": \"2017-10-27T09:19:13.5215065\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:19:13.5215065\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T09_23_36_5958336\",\r\n      \"name\": \"2017-10-27T09:23:36.5958336\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:23:36.5958336\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_19_13_2112484\",\r\n      \"name\": \"2017-10-27T10:19:13.2112484\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:19:13.2112484\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T10_23_36_6454676\",\r\n      \"name\": \"2017-10-27T10:23:36.6454676\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:23:36.6454676\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_19_13_2363036\",\r\n      \"name\": \"2017-10-27T11:19:13.2363036\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:19:13.2363036\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T11_23_36_5891519\",\r\n      \"name\": \"2017-10-27T11:23:36.5891519\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:23:36.5891519\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_19_13_0572883\",\r\n      \"name\": \"2017-10-27T12:19:13.0572883\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:19:13.0572883\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T12_23_36_7130444\",\r\n      \"name\": \"2017-10-27T12:23:36.7130444\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:23:36.7130444\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_19_13_2300286\",\r\n      \"name\": \"2017-10-27T13:19:13.2300286\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:19:13.2300286\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T13_23_36_3023626\",\r\n      \"name\": \"2017-10-27T13:23:36.3023626\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:23:36.3023626\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_19_13_3517337\",\r\n      \"name\": \"2017-10-27T14:19:13.3517337\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:19:13.3517337\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T14_23_36_8293592\",\r\n      \"name\": \"2017-10-27T14:23:36.8293592\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:23:36.8293592\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_19_12_4987298\",\r\n      \"name\": \"2017-10-27T15:19:12.4987298\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:19:12.4987298\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T15_23_36_9160368\",\r\n      \"name\": \"2017-10-27T15:23:36.9160368\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:23:36.9160368\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_19_13_8523253\",\r\n      \"name\": \"2017-10-27T16:19:13.8523253\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:19:13.8523253\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T16_23_37_0967833\",\r\n      \"name\": \"2017-10-27T16:23:37.0967833\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:23:37.0967833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_19_13_5993859\",\r\n      \"name\": \"2017-10-27T17:19:13.5993859\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:19:13.5993859\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T17_23_36_9377034\",\r\n      \"name\": \"2017-10-27T17:23:36.9377034\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:23:36.9377034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_19_13_7476754\",\r\n      \"name\": \"2017-10-27T18:19:13.7476754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:19:13.7476754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/snapshots/2017-10-27T18_23_36_7056109\",\r\n      \"name\": \"2017-10-27T18:23:36.7056109\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:23:36.7056109\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "10909"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e8f97833-5fe3-4c7c-ad8e-3cbc1f747675"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14838"
+        ],
+        "x-ms-correlation-request-id": [
+          "a3c87ed3-d8a2-4d78-8d95-2b82023fcd85"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185717Z:a3c87ed3-d8a2-4d78-8d95-2b82023fcd85"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:16 GMT"
+        ],
+        "ETag": [
+          "\"1D34EBD73E2B860\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL3Nsb3RzL3N0YWdpbmcvc25hcHNob3RzP2FwaS12ZXJzaW9uPTIwMTYtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "46a4976b-97f1-4c2d-942e-f2be8d5b39b1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T01_19_12_9724295\",\r\n      \"name\": \"2017-10-27T01:19:12.9724295\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:19:12.9724295\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T01_23_36_4452294\",\r\n      \"name\": \"2017-10-27T01:23:36.4452294\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T01:23:36.4452294\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T02_19_12_8813722\",\r\n      \"name\": \"2017-10-27T02:19:12.8813722\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:19:12.8813722\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T02_23_36_2711353\",\r\n      \"name\": \"2017-10-27T02:23:36.2711353\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T02:23:36.2711353\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T03_19_17_1792390\",\r\n      \"name\": \"2017-10-27T03:19:17.179239\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:19:17.179239\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T03_23_36_6635273\",\r\n      \"name\": \"2017-10-27T03:23:36.6635273\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T03:23:36.6635273\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T04_19_12_9481680\",\r\n      \"name\": \"2017-10-27T04:19:12.948168\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:19:12.948168\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T04_23_36_5171278\",\r\n      \"name\": \"2017-10-27T04:23:36.5171278\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T04:23:36.5171278\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T05_19_13_3286788\",\r\n      \"name\": \"2017-10-27T05:19:13.3286788\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:19:13.3286788\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T05_23_35_9219200\",\r\n      \"name\": \"2017-10-27T05:23:35.92192\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T05:23:35.92192\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T06_19_13_0687182\",\r\n      \"name\": \"2017-10-27T06:19:13.0687182\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:19:13.0687182\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T06_23_36_7707754\",\r\n      \"name\": \"2017-10-27T06:23:36.7707754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T06:23:36.7707754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T07_19_13_2600954\",\r\n      \"name\": \"2017-10-27T07:19:13.2600954\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:19:13.2600954\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T07_23_36_8898326\",\r\n      \"name\": \"2017-10-27T07:23:36.8898326\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T07:23:36.8898326\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T08_19_13_2261241\",\r\n      \"name\": \"2017-10-27T08:19:13.2261241\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:19:13.2261241\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T08_23_36_5554377\",\r\n      \"name\": \"2017-10-27T08:23:36.5554377\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T08:23:36.5554377\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T09_19_13_5215065\",\r\n      \"name\": \"2017-10-27T09:19:13.5215065\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:19:13.5215065\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T09_23_36_5958336\",\r\n      \"name\": \"2017-10-27T09:23:36.5958336\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T09:23:36.5958336\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T10_19_13_2112484\",\r\n      \"name\": \"2017-10-27T10:19:13.2112484\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:19:13.2112484\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T10_23_36_6454676\",\r\n      \"name\": \"2017-10-27T10:23:36.6454676\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T10:23:36.6454676\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T11_19_13_2363036\",\r\n      \"name\": \"2017-10-27T11:19:13.2363036\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:19:13.2363036\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T11_23_36_5891519\",\r\n      \"name\": \"2017-10-27T11:23:36.5891519\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T11:23:36.5891519\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T12_19_13_0572883\",\r\n      \"name\": \"2017-10-27T12:19:13.0572883\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:19:13.0572883\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T12_23_36_7130444\",\r\n      \"name\": \"2017-10-27T12:23:36.7130444\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T12:23:36.7130444\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T13_19_13_2300286\",\r\n      \"name\": \"2017-10-27T13:19:13.2300286\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:19:13.2300286\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T13_23_36_3023626\",\r\n      \"name\": \"2017-10-27T13:23:36.3023626\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T13:23:36.3023626\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T14_19_13_3517337\",\r\n      \"name\": \"2017-10-27T14:19:13.3517337\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:19:13.3517337\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T14_23_36_8293592\",\r\n      \"name\": \"2017-10-27T14:23:36.8293592\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T14:23:36.8293592\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T15_19_12_4987298\",\r\n      \"name\": \"2017-10-27T15:19:12.4987298\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:19:12.4987298\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T15_23_36_9160368\",\r\n      \"name\": \"2017-10-27T15:23:36.9160368\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T15:23:36.9160368\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T16_19_13_8523253\",\r\n      \"name\": \"2017-10-27T16:19:13.8523253\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:19:13.8523253\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T16_23_37_0967833\",\r\n      \"name\": \"2017-10-27T16:23:37.0967833\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T16:23:37.0967833\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T17_19_13_5993859\",\r\n      \"name\": \"2017-10-27T17:19:13.5993859\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:19:13.5993859\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T17_23_36_9377034\",\r\n      \"name\": \"2017-10-27T17:23:36.9377034\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T17:23:36.9377034\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T18_19_13_7476754\",\r\n      \"name\": \"2017-10-27T18:19:13.7476754\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:19:13.7476754\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/slots/staging/snapshots/2017-10-27T18_23_36_7056109\",\r\n      \"name\": \"2017-10-27T18:23:36.7056109\",\r\n      \"type\": \"Microsoft.Web/sites/snapshots\",\r\n      \"properties\": {\r\n        \"time\": \"2017-10-27T18:23:36.7056109\"\r\n      }\r\n    }\r\n  ],\r\n  \"nextLink\": null,\r\n  \"id\": null\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "11413"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "af0a03b7-a896-45d7-bd7e-62975b8a9beb"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14841"
+        ],
+        "x-ms-correlation-request-id": [
+          "611233f1-75c5-45d5-8148-81bf8cd560c0"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185713Z:611233f1-75c5-45d5-8148-81bf8cd560c0"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:12 GMT"
+        ],
+        "ETag": [
+          "\"1D34EBF91835620\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwP2FwaS12ZXJzaW9uPTIwMTYtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a4f5e010-a3e9-4e84-a0ec-2add42279696"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp\",\r\n  \"name\": \"onesdkpremapp\",\r\n  \"type\": \"Microsoft.Web/sites\",\r\n  \"kind\": \"app\",\r\n  \"location\": \"West Europe\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\": \"empty\"\r\n  },\r\n  \"properties\": {\r\n    \"name\": \"onesdkpremapp\",\r\n    \"state\": \"Running\",\r\n    \"hostNames\": [\r\n      \"onesdkpremapp.azurewebsites.net\"\r\n    ],\r\n    \"webSpace\": \"fsdfsdfsdfsdfsfsdf-WestEuropewebspace\",\r\n    \"selfLink\": \"https://waws-prod-am2-071.api.azurewebsites.windows.net/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/webspaces/fsdfsdfsdfsdfsfsdf-WestEuropewebspace/sites/onesdkpremapp\",\r\n    \"repositorySiteName\": \"onesdkpremapp\",\r\n    \"owner\": null,\r\n    \"usageState\": \"Normal\",\r\n    \"enabled\": true,\r\n    \"adminEnabled\": true,\r\n    \"enabledHostNames\": [\r\n      \"onesdkpremapp.azurewebsites.net\",\r\n      \"onesdkpremapp.scm.azurewebsites.net\"\r\n    ],\r\n    \"siteProperties\": {\r\n      \"metadata\": null,\r\n      \"properties\": [],\r\n      \"appSettings\": null\r\n    },\r\n    \"availabilityState\": \"Normal\",\r\n    \"sslCertificates\": null,\r\n    \"csrs\": [],\r\n    \"cers\": null,\r\n    \"siteMode\": null,\r\n    \"hostNameSslStates\": [\r\n      {\r\n        \"name\": \"onesdkpremapp.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Standard\"\r\n      },\r\n      {\r\n        \"name\": \"onesdkpremapp.scm.azurewebsites.net\",\r\n        \"sslState\": \"Disabled\",\r\n        \"ipBasedSslResult\": null,\r\n        \"virtualIP\": null,\r\n        \"thumbprint\": null,\r\n        \"toUpdate\": null,\r\n        \"toUpdateIpBasedSsl\": null,\r\n        \"ipBasedSslState\": \"NotConfigured\",\r\n        \"hostType\": \"Repository\"\r\n      }\r\n    ],\r\n    \"computeMode\": null,\r\n    \"serverFarm\": null,\r\n    \"serverFarmId\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\",\r\n    \"reserved\": false,\r\n    \"lastModifiedTimeUtc\": \"2017-10-27T00:49:32.39\",\r\n    \"storageRecoveryDefaultState\": \"Running\",\r\n    \"contentAvailabilityState\": \"Normal\",\r\n    \"runtimeAvailabilityState\": \"Normal\",\r\n    \"siteConfig\": null,\r\n    \"deploymentId\": \"onesdkpremapp\",\r\n    \"trafficManagerHostNames\": null,\r\n    \"sku\": \"Premium\",\r\n    \"scmSiteAlsoStopped\": false,\r\n    \"targetSwapSlot\": null,\r\n    \"hostingEnvironment\": null,\r\n    \"hostingEnvironmentProfile\": null,\r\n    \"clientAffinityEnabled\": true,\r\n    \"clientCertEnabled\": false,\r\n    \"hostNamesDisabled\": false,\r\n    \"domainVerificationIdentifiers\": null,\r\n    \"kind\": \"app\",\r\n    \"outboundIpAddresses\": \"13.94.192.238,13.94.195.168,13.94.196.64,13.94.198.79\",\r\n    \"possibleOutboundIpAddresses\": \"13.94.192.238,13.94.195.168,13.94.196.64,13.94.198.79\",\r\n    \"containerSize\": 0,\r\n    \"dailyMemoryTimeQuota\": 0,\r\n    \"suspendedTill\": null,\r\n    \"siteDisabledReason\": 0,\r\n    \"functionExecutionUnitsCache\": null,\r\n    \"maxNumberOfWorkers\": null,\r\n    \"homeStamp\": \"waws-prod-am2-071\",\r\n    \"cloningInfo\": null,\r\n    \"snapshotInfo\": null,\r\n    \"hostingEnvironmentId\": null,\r\n    \"tags\": {\r\n      \"hidden-related:/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\": \"empty\"\r\n    },\r\n    \"resourceGroup\": \"onesdksnapshots\",\r\n    \"defaultHostName\": \"onesdkpremapp.azurewebsites.net\",\r\n    \"slotSwapStatus\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2978"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "6537d8ee-ab2a-4de8-81aa-ef31b53b8a2e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14840"
+        ],
+        "x-ms-correlation-request-id": [
+          "3909d742-9843-42b9-bedf-72e5b065f3b8"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185714Z:3909d742-9843-42b9-bedf-72e5b065f3b8"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:13 GMT"
+        ],
+        "ETag": [
+          "\"1D34EBD73E2B860\""
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/web?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL2NvbmZpZy93ZWI/YXBpLXZlcnNpb249MjAxNi0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "a008f09c-75eb-4fd7-a8ec-2869cfd15fc9"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/web\",\r\n  \"name\": \"onesdkpremapp\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West Europe\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\": \"empty\"\r\n  },\r\n  \"properties\": {\r\n    \"numberOfWorkers\": 1,\r\n    \"defaultDocuments\": [\r\n      \"Default.htm\",\r\n      \"Default.html\",\r\n      \"Default.asp\",\r\n      \"index.htm\",\r\n      \"index.html\",\r\n      \"iisstart.htm\",\r\n      \"default.aspx\",\r\n      \"index.php\",\r\n      \"hostingstart.html\"\r\n    ],\r\n    \"netFrameworkVersion\": \"v4.0\",\r\n    \"phpVersion\": \"5.6\",\r\n    \"pythonVersion\": \"\",\r\n    \"nodeVersion\": \"\",\r\n    \"linuxFxVersion\": \"\",\r\n    \"requestTracingEnabled\": false,\r\n    \"remoteDebuggingEnabled\": false,\r\n    \"remoteDebuggingVersion\": null,\r\n    \"httpLoggingEnabled\": false,\r\n    \"logsDirectorySizeLimit\": 35,\r\n    \"detailedErrorLoggingEnabled\": false,\r\n    \"publishingUsername\": \"$onesdkpremapp\",\r\n    \"publishingPassword\": null,\r\n    \"appSettings\": null,\r\n    \"metadata\": null,\r\n    \"connectionStrings\": null,\r\n    \"machineKey\": null,\r\n    \"handlerMappings\": null,\r\n    \"documentRoot\": null,\r\n    \"scmType\": \"None\",\r\n    \"use32BitWorkerProcess\": true,\r\n    \"webSocketsEnabled\": false,\r\n    \"alwaysOn\": false,\r\n    \"javaVersion\": null,\r\n    \"javaContainer\": null,\r\n    \"javaContainerVersion\": null,\r\n    \"appCommandLine\": \"\",\r\n    \"managedPipelineMode\": \"Integrated\",\r\n    \"virtualApplications\": [\r\n      {\r\n        \"virtualPath\": \"/\",\r\n        \"physicalPath\": \"site\\\\wwwroot\",\r\n        \"preloadEnabled\": false,\r\n        \"virtualDirectories\": null\r\n      }\r\n    ],\r\n    \"winAuthAdminState\": 0,\r\n    \"winAuthTenantState\": 0,\r\n    \"customAppPoolIdentityAdminState\": false,\r\n    \"customAppPoolIdentityTenantState\": false,\r\n    \"runtimeADUser\": null,\r\n    \"runtimeADUserPassword\": null,\r\n    \"loadBalancing\": \"LeastRequests\",\r\n    \"routingRules\": [],\r\n    \"experiments\": {\r\n      \"rampUpRules\": []\r\n    },\r\n    \"limits\": null,\r\n    \"autoHealEnabled\": false,\r\n    \"autoHealRules\": null,\r\n    \"tracingOptions\": null,\r\n    \"vnetName\": \"\",\r\n    \"siteAuthEnabled\": false,\r\n    \"siteAuthSettings\": {\r\n      \"enabled\": null,\r\n      \"unauthenticatedClientAction\": null,\r\n      \"tokenStoreEnabled\": null,\r\n      \"allowedExternalRedirectUrls\": null,\r\n      \"defaultProvider\": null,\r\n      \"clientId\": null,\r\n      \"clientSecret\": null,\r\n      \"issuer\": null,\r\n      \"allowedAudiences\": null,\r\n      \"additionalLoginParams\": null,\r\n      \"isAadAutoProvisioned\": false,\r\n      \"googleClientId\": null,\r\n      \"googleClientSecret\": null,\r\n      \"googleOAuthScopes\": null,\r\n      \"facebookAppId\": null,\r\n      \"facebookAppSecret\": null,\r\n      \"facebookOAuthScopes\": null,\r\n      \"twitterConsumerKey\": null,\r\n      \"twitterConsumerSecret\": null,\r\n      \"microsoftAccountClientId\": null,\r\n      \"microsoftAccountClientSecret\": null,\r\n      \"microsoftAccountOAuthScopes\": null\r\n    },\r\n    \"cors\": null,\r\n    \"push\": null,\r\n    \"apiDefinition\": null,\r\n    \"autoSwapSlotName\": null,\r\n    \"localMySqlEnabled\": false,\r\n    \"ipSecurityRestrictions\": null\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "2492"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "dbfc6a7c-5065-4f1a-8b37-873ea2b6005b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14839"
+        ],
+        "x-ms-correlation-request-id": [
+          "140f780b-4f1a-4583-9321-99d982776e65"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185714Z:140f780b-4f1a-4583-9321-99d982776e65"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:13 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/appsettings/list?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL2NvbmZpZy9hcHBzZXR0aW5ncy9saXN0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c542a231-8fd2-4977-8d41-f42c0a81fbc5"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/appsettings\",\r\n  \"name\": \"appsettings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West Europe\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\": \"empty\"\r\n  },\r\n  \"properties\": {\r\n    \"WEBSITE_NODE_DEFAULT_VERSION\": \"6.9.1\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "466"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "e20be233-b077-46fe-8df9-096a11ac15a1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "14f675c7-0350-4d96-8465-eaece52084b7"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185715Z:14f675c7-0350-4d96-8465-eaece52084b7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/connectionstrings/list?api-version=2016-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGQzYWU1NmMtZGVhZi00OTgyLWI1MTQtMzNkMDE2ZDRhNjgzL3Jlc291cmNlR3JvdXBzL29uZXNka3NuYXBzaG90cy9wcm92aWRlcnMvTWljcm9zb2Z0LldlYi9zaXRlcy9vbmVzZGtwcmVtYXBwL2NvbmZpZy9jb25uZWN0aW9uc3RyaW5ncy9saXN0P2FwaS12ZXJzaW9uPTIwMTYtMDgtMDE=",
+      "RequestMethod": "POST",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cee207a5-8ac7-4e91-8ea0-aa854ee398ec"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.15063",
+          "Microsoft.Azure.Management.WebSites.WebSiteManagementClient/1.7.0"
+        ],
+        "Accept": [
+          "application/json"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourceGroups/onesdksnapshots/providers/Microsoft.Web/sites/onesdkpremapp/config/connectionstrings\",\r\n  \"name\": \"connectionstrings\",\r\n  \"type\": \"Microsoft.Web/sites/config\",\r\n  \"location\": \"West Europe\",\r\n  \"tags\": {\r\n    \"hidden-related:/subscriptions/0d3ae56c-deaf-4982-b514-33d016d4a683/resourcegroups/fsdfsdfsdfsdfsfsdf/providers/Microsoft.Web/serverfarms/efwefwefwefwefwefew\": \"empty\"\r\n  },\r\n  \"properties\": {}\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "440"
+        ],
+        "Content-Type": [
+          "application/json"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "fe6eaccd-0c53-4116-ad9d-df01fdd5a025"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "11996"
+        ],
+        "x-ms-correlation-request-id": [
+          "77e364ab-e6e4-4b81-bbcd-58d071283b5a"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20171027T185715Z:77e364ab-e6e4-4b81-bbcd-58d071283b5a"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 27 Oct 2017 18:57:14 GMT"
+        ],
+        "Server": [
+          "Microsoft-IIS/8.0"
+        ],
+        "X-AspNet-Version": [
+          "4.0.30319"
+        ],
+        "X-Powered-By": [
+          "ASP.NET"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0d3ae56c-deaf-4982-b514-33d016d4a683"
+  }
+}

@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetTopology()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-GetTopology");
@@ -35,6 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetSecurityGroupView()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-GetSecurityGroupView");
@@ -42,6 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetNextHop()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-GetNextHop");
@@ -49,6 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestVerifyIPFlow()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VerifyIPFlow");
@@ -56,6 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestPacketCapture()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-PacketCapture");
@@ -63,6 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestTroubleshoot()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-Troubleshoot");
@@ -70,6 +76,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestFlowLog()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
@@ -77,6 +84,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectivityCheck()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectivityCheck");
@@ -84,6 +92,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestReachabilityReport()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ReachabilityReport");
@@ -91,6 +100,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestProvidersList()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ProvidersList");
@@ -98,6 +108,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectionMonitor()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectionMonitor");
