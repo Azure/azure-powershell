@@ -2775,6 +2775,10 @@
                 <Label>Subnet</Label>
                 <PropertyName>SubnetText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>PublicIpAddress</Label>
+                <PropertyName>PublicIpAddressText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>
