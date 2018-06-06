@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: F9CE8705-F7B1-45AB-98BC-FC6DC023D38D
@@ -59,7 +59,7 @@ Specifies the **PsApiManagement** instance that this cmdlet gets the *PortalHost
 ```yaml
 Type: PsApiManagement
 Parameter Sets: SetFromPsApiManagementInstance
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,7 +89,7 @@ Specifies the name of the API Management instance.
 ```yaml
 Type: String
 Parameter Sets: SetSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,7 +105,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -121,7 +121,7 @@ Passing $null to the cmdlet sets the default hostname.
 ```yaml
 Type: PsApiManagementHostnameConfiguration
 Parameter Sets: SetSpecificService
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -137,7 +137,7 @@ Passing $null sets the default hostname.
 ```yaml
 Type: PsApiManagementHostnameConfiguration
 Parameter Sets: SetSpecificService
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -152,7 +152,7 @@ Specifies the name of the resource group under which the API Management instance
 ```yaml
 Type: String
 Parameter Sets: SetSpecificService
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

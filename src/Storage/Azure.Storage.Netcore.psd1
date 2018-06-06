@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -96,8 +96,7 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
     'Set-AzureStorageShareStoredAccessPolicy', 
     'Start-AzureStorageFileCopy', 'Stop-AzureStorageFileCopy', 
     'New-AzureStorageAccountSASToken', 'Set-AzureStorageCORSRule', 
-    'Get-AzureStorageCORSRule', 
-    'Get-AzureStorageServiceLoggingProperty', 
+    'Get-AzureStorageCORSRule', 'Get-AzureStorageServiceLoggingProperty', 
     'Get-AzureStorageServiceMetricsProperty', 
     'Remove-AzureStorageCORSRule', 
     'Set-AzureStorageServiceLoggingProperty', 
@@ -114,8 +113,8 @@ CmdletsToExport = 'Get-AzureStorageTable', 'New-AzureStorageTableSASToken',
     'Remove-AzureStorageContainerStoredAccessPolicy', 
     'Set-AzureStorageContainerStoredAccessPolicy', 
     'Start-AzureStorageBlobCopy', 
-    'Start-AzureStorageBlobIncrementalCopy', 
-    'Stop-AzureStorageBlobCopy', 'Update-AzureStorageServiceProperty', 
+    'Start-AzureStorageBlobIncrementalCopy', 'Stop-AzureStorageBlobCopy', 
+    'Update-AzureStorageServiceProperty', 
     'Get-AzureStorageServiceProperty', 
     'Enable-AzureStorageDeleteRetentionPolicy', 
     'Disable-AzureStorageDeleteRetentionPolicy'

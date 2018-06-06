@@ -39,7 +39,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		$job1 | Wait-Job
 		$db = $job1.Output
 
-		Assert-AreEqual $db.DatabaseName $databaseName
+		Assert-AreEqual $databaseName $db.DatabaseName
 		Assert-NotNull $db.MaxSizeBytes
 		Assert-NotNull $db.Edition
 		Assert-NotNull $db.CurrentServiceObjectiveName
@@ -68,7 +68,7 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-AreEqual $dwdb.Edition DataWarehouse
 		Assert-AreEqual $dwdb.CurrentServiceObjectiveName DW100
 		Assert-AreEqual $dwdb.CollationName $collationName
-		
+
 		# Create with all parameters
 		$databaseName = Get-DatabaseName
 		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
@@ -94,6 +94,88 @@ function Test-CreateDatabaseInternal ($location = "westcentralus")
 		Assert-NotNull $db.Tags
 		Assert-AreEqual True $db.Tags.ContainsKey("tag_key")
 		Assert-AreEqual "tag_value" $db.Tags["tag_key"]
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a Vcore based database
+#>
+function Test-CreateVcoreDatabase
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with Edition and RequestedServiceObjectiveName
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_2 -Edition GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+
+		# Create with VCore parameter set
+		$databaseName = Get-DatabaseName
+		$job1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -AsJob
+		$job1 | Wait-Job
+		$db = $job1.Output
+
+		Assert-AreEqual $databaseName $db.DatabaseName
+		Assert-NotNull $db.MaxSizeBytes
+		Assert-AreEqual GP_Gen4_2 $db.CurrentServiceObjectiveName
+		Assert-AreEqual 2 $db.Capacity
+		Assert-AreEqual GeneralPurpose $db.Edition
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests creating a database with license type.
+#>
+function Test-CreateVcoreDatabaseWithLicenseType
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "West Central US"
+	$rg = Create-ResourceGroupForTest
+	$server = Create-ServerForTest $rg $location
+
+	try
+	{
+		# Create with Edition and RequestedServiceObjectiveName - Base Price
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType BasePrice
+		Assert-AreEqual BasePrice $db.LicenseType
+
+		# Create with Edition and RequestedServiceObjectiveName - LicenseIncluded
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		Assert-AreEqual LicenseIncluded $db.LicenseType
+
+		# Create with VCore parameter set - BasePrice
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType BasePrice
+		Assert-AreEqual BasePrice $db.LicenseType
+
+		# Create with VCore parameter set - LicenseIncluded
+		$databaseName = Get-DatabaseName
+		$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore 2 -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType LicenseIncluded
+		Assert-AreEqual LicenseIncluded $db.LicenseType
 	}
 	finally
 	{
@@ -142,7 +224,7 @@ function Test-CreateDatabaseWithSampleName
 function Test-CreateDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -202,13 +284,13 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	
+
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Standard -MaxSizeBytes 250GB -RequestedServiceObjectiveName S0
 	Assert-AreEqual $db.DatabaseName $databaseName
 
-    # Database will be Standard s0 with maxsize: 268435456000 (250GB)
+	# Database will be Standard s0 with maxsize: 268435456000 (250GB)
 
 	try
 	{
@@ -264,15 +346,136 @@ function Test-UpdateDatabaseInternal ($location = "westcentralus")
 
 <#
 	.SYNOPSIS
+	Tests updating a vcore database
+#>
+function Test-UpdateVcoreDatabase()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
+		-VCore 2 -Edition GeneralPurpose -ComputeGeneration Gen4 -MaxSizeBytes 250GB
+	Assert-AreEqual $db.DatabaseName $databaseName
+
+	try
+	{
+		# Alter with defaults
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-NotNull $db1.MaxSizeBytes
+		Assert-NotNull $db1.Edition
+		Assert-NotNull $db1.CurrentServiceObjectiveName
+
+		# Alter with all properties
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-MaxSizeBytes 5GB -VCore 1 -Edition GeneralPurpose -ComputeGeneration Gen4 -Tags @{"tag_key"="tag_new_value"} -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.MaxSizeBytes 5GB
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_1
+		Assert-AreEqual $db1.CollationName $db.CollationName
+		Assert-NotNull $db1.Tags
+		Assert-AreEqual True $db1.Tags.ContainsKey("tag_key")
+		Assert-AreEqual "tag_new_value" $db1.Tags["tag_key"]
+
+		# Alter Edition only (can't only specify -Edition since Edition is shared parameter in two difference parameter sets)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition BusinessCritical -ComputeGeneration Gen4 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_1
+
+		# Alter Vcore only
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-VCore 2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition BusinessCritical
+		Assert-AreEqual $db1.CurrentServiceObjectiveName BC_Gen4_2
+
+		# Alter with Dtu based parameters (-Edition and -RequestedServiceObjectiveName)
+		$job = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+			-Edition GeneralPurpose -RequestedServiceObjectiveName GP_Gen4_2 -AsJob
+		$job | Wait-Job
+		$db1 = $job.Output
+		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
+		Assert-AreEqual $db1.Edition GeneralPurpose
+		Assert-AreEqual $db1.CurrentServiceObjectiveName GP_Gen4_2
+
+		# Alter ComputeGeneration only
+		# Need to add later, currently the service not support other Generations besides Gen4
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	Tests updating a vcore database license type
+#>
+function Test-UpdateVcoreDatabaseLicenseType()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+
+	# Create vcore database
+	$databaseName = Get-DatabaseName
+	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -RequestedServiceObjectiveName GP_Gen4_1 -Edition GeneralPurpose
+	Assert-AreEqual $db.DatabaseName $databaseName
+	Assert-AreEqual $db.LicenseType LicenseIncluded # Default license type
+
+	try
+	{
+		# Alter with license type - License Included
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -LicenseType LicenseIncluded
+		Assert-AreEqual LicenseIncluded $db1.LicenseType
+
+		# Alter with license type - Base Price
+		$db1 = Set-AzureRmSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -LicenseType BasePrice
+		Assert-AreEqual BasePrice $db1.LicenseType
+
+		# Test piping - LicenseIncluded
+		$db1 = $db1 | Set-AzureRmSqlDatabase -LicenseType LicenseIncluded
+		Assert-AreEqual LicenseIncluded $db1.LicenseType
+
+		# Test piping - BasePrice
+		$db1 = $db1 | Set-AzureRmSqlDatabase -LicenseType BasePrice
+		Assert-AreEqual BasePrice $db1.LicenseType
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
 	Tests updating a database with zone redundancy
 #>
 function Test-UpdateDatabaseWithZoneRedundant ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
-	
+
 	$databaseName = Get-DatabaseName
 	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Premium
@@ -316,10 +519,10 @@ function Test-UpdateDatabaseWithZoneRedundant ()
 function Test-UpdateDatabaseWithZoneRedundantNotSpecified ()
 {
 	# Setup
-	$location = "eastus2" 
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
-	
+
 	$databaseName = Get-DatabaseName
 	$db = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-Edition Premium -ZoneRedundant
@@ -357,7 +560,7 @@ function Test-RenameDatabase
 	{
 		$location = "westcentralus"
 		$server = Create-ServerForTest $rg $location
-	
+
 		# Create with default values
 		$databaseName = Get-DatabaseName
 		$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
@@ -405,17 +608,17 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	
+
 	# Create with default values
 	$databaseName = Get-DatabaseName
 	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
-    # Create database with non-defaults
+	# Create database with non-defaults
 	$databaseName = Get-DatabaseName
 	$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
-    Assert-AreEqual $db2.DatabaseName $databaseName
+	Assert-AreEqual $db2.DatabaseName $databaseName
 
 	try
 	{
@@ -433,21 +636,21 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 		$all = $server | Get-AzureRmSqlDatabase
 		Assert-AreEqual $all.Count 4 # 4 because master database is included
 
-        $gdb1 = Get-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
-        Assert-NotNull $gdb1
-        Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
-        Assert-AreEqual $db1.Edition $gdb1.Edition
-        Assert-AreEqual $db1.CollationName $gdb1.CollationName
-        Assert-AreEqual $db1.CurrentServiceObjectiveName $gdb1.CurrentServiceObjectiveName
-        Assert-AreEqual $db1.MaxSizeBytes $gdb1.MaxSizeBytes
+		$gdb1 = Get-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName
+		Assert-NotNull $gdb1
+		Assert-AreEqual $db1.DatabaseName $gdb1.DatabaseName
+		Assert-AreEqual $db1.Edition $gdb1.Edition
+		Assert-AreEqual $db1.CollationName $gdb1.CollationName
+		Assert-AreEqual $db1.CurrentServiceObjectiveName $gdb1.CurrentServiceObjectiveName
+		Assert-AreEqual $db1.MaxSizeBytes $gdb1.MaxSizeBytes
 
-        $gdb2 = $db2 | Get-AzureRmSqlDatabase
-        Assert-NotNull $gdb2
-        Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
-        Assert-AreEqual $db2.Edition $gdb2.Edition
-        Assert-AreEqual $db2.CollationName $gdb2.CollationName
-        Assert-AreEqual $db2.CurrentServiceObjectiveName $gdb2.CurrentServiceObjectiveName
-        Assert-AreEqual $db2.MaxSizeBytes $gdb2.MaxSizeBytes
+		$gdb2 = $db2 | Get-AzureRmSqlDatabase
+		Assert-NotNull $gdb2
+		Assert-AreEqual $db2.DatabaseName $gdb2.DatabaseName
+		Assert-AreEqual $db2.Edition $gdb2.Edition
+		Assert-AreEqual $db2.CollationName $gdb2.CollationName
+		Assert-AreEqual $db2.CurrentServiceObjectiveName $gdb2.CurrentServiceObjectiveName
+		Assert-AreEqual $db2.MaxSizeBytes $gdb2.MaxSizeBytes
 	}
 	finally
 	{
@@ -462,7 +665,7 @@ function Test-GetDatabaseInternal  ($location = "westcentralus")
 function Test-GetDatabaseWithZoneRedundancy
 {
 	# Setup
-	$location = "eastus2"
+	$location = Get-Location "Microsoft.Sql" "operations" "West Europe"
 	$rg = Create-ResourceGroupForTest $location
 	try
 	{
@@ -511,17 +714,17 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 	# Setup
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
-	
+
 	# Create with default values
 	$databaseName = Get-DatabaseName
 	$db1 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -MaxSizeBytes 1GB
 	Assert-AreEqual $db1.DatabaseName $databaseName
 
-    # Create database with non-defaults
+	# Create database with non-defaults
 	$databaseName = Get-DatabaseName
 	$db2 = New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName `
 		-CollationName "Japanese_Bushu_Kakusu_100_CS_AS" -MaxSizeBytes 1GB -Edition Basic -RequestedServiceObjectiveName Basic
-    Assert-AreEqual $db2.DatabaseName $databaseName
+	Assert-AreEqual $db2.DatabaseName $databaseName
 
 	try
 	{
@@ -532,16 +735,16 @@ function Test-RemoveDatabaseInternal  ($location = "westcentralus")
 		Assert-AreEqual $dwdb.DatabaseName $databaseName
 
 		Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -Force
-		
+
 		$all = $server | Get-AzureRmSqlDatabase
 		Assert-AreEqual $all.Count 3 # 3 because master database is included
-        
-        Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Force
 
-        $db2 | Remove-AzureRmSqlDatabase -Force
+		Remove-AzureRmSqlDatabase -ResourceGroupName $server.ResourceGroupname -ServerName $server.ServerName -DatabaseName $db1.DatabaseName -Force
 
-        $all = $server | Get-AzureRmSqlDatabase
-        Assert-AreEqual $all.Count 1 # 1 because master database is included
+		$db2 | Remove-AzureRmSqlDatabase -Force
+
+		$all = $server | Get-AzureRmSqlDatabase
+		Assert-AreEqual $all.Count 1 # 1 because master database is included
 	}
 	finally
 	{
