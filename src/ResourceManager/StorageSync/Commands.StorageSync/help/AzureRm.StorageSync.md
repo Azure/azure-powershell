@@ -8,9 +8,9 @@ Locale: en-US
 
 # AzureRm.StorageSync Module
 ## Description
-{{Manually Enter Description Here}}
+This module contains cmdlets pertaining to Azure File Sync.
 
 ## AzureRm.StorageSync Cmdlets
 ### [Invoke-AzureRmStorageSyncCompatibilityCheck](Invoke-AzureRmStorageSyncCompatibilityCheck.md)
-{{Fill in the Synopsis}}
+This cmdlet checks for potential compatibility issues between your system and Azure File Sync.
 
