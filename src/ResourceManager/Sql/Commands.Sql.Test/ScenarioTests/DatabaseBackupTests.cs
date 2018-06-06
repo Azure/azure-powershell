@@ -147,5 +147,11 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-RemoveDatabaseRestorePoint");
             }
         }
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestShortTermRetentionPolicy()
+        {
+            RunPowerShellTest("Test-ShortTermRetentionPolicy");
+        }
     }
 }
