@@ -36,15 +36,15 @@ Storage Account.
 ## EXAMPLES
 
 ### Example 1 : Set an account-type SAS definition, and obtain a current SAS token based on it
-```
-PS C:\> $sa=Get-AzureRmStorageAccount -Name mysa -ResourceGroupName myrg
-PS C:\> $kv=Get-AzureRmKeyVault -VaultName mykv
+```powershell
+PS C:\> $sa = Get-AzureRmStorageAccount -Name mysa -ResourceGroupName myrg
+PS C:\> $kv = Get-AzureRmKeyVault -VaultName mykv
 PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod 180
-PS C:\> $sctx=New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
-PS C:\> $start=[System.DateTime]::Now.AddDays(-1)
-PS C:\> $end=[System.DateTime]::Now.AddMonths(1)
-PS C:\> $at=New-AzureStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
-PS C:\> $sas=Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+PS C:\> $sctx = New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
+PS C:\> $start = [System.DateTime]::Now.AddDays(-1)
+PS C:\> $end = [System.DateTime]::Now.AddMonths(1)
+PS C:\> $at = New-AzureStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
+PS C:\> $sas = Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
 PS C:\> Get-AzureKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
 ```
 
@@ -250,12 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
 
 ## NOTES
 
