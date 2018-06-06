@@ -30,7 +30,7 @@ namespace Commands.DeviceProvisioningServices.Test
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Access denied error on CertEnroll CX509 Enrollment CreateRequest")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsCertificateLifeCycle()
         {

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.OperationalInsights;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -25,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.OperationalInsights;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         protected void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var operationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
@@ -113,9 +113,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
             return context.GetServiceClient<OperationalInsightsManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected SubscriptionClient GetSubscriptionClient()
