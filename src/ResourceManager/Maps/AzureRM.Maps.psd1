@@ -51,7 +51,11 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
+<<<<<<< HEAD:src/ResourceManager/Maps/AzureRM.Maps.psd1
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
+=======
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.2.0'; })
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6:src/ResourceManager/Maps/AzureRM.Maps.psd1
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Maps.dll'
@@ -111,7 +115,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
+<<<<<<< HEAD:src/ResourceManager/Maps/AzureRM.Maps.psd1
         ReleaseNotes = 'Service rename of Location Based Services to Maps'
+=======
+        ReleaseNotes = '* First release of Maps management cmdlets'
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6:src/ResourceManager/Maps/AzureRM.Maps.psd1
 
         # Prerelease string of this module
         # Prerelease = ''

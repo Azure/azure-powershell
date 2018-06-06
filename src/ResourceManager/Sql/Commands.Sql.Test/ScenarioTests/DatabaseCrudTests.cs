@@ -12,10 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -32,10 +29,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
             // Only SqlClient is needed.
             var sqlClient = GetSqlClient(context);
-            var sqlLegacyClient = GetLegacySqlClient();
-            var resourcesClient = GetResourcesClient();
-            var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, resourcesClient, authorizationClient);
+            var newResourcesClient = GetResourcesClient(context);
+            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient);
         }
 
         [Fact]
@@ -54,6 +49,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestVcoreDatabaseCreateWithLicenseType()
+        {
+            RunPowerShellTest("Test-CreateVcoreDatabaseWithLicenseType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
         public void TestDatabaseCreateWithSampleName()
         {
             RunPowerShellTest("Test-CreateDatabaseWithSampleName");
@@ -82,6 +87,16 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+<<<<<<< HEAD
+=======
+        public void TestVcoreDatabaseUpdateWithLicenseType()
+        {
+            RunPowerShellTest("Test-UpdateVcoreDatabaseLicenseType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
         public void TestDatabaseUpdateWithZoneRedundancy()
         {
             RunPowerShellTest("Test-UpdateDatabaseWithZoneRedundant");

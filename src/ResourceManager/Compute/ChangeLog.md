@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.1.0
+* VMSS VM Update feature
+    - Added `Update-AzureRmVmssVM` and `New-AzureRmVMDataDisk` cmdlets
+    - Add VirtualMachineScaleSetVM parameter to `Add-AzureRmVMDataDisk` cmdlet to support adding a data disk to Vmss VM.
+
 ## Version 5.0.0
 * `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters
 * `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).

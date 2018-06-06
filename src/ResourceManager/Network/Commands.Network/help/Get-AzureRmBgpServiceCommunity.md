@@ -123,4 +123,8 @@ This cmdlet does not accept any input.
 
 [New-AzureRmRouteFilter](New-AzureRmRouteFilter.md)
 
+<<<<<<< HEAD
 [New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+=======
+[New-AzureRmRouteFilterRuleConfig](New-AzureRmRouteFilterRuleConfig.md)
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6

@@ -17,7 +17,16 @@ Sets properties for a database, or moves an existing database into an elastic po
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
+ [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -183,16 +192,20 @@ Specifies the edition for the database.
 The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -208,6 +221,21 @@ Specifies name of the elastic pool in which to move the database.
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: Update, VcoreBasedDatabase
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -326,7 +354,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -Vcore
+=======
+### -VCore
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 The Vcore number for the Azure Sql database
 
 ```yaml

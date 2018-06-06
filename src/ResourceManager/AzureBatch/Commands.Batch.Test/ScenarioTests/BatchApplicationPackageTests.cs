@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -51,8 +50,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
                     ScenarioTestHelpers.DeleteApplication(controller, context, id);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -81,8 +80,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeleteApplicationPackage(controller, context, id, version);
                     ScenarioTestHelpers.DeleteApplication(controller, context, id);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
@@ -110,8 +109,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 () =>
                 {
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
@@ -143,8 +142,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeleteApplication(controller, context, id);
                     ScenarioTestHelpers.DeletePool(controller, context, poolId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

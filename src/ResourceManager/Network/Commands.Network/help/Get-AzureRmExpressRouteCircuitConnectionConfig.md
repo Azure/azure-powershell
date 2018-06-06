@@ -10,6 +10,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Gets an ExpressRoute circuit connection configuration associated with Private Peering of ExpressRouteCircuit.
 
+## SYNTAX
+
+```
+Get-AzureRmExpressRouteCircuitConnectionConfig [-Name] <String> [-ExpressRouteCircuit] <PSExpressRouteCircuit>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureRmExpressRouteCircuitConnectionConfig** cmdlet retrieves the configuration of a circuit connection
 associated with Private Peering for an ExpressRoute circuit.
@@ -20,10 +27,7 @@ associated with Private Peering for an ExpressRoute circuit.
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 ```
-### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
-```
 Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
-```
 
 ## PARAMETERS
 
@@ -48,10 +52,10 @@ The ExpressRoute circuit object containing the circuit connection configuration.
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -63,10 +67,10 @@ The name of the circuit connection configuration to be retrieved.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
-Position: Named
+Required: True
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

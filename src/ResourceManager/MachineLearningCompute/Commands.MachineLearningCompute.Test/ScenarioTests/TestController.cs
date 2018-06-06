@@ -12,7 +12,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
 {

@@ -18,4 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+<<<<<<< HEAD:src/ResourceManager/Maps/ChangeLog.md
+=======
+
+## Version 1.0.0
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6:src/ResourceManager/Maps/ChangeLog.md
 * First release of Maps management cmdlets

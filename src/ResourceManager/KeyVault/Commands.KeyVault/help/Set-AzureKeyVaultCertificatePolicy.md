@@ -51,8 +51,29 @@ The **Set-AzureKeyVaultCertificatePolicy** cmdlet creates or updates the policy 
 ## EXAMPLES
 
 ### Example 1: Set a certificate policy
-```
-PS C:\>Set-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True
+```powershell
+PS C:\> Set-AzureKeyVaultCertificatePolicy -VaultName "ContosoKV01" -Name "TestCert01" -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal $True -PassThru
+
+SecretContentType               : application/x-pkcs12
+Kty                             :
+KeySize                         : 2048
+Exportable                      :
+ReuseKeyOnRenewal               : True
+SubjectName                     : CN=contoso.com
+DnsNames                        :
+KeyUsage                        :
+Ekus                            :
+ValidityInMonths                : 6
+IssuerName                      : Self
+CertificateType                 :
+RenewAtNumberOfDaysBeforeExpiry :
+RenewAtPercentageLifetime       :
+EmailAtNumberOfDaysBeforeExpiry :
+EmailAtPercentageLifetime       :
+CertificateTransparency         :
+Enabled                         : True
+Created                         :
+Updated                         :
 ```
 
 This command sets the policy for the TestCert01 certificate in the ContosoKV01 key vault.
@@ -437,8 +458,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
 
 ## OUTPUTS
 
