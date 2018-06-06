@@ -91,22 +91,7 @@
     <Compile Include="SignatureVerifier\SignatureVerifier.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Exceptions\AssemblyVersionConflict.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Exceptions\BreakingChangeIssues.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Exceptions\ExtraAssemblies.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Exceptions\HelpIssues.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Exceptions\MissingAssemblies.csv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Exceptions\SignatureIssues.csv">
+    <None Include="Exceptions\**\*.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="log4net.config">

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
 * Fix issue where `Export-AzureRmResourceGroup` wrote to incorrect location when a relative path was provided
 
