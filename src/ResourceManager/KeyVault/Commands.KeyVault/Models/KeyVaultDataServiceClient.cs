@@ -22,7 +22,6 @@ using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts;
 using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.KeyVault.Models;
 using Microsoft.Azure.KeyVault.WebKey;
