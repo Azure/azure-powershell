@@ -24,11 +24,6 @@ The **Remove-AzureRmSqlServerDisasterRecoveryConfiguration** cmdlet removes a SQ
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

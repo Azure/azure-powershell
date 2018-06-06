@@ -25,11 +25,6 @@ The vault is an Azure Backup resource used to store backup data.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

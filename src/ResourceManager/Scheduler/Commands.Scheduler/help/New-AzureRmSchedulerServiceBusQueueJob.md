@@ -33,11 +33,6 @@ If you omit a required parameter, the cmdlet prompts you for the value.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

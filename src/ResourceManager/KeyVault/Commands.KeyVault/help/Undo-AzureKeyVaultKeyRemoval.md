@@ -32,8 +32,20 @@ Caller needs to have 'recover' permission in order to perform this operation.
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\>Undo-AzureKeyVaultKeyRemoval -VaultName 'MyKeyVault' -Name 'MyKey'
+```powershell
+PS C:\> Undo-AzureKeyVaultKeyRemoval -VaultName 'MyKeyVault' -Name 'MyKey'
+
+Vault Name     : MyKeyVault
+Name           : MyKey
+Version        : 1af807cc331a49d0b52b7c75e1b2366e
+Id             : https://mykeybault.vault.azure.net:443/keys/mykey/1af807cc331a49d0b52b7c75e1b2366e
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 5/24/2018 8:32:27 PM
+Updated        : 5/24/2018 8:32:27 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command will recover the key 'MyKey' that was previously deleted, into an active and usable state.
@@ -138,7 +150,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem
 
 ## OUTPUTS
 

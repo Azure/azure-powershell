@@ -68,5 +68,14 @@ namespace Microsoft.Azure.Commands.Network
 
             return psVirtualNetworkGateway;
         }
+
+        public PSVpnClientIPsecParameters GetVpnClientIpsecParameters(string resourceGroupName, string name)
+        {
+            var vpnClientIPsecParameters = this.VirtualNetworkGatewayClient.GetVpnclientIpsecParameters(resourceGroupName, name);
+
+            var psVpnClientIPsecParameters = NetworkResourceManagerProfile.Mapper.Map<PSVpnClientIPsecParameters>(vpnClientIPsecParameters);
+
+            return psVpnClientIPsecParameters;
+        }
     }
 }

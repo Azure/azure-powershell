@@ -197,7 +197,7 @@ function Change-RMModule
 
         Write-Output "Changing to directory for module modifications $TempRepoPath"
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)
+        if (($isNetCore -eq "false") -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null))
         {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
