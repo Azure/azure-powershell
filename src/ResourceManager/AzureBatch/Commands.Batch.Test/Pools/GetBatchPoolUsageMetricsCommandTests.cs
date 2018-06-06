@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             int poolUsageCount = 0;
             foreach (PSPoolUsageMetrics p in pipeline)
             {
-                Assert.True(poolIds.Contains(p.PoolId));
+                Assert.Contains(p.PoolId, poolIds);
                 poolUsageCount++;
             }
 
