@@ -56,9 +56,6 @@ Adds a circuit connection configuration to Private Peering of an Express Route C
 ### [Add-AzureRmExpressRouteCircuitPeeringConfig](Add-AzureRmExpressRouteCircuitPeeringConfig.md)
 Adds a peering configuration to an ExpressRoute circuit.
 
-### [Add-AzureRmExpressRouteCircuitConnectionConfig](Add-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Adds a circuit connection configuration to Private Peering of an ExpressRoute circuit.
-
 ### [Add-AzureRmLoadBalancerBackendAddressPoolConfig](Add-AzureRmLoadBalancerBackendAddressPoolConfig.md)
 Adds a backend address pool configuration to a load balancer.
 
@@ -196,9 +193,6 @@ Gets an ExpressRoute circuit connection configuration associated with Private Pe
 
 ### [Get-AzureRmExpressRouteCircuitPeeringConfig](Get-AzureRmExpressRouteCircuitPeeringConfig.md)
 Gets an ExpressRoute circuit peering configuration.
-
-### [Get-AzureRmExpressRouteCircuitConnectionConfig](Get-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Gets an ExpressRoute circuit connection configuration. 
 
 ### [Get-AzureRmExpressRouteCircuitRouteTable](Get-AzureRmExpressRouteCircuitRouteTable.md)
 Gets a route table from an ExpressRoute circuit.
@@ -593,9 +587,6 @@ Removes an ExpressRoute circuit connection configuration.
 ### [Remove-AzureRmExpressRouteCircuitPeeringConfig](Remove-AzureRmExpressRouteCircuitPeeringConfig.md)
 Removes an ExpressRoute circuit peering configuration.
 
-### [Remove-AzureRmExpressRouteCircuitConnectionConfig](Remove-AzureRmExpressRouteCircuitConnectionConfig.md) 
-Removes an ExpressRoute circuit connection configuration. 
-
 ### [Remove-AzureRmLoadBalancer](Remove-AzureRmLoadBalancer.md)
 Removes a load balancer.
 
@@ -862,4 +853,3 @@ Returns whether the packet is allowed or denied to or from a particular destinat
 
 ### [Test-AzureRmPrivateIPAddressAvailability](Test-AzureRmPrivateIPAddressAvailability.md)
 Test availability of a private IP address in a virtual network.
-

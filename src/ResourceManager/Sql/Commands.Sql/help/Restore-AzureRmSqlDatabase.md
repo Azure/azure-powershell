@@ -45,14 +45,6 @@ Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### FromDeletedDatabaseBackupWithVcore
-```
-Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
- -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
- -ComputeGeneration <String> -Vcore <Int32> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
 ### FromGeoBackup
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>

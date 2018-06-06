@@ -5,6 +5,7 @@ ms.assetid: 59692f1f-9f1e-4a3c-8200-312c3806a9b7
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermexpressroutecircuitconnectionconfig
 schema: 2.0.0
 ---
+
 # Get-AzureRmExpressRouteCircuitConnectionConfig
 
 ## SYNOPSIS
@@ -22,12 +23,17 @@ The **Get-AzureRmExpressRouteCircuitConnectionConfig** cmdlet retrieves the conf
 associated with Private Peering for an ExpressRoute circuit.
 
 ## EXAMPLES
+
 ### Example 1: Display the circuit connection configuration for an ExpressRoute circuit
 ```
 $circuit_init = Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -ExpressRouteCircuit $circuit_init
 ```
+
+### Example 2: Get circuit connection resource associated with an ExpressRoute Circuit using piping
+```
 Get-AzureRmExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Get-AzureRmExpressRouteCircuitConnectionConfig -Name $circuitConnectionName
+```
 
 ## PARAMETERS
 
@@ -89,6 +95,7 @@ Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' fr
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnection
 
 ## NOTES
+
 ## RELATED LINKS
 
 [Get-AzureRmExpressRouteCircuit](Get-AzureRmExpressRouteCircuit.md)

@@ -31,15 +31,6 @@ New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -Pa
  [<CommonParameters>]
 ```
 
-### VcoreBasedDatabase
-```
-New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob]
- -SecondaryComputeGeneration <String> -SecondaryVcore <Int32> [-ServerName] <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **New-AzureRMSqlDatabaseSecondary** cmdlet replaces the Start-AzureSqlDatabaseCopy cmdlet when
 used for setting up geo-replication for a database. It returns the geo-replication link object from

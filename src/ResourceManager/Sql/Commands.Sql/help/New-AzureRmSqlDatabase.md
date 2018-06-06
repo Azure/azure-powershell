@@ -476,4 +476,3 @@ This cmdlet does not accept any input.
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-

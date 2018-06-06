@@ -232,21 +232,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the network watcher.
-
-```yaml
-Type: String
-Parameter Sets: SetByLocation
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NetworkWatcher
 The network watcher resource.
 

@@ -99,14 +99,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Location of the network watcher.",
-            ParameterSetName = "SetByLocation")]
-        [LocationCompleter("Microsoft.Network/networkWatchers")]
-        [ValidateNotNull]
-        public string Location { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Location of the network watcher.",
             ParameterSetName = SetFlowlogByLocationWithTAByResource)]

@@ -307,7 +307,7 @@ parameter, this cmdlet calculates a value that depends on the value of the *Dtu*
 See [eDTU and storage limits](/azure/sql-database/sql-database-elastic-pool#edtu-and-storage-limits-for-elastic-pools) for possible values.
 
 ```yaml
-Type: Int64
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 

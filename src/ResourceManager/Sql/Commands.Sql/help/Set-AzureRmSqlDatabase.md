@@ -30,15 +30,6 @@ Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Editio
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### VcoreBasedDatabase
-```
-Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
- [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-Vcore <Int32>] [-ComputeGeneration <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
 ### Rename
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> -NewName <String> [-AsJob] [-ServerName] <String>
@@ -219,7 +210,7 @@ Specifies name of the elastic pool in which to move the database.
 
 ```yaml
 Type: String
-Parameter Sets: Update, VcoreBasedDatabase
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -297,7 +288,7 @@ in the Microsoft Developer Network Library.
 
 ```yaml
 Type: String
-Parameter Sets: Update, VcoreBasedDatabase
+Parameter Sets: Update
 Aliases:
 
 Required: False
