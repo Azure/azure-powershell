@@ -251,6 +251,5 @@ function Assert-NotNullOrEmpty
 {
 	param([string]$value)
 
-    Assert-NotNull $value
-	Assert-True { $value -ne "" }
+	Assert-False { [string]::IsNullOrEmpty($value) }
 }
