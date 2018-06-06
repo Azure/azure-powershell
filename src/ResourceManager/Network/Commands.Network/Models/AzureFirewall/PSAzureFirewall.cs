@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewall : PSTopLevelResource
     {
-        private const string AzureFirewallSubnetName = "SecureGatewaySubnet"; // todo: change to "AzureFirewallSubnet";
+        private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
         private const int AzureFirewallSubnetMinSize = 25;
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
         
