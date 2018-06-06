@@ -28,10 +28,11 @@
     public class PSValidationResult
     {
         #region Fields and Properties
-        PSValidationType Type { get; set; }
-        PSResultLevel Level { get; set; }
-        List<int> Positions { get; set; }
-        string Description { get; set; }
+        public PSValidationType Type { get; set; }
+        public PSResultLevel Level { get; set; }
+        public List<int> Positions { get; set; }
+        public string Description { get; set; }
+        public string Path { get; set; }
         #endregion
 
         #region Constructors
@@ -42,6 +43,7 @@
             this.Level = this.Convert(result.Level);
             this.Positions = new List<int>(result.Positions);
             this.Description = result.Description;
+            this.Path = result.Path;
         }
 
         #endregion

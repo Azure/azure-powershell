@@ -7,7 +7,7 @@
         IEnumerable<string> ValidOsVersions();
         IEnumerable<uint> ValidOsSKU();
         IEnumerable<string> ValidFilesystems();
-        IEnumerable<Configuration.CodePointRange> BlacklistOfCodePointRanges();
+        IEnumerable<Configuration.CodePointRange> WhitelistOfCodePointRanges();
         IEnumerable<int> BlacklistOfCodePoints();
         IEnumerable<string> InvalidFileNames();
         int MaximumFilenameLength();
