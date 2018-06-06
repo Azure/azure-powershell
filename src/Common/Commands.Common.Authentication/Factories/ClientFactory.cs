@@ -189,7 +189,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
 
             return client;
-
         }
 
         public virtual TClient CreateCustomClient<TClient>(params object[] parameters) where TClient : ServiceClient<TClient>
