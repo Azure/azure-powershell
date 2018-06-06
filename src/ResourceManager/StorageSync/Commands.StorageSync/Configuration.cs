@@ -16,7 +16,7 @@
             [DataMember] public List<string> ValidFilesystems;
             [DataMember] public List<string> ValidOSVersions;
             [DataMember] public List<string> InvalidFilenames;
-            [DataMember] public List<CodePointRange> BlacklistOfCodePointRanges;
+            [DataMember] public List<CodePointRange> WhitelistOfCodePointRanges;
             [DataMember] public List<int> BlacklistOfCodePoints;
             [DataMember] public int MaximumFilenameLength;
             [DataMember] public long MaximumFileSizeInBytes;
@@ -102,9 +102,9 @@
             return _validationsConfiguration.InvalidFilenames;
         }
 
-        public IEnumerable<CodePointRange> BlacklistOfCodePointRanges()
+        public IEnumerable<CodePointRange> WhitelistOfCodePointRanges()
         {
-            return _validationsConfiguration.BlacklistOfCodePointRanges;
+            return _validationsConfiguration.WhitelistOfCodePointRanges;
         }
 
         public IEnumerable<int> BlacklistOfCodePoints()

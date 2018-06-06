@@ -10,5 +10,6 @@
         List<int> Positions { get; }
         string Description { get; }
         Result Result { get; }
+        string Path { get; }
     }
 }

@@ -2,13 +2,15 @@
 {
     using Interfaces;
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
 
     public class FilenamesCharactersValidation : BaseNamespaceValidation
     {
         #region Fields and Properties
-        private bool[] _characterTable;
+        private bool[] _codePointBlackList;
+        private int NumberOfCodePoints = 0x10FFFF + 1;
         #endregion
 
         #region Constructors
@@ -18,18 +20,14 @@
                 "Unsupported characters validation",
                 ValidationType.FilenameCharacters)
         {
-            IList<Configuration.CodePointRange> blacklistOfCodePointRanges = configuration.BlacklistOfCodePointRanges().ToList();
-            HashSet<int> blacklistOfCodePoints = new HashSet<int>(configuration.BlacklistOfCodePoints());
+            var whitelistOfCodePointRanges = configuration.WhitelistOfCodePointRanges().ToList();
+            var blacklistOfCodePoints = new HashSet<int>(configuration.BlacklistOfCodePoints());
 
-            int characterTableSize = 1 << 8 * sizeof(char);
-            this._characterTable = new bool[characterTableSize];
+            this._codePointBlackList = new bool[this.NumberOfCodePoints];
 
-            for (int i = 0; i < characterTableSize; ++i)
+            for (int i = 0; i < this.NumberOfCodePoints; ++i)
             {
-                char aChar = (char)i;
-                this._characterTable[i] = Char.IsHighSurrogate(aChar) ||
-                    blacklistOfCodePointRanges.Any(range => range.Includes(aChar)) ||
-                    blacklistOfCodePoints.Contains(aChar);
+                this._codePointBlackList[i] = blacklistOfCodePoints.Contains(i) || !whitelistOfCodePointRanges.Any(range => range.Includes(i));
             }
         }
         #endregion
@@ -37,7 +35,7 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo file)
         {
-            return ValidateInternal(file);
+            return ValidateInternal(file, isDirectory: false);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo directoryInfo)
@@ -48,28 +46,46 @@
                 return this.SuccessfulResult;
             }
 
-            return ValidateInternal(directoryInfo);
+            return ValidateInternal(directoryInfo, isDirectory: true);
         }
 
         #endregion
 
         #region Private methods
         
-        private IValidationResult ValidateInternal (INamedObjectInfo node)
+        private IValidationResult ValidateInternal (INamedObjectInfo node, bool isDirectory)
         {
             string name = node.Name;
             List<int> positions = new List<int>();
-            for (int i = 0; i < name.Length; ++i)
+
+            for (int i = 0, codepointIndex = 0; i < name.Length; ++i, ++codepointIndex)
             {
-                if (IsBlacklisted(name[i]))
+                int codePoint;
+
+                if (char.IsSurrogatePair(name, i))
                 {
-                    positions.Add(i);
+                    codePoint = char.ConvertToUtf32(name, i);
+                    i += 1;
+                }
+                else
+                {
+                    codePoint = name[i];
+                }
+
+                if (codePoint < 0 || 
+                    codePoint >= this.NumberOfCodePoints || 
+                    this._codePointBlackList[codePoint])
+                {
+                    // adding +1 so that positions are 1-based
+                    // to make them more human friendly
+                    positions.Add(codepointIndex + 1);
                 }
             }
 
             if (positions.Count > 0)
             {
-                string description = $"File {node.Name} has an unsupported character in position";
+                string itemLabel = isDirectory ? "Directory" : "File";
+                string description = $"{itemLabel} {node.Name} has an unsupported character in position";
                 if (positions.Count > 1)
                 {
                     description += "s";
@@ -90,11 +106,6 @@
             }
 
             return this.SuccessfulResult;
-        }
-
-        private bool IsBlacklisted(char aChar)
-        {
-            return this._characterTable[aChar];
         }
 
         #endregion
