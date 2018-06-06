@@ -32,10 +32,24 @@ The **Update-AzureKeyVaultKey** cmdlet updates the editable attributes of a key 
 ## EXAMPLES
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
-```
-PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
+```powershell
+PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
 PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+
+Vault Name     : Contoso
+Name           : ITSoftware
+Version        : 394f9379a47a4e2086585468de6c7ae5
+Id             : https://Contoso.vault.azure.net:443/keys/ITSoftware/394f9379a47a4e2086585468de6c7ae5
+Enabled        : True
+Expires        : 5/25/2020 7:58:07 PM
+Not Before     :
+Created        : 4/6/2018 11:31:36 PM
+Updated        : 5/25/2018 7:59:02 PM
+Purge Disabled : False
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
 ```
 
 The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
@@ -48,8 +62,20 @@ The final command modifies a key named ITSoftware. The command enables the key, 
 time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
-```
-PS C:\>Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
+```powershell
+PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+
+Vault Name     : Contoso
+Name           : ITSoftware
+Version        : 394f9379a47a4e2086585468de6c7ae5
+Id             : https://Contoso.vault.azure.net:443/keys/ITSoftware/394f9379a47a4e2086585468de6c7ae5
+Enabled        : True
+Expires        : 5/25/2020 7:58:07 PM
+Not Before     :
+Created        : 4/6/2018 11:31:36 PM
+Updated        : 5/25/2018 8:00:08 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This commands deletes all tags for a specific version of a key named ITSoftware.

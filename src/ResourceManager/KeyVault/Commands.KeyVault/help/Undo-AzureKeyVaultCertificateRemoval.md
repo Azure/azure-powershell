@@ -32,8 +32,41 @@ Caller needs to have 'recover' permission in order to perform this operation.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\> Undo-AzureKeyVaultCertificateRemoval -VaultName 'MyKeyVault' -Name 'MyCertificate'
+
+Certificate   : [Subject]
+                  CN=contoso.com
+
+                [Issuer]
+                  CN=contoso.com
+
+                [Serial Number]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                [Not Before]
+                  5/24/2018 10:58:13 AM
+
+                [Not After]
+                  11/24/2018 10:08:13 AM
+
+                [Thumbprint]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+KeyId         : https://mykeyvault.vault.azure.net:443/keys/mycertificate/7fe415d5518240c1a6fce89986b8d334
+SecretId      : https://mykeyvault.vault.azure.net:443/secrets/mycertificate/7fe415d5518240c1a6fce89986b8d334
+Thumbprint    : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RecoveryLevel : Recoverable+Purgeable
+Enabled       : True
+Expires       : 11/24/2018 6:08:13 PM
+NotBefore     : 5/24/2018 5:58:13 PM
+Created       : 5/24/2018 6:08:13 PM
+Updated       : 5/24/2018 6:08:13 PM
+Tags          :
+VaultName     : MyKeyVault
+Name          : MyCertificate
+Version       : 7fe415d5518240c1a6fce89986b8d334
+Id            : https://mykeyvault.vault.azure.net:443/certificates/mycertificate/7fe415d5518240c1a6fce89986b8d334
 ```
 
 This command will recover the certificate 'MyCertificate' that was previously deleted, into an active and usable state.
@@ -138,11 +171,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 
 ## NOTES
 

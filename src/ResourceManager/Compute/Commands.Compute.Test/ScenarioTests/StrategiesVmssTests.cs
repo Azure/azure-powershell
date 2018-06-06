@@ -48,7 +48,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmssImageName");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSimpleNewVmssWithSystemAssignedUserAssignedIdentity()
         {
