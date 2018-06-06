@@ -19,7 +19,10 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallIpConfiguration : PSChildResource
     {
+        [JsonProperty(Order = 2)]
         public PSResourceId Subnet { get; set; }
+
+        [JsonProperty(Order = 2)]
         public PSResourceId PublicIPAddress { get; set; }
 
         [JsonIgnore]
