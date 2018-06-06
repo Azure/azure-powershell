@@ -44,8 +44,20 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 ## EXAMPLES
 
 ### Example 1: Restore a backed-up key
-```
-PS C:\>Restore-AzureKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```powershell
+PS C:\> Restore-AzureKeyVaultKey -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+
+Vault Name     : MyKeyVault
+Name           : key1
+Version        : 394f9379a47a4e2086585468de6c7ae5
+Id             : https://mykeyvault.vault.azure.net:443/keys/key1/394f9379a47a4e2086585468de6c7ae5
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 4/6/2018 11:31:36 PM
+Updated        : 4/6/2018 11:35:04 PM
+Purge Disabled : False
+Tags           : 
 ```
 
 This command restores a key, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
@@ -163,8 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 

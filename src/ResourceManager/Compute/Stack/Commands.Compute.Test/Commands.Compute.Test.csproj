@@ -188,7 +188,7 @@
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Stack\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\..\..\..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>

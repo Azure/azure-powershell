@@ -8,45 +8,33 @@
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Storage</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <SignAssembly>True</SignAssembly>
-    <DelaySign>True</DelaySign>
-    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
-  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
     <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Adapters\**" />
+    <Content Remove="Adapters\**" />
     <EmbeddedResource Remove="Adapters\**" />
     <None Remove="Adapters\**" />
-    <Compile Remove="Stack\AzureContextExtensions.cs" />
-    <Compile Remove="Stack\AzureStorageContext.cs" />
-    <Compile Remove="Stack\BlobUploadParameters.cs" />
-    <Compile Remove="Stack\IStorageClientWrapper.cs" />
-    <Compile Remove="Stack\IStorageContextProvider.cs" />
-    <Compile Remove="Stack\LazyAzureStorageContext.cs" />
-    <Compile Remove="Stack\StorageClientWrapper.cs" />
-    <Compile Remove="Stack\StorageIdentity.cs" />
-    <Compile Remove="Stack\StorageUtilities.cs" />
-    <Compile Remove="Stack\WindowsAzureSubscriptionExtensions.cs" />
-    <Compile Remove="Stack\Properties\AssemblyInfo.cs" />
-    <Compile Remove="Stack\Properties\Resources.Designer.cs" />
-    <EmbeddedResource Remove="Stack\Properties\Resources.resx" />
-    <None Remove="Stack\MSSharedLibKey.snk" />
-    <None Remove="Stack\packages.config" />
   </ItemGroup>
 
   <ItemGroup>
@@ -56,8 +44,8 @@
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>

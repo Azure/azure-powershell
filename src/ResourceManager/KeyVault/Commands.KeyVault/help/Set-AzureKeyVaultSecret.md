@@ -35,9 +35,21 @@ cmdlet creates a new version of that secret.
 ## EXAMPLES
 
 ### Example 1: Modify the value of a secret using default attributes
-```
+```powershell
 PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret
+
+Vault Name   : Contoso
+Name         : ITSecret
+Version      : 8b5c0cb0326e4350bd78200fac932b51
+Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/8b5c0cb0326e4350bd78200fac932b51
+Enabled      : True
+Expires      :
+Not Before   :
+Created      : 5/25/2018 6:39:30 PM
+Updated      : 5/25/2018 6:39:30 PM
+Content Type :
+Tags         :
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
@@ -48,13 +60,27 @@ The second command modifies value of the secret named ITSecret in the key vault 
 secret value becomes the value stored in $Secret.
 
 ### Example 2: Modify the value of a secret using custom attributes
-```
+```powershell
 PS C:\> $Secret = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NBF =(Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = null }
+PS C:\> $Tags = @{ 'Severity' = 'medium'; 'IT' = 'true'}
 PS C:\> $ContentType = 'txt'
-PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable $False -Tags $Tags
+PS C:\> Set-AzureKeyVaultSecret -VaultName 'Contoso' -Name 'ITSecret' -SecretValue $Secret -Expires $Expires -NotBefore $NBF -ContentType $ContentType -Disable -Tags $Tags
+
+Vault Name   : Contoso
+Name         : ITSecret
+Version      : a2c150be3ea24dd6b8286986e6364851
+Id           : https://contoso.vault.azure.net:443/secrets/ITSecret/a2c150be3ea24dd6b8286986e6364851
+Enabled      : False
+Expires      : 5/25/2020 6:40:00 PM
+Not Before   : 5/25/2018 6:40:05 PM
+Created      : 5/25/2018 6:41:22 PM
+Updated      : 5/25/2018 6:41:22 PM
+Content Type : txt
+Tags         : Name      Value
+               Severity  medium
+               IT        true
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
@@ -266,8 +292,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 
 ## OUTPUTS
 
