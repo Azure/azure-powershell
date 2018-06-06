@@ -32,11 +32,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
 
             IDictionaryEnumerator ide = hashtable.GetEnumerator();
             PSTagValuePair tagValuePair = new PSTagValuePair();
-            if(ide.MoveNext())
+            if (ide.MoveNext())
             {
-                DictionaryEntry entry = (DictionaryEntry) ide.Current;
+                DictionaryEntry entry = (DictionaryEntry)ide.Current;
                 tagValuePair.Name = entry.Key.ToString();
-                if(entry.Value != null)
+                if (entry.Value != null)
                 {
                     tagValuePair.Value = entry.Value.ToString();
                 }
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
                 tagDictionary = new Dictionary<string, string>();
                 PSTagValuePair tvPair = new PSTagValuePair();
 
-                foreach(DictionaryEntry entry in tags)
+                foreach (DictionaryEntry entry in tags)
                 {
                     tvPair.Name = entry.Key.ToString();
                     if (entry.Value != null)
@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
                     }
                     tagDictionary[tvPair.Name] = tvPair.Value;
                 }
-                
+
             }
             if (validate)
             {
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             return tagsHashtable;
         }
 
-        public static Dictionary<string, string> ReadOrFetchTags(PSCmdlet cmdlet, Dictionary<string,string> tagsFromModel)
+        public static Dictionary<string, string> ReadOrFetchTags(PSCmdlet cmdlet, Dictionary<string, string> tagsFromModel)
         {
             object tagsFromCli;
-            if (cmdlet.MyInvocation.BoundParameters.TryGetValue("Tags", out tagsFromCli))
+            if (TryGetValue(cmdlet, "Tags", out tagsFromCli) || TryGetValue(cmdlet, "Tag", out tagsFromCli))
             {
                 Hashtable tags = tagsFromCli as Hashtable;
                 return TagsConversionHelper.CreateTagDictionary(tags, validate: true);
@@ -107,7 +107,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Tags
             {
                 return tagsFromModel;
             }
-        } 
-    
+        }
+
+        public static bool TryGetValue(PSCmdlet cmdlet, string parameter, out object tagsFromCli)
+        {
+            return cmdlet.MyInvocation.BoundParameters.TryGetValue(parameter, out tagsFromCli);
+        }
     }
 }
