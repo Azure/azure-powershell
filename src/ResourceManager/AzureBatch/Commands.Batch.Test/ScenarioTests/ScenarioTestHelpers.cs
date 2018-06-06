@@ -96,7 +96,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 PSCertificate existingCert = client.ListCertificates(getParameters).FirstOrDefault();
                 DateTime start = DateTime.Now;
-                DateTime end = start.AddMinutes(5);
+                TimeSpan timeout = GetTimeout(TimeSpan.FromMinutes(5));
+                DateTime end = start.Add(timeout);
 
                 // Cert might still be deleting from other tests, so we wait for the delete to finish.
                 while (existingCert != null && existingCert.State == CertificateState.Deleting)
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             PSCertificate cert = client.ListCertificates(parameters).First();
 
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(2)));
             while (cert.State != CertificateState.DeleteFailed)
             {
                 if (DateTime.Now > timeout)
@@ -261,7 +262,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 PoolId = poolId
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(5);
+            DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(5)));
             PSCloudPool pool = client.ListPools(options).First();
             while (pool.AllocationState != AllocationState.Steady)
             {
@@ -346,7 +347,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// </summary>
         public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string jobScheduleId, string previousJob = null)
         {
-            DateTime timeout = DateTime.Now.AddMinutes(2);
+            DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(2)));
             BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
 
             ListJobScheduleOptions options = new ListJobScheduleOptions(context)
@@ -507,7 +508,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 Select = "id,state"
             };
 
-            DateTime timeout = DateTime.Now.AddMinutes(5);
+            DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(10)));
             PSComputeNode computeNode = client.ListComputeNodes(options).First();
             while (computeNode.State != ComputeNodeState.Idle)
             {
@@ -600,6 +601,16 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             {
                 Thread.Sleep(milliseconds);
             }
+        }
+
+        private static TimeSpan GetTimeout(TimeSpan timeout)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                return TimeSpan.FromHours(3);
+            }
+
+            return timeout;
         }
     }
 }
