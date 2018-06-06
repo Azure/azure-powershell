@@ -1604,6 +1604,10 @@
                 <Label>RetentionPolicy</Label>
                 <PropertyName>RetentionPolicyText</PropertyName>
               </ListItem>
+              <ListItem>
+                <Label>FlowAnalyticsConfiguration</Label>
+                <PropertyName>FlowAnalyticsConfigurationText</PropertyName>
+              </ListItem>
             </ListItems>
           </ListEntry>
         </ListEntries>

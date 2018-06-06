@@ -28,9 +28,6 @@ using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-#if NETSTANDARD
-using Microsoft.Extensions.DependencyInjection;
-#endif
 
 namespace Microsoft.Azure.Commands.Aks
 {

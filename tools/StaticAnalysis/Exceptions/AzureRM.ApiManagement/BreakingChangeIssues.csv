@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll","Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands.SetAzureApiManagementPolicy","Set-AzureRmApiManagementPolicy","0","2050","A validate set has been added for parameter 'Format' for cmdlet 'Set-AzureRmApiManagementPolicy'.","Remove the validate set from parameter 'Format'."

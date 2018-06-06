@@ -20,6 +20,12 @@
 
 ## Current Release
 
+## Version 6.2.0
+* Enable Traffic Analytics parameters on Network Watcher cmdlets
+
+## Version 6.1.1
+* Removed Default sku setting from New-AzureRmVirtualNetworkGateway cmdlet
+
 ## Version 6.1.0
 * Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
 * Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
