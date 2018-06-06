@@ -16,6 +16,7 @@
 	.SYNOPSIS
 	Tests creating a database copy
 #>
+<<<<<<< HEAD
 function Test-CreateDatabaseCopy
 {
 	Test-CreateCopyInternal "12.0" "Southeast Asia"
@@ -26,8 +27,12 @@ function Test-CreateDatabaseCopy
 	Tests creating a database copy
 #>
 function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
+=======
+function Test-CreateDatabaseCopy()
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server "Standard"
@@ -37,7 +42,7 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 	$copyDatabaseName = Get-DatabaseName
 
 	try
-	{	
+	{
 		# Create a local database copy
 		$job = New-AzureRmSqlDatabaseCopy -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -CopyDatabaseName $copyDatabaseName -AsJob
@@ -70,20 +75,72 @@ function Test-CreateCopyInternal ($serverVersion, $location = "North Europe")
 
 <#
 	.SYNOPSIS
-	Tests creating a secondary database
+	Tests creating a vcore database copy
 #>
-function Test-CreateSecondaryDatabase
+function Test-CreateVcoreDatabaseCopy()
 {
+<<<<<<< HEAD
 	Test-CreateSecondaryDatabaseInternal "12.0" "Southeast Asia"
+=======
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$db = Create-VcoreDatabaseForTest $rg $server 1 BasePrice
+
+	try
+	{
+		# Create a local database copy from a vcore database with base price license type
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName
+
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should have same license as src unless specified
+		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
+
+
+		# Create a local database copy from a vcore database with license type option - Base Price
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType BasePrice
+
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbLocalCopy.LicenseType BasePrice # Copy should be set Base Price since specified
+		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
+
+		# Create a local database copy from a vcore database with license type option - License Included
+		$copyDatabaseName = Get-DatabaseName
+		$dbLocalCopy = New-AzureRmSqlDatabaseCopy -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName -CopyDatabaseName $copyDatabaseName -LicenseType LicenseIncluded
+
+		Assert-AreEqual $dbLocalCopy.ServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.DatabaseName $db.DatabaseName
+		Assert-AreEqual $dbLocalCopy.LicenseType LicenseIncluded # Copy should be License Included since specified
+		Assert-AreEqual $dbLocalCopy.CopyResourceGroupName $rg.ResourceGroupName
+		Assert-AreEqual $dbLocalCopy.CopyServerName $server.ServerName
+		Assert-AreEqual $dbLocalCopy.CopyDatabaseName $copyDatabaseName
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 }
 
 <#
 	.SYNOPSIS
 	Tests creating a secondary database
 #>
-function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+function Test-CreateSecondaryDatabase()
 {
 	# Setup
+    # https://github.com/Azure/azure-powershell/issues/6382
+	#$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = 'Southeast Asia'
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -92,7 +149,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# Create Readable Secondary
 		$readSecondary = New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
@@ -121,6 +178,7 @@ function Test-CreateSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	.SYNOPSIS
 	Tests getting a secondary database
 #>
+<<<<<<< HEAD
 function Test-GetReplicationLink
 {
 	Test-GetReplicationLinkInternal "12.0" "Southeast Asia"
@@ -131,8 +189,14 @@ function Test-GetReplicationLink
 	Tests getting a secondary database
 #>
 function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Europe")
+=======
+function Test-GetReplicationLink()
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
+    # https://github.com/Azure/azure-powershell/issues/6382
+	#$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
+    $location = 'Southeast Asia'
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -141,7 +205,7 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# Get Secondary
 		$job = New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 			-PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All -AsJob
@@ -174,6 +238,7 @@ function Test-GetReplicationLinkInternal ($serverVersion, $location = "North Eur
 	.SYNOPSIS
 	Tests removing a secondary database
 #>
+<<<<<<< HEAD
 function Test-RemoveSecondaryDatabase
 {
 	Test-RemoveSecondaryDatabaseInternal "12.0" "Southeast Asia"
@@ -184,8 +249,12 @@ function Test-RemoveSecondaryDatabase
 	Tests removing a secondary database
 #>
 function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+=======
+function Test-RemoveSecondaryDatabase()
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -194,7 +263,7 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# remove Secondary
 		New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
@@ -211,6 +280,7 @@ function Test-RemoveSecondaryDatabaseInternal ($serverVersion, $location = "Nort
 
 <#
 	.SYNOPSIS
+<<<<<<< HEAD
 	Tests removing a secondary database
 #>
 function Test-FailoverSecondaryDatabase
@@ -221,11 +291,14 @@ function Test-FailoverSecondaryDatabase
 
 <#
 	.SYNOPSIS
+=======
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 	Tests failing over a secondary database
 #>
-function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "North Europe")
+function Test-FailoverSecondaryDatabase()
 {
 	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Southeast Asia"
 	$rg = Create-ResourceGroupForTest $location
 	$server = Create-ServerForTest $rg $location
 	$database = Create-DatabaseForTest $rg $server
@@ -234,7 +307,7 @@ function Test-FailoverSecondaryDatabaseInternal ($serverVersion, $location = "No
 	$partServer = Create-ServerForTest $partRg $location
 
 	try
-	{	
+	{
 		# failover Secondary
 		New-AzureRmSqlDatabaseSecondary -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $database.DatabaseName `
 		 -PartnerResourceGroupName $partRg.ResourceGroupName -PartnerServerName $partServer.ServerName -AllowConnections All
@@ -259,4 +332,15 @@ function Create-DatabaseForTest  ($rg, $server, $edition = "Premium")
 {
 	$databaseName = Get-DatabaseName
 	New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -Edition $edition
+}
+
+
+<#
+	.SYNOPSIS
+	Creates test database
+#>
+function Create-VcoreDatabaseForTest  ($rg, $server, $numCores = 1, $licenseType = "LicenseIncluded")
+{
+	$databaseName = Get-DatabaseName
+	New-AzureRmSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $databaseName -VCore $numCores -ComputeGeneration Gen4 -Edition GeneralPurpose -LicenseType $licenseType
 }

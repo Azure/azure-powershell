@@ -51,17 +51,16 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
+<<<<<<< HEAD
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
+=======
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.2.0'; })
+>>>>>>> c53de4427fc95b86607a961e5448b5bd7b36d3a6
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.KeyVault.dll', 
                '.\Microsoft.Azure.KeyVault.WebKey.dll', 
-               '.\Microsoft.Azure.Management.Compute.dll', 
-               '.\Microsoft.Azure.Management.KeyVault.dll', 
-               '.\Microsoft.Azure.Management.Network.dll', 
-               '.\Microsoft.Azure.Management.ResourceManager.dll', 
-               '.\Microsoft.Azure.Management.ServiceFabric.dll', 
-               '.\Microsoft.Azure.Management.Storage.dll'
+               '.\Microsoft.Azure.Management.ServiceFabric.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
