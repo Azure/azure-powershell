@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementUserState
     {
         Active = 1,
-        Blocked = 2
-    }
+        Blocked = 2,
+        Deleted = 3,
+        Pending = 4
+    }    
 }

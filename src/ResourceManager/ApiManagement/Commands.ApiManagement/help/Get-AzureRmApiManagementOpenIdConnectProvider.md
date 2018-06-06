@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
@@ -68,7 +68,7 @@ Specifies a **PsApiManagementContext** object.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ If you specify a name, this cmdlet gets that provider.
 ```yaml
 Type: String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -115,7 +115,7 @@ If you specify an ID, this cmdlet gets that provider.
 ```yaml
 Type: String
 Parameter Sets: GetByOpenIdConnectProviderId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

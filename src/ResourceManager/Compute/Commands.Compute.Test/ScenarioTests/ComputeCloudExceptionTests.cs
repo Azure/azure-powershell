@@ -32,16 +32,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             // Message Only
             var ex1 = new Rest.Azure.CloudException("Test1");
             var cx1 = new ComputeCloudException(ex1);
-            Assert.True(string.Equals(cx1.Message, ex1.Message));
+            Assert.Equal(cx1.Message, ex1.Message);
             Assert.True(cx1.InnerException is Rest.Azure.CloudException);
-            Assert.True(string.Equals(cx1.InnerException.Message, ex1.Message));
+            Assert.Equal(cx1.InnerException.Message, ex1.Message);
 
             // Message + Inner Exception
             var ex2 = new Rest.Azure.CloudException("Test2", ex1);
             var cx2 = new ComputeCloudException(ex2);
-            Assert.True(string.Equals(cx2.Message, ex2.Message));
+            Assert.Equal(cx2.Message, ex2.Message);
             Assert.True(cx2.InnerException is Rest.Azure.CloudException);
-            Assert.True(string.Equals(cx2.InnerException.Message, ex2.Message));
+            Assert.Equal(cx2.InnerException.Message, ex2.Message);
 
             // Empty Message
             var ex3 = new Rest.Azure.CloudException(string.Empty);
