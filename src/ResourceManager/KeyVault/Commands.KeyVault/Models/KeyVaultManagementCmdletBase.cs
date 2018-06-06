@@ -264,7 +264,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrWhiteSpace(spn))
             {
 #if NETSTANDARD
-                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { SPN = spn }).SingleOrDefault();
+                var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
                 objId = servicePrincipal?.Id.ToString();
 #else
                 var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>

@@ -12,9 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -27,14 +27,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCertificateCrudOperations()
         {
             BatchController.NewInstance.RunPsTest("Test-CertificateCrudOperations");
         }
 
-        [Fact]
+        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCancelCertificateDelete()
         {
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.DeletePool(controller, context, poolId);
                     ScenarioTestHelpers.DeleteTestCertificate(controller, context, BatchTestHelpers.TestCertificateAlgorithm, thumbprint);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

@@ -62,7 +62,7 @@ function Test-BlobAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegi
 		Assert-AreEqual $policy.AuditState "Enabled"  
 
 		$newResourceGroupName =  "test-rg2-for-sql-cmdlets-" + $testSuffix
-		New-AzureRmResourceGroup -Location "japanwest" -ResourceGroupName $newResourceGroupName
+		New-AzureRmResourceGroup -Location "West Europe" -ResourceGroupName $newResourceGroupName
 		New-AzureRmStorageAccount -StorageAccountName $params.storageAccount  -ResourceGroupName $newResourceGroupName -Location "West Europe" -Type Standard_GRS 
 
 		Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -StorageAccountName $params.storageAccount
@@ -537,6 +537,15 @@ function Test-BlobAuditingOnDatabase
 		# Assert
 		Assert-AreEqual $policy.AuditState "Disabled"
 		Assert-AreEqual $policy.AuditAction.Length 1
+
+		# Test - Providing empty AuditActionGroups and an AuditAction
+		Set-AzureRmSqlDatabaseAuditing -State Disabled -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -AuditActionGroup @() -AuditAction "UPDATE ON database::[$($params.databaseName)] BY [public]"
+		$policy = Get-AzureRmSqlDatabaseAuditing -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
+	
+		# Assert
+		Assert-AreEqual $policy.AuditActionGroup.Length 0
+		Assert-AreEqual $policy.AuditAction.Length 1
+		Assert-AreEqual $policy.AuditAction[0] "UPDATE ON database::[$($params.databaseName)] BY [public]"
 	}
 	finally
 	{

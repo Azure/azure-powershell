@@ -29,12 +29,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
@@ -45,6 +39,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -320,7 +320,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Location = vaultLocation,
                 Properties = new VaultProperties
                 {
-                    Sku = new Management.KeyVault.Models.Sku
+                    Sku = new Azure.Commands.Common.KeyVault.Version2016_10_1.Models.Sku
                     {
                         Name = SkuName.Standard,
                     },
@@ -441,7 +441,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 ).GetAwaiter().GetResult();
 
-            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Id));
 
             return certificateBundle;
         }

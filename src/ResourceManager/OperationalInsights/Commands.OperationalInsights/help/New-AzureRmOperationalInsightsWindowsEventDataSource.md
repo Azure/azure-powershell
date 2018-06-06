@@ -32,11 +32,6 @@ The **New-AzureRmOperationalInsightsWindowsEventDataSource** cmdlet adds a data 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CollectErrors
