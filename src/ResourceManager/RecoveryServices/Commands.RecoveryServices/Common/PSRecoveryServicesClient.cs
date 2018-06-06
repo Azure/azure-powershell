@@ -87,10 +87,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <param name="azureSubscription">Azure Subscription</param>
         public PSRecoveryServicesClient(IAzureContext defaultContext)
         {
-            System.Configuration.Configuration recoveryServicesConfig = ConfigurationManager.OpenExeConfiguration(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-            System.Configuration.AppSettingsSection appSettings = (System.Configuration.AppSettingsSection)recoveryServicesConfig.GetSection("appSettings");
-
             string resourceType = string.Empty;
 
             // Get Resource provider namespace from config if needed to communicate with internal deployments

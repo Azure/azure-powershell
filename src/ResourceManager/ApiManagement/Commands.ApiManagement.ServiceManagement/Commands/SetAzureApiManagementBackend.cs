@@ -98,7 +98,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementBackendProxy Proxy { get; set; }
 
         [Parameter(
-            ValueFromPipelineByPropertyName = false,
+            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            HelpMessage = "Service Fabric Cluster Backend details. This parameter is optional.")]
+        public PsApiManagementServiceFabric ServiceFabricCluster { get; set; }
+
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "If specified then instance of " +
                           "Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend type " +
@@ -120,7 +126,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     SkipCertificateChainValidation,
                     SkipCertificateNameValidation,
                     Credential,
-                    Proxy);
+                    Proxy,
+                    ServiceFabricCluster);
 
                 if (PassThru)
                 {

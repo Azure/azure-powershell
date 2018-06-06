@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.16.5
+* Fix issue with update ServiceBusQueueJob not setting new Auth values
+
+## Version 0.16.4
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 0.16.3
 * Updated to the latest version of the Azure ClientRuntime
 
 ## Version 0.16.2

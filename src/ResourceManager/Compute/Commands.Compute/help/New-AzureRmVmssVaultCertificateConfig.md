@@ -40,7 +40,7 @@ This is only valid for Windows Virtual Machine Scale Sets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -64,7 +64,7 @@ It is the base64 encoding of the following JSON Object which is encoded in UTF-8
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0

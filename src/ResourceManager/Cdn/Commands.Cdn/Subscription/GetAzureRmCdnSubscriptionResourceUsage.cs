@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
         public override void ExecuteCmdlet()
         {
-            var resourceUsages = CdnManagementClient.CheckResourceUsage().Select(r => r.ToPsResourceUsage());
+            var resourceUsages = CdnManagementClient.ResourceUsage.List().Select(r => r.ToPsResourceUsage());
 
             WriteVerbose(Resources.Success);
             WriteObject(resourceUsages);

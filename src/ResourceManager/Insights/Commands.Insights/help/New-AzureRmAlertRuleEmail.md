@@ -51,7 +51,7 @@ Specifies a list of comma-separated e-mail addresses.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: CustomEmails
+Aliases:
 
 Required: False
 Position: 0
@@ -81,7 +81,7 @@ Indicates that this operation sends an e-mail to the service owners when the rul
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: SendToServiceOwners
+Aliases:
 
 Required: False
 Position: Named

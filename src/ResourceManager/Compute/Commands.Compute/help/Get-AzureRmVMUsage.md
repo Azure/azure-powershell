@@ -52,7 +52,7 @@ Specifies the location for which this cmdlet gets virtual machine core count usa
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

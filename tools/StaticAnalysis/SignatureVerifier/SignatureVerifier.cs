@@ -18,7 +18,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
-using System.Threading.Tasks;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
+using Tools.Common.Loaders;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.SignatureVerifier
 {
@@ -36,19 +40,30 @@ namespace StaticAnalysis.SignatureVerifier
 
         public string Name { get; private set; }
 
-        public void Analyze(IEnumerable<string> cmdletProbingDirs)
+        public void Analyze(IEnumerable<string> scopes)
         {
-            Analyze(cmdletProbingDirs, null, null);
+            Analyze(scopes, null);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
+        {
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
         }
 
         public void Analyze(IEnumerable<string> cmdletProbingDirs,
                             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-                            Func<string, bool> cmdletFilter)
+                            Func<string, bool> cmdletFilter,
+                            IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
             var issueLogger = Logger.CreateLogger<SignatureIssue>(signatureIssueReportLoggerName);
-            
+
             List<string> probingDirectories = new List<string>();
 
             if (directoryFilter != null)
@@ -56,7 +71,8 @@ namespace StaticAnalysis.SignatureVerifier
                 cmdletProbingDirs = directoryFilter(cmdletProbingDirs);
             }
 
-            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && Directory.Exists(Path.GetFullPath(s))))
+            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
+                                                                       !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
                 //Add current directory for probing
                 probingDirectories.Add(baseDirectory);
@@ -64,27 +80,65 @@ namespace StaticAnalysis.SignatureVerifier
 
                 foreach(var directory in probingDirectories)
                 {
-                    var helpFiles = Directory.EnumerateFiles(directory, "*.dll-Help.xml")
-                        .Where(f => !processedHelpFiles.Contains(Path.GetFileName(f),
-                            StringComparer.OrdinalIgnoreCase)).ToList();
-                    if (helpFiles.Any())
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                    {
+                        continue;
+                    }
+
+                    var service = Path.GetFileName(directory);
+                    var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
+                    if (manifestFiles.Count > 1)
+                    {
+                        manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
+                    }
+
+                    if (!manifestFiles.Any())
+                    {
+                        continue;
+                    }
+
+                    var psd1 = manifestFiles.FirstOrDefault();
+                    var parentDirectory = Directory.GetParent(psd1).FullName;
+                    var psd1FileName = Path.GetFileName(psd1);
+                    IEnumerable<string> nestedModules = null;
+                    List<string> requiredModules = null;
+                    PowerShell powershell = PowerShell.Create();
+                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
+                                         " -FileName " + psd1FileName +
+                                         " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
+                    var cmdletResult = powershell.Invoke();
+                    nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+                    requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
+
+                    if (nestedModules.Any())
                     {
                         Directory.SetCurrentDirectory(directory);
-                        foreach (var helpFile in helpFiles)
+
+                        requiredModules = requiredModules.Join(cmdletProbingDirs,
+                                                               module => 1,
+                                                               dir => 1,
+                                                               (module, dir) => Path.Combine(dir, module))
+                                                          .Where(f => Directory.Exists(f))
+                                                          .ToList();
+
+                        requiredModules.Add(directory);
+
+                        foreach (var nestedModule in nestedModules)
                         {
-                            var cmdletFile = helpFile.Substring(0, helpFile.Length - "-Help.xml".Length);
-                            var helpFileName = Path.GetFileName(helpFile);
-                            var cmdletFileName = Path.GetFileName(cmdletFile);
-                            if (File.Exists(cmdletFile))
+                            var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                            if (File.Exists(assemblyFile))
                             {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileName, "AssemblyFileName");
-                                processedHelpFiles.Add(helpFileName);
-                                var proxy = EnvironmentHelpers.CreateProxy<CmdletSignatureLoader>(directory, out _appDomain);
-                                var cmdlets = proxy.GetCmdlets(cmdletFile);
+                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFile, "AssemblyFileName");
+                                processedHelpFiles.Add(assemblyFile);
+                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                                var module = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+                                var cmdlets = module.Cmdlets;
 
                                 if (cmdletFilter != null)
                                 {
-                                    cmdlets = cmdlets.Where<CmdletSignatureMetadata>((cmdlet) => cmdletFilter(cmdlet.Name)).ToList<CmdletSignatureMetadata>();
+                                    cmdlets = cmdlets.Where<CmdletMetadata>((cmdlet) => cmdletFilter(cmdlet.Name)).ToList<CmdletMetadata>();
                                 }
 
                                 foreach (var cmdlet in cmdlets)
@@ -168,6 +222,20 @@ namespace StaticAnalysis.SignatureVerifier
                                         remediation: "Consider using a singular noun for the cmdlet name.");
                                     }
 
+                                    if (!cmdlet.OutputTypes.Any())
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.CmdletWithNoOutputType,
+                                        description:
+                                            string.Format(
+                                                "Cmdlet '{0}' has no defined output type.", cmdlet.Name),
+                                        remediation: "Add an OutputType attribute that declares the type of the object(s) returned " +
+                                                     "by this cmdlet. If this cmdlet returns no output, please set the output " +
+                                                     "type to 'bool' and make sure to implement the 'PassThru' parameter.");
+                                    }
+
                                     foreach (var parameter in cmdlet.GetParametersWithPluralNoun())
                                     {
                                         issueLogger.LogSignatureIssue(
@@ -180,6 +248,51 @@ namespace StaticAnalysis.SignatureVerifier
                                                 "naming convention of using a singular noun for a parameter name.",
                                                 parameter.Name, cmdlet.Name),
                                         remediation: "Consider using a singular noun for the parameter name.");
+                                    }
+
+                                    foreach (var parameterSet in cmdlet.ParameterSets)
+                                    {
+                                        if (parameterSet.Name.Contains(" "))
+                                        {
+                                            issueLogger.LogSignatureIssue(
+                                                cmdlet: cmdlet,
+                                                severity: 1,
+                                            problemId: SignatureProblemId.ParameterSetWithSpace,
+                                            description:
+                                                string.Format(
+                                                    "Parameter set '{0}' of cmdlet '{1}' contains a space, which " +
+                                                    "is discouraged for PowerShell parameter sets.",
+                                                    parameterSet.Name, cmdlet.Name),
+                                            remediation: "Remove the space(s) in the parameter set name.");
+                                        }
+
+                                        if (parameterSet.Parameters.Any(p => p.Position >= 4))
+                                        {
+                                            issueLogger.LogSignatureIssue(
+                                                cmdlet: cmdlet,
+                                                severity: 1,
+                                            problemId: SignatureProblemId.ParameterWithOutOfRangePosition,
+                                            description:
+                                                string.Format(
+                                                    "Parameter set '{0}' of cmdlet '{1}' contains at least one parameter " +
+                                                    "with a position larger than four, which is discouraged.",
+                                                    parameterSet.Name, cmdlet.Name),
+                                            remediation: "Limit the number of positional parameters in a single parameter set to " +
+                                                         "four or fewer.");
+                                        }
+                                    }
+
+                                    if (cmdlet.ParameterSets.Count() > 2 && cmdlet.DefaultParameterSetName == "__AllParameterSets")
+                                    {
+                                        issueLogger.LogSignatureIssue(
+                                            cmdlet: cmdlet,
+                                            severity: 1,
+                                        problemId: SignatureProblemId.MultipleParameterSetsWithNoDefault,
+                                        description:
+                                            string.Format(
+                                                "Cmdlet '{0}' has multiple parameter sets, but no defined default parameter set.",
+                                                cmdlet.Name),
+                                        remediation: "Define a default parameter set in the cmdlet attribute.");
                                     }
                                 }
 
@@ -218,7 +331,7 @@ namespace StaticAnalysis.SignatureVerifier
 
     public static class LogExtensions
     {
-        public static void LogSignatureIssue(this ReportLogger<SignatureIssue> issueLogger, CmdletSignatureMetadata cmdlet,
+        public static void LogSignatureIssue(this ReportLogger<SignatureIssue> issueLogger, CmdletMetadata cmdlet,
             string description, string remediation, int severity, int problemId)
         {
             issueLogger.LogRecord(new SignatureIssue

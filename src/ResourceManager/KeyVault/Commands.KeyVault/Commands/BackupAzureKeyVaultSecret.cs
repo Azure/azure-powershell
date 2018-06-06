@@ -26,10 +26,9 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <remarks>
     /// The cmdlet returns the path of the newly created backup file.
     /// </remarks>
-    [Cmdlet( VerbsData.Backup, "AzureKeyVaultSecret",
+    [Cmdlet(VerbsData.Backup, "AzureKeyVaultSecret",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = BySecretNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri )]
+        DefaultParameterSetName = BySecretNameParameterSet)]
     [OutputType( typeof( String ) )]
     public class BackupAzureKeyVaultSecret : KeyVaultCmdletBase
     {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = BySecretNameParameterSet,
                     HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
                     Position = 1,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = BySecretNameParameterSet,
                     HelpMessage = "Secret name. Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name." )]
         [ValidateNotNullOrEmpty]
@@ -70,12 +67,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         /// <remarks>
         /// Note that the backup applies to the entire family of a secret (current and all its versions); 
-        /// since a key bundle represents a single version, the intent of this parameter is to allow pipelining.
-        /// The backup cmdlet will use the Name and VaultName properties of the KeyBundle parameter.
+        /// since a secret bundle represents a single version, the intent of this parameter is to allow pipelining.
+        /// The backup cmdlet will use the Name and VaultName properties of the SecretBundle parameter.
         /// </remarks>
         [Parameter(Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
                     ValueFromPipeline = true,
                     ParameterSetName = BySecretObjectParameterSet,
                     HelpMessage = "Secret to be backed up, pipelined in from the output of a retrieval call.")]
@@ -88,7 +84,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = false,
                     Position = 2,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Output file. The output file to store the backed up secret blob in. If not present, a default filename is chosen." )]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
@@ -97,8 +92,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Instructs the cmdlet to overwrite the destination file, if it exists.
         /// </summary>
         [Parameter( Mandatory = false,
-                    Position = 3,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Overwrite the given file if it exists" )]
         public SwitchParameter Force { get; set; }
 

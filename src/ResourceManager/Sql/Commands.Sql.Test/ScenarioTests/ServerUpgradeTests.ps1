@@ -147,7 +147,7 @@ function Test-ServerUpgradeNegative
 #>
 function Create-ServerForServerUpgradeTest()
 {
-    $location = "West US"
+    $location = "West US 2"
     $rgName = Get-ResourceGroupName
 
     $rg = New-AzureRmResourceGroup -Name $rgName -Location $location
@@ -158,6 +158,6 @@ function Create-ServerForServerUpgradeTest()
     $serverPassword = "t357ingP@s5w0rd!"
     $credentials = New-Object System.Management.Automation.PSCredential($serverLogin, ($serverPassword | ConvertTo-SecureString -asPlainText -Force)) 
 
-    $server = New-AzureRmSql`Server -ResourceGroupName  $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials
+    $server = New-AzureRmSqlServer -ResourceGroupName  $rgName -ServerName $serverName -Location $location -ServerVersion $version -SqlAdministratorCredentials $credentials
     return $server
 }

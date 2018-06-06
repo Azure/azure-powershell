@@ -18,6 +18,30 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.0
+* VMSS VM Update feature
+    - Added `Update-AzureRmVmssVM` and `New-AzureRmVMDataDisk` cmdlets
+    - Add VirtualMachineScaleSetVM parameter to `Add-AzureRmVMDataDisk` cmdlet to support adding a data disk to Vmss VM.
+
+## Version 5.0.0
+* `New-AzureRmVm` and `New-AzureRmVmss` support verbose output of parameters
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to `Set-AzureRmVmss` and `Set-AzureRmVmssVM`
+* Add DisableVMAgent switch parameter to `Set-AzureRmVMOperatingSystem` cmdlet
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support a `Win10` image.
+* `Repair-AzureRmVmssServiceFabricUpdateDomain` cmdlet is added.
+* Set minimum dependency of module to PowerShell 5.0
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional 
+
+## Version 4.6.0
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
+* `New-AzureRmVm` and `New-AzureRmVmss` (simple parameter set) support availability zones.
 * Updated to the latest version of the Azure ClientRuntime
 
 ## Version 4.5.0

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,11 +51,10 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.ApiManagement.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll'
+RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.ApiManagement.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -74,8 +73,11 @@ NestedModules = @('.\Microsoft.Azure.Commands.ApiManagement.dll',
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureRmApiManagementRegion', 'Get-AzureRmApiManagementSsoToken', 
+CmdletsToExport = 'Add-AzureRmApiManagementRegion', 
+    'Get-AzureRmApiManagementSsoToken', 
     'New-AzureRmApiManagementHostnameConfiguration', 
+    'New-AzureRmApiManagementCustomHostnameConfiguration', 
+    'New-AzureRmApiManagementSystemCertificate', 
     'New-AzureRmApiManagementRegion', 
     'New-AzureRmApiManagementVirtualNetwork', 
     'Remove-AzureRmApiManagementRegion', 
@@ -83,37 +85,56 @@ CmdletsToExport = 'Add-AzureRmApiManagementRegion', 'Get-AzureRmApiManagementSso
     'Update-AzureRmApiManagementDeployment', 
     'Update-AzureRmApiManagementRegion', 
     'Import-AzureRmApiManagementHostnameCertificate', 
-    'Backup-AzureRmApiManagement', 'Get-AzureRmApiManagement', 
-    'New-AzureRmApiManagement', 'Remove-AzureRmApiManagement', 
+    'Backup-AzureRmApiManagement', 
+    'Get-AzureRmApiManagement', 
+    'New-AzureRmApiManagement',
+    'Remove-AzureRmApiManagement', 
     'Restore-AzureRmApiManagement', 
     'Add-AzureRmApiManagementApiToProduct', 
     'Add-AzureRmApiManagementProductToGroup', 
     'Add-AzureRmApiManagementUserToGroup', 
-    'Export-AzureRmApiManagementApi', 'Get-AzureRmApiManagementApi', 
+    'Export-AzureRmApiManagementApi',
+    'Get-AzureRmApiManagementApi', 
+    'Get-AzureRmApiManagementApiRelease', 
+    'Get-AzureRmApiManagementApiRevision', 
+    'Get-AzureRmApiManagementApiVersionSet', 
     'Get-AzureRmApiManagementAuthorizationServer', 
     'Get-AzureRmApiManagementCertificate', 
-    'Get-AzureRmApiManagementGroup', 'Get-AzureRmApiManagementLogger', 
+    'Get-AzureRmApiManagementGroup', 
+    'Get-AzureRmApiManagementLogger', 
     'Get-AzureRmApiManagementOpenIdConnectProvider', 
     'Get-AzureRmApiManagementOperation', 
-    'Get-AzureRmApiManagementPolicy', 'Get-AzureRmApiManagementProduct', 
+    'Get-AzureRmApiManagementPolicy',
+    'Get-AzureRmApiManagementProduct', 
     'Get-AzureRmApiManagementProperty', 
     'Get-AzureRmApiManagementSubscription', 
     'Get-AzureRmApiManagementTenantSyncState', 
-    'Get-AzureRmApiManagementUser', 'Get-AzureRmApiManagementUserSsoUrl', 
+    'Get-AzureRmApiManagementUser', 
+    'Get-AzureRmApiManagementUserSsoUrl', 
     'Get-AzureRmApiManagementTenantAccess', 
     'Get-AzureRmApiManagementTenantGitAccess', 
-    'Import-AzureRmApiManagementApi', 'New-AzureRmApiManagementApi', 
+    'Import-AzureRmApiManagementApi', 
+    'New-AzureRmApiManagementApi', 
+    'New-AzureRmApiManagementApiRevision', 
+    'New-AzureRmApiManagementApiRelease', 
+    'New-AzureRmApiManagementApiVersionSet', 
     'New-AzureRmApiManagementAuthorizationServer', 
     'New-AzureRmApiManagementCertificate', 
-    'New-AzureRmApiManagementContext', 'New-AzureRmApiManagementGroup', 
+    'New-AzureRmApiManagementContext', 
+    'New-AzureRmApiManagementGroup', 
     'New-AzureRmApiManagementLogger', 
     'New-AzureRmApiManagementOpenIdConnectProvider', 
     'New-AzureRmApiManagementOperation', 
     'New-AzureRmApiManagementProduct', 
     'New-AzureRmApiManagementSubscription', 
-    'New-AzureRmApiManagementUser', 'New-AzureRmApiManagementProperty', 
+    'New-AzureRmApiManagementBackendServiceFabric', 
+    'New-AzureRmApiManagementUser', 
+    'New-AzureRmApiManagementProperty', 
     'Publish-AzureRmApiManagementTenantGitConfiguration', 
     'Remove-AzureRmApiManagementApi', 
+    'Remove-AzureRmApiManagementApiRelease', 
+    'Remove-AzureRmApiManagementApiRevision', 
+    'Remove-AzureRmApiManagementApiVersionSet', 
     'Remove-AzureRmApiManagementApiFromProduct', 
     'Remove-AzureRmApiManagementAuthorizationServer', 
     'Remove-AzureRmApiManagementCertificate', 
@@ -129,13 +150,19 @@ CmdletsToExport = 'Add-AzureRmApiManagementRegion', 'Get-AzureRmApiManagementSso
     'Remove-AzureRmApiManagementUser', 
     'Remove-AzureRmApiManagementUserFromGroup', 
     'Save-AzureRmApiManagementTenantGitConfiguration', 
+    'Set-AzureRmApiManagement', 
     'Set-AzureRmApiManagementApi', 
+    'Update-AzureRmApiManagementApiRelease', 
+    'Set-AzureRmApiManagementApiRevision', 
+    'Set-AzureRmApiManagementApiVersionSet', 
     'Set-AzureRmApiManagementAuthorizationServer', 
     'Set-AzureRmApiManagementCertificate', 
-    'Set-AzureRmApiManagementGroup', 'Set-AzureRmApiManagementLogger', 
+    'Set-AzureRmApiManagementGroup', 
+    'Set-AzureRmApiManagementLogger', 
     'Set-AzureRmApiManagementOpenIdConnectProvider', 
     'Set-AzureRmApiManagementOperation', 
-    'Set-AzureRmApiManagementPolicy', 'Set-AzureRmApiManagementProduct', 
+    'Set-AzureRmApiManagementPolicy', 
+    'Set-AzureRmApiManagementProduct', 
     'Set-AzureRmApiManagementProperty', 
     'Set-AzureRmApiManagementSubscription', 
     'Set-AzureRmApiManagementUser', 
@@ -144,7 +171,8 @@ CmdletsToExport = 'Add-AzureRmApiManagementRegion', 'Get-AzureRmApiManagementSso
     'New-AzureRmApiManagementIdentityProvider', 
     'Set-AzureRmApiManagementIdentityProvider', 
     'Remove-AzureRmApiManagementIdentityProvider', 
-    'Get-AzureRmApiManagementBackend', 'New-AzureRmApiManagementBackend', 
+    'Get-AzureRmApiManagementBackend', 
+    'New-AzureRmApiManagementBackend', 
     'New-AzureRmApiManagementBackendCredential', 
     'New-AzureRmApiManagementBackendProxy', 
     'Set-AzureRmApiManagementBackend', 
@@ -183,7 +211,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ''
+        ReleaseNotes = 'Initial Release'
 
         # Prerelease string of this module
         # Prerelease = ''

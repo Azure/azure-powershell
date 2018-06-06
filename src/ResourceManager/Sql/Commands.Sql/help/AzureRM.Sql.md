@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Sql
-Module Guid: XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql
+Help Version: 4.4.0.0
 Locale: en-US
 ---
 
@@ -412,6 +412,9 @@ Cancels the asynchronous updates operation on the database.
 
 ### [Stop-AzureRmSqlDatabaseExecuteIndexRecommendation](Stop-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Stops the workflow that runs a recommended index operation.
+
+### [Stop-AzureRmSqlElasticPoolActivity](Stop-AzureRmSqlElasticPoolActivity.md)
+Cancel the asynchronous update operation on an elastic pool.
 
 ### [Stop-AzureRmSqlServerUpgrade](Stop-AzureRmSqlServerUpgrade.md)
 Stops the upgrade of a SQL Database server.

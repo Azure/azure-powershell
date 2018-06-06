@@ -22,11 +22,6 @@ The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -50,7 +45,7 @@ Specifies the list of properties in the format @(property1 = 'value1',....).
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: Properties
+Aliases:
 
 Required: False
 Position: 1

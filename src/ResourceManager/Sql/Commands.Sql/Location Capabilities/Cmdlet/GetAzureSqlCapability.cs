@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.Location_Capabilities.Cmdlet
             var defaultServiceObjective = defaultEdition[0].SupportedServiceObjectives;
 
             // Assign defaults back to model.
-            defaultServiceObjective[0].SupportedMaxSizes = defaultServiceObjective[0].SupportedMaxSizes.Where(v => { return v.Status == "Default"; }).ToList();
+            defaultServiceObjective[0].SupportedMaxSizes = defaultServiceObjective[0].SupportedMaxSizes.Where(v => { return v.Status.Value.ToString() == "Default"; }).ToList();
             defaultEdition[0].SupportedServiceObjectives = defaultServiceObjective;
             defaultVersion[0].SupportedEditions = defaultEdition;
             model.SupportedServerVersions = defaultVersion;

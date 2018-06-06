@@ -39,3 +39,16 @@
 -->
 
 ## Current Breaking Changes
+
+### Release 5.0.0 - May 2018
+
+The following cmdlets were affected this release:
+
+**New-AzureRmDnsRecordSet**
+- The parameter `Force` is being removed
+
+**Remove-AzureRmDnsRecordSet**
+- The parameter `Force` is being removed
+
+**Remove-AzureRmDnsZone**
+- The parameter `Force` is being removed
