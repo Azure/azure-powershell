@@ -17,30 +17,31 @@ Restores a SQL database.
 ```
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>]
- [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromPointInTimeBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromPointInTimeBackup] -PointInTime <DateTime> -ResourceId <String>
  -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String>
- -Vcore <Int32> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackup
 ```
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> [-Edition <String>]
- [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ServiceObjectiveName <String>] [-ElasticPoolName <String>] [-AsJob] [-LicenseType <String>]
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FromDeletedDatabaseBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>] -DeletionDate <DateTime>
  -ResourceId <String> -ServerName <String> -TargetDatabaseName <String> -Edition <String> [-AsJob]
- -ComputeGeneration <String> -Vcore <Int32> [-ResourceGroupName] <String>
+ -ComputeGeneration <String> -VCore <Int32> [-LicenseType <String>] [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -48,28 +49,32 @@ Restore-AzureRmSqlDatabase [-FromDeletedDatabaseBackup] [-PointInTime <DateTime>
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
- [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### FromGeoBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromGeoBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -Vcore <Int32>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackup
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
  -TargetDatabaseName <String> [-Edition <String>] [-ServiceObjectiveName <String>] [-ElasticPoolName <String>]
- [-AsJob] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AsJob] [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### FromLongTermRetentionBackupWithVcore
 ```
 Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -ServerName <String>
- -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -Vcore <Int32>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -TargetDatabaseName <String> -Edition <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,17 +200,20 @@ Specifies the edition of the SQL database.
 The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
 - Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
 Parameter Sets: FromPointInTimeBackup, FromDeletedDatabaseBackup, FromGeoBackup, FromLongTermRetentionBackup
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -218,7 +226,7 @@ Accept wildcard characters: False
 Type: String
 Parameter Sets: FromPointInTimeBackupWithVcore, FromDeletedDatabaseBackupWithVcore, FromGeoBackupWithVcore, FromLongTermRetentionBackupWithVcore
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: True
 Position: Named
@@ -298,6 +306,21 @@ Parameter Sets: FromPointInTimeBackup, FromPointInTimeBackupWithVcore
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -409,7 +432,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
+### -VCore
 The Vcore numbers of the restored Azure Sql Database.
 
 ```yaml

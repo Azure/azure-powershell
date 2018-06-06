@@ -43,8 +43,29 @@ The **New-AzureKeyVaultCertificatePolicy** cmdlet creates an in-memory certifica
 ## EXAMPLES
 
 ### Example 1: Create a certificate policy
-```
-PS C:\>New-AzureKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+```powershell
+PS C:\> New-AzureKeyVaultCertificatePolicy -SecretContentType "application/x-pkcs12" -SubjectName "CN=contoso.com" -IssuerName "Self" -ValidityInMonths 6 -ReuseKeyOnRenewal
+
+SecretContentType               : application/x-pkcs12
+Kty                             :
+KeySize                         : 2048
+Exportable                      :
+ReuseKeyOnRenewal               : True
+SubjectName                     : CN=contoso.com
+DnsNames                        :
+KeyUsage                        :
+Ekus                            :
+ValidityInMonths                : 6
+IssuerName                      : Self
+CertificateType                 :
+RenewAtNumberOfDaysBeforeExpiry :
+RenewAtPercentageLifetime       :
+EmailAtNumberOfDaysBeforeExpiry :
+EmailAtPercentageLifetime       :
+CertificateTransparency         :
+Enabled                         : True
+Created                         :
+Updated                         :
 ```
 
 This command creates a certificate policy that is valid for six months and reuses the key to renew the certificate.
