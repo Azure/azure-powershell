@@ -557,7 +557,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
-                }
+                },
+                LicenseType = model.LicenseType
             };
 
             if(model.CreateMode.Equals(Management.Sql.Models.CreateMode.Recovery))

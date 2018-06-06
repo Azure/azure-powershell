@@ -51,25 +51,41 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
         }
 
         /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders, 
+        /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
-        public void Analyze(IEnumerable<string> cmdletProbingDirs)
+        /// <param name="modulesToAnalyze">The set of modules to analyze</param>
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
         {
-            Analyze(cmdletProbingDirs, null, null);
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
         }
 
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
-        /// 
+        ///
         /// Filters can be added to find breaking changes for specific modules
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
         /// <param name="directoryFilter">Function that filters the directory paths to be checked.</param>
         /// <param name="cmdletFilter">Function that filters the cmdlets to be checked.</param>
         public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
+        }
+
+        /// <summary>
+        /// Given a set of directory paths containing PowerShell module folders,
+        /// analyze the breaking changes in the modules and report any issues
+        ///
+        /// Filters can be added to find breaking changes for specific modules
+        /// </summary>
+        /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
+        /// <param name="directoryFilter">Function that filters the directory paths to be checked.</param>
+        /// <param name="cmdletFilter">Function that filters the cmdlets to be checked.</param>
+        /// <param name="modulesToAnalyze">The set of modules to analyze</param>
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
 
@@ -96,6 +112,13 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
                     foreach (var directory in probingDirectories)
                     {
+                        if (modulesToAnalyze != null &&
+                            modulesToAnalyze.Any() &&
+                            !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                        {
+                            continue;
+                        }
+
                         IEnumerable<string> cmdlets = GetCmdletsFilesInFolder(directory);
                         if (cmdlets.Any())
                         {
@@ -167,7 +190,7 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
             var service = Path.GetFileName(folderName);
 
             var manifestFiles = Directory.EnumerateFiles(folderName, "*.psd1").ToList();
-            
+
             if (manifestFiles.Count > 1)
             {
                 manifestFiles = manifestFiles.Where(f => Path.GetFileName(f).IndexOf(service) >= 0).ToList();
@@ -211,6 +234,11 @@ namespace StaticAnalysis.BreakingChangeAttributesAnalyzer
 
             //Now that we have the text, add it to the log file
             logger.LogMessage(textForBreakingChangesInModule);
+        }
+
+        public void Analyze(IEnumerable<string> scopes)
+        {
+            throw new NotImplementedException();
         }
     }
 }
