@@ -197,8 +197,8 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
 			   'Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings', 'Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings', 
 			   'Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings',
 			   'Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline', 'Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline', 
-			   'Remove-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline',
-			   'Export-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 'Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord',
+			   'Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline',
+			   'Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan', 'Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord',
 			   'Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan'
 
 # Variables to export from this module
