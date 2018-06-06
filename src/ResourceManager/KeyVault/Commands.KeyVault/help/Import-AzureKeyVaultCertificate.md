@@ -45,9 +45,10 @@ You can create the certificate to import by using one of the following methods:
 ## EXAMPLES
 
 ### Example 1: Import a key vault certificate
-```
-PS C:\>$Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
+```powershell
+PS C:\> $Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
 PS C:\> Import-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+
 Name        : importCert01
 Certificate : [Subject]
                 CN=contoso.com
@@ -56,7 +57,7 @@ Certificate : [Subject]
                 CN=contoso.com
 
               [Serial Number]
-                05979C5A2F0741D5A3B6F97673E8A118
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
               [Not Before]
                 2/8/2016 3:11:45 PM
@@ -65,9 +66,9 @@ Certificate : [Subject]
                 8/8/2016 4:21:45 PM
 
               [Thumbprint]
-                3E9B6848AD1834284157D68B060F748037F663C8
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Thumbprint  : 3E9B6848AD1834284157D68B060F748037F663C8
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        :
 Enabled     : True
 Created     : 2/8/2016 11:50:43 PM
@@ -241,8 +242,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Security.Cryptography.X509Certificates.X509Certificate2Collection
 
 ## OUTPUTS
 

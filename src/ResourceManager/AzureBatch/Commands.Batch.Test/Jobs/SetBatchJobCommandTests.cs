@@ -117,7 +117,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
                     new AzureOperationHeaderResponse<JobUpdateHeaders>(),
                     request =>
                     {
-                        Assert.Equal((OnAllTasksComplete)request.Parameters.OnAllTasksComplete, OnAllTasksComplete.TerminateJob);
+                        Assert.Equal(OnAllTasksComplete.TerminateJob, (OnAllTasksComplete)request.Parameters.OnAllTasksComplete);
                     });
 
             cmdlet.AdditionalBehaviors = new BatchClientBehavior[] { interceptor };

@@ -168,7 +168,7 @@ namespace Microsoft.WindowsAzure.Management.Storage.Test.File.Cmdlet
             public override Task UploadAsync(string sourcePath, CloudFile destFile, UploadOptions options, SingleTransferContext context, CancellationToken cancellationToken)
             {
                 validateAction(sourcePath, destFile);
-                return TaskEx.FromResult(true);
+                return Task.FromResult(true);
             }
         }
     }
