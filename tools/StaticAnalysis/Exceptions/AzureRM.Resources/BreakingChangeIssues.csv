@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll","Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.GetAzureResourceCmdlet","Get-AzureRmResource","0","3000","The type of property 'Properties' of type 'Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource' has changed from 'System.Object' to 'System.Management.Automation.PSObject'.","Change the type of property 'Properties' back to 'System.Object'."
