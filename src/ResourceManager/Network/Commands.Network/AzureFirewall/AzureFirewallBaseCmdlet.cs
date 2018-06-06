@@ -39,6 +39,14 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
+        protected IPublicIPAddressesOperations PublicIPAddressesClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.PublicIPAddresses;
+            }
+        }
+
         public bool IsAzureFirewallPresent(string resourceGroupName, string name)
         {
             try
