@@ -40,8 +40,48 @@ The **Add-AzureRmKeyVaultNetworkRule** cmdlet grants or restricts access to a ke
 
 ### Example 1
 ```powershell
-PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> Add-AzureRmKeyVaultNetworkRule -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+PS C:\> $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24" -ServiceEndpoint Microsoft.KeyVault 
+PS C:\> $virtualNetwork = New-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet
+PS C:\> $myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> Add-AzureRmKeyVaultNetworkRule -VaultName myvault -IpAddressRange "10.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId -PassThru
+
+Vault Name                       : myvault
+Resource Group Name              : myRG
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myRG/providers
+                                   /Microsoft.KeyVault/vaults/myvault
+Vault URI                        : https://myvault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : True
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : get, create, delete, list, update,
+                                   import, backup, restore, recover
+                                   Permissions to Secrets                     : get, list, set, delete, backup,
+                                   restore, recover
+                                   Permissions to Certificates                : get, delete, list, create, import,
+                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
+                                   setissuers, recover
+                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
+                                   listsas, regeneratekey, set, setsas, update
+
+
+Network Rule Set                 :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   : 10.0.1.0/24
+                                   Virtual Network Rules                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-
+                                   xxxxxxxxxxxxx/resourcegroups/myRG/providers/microsoft.network/virtualnetworks/myvn
+                                   et/subnets/frontendsubnet
+
+Tags                             :
 ```
 
 This command adds a network rule to the specified vault, allowing access to the specified IP address from the virtual network identified by $myNetworkResId.
@@ -206,7 +246,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
 
 ## OUTPUTS
 

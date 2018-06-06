@@ -12,35 +12,28 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
+    <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\..\Package\Release\ResourceManager\AzureResourceManager\AzureRM.Profile.Netcore\</OutputPath>
     <DocumentationFile></DocumentationFile>
-    <SignAssembly>True</SignAssembly>
-    <DelaySign>True</DelaySign>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp2.0' ">
-    <PackageReference Include="Microsoft.Azure.KeyVault" Version="2.3.2" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.1" />
-    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,7 +42,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Commands.Common.Compute.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Compute\Common.Compute.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
@@ -61,8 +54,8 @@
 
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
+      <DesignTime>true</DesignTime>
+      <AutoGen>true</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -76,9 +69,6 @@
 
   <ItemGroup>
     <None Update="AzureRmProfileStartup.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Microsoft.Azure.Commands.Profile.dll-Help.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Microsoft.Azure.Commands.Profile.format.ps1xml">
