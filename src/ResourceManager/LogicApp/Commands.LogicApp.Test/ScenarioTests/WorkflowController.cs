@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources;
+
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using System;
@@ -20,7 +22,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
-    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Management.Logic;
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test.HttpRecorder;
@@ -190,7 +191,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// <param name="context"></param>
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
             GalleryClient = GetGalleryClient();
@@ -218,9 +219,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// Creates a ResourceManagementClient instance
         /// </summary>
         /// <returns>ResourceManagementClient instance</returns>
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         /// <summary>

@@ -44,8 +44,6 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
         private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
 
-        private string storageAccountName = "myStorageAccount";
-
         public NewAzureResourceGroupDeploymentCommandTests(ITestOutputHelper output)
         {
             resourcesClientMock = new Mock<ResourceManagerSdkClient>();
