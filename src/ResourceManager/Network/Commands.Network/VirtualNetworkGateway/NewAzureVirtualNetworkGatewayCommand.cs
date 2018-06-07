@@ -149,7 +149,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
-            MNM.VpnClientProtocol.IkeV2)]
+            MNM.VpnClientProtocol.IkeV2,
+            MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientProtocol { get; set; }
 
