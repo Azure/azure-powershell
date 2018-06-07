@@ -18,6 +18,7 @@ Write-Verbose 'To recreate a test data set and perform an evaluation run'
 Write-Verbose '    Perform-Test -Full'
 Write-Verbose 'To perform an evaluation for an already created dataset run'
 Write-Verbose '    Perform-Test'
+Write-Verbose 'Use Get-DataSetLocation to find location of the dataset'
 
 function Get-Configuration
 {
@@ -104,27 +105,77 @@ function CreateItemsWithInvalidCharacters
     Write-Verbose "Created $succeededCodePoints items, skipped $skippedCodePoints"
 }
 
+function Ensure-RobocopySampleLocation
+{
+    $sampleDir = Join-Path $env:TEMP "robocopy-sample"
+    
+    if (Test-Path $sampleDir)
+    {
+        Remove-Item $sampleDir -Recurse | Out-Null
+    }
+
+    New-Item $sampleDir -ItemType Directory | Out-Null
+
+    return $sampleDir
+}
+
+function CreateDirectoryWithRobocopy
+{
+    param ($targetDir)
+
+    $sampleDir = Ensure-RobocopySampleLocation
+
+    Write-Verbose ". robocopy.exe $sampleDir $targetDir /MIR"    
+    
+    . robocopy.exe $sampleDir $targetDir /MIR
+}
+
+function Get-DataSetLocation
+{
+    return Join-Path $env:TEMP "EvalToolDataSet"
+}
+
+function Clear-DataSetLocation
+{
+    CreateDirectoryWithRobocopy -targetDir (Get-DataSetLocation)
+}
+
 function Perform-Test
 {
-    param ([switch]$Full)
+    param ([switch]$Full, [switch]$SkipInvalidCharacters)
     
-    $dataSetLocation = Join-Path $env:TEMP "EvalToolDataSet"
+    $dataSetLocation = Get-DataSetLocation
 
     if ($Full)
     {
         Write-Verbose "Getting configuration"
         $configuration = Get-Configuration
 
-        Write-Verbose "Creating blocked character table"
-        $table = Build-CharacterTable -Configuration $configuration
+        if (! $SkipInvalidCharacters)
+        {
+            Write-Verbose "Creating blocked character table"
+            $table = Build-CharacterTable -Configuration $configuration
 
-        Write-Verbose "Creating invalid files"
-        $pathForInvalidFileNameCharacters = Join-Path $dataSetLocation "InvalidFileNameCharacters"
-        CreateItemsWithInvalidCharacters -path $pathForInvalidFileNameCharacters -configuration $configuration -blockedCharactersTable $table -itemType File
+            Write-Verbose "Creating invalid files"
+            $pathForInvalidFileNameCharacters = Join-Path $dataSetLocation "InvalidFileNameCharacters"
+            CreateItemsWithInvalidCharacters -path $pathForInvalidFileNameCharacters -configuration $configuration -blockedCharactersTable $table -itemType File
 
-        Write-Verbose "Creating invalid dirs"
-        $pathForInvalidDirNameCharacters = Join-Path $dataSetLocation "InvalidDirNameCharacters"
-        CreateItemsWithInvalidCharacters -path $pathForInvalidDirNameCharacters -configuration $configuration -blockedCharactersTable $table -itemType Directory
+            Write-Verbose "Creating invalid dirs"
+            $pathForInvalidDirNameCharacters = Join-Path $dataSetLocation "InvalidDirNameCharacters"
+            CreateItemsWithInvalidCharacters -path $pathForInvalidDirNameCharacters -configuration $configuration -blockedCharactersTable $table -itemType Directory
+        }
+        else
+        {
+            Write-Verbose "Skip invalid characters dataset creation"
+        }
+
+        Write-Verbose "Creating directory violating depth requirement"
+        $pathWithInvalidDepth = "x\" * 300
+        CreateDirectoryWithRobocopy -targetDir (Join-Path (Get-DataSetLocation) $pathWithInvalidDepth)
+
+        Write-Verbose "Creating directory violating max path requirement"
+        $pathWithInvalidFileName = "maximum path length validation\" * 70
+        CreateDirectoryWithRobocopy -targetDir (Join-Path (Get-DataSetLocation) $pathWithInvalidFileName)
     }
     else
     {

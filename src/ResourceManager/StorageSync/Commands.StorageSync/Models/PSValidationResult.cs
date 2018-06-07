@@ -41,7 +41,7 @@
         {
             this.Type = this.Convert(result.Type);
             this.Level = this.Convert(result.Level);
-            this.Positions = new List<int>(result.Positions);
+            this.Positions = result.Positions != null ? new List<int>(result.Positions) : null;
             this.Description = result.Description;
             this.Path = result.Path;
         }

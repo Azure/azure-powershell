@@ -10,7 +10,6 @@
         #region Fields and Properties
         private readonly List<IValidationResult> _systemValidationResults;
         private readonly Dictionary<ValidationType, long> _validationErrorsHistogram;
-        private readonly string _rootPath;
         private readonly IConsoleWriter _consoleWriter;
         private readonly HashSet<ValidationType> _systemValidationTypes;
         private readonly Dictionary<ValidationType, string> _validationTypeDescriptions;
@@ -18,9 +17,10 @@
         #endregion
 
         #region Constructors
-        public TextSummaryOutputWriter(string rootPath, IConsoleWriter consoleWriter, IList<IValidationDescription> validationDescriptions)
+        public TextSummaryOutputWriter(
+            IConsoleWriter consoleWriter, 
+            IList<IValidationDescription> validationDescriptions)
         {
-            _rootPath = rootPath;
             _consoleWriter = consoleWriter;
             _validationErrorsHistogram = new Dictionary<ValidationType, long>();
             _systemValidationResults = new List<IValidationResult>();
@@ -58,28 +58,35 @@
             }
         }
 
-        public void WriteReport(INamespaceInfo namespaceInfo)
+        public void WriteReport(string computerName, INamespaceInfo namespaceInfo)
         {
-            _consoleWriter.WriteLine(" ");
-            WritePathScanned();
-
-            _consoleWriter.WriteLine(" ");
-            _consoleWriter.WriteLine("Environment Validation Results");
-            WriteSystemValidationResults();
-
-            _consoleWriter.WriteLine(" ");
-            _consoleWriter.WriteLine("Namespace Validation Results");
-            _consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
-            _consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
-
-            _consoleWriter.WriteLine(" ");
-            if (!_validationErrorsHistogram.Any())
+            if (_systemValidationResults.Any())
             {
-                _consoleWriter.WriteLine("There were no compatibility issues found with your files.");
+                _consoleWriter.WriteLine(" ");
+                _consoleWriter.WriteLine($"Evaluated host: {computerName}");
+                _consoleWriter.WriteLine(" ");
+                _consoleWriter.WriteLine("Environment Validation Results");
+                WriteSystemValidationResults();
             }
-            else
+
+            if (namespaceInfo != null)
             {
-                WriteCountOfErrorsFound();
+                _consoleWriter.WriteLine(" ");
+                _consoleWriter.WriteLine($"Evaluated path: {namespaceInfo.Path}");
+
+                _consoleWriter.WriteLine(" ");
+                _consoleWriter.WriteLine("Namespace Validation Results");
+                _consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
+                _consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
+                _consoleWriter.WriteLine(" ");
+                if (!_validationErrorsHistogram.Any())
+                {
+                    _consoleWriter.WriteLine("There were no compatibility issues found with your files.");
+                }
+                else
+                {
+                    WriteCountOfErrorsFound();
+                }
             }
         }
 
@@ -122,11 +129,6 @@
                 string result = IsError(validatonResult) ? "Failed" : "Passed";
                 _consoleWriter.WriteLine($"{DescriptionForValidationType(validatonResult.Type)}: {result}.");
             }
-        }
-
-        private void WritePathScanned()
-        {
-            _consoleWriter.WriteLine($"Evaluated path: {_rootPath}");
         }
 
         #endregion

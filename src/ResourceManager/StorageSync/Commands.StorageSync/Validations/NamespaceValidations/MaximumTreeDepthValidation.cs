@@ -42,7 +42,7 @@
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"Node {node.Name} is too deep in the directory tree. Maximum tree depth is {this._maxTreeDepth}.",
+                    Description = $"Directory tree depth limit exceeded. Maximum tree depth is {this._maxTreeDepth}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
                     Type = this.ValidationType
