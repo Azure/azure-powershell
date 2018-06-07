@@ -147,10 +147,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
-        [ValidateSet(
-            MNM.VpnClientProtocol.SSTP,
-            MNM.VpnClientProtocol.IkeV2,
-            MNM.VpnClientProtocol.OpenVPN)]
+        [ArgumentCompleter(typeof(MNM.VpnClientProtocol))]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientProtocol { get; set; }
 
