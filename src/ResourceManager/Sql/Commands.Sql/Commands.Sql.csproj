@@ -241,7 +241,7 @@
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\GetAzureSqlDatabaseVulnerabilityAssessmentScanRecord.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\SqlDatabaseVulnerabilityAssessmentScanCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\GetAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
-    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\RemoveSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\ClearSqlDatabaseVulnerabilityAssessmentSettings.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\SetAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineItemModel.cs" />
     <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanEportModel.cs" />
