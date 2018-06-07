@@ -20,7 +20,6 @@
 // code is regenerated.
 
 using AutoMapper;
-using Microsoft.Azure.Commands.Compute.Common;
 using FROM = Microsoft.Azure.Management.Compute.Models;
 using TO = Microsoft.Azure.Commands.Compute.Automation.Models;
 

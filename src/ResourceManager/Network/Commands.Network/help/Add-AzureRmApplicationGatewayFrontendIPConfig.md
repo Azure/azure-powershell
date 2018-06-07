@@ -84,7 +84,7 @@ Specifies the application gateway to which this cmdlet adds a front-end IP confi
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,7 +114,7 @@ Specifies the name of the front-end IP configuration to add.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -130,7 +130,7 @@ If specified, this IP is statically allocated from the subnet.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +145,7 @@ Specifies the public IP address which this cmdlet adds as a front-end IP address
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -160,7 +160,7 @@ Specifies the ID of the public IP address which this cmdlet adds as a front-end 
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,7 +178,7 @@ If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,7 +196,7 @@ Otherwise, one of the IP from this subnet is dynamically picked up as the front-
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
