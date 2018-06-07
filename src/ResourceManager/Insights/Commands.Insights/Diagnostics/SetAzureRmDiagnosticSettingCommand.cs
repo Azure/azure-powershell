@@ -36,6 +36,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         public const string StorageAccountIdParamName = "StorageAccountId";
         public const string ServiceBusRuleIdParamName = "ServiceBusRuleId";
+        public const string EventHubNameParamName = "EventHubName";
         public const string EventHubRuleIdParamName = "EventHubAuthorizationRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
         public const string EnabledParamName = "Enabled";
@@ -79,9 +80,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the service bus rule id parameter of the cmdlet
         /// </summary>
-        [Alias("EventHubName")]
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
         public string ServiceBusRuleId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service bus rule id parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
+        public string EventHubName { get; set; }
 
         /// <summary>
         /// Gets or sets the event hub authorization rule id parameter of the cmdlet
@@ -137,6 +143,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         private bool isServiceBusParamPresent;
 
+        private bool isEventHubParamPresent;
+
         private bool isEventHubRuleParamPresent;
 
         private bool isWorkspaceParamPresent;
@@ -160,12 +168,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                     this.isStorageParamPresent = usedParams.Contains(StorageAccountIdParamName);
                     this.isServiceBusParamPresent = usedParams.Contains(ServiceBusRuleIdParamName);
+                    this.isEventHubParamPresent = usedParams.Contains(EventHubNameParamName);
                     this.isEventHubRuleParamPresent = usedParams.Contains(EventHubRuleIdParamName);
                     this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
                     this.isEnbledParameterPresent = usedParams.Contains(EnabledParamName);
 
                     if (!this.isStorageParamPresent &&
                         !this.isServiceBusParamPresent &&
+                        !this.isEventHubParamPresent &&
                         !this.isEventHubRuleParamPresent &&
                         !this.isWorkspaceParamPresent &&
                         !this.isEnbledParameterPresent)
@@ -179,6 +189,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                     WriteDebugWithTimestamp("Merging data. Existing setting is: {0}", properties == null ? "null" : "not null");
                     SetStorage(properties);
 
+                    // TODO: make sure that ServiceBusRuleId is not being used anymore.
                     SetServiceBus(properties);
 
                     SetEventHubRule(properties);
@@ -238,7 +249,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             {
                 Logs = properties.Logs,
                 Metrics = properties.Metrics,
-                EventHubName = properties.EventHubName,
+                EventHubName = properties.EventHubName,                
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
                 EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId
@@ -342,6 +353,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             if (this.isServiceBusParamPresent)
             {
                 properties.EventHubName = this.ServiceBusRuleId;
+            }
+
+            if (this.isEventHubParamPresent)
+            {
+                properties.EventHubName = this.EventHubName;
             }
         }
 

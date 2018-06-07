@@ -15,7 +15,7 @@ Sets the logs and metrics settings for the resource.
 
 ```
 Set-AzureRmDiagnosticSetting -ResourceId <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
  [-Categories <System.Collections.Generic.List`1[System.String]>]
  [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
  [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubAuthorizationRuleId
-The event hub rule i
+The event hub rule id
 
 ```yaml
 Type: String
@@ -135,6 +135,36 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubName
+The event hub name
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object (possible from the pipeline)
+
+```yaml
+Type: PSServiceDiagnosticSettings
+Parameter Sets: SetAzureRmDiagnosticSettingNewParamGroup
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
