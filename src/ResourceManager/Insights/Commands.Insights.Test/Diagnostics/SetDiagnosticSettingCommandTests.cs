@@ -146,6 +146,14 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
             VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
+
+            // Test with EventHubName
+            cmdlet.ServiceBusRuleId = null;
+            cmdlet.EventHubName = newServiceBusId;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EventHubNameParamName] = newServiceBusId;
+            cmdlet.ExecuteCmdlet();
+
+            VerifySettings(expectedSettings, this.calledSettings);
         }
 
         [Fact]
@@ -178,6 +186,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
 
             VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
+
+            // Testing the new categories must be known before the cmdlet can add them
+            cmdlet.Categories = new List<string> { "TestCategory3" };
+            cmdlet.Enabled = false;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]
