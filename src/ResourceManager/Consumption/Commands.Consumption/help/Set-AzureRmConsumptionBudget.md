@@ -12,13 +12,24 @@ Update a budget in either a subscription or a resource group.
 
 ## SYNTAX
 
+### Subscription (Default)
 ```
-Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] [-Amount <Decimal>]
- [-Category <String>] [-ContactEmail <String[]>] [-ContactGroup <String[]>] [-ContactRole <String[]>]
- [-EndDate <DateTime>] [-MeterFilter <String[]>] -Name <String> [-NotificationEnabled] [-NotificationDisabled]
- [-NotificationKey <String>] [-NotificationThreshold <Decimal>] [-ResourceFilter <String[]>]
- [-ResourceGroupFilter <String[]>] [-ResourceGroupName <String>] [-StartDate <DateTime>] [-TimeGrain <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
+ [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
+ [-ResourceGroupFilter <String[]>] [-NotificationKey <String>] [-NotificationEnabled] [-NotificationDisabled]
+ [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>] [-ContactGroup <String[]>]
+ [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Notification
+```
+Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
+ [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
+ [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled] [-NotificationDisabled]
+ [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>] [-ContactGroup <String[]>]
+ [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,19 +37,52 @@ The Set-AzureRmConsumptionBudget cmdlet updates a budget in either a subscriptio
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update a budget by a new amount with a budget name at subscription level
 ```powershell
-PS C:\> Set-AzureRmConsumptionBudget -BudgetName PSBudget -Amount 75
+PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -Amount 75
+Amount:			75		
+Category:		Cost
+CurrentSpend:	null
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:			PSBudget
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command updates a cost budget by a new amount with a budget name `PSBudget` in the subscription.
-
-### Example 2
+### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
-PS C:\> Set-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -BudgetName PSBudget -Amount 75
+PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+Amount:			75		
+Category:		Cost
+CurrentSpend:	null
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:			PSBudget
+Notification:	NotificationKey: 	notificationKey-ps1234
+				Threshold:			90
+				Enabled:			true
+				ContactEmail:		johndoe@contoso.com,janesmith@contoso.com
+				ContactRole:		Owner,Reader,Contributor
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command updates a cost budget by a new amount with a budget name `PSBudgetRG` in the resource group `RGBudgets`.
+### Example 3: Update a budget by a new amount with a budget name at resource group level
+```powershell
+PS C:\> Set-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
+Amount:			75		
+Category:		Cost
+CurrentSpend:	null
+Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
+Name:			PSBudgetRG
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
+```
 
 ## PARAMETERS
 
@@ -230,10 +274,22 @@ Key of a notification associated with a budget, required to create a notificatio
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Notification
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

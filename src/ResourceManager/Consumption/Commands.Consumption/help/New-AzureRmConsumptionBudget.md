@@ -12,13 +12,24 @@ Create a budget in either a subscription or a resource group.
 
 ## SYNTAX
 
+### Subscription (Default)
 ```
-New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Amount <Decimal> -Category <String>
- [-ContactEmail <String[]>] [-ContactGroup <String[]>] [-ContactRole <String[]>] [-EndDate <DateTime>]
- [-MeterFilter <String[]>] -Name <String> [-NotificationEnabled] [-NotificationKey <String>]
- [-NotificationThreshold <Decimal>] [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>]
- [-ResourceGroupName <String>] -StartDate <DateTime> -TimeGrain <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
+ -Category <String> -TimeGrain <String> -StartDate <DateTime> [-EndDate <DateTime>]
+ [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
+ [-ResourceGroupFilter <String[]>] [-NotificationKey <String>] [-NotificationEnabled]
+ [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>] [-ContactGroup <String[]>]
+ [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Notification
+```
+New-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> -Amount <Decimal>
+ -Category <String> -TimeGrain <String> -StartDate <DateTime> [-EndDate <DateTime>]
+ [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
+ [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled]
+ -NotificationThreshold <Decimal> -ContactEmail <String[]> [-ContactGroup <String[]>] [-ContactRole <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,19 +37,33 @@ The New-AzureRmConsumptionBudget cmdlet creates a budget in either a subscriptio
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a cost budget with a budget name at subscription level
 ```powershell
-PS C:\> New-AzureRmConsumptionBudget -Amount 60 -BudgetName PSBudget -Category Cost -StartDate 2018-02-01 -EndDate 2018-11-01 -TimeGrain Monthly
+PS C:\> New-AzureRmConsumptionBudget -Amount 60 -Name PSBudget -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:			PSBudget
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command creates a cost budget with a budget name `PSBudget` in the subscription.
-
-### Example 2
+### Example 2: Create a cost budget with a budget name at resource group level
 ```powershell
-PS C:\> New-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -BudgetName PSBudgetRG -Category Cost -StartDate 2018-02-01 -EndDate 2018-11-01 -TimeGrain Monthly
+PS C:\> New-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Amount 60 -Name PSBudgetRG -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
+Name:			PSBudgetRG
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
-
-This command creates a cost budget with a budget name `PSBudgetRG` in the resource group `RGBudgets`.
 
 ## PARAMETERS
 
@@ -93,10 +118,22 @@ Email addresses to send the budget notification to when the threshold is exceede
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
+Parameter Sets: Notification
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,10 +252,22 @@ Key of a notification associated with a budget, required to create a notificatio
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: Notification
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -232,10 +281,22 @@ It is always percent and has to be between 0 and 1000.
 
 ```yaml
 Type: Decimal
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Decimal
+Parameter Sets: Notification
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

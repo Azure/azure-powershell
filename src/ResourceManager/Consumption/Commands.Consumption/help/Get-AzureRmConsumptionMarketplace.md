@@ -23,33 +23,85 @@ The **Get-AzureRmConsumptionMarketplace** cmdlet gets marketplaces of the subscr
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get marketplaces usage
 ```powershell
 PS C:\> Get-AzureRmConsumptionMarketplace -Top 10
+BillingPeriodId:	subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1
+ConsumedQuantity:	24
+Currency:			USD
+Id:					subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1/providers/Microsoft.Consumption/marketplaces/018b7291-57a5-e194-65ea-28c3f1db76aa
+InstanceId:			subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/resourceGroups/TESTRG1/providers/Microsoft.Compute/virtualMachines/TestVM
+InstanceName:		TestVM
+IsEstimated:		false
+Name:				018b7291-57a5-e194-65ea-28c3f1db76aa
+OfferName:			2b380487-dc18-4e5d-981f-1ee2cc59e776
+PretaxCost:			0
+ResourceRate:		0
+SubscriptionGuid:	6b74c45b-9597-4939-a202-36b2ee8fbb3d
+Type:				Microsoft.Consumption/usageDetails
+UsageEnd:			2018-04-29T00:00:00Z
+UsageStart:			2018-04-28T00:00:00Z
 ```
 
-Get top 10 records of marketplaces in the result.
-
-### Example 2
+### Example 2: Get marketplace usage with date range
 ```powershell
 PS C:\> Get-AzureRmConsumptionMarketplace -StartDate 2018-01-03 -EndDate 2018-01-20 -Top 10
+BillingPeriodId:	subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201803-1
+ConsumedQuantity:	24
+Currency:			USD
+Id:					subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201803-1/providers/Microsoft.Consumption/marketplaces/0ec2bd1e-1cd6-0c75-3661-eaf3f635df33
+InstanceId:			subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/resourceGroups/TESTRG1/providers/Microsoft.Compute/virtualMachines/TestVM
+InstanceName:		TestVM
+IsEstimated:		false
+Name:				0ec2bd1e-1cd6-0c75-3661-eaf3f635df33
+OfferName:			2b380487-dc18-4e5d-981f-1ee2cc59e776
+PretaxCost:			0
+ResourceRate:		0
+SubscriptionGuid:	6b74c45b-9597-4939-a202-36b2ee8fbb3d
+Type:				Microsoft.Consumption/usageDetails
+UsageEnd:			2018-01-04T00:00:00Z
+UsageStart:			2018-01-03T00:00:00Z
 ```
 
-Get top 10 records of marketplaces with date range in the result.
-
-### Example 3
+### Example 3: Get marketplace usage of BillingPeriodName
 ```powershell
 PS C:\> Get-AzureRmConsumptionMarketplace -BillingPeriodName 201801-1 -Top 10
+BillingPeriodId:	subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201801-1
+ConsumedQuantity:	24
+Currency:			USD
+Id:					subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201801-1/providers/Microsoft.Consumption/marketplaces/ea82233a-9f76-7eaa-4478-42bd61cf6287
+InstanceId:			subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/resourceGroups/TESTRG1/providers/Microsoft.Compute/virtualMachines/TestVM
+InstanceName:		TestVM
+IsEstimated:		false
+Name:				ea82233a-9f76-7eaa-4478-42bd61cf6287
+OfferName:			2b380487-dc18-4e5d-981f-1ee2cc59e776
+PretaxCost:			0
+ResourceRate:		0
+SubscriptionGuid:	6b74c45b-9597-4939-a202-36b2ee8fbb3d
+Type:				Microsoft.Consumption/usageDetails
+UsageEnd:			2017-10-29T00:00:00Z
+UsageStart:			2017-10-28T00:00:00Z
 ```
 
-Get top 10 records of marketplaces of BillingPeriodName in the result.
-
-### Example 4
+### Example 4: Get marketplace usage with InstanceName filter
 ```powershell
 PS C:\> Get-AzureRmConsumptionMarketplace -InstanceName TestVM -Top 10
+BillingPeriodId:	subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1
+ConsumedQuantity:	24
+Currency:			USD
+Id:					subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/providers/Microsoft.Billing/billingPeriods/201807-1/providers/Microsoft.Consumption/marketplaces/018b7291-57a5-e194-65ea-28c3f1db76aa
+InstanceId:			subscriptions/6b74c45b-9597-4939-a202-36b2ee8fbb3d/resourceGroups/TESTRG1/providers/Microsoft.Compute/virtualMachines/TestVM
+InstanceName:		TestVM
+IsEstimated:		false
+Name:				018b7291-57a5-e194-65ea-28c3f1db76aa
+OfferName:			2b380487-dc18-4e5d-981f-1ee2cc59e776
+PretaxCost:			0
+ResourceRate:		0
+SubscriptionGuid:	6b74c45b-9597-4939-a202-36b2ee8fbb3d
+Type:				Microsoft.Consumption/usageDetails
+UsageEnd:			2018-04-29T00:00:00Z
+UsageStart:			2018-04-28T00:00:00Z
 ```
-
-Get top 10 records of marketplaces with InstanceName filter in the result.
 
 ## PARAMETERS
 
@@ -184,7 +236,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSMarketplace, Microsoft.Azure.Commands.Consumption, Version=0.3.3.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Consumption.Models.PSMarketplace
 
 
 ## NOTES

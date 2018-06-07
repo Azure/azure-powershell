@@ -22,33 +22,61 @@ The Get-AzureRmConsumptionBudget cmdlet gets a list of budgets in either a subsc
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a list of budgets at subscription level
 ```powershell
 PS C:\> Get-AzureRmConsumptionBudget
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:			PSBudget
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command gets a list of budgets in the subscription.
-
-### Example 2
+### Example 2: Get a list of budgets at resource group level
 ```powershell
 PS C:\> Get-AzureRmConsumptionBudget -ResourceGroupName RGBudgets
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
+Name:			PSBudgetRG
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command gets a list of budgets in the resource group `RGBudgets`.
-
-### Example 3
+### Example 3: Get a budget with the budget name at subscription level
 ```powershell
 PS C:\> Get-AzureRmConsumptionBudget -Name PSBudget
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:			PSBudget
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
 
-This command gets a list of budgets including a single budget with the budget name `PSBudget`.
-
-### Example 4
+### Example 4: Get a budget with the budget name at resource group level
 ```powershell
 PS C:\> Get-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG
+Amount:			60		
+Category:		Cost
+CurrentSpend:	null
+Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
+Name:			PSBudgetRG
+TimeGrain:		Monthly
+TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
+				StartDate:	6/1/2018 12:00:00 AM
+Type:			Microsoft.Consumption/budgets
 ```
-
-This command gets a list of budgets including a single budget with the budget name `PSBudgetRG` in the resource group `RGBudgets`.
 
 ## PARAMETERS
 
@@ -108,7 +136,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSBudget, Microsoft.Azure.Commands.Consumption, Version=0.3.3.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 
 ## NOTES

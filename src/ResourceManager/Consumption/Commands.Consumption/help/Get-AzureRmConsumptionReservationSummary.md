@@ -13,9 +13,8 @@ Get reservation summaries for daily or monthly grain.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionReservationSummary [-EndDate <DateTime>] -Grain <String> [-ReservationId <String>]
- -ReservationOrderId <String> [-StartDate <DateTime>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmConsumptionReservationSummary -Grain <String> -ReservationOrderId <String> [-ReservationId <String>]
+ [-StartDate <DateTime>] [-EndDate <DateTime>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,33 +22,73 @@ The **Get-AzureRmConsumptionReservationSummay** cmdlet gets reservation summarie
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get reservation summaries with reservation order Id for monthly grain
 ```powershell
 PS C:\> Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+AvgUtilizationPercentage:	100
+Id:							providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20170901
+MaxUtilizationPercentage:	100
+MinUtilizationPercentage:	100
+Name:						ca69259e-bd4f-45c3-bf28-3f353f9cce9b_f37f4b70-52ba-4344-a8bd-28abfd21d640_20170901
+ReservationId:				f37f4b70-52ba-4344-a8bd-28abfd21d640
+ReservationOrderId:			ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+ReservedHour:				288
+SkuName:					Standard_DS2_v2
+Type:						Microsoft.Consumption/reservationSummaries
+UsageDate:					9/1/2017 12:00:00 AM
+UsedHour:					288			
 ```
 
-Get a list of reservation summaries with reservation order Id for monthly grain.
-
-### Example 2
+### Example 2: Get reservation summaries with reservation order Id and reservation Id for monthly grain
 ```powershell
 PS C:\> Get-AzureRmConsumptionReservationSummary -Grain monthly -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640
+AvgUtilizationPercentage:	100
+Id:							providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20170901
+MaxUtilizationPercentage:	100
+MinUtilizationPercentage:	100
+Name:						ca69259e-bd4f-45c3-bf28-3f353f9cce9b_f37f4b70-52ba-4344-a8bd-28abfd21d640_20170901
+ReservationId:				f37f4b70-52ba-4344-a8bd-28abfd21d640
+ReservationOrderId:			ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+ReservedHour:				288
+SkuName:					Standard_DS2_v2
+Type:						Microsoft.Consumption/reservationSummaries
+UsageDate:					9/1/2017 12:00:00 AM
+UsedHour:					288	
 ```
 
-Get a list of reservation summaries with reservation order Id and reservation Id for monthly grain.
-
-### Example 3
+### Example 3: Get reservation summaries with reservation order Id for daily grain provided date range
 ```powershell
 PS C:\> Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -StartDate 2017-10-01 -EndDate 2017-12-07
+AvgUtilizationPercentage:	100
+Id:							providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20171101
+MaxUtilizationPercentage:	100
+MinUtilizationPercentage:	100
+Name:						ca69259e-bd4f-45c3-bf28-3f353f9cce9b_f37f4b70-52ba-4344-a8bd-28abfd21d640_20171101
+ReservationId:				f37f4b70-52ba-4344-a8bd-28abfd21d640
+ReservationOrderId:			ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+ReservedHour:				24
+SkuName:					Standard_DS2_v2
+Type:						Microsoft.Consumption/reservationSummaries
+UsageDate:					11/1/2017 12:00:00 AM
+UsedHour:					24
 ```
 
-Get a list of reservation summaries with reservation order Id for daily grain provided date range.
-
-### Example 4
+### Example 4: Get reservation summaries with reservation order Id and reservation Id for daily grain provided date range
 ```powershell
 PS C:\> Get-AzureRmConsumptionReservationSummary -Grain daily -ReservationOrderId ca69259e-bd4f-45c3-bf28-3f353f9cce9b -ReservationId f37f4b70-52ba-4344-a8bd-28abfd21d640 -StartDate 2017-10-01 -EndDate 2017-12-07
+AvgUtilizationPercentage:	100
+Id:							providers/Microsoft.Capacity/reservationOrders/ca69259e-bd4f-45c3-bf28-3f353f9cce9b/reservations/f37f4b70-52ba-4344-a8bd-28abfd21d640/providers/Microsoft.Consumption/reservationSummaries/20171101
+MaxUtilizationPercentage:	100
+MinUtilizationPercentage:	100
+Name:						ca69259e-bd4f-45c3-bf28-3f353f9cce9b_f37f4b70-52ba-4344-a8bd-28abfd21d640_20171101
+ReservationId:				f37f4b70-52ba-4344-a8bd-28abfd21d640
+ReservationOrderId:			ca69259e-bd4f-45c3-bf28-3f353f9cce9b
+ReservedHour:				24
+SkuName:					Standard_DS2_v2
+Type:						Microsoft.Consumption/reservationSummaries
+UsageDate:					11/1/2017 12:00:00 AM
+UsedHour:					24
 ```
-
-Get a list of reservation summaries with reservation order Id and reservation Id for daily grain provided date range.
 
 ## PARAMETERS
 
@@ -155,7 +194,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Consumption.Models.PSReservationSummary, Microsoft.Azure.Commands.Consumption, Version=0.3.3.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Consumption.Models.PSReservationSummary
 
 
 ## NOTES

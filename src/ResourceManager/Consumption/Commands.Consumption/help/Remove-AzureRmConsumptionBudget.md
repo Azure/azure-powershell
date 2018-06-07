@@ -22,19 +22,17 @@ The Remove-AzureRmConsumptionBudget cmdlet removes a budget in either a subscrip
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove a budget with a budget name at subscription level
 ```powershell
-PS C:\> Remove-AzureRmConsumptionBudget -BudgetName PSBudget
+PS C:\> Remove-AzureRmConsumptionBudget -Name PSBudget -PassThru
+True
 ```
 
-This command removes a budget with a budget name `PSBudget` in the subscription.
-
-### Example 2
+### Example 2: Remove a budget with a budget name at resource group level
 ```powershell
-PS C:\> Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -BudgetName PSBudget
+PS C:\> Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+True
 ```
-
-This command removes a budget with a budget name `PSBudgetRG` in the resource group `RGBudgets`.
 
 ## PARAMETERS
 
@@ -84,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+The Cmdlet returns true if a budget was successfully removed.
 
 ```yaml
 Type: SwitchParameter
