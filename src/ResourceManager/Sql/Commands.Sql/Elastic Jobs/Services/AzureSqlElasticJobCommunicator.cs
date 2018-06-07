@@ -548,6 +548,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 createTimeMin, createTimeMax,
                 endTimeMin, endTimeMax,
                 isActive, skip, top);
+            results.AddRange(targetExecutions);
 
             while (targetExecutions.NextPageLink != null)
             {
