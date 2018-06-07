@@ -1,4 +1,8 @@
-﻿## 6.2.0 - June 2018
+﻿## 6.2.1 - June 2018
+### AzureRM.OperationalInsights
+* Updated PSWorkspace model to allow Network to use type as a parameter
+
+## 6.2.0 - June 2018
 #### AzureRM.Profile
 * Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
 
