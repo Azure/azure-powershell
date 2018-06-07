@@ -26,9 +26,9 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<string> Protocols { get; set; }
 
-        public List<string> SourceIps { get; set; }
+        public List<string> SourceAddresses { get; set; }
 
-        public List<string> DestinationIps { get; set; }
+        public List<string> DestinationAddresses { get; set; }
         
         public List<string> DestinationPorts { get; set; }
 
@@ -39,15 +39,15 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string SourceIpsText
+        public string SourceAddressesText
         {
-            get { return JsonConvert.SerializeObject(SourceIps, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(SourceAddresses, Formatting.Indented); }
         }
 
         [JsonIgnore]
-        public string DestinationIpsText
+        public string DestinationAddressesText
         {
-            get { return JsonConvert.SerializeObject(DestinationIps, Formatting.Indented); }
+            get { return JsonConvert.SerializeObject(DestinationAddresses, Formatting.Indented); }
         }
         
         [JsonIgnore]
