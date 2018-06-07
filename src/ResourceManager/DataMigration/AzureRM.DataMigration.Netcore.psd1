@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataMigration.dll'
@@ -72,37 +72,30 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataMigration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 
-      'New-AzureRmDataMigrationDatabaseInfo', 
-      'New-AzureRmDataMigrationConnectionInfo', 
-      'New-AzureRmDataMigrationProject', 
-      'Remove-AzureRmDataMigrationProject', 
-      'Get-AzureRmDataMigrationProject', 
-      'Get-AzureRmDataMigrationService', 
-      'New-AzureRmDataMigrationService', 
-      'Remove-AzureRmDataMigrationService', 
-      'New-AzureRmDataMigrationTask', 
-      'Get-AzureRmDataMigrationTask', 
-      'Remove-AzureRmDataMigrationTask', 
-      'Start-AzureRmDataMigrationService', 
-      'Stop-AzureRmDataMigrationService', 
-      'Stop-AzureRmDataMigrationTask',
-      'New-AzureRmDataMigrationSelectedDB',
-      'New-AzureRmDataMigrationFileShare'
+CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo', 
+    'New-AzureRmDataMigrationConnectionInfo', 
+    'New-AzureRmDataMigrationProject', 
+    'Remove-AzureRmDataMigrationProject', 
+    'Get-AzureRmDataMigrationProject', 'Get-AzureRmDataMigrationService', 
+    'New-AzureRmDataMigrationService', 
+    'Remove-AzureRmDataMigrationService', 'New-AzureRmDataMigrationTask', 
+    'Get-AzureRmDataMigrationTask', 'Remove-AzureRmDataMigrationTask', 
+    'Start-AzureRmDataMigrationService', 
+    'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
+    'New-AzureRmDataMigrationSelectedDB', 
+    'New-AzureRmDataMigrationFileShare'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureRmDms', 'Get-AzureRmDmsTask', 'Get-AzureRmDmsProject', 
-               'New-AzureRmDms', 'New-AzureRmDmsConnInfo', 'New-AzureRmDmsDBInfo', 
-               'New-AzureRmDmsTask', 
-               'New-AzureRmDmsProject', 'Remove-AzureRmDmsProject', 
-               'Remove-AzureRmDms', 'Remove-AzureRmDmsTask', 
-               'Start-AzureRmDmsService', 'Stop-AzureRmDmsTask', 
-               'Stop-AzureRmDmsService',
-               'New-AzureRmDmsSelectedDB',
-               'New-AzureRmDmsFileShare'
+    'New-AzureRmDms', 'New-AzureRmDmsConnInfo', 'New-AzureRmDmsDBInfo', 
+    'New-AzureRmDmsTask', 'New-AzureRmDmsProject', 
+    'Remove-AzureRmDmsProject', 'Remove-AzureRmDms', 
+    'Remove-AzureRmDmsTask', 'Start-AzureRmDmsService', 
+    'Stop-AzureRmDmsTask', 'Stop-AzureRmDmsService', 
+    'New-AzureRmDmsSelectedDB', 'New-AzureRmDmsFileShare'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

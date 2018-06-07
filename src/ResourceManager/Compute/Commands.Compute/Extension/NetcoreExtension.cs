@@ -139,21 +139,6 @@ namespace Microsoft.Azure.Commands.Network
     }
 }
 
-namespace Microsoft.Azure.Management.Internal.Network.Common
-{
-    public interface IResourceReference
-    {
-        string Id { get; set; }
-    }
-}
-namespace Microsoft.Azure.Management.Internal.Network.Common
-{
-    public interface INetworkInterfaceReference : IResourceReference
-    {
-        bool? Primary { get; set; }
-    }
-}
-
 namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSResourceId

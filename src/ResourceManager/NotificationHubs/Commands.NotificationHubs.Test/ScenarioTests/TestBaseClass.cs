@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources;
+
 namespace Commands.NotificationHubs.Test
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.NotificationHubs;
-    using Microsoft.Azure.Management.Resources;
     using LegacyTest = Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -42,7 +43,7 @@ namespace Commands.NotificationHubs.Test
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var gallaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var nhManagementClient = GetNotificationHubsManagementClient(context);
@@ -98,9 +99,9 @@ namespace Commands.NotificationHubs.Test
             return context.GetServiceClient<NotificationHubsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
         private Mock<IResourceManagementClient> resourceManagementClientMock;
 
-        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateFile.json");
+        private string templateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateFile.json");
 
-        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\invalidTemplateFile.json");
+        private string invalidTemplateFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/invalidTemplateFile.json");
 
-        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFile.json");
+        private string templateParameterFileSchema1 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFile.json");
 
-        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources\sampleTemplateParameterFileSchema2.json");
+        private string templateParameterFileSchema2 = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"Resources/sampleTemplateParameterFileSchema2.json");
 
         public GalleryTemplatesClientTests(ITestOutputHelper output)
         {
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
             Assert.Equal(typeof(SecureString), dynamicParameter.ParameterType);
-            Assert.Equal(1, dynamicParameter.Attributes.Count);
+            Assert.Single(dynamicParameter.Attributes);
 
             ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
             Assert.False(parameterAttribute.Mandatory);
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal("computeMode", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
             Assert.Equal(typeof(SecureString), dynamicParameter.ParameterType);
-            Assert.Equal(1, dynamicParameter.Attributes.Count);
+            Assert.Single(dynamicParameter.Attributes);
 
             ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
             Assert.False(parameterAttribute.Mandatory);
@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal("appSku", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
             Assert.Equal(typeof(Hashtable), dynamicParameter.ParameterType);
-            Assert.Equal(1, dynamicParameter.Attributes.Count);
+            Assert.Single(dynamicParameter.Attributes);
 
             ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
             Assert.False(parameterAttribute.Mandatory);
@@ -301,7 +301,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             Assert.Equal("ranks", dynamicParameter.Name);
             Assert.Equal(value.DefaultValue, dynamicParameter.Value);
             Assert.Equal(typeof(object[]), dynamicParameter.ParameterType);
-            Assert.Equal(1, dynamicParameter.Attributes.Count);
+            Assert.Single(dynamicParameter.Attributes);
 
             ParameterAttribute parameterAttribute = (ParameterAttribute)dynamicParameter.Attributes[0];
             Assert.False(parameterAttribute.Mandatory);
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal("bool", result["bool"].Name);
             Assert.Equal(typeof(bool), result["bool"].ParameterType);
-            Assert.Equal(true, result["bool"].Value);
+            Assert.True(result["bool"].Value as bool?);
 
             Assert.Equal("object", result["object"].Name);
             Assert.Equal(typeof(Hashtable), result["object"].ParameterType);
@@ -421,7 +421,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
 
             Assert.Equal("bool", result["bool"].Name);
             Assert.Equal(typeof(bool), result["bool"].ParameterType);
-            Assert.Equal(true, result["bool"].Value);
+            Assert.True(result["bool"].Value as bool?);
 
             Assert.Equal("object", result["object"].Name);
             Assert.Equal(typeof(Hashtable), result["object"].ParameterType);
@@ -493,7 +493,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
                 templateParameterFileSchema1,
                 new[] { "TestPS" });
 
-            Assert.Equal(0, result.Count);
+            Assert.Empty(result);
         }
 
         [Fact]
@@ -504,8 +504,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.Models
             TestExecutionHelpers.RetryAction(() =>
             {
                 Dictionary<string, TemplateFileParameterV1> result =
-                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources\WebSite.param.dev.json".AsAbsoluteLocation());
-                Assert.Equal(true, result["isWorker"].Value);
+                    TemplateUtility.ParseTemplateParameterFileContents(@"Resources/WebSite.param.dev.json".AsAbsoluteLocation());
+                Assert.True(result["isWorker"].Value as bool?);
                 Assert.Equal((System.Int64) 1, result["numberOfWorker"].Value);
             });
         }
