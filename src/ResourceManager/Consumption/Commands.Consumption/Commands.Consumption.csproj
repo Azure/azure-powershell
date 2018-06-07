@@ -60,6 +60,7 @@
     <Compile Include="Cmdlets\UsageDetails\GetAzureRmConsumptionUsageDetail.cs" />
     <Compile Include="Common\AzureConsumptionCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\ParameterHelpMessages.cs" />
     <Compile Include="Common\Utilities.cs" />
     <Compile Include="Models\PSBudget.cs" />
     <Compile Include="Models\PSMarketplace.cs" />

@@ -25,7 +25,7 @@ using Microsoft.Rest.Azure.OData;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionMarketplace"), OutputType(typeof(List<PSMarketplace>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionMarketplace"), OutputType(typeof(PSMarketplace))]
     public class GetAzureRmConsumptionMarketplace : AzureConsumptionCmdletBase
     {
         private const int MaxNumberToFetch = 1000;
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
             }
 
             int numberToFetch = MaxNumberToFetch;
-            if (this.Top.HasValue && this.Top.Value < numberToFetch)
+            if (this.Top.HasValue)
             {
                 numberToFetch = this.Top.Value;
             }

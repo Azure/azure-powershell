@@ -25,24 +25,24 @@ using Microsoft.Rest.Azure;
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionReservationDetail")]
-    [OutputType(typeof(List<PSReservationDetail>))]
+    [OutputType(typeof(PSReservationDetail))]
     public class GetAzureRmConsumptionReservationDetail : AzureConsumptionCmdletBase
     {
+        [Parameter(Mandatory = true, HelpMessage = "The start data (YYYY-MM-DD in UTC) of the reservation detail.")]
+        [ValidateNotNullOrEmpty]
+        public DateTime StartDate { get; set; }
+
         [Parameter(Mandatory = true, HelpMessage = "The end data (YYYY-MM-DD in UTC) of the reservation detail.")]
         [ValidateNotNullOrEmpty]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The identifier of a reservation within a reservation order.")]
-        [ValidateNotNullOrEmpty]
-        public string ReservationId { get; set; }
-
         [Parameter(Mandatory = true, HelpMessage = "The identifier of a reservation purchase.")]
         [ValidateNotNullOrEmpty]
-        public string ReservationOrderId { get; set; }
+        public string ReservationOrderId { get; set; }        
 
-        [Parameter(Mandatory = true, HelpMessage = "The start data (YYYY-MM-DD in UTC) of the reservation detail.")]
+        [Parameter(Mandatory = false, HelpMessage = "The identifier of a reservation within a reservation order.")]
         [ValidateNotNullOrEmpty]
-        public DateTime StartDate { get; set; }
+        public string ReservationId { get; set; }        
 
         public override void ExecuteCmdlet()
         {

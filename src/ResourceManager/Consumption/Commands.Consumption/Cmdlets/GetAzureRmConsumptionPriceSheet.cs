@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.CodeDom;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Consumption.Common;
@@ -35,6 +33,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the price sheets based on MeterDetails.")]
         [ValidateNotNullOrEmpty]
+        [ValidateSet("MeterDetails")]
         public string Expand { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
             }
 
             int numberToFetch = MaxNumberToFetch;
-            if (this.Top.HasValue && this.Top.Value < numberToFetch)
+            if (this.Top.HasValue)
             {
                 numberToFetch = this.Top.Value;
             }

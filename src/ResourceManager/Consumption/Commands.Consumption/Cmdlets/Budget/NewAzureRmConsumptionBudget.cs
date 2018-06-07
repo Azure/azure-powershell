@@ -14,90 +14,108 @@
 
 using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Commands.Consumption.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Consumption;
 using Microsoft.Azure.Management.Consumption.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using HelpMessages = Microsoft.Azure.Commands.Consumption.Common.ParameterHelpMessages.BudgetParameterHelpMessages;
+using ParameterSetNames = Microsoft.Azure.Commands.Consumption.Common.Constants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
-    using ResourceManager.Common.ArgumentCompleters;
     using Budget = Management.Consumption.Models.Budget;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmConsumptionBudget", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.New, "AzureRmConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSBudget))]
     public class NewAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Amount of a budget.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
+        [ValidateNotNullOrEmpty]
+        public string Name;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Amount)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Amount)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
         public decimal Amount;       
 
-        [Parameter(Mandatory = true, HelpMessage = "Category of the budget can be cost or usage.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Category)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Category)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Cost", "Usage")]
-        public string Category;
+        public string Category;        
 
-        [Parameter(Mandatory = false, HelpMessage = "Email addresses to send the budget notification to when the threshold is exceeded.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.TimeGrain)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.TimeGrain)]
         [ValidateNotNullOrEmpty]
-        [ValidateCount(1, 50)]
-        public string[] ContactEmail;
+        [ValidateSet("Monthly", "Quarterly", "Annually")]
+        public string TimeGrain;
 
-        [Parameter(Mandatory = false, HelpMessage = "Action groups to send the budget notification to when the threshold is exceeded.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.StartDate)]
         [ValidateNotNullOrEmpty]
-        public string[] ContactGroup;
+        public DateTime? StartDate;
 
-        [Parameter(Mandatory = false, HelpMessage = "Contact roles to send the budget notification to when the threshold is exceeded.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("Owner", "Reader", "Contributor")]
-        public string[] ContactRole;
-
-        [Parameter(Mandatory = false, HelpMessage = "End date (YYYY-MM-DD in UTC) of time period of a budget.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate;
 
-        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of meters to filter on. Required if category is usage.")]
-        [ValidateNotNullOrEmpty]
-        public string[] MeterFilter;
-
-        [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
-        [ValidateNotNullOrEmpty]
-        public string Name;
-
-        [Parameter(Mandatory = false, HelpMessage = "The notification is enabled or not.")]
-        public SwitchParameter NotificationEnabled;
-
-        [Parameter(Mandatory = false, HelpMessage = "Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.")]
-        [ValidateNotNullOrEmpty]
-        public string NotificationKey;
-
-        [Parameter(Mandatory = false, HelpMessage = "Threshold value associated with a notification. Notification is sent when the cost or usage exceeded the threshold. It is always percent and has to be between 0 and 1000.")]
-        [ValidateRange(0, 1000)]
-        public decimal? NotificationThreshold;
-
-        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource instances to filter on.")]
-        [ValidateNotNullOrEmpty]
-        public string[] ResourceFilter;
-
-        [Parameter(Mandatory = false, HelpMessage = "Comma-separated list of resource groups to filter on.")]
-        [ValidateNotNullOrEmpty]
-        public string[] ResourceGroupFilter;
-
-        [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
-        [Parameter(Mandatory = true, HelpMessage = "Start date (YYYY-MM-DD in UTC) of time period of a budget. Not prior to current month for monthly time grain. Not prior to three months for quarterly time grain. Not prior to twelve months for yearly time grain. Future start date not more than three months.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
         [ValidateNotNullOrEmpty]
-        public DateTime? StartDate;
+        public string[] MeterFilter;
 
-        [Parameter(Mandatory = true, HelpMessage = "Time grain of the budget can be monthly, quarterly, or annually.")]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
         [ValidateNotNullOrEmpty]
-        [ValidateSet("Monthly", "Quarterly", "Annually")]
-        public string TimeGrain;
+        public string[] ResourceFilter;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
+        [ValidateNotNullOrEmpty]
+        public string[] ResourceGroupFilter;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationKey)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationKey)]
+        [ValidateNotNullOrEmpty]
+        public string NotificationKey;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
+        public SwitchParameter NotificationEnabled;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationThreshold)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationThreshold)]
+        [ValidateRange(0, 1000)]
+        public decimal? NotificationThreshold;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactEmail)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.ContactEmail)]
+        [ValidateNotNullOrEmpty]
+        [ValidateCount(1, 50)]
+        public string[] ContactEmail;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
+        [ValidateNotNullOrEmpty]
+        public string[] ContactGroup;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
+        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
+        [ValidateNotNullOrEmpty]
+        [ValidateSet("Owner", "Reader", "Contributor")]
+        public string[] ContactRole;
 
         public override void ExecuteCmdlet()
         {
@@ -125,7 +143,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
             if (responseBudget != null)

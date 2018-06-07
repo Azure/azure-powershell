@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Management.Consumption;
 using Microsoft.Azure.Management.Consumption.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using HelpMessages = Microsoft.Azure.Commands.Consumption.Common.ParameterHelpMessages.BudgetParameterHelpMessages;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
@@ -24,21 +25,20 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
     [OutputType(typeof(bool))]
     public class RemoveAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = "Name of a budget.")]
+        [Parameter(Mandatory = true, HelpMessage = HelpMessages.Name)]
         [ValidateNotNullOrEmpty]
         public string Name;
 
-        [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
-        [Parameter(Mandatory = false)]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru;
 
         public override void ExecuteCmdlet()
         {
-            bool isRemoved = true;
             try
             {
                 if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
-                isRemoved = false;
+                WriteExceptionError(e);
+                return;
             }
 
-            if (PassThru.IsPresent && isRemoved)
+            if (PassThru.IsPresent)
             {
                 WriteObject(true);
             }

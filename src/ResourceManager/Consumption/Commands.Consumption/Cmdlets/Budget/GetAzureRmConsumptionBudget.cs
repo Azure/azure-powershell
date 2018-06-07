@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Commands.Consumption.Common;
 using Microsoft.Azure.Commands.Consumption.Models;
 using Microsoft.Azure.Management.Consumption;
@@ -21,21 +20,22 @@ using Microsoft.Rest.Azure;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using HelpMessages = Microsoft.Azure.Commands.Consumption.Common.ParameterHelpMessages.BudgetParameterHelpMessages;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
     using Budget = Management.Consumption.Models.Budget;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionBudget")]
-    [OutputType(typeof(List<PSBudget>))]
+    [OutputType(typeof(PSBudget))]
     public class GetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
-        [Parameter(Mandatory = false, HelpMessage = "Resource Group of a budget.")]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
-        [Parameter(Mandatory = false, HelpMessage = "Name of a budget.")]
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.Name)]
         [ValidateNotNullOrEmpty]
         public string Name;
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
             if (budgets != null)
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
             if (budget != null)
             {
-                WriteObject(new List<PSBudget> {new PSBudget(budget)}, true);
+                WriteObject(new PSBudget(budget), true);
             }
         }
     }
