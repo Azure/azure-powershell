@@ -31,14 +31,24 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             RunPowerShellTest("Test-GetNonExistingDataFactoryGateway");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGateway()
         {
             RunPowerShellTest("Test-DataFactoryGateway");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryGatewayAuthKey()
         {
