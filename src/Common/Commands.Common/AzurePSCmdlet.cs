@@ -27,6 +27,7 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Collections.Generic;
+using System.Timers;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -39,7 +40,9 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private const string DEFAULT_PSVERSION = "3.0.0.0";
 
         public ConcurrentQueue<string> DebugMessages { get; private set; }
-
+        private Timer _pollTimer;
+        private static TimeSpan FlushDebugMessageInterval = new TimeSpan(0, 0, 30);
+        private static int FlushDebugMessageThreshold = 500;
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile = null;
@@ -178,6 +181,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
+            _pollTimer = new Timer(FlushDebugMessageInterval.TotalMilliseconds) { Enabled = true, AutoReset = true };
+            _pollTimer.Elapsed += (source, e) => { TriggerExpiredEntryCleanUp(); };
         }
 
         // Register Dynamic Parameters for use in long running jobs
