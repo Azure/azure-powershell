@@ -14,20 +14,21 @@
 
 using Microsoft.Azure.Batch;
 using Microsoft.Azure.Batch.Common;
-using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Azure.Management.Batch;
 using Microsoft.Azure.Management.Batch.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+#if NETSTANDARD
+using System.Threading.Tasks;
+#else
 using System.IO;
+#endif
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -565,7 +566,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     version);
 
                 CloudBlockBlob blob = new CloudBlockBlob(new Uri(applicationPackage.StorageUrl));
+#if NETSTANDARD
+                Task.Run(() => blob.UploadFromFileAsync(filePath)).Wait();
+#else
                 blob.UploadFromFile(filePath, FileMode.Open);
+#endif
             }
 
             return applicationPackage;

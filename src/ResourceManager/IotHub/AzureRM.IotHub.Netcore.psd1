@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.IotHub.dll'
@@ -81,7 +81,8 @@ CmdletsToExport = 'Add-AzureRmIotHubKey', 'Get-AzureRmIotHubEventHubConsumerGrou
     'New-AzureRmIotHubExportDevices', 'New-AzureRmIotHubImportDevices', 
     'Remove-AzureRmIotHub', 'Remove-AzureRmIotHubEventHubConsumerGroup', 
     'Remove-AzureRmIotHubKey', 'Set-AzureRmIotHub', 
-    'Add-AzureRmIotHubCertificate', 'Get-AzureRmIotHubCertificate', 
+    'Update-AzureRmIotHub', 'Add-AzureRmIotHubCertificate', 
+    'Get-AzureRmIotHubCertificate', 
     'Get-AzureRmIotHubCertificateVerificationCode', 
     'Set-AzureRmIotHubVerifiedCertificate', 
     'Remove-AzureRmIotHubCertificate'
