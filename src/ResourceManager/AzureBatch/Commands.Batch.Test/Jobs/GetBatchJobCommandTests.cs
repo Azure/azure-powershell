@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the job returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
             Assert.Equal(OnTaskFailure.PerformExitOptionsJobAction, pipeline[0].OnTaskFailure);
             Assert.Equal(OnAllTasksComplete.TerminateJob, pipeline[0].OnAllTasksComplete);
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             int jobCount = 0;
             foreach (PSCloudJob j in pipeline)
             {
-                Assert.True(idsOfConstructedJobs.Contains(j.Id));
+                Assert.Contains(j.Id, idsOfConstructedJobs);
                 jobCount++;
             }
             Assert.Equal(idsOfConstructedJobs.Length, jobCount);
@@ -272,7 +272,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             int jobCount = 0;
             foreach (PSCloudJob j in pipeline)
             {
-                Assert.True(idsOfConstructedJobs.Contains(j.Id));
+                Assert.Contains(j.Id, idsOfConstructedJobs);
                 jobCount++;
             }
             Assert.Equal(idsOfConstructedJobs.Length, jobCount);
@@ -318,7 +318,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Jobs
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the task returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Id, pipeline[0].Id);
 
             var psApplicationPackageReference = pipeline[0].JobManagerTask.ApplicationPackageReferences.First();

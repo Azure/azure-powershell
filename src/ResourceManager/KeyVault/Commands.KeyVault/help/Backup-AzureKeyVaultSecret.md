@@ -39,23 +39,29 @@ Typical reasons to use this cmdlet are:
 ## EXAMPLES
 
 ### Example 1: Back up a secret with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+
+C:\Users\username\mykeyvault-mysecret-1527029447.01191
 ```
 
 This command retrieves the secret named MySecret from the key vault named MyKeyVault and saves a backup of that secret to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a secret to a specified file name, overwriting the existing file without prompting
-```
-PS C:\>Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command retrieves the secret named MySecret from the key vaultnamed MyKeyVault and saves a backup of that secret to a file named Backup.blob.
 
 ### Example 3: Back up a secret previously retrieved to a specified file name
-```
-PS C:\>$secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
-PS C:\>Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+PS C:\> Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command uses the $secret object's vault name and name to retrieves the secret and saves its backup to a file named Backup.blob.
@@ -190,13 +196,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 
 ## OUTPUTS
 
 ### String
-The cmdlet returns the path of the output file containing the backup of the key.
+The cmdlet returns the path of the output file containing the backup of the secret.
 
 ## NOTES
 

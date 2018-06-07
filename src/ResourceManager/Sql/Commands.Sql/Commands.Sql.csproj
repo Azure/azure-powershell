@@ -253,7 +253,7 @@
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
-    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />
+    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel.cs" />
     <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Services\AuditingEndpointsCommunicator.cs" />
@@ -463,9 +463,6 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.WindowsAzure.Management.Storage">
-      <HintPath>..\..\..\packages\Microsoft.WindowsAzure.Management.Storage.5.1.1\lib\net40\Microsoft.WindowsAzure.Management.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
