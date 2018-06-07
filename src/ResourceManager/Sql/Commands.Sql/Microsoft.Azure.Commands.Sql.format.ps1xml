@@ -1151,8 +1151,8 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
-                      $_.Targets | % { "(" + $_.TargetServerName + $(If($_.TargetElasticPoolName) { "," + $_.TargetElasticPoolName }) + $(If($_.TargetShardMapName) { "," + $_.TargetShardMapName }) + $(If($_.TargetDatabaseName) { "," + $_.TargetDatabaseName }) + ")"}
-                    </ScriptBlock>
+                  $_.Targets | % { "(" + $_.TargetServerName + $(If($_.TargetElasticPoolName) { "," + $_.TargetElasticPoolName }) + $(If($_.TargetDatabaseName) { "," + $_.TargetDatabaseName }) + ")"} + $(If($_.TargetShardMapName) { "," + $_.TargetShardMapName })
+                </ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
