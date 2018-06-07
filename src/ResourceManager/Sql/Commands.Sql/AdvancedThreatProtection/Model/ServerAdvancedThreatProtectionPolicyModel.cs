@@ -28,5 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
         /// Gets or sets the server name
         /// </summary>
         public string ServerName { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value to indicate whether Advanced Threat Protection is enabled
+        /// </summary>
+        public bool IsEnabled { get; set; }
     }
 }

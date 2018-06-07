@@ -65,15 +65,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
             var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(resourceGroup, serverName);
-            if (threatDetectionPolicy.Properties.State == ThreatDetectionStateType.Disabled.ToString())
-            {
-                throw new Exception(Properties.Resources.ServerAdvancedThreatProtectionIsNotDefined);
-            }
-
             var serverAdvancedThreatProtectionPolicyModel = new ServerAdvancedThreatProtectionPolicyModel()
             {
                 ResourceGroupName = resourceGroup,
-                ServerName = serverName
+                ServerName = serverName,
+                IsEnabled = (threatDetectionPolicy.Properties.State.ToLower() == ThreatDetectionStateType.Enabled.ToString().ToLower())
             };
 
             return serverAdvancedThreatProtectionPolicyModel;

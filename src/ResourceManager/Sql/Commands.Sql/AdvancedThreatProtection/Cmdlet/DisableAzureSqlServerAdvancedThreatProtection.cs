@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
+            model.IsEnabled = false;
             ModelAdapter.DisableServerAdvancedThreatProtection(model);
             return null;
         }

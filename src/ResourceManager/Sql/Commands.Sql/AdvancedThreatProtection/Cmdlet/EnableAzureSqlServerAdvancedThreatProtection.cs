@@ -25,36 +25,13 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     public class EnableAzureSqlServerAdvancedThreatProtection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
-        /// Provides the model element that this cmdlet operates on
-        /// </summary>
-        /// <returns>A model object</returns>
-        protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
-        {
-            ServerAdvancedThreatProtectionPolicyModel model;
-            try
-            {
-                model = ModelAdapter.GetServerAdvancedThreatProtectionPolicy(ResourceGroupName, ServerName);
-            }
-            catch
-            {
-                // For set policy if get returns not found we don't want to expose it to the user.
-                model = new ServerAdvancedThreatProtectionPolicyModel()
-                {
-                    ResourceGroupName = ResourceGroupName,
-                    ServerName = ServerName
-                };
-            }
-
-            return model;
-        }
-
-        /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
+            model.IsEnabled = true;
             ModelAdapter.EnableServerAdvancedThreatProtection(model);
             return null;
         }
