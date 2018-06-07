@@ -406,7 +406,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AsJob
+		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
