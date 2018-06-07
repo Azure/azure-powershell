@@ -8,16 +8,16 @@ schema: 2.0.0
 # Get-AzureRmReservationCatalog
 
 ## SYNOPSIS
-Get the catalog of available reservation
+Get the catalog of available reservations
 
 ## SYNTAX
 
 ```
-Get-AzureRmReservationCatalog [-SubscriptionId <String>] [-ReservedResourceType <String>] [-Location <String>][<CommonParameters>]
+Get-AzureRmReservationCatalog [-SubscriptionId <String>] [-ReservedResourceType <String>] [-Location <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the regions and skus that are available for RI purchase for the specified Azure subscription.
+Get the regions and skus that are available for Reserved Instance purchase for the specified Azure subscription.
 
 ## EXAMPLES
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -ReservedResourceType
-The type of the resource reserved
+Specifies the type of the reserved resources in the catalog
 
 ```yaml
 Type: String
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Filters the skus based on the location specified in this parameter
+Specifies the location of the reserved resources in the catalog
 
 
 ```yaml

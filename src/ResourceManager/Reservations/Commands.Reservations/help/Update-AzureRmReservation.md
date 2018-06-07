@@ -21,7 +21,7 @@ Update-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -
 
 ### PipeObject
 ```
-Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String> 
+Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>] 
  -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,14 +35,14 @@ Updates the applied scopes of the `Reservation`.
 PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff" -InstanceFlexibility "On"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Single and InstanceFlexibility to On.
+Updates the AppliedScopeType of the specified `Reservation` to Single and InstanceFlexibility to On.
 
 ### Example 2
 ```
 PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared" -InstanceFlexibility "Off"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Shared and InstanceFlexibility to Off.
+Updates the AppliedScopeType of the specified `Reservation` to Shared and InstanceFlexibility to Off.
 
 ## PARAMETERS
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -InstanceFlexibility
-If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value of the InstanceFlexibility remains unchanged.
+If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
 
 ```yaml
 Type: String
