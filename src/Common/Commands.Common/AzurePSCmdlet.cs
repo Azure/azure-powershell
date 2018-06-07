@@ -182,7 +182,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             DebugMessages = new ConcurrentQueue<string>();
             _pollTimer = new Timer(FlushDebugMessageInterval.TotalMilliseconds) { Enabled = true, AutoReset = true };
-            _pollTimer.Elapsed += (source, e) => { TriggerExpiredEntryCleanUp(); };
+            _pollTimer.Elapsed += (source, e) => { if(DebugMessages.Count > FlushDebugMessageThreshold) FlushDebugMessages(); };
         }
 
         // Register Dynamic Parameters for use in long running jobs
