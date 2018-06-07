@@ -140,10 +140,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <returns>The converted agent model</returns>
         private static AzureSqlElasticJobAgentModel CreateAgentModelFromResponse(string resourceGroupName, string serverName, JobAgent resp)
         {
-            // Parse database name from database id
-            // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
-            int lastSlashIndex = resp.DatabaseId.LastIndexOf('/');
-            string databaseName = resp.DatabaseId.Substring(lastSlashIndex + 1);
+            string databaseName = new ResourceIdentifier(resp.DatabaseId).ResourceName;
             int? workerCount = resp.Sku.Capacity;
 
             AzureSqlElasticJobAgentModel agent = new AzureSqlElasticJobAgentModel
@@ -251,10 +248,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         /// <returns></returns>
         private static AzureSqlElasticJobCredentialModel CreateAgentCredentialModelFromResponse(string resourceGroupName, string serverName, string agentName, JobCredential resp)
         {
-            // Parse credential name from id
-            // This is not expected to ever fail, but in case we have a bug here it's better to provide a more detailed error message
-            int lastSlashIndex = resp.Id.LastIndexOf('/');
-            string credentialName = resp.Id.Substring(lastSlashIndex + 1);
+            string credentialName = new ResourceIdentifier(resp.Id).ResourceName;
 
             AzureSqlElasticJobCredentialModel credential = new AzureSqlElasticJobCredentialModel
             {
@@ -746,49 +740,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            IPage<JobExecution> resp = Communicator.ListJobExecutionsByAgent(
-                resourceGroupName,
-                serverName,
-                agentName,
-                createTimeMin,
-                createTimeMax,
-                endTimeMin,
-                endTimeMax,
-                isActive,
-                skip,
-                top);
-
-            List<AzureSqlElasticJobExecutionModel> executions = resp.Select((jobExecution) =>
-                CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName,
-                new ResourceIdentifier(jobExecution.Id).ParentResourceBuilder[5], jobExecution)).ToList();
-
-            if (resp.NextPageLink != null)
-            {
-                Match match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                int toSkip = int.Parse(match.Groups[1].Value);
-
-                while (top > toSkip)
+            var resp = Communicator.ListJobExecutionsByAgent(
+                resourceGroupName, serverName, agentName,
+                createTimeMin, createTimeMax,
+                endTimeMin, endTimeMax,
+                isActive, skip, top)
+                .Select((jobExecution) =>
                 {
-                    resp = Communicator.ListJobExecutionsByAgent(
-                        resourceGroupName,
-                        serverName,
-                        agentName,
-                        createTimeMin,
-                        createTimeMax,
-                        endTimeMin,
-                        endTimeMax,
-                        isActive,
-                        toSkip,
-                        top);
+                    string jobName = new ResourceIdentifier(jobExecution.Id).ParentResourceBuilder[5];
+                    return CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobExecution);
+                }).ToList();
 
-                    executions.AddRange(resp.Select((jobExecution) => CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, new ResourceIdentifier(jobExecution.Id).ParentResourceBuilder[5], jobExecution)));
-
-                    match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                    toSkip = int.Parse(match.Groups[1].Value);
-                }
-            }
-
-            return executions;
+            return resp;
         }
 
         /// <summary>
@@ -815,36 +778,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 jobName,
                 createTimeMin, createTimeMax,
                 endTimeMin, endTimeMax,
-                isActive,
-                skip,
-                top);
-
-            List<AzureSqlElasticJobExecutionModel> executions = resp.Select((rootExecution) => CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, rootExecution)).ToList();
-
-            if (resp.NextPageLink != null)
-            {
-                Match match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                int toSkip = int.Parse(match.Groups[1].Value);
-
-                while (top > toSkip)
+                isActive, skip, top)
+                .Select((jobExecution) =>
                 {
-                    resp = Communicator.ListJobExecutionsByJob(
-                        resourceGroupName, serverName, agentName,
-                        jobName,
-                        createTimeMin, createTimeMax,
-                        endTimeMin, endTimeMax,
-                        isActive,
-                        toSkip,
-                        top);
+                    return CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobExecution);
+                }).ToList();
 
-                    executions.AddRange(resp.Select((rootExecution) => CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, rootExecution)).ToList());
-
-                    match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                    toSkip = int.Parse(match.Groups[1].Value);
-                }
-            }
-
-            return executions;
+            return resp;
         }
 
         #endregion
@@ -897,15 +837,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            var resp = Communicator.ListJobExecutionSteps(
+            List<AzureSqlElasticJobStepExecutionModel> resp = Communicator.ListJobExecutionSteps(
                 resourceGroupName, serverName, agentName,
                 jobName, jobExecutionId,
                 createTimeMin, createTimeMax,
                 endTimeMin, endTimeMax,
                 isActive,
-                skip, top);
+                skip, top)
+                .Select((stepExecution) =>
+                    CreateJobStepExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, stepExecution)).ToList();
 
-            return resp.Select((stepExecution) => CreateJobStepExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, stepExecution)).ToList();
+            return resp;
         }
 
         #endregion
@@ -961,40 +903,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            var resp = Communicator.ListJobTargetExecutionsByStep(
+            List<AzureSqlElasticJobTargetExecutionModel> resp = Communicator.ListJobTargetExecutionsByStep(
                 resourceGroupName, serverName, agentName,
                 jobName, jobExecutionId, stepName,
                 createTimeMin, createTimeMax,
                 endTimeMin, endTimeMax,
                 isActive,
-                skip, top);
+                skip, top)
+                .Select((jobTargetExecution) =>
+                    CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobTargetExecution)).ToList();
 
-            List<AzureSqlElasticJobTargetExecutionModel> executions = resp.Select((jobTargetExecution) =>
-                CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobTargetExecution)).ToList();
-
-            if (resp.NextPageLink != null)
-            {
-                Match match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                int toSkip = int.Parse(match.Groups[1].Value);
-
-                while (top > toSkip)
-                {
-                    resp = Communicator.ListJobTargetExecutionsByStep(
-                        resourceGroupName, serverName, agentName,
-                        jobName, jobExecutionId, stepName,
-                        createTimeMin, createTimeMax,
-                        endTimeMin, endTimeMax,
-                        isActive,
-                        toSkip, top);
-
-                    executions.AddRange(resp.Select((jobTargetExecution) => CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobTargetExecution)));
-
-                    match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                    toSkip = int.Parse(match.Groups[1].Value);
-                }
-            }
-
-            return executions;
+            return resp;
         }
 
         /// <summary>
@@ -1021,39 +940,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            var resp = Communicator.ListJobTargetExecutions(
+            List<AzureSqlElasticJobTargetExecutionModel> resp = Communicator.ListJobTargetExecutions(
                 resourceGroupName, serverName, agentName,
                 jobName, jobExecutionId,
                 createTimeMin, createTimeMax,
                 endTimeMin, endTimeMax,
                 isActive,
-                skip, top);
+                skip, top)
+                .Select((targetExecution) =>
+                    CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, targetExecution)).ToList();
 
-            List<AzureSqlElasticJobTargetExecutionModel> executions = resp.Select((targetExecution) => CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, targetExecution)).ToList();
-
-            if (resp.NextPageLink != null)
-            {
-                Match match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                int toSkip = int.Parse(match.Groups[1].Value);
-
-                while (top > toSkip)
-                {
-                    resp = Communicator.ListJobTargetExecutions(
-                        resourceGroupName, serverName, agentName,
-                        jobName, jobExecutionId,
-                        createTimeMin, createTimeMax,
-                        endTimeMin, endTimeMax,
-                        isActive,
-                        toSkip, top);
-
-                    executions.AddRange(resp.Select((targetExecution) => CreateJobTargetExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, targetExecution)).ToList());
-
-                    match = Regex.Match(resp.NextPageLink, @"skip=(\d*)");
-                    toSkip = int.Parse(match.Groups[1].Value);
-                }
-            }
-
-            return executions;
+            return resp;
         }
 
         /// <summary>

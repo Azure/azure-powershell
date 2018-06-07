@@ -591,7 +591,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
-                  $_.Targets | % { "(" + $_.TargetServerName + $(If($_.TargetElasticPoolName) { "," + $_.TargetElasticPoolName }) + $(If($_.TargetShardMapName) { "," + $_.TargetShardMapName }) + $(If($_.TargetDatabaseName) { "," + $_.TargetDatabaseName }) + ")"}
+                  $_.Targets | % { "(" + $(If($_.MembershipType -eq "Exclude") { "-" }) + $_.TargetServerName + $(If($_.TargetElasticPoolName) { "." + $_.TargetElasticPoolName }) + $(If($_.TargetShardMapName) { "." + $_.TargetShardMapName }) + $(If($_.TargetDatabaseName) { "." + $_.TargetDatabaseName }) + ")"}
                 </ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
@@ -714,7 +714,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>
-                  $(If($_.Output.ServerName) { "(" + $_.Output.ServerName }) + $(If($_.Output.DatabaseName) { "," + $_.Output.DatabaseName }) + $(If($_.Output.SchemaName) { "," + $_.Output.SchemaName }) + $(If($_.Output.SchemaName) { "," + $_.Output.TableName + ")" })
+                  $(If($_.Output.ServerName) { "(" + $_.Output.ServerName }) + $(If($_.Output.DatabaseName) { "." + $_.Output.DatabaseName }) + $(If($_.Output.SchemaName) { "." + $_.Output.SchemaName }) + $(If($_.Output.SchemaName) { "." + $_.Output.TableName + ")" })
                 </ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>

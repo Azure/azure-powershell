@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Sql;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Management.Sql.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 {
@@ -294,13 +295,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
         }
 
         /// <summary>
-        /// Lists the credentials associated to the Azure SQL Database Agent.
+        /// Returns a list of job executions across the agent
         /// </summary>
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
         /// <param name="agentName">The agent name</param>
-        /// <returns>A list of credentials belonging to specified agent</returns>
-        public IPage<JobExecution> ListJobExecutionsByAgent(
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
+        /// <returns>The list of job executions across the agent</returns>
+        public List<JobExecution> ListJobExecutionsByAgent(
             string resourceGroupName,
             string serverName,
             string agentName,
@@ -312,7 +320,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            return GetCurrentSqlClient().JobExecutions.ListByAgent(
+            List<JobExecution> results = new List<JobExecution>();
+            IPage<JobExecution> jobExecutions = GetCurrentSqlClient().JobExecutions.ListByAgent(
                 resourceGroupName: resourceGroupName,
                 serverName: serverName,
                 jobAgentName: agentName,
@@ -323,16 +332,33 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 isActive: isActive,
                 skip: skip,
                 top: top);
+            results.AddRange(jobExecutions);
+
+            while (jobExecutions.NextPageLink != null)
+            {
+                jobExecutions = GetCurrentSqlClient().JobExecutions.ListByAgentNext(jobExecutions.NextPageLink);
+                results.AddRange(jobExecutions);
+            }
+
+            return results;
         }
 
         /// <summary>
-        /// Lists the credentials associated to the Azure SQL Database Agent.
+        /// Returns a list of job executions for a job
         /// </summary>
         /// <param name="resourceGroupName">The resource group name</param>
         /// <param name="serverName">The server name</param>
         /// <param name="agentName">The agent name</param>
-        /// <returns>A list of credentials belonging to specified agent</returns>
-        public IPage<JobExecution> ListJobExecutionsByJob(
+        /// <param name="jobName">The job name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
+        /// <returns>The list of job executions by job</returns>
+        public List<JobExecution> ListJobExecutionsByJob(
             string resourceGroupName,
             string serverName,
             string agentName,
@@ -345,9 +371,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            // TODO:
-            // create time min, create time max, end time min, end time max, is active, skip, top
-            return GetCurrentSqlClient().JobExecutions.ListByJob(
+            List<JobExecution> results = new List<JobExecution>();
+            IPage<JobExecution> jobExecutions = GetCurrentSqlClient().JobExecutions.ListByJob(
                 resourceGroupName: resourceGroupName,
                 serverName: serverName,
                 jobAgentName: agentName,
@@ -359,6 +384,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 isActive: isActive,
                 skip: skip,
                 top: top);
+            results.AddRange(jobExecutions);
+
+            while (jobExecutions.NextPageLink != null)
+            {
+                jobExecutions = GetCurrentSqlClient().JobExecutions.ListByJobNext(jobExecutions.NextPageLink);
+                results.AddRange(jobExecutions);
+            }
+
+            return results;
         }
 
         /// <summary>
@@ -401,7 +435,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             return GetCurrentSqlClient().JobStepExecutions.Get(resourceGroupName, serverName, agentName, jobName, jobExecutionId, stepName);
         }
 
-        public IPage<JobExecution> ListJobExecutionSteps(
+        /// <summary>
+        /// Gets a list of job step executions
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active filter</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
+        /// <returns>Returns a list of job step executions for a job execution</returns>
+        public List<JobExecution> ListJobExecutionSteps(
             string resourceGroupName,
             string serverName,
             string agentName,
@@ -415,19 +465,22 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            return GetCurrentSqlClient().JobStepExecutions.ListByJobExecution(
-                resourceGroupName,
-                serverName,
-                agentName,
-                jobName,
-                jobExecutionId,
-                createTimeMin,
-                createTimeMax,
-                endTimeMin,
-                endTimeMax,
-                isActive,
-                skip,
-                top);
+            List<JobExecution> results = new List<JobExecution>();
+            IPage<JobExecution> stepExecutions = GetCurrentSqlClient().JobStepExecutions.ListByJobExecution(
+                resourceGroupName, serverName, agentName,
+                jobName, jobExecutionId,
+                createTimeMin, createTimeMax,
+                endTimeMin, endTimeMax,
+                isActive, skip, top);
+            results.AddRange(stepExecutions);
+
+            while (stepExecutions.NextPageLink != null)
+            {
+                stepExecutions = GetCurrentSqlClient().JobStepExecutions.ListByJobExecutionNext(stepExecutions.NextPageLink);
+                results.AddRange(stepExecutions);
+            }
+
+            return results;
         }
 
         #endregion
@@ -435,6 +488,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
 
         #region Job Target Executions
 
+        /// <summary>
+        /// Gets the job target execution
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
+        /// <param name="stepName">The step name</param>
+        /// <param name="targetId">The target id</param>
+        /// <returns></returns>
         public JobExecution GetJobTargetExecution(
             string resourceGroupName,
             string serverName,
@@ -447,7 +511,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             return GetCurrentSqlClient().JobTargetExecutions.Get(resourceGroupName, serverName, agentName, jobName, jobExecutionId, stepName, targetId);
         }
 
-        public IPage<JobExecution> ListJobTargetExecutions(
+        /// <summary>
+        /// Gets a list of job target executions
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
+        /// <returns></returns>
+        public List<JobExecution> ListJobTargetExecutions(
             string resourceGroupName,
             string serverName,
             string agentName,
@@ -461,22 +541,46 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            return GetCurrentSqlClient().JobTargetExecutions.ListByJobExecution(
-                resourceGroupName,
-                serverName,
-                agentName,
-                jobName,
-                jobExecutionId,
-                createTimeMin,
-                createTimeMax,
-                endTimeMin,
-                endTimeMax,
-                isActive,
-                skip,
-                top);
+            List<JobExecution> results = new List<JobExecution>();
+            IPage<JobExecution> targetExecutions = GetCurrentSqlClient().JobTargetExecutions.ListByJobExecution(
+                resourceGroupName, serverName, agentName,
+                jobName, jobExecutionId,
+                createTimeMin, createTimeMax,
+                endTimeMin, endTimeMax,
+                isActive, skip, top);
+
+            while (targetExecutions.NextPageLink != null)
+            {
+                targetExecutions = GetCurrentSqlClient().JobTargetExecutions.ListByJobExecution(
+                    resourceGroupName, serverName, agentName,
+                    jobName, jobExecutionId,
+                    createTimeMin, createTimeMax,
+                    endTimeMin, endTimeMax,
+                    isActive, skip, top);
+                results.AddRange(targetExecutions);
+            }
+
+            return results;
         }
 
-        public IPage<JobExecution> ListJobTargetExecutionsByStep(
+        /// <summary>
+        /// Gets a list of job target executions per step
+        /// </summary>
+        /// <param name="resourceGroupName">The resource group name</param>
+        /// <param name="serverName">The server name</param>
+        /// <param name="agentName">The agent name</param>
+        /// <param name="jobName">The job name</param>
+        /// <param name="jobExecutionId">The job execution id</param>
+        /// <param name="stepName">The job step name</param>
+        /// <param name="createTimeMin">The create time min</param>
+        /// <param name="createTimeMax">The create time max</param>
+        /// <param name="endTimeMin">The end time min</param>
+        /// <param name="endTimeMax">The end time max</param>
+        /// <param name="isActive">The is active flag</param>
+        /// <param name="skip">The skip count</param>
+        /// <param name="top">The top count</param>
+        /// <returns></returns>
+        public List<JobExecution> ListJobTargetExecutionsByStep(
             string resourceGroupName,
             string serverName,
             string agentName,
@@ -491,20 +595,27 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
             int? skip = null,
             int? top = null)
         {
-            return GetCurrentSqlClient().JobTargetExecutions.ListByStep(
-                resourceGroupName,
-                serverName,
-                agentName,
-                jobName,
-                jobExecutionId,
-                stepName,
-                createTimeMin,
-                createTimeMax,
-                endTimeMin,
-                endTimeMax,
-                isActive,
-                skip,
-                top);
+            List<JobExecution> results = new List<JobExecution>();
+            IPage<JobExecution> targetExecutionsByStep = GetCurrentSqlClient().JobTargetExecutions.ListByStep(
+                resourceGroupName, serverName, agentName,
+                jobName, jobExecutionId, stepName,
+                createTimeMin, createTimeMax,
+                endTimeMin, endTimeMax,
+                isActive, skip, top);
+            results.AddRange(targetExecutionsByStep);
+
+            while (targetExecutionsByStep.NextPageLink != null)
+            {
+                targetExecutionsByStep = GetCurrentSqlClient().JobTargetExecutions.ListByStep(
+                    resourceGroupName, serverName, agentName,
+                    jobName, jobExecutionId, stepName,
+                    createTimeMin, createTimeMax,
+                    endTimeMin, endTimeMax,
+                    isActive, skip, top);
+                results.AddRange(targetExecutionsByStep);
+            }
+
+            return results;
         }
 
         #endregion
