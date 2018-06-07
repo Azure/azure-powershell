@@ -29,13 +29,18 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public Guid ReservationId { get; set; }
 
         [Parameter(Mandatory = true)]
-        [ValidateNotNull]
-        [ValidateSet ("Single", "Shared")]
+        [ValidateSet("Single", "Shared")]
+        [ValidateNotNullOrEmpty]
         public string AppliedScopeType { get; set; }
 
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
         public string AppliedScope { get; set; }
+
+        [Parameter(Mandatory = false)]
+        [ValidateSet("On", "Off", "NotSupported")]
+        [ValidateNotNullOrEmpty]
+        public string InstanceFlexibility { get; set; }
 
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ObjectParameterSet,
             Mandatory = true,
@@ -55,7 +60,6 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
             var resourceInfo = $"Reservation {ReservationId} in order {ReservationOrderId}";
             if (ShouldProcess(resourceInfo, "Update"))
             {
-                
                 Patch Patch;
                 if (AppliedScope != null)
                 {
@@ -63,11 +67,11 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
                     string subscriptionId = ValidateAndGetAppliedSubscription();
                     PreRegister(subscriptionId);
 
-                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope });
+                    Patch = new Patch(AppliedScopeType, new List<string>() { AppliedScope }, InstanceFlexibility);
                 }
                 else
                 {
-                    Patch = new Patch(AppliedScopeType);
+                    Patch = new Patch(AppliedScopeType, instanceFlexibility: InstanceFlexibility);
                 }
                 var response = new PSReservation(AzureReservationAPIClient.Reservation.Update(ReservationOrderId.ToString(), ReservationId.ToString(), Patch));
                 WriteObject(response);

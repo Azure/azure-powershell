@@ -15,13 +15,14 @@ Update a `Reservation`.
 ### CommandLine (Default)
 ```
 Update-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -AppliedScopeType <String>
- [-AppliedScope <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AppliedScope <String>] [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] 
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] -Reservation <PSReservation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String> 
+ -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,17 +32,17 @@ Updates the applied scopes of the `Reservation`.
 
 ### Example 1
 ```
-PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedScopeType "Single" -appliedscope "/subscriptions/1111aaaa-b1b2-c0c2-d0d2-00000fffff" -InstanceFlexibility "On"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Single
+Updates the AppliedScopeType of the specified reservation to Single and InstanceFlexibility to On.
 
 ### Example 2
 ```
-PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared"
+PS C:\> Update-AzureRmReservation -ReservationOrderId "11111111-1111-1111-1111-1111111111" -ReservationId "00000000-1111-1111-1111-0000000000" -appliedscopetype "Shared" -InstanceFlexibility "Off"
 ```
 
-Updates the AppliedScopeType of the specified reservation to Shared
+Updates the AppliedScopeType of the specified reservation to Shared and InstanceFlexibility to Off.
 
 ## PARAMETERS
 
@@ -61,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -AppliedScopeType
-Type of the `Reservation` to be updated
+Type of the Applied Scope
 
 ```yaml
 Type: String
@@ -70,6 +71,22 @@ Aliases:
 Accepted values: Single, Shared
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceFlexibility
+If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value of the InstanceFlexibility remains unchanged.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: On, Off, NotSupported
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

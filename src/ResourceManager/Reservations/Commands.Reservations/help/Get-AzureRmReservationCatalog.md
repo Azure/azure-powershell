@@ -13,32 +13,64 @@ Get the catalog of available reservation
 ## SYNTAX
 
 ```
-Get-AzureRmReservationCatalog [-SubscriptionId <String>] [<CommonParameters>]
+Get-AzureRmReservationCatalog [-SubscriptionId <String>] [-ReservedResourceType <String>] [-Location <String>][<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the regions and skus that are available for Reserved Instance purchase for the specified Azure subscription.
+Get the regions and skus that are available for RI purchase for the specified Azure subscription.
 
 ## EXAMPLES
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmReservationCatalog
+PS C:\> Get-AzureRmReservationCatalog -ReservedResourceType VirtualMachines -Location westus
 ```
 
-Get the catalog for the default subscription
+Get the VirtualMachines catalog in westus for the default subscription
 
 ### Example 2
 ```
-PS C:\> Get-AzureRmReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff"
+PS C:\> Get-AzureRmReservationCatalog -SubscriptionId "1111aaaa-b1b2-c0c2-d0d2-00000fffff" -ReservedResourceType SuseLinux
 ```
 
-Get the catalog for the specified subscription
+Get the SuseLinux catalog for the specified subscription
 
 ## PARAMETERS
 
 ### -SubscriptionId
 Id of the subscription
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservedResourceType
+The type of the resource reserved
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+Accepted values: VirtualMachines, SqlDatabases, SuseLinux
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Filters the skus based on the location specified in this parameter
+
 
 ```yaml
 Type: String

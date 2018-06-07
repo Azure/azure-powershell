@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Reservations.Common;
-using Microsoft.Azure.Management.Reservations.Models;
 using Microsoft.Azure.Commands.Reservations.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Reservations;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
@@ -18,16 +16,30 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         [ValidateNotNull]
         public Guid SubscriptionId { get; set; }
 
+        [Parameter(Mandatory = true)]
+        [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux")]
+        [ValidateSet("VirtualMachines", "SqlDatabases", "SuseLinux")]
+        [ValidateNotNullOrEmpty]
+        public string ReservedResourceType { get; set; }
+
+        [Parameter(Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (SubscriptionId != default(Guid))
             {
-                var response = AzureReservationAPIClient.GetCatalog(SubscriptionId.ToString()).Select(x => new PSCatalog(x));
+                var response = AzureReservationAPIClient
+                    .GetCatalog(SubscriptionId.ToString(), ReservedResourceType, Location)
+                    .Select(x => new PSCatalog(x));
                 WriteObject(response, true);
             }
             else
             {
-                var response = AzureReservationAPIClient.GetCatalog(DefaultContext.Subscription.Id).Select(x => new PSCatalog(x));
+                var response = AzureReservationAPIClient
+                    .GetCatalog(DefaultContext.Subscription.Id, ReservedResourceType, Location)
+                    .Select(x => new PSCatalog(x));
                 WriteObject(response, true);
             }
         }
