@@ -164,6 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
         {
             User newUser = null;
