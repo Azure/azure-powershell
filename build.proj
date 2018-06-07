@@ -102,7 +102,7 @@
 
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-	<LocalBuildTasks  Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'" />
+	  <LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
   </ItemGroup>
 
   <!-- Tasks -->
@@ -110,7 +110,8 @@
   <UsingTask TaskName="FilterOutAutoRestLibraries" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="DebugTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="VerifyAuthenticodeSignatureTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
-  <UsingTask TaskName="SmartTestingTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="FilesChangedTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
+  <UsingTask TaskName="FilterTask" AssemblyFile="$(BuildTasksPath)\Microsoft.Azure.Build.Tasks.dll" />
   <UsingTask TaskName="SetEnvVar" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll" >
 	  <ParameterGroup>
 	    <EnvName ParameterType="System.String" Required="true" />
@@ -118,10 +119,10 @@
     </ParameterGroup>
     <Task>
 		  <Using Namespace="System"/>
-		  <Code Type="Fragment" Language="cs">
+      <Code Type="Fragment" Language="cs">  
 			<![CDATA[System.Environment.SetEnvironmentVariable(EnvName, EnvValue);]]>
-		  </Code>
-	  </Task>
+      </Code>  
+    </Task>  
   </UsingTask>  <!--
   CI build related
   -->
@@ -203,10 +204,33 @@
     <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
 
+  <Target Name="FilterBuild">
+	<!-- Get all of the files changed in the given pull request -->
+  	<FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
+  		<Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
+  	</FilesChangedTask>
 
+  	<!-- Get the list of modules changed -->
+	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\ModuleMappings.json">
+		<Output TaskParameter="Output" ItemName="ModulesChanged"/>
+	</FilterTask>
+	<Message Text="Filtering help generation and StaticAnalysis by the following modules:"/>
+	<Message Text="%(ModulesChanged.Identity)"/>
+	<Message Text="Total: @(ModulesChanged->Count())"/>
+	<Message Text=""/>
 
-  <!-- Build cmdlets -->
-  <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask">
+  	<!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
+	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
+		<Output TaskParameter="Output" ItemName="XUnitTests"/>
+	</FilterTask>
+	<Message Text="Using these test assemblies:"/>
+	<Message Text="%(XUnitTests.Identity)"/>
+	<Message Text="Total: @(XunitTests->Count())"/>
+	<Message Text=""/>
+  </Target>
+
+  <!-- Build all flavors of the Cmdlets -->
+  <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask;FilterBuild">
     <Message Importance="high" Text="Building Cmdlets for scope $(Scope)..." />
 
     <MakeDir  Directories="$(PackageDirectory)"
@@ -218,17 +242,18 @@
               Targets="Build"
               Properties="Configuration=$(Configuration);Platform=Any CPU"
               BuildInParallel="$(BuildInParallel)"
-              ContinueOnError="false" />
+      ContinueOnError="false" />     
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) &quot;"
+    <Exec Command="&quot;$(PowerShellCommandPrefix)&quot; $ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
+ 
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           Condition="'$(CodeSign)' == 'false'"/>
 
     <Exec ContinueOnError="false"
-          Command="$(PowerShellCommandPrefix) &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
+      Command="&quot;$(PowerShellCommandPrefix)&quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" Condition="'$(Latest)' == 'true' and $(CodeSign) == 'true'"/>
           Condition=" '$(SkipHelp)' == 'false' and ('$(Scope)' == 'all' or '$(Scope)' == 'Latest')"/>
 
     <!-- Copying modules to be signed -->
@@ -263,7 +288,6 @@
           Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Stack' "/>
 
     <CallTarget Targets="CodeSignBinaries" Condition=" '$(CodeSign)' == 'true' " />
-
     <!-- AzureRM -->
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psd1"
           DestinationFolder="$(LibraryToolsFolder)\AzureRM" Condition= " '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
@@ -333,11 +357,11 @@
                 ContinueOnError="true" />
 
     <ItemGroup>
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
-      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Resources.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Websites.Netcore\AzureRM.Resources.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Websites.Netcore\AzureRM.Tags.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\AzureRM.Resources.Netcore.psd1" />
+      <ExtraPsdFiles Include="$(PackageDirectory)\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Network.Netcore\AzureRM.Tags.Netcore.psd1" />
     </ItemGroup>
 
     <Delete Files="@(ExtraPsdFiles->'%(FullPath)')"/>
@@ -532,7 +556,7 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(PackageDirectory) true $(SkipHelp)"
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp)" Condition="'$(Latest)' == 'true'"/>
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="True"/>
 
