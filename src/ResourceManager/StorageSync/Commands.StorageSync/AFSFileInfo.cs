@@ -1,20 +1,14 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
-    using System.IO;
 
-    class AfsFileInfo : IFileInfo
+    class AfsFileInfo : AfsNamedObjectInfo, IFileInfo
     {
-        private FileInfo _node;
-
-        public AfsFileInfo(FileInfo node)
+        public AfsFileInfo(string name, long length) : base(name)
         {
-            this._node = node;
+            this.Length = length;
         }
 
-        public string Name => _node.Name;
-        public string FullName => _node.FullName;
-        public long Length => _node.Length;
-        public IDirectoryInfo Directory => new AfsDirectoryInfo(_node.Directory);
+        public long Length { get; private set; }
     }
 }

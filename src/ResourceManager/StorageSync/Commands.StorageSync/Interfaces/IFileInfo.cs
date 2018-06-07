@@ -3,6 +3,5 @@
     public interface IFileInfo : INamedObjectInfo
     {
         long Length { get; }
-        IDirectoryInfo Directory { get; }
     }
 }

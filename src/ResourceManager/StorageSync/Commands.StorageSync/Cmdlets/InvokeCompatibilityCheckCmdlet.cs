@@ -32,27 +32,28 @@
         private string ComputerNameValue {
             get
             {
-                var afsPath = new AfsPath(this.Path);
-                string computerName;
-                string shareName;
-                if (afsPath.TryGetComputerNameAndShareFromPath(out computerName, out shareName))
+                if (!string.IsNullOrEmpty(this.Path))
                 {
-                    return computerName;
+                    var afsPath = new AfsPath(this.Path);
+                    string computerName;
+                    string shareName;
+
+                    if (afsPath.TryGetComputerNameAndShareFromPath(out computerName, out shareName))
+                    {
+                        return computerName;
+                    }
+
+                    return "localhost";
                 }
 
-                if (!string.IsNullOrEmpty(this.ComputerName))
-                {
-                    return this.ComputerName;
-                }
-
-                return null;
+                return this.ComputerName;
             }
         }
 
         [Parameter]
         public SwitchParameter SkipSystemChecks { get; set; }
 
-        [Parameter]
+        [Parameter(ParameterSetName = "PathBased")]
         public SwitchParameter SkipNamespaceChecks { get; set; }
 
         [Parameter]
@@ -60,7 +61,7 @@
 
         private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
         private bool CanRunEstimation => CanRunNamespaceChecks;
-        private bool CanRunSystemChecks => true;
+        private bool CanRunSystemChecks => !string.IsNullOrEmpty(this.ComputerNameValue);
 
         private TimeSpan MaximumDurationOfNamespaceEstimation => TimeSpan.FromSeconds(30);
 
@@ -96,7 +97,7 @@
             systemValidations.ForEach(o => validationDescriptions.Add((IValidationDescription)o));
 
             // output writers
-            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(Path, new AfsConsoleWriter(), validationDescriptions);
+            TextSummaryOutputWriter summaryWriter = new TextSummaryOutputWriter(new AfsConsoleWriter(), validationDescriptions);
             PsObjectsOutputWriter psObjectsWriter = new PsObjectsOutputWriter(this);
 
             this.WriteVerbose($"Path = {this.Path}");
@@ -119,15 +120,15 @@
                 progressReporter.AddSteps(1);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                INamespaceInfo namespaceInfo = new NamespaceEnumerator().Run(
+                INamespaceInfo namespaceInfoEstimation = new NamespaceEnumerator().Run(
                     new AfsDirectoryInfo(this.Path),
                     MaximumDurationOfNamespaceEstimation);
                 stopwatch.Stop();
 
-                totalObjectsToScan += namespaceInfo.NumberOfDirectories + namespaceInfo.NumberOfFiles;
+                totalObjectsToScan += namespaceInfoEstimation.NumberOfDirectories + namespaceInfoEstimation.NumberOfFiles;
                 progressReporter.CompleteStep();
                 progressReporter.Complete();
-                string namespaceCompleteness = namespaceInfo.IsComplete ? "complete" : "incomplete";
+                string namespaceCompleteness = namespaceInfoEstimation.IsComplete ? "complete" : "incomplete";
                 TimeSpan duration = stopwatch.Elapsed;
 
                 WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
@@ -156,6 +157,7 @@
                 WriteVerbose("Skipping system checks.");
             }
 
+            INamespaceInfo namespaceInfo = null;
             if (this.CanRunNamespaceChecks && !SkipNamespaceChecks.ToBool())
             {
                 IProgressReporter progressReporter = new NamespaceScanProgressReporter(this);
@@ -163,7 +165,7 @@
                 progressReporter.AddSteps(totalObjectsToScan);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                INamespaceInfo namespaceInfo = PerformNamespaceChecks(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter);
+                namespaceInfo = PerformNamespaceChecks(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter);
                 stopwatch.Stop();
                 progressReporter.Complete();
 
@@ -177,6 +179,14 @@
                 WriteVerbose("Skipping namespace checks.");
             }
 
+            if (!this.Quiet.ToBool())
+            {
+                summaryWriter.WriteReport(this.ComputerNameValue, namespaceInfo);
+            }
+            else
+            {
+                WriteVerbose("Skipping report.");
+            }
         }
         #endregion
 
@@ -236,8 +246,7 @@
 
         private INamespaceInfo StorageEval(IList<INamespaceValidation> validations, IProgressReporter progressReporter, ICmdlet cmdlet, TextSummaryOutputWriter summaryWriter, PsObjectsOutputWriter psObjectsWriter)
         {
-            DirectoryInfo rootDirectoryInfo = new DirectoryInfo(Path);
-            IDirectoryInfo root = new AfsDirectoryInfo(rootDirectoryInfo);
+            IDirectoryInfo root = new AfsDirectoryInfo(this.Path);
 
             var outputWriters = new List<IOutputWriter>
             {
@@ -255,15 +264,6 @@
             NamespaceEnumerator namespaceEnumerator = new NamespaceEnumerator(namespaceEnumeratorListeners);
 
             var namespaceInfo = namespaceEnumerator.Run(root);
-
-            if (!this.Quiet.ToBool())
-            {
-                summaryWriter.WriteReport(namespaceInfo);
-            }
-            else
-            {
-                WriteVerbose("Skipping report.");
-            }
 
             return namespaceInfo;
         }

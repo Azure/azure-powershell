@@ -36,8 +36,8 @@
 
         ~PowerShellCommandRunner()
         {
-            _powerShell.Dispose();
-            _runspace.Close();
+            _powerShell?.Dispose();
+            _runspace?.Close();
         }
         #endregion
 

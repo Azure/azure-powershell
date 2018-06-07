@@ -21,7 +21,7 @@ Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCre
 ### ComputerNameBased
 ```
 Invoke-AzureRmStorageSyncCompatibilityCheck [-Credential <PSCredential>] -ComputerName <String>
- [-SkipSystemChecks] [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
+ [-SkipSystemChecks] [-Quiet] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +103,7 @@ Set this flag to skip file namespace validations and only perform system validat
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: PathBased
 Aliases:
 
 Required: False

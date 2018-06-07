@@ -58,8 +58,9 @@
   <ItemGroup>
     <Compile Include="AfsDirectoryInfo.cs" />
     <Compile Include="AfsFileInfo.cs" />
-    <Compile Include="AfsFileSystemInfo.cs" />
+    <Compile Include="AfsNamedObjectInfo.cs" />
     <Compile Include="Interfaces\IValidationDescription.cs" />
+    <Compile Include="ListFiles.cs" />
     <Compile Include="Validations\BaseNamespaceValidation.cs" />
     <Compile Include="Cmdlets\InvokeCompatibilityCheckCmdlet.cs" />
     <Compile Include="Interfaces\INamespaceInfo.cs" />

@@ -4,7 +4,7 @@
     using System.Runtime.InteropServices;
     using NET_API_STATUS = System.UInt32;
 
-    public static class NativeMethods
+    internal static partial class NativeMethods
     {
         #region definitions
         [DllImport("kernel32.dll", SetLastError = true)]

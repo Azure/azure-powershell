@@ -4,9 +4,7 @@
 
     public interface IDirectoryInfo : INamedObjectInfo
     {
-        IDirectoryInfo Parent { get; }
-
         IEnumerable<IFileInfo> EnumerateFiles();
         IEnumerable<IDirectoryInfo> EnumerateDirectories();
-    }
+    }   
 }

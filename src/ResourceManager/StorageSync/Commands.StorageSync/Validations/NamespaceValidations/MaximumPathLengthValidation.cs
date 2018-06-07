@@ -39,7 +39,7 @@
                 return new ValidationResult
                 {
                     Result = Result.Fail,
-                    Description = $"File {node.Name} path's is too long. Maximum path length is {this._maxPathLength}.",
+                    Description = $"Path length limit exceeded. Maximum length is {this._maxPathLength}.",
                     Level = ResultLevel.Error,
                     Path = node.FullName,
                     Type = this.ValidationType

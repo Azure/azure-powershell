@@ -161,12 +161,14 @@
     <Compile Include="UnitTests\FileSystemValidationTest.cs" />
     <Compile Include="UnitTests\FunctionalTest.cs" />
     <Compile Include="UnitTests\InvalidFilenameValidationTest.cs" />
+    <Compile Include="UnitTests\ListFilesTests.cs" />
     <Compile Include="UnitTests\MaximumDatasetSizeValidationTest.cs" />
     <Compile Include="UnitTests\MaximumFilenameLengthValidationTest.cs" />
     <Compile Include="UnitTests\MaximumFileSizeValidationTest.cs" />
     <Compile Include="UnitTests\MaximumPathLengthValidationTest.cs" />
     <Compile Include="UnitTests\MaximumTreeDepthValidationTest.cs" />
     <Compile Include="UnitTests\MockFactory.cs" />
+    <Compile Include="UnitTests\NamespaceEnumeratorTests.cs" />
     <Compile Include="UnitTests\OSVersionValidationTest.cs" />
     <Compile Include="UnitTests\SystemValidationsProcessorTest.cs" />
   </ItemGroup>
