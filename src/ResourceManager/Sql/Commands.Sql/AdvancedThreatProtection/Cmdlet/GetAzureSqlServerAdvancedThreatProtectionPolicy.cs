@@ -18,11 +18,11 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Returns the AdvancedThreatProtection policy of a specific server.
+    /// Returns the Advanced Threat Protection policy of a specific server.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerAdvancedThreatProtectionPolicy", SupportsShouldProcess = true), 
         OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
-    public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerThreatDetectionCmdletBase
+    public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerAdvancedThreatProtectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet

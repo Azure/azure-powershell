@@ -17,14 +17,29 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
+using Microsoft.Azure.Commands.Sql.Server.Model;
+using System;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// The base class for all Azure Sql Database security Management Cmdlets
+    /// The base class for all Azure Sql server Advanced Threat Protection Cmdlets
     /// </summary>
-    public abstract class SqlServerThreatDetectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
+    public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
+        protected const string UseParentResourceParameterSet =
+            "Use Advanced Threat Protection policy from server resource";
+
+        /// <summary>
+        /// Server resource
+        /// </summary>
+        [Parameter(ParameterSetName = UseParentResourceParameterSet,
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The server object to use with Advanced Threat Protection policy operation ")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlServerModel InputObject { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
@@ -40,6 +55,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <returns>A model object</returns>
         protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
         {
+            if (string.Equals(this.ParameterSetName, UseParentResourceParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(InputObject.ResourceGroupName, InputObject.ServerName);
+            }
+
             return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(ResourceGroupName, ServerName);
         }
 
