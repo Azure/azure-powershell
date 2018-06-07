@@ -18,26 +18,19 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using LegacyTest = Microsoft.Azure.Test;
-using LegacyRMClient = Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Network;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
-    using Common.Authentication.Abstractions;
-    using Management.Network;
-    using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
-    using TestBase = Microsoft.Azure.Test.TestBase;
-    using TestUtilities = Microsoft.Azure.Test.TestUtilities;
-
     public class KeyVaultManagementController
     {
         private readonly EnvironmentSetupHelper _helper;
@@ -46,19 +39,15 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
 
-        public LegacyRMClient.ResourceManagementClient ResourceManagementClient { get; private set; }
-
-        public Management.Internal.Resources.ResourceManagementClient NewResourceManagementClient { get; private set; }
-
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
-
-        public SubscriptionClient SubscriptionClient { get; private set; }
+        public ResourceManagementClient NewResourceManagementClient { get; private set; }
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public string UserDomain { get; private set; }
 
@@ -114,10 +103,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "Scripts\\ControlPlane\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
-                    helper.RMNetworkModule);
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule,
+                    _helper.GetRMModulePath("AzureRM.KeyVault.psd1"),
+                    _helper.RMNetworkModule);
 
                 try
                 {
@@ -143,19 +132,13 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             NewResourceManagementClient = GetResourceManagementClient(context);
             ResourceClient = GetResourceClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
-            SubscriptionClient = GetSubscriptionClient();
-            GalleryClient = GetGalleryClient();
-            AuthorizationManagementClient = GetAuthorizationManagementClient();
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
                 ResourceClient,
                 NetworkManagementClient,
-                SubscriptionClient,
                 KeyVaultManagementClient,
-                AuthorizationManagementClient,
-                GalleryClient,
                 GraphClient
                 );
         }
@@ -163,16 +146,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
-        }
-
-        private LegacyRMClient.ResourceManagementClient GetResourceManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<LegacyRMClient.ResourceManagementClient>(this.csmTestFactory);
         }
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
@@ -185,7 +158,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             return context.GetServiceClient<RM.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
+    private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
         {
             return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
