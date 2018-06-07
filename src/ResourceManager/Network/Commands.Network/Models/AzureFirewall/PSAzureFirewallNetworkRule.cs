@@ -29,9 +29,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public List<string> SourceIps { get; set; }
 
         public List<string> DestinationIps { get; set; }
-
-        public List<string> SourcePorts { get; set; }
-
+        
         public List<string> DestinationPorts { get; set; }
 
         [JsonIgnore]
@@ -51,15 +49,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             get { return JsonConvert.SerializeObject(DestinationIps, Formatting.Indented); }
         }
-
-
-        [JsonIgnore]
-        public string SourcePortsText
-        {
-            get { return JsonConvert.SerializeObject(SourcePorts, Formatting.Indented); }
-        }
-
-
+        
         [JsonIgnore]
         public string DestinationPortsText
         {

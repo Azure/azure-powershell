@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.Network
                 Protocols = this.Protocol,
                 SourceIps = this.SourceIp,
                 DestinationIps = this.DestinationIp,
-                SourcePorts = this.SourcePort,
                 DestinationPorts = this.DestinationPort
             };
             WriteObject(networkRule);
