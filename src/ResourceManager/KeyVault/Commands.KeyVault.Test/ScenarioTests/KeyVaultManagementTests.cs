@@ -551,10 +551,9 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             KeyVaultManagementController.NewInstance.RunPsTestWorkflow(
                 () => { return new[] { "Test-NetworkRuleSet" }; },
-                (env) => Initialize(),
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName()
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name
                 );
         }
 
