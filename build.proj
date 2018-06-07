@@ -244,7 +244,7 @@
               BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />     
 
-    <Exec Command="&quot;$(PowerShellCommandPrefix)&quot; $ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
@@ -253,7 +253,7 @@
           Condition="'$(CodeSign)' == 'false'"/>
 
     <Exec ContinueOnError="false"
-      Command="&quot;$(PowerShellCommandPrefix)&quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" Condition="'$(Latest)' == 'true' and $(CodeSign) == 'true'"/>
+      Command="$(PowerShellCommandPrefix)&quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;"
           Condition=" '$(SkipHelp)' == 'false' and ('$(Scope)' == 'all' or '$(Scope)' == 'Latest')"/>
 
     <!-- Copying modules to be signed -->
@@ -556,7 +556,7 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp)" Condition="'$(Latest)' == 'true'"/>
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp)"
           Condition="'$(Scope)' != 'Stack'"
           ContinueOnError="True"/>
 
