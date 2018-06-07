@@ -268,7 +268,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid BlobStorageSasUri paramater value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX&quot;.
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX.&quot;.
         /// </summary>
         internal static string InvalidBlobStorageSasUri {
             get {
@@ -691,11 +691,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vulnerability assessment policy is not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first..
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first..
         /// </summary>
-        internal static string RunSetVulnerabilityAssementPolicy {
+        internal static string RunSetVulnerabilityAssemenSettings {
             get {
-                return ResourceManager.GetString("RunSetVulnerabilityAssementPolicy", resourceCulture);
+                return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
             }
         }
         

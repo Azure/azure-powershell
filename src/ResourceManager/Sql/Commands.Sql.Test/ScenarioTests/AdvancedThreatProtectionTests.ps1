@@ -25,7 +25,7 @@ function Test-AdvancedThreatProtectionPolicyTest
 
 	try
 	{
-		$atpOffErrorMessage = "Server Advanced Threat Protection is not defined. Please run Set-AzureRmSqlServerAdvancedThreatProtectionPolicy first."
+		$atpOffErrorMessage = "Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first."
 		$ruleId = "VA2031"
 		$scanId = "myCustomScanId"
 		$baselineResults = @(@("userA", "SELECT"),@("userB", "SELECT"))

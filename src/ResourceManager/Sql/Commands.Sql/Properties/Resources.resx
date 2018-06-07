@@ -411,11 +411,11 @@
   <data name="ServerAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
     <value>Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first.</value>
   </data>
-  <data name="RunSetVulnerabilityAssementPolicy" xml:space="preserve">
-    <value>Vulnerability assessment policy is not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first.</value>
+  <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
+    <value>Vulnerability assessment settings are not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first.</value>
   </data>
   <data name="InvalidBlobStorageSasUri" xml:space="preserve">
-    <value>Invalid BlobStorageSasUri paramater value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX"</value>
+    <value>Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX."</value>
   </data>
   <data name="NoStorageAccountSpecified" xml:space="preserve">
     <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
