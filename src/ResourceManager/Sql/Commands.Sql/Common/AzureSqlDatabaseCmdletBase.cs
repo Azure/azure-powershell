@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             Position = 1,
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
-        public string ServerName { get; set; }
+        public virtual string ServerName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -39,6 +39,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
             Position = 2,
             HelpMessage = "SQL Database name.")]
         [ValidateNotNullOrEmpty]
-        public string DatabaseName { get; set; }
+        public virtual string DatabaseName { get; set; }
     }
 }
