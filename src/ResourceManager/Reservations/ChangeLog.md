@@ -20,6 +20,14 @@
 -->
 ## Current Release
 
+## Version 0.1.4
+* Updated Cmdlet Get-AzureRmReservationCatalog
+    - Added parameters ReservedResourceType and Location.
+    - Removed Size and Tier from Catalog object.
+* Updated Cmdlet Update-AzureRmReservation
+    - Added optional InstanceFlexibility parameter.
+* Added properties to PSReservation
+
 ## Version 0.1.3
 * Change Guid paramters to Guid type, not string
 * Set minimum dependency of module to PowerShell 5.0
