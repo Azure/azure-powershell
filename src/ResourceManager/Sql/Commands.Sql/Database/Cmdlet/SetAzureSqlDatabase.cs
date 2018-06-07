@@ -155,11 +155,25 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// <summary>
         /// Gets or sets the ComputeGeneration for the Azure Sql database.
         /// </summary>
-        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false, 
+        [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = false,
             HelpMessage = "The Compute generation for the Azure Sql database.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.",
+            ParameterSetName = UpdateParameterSetName)]
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.",
+            ParameterSetName = VcoreDatabaseParameterSet)]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -201,7 +215,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 ZoneRedundant =
                        ZoneRedundant != null
                            ? (bool?)ZoneRedundant.ToBool()
-                           : null
+                           : null,
+                LicenseType = LicenseType ?? model.FirstOrDefault().LicenseType // set to original license type
             };
 
             var database = ModelAdapter.GetDatabase(ResourceGroupName, ServerName, DatabaseName);
