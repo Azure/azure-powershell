@@ -86,7 +86,6 @@ namespace Common.Authentication.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesOldJsonData()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
