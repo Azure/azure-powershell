@@ -1,0 +1,515 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"category\": \"Cost\",\r\n    \"amount\": 6000.0,\r\n    \"timeGrain\": \"Monthly\",\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"filters\": {},\r\n    \"notifications\": {}\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "264"
+        ],
+        "x-ms-client-request-id": [
+          "85f3bb3d-3ffe-41ae-a9b0-c73a1bf179af"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20e76f7624\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": null,\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {},\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "491"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "c370003b-ca88-47e3-a5d4-ed8732581577"
+        ],
+        "x-ms-request-id": [
+          "38bdbe7c-206a-4144-a1b7-fc7f935c3021"
+        ],
+        "x-ms-correlation-request-id": [
+          "903aa9d2-14e1-4cf2-89c7-23e6a73334ef"
+        ],
+        "x-ms-client-request-id": [
+          "85f3bb3d-3ffe-41ae-a9b0-c73a1bf179af"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053220Z:903aa9d2-14e1-4cf2-89c7-23e6a73334ef"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:19 GMT"
+        ],
+        "Location": [
+          "https://consumption.azure.com/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31"
+        ]
+      },
+      "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"category\": \"Cost\",\r\n    \"amount\": 6000.0,\r\n    \"timeGrain\": \"Monthly\",\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": []\r\n    },\r\n    \"notifications\": {\r\n      \"NotificationKey-ps7188\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 90.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"eTag\": \"\\\"1d3fe20e76f7624\\\"\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "739"
+        ],
+        "x-ms-client-request-id": [
+          "a235b1b1-e4d2-4849-ba0f-d976d1e6afba"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20f5778f5d\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": null,\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {\r\n      \"notificationKey-ps7188\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 90.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ],\r\n        \"contactGroups\": []\r\n      }\r\n    },\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "714"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "d851a56e-abd3-4ff0-a657-062e28bb0ae6"
+        ],
+        "x-ms-request-id": [
+          "e20e4639-837e-4fb7-bc82-9a561febe85e"
+        ],
+        "x-ms-correlation-request-id": [
+          "e2e3845d-e6b0-444d-ba5e-dd7fba699a70"
+        ],
+        "x-ms-client-request-id": [
+          "a235b1b1-e4d2-4849-ba0f-d976d1e6afba"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053243Z:e2e3845d-e6b0-444d-ba5e-dd7fba699a70"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:42 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"category\": \"Cost\",\r\n    \"amount\": 6000.0,\r\n    \"timeGrain\": \"Monthly\",\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": []\r\n    },\r\n    \"notifications\": {\r\n      \"notificationKey-ps7188\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 90.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ],\r\n        \"contactGroups\": []\r\n      },\r\n      \"NotificationKey-ps3472\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 150.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ]\r\n      }\r\n    }\r\n  },\r\n  \"eTag\": \"\\\"1d3fe20f5778f5d\\\"\"\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1127"
+        ],
+        "x-ms-client-request-id": [
+          "fbff1802-5938-4cf2-9dee-4f0fa20a6762"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20fbe96f3a\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": null,\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {\r\n      \"notificationKey-ps7188\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 90.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ],\r\n        \"contactGroups\": []\r\n      },\r\n      \"notificationKey-ps3472\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 150.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ],\r\n        \"contactGroups\": []\r\n      }\r\n    },\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "939"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "f66fffeb-1a07-4a73-a7a6-ea593c5c1918"
+        ],
+        "x-ms-request-id": [
+          "bb759b7f-c9f7-41f5-8569-5cff368782e7"
+        ],
+        "x-ms-correlation-request-id": [
+          "200c156e-58e2-4a87-bae8-8f0440c9b3a7"
+        ],
+        "x-ms-client-request-id": [
+          "fbff1802-5938-4cf2-9dee-4f0fa20a6762"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1197"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053254Z:200c156e-58e2-4a87-bae8-8f0440c9b3a7"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:54 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e2d285ed-cb9b-4468-9955-ae77acc6c02b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20e76f7624\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": {\r\n      \"amount\": 0.0,\r\n      \"unit\": \"USD\"\r\n    },\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {},\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "514"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "4d9981c7-72b3-45c6-b8ba-e207d11e87b4"
+        ],
+        "x-ms-request-id": [
+          "2ba2d08a-5f49-4a6b-8169-11c846e0ea77"
+        ],
+        "x-ms-correlation-request-id": [
+          "b6706bf8-fd64-4bfe-84ae-35993d131246"
+        ],
+        "x-ms-client-request-id": [
+          "e2d285ed-cb9b-4468-9955-ae77acc6c02b"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053230Z:b6706bf8-fd64-4bfe-84ae-35993d131246"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "420bd094-33d7-4eac-8dca-310a21aa6fe4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20e76f7624\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": {\r\n      \"amount\": 0.0,\r\n      \"unit\": \"USD\"\r\n    },\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {},\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "514"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "b032b16a-3941-4f19-b9b2-c2b3efb10fb2"
+        ],
+        "x-ms-request-id": [
+          "1c61026f-fbe8-4549-abce-e4c5e04d78d8"
+        ],
+        "x-ms-correlation-request-id": [
+          "d83cb6aa-9a5d-4679-9680-ffc53fcb5986"
+        ],
+        "x-ms-client-request-id": [
+          "420bd094-33d7-4eac-8dca-310a21aa6fe4"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053239Z:d83cb6aa-9a5d-4679-9680-ffc53fcb5986"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:39 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "83069935-679d-4297-a7ae-d2f9c6694782"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532\",\r\n  \"name\": \"Budget-ps8532\",\r\n  \"type\": \"Microsoft.Consumption/budgets\",\r\n  \"eTag\": \"\\\"1d3fe20f5778f5d\\\"\",\r\n  \"properties\": {\r\n    \"timePeriod\": {\r\n      \"startDate\": \"2018-06-01T00:00:00Z\",\r\n      \"endDate\": \"2018-11-01T00:00:00Z\"\r\n    },\r\n    \"timeGrain\": \"Monthly\",\r\n    \"amount\": 6000.0,\r\n    \"currentSpend\": {\r\n      \"amount\": 0.0,\r\n      \"unit\": \"USD\"\r\n    },\r\n    \"category\": \"Cost\",\r\n    \"notifications\": {\r\n      \"notificationKey-ps7188\": {\r\n        \"enabled\": true,\r\n        \"operator\": \"GreaterThanOrEqualTo\",\r\n        \"threshold\": 90.0,\r\n        \"contactEmails\": [\r\n          \"johndoe@contoso.com\",\r\n          \"janesmith@contoso.com\"\r\n        ],\r\n        \"contactRoles\": [\r\n          \"Owner\",\r\n          \"Reader\",\r\n          \"Contributor\"\r\n        ],\r\n        \"contactGroups\": []\r\n      }\r\n    },\r\n    \"filters\": {\r\n      \"resourceGroups\": [],\r\n      \"resources\": [],\r\n      \"meters\": [],\r\n      \"tags\": {}\r\n    }\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "737"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "d67890df-9d9d-4c5b-a47e-0cfeb85306c0"
+        ],
+        "x-ms-request-id": [
+          "d97c47d8-34c1-4208-8af2-872b2f6d766b"
+        ],
+        "x-ms-correlation-request-id": [
+          "c421cf48-f805-4cc7-9eea-fccc28226bb1"
+        ],
+        "x-ms-client-request-id": [
+          "83069935-679d-4297-a7ae-d2f9c6694782"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14997"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053249Z:c421cf48-f805-4cc7-9eea-fccc28226bb1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:32:48 GMT"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/Budget-ps8532?api-version=2018-01-31",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWNhYWE1YTMtMmI2Ni00MzhlLThhYjQtYmNlMzdkNTE4YzVkL3Jlc291cmNlR3JvdXBzL1JHQnVkZ2V0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbnN1bXB0aW9uL2J1ZGdldHMvQnVkZ2V0LXBzODUzMj9hcGktdmVyc2lvbj0yMDE4LTAxLTMx",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "e17084ab-1a69-4619-a93c-a4b90e25000a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3056.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Management.Consumption.ConsumptionManagementClient/3.0.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "session-id": [
+          "14c621b1-9331-4d38-92d0-d78faf8be8d4"
+        ],
+        "x-ms-request-id": [
+          "e6c70633-3fc5-4652-b39c-01f41e31cd40"
+        ],
+        "x-ms-correlation-request-id": [
+          "ad490875-7acc-41da-af6d-1eca9bc69893"
+        ],
+        "x-ms-client-request-id": [
+          "e17084ab-1a69-4619-a93c-a4b90e25000a"
+        ],
+        "Access-Control-Allow-Origin": [
+          "*"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180607T053300Z:ad490875-7acc-41da-af6d-1eca9bc69893"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 07 Jun 2018 05:33:00 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {
+    "Test-BudgetAtResourceGroupLevel": [
+      "ps8532",
+      "ps7188",
+      "ps3472"
+    ]
+  },
+  "Variables": {
+    "SubscriptionId": "1caaa5a3-2b66-438e-8ab4-bce37d518c5d"
+  }
+}

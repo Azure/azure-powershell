@@ -23,32 +23,19 @@ function Test-ListMarketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
 	{
-		Assert-Null $mkp.AccountName
-		Assert-Null $mkp.AdditionalProperties
 		Assert-NotNull $mkp.BillingPeriodId
 		Assert-NotNull $mkp.ConsumedQuantity
-		Assert-Null $mkp.ConsumedService
-		Assert-Null $mkp.CostCenter
 		Assert-NotNull $mkp.Currency
-		Assert-Null $mkp.DepartmentName
 		Assert-NotNull $mkp.Id
 		Assert-NotNull $mkp.InstanceId
 		Assert-NotNull $mkp.InstanceName
 		Assert-NotNull $mkp.IsEstimated
-		Assert-Null $mkp.MeterId
 		Assert-NotNull $mkp.Name
-		Assert-Null $mkp.OfferName
 		Assert-NotNull $mkp.OrderNumber
-		Assert-Null $mkp.PlanName
 		Assert-NotNull $mkp.PretaxCost
-		Assert-Null $mkp.PublisherName
-		Assert-Null $mkp.ResourceGroup
 		Assert-NotNull $mkp.ResourceRate
 		Assert-NotNull $mkp.SubscriptionGuid
-		Assert-Null $mkp.SubscriptionName	
-		Assert-Null $mkp.Tag
 		Assert-NotNull $mkp.Type
-		Assert-Null $mkp.UnitOfMeasure
 		Assert-NotNull $mkp.UsageEnd
 		Assert-NotNull $mkp.UsageStart
 	}
@@ -65,32 +52,19 @@ function Test-ListMarketplacesWithDateFilter
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
 	{
-		Assert-Null $mkp.AccountName
-		Assert-Null $mkp.AdditionalProperties
 		Assert-NotNull $mkp.BillingPeriodId
 		Assert-NotNull $mkp.ConsumedQuantity
-		Assert-Null $mkp.ConsumedService
-		Assert-Null $mkp.CostCenter
 		Assert-NotNull $mkp.Currency
-		Assert-Null $mkp.DepartmentName
 		Assert-NotNull $mkp.Id
 		Assert-NotNull $mkp.InstanceId
 		Assert-NotNull $mkp.InstanceName
 		Assert-NotNull $mkp.IsEstimated
-		Assert-Null $mkp.MeterId
 		Assert-NotNull $mkp.Name
-		Assert-Null $mkp.OfferName
 		Assert-NotNull $mkp.OrderNumber
-		Assert-Null $mkp.PlanName
 		Assert-NotNull $mkp.PretaxCost
-		Assert-Null $mkp.PublisherName
-		Assert-Null $mkp.ResourceGroup
 		Assert-NotNull $mkp.ResourceRate
 		Assert-NotNull $mkp.SubscriptionGuid
-		Assert-Null $mkp.SubscriptionName	
-		Assert-Null $mkp.Tag
 		Assert-NotNull $mkp.Type
-		Assert-Null $mkp.UnitOfMeasure
 		Assert-NotNull $mkp.UsageEnd
 		Assert-NotNull $mkp.UsageStart
 	}
@@ -107,32 +81,19 @@ function Test-ListBillingPeriodMarketplaces
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
 	{
-		Assert-Null $mkp.AccountName
-		Assert-Null $mkp.AdditionalProperties
 		Assert-NotNull $mkp.BillingPeriodId
 		Assert-NotNull $mkp.ConsumedQuantity
-		Assert-Null $mkp.ConsumedService
-		Assert-Null $mkp.CostCenter
 		Assert-NotNull $mkp.Currency
-		Assert-Null $mkp.DepartmentName
 		Assert-NotNull $mkp.Id
 		Assert-NotNull $mkp.InstanceId
 		Assert-NotNull $mkp.InstanceName
 		Assert-NotNull $mkp.IsEstimated
-		Assert-Null $mkp.MeterId
 		Assert-NotNull $mkp.Name
-		Assert-Null $mkp.OfferName
 		Assert-NotNull $mkp.OrderNumber
-		Assert-Null $mkp.PlanName
 		Assert-NotNull $mkp.PretaxCost
-		Assert-Null $mkp.PublisherName
-		Assert-Null $mkp.ResourceGroup
 		Assert-NotNull $mkp.ResourceRate
 		Assert-NotNull $mkp.SubscriptionGuid
-		Assert-Null $mkp.SubscriptionName	
-		Assert-Null $mkp.Tag
 		Assert-NotNull $mkp.Type
-		Assert-Null $mkp.UnitOfMeasure
 		Assert-NotNull $mkp.UsageEnd
 		Assert-NotNull $mkp.UsageStart
 	}
@@ -149,32 +110,19 @@ function Test-ListMarketplacesWithFilterOnInstanceName
     Assert-AreEqual 10 $marketplaces.Count
 	Foreach($mkp in $marketplaces)
 	{
-		Assert-Null $mkp.AccountName
-		Assert-Null $mkp.AdditionalProperties
 		Assert-NotNull $mkp.BillingPeriodId
 		Assert-NotNull $mkp.ConsumedQuantity
-		Assert-Null $mkp.ConsumedService
-		Assert-Null $mkp.CostCenter
 		Assert-NotNull $mkp.Currency
-		Assert-Null $mkp.DepartmentName
 		Assert-NotNull $mkp.Id
 		Assert-NotNull $mkp.InstanceId
 		Assert-NotNull $mkp.InstanceName
 		Assert-NotNull $mkp.IsEstimated
-		Assert-Null $mkp.MeterId
 		Assert-NotNull $mkp.Name
-		Assert-Null $mkp.OfferName
 		Assert-NotNull $mkp.OrderNumber
-		Assert-Null $mkp.PlanName
 		Assert-NotNull $mkp.PretaxCost
-		Assert-Null $mkp.PublisherName
-		Assert-Null $mkp.ResourceGroup
 		Assert-NotNull $mkp.ResourceRate
 		Assert-NotNull $mkp.SubscriptionGuid
-		Assert-Null $mkp.SubscriptionName	
-		Assert-Null $mkp.Tag
 		Assert-NotNull $mkp.Type
-		Assert-Null $mkp.UnitOfMeasure
 		Assert-NotNull $mkp.UsageEnd
 		Assert-NotNull $mkp.UsageStart
 	}

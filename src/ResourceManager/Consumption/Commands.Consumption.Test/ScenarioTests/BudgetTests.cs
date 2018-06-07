@@ -32,16 +32,16 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudget()
+        public void TestBudgetAtSubscriptionLevel()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudget");
+            TestController.NewInstance.RunPowerShellTest("Test-BudgetAtSubscriptionLevel");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudgetAtResourceGroupLevel()
+        public void TestBudgetAtResourceGroupLevel()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetAtResourceGroupLevel");
+            TestController.NewInstance.RunPowerShellTest("Test-BudgetAtResourceGroupLevel");
         }
 
         [Fact]
@@ -49,104 +49,6 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         public void TestGetBudgets()
         {
             TestController.NewInstance.RunPowerShellTest("Test-GetBudgets");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetBudgetsAtResourceGroupLevel()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-GetBudgetsAtResourceGroupLevel");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetBudgetByName()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-GetBudgetByName");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetBudgetByNameAtResourceGroupLevel()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-GetBudgetByNameAtResourceGroupLevel");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBudget()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-SetBudget");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBudgetAtResourceGroupLevel()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-SetBudgetAtResourceGroupLevel");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveBudget()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-RemoveBudget");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveBudgetAtResourceGroupLevel()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-RemoveBudgetAtResourceGroupLevel");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudgetWithResourceGroupFilter()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithResourceGroupFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudgetWithResourceFilter()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithResourceFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudgetWithMeterFilter()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithMeterFilter");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewBudgetWithNotification()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-NewBudgetWithNotification");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBudgetWithSameNotification()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-SetBudgetWithSameNotification");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSetBudgetWithDifferentNotification()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-SetBudgetWithDifferentNotification");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestRemoveBudgetWithPassThru()
-        {
-            TestController.NewInstance.RunPowerShellTest("Test-RemoveBudgetWithPassThru");
         }
     }
 }

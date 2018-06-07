@@ -31,7 +31,6 @@ function Test-ListReservationSummariesMonthlyWithOrderId
 		Assert-NotNull $reservationSummary.ReservationOrderId
 		Assert-NotNull $reservationSummary.ReservedHour
 		Assert-NotNull $reservationSummary.SkuName
-		Assert-Null $reservationSummary.Tag
 		Assert-NotNull $reservationSummary.Type
 		Assert-NotNull $reservationSummary.UsageDate
 		Assert-NotNull $reservationSummary.UsedHour
@@ -57,7 +56,6 @@ function Test-ListReservationSummariesMonthlyWithOrderIdAndId
 		Assert-NotNull $reservationSummary.ReservationOrderId
 		Assert-NotNull $reservationSummary.ReservedHour
 		Assert-NotNull $reservationSummary.SkuName
-		Assert-Null $reservationSummary.Tag
 		Assert-NotNull $reservationSummary.Type
 		Assert-NotNull $reservationSummary.UsageDate
 		Assert-NotNull $reservationSummary.UsedHour
@@ -83,7 +81,6 @@ function Test-ListReservationSummariesDailyWithOrderId
 		Assert-NotNull $reservationSummary.ReservationOrderId
 		Assert-NotNull $reservationSummary.ReservedHour
 		Assert-NotNull $reservationSummary.SkuName
-		Assert-Null $reservationSummary.Tag
 		Assert-NotNull $reservationSummary.Type
 		Assert-NotNull $reservationSummary.UsageDate
 		Assert-NotNull $reservationSummary.UsedHour
@@ -109,7 +106,6 @@ function Test-ListReservationSummariesDailyWithOrderIdAndId
 		Assert-NotNull $reservationSummary.ReservationOrderId
 		Assert-NotNull $reservationSummary.ReservedHour
 		Assert-NotNull $reservationSummary.SkuName
-		Assert-Null $reservationSummary.Tag
 		Assert-NotNull $reservationSummary.Type
 		Assert-NotNull $reservationSummary.UsageDate
 		Assert-NotNull $reservationSummary.UsedHour
@@ -133,7 +129,6 @@ function Test-ListReservationDetailsWithOrderId
 		Assert-NotNull $reservationDetail.ReservationOrderId
 		Assert-NotNull $reservationDetail.ReservedHour
 		Assert-NotNull $reservationDetail.SkuName
-		Assert-Null $reservationDetail.Tag
 		Assert-NotNull $reservationDetail.TotalReservedQuantity
 		Assert-NotNull $reservationDetail.Type
 		Assert-NotNull $reservationDetail.UsageDate
@@ -158,7 +153,6 @@ function Test-ListReservationDetailsWithOrderIdAndId
 		Assert-NotNull $reservationDetail.ReservationOrderId
 		Assert-NotNull $reservationDetail.ReservedHour
 		Assert-NotNull $reservationDetail.SkuName
-		Assert-Null $reservationDetail.Tag
 		Assert-NotNull $reservationDetail.TotalReservedQuantity
 		Assert-NotNull $reservationDetail.Type
 		Assert-NotNull $reservationDetail.UsageDate

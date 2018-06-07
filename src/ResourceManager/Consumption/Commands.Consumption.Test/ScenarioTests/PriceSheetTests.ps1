@@ -22,7 +22,6 @@ function Test-ListPriceSheets
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name
-	Assert-Null $priceSheets.Tag
 	Assert-NotNull $priceSheets.Type	
 
 	$priceSheetProperties = $priceSheets.PriceSheets
@@ -51,7 +50,6 @@ function Test-ListPriceSheetsWithMeterDetailsExpand
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name
-	Assert-Null $priceSheets.Tag
 	Assert-NotNull $priceSheets.Type	
 
 	$priceSheetProperties = $priceSheets.PriceSheets
@@ -80,7 +78,6 @@ function Test-ListBillingPeriodPriceSheets
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name
-	Assert-Null $priceSheets.Tag
 	Assert-NotNull $priceSheets.Type	
 
 	$priceSheetProperties = $priceSheets.PriceSheets
