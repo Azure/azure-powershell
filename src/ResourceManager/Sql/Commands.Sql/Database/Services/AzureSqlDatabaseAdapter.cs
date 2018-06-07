@@ -156,7 +156,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 ReadScale =  model.Database.ReadScale.ToString(),
                 SampleName = model.SampleName,
                 ZoneRedundant = model.Database.ZoneRedundant,
-                ElasticPoolId = elasticPoolId
+                ElasticPoolId = elasticPoolId,
+                LicenseType = model.Database.LicenseType
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

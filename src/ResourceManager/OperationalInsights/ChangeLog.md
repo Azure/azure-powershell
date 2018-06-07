@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Updated PSWorkspace model to allow Network to use type as a parameter
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes

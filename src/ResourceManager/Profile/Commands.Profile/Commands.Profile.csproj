@@ -205,6 +205,6 @@
     </ItemGroup>
     <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
-    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFolder="$(OutputPath)\NewAssemblies\" ContinueOnError="false" />
+    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFiles="$(OutputPath)\Newtonsoft.Json.10.dll" />
   </Target>
 </Project>

@@ -23,7 +23,7 @@
   ],
   "src/ResourceManager/ApplicationInsights/": [
     ".\\src\\ResourceManager\\ApplicationInsights\\Commands.ApplicationInsights.Test\\bin\\Debug\\Microsoft.Azure.Commands.ApplicationInsights.Test.dll"
-  ],  
+  ],
   "src/ResourceManager/Automation/": [
     ".\\src\\ResourceManager\\Automation\\Commands.Automation.Test\\bin\\Debug\\Microsoft.Azure.Commands.ResourceManager.Automation.Test.dll"
   ],
@@ -73,6 +73,9 @@
   "src/ResourceManager/DataMigration/": [
     ".\\src\\ResourceManager\\DataMigration\\Commands.DataMigration.Test\\bin\\Debug\\Microsoft.Azure.Commands.DataMigration.Test.dll"
   ],
+  "src/ResourceManager/DeviceProvisioningServices/": [
+    ".\\src\\ResourceManager\\DeviceProvisioningServices\\Commands.DeviceProvisioningServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.DeviceProvisioningServices.dll"
+  ],
   "src/ResourceManager/DevTestLabs/": [],
   "src/ResourceManager/Dns/": [
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"
@@ -93,9 +96,6 @@
   ],
   "src/ResourceManager/IotHub/": [
     ".\\src\\ResourceManager\\IotHub\\Commands.IotHub.Test\\bin\\Debug\\Microsoft.Azure.Commands.IotHub.Test.dll"
-  ],
-  "src/ResourceManager/DeviceProvisioningServices/": [
-    ".\\src\\ResourceManager\\DeviceProvisioningServices\\Commands.DeviceProvisioningServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.DeviceProvisioningServices.dll"
   ],
   "src/ResourceManager/KeyVault/": [
     ".\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\bin\\Debug\\Microsoft.Azure.Commands.Compute.Test.dll",
