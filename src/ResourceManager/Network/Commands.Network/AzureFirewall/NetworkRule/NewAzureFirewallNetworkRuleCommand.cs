@@ -42,22 +42,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The source IPs of the rule")]
+            HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceIp { get; set; }
+        public List<string> SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The destination IPs of the rule")]
+            HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> DestinationIp { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The source ports of the rule")]
-        [ValidateNotNullOrEmpty]
-        public List<string> SourcePort { get; set; }
-
+        public List<string> DestinationAddress { get; set; }
+        
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
@@ -72,17 +66,13 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException("At least one network rule protocol should be specified!");
             }
-            if (this.SourcePort == null || this.SourcePort.Count == 0)
+            if (this.SourceAddress == null || this.SourceAddress.Count == 0)
             {
                 throw new ArgumentException("At least one network rule source IP should be specified!");
             }
-            if (this.DestinationPort == null || this.DestinationPort.Count == 0)
+            if (this.DestinationAddress == null || this.DestinationAddress.Count == 0)
             {
                 throw new ArgumentException("At least one network rule destination IP should be specified!");
-            }
-            if (this.SourcePort == null || this.SourcePort.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule source port should be specified!");
             }
             if (this.DestinationPort == null || this.DestinationPort.Count == 0)
             {
@@ -94,8 +84,8 @@ namespace Microsoft.Azure.Commands.Network
                 Name = this.Name,
                 Description = this.Description,
                 Protocols = this.Protocol,
-                SourceIps = this.SourceIp,
-                DestinationIps = this.DestinationIp,
+                SourceAddresses = this.SourceAddress,
+                DestinationAddresses = this.DestinationAddress,
                 DestinationPorts = this.DestinationPort
             };
             WriteObject(networkRule);

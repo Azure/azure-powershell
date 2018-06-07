@@ -2809,7 +2809,7 @@
                 <Label>Priority</Label>
                 <PropertyName>Priority</PropertyName>
               </ListItem>
-			  <ListItem>
+			        <ListItem>
                 <Label>Action</Label>
                 <PropertyName>ActionText</PropertyName>
               </ListItem>
@@ -2839,7 +2839,7 @@
                 <Label>Description</Label>
                 <PropertyName>Description</PropertyName>
               </ListItem>
-			  <ListItem>
+			        <ListItem>
                 <Label>SourceAddresses</Label>
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
@@ -2881,7 +2881,7 @@
                 <Label>Priority</Label>
                 <PropertyName>Priority</PropertyName>
               </ListItem>
-			  <ListItem>
+			        <ListItem>
                 <Label>Action</Label>
                 <PropertyName>ActionText</PropertyName>
               </ListItem>
@@ -2916,12 +2916,12 @@
                 <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>SourceIps</Label>
-                <PropertyName>SourceIpsText</PropertyName>
+                <Label>SourceAddresses</Label>
+                <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>DestinationIps</Label>
-                <PropertyName>DestinationIpsText</PropertyName>
+                <Label>DestinationAddresses</Label>
+                <PropertyName>DestinationAddressesText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>DestinationPorts</Label>
