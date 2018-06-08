@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallNetworkRuleCollection : PSAzureFirewallBaseRuleCollection
     {
+        [JsonProperty(Order = 4)]
         public List<PSAzureFirewallNetworkRule> Rules { get; set; }
 
         [JsonIgnore]

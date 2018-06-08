@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public PSResourceId Subnet { get; set; }
 
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 3)]
         public PSResourceId PublicIPAddress { get; set; }
 
         [JsonIgnore]

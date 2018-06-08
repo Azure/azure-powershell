@@ -22,7 +22,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 2)]
         public uint Priority { get; set; }
 
-        [JsonProperty(Order = 2)]
+        [JsonProperty(Order = 3)]
         public PSAzureFirewallRCAction Action { get; set; }
+
+        [JsonIgnore]
+        public string ActionText
+        {
+            get { return JsonConvert.SerializeObject(Action, Formatting.Indented); }
+        }
     }
 }
