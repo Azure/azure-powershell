@@ -2798,14 +2798,6 @@
                 <PropertyName>Name</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Etag</Label>
-                <PropertyName>Etag</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>Priority</Label>
                 <PropertyName>Priority</PropertyName>
               </ListItem>
@@ -2868,14 +2860,6 @@
               <ListItem>
                 <Label>Name</Label>
                 <PropertyName>Name</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Id</Label>
-                <PropertyName>Id</PropertyName>
-              </ListItem>
-              <ListItem>
-                <Label>Etag</Label>
-                <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>Priority</Label>
