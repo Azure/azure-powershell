@@ -65,23 +65,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public override string AgentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the target group name
-        /// </summary>
-        [Parameter(
-            ParameterSetName = DefaultParameterSet,
-            Mandatory = false,
-            HelpMessage = "The target group name")]
-        [Parameter(ParameterSetName = InputObjectParameterSet,
-            Mandatory = false,
-            HelpMessage = "The target group name")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = false,
-            HelpMessage = "The target group name")]
-        [ValidateNotNullOrEmpty]
-        [Alias("TargetGroupName")]
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets the agent input object model
         /// </summary>
         [Parameter(ParameterSetName = InputObjectParameterSet,
@@ -90,7 +73,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The agent object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel AgentObject { get; set; }
+        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the agent resource id
@@ -101,15 +84,29 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The agent resource id")]
         [ValidateNotNullOrEmpty]
-        public string AgentResourceId { get; set; }
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target group name
+        /// </summary>
+        [Parameter(
+            ParameterSetName = DefaultParameterSet,
+            HelpMessage = "The target group name")]
+        [Parameter(ParameterSetName = InputObjectParameterSet,
+            HelpMessage = "The target group name")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "The target group name")]
+        [ValidateNotNullOrEmpty]
+        [Alias("TargetGroupName")]
+        public override string Name { get; set; }
 
         /// <summary>
         /// Execution starts here
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.AgentObject);
-            InitializeResourceIdProperties(this.AgentResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

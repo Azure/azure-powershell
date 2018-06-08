@@ -68,22 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public override string AgentName { get; set; }
 
         /// <summary>
-        /// Gets or sets the target group name
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet,
-            Mandatory = true,
-            Position = 3,
-            HelpMessage = "The target group name")]
-        [Alias("TargetGroupName")]
-        public override string Name { get; set; }
-
-        /// <summary>
-        /// Defines whether it is ok to skip the requesting of rule removal confirmation
-        /// </summary>
-        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
-        public SwitchParameter Force { get; set; }
-
-        /// <summary>
         /// Gets or sets the agent input object
         /// </summary>
         [Parameter(ParameterSetName = InputObjectParameterSet,
@@ -104,6 +88,22 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The target group resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target group name
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet,
+            Mandatory = true,
+            Position = 3,
+            HelpMessage = "The target group name")]
+        [Alias("TargetGroupName")]
+        public override string Name { get; set; }
+
+        /// <summary>
+        /// Defines whether it is ok to skip the requesting of rule removal confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
 
         /// <summary>
         /// Execution starts here

@@ -126,7 +126,7 @@ function Test-CreateJobCredentialWithAgentObject ($a1)
 	$c1 = Get-ServerCredential
 
 	# Create using agent input object
-	$resp = New-AzureRmSqlElasticJobCredential -AgentObject $a1 -Name $cn1 -Credential $c1
+	$resp = New-AzureRmSqlElasticJobCredential -ParentObject $a1 -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -144,7 +144,7 @@ function Test-CreateJobCredentialWithAgentResourceId ($a1)
 	$c1 = Get-ServerCredential
 
 	# Create using agent resource id
-	$resp = New-AzureRmSqlElasticJobCredential -AgentResourceId $a1.ResourceId -Name $cn1 -Credential $c1
+	$resp = New-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $cn1 -Credential $c1
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.CredentialName $cn1
@@ -279,7 +279,7 @@ function Test-GetJobCredentialWithAgentObject ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 	# Test job credential input object
-	$resp = Get-AzureRmSqlElasticJobCredential -AgentObject $a1 -Name $jc1.CredentialName
+	$resp = Get-AzureRmSqlElasticJobCredential -ParentObject $a1 -Name $jc1.CredentialName
 
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -288,7 +288,7 @@ function Test-GetJobCredentialWithAgentObject ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test job credential input object - get credentials
-	$resp = Get-AzureRmSqlElasticJobCredential -AgentObject $a1
+	$resp = Get-AzureRmSqlElasticJobCredential -ParentObject $a1
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -303,7 +303,7 @@ function Test-GetJobCredentialWithAgentResourceId ($a1)
 	$jc2 = Create-JobCredentialForTest $a1
 
 		# Test job credential resource id
-	$resp = Get-AzureRmSqlElasticJobCredential -AgentResourceId $a1.ResourceId -Name $jc1.CredentialName
+	$resp = Get-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId -Name $jc1.CredentialName
 	Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
 	Assert-AreEqual $resp.ServerName $a1.ServerName
 	Assert-AreEqual $resp.AgentName $a1.AgentName
@@ -311,7 +311,7 @@ function Test-GetJobCredentialWithAgentResourceId ($a1)
 	Assert-AreEqual $resp.UserName $jc1.UserName
 
 	# Test job credential resource id - get credentials
-	$resp = Get-AzureRmSqlElasticJobCredential -AgentResourceId $a1.ResourceId
+	$resp = Get-AzureRmSqlElasticJobCredential -ParentResourceId $a1.ResourceId
 	Assert-True { $resp.Count -ge 2 }
 }
 

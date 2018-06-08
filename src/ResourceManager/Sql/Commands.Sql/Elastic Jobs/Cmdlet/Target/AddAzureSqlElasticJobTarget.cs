@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the flag indicating that we want to exclude this target
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Excludes a target.")]
+        [Parameter(HelpMessage = "Excludes a target.")]
         [ValidateNotNullOrEmpty]
         public override SwitchParameter Exclude { get; set; }
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public override void ExecuteCmdlet()
         {
             InitializeInputObjectProperties(this.TargetGroupObject);
-            InitializeResourceIdProperties(this.TargetGroupResourceId);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The job object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel JobObject { get; set; }
+        public AzureSqlElasticJobModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the job resource id
@@ -99,21 +99,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The job resource id")]
         [ValidateNotNullOrEmpty]
-        public string JobResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the switch parameter to indicate whether customer wants to poll completion of job
         /// or if not set, to return job execution id immediately upon creation.
         /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false)]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false)]
+        [Parameter(ParameterSetName = DefaultParameterSet)]
+        [Parameter(ParameterSetName = InputObjectParameterSet)]
+        [Parameter(ParameterSetName = ResourceIdParameterSet)]
         public SwitchParameter Wait { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.JobObject);
-            InitializeResourceIdProperties(this.JobResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

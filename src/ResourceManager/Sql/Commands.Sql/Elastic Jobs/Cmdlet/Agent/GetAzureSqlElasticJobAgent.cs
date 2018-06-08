@@ -26,9 +26,32 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticJobAgent",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(IEnumerable<AzureSqlElasticJobAgentModel>))]
+    [OutputType(typeof(AzureSqlElasticJobAgentModel))]
     public class GetAzureSqlElasticJobAgent : AzureSqlElasticJobAgentCmdletBase<AzureSqlServerModel>
     {
+        /// <summary>
+        /// Gets or sets the Agent Server Object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The server input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlServerModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Agent Server Resource Id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The server resource id")]
+        public string ParentResourceId { get; set; }
+
         /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
@@ -55,46 +78,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the agent name
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = DefaultParameterSet,
-            HelpMessage = "The agent name")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "The agent name")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "The agent name")]
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "The agent name")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "The agent name")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "The agent name")]
         [Alias("AgentName")]
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent Server Object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The server input object")]
-        [Alias("ServerObject")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlServerModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent Server Resource Id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The server resource id")]
-        [Alias("ServerResourceId")]
-        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet

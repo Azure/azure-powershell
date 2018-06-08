@@ -48,9 +48,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Parameter sets for target group resource id db, server, pool, and shard map
         /// </summary>
-        protected const string TargetGroupResourceIdSqlDatabaseSet = "Sql Database TargetGroupResourceId Parameter Set";
-        protected const string TargetGroupResourceIdSqlServerOrElasticPoolSet = "Sql Server or Elastic Pool TargetGroupResourceId Parameter Set";
-        protected const string TargetGroupResourceIdSqlShardMapSet = "Sql Shard Map TargetGroupResourceId Parameter Set";
+        protected const string ParentResourceIdSqlDatabaseSet = "Sql Database ParentResourceId Parameter Set";
+        protected const string ParentResourceIdSqlServerOrElasticPoolSet = "Sql Server or Elastic Pool ParentResourceId Parameter Set";
+        protected const string ParentResourceIdSqlShardMapSet = "Sql Shard Map ParentResourceId Parameter Set";
 
         /// <summary>
         /// The target in question
@@ -195,41 +195,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Server Target Name")]
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlDatabaseSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlDatabaseSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Server Target Name")]
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlServerOrElasticPoolSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Server Target Name")]
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlShardMapSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlShardMapSet,
             Mandatory = true,
             Position = 1,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Server Target Name")]
         [ValidateNotNullOrEmpty]
         public override string ServerName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Target Elastic Pool Name
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Elastic Pool Target Name",
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = false,
-            HelpMessage = "Elastic Pool Target Name",
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
-        [Parameter(Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Elastic Pool Target Name",
-            ParameterSetName = TargetGroupResourceIdSqlServerOrElasticPoolSet)]
-        public override string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Gets or sets the Shard Map Name
@@ -248,7 +230,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 2,
             HelpMessage = "Shard Map Target Name",
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = TargetGroupResourceIdSqlShardMapSet)]
+            ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string ShardMapName { get; set; }
 
         /// <summary>
@@ -274,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 2,
             HelpMessage = "Database Target Name",
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = TargetGroupResourceIdSqlDatabaseSet)]
+            ParameterSetName = ParentResourceIdSqlDatabaseSet)]
         [Parameter(Mandatory = true,
             Position = 3,
             HelpMessage = "Database Target Name",
@@ -284,7 +266,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 3,
             HelpMessage = "Database Target Name",
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = TargetGroupResourceIdSqlShardMapSet)]
+            ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string DatabaseName { get; set; }
 
         /// <summary>
@@ -311,11 +293,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(Mandatory = true,
             Position = 2,
             HelpMessage = "Refresh Credential Name",
-            ParameterSetName = TargetGroupResourceIdSqlServerOrElasticPoolSet)]
+            ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet)]
         [Parameter(Mandatory = true,
             Position = 4,
             HelpMessage = "Refresh Credential Name",
-            ParameterSetName = TargetGroupResourceIdSqlShardMapSet)]
+            ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string RefreshCredentialName { get; set; }
 
         /// <summary>
@@ -342,23 +324,40 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the target group resource id.
         /// </summary>
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlDatabaseSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlDatabaseSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The target group resource id")]
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlServerOrElasticPoolSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The target group resource id")]
-        [Parameter(ParameterSetName = TargetGroupResourceIdSqlShardMapSet,
+        [Parameter(ParameterSetName = ParentResourceIdSqlShardMapSet,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The target group resource id")]
         [ValidateNotNullOrEmpty]
-        public string TargetGroupResourceId { get; set; }
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Target Elastic Pool Name
+        /// </summary>
+        [Parameter(
+            HelpMessage = "Elastic Pool Target Name",
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
+        [Parameter(
+            HelpMessage = "Elastic Pool Target Name",
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
+        [Parameter(
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Elastic Pool Target Name",
+            ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet)]
+        public override string ElasticPoolName { get; set; }
 
         /// <summary>
         /// Helper for determining based on parameter set what target type this target should be.

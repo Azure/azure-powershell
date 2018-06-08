@@ -169,7 +169,7 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using input object
-        $resp = Get-AzureRmSqlElasticJobAgent -ServerObject $s1 -AgentName $a1.AgentName
+        $resp = Get-AzureRmSqlElasticJobAgent -ParentObject $s1 -AgentName $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName
@@ -178,7 +178,7 @@ function Test-GetAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using server resource id
-        $resp = Get-AzureRmSqlElasticJobAgent -ServerResourceId $s1.ResourceId -AgentName $a1.AgentName
+        $resp = Get-AzureRmSqlElasticJobAgent -ParentResourceId $s1.ResourceId -AgentName $a1.AgentName
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $a1.ServerName
         Assert-AreEqual $resp.DatabaseName $a1.DatabaseName

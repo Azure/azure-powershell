@@ -108,7 +108,7 @@ function Test-CreateTargetGroupWithAgentObject ($a1)
     $tgName = Get-TargetGroupName
 
     # Test using input object
-    $resp = New-AzureRmSqlElasticJobTargetGroup -AgentObject $a1 -Name $tgName
+    $resp = New-AzureRmSqlElasticJobTargetGroup -ParentObject $a1 -Name $tgName
     Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
     Assert-AreEqual $resp.AgentName $a1.AgentName
     Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -127,7 +127,7 @@ function Test-CreateTargetGroupWithAgentResourceId ($a1)
     $tgName = Get-TargetGroupName
 
     # Test using resource id
-    $resp = New-AzureRmSqlElasticJobTargetGroup -AgentResourceId $a1.ResourceId -Name $tgName
+    $resp = New-AzureRmSqlElasticJobTargetGroup -ParentResourceId $a1.ResourceId -Name $tgName
     Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
     Assert-AreEqual $resp.AgentName $a1.AgentName
     Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -190,7 +190,7 @@ function Test-GetTargetGroupWithAgentObject ($a1)
     $tg2 = Create-TargetGroupForTest $a1
 
     # Test using input object
-    $resp = Get-AzureRmSqlElasticJobTargetGroup -AgentObject $a1 -Name $tg.TargetGroupName
+    $resp = Get-AzureRmSqlElasticJobTargetGroup -ParentObject $a1 -Name $tg.TargetGroupName
     Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
     Assert-AreEqual $resp.AgentName $a1.AgentName
     Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -198,7 +198,7 @@ function Test-GetTargetGroupWithAgentObject ($a1)
     Assert-AreEqual $resp.Members.Count 0
 
     # Test get all with default parameters
-    $resp = Get-AzureRmSqlElasticJobTargetGroup -AgentObject $a1
+    $resp = Get-AzureRmSqlElasticJobTargetGroup -ParentObject $a1
     Assert-True { $resp.Count -ge 2 }
 }
 
@@ -211,10 +211,10 @@ function Test-GetTargetGroupWithAgentObject ($a1)
 function Test-GetTargetGroupWithAgentResourceId ($a1)
 {
     $tg = Create-TargetGroupForTest $a1
-    $tg2 = Create-TargetGroupForTest $a1 
+    $tg2 = Create-TargetGroupForTest $a1
 
     # Test using resource id
-    $resp = Get-AzureRmSqlElasticJobTargetGroup -AgentResourceId $a1.ResourceId -Name $tg.TargetGroupName
+    $resp = Get-AzureRmSqlElasticJobTargetGroup -ParentResourceId $a1.ResourceId -Name $tg.TargetGroupName
     Assert-AreEqual $resp.ResourceGroupName $a1.ResourceGroupName
     Assert-AreEqual $resp.AgentName $a1.AgentName
     Assert-AreEqual $resp.ServerName $a1.ServerName
@@ -222,7 +222,7 @@ function Test-GetTargetGroupWithAgentResourceId ($a1)
     Assert-AreEqual $resp.Members.Count 0
 
     # Test get all with default parameters
-    $resp = Get-AzureRmSqlElasticJobTargetGroup -AgentResourceId $a1.ResourceId
+    $resp = Get-AzureRmSqlElasticJobTargetGroup -ParentResourceId $a1.ResourceId
     Assert-True { $resp.Count -ge 2 }
 }
 

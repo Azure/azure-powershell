@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The Agent Control Database Object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobExecutionModel JobExecutionObject { get; set; }
+        public AzureSqlElasticJobExecutionModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Agent's Control Database Object
@@ -109,15 +109,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The job execution resource id")]
         [ValidateNotNullOrEmpty]
-        public string JobExecutionResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.JobExecutionObject);
-            InitializeResourceIdProperties(this.JobExecutionResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

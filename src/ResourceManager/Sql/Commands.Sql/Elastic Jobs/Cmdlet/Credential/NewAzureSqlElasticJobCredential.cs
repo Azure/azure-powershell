@@ -32,6 +32,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class NewAzureSqlElasticJobCredential : AzureSqlElasticJobCredentialCmdletBase<AzureSqlElasticJobAgentModel>
     {
         /// <summary>
+        /// Gets or sets the agent model input object
+        /// </summary>
+        [Parameter(ParameterSetName = InputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The agent resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -103,34 +125,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public PSCredential Credential { get; set; }
 
         /// <summary>
-        /// Gets or sets the agent model input object
-        /// </summary>
-        [Parameter(ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel AgentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The agent resource id")]
-        [ValidateNotNullOrEmpty]
-        public string AgentResourceId { get; set; }
-
-        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.AgentObject);
-            InitializeResourceIdProperties(this.AgentResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

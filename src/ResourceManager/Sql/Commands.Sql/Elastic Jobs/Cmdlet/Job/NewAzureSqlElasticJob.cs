@@ -39,10 +39,52 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         protected const string AgentDefaultRunOnceParameterSet = "RunOnce";
         protected const string AgentDefaultRecurringParameterSet = "Recurring";
-        protected const string AgentObjectRunOnceParameterSet = "RunOnce using AgentObject";
-        protected const string AgentObjectRecurringParameterSet = "Recurring using AgentObject";
-        protected const string AgentResourceIdRunOnceParameterSet = "RunOnce using AgentResourceId";
-        protected const string AgentResourceIdRecurringParameterSet = "Recurring using AgentResourceId";
+        protected const string ParentObjectRunOnceParameterSet = "RunOnce using ParentObject";
+        protected const string ParentObjectRecurringParameterSet = "Recurring using ParentObject";
+        protected const string ParentResourceIdRunOnceParameterSet = "RunOnce using ParentResourceId";
+        protected const string ParentResourceIdRecurringParameterSet = "Recurring using ParentResourceId";
+
+        /// <summary>
+        /// Gets or sets the agent input object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent input object")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParentObjectRunOnceParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent input object")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParentObjectRecurringParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The agent resource id")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParentResourceIdRunOnceParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The agent resource id")]
+        [Parameter(Mandatory = true,
+            ParameterSetName = ParentResourceIdRecurringParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The agent resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -79,11 +121,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, Position = 3, HelpMessage = "The job name")]
         [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 3, HelpMessage = "The job name")]
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, Position = 1, HelpMessage = "The job name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentObjectRunOnceParameterSet, Position = 1, HelpMessage = "The job name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentObjectRecurringParameterSet, Position = 1, HelpMessage = "The job name")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectRunOnceParameterSet, Position = 1, HelpMessage = "The job name")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectRecurringParameterSet, Position = 1, HelpMessage = "The job name")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, Position = 1, HelpMessage = "The job name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRunOnceParameterSet, Position = 1, HelpMessage = "The job name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRecurringParameterSet, Position = 1, HelpMessage = "The job name")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRunOnceParameterSet, Position = 1, HelpMessage = "The job name")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRecurringParameterSet, Position = 1, HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         [Alias("JobName")]
         public override string Name { get; set; }
@@ -92,8 +134,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the switch parameter run once
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, Position = 4, HelpMessage = "The flag to indicate job will be run once")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentObjectRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
         public SwitchParameter RunOnce { get; set; }
 
         /// <summary>
@@ -101,9 +143,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 4,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentObjectRecurringParameterSet, Position = 2,
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectRecurringParameterSet, Position = 2,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRecurringParameterSet, Position = 2,
+        [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRecurringParameterSet, Position = 2,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         public IntervalTypes? IntervalType { get; set; }
 
@@ -111,81 +153,39 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the job schedule interval count
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 5, HelpMessage = "The recurring schedule interval count")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentObjectRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentResourceIdRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentObjectRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
+        [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
         public uint? IntervalCount { get; set; }
 
         /// <summary>
         /// Gets or sets the job schedule start time
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AgentDefaultRunOnceParameterSet, HelpMessage = "The job schedule start time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentDefaultRecurringParameterSet, HelpMessage = "The job schedule start time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentObjectRunOnceParameterSet, HelpMessage = "The job schedule start time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentObjectRecurringParameterSet, HelpMessage = "The job schedule start time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentResourceIdRunOnceParameterSet, HelpMessage = "The job schedule start time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentResourceIdRecurringParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = AgentDefaultRunOnceParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = AgentDefaultRecurringParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = ParentObjectRunOnceParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = ParentObjectRecurringParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = ParentResourceIdRunOnceParameterSet, HelpMessage = "The job schedule start time")]
+        [Parameter(ParameterSetName = ParentResourceIdRecurringParameterSet, HelpMessage = "The job schedule start time")]
         public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the job schedule end time
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = AgentDefaultRecurringParameterSet, HelpMessage = "The job schedule end time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentObjectRecurringParameterSet, HelpMessage = "The job schedule end time")]
-        [Parameter(Mandatory = false, ParameterSetName = AgentResourceIdRecurringParameterSet, HelpMessage = "The job schedule end time")]
+        [Parameter(ParameterSetName = AgentDefaultRecurringParameterSet, HelpMessage = "The job schedule end time")]
+        [Parameter(ParameterSetName = ParentObjectRecurringParameterSet, HelpMessage = "The job schedule end time")]
+        [Parameter(ParameterSetName = ParentResourceIdRecurringParameterSet, HelpMessage = "The job schedule end time")]
         public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// Gets or sets the job description
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The job description")]
+        [Parameter(HelpMessage = "The job description")]
         public string Description { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent input object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent input object")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = AgentObjectRunOnceParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent input object")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = AgentObjectRecurringParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel AgentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The agent resource id")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = AgentResourceIdRunOnceParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The agent resource id")]
-        [Parameter(Mandatory = true,
-            ParameterSetName = AgentResourceIdRecurringParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The agent resource id")]
-        [ValidateNotNullOrEmpty]
-        public string AgentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the enable switch flag.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The flag to indicate customer wants this job to be enabled.")]
+        [Parameter(HelpMessage = "The flag to indicate customer wants this job to be enabled.")]
         public SwitchParameter Enable { get; set; }
 
         /// <summary>
@@ -193,8 +193,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.AgentObject);
-            InitializeResourceIdProperties(this.AgentResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

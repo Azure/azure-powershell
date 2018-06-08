@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Elastic Jobs Resource Id Templates
         /// </summary>
-        private const string targetGroupResourceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/jobAgents/{3}/targetGroups/{4}";
+        private const string ParentResourceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/jobAgents/{3}/targetGroups/{4}";
         private const string credentialResourceIdTemplate = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Sql/servers/{2}/jobAgents/{3}/credentials/{4}";
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
                 return null;
             }
 
-            return string.Format(targetGroupResourceIdTemplate,
+            return string.Format(ParentResourceIdTemplate,
                             DefaultContext.Subscription.Id,
                             resourceGroupName,
                             serverName,

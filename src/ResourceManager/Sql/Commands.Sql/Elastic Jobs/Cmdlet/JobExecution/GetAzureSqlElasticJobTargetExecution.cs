@@ -30,6 +30,29 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
     public class GetAzureSqlElasticJobTargetExecution : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobExecutionModel>
     {
         /// <summary>
+        /// Gets or sets the job execution object input model
+        /// </summary>
+        [Parameter(
+            ParameterSetName = InputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent object.")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobExecutionModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job execution resource id
+        /// </summary>
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job execution resource id.")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(ParameterSetName = DefaultParameterSet,
@@ -80,63 +103,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         public override string JobExecutionId { get; set; }
 
         /// <summary>
-        /// Gets or sets the job step name
-        /// </summary>
-        [Parameter(
-            ParameterSetName = DefaultParameterSet,
-            Mandatory = false,
-            HelpMessage = "The job step name.")]
-        [Parameter(
-            ParameterSetName = InputObjectParameterSet,
-            Mandatory = false,
-            HelpMessage = "The job step name.")]
-        [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
-            Mandatory = false,
-            HelpMessage = "The job step name.")]
-        public override string StepName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the min create time
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Filter by create time min")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Filter by create time min")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Filter by create time min")]
-        public DateTime? CreateTimeMin { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max create time
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Filter by create time max")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Filter by create time max")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Filter by create time max")]
-        public DateTime? CreateTimeMax { get; set; }
-
-        /// <summary>
-        /// Gets or sets the min end time
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Filter by end time min.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Filter by end time min.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Filter by end time min.")]
-        public DateTime? EndTimeMin { get; set; }
-
-        /// <summary>
-        /// Gets or sets the max end time
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Filter by end time max.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Filter by end time max.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Filter by end time max.")]
-        public DateTime? EndTimeMax { get; set; }
-
-        /// <summary>
-        /// Gets or sets the active switch parameter. Filters by active/in progress executions
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = false, HelpMessage = "Flag to filter by active executions.")]
-        [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = false, HelpMessage = "Flag to filter by active executions.")]
-        [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = false, HelpMessage = "Flag to filter by active executions.")]
-        public SwitchParameter Active { get; set; }
-
-        /// <summary>
         /// Gets or sets the top executions to return in the response
         /// </summary>
         [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, Position = 5, HelpMessage = "Count returns the top number of executions.")]
@@ -145,35 +111,60 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         public int? Count { get; set; }
 
         /// <summary>
-        /// Gets or sets the job execution object input model
+        /// Gets or sets the job step name
         /// </summary>
-        [Parameter(
-            ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent object.")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobExecutionModel JobExecutionObject { get; set; }
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "The job step name.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "The job step name.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "The job step name.")]
+        public override string StepName { get; set; }
 
         /// <summary>
-        /// Gets or sets the job execution resource id
+        /// Gets or sets the min create time
         /// </summary>
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName =true,
-            Position = 0,
-            HelpMessage = "The job execution resource id.")]
-        [ValidateNotNullOrEmpty]
-        public string JobExecutionResourceId { get; set; }
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Filter by create time min")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "Filter by create time min")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "Filter by create time min")]
+        public DateTime? CreateTimeMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max create time
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Filter by create time max")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "Filter by create time max")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "Filter by create time max")]
+        public DateTime? CreateTimeMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the min end time
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Filter by end time min.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "Filter by end time min.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "Filter by end time min.")]
+        public DateTime? EndTimeMin { get; set; }
+
+        /// <summary>
+        /// Gets or sets the max end time
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Filter by end time max.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "Filter by end time max.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "Filter by end time max.")]
+        public DateTime? EndTimeMax { get; set; }
+
+        /// <summary>
+        /// Gets or sets the active switch parameter. Filters by active/in progress executions
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "Flag to filter by active executions.")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "Flag to filter by active executions.")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "Flag to filter by active executions.")]
+        public SwitchParameter Active { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.JobExecutionObject);
-            InitializeResourceIdProperties(this.JobExecutionResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

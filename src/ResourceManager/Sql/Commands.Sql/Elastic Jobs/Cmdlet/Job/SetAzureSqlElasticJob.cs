@@ -39,10 +39,58 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         protected const string JobDefaultRunOnceParameterSet = "RunOnce";
         protected const string JobDefaultRecurringParameterSet = "Recurring";
-        protected const string JobObjectRunOnceParameterSet = "RunOnce using JobObject";
-        protected const string JobObjectRecurringParameterSet = "Recurring using JobObject";
-        protected const string JobResourceIdRunOnceParameterSet = "RunOnce using JobResourceId";
-        protected const string JobResourceIdRecurringParameterSet = "Recurring using JobResourceId";
+        protected const string ParentObjectRunOnceParameterSet = "RunOnce using ParentObject";
+        protected const string ParentObjectRecurringParameterSet = "Recurring using ParentObject";
+        protected const string ParentResourceIdRunOnceParameterSet = "RunOnce using ParentResourceId";
+        protected const string ParentResourceIdRecurringParameterSet = "Recurring using ParentResourceId";
+
+        /// <summary>
+        /// Gets or sets the agent input object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job input object")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectRunOnceParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job input object")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectRecurringParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdRunOnceParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdRecurringParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -140,12 +188,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The flag to indicate job will be run once")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobObjectRunOnceParameterSet,
+            ParameterSetName = ParentObjectRunOnceParameterSet,
             Position = 1,
             HelpMessage = "The flag to indicate job will be run once")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobResourceIdRunOnceParameterSet,
+            ParameterSetName = ParentResourceIdRunOnceParameterSet,
             Position = 1,
             HelpMessage = "The flag to indicate job will be run once")]
         public SwitchParameter RunOnce { get; set; }
@@ -160,12 +208,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobObjectRecurringParameterSet,
+            ParameterSetName = ParentObjectRecurringParameterSet,
             Position = 1,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobResourceIdRecurringParameterSet,
+            ParameterSetName = ParentResourceIdRecurringParameterSet,
             Position = 1,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [ValidateNotNullOrEmpty]
@@ -181,12 +229,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The recurring schedule interval count")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobObjectRecurringParameterSet,
+            ParameterSetName = ParentObjectRecurringParameterSet,
             Position = 2,
             HelpMessage = "The recurring schedule interval count")]
         [Parameter(
             Mandatory = true,
-            ParameterSetName = JobResourceIdRecurringParameterSet,
+            ParameterSetName = ParentResourceIdRecurringParameterSet,
             Position = 2,
             HelpMessage = "The recurring schedule interval count")]
         public uint? IntervalCount { get; set; }
@@ -194,73 +242,25 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the job schedule start time
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The job schedule start time")]
+        [Parameter(HelpMessage = "The job schedule start time")]
         public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the job schedule end time
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The job schedule end time")]
+        [Parameter(HelpMessage = "The job schedule end time")]
         public DateTime? EndTime { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent input object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job input object")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobObjectRunOnceParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job input object")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobObjectRecurringParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobResourceIdRunOnceParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobResourceIdRecurringParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the enable switch flag.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The flag to indicate customer wants this job to be enabled.")]
+        [Parameter(HelpMessage = "The flag to indicate customer wants this job to be enabled.")]
         public SwitchParameter Enable { get; set; }
 
         /// <summary>
         /// Gets or sets the job description
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The job description")]
+        [Parameter(HelpMessage = "The job description")]
         public string Description { get; set; }
 
         /// <summary>

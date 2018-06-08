@@ -31,6 +31,30 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class SetAzureSqlElasticJobCredential : AzureSqlElasticJobCredentialCmdletBase<AzureSqlElasticJobCredentialModel>
     {
         /// <summary>
+        /// Gets or sets the job credential input object model to update
+        /// </summary>
+        [Parameter(
+            ParameterSetName = InputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job credential object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobCredentialModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job credential resource id
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job credential resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -103,30 +127,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job credential")]
         [ValidateNotNullOrEmpty]
         public PSCredential Credential { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job credential input object model to update
-        /// </summary>
-        [Parameter(
-            ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job credential object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobCredentialModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job credential resource id
-        /// </summary>
-        [Parameter(
-            ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job credential resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet

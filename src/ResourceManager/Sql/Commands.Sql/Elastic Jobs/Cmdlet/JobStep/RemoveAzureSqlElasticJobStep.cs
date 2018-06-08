@@ -75,18 +75,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         public override string JobName { get; set; }
 
         /// <summary>
-        /// Gets or sets the job step name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 4,
-            HelpMessage = "The job step name")]
-        [Alias("StepName")]
-        [ValidateNotNullOrEmpty]
-        public override string Name { get; set; }
-
-        /// <summary>
         /// Gets or sets the job step input object
         /// </summary>
         [Parameter(
@@ -111,6 +99,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         public string ResourceId { get; set; }
 
         /// <summary>
+        /// Gets or sets the job step name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 4,
+            HelpMessage = "The job step name")]
+        [Alias("StepName")]
+        [ValidateNotNullOrEmpty]
+        public override string Name { get; set; }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -119,7 +119,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             InitializeResourceIdProperties(this.ResourceId);
             this.Name = this.Name ?? this.StepName;
             base.ExecuteCmdlet();
-            this.Name = null; // Clear name
         }
 
         /// <summary>

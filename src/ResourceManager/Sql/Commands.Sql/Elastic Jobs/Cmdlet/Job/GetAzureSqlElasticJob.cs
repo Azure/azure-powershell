@@ -31,6 +31,29 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     public class GetAzureSqlElasticJob : AzureSqlElasticJobCmdletBase<AzureSqlElasticJobAgentModel>
     {
         /// <summary>
+        /// Gets or sets the agent input object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The agent resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, Position = 0, HelpMessage = "The resource group name")]
@@ -55,43 +78,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         /// <summary>
         /// Gets or sets the job name
         /// </summary>
-        [Parameter(Mandatory = false, ParameterSetName = InputObjectParameterSet, HelpMessage = "The job name")]
-        [Parameter(Mandatory = false, ParameterSetName = ResourceIdParameterSet, HelpMessage = "The job name")]
-        [Parameter(Mandatory = false, ParameterSetName = DefaultParameterSet, HelpMessage = "The job name")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "The job name")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "The job name")]
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         [Alias("JobName")]
         public override string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent input object
-        /// </summary>
-        [Parameter(Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel AgentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The agent resource id")]
-        [ValidateNotNullOrEmpty]
-        public string AgentResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.AgentObject);
-            InitializeResourceIdProperties(this.AgentResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

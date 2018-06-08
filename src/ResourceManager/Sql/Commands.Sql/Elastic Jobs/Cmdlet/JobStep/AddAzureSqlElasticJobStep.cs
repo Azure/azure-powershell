@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         protected const string DefaultOutputDatabaseObject = "WithOutputDb";
         protected const string DefaultOutputDatabaseId = "WithOutputDbId";
-        protected const string JobObjectOutputDatabaseObject = "WithOutputDb using JobObject";
-        protected const string JobObjectOutputDatabaseId = "WithOutputDbId using JobObject";
-        protected const string JobResourceIdOutputDatabaseObject = "WithOutputDb using JobResourceId";
-        protected const string JobResourceIdOutputDatabaseId = "WithOutputDbId Set using JobResourceId";
+        protected const string ParentObjectOutputDatabaseObject = "WithOutputDb using ParentObject";
+        protected const string ParentObjectOutputDatabaseId = "WithOutputDbId using ParentObject";
+        protected const string ParentResourceIdOutputDatabaseObject = "WithOutputDb using ParentResourceId";
+        protected const string ParentResourceIdOutputDatabaseId = "WithOutputDbId Set using ParentResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -132,57 +132,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            Position = 4,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultOutputDatabaseObject,
-            Position = 4,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultOutputDatabaseId,
-            Position = 4,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = JobObjectOutputDatabaseObject,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = JobObjectOutputDatabaseId,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 1,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
-            HelpMessage = "The job step name")]
-        [Alias("StepName")]
-        public override string Name { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job step name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
             Position = 5,
             HelpMessage = "The target group name")]
         [Parameter(
@@ -203,12 +152,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 2,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The target group name")]
         [Parameter(
             Mandatory = true,
             Position = 2,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The target group name")]
         [Parameter(
             Mandatory = true,
@@ -219,12 +168,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Mandatory = true,
             Position = 2,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The target group name")]
         [Parameter(
             Mandatory = true,
             Position = 2,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The target group name")]
         public override string TargetGroupName { get; set; }
 
@@ -251,12 +200,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 3,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The credential name")]
         [Parameter(
             Mandatory = true,
             Position = 3,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The credential name")]
         [Parameter(
             Mandatory = true,
@@ -266,12 +215,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 3,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The credential name")]
         [Parameter(
             Mandatory = true,
             Position = 3,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The credential name")]
         public override string CredentialName { get; set; }
 
@@ -298,12 +247,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 4,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The command text")]
         [Parameter(
             Mandatory = true,
             Position = 4,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The command text")]
         [Parameter(
             Mandatory = true,
@@ -313,12 +262,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 4,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The command text")]
         [Parameter(
             Mandatory = true,
             Position = 4,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The command text")]
         public string CommandText { get; set; }
 
@@ -330,12 +279,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 5,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The output database object")]
         [Parameter(
             Mandatory = true,
             Position = 5,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The output database object")]
         public AzureSqlDatabaseModel OutputDatabaseObject { get; set; }
 
@@ -347,12 +296,12 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 5,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The output database resource id")]
         [Parameter(
             Mandatory = true,
             Position = 5,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The output database resource id")]
         public string OutputDatabaseResourceId { get; set; }
 
@@ -372,22 +321,22 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 6,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The output credential name")]
         [Parameter(
             Mandatory = true,
             Position = 6,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The output credential name")]
         [Parameter(
             Mandatory = true,
             Position = 6,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The output credential name")]
         [Parameter(
             Mandatory = true,
             Position = 6,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The output credential name")]
         public string OutputCredentialName { get; set; }
 
@@ -407,95 +356,24 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             Position = 7,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The output table name")]
         [Parameter(
             Mandatory = true,
             Position = 7,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The output table name")]
         [Parameter(
             Mandatory = true,
             Position = 7,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The output table name")]
         [Parameter(
             Mandatory = true,
             Position = 7,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The output table name")]
         public string OutputTableName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the output schema name
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            Position = 11,
-            ParameterSetName = DefaultOutputDatabaseObject,
-            HelpMessage = "The output schema name")]
-        [Parameter(
-            Mandatory = false,
-            Position = 11,
-            ParameterSetName = DefaultOutputDatabaseId,
-            HelpMessage = "The output schema name")]
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ParameterSetName = JobObjectOutputDatabaseObject,
-            HelpMessage = "The output schema name")]
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ParameterSetName = JobObjectOutputDatabaseId,
-            HelpMessage = "The output schema name")]
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
-            HelpMessage = "The output schema name")]
-        [Parameter(
-            Mandatory = false,
-            Position = 8,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
-            HelpMessage = "The output schema name")]
-        public string OutputSchemaName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the step id
-        /// </summary>
-        [Parameter(Mandatory  = false, HelpMessage = "The step id")]
-        public int? StepId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the timeout seconds
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The timeout seconds")]
-        public int? TimeoutSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retry attempts
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The retry attempts")]
-        public int? RetryAttempts { get; set; }
-
-        /// <summary>
-        /// Gets or sets the initial retry interval seconds
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The initial retry interval seconds")]
-        public int? InitialRetryIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum retry interval seconds
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The maximum retry interval seconds")]
-        public int? MaximumRetryIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retry interval backoff multiplier
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The retry interval back off multiplier")]
-        public double? RetryIntervalBackoffMultiplier { get; set; }
 
         /// <summary>
         /// Gets or sets the job object
@@ -510,16 +388,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = JobObjectOutputDatabaseObject,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
             HelpMessage = "The job object")]
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipeline = true,
-            ParameterSetName = JobObjectOutputDatabaseId,
+            ParameterSetName = ParentObjectOutputDatabaseId,
             HelpMessage = "The job object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel JobObject { get; set; }
+        public AzureSqlElasticJobModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the job resource id
@@ -534,23 +412,133 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = JobResourceIdOutputDatabaseObject,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
             HelpMessage = "The job resource id")]
         [Parameter(
             Mandatory = true,
             Position = 0,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = JobResourceIdOutputDatabaseId,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The job resource id")]
-        public string JobResourceId { get; set; }
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job step name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 4,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultOutputDatabaseObject,
+            Position = 4,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultOutputDatabaseId,
+            Position = 4,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = InputObjectParameterSet,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ParentObjectOutputDatabaseId,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 1,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
+            HelpMessage = "The job step name")]
+        [Alias("StepName")]
+        public override string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the output schema name
+        /// </summary>
+        [Parameter(
+            ParameterSetName = DefaultOutputDatabaseObject,
+            HelpMessage = "The output schema name")]
+        [Parameter(
+            ParameterSetName = DefaultOutputDatabaseId,
+            HelpMessage = "The output schema name")]
+        [Parameter(
+            ParameterSetName = ParentObjectOutputDatabaseObject,
+            HelpMessage = "The output schema name")]
+        [Parameter(
+            ParameterSetName = ParentObjectOutputDatabaseId,
+            HelpMessage = "The output schema name")]
+        [Parameter(
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
+            HelpMessage = "The output schema name")]
+        [Parameter(
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
+            HelpMessage = "The output schema name")]
+        public string OutputSchemaName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the step id
+        /// </summary>
+        [Parameter(HelpMessage = "The step id")]
+        public int? StepId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the timeout seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The timeout seconds")]
+        public int? TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retry attempts
+        /// </summary>
+        [Parameter(HelpMessage = "The retry attempts")]
+        public int? RetryAttempts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial retry interval seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The initial retry interval seconds")]
+        public int? InitialRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum retry interval seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The maximum retry interval seconds")]
+        public int? MaximumRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retry interval backoff multiplier
+        /// </summary>
+        [Parameter(HelpMessage = "The retry interval back off multiplier")]
+        public double? RetryIntervalBackoffMultiplier { get; set; }
 
         /// <summary>
         /// Cmdlet execution starts here
         /// </summary>
         public sealed override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.JobObject);
-            InitializeResourceIdProperties(this.JobResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

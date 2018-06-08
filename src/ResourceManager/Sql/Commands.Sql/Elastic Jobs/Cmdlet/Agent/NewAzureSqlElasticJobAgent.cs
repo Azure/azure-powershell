@@ -30,9 +30,33 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     [Cmdlet(VerbsCommon.New, "AzureRmSqlElasticJobAgent",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(IEnumerable<AzureSqlElasticJobAgentModel>))]
+    [OutputType(typeof(AzureSqlElasticJobAgentModel))]
     public class NewAzureSqlElasticJobAgent : AzureSqlElasticJobAgentCmdletBase<AzureSqlDatabaseModel>
     {
+        /// <summary>
+        /// Gets or sets the Agent's Control Database Object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The Job database object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlDatabaseModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Agent's Control Database Resource Id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The Job database resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
         /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
@@ -92,53 +116,20 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the Agent's Tags
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = DefaultParameterSet,
-            HelpMessage = "The agent tags")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "The agent tags")]
-        [Parameter(
-            Mandatory = false,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "The agent tags")]
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "The agent tags")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "The agent tags")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "The agent tags")]
         [ValidateNotNullOrEmpty]
         [Alias("Tags")]
         public Hashtable Tag { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent's Control Database Object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The control database object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel DatabaseObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent's Control Database Resource Id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The control database resource id")]
-        [ValidateNotNullOrEmpty]
-        public string DatabaseResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.DatabaseObject);
-            InitializeResourceIdProperties(this.DatabaseResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

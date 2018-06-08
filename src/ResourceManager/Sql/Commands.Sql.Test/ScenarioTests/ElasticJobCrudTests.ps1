@@ -196,7 +196,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test min param
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"   # defaults to once if not specified
 	Assert-AreEqual $resp.Enabled $false # defaults to false if not specified
@@ -204,7 +204,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test enabled
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Enable
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Enable
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"
 	Assert-AreEqual $resp.Enabled $true # defaults to false if not specified
@@ -212,7 +212,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test once
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -RunOnce
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -RunOnce
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"   # defaults to once if not specified
@@ -220,7 +220,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test recurring - minute interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Minute -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Minute -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -229,7 +229,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test recurring - hour interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Hour -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Hour -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -238,7 +238,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test recurring - day interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Day -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Day -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -247,7 +247,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test recurring - week interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Week -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Week -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -256,7 +256,7 @@ function Test-CreateJobWithAgentObject($a1)
 
 	# Test recurring - month interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Month -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentObject $a1 -Name $jn1 -Description $jn1 -IntervalType Month -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -278,7 +278,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test min param
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"   # defaults to once if not specified
 	Assert-AreEqual $resp.Enabled $false # defaults to false if not specified
@@ -286,7 +286,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test enabled
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Enable
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Enable
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"
 	Assert-AreEqual $resp.Enabled $true # defaults to false if not specified
@@ -294,7 +294,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test once
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -RunOnce
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -RunOnce
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Once"   # defaults to once if not specified
@@ -302,7 +302,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test recurring - minute interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Minute -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Minute -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -311,7 +311,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test recurring - hour interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Hour -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Hour -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -320,7 +320,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test recurring - day interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Day -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Day -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -329,7 +329,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test recurring - week interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Week -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Week -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -338,7 +338,7 @@ function Test-CreateJobWithAgentResourceId($a1)
 
 	# Test recurring - month interval
 	$jn1 = Get-JobName
-	$resp = New-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Month -IntervalCount 1
+	$resp = New-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $jn1 -Description $jn1 -IntervalType Month -IntervalCount 1
 	Assert-AreEqual $resp.JobName $jn1
 	Assert-AreEqual $resp.Description $jn1
 	Assert-AreEqual $resp.ScheduleType "Recurring"
@@ -461,14 +461,14 @@ function Test-GetJobWithAgentObject($a1)
 	$j2 = Create-JobForTest $a1
 
 	# Test using input object
-	$resp = Get-AzureRmSqlElasticJob -AgentObject $a1 -Name $j1.JobName
+	$resp = Get-AzureRmSqlElasticJob -ParentObject $a1 -Name $j1.JobName
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"
 	Assert-Null $resp.Interval
 
 	# Test get all
-	$resp = Get-AzureRmSqlElasticJob -AgentObject $a1
+	$resp = Get-AzureRmSqlElasticJob -ParentObject $a1
 	Assert-True { $resp.Count -ge 2 }
 }
 
@@ -484,14 +484,14 @@ function Test-GetJobWithAgentResourceId($a1)
 	$j2 = Create-JobForTest $a1
 
 	# Test using agent resource id
-	$resp = Get-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId -Name $j1.JobName
+	$resp = Get-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId -Name $j1.JobName
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"
 	Assert-Null $resp.Interval
 
 	# Test get all
-	$resp = Get-AzureRmSqlElasticJob -AgentResourceId $a1.ResourceId
+	$resp = Get-AzureRmSqlElasticJob -ParentResourceId $a1.ResourceId
 	Assert-True { $resp.Count -ge 2 }
 }
 
