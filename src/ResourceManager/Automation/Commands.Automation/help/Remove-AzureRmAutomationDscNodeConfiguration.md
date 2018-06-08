@@ -25,11 +25,6 @@ Automation stores DSC node configuration as a Managed Object Format (MOF) config
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -AutomationAccountName

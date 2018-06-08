@@ -21,7 +21,6 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;

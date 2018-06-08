@@ -18,7 +18,6 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.WindowsAzure.Management.Storage;
 using System.Collections.Generic;
 using System.Linq;
 

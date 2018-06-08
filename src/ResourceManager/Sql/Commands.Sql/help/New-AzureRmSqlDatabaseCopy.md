@@ -13,19 +13,20 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 
 ## SYNTAX
 
-### DtuBasedDatabase
+### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
- -CopyDatabaseName <String> [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -CopyDatabaseName <String> [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
- [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String>
- -Vcore <Int32> [-ServerName] <String> [-ResourceGroupName] <String>
+ [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,11 +40,6 @@ Note: Use the New-AzureRmSqlDatabaseSecondary cmdlet to configure geo-replicatio
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
-
-### 1:
-```
-
-```
 
 ## PARAMETERS
 
@@ -121,21 +117,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
-The Vcore numbers of the Azure Sql Database copy.
-
-```yaml
-Type: Int32
-Parameter Sets: VcoreBasedDatabase
-Aliases: Capacity
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DatabaseName
 Specifies the name of the SQL Database to copy.
 
@@ -173,6 +154,21 @@ Specifies the name of the elastic pool in which to assign the copy.
 Type: String
 Parameter Sets: DtuBasedDatabase
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -237,6 +233,21 @@ Parameter Sets: (All)
 Aliases: Tag
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VCore
+The Vcore numbers of the Azure Sql Database copy.
+
+```yaml
+Type: Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

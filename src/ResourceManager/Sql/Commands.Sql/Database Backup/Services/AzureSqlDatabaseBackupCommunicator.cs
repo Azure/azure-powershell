@@ -14,17 +14,12 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using Microsoft.WindowsAzure.Management.Storage;
-using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
 namespace Microsoft.Azure.Commands.Sql.Backup.Services
@@ -385,7 +380,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
         /// <returns>A backup LongTermRetention policy</returns>
-        public BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
+        public Management.Sql.Models.BackupShortTermRetentionPolicy GetDatabaseBackupShortTermRetentionPolicy(
             string resourceGroupName,
             string serverName,
             string databaseName)

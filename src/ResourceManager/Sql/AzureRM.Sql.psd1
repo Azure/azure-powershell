@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.5.0'
+ModuleVersion = '4.6.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -274,18 +274,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
-* Add commandlets for new feature - Instance Failover Groups
-	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
-	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
-	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
-	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
-	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
-* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
-* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with "Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy".'
+        ReleaseNotes = '* Updated the following cmdlets with optional LicenseType parameter
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false

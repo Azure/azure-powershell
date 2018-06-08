@@ -46,11 +46,6 @@ To get a list of supported actions, use the Azure Resource Explorer tool.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -Action

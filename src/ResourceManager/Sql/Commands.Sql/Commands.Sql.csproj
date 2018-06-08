@@ -334,7 +334,7 @@
     <Compile Include="Auditing\Cmdlet\UseAzureSqlServerAuditingPolicy.cs" />
     <Compile Include="ThreatDetection\Model\BaseThreatDetectionPolicyModel.cs" />
     <Compile Include="ThreatDetection\Model\ServerThreatDetectionPolicyModel.cs" />
-    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel .cs" />
+    <Compile Include="ThreatDetection\Model\DatabaseThreatDetectionPolicyModel.cs" />
     <Compile Include="Auditing\Model\DatabaseAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Model\ServerAuditingPolicyModel.cs" />
     <Compile Include="Auditing\Services\AuditingEndpointsCommunicator.cs" />

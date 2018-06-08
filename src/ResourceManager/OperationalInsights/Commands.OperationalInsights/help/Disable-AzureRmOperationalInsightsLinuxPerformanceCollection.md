@@ -30,11 +30,6 @@ The **Disable-AzureRmOperationalInsightsLinuxPerformanceCollection** cmdlet stop
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
