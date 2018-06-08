@@ -25,7 +25,7 @@ Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
 Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
  [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
- [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled] [-NotificationDisabled]
+ [-ResourceGroupFilter <String[]>] -NotificationKey <String> [-NotificationEnabled]
  [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>] [-ContactGroup <String[]>]
  [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -38,48 +38,48 @@ The Set-AzureRmConsumptionBudget cmdlet updates a budget in either a subscriptio
 ### Example 1: Update a budget by a new amount with a budget name at subscription level
 ```powershell
 PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -Amount 75
-Amount:			75		
-Category:		Cost
-CurrentSpend:	null
-Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
-Name:			PSBudget
-TimeGrain:		Monthly
-TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
-				StartDate:	6/1/2018 12:00:00 AM
-Type:			Microsoft.Consumption/budgets
+Amount:  75		
+Category:  Cost
+CurrentSpend:  null
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:  PSBudget
+TimeGrain:  Monthly
+TimePeriod:  EndDate:  11/1/2018 12:00:00 AM
+             StartDate:  6/1/2018 12:00:00 AM
+Type:  Microsoft.Consumption/budgets
 ```
 
 ### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
 PS C:\> Set-AzureRmConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
-Amount:			75		
-Category:		Cost
-CurrentSpend:	null
-Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
-Name:			PSBudget
-Notification:	NotificationKey: 	notificationKey-ps1234
-				Threshold:			90
-				Enabled:			true
-				ContactEmail:		johndoe@contoso.com,janesmith@contoso.com
-				ContactRole:		Owner,Reader,Contributor
-TimeGrain:		Monthly
-TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
-				StartDate:	6/1/2018 12:00:00 AM
-Type:			Microsoft.Consumption/budgets
+Amount:  75		
+Category:  Cost
+CurrentSpend:  null
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Consumption/budgets/PSBudget
+Name:  PSBudget
+Notification:  NotificationKey:  notificationKey-ps1234
+               Threshold:  90
+               Enabled:  true
+               ContactEmail:  johndoe@contoso.com,janesmith@contoso.com
+               ContactRole:  Owner,Reader,Contributor
+TimeGrain:  Monthly
+TimePeriod:  EndDate:  11/1/2018 12:00:00 AM
+             StartDate:  6/1/2018 12:00:00 AM
+Type:  Microsoft.Consumption/budgets
 ```
 
 ### Example 3: Update a budget by a new amount with a budget name at resource group level
 ```powershell
 PS C:\> Set-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -Amount 75
-Amount:			75		
-Category:		Cost
-CurrentSpend:	null
-Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
-Name:			PSBudgetRG
-TimeGrain:		Monthly
-TimePeriod:		EndDate:	11/1/2018 12:00:00 AM
-				StartDate:	6/1/2018 12:00:00 AM
-Type:			Microsoft.Consumption/budgets
+Amount:  75		
+Category:  Cost
+CurrentSpend:  null
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG
+Name:  PSBudgetRG
+TimeGrain:  Monthly
+TimePeriod:  EndDate:  11/1/2018 12:00:00 AM
+             StartDate:  6/1/2018 12:00:00 AM
+Type:  Microsoft.Consumption/budgets
 ```
 
 ## PARAMETERS
@@ -237,23 +237,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NotificationDisabled
-The notification is disabled or not.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: Notification
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NotificationEnabled
-The notification is enabled or not.
+The notification is enabled.
+If not specified, the notification is disabled by default.
 
 ```yaml
 Type: SwitchParameter

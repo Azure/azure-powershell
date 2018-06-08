@@ -13,7 +13,7 @@ Get price sheets of the subscription.
 ## SYNTAX
 
 ```
-Get-AzureRmConsumptionPriceSheet [-BillingPeriodName <String>] [-Expand <String>] [-Top <Int32>]
+Get-AzureRmConsumptionPriceSheet [-BillingPeriodName <String>] [-ExpandMeterDetail] [-Top <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,66 +25,66 @@ The **Get-AzureRmConsumptionPriceSheet** cmdlet gets price sheets of the subscri
 ### Example 1: Get price sheets
 ```powershell
 PS C:\> Get-AzureRmConsumptionPriceSheet
-Id:				/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
-Name:			default
-Type:			Microsoft.Consumption/pricesheets
-Pricesheets: 	BillingPeriodId:	/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
-				CurrencyCode:		USD
-				IncludedQuantity:	0
-				MeterId:			BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
-				PartNumber:			AAA-49135
-				UnitOfMeasure:		10 Hours
-				UnitPrice:			1.33
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
+Name:  default
+Type:  Microsoft.Consumption/pricesheets
+Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
+              CurrencyCode:  USD
+              IncludedQuantity:  0
+              MeterId:  BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
+              PartNumber:  AAA-49135
+              UnitOfMeasure:  10 Hours
+              UnitPrice:  1.33
 ```
 
 ### Example 2: Get price sheets with expand of MeterDetails
 ```powershell
-PS C:\> Get-AzureRmConsumptionPriceSheet -Expand MeterDetails
-Id:				/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
-Name:			default
-Type:			Microsoft.Consumption/pricesheets
-Pricesheets: 	BillingPeriodId:	/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
-				CurrencyCode:		USD
-				IncludedQuantity:	0
-				MeterDetails:		MeterCategory:		Virtual Machines
-									MeterLocation: 		US North Central
-									MeterName:			Compute Hours
-									MeterSubCategory:	Standard_D11_v2 VM_Promo (Windows)
-									Unit:				Hours
-				MeterId:			BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
-				PartNumber:			AAA-49135
-				UnitOfMeasure:		10 Hours
-				UnitPrice:			1.33
+PS C:\> Get-AzureRmConsumptionPriceSheet -ExpandMeterDetail
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
+Name:  default
+Type:  Microsoft.Consumption/pricesheets
+Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
+              CurrencyCode:  USD
+              IncludedQuantity:  0
+              MeterDetails:  MeterCategory:  Virtual Machines
+                             MeterLocation:  US North Central
+                             MeterName:  Compute Hours
+                             MeterSubCategory:  Standard_D11_v2 VM_Promo (Windows)
+                             Unit:  Hours
+              MeterId:  BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
+              PartNumber:  AAA-49135
+              UnitOfMeasure:  10 Hours
+              UnitPrice:  1.33
 ```
 
 ### Example 3: Get price sheets of BillingPeriodName
 ```powershell
 PS C:\> Get-AzureRmConsumptionPriceSheet -BillingPeriodName 201712
-Id:				/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
-Name:			default
-Type:			Microsoft.Consumption/pricesheets
-Pricesheets: 	BillingPeriodId:	/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
-				CurrencyCode:		USD
-				IncludedQuantity:	0
-				MeterId:			46367D67-1E4C-4ED4-8267-4477083F581C
-				PartNumber:			AAA-53590
-				UnitOfMeasure:		10 Hours
-				UnitPrice:			1.37
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
+Name:  default
+Type:  Microsoft.Consumption/pricesheets
+Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
+              CurrencyCode:  USD
+              IncludedQuantity:  0
+              MeterId:  46367D67-1E4C-4ED4-8267-4477083F581C
+              PartNumber:  AAA-53590
+              UnitOfMeasure:  10 Hours
+              UnitPrice:  1.37
 ```
 
 ### Example 4: Get top 5 records of price sheets
 ```powershell
 PS C:\> Get-AzureRmConsumptionPriceSheet -Top 5
-Id:				/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
-Name:			default
-Type:			Microsoft.Consumption/pricesheets
-Pricesheets: 	BillingPeriodId:	/subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
-				CurrencyCode:		USD
-				IncludedQuantity:	0
-				MeterId:			BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
-				PartNumber:			AAA-49135
-				UnitOfMeasure:		10 Hours
-				UnitPrice:			1.33
+Id:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601/providers/Microsoft.Consumption/pricesheets/default
+Name:  default
+Type:  Microsoft.Consumption/pricesheets
+Pricesheets:  BillingPeriodId:  subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/providers/Microsoft.Billing/billingPeriods/20180601
+              CurrencyCode:  USD
+              IncludedQuantity:  0
+              MeterId:  BACDDD36-2C2C-46BB-8CFA-D13C15EE4A7E
+              PartNumber:  AAA-49135
+              UnitOfMeasure:  10 Hours
+              UnitPrice:  1.33
 ```
 
 ## PARAMETERS
@@ -119,14 +119,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Expand
+### -ExpandMeterDetail
 Expand the price sheets based on MeterDetails.
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
-Accepted values: MeterDetails
 
 Required: False
 Position: Named
