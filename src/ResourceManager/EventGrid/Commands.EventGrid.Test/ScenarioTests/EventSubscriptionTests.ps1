@@ -197,6 +197,7 @@ function EventSubscriptionTests_ResourceGroup {
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionName2 = Get-EventSubscriptionName
     $resourceGroupName = Get-ResourceGroupName
+
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
 
     Write-Debug "Creating resource group"
@@ -491,20 +492,13 @@ Tests EventGrid EventSubscription with deadletter destination
 function EventSubscriptionTests_Deadletter {
     # Setup
     $subscriptionId = Get-SubscriptionId
-    $location = Get-LocationForEventGrid
     $eventSubscriptionName = Get-EventSubscriptionName
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-    $deadletterResourceId = "/subscriptions/$subscriptionId/resourceGroups/testpowershelResourceGroup/providers/Microsoft.Storage/storageAccounts/testpsstorageaccount/blobServices/default/containers/psdeadletterqueue"
+    $resourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.EventGrid/topics/<TopicName>"
+    $deadletterResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.Storage/storageAccounts/<StorageAccountName>/blobServices/default/containers/<ContainerName>"
 
-    try
-    {
-        Write-Debug " Creating a new EventSubscription $eventSubscriptionName to Azure subscription"
-        $labels = "Finance", "HR"
-        $result = New-AzureRmEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -Label $labels -DeadLetterEndpoint $deadletterResourceId
-        Assert-True {$false} "New-AzureRmEventGridSubscription succeeded while it is expected to fail as deadletter is not yet enabled"
-    }
-    catch
-    {
-        Assert-True {$true}
-    }
+    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to user topic"
+
+    $result = New-AzureRmEventGridSubscription -ResourceId $resourceId -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeadLetterEndpoint $deadletterResourceId
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
 }
