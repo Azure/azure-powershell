@@ -12,6 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Instructions of recording tests
+# Recording of reservation related tests requires a subscription with
+# reserved instances. You can create them and find reservation order id
+# and reservation id from Azure portal. For any recording question, 
+# please contact Prem.Prakash@microsoft.com
+
 <#
 .SYNOPSIS
 List monthly reservation summaries with reservation order Id

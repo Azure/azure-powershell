@@ -12,6 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Instructions of recording tests
+# Recording of price sheet tests requires a subscription with some resources 
+# associated. You can create some resources, so that information on Azure pricing
+# will be shown from price sheet data. For any recording question, 
+# please contact Prem.Prakash@microsoft.com
+
 <#
 .SYNOPSIS
 List price sheets

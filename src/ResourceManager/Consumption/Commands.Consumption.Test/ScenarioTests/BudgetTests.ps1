@@ -12,6 +12,13 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Instructions of recording tests
+# Recording of budget tests requires a subscription and user Id. Service principal
+# can support recording but a request to create, set, or remove through service 
+# principal will be prevented by API. StartDate should be no later than the 1st 
+# date of the current month for monthly grain. For any recording question, 
+# please contact Prem.Prakash@microsoft.com
+
 <#
 .SYNOPSIS
 Get Budget name
@@ -39,8 +46,6 @@ function Test-BudgetAtSubscriptionLevel
 	# Setup
 	$budgetName = Get-BudgetName
 	$notificationKey = Get-NotificationKey
-	# This resource group is created at the scope of test subscription
-	$resourceGroupName = "CriTest"
 
 	Write-Debug "Create a new budget $budgetName at subscription level"
     $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
@@ -75,12 +80,6 @@ function Test-BudgetAtSubscriptionLevel
 	Assert-AreEqual $budgetName $budgetSet3.Name
 	Assert-AreEqual 1 $budgetSet3.Notification.Count
 
-	Write-Debug "Update the budget $budgetName with a resource group filter, so the budget only applies to the cost within the resource group"
-	$budgetSet4 = Set-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupFilter $resourceGroupName
-	Assert-NotNull $budgetSet4
-	Assert-AreEqual $budgetName $budgetSet4.Name
-	Assert-AreEqual 1 $budgetSet4.Filter.ResourceGroups.Count
-
 	Write-Debug "Remove the budget $budgetName"
 	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -PassThru
 	Assert-AreEqual True $response
@@ -99,6 +98,7 @@ function Test-BudgetAtResourceGroupLevel
 	# This resource group is created at the scope of test subscription
 	$resourceGroupName = "RGBudgets"
 
+	# Create budget
 	Write-Debug "Create a new budget $budgetName at resource group level"
     $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -ResourceGroupName $resourceGroupName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
 	Assert-NotNull $budgetNew
@@ -107,6 +107,7 @@ function Test-BudgetAtResourceGroupLevel
 	Assert-AreEqual Cost $budgetNew.Category
 	Assert-AreEqual Monthly $budgetNew.TimeGrain
 
+	# Get budget
 	Write-Debug "Get the budget $budgetName"
 	$budgetGet = Get-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName
 	Assert-NotNull $budgetGet
@@ -115,6 +116,7 @@ function Test-BudgetAtResourceGroupLevel
 	Assert-AreEqual Cost $budgetGet.Category
 	Assert-AreEqual Monthly $budgetGet.TimeGrain
 
+	# Set budget
 	Write-Debug "Update the budget $budgetName with a notification $notificationKey when cost reaches a threshold of 90 percent of amount"
 	$budgetSet1 = Set-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -NotificationKey $notificationKey1 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
 	Assert-NotNull $budgetSet1
@@ -127,6 +129,7 @@ function Test-BudgetAtResourceGroupLevel
 	Assert-AreEqual $budgetName $budgetSet2.Name
 	Assert-AreEqual 2 $budgetSet2.Notification.Count
 
+	# Remove budget
 	Write-Debug "Remove the budget $budgetName"
 	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -PassThru
 	Assert-AreEqual True $response
@@ -138,6 +141,16 @@ Get all budgets at subscription level
 #>
 function Test-GetBudgets
 {
+	# Setup
+	$budgetName = Get-BudgetName
+	$budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+	Assert-NotNull $budgetNew
+
+	# Validate get all budgets
     $budgets = Get-AzureRmConsumptionBudget 
 	Assert-NotNull $budgets
+
+	# Clean up through piping
+	$response = Get-AzureRmConsumptionBudget -Name $budgetName | Remove-AzureRmConsumptionBudget -PassThru
+	Assert-AreEqual True $response
 }

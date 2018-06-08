@@ -12,6 +12,12 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Instructions of recording tests
+# Recording of marketplace tests requires a subscription with marketplace usage. 
+# You can create some resources through Azure Marketplace, so that marketplace usage 
+# will show consumption data from those resources. For any recording question, 
+# please contact Prem.Prakash@microsoft.com
+
 <#
 .SYNOPSIS
 List marketplaces
