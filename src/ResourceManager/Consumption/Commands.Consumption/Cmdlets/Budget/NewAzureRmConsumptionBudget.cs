@@ -86,32 +86,26 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [ValidateNotNullOrEmpty]
         public string[] ResourceGroupFilter;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationKey)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationKey)]
         [ValidateNotNullOrEmpty]
         public string NotificationKey;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
         public SwitchParameter NotificationEnabled;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationThreshold)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationThreshold)]
         [ValidateRange(0, 1000)]
         public decimal? NotificationThreshold;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactEmail)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.ContactEmail)]
         [ValidateNotNullOrEmpty]
         [ValidateCount(1, 50)]
         public string[] ContactEmail;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
         [ValidateNotNullOrEmpty]
         public string[] ContactGroup;
 
-        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Owner", "Reader", "Contributor")]

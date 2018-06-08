@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Consumption.Common
             public const string InvoiceItemParameterSet = "Invoice";
             public const string BillingPeriodItemParameterSet = "BillingPeriod";
             public const string NotificationItemParameterSet = "Notification";
+            public const string PipingItemParameterSet = "Piping";
         }
 
         public class Expands

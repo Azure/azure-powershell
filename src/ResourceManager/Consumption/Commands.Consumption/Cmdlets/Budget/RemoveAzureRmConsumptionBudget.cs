@@ -12,36 +12,61 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Consumption.Common;
+using Microsoft.Azure.Commands.Consumption.Models;
 using Microsoft.Azure.Management.Consumption;
 using Microsoft.Azure.Management.Consumption.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using HelpMessages = Microsoft.Azure.Commands.Consumption.Common.ParameterHelpMessages.BudgetParameterHelpMessages;
+using ParameterSetNames = Microsoft.Azure.Commands.Consumption.Common.Constants.ParameterSetNames;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmConsumptionBudget", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmConsumptionBudget : AzureConsumptionCmdletBase
     {
-        [Parameter(Mandatory = true, HelpMessage = HelpMessages.Name)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
         [ValidateNotNullOrEmpty]
         public string Name;
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSBudget InputObject;
+
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupName)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName;
 
-        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PassThru)]
+        [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.PassThru)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.PassThru)]
         public SwitchParameter PassThru;
 
         public override void ExecuteCmdlet()
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                if (InputObject != null)
+                {
+                    var name = InputObject.Name;
+                    var id = InputObject.Id;
+                    var parts = id.Split('/');
+
+                    if (parts.Length >= 4 &&
+                        parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var resourceGroupName = parts[3];
+                        ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(resourceGroupName, name);
+                    }
+                    else
+                    {
+                        ConsumptionManagementClient.Budgets.Delete(name);
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
                 {
                     ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(this.ResourceGroupName,
                         this.Name);

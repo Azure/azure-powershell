@@ -49,6 +49,8 @@ namespace Microsoft.Azure.Commands.Consumption.Common
             public const string ContactGroup = "Action groups to send the budget notification to when the threshold is exceeded.";
             public const string ContactRole = "Contact roles to send the budget notification to when the threshold is exceeded.";
             public const string PassThru = "The Cmdlet returns true if a budget was successfully removed.";
+
+            public const string InputObject = "Budget object.";
         }     
     }
 }
