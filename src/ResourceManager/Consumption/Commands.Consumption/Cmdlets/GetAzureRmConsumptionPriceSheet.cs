@@ -32,9 +32,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         public string BillingPeriodName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Expand the price sheets based on MeterDetails.")]
-        [ValidateNotNullOrEmpty]
-        [ValidateSet("MeterDetails")]
-        public string Expand { get; set; }
+        public SwitchParameter ExpandMeterDetail { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.")]
         [ValidateNotNullOrEmpty]
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         public override void ExecuteCmdlet()
         {
             var expand = default(string);
-            if (!string.IsNullOrWhiteSpace(this.Expand) && 
-                this.Expand.Equals(Constants.Expands.MeterDetails, StringComparison.InvariantCultureIgnoreCase))
+            if (this.ExpandMeterDetail.IsPresent)
             {
                 expand = "properties/meterDetails";
             }
@@ -99,7 +96,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
             WriteObject(result);

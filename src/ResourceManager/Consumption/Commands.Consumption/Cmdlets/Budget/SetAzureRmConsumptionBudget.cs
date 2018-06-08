@@ -92,9 +92,6 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
         public SwitchParameter NotificationEnabled;
 
-        [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationDisabled)]
-        public SwitchParameter NotificationDisabled;
-
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationThreshold)]
         [ValidateRange(0, 1000)]
         public decimal? NotificationThreshold;
@@ -204,8 +201,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
                 {
                     notification.Enabled = true;
                 }
-
-                if (this.NotificationDisabled.IsPresent)
+                else
                 {
                     notification.Enabled = false;
                 }

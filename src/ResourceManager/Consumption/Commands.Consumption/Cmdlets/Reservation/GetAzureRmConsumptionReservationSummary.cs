@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
             if (reservationSummaries != null)

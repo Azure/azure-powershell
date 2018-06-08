@@ -195,7 +195,7 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
             WriteObject(result, true);

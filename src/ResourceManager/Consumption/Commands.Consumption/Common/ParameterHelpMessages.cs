@@ -39,8 +39,7 @@ namespace Microsoft.Azure.Commands.Consumption.Common
 
             public const string NotificationKey =
                 "Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.";
-            public const string NotificationEnabled = "The notification is enabled or not.";
-            public const string NotificationDisabled = "The notification is disabled or not.";
+            public const string NotificationEnabled = "The notification is enabled. If not specified, the notification is disabled by default.";
 
             public const string NotificationThreshold =
                 "Threshold value associated with a notification. Notification is sent when the cost or usage exceeded the threshold. It is always percent and has to be between 0 and 1000.";
