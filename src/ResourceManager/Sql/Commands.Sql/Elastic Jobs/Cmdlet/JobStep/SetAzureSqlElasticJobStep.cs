@@ -462,10 +462,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 RetryIntervalBackoffMultiplier = this.RetryIntervalBackoffMultiplier ?? existingEntity.RetryIntervalBackoffMultiplier,
                 TimeoutSeconds = this.TimeoutSeconds ?? existingEntity.TimeoutSeconds,
                 CommandText = this.CommandText ?? existingEntity.CommandText,
-                StepId = this.StepId ?? existingEntity.StepId,
+                StepId = this.StepId ?? existingEntity.StepId
             };
 
-            // If there was an existing output target
+            // If there was an existing output in the step, update it and make sure Remove Output wasn't present.
             if (existingEntity.Output != null && !this.RemoveOutput.IsPresent)
             {
                 // Initialize to existing output first
@@ -502,8 +502,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 updatedModel.Output.SchemaName = this.OutputSchemaName != null ? this.OutputSchemaName : existingEntity.Output.SchemaName;
                 updatedModel.Output.TableName = this.OutputTableName != null ? this.OutputTableName : existingEntity.Output.TableName;
             }
-            // If no existing output entity, then treat this as if adding new output
-            else
+            // At this point, we know existing job step has no output object and params don't include remove output.
+            // So let's add new output
+            else if (existingEntity.Output == null && !this.RemoveOutput.IsPresent)
             {
                 if (this.OutputDatabaseObject != null)
                 {
@@ -535,6 +536,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                     };
                 }
             }
+            // At this point, we know RemoveOutput was present. If so, then just do nothing since we just exclude the step's existing output from the updated model.
 
             return new List<AzureSqlElasticJobStepModel> { updatedModel };
         }
