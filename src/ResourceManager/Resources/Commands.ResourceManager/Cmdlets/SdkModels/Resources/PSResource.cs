@@ -13,10 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 using Microsoft.Azure.Management.ResourceManager.Models;
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 
         public Plan Plan { get; set; }
 
-        public object Properties { get; set; }
+        public PSObject Properties { get; set; }
 
         public string ResourceGroupName { get; set; }
 
@@ -62,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             this.ManagedBy = resource.ManagedBy;
             this.Name = resource.Name;
             this.Plan = resource.Plan;
-            this.Properties = resource.Properties;
+            this.Properties = ((JToken)resource.Properties).ToPsObject();
             this.ResourceType = resource.Type;
             this.Sku = resource.Sku;
             this.Tags = resource.Tags;

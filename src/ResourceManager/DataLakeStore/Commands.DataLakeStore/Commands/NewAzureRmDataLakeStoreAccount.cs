@@ -20,6 +20,7 @@ using Microsoft.Rest.Azure;
 using System;
 using System.Collections;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 4, Mandatory = false,
             HelpMessage = "A string,string dictionary of tags associated with this account",
             ParameterSetName = EncryptionDisabledParameterSetName)]
-        [Obsolete("New-AzureRmDataLakeStoreAccount: -Tags will be removed in favor of -Tag in an upcoming breaking change release.  Please start using the -Tag parameter to avoid breaking scripts.")]
+        [CmdletParameterBreakingChange("Tags", ReplaceMentCmdletParameterName = "Tag", ChangeDescription = "Please start using the -Tag parameter to avoid breaking scripts.")]
         [Alias("Tags")]
         [ValidateNotNull]
         public Hashtable Tag { get; set; }

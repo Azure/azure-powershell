@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
 #endif
         }
 
-        public static void RunDataProfileTest(IAzureContextContainer rmProfile, IAzureContextContainer smProfile, Action testAction)
+        private static void RunDataProfileTest(IAzureContextContainer rmProfile, IAzureContextContainer smProfile, Action testAction)
         {
             AzureSession.Instance.DataStore = new MemoryDataStore();
             var savedRmProfile = AzureRmProfileProvider.Instance.Profile;

@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the node file returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Path, pipeline[0].Path);
         }
 
@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
+                Assert.Contains(f.Path, namesOfConstructedNodeFiles);
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -196,7 +196,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
+                Assert.Contains(f.Path, namesOfConstructedNodeFiles);
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -309,7 +309,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the node file returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Path, pipeline[0].Path);
         }
 
@@ -351,7 +351,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
+                Assert.Contains(f.Path, namesOfConstructedNodeFiles);
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Files
             int taskCount = 0;
             foreach (PSNodeFile f in pipeline)
             {
-                Assert.True(namesOfConstructedNodeFiles.Contains(f.Path));
+                Assert.Contains(f.Path, namesOfConstructedNodeFiles);
                 taskCount++;
             }
             Assert.Equal(namesOfConstructedNodeFiles.Length, taskCount);
