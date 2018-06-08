@@ -846,8 +846,7 @@ function Test-RemoveJobStepWithPiping ($a1)
 	Assert-AreEqual $resp.Count 1
 
 	# Test job step doesn't exist
-	$js1 = $j1 | Get-AzureRmSqlElasticJobStep -Name $js1.StepName
-	Assert-Null $js1
+	Assert-Throws { $j1 | Get-AzureRmSqlElasticJobStep -Name $js1.StepName }
 }
 
 <#

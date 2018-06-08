@@ -938,6 +938,5 @@ function Test-RemoveJobWithPiping($a1)
 	Assert-Null $resp.Interval
 
 	# Test job is gone
-	$j1 = $a1 | Get-AzureRmSqlElasticJob -Name $j1.JobName
-	Assert-Null $j1
+	Assert-Throws { $a1 | Get-AzureRmSqlElasticJob -Name $j1.JobName }
 }

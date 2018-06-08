@@ -80,8 +80,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ValueFromPipeline = true,
             Position = 0,
             HelpMessage = "The server input object")]
+        [Alias("ServerObject")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlServerModel ServerObject { get; set; }
+        public AzureSqlServerModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Agent Server Resource Id
@@ -92,15 +93,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = "The server resource id")]
-        public string ServerResourceId { get; set; }
+        [Alias("ServerResourceId")]
+        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.ServerObject);
-            InitializeResourceIdProperties(this.ServerResourceId);
+            InitializeInputObjectProperties(this.ParentObject);
+            InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }
 

@@ -327,6 +327,5 @@ function Test-RemoveTargetGroupWithPiping ($a1)
     Assert-True { $resp.Count -ge 1 }
 
     # Test target group after getting is really gone
-    $tg = $a1 | Get-AzureRmSqlElasticJobTargetGroup -Name $tg.Name
-    Assert-Null $tg
+    Assert-Throws { $a1 | Get-AzureRmSqlElasticJobTargetGroup -Name $tg.TargetGroupName }
 }

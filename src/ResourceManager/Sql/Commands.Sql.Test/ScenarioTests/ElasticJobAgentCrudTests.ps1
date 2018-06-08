@@ -267,17 +267,10 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test that agents are indeed gone
-        $a1 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a1.AgentName
-        Assert-Null $a1
-
-        $a2 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a2.AgentName
-        Assert-Null $a2
-
-        $a3 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a3.AgentName
-        Assert-Null $a3
-
-        $a4 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a4.AgentName
-        Assert-Null $a4
+        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a1.AgentName }
+        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a2.AgentName }
+        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a3.AgentName }
+        Assert-Throws { $s1 | Get-AzureRmSqlElasticJobAgent -Name $a4.AgentName }
     }
     finally
     {
