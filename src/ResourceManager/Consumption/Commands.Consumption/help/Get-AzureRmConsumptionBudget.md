@@ -42,7 +42,7 @@ PS C:\> Get-AzureRmConsumptionBudget -ResourceGroupName RGBudgets
 Amount:			60		
 Category:		Cost
 CurrentSpend:	null
-Id:				"subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG"
+Id:				subscriptions/1caaa5a3-2b66-438e-8ab4-bce37d518c5d/resourceGroups/RGBudgets/providers/Microsoft.Consumption/budgets/PSBudgetRG
 Name:			PSBudgetRG
 TimeGrain:		Monthly
 TimePeriod:		EndDate:	11/1/2018 12:00:00 AM

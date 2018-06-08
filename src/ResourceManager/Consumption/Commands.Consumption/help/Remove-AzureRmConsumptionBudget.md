@@ -12,9 +12,16 @@ Remove a budget in either a subscription or a resource group.
 
 ## SYNTAX
 
+### Subscription (Default)
 ```
 Remove-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String>
  [-ResourceGroupName <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Piping
+```
+Remove-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget> [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,6 +38,12 @@ True
 ### Example 2: Remove a budget with a budget name at resource group level
 ```powershell
 PS C:\> Remove-AzureRmConsumptionBudget -ResourceGroupName RGBudgets -Name PSBudgetRG -PassThru
+True
+```
+
+### Example 3: Remove a budget through piping at subscription level
+```powershell
+PS C:\> Get-AzureRmConsumptionBudget -Name PSBudget | Remove-AzureRmConsumptionBudget -PassThru
 True
 ```
 
@@ -66,12 +79,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Budget object.
+
+```yaml
+Type: PSBudget
+Parameter Sets: Piping
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of a budget.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: True
@@ -101,7 +129,7 @@ Resource Group of a budget.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription
 Aliases:
 
 Required: False
@@ -133,7 +161,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 
 ## OUTPUTS

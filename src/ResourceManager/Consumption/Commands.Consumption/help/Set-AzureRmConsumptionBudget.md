@@ -17,9 +17,7 @@ Update a budget in either a subscription or a resource group.
 Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <String> [-Amount <Decimal>]
  [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
  [-ResourceGroupName <String>] [-MeterFilter <String[]>] [-ResourceFilter <String[]>]
- [-ResourceGroupFilter <String[]>] [-NotificationKey <String>] [-NotificationEnabled] [-NotificationDisabled]
- [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>] [-ContactGroup <String[]>]
- [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupFilter <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Notification
@@ -137,7 +135,7 @@ Email addresses to send the budget notification to when the threshold is exceede
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 
 Required: False
@@ -152,7 +150,7 @@ Action groups to send the budget notification to when the threshold is exceeded.
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 
 Required: False
@@ -167,7 +165,7 @@ Contact roles to send the budget notification to when the threshold is exceeded.
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 Accepted values: Owner, Reader, Contributor
 
@@ -244,7 +242,7 @@ The notification is disabled or not.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 
 Required: False
@@ -259,7 +257,7 @@ The notification is enabled or not.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 
 Required: False
@@ -271,18 +269,6 @@ Accept wildcard characters: False
 
 ### -NotificationKey
 Key of a notification associated with a budget, required to create a notification with notification enabled switch, notification threshold, contact emails, contact groups, or contact roles.
-
-```yaml
-Type: String
-Parameter Sets: Subscription
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: String
@@ -303,7 +289,7 @@ It is always percent and has to be between 0 and 1000.
 
 ```yaml
 Type: Decimal
-Parameter Sets: (All)
+Parameter Sets: Notification
 Aliases:
 
 Required: False
