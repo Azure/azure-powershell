@@ -64,7 +64,7 @@ function Test-BudgetAtSubscriptionLevel
 	Assert-AreEqual Monthly $budgetGet.TimeGrain
 
 	Write-Debug "Update the budget $budgetName with amount change to 7500"
-	$budgetSet1 = Set-AzureRmConsumptionBudget -Name $budgetName -Amount 7500
+	$budgetSet1 = Get-AzureRmConsumptionBudget -Name $budgetName | Set-AzureRmConsumptionBudget -Amount 7500
 	Assert-NotNull $budgetSet1
 	Assert-AreEqual 7500 $budgetSet1.Amount
 

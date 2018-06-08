@@ -30,6 +30,23 @@ Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -Name <S
  [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Piping
+```
+Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget>
+ [-Amount <Decimal>] [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-MeterFilter <String[]>] [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Piping and Notification
+```
+Set-AzureRmConsumptionBudget [-DefaultProfile <IAzureContextContainer>] -InputObject <PSBudget>
+ [-Amount <Decimal>] [-Category <String>] [-TimeGrain <String>] [-StartDate <DateTime>] [-EndDate <DateTime>]
+ [-MeterFilter <String[]>] [-ResourceFilter <String[]>] [-ResourceGroupFilter <String[]>]
+ -NotificationKey <String> [-NotificationEnabled] [-NotificationThreshold <Decimal>] [-ContactEmail <String[]>]
+ [-ContactGroup <String[]>] [-ContactRole <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The Set-AzureRmConsumptionBudget cmdlet updates a budget in either a subscription or a resource group.
 
@@ -135,7 +152,7 @@ Email addresses to send the budget notification to when the threshold is exceede
 
 ```yaml
 Type: String[]
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 
 Required: False
@@ -150,7 +167,7 @@ Action groups to send the budget notification to when the threshold is exceeded.
 
 ```yaml
 Type: String[]
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 
 Required: False
@@ -165,7 +182,7 @@ Contact roles to send the budget notification to when the threshold is exceeded.
 
 ```yaml
 Type: String[]
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 Accepted values: Owner, Reader, Contributor
 
@@ -206,6 +223,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Budget object.
+
+```yaml
+Type: PSBudget
+Parameter Sets: Piping, Piping and Notification
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -MeterFilter
 Comma-separated list of meters to filter on.
 Required if category is usage.
@@ -227,7 +259,7 @@ Name of a budget.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription, Notification
 Aliases:
 
 Required: True
@@ -243,7 +275,7 @@ If not specified, the notification is disabled by default.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 
 Required: False
@@ -258,7 +290,7 @@ Key of a notification associated with a budget, required to create a notificatio
 
 ```yaml
 Type: String
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 
 Required: True
@@ -275,7 +307,7 @@ It is always percent and has to be between 0 and 1000.
 
 ```yaml
 Type: Decimal
-Parameter Sets: Notification
+Parameter Sets: Notification, Piping and Notification
 Aliases:
 
 Required: False
@@ -320,7 +352,7 @@ Resource Group of a budget.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Subscription, Notification
 Aliases:
 
 Required: False
@@ -387,7 +419,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Consumption.Models.PSBudget
 
 
 ## OUTPUTS

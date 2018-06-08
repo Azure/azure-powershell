@@ -37,30 +37,45 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         [ValidateNotNullOrEmpty]
         public string Name;
 
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessages.InputObject)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = HelpMessages.InputObject)]
+        [ValidateNotNullOrEmpty]
+        public PSBudget InputObject;
+
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Amount)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Amount)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Amount)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Amount)]
         [ValidateNotNullOrEmpty]
         [ValidateRange(0, int.MaxValue)]
         public decimal? Amount;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Category)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Category)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Category)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.Category)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Cost", "Usage")]
         public string Category;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.TimeGrain)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.TimeGrain)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.TimeGrain)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.TimeGrain)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Monthly", "Quarterly", "Annually")]
         public string TimeGrain;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartDate)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.StartDate)]
         public DateTime? StartDate;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.EndDate)]
         [ValidateNotNullOrEmpty]
         public DateTime? EndDate;
 
@@ -72,39 +87,51 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.MeterFilter)]
         [ValidateNotNullOrEmpty]
         public string[] MeterFilter;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceFilter)]
         [ValidateNotNullOrEmpty]
         public string[] ResourceFilter;
 
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ResourceGroupFilter)]
         [ValidateNotNullOrEmpty]
         public string[] ResourceGroupFilter;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationKey)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.NotificationKey)]
         [ValidateNotNullOrEmpty]
         public string NotificationKey;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationEnabled)]
         public SwitchParameter NotificationEnabled;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationThreshold)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.NotificationThreshold)]
         [ValidateRange(0, 1000)]
         public decimal? NotificationThreshold;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactEmail)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactEmail)]
         [ValidateNotNullOrEmpty]
         public string[] ContactEmail;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactGroup)]
         [ValidateNotNullOrEmpty]
         public string[] ContactGroup;
 
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
+        [Parameter(ParameterSetName = ParameterSetNames.PipingNotificationItemParameterSet, Mandatory = false, HelpMessage = HelpMessages.ContactRole)]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Owner", "Reader", "Contributor")]
         public string[] ContactRole;     
@@ -114,7 +141,26 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             Budget budget = null;
             try
             {
-                if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                if (this.InputObject != null)
+                {
+                    var name = InputObject.Name;
+                    var id = InputObject.Id;
+                    var parts = id.Split('/');
+
+                    if (parts.Length >= 4 &&
+                        parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        var resourceGroupName = parts[3];
+                        budget = ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(resourceGroupName, name,
+                            UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                    }
+                    else
+                    {
+                        budget = ConsumptionManagementClient.Budgets.CreateOrUpdate(name,
+                            UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
                 {
                     budget =
                         ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(this.ResourceGroupName,
@@ -138,6 +184,20 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
             {
                 WriteObject(new PSBudget(budget), true);
             }
+        }
+
+        private Budget TransformFromPSBudgetToBudget(PSBudget psBudget)
+        {
+            return new Budget
+            {
+                ETag = psBudget.ETag,
+                Category = psBudget.Category,
+                Amount = psBudget.Amount,
+                TimeGrain = psBudget.TimeGrain,
+                TimePeriod = psBudget.TimePeriod,
+                Filters = psBudget.Filter,
+                Notifications = psBudget.Notification
+            };
         }
 
         private Budget UpdateBudget(Budget budget)
@@ -211,52 +271,25 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
                     notification.Threshold = this.NotificationThreshold.Value;
                 }
 
-                var contactCount = 0;
-
                 if (!string.IsNullOrWhiteSpace(this.ContactEmail?.FirstOrDefault()))
                 {
                     notification.ContactEmails = this.ContactEmail.ToList();
-                    contactCount += notification.ContactEmails.Count;
-                }
-                else if (notification.ContactEmails != null)
-                {
-                    contactCount += notification.ContactEmails.Count;
                 }
 
                 if (!string.IsNullOrWhiteSpace(this.ContactGroup?.FirstOrDefault()))
                 {
                     notification.ContactGroups = this.ContactGroup.ToList();
-                    contactCount += notification.ContactGroups.Count;
-                }
-                else if (notification.ContactGroups != null)
-                {
-                    contactCount += notification.ContactGroups.Count;
                 }
 
                 if (!string.IsNullOrWhiteSpace(this.ContactRole?.FirstOrDefault()))
                 {
                     notification.ContactRoles = this.ContactRole.ToList();
-                    contactCount += notification.ContactRoles.Count;
-                }   
-                else if (notification.ContactRoles != null)
-                {
-                    contactCount += notification.ContactRoles.Count;
-                }
-
-                if (contactCount <= 0)
-                {
-                    WriteWarning("Notification cannot have all of Contact Emails, Contact Roles and Contact Groups empty.");
-                }
+                }                  
 
                 if (!notifications.ContainsKey(this.NotificationKey))
                 {
                     notifications.Add(this.NotificationKey, notification);
                 }               
-
-                if (notifications.Keys.Count >= 6)
-                {
-                    WriteWarning("Budget can only have up to five notifications.");
-                }
             }
 
             return budget;
