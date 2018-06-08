@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.6.0'
+ModuleVersion = '4.7.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -248,15 +248,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated the following cmdlets with optional LicenseType parameter
-	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
-	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
-	- New-AzureRmSqlDatabaseCopy
-	- New-AzureRmSqlDatabaseSecondary
-	- Restore-AzureRmSqlDatabase'
+        ReleaseNotes = '* Add new cmdlets `Get-AzureRmSqlDatabaseBackupShortTermRetention` and `Set-AzureRmSqlDatabaseBackupShortTermRetention` to support getting/setting the retention policy for point-in-time-restore backups'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
