@@ -37,10 +37,39 @@ function Test-StartJob
 	{
 		# Start job
 		$je = Start-AzureRmSqlElasticJob -ResourceGroupName $j1.ResourceGroupName -ServerName $j1.ServerName -AgentName $j1.AgentName -JobName $j1.JobName
-		$je = Start-AzureRmSqlElasticJob -JobObject $j1
-		$je = Start-AzureRmSqlElasticJob -JobResourceId $j1.ResourceId
-		$je = $j1 | Start-AzureRmSqlElasticJob
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
+		Assert-AreEqual 1 $je.JobVersion
+		Assert-AreEqual Created $je.Lifecycle
+		Assert-AreEqual Created $je.ProvisioningState
 
+		# Start job with job object
+		$je = Start-AzureRmSqlElasticJob -JobObject $j1
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
+		Assert-AreEqual 1 $je.JobVersion
+		Assert-AreEqual Created $je.Lifecycle
+		Assert-AreEqual Created $je.ProvisioningState
+
+		# Start job with job resource id
+		$je = Start-AzureRmSqlElasticJob -JobResourceId $j1.ResourceId
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
+		Assert-AreEqual 1 $je.JobVersion
+		Assert-AreEqual Created $je.Lifecycle
+		Assert-AreEqual Created $je.ProvisioningState
+
+		# Start job with piping
+		$je = $j1 | Start-AzureRmSqlElasticJob
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -82,7 +111,6 @@ function Test-StartJobWait
 	{
 		# Start job - test wait
 		$je = $j1 | Start-AzureRmSqlElasticJob -Wait
-
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -123,13 +151,33 @@ function Test-StopJob
 
 	try
 	{
-		# Stop
+		# Stop with default param
 		$resp = Stop-AzureRmSqlElasticJob -ResourceGroupName $je.ResourceGroupName -ServerName $je.ServerName `
 			-AgentName $je.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
-		$resp = Stop-AzureRmSqlElasticJob -JobExecutionObject $je
-		$resp = Stop-AzureRmSqlElasticJob -JobExecutionResourceId $je.ResourceId
-		$resp = $je | Stop-AzureRmSqlElasticJob
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
 
+		# Stop with job execution object
+		$resp = Stop-AzureRmSqlElasticJob -JobExecutionObject $je
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
+
+		# Stop with job execution resource id
+		$resp = Stop-AzureRmSqlElasticJob -JobExecutionResourceId $je.ResourceId
+		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
+		Assert-AreEqual $je.ServerName $j1.ServerName
+		Assert-AreEqual $je.AgentName $j1.AgentName
+		Assert-AreEqual $je.JobName $j1.JobName
+		Assert-NotNull $je.JobExecutionId
+
+		# Stop with piping
+		$resp = $je | Stop-AzureRmSqlElasticJob
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -174,15 +222,57 @@ function Test-GetJobExecution
 		$jobExecution = Get-AzureRmSqlElasticJobExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName `
 			-AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
+		# Test values from job execution model
+		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
+		Assert-AreEqual $je.ServerName $jobExecution.ServerName
+		Assert-AreEqual $je.AgentName $jobExecution.AgentName
+		Assert-AreEqual $je.JobName $jobExecution.JobName
+		Assert-AreEqual $je.JobExecutionId $jobExecution.JobExecutionId
+		Assert-AreEqual $je.Lifecycle $jobExecution.Lifecycle
+		Assert-AreEqual $je.ProvisioningState $jobExecution.ProvisioningState
+		Assert-AreEqual $je.LastMessage $jobExecution.LastMessage
+		Assert-AreEqual $je.CurrentAttemptStartTime $jobExecution.CurrentAttemptStartTime
+		Assert-AreEqual $je.StartTime $jobExecution.StartTime
+		Assert-AreEqual $je.EndTime $jobExecution.EndTime
+		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
+
 		# Test agent resource id
 		$allExecutions = Get-AzureRmSqlElasticJobExecution -AgentObject $a1 -Count 10
 		$jobExecutions = Get-AzureRmSqlElasticJobExecution -AgentObject $a1 -JobName $j1.JobName -Count 10
 		$jobExecution = Get-AzureRmSqlElasticJobExecution -AgentObject $a1 -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 
+		# Test values from job execution model
+		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
+		Assert-AreEqual $je.ServerName $jobExecution.ServerName
+		Assert-AreEqual $je.AgentName $jobExecution.AgentName
+		Assert-AreEqual $je.JobName $jobExecution.JobName
+		Assert-AreEqual $je.JobExecutionId $jobExecution.JobExecutionId
+		Assert-AreEqual $je.Lifecycle $jobExecution.Lifecycle
+		Assert-AreEqual $je.ProvisioningState $jobExecution.ProvisioningState
+		Assert-AreEqual $je.LastMessage $jobExecution.LastMessage
+		Assert-AreEqual $je.CurrentAttemptStartTime $jobExecution.CurrentAttemptStartTime
+		Assert-AreEqual $je.StartTime $jobExecution.StartTime
+		Assert-AreEqual $je.EndTime $jobExecution.EndTime
+		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
+
 		# Test agent resource id
 		$allExecutions = Get-AzureRmSqlElasticJobExecution -AgentResourceId $a1.ResourceId -Count 10
 		$jobExecutions = Get-AzureRmSqlElasticJobExecution -AgentResourceId $a1.ResourceId -JobName $j1.JobName -Count 10
 		$jobExecution = Get-AzureRmSqlElasticJobExecution -AgentResourceId $a1.ResourceId -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
+
+		# Test values from job execution model
+		Assert-AreEqual $je.ResourceGroupName $jobExecution.ResourceGroupName
+		Assert-AreEqual $je.ServerName $jobExecution.ServerName
+		Assert-AreEqual $je.AgentName $jobExecution.AgentName
+		Assert-AreEqual $je.JobName $jobExecution.JobName
+		Assert-AreEqual $je.JobExecutionId $jobExecution.JobExecutionId
+		Assert-AreEqual $je.Lifecycle $jobExecution.Lifecycle
+		Assert-AreEqual $je.ProvisioningState $jobExecution.ProvisioningState
+		Assert-AreEqual $je.LastMessage $jobExecution.LastMessage
+		Assert-AreEqual $je.CurrentAttemptStartTime $jobExecution.CurrentAttemptStartTime
+		Assert-AreEqual $je.StartTime $jobExecution.StartTime
+		Assert-AreEqual $je.EndTime $jobExecution.EndTime
+		Assert-AreEqual $je.JobVersion $jobExecution.JobVersion
 
 		# Test piping
 		$allExecutions = $a1 | Get-AzureRmSqlElasticJobExecution -Count 10
@@ -242,13 +332,38 @@ function Test-GetJobStepExecution
 		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId
 		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -JobName $j1.JobName -JobExecutionId $je.JobExecutionId -StepName $js1.StepName
 
+		# Test values from job execution model
+		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $stepExecution.ServerName $a1.ServerName
+		Assert-AreEqual $stepExecution.AgentName $a1.AgentName
+		Assert-AreEqual $stepExecution.JobName $j1.JobName
+		Assert-AreEqual $stepExecution.JobExecutionId $je.JobExecutionId
+		Assert-AreEqual $stepExecution.StepName $js1.StepName
+
 		# Test job step job execution object
 		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -JobExecutionObject $je
 		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -JobExecutionObject $je -StepName $js1.StepName
 
+		# Test values from job execution model
+		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $stepExecution.ServerName $a1.ServerName
+		Assert-AreEqual $stepExecution.AgentName $a1.AgentName
+		Assert-AreEqual $stepExecution.JobName $j1.JobName
+		Assert-AreEqual $stepExecution.JobExecutionId $je.JobExecutionId
+		Assert-AreEqual $stepExecution.StepName $js1.StepName
+
+
 		# Test job step job execution resource id
 		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -JobExecutionResourceId $je.ResourceId
 		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -JobExecutionResourceId $je.ResourceId -StepName $js1.StepName
+
+		# Test values from job execution model
+		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
+		Assert-AreEqual $stepExecution.ServerName $a1.ServerName
+		Assert-AreEqual $stepExecution.AgentName $a1.AgentName
+		Assert-AreEqual $stepExecution.JobName $j1.JobName
+		Assert-AreEqual $stepExecution.JobExecutionId $je.JobExecutionId
+		Assert-AreEqual $stepExecution.StepName $js1.StepName
 
 		# Test job step execution piping
 		$allStepExecutions = $je | Get-AzureRmSqlElasticJobStepExecution
@@ -259,8 +374,8 @@ function Test-GetJobStepExecution
 		Assert-AreEqual $stepExecution.ServerName $a1.ServerName
 		Assert-AreEqual $stepExecution.AgentName $a1.AgentName
 		Assert-AreEqual $stepExecution.JobName $j1.JobName
-		Assert-NotNull  $stepExecution.JobExecutionId
-		Assert-NotNull 	$stepExecution.StepName
+		Assert-AreEqual $stepExecution.JobExecutionId $je.JobExecutionId
+		Assert-AreEqual $stepExecution.StepName $js1.StepName
 
 		# Test filters
 		$allStepExecutions = $je | Get-AzureRmSqlElasticJobStepExecution -CreateTimeMin "2018-05-31T23:58:57" `
