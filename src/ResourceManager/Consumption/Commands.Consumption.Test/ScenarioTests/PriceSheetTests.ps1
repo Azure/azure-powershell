@@ -52,7 +52,7 @@ List price sheets with Expand on Meter Details
 #>
 function Test-ListPriceSheetsWithMeterDetailsExpand
 {
-    $priceSheets = Get-AzureRmConsumptionPriceSheet -Expand MeterDetails -Top 5
+    $priceSheets = Get-AzureRmConsumptionPriceSheet -ExpandMeterDetail -Top 5
 	Assert-NotNull $priceSheets
 	Assert-NotNull $priceSheets.Id
 	Assert-NotNull $priceSheets.Name

@@ -74,12 +74,6 @@ function Test-BudgetAtSubscriptionLevel
 	Assert-AreEqual $budgetName $budgetSet2.Name
 	Assert-AreEqual 1 $budgetSet2.Notification.Count
 
-	Write-Debug "Update the budget $budgetName to disable the notificaiton $notificationKey"
-	$budgetSet3 = Set-AzureRmConsumptionBudget -Name $budgetName -NotificationKey $notificationKey -NotificationDisable
-	Assert-NotNull $budgetSet3
-	Assert-AreEqual $budgetName $budgetSet3.Name
-	Assert-AreEqual 1 $budgetSet3.Notification.Count
-
 	Write-Debug "Remove the budget $budgetName"
 	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -PassThru
 	Assert-AreEqual True $response
