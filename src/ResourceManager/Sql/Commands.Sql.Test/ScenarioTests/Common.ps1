@@ -256,8 +256,9 @@ Creates the basic test environment needed to perform the Elastic Job agent tests
 #>
 function Create-ElasticJobAgentTestEnvironment ()
 {
+	$location = Get-Location "Microsoft.Sql" "operations" "West US 2"
 	$rg1 = Create-ResourceGroupForTest
-	$s1 = Create-ServerForTest $rg1 "westus2"
+	$s1 = Create-ServerForTest $rg1 $location
 	$s1fw = $s1 | New-AzureRmSqlServerFirewallRule -AllowAllAzureIPs # allow azure ips
 	$db1 = Create-DatabaseForTest $s1
 	$agent = Create-AgentForTest $db1
@@ -512,7 +513,7 @@ function Get-ProviderLocation($provider)
 			if ($location -eq $null)
 			{
 				return "East US"
-			} 
+			}
             else
 			{
 				return $location.Locations[0]
@@ -581,7 +582,6 @@ function Create-ServerForTest ($resourceGroup, $location = "Japan East")
 {
 	$serverName = Get-ServerName
 	$credentials = Get-ServerCredential
-
 	$server = New-AzureRmSqlServer -ResourceGroupName  $resourceGroup.ResourceGroupName -ServerName $serverName -Location $location -SqlAdministratorCredentials $credentials
 	return $server
 }
@@ -593,7 +593,6 @@ function Create-ServerForTest ($resourceGroup, $location = "Japan East")
 function Create-ElasticPoolForTest ($server)
 {
 	$epName = Get-ElasticPoolName
-
 	$ep = New-AzureRmSqlElasticPool -ResourceGroupName  $server.ResourceGroupName -ServerName $server.ServerName -ElasticPoolName $epName
 	return $ep
 }

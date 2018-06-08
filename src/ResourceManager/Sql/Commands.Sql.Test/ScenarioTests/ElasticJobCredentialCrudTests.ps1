@@ -414,4 +414,8 @@ function Test-RemoveJobCredentialWithPiping ($a1)
 	$all = $a1 | Get-AzureRmSqlElasticJobCredential
 	$resp = $all | Remove-AzureRmSqlElasticJobCredential
 	Assert-True { $resp.Count -ge 1 }
+
+	# Test get credential and assert it doesn't exist anymore
+	$jc1 = $a1 | Get-AzureRmSqlElasticJobCredential -Name $jc1.Name
+	Assert-Null $jc1
 }

@@ -19,8 +19,9 @@
 function Test-CreateAgent
 {
     # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
     $rg1 = Create-ResourceGroupForTest
-    $s1 = Create-ServerForTest $rg1 "westus2"
+    $s1 = Create-ServerForTest $rg1 $location
     $db1 = Create-DatabaseForTest $s1
     $db2 = Create-DatabaseForTest $s1
     $db3 = Create-DatabaseForTest $s1
@@ -81,9 +82,9 @@ function Test-CreateAgent
 function Test-UpdateAgent
 {
     # Setup
-    # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
     $rg1 = Create-ResourceGroupForTest
-    $s1 = Create-ServerForTest $rg1 "westus2"
+    $s1 = Create-ServerForTest $rg1 $location
     $db1 = Create-DatabaseForTest $s1
     $a1 = Create-AgentForTest $db1
     $agentName = Get-AgentName
@@ -144,9 +145,10 @@ function Test-UpdateAgent
 function Test-GetAgent
 {
     # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
     $rg1 = Create-ResourceGroupForTest
-    $s1 = Create-ServerForTest $rg1 "westus2"
-    $s2 = Create-ServerForTest $rg1 "westus2"
+    $s1 = Create-ServerForTest $rg1 $location
+    $s2 = Create-ServerForTest $rg1 $location
     $db1 = Create-DatabaseForTest $s1
     $db2 = Create-DatabaseForTest $s1
     $db3 = Create-DatabaseForTest $s2
@@ -214,8 +216,9 @@ function Test-GetAgent
 function Test-RemoveAgent
 {
     # Setup
+    $location = Get-Location "Microsoft.Sql" "operations" "West US 2"
     $rg1 = Create-ResourceGroupForTest
-    $s1 = Create-ServerForTest $rg1 "westus2"
+    $s1 = Create-ServerForTest $rg1 $location
     $db1 = Create-DatabaseForTest $s1
     $db2 = Create-DatabaseForTest $s1
     $db3 = Create-DatabaseForTest $s1
@@ -262,6 +265,19 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.ResourceGroupName $rg1.ResourceGroupName
         Assert-AreEqual $resp.Location $s1.Location
         Assert-AreEqual $resp.WorkerCount 100
+
+        # Test that agents are indeed gone
+        $a1 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a1.AgentName
+        Assert-Null $a1
+
+        $a2 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a2.AgentName
+        Assert-Null $a2
+
+        $a3 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a3.AgentName
+        Assert-Null $a3
+
+        $a4 = $s1 | Get-AzureRmSqlElasticJobAgent -Name $a4.AgentName
+        Assert-Null $a4
     }
     finally
     {

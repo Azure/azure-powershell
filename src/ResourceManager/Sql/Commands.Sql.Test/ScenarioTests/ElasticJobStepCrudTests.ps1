@@ -27,7 +27,7 @@ function Test-CreateJobStep
 		Test-CreateJobStepWithDefaultParam $a1
 		Test-CreateJobStepWithJobObject $a1
 		Test-CreateJobStepWithJobResourceId $a1
-	  Test-CreateJobStepWithPiping $a1
+		Test-CreateJobStepWithPiping $a1
 	}
 	finally
 	{
@@ -49,7 +49,7 @@ function Test-GetJobStep
 		Test-GetJobStepWithDefaultParam $a1
 		Test-GetJobStepWithJobObject $a1
 		Test-GetJobStepWithJobResourceId $a1
-	  Test-GetJobStepWithPiping $a1
+		Test-GetJobStepWithPiping $a1
 	}
 	finally
 	{
@@ -71,7 +71,7 @@ function Test-UpdateJobStep
 		Test-UpdateJobStepWithDefaultParam $a1
 		Test-UpdateJobStepWithInputObject $a1
 		Test-UpdateJobStepWithResourceId $a1
-	  Test-UpdateJobStepWithPiping $a1
+		Test-UpdateJobStepWithPiping $a1
 	}
 	finally
 	{
@@ -93,7 +93,7 @@ function Test-RemoveJobStep
 		Test-RemoveJobStepWithDefaultParam $a1
 		Test-RemoveJobStepWithInputObject $a1
 		Test-RemoveJobStepWithResourceId $a1
-	  Test-RemoveJobStepWithPiping $a1
+		Test-RemoveJobStepWithPiping $a1
 	}
 	finally
 	{
@@ -844,6 +844,10 @@ function Test-RemoveJobStepWithPiping ($a1)
 	$allStepsForJob = $j1 | Get-AzureRmSqlElasticJobStep
 	$resp = $allStepsForJob | Remove-AzureRmSqlElasticJobStep
 	Assert-AreEqual $resp.Count 1
+
+	# Test job step doesn't exist
+	$js1 = $j1 | Get-AzureRmSqlElasticJobStep -Name $js1.StepName
+	Assert-Null $js1
 }
 
 <#
