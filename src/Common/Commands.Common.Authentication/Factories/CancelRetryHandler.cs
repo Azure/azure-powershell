@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
     /// </summary>
     public class CancelRetryHandler : DelegatingHandler, ICloneable
     {
-        const string TestModeVariableKey = "Azure_Test_Mode", TestModeVariableValue="Record";
+        static readonly string[] TestModeLiveValues = { "Record", "None", "Live" };
+        const string TestModeVariableKey = "Azure_Test_Mode";
         public CancelRetryHandler()
         {
             WaitInterval = TimeSpan.Zero;
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         void SleepIfRunningLive(TimeSpan timeSpan)
         {
             var testModeSetting = Environment.GetEnvironmentVariable(TestModeVariableKey);
-            if (string.IsNullOrWhiteSpace(testModeSetting) || !string.Equals(TestModeVariableValue, testModeSetting, StringComparison.OrdinalIgnoreCase))
+            if (string.IsNullOrWhiteSpace(testModeSetting) || TestModeLiveValues.Any( v => string.Equals(v, testModeSetting, StringComparison.OrdinalIgnoreCase)))
             {
                 Thread.Sleep(timeSpan);
             }
