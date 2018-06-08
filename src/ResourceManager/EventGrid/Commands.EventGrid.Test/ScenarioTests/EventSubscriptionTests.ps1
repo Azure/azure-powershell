@@ -491,14 +491,36 @@ Tests EventGrid EventSubscription with deadletter destination
 #>
 function EventSubscriptionTests_Deadletter {
     # Setup
+    $location = "eastus2euap"
+    $topicName = Get-TopicName
     $subscriptionId = Get-SubscriptionId
     $eventSubscriptionName = Get-EventSubscriptionName
+    $resourceGroupName = Get-ResourceGroupName
     $eventSubscriptionEndpoint = "https://eventgridrunnerfunction.azurewebsites.net/api/HttpTriggerCSharp1?code=<HIDDEN>"
-    $resourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.EventGrid/topics/<TopicName>"
     $deadletterResourceId = "/subscriptions/$subscriptionId/resourceGroups/<ResourceGroupName>/providers/microsoft.Storage/storageAccounts/<StorageAccountName>/blobServices/default/containers/<ContainerName>"
 
-    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to user topic"
+    Write-Host "Creating resource group"
+    Write-Host "ResourceGroup name : $resourceGroupName"
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
 
-    $result = New-AzureRmEventGridSubscription -ResourceId $resourceId -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeadLetterEndpoint $deadletterResourceId
+    Write-Host " Creating a new EventGrid Topic: $topicName in resource group $resourceGroupName"
+    $result = New-AzureRmEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName -Location $location
     Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    Write-Debug " Creating a new EventSubscription $eventSubscriptionName to topic $topicName in resource group $resourceGroupName"
+    $result = Get-AzureRmEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | New-AzureRmEventGridSubscription -Endpoint $eventSubscriptionEndpoint -EventSubscriptionName $eventSubscriptionName -DeadLetterEndpoint $deadletterResourceId
+    Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+    Write-Debug "Getting the created event subscription $eventSubscriptionName"
+    $result = Get-AzureRmEventGridSubscription -ResourceGroupName $resourceGroupName -TopicName $topicName -EventSubscriptionName $eventSubscriptionName -IncludeFullEndpointUrl
+    Assert-True {$result.EventSubscriptionName -eq $eventSubscriptionName}
+
+    Write-Debug " Deleting event subscription $eventSubscriptionName"
+    Get-AzureRmEventGridTopic -ResourceGroupName $resourceGroupName -Name $topicName | Remove-AzureRmEventGridSubscription -EventSubscriptionName $eventSubscriptionName
+
+    Write-Debug " Deleting topic $topicName"
+    Remove-AzureRmEventGridTopic -Name $topicName -ResourceGroupName $resourceGroupName
+
+    Write-Debug " Deleting resourcegroup $resourceGroupName"
+    Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
