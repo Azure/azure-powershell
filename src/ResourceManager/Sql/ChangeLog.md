@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.7.0-preview
 * Add new cmdlets 'Get-AzureRmSqlDatabaseBackupShortTermRetention' and 'Set-AzureRmSqlDatabaseBackupShortTermRetention' to support getting/setting the retention policy for point-in-time-restore backups
 
 ## Version 4.6.0
