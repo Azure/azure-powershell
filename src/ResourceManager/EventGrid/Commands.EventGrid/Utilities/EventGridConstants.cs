@@ -40,9 +40,10 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string TagsHelp = "Hashtable which represents resource Tags.";
         public const string ResourceIdNameHelp = "The identifier of the resource to which the event subscription should be created.";
         public const string TopicNameOfTheEventSubscriptionHelp = "The name of the topic to which the event subscription should be created.";
-        public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema.";
-        public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key=value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion.";
-        public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key=value format. Allowed key names are: subject, eventtype, and dataversion.";
+        public const string InputSchemaHelp = "The schema of the input events for the topic. Allowed values are: eventgridschema, customeventschema, or cloudeventv01Schema. Default value is eventgridschema. Note that if customeventschema " +
+            "is specified, then InputMappingField or/and InputMappingDefaultValue parameters need to be specified as well.";
+        public const string InputMappingFieldHelp = "Hashtable which represents the input mapping fields in space separated key = value format. Allowed key names are: id, topic, eventtime, subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
+        public const string InputMappingDefaultValueHelp = "Hashtable which represents the input mapping fields with default value in space separated key = value format. Allowed key names are: subject, eventtype, and dataversion. This is used when InputSchemaHelp is customeventschema only.";
         public const string EventTtlHelp = "The time in minutes for the event delivery. This value must be between 1 and 1440";
         public const string MaxDeliveryAttemptHelp = "The maximum number of attempts to deliver the event. This value must be between 1 and 30";
         public const string DeliverySchemaHelp = "The schema to be used when delivering events to the destination. The possible values are: eventgridschema, inputeventschema, or cloudeventv01schema. Default value is inputeventschema.";
