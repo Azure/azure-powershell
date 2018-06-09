@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class NewAzureSqlElasticJobAgent : AzureSqlElasticJobAgentCmdletBase<AzureSqlDatabaseModel>
     {
         /// <summary>
-        /// Gets or sets the Agent's Control Database Object
+        /// Gets or sets the Agent's Job Database Object
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The Job database object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlDatabaseModel ParentObject { get; set; }
+        public AzureSqlDatabaseModel DatabaseObject { get; set; }
 
         /// <summary>
         /// Gets or sets the Agent's Control Database Resource Id
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The Job database resource id")]
         [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
+        public string DatabaseResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -128,8 +128,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.ParentObject);
-            InitializeResourceIdProperties(this.ParentResourceId);
+            InitializeInputObjectProperties(this.DatabaseObject);
+            InitializeResourceIdProperties(this.DatabaseResourceId);
             base.ExecuteCmdlet();
         }
 

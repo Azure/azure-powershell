@@ -25,8 +25,8 @@ function Test-CreateJob
 		$a1 = Create-ElasticJobAgentTestEnvironment
 
 		Test-CreateJobWithDefaultParam $a1
-		Test-CreateJobWithAgentObject $a1
-		Test-CreateJobWithAgentResourceId $a1
+		Test-CreateJobWithParentObject $a1
+		Test-CreateJobWithParentResourceId $a1
 		Test-CreateJobWithPiping $a1
 	}
 	finally
@@ -47,8 +47,8 @@ function Test-GetJob
 		$a1 = Create-ElasticJobAgentTestEnvironment
 
 		Test-GetJobWithDefaultParam $a1
-		Test-GetJobWithAgentObject $a1
-		Test-GetJobWithAgentResourceId $a1
+		Test-GetJobWithParentObject $a1
+		Test-GetJobWithParentResourceId $a1
 		Test-GetJobWithPiping $a1
 	}
 	finally
@@ -186,7 +186,7 @@ function Test-CreateJobWithDefaultParam($a1)
 	.SYNOPSIS
 	Tests creating a job with min parameters using agent object parameter sets
 #>
-function Test-CreateJobWithAgentObject($a1)
+function Test-CreateJobWithParentObject($a1)
 {
 	# Setup
 	$startTime = Get-Date "2018-05-31T23:58:57"
@@ -268,7 +268,7 @@ function Test-CreateJobWithAgentObject($a1)
 	.SYNOPSIS
 	Tests creating a job with min parameters using agent resource id parameter sets
 #>
-function Test-CreateJobWithAgentResourceId($a1)
+function Test-CreateJobWithParentResourceId($a1)
 {
 	# Setup
 	$startTime = Get-Date "2018-05-31T23:58:57"
@@ -454,7 +454,7 @@ function Test-GetJobWithDefaultParam($a1)
 	.SYNOPSIS
 	Tests getting a job using agent object
 #>
-function Test-GetJobWithAgentObject($a1)
+function Test-GetJobWithParentObject($a1)
 {
 	# Setup
 	$j1 = Create-JobForTest $a1
@@ -476,7 +476,7 @@ function Test-GetJobWithAgentObject($a1)
 	.SYNOPSIS
 	Tests getting job with agent resource id
 #>
-function Test-GetJobWithAgentResourceId($a1)
+function Test-GetJobWithParentResourceId($a1)
 {
 	# Setup
 	$j1 = Create-JobForTest $a1

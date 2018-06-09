@@ -25,8 +25,8 @@ function Test-CreateJobStep
 	try
 	{
 		Test-CreateJobStepWithDefaultParam $a1
-		Test-CreateJobStepWithJobObject $a1
-		Test-CreateJobStepWithJobResourceId $a1
+		Test-CreateJobStepWithParentObject $a1
+		Test-CreateJobStepWithParentResourceId $a1
 		Test-CreateJobStepWithPiping $a1
 	}
 	finally
@@ -47,8 +47,8 @@ function Test-GetJobStep
 	try
 	{
 		Test-GetJobStepWithDefaultParam $a1
-		Test-GetJobStepWithJobObject $a1
-		Test-GetJobStepWithJobResourceId $a1
+		Test-GetJobStepWithParentObject $a1
+		Test-GetJobStepWithParentResourceId $a1
 		Test-GetJobStepWithPiping $a1
 	}
 	finally
@@ -178,7 +178,7 @@ function Test-CreateJobStepWithDefaultParam ($a1)
 	.SYNOPSIS
 	Tests creating a job step with job object
 #>
-function Test-CreateJobStepWithJobObject ($a1)
+function Test-CreateJobStepWithParentObject ($a1)
 {
 	# Setup
 	$db1 = $a1 | Get-AzureRmSqlDatabase
@@ -251,7 +251,7 @@ function Test-CreateJobStepWithJobObject ($a1)
 	.SYNOPSIS
 	Tests creating a job step with job resource id
 #>
-function Test-CreateJobStepWithJobResourceId ($a1)
+function Test-CreateJobStepWithParentResourceId ($a1)
 {
 	# Setup
 	$db1 = $a1 | Get-AzureRmSqlDatabase
@@ -882,7 +882,7 @@ function Test-GetJobStepWithDefaultParam ($a1)
 	.SYNOPSIS
 	Tests getting one or more job steps using job object
 #>
-function Test-GetJobStepWithJobObject ($a1)
+function Test-GetJobStepWithParentObject ($a1)
 {
 	# Setup
 	$jc1 = Create-JobCredentialForTest $a1
@@ -911,7 +911,7 @@ function Test-GetJobStepWithJobObject ($a1)
 	.SYNOPSIS
 	Tests getting one or more job steps using job resource id
 #>
-function Test-GetJobStepWithJobResourceId ($a1)
+function Test-GetJobStepWithParentResourceId ($a1)
 {
 	# Setup
 	$jc1 = Create-JobCredentialForTest $a1

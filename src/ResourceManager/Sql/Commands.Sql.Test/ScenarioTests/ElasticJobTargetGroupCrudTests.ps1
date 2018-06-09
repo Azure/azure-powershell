@@ -24,8 +24,8 @@ function Test-CreateTargetGroup
 	try
 	{
 		Test-CreateTargetGroupWithDefaultParam $a1
-		Test-CreateTargetGroupWithAgentObject $a1
-		Test-CreateTargetGroupWithAgentResourceId $a1
+		Test-CreateTargetGroupWithParentObject $a1
+		Test-CreateTargetGroupWithParentResourceId $a1
 		Test-CreateTargetGroupWithPiping $a1
 	}
 	finally
@@ -46,8 +46,8 @@ function Test-GetTargetGroup
 	try
 	{
 		Test-GetTargetGroupWithDefaultParam $a1
-		Test-GetTargetGroupWithAgentObject $a1
-		Test-GetTargetGroupWithAgentResourceId $a1
+		Test-GetTargetGroupWithParentObject $a1
+		Test-GetTargetGroupWithParentResourceId $a1
 		Test-GetTargetGroupWithPiping $a1
 	}
 	finally
@@ -103,7 +103,7 @@ function Test-CreateTargetGroupWithDefaultParam ($a1)
     .DESCRIPTION
     SmokeTest
 #>
-function Test-CreateTargetGroupWithAgentObject ($a1)
+function Test-CreateTargetGroupWithParentObject ($a1)
 {
     $tgName = Get-TargetGroupName
 
@@ -122,7 +122,7 @@ function Test-CreateTargetGroupWithAgentObject ($a1)
     .DESCRIPTION
     SmokeTest
 #>
-function Test-CreateTargetGroupWithAgentResourceId ($a1)
+function Test-CreateTargetGroupWithParentResourceId ($a1)
 {
     $tgName = Get-TargetGroupName
 
@@ -184,7 +184,7 @@ function Test-GetTargetGroupWithDefaultParam ($a1)
     .DESCRIPTION
     SmokeTest
 #>
-function Test-GetTargetGroupWithAgentObject ($a1)
+function Test-GetTargetGroupWithParentObject ($a1)
 {
     $tg = Create-TargetGroupForTest $a1
     $tg2 = Create-TargetGroupForTest $a1
@@ -208,7 +208,7 @@ function Test-GetTargetGroupWithAgentObject ($a1)
     .DESCRIPTION
     SmokeTest
 #>
-function Test-GetTargetGroupWithAgentResourceId ($a1)
+function Test-GetTargetGroupWithParentResourceId ($a1)
 {
     $tg = Create-TargetGroupForTest $a1
     $tg2 = Create-TargetGroupForTest $a1

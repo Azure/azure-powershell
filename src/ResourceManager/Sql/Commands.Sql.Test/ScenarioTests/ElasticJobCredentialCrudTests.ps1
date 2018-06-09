@@ -23,8 +23,8 @@ function Test-CreateJobCredential
 	try
 	{
 		Test-CreateJobCredentialWithDefaultParam $a1
-		Test-CreateJobCredentialWithAgentObject $a1
-		Test-CreateJobCredentialWithAgentResourceId $a1
+		Test-CreateJobCredentialWithParentObject $a1
+		Test-CreateJobCredentialWithParentResourceId $a1
 		Test-CreateJobCredentialWithPiping $a1
 	}
 	finally
@@ -45,8 +45,8 @@ function Test-GetJobCredential
 	try
 	{
 		Test-GetJobCredentialWithDefaultParam $a1
-		Test-GetJobCredentialWithAgentObject $a1
-		Test-GetJobCredentialWithAgentResourceId $a1
+		Test-GetJobCredentialWithParentObject $a1
+		Test-GetJobCredentialWithParentResourceId $a1
 		Test-GetJobCredentialWithPiping $a1
 	}
 	finally
@@ -119,7 +119,7 @@ function Test-CreateJobCredentialWithDefaultParam ($a1)
 	.SYNOPSIS
 	Tests creating a job credential with agent object
 #>
-function Test-CreateJobCredentialWithAgentObject ($a1)
+function Test-CreateJobCredentialWithParentObject ($a1)
 {
 	# Setup
 	$cn1 = Get-JobCredentialName
@@ -137,7 +137,7 @@ function Test-CreateJobCredentialWithAgentObject ($a1)
 	.SYNOPSIS
 	Tests creating a job credential with resource id
 #>
-function Test-CreateJobCredentialWithAgentResourceId ($a1)
+function Test-CreateJobCredentialWithParentResourceId ($a1)
 {
 	# Setup
 	$cn1 = Get-JobCredentialName
@@ -272,7 +272,7 @@ function Test-GetJobCredentialWithDefaultParam ($a1)
 	.SYNOPSIS
 	Tests getting a job credential with agent object
 #>
-function Test-GetJobCredentialWithAgentObject ($a1)
+function Test-GetJobCredentialWithParentObject ($a1)
 {
 	# Setup
 	$jc1 = Create-JobCredentialForTest $a1
@@ -296,7 +296,7 @@ function Test-GetJobCredentialWithAgentObject ($a1)
 	.SYNOPSIS
 	Tests getting a job credential with agent resource id
 #>
-function Test-GetJobCredentialWithAgentResourceId ($a1)
+function Test-GetJobCredentialWithParentResourceId ($a1)
 {
 	# Setup
 	$jc1 = Create-JobCredentialForTest $a1
