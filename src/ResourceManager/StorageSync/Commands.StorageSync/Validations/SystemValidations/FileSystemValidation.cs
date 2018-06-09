@@ -8,35 +8,20 @@
     public class FileSystemValidation : BaseSystemValidation
     {
         #region Fields and Properties
-        private readonly char _driveLetter;
-        private readonly bool _haveDriveLetter;
+        private readonly char? _driveLetter;
         #endregion
 
         #region Constructors
         public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File System type", ValidationType.FileSystem)
         {
-            AfsPath afsPath = new AfsPath(path);
-            string computerName;
-
-            if (afsPath.TryGetDriveLetterFromPath(out _driveLetter))
-            {
-                _haveDriveLetter = true;
-            }
-            else if (afsPath.TryGetComputerNameAndDriveFromPath(out computerName, out _driveLetter))
-            {
-                _haveDriveLetter = true;
-            }
-            else
-            {
-                _haveDriveLetter = false;
-            }
+            _driveLetter = new AfsPath(path).DriveLetter;
         }
         #endregion
 
         #region Protected methods
         protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            if (!_haveDriveLetter)
+            if (!_driveLetter.HasValue)
             {
                 return UnableToRunBecause(
                     @"Unable to perform the File System validation. In order to run this validation, specify 'Path' parameter such that it includes the drive letter, e.g. C:\MyDataSet or \\contoso-server\d$\data");
@@ -45,7 +30,7 @@
             string filesystem;
             try
             {
-                commandRunner.AddScript($"Get-Volume -DriveLetter {_driveLetter}");
+                commandRunner.AddScript($"Get-Volume -DriveLetter {_driveLetter.Value}");
                 PSObject volume = commandRunner.Invoke()[0];
                 filesystem = (string)volume.Members["FileSystem"].Value;
             }
@@ -58,7 +43,6 @@
             {
                 return this.SuccessfulResult;
             }
-
 
             return new ValidationResult
             {

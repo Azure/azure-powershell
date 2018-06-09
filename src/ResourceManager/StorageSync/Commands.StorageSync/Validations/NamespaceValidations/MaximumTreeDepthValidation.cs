@@ -34,7 +34,7 @@
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             AfsPath path = new AfsPath(node.FullName);
-            int depth = path.Depth();
+            int depth = path.Depth;
 
             bool isTooDeep = depth > this._maxTreeDepth;
             if (isTooDeep)

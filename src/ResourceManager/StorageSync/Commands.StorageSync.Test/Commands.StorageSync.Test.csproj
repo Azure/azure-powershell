@@ -155,6 +155,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\StorageSyncTests.cs" />
     <Compile Include="TestController.cs" />
+    <Compile Include="UnitTests\AfsPathTests.cs" />
     <Compile Include="UnitTests\AssertExtension.cs" />
     <Compile Include="UnitTests\Category.cs" />
     <Compile Include="UnitTests\FilenamesCharactersValidationTest.cs" />
