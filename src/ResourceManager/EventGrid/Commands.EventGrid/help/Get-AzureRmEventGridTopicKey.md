@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridtopickey
@@ -72,7 +72,7 @@ EventGrid Topic object.
 ```yaml
 Type: PSTopic
 Parameter Sets: TopicInputObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -117,7 +117,7 @@ Resource Identifier representing the Event Grid Topic.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -140,4 +140,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

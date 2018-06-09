@@ -46,22 +46,22 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.ResourceGroupName,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.ResourceGroupName,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = EventGridConstants.TopicName,
+            HelpMessage = EventGridConstants.TopicNameHelp,
             ParameterSetName = TopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }

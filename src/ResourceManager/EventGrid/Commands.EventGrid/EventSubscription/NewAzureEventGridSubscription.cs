@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = "The identifier of the resource to which the event subscription should be created.",
+            HelpMessage = EventGridConstants.ResourceIdNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -49,25 +49,25 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = false,
             Position = 1,
-            HelpMessage = EventGridConstants.EventSubscriptionName,
+            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = "The resource group of the topic.",
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 2,
-            HelpMessage = EventGridConstants.ResourceGroupName,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 3,
-            HelpMessage = "The name of the topic to which the event subscription should be created.",
+            HelpMessage = EventGridConstants.TopicNameOfTheEventSubscriptionHelp,
             ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
@@ -149,11 +149,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             Position = 3,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
-        [ValidateSet("webhook", "eventhub", IgnoreCase = true)]
+        [ValidateSet(EventGridConstants.Webhook, EventGridConstants.EventHub, EventGridConstants.StorageQueue, EventGridConstants.HybridConnection, IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
-        public string EndpointType { get; set; }
+        public string EndpointType { get; set; } = EventGridConstants.Webhook;
 
-        [Parameter(
+    [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 5,
@@ -280,12 +280,106 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string[] Label { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.EventTtlHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.EventTtlHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.EventTtlHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.EventTtlHelp,
+            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+        [ValidateRange(1, 1440)]
+        public int? EventTtl { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.MaxDeliveryAttemptHelp,
+            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+        [ValidateRange(1, 30)]
+        public int? MaxDeliveryAttempt { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeliverySchemaHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeliverySchemaHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeliverySchemaHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.DeliverySchemaHelp,
+            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+        [ValidateSet(EventDeliverySchema.EventGridSchema, EventDeliverySchema.InputEventSchema, EventDeliverySchema.CloudEventV01Schema, IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string DeliverySchema { get; set; } = EventDeliverySchema.InputEventSchema;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeadletterEndpointHelp,
+            ParameterSetName = CustomTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeadletterEndpointHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DeadletterEndpointHelp,
+            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = false,
+            HelpMessage = EventGridConstants.DeadletterEndpointHelp,
+            ParameterSetName = EventSubscriptionInputObjectParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string DeadLetterEndpoint { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ShouldProcess(this.EventSubscriptionName, $"Create a new Event Grid subscription {this.EventSubscriptionName}"))
             {
                 string scope;
                 bool isSubjectCaseSensitive = this.SubjectCaseSensitive.IsPresent;
+                RetryPolicy retryPolicy = null;
 
                 if (!string.IsNullOrEmpty(this.ResourceId))
                 {
@@ -302,12 +396,23 @@ namespace Microsoft.Azure.Commands.EventGrid
                     scope = EventGridUtils.GetScope(this.DefaultContext.Subscription.Id, this.ResourceGroupName, this.TopicName);
                 }
 
+                if (this.MaxDeliveryAttempt.HasValue || this.EventTtl.HasValue)
+                {
+                    retryPolicy = new RetryPolicy(this.MaxDeliveryAttempt, this.EventTtl);
+                }
+
+                if (EventGridUtils.ShouldShowEventSubscriptionWarningMessage(this.Endpoint, this.EndpointType))
+                {
+                    WriteWarning(EventGridConstants.EventSubscriptionHandshakeValidationMessage);
+                }
+
                 EventSubscription eventSubscription = this.Client.CreateEventSubscription(scope,
                     this.EventSubscriptionName, this.Endpoint, this.EndpointType, this.SubjectBeginsWith,
-                    this.SubjectEndsWith, isSubjectCaseSensitive, this.IncludedEventType, this.Label);
+                    this.SubjectEndsWith, isSubjectCaseSensitive, this.IncludedEventType, this.Label, retryPolicy, this.DeliverySchema,
+                    this.DeadLetterEndpoint);
 
                 PSEventSubscription psEventSubscription = new PSEventSubscription(eventSubscription);
-                this.WriteObject(psEventSubscription);
+                this.WriteObject(psEventSubscription, true);
             }
         }
     }

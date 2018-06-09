@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.EventGrid.dll-Help.xml
 Module Name: AzureRM.EventGrid
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.eventgrid/get-azurermeventgridsubscription
@@ -145,7 +145,7 @@ The name of the event subscription
 ```yaml
 Type: String
 Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -160,7 +160,7 @@ Include the full endpoint URL of the event subscription destination.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: EventSubscriptionTopicNameParameterSet, ResourceIdEventSubscriptionParameterSet, EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -175,7 +175,7 @@ EventGrid Event Subscription object.
 ```yaml
 Type: PSTopic
 Parameter Sets: EventSubscriptionInputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -190,7 +190,7 @@ Location
 ```yaml
 Type: String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -220,7 +220,7 @@ Identifier of the resource to which event subscriptions have been created.
 ```yaml
 Type: String
 Parameter Sets: ResourceIdEventSubscriptionParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -235,7 +235,7 @@ EventGrid Topic Name.
 ```yaml
 Type: String
 Parameter Sets: EventSubscriptionTopicNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -250,7 +250,7 @@ TopicType name
 ```yaml
 Type: String
 Parameter Sets: EventSubscriptionTopicTypeNameParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -276,4 +276,3 @@ System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSE
 ## NOTES
 
 ## RELATED LINKS
-
