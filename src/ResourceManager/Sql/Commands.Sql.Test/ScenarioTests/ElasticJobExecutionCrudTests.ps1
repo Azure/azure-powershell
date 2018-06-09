@@ -169,7 +169,7 @@ function Test-StopJob
 		Assert-NotNull $je.JobExecutionId
 
 		# Stop with job execution resource id
-		$resp = Stop-AzureRmSqlElasticJob -JobExecutionResourceId $je.ResourceId
+		$resp = Stop-AzureRmSqlElasticJob -ParentResourceId $je.ResourceId
 		Assert-AreEqual $je.ResourceGroupName $j1.ResourceGroupName
 		Assert-AreEqual $je.ServerName $j1.ServerName
 		Assert-AreEqual $je.AgentName $j1.AgentName
@@ -354,8 +354,8 @@ function Test-GetJobStepExecution
 
 
 		# Test job step job execution resource id
-		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -JobExecutionResourceId $je.ResourceId
-		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -JobExecutionResourceId $je.ResourceId -StepName $js1.StepName
+		$allStepExecutions = Get-AzureRmSqlElasticJobStepExecution -ParentResourceId $je.ResourceId
+		$stepExecution = Get-AzureRmSqlElasticJobStepExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName
 
 		# Test values from job execution model
 		Assert-AreEqual $stepExecution.ResourceGroupName $a1.ResourceGroupName
@@ -422,8 +422,8 @@ function Test-GetJobTargetExecution
 		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentObject $je -StepName $js1.StepName -Count 10
 
 		# Test job target job execution resource id
-		$allTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -JobExecutionResourceId $je.ResourceId -Count 10
-		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -JobExecutionResourceId $je.ResourceId -StepName $js1.StepName -Count 10
+		$allTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -Count 10
+		$stepTargetExecutions = Get-AzureRmSqlElasticJobTargetExecution -ParentResourceId $je.ResourceId -StepName $js1.StepName -Count 10
 
 		# Test job target execution piping
 		$allTargetExecutions = $je | Get-AzureRmSqlElasticJobTargetExecution -Count 10
