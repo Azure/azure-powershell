@@ -975,7 +975,7 @@
       <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.RecommendedElasticPoolTests\ListRecommendedElasticPools.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <!-- <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticJobAgentCrudTests\TestAgentCreate.json">
+      <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticJobAgentCrudTests\TestAgentCreate.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticJobAgentCrudTests\TestAgentUpdate.json">
@@ -1055,7 +1055,7 @@
       </None>
       <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ElasticJobTargetGroupCrudTests\TestTargetGroupRemove.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None> -->
+      </None>
       <None Include="SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerActiveDirectoryAdministratorTest\TestServerActiveDirectoryAdministratorCRUD.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
