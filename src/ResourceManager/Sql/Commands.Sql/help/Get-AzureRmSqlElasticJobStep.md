@@ -22,31 +22,31 @@ Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String
 ### GetVersion
 ```
 Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> -Name <String> [-Version] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-JobName] <String> [-Version] <Int32> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### ObjectSet
-```
-Get-AzureRmSqlElasticJobStep [-Name <String>] [-JobObject] <AzureSqlElasticJobModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetVersion Using Job Object
 ```
-Get-AzureRmSqlElasticJobStep -Name <String> [-Version] <Int32> [-JobObject] <AzureSqlElasticJobModel>
+Get-AzureRmSqlElasticJobStep [-Version] <Int32> -ParentObject <AzureSqlElasticJobModel> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetVersion Using ParentResourceId
+```
+Get-AzureRmSqlElasticJobStep [-Version] <Int32> -ParentResourceId <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectSet
+```
+Get-AzureRmSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmSqlElasticJobStep [-Name <String>] [-JobResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetVersion Using JobResourceId
-```
-Get-AzureRmSqlElasticJobStep -Name <String> [-Version] <Int32> [-JobResourceId] <String>
+Get-AzureRmSqlElasticJobStep -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,36 +114,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobObject
-The job input object
-
-```yaml
-Type: AzureSqlElasticJobModel
-Parameter Sets: ObjectSet, GetVersion Using Job Object
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JobResourceId
-The job resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet, GetVersion Using JobResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The job step name
 
@@ -161,13 +131,39 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: GetVersion, GetVersion Using Job Object, GetVersion Using JobResourceId
+Parameter Sets: GetVersion, GetVersion Using Job Object, GetVersion Using ParentResourceId
 Aliases: StepName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The job input object```yaml
+Type: AzureSqlElasticJobModel
+Parameter Sets: GetVersion Using Job Object, ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The job resource id```yaml
+Type: String
+Parameter Sets: GetVersion Using ParentResourceId, ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -230,7 +226,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: GetVersion Using JobResourceId
+Parameter Sets: GetVersion Using ParentResourceId
 Aliases:
 
 Required: True

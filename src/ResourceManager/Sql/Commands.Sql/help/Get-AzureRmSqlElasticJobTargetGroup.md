@@ -20,13 +20,13 @@ Get-AzureRmSqlElasticJobTargetGroup [-ResourceGroupName] <String> [-ServerName] 
 
 ### ObjectSet
 ```
-Get-AzureRmSqlElasticJobTargetGroup [-Name <String>] [-AgentObject] <AzureSqlElasticJobAgentModel>
+Get-AzureRmSqlElasticJobTargetGroup -ParentObject <AzureSqlElasticJobAgentModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmSqlElasticJobTargetGroup [-Name <String>] [-AgentResourceId] <String>
+Get-AzureRmSqlElasticJobTargetGroup -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,36 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AgentObject
-The agent object
-
-```yaml
-Type: AzureSqlElasticJobAgentModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AgentResourceId
-The agent resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -121,6 +91,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The agent object```yaml
+Type: AzureSqlElasticJobAgentModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The agent resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

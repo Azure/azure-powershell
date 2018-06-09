@@ -21,14 +21,14 @@ Stop-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [
 
 ### ObjectSet
 ```
-Stop-AzureRmSqlElasticJob [-JobExecutionObject] <AzureSqlElasticJobExecutionModel>
+Stop-AzureRmSqlElasticJob -ParentObject <AzureSqlElasticJobExecutionModel>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Stop-AzureRmSqlElasticJob [-JobExecutionResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzureRmSqlElasticJob -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,36 +94,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobExecutionObject
-The Agent Control Database Object
-
-```yaml
-Type: AzureSqlElasticJobExecutionModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JobExecutionResourceId
-The job execution resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JobName
 The job name
 
@@ -136,6 +106,32 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The Agent Control Database Object```yaml
+Type: AzureSqlElasticJobExecutionModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The job execution resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -12,7 +12,7 @@ Removes a job
 
 ## SYNTAX
 
-### DefaultSet
+### DefaultSet (Default)
 ```
 Remove-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  [-Name] <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -20,13 +20,13 @@ Remove-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String>
 
 ### ObjectSet
 ```
-Remove-AzureRmSqlElasticJob [-Force] [-InputObject] <AzureSqlElasticJobModel>
+Remove-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzureRmSqlElasticJob [-Force] [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Remove-AzureRmSqlElasticJob [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

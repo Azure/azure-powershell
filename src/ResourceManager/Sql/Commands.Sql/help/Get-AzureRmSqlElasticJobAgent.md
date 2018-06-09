@@ -20,13 +20,13 @@ Get-AzureRmSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <Strin
 
 ### ObjectSet
 ```
-Get-AzureRmSqlElasticJobAgent [-Name <String>] [-ServerObject] <AzureSqlServerModel>
+Get-AzureRmSqlElasticJobAgent -ParentObject <AzureSqlServerModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmSqlElasticJobAgent [-Name <String>] [-ServerResourceId] <String>
+Get-AzureRmSqlElasticJobAgent -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -78,6 +78,32 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ParentObject
+The server input object```yaml
+Type: AzureSqlServerModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The server resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name
 
@@ -105,36 +131,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ServerObject
-The server input object
-
-```yaml
-Type: AzureSqlServerModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ServerResourceId
-The server resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

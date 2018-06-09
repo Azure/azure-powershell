@@ -21,13 +21,13 @@ Start-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> 
 
 ### ObjectSet
 ```
-Start-AzureRmSqlElasticJob [-JobObject] <AzureSqlElasticJobModel> [-Wait] [-AsJob]
+Start-AzureRmSqlElasticJob -ParentObject <AzureSqlElasticJobModel> [-Wait] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Start-AzureRmSqlElasticJob [-JobResourceId] <String> [-Wait] [-AsJob]
+Start-AzureRmSqlElasticJob -ParentResourceId <String> [-Wait] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,31 +110,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobObject
-The job object
-
-```yaml
+### -ParentObject
+The job object```yaml
 Type: AzureSqlElasticJobModel
 Parameter Sets: ObjectSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JobResourceId
-The job resource id
-
-```yaml
+### -ParentResourceId
+The job resource id```yaml
 Type: String
 Parameter Sets: ResourceIdSet
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

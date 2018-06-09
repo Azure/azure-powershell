@@ -21,14 +21,14 @@ Set-AzureRmSqlElasticJobCredential [-ResourceGroupName] <String> [-ServerName] <
 
 ### ObjectSet
 ```
-Set-AzureRmSqlElasticJobCredential [-Credential] <PSCredential>
- [-InputObject] <AzureSqlElasticJobCredentialModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlElasticJobCredential [-InputObject] <AzureSqlElasticJobCredentialModel>
+ [-Credential] <PSCredential> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Set-AzureRmSqlElasticJobCredential [-Credential] <PSCredential> [-ResourceId] <String>
+Set-AzureRmSqlElasticJobCredential [-ResourceId] <String> [-Credential] <PSCredential>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

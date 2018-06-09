@@ -20,13 +20,13 @@ New-AzureRmSqlElasticJobTargetGroup [-ResourceGroupName] <String> [-ServerName] 
 
 ### ObjectSet
 ```
-New-AzureRmSqlElasticJobTargetGroup [-Name] <String> [-AgentObject] <AzureSqlElasticJobAgentModel>
+New-AzureRmSqlElasticJobTargetGroup -ParentObject <AzureSqlElasticJobAgentModel> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-New-AzureRmSqlElasticJobTargetGroup [-Name] <String> [-AgentResourceId] <String>
+New-AzureRmSqlElasticJobTargetGroup -ParentResourceId <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,36 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AgentObject
-The agent input object
-
-```yaml
-Type: AzureSqlElasticJobAgentModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AgentResourceId
-The agent resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -121,6 +91,32 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The agent input object```yaml
+Type: AzureSqlElasticJobAgentModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The agent resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

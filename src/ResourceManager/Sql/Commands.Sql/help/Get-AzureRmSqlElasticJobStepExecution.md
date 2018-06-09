@@ -20,38 +20,36 @@ Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithJobStepName
-```
-Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
- [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### WithJobStepName using JobExecutionObject
-```
-Get-AzureRmSqlElasticJobStepExecution [-StepName] <String>
- [-JobExecutionObject] <AzureSqlElasticJobExecutionModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### WithJobStepName using JobExecutionResourceId
-```
-Get-AzureRmSqlElasticJobStepExecution [-StepName] <String> [-JobExecutionResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### ObjectSet
 ```
-Get-AzureRmSqlElasticJobStepExecution [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
- [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
- [-JobExecutionObject] <AzureSqlElasticJobExecutionModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel>
+ [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>]
+ [-Active] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithJobStepName using ParentObject
+```
+Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel> [-StepName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmSqlElasticJobStepExecution [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
- [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active] [-JobExecutionResourceId] <String>
+Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-CreateTimeMin <DateTime>]
+ [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithJobStepName using ParentResourceId
+```
+Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-StepName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithJobStepName
+```
+Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
+ [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -204,36 +202,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobExecutionObject
-The agent object.
-
-```yaml
-Type: AzureSqlElasticJobExecutionModel
-Parameter Sets: WithJobStepName using JobExecutionObject, ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JobExecutionResourceId
-The job execution resource id.
-
-```yaml
-Type: String
-Parameter Sets: WithJobStepName using JobExecutionResourceId, ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -JobName
 The job name.
 
@@ -246,6 +214,32 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The agent object.```yaml
+Type: AzureSqlElasticJobExecutionModel
+Parameter Sets: ObjectSet, WithJobStepName using ParentObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The job execution resource id.```yaml
+Type: String
+Parameter Sets: ResourceIdSet, WithJobStepName using ParentResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -284,7 +278,7 @@ The job step name.
 
 ```yaml
 Type: String
-Parameter Sets: WithJobStepName, WithJobStepName using JobExecutionObject, WithJobStepName using JobExecutionResourceId
+Parameter Sets: WithJobStepName using ParentObject, WithJobStepName using ParentResourceId, WithJobStepName
 Aliases:
 
 Required: True

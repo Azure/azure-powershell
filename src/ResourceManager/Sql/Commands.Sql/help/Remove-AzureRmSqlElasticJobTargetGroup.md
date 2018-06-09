@@ -21,13 +21,13 @@ Remove-AzureRmSqlElasticJobTargetGroup [-ResourceGroupName] <String> [-ServerNam
 
 ### ObjectSet
 ```
-Remove-AzureRmSqlElasticJobTargetGroup [-Force] [-InputObject] <AzureSqlElasticJobTargetGroupModel>
+Remove-AzureRmSqlElasticJobTargetGroup [-InputObject] <AzureSqlElasticJobTargetGroupModel> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Remove-AzureRmSqlElasticJobTargetGroup [-Force] [-ResourceId] <String>
+Remove-AzureRmSqlElasticJobTargetGroup [-ResourceId] <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

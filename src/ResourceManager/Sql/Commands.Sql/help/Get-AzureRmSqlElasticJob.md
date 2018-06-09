@@ -20,14 +20,14 @@ Get-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-
 
 ### ObjectSet
 ```
-Get-AzureRmSqlElasticJob [-Name <String>] [-AgentObject] <AzureSqlElasticJobAgentModel>
+Get-AzureRmSqlElasticJob -ParentObject <AzureSqlElasticJobAgentModel> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Get-AzureRmSqlElasticJob [-Name <String>] [-AgentResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Get-AzureRmSqlElasticJob -ParentResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,36 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AgentObject
-The agent input object
-
-```yaml
-Type: AzureSqlElasticJobAgentModel
-Parameter Sets: ObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AgentResourceId
-The agent resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -121,6 +91,32 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The agent input object```yaml
+Type: AzureSqlElasticJobAgentModel
+Parameter Sets: ObjectSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The agent resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

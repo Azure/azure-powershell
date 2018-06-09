@@ -402,7 +402,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             {
                 if (ex.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
                 {
-                    // This is what we want.  We looked and there is no agent with this name.
+                    // We looked for the existing job step and it wasn't found. We should throw error.
                     throw new PSArgumentException(
                         string.Format(Properties.Resources.AzureElasticJobStepNotExists, this.Name, this.JobName),
                         "JobStep");

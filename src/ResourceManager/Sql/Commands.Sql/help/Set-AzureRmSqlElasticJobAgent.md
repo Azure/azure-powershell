@@ -20,13 +20,13 @@ Set-AzureRmSqlElasticJobAgent [-ResourceGroupName] <String> [-ServerName] <Strin
 
 ### ObjectSet
 ```
-Set-AzureRmSqlElasticJobAgent [-Tag <Hashtable>] [-InputObject] <AzureSqlElasticJobAgentModel>
+Set-AzureRmSqlElasticJobAgent [-InputObject] <AzureSqlElasticJobAgentModel> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Set-AzureRmSqlElasticJobAgent [-Tag <Hashtable>] [-ResourceId] <String>
+Set-AzureRmSqlElasticJobAgent [-ResourceId] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

@@ -15,9 +15,37 @@ Gets one or more job executions
 ### DefaultSet (Default)
 ```
 Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
+ [-JobName <String>] [-Count] <Int32> [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>]
  [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ObjectSet
+```
+Get-AzureRmSqlElasticJobExecution -ParentObject <AzureSqlElasticJobAgentModel> [-JobName <String>]
+ [-Count] <Int32> [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>]
+ [-EndTimeMax <DateTime>] [-Active] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### WithJobExecutionId using ParentObject
+```
+Get-AzureRmSqlElasticJobExecution -ParentObject <AzureSqlElasticJobAgentModel> -JobName <String>
+ [-JobExecutionId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Get-AzureRmSqlElasticJobExecution -ParentResourceId <String> [-JobName <String>] [-Count] <Int32>
+ [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>]
+ [-Active] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### WithJobExecutionId using ParentResourceId
+```
+Get-AzureRmSqlElasticJobExecution -ParentResourceId <String> -JobName <String> [-JobExecutionId] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WithJobExecutionId
@@ -25,35 +53,6 @@ Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <S
 Get-AzureRmSqlElasticJobExecution [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
  -JobName <String> [-JobExecutionId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### ObjectSet
-```
-Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>]
- [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
- [-AgentObject] <AzureSqlElasticJobAgentModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ResourceIdSet
-```
-Get-AzureRmSqlElasticJobExecution [-Count] <Int32> [-JobName <String>] [-CreateTimeMin <DateTime>]
- [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
- [-AgentResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### WithJobExecutionId using AgentObject
-```
-Get-AzureRmSqlElasticJobExecution -JobName <String> [-JobExecutionId] <String>
- [-AgentObject] <AzureSqlElasticJobAgentModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### WithJobExecutionId using AgentResourceId
-```
-Get-AzureRmSqlElasticJobExecution -JobName <String> [-JobExecutionId] <String> [-AgentResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,36 +113,6 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AgentObject
-The job execution id.
-
-```yaml
-Type: AzureSqlElasticJobAgentModel
-Parameter Sets: ObjectSet, WithJobExecutionId using AgentObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -AgentResourceId
-The agent resource id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet, WithJobExecutionId using AgentResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -242,7 +211,7 @@ The job execution id.
 
 ```yaml
 Type: String
-Parameter Sets: WithJobExecutionId, WithJobExecutionId using AgentObject, WithJobExecutionId using AgentResourceId
+Parameter Sets: WithJobExecutionId using ParentObject, WithJobExecutionId using ParentResourceId, WithJobExecutionId
 Aliases:
 
 Required: True
@@ -269,13 +238,39 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: WithJobExecutionId, WithJobExecutionId using AgentObject, WithJobExecutionId using AgentResourceId
+Parameter Sets: WithJobExecutionId using ParentObject, WithJobExecutionId using ParentResourceId, WithJobExecutionId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The job execution id.```yaml
+Type: AzureSqlElasticJobAgentModel
+Parameter Sets: ObjectSet, WithJobExecutionId using ParentObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The agent resource id.```yaml
+Type: String
+Parameter Sets: ResourceIdSet, WithJobExecutionId using ParentResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

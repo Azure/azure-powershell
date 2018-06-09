@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            InitializeInputObjectProperties(this.TargetGroupObject);
+            InitializeInputObjectProperties(this.ParentObject);
             InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
         }

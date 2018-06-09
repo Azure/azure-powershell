@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The target group object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobTargetGroupModel TargetGroupObject { get; set; }
+        public AzureSqlElasticJobTargetGroupModel ParentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the target group resource id.

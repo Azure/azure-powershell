@@ -15,8 +15,8 @@ Adds a job step to a job
 ### DefaultSet (Default)
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
+ [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-Name] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
  [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -25,9 +25,9 @@ Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String
 ### WithOutputDb
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,9 +36,9 @@ Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String
 ### WithOutputDbId
 ```
 Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-JobName] <String> [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
  [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
  [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -46,59 +46,59 @@ Add-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String
 
 ### ObjectSet
 ```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ -ParentObject <AzureSqlElasticJobModel> [-Name] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### WithOutputDb using ParentObject
+```
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ -ParentObject <AzureSqlElasticJobModel> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+ [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
+ [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithOutputDb using JobObject
+### WithOutputDbId using ParentObject
 ```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
- [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### WithOutputDbId using JobObject
-```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
- [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobObject] <AzureSqlElasticJobModel>
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ -ParentObject <AzureSqlElasticJobModel> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+ [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
+ [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>]
- [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ -ParentResourceId <String> [-Name] <String> [-StepId <Int32>] [-TimeoutSeconds <Int32>]
+ [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
+ [-RetryIntervalBackoffMultiplier <Double>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### WithOutputDb using ParentResourceId
+```
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ -ParentResourceId <String> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+ [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
+ [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithOutputDb using JobResourceId
+### WithOutputDbId Set using ParentResourceId
 ```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseObject] <AzureSqlDatabaseModel> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
- [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### WithOutputDbId Set using JobResourceId
-```
-Add-AzureRmSqlElasticJobStep [-Name] <String> [-TargetGroupName] <String> [-CredentialName] <String>
- [-CommandText] <String> [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String>
- [-OutputTableName] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>] [-TimeoutSeconds <Int32>]
- [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>] [-MaximumRetryIntervalSeconds <Int32>]
- [-RetryIntervalBackoffMultiplier <Double>] [-JobResourceId] <String>
+Add-AzureRmSqlElasticJobStep [-TargetGroupName] <String> [-CredentialName] <String> [-CommandText] <String>
+ [-OutputDatabaseResourceId] <String> [-OutputCredentialName] <String> [-OutputTableName] <String>
+ -ParentResourceId <String> [-Name] <String> [[-OutputSchemaName] <String>] [-StepId <Int32>]
+ [-TimeoutSeconds <Int32>] [-RetryAttempts <Int32>] [-InitialRetryIntervalSeconds <Int32>]
+ [-MaximumRetryIntervalSeconds <Int32>] [-RetryIntervalBackoffMultiplier <Double>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -211,36 +211,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JobObject
-The job object
-
-```yaml
-Type: AzureSqlElasticJobModel
-Parameter Sets: ObjectSet, WithOutputDb using JobObject, WithOutputDbId using JobObject
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -JobResourceId
-The job resource id
-
-```yaml
-Type: String
-Parameter Sets: ResourceIdSet, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -MaximumRetryIntervalSeconds
 The maximum retry interval seconds
 
@@ -276,7 +246,7 @@ The output credential name
 
 ```yaml
 Type: String
-Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using ParentObject, WithOutputDbId using ParentObject, WithOutputDb using ParentResourceId, WithOutputDbId Set using ParentResourceId
 Aliases:
 
 Required: True
@@ -291,7 +261,7 @@ The output database object
 
 ```yaml
 Type: AzureSqlDatabaseModel
-Parameter Sets: WithOutputDb, WithOutputDb using JobObject, WithOutputDb using JobResourceId
+Parameter Sets: WithOutputDb, WithOutputDb using ParentObject, WithOutputDb using ParentResourceId
 Aliases:
 
 Required: True
@@ -306,7 +276,7 @@ The output database resource id
 
 ```yaml
 Type: String
-Parameter Sets: WithOutputDbId, WithOutputDbId using JobObject, WithOutputDbId Set using JobResourceId
+Parameter Sets: WithOutputDbId, WithOutputDbId using ParentObject, WithOutputDbId Set using ParentResourceId
 Aliases:
 
 Required: True
@@ -321,7 +291,7 @@ The output schema name
 
 ```yaml
 Type: String
-Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using ParentObject, WithOutputDbId using ParentObject, WithOutputDb using ParentResourceId, WithOutputDbId Set using ParentResourceId
 Aliases:
 
 Required: False
@@ -336,13 +306,39 @@ The output table name
 
 ```yaml
 Type: String
-Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using JobObject, WithOutputDbId using JobObject, WithOutputDb using JobResourceId, WithOutputDbId Set using JobResourceId
+Parameter Sets: WithOutputDb, WithOutputDbId, WithOutputDb using ParentObject, WithOutputDbId using ParentObject, WithOutputDb using ParentResourceId, WithOutputDbId Set using ParentResourceId
 Aliases:
 
 Required: True
 Position: 10
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The job object```yaml
+Type: AzureSqlElasticJobModel
+Parameter Sets: ObjectSet, WithOutputDb using ParentObject, WithOutputDbId using ParentObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ParentResourceId
+The job resource id```yaml
+Type: String
+Parameter Sets: ResourceIdSet, WithOutputDb using ParentResourceId, WithOutputDbId Set using ParentResourceId
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -425,7 +421,7 @@ The target group name
 
 ```yaml
 Type: String
-Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId, ObjectSet, WithOutputDb using JobObject, WithOutputDbId using JobObject, ResourceIdSet, WithOutputDbId Set using JobResourceId
+Parameter Sets: DefaultSet, WithOutputDb, WithOutputDbId, ObjectSet, WithOutputDb using ParentObject, WithOutputDbId using ParentObject, ResourceIdSet, WithOutputDbId Set using ParentResourceId
 Aliases:
 
 Required: True
@@ -437,7 +433,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: WithOutputDb using JobResourceId
+Parameter Sets: WithOutputDb using ParentResourceId
 Aliases:
 
 Required: True

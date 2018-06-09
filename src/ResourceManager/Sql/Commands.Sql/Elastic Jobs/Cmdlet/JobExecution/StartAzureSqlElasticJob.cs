@@ -105,9 +105,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the switch parameter to indicate whether customer wants to poll completion of job
         /// or if not set, to return job execution id immediately upon creation.
         /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet)]
-        [Parameter(ParameterSetName = InputObjectParameterSet)]
-        [Parameter(ParameterSetName = ResourceIdParameterSet)]
+        [Parameter(ParameterSetName = DefaultParameterSet, HelpMessage = "The wait flag to indicate to wait until the job's execution is done")]
+        [Parameter(ParameterSetName = InputObjectParameterSet, HelpMessage = "The wait flag to indicate to wait until the job's execution is done")]
+        [Parameter(ParameterSetName = ResourceIdParameterSet, HelpMessage = "The wait flag to indicate to wait until the job's execution is done")]
         public SwitchParameter Wait { get; set; }
 
         /// <summary>
