@@ -95,6 +95,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage =
+                "If passed then progress status is showed. Only applicable when recursive Acl modify is done."
+        )]
+        public SwitchParameter Progress { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
@@ -109,9 +115,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 {
                     if (Recurse)
                     {
+
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account,
-                            aclSpec, RequestedAclType.ModifyAcl, Concurrency);
+                            aclSpec, RequestedAclType.ModifyAcl, Concurrency, Progress ? this : null, CmdletCancellationToken);
                     }
                     else
                     {
