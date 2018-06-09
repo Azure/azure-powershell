@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             powershellCommandRunnerMockFactory.Setup(powershellCommandRunner => powershellCommandRunner.Invoke()).Returns(commandResults);
 
             // Exercise
-            string path = "3C:\\";
+            string path = @"\\someserver\someshare";
             FileSystemValidation fileSystemValidation = new FileSystemValidation(configurationMockFactory.Object, path);
             IValidationResult validationResult = fileSystemValidation.ValidateUsing(powershellCommandRunnerMockFactory.Object);
 

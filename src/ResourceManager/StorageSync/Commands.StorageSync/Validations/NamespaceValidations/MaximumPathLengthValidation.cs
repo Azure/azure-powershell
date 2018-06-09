@@ -31,7 +31,7 @@
         private IValidationResult ValidateInternal(INamedObjectInfo node)
         {
             AfsPath path = new AfsPath(node.FullName);
-            int pathLength = path.Length();
+            int pathLength = path.Length;
 
             bool pathIsTooLong = pathLength > this._maxPathLength;
             if (pathIsTooLong)

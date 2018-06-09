@@ -35,12 +35,9 @@
                 if (!string.IsNullOrEmpty(this.Path))
                 {
                     var afsPath = new AfsPath(this.Path);
-                    string computerName;
-                    string shareName;
-
-                    if (afsPath.TryGetComputerNameAndShareFromPath(out computerName, out shareName))
+                    if (afsPath.ComputerName != null)
                     {
-                        return computerName;
+                        return afsPath.ComputerName;
                     }
 
                     return "localhost";
@@ -201,7 +198,11 @@
             }
             catch
             {
-                this.WriteWarning("Establishing connection didn't work. Consider using -SkipSystemChecks switch to skip it.");
+                string user = Credential == null ? "the current user" : Credential.UserName;
+                this.WriteWarning(
+                    $"Establishing management service connection with host '{ComputerNameValue}' as {user} didn't work." + Environment.NewLine +
+                    $"Ensure {user} has administrative rights and that the process is running with administrative permissions." + Environment.NewLine +
+                    $"You can also use -SkipSystemChecks switch to skip system requirements checks.");
                 throw;
             }
 
