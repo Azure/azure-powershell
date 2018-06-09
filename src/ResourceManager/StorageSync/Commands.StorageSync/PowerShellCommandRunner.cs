@@ -17,7 +17,7 @@
         {
             WSManConnectionInfo connectionInfo = new WSManConnectionInfo();
 
-            if (computerName != null)
+            if (computerName != null && !computerName.Equals("localhost", System.StringComparison.OrdinalIgnoreCase))
             {
                 connectionInfo.ComputerName = computerName;
             }
