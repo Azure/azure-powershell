@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticJobTargetGroup",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(IEnumerable<AzureSqlElasticJobTargetGroupModel>))]
+    [OutputType(typeof(AzureSqlElasticJobTargetGroupModel))]
     public class RemoveAzureSqlElasticJobTargetGroup: AzureSqlElasticJobTargetGroupCmdletBase<AzureSqlElasticJobTargetGroupModel>
     {
         /// <summary>

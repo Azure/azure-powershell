@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmSqlElasticJobTarget",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultSqlDatabaseSet),
-        OutputType(typeof(JobTarget))]
+        DefaultParameterSetName = DefaultSqlDatabaseSet)]
+    [OutputType(typeof(AzureSqlElasticJobTargetModel))]
     public class AddAzureSqlElasticJobTarget : AzureSqlElasticJobTargetCmdletBase<AzureSqlElasticJobTargetGroupModel>
     {
         /// <summary>

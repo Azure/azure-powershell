@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlElasticJobStep",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(AzureSqlElasticJobStepModel))]
     public class RemoveAzureSqlElasticJobStep : AzureSqlElasticJobStepCmdletBase<AzureSqlElasticJobStepModel>
     {
         /// <summary>

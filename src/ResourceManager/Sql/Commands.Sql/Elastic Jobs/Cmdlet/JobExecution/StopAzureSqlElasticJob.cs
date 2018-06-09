@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlElasticJob",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
-    [OutputType(typeof(IEnumerable<AzureSqlElasticJobExecutionModel>))]
+    [OutputType(typeof(AzureSqlElasticJobExecutionModel))]
     public class StopAzureSqlElasticJob : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobExecutionModel>
     {
         /// <summary>
