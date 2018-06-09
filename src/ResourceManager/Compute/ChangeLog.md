@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks
 
 ## Version 5.1.0
 * VMSS VM Update feature
