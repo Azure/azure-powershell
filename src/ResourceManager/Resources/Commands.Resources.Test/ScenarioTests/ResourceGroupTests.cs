@@ -85,6 +85,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestExportResourceGroupUsingRelativePath()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-ExportResourceGroupUsingRelativePath");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupWithPositionalParams()
         {
             ResourcesController.NewInstance.RunPsTest("Test-ResourceGroupWithPositionalParams");
