@@ -420,4 +420,7 @@
   <data name="NoStorageAccountSpecified" xml:space="preserve">
     <value>Please provide valid value for StorageAccountName or BlobStorageSasUri parameter.</value>
   </data>
+  <data name="ScanIdParameterIsRequired" xml:space="preserve">
+    <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+  </data>
 </root>
