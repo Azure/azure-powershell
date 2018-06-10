@@ -12,12 +12,12 @@
   }
   PROCESS {
     if($Name -eq $null) {
-      $getTask = $client.ResourceGroups.ListAsync($null, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.ListWithHttpMessagesAsync($null, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       $resourceGroup = List-ResourceGroup
       Write-Output $resourceGroup
     } else {
-      $getTask = $client.ResourceGroups.GetAsync($Name, [System.Threading.CancellationToken]::None)
+      $getTask = $client.ResourceGroups.GetWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
       $rg = $getTask.Result
       if($rg -eq $null) {
         $resourceGroup = $null
@@ -40,8 +40,8 @@ function Get-AzureRmResourceProvider
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $getTask = $client.Providers.GetAsync($ProviderNamespace, [System.Threading.CancellationToken]::None)
-    Write-Output $getTask.Result.Provider
+    $getTask = $client.Providers.GetWithHttpMessagesAsync($ProviderNamespace)
+    Write-Output $getTask.Result.Body
   }
   END {}
 }
@@ -59,9 +59,9 @@ function New-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.ResourceGroup
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
     $createParams.Location = $Location
-    $createTask = $client.ResourceGroups.CreateOrUpdateAsync($Name, $createParams, [System.Threading.CancellationToken]::None)
+    $createTask = $client.ResourceGroups.CreateOrUpdateWithHttpMessagesAsync($Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
     $resourceGroup = Get-ResourceGroup $Name $Location
     Write-Output $resourceGroup
@@ -89,8 +89,8 @@ function New-AzureRmResourceGroupDeployment
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $createParams = New-Object -Type Microsoft.Azure.Management.Resources.Models.Deployment
-    $createTask = $client.Deployments.CreateOrUpdateAsync($Name, $Name, $createParams, [System.Threading.CancellationToken]::None)
+    $createParams = New-Object -Type Microsoft.Azure.Management.Internal.Resources.Models.Deployment
+    $createTask = $client.Deployments.CreateOrUpdateWithHttpMessagesAsync($Name, $Name, $createParams, $null, [System.Threading.CancellationToken]::None)
     $rg = $createTask.Result
   }
   END {}
@@ -107,7 +107,7 @@ function Remove-AzureRmResourceGroup
     $client = Get-ResourcesClient $context
   }
   PROCESS {
-    $deleteTask = $client.ResourceGroups.DeleteAsync($Name, [System.Threading.CancellationToken]::None)
+    $deleteTask = $client.ResourceGroups.DeleteWithHttpMessagesAsync($Name, $null, [System.Threading.CancellationToken]::None)
     $rg = $deleteTask.Result
   }
   END {}
@@ -124,8 +124,8 @@ function Get-ResourcesClient
   $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
   [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], 
 	[string]
-  $method = [Microsoft.Azure.Commands.Common.Authentication.IHyakClientFactory].GetMethod("CreateClient", $types)
-  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Resources.ResourceManagementClient])
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
+  $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient])
   $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)
   return $client

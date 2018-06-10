@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -63,11 +64,12 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.Models
         public void GetWebKeyFromCertificate()
         {
             string password = "123";
-            string tempPath = Path.GetTempFileName() + ".pfx";
-            File.WriteAllBytes(tempPath, Resource.pfxCert);
+            // This allows the test to run in Visual Studio and in the console runner. The file will exist in one of the two locations depending on the environment.
+            var consolePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? String.Empty, "Resources", "pshtest.pfx");
+            var vsPath = Path.Combine(Directory.GetCurrentDirectory(), "Resources", "pshtest.pfx");
 
             IWebKeyConverter converters = WebKeyConverterFactory.CreateConverterChain();
-            var webKey = converters.ConvertKeyFromFile(new FileInfo(tempPath), password.ConvertToSecureString());
+            var webKey = converters.ConvertKeyFromFile(new FileInfo(File.Exists(consolePath) ? consolePath : vsPath), password.ConvertToSecureString());
 
             Assert.True(webKey.HasPrivateKey());
             Assert.True(webKey.IsValid());

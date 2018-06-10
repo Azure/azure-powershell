@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Need to implement storage client mock.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-ValidateDeployment");
@@ -42,6 +43,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NestedDeploymentFromTemplateFile");
@@ -57,6 +59,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSaveDeploymentTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SaveDeploymentTemplateFile");
@@ -70,6 +73,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithKeyVaultReference()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
@@ -77,6 +81,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithComplexPramaters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithComplexPramaters");

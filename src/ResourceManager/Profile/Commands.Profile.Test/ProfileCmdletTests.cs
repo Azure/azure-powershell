@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlt.InvokeEndProcessing();
 
             // Verify
-            Assert.True(AzureRmProfileProvider.Instance.Profile.Environments.Any((e) => string.Equals(e.Name, "foo")));
+            Assert.Contains(AzureRmProfileProvider.Instance.Profile.Environments, (e) => string.Equals(e.Name, "foo"));
         }
 
         [Fact]
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             // Verify
             Assert.True(AzureSession.Instance.DataStore.FileExists("X:\\foo.json"));
             var profile2 = new AzureRmProfile("X:\\foo.json");
-            Assert.True(profile2.Environments.Any((e) => string.Equals(e.Name, "foo")));
+            Assert.Contains(profile2.Environments, (e) => string.Equals(e.Name, "foo"));
         }
 
         [Fact]
