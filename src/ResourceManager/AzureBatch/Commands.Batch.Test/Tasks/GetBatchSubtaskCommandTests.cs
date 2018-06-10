@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Subtasks
             int SubtaskCount = 0;
             foreach (PSSubtaskInformation s in pipeline)
             {
-                Assert.True(idsOfConstructedSubtasks.Contains(s.Id.Value));
+                Assert.Contains(s.Id.Value, idsOfConstructedSubtasks);
                 SubtaskCount++;
             }
             Assert.Equal(idsOfConstructedSubtasks.Length, SubtaskCount);
