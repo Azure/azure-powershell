@@ -196,8 +196,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
-
 ## NOTES
 
 ## RELATED LINKS

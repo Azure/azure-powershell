@@ -135,6 +135,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModelExpanded
+
 ## NOTES
 
 ## RELATED LINKS

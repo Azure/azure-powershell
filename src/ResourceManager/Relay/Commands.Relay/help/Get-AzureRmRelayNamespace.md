@@ -81,11 +81,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 

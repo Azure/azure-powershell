@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupItem",
-        DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase),
-            typeof(IList<ItemBase>))]
+        DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
     public class GetAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";

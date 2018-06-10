@@ -179,7 +179,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataset Microsoft.WindowsAzure.Commands.Utilities.PSDataset
+### Microsoft.WindowsAzure.Commands.Utilities.PSDataset
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

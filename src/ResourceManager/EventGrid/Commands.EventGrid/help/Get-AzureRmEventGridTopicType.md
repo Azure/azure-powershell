@@ -99,12 +99,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Management.Automation.SwitchParameter
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfoListInstance
-Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopicTypeInfo
 
 ## NOTES
 

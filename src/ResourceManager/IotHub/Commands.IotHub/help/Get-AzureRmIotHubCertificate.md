@@ -167,7 +167,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
-Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
 
 ## NOTES
 

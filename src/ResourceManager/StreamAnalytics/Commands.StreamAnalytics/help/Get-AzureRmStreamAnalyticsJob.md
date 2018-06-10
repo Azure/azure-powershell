@@ -122,7 +122,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob            Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSJob
 
 ## NOTES
 

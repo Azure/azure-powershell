@@ -102,7 +102,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation            Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSTransformation
 
 ## NOTES
 

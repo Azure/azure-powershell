@@ -120,8 +120,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
 
-### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
-
 ## NOTES
 
 ## RELATED LINKS

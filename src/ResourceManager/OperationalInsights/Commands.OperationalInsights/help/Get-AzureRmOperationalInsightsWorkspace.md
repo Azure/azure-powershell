@@ -92,8 +92,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
 
-### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
-
 ## NOTES
 
 ## RELATED LINKS
