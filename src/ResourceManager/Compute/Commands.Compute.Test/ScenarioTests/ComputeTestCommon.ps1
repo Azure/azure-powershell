@@ -623,7 +623,9 @@ function Verify-PSComputeLongRunningOperation
 {
     param ($result)
 
-    [System.Guid]::Parse($result.OperationId);
+    Assert-NotNull $result;
+    $id = New-Object System.Guid;
+    Assert-True { [System.Guid]::TryParse($result.OperationId, [REF] $id) };
     Assert-AreEqual "Succeeded" $result.Status;
     Assert-NotNull $result.StartTime;
     Assert-NotNull $result.EndTime;
@@ -634,7 +636,9 @@ function Verify-PSOperationStatusResponse
 {
     param ($result)
 
-    [System.Guid]::Parse($result.Name);
+    Assert-NotNull $result;
+    $id = New-Object System.Guid;
+    Assert-True { [System.Guid]::TryParse($result.Name, [REF] $id) };
     Assert-AreEqual "Succeeded" $result.Status;
     Assert-NotNull $result.StartTime;
     Assert-NotNull $result.EndTime;
