@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return new AdalConfiguration
             {
                 AdEndpoint = adEndpoint.ToString(),
-                ResourceClientUri = environment.GetEndpoint(resourceId),
+                ResourceClientUri = audience,
                 AdDomain = tenantId,
                 ValidateAuthority = !environment.OnPremise,
                 TokenCache = tokenCache

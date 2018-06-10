@@ -71,6 +71,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesOldData()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -139,6 +140,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileFromCertificateWithNullsThrowsArgumentNullException()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -152,6 +154,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileFromCertificateReturnsProfile()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -171,6 +174,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileFromAdCredentialsWithNullsThrowsArgumentNullException()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -184,6 +188,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileFromADReturnsProfile()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new List<CSMSubscription>());
@@ -205,6 +210,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileWithAccessTokenReturnsProfile()
         {
             //SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -225,6 +231,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NewProfileFromADWithMismatchSubscriptionThrows()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -240,6 +247,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesOldDataOnce()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -318,6 +326,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesAccountsSkipsBadOnesAndBacksUpFile()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -366,6 +375,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProfileMigratesCorruptedFileAndCreatedBackup()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -390,6 +400,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountReturnsAccountWithAllSubscriptionsInRdfeMode()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -409,6 +420,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountFiltersEmptyAdClientsInRdfeMode()
         {
             var emptyTenantIdrdfeSubscription = new RDFESubscription
@@ -464,6 +476,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountReturnsAccountWithAllSubscriptionsInCsmMode()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1 }.ToList());
@@ -494,6 +507,7 @@ namespace Common.Authentication.Test
         /// access to subscriptions
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountWithImpersonatedGuestWithNoSubscriptions()
         {
             SetMocks(new[] { rdfeSubscription1 }.ToList(),
@@ -534,6 +548,7 @@ namespace Common.Authentication.Test
         /// Verify that subscriptions with admin access for all accounts are added
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountWithImpersonatedGuestWithSubscriptions()
         {
             SetMocks(new[] { rdfeSubscription1, guestRdfeSubscription }.ToList(),
@@ -579,6 +594,7 @@ namespace Common.Authentication.Test
         /// and that accounts can be retrieved case-insensitively
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureAccountIsCaseInsensitive()
         {
             SetMocks(new[] { rdfeSubscription1, guestRdfeSubscription }.ToList(),
@@ -612,6 +628,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAccountReturnsAccountWithSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -634,6 +651,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAccountWithoutEnvironmentReturnsAccount()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -656,6 +674,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAccountReturnsEmptyEnumerationForNonExistingUser()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -674,6 +693,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureAccountReturnsAllAccountsWithNullUser()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -701,6 +721,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureAccountRemovesSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -732,6 +753,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureAccountRemovesDefaultSubscriptionAndWritesWarning()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -768,6 +790,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureAccountRemovesDefaultAccountFromSubscription()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -794,6 +817,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureAccountRemovesInMemoryAccount()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -828,6 +852,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureEnvironmentAddsEnvironment()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -845,6 +870,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureEnvironmentsListsEnvironments()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -866,6 +892,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureEnvironmentRemovesEnvironmentSubscriptionsAndAccounts()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -894,6 +921,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureEnvironmentDoesNotRemoveEnvironmentSubscriptionsAndAccountsForAzureCloudOrChinaCloud()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -922,6 +950,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureEnvironmentUpdatesEnvironment()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -947,6 +976,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureEnvironmentReturnsCorrectValue()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -966,6 +996,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetCurrentEnvironmentReturnsCorrectValue()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -984,6 +1015,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddOrSetAzureSubscriptionChecksAndUpdates()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1008,6 +1040,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddOrSetAzureSubscriptionUpdatesInMemory()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1044,6 +1077,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAzureSubscriptionChecksAndRemoves()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1074,6 +1108,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RefreshSubscriptionsUpdatesAccounts()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1094,6 +1129,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RefreshSubscriptionsMergesFromServer()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1116,6 +1152,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RefreshSubscriptionsWorksWithMooncake()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1135,6 +1172,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RefreshSubscriptionsListsAllSubscriptions()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1157,6 +1195,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSubscriptionByNameChecksAndReturnsOnlyLocal()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1176,6 +1215,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzureSubscriptionByIdChecksAndReturnsOnlyLocal()
         {
             SetMocks(new[] { rdfeSubscription1, rdfeSubscription2 }.ToList(), new[] { csmSubscription1, csmSubscription1withDuplicateId }.ToList());
@@ -1195,6 +1235,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetAzureSubscriptionAsDefaultSetsDefaultAndCurrent()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1219,6 +1260,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ClearDefaultAzureSubscriptionClearsDefault()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1242,6 +1284,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsLoadsAndReturnsSubscriptions()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1262,6 +1305,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsDefaultsToAzureCloudEnvironmentWithManagementUrl()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1289,6 +1333,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsUsesProperEnvironmentWithManagementUrl()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1317,6 +1362,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsUsesProperEnvironmentWithChinaManagementUrl()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1336,6 +1382,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsUsesProperEnvironmentWithChinaManagementUrlOld()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1355,6 +1402,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsDefaultsToAzureCloudWithIncorrectManagementUrl()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1382,6 +1430,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsUsesPassedInEnvironment()
         {
             MemoryDataStore dataStore = new MemoryDataStore();
@@ -1408,6 +1457,7 @@ namespace Common.Authentication.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ImportPublishSettingsAddsSecondCertificate()
         {
             MemoryDataStore dataStore = new MemoryDataStore();

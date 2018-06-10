@@ -450,7 +450,7 @@ function Test-PublicIpAddressVmss
         $vmssName = "vmssip"
         $deploymentName = "vmssDeployment";
         $templateFile = ".\ScenarioTests\Data\VmssDeploymentTemplate.json"
-        AzureRm.Resources\New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rgname -TemplateFile $templateFile;
+        New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rgname -TemplateFile $templateFile;
 
         $listAllResults = Get-AzureRmPublicIpAddress -ResourceGroupName $rgname -VirtualMachineScaleSetName $vmssName;
         Assert-NotNull $listAllResults;
