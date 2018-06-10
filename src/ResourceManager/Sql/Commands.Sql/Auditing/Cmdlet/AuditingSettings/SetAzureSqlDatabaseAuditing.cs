@@ -61,6 +61,13 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string StorageAccountName { get; set; }
 
         /// <summary>
+        /// Gets or sets the id of the storage account subscription to use.
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public Guid StorageAccountSubscriptionId { get; set; }
+
+        /// <summary>
         /// Gets or sets the type of the storage key.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.StorageKeyTypeHelpMessage)]
@@ -116,6 +123,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             if (AuditAction != null)
             {
                 model.AuditAction = AuditAction;
+            }
+
+            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
+            {
+                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
             }
 
             return model;
