@@ -109,7 +109,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput            Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSOutput
 
 ## NOTES
 

@@ -265,11 +265,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Consumption.Models.PSUsageDetail
-
 
 ## NOTES
 

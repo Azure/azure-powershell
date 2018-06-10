@@ -141,8 +141,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
-
 ## NOTES
 
 ## RELATED LINKS

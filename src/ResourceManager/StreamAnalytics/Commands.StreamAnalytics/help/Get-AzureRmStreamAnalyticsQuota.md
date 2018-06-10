@@ -73,7 +73,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota            Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSQuota
 
 ## NOTES
 

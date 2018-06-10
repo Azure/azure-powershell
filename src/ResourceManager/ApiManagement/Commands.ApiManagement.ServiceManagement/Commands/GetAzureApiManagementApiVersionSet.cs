@@ -21,7 +21,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiVersionSet)]
     [OutputType(typeof(PsApiManagementApiVersionSet))]
-    [OutputType(typeof(PsApiManagementApiVersionSet))]
     public class GetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {        
         [Parameter(

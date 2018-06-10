@@ -211,12 +211,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
-System.String
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSActivityRun
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSActivityRun
 
 ## NOTES
 

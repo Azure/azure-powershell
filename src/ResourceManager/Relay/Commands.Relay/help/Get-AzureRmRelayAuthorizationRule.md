@@ -166,41 +166,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String 
-
-### -NamespaceName
- System.String 
- 
-
-### -HybridConnectionsName
- System.String 
-
-### -WcfRelayName
- System.String 
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
-### Example 1 - Namespace
+#### Example 1 - Namespace
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
 Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/Aut
          hoRule1
 
-### Example 2 - WcfRelay
+#### Example 2 - WcfRelay
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules
 Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
          1/authorizationRules/AuthoRule1
 
-### Example 3 - HybridConnection
+#### Example 3 - HybridConnection
 Rights : {Listen, Send}
 Name   : AuthoRule1
 Type   : Microsoft.Relay/AuthorizationRules

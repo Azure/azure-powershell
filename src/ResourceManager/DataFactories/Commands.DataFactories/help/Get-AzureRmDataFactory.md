@@ -114,7 +114,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory
+### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

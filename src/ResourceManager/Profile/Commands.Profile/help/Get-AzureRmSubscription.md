@@ -183,7 +183,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSAzureSubscription
+### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
 
 ## NOTES
 

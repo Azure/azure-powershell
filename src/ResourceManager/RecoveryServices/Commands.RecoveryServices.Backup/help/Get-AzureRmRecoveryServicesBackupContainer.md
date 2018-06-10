@@ -180,8 +180,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
 
-### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
-
 ## NOTES
 
 ## RELATED LINKS

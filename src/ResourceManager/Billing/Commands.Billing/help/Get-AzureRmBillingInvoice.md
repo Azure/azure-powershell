@@ -149,7 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Billing.Models.Invoice
-Microsoft.Azure.Management.Billing.Models.Invoice
 
 ## NOTES
 

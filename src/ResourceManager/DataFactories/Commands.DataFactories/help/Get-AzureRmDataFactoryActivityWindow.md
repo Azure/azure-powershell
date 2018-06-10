@@ -384,7 +384,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSActivyWindow
+### Microsoft.WindowsAzure.Commands.Utilities.PSActivityWindow
 
 ## NOTES
 

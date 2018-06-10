@@ -340,23 +340,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
-### CloudFileDirectory
-
+### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
 Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
 
-### CloudFile
-
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter 'File' accepts value of type 'CloudFile' from the pipeline
 
-### CloudFileShare
-
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 
 ## NOTES
 

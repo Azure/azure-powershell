@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// Defines the Get-AzureRmSqlElasticPoolAdvisors cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolAdvisor")]
+    [OutputType(typeof(AzureSqlElasticPoolAdvisorModel))]
     public class GetAzureSqlElasticPoolAdvisor : AzureSqlElasticPoolAdvisorCmdletBase
     {
         /// <summary>
