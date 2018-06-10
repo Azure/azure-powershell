@@ -71,7 +71,8 @@ function Test-AvailabilitySet
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
         $st = $job | Receive-Job;
-        [System.Guid]::Parse($st.RequestId);
+        $id = New-Object System.Guid;
+        Assert-True { [System.Guid]::TryParse($st.RequestId, [REF] $id) };
         Assert-AreEqual "OK" $st.StatusCode;
         Assert-AreEqual "OK" $st.ReasonPhrase;
         Assert-True { $st.IsSuccessStatusCode };
