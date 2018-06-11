@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
+* Resource Id completer added.
 
 ## Version 5.2.0
 * Added the following three values to the telemetry:
