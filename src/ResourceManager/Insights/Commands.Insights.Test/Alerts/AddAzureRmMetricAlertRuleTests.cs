@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 .Returns(Task.FromResult<Rest.Azure.AzureOperationResponse<AlertRuleResource>>(response))
                 .Callback((string resourceGrp, string name, AlertRuleResource alertRuleResourceIn, Dictionary<string, List<string>> headers, CancellationToken t) =>
                 {
+                    response.Body = alertRuleResourceIn;
                     resourceGroup = resourceGrp;
                     alertRuleResource = alertRuleResourceIn;
                 });
@@ -83,7 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             commandRuntimeMock.Setup(f => f.ShouldContinue(It.IsAny<string>(), It.IsAny<string>())).Returns(true);
         }
 
-        [Fact(Skip = "Investigating why it fails")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureRmMetricAlertRuleCommandParametersProcessing()
         {
@@ -262,9 +263,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             Assert.Equal(totalMinutes, ((TimeSpan)condition.WindowSize).TotalMinutes);
             Assert.Equal(timeAggregationOperator, condition.TimeAggregation);
 
-            Assert.True(condition.DataSource is Management.Monitor.Management.Models.RuleMetricDataSource);
+            Assert.True(condition.DataSource is Management.Monitor.Models.RuleMetricDataSource);
 
-            var dataSource = condition.DataSource as Management.Monitor.Management.Models.RuleMetricDataSource;
+            var dataSource = condition.DataSource as Management.Monitor.Models.RuleMetricDataSource;
             Assert.Equal(metricName, dataSource.MetricName);
             Assert.Equal(resourceUri, dataSource.ResourceUri);
         }
