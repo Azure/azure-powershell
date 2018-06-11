@@ -133,10 +133,6 @@
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
     <Compile Include="Alerts\GetAzureRmAlertHistoryTests.cs" />
-    <None Include="Alerts\GetAzureRmAlertRuleTests.cs" />
-    <None Include="Alerts\NewAzureRmAlerRuleWebhookTests.cs" />
-    <None Include="Alerts\NewAzureRmAlertRuleEmailTests.cs" />
-    <None Include="Alerts\RemoveAzureRmAlertRuleTests.cs" />
     <Compile Include="Autoscale\AddAzureRmAutoscaleSettingTests.cs" />
     <Compile Include="Autoscale\GetAzureRmAutoscaleHistoryTests.cs" />
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingTests.cs" />
@@ -149,10 +145,10 @@
     <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
-    <Compile Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />
+    <Compile Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="ActivityLogs\GetAzureRmLogTests.cs" />
     <Compile Include="LogProfiles\AddAzureRmLogProfileTests.cs" />
     <Compile Include="LogProfiles\GetAzureRmLogProfileTests.cs" />

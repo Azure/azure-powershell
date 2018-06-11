@@ -99,6 +99,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
         //Uncomment when we need to tag on only run under mock
         //public const string MockedOnly = "MockedOnly";
 
+        public const string DesktopOnly = "DesktopOnly";
+
         // Environment
         public const string Environment = "Environment";
 

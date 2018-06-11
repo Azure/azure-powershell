@@ -258,6 +258,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact (Skip = "Ignore")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublishNewCloudService()
         {
             RemoveDeployments();
@@ -289,6 +290,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact(Skip = "Ignore")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpgradeCloudService()
         {
             clientMocks.ComputeManagementClientMock.Setup(
@@ -323,6 +325,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact(Skip = "Ignore")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateStorageServiceWithPublish()
         {
             RemoveDeployments();
@@ -353,6 +356,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact(Skip = "Ignore")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublishWithCurrentStorageAccount()
         {
             RemoveDeployments();
@@ -386,6 +390,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Utilities
         }
 
         [Fact(Skip = "Ignore")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPublishWithDefaultLocation()
         {
             RemoveDeployments();
