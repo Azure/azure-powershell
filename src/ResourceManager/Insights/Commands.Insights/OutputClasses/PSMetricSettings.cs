@@ -14,7 +14,7 @@
 
 using System;
 using System.Text;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Xml;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             StringBuilder output = new StringBuilder();
             output.AppendLine();
             output.AppendLine("Enabled         : " + Enabled);
-            output.AppendLine("TimeGrain       : " + XmlConvert.ToString(TimeGrain));
+            output.AppendLine("TimeGrain       : " + (this.TimeGrain.HasValue ? XmlConvert.ToString(this.TimeGrain.Value): "null"));
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
             return output.ToString();
         }

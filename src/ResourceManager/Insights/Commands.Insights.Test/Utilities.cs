@@ -13,10 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Rest.Azure.OData;
 using Moq;
@@ -38,8 +36,9 @@ namespace Microsoft.Azure.Commands.Insights.Test
         public static readonly string ResourceGroup = "Default-Web-EastUS";
         public static readonly string ResourceProvider = "Microsoft Resources";
         public static readonly string ResourceUri = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/garyyang1";
+        public static readonly string MetricNamespace = "microsoft.web/sites";
         public static readonly string Status = "Succeeded";
-        public static readonly string ContinuationToken = "more records";
+        public static readonly string ContinuationToken = null;
 
         #region Events
 

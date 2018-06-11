@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
     public class GetAzureRmAutoscaleHistoryTests
     {
         private readonly GetAzureRmAutoscaleHistoryCommand cmdlet;
-        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<MonitorManagementClient> MonitorClientMock;
         private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
@@ -46,12 +46,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
-            MonitorClientMock = new Mock<MonitorClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAutoscaleHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                MonitorClient = MonitorClientMock.Object
+                MonitorManagementClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();

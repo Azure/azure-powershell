@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights
     /// <summary>
     /// Base class for the Azure Insights SDK EventService Cmdlets
     /// </summary>
-    public abstract class LogsCmdletBase : MonitorClientCmdletBase
+    public abstract class LogsCmdletBase : ManagementCmdletBase
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromDays(7);
         private const int MaxNumberOfReturnedRecords = 1000;
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Insights
             // If fullDetails is present do not select fields, if not present fetch only the SelectedFieldsForQuery
             WriteDebug("First call");
             var query = new ODataQuery<EventData>(queryFilter);
-            IPage<EventData> response = this.MonitorClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
+            IPage<EventData> response = this.MonitorManagementClient.ActivityLogs.ListAsync(odataQuery: query, cancellationToken: CancellationToken.None).Result;
             var records = new List<PSEventData>();
             var enumerator = response.GetEnumerator();
             enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);
@@ -227,7 +227,7 @@ namespace Microsoft.Azure.Commands.Insights
             while (!string.IsNullOrWhiteSpace(nextLink) && records.Count < maxNumberOfRecords)
             {
                 WriteDebug("Following continuation token");
-                response = this.MonitorClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
+                response = this.MonitorManagementClient.ActivityLogs.ListNextAsync(nextPageLink: nextLink, cancellationToken: CancellationToken.None).Result;
                 enumerator = response.GetEnumerator();
                 WriteDebug(string.Format("Merging records with {0} records", records.Count));
                 enumerator.ExtractCollectionFromResult(fullDetails: fullDetails, records: records, keepTheRecord: this.KeepTheRecord);

@@ -21,21 +21,17 @@ function Test-GetAzureRmDiagnosticSetting
     try 
     {
         # Test
-        $actual = Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2
+        $actual = Get-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/viruela1/providers/Microsoft.Logic/workflows/viruela6
 
 		Assert-NotNull $actual "Null result"
 
-		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470" $actual.StorageAccountId
-		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
-		Assert-AreEqual 1            $actual.Metrics.Count 
-		Assert-AreEqual $true        $actual.Metrics[0].Enabled 
-		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain 
-		Assert-AreEqual 2            $actual.Logs.Count
+		Assert-AreEqual "subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/kzhantest111" $actual.StorageAccountId
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-SouthCentralUS/providers/Microsoft.EventHub/namespaces/test1sadfsd/authorizationrules/RootManageSharedAccessKey" $actual.EventHubAuthorizationRuleId
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $true        $actual.Metrics[0].Enabled
+		Assert-AreEqual 1            $actual.Logs.Count
 		Assert-AreEqual $true        $actual.Logs[0].Enabled
-		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category
-		Assert-AreEqual $true        $actual.Logs[1].Enabled
-		Assert-AreEqual "TestLog2"   $actual.Logs[1].Category
-		Assert-AreEqual "workspace1" $actual.WorkspaceId
+		Assert-AreEqual "WorkflowRuntime"   $actual.Logs[0].Category
     }
     finally
     {
@@ -52,18 +48,15 @@ function Test-SetAzureRmDiagnosticSetting
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/viruela1/providers/Microsoft.Logic/workflows/viruela6 -StorageAccountId subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/kzhantest111 -Enabled $true
 
-		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
-		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
-		Assert-AreEqual 1           $actual.Metrics.Count
-		Assert-AreEqual $true       $actual.Metrics[0].Enabled
-		Assert-AreEqual "00:01:00"  $actual.Metrics[0].Timegrain
-		Assert-AreEqual 2           $actual.Logs.Count
-		Assert-AreEqual $true       $actual.Logs[0].Enabled
-		Assert-AreEqual "TestLog1"  $actual.Logs[0].Category
-		Assert-AreEqual $true       $actual.Logs[1].Enabled
-		Assert-AreEqual "TestLog2"  $actual.Logs[1].Category
+		Assert-AreEqual "subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/kzhantest111" $actual.StorageAccountId
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-SouthCentralUS/providers/Microsoft.EventHub/namespaces/test1sadfsd/authorizationrules/RootManageSharedAccessKey" $actual.EventHubAuthorizationRuleId
+		Assert-AreEqual 1            $actual.Metrics.Count
+		Assert-AreEqual $true        $actual.Metrics[0].Enabled
+		Assert-AreEqual 1            $actual.Logs.Count
+		Assert-AreEqual $true        $actual.Logs[0].Enabled
+		Assert-AreEqual "WorkflowRuntime"   $actual.Logs[0].Category
     }
     finally
     {
@@ -80,25 +73,19 @@ function Test-SetAzureRmDiagnosticSettingWithRetention
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -RetentionEnabled $true -RetentionInDays 90
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/viruela1/providers/Microsoft.Logic/workflows/viruela6 -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 
-		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
-		Assert-AreEqual "workspace1" $actual.WorkspaceId
-		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
+		Assert-AreEqual "subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/Default-Storage-WestUS/providers/Microsoft.ClassicStorage/storageAccounts/kzhantest111" $actual.StorageAccountId
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-ServiceBus-SouthCentralUS/providers/Microsoft.EventHub/namespaces/test1sadfsd/authorizationrules/RootManageSharedAccessKey" $actual.EventHubAuthorizationRuleId
 		Assert-AreEqual 1           $actual.Metrics.Count
 		Assert-AreEqual $true       $actual.Metrics[0].Enabled "Metrics[0]"
-		Assert-AreEqual "00:01:00"  $actual.Metrics[0].Timegrain
 		Assert-AreEqual $true       $actual.Metrics[0].RetentionPolicy.Enabled "Metric[0].RetentionPolicy"
 		Assert-AreEqual 90          $actual.Metrics[0].RetentionPolicy.Days
-		Assert-AreEqual 2           $actual.Logs.Count
+		Assert-AreEqual 1           $actual.Logs.Count
 		Assert-AreEqual $true       $actual.Logs[0].Enabled "Logs[0]"
-		Assert-AreEqual "TestLog1"  $actual.Logs[0].Category
+		Assert-AreEqual "WorkflowRuntime"  $actual.Logs[0].Category
 		Assert-AreEqual $true       $actual.Logs[0].RetentionPolicy.Enabled "Logs[0].RetentionPolicy"
 		Assert-AreEqual 90          $actual.Logs[0].RetentionPolicy.Days
-		Assert-AreEqual $true       $actual.Logs[1].Enabled
-		Assert-AreEqual "TestLog2"  $actual.Logs[1].Category
-		Assert-AreEqual $true       $actual.Logs[1].RetentionPolicy.Enabled
-		Assert-AreEqual 90          $actual.Logs[1].RetentionPolicy.Days
     }
     finally
     {
@@ -115,13 +102,12 @@ function Test-SetAzureRmDiagnosticSetting-CategoriesOnly
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Categories TestLog2
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -Name mysetting -StorageAccountId subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/viruela1 -Enabled $true -Categories TestLog2
 
-		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
+		Assert-AreEqual "subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Storage/storageAccounts/viruela1" $actual.StorageAccountId
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1            $actual.Metrics.Count
 		Assert-AreEqual $false       $actual.Metrics[0].Enabled
-		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain
 		Assert-AreEqual 2            $actual.Logs.Count
 		Assert-AreEqual $false       $actual.Logs[0].Enabled
 		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category
@@ -144,14 +130,13 @@ function Test-SetAzureRmDiagnosticSetting-TimegrainsOnly
 {
     try 
     {
-	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Timegrains PT1M
+	    $actual = Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourcegroups/insights-integration/providers/test.shoebox/testresources2/pstest0000eastusR2 -Name mysetting -StorageAccountId /subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470 -Enabled $true -Timegrains PT1M
 
-		Assert-AreEqual $actual.StorageAccountId "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470"
+		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.Storage/storageAccounts/montest3470" $actual.StorageAccountId
 		Assert-AreEqual "workspace1" $actual.WorkspaceId
 		Assert-AreEqual "/subscriptions/1a66ce04-b633-4a0b-b2bc-a912ec8986a6/resourceGroups/montest/providers/Microsoft.ServiceBus/namespaces/ns1/authorizationrules/ar1" $actual.ServiceBusRuleId
 		Assert-AreEqual 1            $actual.Metrics.Count
 		Assert-AreEqual $true        $actual.Metrics[0].Enabled
-		Assert-AreEqual "00:01:00"   $actual.Metrics[0].Timegrain
 		Assert-AreEqual 2            $actual.Logs.Count
 		Assert-AreEqual $false       $actual.Logs[0].Enabled
 		Assert-AreEqual "TestLog1"   $actual.Logs[0].Category

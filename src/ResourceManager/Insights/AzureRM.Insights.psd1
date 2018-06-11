@@ -89,7 +89,7 @@ CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric',
                'Enable-AzureRmActivityLogAlert', 'Disable-AzureRmActivityLogAlert', 
                'Remove-AzureRmActivityLogAlert', 'New-AzureRmActionGroupReceiver', 
                'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 
-               'Remove-AzureRmActionGroup'
+               'Remove-AzureRmActionGroup', 'New-AzureRmMetricFilter'
 
 # Variables to export from this module
 # VariablesToExport = @()
