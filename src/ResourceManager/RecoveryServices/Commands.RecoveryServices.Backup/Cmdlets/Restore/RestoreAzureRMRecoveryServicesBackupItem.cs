@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -67,13 +68,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 GenericResource storageAccountResource = GetStorageAccountResource();
                 WriteDebug(string.Format("StorageId = {0}", storageAccountResource.Id));
 
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
                     {
-                        { VaultParams.Vault, Vault },
+                        { VaultParams.VaultName, vaultName },
+                        { VaultParams.ResourceGroupName, resourceGroupName },
+                        { VaultParams.VaultLocation, VaultLocation },
                         { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint },
                         { RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id },
                         { RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location },
@@ -87,9 +94,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 WriteDebug(string.Format("Restore submitted"));
                 HandleCreatedJob(
-                    jobResponse, 
+                    jobResponse,
                     Resources.RestoreOperation,
-                    vault: Vault);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
             }, ShouldProcess(RecoveryPoint.ItemName, VerbsData.Restore));
         }
 

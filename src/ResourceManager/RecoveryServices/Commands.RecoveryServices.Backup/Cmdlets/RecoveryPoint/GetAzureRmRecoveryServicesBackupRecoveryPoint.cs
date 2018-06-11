@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -101,12 +102,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 //Validate start time < end time
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 // initialize values to default
                 DateTime rangeEnd = DateTime.UtcNow;
                 DateTime rangeStart = rangeEnd.AddDays(-30);
 
                 Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
-                providerParameters.Add(VaultParams.Vault, Vault);
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
                 providerParameters.Add(RecoveryPointParams.Item, Item);
 
                 if (ParameterSetName == DateTimeFilterParameterSet ||

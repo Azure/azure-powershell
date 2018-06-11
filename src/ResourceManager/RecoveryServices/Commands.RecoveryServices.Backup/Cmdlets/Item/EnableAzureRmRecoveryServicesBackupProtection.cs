@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -82,6 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 string shouldProcessName = Name;
                 if (ParameterSetName == ModifyProtectionParameterSet)
                 {
@@ -89,11 +94,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
-                {                    
+                {
                     PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(new Dictionary<Enum, object>()
                         {
-                            { VaultParams.Vault, Vault },
+                            { VaultParams.VaultName, vaultName },
+                            { VaultParams.ResourceGroupName, resourceGroupName },
                             { ItemParams.AzureVMName, Name },
                             { ItemParams.AzureVMCloudServiceName, ServiceName },
                             { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
@@ -110,9 +116,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     // Track Response and display job details
                     HandleCreatedJob(
-                        itemResponse, 
+                        itemResponse,
                         Resources.EnableProtectionOperation,
-                        vault: Vault);
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
                 }
             });
         }

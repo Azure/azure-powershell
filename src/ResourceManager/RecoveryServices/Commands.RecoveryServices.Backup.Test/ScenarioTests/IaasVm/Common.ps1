@@ -111,24 +111,24 @@ function Cleanup-ResourceGroup(
 function Delete-Vault($vault)
 {
 	$containers = Get-AzureRmRecoveryServicesBackupContainer `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-ContainerType AzureVM
 	foreach ($container in $containers)
 	{
 		$items = Get-AzureRmRecoveryServicesBackupItem `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-Container $container `
 			-WorkloadType AzureVM
 		foreach ($item in $items)
 		{
 			Disable-AzureRmRecoveryServicesBackupProtection `
-				-Vault $vault `
+				-VaultId $vault.ID `
 				-Item $item `
 				-RemoveRecoveryPoints -Force
 		}
 	}
 
-	Remove-AzureRmRecoveryServicesVault -Vault $vault
+	Remove-AzureRmRecoveryServicesVault -VaultId $vault.ID
 }
 
 function Create-VM(
@@ -215,30 +215,30 @@ function Enable-Protection(
 	$vm)
 {
 	$container = Get-AzureRmRecoveryServicesBackupContainer `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-ContainerType AzureVM `
 		-Name $vm.Name;
 
 	if ($container -eq $null)
 	{
 		$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-Name "DefaultPolicy";
 	
 		Enable-AzureRmRecoveryServicesBackupProtection `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-Policy $policy `
 			-Name $vm.Name `
 			-ResourceGroupName $vm.ResourceGroupName | Out-Null
 
 		$container = Get-AzureRmRecoveryServicesBackupContainer `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-ContainerType AzureVM `
 			-Name $vm.Name;
 	}
 	
 	$item = Get-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Container $container `
 		-WorkloadType AzureVM `
 		-Name $vm.Name
@@ -251,8 +251,8 @@ function Backup-Item(
 	$item)
 {
 	return Backup-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
-		-Item $item | Wait-AzureRmRecoveryServicesBackupJob -Vault $vault
+		-VaultId $vault.ID `
+		-Item $item | Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 }
 
 function Get-RecoveryPoint(
@@ -264,7 +264,7 @@ function Get-RecoveryPoint(
 	$backupEndTime = $backupJob.EndTime.AddMinutes(1);
 
 	$rps = Get-AzureRmRecoveryServicesBackupRecoveryPoint `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Item $item `
 		-StartDate $backupStartTime `
 		-EndDate $backupEndTime

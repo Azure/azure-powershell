@@ -110,10 +110,6 @@
       <Project>{b758fec1-35c1-4f93-a954-66dd33f6e0ec}</Project>
       <Name>Commands.RecoveryServices.Backup.ServiceClientAdapter</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.RecoveryServices\Commands.RecoveryServices.csproj">
-      <Project>{604260dc-b392-4cf4-81ec-34b14591e2d2}</Project>
-      <Name>Commands.RecoveryServices</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\AzureRM.RecoveryServices.Backup.psd1">

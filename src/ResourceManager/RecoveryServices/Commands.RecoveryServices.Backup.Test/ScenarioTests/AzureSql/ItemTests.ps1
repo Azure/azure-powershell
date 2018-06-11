@@ -19,7 +19,7 @@ function Test-AzureSqlGetItems
 	
 	# 2. Get the container
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
 		-Name "Sql;sqlpaasrg;sqlpaasserver";
@@ -27,14 +27,14 @@ function Test-AzureSqlGetItems
 
 	# VAR-1: Get all items for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase";
 	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 
 	# VAR-2: Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
 		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
@@ -48,7 +48,7 @@ function Test-AzureSqlDisableProtection
 	
 	# 2. Get the container
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
 		-Name "Sql;sqlpaasrg;sqlpaasserver";
@@ -56,14 +56,14 @@ function Test-AzureSqlDisableProtection
 
 	# 3. Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
 		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 	Assert-AreEqual $item.Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
 
 	$job = Disable-AzureRmRecoveryServicesBackupProtection `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Item $item `
 		-RemoveRecoveryPoints `
 		-Force;
@@ -76,7 +76,7 @@ function Test-AzureSqlGetRPs
 	
 	# 2. Get the container
 	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-ContainerType "AzureSQL" `
 		-BackupManagementType "AzureSQL" `
 		-Name "Sql;sqlpaasrg;sqlpaasserver";
@@ -84,7 +84,7 @@ function Test-AzureSqlGetRPs
 
 	# 3. Get named item for container
 	$item = Get-AzureRmRecoveryServicesBackupItem `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Container $namedContainer `
 		-WorkloadType "AzureSQLDatabase" `
 		-Name "dsName;satyay-sea-d1-fc1-catalog-2016-11-11-17-20;661f0942-d5b7-486a-b3cb-68f97d325a3c";
@@ -96,7 +96,7 @@ function Test-AzureSqlGetRPs
 	$endDate = $fixedEndDate.ToUniversalTime()
 	
 	$recoveryPoints = Get-AzureRMRecoveryServicesBackupRecoveryPoint `
-		-Vault $vault `
+		-VaultId $vault.ID `
 		-Item $item[0] `
 		-StartDate $startDate `
 		-EndDate $endDate

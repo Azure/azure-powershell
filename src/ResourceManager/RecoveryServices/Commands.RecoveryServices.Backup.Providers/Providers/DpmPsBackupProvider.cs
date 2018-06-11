@@ -20,7 +20,6 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Rest.Azure.OData;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -113,7 +112,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns></returns>
         public List<BackupEngineBase> ListBackupManagementServers()
         {
-            ARSVault vault = (ARSVault)ProviderData[VaultParams.Vault];
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string name = (string)ProviderData[ContainerParams.Name];
 
             ODataQuery<ServiceClientModel.BMSBackupEnginesQueryObject> queryParams =
@@ -121,8 +121,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             var listResponse = ServiceClientAdapter.ListBackupEngines(
                 queryParams,
-                vaultName: vault?.Name,
-                resourceGroupName: vault?.ResourceGroupName);
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
 
             List<BackupEngineBase> backupEngineModels = ConversionHelpers.GetBackupEngineModelList(listResponse);
 

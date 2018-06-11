@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using AzureRestNS = Microsoft.Rest.Azure;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
@@ -17,19 +18,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [Parameter(Mandatory = false, HelpMessage = "The Recovery Services Vault.",
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
-        public ARSVault Vault { get; set; }
+        public string VaultId { get; set; }
+
+        /// <summary>
+        /// Location of the Recovery Services Vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault.",
+            ValueFromPipeline = true)]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        [ValidateNotNullOrEmpty]
+        public string VaultLocation { get; set; }
 
         /// <summary>
         /// Get the job PS model after fetching the job object from the service given the job ID.
         /// </summary>
         /// <param name="jobId">ID of the job to be fetched</param>
         /// <returns></returns>
-        public CmdletModel.JobBase GetJobObject(string jobId, ARSVault vault = null)
+        public CmdletModel.JobBase GetJobObject(string jobId, string vaultName = null, string resourceGroupName = null)
         {
             return JobConversions.GetPSJob(ServiceClientAdapter.GetJob(
                 jobId,
-                vaultName: vault?.Name,
-                resourceGroupName: vault?.ResourceGroupName));
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName));
         }
 
         /// <summary>
@@ -37,12 +47,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// </summary>
         /// <param name="jobIds">List of IDs of jobs to be fetched</param>
         /// <returns></returns>
-        public List<CmdletModel.JobBase> GetJobObject(IList<string> jobIds, ARSVault vault = null)
+        public List<CmdletModel.JobBase> GetJobObject(IList<string> jobIds, string vaultName = null, string resourceGroupName = null)
         {
             List<CmdletModel.JobBase> result = new List<CmdletModel.JobBase>();
             foreach (string jobId in jobIds)
             {
-                result.Add(GetJobObject(jobId, vault));
+                result.Add(GetJobObject(
+                    jobId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName));
             }
             return result;
         }
@@ -55,7 +68,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         protected void HandleCreatedJob(
             AzureRestNS.AzureOperationResponse response,
             string operationName,
-            ARSVault vault = null)
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             WriteDebug(Resources.TrackingOperationStatusURLForCompletion +
                             response.Response.Headers.GetAzureAsyncOperationHeader());
@@ -64,8 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 response,
                 operationId => ServiceClientAdapter.GetProtectedItemOperationStatus(
                     operationId,
-                    vaultName: vault?.Name,
-                    resourceGroupName: vault?.ResourceGroupName));
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName));
 
             if (response != null && operationStatus != null)
             {
@@ -80,7 +94,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         var jobStatusResponse =
                             (OperationStatusJobExtendedInfo)operationStatus.Properties;
-                        WriteObject(GetJobObject(jobStatusResponse.JobId, vault: vault));
+                        WriteObject(GetJobObject(
+                            jobStatusResponse.JobId,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName));
                     }
                 }
 

@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
@@ -60,6 +61,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 WriteDebug(string.Format("Input params - Policy: {0}" +
                           "RetentionPolicy:{1}, SchedulePolicy:{2}",
                           Policy == null ? "NULL" : Policy.ToString(),
@@ -73,7 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 ProtectionPolicyResource servicePolicy = PolicyCmdletHelpers.GetProtectionPolicyByName(
                     Policy.Name,
                     ServiceClientAdapter,
-                    vault: Vault);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
                 if (servicePolicy == null)
                 {
                     throw new ArgumentException(string.Format(Resources.PolicyNotFoundException,
@@ -83,7 +89,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
                     {
-                        { VaultParams.Vault, Vault },
+                        { VaultParams.VaultName, vaultName },
+                        { VaultParams.ResourceGroupName, resourceGroupName },
                         { PolicyParams.ProtectionPolicy, Policy },
                         { PolicyParams.RetentionPolicy, RetentionPolicy },
                         { PolicyParams.SchedulePolicy, SchedulePolicy },
@@ -109,8 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 ServiceClientAdapter.GetProtectionPolicyOperationStatus(
                                     policyName,
                                     operationId,
-                                    vaultName: Vault?.Name,
-                                    resourceGroupName: Vault?.ResourceGroupName));
+                                    vaultName: vaultName,
+                                    resourceGroupName: resourceGroupName));
 
                     WriteDebug("Final operation status: " + operationStatus.Status);
 
@@ -121,7 +128,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         // get list of jobIds and return jobResponses                    
                         WriteObject(GetJobObject(
                             ((OperationStatusJobsExtendedInfo)operationStatus.Properties).JobIds,
-                            vault: Vault));
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName));
                     }
 
                     if (operationStatus.Status == OperationStatusValues.Failed)

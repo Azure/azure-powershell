@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure.OData;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -68,6 +69,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 WriteDebug(string.Format("Input params - Name:{0}, " +
                                       "WorkloadType: {1}, BackupManagementType:{2}, " +
                                       "ParameterSetName: {3}",
@@ -87,7 +92,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         PolicyCmdletHelpers.GetProtectionPolicyByName(
                             Name,
                             ServiceClientAdapter,
-                            vault: Vault);
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     if (policy == null)
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
@@ -160,8 +166,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     List<ServiceClientModel.ProtectionPolicyResource> respList =
                         ServiceClientAdapter.ListProtectionPolicy(
                             queryParams,
-                            vaultName: Vault?.Name,
-                            resourceGroupName: Vault?.ResourceGroupName);
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     WriteDebug("Successfully got response from service");
 
                     policyList = ConversionHelpers.GetPolicyModelList(respList);

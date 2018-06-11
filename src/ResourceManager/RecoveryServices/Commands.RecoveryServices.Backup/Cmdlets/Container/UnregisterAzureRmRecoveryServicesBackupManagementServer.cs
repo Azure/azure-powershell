@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
 {
@@ -47,6 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 if ((AzureRmBackupManagementServer.BackupEngineType !=
                     BackupEngineType.DpmBackupEngine.ToString() &&
                     AzureRmBackupManagementServer.BackupEngineType !=
@@ -65,8 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Container
                 string azureRmBackupManagementServer = AzureRmBackupManagementServer.Name;
                 ServiceClientAdapter.UnregisterContainers(
                     azureRmBackupManagementServer,
-                    vaultName: Vault?.Name,
-                    resourceGroupName: Vault?.ResourceGroupName);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
                 if (PassThru.IsPresent)
                 {

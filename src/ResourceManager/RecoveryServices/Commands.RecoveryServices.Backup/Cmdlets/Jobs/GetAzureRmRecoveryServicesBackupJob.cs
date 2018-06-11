@@ -18,7 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
-using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -84,6 +84,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 // initialize values to default
                 DateTime rangeStart = DateTime.UtcNow.AddDays(-1);
@@ -157,8 +161,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     rangeEnd,
                     ServiceClientHelpers.GetServiceClientBackupManagementType(
                         BackupManagementType),
-                    vaultName: Vault?.Name,
-                    resourceGroupName: Vault?.ResourceGroupName);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
                 JobConversions.AddServiceClientJobsToPSList(
                     adapterResponse, result, ref resultCount);

@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -50,6 +51,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 if (ParameterSetName == JobFilterSet)
                 {
                     JobId = Job.JobId;
@@ -59,8 +64,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 var adapterResponse = ServiceClientAdapter.GetJob(
                     JobId,
-                    vaultName: Vault?.Name,
-                    resourceGroupName: Vault?.ResourceGroupName);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
                 WriteObject(JobConversions.GetPSJob(adapterResponse));
             });
         }

@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public static ProtectionPolicyResource GetProtectionPolicyByName(
             string policyName,
             ServiceClientAdapter serviceClientAdapter,
-            ARSVault vault = null)
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             ProtectionPolicyResource response = null;
 
@@ -69,8 +70,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 response = serviceClientAdapter.GetProtectionPolicy(
                     policyName,
-                    vaultName: vault?.Name,
-                    resourceGroupName: vault?.ResourceGroupName);
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
                 Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
             catch (AggregateException exception)

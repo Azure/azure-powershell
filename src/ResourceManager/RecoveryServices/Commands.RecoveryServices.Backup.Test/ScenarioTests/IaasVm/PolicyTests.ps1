@@ -35,7 +35,7 @@ function Test-AzureVMPolicy
 		# Create policy
 		$policyName = "newPolicy"
 		$policy = New-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-Name $policyName `
 			-WorkloadType AzureVM `
 			-RetentionPolicy $retentionPolicy `
@@ -44,7 +44,9 @@ function Test-AzureVMPolicy
 		Assert-AreEqual $policy.Name $policyName
 
 		# Get policy
-	    $policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Vault $vault -Name $policyName
+	    $policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Name $policyName
 		Assert-NotNull $policy
 		Assert-AreEqual $policy.Name $policyName
 
@@ -56,13 +58,16 @@ function Test-AzureVMPolicy
 
 		# Update policy
 		Set-AzureRmRecoveryServicesBackupProtectionPolicy `
-			-Vault $vault `
+			-VaultId $vault.ID `
 			-RetentionPolicy $retentionPolicy `
 			-SchedulePolicy $schedulePolicy `
 			-Policy $policy
 
 		# Delete policy
-		Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Vault $vault -Policy $policy -Force
+		Remove-AzureRmRecoveryServicesBackupProtectionPolicy `
+			-VaultId $vault.ID `
+			-Policy $policy `
+			-Force
 	}
 	finally
 	{

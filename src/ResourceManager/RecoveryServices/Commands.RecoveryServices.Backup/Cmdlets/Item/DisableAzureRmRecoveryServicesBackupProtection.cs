@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -67,10 +68,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Item.Name, () =>
                     {
                         base.ExecuteCmdlet();
+
+                        ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                        string vaultName = resourceIdentifier.ResourceName;
+                        string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
                             {
-                                { VaultParams.Vault, Vault },
+                                { VaultParams.VaultName, vaultName },
+                                { VaultParams.ResourceGroupName, resourceGroupName },
                                 { ItemParams.Item, Item },
                                 { ItemParams.DeleteBackupData, this.DeleteBackupData },
                             }, ServiceClientAdapter);
@@ -86,7 +93,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         HandleCreatedJob(
                             itemResponse,
                             Resources.DisableProtectionOperation,
-                            vault: Vault);
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     }
                 );
             }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));

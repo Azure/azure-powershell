@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
@@ -47,6 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ExecutionBlock(() =>
             {
                 base.ExecuteCmdlet();
+
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
 
                 List<string> jobsToWaitOn = new List<string>();
                 List<JobBase> finalJobs = new List<JobBase>();
@@ -111,8 +116,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         var updatedJob = JobConversions.GetPSJob(
                             ServiceClientAdapter.GetJob(
                                 jobId,
-                                vaultName: Vault?.Name,
-                                resourceGroupName: Vault?.ResourceGroupName));
+                                vaultName: vaultName,
+                                resourceGroupName: resourceGroupName));
 
                         if (IsJobInProgress(updatedJob))
                         {
