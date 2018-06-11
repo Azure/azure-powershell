@@ -13,12 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using System.Text;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the ServiceDiagnosticSettings
+    /// Wrapps around the DiagnosticSettings
     /// </summary>
     public class PSRetentionPolicy : RetentionPolicy
     {

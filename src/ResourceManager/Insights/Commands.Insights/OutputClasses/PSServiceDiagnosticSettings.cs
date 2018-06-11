@@ -12,30 +12,28 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the ServiceDiagnosticSettings
+    /// Wrapps around the DiagnosticSettings
     /// </summary>
-    public class PSServiceDiagnosticSettings : ServiceDiagnosticSettingsResource
+    public class PSServiceDiagnosticSettings : DiagnosticSettingsResource
     {
         /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
         /// </summary>
-        public PSServiceDiagnosticSettings(ServiceDiagnosticSettingsResource serviceDiagnosticSettings)
+        public PSServiceDiagnosticSettings(DiagnosticSettingsResource serviceDiagnosticSettings)
             : base(
                 name: serviceDiagnosticSettings.Name,
                 id: serviceDiagnosticSettings.Id, 
-                location: serviceDiagnosticSettings.Location, 
                 type: serviceDiagnosticSettings.Type,
                 metrics: serviceDiagnosticSettings.Metrics, 
                 logs: serviceDiagnosticSettings.Logs)
         {
             this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
-            this.ServiceBusRuleId = serviceDiagnosticSettings.ServiceBusRuleId;
             this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
             this.Metrics = new List<MetricSettings>();
             foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             }
 
             this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
-            this.Tags = serviceDiagnosticSettings.Tags;
         }
     }
 }

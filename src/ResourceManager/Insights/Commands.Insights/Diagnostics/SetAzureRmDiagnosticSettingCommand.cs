@@ -20,8 +20,8 @@ using System.Management.Automation;
 using System.Threading;
 using System.Xml;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -45,6 +45,12 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name parameter of the cmdlet
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Diagnostics setting resource name")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
@@ -135,13 +141,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 throw new ArgumentException("No operation is specified");
             }
 
-            ServiceDiagnosticSettingsResource getResponse = this.MonitorManagementClient.ServiceDiagnosticSettings.GetAsync(resourceUri: this.ResourceId, cancellationToken: CancellationToken.None).Result;
+            string diagnosticSettingsResourceName = string.IsNullOrWhiteSpace(this.Name) ? "service" : this.Name;
 
-            ServiceDiagnosticSettingsResource properties = getResponse;
+            DiagnosticSettingsResource getResponse = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: diagnosticSettingsResourceName, cancellationToken: CancellationToken.None).Result;
+
+            DiagnosticSettingsResource properties = getResponse;
 
             SetStorage(properties);
-
-            SetServiceBus(properties);
 
             SetEventHubRule(properties);
 
@@ -175,28 +181,26 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 target: string.Format("Create/update a diagnostic setting for resource Id: {0}", this.ResourceId),
                 action: "Create/update a diagnostic setting"))
             {
-                ServiceDiagnosticSettingsResource result = this.MonitorManagementClient.ServiceDiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, cancellationToken: CancellationToken.None).Result;
+                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, name: diagnosticSettingsResourceName, cancellationToken: CancellationToken.None).Result;
                 WriteObject(new PSServiceDiagnosticSettings(result));
             }
         }
 
-        private static ServiceDiagnosticSettingsResource CopySettings(ServiceDiagnosticSettingsResource properties)
+        private static DiagnosticSettingsResource CopySettings(DiagnosticSettingsResource properties)
         {
             // Location is marked as required, but the get operation returns Location as null. So use an empty string instead of null to avoid validation errors
-            var putParameters = new ServiceDiagnosticSettingsResource(location: properties.Location ?? string.Empty, name: properties.Name, id: properties.Id, type: properties.Type)
+            var putParameters = new DiagnosticSettingsResource(name: properties.Name, id: properties.Id, type: properties.Type)
             {
                 Logs = properties.Logs,
                 Metrics = properties.Metrics,
-                ServiceBusRuleId = properties.ServiceBusRuleId,
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
-                Tags = properties.Tags,
                 EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId
             };
             return putParameters;
         }
 
-        private void SetRetention(ServiceDiagnosticSettingsResource properties)
+        private void SetRetention(DiagnosticSettingsResource properties)
         {
             var retentionPolicy = new RetentionPolicy
             {
@@ -221,7 +225,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetSelectedTimegrains(ServiceDiagnosticSettingsResource properties)
+        private void SetSelectedTimegrains(DiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -241,7 +245,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetSelectedCategories(ServiceDiagnosticSettingsResource properties)
+        private void SetSelectedCategories(DiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -261,7 +265,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetAllCategoriesAndTimegrains(ServiceDiagnosticSettingsResource properties)
+        private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
         {
             if (!this.isEnbledParameterPresent)
             {
@@ -279,7 +283,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetWorkspace(ServiceDiagnosticSettingsResource properties)
+        private void SetWorkspace(DiagnosticSettingsResource properties)
         {
             if (this.isWorkspaceParamPresent)
             {
@@ -287,15 +291,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             }
         }
 
-        private void SetServiceBus(ServiceDiagnosticSettingsResource properties)
-        {
-            if (this.isServiceBusParamPresent)
-            {
-                properties.ServiceBusRuleId = this.ServiceBusRuleId;
-            }
-        }
-
-        private void SetEventHubRule(ServiceDiagnosticSettingsResource properties)
+        private void SetEventHubRule(DiagnosticSettingsResource properties)
         {
             if (this.isEventHubRuleParamPresent)
             {
@@ -304,7 +300,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
 
 
-        private void SetStorage(ServiceDiagnosticSettingsResource properties)
+        private void SetStorage(DiagnosticSettingsResource properties)
         {
             if (this.isStorageParamPresent)
             {

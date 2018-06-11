@@ -14,17 +14,15 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups
 {
-    using System.Collections;
     using System.Linq;
 
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-    using Microsoft.Azure.Management.Monitor.Management;
+    using Microsoft.Azure.Management.Monitor;
     using ResourceManager.Common.ArgumentCompleters;
 
     /// <summary>

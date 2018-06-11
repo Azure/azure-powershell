@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Alerts;
-using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;

@@ -38,5 +38,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
         {
             TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewMetricFilter()
+        {
+            TestsController.NewInstance.RunPsTest("Test-NewMetricFilter");
+        }
     }
 }
