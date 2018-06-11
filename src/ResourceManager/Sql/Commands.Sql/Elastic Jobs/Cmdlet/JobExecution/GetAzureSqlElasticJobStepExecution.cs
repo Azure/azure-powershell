@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
     /// Defines the Get-AzureRmSqlElasticJobExecution Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticJobStepExecution",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobExecutionModel))]
     public class GetAzureSqlElasticJobStepExecution : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobExecutionModel>

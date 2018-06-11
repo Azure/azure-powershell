@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     /// Defines the Get-AzureRmSqlElasticJobTargetGroup Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticJobTargetGroup",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobTargetGroupModel))]
     public class GetAzureSqlElasticJobTargetGroup : AzureSqlElasticJobTargetGroupCmdletBase<AzureSqlElasticJobAgentModel>

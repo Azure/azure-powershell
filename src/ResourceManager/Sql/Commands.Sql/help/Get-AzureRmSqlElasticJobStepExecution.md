@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlElasticJobStepExecution
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets one or more job step executions
 
 ## SYNTAX
 
@@ -17,40 +17,40 @@ schema: 2.0.0
 Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WithJobStepName
 ```
 Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
  [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel>
  [-CreateTimeMin <DateTime>] [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>]
- [-Active] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Active] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WithJobStepNameUsingParentObject
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel> [-StepName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdSet
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-CreateTimeMin <DateTime>]
  [-CreateTimeMax <DateTime>] [-EndTimeMin <DateTime>] [-EndTimeMax <DateTime>] [-Active]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WithJobStepNameUsingParentResourceId
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-StepName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -292,45 +292,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel
-System.String
 
 ## OUTPUTS
 

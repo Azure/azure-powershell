@@ -24,7 +24,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     /// Defines the Get-AzureRmSqlElasticJob Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticJob",
-        SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(AzureSqlElasticJobModel))]
     public class GetAzureSqlElasticJob : AzureSqlElasticJobCmdletBase<AzureSqlElasticJobAgentModel>
