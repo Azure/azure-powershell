@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             {
                 if (this.Rules.Any(rc => rc.Name.Equals(rule.Name)))
                 {
-                    throw new ArgumentException($"Application Rule names must be unique. {rule.Name} name is already used.");
+                    throw new ArgumentException($"Network Rule names must be unique. {rule.Name} name is already used.");
                 }
             }
             else

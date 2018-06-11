@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network.Models
                     {
                         Name = AzureFirewallIpConfigurationName,
                         Subnet = new PSResourceId { Id = firewallSubnet.Id },
-                        PublicIPAddress = new PSResourceId {Id =  publicIpAddress.Id}
+                        InternalPublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
                     }
                 };
         }
