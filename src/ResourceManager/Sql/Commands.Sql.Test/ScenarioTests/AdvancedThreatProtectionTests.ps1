@@ -25,12 +25,31 @@ function Test-AdvancedThreatProtectionPolicyTest
 
 	try
 	{
-		$atpOffErrorMessage = "Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first."
-		$ruleId = "VA2031"
-		$scanId = "myCustomScanId"
-		$baselineResults = @(@("userA", "SELECT"),@("userB", "SELECT"))
+		# Get Advanced Threat Protection Policy
+		$policy = Get-AzureSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+				
+		# Validate the policy
+		Assert-AreEqual $params.rgname $settings.ResourceGroupName
+		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-False { $policy.IsEnabled }
 
+		# Enabled Advanced Threat Protection Policy
+		Enable-AzureSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzureSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+				
+		# Validate the policy
+		Assert-AreEqual $params.rgname $settings.ResourceGroupName
+		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-True { $policy.IsEnabled }
 
+		# Disable Advanced Threat Protection Policy
+		Disable-AzureSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzureSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+				
+		# Validate the policy
+		Assert-AreEqual $params.rgname $settings.ResourceGroupName
+		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-False { $policy.IsEnabled }
 	}
 	finally
 	{
@@ -38,7 +57,6 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Remove-AdvancedThreatProtectionTestEnvironment $testSuffix
 	}
 }
-
 
 <#
 .SYNOPSIS
