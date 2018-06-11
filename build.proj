@@ -68,7 +68,7 @@
                             Condition=" '$(Scope)' == 'AzureStorage' "/>
     <CmdletSolutionsToBuild Include=".\src\Stack.sln"
                             Condition=" '$(Stack)' == 'true' "/>
-                            
+
     <StaticAnalysis Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
 	<LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
@@ -204,26 +204,28 @@
   	</FilesChangedTask>
 
   	<!-- Get the list of modules changed -->
-	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\ModuleMappings.json">
-		<Output TaskParameter="Output" ItemName="ModulesChanged"/>
-	</FilterTask>
-	<Message Text="Filtering help generation and StaticAnalysis by the following modules:"/>
-	<Message Text="%(ModulesChanged.Identity)"/>
-	<Message Text="Total: @(ModulesChanged->Count())"/>
-	<Message Text=""/>
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\ModuleMappings.json">
+      <Output TaskParameter="Output" ItemName="ModulesChanged"/>
+    </FilterTask>
+    <Message Text="Filtering help generation and StaticAnalysis by the following modules:"/>
+    <Message Text="%(ModulesChanged.Identity)"/>
+    <Message Text="Total: @(ModulesChanged->Count())"/>
+    <Message Text=""/>
 
-  	<!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
-	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-		<Output TaskParameter="Output" ItemName="XUnitTests"/>
-	</FilterTask>
-	<Message Text="Using these test assemblies:"/>
-	<Message Text="%(XUnitTests.Identity)"/>
-	<Message Text="Total: @(XunitTests->Count())"/>
-	<Message Text=""/>
+    <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
+    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
+      <Output TaskParameter="Output" ItemName="XUnitTests"/>
+    </FilterTask>
+    <Message Text="Using these test assemblies:"/>
+    <Message Text="%(XUnitTests.Identity)"/>
+    <Message Text="Total: @(XunitTests->Count())"/>
+    <Message Text=""/>
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask;FilterBuild">
+    <CallTarget targets="ChangeLogCheck" ContinueOnError="false" />
+
     <Message Importance="high" Text="Building Cmdlets..." />
 
     <MakeDir Directories="$(PackageDirectory)" />
@@ -504,6 +506,17 @@
 
   <Target Name="StaticAnalysisErrorMessage">
     <Error Text="StaticAnalysis has failed.  Please follow the instructions on this doc: https://github.com/Azure/azure-powershell/blob/preview/documentation/Debugging-StaticAnalysis-Errors.md"/>
+  </Target>
+
+  <Target Name="ChangeLogCheck">
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckChangeLog.ps1 -FilesChanged '@(FilesChanged)' &quot;"
+      ContinueOnError="false"
+      Condition="'$(Latest)' == 'true'"/>
+    <OnError ExecuteTargets="ChangeLogErrorMessage"/>
+  </Target>
+
+  <Target Name="ChangeLogErrorMessage">
+    <Error Text="Modified files were found with no update to their change log. Please add a snippet to the affected modules' change log."/>
   </Target>
 
   <!-- Publish all packages -->
