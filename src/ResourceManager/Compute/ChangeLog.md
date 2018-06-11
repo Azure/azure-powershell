@@ -19,7 +19,7 @@
 -->
 ## Current Release
 * Update Compute client library version to fix following cmdlets
-    - Grant-AzureRmDisk
+    - Grant-AzureRmDiskAccess
     - Grant-AzureRmSnapshotAccess
     - Save-AzureRmVMImage
 
