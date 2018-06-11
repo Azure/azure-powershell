@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticJob",
         SupportsShouldProcess = true,
         DefaultParameterSetName = DefaultParameterSet)]
+    [OutputType(typeof(AzureSqlElasticJobModel))]
     public class SetAzureSqlElasticJob : AzureSqlElasticJobCmdletBase<AzureSqlElasticJobModel>
     {
         /// <summary>
