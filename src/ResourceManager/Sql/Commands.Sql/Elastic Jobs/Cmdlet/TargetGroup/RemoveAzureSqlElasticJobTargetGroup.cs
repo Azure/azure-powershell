@@ -34,6 +34,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class RemoveAzureSqlElasticJobTargetGroup: AzureSqlElasticJobTargetGroupCmdletBase<AzureSqlElasticJobTargetGroupModel>
     {
         /// <summary>
+        /// Gets or sets the agent input object
+        /// </summary>
+        [Parameter(ParameterSetName = InputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The target group object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobTargetGroupModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The target group resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -66,28 +88,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The agent name")]
         [ValidateNotNullOrEmpty]
         public override string AgentName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent input object
-        /// </summary>
-        [Parameter(ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The target group object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobTargetGroupModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The target group resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the target group name

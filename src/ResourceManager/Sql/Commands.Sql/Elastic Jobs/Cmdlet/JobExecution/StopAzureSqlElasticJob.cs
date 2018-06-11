@@ -33,6 +33,30 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class StopAzureSqlElasticJob : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobExecutionModel>
     {
         /// <summary>
+        /// Gets or sets the Agent's Control Database Object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The Agent Control Database Object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobExecutionModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Agent's Control Database Object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job execution resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -86,30 +110,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job execution id.")]
         [ValidateNotNullOrEmpty]
         public override string JobExecutionId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent's Control Database Object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The Agent Control Database Object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobExecutionModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the Agent's Control Database Object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job execution resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet

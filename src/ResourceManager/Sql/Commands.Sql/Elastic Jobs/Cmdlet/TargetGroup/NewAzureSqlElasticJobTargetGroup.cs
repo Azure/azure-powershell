@@ -32,6 +32,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class NewAzureSqlElasticJobTargetGroup : AzureSqlElasticJobTargetGroupCmdletBase<AzureSqlElasticJobAgentModel>
     {
         /// <summary>
+        /// Gets or sets the agent input object
+        /// </summary>
+        [Parameter(ParameterSetName = InputObjectParameterSet,
+            Mandatory = true,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The agent input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the agent resource id
+        /// </summary>
+        [Parameter(ParameterSetName = ResourceIdParameterSet,
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The agent resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -64,28 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The agent name")]
         [ValidateNotNullOrEmpty]
         public override string AgentName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent input object
-        /// </summary>
-        [Parameter(ParameterSetName = InputObjectParameterSet,
-            Mandatory = true,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The agent input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobAgentModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the agent resource id
-        /// </summary>
-        [Parameter(ParameterSetName = ResourceIdParameterSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The agent resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the target group name

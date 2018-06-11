@@ -45,6 +45,54 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected const string ParentResourceIdAddParentResourceIdParameterSet = "WithAddOutput using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the job object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "The job step object")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectRemoveOutputParameterSet,
+            HelpMessage = "The job step object")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectAddParentResourceIdParameterSet,
+            HelpMessage = "The job step object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobStepModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "The job step resource id")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ParentResourceIdRemoveOutputParameterSet,
+            HelpMessage = "The job step resource id")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ParentResourceIdAddParentResourceIdParameterSet,
+            HelpMessage = "The job step resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -129,91 +177,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string JobName { get; set; }
 
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultRemoveOutputParameterSet,
-            Position = 5,
-            HelpMessage = "The flag to indicate whether to remove output")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentObjectRemoveOutputParameterSet,
-            Position = 1,
-            HelpMessage = "The flag to indicate whether to remove output")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentResourceIdRemoveOutputParameterSet,
-            Position = 1,
-            HelpMessage = "The flag to indicate whether to remove output")]
-        public SwitchParameter RemoveOutput { get; set; }
-
-        /// <summary>
-        /// Gets or sets the output database resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultAddParentResourceIdParameterSet,
-            Position = 5,
-            HelpMessage = "The output database resource id")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentObjectAddParentResourceIdParameterSet,
-            Position = 1,
-            HelpMessage = "The output database resource id")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentResourceIdAddParentResourceIdParameterSet,
-            Position = 1,
-            HelpMessage = "The output database resource id")]
-        public string OutputDatabaseResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            HelpMessage = "The job step object")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = ParentObjectRemoveOutputParameterSet,
-            HelpMessage = "The job step object")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = ParentObjectAddParentResourceIdParameterSet,
-            HelpMessage = "The job step object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobStepModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "The job step resource id")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdRemoveOutputParameterSet,
-            HelpMessage = "The job step resource id")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdAddParentResourceIdParameterSet,
-            HelpMessage = "The job step resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
         /// <summary>
         /// Gets or sets the job step name
         /// </summary>
@@ -236,59 +199,22 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [ValidateNotNullOrEmpty]
         public override string Name { get; set; }
 
-        /// <summary>
-        /// Gets or sets the target group name
-        /// </summary>
-        [Parameter(HelpMessage = "The target group name")]
-        public override string TargetGroupName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the credential name
-        /// </summary>
-        [Parameter(HelpMessage = "The credential name")]
-        public override string CredentialName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the command text
-        /// </summary>
-        [Parameter(HelpMessage = "The command text")]
-        public string CommandText { get; set; }
-
-        /// <summary>
-        /// Gets or sets the step id
-        /// </summary>
-        [Parameter(HelpMessage = "The step id")]
-        public int? StepId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the timeout seconds
-        /// </summary>
-        [Parameter(HelpMessage = "The timeout seconds")]
-        public int? TimeoutSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retry attempts
-        /// </summary>
-        [Parameter(HelpMessage = "The retry attemps")]
-        public int? RetryAttempts { get; set; }
-
-        /// <summary>
-        /// Gets or sets the initial retry interval seconds
-        /// </summary>
-        [Parameter(HelpMessage = "The initial retry interval seconds")]
-        public int? InitialRetryIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum retry interval seconds
-        /// </summary>
-        [Parameter(HelpMessage = "The maximum retry interval seconds")]
-        public int? MaximumRetryIntervalSeconds { get; set; }
-
-        /// <summary>
-        /// Gets or sets the retry interval backoff multiplier
-        /// </summary>
-        [Parameter(HelpMessage = "The retry interval backoff multiplier")]
-        public double? RetryIntervalBackoffMultiplier { get; set; }
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultRemoveOutputParameterSet,
+            Position = 5,
+            HelpMessage = "The flag to indicate whether to remove output")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectRemoveOutputParameterSet,
+            Position = 1,
+            HelpMessage = "The flag to indicate whether to remove output")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdRemoveOutputParameterSet,
+            Position = 1,
+            HelpMessage = "The flag to indicate whether to remove output")]
+        public SwitchParameter RemoveOutput { get; set; }
 
         /// <summary>
         /// Gets or sets the output database object
@@ -303,6 +229,26 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ParameterSetName = ResourceIdParameterSet,
             HelpMessage = "The output database object")]
         public AzureSqlDatabaseModel OutputDatabaseObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the output database resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultAddParentResourceIdParameterSet,
+            Position = 5,
+            HelpMessage = "The output database resource id")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectAddParentResourceIdParameterSet,
+            Position = 1,
+            HelpMessage = "The output database resource id")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdAddParentResourceIdParameterSet,
+            Position = 1,
+            HelpMessage = "The output database resource id")]
+        public string OutputDatabaseResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the output credential name
@@ -372,6 +318,60 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ParameterSetName = ParentResourceIdAddParentResourceIdParameterSet,
             HelpMessage = "The output schema name")]
         public string OutputSchemaName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the target group name
+        /// </summary>
+        [Parameter(HelpMessage = "The target group name")]
+        public override string TargetGroupName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the credential name
+        /// </summary>
+        [Parameter(HelpMessage = "The credential name")]
+        public override string CredentialName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the command text
+        /// </summary>
+        [Parameter(HelpMessage = "The command text")]
+        public string CommandText { get; set; }
+
+        /// <summary>
+        /// Gets or sets the step id
+        /// </summary>
+        [Parameter(HelpMessage = "The step id")]
+        public int? StepId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the timeout seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The timeout seconds")]
+        public int? TimeoutSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retry attempts
+        /// </summary>
+        [Parameter(HelpMessage = "The retry attemps")]
+        public int? RetryAttempts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the initial retry interval seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The initial retry interval seconds")]
+        public int? InitialRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the maximum retry interval seconds
+        /// </summary>
+        [Parameter(HelpMessage = "The maximum retry interval seconds")]
+        public int? MaximumRetryIntervalSeconds { get; set; }
+
+        /// <summary>
+        /// Gets or sets the retry interval backoff multiplier
+        /// </summary>
+        [Parameter(HelpMessage = "The retry interval backoff multiplier")]
+        public double? RetryIntervalBackoffMultiplier { get; set; }
 
         /// <summary>
         /// Entry point for the cmdlet

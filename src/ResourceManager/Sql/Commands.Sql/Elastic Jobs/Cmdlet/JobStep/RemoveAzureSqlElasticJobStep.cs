@@ -31,6 +31,30 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     public class RemoveAzureSqlElasticJobStep : AzureSqlElasticJobStepCmdletBase<AzureSqlElasticJobStepModel>
     {
         /// <summary>
+        /// Gets or sets the job step input object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job step input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobStepModel InputObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job step resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job step resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -74,30 +98,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         public override string JobName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job step input object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job step input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobStepModel InputObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job step resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job step resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the job step name

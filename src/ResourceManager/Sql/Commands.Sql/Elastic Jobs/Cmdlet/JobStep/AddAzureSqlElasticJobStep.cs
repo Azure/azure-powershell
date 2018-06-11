@@ -45,6 +45,53 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected const string ParentResourceIdOutputDatabaseId = "WithOutputDbId Set using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the job object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ParameterSetName = InputObjectParameterSet,
+            HelpMessage = "The job object")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectOutputDatabaseObject,
+            HelpMessage = "The job object")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipeline = true,
+            ParameterSetName = ParentObjectOutputDatabaseId,
+            HelpMessage = "The job object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ResourceIdParameterSet,
+            HelpMessage = "The job resource id")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ParentResourceIdOutputDatabaseObject,
+            HelpMessage = "The job resource id")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ParentResourceIdOutputDatabaseId,
+            HelpMessage = "The job resource id")]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -177,6 +224,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The target group name")]
         public override string TargetGroupName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the credential name
+        /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 6,
@@ -224,6 +274,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The credential name")]
         public override string CredentialName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the command text
+        /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 7,
@@ -271,6 +324,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The command text")]
         public string CommandText { get; set; }
 
+        /// <summary>
+        /// Gets or sets the output database object.
+        /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 8,
@@ -288,6 +344,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The output database object")]
         public AzureSqlDatabaseModel OutputDatabaseObject { get; set; }
 
+        /// <summary>
+        /// Gets or sets the output database resource id
+        /// </summary>
         [Parameter(
             Mandatory = true,
             Position = 8,
@@ -374,53 +433,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ParameterSetName = ParentResourceIdOutputDatabaseId,
             HelpMessage = "The output table name")]
         public string OutputTableName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = InputObjectParameterSet,
-            HelpMessage = "The job object")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = ParentObjectOutputDatabaseObject,
-            HelpMessage = "The job object")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            ParameterSetName = ParentObjectOutputDatabaseId,
-            HelpMessage = "The job object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdParameterSet,
-            HelpMessage = "The job resource id")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdOutputDatabaseObject,
-            HelpMessage = "The job resource id")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ParentResourceIdOutputDatabaseId,
-            HelpMessage = "The job resource id")]
-        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the job step name

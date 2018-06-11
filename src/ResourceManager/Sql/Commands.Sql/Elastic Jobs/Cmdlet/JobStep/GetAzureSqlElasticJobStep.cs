@@ -36,6 +36,42 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         protected const string ParentResourceIdGetVersionParameterSet = "GetVersion Using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the job input object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job input object")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectGetVersionParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job input object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdGetVersionParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -96,64 +132,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         public override string JobName { get; set; }
 
         /// <summary>
-        /// Gets or sets the job version
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultGetVersionParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 5,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentObjectGetVersionParameterSet,
-            ValueFromPipeline = true,
-            Position = 2,
-            HelpMessage = "The job step name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentResourceIdGetVersionParameterSet,
-            Position = 2,
-            HelpMessage = "The job step name")]
-        public int? Version { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job input object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job input object")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentObjectGetVersionParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job input object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ParentResourceIdGetVersionParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
-
-        /// <summary>
         /// Gets or sets the job step name
         /// </summary>
         [Parameter(
@@ -182,6 +160,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The job step name")]
         [Alias("StepName")]
         public override string Name { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job step version
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultGetVersionParameterSet,
+            ValueFromPipelineByPropertyName = true,
+            Position = 5,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectGetVersionParameterSet,
+            ValueFromPipeline = true,
+            Position = 2,
+            HelpMessage = "The job step name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentResourceIdGetVersionParameterSet,
+            Position = 2,
+            HelpMessage = "The job step name")]
+        public int? Version { get; set; }
 
         /// <summary>
         /// Cmdlet execution starts here

@@ -33,6 +33,30 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class StartAzureSqlElasticJob : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobModel>
     {
         /// <summary>
+        /// Gets or sets the job model input object
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = InputObjectParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job object")]
+        [ValidateNotNullOrEmpty]
+        public AzureSqlElasticJobModel ParentObject { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job resource id
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ResourceIdParameterSet,
+            ValueFromPipeline = true,
+            Position = 0,
+            HelpMessage = "The job resource id")]
+        [ValidateNotNullOrEmpty]
+        public string ParentResourceId { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name
         /// </summary>
         [Parameter(
@@ -76,30 +100,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job name")]
         [ValidateNotNullOrEmpty]
         public override string JobName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job model input object
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = InputObjectParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job object")]
-        [ValidateNotNullOrEmpty]
-        public AzureSqlElasticJobModel ParentObject { get; set; }
-
-        /// <summary>
-        /// Gets or sets the job resource id
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = ResourceIdParameterSet,
-            ValueFromPipeline = true,
-            Position = 0,
-            HelpMessage = "The job resource id")]
-        [ValidateNotNullOrEmpty]
-        public string ParentResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the switch parameter to indicate whether customer wants to poll completion of job

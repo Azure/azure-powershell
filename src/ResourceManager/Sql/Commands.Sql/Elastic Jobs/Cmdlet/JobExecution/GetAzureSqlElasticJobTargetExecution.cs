@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
             Mandatory = true,
             ValueFromPipeline = true,
             Position = 0,
-            HelpMessage = "The agent object.")]
+            HelpMessage = "The job execution object.")]
         [ValidateNotNullOrEmpty]
         public AzureSqlElasticJobExecutionModel ParentObject { get; set; }
 
