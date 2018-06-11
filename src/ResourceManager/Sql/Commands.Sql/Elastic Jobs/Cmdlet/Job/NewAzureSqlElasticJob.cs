@@ -46,6 +46,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected const string ParentResourceIdRecurringParameterSet = "Recurring using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, Position = 0, HelpMessage = "The resource group name")]
+        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, Position = 0, HelpMessage = "The resource group name")]
+        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 0, HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the agent input object
         /// </summary>
         [Parameter(Mandatory = true,
@@ -88,16 +98,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public string ParentResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, Position = 0, HelpMessage = "The resource group name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, Position = 0, HelpMessage = "The resource group name")]
-        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 0, HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Gets or sets the server name
         /// </summary>
         [Parameter(Mandatory = true, ParameterSetName = DefaultParameterSet, Position = 1, HelpMessage = "The server name")]
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the switch parameter run once
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, Position = 4, HelpMessage = "The flag to indicate job will be run once")]
+        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRunOnceParameterSet, HelpMessage = "The flag to indicate job will be run once")]
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
         [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRunOnceParameterSet, Position = 2, HelpMessage = "The flag to indicate job will be run once")]
         public SwitchParameter RunOnce { get; set; }
@@ -142,7 +142,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Get or sets the job schedule interval type
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 4,
+        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectRecurringParameterSet, Position = 2,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
@@ -153,7 +153,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Gets or sets the job schedule interval count
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, Position = 5, HelpMessage = "The recurring schedule interval count")]
+        [Parameter(Mandatory = true, ParameterSetName = AgentDefaultRecurringParameterSet, HelpMessage = "The recurring schedule interval count")]
         [Parameter(Mandatory = true, ParameterSetName = ParentObjectRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
         [Parameter(Mandatory = true, ParameterSetName = ParentResourceIdRecurringParameterSet, Position = 3, HelpMessage = "The recurring schedule interval count")]
         public uint? IntervalCount { get; set; }

@@ -19,11 +19,51 @@ Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerNam
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### Sql Database Input Object Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Sql Server or Elastic Pool Input Object Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-ElasticPoolName <String>] [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Sql Shard Map Input Object Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-ShardMapName] <String> [-DatabaseName] <String> [-RefreshCredentialName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Sql Database ParentResourceId Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Sql Server or Elastic Pool ParentResourceId Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ElasticPoolName <String>]
+ [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### Sql Shard Map ParentResourceId Parameter Set
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ShardMapName] <String>
+ [-DatabaseName] <String> [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### Sql Server or Elastic Pool Target Type
 ```
 Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String>
- [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-RefreshCredentialName] <String>
- [-ElasticPoolName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-ElasticPoolName <String>]
+ [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,47 +72,6 @@ Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerNam
 Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String>
  [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-ShardMapName] <String>
  [-DatabaseName] <String> [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Database Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-DatabaseName] <String>
- [-TargetGroupObject] <AzureSqlElasticJobTargetGroupModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Sql Server or Elastic Pool Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-RefreshCredentialName] <String>
- [-TargetGroupObject] <AzureSqlElasticJobTargetGroupModel> [-ElasticPoolName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Shard Map Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-ShardMapName] <String> [-DatabaseName] <String>
- [-RefreshCredentialName] <String> [-TargetGroupObject] <AzureSqlElasticJobTargetGroupModel>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Database ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-DatabaseName] <String> -ParentResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Server or Elastic Pool ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-RefreshCredentialName] <String>
- -ParentResourceId <String> [-ElasticPoolName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Sql Shard Map ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget [-ServerName] <String> [-ShardMapName] <String> [-DatabaseName] <String>
- [-RefreshCredentialName] <String> -ParentResourceId <String> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -160,7 +159,7 @@ The database target name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Shard Map Target Type, Sql Database Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set
+Parameter Sets: Sql Database Target Type, Sql Database Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
 Aliases:
 
 Required: True
@@ -190,13 +189,28 @@ The target elastic pool name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Server or Elastic Pool Target Type, Sql Server or Elastic Pool Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set
+Parameter Sets: Sql Server or Elastic Pool Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Server or Elastic Pool Target Type
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ParentObject
+The target group object.
+
+```yaml
+Type: AzureSqlElasticJobTargetGroupModel
+Parameter Sets: Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -220,7 +234,7 @@ The refresh credential name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set
+Parameter Sets: Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
 Aliases:
 
 Required: True
@@ -250,7 +264,7 @@ The target server name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Shard Map Target Type, Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set
+Parameter Sets: Sql Database Target Type, Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
 Aliases:
 
 Required: True
@@ -277,7 +291,7 @@ The target shard map name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Shard Map Target Type, Sql Shard Map Input Object Parameter Set, Sql Shard Map ParentResourceId Parameter Set
+Parameter Sets: Sql Shard Map Input Object Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
 Aliases:
 
 Required: True
@@ -299,21 +313,6 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetGroupObject
-The SQL Database Agent Target Group Object
-
-```yaml
-Type: AzureSqlElasticJobTargetGroupModel
-Parameter Sets: Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

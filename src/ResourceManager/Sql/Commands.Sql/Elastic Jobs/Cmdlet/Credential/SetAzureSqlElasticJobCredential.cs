@@ -31,6 +31,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class SetAzureSqlElasticJobCredential : AzureSqlElasticJobCredentialCmdletBase<AzureSqlElasticJobCredentialModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job credential input object model to update
         /// </summary>
         [Parameter(
@@ -55,25 +67,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
-
-        /// <summary>
         /// Gets or sets the server name
         /// </summary>
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The server name")]
         [ValidateNotNullOrEmpty]
@@ -85,7 +83,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 2,
             HelpMessage = "The agent name")]
         [ValidateNotNullOrEmpty]
@@ -97,7 +94,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            ValueFromPipelineByPropertyName = true,
             Position = 3,
             HelpMessage = "The job credential name")]
         [Alias("CredentialName")]
@@ -110,19 +106,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 4,
             HelpMessage = "The job credential")]
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The job credential")]
         [Parameter(
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = "The job credential")]
         [ValidateNotNullOrEmpty]

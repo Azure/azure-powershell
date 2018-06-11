@@ -82,6 +82,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         }
 
         /// <summary>
+        /// Gets or sets the resource group name.
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = DefaultSqlServerOrElasticPoolSet,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = DefaultSqlDatabaseSet,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            Position = 0,
+            ParameterSetName = DefaultSqlShardMapSet,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the target group input object.
         /// </summary>
         [Parameter(ParameterSetName = TargetGroupObjectSqlDatabaseSet,
@@ -122,28 +144,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The target group resource id.")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name.
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ParameterSetName = DefaultSqlServerOrElasticPoolSet,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ParameterSetName = DefaultSqlDatabaseSet,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            Position = 0,
-            ParameterSetName = DefaultSqlShardMapSet,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the agent's server name
@@ -208,16 +208,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = 4,
             HelpMessage = "The target server name.",
             ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The target server name.",
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultSqlDatabaseSet)]
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The target server name.",
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultSqlShardMapSet)]
@@ -258,7 +255,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the Shard Map Name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 5,
             HelpMessage = "The target shard map name.",
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultSqlShardMapSet)]
@@ -278,13 +274,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// Gets or sets the Target Database Name
         /// </summary>
         [Parameter(Mandatory = true,
-            Position = 5,
             HelpMessage = "The target database name.",
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultSqlDatabaseSet)]
         [Parameter(
             Mandatory = true,
-            Position = 6,
             HelpMessage = "The target database name.",
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = DefaultSqlShardMapSet)]
@@ -332,12 +326,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         [Parameter(
             Mandatory = true,
-            Position = 5,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlServerOrElasticPoolSet)]
         [Parameter(
             Mandatory = true,
-            Position = 7,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = DefaultSqlShardMapSet)]
         [Parameter(Mandatory = true,
@@ -345,7 +337,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlShardMapSet)]
         [Parameter(Mandatory = true,
@@ -353,7 +344,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlServerOrElasticPoolSet)]
         [Parameter(Mandatory = true,
-            Position = 4,
             HelpMessage = "The refresh credential name.",
             ParameterSetName = ParentResourceIdSqlShardMapSet)]
         public override string RefreshCredentialName { get; set; }

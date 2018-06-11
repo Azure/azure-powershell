@@ -30,6 +30,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
     public class GetAzureSqlElasticJobTargetExecution : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobExecutionModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job execution object input model
         /// </summary>
         [Parameter(
@@ -51,17 +62,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
             HelpMessage = "The job execution resource id.")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -98,14 +98,13 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = true,
-            Position = 4,
             HelpMessage = "The job execution id.")]
         public override string JobExecutionId { get; set; }
 
         /// <summary>
         /// Gets or sets the top executions to return in the response
         /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, Position = 5, HelpMessage = "Count returns the top number of executions.")]
+        [Parameter(ParameterSetName = DefaultParameterSet, Mandatory = true, HelpMessage = "Count returns the top number of executions.")]
         [Parameter(ParameterSetName = InputObjectParameterSet, Mandatory = true, Position = 1, HelpMessage = "Count returns the top number of executions.")]
         [Parameter(ParameterSetName = ResourceIdParameterSet, Mandatory = true, Position = 1, HelpMessage = "Count returns the top number of executions.")]
         public int? Count { get; set; }

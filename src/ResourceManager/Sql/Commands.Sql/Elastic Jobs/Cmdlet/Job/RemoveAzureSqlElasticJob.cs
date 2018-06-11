@@ -31,6 +31,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     public class RemoveAzureSqlElasticJob : AzureSqlElasticJobCmdletBase<AzureSqlElasticJobModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job input object
         /// </summary>
         [Parameter(
@@ -53,16 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The agent resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name

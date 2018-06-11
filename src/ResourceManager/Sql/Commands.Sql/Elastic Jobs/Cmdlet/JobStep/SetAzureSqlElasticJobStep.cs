@@ -45,6 +45,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected const string ParentResourceIdAddParentResourceIdParameterSet = "WithAddOutput using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultRemoveOutputParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultAddParentResourceIdParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job object
         /// </summary>
         [Parameter(
@@ -91,28 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job step resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultRemoveOutputParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultAddParentResourceIdParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -183,17 +183,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            Position = 4,
             HelpMessage = "The step name")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultRemoveOutputParameterSet,
-            Position = 4,
             HelpMessage = "The step name")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultAddParentResourceIdParameterSet,
-            Position = 4,
             HelpMessage = "The step name")]
         [Alias("StepName")]
         [ValidateNotNullOrEmpty]
@@ -202,7 +199,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultRemoveOutputParameterSet,
-            Position = 5,
             HelpMessage = "The flag to indicate whether to remove output")]
         [Parameter(
             Mandatory = true,
@@ -236,7 +232,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultAddParentResourceIdParameterSet,
-            Position = 5,
             HelpMessage = "The output database resource id")]
         [Parameter(
             Mandatory = true,

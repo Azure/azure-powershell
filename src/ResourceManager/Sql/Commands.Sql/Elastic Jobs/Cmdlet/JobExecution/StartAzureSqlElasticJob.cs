@@ -33,6 +33,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class StartAzureSqlElasticJob : AzureSqlElasticJobExecutionCmdletBase<AzureSqlElasticJobModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job model input object
         /// </summary>
         [Parameter(
@@ -55,18 +67,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job resource id")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name

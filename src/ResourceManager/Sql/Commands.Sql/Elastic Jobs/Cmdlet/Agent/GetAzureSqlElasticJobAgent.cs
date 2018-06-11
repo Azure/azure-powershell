@@ -30,6 +30,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
     public class GetAzureSqlElasticJobAgent : AzureSqlElasticJobAgentCmdletBase<AzureSqlServerModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the Agent Server Object
         /// </summary>
         [Parameter(
@@ -51,18 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             Position = 0,
             HelpMessage = "The server resource id")]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name

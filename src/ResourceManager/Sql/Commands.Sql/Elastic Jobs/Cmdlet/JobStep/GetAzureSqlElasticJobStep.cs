@@ -36,6 +36,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         protected const string ParentResourceIdGetVersionParameterSet = "GetVersion Using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultGetVersionParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job input object
         /// </summary>
         [Parameter(
@@ -70,21 +85,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The job resource id")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultGetVersionParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -140,7 +140,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultGetVersionParameterSet,
-            Position = 4,
             HelpMessage = "The job step name")]
         [Parameter(
             ParameterSetName = InputObjectParameterSet,
@@ -168,7 +167,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             Mandatory = true,
             ParameterSetName = DefaultGetVersionParameterSet,
             ValueFromPipelineByPropertyName = true,
-            Position = 5,
             HelpMessage = "The job step name")]
         [Parameter(
             Mandatory = true,

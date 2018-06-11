@@ -37,6 +37,21 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         protected const string GetRootJobExecutionByParentResourceId = "WithJobExecutionId using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(ParameterSetName = DefaultParameterSet,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The resource group name.")]
+        [Parameter(ParameterSetName = GetRootJobExecution,
+            Mandatory = true,
+            Position = 0,
+            HelpMessage = "The resource group name.")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the agent object input model
         /// </summary>
         [Parameter(
@@ -71,21 +86,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
             HelpMessage = "The agent resource id.")]
         [ValidateNotNullOrEmpty]
         public string ParentResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(ParameterSetName = DefaultParameterSet,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The resource group name.")]
-        [Parameter(ParameterSetName = GetRootJobExecution,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The resource group name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -157,7 +157,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.JobExecution
         /// </summary>
         [Parameter(ParameterSetName = GetRootJobExecution,
             Mandatory = true,
-            Position = 4,
             HelpMessage = "The job execution id.")]
         [Parameter(ParameterSetName = GetRootJobExecutionByParentObject,
             Mandatory = true,

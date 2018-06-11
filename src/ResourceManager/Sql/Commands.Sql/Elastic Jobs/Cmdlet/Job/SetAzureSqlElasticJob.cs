@@ -45,6 +45,28 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected const string ParentResourceIdRecurringParameterSet = "Recurring using ParentResourceId";
 
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = JobDefaultRunOnceParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = JobDefaultRecurringParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the agent input object
         /// </summary>
         [Parameter(
@@ -91,28 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             HelpMessage = "The job resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobDefaultRunOnceParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = JobDefaultRecurringParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -184,7 +184,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = JobDefaultRunOnceParameterSet,
-            Position = 4,
             HelpMessage = "The flag to indicate job will be run once")]
         [Parameter(
             Mandatory = true,
@@ -204,7 +203,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = JobDefaultRecurringParameterSet,
-            Position = 4,
             HelpMessage = "The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month")]
         [Parameter(
             Mandatory = true,
@@ -225,7 +223,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         [Parameter(
             Mandatory = true,
             ParameterSetName = JobDefaultRecurringParameterSet,
-            Position = 5,
             HelpMessage = "The recurring schedule interval count")]
         [Parameter(
             Mandatory = true,

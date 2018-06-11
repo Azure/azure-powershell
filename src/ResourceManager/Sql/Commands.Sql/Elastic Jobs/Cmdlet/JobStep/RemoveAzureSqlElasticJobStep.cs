@@ -31,6 +31,18 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
     public class RemoveAzureSqlElasticJobStep : AzureSqlElasticJobStepCmdletBase<AzureSqlElasticJobStepModel>
     {
         /// <summary>
+        /// Gets or sets the resource group name
+        /// </summary>
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = DefaultParameterSet,
+            Position = 0,
+            HelpMessage = "The resource group name")]
+        [ValidateNotNullOrEmpty]
+        [ResourceGroupCompleter]
+        public override string ResourceGroupName { get; set; }
+
+        /// <summary>
         /// Gets or sets the job step input object
         /// </summary>
         [Parameter(
@@ -53,18 +65,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             HelpMessage = "The job step resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the resource group name
-        /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ParameterSetName = DefaultParameterSet,
-            Position = 0,
-            HelpMessage = "The resource group name")]
-        [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter]
-        public override string ResourceGroupName { get; set; }
 
         /// <summary>
         /// Gets or sets the server name
@@ -105,7 +105,6 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
-            Position = 4,
             HelpMessage = "The job step name")]
         [Alias("StepName")]
         [ValidateNotNullOrEmpty]
