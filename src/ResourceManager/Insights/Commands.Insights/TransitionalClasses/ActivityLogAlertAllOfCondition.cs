@@ -12,6 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Insights.TransitionalClasses;
+using System.Collections.Generic;
+using System.Linq;
+
 namespace Microsoft.Azure.Management.Monitor.Management.Models
 {
     /// <summary>
@@ -21,12 +25,18 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
     public class ActivityLogAlertAllOfCondition : Monitor.Models.ActivityLogAlertAllOfCondition
     {
         /// <summary>
+        /// Gets or sets the AllOf property
+        /// </summary>
+        public new IList<ActivityLogAlertLeafCondition> AllOf { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the ActivityLogAlertAllOfCondition class.
         /// </summary>
         /// <param name="allOfList">The all of list of conditions</param>
         public ActivityLogAlertAllOfCondition(Monitor.Models.ActivityLogAlertAllOfCondition allOfList)
             : base(allOf: allOfList?.AllOf)
         {
+            this.AllOf = allOfList?.AllOf.Select(TransitionHelpers.ToMirrorNamespace).ToList();
         }
     }
 }

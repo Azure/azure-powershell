@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             output.AppendLine();
             output.AppendLine("Category        : " + Category);
             output.AppendLine("Enabled         : " + Enabled);
-            output.AppendLine("TimeGrain       : " + (TimeGrain.HasValue ? XmlConvert.ToString(TimeGrain.Value) : ""));
+            output.AppendLine("TimeGrain       : " + XmlConvert.ToString(TimeGrain));
             output.Append("RetentionPolicy : " + RetentionPolicy.ToString(1));
             return output.ToString();
         }
