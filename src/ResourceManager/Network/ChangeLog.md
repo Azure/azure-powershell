@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 6.2.0
 * Enable Traffic Analytics parameters on Network Watcher cmdlets

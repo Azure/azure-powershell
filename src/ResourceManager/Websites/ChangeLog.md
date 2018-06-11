@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 5.0.2
 * `New-AzureRMWebApp` is updated to use common algorithms from the Strategy library.
