@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
+
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
 {
     /// <summary>
@@ -32,6 +34,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model
         /// <summary>
         /// Gets or sets a value to indicate whether Advanced Threat Protection is enabled
         /// </summary>
+        [Ps1Xml(Label = "Enabled", Target = ViewControl.Table)]
         public bool IsEnabled { get; set; }
     }
 }
