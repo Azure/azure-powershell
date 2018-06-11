@@ -128,7 +128,7 @@ function Delete-Vault($vault)
 		}
 	}
 
-	Remove-AzureRmRecoveryServicesVault -VaultId $vault.ID
+	Remove-AzureRmRecoveryServicesVault -Vault $vault
 }
 
 function Create-VM(

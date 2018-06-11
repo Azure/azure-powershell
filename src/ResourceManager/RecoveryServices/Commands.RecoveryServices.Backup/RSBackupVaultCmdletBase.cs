@@ -13,9 +13,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     public abstract class RSBackupVaultCmdletBase : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
-        /// The Recovery Services Vault.
+        /// ARM ID of the Recovery Services Vault.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The Recovery Services Vault.",
+        [Parameter(Mandatory = false, HelpMessage = "ARM ID of the Recovery Services Vault.",
             ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
         public string VaultId { get; set; }
