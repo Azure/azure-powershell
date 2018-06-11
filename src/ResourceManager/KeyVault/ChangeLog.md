@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 5.0.1
 * Update documentation with example output
