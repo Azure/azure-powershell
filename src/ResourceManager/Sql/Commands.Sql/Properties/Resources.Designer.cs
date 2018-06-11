@@ -581,28 +581,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFailoverGroupWarning", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
-        /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on server &apos;{1}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning
-        {
-            get
-            {
-                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
-            }
-        }
         
         /// <summary>
         ///   Looks up a localized string similar to Permanently removing this Azure Sql Database from  Azure Sql Database Failover Group &apos;{0}&apos; on server &apos;{1}&apos;..
@@ -610,6 +588,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlDatabaseFromAzureSqlDatabaseFailoverGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permanently removing Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;..
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupDescription {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove the Azure Sql Database Instance Failover Group &apos;{0}&apos; on region &apos;{1}&apos;?.
+        /// </summary>
+        internal static string RemoveAzureSqlDatabaseInstanceFailoverGroupWarning {
+            get {
+                return ResourceManager.GetString("RemoveAzureSqlDatabaseInstanceFailoverGroupWarning", resourceCulture);
             }
         }
         
@@ -839,38 +835,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing the agent &apos;{0}&apos; from server &apos;{1}&apos;.
-        /// </summary>
-        internal static string RemoveElasticJobAgentDescription {
-            get {
-                return ResourceManager.GetString("RemoveElasticJobAgentDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove the agent &apos;{0}&apos; from server &apos;{1}&apos;?.
         /// </summary>
         internal static string RemoveElasticJobAgentWarning {
             get {
                 return ResourceManager.GetString("RemoveElasticJobAgentWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing job &apos;{0}&apos; from agent &apos;{1}&apos;.
-        /// </summary>
-        internal static string RemoveElasticJobDescription {
-            get {
-                return ResourceManager.GetString("RemoveElasticJobDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing target group &apos;{0}&apos; from agent &apos;{1}&apos;.
-        /// </summary>
-        internal static string RemoveElasticJobTargetGroupDescription {
-            get {
-                return ResourceManager.GetString("RemoveElasticJobTargetGroupDescription", resourceCulture);
             }
         }
         

@@ -112,22 +112,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         {
             InitializeInputObjectProperties(this.InputObject);
             InitializeResourceIdProperties(this.ResourceId);
-
             this.Name = this.Name ?? this.TargetGroupName;
-
-            // Warning confirmation for deletion for target group
-            // Should only show warning if target has members
-            // TODO: perform check if target group has members
-            if (!Force.IsPresent && !ShouldProcess(string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobTargetGroupDescription, this.Name, this.AgentName),
-                   string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobTargetGroupWarning, this.Name, this.AgentName),
-                   Properties.Resources.ShouldProcessCaption))
-            {
-                return;
-            }
-
             base.ExecuteCmdlet();
-            this.Name = null; // Clear name
-            this.TargetGroupName = null; // Clear target group name
         }
 
         /// <summary>
@@ -138,10 +124,46 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         {
             try
             {
-                return new List<AzureSqlElasticJobTargetGroupModel>
+                AzureSqlElasticJobTargetGroupModel targetGroup = ModelAdapter.GetTargetGroup(this.ResourceGroupName, this.ServerName, this.AgentName, this.Name);
+
+                // We should only delete target group under these conditions.
+                // 1. Force is given
+                // 2. Force is not given, but Target group has no targets
+                // 3. Force is not given, Target group has targets and confirmation is accepted
+
+                // If force is present, remove the target group
+                if (Force.IsPresent)
                 {
-                    ModelAdapter.GetTargetGroup(this.ResourceGroupName, this.ServerName, this.AgentName, this.Name)
-                };
+                    return new List<AzureSqlElasticJobTargetGroupModel> { targetGroup };
+                }
+                else
+                {
+                    // Force is not present
+                    bool hasTargets = targetGroup.Targets.Count > 0;
+
+                    // There were no targets in target group, so we can just remove the target group
+                    if (!hasTargets)
+                    {
+                        return new List<AzureSqlElasticJobTargetGroupModel> { targetGroup };
+                    }
+                    // There are targets in the target group - Give confirmation message
+                    else
+                    {
+                        if (ShouldContinue(
+                            string.Format(CultureInfo.InvariantCulture,
+                            Properties.Resources.RemoveElasticJobTargetGroupWarning, this.Name, this.AgentName),
+                            Properties.Resources.ShouldProcessCaption))
+                        {
+                            // Since confirmation succeeded, we can return the target group to delete
+                            return new List<AzureSqlElasticJobTargetGroupModel> { targetGroup };
+                        }
+                        else
+                        {
+                            // Otherwise, return empty list to do nothing
+                            return new List<AzureSqlElasticJobTargetGroupModel> { };
+                        }
+                    }
+                }
             }
             catch (CloudException ex)
             {
@@ -175,7 +197,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <returns>The removed target group</returns>
         protected override IEnumerable<AzureSqlElasticJobTargetGroupModel> PersistChanges(IEnumerable<AzureSqlElasticJobTargetGroupModel> entity)
         {
-            var existingEntity = entity.First();
+            // If passed entity had no target group to remove, just return empty list.
+            var existingEntity = entity.FirstOrDefault();
+            if (existingEntity == null)
+            {
+                return new List<AzureSqlElasticJobTargetGroupModel> { };
+            }
+
+            // If we had a target group to remove, then we remove here.
             ModelAdapter.RemoveTargetGroup(existingEntity.ResourceGroupName, existingEntity.ServerName, existingEntity.AgentName, existingEntity.TargetGroupName);
             return entity;
         }

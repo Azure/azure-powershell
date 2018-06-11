@@ -110,10 +110,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             InitializeResourceIdProperties(this.ResourceId);
             this.Name = this.Name ?? this.JobName;
 
-            // Warning confirmation for agent when deleting
+            // Warning confirmation when deleting job
             if (!Force.IsPresent &&
-                !ShouldProcess(string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobDescription, this.Name, this.ServerName),
-                               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobWarning, this.Name, this.ServerName),
+                !ShouldContinue(string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobWarning, this.Name, this.ServerName),
                                Properties.Resources.ShouldProcessCaption))
             {
                 return;

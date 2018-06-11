@@ -107,9 +107,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
 
             // Warning confirmation for agent when deleting
             if (!Force.IsPresent &&
-                !ShouldProcess(string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobAgentDescription, this.Name, this.ServerName),
-                               string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobAgentWarning, this.Name, this.ServerName),
-                               Properties.Resources.ShouldProcessCaption))
+                !ShouldContinue(string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveElasticJobAgentWarning, this.Name, this.ServerName), Properties.Resources.ShouldProcessCaption))
             {
                 return;
             }
