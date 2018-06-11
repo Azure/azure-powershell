@@ -39,15 +39,6 @@ function Get-NotificationKey
 
 <#
 .SYNOPSIS
-Get Resource Group Name
-#>
-function Get-ResourceGroupName
-{
-    return "RG-" + (getAssetName)
-}
-
-<#
-.SYNOPSIS
 Test budget at subscription level
 #>
 function Test-BudgetAtSubscriptionLevel
@@ -103,14 +94,9 @@ function Test-BudgetAtResourceGroupLevel
 	$notificationKey1 = Get-NotificationKey
 	$notificationKey2 = Get-NotificationKey
 	# This resource group is created at the scope of test subscription
-	$resourceGroupName = Get-ResourceGroupName
+	$resourceGroupName = 'RGBudgets'
 	$startDate = Get-Date -Day 1
 	$endDate = ($startDate).AddMonths(3).AddDays(-1)
-
-	# Create Resource Group 
-	Install-Module -Name AzureRm.Resources -Force
-	Import-Module -Name AzureRm.Resources
-	New-AzureRmResourceGroup -Name $resourceGroupName -Location westus -Force
 
 	# Create budget
 	Write-Debug "Create a new budget $budgetName at resource group level"
@@ -149,9 +135,6 @@ function Test-BudgetAtResourceGroupLevel
 	Assert-AreEqual True $response
 
 	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName}
-
-	# Remove Resource Group
-	Remove-AzureRmResourceGroup -Name $resourceGroupName
 }
 
 <#

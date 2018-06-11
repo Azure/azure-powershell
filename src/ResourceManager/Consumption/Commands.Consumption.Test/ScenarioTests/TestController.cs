@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
+        public RM.Fluent.ResourceManagementClient ResourceClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -165,10 +165,10 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
             return TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
         }
 
-        private RM.ResourceManagementClient GetResourceClient(MockContext context)
+        private RM.Fluent.ResourceManagementClient GetResourceClient(MockContext context)
         {
             return
-                context.GetServiceClient<RM.ResourceManagementClient>(
+                context.GetServiceClient<RM.Fluent.ResourceManagementClient>(
                     Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
