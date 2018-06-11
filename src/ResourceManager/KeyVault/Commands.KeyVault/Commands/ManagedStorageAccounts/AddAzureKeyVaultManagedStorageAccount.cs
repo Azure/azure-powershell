@@ -20,9 +20,8 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsCommon.Add, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(ManagedStorageAccount))]
+        SupportsShouldProcess = true)]
+    [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
     public class AddAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ActiveKeyName,
                     !DisableAutoRegenerateKey.IsPresent,
                     RegenerationPeriod,
-                    new ManagedStorageAccountAttributes( !Disable.IsPresent ),
+                    new PSKeyVaultManagedStorageAccountAttributes( !Disable.IsPresent ),
                     Tag );
 
                 WriteObject( managedStorageAccount );

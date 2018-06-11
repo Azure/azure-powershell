@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 0EB9F1C9-54CC-4794-9E37-108342341FE5
@@ -22,11 +22,6 @@ The **Set-AzureRmCdnOrigin** cmdlet updates an Azure Content Delivery Network (C
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnOrigin
@@ -35,7 +30,7 @@ Specifies the origin server that this cmdlet updates.
 ```yaml
 Type: PSOrigin
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

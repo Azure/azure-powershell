@@ -30,7 +30,7 @@ The **Get-AzureVMChefExtension** cmdlet gets information about a Chef extension 
 
 ## EXAMPLES
 
-### Example 1: Get the details of Chef extension for a Windows virtual machine-
+### Example 1: Get the details of Chef extension for a Windows virtual machine
 ```
 PS C:\> Get-AzureRmVMChefExtension -ResourceGroupName "ResourceGroup001" -VMName "WindowsVM001" -Windows
 ```
@@ -67,7 +67,7 @@ Indicates that this cmdlet works on a Linux virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Linux
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ Specifies the name of the resource group that contains the virtual machine.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,7 +112,7 @@ Indicates that this cmdlet gets only the instance view of the Chef extension.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -142,7 +142,7 @@ Indicates that this cmdlet is for a Windows virtual machine.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Windows
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

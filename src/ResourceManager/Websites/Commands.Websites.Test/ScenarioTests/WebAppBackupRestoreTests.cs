@@ -27,46 +27,90 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackup()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppBackup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppBackupPiping()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppBackupPiping");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackup()
         {
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppBackup");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppBackupList()
         {
             WebsitesController.NewInstance.RunPsTest("Test-GetWebAppBackupList");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEditAndGetWebAppBackupConfiguration()
         {
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfiguration");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version out-of-date: Awaiting Storage.Management.Common")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEditAndGetWebAppBackupConfigurationPiping()
         {
             WebsitesController.NewInstance.RunPsTest("Test-EditAndGetWebAppBackupConfigurationPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetWebAppSnapshot()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSnapshot");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRestoreWebAppSnapshot()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-RestoreWebAppSnapshot");
         }
     }
 }

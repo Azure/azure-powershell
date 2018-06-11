@@ -67,7 +67,7 @@ You can use the Get-AzureRmLocalNetworkGateway cmdlet to create an object refere
 ```yaml
 Type: PSLocalNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -85,7 +85,7 @@ The variable $VirtualGateway can then be used as the parameter value for the *Vi
 ```yaml
 Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

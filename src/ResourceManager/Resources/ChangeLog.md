@@ -19,6 +19,36 @@
 -->
 ## Current Release
 
+## Version 6.1.0
+* Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+
+## Version 6.0.1
+* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Role`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`
+
+## Version 6.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add convenience cmdlet for creating ServicePrincipals
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
+
+## Version 5.5.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 5.5.1
 * Fix issue with Default Resource Group in CloudShell
 

@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-GetAppServicePlanMetrics");
         }
 
-        [Fact]
+        [Fact(Skip = "TODO #5594: This test requires a pre-set AppService Environment with specific settings.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppServicePlanInAse()
         {

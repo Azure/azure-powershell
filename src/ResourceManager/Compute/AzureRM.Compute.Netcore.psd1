@@ -12,13 +12,13 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = 'D4CB9989-9ED1-49C2-BACD-0F8DAF758671'
+GUID = 'd4cb9989-9ed1-49c2-bacd-0f8daf758671'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -42,27 +42,22 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = '4.5.2'
+# DotNetFrameworkVersion = ''
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# CLRVersion = '4.0'
+# CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll',
-    '.\Microsoft.Azure.Commands.Common.Strategies.dll', 
-    '.\Microsoft.Azure.Management.Compute.dll',
-    '.\Microsoft.Azure.Management.KeyVault.dll',
-    '.\Microsoft.Azure.Management.Storage.dll',
-    '.\Microsoft.Data.Edm.dll',
-    '.\Microsoft.Data.OData.dll',
-    '.\Microsoft.WindowsAzure.Storage.dll', 
-    '.\System.Spatial.dll'
+RequiredAssemblies = '.\AutoMapper.dll', 
+    '.\Microsoft.Azure.Commands.Common.Strategies.4.dll', 
+    '.\Microsoft.Azure.Management.Compute.dll', 
+    '.\Microsoft.Azure.Management.KeyVault.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -72,8 +67,8 @@ TypesToProcess = '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml', 
-               '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
-               '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
+    '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
+    '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Compute.dll')
@@ -82,107 +77,112 @@ NestedModules = @('.\Microsoft.Azure.Commands.Compute.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
-    'New-AzureRmAvailabilitySet', 'Update-AzureRmAvailabilitySet',
-    'Get-AzureRmVMExtensionImageType', 'Get-AzureRmVMExtensionImage',
-    'Get-AzureRmVMADDomainExtension', 'Set-AzureRmVMADDomainExtension',
-    'Get-AzureRmVMAEMExtension', 'Remove-AzureRmVMAEMExtension',
-    'Set-AzureRmVMAEMExtension', 'Test-AzureRmVMAEMExtension',
-    'Set-AzureRmVMBginfoExtension',
-    'Get-AzureRmVMCustomScriptExtension',
-    'Remove-AzureRmVMCustomScriptExtension',
-    'Set-AzureRmVMCustomScriptExtension',
-    'Get-AzureRmVMDiagnosticsExtension',
-    'Remove-AzureRmVMDiagnosticsExtension',
-    'Remove-AzureRmVmssDiagnosticsExtension',
-    'Set-AzureRmVMDiagnosticsExtension', 'Set-AzureRmVMExtension',
-    'Remove-AzureRmVMExtension', 'Get-AzureRmVMExtension',
-    'Get-AzureRmVMSqlServerExtension',
-    'New-AzureRmVMSqlServerAutoBackupConfig',
-    'New-AzureRmVMSqlServerAutoPatchingConfig',
-    'New-AzureRmVMSqlServerKeyVaultCredentialConfig',
-    'Remove-AzureRmVMSqlServerExtension',
-    'Set-AzureRmVMSqlServerExtension', 'Get-AzureRmVMImage',
-    'Get-AzureRmVMAccessExtension', 'Remove-AzureRmVMAccessExtension',
-    'Set-AzureRmVMAccessExtension', 'Get-AzureRmVMImageSku',
-    'Get-AzureRmVMImagePublisher', 'Get-AzureRmVMImageOffer',
-    'Get-AzureRmRemoteDesktopFile', 'Get-AzureRmVMUsage',
-    'Get-AzureRmVMSize', 'Save-AzureRmVMImage', 'Set-AzureRmVM',
-    'Add-AzureRmVMAdditionalUnattendContent',
-    'Add-AzureRmVMSshPublicKey', 'Add-AzureRmVMSecret',
-    'Remove-AzureRmVMSecret', 'Remove-AzureRmVMNetworkInterface',
-    'Remove-AzureRmVMDataDisk', 'Set-AzureRmVMBootDiagnostics',
-    'Set-AzureRmVMDataDisk', 'Set-AzureRmVMPlan',
-    'Set-AzureRmVMSourceImage', 'Set-AzureRmVMOSDisk',
-    'Get-AzureRmVMBootDiagnosticsData', 'Get-AzureRmVM',
-    'Update-AzureRmVM', 'Restart-AzureRmVM', 'New-AzureRmVM',
-    'Start-AzureRmVM', 'Stop-AzureRmVM', 'Remove-AzureRmVM',
-    'New-AzureRmVMConfig', 'Set-AzureRmVMOperatingSystem',
-    'Add-AzureRmVMDataDisk', 'Add-AzureRmVMNetworkInterface',
-    'Add-AzureRmVhd', 'Save-AzureRmVhd',
-    'Add-AzureRmContainerServiceAgentPoolProfile',
-    'New-AzureRmContainerServiceConfig',
-    'Remove-AzureRmContainerServiceAgentPoolProfile',
-    'New-AzureRmContainerService', 'Update-AzureRmContainerService',
-    'Remove-AzureRmContainerService', 'Get-AzureRmContainerService',
-    'Get-AzureRmVmssVM', 'Set-AzureRmVmssVM',
-    'Add-AzureRmVmssAdditionalUnattendContent',
-    'Add-AzureRmVmssExtension', 'Add-AzureRmVmssDataDisk',
-    'Add-AzureRmVmssNetworkInterfaceConfiguration',
-    'Add-AzureRmVmssSecret', 'Add-AzureRmVmssSshPublicKey',
-    'Add-AzureRmVmssWinRMListener', 'New-AzureRmVmssConfig',
-    'New-AzureRmVmssIpConfig', 'New-AzureRmVmssVaultCertificateConfig',
-    'Remove-AzureRmVmssExtension', 'Remove-AzureRmVmssDataDisk',
-    'Remove-AzureRmVmssNetworkInterfaceConfiguration',
-    'Set-AzureRmVmssOsProfile', 'Set-AzureRmVmssStorageProfile',
-    'New-AzureRmVmss', 'Update-AzureRmVmss', 'Stop-AzureRmVmss',
-    'Remove-AzureRmVmss', 'Get-AzureRmVmss', 'Get-AzureRmVmssSku',
-    'Set-AzureRmVmss', 'Restart-AzureRmVmss', 'Start-AzureRmVmss',
-    'Update-AzureRmVmssInstance', 'Get-AzureRmVMDscExtensionStatus',
-    'Publish-AzureRmVMDscConfiguration', 'Remove-AzureRmVMDscExtension',
-    'Set-AzureRmVMDscExtension', 'Get-AzureRmVMDscExtension',
-    'Add-AzureRmVmssDiagnosticsExtension', 'Get-AzureRmVMChefExtension',
-    'Remove-AzureRmVMChefExtension', 'Set-AzureRmVMChefExtension',
-    'Remove-AzureRmVMBackup', 'Disable-AzureRmVMDiskEncryption',
-    'Get-AzureRmVMDiskEncryptionStatus',
-    'Remove-AzureRmVMDiskEncryptionExtension',
-    'Set-AzureRmVMDiskEncryptionExtension',
-    'Set-AzureRmVMBackupExtension', 'New-AzureRmDisk',
-    'Update-AzureRmDisk', 'Get-AzureRmDisk', 'Remove-AzureRmDisk',
-    'Grant-AzureRmDiskAccess', 'Revoke-AzureRmDiskAccess',
-    'New-AzureRmDiskConfig', 'Set-AzureRmDiskDiskEncryptionKey',
-    'Set-AzureRmDiskImageReference', 'Set-AzureRmDiskKeyEncryptionKey',
-    'New-AzureRmDiskUpdateConfig',
-    'Set-AzureRmDiskUpdateDiskEncryptionKey',
-    'Set-AzureRmDiskUpdateImageReference',
-    'Set-AzureRmDiskUpdateKeyEncryptionKey', 'New-AzureRmSnapshot',
-    'Update-AzureRmSnapshot', 'Get-AzureRmSnapshot',
-    'Remove-AzureRmSnapshot', 'Grant-AzureRmSnapshotAccess',
-    'Revoke-AzureRmSnapshotAccess', 'New-AzureRmSnapshotConfig',
-    'Set-AzureRmSnapshotDiskEncryptionKey',
-    'Set-AzureRmSnapshotImageReference',
-    'Set-AzureRmSnapshotKeyEncryptionKey',
-    'New-AzureRmSnapshotUpdateConfig',
-    'Set-AzureRmSnapshotUpdateDiskEncryptionKey',
-    'Set-AzureRmSnapshotUpdateImageReference',
-    'Set-AzureRmSnapshotUpdateKeyEncryptionKey', 'New-AzureRmImage',
-    'Update-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage',
-    'New-AzureRmImageConfig', 'Set-AzureRmImageOsDisk',
-    'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk',
-    'ConvertTo-AzureRmVMManagedDisk', 'Set-AzureRmVmssBootDiagnostic',
-    'Get-AzureRmComputeResourceSku', 'Get-AzureRmVMRunCommandDocument',
-    'Invoke-AzureRmVMRunCommand', 'Start-AzureRmVmssRollingOSUpgrade',
-    'Stop-AzureRmVmssRollingUpgrade', 'Get-AzureRmVmssRollingUpgrade',
-    'Set-AzureRmVmssRollingUpgradePolicy',
-    'Set-AzureRmVmssDiskEncryptionExtension',
-    'Disable-AzureRmVmssDiskEncryption',
-    'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption'
+CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet', 
+    'New-AzureRmAvailabilitySet', 'Update-AzureRmAvailabilitySet', 
+    'Get-AzureRmVMExtensionImageType', 'Get-AzureRmVMExtensionImage', 
+    'Get-AzureRmVMADDomainExtension', 'Set-AzureRmVMADDomainExtension', 
+    'Get-AzureRmVMAEMExtension', 'Remove-AzureRmVMAEMExtension', 
+    'Set-AzureRmVMAEMExtension', 'Test-AzureRmVMAEMExtension', 
+    'Set-AzureRmVMBginfoExtension', 'Get-AzureRmVMCustomScriptExtension', 
+    'Remove-AzureRmVMCustomScriptExtension', 
+    'Set-AzureRmVMCustomScriptExtension', 
+    'Get-AzureRmVMDiagnosticsExtension', 
+    'Remove-AzureRmVMDiagnosticsExtension', 
+    'Remove-AzureRmVmssDiagnosticsExtension', 
+    'Set-AzureRmVMDiagnosticsExtension', 'Set-AzureRmVMExtension', 
+    'Remove-AzureRmVMExtension', 'Get-AzureRmVMExtension', 
+    'Get-AzureRmVMSqlServerExtension', 
+    'New-AzureRmVMSqlServerAutoBackupConfig', 
+    'New-AzureRmVMSqlServerAutoPatchingConfig', 
+    'New-AzureRmVMSqlServerKeyVaultCredentialConfig', 
+    'Remove-AzureRmVMSqlServerExtension', 
+    'Set-AzureRmVMSqlServerExtension', 'Get-AzureRmVMImage', 
+    'Get-AzureRmVMAccessExtension', 'Remove-AzureRmVMAccessExtension', 
+    'Set-AzureRmVMAccessExtension', 'Get-AzureRmVMImageSku', 
+    'Get-AzureRmVMImagePublisher', 'Get-AzureRmVMImageOffer', 
+    'Get-AzureRmRemoteDesktopFile', 'Get-AzureRmVMUsage', 
+    'Get-AzureRmVMSize', 'Save-AzureRmVMImage', 'Set-AzureRmVM', 
+    'Add-AzureRmVMAdditionalUnattendContent', 
+    'Add-AzureRmVMSshPublicKey', 'Add-AzureRmVMSecret', 
+    'Remove-AzureRmVMSecret', 'Remove-AzureRmVMNetworkInterface', 
+    'Remove-AzureRmVMDataDisk', 'Set-AzureRmVMBootDiagnostics', 
+    'Set-AzureRmVMDataDisk', 'Set-AzureRmVMPlan', 
+    'Set-AzureRmVMSourceImage', 'Set-AzureRmVMOSDisk', 
+    'Get-AzureRmVMBootDiagnosticsData', 'Get-AzureRmVM', 
+    'Update-AzureRmVM', 'Restart-AzureRmVM', 'New-AzureRmVM', 
+    'Start-AzureRmVM', 'Stop-AzureRmVM', 'Remove-AzureRmVM', 
+    'New-AzureRmVMConfig', 'Set-AzureRmVMOperatingSystem', 
+    'Add-AzureRmVMDataDisk', 'Add-AzureRmVMNetworkInterface', 
+    'Add-AzureRmVhd', 'Save-AzureRmVhd', 
+    'Add-AzureRmContainerServiceAgentPoolProfile', 
+    'New-AzureRmContainerServiceConfig', 
+    'Remove-AzureRmContainerServiceAgentPoolProfile', 
+    'New-AzureRmContainerService', 'Update-AzureRmContainerService', 
+    'Remove-AzureRmContainerService', 'Get-AzureRmContainerService', 
+    'Get-AzureRmVmssVM', 'Set-AzureRmVmssVM', 
+    'Add-AzureRmVmssAdditionalUnattendContent', 
+    'Add-AzureRmVmssExtension', 'Add-AzureRmVmssDataDisk', 
+    'Add-AzureRmVmssNetworkInterfaceConfiguration', 
+    'Add-AzureRmVmssSecret', 'Add-AzureRmVmssSshPublicKey', 
+    'Add-AzureRmVmssWinRMListener', 'New-AzureRmVmssConfig', 
+    'New-AzureRmVmssIpConfig', 'New-AzureRmVmssVaultCertificateConfig', 
+    'Remove-AzureRmVmssExtension', 'Remove-AzureRmVmssDataDisk', 
+    'Remove-AzureRmVmssNetworkInterfaceConfiguration', 
+    'Set-AzureRmVmssOsProfile', 'Set-AzureRmVmssStorageProfile', 
+    'New-AzureRmVmss', 'Update-AzureRmVmss', 'Stop-AzureRmVmss', 
+    'Remove-AzureRmVmss', 'Get-AzureRmVmss', 'Get-AzureRmVmssSku', 
+    'Set-AzureRmVmss', 'Restart-AzureRmVmss', 'Start-AzureRmVmss', 
+    'Update-AzureRmVmssInstance', 'Get-AzureRmVMDscExtensionStatus', 
+    'Publish-AzureRmVMDscConfiguration', 'Remove-AzureRmVMDscExtension', 
+    'Set-AzureRmVMDscExtension', 'Get-AzureRmVMDscExtension', 
+    'Add-AzureRmVmssDiagnosticsExtension', 'Get-AzureRmVMChefExtension', 
+    'Remove-AzureRmVMChefExtension', 'Set-AzureRmVMChefExtension', 
+    'Remove-AzureRmVMBackup', 'Disable-AzureRmVMDiskEncryption', 
+    'Get-AzureRmVMDiskEncryptionStatus', 
+    'Remove-AzureRmVMDiskEncryptionExtension', 
+    'Set-AzureRmVMDiskEncryptionExtension', 
+    'Set-AzureRmVMBackupExtension', 'New-AzureRmDisk', 
+    'Update-AzureRmDisk', 'Get-AzureRmDisk', 'Remove-AzureRmDisk', 
+    'Grant-AzureRmDiskAccess', 'Revoke-AzureRmDiskAccess', 
+    'New-AzureRmDiskConfig', 'Set-AzureRmDiskDiskEncryptionKey', 
+    'Set-AzureRmDiskImageReference', 'Set-AzureRmDiskKeyEncryptionKey', 
+    'New-AzureRmDiskUpdateConfig', 
+    'Set-AzureRmDiskUpdateDiskEncryptionKey', 
+    'Set-AzureRmDiskUpdateImageReference', 
+    'Set-AzureRmDiskUpdateKeyEncryptionKey', 'New-AzureRmSnapshot', 
+    'Update-AzureRmSnapshot', 'Get-AzureRmSnapshot', 
+    'Remove-AzureRmSnapshot', 'Grant-AzureRmSnapshotAccess', 
+    'Revoke-AzureRmSnapshotAccess', 'New-AzureRmSnapshotConfig', 
+    'Set-AzureRmSnapshotDiskEncryptionKey', 
+    'Set-AzureRmSnapshotImageReference', 
+    'Set-AzureRmSnapshotKeyEncryptionKey', 
+    'New-AzureRmSnapshotUpdateConfig', 
+    'Set-AzureRmSnapshotUpdateDiskEncryptionKey', 
+    'Set-AzureRmSnapshotUpdateImageReference', 
+    'Set-AzureRmSnapshotUpdateKeyEncryptionKey', 'New-AzureRmImage', 
+    'Update-AzureRmImage', 'Get-AzureRmImage', 'Remove-AzureRmImage', 
+    'New-AzureRmImageConfig', 'Set-AzureRmImageOsDisk', 
+    'Add-AzureRmImageDataDisk', 'Remove-AzureRmImageDataDisk', 
+    'ConvertTo-AzureRmVMManagedDisk', 'Set-AzureRmVmssBootDiagnostic', 
+    'Get-AzureRmComputeResourceSku', 'Get-AzureRmVMRunCommandDocument', 
+    'Invoke-AzureRmVMRunCommand', 'Start-AzureRmVmssRollingOSUpgrade', 
+    'Stop-AzureRmVmssRollingUpgrade', 'Get-AzureRmVmssRollingUpgrade', 
+    'Set-AzureRmVmssRollingUpgradePolicy', 
+    'Set-AzureRmVmssDiskEncryptionExtension', 
+    'Disable-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssDiskEncryption', 
+    'Get-AzureRmVmssVMDiskEncryption', 
+    'Export-AzureRmLogAnalyticRequestRateByInterval', 
+    'Export-AzureRmLogAnalyticThrottledRequests', 
+    'Repair-AzureRmVmssServiceFabricUpdateDomain', 
+    'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = ''
+AliasesToExport = 'Get-AzureRmVmssDiskEncryptionStatus', 
+    'Get-AzureRmVmssVMDiskEncryptionStatus', 
+    'Repair-AzureRmVmssServiceFabricUD'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -199,7 +199,8 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Compute','IAAS','VM','VirtualMachine'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Compute', 'IAAS', 'VM', 
+            'VirtualMachine'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -223,12 +224,18 @@ PrivateData = @{
     - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
 '
 
+        # Prerelease string of this module
+        # Prerelease = ''
+
+        # Flag to indicate whether the module requires explicit user acceptance for install/update/save
+        # RequireLicenseAcceptance = $false
+
         # External dependent modules of this module
-        # ExternalModuleDependencies = ''
+        # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

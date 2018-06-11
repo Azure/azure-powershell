@@ -19,12 +19,12 @@ using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Management.ResourceManager.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using System;
 using System.Linq;
+using System.Reflection;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -45,6 +45,18 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void RaDeletedPrincipals()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-RaDeletedPrincipals");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void RaPropertiesValidation() {
             ResourcesController.NewInstance.RunPsTest("Test-RaPropertiesValidation");
@@ -63,7 +75,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaByScope");
         }
-        
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeleteByPSRoleAssignment()
@@ -116,14 +128,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScope");
         }
 
-        [Fact]
+        [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDeletionByScopeAtRootScope()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RaDeletionByScopeAtRootScope");
         }
-        
-        [Fact]
+
+        [Fact(Skip = "Need AD team to re-record")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaDelegation()
         {
@@ -152,6 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix the flaky test and token error and then re-record the test. Token from admin user is being used even when trying to use newly created user.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaUserPermissions()
         {
             User newUser = null;
@@ -210,12 +223,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                                 resourceGroup.Name)
                         };
                     },
-                    // initialize
+                    // cleanup
                     null,
-                    // cleanup 
-                    null,
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Setup");
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Setup");
 
                 // login as different user and run the test
                 var controllerUser = ResourcesController.NewInstance;
@@ -234,19 +245,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                             userPermission)
                         };
                     },
-                    // initialize
-                    (testFactory) =>
-                    {
-                        if (newUser != null)
-                        {
-                            testFactory.CustomEnvValues[TestEnvironment.UserIdKey] = userName + "@" + controllerAdmin.UserDomain;
-                            testFactory.CustomEnvValues[TestEnvironment.AADPasswordKey] = userPass;
-                        }
-                    },
-                    // cleanup 
+                    // cleanup
                     null,
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Test");
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Test");
             }
             finally
             {
@@ -257,7 +259,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     null,
                     // initialize
                     null,
-                    // cleanup 
+                    // cleanup
                     () =>
                     {
                         if (newUser != null)
@@ -268,11 +270,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                         if (resourceGroup != null)
                         {
                             controllerAdmin.AuthorizationManagementClient.RoleAssignments.Delete(resourceGroup.Id, roleAssignmentId).ToString();
-                        }                        
+                        }
                     },
-                    TestUtilities.GetCallingClass(),
-                    TestUtilities.GetCurrentMethodName() + "_Cleanup");
-            }                       
+                    MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                    MethodBase.GetCurrentMethod().Name + "_Cleanup");
+            }
         }
     }
 }

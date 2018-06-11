@@ -215,16 +215,20 @@ FakesAssemblies/
 *.GhostDoc.xml
 pingme.txt
 groupMapping*.json
+/tools/index.json
+/Package/index.json
 
 *.msi
 *.wixpdb
 
 .vscode/
-/tools/AutomationTestFramework/RunBooks
-/tools/AutomationTestFramework/TestHelpers/TestHelpers.zip
+/tools/AutomationTestFramework/Runbooks
 Results
 Package
 .DS_Store
 .idea
-/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Logger/bin
-/src/ResourceManager/RecoveryServices.Backup/Commands.RecoveryServices.Backup.Models/bin
+/src/ResourceManager/RecoveryServices.Backup/**/bin
+launchSettings.json
+/src/StackAdmin/AzureRM/AzureRM.psm1
+/src/StackAdmin/AzureStack/AzureStack.psm1
+/tools/AzureRM.Netcore/AzureRM.Netcore.psm1

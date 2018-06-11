@@ -15,26 +15,26 @@ Removes a credential from a service principal.
 
 ### ObjectIdWithKeyIdParameterSet (Default)
 ```
-Remove-AzureRmADSpCredential -ObjectId <String> -KeyId <Guid> [-Force]
+Remove-AzureRmADSpCredential -ObjectId <Guid> [-KeyId <Guid>] [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ObjectIdWithAllParameterSet
-```
-Remove-AzureRmADSpCredential -ObjectId <String> [-All] [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithKeyIdParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> -KeyId <Guid> [-Force]
+Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-KeyId <Guid>] [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SPNWithAllParameterSet
+### DisplayNameWithKeyIdParameterSet
 ```
-Remove-AzureRmADSpCredential -ServicePrincipalName <String> [-All] [-Force]
+Remove-AzureRmADSpCredential -DisplayName <String> [-PassThru] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ServicePrincipalObjectParameterSet
+```
+Remove-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-KeyId <Guid>] [-PassThru]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,38 +45,31 @@ The credential to be removed is identified by its key ID if an individual creden
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Remove a specific credential from a service principal
+
 ```
-PS E:\> Remove-AzureRmADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
+PS C:\> Remove-AzureRmADSpCredential -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 -KeyId 9044423a-60a3-45ac-9ab1-09534157ebb
 ```
 
-This command removes a credential key from a service principal.
-In this example, the key with Id "9044423a-60a3-45ac-9ab1-09534157ebb" will be removed from the service principal.
+Removes the credential with key id '9044423a-60a3-45ac-9ab1-09534157ebb' from the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82'.
 
-### Example 2
+### Example 2 - Remove all credentials from a service principal
+
 ```
-PS E:\> Remove-AzureRmADSpCredential -ServicePrincipalName http://test123 -All
+PS C:\> Remove-AzureRmADSpCredential -ServicePrincipalName http://test123
 ```
 
-This command removes a credential key from a service principal.
-In this example, all credentials will be removed from the service principal associated with the service principal name "http://test123".
+Removes all credentials from the service principal with the SPN "http://test123".
+
+### Example 3 - Remove all credentials from a service principal using piping
+
+```
+PS C:\> Get-AzureRmADServicePrincipal -ObjectId 7663d3fb-6f86-4352-9e6d-cf9d50d5ee82 | Remove-AzureRmADSpCredential
+```
+
+Gets the service principal with object id '7663d3fb-6f86-4352-9e6d-cf9d50d5ee82' and pipes that to the Remove-AzureRmADSpCredential cmdlet to remove all credentials from that service principal.
 
 ## PARAMETERS
-
-### -All
-Switch to remove all the credentials associated with the service principal.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ObjectIdWithAllParameterSet, SPNWithAllParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
@@ -90,6 +83,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+The display name of the service principal.
+
+```yaml
+Type: String
+Parameter Sets: DisplayNameWithKeyIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -114,10 +122,10 @@ The key Ids for a service principal can be obtained using the Get-AzureRmADSpCre
 
 ```yaml
 Type: Guid
-Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet
+Parameter Sets: ObjectIdWithKeyIdParameterSet, SPNWithKeyIdParameterSet, ServicePrincipalObjectParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -128,8 +136,8 @@ Accept wildcard characters: False
 The object id of the service principal to remove the credentials from.
 
 ```yaml
-Type: String
-Parameter Sets: ObjectIdWithKeyIdParameterSet, ObjectIdWithAllParameterSet
+Type: Guid
+Parameter Sets: ObjectIdWithKeyIdParameterSet
 Aliases:
 
 Required: True
@@ -139,18 +147,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Specifying this will return true if the command was successful.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServicePrincipalName
 The name (SPN) of the service principal to remove the credentials from.
 
 ```yaml
 Type: String
-Parameter Sets: SPNWithKeyIdParameterSet, SPNWithAllParameterSet
+Parameter Sets: SPNWithKeyIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ServicePrincipalObject
+The service principal object to remove the credentials from.
+
+```yaml
+Type: PSADServicePrincipal
+Parameter Sets: ServicePrincipalObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -170,6 +208,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
@@ -187,10 +228,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+
+This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to remove credentials from the provided service principal.
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

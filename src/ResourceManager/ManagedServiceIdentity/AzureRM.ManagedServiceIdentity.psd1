@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.0.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -33,7 +33,7 @@ Copyright = 'Microsoft Corporation. All rights reserved.'
 Description = 'Microsoft Azure PowerShell - Managed Service Identity cmdlets for Azure Resource Manager.  Manages user assigned identities in Azure Resource Manager'
 
 # Minimum version of the Windows PowerShell engine required by this module
-PowerShellVersion = '3.0'
+PowerShellVersion = '5.0'
 
 # Name of the Windows PowerShell host required by this module
 # PowerShellHostName = ''
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '4.2.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.2.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.ManagedServiceIdentity.dll'
@@ -109,14 +109,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = 'First release of Managed Service Identity cmdlets
-- Get-AzureRmUserAssignedIdentity
-The **Get-AzureRmUserAssignedIdentity** gets existing user assigned identities.
-- New-AzureRmUserAssignedIdentity
-The **New-AzureRmUserAssignedIdentity** cmdlet creates a new User Assigned Identity. When used with an already existing identity, it updated the identity.
-To add Azure Resource Manager tags to the identity, please use the Set-AzureRmResource cmdlet.
-- Remove-AzureRmUserAssignedIdentity
-The **Remove-AzureRmUserAssignedIdentity** deletes the specified User Assigned Identity.'
+        ReleaseNotes = '* Updated to the latest version of the Azure ClientRuntime
+* Set minimum dependency of module to PowerShell 5.0'
 
         # Prerelease string of this module
         Prerelease = 'preview'
