@@ -136,8 +136,8 @@ Accept wildcard characters: False
 ```
 
 ### -MinChildEndpoints
-Specify an Azure region name.
-For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
+The minimum number of endpoints that must be available in the child profile in order for the Nested Endpoint in the parent profile to be considered available.
+Only applicable to endpoint of type 'NestedEndpoints'.
 
 ```yaml
 Type: UInt32
