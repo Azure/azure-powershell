@@ -20,10 +20,13 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewallIpConfiguration : PSChildResource
     {
         [JsonProperty(Order = 2)]
-        public PSResourceId Subnet { get; set; }
+        public string PrivateIPAddress { get; set; }
 
         [JsonProperty(Order = 3)]
-        public PSResourceId PublicIPAddress { get; set; }
+        public PSResourceId Subnet { get; set; }
+
+        [JsonProperty(Order = 4)]
+        public PSResourceId InternalPublicIpAddress { get; set; }
 
         [JsonIgnore]
         public string SubnetText
@@ -32,9 +35,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string PublicIpAddressText
+        public string InternalPublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(PublicIPAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(InternalPublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
