@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+	* ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
 
 ## Version 5.1.0
 * VMSS VM Update feature
