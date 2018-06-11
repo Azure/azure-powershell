@@ -21,7 +21,6 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using static Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel;
 using static Microsoft.Azure.Commands.Sql.Common.Iso8601DurationHelper;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
@@ -40,10 +39,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         protected const string AgentDefaultRunOnceParameterSet = "RunOnce";
         protected const string AgentDefaultRecurringParameterSet = "Recurring";
-        protected const string ParentObjectRunOnceParameterSet = "RunOnce using ParentObject";
-        protected const string ParentObjectRecurringParameterSet = "Recurring using ParentObject";
-        protected const string ParentResourceIdRunOnceParameterSet = "RunOnce using ParentResourceId";
-        protected const string ParentResourceIdRecurringParameterSet = "Recurring using ParentResourceId";
+        protected const string ParentObjectRunOnceParameterSet = "RunOnceUsingParentObject";
+        protected const string ParentObjectRecurringParameterSet = "RecurringUsingParentObject";
+        protected const string ParentResourceIdRunOnceParameterSet = "RunOnceUsingParentResourceId";
+        protected const string ParentResourceIdRecurringParameterSet = "RecurringUsingParentResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name

@@ -32,12 +32,12 @@ Start-AzureRmSqlElasticJob -ParentResourceId <String> [-Wait] [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Start-AzureRmSqlElasticJob** cmdlet starts a job returning a new job execution
+The Start-AzureRmSqlElasticJob cmdlet starts a job returning a new job execution
 
 ## EXAMPLES
 
 ### Example 1 - Starts a job returning a new job execution
-```powershell
+```
 PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name job1
 $job | Start-AzureRmSqlElasticJob
 
@@ -75,7 +75,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -112,6 +112,7 @@ Accept wildcard characters: False
 
 ### -ParentObject
 The job object
+
 ```yaml
 Type: AzureSqlElasticJobModel
 Parameter Sets: ObjectSet
@@ -126,6 +127,7 @@ Accept wildcard characters: False
 
 ### -ParentResourceId
 The job resource id
+
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
@@ -169,7 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -Wait
-The wait flag to indicate to wait until the job's execution is done
+{{Fill Wait Description}}
 
 ```yaml
 Type: SwitchParameter
@@ -178,7 +180,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -193,7 +195,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,13 +211,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -224,7 +227,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel, Microsoft.Azure.Commands.Sql, Version=4.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel
 
 ## NOTES
 

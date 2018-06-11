@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlElasticJobStepExecution
 
 ## SYNOPSIS
-Gets one or more job step executions
+{{Fill in the Synopsis}}
 
 ## SYNTAX
 
@@ -20,6 +20,13 @@ Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### WithJobStepName
+```
+Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
+ [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ObjectSet
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel>
@@ -27,7 +34,7 @@ Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecution
  [-Active] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithJobStepName using ParentObject
+### WithJobStepNameUsingParentObject
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentObject <AzureSqlElasticJobExecutionModel> [-StepName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -40,26 +47,19 @@ Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-CreateTimeMin
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithJobStepName using ParentResourceId
+### WithJobStepNameUsingParentResourceId
 ```
 Get-AzureRmSqlElasticJobStepExecution -ParentResourceId <String> [-StepName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### WithJobStepName
-```
-Get-AzureRmSqlElasticJobStepExecution [-ResourceGroupName] <String> [-ServerName] <String>
- [-AgentName] <String> [-JobName] <String> [-JobExecutionId] <String> [-StepName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-The **Get-AzureRmSqlElasticJobStepExecution** cmdlet gets one or more job step executions from a job execution
+The Get-AzureRmSqlElasticJobStepExecution cmdlet gets one or more job step executions from a job execution
 
 ## EXAMPLES
 
 ### Example 1 - Gets one or more job step executions from a job executions
-```powershell
+```
 PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzureRmSqlElasticJobStepExecution
 
@@ -69,7 +69,7 @@ job1    1          step1    1      3bcfc912-20b2-411d-a2b7-6265d13fe272 Succeede
 ```
 
 ### Example 2 - Gets one or more job step executions from a job execution, filtering by step name
-```powershell
+```
 PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId 3bcfc912-20b2-411d-a2b7-6265d13fe272
 $je | Get-AzureRmSqlElasticJobStepExecution -StepName step1
 
@@ -92,7 +92,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,7 +222,7 @@ The agent object.
 
 ```yaml
 Type: AzureSqlElasticJobExecutionModel
-Parameter Sets: ObjectSet, WithJobStepName using ParentObject
+Parameter Sets: ObjectSet, WithJobStepNameUsingParentObject
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ The job execution resource id.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceIdSet, WithJobStepName using ParentResourceId
+Parameter Sets: ResourceIdSet, WithJobStepNameUsingParentResourceId
 Aliases:
 
 Required: True
@@ -282,7 +282,7 @@ The job step name.
 
 ```yaml
 Type: String
-Parameter Sets: WithJobStepName using ParentObject, WithJobStepName using ParentResourceId, WithJobStepName
+Parameter Sets: WithJobStepName, WithJobStepNameUsingParentObject, WithJobStepNameUsingParentResourceId
 Aliases:
 
 Required: True
@@ -302,7 +302,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -318,13 +318,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -333,7 +334,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel, Microsoft.Azure.Commands.Sql, Version=4.5.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel
 
 ## NOTES
 

@@ -31,12 +31,12 @@ Set-AzureRmSqlElasticJobAgent [-ResourceId] <String> [-Tag <Hashtable>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSqlElasticJobAgent** cmdlet updates an Elastic Job agents
+The Set-AzureRmSqlElasticJobAgent cmdlet updates an Elastic Job agents
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> Set-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
@@ -163,7 +163,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,13 +179,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

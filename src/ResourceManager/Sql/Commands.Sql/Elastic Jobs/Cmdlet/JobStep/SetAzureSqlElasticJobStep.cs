@@ -39,10 +39,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// </summary>
         protected const string DefaultRemoveOutputParameterSet = "WithRemoveOutput";
         protected const string DefaultAddParentResourceIdParameterSet = "WithAddOutput";
-        protected const string ParentObjectRemoveOutputParameterSet = "WithRemoveOutput using ParentObject";
-        protected const string ParentObjectAddParentResourceIdParameterSet = "WithAddOutput using ParentObject";
-        protected const string ParentResourceIdRemoveOutputParameterSet = "WithRemoveOutput using ParentResourceId";
-        protected const string ParentResourceIdAddParentResourceIdParameterSet = "WithAddOutput using ParentResourceId";
+        protected const string ParentObjectRemoveOutputParameterSet = "WithRemoveOutputUsingParentObject";
+        protected const string ParentObjectAddParentResourceIdParameterSet = "WithAddOutputUsingParentObject";
+        protected const string ParentResourceIdRemoveOutputParameterSet = "WithRemoveOutputUsingParentResourceId";
+        protected const string ParentResourceIdAddParentResourceIdParameterSet = "WithAddOutputUsingParentResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name

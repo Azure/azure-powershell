@@ -32,12 +32,12 @@ Remove-AzureRmSqlElasticJobStep [-ResourceId] <String> [-DefaultProfile <IAzureC
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlElasticJobStep** cmdlet removes a job step from a job
+The Remove-AzureRmSqlElasticJobStep cmdlet removes a job step from a job
 
 ## EXAMPLES
 
 ### Example 1 - Removes a job step from a job
-```powershell
+```
 PS C:\> $jobStep = Get-AzureRmSqlElasticJobStep -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -Name step1
 $jobStep | Remove-AzureRmSqlElasticJobStep
 
@@ -180,7 +180,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -196,13 +196,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -211,7 +212,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobStepModel
 
 ## NOTES
 

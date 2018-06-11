@@ -22,25 +22,19 @@ Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String
 ### GetVersion
 ```
 Get-AzureRmSqlElasticJobStep [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
- [-JobName] <String> [-Version] <Int32> -Name <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-JobName] <String> -Name <String> [-Version] <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
-```
-
-### GetVersion Using Job Object
-```
-Get-AzureRmSqlElasticJobStep [-Version] <Int32> -ParentObject <AzureSqlElasticJobModel> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### GetVersion Using ParentResourceId
-```
-Get-AzureRmSqlElasticJobStep [-Version] <Int32> -ParentResourceId <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectSet
 ```
 Get-AzureRmSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> [-Name <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### GetVersionUsingJobObject
+```
+Get-AzureRmSqlElasticJobStep -ParentObject <AzureSqlElasticJobModel> -Name <String> [-Version] <Int32>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -50,13 +44,19 @@ Get-AzureRmSqlElasticJobStep -ParentResourceId <String> [-Name <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### GetVersionUsingParentResourceId
+```
+Get-AzureRmSqlElasticJobStep -ParentResourceId <String> -Name <String> [-Version] <Int32>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Get-AzureRmSqlElasticJobStep** cmdlet gets one or more job steps from a job
+The Get-AzureRmSqlElasticJobStep cmdlet gets one or more job steps from a job
 
 ## EXAMPLES
 
 ### Example 1 - Gets a job step from a job
-```powershell
+```
 PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name job1
 $job | Get-AzureRmSqlElasticJobStep -Name step1
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: GetVersion, GetVersion Using Job Object, GetVersion Using ParentResourceId
+Parameter Sets: GetVersion, GetVersionUsingJobObject, GetVersionUsingParentResourceId
 Aliases: StepName
 
 Required: True
@@ -146,7 +146,7 @@ The job input object
 
 ```yaml
 Type: AzureSqlElasticJobModel
-Parameter Sets: GetVersion Using Job Object, ObjectSet
+Parameter Sets: ObjectSet, GetVersionUsingJobObject
 Aliases:
 
 Required: True
@@ -161,7 +161,7 @@ The job resource id
 
 ```yaml
 Type: String
-Parameter Sets: GetVersion Using ParentResourceId, ResourceIdSet
+Parameter Sets: ResourceIdSet, GetVersionUsingParentResourceId
 Aliases:
 
 Required: True
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: GetVersion Using Job Object
+Parameter Sets: GetVersionUsingJobObject
 Aliases:
 
 Required: True
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: Int32
-Parameter Sets: GetVersion Using ParentResourceId
+Parameter Sets: GetVersionUsingParentResourceId
 Aliases:
 
 Required: True
@@ -250,7 +250,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -266,25 +266,23 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel
-System.String
+Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobStepModel
-Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobStepVersionModel
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobStepModel, Microsoft.Azure.Commands.Sql, Version=4.4.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

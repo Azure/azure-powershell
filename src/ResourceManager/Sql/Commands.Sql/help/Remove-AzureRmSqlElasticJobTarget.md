@@ -12,54 +12,14 @@ Removes the target from the target group
 
 ## SYNTAX
 
-### Sql Database Target Type (Default)
+### SqlDatabase (Default)
 ```
 Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String>
  [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-DatabaseName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### Sql Database Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
- [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Server or Elastic Pool Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
- [-ElasticPoolName <String>] [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Shard Map Input Object Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
- [-ShardMapName] <String> [-DatabaseName] <String> [-RefreshCredentialName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Database ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-DatabaseName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Server or Elastic Pool ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ElasticPoolName <String>]
- [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Sql Shard Map ParentResourceId Parameter Set
-```
-Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ShardMapName] <String>
- [-DatabaseName] <String> [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### Sql Server or Elastic Pool Target Type
+### SqlServerOrElasticPool
 ```
 Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String>
  [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-ElasticPoolName <String>]
@@ -67,7 +27,7 @@ Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerNam
  [<CommonParameters>]
 ```
 
-### Sql Shard Map Target Type
+### SqlShardMap
 ```
 Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerName] <String>
  [-AgentName] <String> [-TargetGroupName] <String> [-ServerName] <String> [-ShardMapName] <String>
@@ -75,13 +35,53 @@ Remove-AzureRmSqlElasticJobTarget [-ResourceGroupName] <String> [-AgentServerNam
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### SqlDatabaseUsingParentObject
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-DatabaseName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlServerOrElasticPoolUsingParentObject
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-ElasticPoolName <String>] [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlShardMapUsingParentObject
+```
+Remove-AzureRmSqlElasticJobTarget -ParentObject <AzureSqlElasticJobTargetGroupModel> [-ServerName] <String>
+ [-ShardMapName] <String> [-DatabaseName] <String> [-RefreshCredentialName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlDatabaseUsingParentResourceId
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-DatabaseName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SqlServerOrElasticPoolUsingParentResourceId
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ElasticPoolName <String>]
+ [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SqlShardMapUsingParentResourceId
+```
+Remove-AzureRmSqlElasticJobTarget -ParentResourceId <String> [-ServerName] <String> [-ShardMapName] <String>
+ [-DatabaseName] <String> [-RefreshCredentialName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Remove-AzureRmSqlElasticJobTarget** cmdlet removes a target resource to a target group
+The Remove-AzureRmSqlElasticJobTarget cmdlet removes a target resource to a target group
 
 ## EXAMPLES
 
 ### Example 1 - Remove a server target
-```powershell
+```
 PS C:\> $tg = Get-AzureRmSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzureRmSqlElasticJobTarget -ServerName s1 -RefreshCredentialName cred1
 
@@ -91,7 +91,7 @@ tg1             SqlServer  s1                                                   
 ```
 
 ### Example 2 - Remove a database target
-```powershell
+```
 PS C:\> $tg = Get-AzureRmSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzureRmSqlElasticJobTarget -ServerName s1 -DatabaseName db2
 
@@ -101,7 +101,7 @@ tg1             SqlDatabase s1               db2                                
 ```
 
 ### Example 3 - Remove an elastic pool target
-```powershell
+```
 PS C:\> $tg = Get-AzureRmSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzureRmSqlElasticJobTarget -ServerName s1 -ElasticPoolName ep1 -RefreshCredentialName cred1
 
@@ -111,7 +111,7 @@ tg1             SqlElasticPool s1                                  ep1          
 ```
 
 ### Example 4 - Remove a shard map target
-```powershell
+```
 PS C:\> $tg = Get-AzureRmSqlElasticJobTargetGroup -ResourceGroupName rg -ServerName elasticjobserver -Name tg1
 $tg | Remove-AzureRmSqlElasticJobTarget -ServerName s1 -ShardMapName sm1 -DatabaseName db1 -RefreshCredentialName cred1
 
@@ -125,11 +125,11 @@ Removes a target (server, elastic pool, database, and shard map) from a target g
 ## PARAMETERS
 
 ### -AgentName
-The agent name.
+SQL Database Agent Name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlServerOrElasticPool, SqlShardMap
 Aliases:
 
 Required: True
@@ -140,11 +140,11 @@ Accept wildcard characters: False
 ```
 
 ### -AgentServerName
-The server name.
+SQL Database Agent Server Name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlServerOrElasticPool, SqlShardMap
 Aliases:
 
 Required: True
@@ -155,11 +155,11 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-The database target name.
+Database Target Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Database Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlShardMap, SqlDatabaseUsingParentObject, SqlShardMapUsingParentObject, SqlDatabaseUsingParentResourceId, SqlShardMapUsingParentResourceId
 Aliases:
 
 Required: True
@@ -185,11 +185,11 @@ Accept wildcard characters: False
 ```
 
 ### -ElasticPoolName
-The target elastic pool name.
+Elastic Pool Target Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Server or Elastic Pool Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Server or Elastic Pool Target Type
+Parameter Sets: SqlServerOrElasticPool, SqlServerOrElasticPoolUsingParentObject, SqlServerOrElasticPoolUsingParentResourceId
 Aliases:
 
 Required: False
@@ -204,7 +204,7 @@ The target group object.
 
 ```yaml
 Type: AzureSqlElasticJobTargetGroupModel
-Parameter Sets: Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set
+Parameter Sets: SqlDatabaseUsingParentObject, SqlServerOrElasticPoolUsingParentObject, SqlShardMapUsingParentObject
 Aliases:
 
 Required: True
@@ -219,7 +219,7 @@ The target group resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database ParentResourceId Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set
+Parameter Sets: SqlDatabaseUsingParentResourceId, SqlServerOrElasticPoolUsingParentResourceId, SqlShardMapUsingParentResourceId
 Aliases:
 
 Required: True
@@ -230,11 +230,11 @@ Accept wildcard characters: False
 ```
 
 ### -RefreshCredentialName
-The refresh credential name.
+Refresh Credential Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
+Parameter Sets: SqlServerOrElasticPool, SqlShardMap, SqlServerOrElasticPoolUsingParentObject, SqlShardMapUsingParentObject, SqlServerOrElasticPoolUsingParentResourceId, SqlShardMapUsingParentResourceId
 Aliases:
 
 Required: True
@@ -245,11 +245,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name.
+Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlServerOrElasticPool, SqlShardMap
 Aliases:
 
 Required: True
@@ -260,11 +260,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-The target server name.
+Server Target Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Database Input Object Parameter Set, Sql Server or Elastic Pool Input Object Parameter Set, Sql Shard Map Input Object Parameter Set, Sql Database ParentResourceId Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlShardMap, SqlDatabaseUsingParentObject, SqlServerOrElasticPoolUsingParentObject, SqlShardMapUsingParentObject, SqlDatabaseUsingParentResourceId, SqlServerOrElasticPoolUsingParentResourceId, SqlShardMapUsingParentResourceId
 Aliases:
 
 Required: True
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String
-Parameter Sets: Sql Server or Elastic Pool Target Type
+Parameter Sets: SqlServerOrElasticPool
 Aliases:
 
 Required: True
@@ -287,11 +287,11 @@ Accept wildcard characters: False
 ```
 
 ### -ShardMapName
-The target shard map name.
+Shard Map Target Name
 
 ```yaml
 Type: String
-Parameter Sets: Sql Shard Map Input Object Parameter Set, Sql Shard Map ParentResourceId Parameter Set, Sql Shard Map Target Type
+Parameter Sets: SqlShardMap, SqlShardMapUsingParentObject, SqlShardMapUsingParentResourceId
 Aliases:
 
 Required: True
@@ -302,11 +302,11 @@ Accept wildcard characters: False
 ```
 
 ### -TargetGroupName
-The target group name.
+SQL Database Agent Name.
 
 ```yaml
 Type: String
-Parameter Sets: Sql Database Target Type, Sql Server or Elastic Pool Target Type, Sql Shard Map Target Type
+Parameter Sets: SqlDatabase, SqlServerOrElasticPool, SqlShardMap
 Aliases:
 
 Required: True
@@ -326,7 +326,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -342,13 +342,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

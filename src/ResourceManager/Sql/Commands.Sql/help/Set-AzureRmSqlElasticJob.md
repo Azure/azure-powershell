@@ -19,47 +19,6 @@ Set-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ObjectSet
-```
-Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### RunOnce using ParentObject
-```
-Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-RunOnce] [-StartTime <DateTime>]
- [-EndTime <DateTime>] [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
-```
-
-### Recurring using ParentObject
-```
-Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-IntervalType] <IntervalTypes>
- [-IntervalCount] <UInt32> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceIdSet
-```
-Set-AzureRmSqlElasticJob [-ResourceId] <String> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable]
- [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### RunOnce using ParentResourceId
-```
-Set-AzureRmSqlElasticJob [-ResourceId] <String> [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### Recurring using ParentResourceId
-```
-Set-AzureRmSqlElasticJob [-ResourceId] <String> [-IntervalType] <IntervalTypes> [-IntervalCount] <UInt32>
- [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ### RunOnce
 ```
 Set-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-AgentName] <String>
@@ -75,13 +34,54 @@ Set-AzureRmSqlElasticJob [-ResourceGroupName] <String> [-ServerName] <String> [-
  [-Confirm] [<CommonParameters>]
 ```
 
+### ObjectSet
+```
+Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RunOnceUsingParentObject
+```
+Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-RunOnce] [-StartTime <DateTime>]
+ [-EndTime <DateTime>] [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### RecurringUsingParentObject
+```
+Set-AzureRmSqlElasticJob [-InputObject] <AzureSqlElasticJobModel> [-IntervalType] <IntervalTypes>
+ [-IntervalCount] <UInt32> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResourceIdSet
+```
+Set-AzureRmSqlElasticJob [-ResourceId] <String> [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable]
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunOnceUsingParentResourceId
+```
+Set-AzureRmSqlElasticJob [-ResourceId] <String> [-RunOnce] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [-Enable] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RecurringUsingParentResourceId
+```
+Set-AzureRmSqlElasticJob [-ResourceId] <String> [-IntervalType] <IntervalTypes> [-IntervalCount] <UInt32>
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-Enable] [-Description <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Set-AzureRmSqlElasticJob** cmdlet updates a job
+The Set-AzureRmSqlElasticJob cmdlet updates a job
 
 ## EXAMPLES
 
 ### Example 1 - Updates a job to start an hour from now and repeat every 1 hour
-```powershell
+```
 PS C:\> $job = Get-AzureRmSqlElasticJob -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name job1
 $job | Set-AzureRmSqlElasticJob -IntervalType Hour -IntervalCount 1 -StartTime (Get-Date).AddHours(1) -Enable
 
@@ -149,7 +149,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -174,7 +174,7 @@ The job input object
 
 ```yaml
 Type: AzureSqlElasticJobModel
-Parameter Sets: ObjectSet, RunOnce using ParentObject, Recurring using ParentObject
+Parameter Sets: ObjectSet, RunOnceUsingParentObject, RecurringUsingParentObject
 Aliases:
 
 Required: True
@@ -189,7 +189,7 @@ The recurring schedule interval count
 
 ```yaml
 Type: UInt32
-Parameter Sets: Recurring using ParentObject, Recurring using ParentResourceId, Recurring
+Parameter Sets: Recurring, RecurringUsingParentObject, RecurringUsingParentResourceId
 Aliases:
 
 Required: True
@@ -204,7 +204,7 @@ The recurring schedule interval type - Can be Minute, Hour, Day, Week, Month
 
 ```yaml
 Type: IntervalTypes
-Parameter Sets: Recurring using ParentObject, Recurring using ParentResourceId, Recurring
+Parameter Sets: Recurring, RecurringUsingParentObject, RecurringUsingParentResourceId
 Aliases:
 Accepted values: Minute, Hour, Day, Week, Month
 
@@ -250,7 +250,7 @@ The job resource id
 
 ```yaml
 Type: String
-Parameter Sets: ResourceIdSet, RunOnce using ParentResourceId, Recurring using ParentResourceId
+Parameter Sets: ResourceIdSet, RunOnceUsingParentResourceId, RecurringUsingParentResourceId
 Aliases:
 
 Required: True
@@ -265,12 +265,12 @@ The flag to indicate job will be run once
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: RunOnce using ParentObject, RunOnce using ParentResourceId, RunOnce
+Parameter Sets: RunOnce, RunOnceUsingParentObject, RunOnceUsingParentResourceId
 Aliases:
 
 Required: True
 Position: 4
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -315,7 +315,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -331,13 +331,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -346,7 +347,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobModel
 
 ## NOTES
 

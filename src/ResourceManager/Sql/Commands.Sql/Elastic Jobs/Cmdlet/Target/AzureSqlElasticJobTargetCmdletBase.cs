@@ -33,23 +33,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         /// <summary>
         /// Parameter sets name for default target group db, server, elastic pool, and shard map
         /// </summary>
-        protected const string DefaultSqlDatabaseSet = "Sql Database Target Type";
-        protected const string DefaultSqlServerOrElasticPoolSet = "Sql Server or Elastic Pool Target Type";
-        protected const string DefaultSqlShardMapSet = "Sql Shard Map Target Type";
+        protected const string DefaultSqlDatabaseSet = "SqlDatabase";
+        protected const string DefaultSqlServerOrElasticPoolSet = "SqlServerOrElasticPool";
+        protected const string DefaultSqlShardMapSet = "SqlShardMap";
 
         /// <summary>
         /// Parameter sets for target group object db, server, elastic pool, and shard map
         /// </summary>
-        protected const string TargetGroupObjectSqlDatabaseSet = "Sql Database Input Object Parameter Set";
-        protected const string TargetGroupObjectSqlServerOrElasticPoolSet = "Sql Server or Elastic Pool Input Object Parameter Set";
-        protected const string TargetGroupObjectSqlShardMapSet = "Sql Shard Map Input Object Parameter Set";
+        protected const string TargetGroupObjectSqlDatabaseSet = "SqlDatabaseUsingParentObject";
+        protected const string TargetGroupObjectSqlServerOrElasticPoolSet = "SqlServerOrElasticPoolUsingParentObject";
+        protected const string TargetGroupObjectSqlShardMapSet = "SqlShardMapUsingParentObject";
 
         /// <summary>
         /// Parameter sets for target group resource id db, server, pool, and shard map
         /// </summary>
-        protected const string ParentResourceIdSqlDatabaseSet = "Sql Database ParentResourceId Parameter Set";
-        protected const string ParentResourceIdSqlServerOrElasticPoolSet = "Sql Server or Elastic Pool ParentResourceId Parameter Set";
-        protected const string ParentResourceIdSqlShardMapSet = "Sql Shard Map ParentResourceId Parameter Set";
+        protected const string ParentResourceIdSqlDatabaseSet = "SqlDatabaseUsingParentResourceId";
+        protected const string ParentResourceIdSqlServerOrElasticPoolSet = "SqlServerOrElasticPoolUsingParentResourceId";
+        protected const string ParentResourceIdSqlShardMapSet = "SqlShardMapUsingParentResourceId";
 
         /// <summary>
         /// The target in question

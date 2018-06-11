@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
         /// The parameter sets
         /// </summary>
         protected const string DefaultGetVersionParameterSet = "GetVersion";
-        protected const string ParentObjectGetVersionParameterSet = "GetVersion Using Job Object";
-        protected const string ParentResourceIdGetVersionParameterSet = "GetVersion Using ParentResourceId";
+        protected const string ParentObjectGetVersionParameterSet = "GetVersionUsingJobObject";
+        protected const string ParentResourceIdGetVersionParameterSet = "GetVersionUsingParentResourceId";
 
         /// <summary>
         /// Gets or sets the resource group name

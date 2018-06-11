@@ -32,12 +32,13 @@ Stop-AzureRmSqlElasticJob -ParentResourceId <String> [-DefaultProfile <IAzureCon
 ```
 
 ## DESCRIPTION
-The **Stop-AzureRmSqlElasticJob** cmdlet stops a job's with a running execution. Returns the current status of the job execution
+The Stop-AzureRmSqlElasticJob cmdlet stops a job's with a running execution.
+Returns the current status of the job execution
 
 ## EXAMPLES
 
 ### Example 1 - Stops a job with a running job execution
-```powershell
+```
 PS C:\> $je = Get-AzureRmSqlElasticJobExecution -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -JobName job1 -JobExecutionId dab0ebe8-fd52-42e9-bacf-e5f27577039b
 $je | Stop-AzureRmSqlElasticJob
 JobName JobExecutionId                       Lifecycle                    StartTime            EndTime
@@ -111,6 +112,7 @@ Accept wildcard characters: False
 
 ### -ParentObject
 The Agent Control Database Object
+
 ```yaml
 Type: AzureSqlElasticJobExecutionModel
 Parameter Sets: ObjectSet
@@ -125,6 +127,7 @@ Accept wildcard characters: False
 
 ### -ParentResourceId
 The job execution resource id
+
 ```yaml
 Type: String
 Parameter Sets: ResourceIdSet
@@ -177,7 +180,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -193,13 +196,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -208,7 +212,7 @@ System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel, Microsoft.Azure.Commands.Sql, Version=4.4.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Sql.ElasticJobs.Model.AzureSqlElasticJobExecutionModel
 
 ## NOTES
 

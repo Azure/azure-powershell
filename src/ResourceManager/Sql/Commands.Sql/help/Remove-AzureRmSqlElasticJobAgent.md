@@ -31,12 +31,12 @@ Remove-AzureRmSqlElasticJobAgent [-ResourceId] <String> [-Force] [-DefaultProfil
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSqlElasticJobAgent** cmdlet removes an Elastic Job agent
+The Remove-AzureRmSqlElasticJobAgent cmdlet removes an Elastic Job agent
 
 ## EXAMPLES
 
 ### Example 1
-```powershell
+```
 PS C:\> Remove-AzureRmSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
@@ -73,7 +73,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -163,7 +163,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,13 +179,14 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
