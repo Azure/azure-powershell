@@ -113,37 +113,40 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         public override void ExecuteCmdlet()
         {
-            var requestBudget = new Budget(
-                this.Category, 
-                this.Amount, 
-                this.TimeGrain, 
+            if (ShouldProcess(Name, "Create Consumption Budget"))
+            {
+                var requestBudget = new Budget(
+                this.Category,
+                this.Amount,
+                this.TimeGrain,
                 CreateBudgetTimePeriod(),
-                filters: CreateFilters(), 
+                filters: CreateFilters(),
                 notifications: CreateNotifications());
 
-            Budget responseBudget = null;
-            try
-            {
-                if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                Budget responseBudget = null;
+                try
                 {
-                    responseBudget =
-                        ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(this.ResourceGroupName,
-                            this.Name, requestBudget);
+                    if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                    {
+                        responseBudget =
+                            ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(this.ResourceGroupName,
+                                this.Name, requestBudget);
+                    }
+                    else
+                    {
+                        responseBudget = ConsumptionManagementClient.Budgets.CreateOrUpdate(this.Name, requestBudget);
+                    }
                 }
-                else
+                catch (ErrorResponseException e)
                 {
-                    responseBudget = ConsumptionManagementClient.Budgets.CreateOrUpdate(this.Name, requestBudget);
+                    WriteExceptionError(e);
                 }
-            }
-            catch (ErrorResponseException e)
-            {
-                WriteExceptionError(e);
-            }
 
-            if (responseBudget != null)
-            {
-                WriteObject(new PSBudget(responseBudget), true);
-            }
+                if (responseBudget != null)
+                {
+                    WriteObject(new PSBudget(responseBudget), true);
+                }
+            }           
         }
 
         private BudgetTimePeriod CreateBudgetTimePeriod()

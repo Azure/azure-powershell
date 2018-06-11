@@ -39,6 +39,15 @@ function Get-NotificationKey
 
 <#
 .SYNOPSIS
+Get Resource Group Name
+#>
+function Get-ResourceGroupName
+{
+    return "ResourceGroupName-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
 Test budget at subscription level
 #>
 function Test-BudgetAtSubscriptionLevel
@@ -46,9 +55,11 @@ function Test-BudgetAtSubscriptionLevel
 	# Setup
 	$budgetName = Get-BudgetName
 	$notificationKey = Get-NotificationKey
+	$startDate = Get-Date -Day 1
+	$endDate = ($startDate).AddMonths(3).AddDays(-1)
 
 	Write-Debug "Create a new budget $budgetName at subscription level"
-    $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 	Assert-NotNull $budgetNew
 	Assert-AreEqual 6000 $budgetNew.Amount
 	Assert-AreEqual $budgetName $budgetNew.Name
@@ -77,6 +88,8 @@ function Test-BudgetAtSubscriptionLevel
 	Write-Debug "Remove the budget $budgetName"
 	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -PassThru
 	Assert-AreEqual True $response
+
+	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName}
 }
 
 <#
@@ -90,11 +103,17 @@ function Test-BudgetAtResourceGroupLevel
 	$notificationKey1 = Get-NotificationKey
 	$notificationKey2 = Get-NotificationKey
 	# This resource group is created at the scope of test subscription
-	$resourceGroupName = "RGBudgets"
+	$resourceGroupName = Get-ResourceGroupName
+	$startDate = Get-Date -Day 1
+	$endDate = ($startDate).AddMonths(3).AddDays(-1)
+
+	# Create resource group
+	Import-Module AzureRM.Resources
+	$resourceGroup = New-AzureRmResourceGroup -Name $resourceGroupName -Location westus -Force
 
 	# Create budget
 	Write-Debug "Create a new budget $budgetName at resource group level"
-    $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -ResourceGroupName $resourceGroupName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+    $budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -ResourceGroupName $resourceGroupName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 	Assert-NotNull $budgetNew
 	Assert-AreEqual 6000 $budgetNew.Amount
 	Assert-AreEqual $budgetName $budgetNew.Name
@@ -127,6 +146,11 @@ function Test-BudgetAtResourceGroupLevel
 	Write-Debug "Remove the budget $budgetName"
 	$response = Remove-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName -PassThru
 	Assert-AreEqual True $response
+
+	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName -ResourceGroupName $resourceGroupName}
+
+	# Remove resource group
+	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
 }
 
 <#
@@ -136,8 +160,10 @@ Get all budgets at subscription level
 function Test-GetBudgets
 {
 	# Setup
+	$startDate = Get-Date -Day 1
+	$endDate = ($startDate).AddMonths(3).AddDays(-1)
 	$budgetName = Get-BudgetName
-	$budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate 2018-06-01 -EndDate 2018-11-01 -TimeGrain Monthly
+	$budgetNew = New-AzureRmConsumptionBudget -Amount 6000 -Name $budgetName -Category Cost -StartDate $startDate -EndDate $endDate -TimeGrain Monthly
 	Assert-NotNull $budgetNew
 
 	# Validate get all budgets
@@ -147,4 +173,6 @@ function Test-GetBudgets
 	# Clean up through piping
 	$response = Get-AzureRmConsumptionBudget -Name $budgetName | Remove-AzureRmConsumptionBudget -PassThru
 	Assert-AreEqual True $response
+
+	Assert-Throws {Get-AzureRmConsumptionBudget -Name $budgetName}
 }

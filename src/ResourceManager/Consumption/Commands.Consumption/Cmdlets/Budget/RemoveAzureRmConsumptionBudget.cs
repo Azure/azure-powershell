@@ -47,45 +47,48 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         public override void ExecuteCmdlet()
         {
-            try
+            if (ShouldProcess(Name, "Remove Consumption Budget"))
             {
-                if (InputObject != null)
+                try
                 {
-                    var name = InputObject.Name;
-                    var id = InputObject.Id;
-                    var parts = id.Split('/');
-
-                    if (parts.Length >= 4 &&
-                        parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                    if (InputObject != null)
                     {
-                        var resourceGroupName = parts[3];
-                        ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(resourceGroupName, name);
+                        var name = InputObject.Name;
+                        var id = InputObject.Id;
+                        var parts = id.Split('/');
+
+                        if (parts.Length >= 4 &&
+                            parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            var resourceGroupName = parts[3];
+                            ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(resourceGroupName, name);
+                        }
+                        else
+                        {
+                            ConsumptionManagementClient.Budgets.Delete(name);
+                        }
+                    }
+                    else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                    {
+                        ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(this.ResourceGroupName,
+                            this.Name);
                     }
                     else
                     {
-                        ConsumptionManagementClient.Budgets.Delete(name);
+                        ConsumptionManagementClient.Budgets.Delete(this.Name);
                     }
                 }
-                else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                catch (ErrorResponseException e)
                 {
-                    ConsumptionManagementClient.Budgets.DeleteByResourceGroupName(this.ResourceGroupName,
-                        this.Name);
+                    WriteExceptionError(e);
+                    return;
                 }
-                else
-                {
-                    ConsumptionManagementClient.Budgets.Delete(this.Name);
-                }
-            }
-            catch (ErrorResponseException e)
-            {
-                WriteExceptionError(e);
-                return;
-            }
 
-            if (PassThru.IsPresent)
-            {
-                WriteObject(true);
-            }
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(true);
+                }
+            }            
         }
     }
 }

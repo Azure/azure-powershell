@@ -138,52 +138,55 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
 
         public override void ExecuteCmdlet()
         {
-            Budget budget = null;
-            try
+            if (ShouldProcess(Name, "Set Consumption Budget"))
             {
-                if (this.InputObject != null)
+                Budget budget = null;
+                try
                 {
-                    var name = InputObject.Name;
-                    var id = InputObject.Id;
-                    var parts = id.Split('/');
-
-                    if (parts.Length >= 4 &&
-                        parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                    if (this.InputObject != null)
                     {
-                        var resourceGroupName = parts[3];
-                        budget = ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(resourceGroupName, name,
-                            UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                        var name = InputObject.Name;
+                        var id = InputObject.Id;
+                        var parts = id.Split('/');
+
+                        if (parts.Length >= 4 &&
+                            parts[2].Equals("resourceGroups", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            var resourceGroupName = parts[3];
+                            budget = ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(resourceGroupName, name,
+                                UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                        }
+                        else
+                        {
+                            budget = ConsumptionManagementClient.Budgets.CreateOrUpdate(name,
+                                UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                        }
+                    }
+                    else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                    {
+                        budget =
+                            ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(this.ResourceGroupName,
+                                this.Name,
+                                UpdateBudget(
+                                    ConsumptionManagementClient.Budgets.GetByResourceGroupName(this.ResourceGroupName,
+                                        this.Name)));
                     }
                     else
                     {
-                        budget = ConsumptionManagementClient.Budgets.CreateOrUpdate(name,
-                            UpdateBudget(TransformFromPSBudgetToBudget(InputObject)));
+                        budget = ConsumptionManagementClient.Budgets.CreateOrUpdate(this.Name,
+                            UpdateBudget(ConsumptionManagementClient.Budgets.Get(this.Name)));
                     }
                 }
-                else if (!string.IsNullOrWhiteSpace(this.ResourceGroupName))
+                catch (ErrorResponseException e)
                 {
-                    budget =
-                        ConsumptionManagementClient.Budgets.CreateOrUpdateByResourceGroupName(this.ResourceGroupName,
-                            this.Name,
-                            UpdateBudget(
-                                ConsumptionManagementClient.Budgets.GetByResourceGroupName(this.ResourceGroupName,
-                                    this.Name)));
+                    WriteExceptionError(e);
                 }
-                else
-                {
-                    budget = ConsumptionManagementClient.Budgets.CreateOrUpdate(this.Name,
-                        UpdateBudget(ConsumptionManagementClient.Budgets.Get(this.Name)));
-                }
-            }
-            catch (ErrorResponseException e)
-            {
-                WriteExceptionError(e);
-            }
 
-            if (budget != null)
-            {
-                WriteObject(new PSBudget(budget), true);
-            }
+                if (budget != null)
+                {
+                    WriteObject(new PSBudget(budget), true);
+                }
+            }            
         }
 
         private Budget TransformFromPSBudgetToBudget(PSBudget psBudget)
