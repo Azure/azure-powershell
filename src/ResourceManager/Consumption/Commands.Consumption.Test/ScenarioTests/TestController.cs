@@ -136,6 +136,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
+                    _helper.RMResourceModule,
                    @"AzureRM.Consumption.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
