@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void E2E_CreateAndAssociateTest()
         {
             this.RunPowerShellTest("Test-E2E_CreateAndAssociate -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
@@ -54,12 +55,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NetworkMappingTest()
         {
             this.RunPowerShellTest("Test-NetworkMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void NetworkUnMappingTest()
         {
             this.RunPowerShellTest("Test-NetworkUnMapping -vaultSettingsFilePath \"" + vaultSettingsFilePath + "\"");
@@ -161,6 +164,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void VaultUpgradeTest()
         {
             this.RunPowerShellTest(

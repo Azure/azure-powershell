@@ -22,8 +22,11 @@ function Test-CertificateCrudOperations
     $thumbprintAlgorithm = "sha1"
 
     $localDir = ($pwd).Path # Use $pwd to get the local directory. If $pwd is not used, paths are relative to [Environment]::CurrentDirectory, which can be different
-    $certPath = $localDir + "\Resources\BatchTestCert01.cer"
-    $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPath
+
+    $certPathVs = $localDir + "/Resources/BatchTestCert01.cer"
+    # $certPathConsole = [System.IO.Path]::GetDirectoryName($PSScriptRoot) + "/Resources/BatchTestCert01.cer"
+    # $certPath = if (Test-Path $certPathVs -PathType Leaf) { $certPathVs } Else { $certPathConsole }
+    $x509cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certPathVs
 
     # Add the cert
     $x509cert | New-AzureBatchCertificate -BatchContext $context

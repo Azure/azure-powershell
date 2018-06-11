@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+* Public release of Policy Insights cmdlets
+    - Use API version 2018-04-04
+    - Add PolicyDefinitionReferenceId to the results of Get-AzureRmPolicyStateSummary
 
 ## Version 0.9.1-preview
 * Set minimum dependency of module to PowerShell 5.0
