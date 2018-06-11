@@ -8,7 +8,7 @@ schema: 2.0.0
 # Enable-AzureRmSqlServerAdvancedThreatProtection
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Enables Advanced Threat Protection on a server.
 
 ## SYNTAX
 
@@ -19,13 +19,16 @@ Enable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerMod
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Enable-AzureRmSqlServerAdvancedThreatProtection** cmdlet enables Advanced Threat Protection on a server.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName "ResourceGroup01" -ServerName "Server01" 
+ResourceGroupName             : ResourceGroup01
+ServerName                    : Server01
+IsEnabled                     : Database01
 ```
 
 {{ Add example description here }}
