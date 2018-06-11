@@ -33,9 +33,6 @@ using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
-    using Rest;
-    using TokenAudience = Rest.ClientRuntime.Azure.TestFramework.TokenAudience;
-
     public class TestController : RMTestBase
     {
         private CSMTestEnvironmentFactory _csmTestFactory;
@@ -170,7 +167,9 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
         private RM.Fluent.ResourceManagementClient GetResourceClient(MockContext context)
         {
-            return context.GetServiceClient<RM.Fluent.ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+            return
+                context.GetServiceClient<RM.Fluent.ResourceManagementClient>(
+                    Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
