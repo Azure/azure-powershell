@@ -127,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubAuthorizationRuleId
-The event hub rule id
+The event hub authorization rule id
 
 ```yaml
 Type: String
@@ -217,6 +217,8 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceBusRuleId
+The Service Bus Rule id.
+
 ```yaml
 Type: String
 Parameter Sets: (All)
