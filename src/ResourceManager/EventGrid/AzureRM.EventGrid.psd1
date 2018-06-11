@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.3.3'
+ModuleVersion = '0.4.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -113,10 +113,24 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
+        ReleaseNotes = '* Update the following cmdlets to support new scenario in 2018-05-01-preview API version
+	- New-AzureRmEventGridTopic: Add new optional parameters for specifying: 
+		- Input schema.
+		- Input mapping fields
+		- Input mapping default values.
+	- New-AzureRmEventGridSubscription: Add new optional parameters for specifying: 
+		- Event Time-To-Live, 
+		- Maximum number of delivery attempts for the events, 
+		- The delivery schema
+		- Dead letter endpoint.
+	- Update-AzureRmEventGridSubscription: Add new optional parameters for specifying: 
+		- Event Time-To-Live, 
+		- Maximum number of delivery attempts for the events, 
+		- Dead letter endpoint.
+* Show warning message if creating or updating the event subscription is expected to entail manual action from user.'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
