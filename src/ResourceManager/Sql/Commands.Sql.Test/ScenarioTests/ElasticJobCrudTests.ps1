@@ -883,7 +883,7 @@ function Test-RemoveJobWithDefaultParam($a1)
 	$j1 = Create-JobForTest $a1
 
 	# Test remove using default parameters
-	$resp = Remove-AzureRmSqlElasticJob -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $j1.JobName
+	$resp = Remove-AzureRmSqlElasticJob -ResourceGroupName $a1.ResourceGroupName -ServerName $a1.ServerName -AgentName $a1.AgentName -Name $j1.JobName -Force
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"
@@ -899,7 +899,7 @@ function Test-RemoveJobWithInputObject($a1)
 	$j1 = Create-JobForTest $a1
 
 	# Test remove using default parameters
-	$resp = Remove-AzureRmSqlElasticJob -InputObject $j1
+	$resp = Remove-AzureRmSqlElasticJob -InputObject $j1 -Force
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"
@@ -915,7 +915,7 @@ function Test-RemoveJobWithResourceId($a1)
 	$j1 = Create-JobForTest $a1
 
 	# Test remove using resource id
-	$resp = Remove-AzureRmSqlElasticJob -ResourceId $j1.ResourceId
+	$resp = Remove-AzureRmSqlElasticJob -ResourceId $j1.ResourceId -Force
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"
@@ -931,7 +931,7 @@ function Test-RemoveJobWithPiping($a1)
 	$j1 = Create-JobForTest $a1
 
 	# Test piping
-	$resp = $j1 | Remove-AzureRmSqlElasticJob
+	$resp = $j1 | Remove-AzureRmSqlElasticJob -Force
 	Assert-AreEqual $resp.JobName $j1.JobName
 	Assert-AreEqual $resp.Enabled $false
 	Assert-AreEqual $resp.ScheduleType "Once"

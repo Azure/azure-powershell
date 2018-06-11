@@ -231,7 +231,7 @@ function Test-RemoveAgent
     try
     {
         # Test using parameters
-        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -AgentName $a1.AgentName
+        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceGroupName $rg1.ResourceGroupName -ServerName $s1.ServerName -AgentName $a1.AgentName -Force
         Assert-AreEqual $resp.AgentName $a1.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db1.DatabaseName
@@ -240,7 +240,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using input object
-        $resp = Remove-AzureRmSqlElasticJobAgent -InputObject $a2
+        $resp = Remove-AzureRmSqlElasticJobAgent -InputObject $a2 -Force
         Assert-AreEqual $resp.AgentName $a2.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db2.DatabaseName
@@ -249,7 +249,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using resource id
-        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceId $a3.ResourceId
+        $resp = Remove-AzureRmSqlElasticJobAgent -ResourceId $a3.ResourceId -Force
         Assert-AreEqual $resp.AgentName $a3.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db3.DatabaseName
@@ -258,7 +258,7 @@ function Test-RemoveAgent
         Assert-AreEqual $resp.WorkerCount 100
 
         # Test using piping
-        $resp = $a4 | Remove-AzureRmSqlElasticJobAgent
+        $resp = $a4 | Remove-AzureRmSqlElasticJobAgent -Force
         Assert-AreEqual $resp.AgentName $a4.AgentName
         Assert-AreEqual $resp.ServerName $s1.ServerName
         Assert-AreEqual $resp.DatabaseName $db4.DatabaseName
