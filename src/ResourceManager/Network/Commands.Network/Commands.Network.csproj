@@ -369,6 +369,8 @@
     <Compile Include="Models\PSAzureReachabilityReportLatencyInfo.cs" />
     <Compile Include="Models\PSAzureReachabilityReportLocation.cs" />
     <Compile Include="Models\PSAzureReachabilityReportParameters.cs" />
+    <Compile Include="Models\PSTrafficAnalyticsConfigurationProperties.cs" />
+    <Compile Include="Models\PSTrafficAnalyticsProperties.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveNetworkSecurityGroupCommand.cs" />
     <Compile Include="NetworkInterface\EffectiveResources\GetAzureEffectiveRouteTableCommand.cs" />
     <Compile Include="NetworkInterface\IpConfiguration\AddAzureNetworkInterfaceIpConfigCommand.cs" />

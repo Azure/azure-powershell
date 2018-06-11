@@ -41,6 +41,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Authenticat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.KeyVault", "..\..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub", "..\IotHub\Commands.IotHub\Commands.IotHub.csproj", "{78770A60-B18A-4442-A982-0CEE0356F8DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -119,6 +121,10 @@ Global
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -126,6 +132,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3436A126-EDC9-4060-8952-9A1BE34CDD95} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
 		{4802BBF0-70F7-4FCB-81A6-381810234F14} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
+		{78770A60-B18A-4442-A982-0CEE0356F8DB} = {DB3F9035-1533-4D52-B782-285C784EFDD4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {930E4484-D6C7-4C25-AE5B-05EDACF6ED88}
