@@ -112,7 +112,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The agent object```yaml
+The agent object
+
+```yaml
 Type: AzureSqlElasticJobAgentModel
 Parameter Sets: ObjectSet
 Aliases:
@@ -125,7 +127,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The agent resource id```yaml
+The agent resource id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
 Aliases:

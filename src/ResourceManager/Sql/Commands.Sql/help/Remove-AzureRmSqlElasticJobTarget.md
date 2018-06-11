@@ -126,7 +126,7 @@ Removes a target (server, elastic pool, database, and shard map) from a target g
 ## PARAMETERS
 
 ### -AgentName
-SQL Database Agent Name.
+The agent name.
 
 ```yaml
 Type: String
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentServerName
-SQL Database Agent Server Name.
+The server name.
 
 ```yaml
 Type: String
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-Database Target Name
+The database target name.
 
 ```yaml
 Type: String
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -ElasticPoolName
-Elastic Pool Target Name
+The target elastic pool name.
 
 ```yaml
 Type: String
@@ -201,7 +201,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The target group resource id```yaml
+The target group resource id.
+
+```yaml
 Type: String
 Parameter Sets: Sql Database ParentResourceId Parameter Set, Sql Server or Elastic Pool ParentResourceId Parameter Set, Sql Shard Map ParentResourceId Parameter Set
 Aliases:
@@ -214,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -RefreshCredentialName
-Refresh Credential Name
+The refresh credential name.
 
 ```yaml
 Type: String
@@ -229,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The resource group name.
 
 ```yaml
 Type: String
@@ -244,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-Server Target Name
+The target server name.
 
 ```yaml
 Type: String
@@ -271,7 +273,7 @@ Accept wildcard characters: False
 ```
 
 ### -ShardMapName
-Shard Map Target Name
+The target shard map name.
 
 ```yaml
 Type: String
@@ -286,7 +288,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetGroupName
-SQL Database Agent Name.
+The target group name.
 
 ```yaml
 Type: String

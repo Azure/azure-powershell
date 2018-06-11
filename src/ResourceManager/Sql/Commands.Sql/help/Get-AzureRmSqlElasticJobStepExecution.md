@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSqlElasticJobStepExecution
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Gets one or more job step executions
 
 ## SYNTAX
 
@@ -218,7 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The agent object.```yaml
+The agent object.
+
+```yaml
 Type: AzureSqlElasticJobExecutionModel
 Parameter Sets: ObjectSet, WithJobStepName using ParentObject
 Aliases:
@@ -231,7 +233,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The job execution resource id.```yaml
+The job execution resource id.
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet, WithJobStepName using ParentResourceId
 Aliases:

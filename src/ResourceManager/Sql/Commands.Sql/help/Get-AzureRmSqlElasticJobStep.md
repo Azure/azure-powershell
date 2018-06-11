@@ -142,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The job input object```yaml
+The job input object
+
+```yaml
 Type: AzureSqlElasticJobModel
 Parameter Sets: GetVersion Using Job Object, ObjectSet
 Aliases:
@@ -155,7 +157,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The job resource id```yaml
+The job resource id
+
+```yaml
 Type: String
 Parameter Sets: GetVersion Using ParentResourceId, ResourceIdSet
 Aliases:

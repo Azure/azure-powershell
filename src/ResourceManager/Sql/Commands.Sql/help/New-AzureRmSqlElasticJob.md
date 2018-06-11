@@ -216,7 +216,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The agent input object```yaml
+The agent input object
+
+```yaml
 Type: AzureSqlElasticJobAgentModel
 Parameter Sets: ObjectSet, RunOnce using ParentObject, Recurring using ParentObject
 Aliases:
@@ -229,7 +231,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The agent resource id```yaml
+The agent resource id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet, RunOnce using ParentResourceId, Recurring using ParentResourceId
 Aliases:

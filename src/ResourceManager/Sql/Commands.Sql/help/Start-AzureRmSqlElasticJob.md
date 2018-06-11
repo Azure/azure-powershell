@@ -111,7 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The job object```yaml
+The job object
+```yaml
 Type: AzureSqlElasticJobModel
 Parameter Sets: ObjectSet
 Aliases:
@@ -124,7 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The job resource id```yaml
+The job resource id
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
 Aliases:
@@ -167,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -Wait
-{{Fill Wait Description}}
+The wait flag to indicate to wait until the job's execution is done
 
 ```yaml
 Type: SwitchParameter

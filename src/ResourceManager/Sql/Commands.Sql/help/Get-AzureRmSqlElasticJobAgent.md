@@ -79,7 +79,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The server input object```yaml
+The server input object
+
+```yaml
 Type: AzureSqlServerModel
 Parameter Sets: ObjectSet
 Aliases:
@@ -92,7 +94,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The server resource id```yaml
+The server resource id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet
 Aliases:

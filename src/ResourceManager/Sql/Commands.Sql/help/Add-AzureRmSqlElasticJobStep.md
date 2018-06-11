@@ -317,7 +317,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentObject
-The job object```yaml
+The job object
+
+```yaml
 Type: AzureSqlElasticJobModel
 Parameter Sets: ObjectSet, WithOutputDb using ParentObject, WithOutputDbId using ParentObject
 Aliases:
@@ -330,7 +332,9 @@ Accept wildcard characters: False
 ```
 
 ### -ParentResourceId
-The job resource id```yaml
+The job resource id
+
+```yaml
 Type: String
 Parameter Sets: ResourceIdSet, WithOutputDb using ParentResourceId, WithOutputDbId Set using ParentResourceId
 Aliases:
