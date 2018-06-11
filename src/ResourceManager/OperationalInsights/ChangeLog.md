@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Updated PSWorkspace model to allow Network to use type as a parameter
+
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+## Version 4.3.2
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.3.1
 * Fix issue with Default Resource Group in CloudShell
 * Fixed issue with cleaning up scripts in build

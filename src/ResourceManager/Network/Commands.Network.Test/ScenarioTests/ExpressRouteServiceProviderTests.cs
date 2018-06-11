@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRouteServiceProviderList()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ExpressRouteServiceProviderList");

@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             return autocaseRuleCmd.CreateSettingRule();
         }
 
-        public void InitializeAutoscaleProfile(List<ScaleRule> rules = null)
+        internal void InitializeAutoscaleProfile(List<ScaleRule> rules = null)
         {
             List<ScaleRule> autoscaleRules = rules ?? new List<ScaleRule> { this.CreateAutoscaleRule() };
 
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.Rule = autoscaleRules;
         }
 
-        public void InitializeForRecurrentSchedule()
+        internal void InitializeForRecurrentSchedule()
         {
             Cmdlet.RecurrenceFrequency = RecurrenceFrequency.Minute;
             Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" };
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ScheduleTimeZone = "GMT";
         }
 
-        public void InitializeForFixedDate()
+        internal void InitializeForFixedDate()
         {
             Cmdlet.StartTimeWindow = DateTime.Now;
             Cmdlet.EndTimeWindow = DateTime.Now.AddMinutes(1);

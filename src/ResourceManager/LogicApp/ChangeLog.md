@@ -19,6 +19,13 @@
 -->
 ## Current Release
 
+## Version 4.0.4
+* Set minimum dependency of module to PowerShell 5.0
+* Stop-AzureRmLogicAppRun example documentation fix
+
+## Version 4.0.3
+* Updated to the latest version of the Azure ClientRuntime
+
 ## Version 4.0.2
 * Fix issue with Default Resource Group in CloudShell
 

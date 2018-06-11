@@ -18403,6 +18403,15 @@ PS C:\&gt; New-AzureVMConfig -Name "VirtualMachine17" -InstanceSize Small -Image
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -18511,6 +18520,15 @@ PS C:\&gt; New-AzureVMConfig -Name "VirtualMachine17" -InstanceSize Small -Image
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -18550,7 +18568,7 @@ PS C:\&gt; New-AzureVMConfig -Name "VirtualMachine17" -InstanceSize Small -Image
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Create a deployment based on an extension configuration  --------------------------</maml:title>
-<dev:code>PS C:\&gt;New-AzureDeployment -ServiceName "ContosoService" -Slot "Production" -Package "https://contosostorage.blob.core.windows.net/container06/ContosoPackage.cspkg" -Configuration "C:\packages\ContosoConfiguration.cscfg" -ExtensionConfiguration "C:\packages\ContosoExtensionConfig.cscfg"</dev:code>
+<dev:code>PS C:\&gt;New-AzureDeployment -ServiceName "ContosoService" -Slot "Production" -Package "https://contosostorage.blob.core.windows.net/container06/ContosoPackage.cspkg" -Configuration "C:\packages\ContosoConfiguration.cscfg" -ExtensionConfiguration "C:\packages\ContosoExtensionConfig.cscfg" -ExtendedProperty @{"key1"="value1"}</dev:code>
 <dev:remarks><maml:para>This command creates a production deployment based on a package and configuration. The command specifies an extension configuration named ContosoExtensionConfig.cscfg. This cmdlet creates GUIDs as the name and the label.
 </maml:para>
 </dev:remarks>
@@ -20841,6 +20859,15 @@ PS C:\&gt; New-AzureQuickVM -Windows -InstanceSize "Large" -ServiceName "Contoso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -20910,6 +20937,15 @@ PS C:\&gt; New-AzureQuickVM -Windows -InstanceSize "Large" -ServiceName "Contoso
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
 <dev:type><maml:name>String</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -20985,6 +21021,15 @@ PS C:\&gt; New-AzureQuickVM -Windows -InstanceSize "Large" -ServiceName "Contoso
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -21027,13 +21072,13 @@ PS C:\&gt; New-AzureQuickVM -Windows -InstanceSize "Large" -ServiceName "Contoso
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Create a service  --------------------------</maml:title>
-<dev:code>PS C:\&gt;New-AzureService -ServiceName "MySvc01" -Label "MyTestService" -Location "South Central US"</dev:code>
+<dev:code>PS C:\&gt;New-AzureService -ServiceName "MySvc01" -Label "MyTestService" -Location "South Central US" -ExtendedProperty @{"key1"="value1"}</dev:code>
 <dev:remarks><maml:para>This command creates a new service named MySvc01 in the South Central US location.
 </maml:para>
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 2: Create a service in an affinity group  --------------------------</maml:title>
-<dev:code>PS C:\&gt;New-AzureService -ServiceName "MySvc01" -AffinityGroup NorthRegion</dev:code>
+<dev:code>PS C:\&gt;New-AzureService -ServiceName "MySvc01" -AffinityGroup NorthRegion -ExtendedProperty @{"key1"="value1"}</dev:code>
 <dev:remarks><maml:para>This command creates a new service named MySvc01 using the NorthRegion affinity group.
 </maml:para>
 </dev:remarks>
@@ -37071,6 +37116,15 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -37139,6 +37193,15 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 </maml:Description>
 <command:parameterValue required="true" variableLength="false">ExtensionConfigurationInput[]</command:parameterValue>
 <dev:type><maml:name>ExtensionConfigurationInput[]</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
@@ -37327,6 +37390,15 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -37405,7 +37477,7 @@ PS C:\&gt; Get-AzureVM -ServiceName "ContosoService" -Name "VirtualMachine07" | 
 </dev:remarks>
 </command:example>
 <command:example><maml:title>--------------------------  Example 4: Install extension configuration in a service  --------------------------</maml:title>
-<dev:code>PS C:\&gt;Set-AzureDeployment -Config -ServiceName "ContosoService" -Mode "Automatic" -Package "https://contosostorage.blob.core.windows.net/container06/ContosoPackage.cspkg" -Configuration "C:\packages\ContosoConfiguration.cscfg" -Slot "Production" -ExtensionConfiguration "C:\packages\ContosoExtensionConfig.cscfg"</dev:code>
+<dev:code>PS C:\&gt;Set-AzureDeployment -Config -ServiceName "ContosoService" -Mode "Automatic" -Package "https://contosostorage.blob.core.windows.net/container06/ContosoPackage.cspkg" -Configuration "C:\packages\ContosoConfiguration.cscfg" -Slot "Production" -ExtensionConfiguration "C:\packages\ContosoExtensionConfig.cscfg" -ExtendedProperty @{"key1"="value1"}</dev:code>
 <dev:remarks><maml:para>This command installs the extension configuration in the specified Cloud Service and applies them on roles.
 </maml:para>
 </dev:remarks>
@@ -40211,6 +40283,15 @@ PS C:\&gt; Set-AzureOSDisk "ReadWrite" -VM $myVM2</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -40274,6 +40355,15 @@ PS C:\&gt; Set-AzureOSDisk "ReadWrite" -VM $myVM2</dev:code>
 <maml:uri /></dev:type>
 <dev:defaultValue>None</dev:defaultValue>
 </command:parameter>
+<command:parameter required="false" variableLength="true" globbing="false" pipelineInput="false" position="named" aliases="none"><maml:name>ExtendedProperty</maml:name>
+<maml:Description><maml:para>Specifies extended properties.
+</maml:para>
+</maml:Description>
+<command:parameterValue required="true" variableLength="false">Hashtable</command:parameterValue>
+<dev:type><maml:name>Hashtable</maml:name>
+<maml:uri /></dev:type>
+<dev:defaultValue>None</dev:defaultValue>
+</command:parameter>
 <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="none"><maml:name>Profile</maml:name>
 <maml:Description><maml:para>Specifies the Azure profile from which this cmdlet reads. If you do not specify a profile, this cmdlet reads from the local default profile.
 </maml:para>
@@ -40313,7 +40403,7 @@ PS C:\&gt; Set-AzureOSDisk "ReadWrite" -VM $myVM2</dev:code>
 </maml:alert>
 </maml:alertSet>
 <command:examples><command:example><maml:title>--------------------------  Example 1: Update the label and description for a service  --------------------------</maml:title>
-<dev:code>PS C:\&gt; C:\PS&gt;Set-AzureService -ServiceName "MySvc1" -Label "MyTestSvc1" -Description "My service for testing out new configurations"</dev:code>
+<dev:code>PS C:\&gt; C:\PS&gt;Set-AzureService -ServiceName "MySvc1" -Label "MyTestSvc1" -Description "My service for testing out new configurations" -ExtendedProperty @{"key1"="value1"}</dev:code>
 <dev:remarks><maml:para>This command sets the label to "MyTestSvc1" and the description to "My service for testing out new configurations" for the MyTestSvc1 service.
 </maml:para>
 </dev:remarks>

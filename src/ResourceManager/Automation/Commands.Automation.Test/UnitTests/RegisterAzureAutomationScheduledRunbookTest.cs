@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string runbookName = "runbook";
             string scheduleName = "schedule";
-            string runOn = "hybridWorkerGroup";
 
             this.mockAutomationClient.Setup(
                 f => f.RegisterScheduledRunbook(resourceGroupName, accountName, runbookName, scheduleName, null, null));

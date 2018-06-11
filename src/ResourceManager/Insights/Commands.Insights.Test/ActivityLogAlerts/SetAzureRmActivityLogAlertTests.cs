@@ -105,15 +105,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             Assert.NotNull(this.createOrUpdatePrms.Actions);
             Assert.NotNull(this.createOrUpdatePrms.Actions.ActionGroups);
             Assert.Equal(1, this.createOrUpdatePrms.Actions.ActionGroups.Count);
-            Assert.Equal(this.createOrUpdatePrms.Actions.ActionGroups[0].ActionGroupId, "ActGrpId");
+            Assert.Equal("ActGrpId", this.createOrUpdatePrms.Actions.ActionGroups[0].ActionGroupId);
             Assert.NotNull(this.createOrUpdatePrms.Actions.ActionGroups[0].WebhookProperties);
             Assert.True(this.createOrUpdatePrms.Actions.ActionGroups[0].WebhookProperties.ContainsKey("key1"));
 
             Assert.NotNull(this.createOrUpdatePrms.Condition);
             Assert.NotNull(this.createOrUpdatePrms.Condition.AllOf);
             Assert.Equal(1, this.createOrUpdatePrms.Condition.AllOf.Count);
-            Assert.Equal(this.createOrUpdatePrms.Condition.AllOf[0].Field, "field");
-            Assert.Equal(this.createOrUpdatePrms.Condition.AllOf[0].Equals, "equals");
+            Assert.Equal("field", this.createOrUpdatePrms.Condition.AllOf[0].Field);
+            Assert.Equal("equals", this.createOrUpdatePrms.Condition.AllOf[0].Equals);
 
             Assert.True(this.createOrUpdatePrms.Enabled);
             Assert.Null(this.createOrUpdatePrms.Description);

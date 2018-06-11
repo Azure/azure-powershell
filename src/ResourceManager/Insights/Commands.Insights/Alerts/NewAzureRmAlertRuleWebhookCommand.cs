@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// Gets or sets the properties dictionary of the action
         /// </summary>
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The properties of the action in @{Property1 = 'Value1'; ...} format")]
-        [Alias("Properties")]
         public Hashtable Property { get; set; }
 
         /// <summary>
@@ -50,10 +49,6 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            this.WriteIdentifiedWarning(
-                cmdletName: "New-AzureRmAlertRuleWebhook",
-                topic: "Parameter name change", 
-                message: "The parameter plural names for the parameters will be deprecated in a future breaking change release in favor of the singular versions of the same names.");
             Utilities.ValidateUri(this.ServiceUri, "ServiceUri");
 
             var dictionary = this.Property == null

@@ -37,7 +37,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
         [ValidateNotNullOrEmpty]
-        [Alias("MetricNames")]
         public string[] MetricName { get; set; }
 
         /// <summary>
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             string cmdletName = "Get-AzureRmMetricDefinition";
             this.WriteIdentifiedWarning(
                 cmdletName: cmdletName,
-                topic: "Parameter deprecation", 
+                topic: "Parameter deprecation",
                 message: "The DetailedOutput parameter will be deprecated in a future breaking change release.");
             this.WriteIdentifiedWarning(
                 cmdletName: cmdletName,

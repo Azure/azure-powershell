@@ -11,7 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Collections.Generic;
 using Microsoft.Azure.Management.WebSites;
 using Microsoft.Azure.Management.WebSites.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -20,28 +19,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
 {
     static class SiteStrategy
     {
-#if !NETSTANDARD
-        public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
-            provider: "sites",
-            getOperations: client => client.Sites,
-            getAsync: (o, p) => o.GetSiteAsync(p.ResourceGroupName, p.Name, null, p.CancellationToken),
-            createOrUpdateAsync: (o, p) => o.CreateOrUpdateSiteAsync(p.ResourceGroupName, p.Name, p.Model, cancellationToken: p.CancellationToken),
-            createTime: _ => 20,
-            compulsoryLocation: true);
-
-        public static ResourceConfig<Site> CreateSiteConfig(this ResourceConfig<ResourceGroup> resourceGroup, 
-            ResourceConfig<ServerFarmWithRichSku> plan, string siteName) => 
-            Strategy.CreateResourceConfig(
-                resourceGroup, 
-                siteName,
-            createModel: engine =>
-                new Site
-                {
-                    SiteName = siteName,
-                    Name = siteName,
-                    ServerFarmId = engine.GetId(plan)
-                });
-#else
         public static ResourceStrategy<Site> Strategy { get; } = AppServicePolicy.Create(
             provider: "sites",
             getOperations: client => client.WebApps,
@@ -55,12 +32,11 @@ namespace Microsoft.Azure.Commands.Common.Strategies.WebApps
             Strategy.CreateResourceConfig(
                 resourceGroup,
                 siteName,
-            createModel: engine =>
-                new Site
-                {
-                    Name = siteName,
-                    ServerFarmId = engine.GetId(plan)
-                });
-#endif
+                createModel: engine =>
+                    new Site(location: null, name: siteName)
+                    {
+                        //Name = siteName,
+                        ServerFarmId = engine.GetId(plan)
+                    });
     }
 }

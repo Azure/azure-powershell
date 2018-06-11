@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Microsoft.Azure.Commands.Common.Storage.Management</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Storage.Management</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <RestorePackages>true</RestorePackages>
+    <CodeAnalysisAdditionalOptions>/assemblyCompareMode:StrongNameIgnoringVersion</CodeAnalysisAdditionalOptions>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release</OutputPath>
+    <DefineConstants>TRACE;SIGN</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\Management.Utilities.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;$(ProgramFiles)\Microsoft Visual Studio 12.0\Team Tools\Static Analysis Tools\FxCop\Rules</CodeAnalysisRuleDirectories>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>true</DelaySign>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Microsoft.Rest.ClientRuntime">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\Microsoft.Rest.ClientRuntime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure">
+      <HintPath>..\..\packages\Microsoft.Rest.ClientRuntime.Azure.3.3.12\lib\net452\Microsoft.Rest.ClientRuntime.Azure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Version2017-10-01\IOperations.cs" />
+    <Compile Include="Version2017-10-01\ISkusOperations.cs" />
+    <Compile Include="Version2017-10-01\IStorageAccountsOperations.cs" />
+    <Compile Include="Version2017-10-01\IStorageManagementClient.cs" />
+    <Compile Include="Version2017-10-01\IUsageOperations.cs" />
+    <Compile Include="Version2017-10-01\Models\AccessTier.cs" />
+    <Compile Include="Version2017-10-01\Models\AccountSasParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\AccountStatus.cs" />
+    <Compile Include="Version2017-10-01\Models\Action.cs" />
+    <Compile Include="Version2017-10-01\Models\Bypass.cs" />
+    <Compile Include="Version2017-10-01\Models\CheckNameAvailabilityResult.cs" />
+    <Compile Include="Version2017-10-01\Models\CustomDomain.cs" />
+    <Compile Include="Version2017-10-01\Models\DefaultAction.cs" />
+    <Compile Include="Version2017-10-01\Models\Dimension.cs" />
+    <Compile Include="Version2017-10-01\Models\Encryption.cs" />
+    <Compile Include="Version2017-10-01\Models\EncryptionService.cs" />
+    <Compile Include="Version2017-10-01\Models\EncryptionServices.cs" />
+    <Compile Include="Version2017-10-01\Models\Endpoints.cs" />
+    <Compile Include="Version2017-10-01\Models\HttpProtocol.cs" />
+    <Compile Include="Version2017-10-01\Models\Identity.cs" />
+    <Compile Include="Version2017-10-01\Models\IPRule.cs" />
+    <Compile Include="Version2017-10-01\Models\KeyPermission.cs" />
+    <Compile Include="Version2017-10-01\Models\KeySource.cs" />
+    <Compile Include="Version2017-10-01\Models\KeyVaultProperties.cs" />
+    <Compile Include="Version2017-10-01\Models\Kind.cs" />
+    <Compile Include="Version2017-10-01\Models\ListAccountSasResponse.cs" />
+    <Compile Include="Version2017-10-01\Models\ListServiceSasResponse.cs" />
+    <Compile Include="Version2017-10-01\Models\MetricSpecification.cs" />
+    <Compile Include="Version2017-10-01\Models\NetworkRuleSet.cs" />
+    <Compile Include="Version2017-10-01\Models\Operation.cs" />
+    <Compile Include="Version2017-10-01\Models\OperationDisplay.cs" />
+    <Compile Include="Version2017-10-01\Models\Page.cs" />
+    <Compile Include="Version2017-10-01\Models\Permissions.cs" />
+    <Compile Include="Version2017-10-01\Models\ProvisioningState.cs" />
+    <Compile Include="Version2017-10-01\Models\Reason.cs" />
+    <Compile Include="Version2017-10-01\Models\ReasonCode.cs" />
+    <Compile Include="Version2017-10-01\Models\Resource.cs" />
+    <Compile Include="Version2017-10-01\Models\Restriction.cs" />
+    <Compile Include="Version2017-10-01\Models\Services.cs" />
+    <Compile Include="Version2017-10-01\Models\ServiceSasParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\ServiceSpecification.cs" />
+    <Compile Include="Version2017-10-01\Models\SignedResource.cs" />
+    <Compile Include="Version2017-10-01\Models\SignedResourceTypes.cs" />
+    <Compile Include="Version2017-10-01\Models\Sku.cs" />
+    <Compile Include="Version2017-10-01\Models\SKUCapability.cs" />
+    <Compile Include="Version2017-10-01\Models\SkuName.cs" />
+    <Compile Include="Version2017-10-01\Models\SkuTier.cs" />
+    <Compile Include="Version2017-10-01\Models\State.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccount.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountCheckNameAvailabilityParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountCreateParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountKey.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountListKeysResult.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountRegenerateKeyParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\StorageAccountUpdateParameters.cs" />
+    <Compile Include="Version2017-10-01\Models\Usage.cs" />
+    <Compile Include="Version2017-10-01\Models\UsageName.cs" />
+    <Compile Include="Version2017-10-01\Models\UsageUnit.cs" />
+    <Compile Include="Version2017-10-01\Models\VirtualNetworkRule.cs" />
+    <Compile Include="Version2017-10-01\Operations.cs" />
+    <Compile Include="Version2017-10-01\OperationsExtensions.cs" />
+    <Compile Include="Version2017-10-01\SkusOperations.cs" />
+    <Compile Include="Version2017-10-01\SkusOperationsExtensions.cs" />
+    <Compile Include="Version2017-10-01\StorageAccountsOperations.cs" />
+    <Compile Include="Version2017-10-01\StorageAccountsOperationsExtensions.cs" />
+    <Compile Include="Version2017-10-01\StorageManagementClient.cs" />
+    <Compile Include="Version2017-10-01\UsageOperations.cs" />
+    <Compile Include="Version2017-10-01\UsageOperationsExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
+      <Name>Commands.Common.Authentication.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -9,19 +9,35 @@ schema: 2.0.0
 # Add-AzureRmVMDataDisk
 
 ## SYNOPSIS
-Adds a data disk to a virtual machine.
+Adds a data disk to a virtual machine or a Vmss VM.
 
 ## SYNTAX
 
+### VmNormalDiskParameterSetName (Default)
 ```
 Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
- [[-Caching] <CachingTypes>] [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <DiskCreateOptionTypes>
- [[-SourceImageUri] <String>] [[-ManagedDiskId] <String>] [[-StorageAccountType] <StorageAccountTypes>]
- [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Caching] <CachingTypes>] [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String>
+ [[-SourceImageUri] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### VmManagedDiskParameterSetName
+```
+Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <CachingTypes>]
+ [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [[-ManagedDiskId] <String>]
+ [[-StorageAccountType] <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### VmScaleSetVMParameterSetName
+```
+Add-AzureRmVMDataDisk -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
+ [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [-ManagedDiskId] <String>
+ [[-StorageAccountType] <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a virtual machine.
+The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a virtual machine or a Vmss VM.
 You can add a data disk when you create a virtual machine, or you can add a data disk to an existing virtual machine.
 
 ## EXAMPLES
@@ -94,6 +110,19 @@ This approach is used to improve the readability of the following commands.
 The final command add a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 
+### Example 5: Add a managed data disk to a Vmss VM.
+```
+PS C:\> $disk = Get-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname0
+PS C:\> $VmssVM = Get-AzureRmVmssVM -ResourceGroupName "myrg" -VMScaleSetName "myvmss" -InstanceId 0
+PS C:\> $VmssVM = Add-AzureRmVMDataDisk -VirtualMachineScaleSetVM $VmssVM -Lun 0 -DiskSizeInGB 10 -CreateOption Attach -StorageAccountType Standard_LRS -ManagedDiskId $disk.Id
+PS C:\> Update-AzureRmVmssVM -VirtualMachineScaleSetVM $VmssVM
+```
+
+The first command gets an existing managed disk.
+The next command gets an existing Vmss VM given by the resource group name, the vmss name and the instance ID.
+The next command adds the managed disk to the Vmss VM stored locally in $VmssVM.
+The final command updates the Vmss VM with added data disk.
+
 ## PARAMETERS
 
 ### -Caching
@@ -112,7 +141,7 @@ This setting affects the consistency and performance of the disk.
 ```yaml
 Type: CachingTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, ReadOnly, ReadWrite
 
 Required: False
@@ -138,10 +167,9 @@ When you specify this option, you must specify the *SourceImageUri* parameter al
 The *VhdUri* parameter is used as the location identifying where the data disk VHD will be stored when it is used by the virtual machine.
 
 ```yaml
-Type: DiskCreateOptionTypes
+Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: FromImage, Empty, Attach
+Aliases:
 
 Required: True
 Position: 6
@@ -171,7 +199,7 @@ Specifies the size, in gigabytes, of an empty disk to attach to a virtual machin
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -186,7 +214,7 @@ Specifies the logical unit number (LUN) for a data disk.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -200,10 +228,22 @@ Specifies the ID of a managed disk.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: VmManagedDiskParameterSetName
+Aliases:
 
 Required: False
+Position: 8
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: VmScaleSetVMParameterSetName
+Aliases:
+
+Required: True
 Position: 8
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -215,8 +255,8 @@ Specifies the name of the data disk to add.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
+Aliases:
 
 Required: False
 Position: 1
@@ -230,7 +270,7 @@ Specifies the source URI of the disk that this cmdlet attaches.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: VmNormalDiskParameterSetName
 Aliases: SourceImage
 
 Required: False
@@ -244,10 +284,9 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: StorageAccountTypes
-Parameter Sets: (All)
-Aliases: 
-Accepted values: StandardLRS, PremiumLRS
+Type: String
+Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
+Aliases:
 
 Required: False
 Position: 9
@@ -263,13 +302,29 @@ This is the location from which to start the virtual machine.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: VmNormalDiskParameterSetName
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualMachineScaleSetVM
+Specifies the local virtual machine scale set VM object to which to add a data disk.
+You can use the **Get-AzureRmVmssVM** cmdlet to obtain a virtual machine scale set VM object.
+
+```yaml
+Type: PSVirtualMachineScaleSetVM
+Parameter Sets: VmScaleSetVMParameterSetName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -280,7 +335,7 @@ You can use the **New-AzureRmVMConfig** cmdlet to create a virtual machine objec
 
 ```yaml
 Type: PSVirtualMachine
-Parameter Sets: (All)
+Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
 Aliases: VMProfile
 
 Required: True
@@ -291,12 +346,12 @@ Accept wildcard characters: False
 ```
 
 ### -WriteAccelerator
-Specifies whether WriteAccelerator should be enabled or disabled on the data disk.
+Specifies whether WriteAccelerator should be enabled or disabled on a managed data disk.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
+Aliases:
 
 Required: False
 Position: Named
