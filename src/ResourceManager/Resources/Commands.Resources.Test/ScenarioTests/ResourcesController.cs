@@ -14,37 +14,33 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Insights;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.ResourceManager;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using LegacyRMClient = Microsoft.Azure.Management.Resources;
-using LegacyRMSubscription = Microsoft.Azure.Subscriptions;
-using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
-using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using Microsoft.Azure.Test.Authentication;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Resources.Models.Gallery;
+using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public sealed class ResourcesController
     {
-        private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
         private const string TenantIdKey = "TenantId";
         private const string DomainKey = "Domain";
         private const string SubscriptionIdKey = "SubscriptionId";
@@ -53,17 +49,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
-        public LegacyRMClient.ResourceManagementClient LegacyResourceManagementClient { get; private set; }
-
-        public LegacyRMSubscription.SubscriptionClient LegacySubscriptionClient { get; private set; }
-
         public FeatureClient FeatureClient { get; private set; }
 
         public Internal.Subscriptions.SubscriptionClient SubscriptionClient { get; private set; }
-
-        public GalleryClient GalleryClient { get; private set; }
-
-        public InsightsClient InsightsClient { get; private set; }
 
         public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
 
@@ -72,28 +60,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public string UserDomain { get; private set; }
 
-        public static ResourcesController NewInstance
-        {
-            get
-            {
-                return new ResourcesController();
-            }
-        }
+        public static ResourcesController NewInstance => new ResourcesController();
 
         public ResourcesController()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
         public void RunPsTest(params string[] scripts)
         {
-            var callingClassType = TestUtilities.GetCallingClass(2);
-            var mockName = TestUtilities.GetCurrentMethodName(2);
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom initializer
-                null,
                 // no custom cleanup
                 null,
                 callingClassType,
@@ -103,18 +84,16 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RunPsTestWorkflow(
             XunitTracingInterceptor interceptor,
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
         {
-            helper.TracingInterceptor = interceptor;
-            this.RunPsTestWorkflow(scriptBuilder, initialize, cleanup, callingClassType, mockName);
+            _helper.TracingInterceptor = interceptor;
+            RunPsTestWorkflow(scriptBuilder, cleanup, callingClassType, mockName);
         }
 
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
-            Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
             Action cleanup,
             string callingClassType,
             string mockName)
@@ -132,26 +111,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
             using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                this.csmTestFactory = new LegacyTest.CSMTestEnvironmentFactory();
-
-                if (initialize != null)
-                {
-                    initialize(this.csmTestFactory);
-                }
-
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
                 SetupManagementClients(context);
 
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMInsightsModule);
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule,
+                    _helper.RMInsightsModule);
 
                 try
                 {
@@ -161,47 +133,36 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                         if (psScripts != null)
                         {
-                            helper.RunPowerShellTest(psScripts);
+                            _helper.RunPowerShellTest(psScripts);
                         }
                     }
                 }
                 finally
                 {
-                    if (cleanup != null)
-                    {
-                        cleanup();
-                    }
+                    cleanup?.Invoke();
                 }
             }
         }
 
         private void SetupManagementClients(MockContext context)
         {
-            LegacyResourceManagementClient = GetLegacyResourceManagementClient();
-            LegacySubscriptionClient = GetLegacySubscriptionClient();
             ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient(context);
-            GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient(context);
             GraphClient = GetGraphClient(context);
-            InsightsClient = GetInsightsClient();
             ManagementGroupsApiClient = GetManagementGroupsApiClient(context);
-            this.FeatureClient = this.GetFeatureClient(context);
-            var testEnvironment = this.csmTestFactory.GetTestEnvironment();
-            var credentials = new SubscriptionCredentialsAdapter(
-                testEnvironment.AuthorizationContext.TokenCredentials[Microsoft.Azure.Test.TokenAudience.Management],
+            FeatureClient = GetFeatureClient(context);
+            var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+            var credentials = new SubscriptionCloudCredentialsAdapter(
+                testEnvironment.TokenInfo[TokenAudience.Management],
                 testEnvironment.SubscriptionId);
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
-            helper.SetupManagementClients(ResourceManagementClient,
-                LegacyResourceManagementClient,
-                LegacySubscriptionClient,
+            _helper.SetupManagementClients(ResourceManagementClient,
                 SubscriptionClient,
-                GalleryClient,
                 AuthorizationManagementClient,
                 GraphClient,
-                InsightsClient,
-                this.FeatureClient,
+                FeatureClient,
                 ManagementGroupsApiClient);
         }
 
@@ -261,29 +222,9 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private LegacyRMClient.ResourceManagementClient GetLegacyResourceManagementClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<LegacyRMClient.ResourceManagementClient>(this.csmTestFactory);
-        }
-
-        private LegacyRMSubscription.SubscriptionClient GetLegacySubscriptionClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<LegacyRMSubscription.SubscriptionClient>(this.csmTestFactory);
-        }
-
         private Internal.Subscriptions.SubscriptionClient GetSubscriptionClient(MockContext context)
         {
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private GalleryClient GetGalleryClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
-        }
-
-        private InsightsClient GetInsightsClient()
-        {
-            return LegacyTest.TestBase.GetServiceClient<InsightsClient>(this.csmTestFactory);
         }
 
         private ManagementGroupsAPIClient GetManagementGroupsApiClient(MockContext context)
@@ -307,7 +248,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// <param name="credentials"></param>
             public TestHttpClientHelperFactory(SubscriptionCloudCredentials credentials)
             {
-                this.credential = credentials;
+                credential = credentials;
             }
 
             /// <summary>
@@ -317,7 +258,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             /// <param name="headerValues">The headers.</param>
             public override HttpClientHelper CreateHttpClientHelper(SubscriptionCloudCredentials credentials, IEnumerable<ProductInfoHeaderValue> headerValues, Dictionary<string, string> cmdletHeaderValues)
             {
-                return new HttpClientHelperImpl(credentials: this.credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
+                return new HttpClientHelperImpl(credentials: credential, headerValues: headerValues, cmdletHeaderValues: cmdletHeaderValues);
             }
 
             /// <summary>
@@ -343,6 +284,25 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 {
                     return base.CreateHttpClient(HttpMockServer.CreateInstance().AsArray().Concat(primaryHandlers).ToArray());
                 }
+            }
+        }
+
+        //https://gist.github.com/markcowl/4d907da7ce40f2e424e8d0625887b82e
+        public class SubscriptionCloudCredentialsAdapter : SubscriptionCloudCredentials
+        {
+            private readonly ServiceClientCredentials _wrappedCreds;
+
+            public SubscriptionCloudCredentialsAdapter(ServiceClientCredentials credentials, string subscriptionId)
+            {
+                _wrappedCreds = credentials;
+                SubscriptionId = subscriptionId;
+            }
+
+            public override string SubscriptionId { get; }
+
+            public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                return _wrappedCreds.ProcessHttpRequestAsync(request, cancellationToken);
             }
         }
     }

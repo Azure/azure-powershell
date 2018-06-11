@@ -657,7 +657,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -995,7 +995,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ActionHistory": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
               "StartTime": "System.Nullable`1[System.DateTime]",
@@ -1324,7 +1324,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "JobCollectionName": "System.String",
@@ -1802,7 +1802,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -2658,7 +2658,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -3542,7 +3542,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -4426,7 +4426,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -5708,7 +5708,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -6564,7 +6564,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceGroupName": "System.String",
               "JobCollectionName": "System.String",
@@ -7042,7 +7042,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -7926,7 +7926,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -8810,7 +8810,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
             "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSSchedulerJobDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "JobAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
               "JobErrorAction": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -9926,7 +9926,7 @@
     "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": {
       "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobActionType": "System.Nullable`1[Microsoft.Azure.Management.Scheduler.Models.JobActionType]"
       },
@@ -10125,7 +10125,7 @@
     "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory": {
       "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.4.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionHistory, Microsoft.Azure.Commands.Scheduler, Version=0.16.5.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "JobActionType": "System.String",
         "JobHistoryActionName": "System.String",
