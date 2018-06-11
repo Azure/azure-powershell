@@ -48,7 +48,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(@"Test-VirtualMachine $null $true");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachinePiping()
         {
@@ -122,7 +127,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSizeAndUsage");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineCapture()
         {
@@ -275,7 +285,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineWithEmptyAuc");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue/update, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineWithBYOL()
         {
