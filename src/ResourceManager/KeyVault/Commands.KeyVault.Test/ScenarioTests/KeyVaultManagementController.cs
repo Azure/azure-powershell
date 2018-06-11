@@ -26,6 +26,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
+using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.KeyVault.Test
 {
@@ -38,6 +39,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private const string SubscriptionIdKey = "SubscriptionId";
 
         public ResourceManagementClient NewResourceManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
@@ -123,17 +126,25 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
         private void SetupManagementClients(MockContext context)
         {
             NewResourceManagementClient = GetResourceManagementClient(context);
+            ResourceClient = GetResourceClient(context);
             GraphClient = GetGraphClient(context);
             KeyVaultManagementClient = GetKeyVaultManagementClient(context);
             _helper.SetupManagementClients(
                 NewResourceManagementClient,
+                ResourceClient,
                 KeyVaultManagementClient,
-                GraphClient);
+                GraphClient
+                );
         }
 
         private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private RM.ResourceManagementClient GetResourceClient(MockContext context)
+        {
+            return context.GetServiceClient<RM.ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private KeyVaultManagementClient GetKeyVaultManagementClient(MockContext context)
