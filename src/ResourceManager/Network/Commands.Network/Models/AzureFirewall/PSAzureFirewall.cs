@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSAzureFirewall : PSTopLevelResource
     {
         private const string AzureFirewallSubnetName = "AzureFirewallSubnet";
-        private const int AzureFirewallSubnetMinSize = 25;
         private const string AzureFirewallIpConfigurationName = "AzureFirewallIpConfiguration";
         
         public List<PSAzureFirewallIpConfiguration> IpConfigurations { get; set; }
@@ -79,10 +78,6 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
 
             var subnetSize = int.Parse(firewallSubnet.AddressPrefix.Split(new[] { '/' })[1]);
-            if (subnetSize > AzureFirewallSubnetMinSize)
-            {
-                throw new ArgumentException($"The AddressPrefix ({firewallSubnet.AddressPrefix}) of the {AzureFirewallSubnetName} of the referenced Virtual Network must be at least /{AzureFirewallSubnetMinSize}");
-            }
             
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>
                 {
