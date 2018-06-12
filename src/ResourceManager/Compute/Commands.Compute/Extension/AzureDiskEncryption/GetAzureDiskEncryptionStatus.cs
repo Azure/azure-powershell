@@ -514,7 +514,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 // retrieve encryption state using per-disk instance status and report if successful
                 AzureDiskEncryptionStatusContext encryptionStatus = GetStatusFromInstanceView();
-                if (encryptionStatus != null && !(encryptionStatus.OsVolumeEncrypted==EncryptionStatus.Unknown || encryptionStatus.DataVolumesEncrypted==EncryptionStatus.Unknown))
+                if (encryptionStatus != null && (encryptionStatus.OsVolumeEncrypted!=EncryptionStatus.Unknown || encryptionStatus.DataVolumesEncrypted!=EncryptionStatus.Unknown))
                 {
                     encryptionStatus.ProgressMessage = progressMessage;
                     WriteObject(encryptionStatus);

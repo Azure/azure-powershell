@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupRPMountScript",
         SupportsShouldProcess = true), OutputType(typeof(RecoveryPointBase))]
-    public class DisableAzureRmRecoveryServicesBackupRPMountScript : RecoveryServicesBackupCmdletBase
+    public class DisableAzureRmRecoveryServicesBackupRPMountScript : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Recovery point of the item. Access to the mounted files of this recovery point
@@ -49,11 +50,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<Enum, object>()
-                {
-                    {RestoreBackupItemParams.RecoveryPoint, RecoveryPoint}
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.VaultName, vaultName },
+                        { VaultParams.ResourceGroupName, resourceGroupName },
+                        { RestoreBackupItemParams.RecoveryPoint, RecoveryPoint }
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider = providerManager.GetProviderInstance(
                     RecoveryPoint.WorkloadType, RecoveryPoint.BackupManagementType);
