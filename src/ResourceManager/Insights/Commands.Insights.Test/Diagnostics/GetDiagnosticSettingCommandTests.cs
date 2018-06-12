@@ -20,7 +20,6 @@ using Moq;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
@@ -54,6 +53,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             {
                 Body = new DiagnosticSettingsResource
                 {
+                    EventHubName = "",
+                    EventHubAuthorizationRuleId = "",
                     StorageAccountId = "/subscriptions/123/resourcegroups/rg/providers/microsoft.storage/accounts/myaccount",
                     WorkspaceId = "",
                     Logs = new List<LogSettings>

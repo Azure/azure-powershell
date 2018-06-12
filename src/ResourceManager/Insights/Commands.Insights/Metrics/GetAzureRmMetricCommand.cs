@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure.OData;
+using System.Globalization;
 
 namespace Microsoft.Azure.Commands.Insights.Metrics
 {

@@ -31,83 +31,110 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
+        internal const string SetAzureRmDiagnosticSettingOldParamGroup = "OldSetDiagnosticSetting";
+        internal const string SetAzureRmDiagnosticSettingNewParamGroup = "NewSetDiagnosticSetting";
+
         public const string StorageAccountIdParamName = "StorageAccountId";
         public const string ServiceBusRuleIdParamName = "ServiceBusRuleId";
+        public const string EventHubNameParamName = "EventHubName";
         public const string EventHubRuleIdParamName = "EventHubAuthorizationRuleId";
         public const string WorkspacetIdParamName = "WorkspaceId";
         public const string EnabledParamName = "Enabled";
 
+        /// <summary>
+        /// This is a temporary constant to provide backwards compatibility
+        /// </summary>
+        internal const string TempServiceName = "service";
+
         #region Parameters declarations
+
+        /// <summary>
+        /// Gets or sets the InputObject parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The complete spec of a DiagnosticSettingSetting")]
+        [ValidateNotNullOrEmpty]
+        public PSServiceDiagnosticSettings InputObject { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name parameter of the cmdlet
+        /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Diagnostics setting resource name")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the storage account parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The storage account id")]
         public string StorageAccountId { get; set; }
 
         /// <summary>
         /// Gets or sets the service bus rule id parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
         public string ServiceBusRuleId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service bus rule id parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The service bus rule id")]
+        public string EventHubName { get; set; }
 
         /// <summary>
         /// Gets or sets the event hub authorization rule id parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The event hub rule id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The event hub rule id")]
         public string EventHubAuthorizationRuleId { get; set; }
 
         /// <summary>
         /// Gets or sets the enable parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the diagnostics should be enabled or disabled")]
         [ValidateNotNullOrEmpty]
         public bool Enabled { get; set; }
 
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
         [ValidateNotNullOrEmpty]
+        [Alias("Category")]
         public List<string> Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
         [ValidateNotNullOrEmpty]
+        [Alias("Timegrain")]
         public List<string> Timegrains { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether retention should be enabled
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled")]
         [ValidateNotNullOrEmpty]
         public bool? RetentionEnabled { get; set; }
 
         /// <summary>
         /// Gets or sets the OMS workspace Id
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id of the Log Analytics workspace to send logs/metrics to")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource Id of the Log Analytics workspace to send logs/metrics to")]
         public string WorkspaceId { get; set; }
 
         /// <summary>
         /// Gets or sets the retention in days
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
         public int? RetentionInDays { get; set; }
 
         #endregion
@@ -115,6 +142,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         private bool isStorageParamPresent;
 
         private bool isServiceBusParamPresent;
+
+        private bool isEventHubParamPresent;
 
         private bool isEventHubRuleParamPresent;
 
@@ -124,64 +153,91 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
         protected override void ProcessRecordInternal()
         {
-            HashSet<string> usedParams = new HashSet<string>(this.MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
-
-            this.isStorageParamPresent = usedParams.Contains(StorageAccountIdParamName);
-            this.isServiceBusParamPresent = usedParams.Contains(ServiceBusRuleIdParamName);
-            this.isEventHubRuleParamPresent = usedParams.Contains(EventHubRuleIdParamName);
-            this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
-            this.isEnbledParameterPresent = usedParams.Contains(EnabledParamName);
-
-            if (!this.isStorageParamPresent &&
-                !this.isServiceBusParamPresent &&
-                !this.isEventHubRuleParamPresent &&
-                !this.isWorkspaceParamPresent &&
-                !this.isEnbledParameterPresent)
-            {
-                throw new ArgumentException("No operation is specified");
-            }
-
-            string diagnosticSettingsResourceName = string.IsNullOrWhiteSpace(this.Name) ? "service" : this.Name;
-
-            DiagnosticSettingsResource getResponse = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: diagnosticSettingsResourceName, cancellationToken: CancellationToken.None).Result;
-
-            DiagnosticSettingsResource properties = getResponse;
-
-            SetStorage(properties);
-
-            SetEventHubRule(properties);
-
-            SetWorkspace(properties);
-
-            if (this.Categories == null && this.Timegrains == null)
-            {
-                SetAllCategoriesAndTimegrains(properties);
-            }
-            else
-            {
-                if (this.Categories != null)
-                {
-                    SetSelectedCategories(properties);
-                }
-
-                if (this.Timegrains != null)
-                {
-                    SetSelectedTimegrains(properties);
-                }
-            }
-
-            if (this.RetentionEnabled.HasValue)
-            {
-                SetRetention(properties);
-            }
-
-            var putParameters = CopySettings(properties);
-
             if (ShouldProcess(
                 target: string.Format("Create/update a diagnostic setting for resource Id: {0}", this.ResourceId),
                 action: "Create/update a diagnostic setting"))
             {
-                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(resourceUri: this.ResourceId, parameters: putParameters, name: diagnosticSettingsResourceName, cancellationToken: CancellationToken.None).Result;
+                WriteWarningWithTimestamp("The arguments Categories and Timegrains now have aliases Category and Timegrain respectively. The plural names will be removed in future releases.");
+                DiagnosticSettingsResource properties;
+
+                if (this.InputObject == null)
+                {
+                    // If InputObject is null process the way it was done before
+                    WriteDebugWithTimestamp("Processing using command line arguments");
+                    HashSet<string> usedParams = new HashSet<string>(this.MyInvocation.BoundParameters.Keys, StringComparer.OrdinalIgnoreCase);
+
+                    this.isStorageParamPresent = usedParams.Contains(StorageAccountIdParamName);
+                    this.isServiceBusParamPresent = usedParams.Contains(ServiceBusRuleIdParamName);
+                    this.isEventHubParamPresent = usedParams.Contains(EventHubNameParamName);
+                    this.isEventHubRuleParamPresent = usedParams.Contains(EventHubRuleIdParamName);
+                    this.isWorkspaceParamPresent = usedParams.Contains(WorkspacetIdParamName);
+                    this.isEnbledParameterPresent = usedParams.Contains(EnabledParamName);
+
+                    if (!this.isStorageParamPresent &&
+                        !this.isServiceBusParamPresent &&
+                        !this.isEventHubParamPresent &&
+                        !this.isEventHubRuleParamPresent &&
+                        !this.isWorkspaceParamPresent &&
+                        !this.isEnbledParameterPresent)
+                    {
+                        throw new ArgumentException("No operation is specified");
+                    }
+
+                    WriteDebugWithTimestamp("Getting existing diagnostics setting");
+                    properties = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: TempServiceName, cancellationToken: CancellationToken.None).Result;
+
+                    WriteDebugWithTimestamp("Merging data. Existing setting is: {0}", properties == null ? "null" : "not null");
+                    SetStorage(properties);
+
+                    // TODO: make sure that ServiceBusRuleId is not being used anymore.
+                    SetServiceBus(properties);
+
+                    SetEventHubRule(properties);
+
+                    SetWorkspace(properties);
+
+                    if (this.Categories == null && this.Timegrains == null)
+                    {
+                        WriteDebugWithTimestamp("Changing the enable properties");
+                        SetAllCategoriesAndTimegrains(properties);
+                    }
+                    else
+                    {
+                        WriteDebugWithTimestamp("Setting categories and time grains");
+                        if (this.Categories != null)
+                        {
+                            SetSelectedCategories(properties);
+                        }
+
+                        if (this.Timegrains != null)
+                        {
+                            SetSelectedTimegrains(properties);
+                        }
+                    }
+
+                    if (this.RetentionEnabled.HasValue)
+                    {
+                        WriteDebugWithTimestamp("Setting retention");
+                        SetRetention(properties);
+                    }
+                }
+                else
+                {
+                    // This is new functionality to keep the previous as it was before
+                    WriteDebugWithTimestamp("Processing using InputObject");
+                    properties = this.InputObject;
+                }
+
+                DiagnosticSettingsResource putParameters = CopySettings(properties);
+
+                WriteDebugWithTimestamp("Sending create/update request");
+                DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(
+                    resourceUri: this.ResourceId, 
+                    name: string.IsNullOrWhiteSpace(this.Name) ? TempServiceName : this.Name.Trim(), 
+                    parameters: putParameters, 
+                    cancellationToken: CancellationToken.None).Result;
+
+                WriteDebugWithTimestamp("Successful operation. Sending output");
                 WriteObject(new PSServiceDiagnosticSettings(result));
             }
         }
@@ -193,6 +249,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             {
                 Logs = properties.Logs,
                 Metrics = properties.Metrics,
+                EventHubName = properties.EventHubName,                
                 StorageAccountId = properties.StorageAccountId,
                 WorkspaceId = properties.WorkspaceId,
                 EventHubAuthorizationRuleId = properties.EventHubAuthorizationRuleId
@@ -288,6 +345,19 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
             if (this.isWorkspaceParamPresent)
             {
                 properties.WorkspaceId = this.WorkspaceId;
+            }
+        }
+
+        private void SetServiceBus(DiagnosticSettingsResource properties)
+        {
+            if (this.isServiceBusParamPresent)
+            {
+                properties.EventHubName = this.ServiceBusRuleId;
+            }
+
+            if (this.isEventHubParamPresent)
+            {
+                properties.EventHubName = this.EventHubName;
             }
         }
 

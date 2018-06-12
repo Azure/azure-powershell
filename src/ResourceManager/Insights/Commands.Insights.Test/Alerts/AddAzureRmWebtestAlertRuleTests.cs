@@ -72,6 +72,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 {
                     resourceGroup = resourceGrp;
                     createOrUpdatePrms = createOrUpdateParams;
+                    response.Body = createOrUpdateParams;
                 });
 
             insightsManagementClientMock.SetupGet(f => f.AlertRules).Returns(this.insightsAlertRuleOperationsMock.Object);
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             // Test empty actions
             cmdlet.DisableRule = false;
-            cmdlet.Action = new List<RuleAction>();
+            cmdlet.Action = new List<Management.Monitor.Management.Models.RuleAction>();
 
             cmdlet.ExecuteCmdlet();
 
@@ -138,7 +139,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             // Test non-empty actions (one action)
             List<string> eMails = new List<string>();
             eMails.Add("le@hypersoft.com");
-            RuleAction ruleAction = new RuleEmailAction
+            Management.Monitor.Management.Models.RuleAction ruleAction = new Management.Monitor.Management.Models.RuleEmailAction
             {
                 SendToServiceOwners = true,
                 CustomEmails = eMails
@@ -160,7 +161,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             // Test non-empty actions (two actions)
             var properties = new Dictionary<string, string>();
             properties.Add("hello", "goodbye");
-            ruleAction = new RuleWebhookAction
+            ruleAction = new Management.Monitor.Management.Models.RuleWebhookAction
             {
                 ServiceUri = "http://bueno.net",
                 Properties = properties
@@ -198,7 +199,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         {
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
             Assert.Equal(location, this.createOrUpdatePrms.Location);
-            Assert.True(this.createOrUpdatePrms.Tags.ContainsKey(tagsKey));
+            Assert.True(this.createOrUpdatePrms.Tags.ContainsKey(tagsKey), "Checking tags");
 
             Assert.NotNull(this.createOrUpdatePrms);
             if (actionsNull)
@@ -213,15 +214,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             Assert.Equal(Utilities.Name, this.createOrUpdatePrms.AlertRuleResourceName);
             Assert.Equal(isEnabled, this.createOrUpdatePrms.IsEnabled);
-            Assert.True(this.createOrUpdatePrms.Condition is LocationThresholdRuleCondition);
+            Assert.True(this.createOrUpdatePrms.Condition is Management.Monitor.Models.LocationThresholdRuleCondition, "Checking type #1");
 
-            var condition = this.createOrUpdatePrms.Condition as LocationThresholdRuleCondition;
+            var condition = this.createOrUpdatePrms.Condition as Management.Monitor.Models.LocationThresholdRuleCondition;
             Assert.Equal(failedLocationCount, condition.FailedLocationCount);
             Assert.Equal(totalMinutes, ((TimeSpan)condition.WindowSize).TotalMinutes);
 
             // This is probably unnecessary
-            Assert.True(condition.DataSource is RuleMetricDataSource);
-            var dataSource = condition.DataSource as RuleMetricDataSource;
+            Assert.True(condition.DataSource is Management.Monitor.Models.RuleMetricDataSource, "Checking type #2");
+            var dataSource = condition.DataSource as Management.Monitor.Models.RuleMetricDataSource;
             Assert.Null(dataSource.MetricName);
             Assert.Null(dataSource.ResourceUri);
         }

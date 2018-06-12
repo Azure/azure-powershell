@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Create an AlertRuleWebhook action
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleEmail"), OutputType(typeof(RuleEmailAction))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAlertRuleEmail"), OutputType(typeof(Management.Monitor.Management.Models.RuleEmailAction))]
     public class NewAzureRmAlertRuleEmailCommand : MonitorCmdletBase
     {
         /// <summary>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 throw new ArgumentException("Either SendToServiceOwners must be set or at least one custom email must be present");
             }
 
-            var action = new RuleEmailAction
+            var action = new Management.Monitor.Management.Models.RuleEmailAction
             {
                 CustomEmails = this.CustomEmail,
                 SendToServiceOwners = this.SendToServiceOwner

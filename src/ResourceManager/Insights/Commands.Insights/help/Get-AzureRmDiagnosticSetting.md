@@ -88,5 +88,4 @@ This cmdlet does not accept any input.
 ## RELATED LINKS
 
 [Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
-
-
+[Remove-AzureRmDiagnosticSetting](./Remove-AzureRmDiagnosticSetting.md)

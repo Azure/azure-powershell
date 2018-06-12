@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
     using Microsoft.Azure.Management.Monitor;
     using ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 
     /// <summary>
     /// Gets an Azure Action Group.
@@ -139,7 +140,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
                 IList<EmailReceiver> emailReceivers =
                     this.Receiver.OfType<PSEmailReceiver>().
-                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: o.Status)).ToList();
+                        Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<SmsReceiver> smsReceivers =
                     this.Receiver.OfType<PSSmsReceiver>().
                         Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: o.Status)).ToList();
