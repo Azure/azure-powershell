@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: A8FDC5A3-F309-49B3-B417-8E0A1535BAF4
@@ -15,14 +15,14 @@ Cancels a running job.
 
 ### JobFilterSet (Default)
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +92,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultId
+ARM ID of the Recovery Services Vault.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
