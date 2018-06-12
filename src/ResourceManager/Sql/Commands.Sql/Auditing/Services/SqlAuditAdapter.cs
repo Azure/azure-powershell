@@ -471,11 +471,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
-                properties.StorageAccountAccessKey = Guid.Empty.Equals(model.StorageAccountSubscriptionId) || Context.Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
+                properties.StorageAccountAccessKey = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
                     ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType) :
                     ExtractStorageAccountKey(model.StorageAccountSubscriptionId, model.StorageAccountName, model.StorageKeyType);
                 properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                properties.StorageAccountSubscriptionId = Guid.Empty.Equals(model.StorageAccountSubscriptionId) ?
+                properties.StorageAccountSubscriptionId = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
                     ExtractStorageAccountSubscriptionId(model.StorageAccountName) : model.StorageAccountSubscriptionId.ToString();
             }
             properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);

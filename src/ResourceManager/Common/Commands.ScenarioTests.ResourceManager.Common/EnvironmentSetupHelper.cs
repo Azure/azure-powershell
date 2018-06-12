@@ -442,6 +442,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+
 #if !NETSTANDARD
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {

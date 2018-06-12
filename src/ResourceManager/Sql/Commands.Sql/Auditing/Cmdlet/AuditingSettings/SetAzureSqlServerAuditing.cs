@@ -110,10 +110,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditActionGroup = AuditActionGroup;
             }
 
-            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
-            {
-                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
-            }
+            model.StorageAccountSubscriptionId = StorageAccountSubscriptionId.Equals(Guid.Empty) ?
+                            Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id) : StorageAccountSubscriptionId;
 
             return model;
         }
