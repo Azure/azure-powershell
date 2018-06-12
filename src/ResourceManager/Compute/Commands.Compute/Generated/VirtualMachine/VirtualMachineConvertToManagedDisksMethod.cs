@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string vmName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = VirtualMachinesClient.ConvertToManagedDisks(resourceGroupName, vmName);
-            WriteObject(result);
+            VirtualMachinesClient.ConvertToManagedDisks(resourceGroupName, vmName);
         }
     }
 
@@ -103,6 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMName, VerbsData.ConvertTo))
@@ -110,10 +110,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string vmName = this.VMName;
 
-                    var result = VirtualMachinesClient.ConvertToManagedDisks(resourceGroupName, vmName);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
+                    var result = VirtualMachinesClient.ConvertToManagedDisksWithHttpMessagesAsync(resourceGroupName, vmName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }
