@@ -406,4 +406,12 @@
   <data name="RunLoginCmdlet" xml:space="preserve">
     <value>Run Connect-AzureRmAccount to login.</value>
   </data>
+  <data name="CannotCreateContext" xml:space="preserve">
+    <value>Cannot create a context for subscription with id '{0}'.</value>
+    <comment>{0} = subscription id</comment>
+  </data>
+  <data name="CannotGetContextName" xml:space="preserve">
+    <value>Unable to get context name for subscription with id '{0}'.</value>
+    <comment>{0} = subscription id</comment>
+  </data>
 </root>

@@ -72,7 +72,15 @@ NestedModules = @('.\Microsoft.Azure.Commands.Consumption.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmConsumptionUsageDetail'
+CmdletsToExport = 'Get-AzureRmConsumptionBudget',
+                  'Get-AzureRmConsumptionMarketplace',
+                  'Get-AzureRmConsumptionPriceSheet',
+                  'Get-AzureRmConsumptionReservationDetail',
+                  'Get-AzureRmConsumptionReservationSummary',
+                  'Get-AzureRmConsumptionUsageDetail',			  				  
+                  'New-AzureRmConsumptionBudget',
+                  'Remove-AzureRmConsumptionBudget',
+                  'Set-AzureRmConsumptionBudget'				  				  
 
 # Variables to export from this module
 # VariablesToExport = @()
