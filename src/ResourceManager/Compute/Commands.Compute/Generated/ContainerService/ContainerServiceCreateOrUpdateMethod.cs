@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.Name, VerbsCommon.New))
@@ -166,6 +167,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.Name, VerbsData.Update))

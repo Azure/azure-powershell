@@ -19,11 +19,13 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using Microsoft.Azure.Management.Compute.Models;
-
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSRunCommandResult : RunCommandResult
+    public class PSVirtualMachineExtensionList : PSVirtualMachineExtension
     {
+        public PSVirtualMachineExtension ToPSVirtualMachineExtension ()
+        {
+            return ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineExtension>(this);
+        }
     }
 }

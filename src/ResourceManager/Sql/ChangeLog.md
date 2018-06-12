@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+* Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
 
 ## Version 4.6.0
 * Updated the following cmdlets with optional LicenseType parameter
