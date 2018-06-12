@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.1.1
 * `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
 * Update Compute client library version to fix following cmdlets
     - Grant-AzureRmDiskAccess
