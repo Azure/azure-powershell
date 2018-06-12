@@ -181,7 +181,6 @@
     <Compile Include="ScenarioTests\DatabaseCrudStretchTests.cs" />
     <Compile Include="ScenarioTests\ServerDnsAliasTests.cs" />
     <Compile Include="ScenarioTests\ServerUpgradeTests.cs" />
-    <Compile Include="ScenarioTests\AdvancedThreatProtectionTests.cs" />
     <Compile Include="ScenarioTests\VulnerabilityAssessmentTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\ThreatDetectionTests.cs" />
@@ -224,9 +223,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ServerUpgradeTests.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="ScenarioTests\AdvancedThreatProtectionTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\VulnerabilityAssessmentTests.ps1">

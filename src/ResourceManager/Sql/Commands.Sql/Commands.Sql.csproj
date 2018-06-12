@@ -51,8 +51,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AdvancedThreatProtection\Cmdlet\DisableAzureSqlServerAdvancedThreatProtection.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\EnableAzureSqlServerAdvancedThreatProtection.cs" />
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
@@ -205,10 +203,6 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
-    <Compile Include="AdvancedThreatProtection\Cmdlet\SqlServerAdvancedThreatProtectionCmdletBase.cs" />
-    <Compile Include="AdvancedThreatProtection\Model\ServerAdvancedThreatProtectionPolicyModel.cs" />
-    <Compile Include="AdvancedThreatProtection\Services\SqlAdvancedThreatProtectionAdapter.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -230,7 +224,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentAtpCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentOperationCmdletBase.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
     <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\ClearSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
