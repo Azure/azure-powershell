@@ -232,6 +232,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj">
       <Project>{836965C0-B198-4D01-B3D7-757DB62B49A0}</Project>
       <Name>Commands.Common.KeyVault</Name>
+	  </ProjectReference>
     <ProjectReference Include="..\..\Network\Commands.Network\Commands.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
       <Name>Commands.Network</Name>
