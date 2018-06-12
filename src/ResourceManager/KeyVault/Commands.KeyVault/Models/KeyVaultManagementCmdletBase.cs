@@ -39,6 +39,8 @@ using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
+using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -113,50 +115,64 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
                 }
             }
-            IPage<GenericResource> listResult = null;
+            var listResult = Enumerable.Empty<PSKeyVaultIdentityItem>();
             var resourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null;
             if (resourceGroupName != null)
             {
-                listResult = armClient.ResourceGroups.ListResources(resourceGroupName,
+                listResult = this.ListByResourceGroup(resourceGroupName,
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
+                        r => r.ResourceType == resourceType));
             }
             else
             {
-                listResult = armClient.Resources.List(
+                listResult = this.ListResources(
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
+                        r => r.ResourceType == resourceType));
+            }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Name))
+            {
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.ConvertToDictionary().Keys.Where(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)).Any());
+            }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Value))
+            {
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.ConvertToDictionary().Values.Where(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)).Any());
             }
 
             List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
-                vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
-                    .Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-            }
-
-            while (!string.IsNullOrEmpty(listResult.NextPageLink))
-            {
-                if (resourceGroupName != null)
-                {
-                    listResult = armClient.ResourceGroups.ListResourcesNext(listResult.NextPageLink);
-                }
-                else
-                {
-                    listResult = armClient.Resources.ListNext(listResult.NextPageLink);
-                }
-
-                if (listResult != null)
-                {
-                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-                }
+                vaults.AddRange(listResult);
             }
 
             return vaults;
+        }
+
+        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        {
+            IResourceManagementClient armClient = this.ResourceClient;
+
+            return new GenericPageEnumerable<GenericResource>(
+                delegate ()
+                {
+                    return armClient.Resources.List(filter);
+                }, armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+        }
+
+        private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
+            string resourceGroupName,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
+            ulong first = ulong.MaxValue,
+            ulong skip = ulong.MinValue)
+        {
+            IResourceManagementClient armClient = this.ResourceClient;
+
+            return new GenericPageEnumerable<GenericResource>(
+                delegate ()
+                {
+                    return armClient.ResourceGroups.ListResources(resourceGroupName, filter);
+                }, armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
         protected string GetResourceGroupName(string vaultName)

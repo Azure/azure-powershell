@@ -183,8 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -224,14 +223,32 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 [Stop-AzureRmNetworkWatcherPacketCapture]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor]()
+[Get-AzureRmNetworkWatcherConnectionMonitor]()
 
 [Get-AzureRmNetworkWatcherConnectionMonitorReport]()
 
-[Set-AzureRmNetworkWatcherConnectionMonitor]()
+[Remove-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzureRmNetworkWatcherConnectionMonitor]()
 
 [Stop-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Remove-AzureRmNetworkWatcherConnectionMonitor]()
+[New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherProtocolConfiguration]()
+
+[Test-AzureRmNetworkWatcherIPFlow]()
+
+[Test-AzureRmNetworkWatcherConnectivity]()
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+
+[Start-AzureRmNetworkWatcherConnectionMonitor]()
+
+[Set-AzureRmNetworkWatcherConfigFlowLog]()
+
+[Get-AzureRMNetworkWatcherReachabilityReport]()
+
+[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+
+[Get-AzureRmNetworkWatcherFlowLogStatus]()

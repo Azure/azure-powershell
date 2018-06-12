@@ -92,6 +92,8 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for Storage account.
 Permissions are valid only if they match the specified resource type.
+
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
 ```yaml

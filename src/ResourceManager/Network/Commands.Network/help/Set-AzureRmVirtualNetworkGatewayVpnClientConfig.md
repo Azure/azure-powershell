@@ -82,7 +82,7 @@ P2S External Radius server address.
 ```yaml
 Type: String
 Parameter Sets: RadiusServerConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -97,7 +97,7 @@ P2S External Radius server secret.
 ```yaml
 Type: SecureString
 Parameter Sets: RadiusServerConfiguration
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ You can create an object reference to a virtual network gateway by using the Get
 ```yaml
 Type: PSVirtualNetworkGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +128,7 @@ Specifies the IP addresses to be assigned to clients connecting to this gateway
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
