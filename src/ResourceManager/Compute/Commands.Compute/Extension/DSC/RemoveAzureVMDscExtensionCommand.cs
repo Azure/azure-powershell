@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
             {
                 //Add retry logic due to CRP service restart known issue CRP bug: 3564713
                 var count = 1;
-                AzureOperationResponse<MC.OperationStatusResponse> op = null;
+                Rest.Azure.AzureOperationResponse op = null;
 
                 while (true)
                 {

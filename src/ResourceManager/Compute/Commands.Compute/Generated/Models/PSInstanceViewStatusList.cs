@@ -20,10 +20,11 @@
 // code is regenerated.
 
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSOperationStatusResponse : Azure.Management.Compute.Models.OperationStatusResponse
+    public partial class PSInstanceViewStatusList : List<InstanceViewStatus>
     {
     }
 }

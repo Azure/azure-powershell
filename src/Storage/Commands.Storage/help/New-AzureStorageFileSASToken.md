@@ -165,6 +165,8 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for a Storage file.
 
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+
 ```yaml
 Type: String
 Parameter Sets: NameSasPermission, FileSasPermission

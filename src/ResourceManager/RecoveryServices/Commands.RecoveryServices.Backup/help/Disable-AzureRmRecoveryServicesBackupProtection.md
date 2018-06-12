@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: ECD3F05A-9350-407E-8B48-67443547652F
@@ -15,7 +15,7 @@ Disables protection for a Backup-protected item.
 
 ```
 Disable-AzureRmRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPoints] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +101,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultId
+ARM ID of the Recovery Services Vault.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

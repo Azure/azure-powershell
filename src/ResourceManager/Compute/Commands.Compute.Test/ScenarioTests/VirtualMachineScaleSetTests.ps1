@@ -264,18 +264,24 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         }
 
         $st = $vmssResult | Stop-AzureRmVmss -StayProvision -Force;
+        Verify-PSOperationStatusResponse $st;
+
         $job = $vmssResult | Stop-AzureRmVmss -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        $st = $job | Receive-Job
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
+
         $job = $vmssResult | Start-AzureRmVmss -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        $st = $job | Receive-Job
+        $st = $job | Receive-Job;
+
         $job = $vmssResult | Restart-AzureRmVmss -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        $st = $job | Receive-Job
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
 
         if ($IsManaged -eq $true)
         {
@@ -283,6 +289,8 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
             $job | Wait-Job;
             $result = $job | Wait-Job;
             Assert-AreEqual "Completed" $result.State;
+            $st = $job | Receive-Job;
+            Verify-PSOperationStatusResponse $st;
         }
         $instanceListParam = @();
         for ($i = 0; $i -lt 2; $i++)
@@ -291,9 +299,17 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
         }
 
         $st = $vmssResult | Stop-AzureRmVmss -StayProvision -InstanceId $instanceListParam -Force;
+        Verify-PSOperationStatusResponse $st;
+
         $st = $vmssResult | Stop-AzureRmVmss -InstanceId $instanceListParam -Force;
+        Verify-PSOperationStatusResponse $st;
+
         $st = $vmssResult | Start-AzureRmVmss -InstanceId $instanceListParam;
+        Verify-PSOperationStatusResponse $st;
+
         $st = $vmssResult | Restart-AzureRmVmss -InstanceId $instanceListParam;
+        Verify-PSOperationStatusResponse $st;
+
         if ($IsManaged -eq $true)
         {
             for ($j = 0; $j -lt 2; $j++)
@@ -301,15 +317,14 @@ function Test-VirtualMachineScaleSet-Common($IsManaged)
                 $job = Set-AzureRmVmssVM -ReimageAll -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $j -AsJob;
                 $result = $job | Wait-Job;
                 Assert-AreEqual "Completed" $result.State;
-                $st = $job | Receive-Job
+                $st = $job | Receive-Job;
+                Verify-PSOperationStatusResponse $st;
             }
         }
 
         # Remove
         $st = Remove-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -InstanceId 1 -Force;
-        $job = $vmssResult | Remove-AzureRmVmss -Force -AsJob;
-        $result = $job | Wait-Job;
-        Assert-AreEqual "Completed" $result.State;
+        Verify-PSOperationStatusResponse $st;
     }
     finally
     {

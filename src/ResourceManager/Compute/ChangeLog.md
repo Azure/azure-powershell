@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
-	* ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
+* ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
 
 ## Version 5.1.0
 * VMSS VM Update feature
