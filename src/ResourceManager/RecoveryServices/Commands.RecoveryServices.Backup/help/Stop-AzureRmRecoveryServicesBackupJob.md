@@ -15,13 +15,13 @@ Cancels a running job.
 
 ### JobFilterSet (Default)
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [-Vault <ARSVault>]
+Stop-AzureRmRecoveryServicesBackupJob [-Job] <JobBase> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-Vault <ARSVault>]
+Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,11 +95,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

@@ -16,7 +16,7 @@ Gets Backup jobs.
 ```
 Get-AzureRmRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobOperation>] [[-From] <DateTime>]
  [[-To] <DateTime>] [[-JobId] <String>] [[-Job] <JobBase>] [-BackupManagementType <BackupManagementType>]
- [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,11 +220,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

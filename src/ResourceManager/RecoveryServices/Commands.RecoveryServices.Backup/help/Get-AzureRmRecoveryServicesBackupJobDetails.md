@@ -15,13 +15,13 @@ Gets details for a Backup job.
 
 ### JobFilterSet (Default)
 ```
-Get-AzureRmRecoveryServicesBackupJobDetails [-Job] <JobBase> [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupJobDetails [-Job] <JobBase> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IdFilterSet
 ```
-Get-AzureRmRecoveryServicesBackupJobDetails [-JobId] <String> [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupJobDetails [-JobId] <String> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -94,11 +94,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

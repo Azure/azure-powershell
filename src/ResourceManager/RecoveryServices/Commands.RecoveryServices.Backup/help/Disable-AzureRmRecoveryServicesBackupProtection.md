@@ -15,7 +15,7 @@ Disables protection for a Backup-protected item.
 
 ```
 Disable-AzureRmRecoveryServicesBackupProtection [-Item] <ItemBase> [-RemoveRecoveryPoints] [-Force]
- [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,11 +104,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

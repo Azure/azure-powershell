@@ -14,9 +14,9 @@ Restores the data and configuration for a Backup item to a recovery point.
 ## SYNTAX
 
 ```
-Restore-AzureRmRecoveryServicesBackupItem [-RecoveryPoint] <RecoveryPointBase> [-StorageAccountName] <String>
- [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount] [-Vault <ARSVault>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-AzureRmRecoveryServicesBackupItem [-VaultLocation <String>] [-RecoveryPoint] <RecoveryPointBase>
+ [-StorageAccountName] <String> [-StorageAccountResourceGroupName] <String> [-UseOriginalStorageAccount]
+ [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,11 +137,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
-```yaml
-Type: ARSVault
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -VaultLocation
+Location of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

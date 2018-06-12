@@ -16,7 +16,7 @@ Creates a Backup protection policy.
 ```
 New-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadType] <WorkloadType>
  [[-BackupManagementType] <BackupManagementType>] [[-RetentionPolicy] <RetentionPolicyBase>]
- [[-SchedulePolicy] <SchedulePolicyBase>] [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -142,11 +142,9 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

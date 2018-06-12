@@ -21,15 +21,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string VaultId { get; set; }
 
         /// <summary>
-        /// Location of the Recovery Services Vault.
-        /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault.",
-            ValueFromPipeline = true)]
-        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
-        [ValidateNotNullOrEmpty]
-        public string VaultLocation { get; set; }
-
-        /// <summary>
         /// Get the job PS model after fetching the job object from the service given the job ID.
         /// </summary>
         /// <param name="jobId">ID of the job to be fetched</param>

@@ -16,7 +16,7 @@ Gets Backup containers.
 ```
 Get-AzureRmRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-BackupManagementType] <String>]
  [[-Name] <String>] [[-FriendlyName] <String>] [[-ResourceGroupName] <String>]
- [[-Status] <ContainerRegistrationStatus>] [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Status] <ContainerRegistrationStatus>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -169,11 +169,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

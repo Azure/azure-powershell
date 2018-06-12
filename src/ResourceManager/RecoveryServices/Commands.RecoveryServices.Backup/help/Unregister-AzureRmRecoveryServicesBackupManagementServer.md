@@ -15,7 +15,7 @@ Unregisters a SCDPM server or Backup server from the vault.
 
 ```
 Unregister-AzureRmRecoveryServicesBackupManagementServer [-AzureRmBackupManagementServer] <BackupEngineBase>
- [-PassThru] [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-PassThru] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -87,11 +87,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

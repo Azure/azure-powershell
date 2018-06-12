@@ -19,6 +19,7 @@ using System.Threading;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -32,6 +33,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
+        /// <summary>
+        /// Location of the Recovery Services Vault.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Location of the Recovery Services Vault.",
+            ValueFromPipeline = true)]
+        [LocationCompleter("Microsoft.RecoveryServices/vaults")]
+        [ValidateNotNullOrEmpty]
+        public string VaultLocation { get; set; }
+
         /// <summary>
         /// Recovery point of the item to be restored
         /// </summary>

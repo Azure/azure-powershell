@@ -15,20 +15,20 @@ Gets the recovery points for a backed up item.
 
 ### NoFilterParameterSet (Default)
 ```
-Get-AzureRmRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### DateTimeFilter
 ```
 Get-AzureRmRecoveryServicesBackupRecoveryPoint [[-StartDate] <DateTime>] [[-EndDate] <DateTime>]
- [-Item] <ItemBase> [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Item] <ItemBase> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RecoveryPointId
 ```
 Get-AzureRmRecoveryServicesBackupRecoveryPoint [-Item] <ItemBase> [-RecoveryPointId] <String>
- [[-KeyFileDownloadLocation] <String>] [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [[-KeyFileDownloadLocation] <String>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -152,11 +152,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

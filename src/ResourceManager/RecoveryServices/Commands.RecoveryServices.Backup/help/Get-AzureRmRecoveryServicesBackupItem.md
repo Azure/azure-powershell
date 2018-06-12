@@ -17,7 +17,7 @@ Gets the items from a container in Backup.
 ```
 Get-AzureRmRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [-WorkloadType] <WorkloadType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzureRmRecoveryServicesBackupItem [-Container] <ContainerBase> [[-Name] <Str
 ```
 Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementType> [[-Name] <String>]
  [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>]
- [-WorkloadType] <WorkloadType> [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [-WorkloadType] <WorkloadType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -166,11 +166,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

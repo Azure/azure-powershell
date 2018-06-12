@@ -14,7 +14,7 @@ Gets SCDPM and Azure Backup management servers.
 ## SYNTAX
 
 ```
-Get-AzureRmRecoveryServicesBackupManagementServer [[-Name] <String>] [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupManagementServer [[-Name] <String>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -67,11 +67,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 

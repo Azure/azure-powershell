@@ -15,26 +15,26 @@ Gets Backup protection policies for a vault.
 
 ### NoParamSet (Default)
 ```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
-Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-Vault <ARSVault>]
+Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzureRmRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
- [-BackupManagementType] <BackupManagementType> [-Vault <ARSVault>] [-DefaultProfile <IAzureContextContainer>]
+ [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -113,11 +113,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vault
-The Recovery Services Vault.
-
-```yaml
-Type: ARSVault
+### -VaultId
+ARM ID of the Recovery Services Vault.```yaml
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
