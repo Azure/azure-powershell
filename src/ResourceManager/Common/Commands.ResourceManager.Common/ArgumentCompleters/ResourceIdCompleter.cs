@@ -61,8 +61,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
 
                 var client = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
 
-                client.SubscriptionId = context.Subscription.Id;
-
                 var odata = new ODataQuery<GenericResourceFilter>(r => r.ResourceType == resourceType);
 
                 IEnumerable<string> resourceInfoList = new List<string>();
@@ -85,7 +83,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters
                             .ToList();
                     }
                 }
-                catch (ArgumentException)
+                catch (Exception)
                 {
                     return resourceInfoList;
                 }
