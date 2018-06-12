@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.3.0
 * Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
 
