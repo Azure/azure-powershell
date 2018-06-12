@@ -21,6 +21,7 @@
 
 ## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+* Fix issue with error message(s) not being returned for ManagedApplication and ManagedApplicationDefinition cmdlets
 
 ## Version 6.0.1
 * Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters

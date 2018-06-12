@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
                 var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
                 var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
-                    .WaitOnOperation(operationResult: operationResult);
+                    .WaitOnOperation(operationResult: operationResult, resourceId: resourceId, apiVersion: apiVersion);
                 this.WriteObject(this.GetOutputObjects("ManagedApplicationDefinitionId", JObject.Parse(result)), enumerateCollection: true);
             }
         }

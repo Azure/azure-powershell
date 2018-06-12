@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Resources;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.RestClients;
+    using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
     using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities;
     using Newtonsoft.Json.Linq;
     using System;
@@ -77,12 +78,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Waits for the operation to complete.
         /// </summary>
         /// <param name="operationResult">The operation result.</param>
-        internal string WaitOnOperation(OperationResult operationResult)
+        internal string WaitOnOperation(OperationResult operationResult, string resourceId = null, string apiVersion = null)
         {
             // TODO: Re-factor this mess.
             this.ProgressTrackerObject.UpdateProgress("Starting", 0);
 
-            var trackingResult = this.HandleOperationResponse(operationResult, this.IsResourceCreateOrUpdate ? operationResult.OperationUri : operationResult.LocationUri);
+            var trackingResult = this.HandleOperationResponse(operationResult, this.IsResourceCreateOrUpdate ? (operationResult.AzureAsyncOperationUri ?? operationResult.LocationUri) : operationResult.OperationUri);
 
             while (trackingResult != null && trackingResult.ShouldWait)
             {
@@ -100,6 +101,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
             }
 
             this.ProgressTrackerObject.UpdateProgress("Complete", 100);
+
+            // Handle async operation status
+            var result = !string.IsNullOrEmpty(operationResult.Value)
+                ? JObject.Parse(operationResult.Value)
+                : new JObject();
+
+            JToken statusToken;
+            if (result.TryGetValue("status", out statusToken))
+            {
+                TerminalProvisioningStates resourceProvisioningState;
+                if (Enum.TryParse(value: statusToken.ToString(), ignoreCase: true, result: out resourceProvisioningState))
+                {
+                    if (resourceProvisioningState == TerminalProvisioningStates.Succeeded ||
+                    resourceProvisioningState == TerminalProvisioningStates.Ready)
+                    {
+                        return this.GetResourcesClient()
+                            .GetResource<JObject>(resourceId, apiVersion, CancellationToken.None)
+                            .Result
+                            .ToString();
+                    } else if (resourceProvisioningState == TerminalProvisioningStates.Failed ||
+                        resourceProvisioningState == TerminalProvisioningStates.Canceled)
+                    {
+                        JToken errorToken;
+                        if (result.TryGetValue("error", out errorToken))
+                        {
+                            var errors = ResourceManagerSdkClient.ParseDetailErrorMessageWithCode(result.ToString());
+                            var errorText = string.Empty;
+                            if (errors != null)
+                            {
+                                errors.ForEach(error => errorText = string.Join(";", string.Format("Code: {0}, Message: {1}", error.Item1, error.Item2)));
+                            }
+
+                            this.FailedResult(
+                                operationResult,
+                                string.Format("The operation failed because resource is in the: '{0}' state. Error(s): {1}", statusToken, errorText));
+                        }
+                        else
+                        {
+                            this.FailedResult(
+                                operationResult,
+                                string.Format("The operation failed because resource is in the: '{0}' state. Please check the logs for more details.", statusToken));
+                        }
+                    }
+                }
+            }
 
             return operationResult.Value;
         }
@@ -163,6 +209,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         private TrackingOperationResult HandleCreateOrUpdateResponse(OperationResult operationResult)
         {
             Resource<InsensitiveDictionary<JToken>> resource;
+
             if (!operationResult.Value.TryConvertTo<Resource<InsensitiveDictionary<JToken>>>(out resource))
             {
                 return null;
@@ -241,7 +288,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 ShouldWait = true,
                 Failed = false,
                 RetryAfter = operationResult.RetryAfter ?? LongRunningOperationHelper.DefaultRetryAfter,
-                TrackingUri = operationResult.LocationUri ?? operationResult.OperationUri,
+                TrackingUri = operationResult.AzureAsyncOperationUri ?? (operationResult.LocationUri ?? operationResult.OperationUri),
                 OperationResult = operationResult,
             };
 
@@ -261,7 +308,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
                 ShouldWait = false,
                 Failed = true,
                 RetryAfter = operationResult.RetryAfter ?? LongRunningOperationHelper.DefaultRetryAfter,
-                TrackingUri = operationResult.LocationUri ?? operationResult.OperationUri,
+                TrackingUri = operationResult.AzureAsyncOperationUri ?? (operationResult.LocationUri ?? operationResult.OperationUri),
                 OperationResult = operationResult,
             };
 
