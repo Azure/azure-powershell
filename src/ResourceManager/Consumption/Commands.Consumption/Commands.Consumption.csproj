@@ -42,16 +42,32 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.Consumption, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Consumption.3.0.0\lib\net452\Microsoft.Azure.Management.Consumption.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Consumption, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Consumption.3.0.1\lib\net452\Microsoft.Azure.Management.Consumption.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cmdlets\Budget\GetAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\NewAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\RemoveAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\Budget\SetAzureRmConsumptionBudget.cs" />
+    <Compile Include="Cmdlets\GetAzureRmConsumptionMarketplace.cs" />
+    <Compile Include="Cmdlets\GetAzureRmConsumptionPriceSheet.cs" />
+    <Compile Include="Cmdlets\Reservation\GetAzureRmConsumptionReservationDetail.cs" />
+    <Compile Include="Cmdlets\Reservation\GetAzureRmConsumptionReservationSummary.cs" />
     <Compile Include="Cmdlets\UsageDetails\GetAzureRmConsumptionUsageDetail.cs" />
     <Compile Include="Common\AzureConsumptionCmdletBase.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\ParameterHelpMessages.cs" />
     <Compile Include="Common\Utilities.cs" />
+    <Compile Include="Models\PSBudget.cs" />
+    <Compile Include="Models\PSMarketplace.cs" />
+    <Compile Include="Models\PSPriceSheet.cs" />
+    <Compile Include="Models\PSPriceSheetProperty.cs" />
+    <Compile Include="Models\PSReservationDetail.cs" />
+    <Compile Include="Models\PSReservationSummary.cs" />
     <Compile Include="Models\PSUsageDetail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

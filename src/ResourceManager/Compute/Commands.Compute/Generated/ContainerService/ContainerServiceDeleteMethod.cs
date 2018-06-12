@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.Name, VerbsCommon.Remove)
@@ -112,8 +113,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string containerServiceName = this.Name;
 
-                    ContainerServicesClient.Delete(resourceGroupName, containerServiceName);
+                    var result = ContainerServicesClient.DeleteWithHttpMessagesAsync(resourceGroupName, containerServiceName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
 
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

@@ -165,12 +165,20 @@ function Test-VirtualMachine
         $job = Start-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSComputeLongRunningOperation $st;
+
         $job = Restart-AzureRmVM -Name $vmname -ResourceGroupName $rgname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSComputeLongRunningOperation $st;
+
         $job = Stop-AzureRmVM -Name $vmname -ResourceGroupName $rgname -Force -StayProvisioned -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSComputeLongRunningOperation $st;
 
         # Update
         $p.Location = $vm1.Location;
@@ -269,7 +277,8 @@ function Test-VirtualMachine
         Assert-True { $vm2.ResourceGroupName -eq $rgname }
 
         # Remove
-        Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
+        $st = Remove-AzureRmVM -Name $vmname2 -ResourceGroupName $rgname -Force;
+        Verify-PSComputeLongRunningOperation $st;
     }
     finally
     {
@@ -360,9 +369,12 @@ function Test-VirtualMachinePiping
         Assert-AreEqual $vm1.Extensions[0].Publisher "Microsoft.Compute"
         Assert-AreEqual $vm1.Extensions[0].VirtualMachineExtensionType "BGInfo";
 
-        Get-AzureRmVM -ResourceGroupName $rgname | Start-AzureRmVM;
-        Get-AzureRmVM -ResourceGroupName $rgname | Restart-AzureRmVM;
-        Get-AzureRmVM -ResourceGroupName $rgname | Stop-AzureRmVM -Force -StayProvisioned;
+        $st = Get-AzureRmVM -ResourceGroupName $rgname | Start-AzureRmVM;
+        Verify-PSComputeLongRunningOperation $st;
+        $st = Get-AzureRmVM -ResourceGroupName $rgname | Restart-AzureRmVM;
+        Verify-PSComputeLongRunningOperation $st;
+        $st = Get-AzureRmVM -ResourceGroupName $rgname | Stop-AzureRmVM -Force -StayProvisioned;
+        Verify-PSComputeLongRunningOperation $st;
 
         # Update VM
         Get-AzureRmVM -ResourceGroupName $rgname -Name $vmname `
@@ -393,6 +405,8 @@ function Test-VirtualMachinePiping
         $job = Get-AzureRmVM -ResourceGroupName $rgname | Save-AzureRmVMImage -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSComputeLongRunningOperation $st;
 
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
@@ -1067,9 +1081,10 @@ function Test-VirtualMachineCapture
 
         $dest = Get-ComputeTestResourceName;
         $templatePath = "$TestOutputRoot\template.txt";
-        Save-AzureRmVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
+        $st = Save-AzureRmVMImage -ResourceGroupName $rgname -VMName $vmname -DestinationContainerName $dest -VHDNamePrefix 'pslib' -Overwrite -Path $templatePath;
         $template = Get-Content $templatePath;
         Assert-True { $template[1].Contains("$schema"); }
+        Verify-PSComputeLongRunningOperation $st;
 
         # Remove
         Remove-AzureRmVM -ResourceGroupName $rgname -Name $vmname -Force;
@@ -2525,14 +2540,14 @@ function Test-VirtualMachineWithBYOL
         Assert-AreEqual $p.NetworkProfile.NetworkInterfaces[0].Primary $true;
 
         # Storage Account (SA)
-        $stoname = "mybyolosimagerdfe";
+        $stoname = "mybyolosimage";
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
         $osDiskVhdUri = "https://$stoname.blob.core.windows.net/test/os.vhd";
         $dataDiskVhdUri1 = "https://$stoname.blob.core.windows.net/test/data1.vhd";
         $dataDiskVhdUri2 = "https://$stoname.blob.core.windows.net/test/data2.vhd";
-        $userImageUrl = "https://mybyolosimagerdfe.blob.core.windows.net/vhdsrc2/win2012-tag2.vhd";
+        $userImageUrl = "https://$stoname.blob.core.windows.net/vhdsrc/win2012-tag0.vhd";
 
         $p = Set-AzureRmVMOSDisk -VM $p -Windows -Name $osDiskName -VhdUri $osDiskVhdUri -Caching $osDiskCaching -SourceImage $userImageUrl -CreateOption FromImage;
         $p = Add-AzureRmVMDataDisk -VM $p -Name 'testDataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 1 -VhdUri $dataDiskVhdUri1 -CreateOption Empty;

@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+* Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
 
 ## Version 5.2.0

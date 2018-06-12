@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.Backup
 ms.assetid: F671A7CC-2A27-460E-B064-2FBF1B9C6A0B
@@ -14,7 +14,7 @@ Waits for a Backup job to finish.
 ## SYNTAX
 
 ```
-Wait-AzureRmRecoveryServicesBackupJob [-Job] <Object> [[-Timeout] <Int64>]
+Wait-AzureRmRecoveryServicesBackupJob [-Job] <Object> [[-Timeout] <Int64>] [-VaultId <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -95,6 +95,21 @@ Required: False
 Position: 2
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VaultId
+ARM ID of the Recovery Services Vault.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
