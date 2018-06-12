@@ -168,16 +168,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingFailedUseServerDefault");
         }
 
-<<<<<<< HEAD
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
-=======
 #if NETSTANDARD
         [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
 #endif
->>>>>>> e78e977fe0b41df3768215a47ca8054cfbd61b10
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypeShortcuts()
         {

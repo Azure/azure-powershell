@@ -32,7 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var resourcesClient = GetResourcesClient();
             var newResourcesClient = GetResourcesClient(context);
             var authorizationClient = GetAuthorizationManagementClient();
-            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient,
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient, commonStorageClient,
+			  newResourcesClient, authorizationClient);
         }
 
         public ThreatDetectionClassicStorageTests(ITestOutputHelper output) : base(output)
