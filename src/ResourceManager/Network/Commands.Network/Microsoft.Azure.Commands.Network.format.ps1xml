@@ -2776,6 +2776,10 @@
                 <PropertyName>Etag</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>PrivateIpAddress</Label>
+                <PropertyName>PrivateIpAddress</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Subnet</Label>
                 <PropertyName>SubnetText</PropertyName>
               </ListItem>

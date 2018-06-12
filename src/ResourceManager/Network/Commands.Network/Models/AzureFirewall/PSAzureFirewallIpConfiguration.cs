@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         [JsonProperty(Order = 4)]
         public PSResourceId InternalPublicIpAddress { get; set; }
 
+        [JsonProperty(Order = 4)]
+        public PSResourceId PublicIpAddress { get; set; }
+
         [JsonIgnore]
         public string SubnetText
         {
@@ -35,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         }
 
         [JsonIgnore]
-        public string InternalPublicIpAddressText
+        public string PublicIpAddressText
         {
-            get { return JsonConvert.SerializeObject(InternalPublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
+            get { return JsonConvert.SerializeObject(PublicIpAddress, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
     }
 }
