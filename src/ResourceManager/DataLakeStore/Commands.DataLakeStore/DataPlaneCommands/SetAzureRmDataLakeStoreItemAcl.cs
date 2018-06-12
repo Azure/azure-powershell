@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                         {
                             DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                                 Account,
-                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency, Progress ? this : null, CmdletCancellationToken);
+                                Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList(), RequestedAclType.SetAcl, Concurrency, this, Progress, CmdletCancellationToken);
                         }
                         else
                         {
