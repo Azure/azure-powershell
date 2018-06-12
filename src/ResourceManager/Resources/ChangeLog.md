@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Get-AzureRmPolicyAssignment cmdlets:
+    - Add support for listing -Scope values at management group level
+    - Add support for retrieving individual assignments with -Scope values at management group level
+    - Add -Effective and -All switches to control $filter parameter
+* Update Get/New/Remove/Set-AzureRmPolicyDefinition cmdlets
+    - Add -ManagementGroupName parameter to apply operations to a given management group
+    - Add -SubscriptionId parameter to apply operations to a given subscription
+* Update Get/New/Remove/Set-AzureRmPolicySetDefinition cmdlets
+    - Add -ManagementGroupName parameter to apply operations to a given management group
+    - Add -SubscriptionId parameter to apply operations to a given subscription
 
 ## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`

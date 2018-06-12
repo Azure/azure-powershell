@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/remove-azurermpolicysetdefinition
@@ -12,15 +12,34 @@ Removes a policy set definition.
 
 ## SYNTAX
 
-### RemoveByNameAndResourceGroup (Default)
+### NameParameterSet (Default)
 ```
 Remove-AzureRmPolicySetDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveById
+### ManagementGroupNameParameterSet
+```
+Remove-AzureRmPolicySetDefinition [-Name <String>] [-Force] -ManagementGroupName <String>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Remove-AzureRmPolicySetDefinition [-Name <String>] [-Force] -SubscriptionId <Guid> [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Remove-AzureRmPolicySetDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### InputObjectParameterSet
+```
+Remove-AzureRmPolicySetDefinition [-Force] -InputObject <PsPolicySetDefinition> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,14 +50,21 @@ The **Remove-AzureRmPolicySetDefinition** cmdlet removes a policy definition.
 
 ### Example 1: Remove policy set definition by resource ID
 ```
-PS C:\>$PolicySetDefinition = Get-AzureRmPolicySetDefinition -ResourceId "/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition"
-PS C:\>Remove-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
+PS C:\> $PolicySetDefinition = Get-AzureRmPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
+PS C:\> Remove-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Force
 ```
 
 The first command gets a policy set definition by using the Get-AzureRmPolicySetDefinition cmdlet.
 The command stores it in the $PolicySetDefinition variable.
 
 The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+
+### Example 2: Remove policy set definition piped to input
+```
+PS C:\> Get-AzureRmPolicySetDefinition -Name 'VMPolicySetDefinition' | Remove-AzureRmPolicySetDefinition
+```
+
+The first command gets a policy set definition named VMPolicySetDefinition and remvoes it by piping it to the Remove-AzureRmPolicySetDefinition cmdlet.
 
 ## PARAMETERS
 
@@ -50,6 +76,21 @@ If not specified, the API version is automatically determined as the latest avai
 Type: String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -95,8 +136,38 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveById
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy set definition object to remove that was output from another cmdlet.
+
+```yaml
+Type: PsPolicySetDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -ManagementGroupName
+The name of the management group of the policy set definition to delete.
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -110,10 +181,22 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByNameAndResourceGroup
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet, SubscriptionIdParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -135,18 +218,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -SubscriptionId
+The subscription ID of the policy set definition to delete.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
+Type: Guid
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
