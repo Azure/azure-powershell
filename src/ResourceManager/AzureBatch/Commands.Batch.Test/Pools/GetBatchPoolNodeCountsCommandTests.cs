@@ -306,25 +306,25 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             var str = PSNodeCounts.FormatObject(psPoolsNodeCounts[0].Dedicated);
             const string segmentFormat = "{0}: {1}";
 
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Creating), creating)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Idle), idle)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Offline), offline)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Preempted), preempted)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Rebooting), rebooting)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Reimaging), reimaging)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Running), running)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Starting), starting)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.StartTaskFailed), startTaskFailed)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.LeavingPool), leavingPool)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unknown), unknown)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unusable), unusable)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.WaitingForStartTask), waitingForStartTask)));
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total)));
-            Assert.True(str.EndsWith(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total)));
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Creating), creating), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Idle), idle), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Offline), offline), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Preempted), preempted), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Rebooting), rebooting), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Reimaging), reimaging), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Running), running), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Starting), starting), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.StartTaskFailed), startTaskFailed), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.LeavingPool), leavingPool), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unknown), unknown), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Unusable), unusable), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.WaitingForStartTask), waitingForStartTask), str);
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total), str);
+            Assert.EndsWith(string.Format(segmentFormat, nameof(PSNodeCounts.Total), total), str);
 
             str = PSNodeCounts.FormatObject(psPoolsNodeCounts[0].LowPriority);
 
-            Assert.True(str.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), 0)));
+            Assert.Contains(string.Format(segmentFormat, nameof(PSNodeCounts.Total), 0), str);
         }
 
         public class PoolNodeCountsObjectComparer

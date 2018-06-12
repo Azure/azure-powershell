@@ -150,7 +150,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
-                }
+                },
+                LicenseType = model.LicenseType
             });
 
             return CreateDatabaseCopyModelFromResponse(model.CopyResourceGroupName, model.CopyServerName, model.ResourceGroupName,
@@ -213,6 +214,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
             model.Location = GetServerLocation(resourceGroupName, serverName);
             model.CopyLocation = database.Location;
             model.CreationDate = database.CreationDate.Value;
+            model.LicenseType = database.LicenseType;
 
             return model;
         }
@@ -271,7 +273,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Tier = model.Edition,
                     Family = model.Family,
                     Capacity = model.Capacity
-                }
+                },
+                LicenseType = model.LicenseType
             });
 
             return GetLink(model.ResourceGroupName, model.ServerName, model.DatabaseName, model.PartnerResourceGroupName, model.PartnerServerName);

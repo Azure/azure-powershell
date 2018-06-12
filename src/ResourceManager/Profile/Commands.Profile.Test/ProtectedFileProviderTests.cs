@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void FileProviderThrowsOnInvalidInputs()
         {
-            Assert.Throws(typeof(ArgumentNullException), () => ProtectedFileProvider.CreateFileProvider(string.Empty, FileProtection.SharedRead, null));
-            Assert.Throws(typeof(ArgumentOutOfRangeException), () => ProtectedFileProvider.CreateFileProvider(string.Empty, FileProtection.SharedRead, new MemoryDataStore()));
+            Assert.Throws<ArgumentNullException>(() => ProtectedFileProvider.CreateFileProvider(string.Empty, FileProtection.SharedRead, null));
+            Assert.Throws<ArgumentOutOfRangeException>(() => ProtectedFileProvider.CreateFileProvider(string.Empty, FileProtection.SharedRead, new MemoryDataStore()));
         }
 
         [Fact]
