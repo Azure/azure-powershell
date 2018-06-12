@@ -28,6 +28,8 @@ namespace Microsoft.Azure.Management.Internal.Resources.Utilities.Models
 
         public string ParentResource { get; set; }
 
+        public List<string> ParentResourceBuilder { get; set; }
+
         public string Subscription { get; set; }
 
         public ResourceIdentifier() { }
@@ -58,6 +60,8 @@ namespace Microsoft.Azure.Management.Internal.Resources.Utilities.Models
                         resourceTypeBuilder.Add(tokens[i]);
                     }
                 }
+
+                ParentResourceBuilder = parentResourceBuilder;
                 resourceTypeBuilder.Add(tokens[tokens.Length - 2]);
 
                 if (parentResourceBuilder.Count > 0)
