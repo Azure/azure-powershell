@@ -138,7 +138,9 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
-ARM ID of the Recovery Services Vault.```yaml
+ARM ID of the Recovery Services Vault.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -151,7 +153,9 @@ Accept wildcard characters: False
 ```
 
 ### -VaultLocation
-Location of the Recovery Services Vault.```yaml
+Location of the Recovery Services Vault.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
