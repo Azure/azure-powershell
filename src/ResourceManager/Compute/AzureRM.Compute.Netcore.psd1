@@ -12,13 +12,13 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.11.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = 'D4CB9989-9ED1-49C2-BACD-0F8DAF758671'
+GUID = 'd4cb9989-9ed1-49c2-bacd-0f8daf758671'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -42,19 +42,19 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = '4.5.2'
+# DotNetFrameworkVersion = ''
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# CLRVersion = '4.0'
+# CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\AutoMapper.dll',
+RequiredAssemblies = '.\AutoMapper.dll', 
     '.\Microsoft.Azure.Commands.Common.Strategies.4.dll', 
     '.\Microsoft.Azure.Management.Compute.dll',
     '.\Microsoft.Azure.Commands.Common.KeyVault.dll',
@@ -68,8 +68,8 @@ TypesToProcess = '.\Microsoft.Azure.Commands.Compute.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Compute.format.ps1xml', 
-               '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
-               '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
+    '.\Microsoft.Azure.Commands.Compute.format.generated.ps1xml', 
+    '.\Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Compute.dll')
@@ -84,8 +84,7 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
     'Get-AzureRmVMADDomainExtension', 'Set-AzureRmVMADDomainExtension', 
     'Get-AzureRmVMAEMExtension', 'Remove-AzureRmVMAEMExtension', 
     'Set-AzureRmVMAEMExtension', 'Test-AzureRmVMAEMExtension', 
-    'Set-AzureRmVMBginfoExtension', 
-    'Get-AzureRmVMCustomScriptExtension', 
+    'Set-AzureRmVMBginfoExtension', 'Get-AzureRmVMCustomScriptExtension', 
     'Remove-AzureRmVMCustomScriptExtension', 
     'Set-AzureRmVMCustomScriptExtension', 
     'Get-AzureRmVMDiagnosticsExtension', 
@@ -171,17 +170,20 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
     'Stop-AzureRmVmssRollingUpgrade', 'Get-AzureRmVmssRollingUpgrade', 
     'Set-AzureRmVmssRollingUpgradePolicy', 
     'Set-AzureRmVmssDiskEncryptionExtension', 
-    'Disable-AzureRmVmssDiskEncryption', 
-    'Get-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssVMDiskEncryption', 
+    'Disable-AzureRmVmssDiskEncryption', 'Get-AzureRmVmssDiskEncryption', 
+    'Get-AzureRmVmssVMDiskEncryption', 
     'Export-AzureRmLogAnalyticRequestRateByInterval', 
-    'Export-AzureRmLogAnalyticThrottledRequests'
+    'Export-AzureRmLogAnalyticThrottledRequests', 
+    'Repair-AzureRmVmssServiceFabricUpdateDomain', 
+    'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzureRmVmssDiskEncryptionStatus', 
-    'Get-AzureRmVmssVMDiskEncryptionStatus'
+    'Get-AzureRmVmssVMDiskEncryptionStatus', 
+    'Repair-AzureRmVmssServiceFabricUD'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -198,7 +200,8 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Compute','IAAS','VM','VirtualMachine'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Compute', 'IAAS', 'VM', 
+            'VirtualMachine'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -222,12 +225,18 @@ PrivateData = @{
     - `New-AzureVMSqlServerKeyVaultCredentialConfig` has been renamed to `New-AzureRmVMSqlServerKeyVaultCredentialConfig`
 '
 
+        # Prerelease string of this module
+        # Prerelease = ''
+
+        # Flag to indicate whether the module requires explicit user acceptance for install/update/save
+        # RequireLicenseAcceptance = $false
+
         # External dependent modules of this module
-        # ExternalModuleDependencies = ''
+        # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
 
- } # End of PrivateData hashtable
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

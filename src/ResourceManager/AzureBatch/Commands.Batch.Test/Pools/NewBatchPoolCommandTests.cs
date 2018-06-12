@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             // Verify the request parameters match the cmdlet parameters
             Assert.Equal(cmdlet.AutoScaleEvaluationInterval, requestParameters.AutoScaleEvaluationInterval);
             Assert.Equal(cmdlet.AutoScaleFormula, requestParameters.AutoScaleFormula);
-            Assert.Equal(true, requestParameters.EnableAutoScale);
-            Assert.Equal(null, requestParameters.TargetDedicatedNodes);
+            Assert.True(requestParameters.EnableAutoScale);
+            Assert.Null(requestParameters.TargetDedicatedNodes);
         }
 
         [Fact]

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -39,63 +38,109 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact(Skip ="Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithStorage()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithStorage");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypes");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithEventTypes()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypes");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDisableDatabaseAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableDatabaseAuditing");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDisableServerAuditing()
         {
             RunPowerShellTest("Test-AuditingDisableServerAuditing");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseDisableEnableKeepProperties");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerDisableEnableKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerDisableEnableKeepProperties");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingUseServerDefault()
         {
@@ -123,28 +168,52 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingFailedUseServerDefault");
         }
 
+<<<<<<< HEAD
         [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+=======
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+>>>>>>> e78e977fe0b41df3768215a47ca8054cfbd61b10
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithEventTypeShortcuts");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithEventTypeShortcuts()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithEventTypeShortcuts");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyKeepPreviousStorage()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyKeepPreviousStorage");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyKeepPreviousStorage()
         {
@@ -165,77 +234,132 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-AuditingFailWithBadServerIndentity");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingDatabaseStorageKeyRotation");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerStorageKeyRotation()
         {
             RunPowerShellTest("Test-AuditingServerStorageKeyRotation");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingServerUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithRetention()
         {
             RunPowerShellTest("Test-AuditingDatabaseUpdatePolicyWithRetention");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingServerRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingServerRetentionKeepProperties");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseRetentionKeepProperties()
         {
             RunPowerShellTest("Test-AuditingDatabaseRetentionKeepProperties");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingOnDatabase()
         {
             RunPowerShellTest("Test-BlobAuditingOnDatabase");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingOnServer()
         {
             RunPowerShellTest("Test-BlobAuditingOnServer");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatatabaseAuditingTypeMigration()
         {
             RunPowerShellTest("Test-DatatabaseAuditingTypeMigration");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerAuditingTypeMigration()
         {
             RunPowerShellTest("Test-ServerAuditingTypeMigration");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAuditingDatabaseUpdatePolicyWithSameNameStorageOnDifferentRegion()
         {
@@ -249,7 +373,12 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-GetServerAndDatabaseAuditingInUkRegion");
         }
 
-        [Fact(Skip = "Tests failed to rerecord because of storage account creation issues, Service team needs to investigate")]
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditingWithAuditActionGroups()
         {

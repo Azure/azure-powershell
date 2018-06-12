@@ -12,9 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest.Mocks;
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -35,7 +33,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             var newResourcesClient = GetResourcesClient(context);
             var authorizationClient = GetAuthorizationManagementClient();
             helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageClient, storageV2Client, resourcesClient,
-                newResourcesClient, authorizationClient, commonStorageClient);
         }
 
         public ThreatDetectionClassicStorageTests(ITestOutputHelper output) : base(output)

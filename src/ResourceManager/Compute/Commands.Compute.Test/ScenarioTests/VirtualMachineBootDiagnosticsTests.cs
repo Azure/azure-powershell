@@ -32,21 +32,37 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsPremium()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineBootDiagnosticsPremium");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachineBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-LinuxVirtualMachineBootDiagnostics");
         }
 
-        [Fact(Skip = "Service teeam needs to fix test, recording failed with Storage account 'stocrptestps9385' not found")]
+
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineBootDiagnosticsSet()
         {
