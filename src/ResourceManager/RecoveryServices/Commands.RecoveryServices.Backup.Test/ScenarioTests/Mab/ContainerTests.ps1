@@ -15,24 +15,37 @@
 function Test-MabGetContainers
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "Windows" -BackupManagementType "MARS";
+	$containers = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType "Windows" `
+		-BackupManagementType "MARS";
 	
 	Assert-AreEqual $containers[0].FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 
-	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "Windows" -BackupManagementType "MARS" -Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType "Windows" `
+		-BackupManagementType "MARS" `
+		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $namedContainer.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 }
 
 function Test-MabUnregisterContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "Windows" -BackupManagementType "MARS" -Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+	$container = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType "Windows" `
+		-BackupManagementType "MARS" `
+		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $container.FriendlyName "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 
-	Unregister-AzureRmRecoveryServicesBackupContainer -Container $container;
-	$container = Get-AzureRmRecoveryServicesBackupContainer -ContainerType "Windows" -BackupManagementType "MARS" -Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
+	Unregister-AzureRmRecoveryServicesBackupContainer -VaultId $vault.ID -Container $container;
+	$container = Get-AzureRmRecoveryServicesBackupContainer `
+		-VaultId $vault.ID `
+		-ContainerType "Windows" `
+		-BackupManagementType "MARS" `
+		-Name "ADIT-PC.FAREAST.CORP.MICROSOFT.COM";
 	Assert-Null $container;
 }

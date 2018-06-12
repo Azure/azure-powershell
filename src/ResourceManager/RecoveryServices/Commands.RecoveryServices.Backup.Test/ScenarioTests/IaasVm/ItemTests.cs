@@ -90,5 +90,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
             Assert.True(AzureSession.Instance.DataStore.FileExists(mountScriptDetails.FilePath));
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(TestConstants.Workload, TestConstants.AzureVM)]
+        public void TestAzureVMSetVaultContext()
+        {
+            TestController.NewInstance.RunPsTest(
+                PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultContext");
+        }
     }
 }

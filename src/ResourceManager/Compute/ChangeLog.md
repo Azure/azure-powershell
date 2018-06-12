@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
 
 ## Version 5.1.0
 * VMSS VM Update feature

@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure.OData;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),
             OutputType(typeof(PolicyBase), typeof(IList<PolicyBase>))]
-    public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
         protected const string WorkloadParamSet = "WorkloadParamSet";
@@ -68,6 +69,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 WriteDebug(string.Format("Input params - Name:{0}, " +
                                       "WorkloadType: {1}, BackupManagementType:{2}, " +
                                       "ParameterSetName: {3}",
@@ -85,8 +90,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     // query service
                     ServiceClientModel.ProtectionPolicyResource policy =
                         PolicyCmdletHelpers.GetProtectionPolicyByName(
-                                                      Name,
-                                                      ServiceClientAdapter);
+                            Name,
+                            ServiceClientAdapter,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     if (policy == null)
                     {
                         throw new ArgumentException(string.Format(Resources.PolicyNotFoundException, Name));
@@ -157,7 +164,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     WriteDebug("going to query service to get list of policies");
                     List<ServiceClientModel.ProtectionPolicyResource> respList =
-                        ServiceClientAdapter.ListProtectionPolicy(queryParams);
+                        ServiceClientAdapter.ListProtectionPolicy(
+                            queryParams,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     WriteDebug("Successfully got response from service");
 
                     policyList = ConversionHelpers.GetPolicyModelList(respList);
