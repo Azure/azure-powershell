@@ -24,6 +24,7 @@ function EventHubsTests
 	$resourceGroupName = getAssetName "RSG"
 	$namespaceName = getAssetName "Eventhub-Namespace-"
 	$eventHubName = getAssetName "EventHub-"
+	$eventHubName2 = getAssetName "EventHub-"
 
 	# Create Resource Group
 	Write-Debug "Create resource group"    
@@ -66,7 +67,7 @@ function EventHubsTests
 	Set-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $createdEventHub
 	
 	# Update the Created EventHub
-	Write-Debug " Update the first EventHub"    
+	Write-Debug " Update the first EventHub"
 	$createdEventHub.MessageRetentionInDays = 4	
 	$createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
 	$createdEventHub.CaptureDescription.Enabled = $true
@@ -84,6 +85,13 @@ function EventHubsTests
 	Assert-AreEqual $result.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
 	Assert-AreEqual $result.CaptureDescription.Destination.BlobContainer "container01"
 
+	# Create New EventHub with InputObject
+	$resultNew = New-AzureRmEventHub -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $createdEventHub.Name  -InputObject $result
+
+	# Assert
+	Assert-AreEqual $resultNew.MessageRetentionInDays $createdEventHub.MessageRetentionInDays
+	Assert-AreEqual $resultNew.CaptureDescription.Destination.BlobContainer "container01"
+	
 	# Cleanup
 	# Delete all Created Eventhub
 	Write-Debug " Delete the EventHub"
