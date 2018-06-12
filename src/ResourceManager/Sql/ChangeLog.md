@@ -19,8 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.7.0-preview
-* Add new cmdlets 'Get-AzureRmSqlDatabaseBackupShortTermRetention' and 'Set-AzureRmSqlDatabaseBackupShortTermRetention' to support getting/setting the retention policy for point-in-time-restore backups
+## Version 4.8.0-preview
 * Added new cmdlets for Elastic Jobs
 	* Elastic Job agent
 		* New-AzureRmSqlElasticJobAgent creates a new elastic job agent
@@ -56,14 +55,8 @@
 		* Get-AzureRmSqlElasticJobExecution gets the status of running job step executions
 		* Get-AzureRmSqlElasticJobExecution gets the status of running job target executions
 
-## Version 4.5.0-preview
-* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
-* Add commandlets for new feature - Instance Failover Groups
-	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
-	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
-	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
-	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
-	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
+## Version 4.7.0-preview
+* Add new cmdlets 'Get-AzureRmSqlDatabaseBackupShortTermRetention' and 'Set-AzureRmSqlDatabaseBackupShortTermRetention' to support getting/setting the retention policy for point-in-time-restore backups
 
 ## Version 4.6.0
 * Updated the following cmdlets with optional LicenseType parameter
@@ -72,15 +65,6 @@
 	- New-AzureRmSqlDatabaseCopy
 	- New-AzureRmSqlDatabaseSecondary
 	- Restore-AzureRmSqlDatabase
-
-## Version 4.5.0-preview
-* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
-* Add commandlets for new feature - Instance Failover Groups
-- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
-- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
-- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
-- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
-- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
 
 ## Version 4.5.0
 * Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
@@ -92,6 +76,15 @@
 	- New-AzureRmSqlDatabaseCopy
 	- New-AzureRmSqlDatabaseSecondary
 	- Restore-AzureRmSqlDatabase
+
+## Version 4.5.0-preview
+* Added new cmdlets for CRUD operations on Managed Instance and Managed Database
+* Add commandlets for new feature - Instance Failover Groups
+	- Get-AzureRmSqlDatabaseInstanceFailoverGroup get the Instance Failover Group entity
+	- New-AzureRmSqlDatabaseInstanceFailoverGroup creates a new Instance Failover Group
+	- Remove-AzureRmSqlDatabaseInstanceFailoverGroup Instance Failover Group deletes the Failover Group
+	- Set-AzureRmSqlDatabaseInstanceFailoverGroup set Azure Sql Database Failover Policy and Grace Period entities of the Instance Failover Group
+	- Switch-AzureRmSqlDatabaseInstanceFailoverGroup issues the failover operation with data loss or without data loss
 
 ## Version 4.4.1
 * Set minimum dependency of module to PowerShell 5.0 
