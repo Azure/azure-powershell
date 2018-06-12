@@ -23,6 +23,27 @@
     - Grant-AzureRmDiskAccess
     - Grant-AzureRmSnapshotAccess
     - Save-AzureRmVMImage
+* Fixed following cmdlets to show `operation ID` and `operation status` correctly:
+    - Start-AzureRmVM
+    - Stop-AzureRmVM
+    - Restart-AzureRmVM
+    - Set-AzureRmVM
+    - Remove-AzuerRmVM
+    - Set-AzureRmVmss
+    - Start-AzureRmVmssRollingOSUpgrade
+    - Stop-AzureRmVmssRollingUpgrade
+    - Start-AzureRmVmss
+    - Restart-AzureRmVmss
+    - Stop-AzureRmVmss
+    - Remove-AzureRmVmss
+    - ConvertTo-AzureRmVMManagedDisk
+    - Revoke-AzureRmSnapshotAccess
+    - Remove-AzureRmSnapshot
+    - Revoke-AzureRmDiskAccess
+    - Remove-AzureRmDisk
+    - Remove-AzureRmContainerService
+    - Remove-AzureRmAvailabilitySet
+
 
 ## Version 5.1.0
 * VMSS VM Update feature
