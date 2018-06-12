@@ -68,7 +68,9 @@ Accept wildcard characters: False
 ```
 
 ### -VaultId
-ARM ID of the Recovery Services Vault.```yaml
+ARM ID of the Recovery Services Vault.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
