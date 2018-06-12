@@ -52,7 +52,7 @@ foreach ($File in $FilesChangedList)
     }
 
     # If a file in src/Common is updated, check for change log entry in Profile
-    if ($File.StartsWith("src/Common") -and ($UpdatedServicePaths | where { $_ -like "*Profile*" } | Measure-Object).Count -gt 0)
+    if (($File.StartsWith("src/Common") -or $File.StartsWith("src/ResourceManager/Common")) -and ($UpdatedServicePaths | where { $_ -like "*Profile*" } | Measure-Object).Count -gt 0)
     {
         continue
     }
