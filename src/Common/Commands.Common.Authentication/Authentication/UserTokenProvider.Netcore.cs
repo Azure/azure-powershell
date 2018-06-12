@@ -29,8 +29,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// </summary>
     internal class UserTokenProvider : ITokenProvider
     {
-        Action<string> _promptAction = null;
-
         public UserTokenProvider()
         {
         }

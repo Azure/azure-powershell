@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithSyntaxError()
         {
             RunDataPowerShellTest("Test-ExceptionWithSyntaxError");
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAsJob()
         {
             RunDataPowerShellTest("Test-AsJob");

@@ -125,5 +125,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Model
         /// Gets or sets the zone redundant option of the elastic pool.
         /// </summary>
         public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type of the elastic pool
+        /// </summary>
+        public string LicenseType { get; set; }
     }
 }

@@ -56,7 +56,7 @@ Specifies the **LoadBalancer** object that contains the rule configuration that 
 ```yaml
 Type: PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Specifies the name of the load balancer rule configuration that this cmdlet remo
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
