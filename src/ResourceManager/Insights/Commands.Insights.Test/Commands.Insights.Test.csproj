@@ -145,6 +145,7 @@
     <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
+    <Compile Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />

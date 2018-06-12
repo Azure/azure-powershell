@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     /// <summary>
     /// Wrapps around the AutoscaleSettingGetResponse and AutoscaleSettingResource
     /// </summary>
-    public class PSAutoscaleSetting : AutoscaleSettingResource
+    public class PSAutoscaleSetting : Management.Monitor.Management.Models.AutoscaleSettingResource
     {
         /// <summary>
         /// <para>Gets or sets the AutoscaleSettingResourceName of the object.</para>
@@ -32,16 +32,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// </summary>
         /// <param name="autoscaleSettingSpec">The autoscale setting spec</param>
         public PSAutoscaleSetting(AutoscaleSettingResource autoscaleSettingSpec)
-            : base(
-                  location: autoscaleSettingSpec.Location,
-                  profiles: autoscaleSettingSpec.Profiles,
-                  id: autoscaleSettingSpec.Id,
-                  name: autoscaleSettingSpec.Name,
-                  type: autoscaleSettingSpec.Type,
-                  tags: autoscaleSettingSpec.Tags,
-                  notifications: autoscaleSettingSpec.Notifications,
-                  enabled: autoscaleSettingSpec.Enabled,
-                  targetResourceUri: autoscaleSettingSpec.TargetResourceUri)
+            : base(autoscaleSettingSpec)
         {
         }
     }

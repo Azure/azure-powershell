@@ -62,16 +62,16 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.CustomEmail = null;
-            Cmdlet.Webhook = new WebhookNotification[0];
+            Cmdlet.Webhook = new Management.Monitor.Management.Models.WebhookNotification[0];
             Assert.Throws<ArgumentException>(() => Cmdlet.ExecuteCmdlet());
 
-            var notification = new WebhookNotification
+            var notification = new Management.Monitor.Management.Models.WebhookNotification
             {
                 ServiceUri = "http://hello.com",
                 Properties = null
             };
 
-            Cmdlet.Webhook = new WebhookNotification[] { notification };
+            Cmdlet.Webhook = new Management.Monitor.Management.Models.WebhookNotification[] { notification };
             Cmdlet.ExecuteCmdlet();
 
             Cmdlet.SendEmailToSubscriptionAdministrator = true;

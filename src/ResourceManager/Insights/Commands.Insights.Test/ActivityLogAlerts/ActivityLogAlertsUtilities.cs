@@ -19,18 +19,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 {
     public static class ActivityLogAlertsUtilities
     {
-        public static ActivityLogAlertActionGroup CreateActionGroup(string id, Dictionary<string, string> webhooks)
+        public static Management.Monitor.Management.Models.ActivityLogAlertActionGroup CreateActionGroup(string id, Dictionary<string, string> webhooks)
         {
-            return new ActivityLogAlertActionGroup
+            return new Management.Monitor.Management.Models.ActivityLogAlertActionGroup
             {
                 ActionGroupId = id,
                 WebhookProperties = webhooks
             };
         }
 
-        public static ActivityLogAlertLeafCondition CreateLeafCondition(string field, string equals)
+        public static Management.Monitor.Management.Models.ActivityLogAlertLeafCondition CreateLeafCondition(string field, string equals)
         {
-            return new ActivityLogAlertLeafCondition
+            return new Management.Monitor.Management.Models.ActivityLogAlertLeafCondition
             {
                 Field = field,
                 Equals = equals

@@ -43,49 +43,57 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         public new PSDictionaryElement Properties { get; set; }
 
         /// <summary>
+        /// Gets or sets the Level of the event
+        /// </summary>
+        public new EventLevel Level { get; set; }
+
+        /// <summary>
+        /// Gets or sets the SubmissionTimestamp of the event
+        /// </summary>
+        public new DateTime SubmissionTimestamp { get; set; }
+
+        /// <summary>
+        /// Gets or sets the EventTimestamp of the event
+        /// </summary>
+        public new DateTime EventTimestamp { get; set; }
+
+        /// <summary>
         /// Initializes a new instance of the EventData class.
         /// </summary>
         public PSEventData(EventData eventData)
-            : base(
-                  caller: eventData.Caller,
-                  correlationId: eventData.CorrelationId,
-                  description: eventData.Description,
-                  eventDataId: eventData.EventDataId,
-                  eventName: eventData.EventName,
-                  category: eventData.Category,
-                  eventTimestamp: eventData.EventTimestamp,
-                  id: eventData.Id,
-                  level: eventData.Level,
-                  operationId: eventData.OperationId,
-                  operationName: eventData.OperationName,
-                  resourceGroupName: eventData.ResourceGroupName,
-                  resourceProviderName: eventData.ResourceProviderName,
-                  resourceId: eventData.ResourceId,
-                  status: eventData.Status,
-                  submissionTimestamp: eventData.SubmissionTimestamp,
-                  subscriptionId: eventData.SubscriptionId,
-                  subStatus: eventData.SubStatus)
+            : base(caller: eventData?.Caller, correlationId: eventData?.CorrelationId, description: eventData?.Description, eventDataId: eventData?.EventDataId,
+                  eventName: eventData?.EventName, category: eventData?.Category, eventTimestamp: eventData?.EventTimestamp,
+                  id: eventData?.Id, level: eventData?.Level, operationId: eventData?.OperationId, operationName: eventData?.OperationName,
+                  resourceGroupName: eventData?.ResourceGroupName, resourceProviderName: eventData?.ResourceProviderName, resourceId: eventData?.ResourceId,
+                  status: eventData?.Status, submissionTimestamp: eventData?.SubmissionTimestamp, subscriptionId: eventData?.SubscriptionId, subStatus: eventData?.SubStatus)
         {
-            this.Authorization = eventData.Authorization != null
-                ? new PSEventDataAuthorization
-                {
-                    Action = eventData.Authorization.Action,
-                    Role = eventData.Authorization.Role,
-                    Scope = eventData.Authorization.Scope
-                }
-                : null;
-            this.Claims = new PSDictionaryElement(eventData.Claims);
+            if (eventData != null)
+            {
+                this.Authorization = eventData.Authorization != null
+                    ? new PSEventDataAuthorization
+                    {
+                        Action = eventData.Authorization.Action,
+                        Role = eventData.Authorization.Role,
+                        Scope = eventData.Authorization.Scope
+                    }
+                    : null;
 
-            this.HttpRequest = eventData.HttpRequest != null
-                ? new PSEventDataHttpRequest
-                {
-                    ClientId = eventData.HttpRequest.ClientRequestId,
-                    ClientIpAddress = eventData.HttpRequest.ClientIpAddress,
-                    Method = eventData.HttpRequest.Method,
-                    Url = eventData.HttpRequest.Uri
-                }
-                : null;
-            this.Properties = new PSDictionaryElement(eventData.Properties);
+                this.Claims = new PSDictionaryElement(eventData.Claims);
+
+                this.HttpRequest = eventData.HttpRequest != null
+                    ? new PSEventDataHttpRequest
+                    {
+                        ClientId = eventData.HttpRequest.ClientRequestId,
+                        ClientIpAddress = eventData.HttpRequest.ClientIpAddress,
+                        Method = eventData.HttpRequest.Method,
+                        Url = eventData.HttpRequest.Uri
+                    }
+                    : null;
+                this.Properties = new PSDictionaryElement(eventData.Properties);
+                this.Level = eventData.Level ?? default(EventLevel);
+                this.SubmissionTimestamp = eventData.SubmissionTimestamp ?? default(DateTime);
+                this.EventTimestamp = eventData.EventTimestamp ?? default(DateTime);
+            }
         }
     }
 }

@@ -19,6 +19,24 @@
 -->
 ## Current Release
 
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+    - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.
+    - The SDK includes support for multi-named diagnostic settings.
+    - The SDK also supports the most recent Metrics API: multi-dimension metrics.
+
+* **Set-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to "service" for backward compatibility.
+    - The argument ServiceBusRuleId has been added an alias "EventHubName" which will replace it in the future.
+    - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
+    - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
+
+* **Remove-AzureRmDiagnosticSetting**
+    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible.
+
+* **Get-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to "service" for backward compatibility.
+    - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduced multiple breaking changes

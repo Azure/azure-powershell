@@ -23,31 +23,64 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
     public class PSServiceDiagnosticSettings : DiagnosticSettingsResource
     {
         /// <summary>
+        /// Sets or gets the Service Bus Rule Id, a.k.a. EventHubName
+        /// </summary>
+        public string ServiceBusRuleId { get; set; }
+
+        /// <summary>
+        /// Sets or gets the Location of the Diagnostic Setting
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
+        /// Sets or gets the Tags of the Diagnostic Setting
+        /// </summary>
+        public IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>
+        /// Sets or gets the Logs of the Diagnostic Setting.
+        /// This property in transitional until the namesace change is taken
+        /// </summary>
+        public new IList<Microsoft.Azure.Management.Monitor.Management.Models.LogSettings> Logs { get; set; }
+
+        /// <summary>
+        /// Sets or gets the Logs of the Diagnostic Setting.
+        /// This property in transitional until the namesace change is taken
+        /// </summary>
+        public new IList<Microsoft.Azure.Management.Monitor.Management.Models.MetricSettings> Metrics { get; set; }
+
+
+        /// <summary>
         /// Initializes a new instance of the PSServiceDiagnosticSettings class.
         /// </summary>
         public PSServiceDiagnosticSettings(DiagnosticSettingsResource serviceDiagnosticSettings)
             : base(
-                name: serviceDiagnosticSettings.Name,
-                id: serviceDiagnosticSettings.Id, 
-                type: serviceDiagnosticSettings.Type,
-                metrics: serviceDiagnosticSettings.Metrics, 
-                logs: serviceDiagnosticSettings.Logs)
+                name: serviceDiagnosticSettings?.Name,
+                id: serviceDiagnosticSettings?.Id,
+                type: serviceDiagnosticSettings?.Type,
+                metrics: serviceDiagnosticSettings?.Metrics,
+                logs: serviceDiagnosticSettings?.Logs)
         {
-            this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
-            this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
-            this.Metrics = new List<MetricSettings>();
-            foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
+            if (serviceDiagnosticSettings != null)
             {
-                this.Metrics.Add(new PSMetricSettings(metricSettings));
-            }
+                this.StorageAccountId = serviceDiagnosticSettings.StorageAccountId;
+                this.EventHubName = serviceDiagnosticSettings.EventHubName;
+                this.ServiceBusRuleId = this.EventHubName;
+                this.EventHubAuthorizationRuleId = serviceDiagnosticSettings.EventHubAuthorizationRuleId;
+                this.Metrics = new List<Management.Monitor.Management.Models.MetricSettings>();
+                foreach (MetricSettings metricSettings in serviceDiagnosticSettings.Metrics)
+                {
+                    this.Metrics.Add(new PSMetricSettings(metricSettings));
+                }
 
-            this.Logs = new List<LogSettings>();
-            foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
-            {
-                this.Logs.Add(new PSLogSettings(logSettings));
-            }
+                this.Logs = new List<Management.Monitor.Management.Models.LogSettings>();
+                foreach (LogSettings logSettings in serviceDiagnosticSettings.Logs)
+                {
+                    this.Logs.Add(new PSLogSettings(logSettings));
+                }
 
-            this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+                this.WorkspaceId = serviceDiagnosticSettings.WorkspaceId;
+            }
         }
     }
 }

@@ -16,7 +16,6 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
-using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
@@ -37,17 +36,20 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public string ResourceId { get; set; }
 
         /// <summary>
-        /// Gets or sets the name parameter of the cmdlet
+        /// Gets or sets the diagnostics setting name parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Diagnostics setting resource name")]
+        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name. Defaults to 'service'")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         #endregion
 
         protected override void ProcessRecordInternal()
         {
-            string diagnosticSettingsResourceName = string.IsNullOrWhiteSpace(this.Name) ? "service" : this.Name;
-            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: diagnosticSettingsResourceName, cancellationToken: CancellationToken.None).Result;
+            // Temporary service name constant provided for backwards compatibility
+            DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.Get(
+                resourceUri: this.ResourceId, 
+                name: string.IsNullOrWhiteSpace(this.Name) ? SetAzureRmDiagnosticSettingCommand.TempServiceName : this.Name);
 
             var psResult = new PSServiceDiagnosticSettings(result);
             WriteObject(psResult);
