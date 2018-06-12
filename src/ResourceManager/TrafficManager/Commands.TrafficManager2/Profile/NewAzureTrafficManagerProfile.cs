@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using Microsoft.Rest.Azure;
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Collections.Generic;
+    using System;
+    using Microsoft.Azure.Management.TrafficManager.Models;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
@@ -87,6 +90,14 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateNotNullOrEmpty]
         public int? MonitorToleratedNumberOfFailures { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<string> CustomHeaders { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "List of expected HTTP status code ranges for probe reuqests.")]
+        [ValidateCount(1, 8)]
+        public List<string> ExpectedStatusCodeRanges { get; set; }
+
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Tag { get; set; }
@@ -119,6 +130,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MonitorIntervalInSeconds,
                     this.MonitorTimeoutInSeconds,
                     this.MonitorToleratedNumberOfFailures,
+                    this.CustomHeaders,
+                    this.ExpectedStatusCodeRanges,
                     this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);

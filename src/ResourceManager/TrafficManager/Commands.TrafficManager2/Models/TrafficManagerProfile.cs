@@ -49,9 +49,13 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public List<TrafficManagerEndpoint> Endpoints { get; set; }
 
+        public List<MonitorConfigCustomHeadersItem> CustomHeaders { get; set; }
+
+        public List<MonitorConfigExpectedStatusCodeRangesItem> ExpectedStatusCodeRanges { get; set; }
+
         public Profile ToSDKProfile()
         {
-            var profile = new Profile(this.Id, this.Name, Constants.ProfileType, TrafficManagerClient.ProfileResourceLocation)
+            var profile = new Profile(this.Id, this.Name, Constants.ProfileType, null, TrafficManagerClient.ProfileResourceLocation)
             { 
                 ProfileStatus = this.ProfileStatus,
                 TrafficRoutingMethod = this.TrafficRoutingMethod,
@@ -68,6 +72,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                     IntervalInSeconds = this.MonitorIntervalInSeconds,
                     TimeoutInSeconds = this.MonitorTimeoutInSeconds,
                     ToleratedNumberOfFailures = this.MonitorToleratedNumberOfFailures,
+                    CustomHeaders = this.CustomHeaders,
+                    ExpectedStatusCodeRanges = this.ExpectedStatusCodeRanges
                 }
             };
 
