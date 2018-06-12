@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.7.0
+## Version 4.6.1
 * Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
 
 ## Version 4.6.0
