@@ -21,8 +21,9 @@ New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] 
 
 ### EventhubInputObjectSet
 ```
-New-AzureRmEventHub [-InputObject <PSEventHubAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+ [-InputObject <PSEventHubAttributes>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

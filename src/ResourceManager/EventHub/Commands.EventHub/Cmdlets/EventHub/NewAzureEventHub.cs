@@ -26,17 +26,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     [Cmdlet(VerbsCommon.New, EventHubVerb, DefaultParameterSetName = EventhubPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }        
 
-        [Parameter(Mandatory = true, ParameterSetName = EventhubPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Eventhub Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 3, HelpMessage = "Eventhub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
