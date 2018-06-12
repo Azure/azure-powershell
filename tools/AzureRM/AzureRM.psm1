@@ -1,1 +1,1 @@
-﻿# Placeholder for script template
+# Placeholder for script template

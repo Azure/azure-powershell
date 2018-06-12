@@ -308,7 +308,7 @@ function Wait-Seconds {
     param([int] $timeout)
 
     try {
-        [Microsoft.Azure.Test.TestUtilities]::Wait($timeout * 1000);
+        [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait($timeout * 1000);
     } catch {
         if ($PSItem.Exception.Message -like '*Unable to find type*') {
             Start-Sleep -Seconds $timeout;
@@ -475,7 +475,7 @@ The connection string containing username and password information
 function getTestCredentialFromString
 {
   param([string] $connectionString)
-  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectionString)
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::UserIdKey) -or ((-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::AADPasswordKey))))))
   {
     throw "The connection string '$connectionString' must have a valid value, including username and password " +`
@@ -494,7 +494,7 @@ The connection string containing subscription information
 function getSubscriptionFromString
 {
   param([string] $connectionString)
-  $parsedString = [Microsoft.Azure.Test.TestUtilities]::ParseConnectionString($connectionString)
+  $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectionString)
   if (-not ($parsedString.ContainsKey([Microsoft.Azure.Test.TestEnvironment]::SubscriptionIdKey)))
   {
     throw "The connection string '$connectionString' must have a valid value, including subscription " +`
@@ -601,4 +601,13 @@ function Get-Location
     {
         return $location
     }
+}
+
+function Normalize-Location
+{
+	param([string]$location)
+	$outputLocation = $location.ToLower()
+	$outputLocation = $outputLocation -replace '\s', ''
+	$outputLocation = $outputLocation -replace '-', ''
+	$outputLocation = $outputLocation -replace '_', ''
 }

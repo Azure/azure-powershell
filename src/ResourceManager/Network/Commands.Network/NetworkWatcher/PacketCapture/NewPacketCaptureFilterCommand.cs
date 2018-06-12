@@ -16,10 +16,10 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -65,6 +65,12 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
+
+            if (this.Protocol == null && this.RemoteIPAddress == null && this.LocalIPAddress == null &&
+                this.RemotePort == null && this.LocalPort == null)
+            {
+                throw new ArgumentException("Parameters cannot be all empty to create new packet capture filter.");
+            }
 
             var packetCaptureFilter = new PSPacketCaptureFilter();
             packetCaptureFilter.Protocol = this.Protocol;

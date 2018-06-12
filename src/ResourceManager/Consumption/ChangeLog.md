@@ -19,6 +19,17 @@
 -->
 ## Current Release
 
+## Version 0.4.0
+* Add new cmdlets for managing budget 
+    - Get/New/Set/Remove-AzureRmConsumptionBudget
+    - Get-AzureRmConsumptionMarketplace
+    - Get-AzureRmConsumptionPriceSheet
+    - Get-AzureRmConsumptionReservationSummary
+    - Get-AzureRmConsumptionReservationDetail
+
+## Version 0.3.3
+* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
+
 ## Version 0.3.2
 * Set minimum dependency of module to PowerShell 5.0
 

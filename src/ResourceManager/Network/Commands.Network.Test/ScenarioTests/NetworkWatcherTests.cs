@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestNetworkWatcherCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-NetworkWatcherCRUD");

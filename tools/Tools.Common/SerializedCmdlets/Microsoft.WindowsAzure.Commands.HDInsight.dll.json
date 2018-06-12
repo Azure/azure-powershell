@@ -14,7 +14,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -222,7 +222,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -296,7 +296,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -470,7 +470,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -622,7 +622,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -702,7 +702,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -933,7 +933,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1037,7 +1037,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1148,7 +1148,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -1231,7 +1231,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -1367,7 +1367,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
               "Configuration": "System.Collections.Hashtable"
@@ -1420,7 +1420,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CapacitySchedulerConfiguration": "System.Collections.Hashtable",
               "Configuration": "System.Collections.Hashtable"
@@ -1473,7 +1473,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalActionExecutorLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
               "AdditionalSharedLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -1563,7 +1563,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
               "Configuration": "System.Collections.Hashtable"
@@ -1616,7 +1616,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -1715,7 +1715,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -1875,7 +1875,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "Configuration": "System.Collections.Hashtable"
@@ -1934,7 +1934,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CapacitySchedulerConfiguration": "System.Collections.Hashtable",
                     "Configuration": "System.Collections.Hashtable"
@@ -1993,7 +1993,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalActionExecutorLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "AdditionalSharedLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -2101,7 +2101,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "Configuration": "System.Collections.Hashtable"
@@ -2160,7 +2160,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2336,7 +2336,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "Configuration": "System.Collections.Hashtable"
@@ -2395,7 +2395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "CapacitySchedulerConfiguration": "System.Collections.Hashtable",
                     "Configuration": "System.Collections.Hashtable"
@@ -2454,7 +2454,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightOozieConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalActionExecutorLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "AdditionalSharedLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -2562,7 +2562,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHBaseConfiguration, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "AdditionalLibraries": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
                     "Configuration": "System.Collections.Hashtable"
@@ -2621,7 +2621,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -2732,7 +2732,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -2815,7 +2815,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -2933,7 +2933,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -3054,7 +3054,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3153,7 +3153,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -3289,7 +3289,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -3422,7 +3422,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3526,7 +3526,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3637,7 +3637,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -3720,7 +3720,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -3874,7 +3874,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -3973,7 +3973,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -4157,7 +4157,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -4261,7 +4261,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -4372,7 +4372,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -4455,7 +4455,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -4573,7 +4573,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -4672,7 +4672,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -4808,7 +4808,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -4912,7 +4912,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5197,7 +5197,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5423,7 +5423,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5752,7 +5752,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -5863,7 +5863,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -6055,7 +6055,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6307,7 +6307,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6435,7 +6435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -6546,7 +6546,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SubmissionTime": "System.DateTime",
               "ExitCode": "System.Nullable`1[System.Int32]",
@@ -6772,7 +6772,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7049,7 +7049,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7229,7 +7229,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7435,7 +7435,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -7793,7 +7793,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8192,7 +8192,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8303,7 +8303,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCapabilities",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCapabilities, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCapabilities, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Versions": "System.Collections.Generic.IEnumerable`1[Microsoft.WindowsAzure.Management.HDInsight.HDInsightVersion]",
               "Locations": "System.Collections.Generic.IEnumerable`1[System.String]",
@@ -8498,7 +8498,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8771,7 +8771,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -8882,7 +8882,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -9110,7 +9110,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9336,7 +9336,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9641,7 +9641,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -9923,7 +9923,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10222,7 +10222,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -10333,7 +10333,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -10469,7 +10469,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -11118,7 +11118,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -11989,7 +11989,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -12145,7 +12145,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -12619,7 +12619,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -12723,7 +12723,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -12834,7 +12834,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -13131,7 +13131,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -13486,7 +13486,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -13590,7 +13590,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -13701,7 +13701,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightHiveJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "RunAsFileJob": "System.Boolean",
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
@@ -13913,7 +13913,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -14212,7 +14212,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -14323,7 +14323,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMapReduceJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "LibJars": "System.Collections.Generic.ICollection`1[System.String]",
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
@@ -14537,7 +14537,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -14838,7 +14838,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -14949,7 +14949,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightPigJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightPigJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightPigJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
               "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -15102,7 +15102,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -15327,7 +15327,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -15438,7 +15438,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightSqoopJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightSqoopJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightSqoopJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
               "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -15569,7 +15569,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -15766,7 +15766,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -15877,7 +15877,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStreamingMapReduceJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStreamingMapReduceJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStreamingMapReduceJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "CommandEnvironment": "System.Collections.Generic.ICollection`1[System.String]",
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
@@ -16148,7 +16148,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -16521,7 +16521,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -16752,7 +16752,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -17004,7 +17004,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -17108,7 +17108,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -17219,7 +17219,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -17429,7 +17429,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -17655,7 +17655,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -17936,7 +17936,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -18047,7 +18047,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightCluster, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "State": "Microsoft.WindowsAzure.Management.HDInsight.ClusterState",
@@ -18257,7 +18257,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -18459,7 +18459,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -18740,7 +18740,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -18851,7 +18851,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -18934,7 +18934,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
               "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -19070,7 +19070,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -19169,7 +19169,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfig, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "ClusterType": "Microsoft.WindowsAzure.Management.HDInsight.ClusterProvisioning.Data.ClusterType",
                     "DefaultStorageAccount": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
@@ -19329,7 +19329,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -19433,7 +19433,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -19544,7 +19544,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SubmissionTime": "System.DateTime",
               "ExitCode": "System.Nullable`1[System.Int32]",
@@ -19732,7 +19732,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
               "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -19800,7 +19800,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -20053,7 +20053,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
                     "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -20107,7 +20107,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -20239,7 +20239,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
                     "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -20293,7 +20293,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -20451,7 +20451,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJobDefinition, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Arguments": "System.Collections.Generic.ICollection`1[System.String]",
                     "Files": "System.Collections.Generic.ICollection`1[System.String]",
@@ -20505,7 +20505,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -20616,7 +20616,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SubmissionTime": "System.DateTime",
               "ExitCode": "System.Nullable`1[System.Int32]",
@@ -20840,7 +20840,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -21115,7 +21115,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -21269,7 +21269,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -21449,7 +21449,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -21696,7 +21696,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -21948,7 +21948,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -22052,7 +22052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -22163,7 +22163,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SubmissionTime": "System.DateTime",
               "ExitCode": "System.Nullable`1[System.Int32]",
@@ -22347,7 +22347,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
             "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SubmissionTime": "System.DateTime",
               "ExitCode": "System.Nullable`1[System.Int32]",
@@ -22472,7 +22472,7 @@
           "Type": {
             "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
             "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
               "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -22671,7 +22671,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SubmissionTime": "System.DateTime",
                     "ExitCode": "System.Nullable`1[System.Int32]",
@@ -22796,7 +22796,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -22998,7 +22998,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -23152,7 +23152,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -23282,7 +23282,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
                   "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightJob, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "SubmissionTime": "System.DateTime",
                     "ExitCode": "System.Nullable`1[System.Int32]",
@@ -23381,7 +23381,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -23509,7 +23509,7 @@
                 "Type": {
                   "Namespace": "Microsoft.WindowsAzure.Commands.Utilities.Common",
                   "Name": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile",
-                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.1.2.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.WindowsAzure.Commands.Utilities.Common.AzureSMProfile, Microsoft.WindowsAzure.Commands.ServiceManagement.Common, Version=5.2.0.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Context": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
                     "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
@@ -23961,7 +23961,7 @@
     "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount": {
       "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
       "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightDefaultStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StorageContainerName": "System.String",
         "StorageAccountKey": "System.String",
@@ -24190,7 +24190,7 @@
     "System.Collections.Generic.IEnumerable`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -24202,7 +24202,7 @@
     "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount": {
       "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
       "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "StorageAccountKey": "System.String",
         "StorageAccountName": "System.String"
@@ -24509,7 +24509,7 @@
     "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastore": {
       "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
       "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastore",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastore, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastore, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "MetastoreType": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType",
         "Credential": "System.Management.Automation.PSCredential",
@@ -24556,7 +24556,7 @@
     "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType": {
       "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
       "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightMetastoreType, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -25000,7 +25000,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -25012,7 +25012,7 @@
     "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction": {
       "Namespace": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects",
       "Name": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction",
-      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightConfigAction, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ClusterRoleCollection": "Microsoft.WindowsAzure.Management.HDInsight.ClusterNodeType[]",
         "Name": "System.String"
@@ -25212,7 +25212,7 @@
     "System.Collections.Generic.ICollection`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.ICollection`1[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount]",
-      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.ICollection`1[[Microsoft.WindowsAzure.Management.HDInsight.Cmdlet.DataObjects.AzureHDInsightStorageAccount, Microsoft.WindowsAzure.Commands.HDInsight, Version=5.3.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [

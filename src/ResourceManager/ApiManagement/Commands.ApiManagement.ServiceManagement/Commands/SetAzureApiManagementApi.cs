@@ -19,11 +19,19 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Linq;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi)]
-    [OutputType(typeof(PsApiManagementApi))]
+    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementApi, DefaultParameterSetName = ExpandedParameterSet)]
+    [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
     public class SetAzureApiManagementApi : AzureApiManagementCmdletBase
     {
+        #region Parameter Set Names
+
+        protected const string ExpandedParameterSet = "ExpandedParameter";
+        protected const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Instance of PsApiManagementContext. This parameter is required.")]
@@ -31,11 +39,20 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         public PsApiManagementContext Context { get; set; }
 
         [Parameter(
+            ParameterSetName = ExpandedParameterSet,
             ValueFromPipelineByPropertyName = true,
             Mandatory = true,
             HelpMessage = "Identifier of existing API. This parameter is required.")]
         [ValidateNotNullOrEmpty]
         public String ApiId { get; set; }
+
+        [Parameter(
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            Mandatory = true,
+            HelpMessage = "Instance of PsApiManagementApi. This parameter is required.")]
+        [ValidateNotNullOrEmpty]
+        public PsApiManagementApi InputObject { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -111,9 +128,27 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
         public override void ExecuteApiManagementCmdlet()
         {
-            Client.ApiSet(
-                Context,
-                ApiId,
+            string resourcegroupName;
+            string serviceName;
+            string apiId;
+
+            if (ParameterSetName.Equals(ByInputObjectParameterSet))
+            {
+                resourcegroupName = InputObject.ResourceGroupName;
+                serviceName = InputObject.ServiceName;
+                apiId = InputObject.ApiId;
+            }
+            else
+            {
+                resourcegroupName = Context.ResourceGroupName;
+                serviceName = Context.ServiceName;
+                apiId = ApiId;
+            }
+
+            var updatedApi = Client.ApiSet(
+                resourcegroupName,
+                serviceName,
+                apiId,
                 Name,
                 Description,
                 ServiceUrl,
@@ -122,12 +157,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                 AuthorizationServerId,
                 AuthorizationScope,
                 SubscriptionKeyHeaderName,
-                SubscriptionKeyQueryParamName);
+                SubscriptionKeyQueryParamName,
+                InputObject);
 
             if (PassThru.IsPresent)
             {
-                var api = Client.ApiById(Context, ApiId);
-                WriteObject(api);
+                WriteObject(updatedApi);
             }
         }
     }

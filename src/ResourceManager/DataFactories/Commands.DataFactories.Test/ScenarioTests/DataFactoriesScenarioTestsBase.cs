@@ -12,46 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Gallery;
-using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactories;
-using Microsoft.Azure.Management.Resources;
-using Microsoft.Azure.Subscriptions;
-using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
+using ResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
+#if !NETSTANDARD
+using Microsoft.Azure.Test;
+using TestBase = Microsoft.Azure.Test.TestBase;
+#endif
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         protected DataFactoriesScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void SetupManagementClients(MockContext context)
         {
-            var dataPipelineManagementClient = GetDataPipelineManagementClient();
-            var resourceManagementClient = GetResourceManagementClient();
-            var subscriptionsClient = GetSubscriptionClient();
-            var galleryClient = GetGalleryClient();
-            var authorizationManagementClient = GetAuthorizationManagementClient();
+            var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
+            var resourceManagementClient = GetResourceManagementClient(context);
 
-            helper.SetupManagementClients(dataPipelineManagementClient,
-                resourceManagementClient,
-                subscriptionsClient,
-                galleryClient,
-                authorizationManagementClient);
+            _helper.SetupManagementClients(dataPipelineManagementClient, resourceManagementClient);
         }
 
         protected void RunPowerShellTest(params string[] scripts)
         {
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
+
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -59,49 +61,38 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, d, providersToIgnore);
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
 
-            using (UndoContext context = UndoContext.Current)
+            using (MockContext context = MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                SetupManagementClients(context);
 
-                SetupManagementClients();
-
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
+                    _helper.RMProfileModule,
+                    _helper.RMResourceModule,
+                    _helper.GetRMModulePath("AzureRM.DataFactories.psd1"),
                     "AzureRM.Resources.ps1");
 
-                helper.RunPowerShellTest(scripts);
+                _helper.RunPowerShellTest(scripts);
             }
         }
 
-        protected DataFactoryManagementClient GetDataPipelineManagementClient()
+        protected DataFactoryManagementClient GetDataPipelineManagementClient(MockContext context)
         {
+#if NETSTANDARD
+            //return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return null;
+#else
             return TestBase.GetServiceClient<DataFactoryManagementClient>(new CSMTestEnvironmentFactory());
+#endif
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected SubscriptionClient GetSubscriptionClient()
-        {
-            return TestBase.GetServiceClient<SubscriptionClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected GalleryClient GetGalleryClient()
-        {
-            return TestBase.GetServiceClient<GalleryClient>(new CSMTestEnvironmentFactory());
-        }
-
-        protected AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(new CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
     }
 }

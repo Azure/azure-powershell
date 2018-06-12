@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove ValidateNotNullOrEmpty validation conditions for SubjectBeginsWith/SubjectEndsWith in Update-AzureRmEventGridSubscription cmdlet to allow changing these parameters to empty string if needed.
 
 ## Version 0.3.3
 * Set minimum dependency of module to PowerShell 5.0

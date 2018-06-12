@@ -24,12 +24,12 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestBase = Microsoft.Azure.Test.TestBase;
-using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
         protected void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
+            ResourceClient = GetResourceClient(context);
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -72,18 +75,18 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
+                ResourceClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
                 ConsumptionManagementClient);
         }
 
-        public void RunPowerShellTest(ServiceManagemenet.Common.Models.XunitTracingInterceptor logger, params string[] scripts)
+        public void RunPowerShellTest(params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 
-            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -133,6 +136,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
+                    _helper.RMResourceModule,
                    @"AzureRM.Consumption.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
@@ -162,6 +166,13 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
             return TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
         }
 
+        private RM.ResourceManagementClient GetResourceClient(MockContext context)
+        {
+            return
+                context.GetServiceClient<RM.ResourceManagementClient>(
+                    Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
             return TestBase.GetServiceClient<AuthorizationManagementClient>(_csmTestFactory);
@@ -179,7 +190,10 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
         private ConsumptionManagementClient GetConsumptionManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ConsumptionManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return
+                context.GetServiceClient<ConsumptionManagementClient>(
+                    new Rest.ClientRuntime.Azure.TestFramework.TestEnvironment(
+                        Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")));
         }
     }
 }

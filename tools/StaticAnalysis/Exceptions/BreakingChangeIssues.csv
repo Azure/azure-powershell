@@ -1,2 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Microsoft.Azure.Commands.EventHub.dll","Microsoft.Azure.Commands.EventHub.Commands.EventHub.NewAzureRmEventHub","New-AzureRmEventHub","0","1050","The parameter set 'EventhubInputObjectSet' for cmdlet 'New-AzureRmEventHub' has been removed.","Add parameter set 'EventhubInputObjectSet' back to cmdlet 'New-AzureRmEventHub'."

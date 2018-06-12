@@ -25,9 +25,13 @@ The **New-AzureKeyVaultCertificateOrganizationDetails** cmdlet creates an in-mem
 ## EXAMPLES
 
 ### Example 1: Create an organization details object
-```
-PS C:\>$AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
-$OrgDetails = New-AzureKeyVaultCertificateOrganizationDetails -Name "Contoso" -Address1 "1 Redmond Way" -Address2 "Suite 906" -City "Redmond" -State "WA" -Zip 98052 -Country "US" -AdministratorDetails $AdminDetails
+```powershell
+PS C:\> $AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "Patti.Fuller@contoso.com" -PhoneNumber "1234567890"
+PS C:\> New-AzureKeyVaultCertificateOrganizationDetails -AdministratorDetails $AdminDetails
+
+Id AdministratorDetails
+-- --------------------
+   {Patti}
 ```
 
 The first command creates a certificate administrator details object, and then stores it in the $AdminDetails variable.
