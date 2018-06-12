@@ -118,10 +118,6 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
-            <Label>Rule Applies To Master</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Alignment>Left</Alignment>
             <Label>Baseline Results</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -131,10 +127,6 @@
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>RuleId</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <Alignment>Left</Alignment>
-                <PropertyName>AppliesToMaster</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
