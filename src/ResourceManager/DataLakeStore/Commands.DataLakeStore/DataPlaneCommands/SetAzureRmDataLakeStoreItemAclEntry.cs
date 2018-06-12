@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account,
-                            aclSpec, RequestedAclType.ModifyAcl, Concurrency, Progress ? this : null, CmdletCancellationToken);
+                            aclSpec, RequestedAclType.ModifyAcl, Concurrency, this, Progress, CmdletCancellationToken);
                     }
                     else
                     {

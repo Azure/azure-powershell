@@ -47,7 +47,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         private const long NeverExpireValue = 253402300800000;
         internal const int ImportExportMaxThreads = 256;
         private readonly LoggingConfiguration _adlsLoggerConfig;
-
+        private readonly bool _isDebugEnabled;
+        private const int DebugMessageFlushThreshold = 500;
         #region Constructors
 
         static DataLakeStoreFileSystemClient()
@@ -80,13 +81,21 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
         public DataLakeStoreFileSystemClient(IAzureContext context, DataLakeStoreFileSystemCmdletBase cmdlet) : this(context)
         {
-            bool debug;
             bool containsDebug = cmdlet.MyInvocation.BoundParameters.ContainsKey("Debug");
             if (containsDebug)
-                debug = ((SwitchParameter)cmdlet.MyInvocation.BoundParameters["Debug"]).ToBool();
+            {
+                _isDebugEnabled = ((SwitchParameter) cmdlet.MyInvocation.BoundParameters["Debug"]).ToBool();
+            }
             else
-                debug = (ActionPreference)cmdlet.GetVariableValue("DebugPreference") != ActionPreference.SilentlyContinue;
-            if (debug)
+            {
+                var debugPreference = cmdlet.GetVariableValue("DebugPreference") as string;
+                if (debugPreference != null)
+                {
+                    _isDebugEnabled = !debugPreference.Equals("SilentlyContinue");
+                }
+            }
+            
+            if (_isDebugEnabled)
             {
                 _adlsLoggerConfig = new LoggingConfiguration();
                 cmdlet.WriteObject(null);
@@ -182,16 +191,17 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="aclChangeType">Type of al change- Modify, Set, Remove</param>
         /// <param name="concurrency">Concurrency- number of parallel operations</param>
         /// <param name="aclCmdlet">Cmdlet for acl change. This is only for printing progress. If passed null, then no progress tracking is done</param>
+        /// <param name="trackProgress"></param>
         /// <param name="cmdletCancellationToken">Cancellationtoken for cmdlet</param>
         public AclProcessorStats ChangeAclRecursively(string path, string accountName, List<AclEntry> aclToSet,
-            RequestedAclType aclChangeType, int concurrency, Cmdlet aclCmdlet, CancellationToken cmdletCancellationToken )
+            RequestedAclType aclChangeType, int concurrency, Cmdlet aclCmdlet, bool trackProgress, CancellationToken cmdletCancellationToken )
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
 
             System.Progress<AclProcessorStats> progressTracker = null;
             ProgressRecord progress = null;
             // If passing null, then we do not want progreess tracking
-            if (aclCmdlet != null)
+            if (trackProgress)
             {
                 progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
                     string.Format($"Recursive acl change for path {path} and type {aclChangeType}"),
@@ -219,11 +229,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 status = client.ChangeAcl(path, aclToSet, aclChangeType, concurrency, progressTracker, cmdletCancellationToken);
             }, cmdletCancellationToken);
 
-            if (aclCmdlet != null)
+            if (trackProgress || _isDebugEnabled)
             {
-                TrackTaskProgress(aclTask, progress, aclCmdlet, cmdletCancellationToken);
+                TrackTaskProgress(aclTask, aclCmdlet, progress, cmdletCancellationToken);
 
-                if (!cmdletCancellationToken.IsCancellationRequested)
+                if (trackProgress && !cmdletCancellationToken.IsCancellationRequested)
                 {
                     progress.PercentComplete = 100;
                     progress.RecordType = ProgressRecordType.Completed;
@@ -693,7 +703,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 }, cmdletCancellationToken);
 
 
-            TrackTaskProgress(transferTask, progress, cmdletRunningRequest, cmdletCancellationToken);
+            TrackTaskProgress(transferTask, cmdletRunningRequest, progress, cmdletCancellationToken);
 
             if (!cmdletCancellationToken.IsCancellationRequested)
             {
@@ -724,26 +734,39 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="displayFiles">Display files</param>
         /// <param name="hideConsistentAcl">Hide consistent Acl</param>
         /// <param name="maxDepth">Maximum depth</param>
+        /// <param name="cmdlet">ExportFileProperties Commandlet</param>
         /// <param name="cmdletCancellationToken">CancellationToken</param>
-        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth, CancellationToken cmdletCancellationToken )
+        public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth, Cmdlet cmdlet, CancellationToken cmdletCancellationToken)
         {
-            AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(path, getAclUsage, dumpFileName,
-                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth,cmdletCancellationToken);
+            Task exportTask = Task.Run(() => AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(
+                path, getAclUsage, dumpFileName,
+                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth,
+                cmdletCancellationToken), cmdletCancellationToken);
+
+            if (_isDebugEnabled)
+            {
+                TrackTaskProgress(exportTask, cmdlet, null, cmdletCancellationToken);
+            }
+            else
+            {
+                WaitForTask(exportTask, cmdletCancellationToken);
+            }
         }
 
         #endregion
 
         #region private helpers
         /// <summary>
-        /// Tracks the upload progress in the PowerShell console.
+        /// Tracks the task and shows the task progress or debug nessages after a regular interval in the PowerShell console.
+        /// Call this method only if you want to do something for a task - like show progress, show debug messages
         /// </summary>
         /// <param name="task">The task that tracks the upload.</param>
-        /// <param name="taskProgress">The upload progress that will be displayed in the console.</param>
         /// <param name="commandToUpdateProgressFor">Commandlet to write to</param>
+        /// <param name="taskProgress">The upload progress that will be displayed in the console.</param>
         /// <param name="token">Cancellation token</param>
-        private void TrackTaskProgress(Task task, ProgressRecord taskProgress,
-            Cmdlet commandToUpdateProgressFor, CancellationToken token)
+        private void TrackTaskProgress(Task task, Cmdlet commandToUpdateProgressFor, ProgressRecord taskProgress, CancellationToken token)
         {
+            var pscommandToUpdateProgressFor = (DataLakeStoreFileSystemCmdletBase) commandToUpdateProgressFor;
             // Update the UI with the progress.
             var lastUpdate = DateTime.Now.Subtract(TimeSpan.FromSeconds(2));
             while (!task.IsCompleted && !task.IsCanceled)
@@ -759,7 +782,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 {
                     lock (ConsoleOutputLock)
                     {
-                        if (commandToUpdateProgressFor != null && !token.IsCancellationRequested &&
+                        if (taskProgress != null && !token.IsCancellationRequested &&
                             !commandToUpdateProgressFor.Stopping)
                         {
                             commandToUpdateProgressFor.WriteProgress(taskProgress);
@@ -767,10 +790,23 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     }
                 }
 
+                // If debug is enabled then flush debug messsages 
+                if (_isDebugEnabled)
+                {
+                    if (!token.IsCancellationRequested &&
+                        !commandToUpdateProgressFor.Stopping && pscommandToUpdateProgressFor.DebugMessages.Count > DebugMessageFlushThreshold)
+                    {
+                        lock (ConsoleOutputLock)
+                        {
+                            FlushDebugMessages(DebugMessageFlushThreshold, pscommandToUpdateProgressFor);
+                        }
+                    }
+                }
                 TestMockSupport.Delay(250);
+                
             }
 
-            if (task.IsCanceled || token.IsCancellationRequested)
+            if (taskProgress != null && (task.IsCanceled || token.IsCancellationRequested))
             {
                 taskProgress.RecordType = ProgressRecordType.Completed;
             }
@@ -790,7 +826,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                 throw task.Exception;
             }
-            else
+            else if (taskProgress != null)
             {
                 // finally execution is finished, set progress state to completed.
                 taskProgress.PercentComplete = 100;
@@ -800,6 +836,26 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             }
         }
 
+        /// <summary>
+        /// Flushes the debug messages to debug stream
+        /// </summary>
+        /// <param name="numDebugMessagesToFlush">number of debug messages to flush</param>
+        /// <param name="cmdlet">Instance of AzurePSCCmdlet</param>
+        private void FlushDebugMessages(int numDebugMessagesToFlush, AzurePSCmdlet cmdlet)
+        {
+            string message;
+            int count = 0;
+            while ((count++ < numDebugMessagesToFlush) && cmdlet.DebugMessages.TryDequeue(out message))
+            {
+                cmdlet.WriteDebug(message);
+            }
+        }
+
+        /// <summary>
+        /// Waits for the task to finish
+        /// </summary>
+        /// <param name="task">Task</param>
+        /// <param name="token">Cancellation token</param>
         private void WaitForTask(Task task, CancellationToken token)
         {
             try
