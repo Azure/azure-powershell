@@ -39,6 +39,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         private const string DEFAULT_PSVERSION = "3.0.0.0";
 
         public ConcurrentQueue<string> DebugMessages { get; private set; }
+
         private RecordingTracingInterceptor _httpTracingInterceptor;
         private object lockObject = new object();
         private AzurePSDataCollectionProfile _cachedProfile = null;
