@@ -485,6 +485,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             {
                 RecordDebugMessages();
             }
+
             string message;
             while (DebugMessages.TryDequeue(out message))
             {
