@@ -77,9 +77,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
                 });
 
             MonitorClientMock.SetupGet(f => f.Metrics).Returns(this.insightsMetricOperationsMock.Object);
- }
+        }
 
-        [Fact(Skip = "Metrics API to be upgraded by another engineer")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetMetricsCommandParametersProcessing()
         {

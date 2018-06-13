@@ -43,7 +43,7 @@ function Test-GetMetrics
 
 <#
 .SYNOPSIS
-Tests getting metrics definitions.
+Tests getting metrics definitions and creating a new metric dimension filter.
 #>
 function Test-GetMetricDefinitions
 {
@@ -60,25 +60,10 @@ function Test-GetMetricDefinitions
         $actual = Get-AzureRmMetricDefinition -ResourceId $rscname -MetricNamespace "Microsoft.Web/sites" -MetricName CpuTime,Requests
 
         Assert-AreEqual 2 $actual.Count
-    }
-    finally
-    {
-        # Cleanup
-        # No cleanup needed for now
-    }
-}
 
-<#
-.SYNOPSIS
-Tests creating a new metric dimension filter
-#>
-function Test-NewMetricFilter
-{
-    try
-    {
-        $actual = New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle, New York"
+        $metricFilter = New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle, New York"
 
-        Assert-AreEqual 1 $actual.Count
+        Assert-AreEqual 1 $metricFilter.Count
     }
     finally
     {
