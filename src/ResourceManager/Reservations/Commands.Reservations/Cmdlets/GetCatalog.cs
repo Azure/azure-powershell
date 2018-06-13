@@ -18,11 +18,11 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 
         [Parameter(Mandatory = true)]
         [PSArgumentCompleter("VirtualMachines", "SqlDatabases", "SuseLinux")]
-        [ValidateSet("VirtualMachines", "SqlDatabases", "SuseLinux")]
         [ValidateNotNullOrEmpty]
         public string ReservedResourceType { get; set; }
 
         [Parameter(Mandatory = false)]
+        [LocationCompleter("Microsoft.Capacity/catalogs")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 

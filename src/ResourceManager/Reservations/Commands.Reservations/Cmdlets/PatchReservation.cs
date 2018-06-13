@@ -9,6 +9,7 @@ using Microsoft.Azure.Management.Reservations;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Rest.Azure;
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public Guid ReservationId { get; set; }
 
         [Parameter(Mandatory = true)]
-        [ValidateSet("Single", "Shared")]
+        [PSArgumentCompleter("Single", "Shared")]
         [ValidateNotNullOrEmpty]
         public string AppliedScopeType { get; set; }
 
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         public string AppliedScope { get; set; }
 
         [Parameter(Mandatory = false)]
-        [ValidateSet("On", "Off", "NotSupported")]
+        [PSArgumentCompleter("On", "Off", "NotSupported")]
         [ValidateNotNullOrEmpty]
         public string InstanceFlexibility { get; set; }
 
