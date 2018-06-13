@@ -334,6 +334,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             ParameterSetName = DefaultSqlShardMapSet)]
         [Parameter(Mandatory = true,
             Position = 2,
+            HelpMessage = "The refresh credential name.",
             ParameterSetName = TargetGroupObjectSqlServerOrElasticPoolSet)]
         [Parameter(Mandatory = true,
             HelpMessage = "The refresh credential name.",
