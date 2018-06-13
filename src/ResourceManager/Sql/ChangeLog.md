@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.8.1-preview
 * Bug fixes for cmdlets in Elastic Jobs
 
 ## Version 4.8.0-preview
