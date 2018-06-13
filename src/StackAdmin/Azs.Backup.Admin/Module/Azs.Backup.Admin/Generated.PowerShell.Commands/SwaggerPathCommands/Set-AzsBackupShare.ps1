@@ -34,6 +34,15 @@ Licensed under the MIT License. See License.txt in the project root for license 
 .PARAMETER EncryptionKey
     Encryption key used to encrypt backups.
 
+.PARAMETER IsBackupSchedulerEnabled
+    Whether the backup scheduler should be enabled.
+
+.PARAMETER BackupFrequencyInHours
+    The interval, in hours, for the frequency that the scheduler takes a backup.
+
+.PARAMETER BackupRetentionPeriodInDays
+    The retention period, in days, for backups in the storage location.
+
 .PARAMETER AsJob
     Run asynchronous as a job and return the job object.
 
@@ -68,33 +77,52 @@ function Set-AzsBackupShare {
         [System.String]
         $Location,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
         [System.String]
+        [Alias("Path")]
         $BackupShare,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
         [System.String]
         $Username,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNull()]
         [securestring]
         $Password,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNull()]
         [securestring]
         $EncryptionKey,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [bool]
+        $IsBackupSchedulerEnabled,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [int]
+        $BackupFrequencyInHours,
+
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
+        [int]
+        $BackupRetentionPeriodInDays,
 
         [Parameter(Mandatory = $false)]
         [switch]
@@ -161,10 +189,40 @@ function Set-AzsBackupShare {
                     $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
                 }
 
-                $InputObject.Path = $BackupShare
-                $InputObject.UserName = $Username
-                $InputObject.Password = ConvertTo-String -SecureString $Password
-                $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                if ($PSBoundParameters.ContainsKey('BackupShare'))
+                {
+                    $InputObject.Path = $BackupShare
+                }
+
+                if ($PSBoundParameters.ContainsKey('Username'))
+                {
+                    $InputObject.UserName = $Username
+                }
+
+                if ($PSBoundParameters.ContainsKey('Password'))
+                {
+                    $InputObject.Password = ConvertTo-String -SecureString $Password
+                }
+
+                if ($PSBoundParameters.ContainsKey('EncryptionKey'))
+                {
+                    $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                }
+
+                if ($PSBoundParameters.ContainsKey('IsBackupSchedulerEnabled'))
+                {
+                    $InputObject.IsBackupSchedulerEnabled = $IsBackupSchedulerEnabled
+                }
+
+                if ($PSBoundParameters.ContainsKey('BackupFrequencyInHours'))
+                {
+                    $InputObject.BackupFrequencyInHours = $BackupFrequencyInHours
+                }
+
+                if ($PSBoundParameters.ContainsKey('BackupRetentionPeriodInDays'))
+                {
+                    $InputObject.BackupRetentionPeriodInDays = $BackupRetentionPeriodInDays
+                }
 
                 Write-Verbose -Message 'Performing operation update on $BackupAdminClient.'
                 $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
