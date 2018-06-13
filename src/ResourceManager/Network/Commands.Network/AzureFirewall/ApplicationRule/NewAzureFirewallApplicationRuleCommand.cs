@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
-        public List<string> SourceAddresses { get; set; }
+        public List<string> SourceAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 Name = this.Name,
                 Description = this.Description,
-                SourceAddresses = this.SourceAddresses,
+                SourceAddresses = this.SourceAddress,
                 Protocols = protocolsAsWeExpectThem,
                 TargetUrls = this.TargetFqdn
             };
