@@ -160,7 +160,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.3.0 - june 2018
+        ReleaseNotes = '6.3.0 - June 2018
 AzureRM.Profile
 * Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running ''Connect-AzureRmAccount'' with no previous context
