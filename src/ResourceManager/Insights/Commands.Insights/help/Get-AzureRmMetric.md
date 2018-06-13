@@ -13,17 +13,9 @@ Gets the metric values of a resource.
 
 ## SYNTAX
 
-### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetWithFullParameters
-```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
- [-StartTime <DateTime>] [-EndTime <DateTime>] [-MetricName] <String[]> [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int>] [-OrderBy <String>] 
+ [-MetricNamespace <String>] [-Resulttype <Resulttype>] [-MetricFilter <MetricFilter>] [-MetricName <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +151,39 @@ Unit           : Count
 
 This command gets detailed output for the Requests metric.
 
+### Example 4: Get summarized output for a specified metric with specified dimension filter
+```
+PS C:\> $dimFilter = @((New-AzureRmMetricDimensionFilter -Dimension City -Operator eq -Values Seattle, Toronto), (New-AzureRmMetricDimensionFilter -Dimension AuthenticationType Operator eq -Values User))
+
+PS C:\> Get-AzureRmMetricValues -ResourceId <resourcId> -MetricName PageViews -TimeGrain PT5M -Filters $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType -Average
+ResourceId	: [ResourceId]
+MetricNamespace	: Microsoft.Insights/ApplicationInsights
+Metric Name	:
+					LocalizedValue	: Page Views
+					Value		: PageViews
+Unit		: Seconds
+Timeseries	:
+			City 			: Seattle
+			AuthenticationType 	: User
+
+					Timestamp	: 2018-02-01 12:00:00 PM
+					Average		: 3518
+
+					Timestamp	: 2018-02-01 12:05:00 PM
+					Average		: 1984
+
+			City 			: Toronto
+			AuthenticationType 	: User
+
+					Timestamp	: 2018-02-01 12:00:00 PM
+					Average		: 894
+
+					Timestamp	: 2018-02-01 12:05:00 PM
+					Average		: 967
+```
+
+This command gets summarized output for the PageViews metric with specified dimesion filter and aggregation type.
+
 ## PARAMETERS
 
 ### -AggregationType
@@ -166,7 +191,7 @@ The aggregation type of the query
 
 ```yaml
 Type: AggregationType
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -213,7 +238,7 @@ The default is the current time.
 
 ```yaml
 Type: DateTime
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -231,8 +256,8 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: MetricNames
 
-Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
-Position: 1
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -240,7 +265,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: String[]
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -271,7 +296,7 @@ The default is the current local time minus one hour.
 
 ```yaml
 Type: DateTime
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -286,8 +311,83 @@ Specifies the time grain of the metric as a **TimeSpan** object in the format hh
 
 ```yaml
 Type: TimeSpan
-Parameter Sets: GetWithFullParameters
+Parameter Sets: (All)
 Aliases: 
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Top
+Specifies the maximum number of records to retrieve (default:10), to be specified with $filter.
+
+```yaml
+Type: Integer
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OrderBy
+Specifies the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricNamespace
+Specifies the metric namespace to query metrics for.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Resulttype
+Specifies the result type to be returned (metadata or data).
+
+```yaml
+Type: Resulttype
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricFilter
+Specifies the metric dimension filter to query metrics for.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: 1
@@ -313,5 +413,6 @@ This cmdlet does not accept any input.
 ## RELATED LINKS
 
 [Get-AzureRmMetricDefinition](./Get-AzureRmMetricDefinition.md)
+[New-AzureRmMetricFilter](./New-AzureRmMetricFilter.md)
 
 
