@@ -402,6 +402,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         protected abstract bool UpdateExistingTargets();
 
         /// <summary>
+        /// Clears target group properties
+        /// </summary>
+        /// <remarks>
+        /// We clear these properties so that during piping scenarios we can ensure we initialize the minimum properties
+        /// for either getting, starting, stopping the current job execution.
+        /// Resource group name, server name, agent name, target group name, and name are cleared
+        /// so that during the next iteration in list, they will be initialized properly during <see cref="InitializeInputObjectProperties"/>
+        protected void ClearProperties()
+        {
+            this.ResourceGroupName = null;
+            this.ServerName = null;
+            this.AgentName = null;
+            this.TargetGroupName = null;
+            this.Name = null;
+        }
+
+        /// <summary>
         /// Gets the list of existing targets in the target group.
         /// </summary>
         /// <returns>The list of existing targets</returns>

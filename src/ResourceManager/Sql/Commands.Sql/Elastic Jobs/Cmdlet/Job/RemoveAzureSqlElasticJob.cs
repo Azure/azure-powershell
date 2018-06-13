@@ -119,6 +119,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet.Job
             }
 
             base.ExecuteCmdlet();
+            ClearProperties();
         }
 
         /// <summary>

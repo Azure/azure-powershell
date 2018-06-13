@@ -35,5 +35,23 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         {
             return new AzureSqlElasticJobAdapter(DefaultContext);
         }
+
+        /// <summary>
+        /// Clears job properties
+        /// </summary>
+        /// <remarks>
+        /// We clear these properties so that during piping scenarios we can ensure we initialize the minimum properties
+        /// for either getting, creating, updating, or removing the correct resource
+        /// Resource group name, server name, agent name, job name, and name are cleared
+        /// so that during the next iteration in list, they will be initialized properly during <see cref="InitializeInputObjectProperties"/>
+        /// </remarks>
+        protected void ClearProperties()
+        {
+            this.ResourceGroupName = null;
+            this.ServerName = null;
+            this.AgentName = null;
+            this.JobName = null;
+            this.Name = null;
+        }
     }
 }

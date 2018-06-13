@@ -516,6 +516,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             InitializeInputObjectProperties(this.ParentObject);
             InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
+            ClearProperties();
         }
 
         /// <summary>
@@ -597,7 +598,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
                 {
                     SubscriptionId = Guid.Parse(databaseIdentifier.Subscription),
                     ResourceGroupName = databaseIdentifier.ResourceGroupName,
-                    ServerName = databaseIdentifier.ParentResourceBuilder[1],
+                    ServerName = databaseIdentifier.ParentResource.Split('/')[1],
                     DatabaseName = databaseIdentifier.ResourceName,
                     Credential = this.OutputCredentialName != null ? CreateCredentialId(this.ResourceGroupName, this.ServerName, this.AgentName, this.OutputCredentialName) : null,
                     SchemaName = this.OutputSchemaName != null ? this.OutputSchemaName : null,

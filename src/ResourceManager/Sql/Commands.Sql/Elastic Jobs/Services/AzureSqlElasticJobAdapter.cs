@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Services
                 isActive, skip, top)
                 .Select((jobExecution) =>
                 {
-                    string jobName = new ResourceIdentifier(jobExecution.Id).ParentResourceBuilder[5];
+                    string jobName = new ResourceIdentifier(jobExecution.Id).ParentResource.Split('/')[5];
                     return CreateJobExecutionModelFromResponse(resourceGroupName, serverName, agentName, jobName, jobExecution);
                 }).ToList();
 

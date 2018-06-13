@@ -38,6 +38,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
             InitializeInputObjectProperties(this.ParentObject);
             InitializeResourceIdProperties(this.ParentResourceId);
             base.ExecuteCmdlet();
+            ClearProperties();
         }
 
         /// <summary>
