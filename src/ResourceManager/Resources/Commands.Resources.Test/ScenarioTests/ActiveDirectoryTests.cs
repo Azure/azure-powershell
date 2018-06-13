@@ -514,6 +514,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Currently not working.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithFPOUPN()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithFPOUPN");

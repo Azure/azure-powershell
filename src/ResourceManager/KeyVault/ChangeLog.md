@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue where no Tags are being returned when Get-AzureRmKeyVault -Tag is run
 
 ## Version 5.0.1
 * Update documentation with example output

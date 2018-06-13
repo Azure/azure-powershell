@@ -19,6 +19,11 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` are updated to use the latest `Strategies` library.
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
 
 ## Version 5.1.0
 * VMSS VM Update feature

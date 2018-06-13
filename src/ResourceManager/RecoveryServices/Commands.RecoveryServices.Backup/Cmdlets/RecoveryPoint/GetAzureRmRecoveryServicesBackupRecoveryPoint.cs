@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupRecoveryPoint",
         DefaultParameterSetName = NoFilterParameterSet),
         OutputType(typeof(RecoveryPointBase), typeof(IList<RecoveryPointBase>))]
-    public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RecoveryServicesBackupCmdletBase
+    public class GetAzureRmRecoveryServicesBackupRecoveryPoint : RSBackupVaultCmdletBase
     {
         internal const string DateTimeFilterParameterSet = "DateTimeFilter";
         internal const string NoFilterParameterSet = "NoFilterParameterSet";
@@ -101,12 +102,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 //Validate start time < end time
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 // initialize values to default
                 DateTime rangeEnd = DateTime.UtcNow;
                 DateTime rangeStart = rangeEnd.AddDays(-30);
 
-                Dictionary<Enum, object> parameter = new Dictionary<Enum, object>();
-                parameter.Add(RecoveryPointParams.Item, Item);
+                Dictionary<Enum, object> providerParameters = new Dictionary<Enum, object>();
+                providerParameters.Add(VaultParams.VaultName, vaultName);
+                providerParameters.Add(VaultParams.ResourceGroupName, resourceGroupName);
+                providerParameters.Add(RecoveryPointParams.Item, Item);
 
                 if (ParameterSetName == DateTimeFilterParameterSet ||
                     ParameterSetName == NoFilterParameterSet)
@@ -150,10 +157,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             Resources.GetRPErrorStartTimeShouldBeLessThanUTCNow);
                     }
 
-                    parameter.Add(RecoveryPointParams.StartDate, rangeStart);
-                    parameter.Add(RecoveryPointParams.EndDate, rangeEnd);
+                    providerParameters.Add(RecoveryPointParams.StartDate, rangeStart);
+                    providerParameters.Add(RecoveryPointParams.EndDate, rangeEnd);
                     PsBackupProviderManager providerManager =
-                        new PsBackupProviderManager(parameter, ServiceClientAdapter);
+                        new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider =
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     var rpList = psBackupProvider.ListRecoveryPoints();
@@ -168,11 +175,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         "StartDate = {0} EndDate = {1}, RPId = {2}, KeyFileDownloadLocation = {3}",
                         StartDate, EndDate, RecoveryPointId, KeyFileDownloadLocation));
 
-                    parameter.Add(RecoveryPointParams.RecoveryPointId, RecoveryPointId);
-                    parameter.Add(
+                    providerParameters.Add(RecoveryPointParams.RecoveryPointId, RecoveryPointId);
+                    providerParameters.Add(
                         RecoveryPointParams.KeyFileDownloadLocation, KeyFileDownloadLocation);
                     PsBackupProviderManager providerManager =
-                        new PsBackupProviderManager(parameter, ServiceClientAdapter);
+                        new PsBackupProviderManager(providerParameters, ServiceClientAdapter);
                     IPsBackupProvider psBackupProvider =
                         providerManager.GetProviderInstance(Item.ContainerType, Item.BackupManagementType);
                     WriteObject(psBackupProvider.GetRecoveryPointDetails());
