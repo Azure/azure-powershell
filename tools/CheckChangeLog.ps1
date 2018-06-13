@@ -5,12 +5,6 @@ Param
     [string]$FilesChanged
 )
 
-if ([string]::IsNullOrEmpty($FilesChanged))
-{
-    Write-Host "The list of files changed is empty; skipping check for change log entry"
-    return
-}
-
 $PathsToCheck = @(
     "src/Common",
     "src/ResourceManager",
@@ -23,6 +17,13 @@ $PathStringsToIgnore = @(
 )
 
 $FilesChangedList = $FilesChanged -split ';'
+
+if ([string]::IsNullOrEmpty($FilesChanged) -or ($FilesChangedList.Count -eq 300))
+{
+    Write-Host "The list of files changed is empty or is past the 300 file limit; skipping check for change log entry"
+    return
+}
+
 $ChangeLogs = $FilesChangedList | where { $_ -like "*ChangeLog.md*" }
 $UpdatedServicePaths = New-Object System.Collections.Generic.HashSet[string]
 foreach ($ChangeLog in $ChangeLogs)
