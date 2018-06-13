@@ -39,6 +39,18 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
 
+            if (this.AzureFirewall.IpConfigurations.Count != 1)
+            {
+                throw new ArgumentException(string.Format("There must be exactly one IP configuration associated with the Azure Firewall, found {0}.", this.AzureFirewall.IpConfigurations.Count));
+            }
+            if (this.AzureFirewall.IpConfigurations[0].PublicIpAddress == null)
+            {
+                throw new ArgumentException("The Azure Firewall IP configuration Public IP Address must be populated.");
+            }
+
+            this.AzureFirewall.IpConfigurations[0].InternalPublicIpAddress = this.AzureFirewall.IpConfigurations[0].PublicIpAddress;
+            this.AzureFirewall.IpConfigurations[0].PublicIpAddress = null;
+
             // Map to the sdk object
             var secureGwModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(this.AzureFirewall);
             secureGwModel.Tags = TagsConversionHelper.CreateTagDictionary(this.AzureFirewall.Tag, validate: true);
