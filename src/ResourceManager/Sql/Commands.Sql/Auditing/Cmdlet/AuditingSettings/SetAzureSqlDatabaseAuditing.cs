@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         public string StorageAccountName { get; set; }
 
         /// <summary>
-        /// Gets or sets the id of the storage account subscription to use.
+        /// Gets or sets storage account subscription id.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
