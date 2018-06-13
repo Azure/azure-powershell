@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.6
 * Updated the help file for Add-AzureRmTrafficManagerEndpointConfig
 
 ## Version 4.0.5

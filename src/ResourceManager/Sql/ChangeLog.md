@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.1
 * Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
 
 ## Version 4.6.0
