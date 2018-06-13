@@ -69,5 +69,8 @@ foreach ($File in $FilesChangedList)
 
 if ($FlaggedFiles.Count -gt 0)
 {
+    $message = "The following files were flagged for not having a change log entry:`n"
+    $FlaggedFiles | % { $message += "`t- $_`n" }
+    Write-Host $message
     throw "Modified files were found with no update to their change log. Please add a snippet to the affected modules' change log."
 }
