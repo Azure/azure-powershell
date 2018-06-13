@@ -61,7 +61,7 @@ namespace RecoveryServices.SiteRecovery.Test
              "Test-AsrEvent -vaultSettingsFilePath \"" + this.vaultSettingsFilePath + "\"");
         }
 
-        [Fact]
+        [Fact(Skip = "Failing, needs service team to rerecord")]
         [Trait(
             Category.AcceptanceType,
             Category.CheckIn)]
