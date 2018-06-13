@@ -1,0 +1,197 @@
+{
+    ".github": [],
+    "documentation": [],
+    "setup": [],
+    ".gitattributes": [],
+    "CONTRIBUTING.md": [],
+    "ChangeLog.md": [],
+    "LICENSE.txt": [],
+    "README.md": [],
+    "appveyor.yml": [],
+    "src/Common/": [
+      ".\\src\\ResourceManager\\Profile\\Profile.sln"
+    ],
+    "src/ResourceManager/Common": [
+      ".\\src\\ResourceManager\\Profile\\Profile.sln"
+    ],
+    "src/ResourceManager/Aks/": [
+      ".\\src\\ResourceManager\\Aks\\Aks.sln"
+    ],
+    "src/ResourceManager/AnalysisServices/": [
+      ".\\src\\ResourceManager\\AnalysisServices\\AnalysisServices.sln"
+    ],
+    "src/ResourceManager/ApiManagement/": [
+      ".\\src\\ResourceManager\\ApiManagement\\ApiManagement.sln"
+    ],
+    "src/ResourceManager/ApplicationInsights/": [
+      ".\\src\\ResourceManager\\ApplicationInsights\\ApplicationInsights.sln"
+    ],
+    "src/ResourceManager/Automation/": [
+      ".\\src\\ResourceManager\\Automation\\Automation.sln"
+    ],
+    "src/ResourceManager/AzureBackup/": [
+      ".\\src\\ResourceManager\\AzureBackup\\AzureBackup.sln"
+    ],
+    "src/ResourceManager/AzureBatch/": [
+      ".\\src\\ResourceManager\\AzureBatch\\AzureBatch.sln"
+    ],
+    "src/ResourceManager/Billing/": [
+      ".\\src\\ResourceManager\\Billing\\Billing.sln"
+    ],
+    "src/ResourceManager/Cdn/": [
+      ".\\src\\ResourceManager\\Cdn\\Cdn.sln"
+    ],
+    "src/ResourceManager/CognitiveServices/": [
+      ".\\src\\ResourceManager\\CognitiveServices\\CognitiveServices.sln"
+    ],
+    "src/ResourceManager/Compute/": [
+      ".\\src\\ResourceManager\\Compute\\Compute.sln"
+    ],
+    "src/ResourceManager/Consumption/": [
+      ".\\src\\ResourceManager\\Consumption\\Consumption.sln"
+    ],
+    "src/ResourceManager/ContainerInstance/": [
+      ".\\src\\ResourceManager\\ContainerInstance\\ContainerInstance.sln"
+    ],
+    "src/ResourceManager/ContainerRegistry/": [
+      ".\\src\\ResourceManager\\ContainerRegistry\\ContainerRegistry.sln"
+    ],
+    "src/ResourceManager/DataFactories/": [
+      ".\\src\\ResourceManager\\DataFactories\\DataFactories.sln"
+    ],
+    "src/ResourceManager/DataFactoryV2/": [
+      ".\\src\\ResourceManager\\DataFactoryV2\\DataFactoryV2.sln"
+    ],
+    "src/ResourceManager/DataLakeAnalytics/": [
+      ".\\src\\ResourceManager\\DataLakeAnalytics\\DataLakeAnalytics.sln"
+    ],
+    "src/ResourceManager/DataLakeStore/": [
+      ".\\src\\ResourceManager\\DataLakeStore\\DataLakeStore.sln"
+    ],
+    "src/ResourceManager/DataMigration/": [
+      ".\\src\\ResourceManager\\DataMigration\\DataMigration.sln"
+    ],
+    "src/ResourceManager/DeviceProvisioningServices/": [
+      ".\\src\\ResourceManager\\DeviceProvisioningServices\\DeviceProvisioningServices.sln"
+    ],
+    "src/ResourceManager/DevTestLabs/": [
+      ".\\src\\ResourceManager\\DevTestLabs\\DevTestLabs.sln"
+    ],
+    "src/ResourceManager/Dns/": [
+      ".\\src\\ResourceManager\\Dns\\Dns.sln"
+    ],
+    "src/ResourceManager/EventGrid/": [
+      ".\\src\\ResourceManager\\EventGrid\\EventGrid.sln"
+    ],
+    "src/ResourceManager/EventHub/": [
+      ".\\src\\ResourceManager\\EventHub\\Eventhubs.sln"
+    ],
+    "src/ResourceManager/HDInsight/": [
+      ".\\src\\ResourceManager\\HDInsight\\HDInsight.sln"
+    ],
+    "src/ResourceManager/Insights/": [
+      ".\\src\\ResourceManager\\Insights\\Insights.sln"
+    ],
+    "src/ResourceManager/IotHub/": [
+      ".\\src\\ResourceManager\\IotHub\\IotHub.sln"
+    ],
+    "src/ResourceManager/KeyVault/": [
+      ".\\src\\ResourceManager\\KeyVault\\KeyVault.sln"
+    ],
+    "src/ResourceManager/LogicApp/": [
+      ".\\src\\ResourceManager\\LogicApp\\LogicApp.sln"
+    ],
+    "src/ResourceManager/MachineLearning/": [
+      ".\\src\\ResourceManager\\MachineLearning\\MachineLearning.sln"
+    ],
+    "src/ResourceManager/MachineLearningCompute/" : [
+      ".\\src\\ResourceManager\\MachineLearningCompute\\MachineLearningCompute.sln"
+    ],
+    "src/ResourceManager/ManagedServiceIdentity/" : [
+      ".\\src\\ResourceManager\\ManagedServiceIdentity\\ManagedServiceIdentity.sln"
+   ],
+    "src/ResourceManager/MarketplaceOrdering/Commands.MarketplaceOrdering.Test/": [
+      ".\\src\\ResourceManager\\MarketplaceOrdering\\MarketplaceOrdering.sln"
+    ],
+    "src/ResourceManager/Media/": [
+      ".\\src\\ResourceManager\\Media\\Media.sln"
+    ],
+    "src/ResourceManager/Network/": [
+      ".\\src\\ResourceManager\\Network\\Network.sln"
+    ],
+    "src/ResourceManager/NotificationHubs /": [
+      ".\\src\\ResourceManager\\NotificationHubs\\NotificationHubs.sln"
+    ],
+    "src/ResourceManager/OperationalInsights/": [
+      ".\\src\\ResourceManager\\OperationalInsights\\OperationalInsights.sln"
+    ],
+    "src/ResourceManager/PolicyInsights/": [
+      ".\\src\\ResourceManager\\PolicyInsights\\PolicyInsights.sln"
+    ],
+    "src/ResourceManager/PowerBIEmbedded/": [
+      ".\\src\\ResourceManager\\PowerBIEmbedded\\PowerBIEmbedded.sln"
+    ],
+    "src/ResourceManager/Profile/": [
+      ".\\src\\ResourceManager\\Profile\\Profile.sln"
+    ],
+    "src/ResourceManager/RecoveryServices.SiteRecovery/": [
+      ".\\src\\ResourceManager\\RecoveryServices.SiteRecovery\\RecoveryServices.SiteRecovery.sln"
+    ],
+    "src/ResourceManager/RecoveryServices/": [
+      ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.sln",
+      ".\\src\\ResourceManager\\RecoveryServices\\RecoveryServices.Backup.sln"
+    ],
+    "src/ResourceManager/RedisCache/": [
+      ".\\src\\ResourceManager\\RedisCache\\RedisCache.sln"
+    ],
+    "src/ResourceManager/Relay/": [
+      ".\\src\\ResourceManager\\Relay\\Relay.sln"
+    ],
+    "src/ResourceManager/Reservations/": [
+      ".\\src\\ResourceManager\\Reservations\\Reservations.sln"
+    ],
+    "src/ResourceManager/Resources/": [
+      ".\\src\\ResourceManager\\Resources\\Resources.sln"
+    ],
+    "src/ResourceManager/Scheduler/": [
+      ".\\src\\ResourceManager\\Scheduler\\Scheduler.sln"
+    ],
+    "src/ResourceManager/ServiceBus/": [
+      ".\\src\\ResourceManager\\ServiceBus\\ServiceBus.sln"
+    ],
+    "src/ResourceManager/ServiceFabric/": [
+      ".\\src\\ResourceManager\\ServiceFabric\\ServiceFabric.sln"
+    ],
+    "src/ResourceManager/Sql/": [
+      ".\\src\\ResourceManager\\Sql\\Sql.sln"
+    ],
+    "src/ResourceManager/Storage/": [
+      ".\\src\\ResourceManager\\Storage\\Storage.sln"
+    ],
+    "src/ResourceManager/StreamAnalytics/": [
+      ".\\src\\ResourceManager\\StreamAnalytics\\StreamAnalytics.sln"
+    ],
+    "src/ResourceManager/Subscription/": [
+      ".\\src\\ResourceManager\\Subscription\\Subscription.sln"
+    ],
+    "src/ResourceManager/Tags/": [
+      ".\\src\\ResourceManager\\Tags\\Tags.sln"
+    ],
+    "src/ResourceManager/TrafficManager/": [
+      ".\\src\\ResourceManager\\TrafficManager\\TrafficManager.sln"
+    ],
+    "src/ResourceManager/UsageAggregates/": [
+      ".\\src\\ResourceManager\\UsageAggregates\\UsageAggregates.sln"
+    ],
+    "src/ResourceManager/Websites/": [
+      ".\\src\\ResourceManager\\Websites\\Websites.sln"
+    ],
+    "src/ServiceManagement/": [
+      ".\\src\\ServiceManagement\\ServiceManagement.sln"
+    ],
+    "src/Storage/Commands.Storage/": [
+      ".\\src\\Storage\\Storage.sln"
+    ],
+    "tools/": [
+    ]
+  }

@@ -80,7 +80,6 @@ namespace Commands.NotificationHubs.Test
                 //modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
                 modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
                 modules.Add(helper.RMProfileModule);
-                modules.Add(helper.RMResourceModule);
                 modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));
                 modules.Add("AzureRM.Resources.ps1");
 

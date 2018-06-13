@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
+                helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
 
                 if (createWasbAccount)
                 {

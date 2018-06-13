@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
                     "Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.IotHub.psd1"),
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");
