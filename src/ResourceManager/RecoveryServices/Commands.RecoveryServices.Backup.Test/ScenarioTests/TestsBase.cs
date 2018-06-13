@@ -30,7 +30,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using HyakRmNS = Microsoft.Azure.Management.Internal.Resources;
 using RecoveryServicesNS = Microsoft.Azure.Management.RecoveryServices;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
-using ResourceManagementRestNS = Microsoft.Azure.Management.ResourceManager;
+using ResourceManagementRestNS = Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using StorageMgmtNS = Microsoft.Azure.Management.Storage;
 using NetworkMgmtNS = Microsoft.Azure.Management.Network;
@@ -58,6 +58,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public StorageMgmtNS.StorageManagementClient StorageClient { get; private set; }
 
         public NetworkMgmtNS.NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient InternalNetworkManagementClient { get; private set; }
 
         public ComputeMgmtNS.ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -92,6 +94,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 
             StorageClient = GetStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
+            InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
             ComputeManagementClient = GetComputeManagementClient(context);
 
             helper.SetupManagementClients(
@@ -102,6 +105,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 HyakRmClient,
                 StorageClient,
                 NetworkManagementClient,
+                InternalNetworkManagementClient,
                 ComputeManagementClient);
         }
 
@@ -114,6 +118,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         private NetworkMgmtNS.NetworkManagementClient GetNetworkManagementClient(MockContext context)
         {
             return context.GetServiceClient<NetworkMgmtNS.NetworkManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient GetNetworkManagementClientInternal(MockContext context)
+        {
+            return context.GetServiceClient<Microsoft.Azure.Management.Internal.Network.Version2017_10_01.NetworkManagementClient>(
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
@@ -171,8 +181,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             providers.Add("Microsoft.Authorization", null);
             providers.Add("Microsoft.Compute", null);
             providers.Add("Microsoft.Network", null);
+            providers.Add("Microsoft.Storage", null);
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
+            providersToIgnore.Add("Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient", "2016-02-01");
             HttpMockServer.Matcher = new PermissiveRecordMatcherWithApiExclusion(true, providers, providersToIgnore);
 
             HttpMockServer.RecordsDirectory =

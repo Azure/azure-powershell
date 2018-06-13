@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
             var webApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
 
-            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
+            WriteObject(WebsitesClient.CreateWebApp(ResourceGroupName, Name, Slot, webApp.Location, AppServicePlan==null?webApp.ServerFarmId : AppServicePlan, cloningInfo, AseName, AseResourceGroupName));
         }
     }
 }

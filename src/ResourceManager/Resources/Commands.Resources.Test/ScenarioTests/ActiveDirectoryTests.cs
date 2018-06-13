@@ -12,10 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Reflection;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -48,15 +49,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { scriptMethod };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -74,15 +73,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -107,15 +104,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -133,15 +128,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId, newGroup.SecurityEnabled) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -166,15 +159,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -203,16 +194,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId, newUser.ObjectId, newUser.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -237,15 +226,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -263,15 +250,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -291,16 +276,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -325,15 +308,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -353,16 +334,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.ServicePrincipalNames[1]) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -389,16 +368,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newServicePrincipal = CreateNewAdServicePrincipal(controllerAdmin, app.AppId);
                     return new[] { string.Format(scriptMethod, newServicePrincipal.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdServicePrincipal(controllerAdmin, newServicePrincipal);
                     DeleteAdApp(controllerAdmin, app);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -423,15 +400,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -450,15 +425,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -476,15 +449,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.UserPrincipalName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -509,15 +480,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newGroup = CreateNewAdGroup(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newGroup.ObjectId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdGroup(controllerAdmin, newGroup);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -535,18 +504,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.UserPrincipalName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact(Skip = "Currently not working.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithFPOUPN()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetADUserWithFPOUPN");
@@ -574,15 +542,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     newUser = CreateNewAdUser(controllerAdmin);
                     return new[] { string.Format(scriptMethod, newUser.DisplayName) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdUser(controllerAdmin, newUser);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
@@ -649,15 +615,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     application = CreateNewAdApp(controllerAdmin);
                     return new[] { string.Format(scriptMethod, application.AppId) };
                 },
-                // initialize
-                null,
                 // cleanup
                 () =>
                 {
                     DeleteAdApp(controllerAdmin, application);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         private User CreateNewAdUser(ResourcesController controllerAdmin)

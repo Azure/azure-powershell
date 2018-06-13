@@ -50,7 +50,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     Region = RecoveryPoint.Location,
                 };
 
-                string azureIaaSVMRecoveryInputsCSMObjectString = JsonConvert.SerializeObject(azureIaaSVMRecoveryInputsCSMObject);
+                string azureIaaSVMRecoveryInputsCSMObjectString = JsonConvert.SerializeObject(
+                    azureIaaSVMRecoveryInputsCSMObject, 
+                    new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat });
 
                 CSMRestoreRequest csmRestoreRequest = new CSMRestoreRequest()
                 {

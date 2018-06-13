@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
+
+## Version 5.1.0
 * VMSS VM Update feature
     - Added `Update-AzureRmVmssVM` and `New-AzureRmVMDataDisk` cmdlets
     - Add VirtualMachineScaleSetVM parameter to `Add-AzureRmVMDataDisk` cmdlet to support adding a data disk to Vmss VM.
