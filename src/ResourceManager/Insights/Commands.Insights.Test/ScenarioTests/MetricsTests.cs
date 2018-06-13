@@ -25,25 +25,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip="Metrics API to be upgraded by another engineer")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetrics()
         {
             TestsController.NewInstance.RunPsTest("Test-GetMetrics");
         }
 
-        [Fact(Skip = "Metrics API to be upgraded by another engineer")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetMetricDefinitions()
         {
             TestsController.NewInstance.RunPsTest("Test-GetMetricDefinitions");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewMetricFilter()
-        {
-            TestsController.NewInstance.RunPsTest("Test-NewMetricFilter");
         }
     }
 }

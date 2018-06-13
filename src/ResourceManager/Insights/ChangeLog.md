@@ -37,6 +37,19 @@
     - Added new optional Name argument. It defaults to "service" for backward compatibility.
     - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
 
+* **Get-AzureRmMetric**
+    - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to "10", to be specified with $filter.
+    - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
+    - Added new optional parameter 'Resulttype'. It is the result type to be returned (metadata or data).
+    - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
+
+* **Get-AzureRmMetricDefinition**
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metric definitions for.
+
+* **New-AzureRmMetricFilter**
+    - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduced multiple breaking changes

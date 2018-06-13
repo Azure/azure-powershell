@@ -155,6 +155,7 @@
     <Compile Include="LogProfiles\RemoveAzureRmLogProfileTests.cs" />
     <Compile Include="Metrics\GetAzureRmMetricDefinitionTests.cs" />
     <Compile Include="Metrics\GetAzureRmMetricTests.cs" />
+    <Compile Include="Metrics\NewAzureRmMetricFilterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\ActivityLogAlertsTests.cs" />
     <Compile Include="ScenarioTests\ActionGroupsTests.cs" />

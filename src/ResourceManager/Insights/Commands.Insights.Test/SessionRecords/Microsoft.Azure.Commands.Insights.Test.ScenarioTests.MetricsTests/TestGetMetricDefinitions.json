@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e230e9ab-a8a3-4827-bee9-d4074c61924c"
+          "f56febb7-6cf6-484c-9b0e-7c1b7c12f1e6"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2633.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.19.1.0"
@@ -31,19 +31,19 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14998"
         ],
         "__HandlingServerId__": [
-          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_0"
+          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_8"
         ],
         "x-ms-request-id": [
-          "{a62ccca1-a1d0-4738-92b6-18f0cfc28f22}"
+          "{d2f93c93-5b19-4a23-a722-0db54ea79510}"
         ],
         "x-ms-correlation-request-id": [
-          "a62ccca1-a1d0-4738-92b6-18f0cfc28f22"
+          "d2f93c93-5b19-4a23-a722-0db54ea79510"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180323T200127Z:a62ccca1-a1d0-4738-92b6-18f0cfc28f22"
+          "WESTUS2:20180613T204319Z:d2f93c93-5b19-4a23-a722-0db54ea79510"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 23 Mar 2018 20:01:26 GMT"
+          "Wed, 13 Jun 2018 20:43:18 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -76,13 +76,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "27a99114-daef-407e-9612-81cc97420453"
+          "56f7596f-2641-4640-8fb7-c5587127a177"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2633.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
           "Microsoft.Azure.Management.Monitor.MonitorManagementClient/0.19.1.0"
@@ -100,19 +100,19 @@
           "Accept-Encoding"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
+          "14997"
         ],
         "__HandlingServerId__": [
-          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_0"
+          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_8"
         ],
         "x-ms-request-id": [
-          "{6ed09a78-dbe3-4ef7-a30d-2b74d918e795}"
+          "{47d8c9f1-ecff-464b-a889-8e4b481956df}"
         ],
         "x-ms-correlation-request-id": [
-          "6ed09a78-dbe3-4ef7-a30d-2b74d918e795"
+          "47d8c9f1-ecff-464b-a889-8e4b481956df"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180323T200127Z:6ed09a78-dbe3-4ef7-a30d-2b74d918e795"
+          "WESTUS2:20180613T204319Z:47d8c9f1-ecff-464b-a889-8e4b481956df"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -124,7 +124,7 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 23 Mar 2018 20:01:26 GMT"
+          "Wed, 13 Jun 2018 20:43:18 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
