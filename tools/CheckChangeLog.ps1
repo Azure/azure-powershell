@@ -19,7 +19,9 @@ $PathsToCheck = @(
 )
 
 $PathStringsToIgnore = @(
-    "Test"
+    "Test",
+    ".sln",
+    "Nuget.config"
 )
 
 $FilesChangedList = $FilesChanged -split ';'
