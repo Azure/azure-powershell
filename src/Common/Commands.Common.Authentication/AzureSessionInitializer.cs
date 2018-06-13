@@ -20,6 +20,7 @@ using System.IO;
 using System.Diagnostics;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Newtonsoft.Json;
+using TraceLevel = System.Diagnostics.TraceLevel;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -158,67 +159,35 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 #if !NETSTANDARD
             public override TraceLevel AuthenticationLegacyTraceLevel
             {
-                get
-                {
-                    return AdalTrace.LegacyTraceSwitch.Level;
-                }
-
-                set
-                {
-                    AdalTrace.LegacyTraceSwitch.Level = value;
-                }
+                get { return AdalTrace.LegacyTraceSwitch.Level; }
+                set { AdalTrace.LegacyTraceSwitch.Level = value; }
             }
 
-            public override TraceListenerCollection AuthenticationTraceListeners
-            {
-                get
-                {
-                    return AdalTrace.TraceSource.Listeners;
-                }
-            }
+            public override TraceListenerCollection AuthenticationTraceListeners => AdalTrace.TraceSource.Listeners;
 
             public override SourceLevels AuthenticationTraceSourceLevel
             {
-                get
-                {
-                    return AdalTrace.TraceSource.Switch.Level;
-                }
-
-                set
-                {
-                    AdalTrace.TraceSource.Switch.Level = value;
-                }
+                get { return AdalTrace.TraceSource.Switch.Level; }
+                set { AdalTrace.TraceSource.Switch.Level = value; }
             }
 #else
             public AdalSession()
-                : base()
             {
+                LoggerCallbackHandler.UseDefaultLogging = false;
             }
 
-            public override System.Diagnostics.TraceLevel AuthenticationLegacyTraceLevel
+            public override TraceLevel AuthenticationLegacyTraceLevel
             {
-                get
-                {
-                    return System.Diagnostics.TraceLevel.Off;
-                }
-                set
-                {
-
-                }
+                get => TraceLevel.Off;
+                set { }
             }
 
-            public override TraceListenerCollection AuthenticationTraceListeners { get => Trace.Listeners; }
+            public override TraceListenerCollection AuthenticationTraceListeners => Trace.Listeners;
 
             public override SourceLevels AuthenticationTraceSourceLevel
             {
-                get
-                {
-                    return SourceLevels.Off;
-                }
-                set
-                {
-
-                }
+                get => SourceLevels.Off;
+                set { }
             }
 #endif
         }

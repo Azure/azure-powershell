@@ -406,7 +406,7 @@ function Test-CreateNewWebAppSlot
 		Assert-AreEqual $serverFarm.Id $result.ServerFarmId
 
 		# Create deployment slot
-		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName -AsJob
+		$job = New-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AsJob
 		$job | Wait-Job
 		$slot1 = $job | Receive-Job
 
@@ -528,7 +528,7 @@ function Test-SetWebAppSlot
         Assert-Null $webApp.Identity
 		
 		# Change service plan & set properties
-		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AssignIdentity $true -AsJob
+		$job = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppServicePlan $planName2 -HttpsOnly $true -AsJob
 		$job | Wait-Job
 		$slot = $job | Receive-Job
 
@@ -536,7 +536,6 @@ function Test-SetWebAppSlot
 		Assert-AreEqual $appWithSlotName $slot.Name
 		Assert-AreEqual $serverFarm2.Id $slot.ServerFarmId
         Assert-AreEqual $true $slot.HttpsOnly
-		Assert-NotNull  $slot.Identity
 
 		# Set config properties
 		$slot.SiteConfig.HttpLoggingEnabled = $true
@@ -554,11 +553,16 @@ function Test-SetWebAppSlot
 		$appSettings = @{ "setting1" = "valueA"; "setting2" = "valueB"}
 		$connectionStrings = @{ connstring1 = @{ Type="MySql"; Value="string value 1"}; connstring2 = @{ Type = "SQLAzure"; Value="string value 2"}}
 
-		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
+		$slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -AssignIdentity $true
+
+        # Assert
+        Assert-NotNull  $slot.Identity
+        Assert-AreEqual ($appSettings.Keys.Count  + 1) $slot.SiteConfig.AppSettings.Count
+
+        $slot = Set-AzureRmWebAppSlot -ResourceGroupName $rgname -Name $appname -Slot $slotname -AppSettings $appSettings -ConnectionStrings $connectionStrings -numberofworkers $numberOfWorkers
 
 		# Assert
 		Assert-AreEqual $appWithSlotName $slot.Name
-		Assert-AreEqual $appSettings.Keys.Count $slot.SiteConfig.AppSettings.Count
 		foreach($nvp in $slot.SiteConfig.AppSettings)
 		{
 			Assert-True { $appSettings.Keys -contains $nvp.Name }

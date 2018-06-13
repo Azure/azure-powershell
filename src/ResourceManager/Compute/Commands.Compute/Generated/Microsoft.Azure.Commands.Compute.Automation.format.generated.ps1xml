@@ -24,23 +24,6 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSOperationStatusResponse</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSOperationStatusResponse</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineSize</TypeName>
@@ -279,6 +262,23 @@
       </CustomControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineExtensionsListResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineExtensionsListResult</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandDocument</TypeName>
@@ -483,6 +483,23 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetInstanceView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSUpgradeOperationHistoricalStatusInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSUpgradeOperationHistoricalStatusInfo</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>
@@ -735,23 +752,6 @@
       <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineInstanceView</TypeName>
-      </ViewSelectedBy>
-      <CustomControl>
-        <CustomEntries>
-          <CustomEntry>
-            <CustomItem>
-              <ExpressionBinding>
-                <ScriptBlock>[Microsoft.Azure.Commands.Compute.Automation.ComputeAutomationBaseCmdlet]::FormatObject($_)</ScriptBlock>
-              </ExpressionBinding>
-            </CustomItem>
-          </CustomEntry>
-        </CustomEntries>
-      </CustomControl>
-    </View>
-    <View>
-      <Name>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</Name>
-      <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.Compute.Automation.Models.PSRunCommandResult</TypeName>
       </ViewSelectedBy>
       <CustomControl>
         <CustomEntries>

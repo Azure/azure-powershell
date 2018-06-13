@@ -66,6 +66,7 @@
     <Compile Include="Common\INetworkInterfaceReference.cs" />
     <Compile Include="Common\IResourceReference.cs" />
     <Compile Include="Common\NetworkClient.cs" />
+    <Compile Include="Common\IOperationalInsightWorkspace.cs" />
     <Compile Include="Version2017_03_01\ILoadBalancersOperations.cs" />
     <Compile Include="Version2017_03_01\INetworkInterfacesOperations.cs" />
     <Compile Include="Version2017_03_01\INetworkManagementClient.cs" />

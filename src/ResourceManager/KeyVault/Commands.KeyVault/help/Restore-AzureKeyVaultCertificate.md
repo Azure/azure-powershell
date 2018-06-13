@@ -43,8 +43,41 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 ## EXAMPLES
 
 ### Example 1: Restore a backed-up certificate
-```
-PS C:\>Restore-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```powershell
+PS C:\> Restore-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+
+Certificate   : [Subject]
+                  CN=contoso.com
+
+                [Issuer]
+                  CN=contoso.com
+
+                [Serial Number]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                [Not Before]
+                  5/25/2018 3:47:41 AM
+
+                [Not After]
+                  11/25/2018 2:57:41 AM
+
+                [Thumbprint]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+KeyId         : https://mykeyvault.vault.azure.net:443/keys/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
+SecretId      : https://mykeyvault.vault.azure.net:443/secrets/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
+Thumbprint    : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RecoveryLevel : Purgeable
+Enabled       : True
+Expires       : 11/25/2018 10:57:41 AM
+NotBefore     : 5/25/2018 10:47:41 AM
+Created       : 5/25/2018 10:57:41 AM
+Updated       : 5/25/2018 10:57:41 AM
+Tags          : 
+VaultName     : MyKeyVault
+Name          : cert1
+Version       : bd406f6d6b3a41a1a1c633494d8c3c3a
+Id            : https://mykeyvault.vault.azure.net:443/certificates/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
 ```
 
 This command restores a certificate, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
@@ -165,7 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
 
 ## OUTPUTS
 

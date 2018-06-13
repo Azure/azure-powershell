@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added additional information about -Permissions parameter in help files.
 
 ## Version 4.4.0
 * Support create Storage Context with OAuth.
