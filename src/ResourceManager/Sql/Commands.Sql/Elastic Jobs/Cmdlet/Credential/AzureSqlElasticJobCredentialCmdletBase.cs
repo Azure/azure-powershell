@@ -35,5 +35,17 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         {
             return new AzureSqlElasticJobAdapter(DefaultContext);
         }
+
+        /// <summary>
+        /// Clears credential properties
+        /// </summary>
+        protected void ClearProperties()
+        {
+            this.ResourceGroupName = null;
+            this.ServerName = null;
+            this.AgentName = null;
+            this.CredentialName = null;
+            this.Name = null;
+        }
     }
 }

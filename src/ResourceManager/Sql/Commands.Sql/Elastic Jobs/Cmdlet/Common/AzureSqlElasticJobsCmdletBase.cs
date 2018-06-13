@@ -113,37 +113,6 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
-        /// Clear properties amongst completing an execution
-        /// We need to clear the properties because in piping scenario, existing property values carry over.
-        /// </summary>
-        public override void ExecuteCmdlet()
-        {
-            base.ExecuteCmdlet();
-            ClearProperties();
-        }
-
-        /// <summary>
-        /// Helper to clear properties which may carry forward during piping scenarios
-        /// </summary>
-        protected void ClearProperties()
-        {
-            this.ResourceGroupName = null;
-            this.ServerName = null;
-            this.AgentServerName = null;
-            this.AgentName = null;
-            this.JobName = null;
-            this.StepName = null;
-            this.JobExecutionId = null;
-            this.TargetGroupName = null;
-            this.CredentialName = null;
-            this.DatabaseName = null;
-            this.ShardMapName = null;
-            this.ElasticPoolName = null;
-            this.RefreshCredentialName = null;
-            this.Name = null;
-        }
-
-        /// <summary>
         /// Helper method to return model property from input object model
         /// </summary>
         /// <param name="inputObject">The input object model</param>

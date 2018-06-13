@@ -35,5 +35,14 @@ namespace Microsoft.Azure.Commands.Sql.ElasticJobs.Cmdlet
         {
             return new AzureSqlElasticJobAdapter(DefaultContext);
         }
+
+        protected void ClearProperties()
+        {
+            this.ResourceGroupName = null;
+            this.ServerName = null;
+            this.AgentName = null;
+            this.TargetGroupName = null;
+            this.Name = null;
+        }
     }
 }
