@@ -98,7 +98,9 @@ Accept wildcard characters: False
 ```
 
 ### -SourceAddress
-The source addresses of the rule```yaml
+The source addresses of the rule
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:

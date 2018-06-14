@@ -38,7 +38,9 @@ the action of the rule collection with higher priority will take in effect inste
 ## PARAMETERS
 
 ### -ActionType
-The action of the rule collection```yaml
+The action of the rule collection
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
