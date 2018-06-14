@@ -17,6 +17,15 @@ Adds one or more databases to an Azure SQL Database Failover Group.
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
 
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Clears the vulnerability assessment rule baseline.
+
+### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Clears the vulnerability assessment settings of a database.
+
+### [Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Converts a vulnerability assessment scan results to Excel format.
+
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
 
@@ -88,6 +97,15 @@ Gets the progress of a TDE scan of a database.
 
 ### [Get-AzureRmSqlDatabaseUpgradeHint](Get-AzureRmSqlDatabaseUpgradeHint.md)
 Gets pricing tier hints for a database.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Gets the vulnerability assessment rule baseline.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord](Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord.md)
+Gets all vulnerability assessment scan record(s) associated with a given database.
+
+### [Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Gets the vulnerability assessment settings of a database.
 
 ### [Get-AzureRmSqlDeletedDatabaseBackup](Get-AzureRmSqlDeletedDatabaseBackup.md)
 Gets a deleted database that you can restore.
@@ -350,6 +368,12 @@ Sets a threat detection policy on a database.
 ### [Set-AzureRmSqlDatabaseTransparentDataEncryption](Set-AzureRmSqlDatabaseTransparentDataEncryption.md)
 Modifies TDE property for a database.
 
+### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
+Sets the vulnerability assessment rule baseline.
+
+### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Sets the vulnerability assessment settings of a database.
+
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -400,6 +424,9 @@ Modifies the configuration of an Azure SQL Server Virtual Network Rule.
 
 ### [Start-AzureRmSqlDatabaseExecuteIndexRecommendation](Start-AzureRmSqlDatabaseExecuteIndexRecommendation.md)
 Starts the workflow that runs a recommended index operation.
+
+### [Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
+Starts a vulnerability assessment scan.
 
 ### [Start-AzureRmSqlServerUpgrade](Start-AzureRmSqlServerUpgrade.md)
 Starts the upgrade of a SQL Database server.
