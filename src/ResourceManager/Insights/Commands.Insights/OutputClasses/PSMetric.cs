@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Metric name (This should be the public facing display name)
         /// </summary>
-        public PSLocalizableString Name { get; set; }
+        public LocalizableString Name { get; set; }
 
         /// <summary>
         /// Resource type
@@ -40,12 +40,12 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Metric Unit
         /// </summary>
-        public string Unit { get; set; }
+        public Unit Unit { get; set; }
 
         /// <summary>
         /// Metric data
         /// </summary>
-        public PSMetricValuesCollection Data { get; set; }
+        public IList<MetricValue> Data { get; set; }
 
         /// <summary>
         /// Gets or sets the time series returned when a data query is performed.
@@ -58,8 +58,8 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
         {
-            this.Name = new PSLocalizableString(metric.Name);
-            this.Unit = metric.Unit.ToString();
+            this.Name = metric.Name;
+            this.Unit = metric.Unit;
             this.Id = metric.Id;
             this.Type = metric.Type;
             this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);

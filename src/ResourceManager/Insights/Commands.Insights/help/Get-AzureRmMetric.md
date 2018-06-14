@@ -13,9 +13,18 @@ Gets the metric values of a resource.
 
 ## SYNTAX
 
+### GetWithDefaultParameters
+
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int>] [-OrderBy <String>] 
- [-MetricNamespace <String>] [-Resulttype <Resulttype>] [-MetricFilter <MetricFilter>] [-MetricName <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### GetWithFullParameters
+
+```
+Get-AzureRmMetric [-ResourceId] <String> [-MetricName] <String[]> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int>] [-OrderBy <String>] 
+ [-MetricNamespace <String>] [-Resulttype <Resulttype>] [-MetricFilter <MetricFilter>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,7 +200,7 @@ The aggregation type of the query
 
 ```yaml
 Type: AggregationType
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases: 
 
 Required: False
@@ -256,20 +265,8 @@ Type: String[]
 Parameter Sets: (All)
 Aliases: MetricNames
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
+Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -315,7 +312,7 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -326,11 +323,11 @@ Specifies the maximum number of records to retrieve (default:10), to be specifie
 
 ```yaml
 Type: Integer
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -341,11 +338,11 @@ Specifies the aggregation to use for sorting results and the direction of the so
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -356,11 +353,11 @@ Specifies the metric namespace to query metrics for.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -371,11 +368,11 @@ Specifies the result type to be returned (metadata or data).
 
 ```yaml
 Type: Resulttype
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -386,11 +383,11 @@ Specifies the metric dimension filter to query metrics for.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: GetWithFullParameters
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

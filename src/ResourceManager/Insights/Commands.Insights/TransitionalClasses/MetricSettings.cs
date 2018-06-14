@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
         /// <summary>
         /// Gets or sets the TimeGrain of the MetricSettings
         /// </summary>
-        public new TimeSpan? TimeGrain { get; set; }
+        public new TimeSpan TimeGrain { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the MetricSettings class.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
                 base.RetentionPolicy = metricSettings.RetentionPolicy;
                 base.TimeGrain = metricSettings.TimeGrain;
                 this.RetentionPolicy = metricSettings.RetentionPolicy != null ? new RetentionPolicy(metricSettings.RetentionPolicy) : null;
-                this.TimeGrain = metricSettings.TimeGrain;
+                this.TimeGrain = metricSettings.TimeGrain.Value;
             }
         }
     }
