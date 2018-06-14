@@ -61,7 +61,7 @@ function Test-GetMetricDefinitions
 
         Assert-AreEqual 2 $actual.Count
 
-        $metricFilter = New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle, New York"
+        $metricFilter = New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle","New York"
 
         Assert-AreEqual 1 $metricFilter.Count
     }
