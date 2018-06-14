@@ -167,7 +167,7 @@ Gets latest policy state records generated in the last day for all resources (wi
 
 ### Example 14: Get latest policy states for a policy assignment in the specified resource group in the current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyState -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1" 
+PS C:\> Get-AzureRmPolicyState -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the resource group in the subscription in current session context).
@@ -453,8 +453,8 @@ Accept wildcard characters: False
 ```
 
 ### -To
-ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+ISO 8601 formatted timestamp specifying the end time of the interval to query.
+When not specified, defaults to time of request.
 
 ```yaml
 Type: DateTime
