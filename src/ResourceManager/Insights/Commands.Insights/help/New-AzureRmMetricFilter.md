@@ -25,7 +25,7 @@ The **New-AzureRmMetricFilter** cmdlet creates a metric dimension filter that ca
 
 ### Example 1: Create a metric dimension filter
 ```
-PS C:\>New-AzureRmMetricDimensionFilter -Dimension City -Operator eq -Values Seattle, New York
+PS C:\>New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle","New York"
 ```
 
 This command creates metric dimension filter of the format "City eq 'Seattle' or City eq 'New York'".
