@@ -14,10 +14,11 @@ Creates a Firewall Application Rule.
 ## SYNTAX
 
 ```
-New-AzureRmFirewallApplicationRule -Name <String> -Priority <Integer> [-Description <String>]
+New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
+ [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
  -Protocol <System.Collections.Generic.List`1[System.String]>
- -TargetFqdn <System.Collections.Generic.List`1[System.String]>
- -ActionType <String> [<CommonParameters>]
+ -TargetFqdn <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,115 +26,14 @@ The **New-AzureRmFirewallApplicationRule** cmdlet creates an application rule fo
 
 ## EXAMPLES
 
-### 1:  Create a rule to allow all HTTPS traffic
+### 1:  Create a rule to allow all HTTPS traffic from 10.0.0.0
 ```
-New-AzureRmFirewallApplicationRule -Name "AllowHTTPS" -Priority 100 -Protocol "https" -TargetFqdn "*" -ActionType "allow"
-```
-
-This example creates a rule which will allow all HTTPS traffic.
-
-### 2:  Allow *.msn.com, but deny *.site.msn.com for HTTP traffic
-```
-New-AzureRmFirewallApplicationRule -Name "AllowMsnHttp" -Priority 100 -Protocol "http" -TargetFqdn "*.msn.com" -ActionType "allow"
-New-AzureRmFirewallApplicationRule -Name "BlockMsnSiteHttp" -Priority 90 -Protocol "http" -TargetFqdn "*.site.msn.com" -ActionType "deny"
+New-AzureRmFirewallApplicationRule -Name "https-rule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
 ```
 
-This example evidentiates the importance of priority for a rule.
-If "AllowMsnHttp" rule would have a bigger priority (smaller number), all MSN traffic will match it, including the traffic for *.site.msn.com.
-By giving the subdomain rule ("BlockMsnSiteHttp") a bigger priority, we are sure traffic will match it first and thus deny traffic to *.site.msn.com.
+This example creates a rule which will allow all HTTPS traffic on port 443 from 10.0.0.0.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of this application rule. The name must be unique inside a rule collection.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Priority
-Specifies the priority of this rule. Priority is a number between 0 and 65000. The smaller the number, the bigger the priority.
-
-```yaml
-Type: Integer
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Specifies an optional description of this rule.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are HTTP and HTTPS.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TargetFqdn
-Specifies a list of domain names filtered by this rule.
-"*" is accepted only as first character of an entry in this list. When used, "*" matches any number of characters. (e.g. "*msn.com" will match msn.com and all its subdomains)
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -ActionType
-Specifies the action to be taken for traffic matching conditions of this rule. Accepted actions are "allow" or "deny".
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -150,13 +50,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -Description
+Specifies an optional description of this rule.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -165,21 +65,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+### -Name
+Specifies the name of this application rule. The name must be unique inside a rule collection.
 
 ```yaml
-Type: Hashtable
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the type of traffic to be filtered by this rule. The format is <protocol type>:<port>. 
+For example, "http:80" or "https:443".
+The supported protocols are HTTP and HTTPS.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceAddress
+The source addresses of the rule```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
+```
+
+### -TargetFqdn
+Specifies a list of domain names filtered by this rule.
+"*" is accepted only as first character of an entry in this list. When used, "*" matches any number of characters. (e.g. "*msn.com" will match msn.com and all its subdomains)
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: True
 ```
 
 ### -Confirm

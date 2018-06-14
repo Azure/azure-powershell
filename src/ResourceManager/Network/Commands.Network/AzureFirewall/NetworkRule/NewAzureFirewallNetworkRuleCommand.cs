@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -79,6 +80,8 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("At least one network rule destination port should be specified!");
             }
 
+            ValidateProtocols(this.Protocol);
+
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
@@ -89,6 +92,22 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationPorts = this.DestinationPort
             };
             WriteObject(networkRule);
+        }
+
+        private void ValidateProtocols(List<string> protocols)
+        {
+            foreach (var protocol in protocols)
+            {
+                if (
+                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.Any, StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.ICMP, StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.TCP, StringComparison.OrdinalIgnoreCase) &&
+                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.UDP, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new ArgumentException($"Invalid protocol {0}", protocol);
+                }
+            }
+
         }
     }
 }

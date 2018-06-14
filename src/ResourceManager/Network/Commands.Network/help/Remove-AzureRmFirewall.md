@@ -9,12 +9,13 @@ schema: 2.0.0
 # Remove-AzureRmFirewall
 
 ## SYNOPSIS
-Remove a Firewall
+Remove a Firewall.
 
 ## SYNTAX
 
 ```
-Remove-AzureRmFirewall -ResourceGroupName <String> -Name <String>
+Remove-AzureRmFirewall -Name <String> -ResourceGroupName <String> [-Force] [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,42 +25,30 @@ The **Remove-AzureRmFirewall** cmdlet removes an Azure Firewall.
 
 ### 1: Create and delete a Firewall
 ```
-New-AzureRmFirewall -Name "secGw" -ResourceGroupName "rgName" -Location centralus
+New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus -VirtualNetworkName "vnet-name" -PublicIpName "pip-name"
 
-Remove-AzureRmFirewall -Name "secGw" -ResourceGroupName "rgName"
+Remove-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+Confirm
+Are you sure you want to remove resource 'azFw'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-This example creates a Firewall in a resource group and then immediately deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
+This example creates a Firewall in a resource group and then deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the virtual network that this cmdlet removes.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: ResourceName
+Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of the resource group that contains the virtual network that this cmdlet removes.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -84,12 +73,57 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the firewall that this cmdlet removes.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of the resource group that contains the firewall that this cmdlet removes.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -129,8 +163,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### PSAzureFirewall
+Type 'PSAzureFirewall' is accepted from the pipeline
 
 ## OUTPUTS
 

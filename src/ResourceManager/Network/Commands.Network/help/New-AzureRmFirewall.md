@@ -6,17 +6,19 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.netwo
 schema: 2.0.0
 ---
 
-# New-AzureFirewall
+# New-AzureRmFirewall
 
 ## SYNOPSIS
-Creates a Firewall
+Creates a new Firewall in a resource group.
 
 ## SYNTAX
 
 ```
 New-AzureRmFirewall -Name <String> -ResourceGroupName <String> -Location <String>
- [-VirtualNetworkName <String>]
- [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRuleCollection]>]
+ [-VirtualNetworkName <String>] -PublicIpName <String>
+ [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection]>]
+ [-NetworkRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]>]
+ [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,122 +27,45 @@ The **New-AzureRmFirewall** cmdlet creates an Azure Firewall.
 
 ## EXAMPLES
 
-### 1:  Create a Firewall attached to a virtual network
+### 1:  Create a Firewall attached to a virtual network 
 ```
-New-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet"
-```
-
-This example creates a Firewall attached to virtual network "vnet" in the same resource group as the gateway.
-Since no rules were specified, gateway will block all traffic (default behavior).
-
-### 2:  Create a Firewall which allows all HTTPS traffic and is not attached to a virtual network
-```
-$rule = New-AzureRmFirewallApplicationRule -Name Rule1 -Priority 100 -Protocol HTTPS -TargetFqdn "*" -ActionType Allow
-$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RC -Priority 1000 -Rule $rule
-New-AzureRmFirewall -Name "SecGw" -ResourceGroupName "rg" -Location centralus -ApplicationRuleCollection $ruleCollection
+New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name"
 ```
 
-This example creates a Firewall which allows all HTTPS traffic. This firewall is not attached to a particular virtual network, so no traffic can be sent to it.
+This example creates a Firewall attached to virtual network "vnet" in the same resource group as the firewall.
+Since no rules were specified, the firewall will block all traffic (default behavior).
+
+### 2:  Create a Firewall which allows all HTTPS traffic
+```
+$rule = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "https:443" -TargetFqdn "*" 
+$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name RC1 -Priority 100 -Rule $rule -ActionType "Allow"
+New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name" -ApplicationRuleCollection $ruleCollection
+```
+
+This example creates a Firewall which allows all HTTPS traffic on port 443.
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of the Azure Firewall that this cmdlet creates.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Specifies the name of a resource group to contain the Firewall.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Location
-Specifies the region for the Firewall.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -VirtualNetworkName
-Specifies the name of the virtual network for which the Firewall will be deployed. Virtual network and Firewall must belong to the same resource group.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ApplicationRuleCollection
-Specifies the collections of rules for the new Firewall.
+Specifies the collections of application rules for the new Firewall.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallApplicationRuleCollection]
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -WorkspaceId
-Specifies the workspace identifier for Azure logging. Workspace primary key must also be specified when this parameter is used.
-
-```yaml
-Type: String
+### -AsJob
+Run cmdlet in the background```yaml
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WorkspacePrimaryKey
-Specifies the primary key for Azure logging.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -170,12 +95,83 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the region for the Firewall.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of the Azure Firewall that this cmdlet creates.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: ResourceName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -NetworkRuleCollection
+The list of AzureFirewallNetworkRuleCollections```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -PublicIpName
+Public Ip Name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Specifies the name of a resource group to contain the Firewall.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -187,7 +183,22 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VirtualNetworkName
+Specifies the name of the virtual network for which the Firewall will be deployed. Virtual network and Firewall must belong to the same resource group.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
