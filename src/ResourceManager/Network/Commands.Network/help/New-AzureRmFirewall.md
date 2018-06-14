@@ -62,7 +62,9 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -135,7 +137,9 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkRuleCollection
-The list of AzureFirewallNetworkRuleCollections```yaml
+The list of AzureFirewallNetworkRuleCollections
+
+```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]
 Parameter Sets: (All)
 Aliases:
