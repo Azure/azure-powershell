@@ -467,6 +467,18 @@ function Get-MarketplaceImage
     return $imgs;
 }
 
+function Get-FirstMarketPlaceImage
+{
+	$img = Get-AzureRmVMImagePublisher -Location westus | where { $_.PublisherName -eq "1e" } | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage | Get-AzureRmVMImage | where {$_.PurchasePlan -ne $null }
+	
+	if ($img -eq $null)
+	{
+		$img = Get-MarketplaceImage[0]
+	}
+
+	return $img
+}
+
 <#
 .SYNOPSIS
 Gets default VM config object
