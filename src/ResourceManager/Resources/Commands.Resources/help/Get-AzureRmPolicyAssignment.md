@@ -21,9 +21,9 @@ Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzu
 
 ### NameParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### EffectiveFilterParameterSet
@@ -49,7 +49,7 @@ Get-AzureRmPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-Api
 
 ### IdParameterSet
 ```
-Get-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyAssignment -Id <String> -PolicyDefinitionId <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -78,6 +78,21 @@ The second command get the policy assignment named PolicyAssignment07 for the sc
 
 ## PARAMETERS
 
+### -All
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from containing scopes and those from contained scopes.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: AllFilterParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
@@ -94,18 +109,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Pre
-Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: SwitchParameter
+Type: IAzureContextContainer
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Effective
+Causes the list of returned policy assignments to include all assignments that apply to the given scope, including those from containing scopes.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: EffectiveFilterParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Id
+Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: IdParameterSet
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -163,6 +208,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PolicyDefinitionId
+Specifies the ID of the policy definition of the policy assignments that this cmdlet gets.
+
+```yaml
+Type: String
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: PolicyDefinitionIdFilterParameterSet, IdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Pre
+Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Specifies the scope at which the policy is applied for the assignment that this cmdlet gets.
 
@@ -172,81 +259,6 @@ Parameter Sets: NameParameterSet, EffectiveFilterParameterSet, AllFilterParamete
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -PolicyDefinitionId
-Specifies the ID of the policy definition of the policy assignments that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: PolicyDefinitionIdFilterParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Id
-Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
-
-```yaml
-Type: String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -All
-Causes the list of returned policy assignments to include all assignments related to the given scope, including those from containing scopes and those from contained scopes.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: AllFilterParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Effective
-Causes the list of returned policy assignments to include all assignments that apply to the given scope, including those from containing scopes.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: EffectiveFilterParameterSet
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
