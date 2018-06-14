@@ -89,7 +89,9 @@ Accept wildcard characters: False
 ```
 
 ### -DestinationPort
-The destination ports of the rule```yaml
+The destination ports of the rule
+
+```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:

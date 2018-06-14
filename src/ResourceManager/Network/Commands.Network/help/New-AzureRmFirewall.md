@@ -152,7 +152,9 @@ Accept wildcard characters: False
 ```
 
 ### -PublicIpName
-Public Ip Name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.```yaml
+Public Ip Name. The Public IP must use Standard SKU and must belong to the same resource group as the Firewall.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:

@@ -114,7 +114,7 @@ Accept wildcard characters: False
 
 ### -TargetFqdn
 Specifies a list of domain names filtered by this rule.
-"*" is accepted only as first character of an entry in this list. When used, "*" matches any number of characters. (e.g. "*msn.com" will match msn.com and all its subdomains)
+The asterik character, '*', is accepted only as the first character of an FQDN in the list. When used, the asterik matches any number of characters. (e.g. '*msn.com' will match msn.com and all its subdomains)
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
