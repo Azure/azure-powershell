@@ -29,6 +29,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using TestBase = Microsoft.Azure.Test.TestBase;
 using TestUtilities = Microsoft.Azure.Test.TestUtilities;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using RM = Microsoft.Azure.Management.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 {
@@ -39,6 +40,8 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
         private readonly EnvironmentSetupHelper _helper;
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public RM.ResourceManagementClient ResourceClient { get; private set; }
 
         public SubscriptionClient SubscriptionClient { get; private set; }
 
@@ -64,6 +67,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
         protected void SetupManagementClients(MockContext context)
         {
             ResourceManagementClient = GetResourceManagementClient();
+            ResourceClient = GetResourceClient(context);
             SubscriptionClient = GetSubscriptionClient();
             GalleryClient = GetGalleryClient();
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -71,6 +75,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
             _helper.SetupManagementClients(
                 ResourceManagementClient,
+                ResourceClient,
                 SubscriptionClient,
                 GalleryClient,
                 AuthorizationManagementClient,
@@ -131,6 +136,7 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
 
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
+                    _helper.RMResourceModule,
                    @"AzureRM.Consumption.psd1",
                     "ScenarioTests\\" + callingClassName + ".ps1");
                 try
@@ -158,6 +164,13 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests.ScenarioTest
         protected ResourceManagementClient GetResourceManagementClient()
         {
             return TestBase.GetServiceClient<ResourceManagementClient>(_csmTestFactory);
+        }
+
+        private RM.ResourceManagementClient GetResourceClient(MockContext context)
+        {
+            return
+                context.GetServiceClient<RM.ResourceManagementClient>(
+                    Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()

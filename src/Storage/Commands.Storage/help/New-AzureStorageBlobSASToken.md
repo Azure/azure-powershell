@@ -171,7 +171,9 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the permissions for a storage blob.
+Specifies the permissions for a storage blob. 
+
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete). 
 
 ```yaml
 Type: String
