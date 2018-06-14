@@ -58,16 +58,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.Monitor.Management.Models
                 base.RetentionPolicy = metricSettings.RetentionPolicy;
                 base.TimeGrain = metricSettings.TimeGrain;
                 this.RetentionPolicy = metricSettings.RetentionPolicy != null ? new RetentionPolicy(metricSettings.RetentionPolicy) : null;
-                this.TimeGrain = metricSettings.TimeGrain.HasValue ? metricSettings.TimeGrain.Value : default(TimeSpan);
+                this.TimeGrain = metricSettings.TimeGrain ?? default(TimeSpan);
             }
         }
     }
