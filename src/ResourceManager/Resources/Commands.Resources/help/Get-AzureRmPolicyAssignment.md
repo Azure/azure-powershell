@@ -21,9 +21,9 @@ Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzu
 
 ### NameParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### EffectiveFilterParameterSet
@@ -49,7 +49,7 @@ Get-AzureRmPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-Api
 
 ### IdParameterSet
 ```
-Get-AzureRmPolicyAssignment -Id <String> -PolicyDefinitionId <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -213,19 +213,7 @@ Specifies the ID of the policy definition of the policy assignments that this cm
 
 ```yaml
 Type: String
-Parameter Sets: NameParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: PolicyDefinitionIdFilterParameterSet, IdParameterSet
+Parameter Sets: PolicyDefinitionIdFilterParameterSet
 Aliases:
 
 Required: True
