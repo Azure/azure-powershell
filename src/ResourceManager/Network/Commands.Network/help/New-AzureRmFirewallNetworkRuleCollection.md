@@ -9,15 +9,14 @@ schema: 2.0.0
 # New-AzureRmFirewallNetworkRuleCollection
 
 ## SYNOPSIS
-Creates a collection of Firewall rules.
+Creates a Azure Firewall Network Collection of Network rules.
 
 ## SYNTAX
 
 ```
-New-AzureRmFirewallNetworkRuleCollection -Name <String> -Priority <Integer>
- -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallNetworkRule]>
- -ActionType <String> 
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzureRmFirewallNetworkRuleCollection -Name <String> -Priority <UInt32>
+ -Rule <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule]>
+ -ActionType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,86 +24,28 @@ The **New-AzureRmFirewallNetworkRuleCollection** cmdlet creates a collection of 
 
 ## EXAMPLES
 
-### 1:  Create a collection of two rules
+### 1:  Create a network collection with two rules
 ```
-$rule1 = New-AzureRmFirewallNetworkRule -Name "Deny abc" -Protocol "tcp" -SourceIp "10.0.0.0" -DestinationIp "60.1.5.0" -SourcePort "40" -DestinationPort "4040"
-$rule2 = New-AzureRmFirewallNetworkRule -Name "AllowAll" -Protocol "udp" -SourceIp "10.0.0.0" -DestinationIp "60.1.5.0" -SourcePort "80" -DestinationPort "8080"
-New-AzureRmFirewallNetworkRuleCollection -Name "MyCollection" -Priority 1000 -ActionType "Deny"  -Rule $rule1,$rule2
+$rule1 = New-AzureRmFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$rule2 = New-AzureRmFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol "Tcp" -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
+New-AzureRmFirewallNetworkRuleCollection -Name RC1 -Priority 100 -Rule $rule1, $rule2 -ActionType "Allow"
 ```
 
-This example creates a collection with 2 rules.
-The first rule will deny all traffic from 10.0.0.0:40 to 60.1.5.0:4040
-The second rule will deny all traffic from 10.0.0.0:80 to 60.1.5.0:8080
+This example creates a collection which will allow all traffic that matches either of the two rules.
+The first rule is for all UDP traffic.
+The second rule is for TCP traffic from 10.0.0.0 to 60.1.5.0:4040.
+If there is another Network rule collection with higher priority (smaller number) which also matches traffic identified in $rule1 or $rule2,
+the action of the rule collection with higher priority will take in effect instead. 
 
 ## PARAMETERS
 
-### -Name
-Specifies the name of this network rule collection. The name must be unique across all network rule collection.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Priority
-Specifies the priority of this rule collection. Priority is a number between 100 and 65000. The smaller the number, the higher the priority.
-
-```yaml
-Type: Integer
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Specifies an optional description of this rule.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Rule
-Specifies the list of rules to be grouped under this collection.
-
-```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSFirewallNetworkRule]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ActionType
-Specifies the action to be taken for traffic matching conditions of this rule. Accepted actions are "allow" or "deny".
+Specifies the action to be taken for traffic matching conditions of this rule. Accepted actions are "Allow" or "Deny".
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -128,35 +69,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -Name
+Specifies the name of this network rule collection. The name must be unique across all network rule collection.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
+### -Priority
+Specifies the priority of this rule collection. Priority is a number between 100 and 65000. The smaller the number, the higher the priority.
 
 ```yaml
-Type: Hashtable
+Type: UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Rule
+Specifies the list of rules to be grouped under this collection.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRule]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

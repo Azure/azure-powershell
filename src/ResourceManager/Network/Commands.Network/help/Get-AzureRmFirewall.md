@@ -9,12 +9,13 @@ schema: 2.0.0
 # Get-AzureRmFirewall
 
 ## SYNOPSIS
-Get a Firewall in a resource group
+Gets a Azure Firewall.
 
 ## SYNTAX
 
 ```
-Get-AzureRmFirewall [-ResourceGroupName <String>] [-Name <String>]
+Get-AzureRmFirewall [-Name <String>] [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,12 +32,27 @@ This example retrieves all Firewalls in resource group "rgName".
 
 ### 2:  Retrieve a Firewall by name
 ```
-Get-AzureRmFirewall -ResourceGroupName rgName -Name secGw
+Get-AzureRmFirewall -ResourceGroupName rgName -Name azFw
 ```
 
-This example retrieves Firewall named "secGw" in resource group "rgName".
+This example retrieves Firewall named "azFw" in resource group "rgName".
 
 ## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Name
 Specifies the name of the Firewall that this cmdlet gets.
@@ -59,27 +75,12 @@ Specifies the name of the resource group that Firewall belongs to.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -93,7 +94,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSFirewall
+### Microsoft.Azure.Commands.Network.Models.PSAzureFirewall
 
 ## NOTES
 

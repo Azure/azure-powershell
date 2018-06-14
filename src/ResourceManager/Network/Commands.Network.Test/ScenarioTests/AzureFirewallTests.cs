@@ -32,33 +32,5 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallCRUD");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureFirewallApplicationRuleCollection()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NewAzureFirewallApplicationRuleCollection");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureFirewallApplicationRule()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-NewAzureFirewallApplicationRule");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureFirewallNetworkRuleCollectionCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewall-NetworkRuleCollectionCreate");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureFirewallNetworkRuleCRUD()
-        {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewall-NetworkRuleCreate");
-        }
     }
 }

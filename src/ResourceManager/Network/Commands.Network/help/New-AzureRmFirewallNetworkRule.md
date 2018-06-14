@@ -16,11 +16,10 @@ Creates a Firewall Network Rule.
 ```
 New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>]
  -Protocol <System.Collections.Generic.List`1[System.String]>
- -SourceIp <System.Collections.Generic.List`1[System.String]>
- -DestinationIp <System.Collections.Generic.List`1[System.String]>
- -SourcePort <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <System.Collections.Generic.List`1[System.String]>
- [<CommonParameters>]
+ -SourceAddress <System.Collections.Generic.List`1[System.String]>
+ -DestinationAddress <System.Collections.Generic.List`1[System.String]>
+ -DestinationPort <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,124 +27,21 @@ The **New-AzureRmFirewallNetworkRule** cmdlet creates an network rule for Azure 
 
 ## EXAMPLES
 
-### 1:  Create a rule to deny all TCP traffic
+### 1:  Create a rule for all TCP traffic
 ```
-$rule1 = New-AzureRmFirewallNetworkRule -Name "Deny all TCP traffic" -Protocol "tcp" -SourceIp "*" -DestinationIp "*" -SourcePort "*" -DestinationPort "*"
+$rule1 = New-AzureRmFirewallNetworkRule -Name "all-tcp-traffic" -Description "Rule for all TCP traffic" -Protocol "Tcp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
 ```
 
-This example creates a rule which will allow all HTTPS traffic.
+This example creates a rule for all TCP traffic. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
-### 2:  The deny all TCP traffic from 10.0.0.0:40 to 60.1.5.0:4040
+### 2:  Create a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040
 ```
-$rule1 = New-AzureRmFirewallNetworkRule -Name "Deny TCP traffic" -Protocol "tcp" -SourceIp "10.0.0.0" -DestinationIp "60.1.5.0" -SourcePort "40" -DestinationPort "4040"
+$rule1 = New-AzureRmFirewallNetworkRule -Name "partial-tcp-rule" -Description "Rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040" -Protocol "Tcp" -SourceAddress "10.0.0.0" -DestinationAddress "60.1.5.0" -DestinationPort "4040"
 ```
+
+This example creates a rule for all TCP traffic from 10.0.0.0 to 60.1.5.0:4040. User enforces whether traffic will be allowed or denied for a rule based on the rule collection it is associated with.
 
 ## PARAMETERS
-
-### -Name
-Specifies the name of this network rule. The name must be unique inside a rule collection.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Description
-Specifies an optional description of this rule.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Protocol
-Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, and Any.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceIp
-Specifies a list of source IPs filtered by this rule.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -DestinationIp
-Specifies a list of destination IPs filtered by this rule.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -SourcePort
-Specifies a list of source ports filtered by this rule.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
-
-### -DestinationPorts
-Specifies a list of destination ports filtered by this rule.
-
-```yaml
-Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: True
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -162,13 +58,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Forces the command to run without asking for user confirmation.
+### -Description
+Specifies an optional description of this rule.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,20 +73,72 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Key-value pairs in the form of a hash table. For example:
-
-@{key0="value0";key1=$null;key2="value2"}
-
-```yaml
-Type: Hashtable
+### -DestinationAddress
+The destination addresses of the rule```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestinationPort
+The destination ports of the rule```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Specifies the name of this network rule. The name must be unique inside a rule collection.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Protocol
+Specifies the type of traffic to be filtered by this rule. Possible values are TCP, UDP, and Any.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceAddress
+The source addresses of the rule```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
