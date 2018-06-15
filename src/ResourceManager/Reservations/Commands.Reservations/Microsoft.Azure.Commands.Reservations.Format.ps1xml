@@ -210,10 +210,6 @@
                 <PropertyName>ProvisioningState</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>ProvisioningSubState</Label>
-                <PropertyName>ProvisioningSubState</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>EffectiveDateTime</Label>
                 <PropertyName>EffectiveDateTime</PropertyName>
               </ListItem>
