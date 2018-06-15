@@ -24,8 +24,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait("Re-record", "ClientRuntime changes")]
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionBasicWindowsWAD()
         {
@@ -80,8 +84,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedWindowsWAD");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait("Re-record", "ClientRuntime changes")]
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindows()
         {
@@ -107,8 +115,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-AEMExtensionAdvancedLinux");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
-        [Trait("Re-record", "ClientRuntime changes")]
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAEMExtensionAdvancedWindowsMD()
         {

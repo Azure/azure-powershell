@@ -129,6 +129,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Remove)
@@ -140,15 +141,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmScaleSetName = this.VMScaleSetName;
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
+                    Rest.Azure.AzureOperationResponse result = null;
                     if (!string.IsNullOrEmpty(resourceGroupName) && !string.IsNullOrEmpty(vmScaleSetName) && instanceIds != null)
                     {
-                        VirtualMachineScaleSetsClient.DeleteInstances(resourceGroupName, vmScaleSetName, instanceIds);
+                        result = VirtualMachineScaleSetsClient.DeleteInstancesWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        VirtualMachineScaleSetsClient.Delete(resourceGroupName, vmScaleSetName);
+                        result = VirtualMachineScaleSetsClient.DeleteWithHttpMessagesAsync(resourceGroupName, vmScaleSetName).GetAwaiter().GetResult();
                     }
 
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

@@ -137,6 +137,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
         }
 
+        public IVirtualMachineExtensionsOperations VirtualMachineExtensionsClient
+        {
+            get
+            {
+                return ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+            }
+        }
+
         public IVirtualMachineRunCommandsOperations VirtualMachineRunCommandsClient
         {
             get
