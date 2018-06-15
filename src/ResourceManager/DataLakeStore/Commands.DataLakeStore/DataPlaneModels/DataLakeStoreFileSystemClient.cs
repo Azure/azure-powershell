@@ -28,6 +28,7 @@ using Microsoft.Azure.DataLake.Store;
 using Microsoft.Azure.DataLake.Store.Acl;
 using Microsoft.Azure.DataLake.Store.AclTools;
 using Microsoft.Azure.DataLake.Store.FileTransfer;
+using Microsoft.Azure.DataLake.Store.MockAdlsFileSystem;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
@@ -197,56 +198,64 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             RequestedAclType aclChangeType, int concurrency, Cmdlet aclCmdlet, bool trackProgress, CancellationToken cmdletCancellationToken )
         {
             var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
-
-            System.Progress<AclProcessorStats> progressTracker = null;
-            ProgressRecord progress = null;
-            // If passing null, then we do not want progreess tracking
-            if (trackProgress)
+            // Currently mockadlsclient signature is different, once that gets fixed, we can remove this
+            if (client.GetType() != typeof(MockAdlsClient))
             {
-                progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
-                    string.Format($"Recursive acl change for path {path} and type {aclChangeType}"),
-                    $"Acl {aclChangeType}")
+                System.Progress<AclProcessorStats> progressTracker = null;
+                ProgressRecord progress = null;
+                // If passing null, then we do not want progreess tracking
+                if (trackProgress)
                 {
-                    PercentComplete = 0
-                };
-                // On update from the Data Lake store uploader, capture the progress.
-                progressTracker = new System.Progress<AclProcessorStats>();
-                progressTracker.ProgressChanged += (s, e) =>
-                {
-                    lock (ConsoleOutputLock)
+                    progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
+                        string.Format($"Recursive acl change for path {path} and type {aclChangeType}"),
+                        $"Acl {aclChangeType}")
                     {
-                        progress.PercentComplete = 0;
-                        progress.Activity =
-                            $"Acl {aclChangeType}: Files enumerated: {e.FilesProcessed} Directories enumerated:{e.DirectoryProcessed}";
+                        PercentComplete = 0
+                    };
+                    // On update from the Data Lake store uploader, capture the progress.
+                    progressTracker = new System.Progress<AclProcessorStats>();
+                    progressTracker.ProgressChanged += (s, e) =>
+                    {
+                        lock (ConsoleOutputLock)
+                        {
+                            progress.PercentComplete = 0;
+                            progress.Activity =
+                                $"Acl {aclChangeType}: Files enumerated: {e.FilesProcessed} Directories enumerated:{e.DirectoryProcessed}";
+
+                        }
+                    };
+                }
+
+                AclProcessorStats status = null;
+                Task aclTask = Task.Run(() =>
+                {
+                    cmdletCancellationToken.ThrowIfCancellationRequested();
+                    status = client.ChangeAcl(path, aclToSet, aclChangeType, concurrency, progressTracker,
+                        cmdletCancellationToken);
+                }, cmdletCancellationToken);
+
+                if (trackProgress || _isDebugEnabled)
+                {
+                    TrackTaskProgress(aclTask, aclCmdlet, progress, cmdletCancellationToken);
+
+                    if (trackProgress && !cmdletCancellationToken.IsCancellationRequested)
+                    {
+                        progress.PercentComplete = 100;
+                        progress.RecordType = ProgressRecordType.Completed;
+                        UpdateProgress(progress, aclCmdlet);
 
                     }
-                };
-            }
-            AclProcessorStats status = null;
-            Task aclTask = Task.Run(() =>
-            {
-                cmdletCancellationToken.ThrowIfCancellationRequested();
-                status = client.ChangeAcl(path, aclToSet, aclChangeType, concurrency, progressTracker, cmdletCancellationToken);
-            }, cmdletCancellationToken);
-
-            if (trackProgress || _isDebugEnabled)
-            {
-                TrackTaskProgress(aclTask, aclCmdlet, progress, cmdletCancellationToken);
-
-                if (trackProgress && !cmdletCancellationToken.IsCancellationRequested)
-                {
-                    progress.PercentComplete = 100;
-                    progress.RecordType = ProgressRecordType.Completed;
-                    UpdateProgress(progress, aclCmdlet);
-
                 }
-            }
-            else
-            {
-                WaitForTask(aclTask, cmdletCancellationToken);
+                else
+                {
+                    WaitForTask(aclTask, cmdletCancellationToken);
+                }
+
+
+                return status;
             }
 
-            return status;
+            return client.ChangeAcl(path, aclToSet, aclChangeType, concurrency);
         }
         /// <summary>
         /// Add specific Acl entries
@@ -738,10 +747,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         /// <param name="cmdletCancellationToken">CancellationToken</param>
         public void GetFileProperties(string accountName, string path, bool getAclUsage, string dumpFileName, bool getDiskUsage , bool saveToLocal, int numThreads, bool displayFiles, bool hideConsistentAcl , long maxDepth, Cmdlet cmdlet, CancellationToken cmdletCancellationToken)
         {
-            Task exportTask = Task.Run(() => AdlsClientFactory.GetAdlsClient(accountName, _context).GetFileProperties(
-                path, getAclUsage, dumpFileName,
-                getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth,
-                cmdletCancellationToken), cmdletCancellationToken);
+            var client = AdlsClientFactory.GetAdlsClient(accountName, _context);
+            Task exportTask = Task.Run(() => client
+                    .GetFileProperties(
+                        path, getAclUsage, dumpFileName,
+                        getDiskUsage, saveToLocal, numThreads, displayFiles, hideConsistentAcl, maxDepth,
+                        cmdletCancellationToken), cmdletCancellationToken);
 
             if (_isDebugEnabled)
             {
@@ -751,6 +762,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             {
                 WaitForTask(exportTask, cmdletCancellationToken);
             }
+            
+
         }
 
         #endregion
