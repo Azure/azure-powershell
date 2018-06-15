@@ -46,6 +46,7 @@ foreach ($ChangeLog in $ChangeLogs)
     }
 }
 
+$FlaggedFiles = @()
 foreach ($File in $FilesChangedList)
 {
     if ($File -like "*ChangeLog.md*")
