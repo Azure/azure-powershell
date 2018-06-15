@@ -37,61 +37,61 @@ namespace Microsoft.Azure.Commands.Reservations.Test.ScenarioTests
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-MergeReservation");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSplitReservation()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-SplitReservation");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestSplitReservation()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-SplitReservation");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetReservation()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservation");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestGetReservation()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservation");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateReservationToSingle()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToSingle");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestUpdateReservationToSingle()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToSingle");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestUpdateReservationToShared()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToShared");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestUpdateReservationToShared()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateReservationToShared");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListReservations()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservations");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestListReservations()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservations");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestListReservationHistory()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationHistory");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestListReservationHistory()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationHistory");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetReservationOrderId()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservationOrderId");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestGetReservationOrderId()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetReservationOrderId");
+        //}
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestGetCatalog()
-        {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
-        }
+        //[Fact]
+        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        //public void TestGetCatalog()
+        //{
+        //    TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetCatalog");
+        //}
 
     }
 }

@@ -16,9 +16,9 @@
 # Please create reservation through portal and use id to run tests
 # Once reservation is created you will have reservationOrderId (which is container for reservation),
 # reservationId, subscriptionId to run this test
-$subscriptionId ="caadc3f2-e83e-487c-9a14-41f74366467f"
-$reservationOrderId = "ffa7538a-2251-489d-82bf-7efcb8b346d7"
-$reservationId = "cf909cbc-f1e6-46b7-a3cc-6bf51cdc571f"
+$subscriptionId ="302110e3-cd4e-4244-9874-07c91853c809"
+$reservationOrderId = "704aee8c-c906-47c7-bd22-781841fb48b5"
+$reservationId = "ac7f6b04-ff45-4da1-83f3-b0f2f6c8128e"
 
 <#
 .SYNOPSIS
@@ -100,8 +100,8 @@ Merge reservations
 #>
 function Test-MergeReservation
 {
-	$reservationId1 = "d2e29da5-857d-498c-8d34-496f2a315bb9"
-	$reservationId2 = "5c3b763e-a148-49df-9d9c-544a40d9d97b"
+	$reservationId1 = "efcd2077-baa6-4be3-8190-2b9ba939c8bc"
+	$reservationId2 = "0281e256-5b31-424a-8df8-e67f6531113a"
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
 	$mergeResult = Merge-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId1,$reservationId2
 	Foreach ($mergeItem in $mergeResult)
@@ -166,7 +166,7 @@ Update reservation
 function Test-UpdateReservationToSingle
 {
 	$type = "Microsoft.Capacity/reservationOrders/reservations"
-	$subscription = "/subscriptions/caadc3f2-e83e-487c-9a14-41f74366467f"
+	$subscription = "/subscriptions/302110e3-cd4e-4244-9874-07c91853c809"
 
 	$reservationItem = Update-AzureRmReservation -ReservationOrderId $reservationOrderId -ReservationId $reservationId -appliedscopetype Single -appliedscope $subscription -InstanceFlexibility On
 
