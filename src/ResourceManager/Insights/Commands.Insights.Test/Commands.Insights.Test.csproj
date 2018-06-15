@@ -145,10 +145,10 @@
     <Compile Include="ActivityLogAlerts\EnableAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\GetAzureRmActivityLogAlertTests.cs" />
     <Compile Include="ActivityLogAlerts\RemoveAzureRmActivityLogAlertTests.cs" />
-    <Compile Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="CustomPrinterTests.cs" />
     <Compile Include="Diagnostics\SetDiagnosticSettingCommandTests.cs" />
     <Compile Include="Diagnostics\GetDiagnosticSettingCommandTests.cs" />
+    <Compile Include="Diagnostics\RemoveDiagnosticSettingCommandTests.cs" />
     <Compile Include="ActivityLogs\GetAzureRmLogTests.cs" />
     <Compile Include="LogProfiles\AddAzureRmLogProfileTests.cs" />
     <Compile Include="LogProfiles\GetAzureRmLogProfileTests.cs" />

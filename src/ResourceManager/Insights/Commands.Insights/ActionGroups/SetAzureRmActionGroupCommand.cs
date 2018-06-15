@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                         Select(o => new EmailReceiver(name: o.Name, emailAddress: o.EmailAddress, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<SmsReceiver> smsReceivers =
                     this.Receiver.OfType<PSSmsReceiver>().
-                        Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: o.Status)).ToList();
+                        Select(o => new SmsReceiver(name: o.Name, countryCode: o.CountryCode, phoneNumber: o.PhoneNumber, status: TransitionHelpers.ConvertNamespace(o.Status))).ToList();
                 IList<WebhookReceiver> webhookReceivers =
                     this.Receiver.OfType<PSWebhookReceiver>().
                         Select(o => new WebhookReceiver(name: o.Name, serviceUri: o.ServiceUri)).ToList();
