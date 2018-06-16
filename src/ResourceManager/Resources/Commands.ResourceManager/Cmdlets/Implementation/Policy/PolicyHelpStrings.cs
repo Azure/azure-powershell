@@ -9,8 +9,7 @@
         public const string GetPolicyAssignmentScopeHelp = "The scope of the policy assignment to get, e.g. /providers/managementGroups/{managementGroupName}.";
         public const string GetPolicyAssignmentIdHelp = "The fully qualified policy assignment ID to get, including the scope, e.g. /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}.";
         public const string GetPolicyDefinitionFilterHelp = "Limits the list of returned policy assignments to those assigning the policy definition identified by this fully qualified Id.";
-        public const string GetPolicyAssignmentAllFilterHelp = "Causes the list of returned policy assignments to include all assignments related to the given scope, including those from containing scopes and those from contained scopes.";
-        public const string GetPolicyAssignmentEffectiveFilterHelp = "Causes the list of returned policy assignments to include all assignments that apply to the given scope, including those from containing scopes.";
+        public const string GetPolicyAssignmentIncludeDescendentsHelp = "Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.";
         public const string NewPolicyAssignmentNameHelp = "The name of the new policy assignment.";
         public const string NewPolicyAssignmentScopeHelp = "The scope of the new policy assignment, e.g. /providers/managementGroups/{managementGroupName}.";
         public const string NewPolicyAssignmentNotScopesHelp = "The not scopes for the new policy assignment.";
