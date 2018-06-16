@@ -26,16 +26,9 @@ Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-ApiVersion <Str
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### EffectiveFilterParameterSet
+### IncludeDescendentsParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Scope <String>] [-Effective] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### AllFilterParameterSet
-```
-Get-AzureRmPolicyAssignment [-Scope <String>] [-All] [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyAssignment [-Scope <String>] [-IncludeDescendents] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -78,21 +71,6 @@ The second command get the policy assignment named PolicyAssignment07 for the sc
 
 ## PARAMETERS
 
-### -All
-Causes the list of returned policy assignments to include all assignments related to the given scope, including those from containing scopes and those from contained scopes.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: AllFilterParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -ApiVersion
 Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
@@ -124,13 +102,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Effective
-Causes the list of returned policy assignments to include all assignments that apply to the given scope, including those from containing scopes.
+### -Id
+Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: EffectiveFilterParameterSet
-Aliases:
+Type: String
+Parameter Sets: IdParameterSet
+Aliases: ResourceId
 
 Required: True
 Position: Named
@@ -139,13 +117,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the fully qualified resource ID for the policy assignment that this cmdlet gets.
+### -IncludeDescendents
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
 
 ```yaml
-Type: String
-Parameter Sets: IdParameterSet
-Aliases: ResourceId
+Type: SwitchParameter
+Parameter Sets: IncludeDescendentsParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -243,7 +221,7 @@ Specifies the scope at which the policy is applied for the assignment that this 
 
 ```yaml
 Type: String
-Parameter Sets: NameParameterSet, EffectiveFilterParameterSet, AllFilterParameterSet, PolicyDefinitionIdFilterParameterSet
+Parameter Sets: NameParameterSet, IncludeDescendentsParameterSet, PolicyDefinitionIdFilterParameterSet
 Aliases:
 
 Required: False
