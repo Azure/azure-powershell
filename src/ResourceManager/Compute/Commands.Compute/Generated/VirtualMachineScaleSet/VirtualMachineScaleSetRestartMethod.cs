@@ -97,8 +97,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 instanceIds = inputArray2.ToList();
             }
 
-            var result = VirtualMachineScaleSetsClient.Restart(resourceGroupName, vmScaleSetName, instanceIds);
-            WriteObject(result);
+            VirtualMachineScaleSetsClient.Restart(resourceGroupName, vmScaleSetName, instanceIds);
         }
     }
 
@@ -122,6 +121,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsLifecycle.Restart))
@@ -130,10 +130,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmScaleSetName = this.VMScaleSetName;
                     System.Collections.Generic.IList<string> instanceIds = this.InstanceId;
 
-                    var result = VirtualMachineScaleSetsClient.Restart(resourceGroupName, vmScaleSetName, instanceIds);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
+                    var result = VirtualMachineScaleSetsClient.RestartWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceIds).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }

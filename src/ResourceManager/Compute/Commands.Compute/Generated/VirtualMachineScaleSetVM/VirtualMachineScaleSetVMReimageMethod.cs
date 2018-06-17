@@ -92,8 +92,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string vmScaleSetName = (string)ParseParameter(invokeMethodInputParameters[1]);
             string instanceId = (string)ParseParameter(invokeMethodInputParameters[2]);
 
-            var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
-            WriteObject(result);
+            VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
         }
     }
 
@@ -117,6 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMScaleSetName, VerbsCommon.Set))
@@ -125,35 +125,36 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string vmScaleSetName = this.VMScaleSetName;
                     string instanceId = this.InstanceId;
 
+                    Rest.Azure.AzureOperationResponse result = null;
                     if (this.ParameterSetName.Equals("FriendMethod"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.ReimageAll(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.ReimageAllWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else if (this.ParameterSetName.Equals("RedeployMethodParameter"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.Redeploy(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.RedeployWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else if (this.ParameterSetName.Equals("PerformMaintenanceMethodParameter"))
                     {
-                        var result = VirtualMachineScaleSetVMsClient.PerformMaintenance(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.PerformMaintenanceWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
                     else
                     {
-                        var result = VirtualMachineScaleSetVMsClient.Reimage(resourceGroupName, vmScaleSetName, instanceId);
-                        var psObject = new PSOperationStatusResponse();
-                        ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                        WriteObject(psObject);
+                        result = VirtualMachineScaleSetVMsClient.ReimageWithHttpMessagesAsync(resourceGroupName, vmScaleSetName, instanceId).GetAwaiter().GetResult();
                     }
 
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }
