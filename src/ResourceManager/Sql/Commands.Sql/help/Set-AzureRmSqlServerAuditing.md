@@ -13,9 +13,18 @@ Changes the auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
- [-StorageAccountName <String>] [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>]
+ [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### StorageAccountSubscriptionIdSet
+```
+Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
+ -StorageAccountName <String> [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -155,7 +164,7 @@ This parameter is not required.
 If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
 If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -165,10 +174,22 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+```yaml
+Type: String
+Parameter Sets: StorageAccountSubscriptionIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -StorageAccountSubscriptionId
 Specifies storage account subscription id```yaml
 Type: Guid
-Parameter Sets: (All)
+Parameter Sets: StorageAccountSubscriptionIdSet
 Aliases:
 
 Required: False
