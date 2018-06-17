@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// <summary>
     /// Sets the auditing settings properties for a specific database.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class SetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
@@ -57,13 +57,14 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets storage account subscription id.
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
+        [Parameter(ParameterSetName = StorageAccountSubscriptionIdSetName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = AuditingHelpMessages.AuditStorageAccountSubscriptionIdHelpMessage)]
         [ValidateNotNullOrEmpty]
         public Guid StorageAccountSubscriptionId { get; set; }
 
@@ -125,10 +126,20 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
                 model.AuditAction = AuditAction;
             }
 
-            model.StorageAccountSubscriptionId = StorageAccountSubscriptionId.Equals(Guid.Empty) ?
-                Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id) : StorageAccountSubscriptionId;
+            if (!StorageAccountSubscriptionId.Equals(Guid.Empty))
+            {
+                model.StorageAccountSubscriptionId = StorageAccountSubscriptionId;
+            }
+            else if (StorageAccountName != null)
+            {
+                model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
+            }
 
             return model;
         }
+
+        private const string StorageAccountSubscriptionIdSetName = "StorageAccountSubscriptionIdSet";
+
+        private const string DefaultParameterSetName = "DefaultParameterSet";
     }
 }
