@@ -1,9 +1,6 @@
 ﻿using Microsoft.Azure.Management.Reservations.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Reservations.Models
 {
