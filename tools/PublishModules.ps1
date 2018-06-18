@@ -272,7 +272,7 @@ function Get-ClientModules {
             }
 
             # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'AzureRM.Storage.Netcore')
+            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'Azure.Storage.Netcore', 'AzureRM.Netcore')
 
             # Add all modules for AzureRM for Azure
             foreach ($module in $resourceManagerModules) {
