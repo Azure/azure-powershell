@@ -76,6 +76,7 @@ function ServiceBusNameSpaceAuthTests
 	$namespaceName = getAssetName "Namespace-"
 	$authRuleName = getAssetName "authorule-"
 	$defaultNamespaceAuthRule = "RootManageSharedAccessKey"
+	$keyValue = "YskcXxK7Jk0qeOPlISv8J/JFHU5pGFfxI4p0W1voKIc="
 	
     Write-Debug " Create resource group"    
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -170,13 +171,18 @@ function ServiceBusNameSpaceAuthTests
 	
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $keyValue
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $keyValue
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $keyValue
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
+	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $keyValue
+																	
+	$namespaceRegenerateKeys1 = New-AzureRmServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $keyValue}
 
     Write-Debug "Delete the created Namespace AuthorizationRule"
     $result = Remove-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
