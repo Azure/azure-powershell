@@ -50,24 +50,29 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
+        [ValidateNotNullOrEmpty]
         public TimeSpan TimeGrain { get; set; }
 
         /// <summary>
         /// Gets or sets the aggregation type parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The aggregation type of the query")]
+        [ValidateNotNullOrEmpty]
         public AggregationType? AggregationType { get; set; }
 
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The start time of the query")]
         public DateTime StartTime { get; set; }
 
         /// <summary>
         /// Gets or sets the endtime parameter of the cmdlet
         /// </summary>
+        [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The end time of the query")]
         public DateTime EndTime { get; set; }
 
@@ -106,6 +111,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
+        [ValidateNotNullOrEmpty]
         [Alias("MetricNames")]
         public string[] MetricName { get; set; }
 
