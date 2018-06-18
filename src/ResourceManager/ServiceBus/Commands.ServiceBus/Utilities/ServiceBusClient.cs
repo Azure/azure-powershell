@@ -41,6 +41,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         public Action<string> WarningLogger { get; set; }
 
+        public static int ServiceBusDRWaitTime = 5;
+
         public ServiceBusClient(IAzureContext context)
         {
             this.Client = AzureSession.Instance.ClientFactory.CreateArmClient<ServiceBusManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
@@ -590,14 +592,14 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public bool DeleteServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            Thread.Sleep(TimeSpan.FromSeconds(ServiceBusDRWaitTime));
             return true;
         }
 
         public void SetServiceBusDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(5));            
+            Thread.Sleep(TimeSpan.FromSeconds(ServiceBusDRWaitTime));            
         }
 
         public void SetServiceBusDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
