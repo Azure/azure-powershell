@@ -87,15 +87,15 @@
 
 
   <ItemGroup>
+    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
+                            Condition=" '$(Scope)' == 'AzureStorage' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
+
     <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;"
                            Exclude=".\src\ResourceManager\Intune\*.sln"
                             Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
 
     <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
                             Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
-                            Condition=" '$(Scope)' == 'AzureStorage' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
 
     <CmdletSolutionsToBuild Include=".\src\Stack.sln"
                             Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
