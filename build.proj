@@ -150,6 +150,30 @@
       Targets="Clean"
       Properties="Configuration=$(Configuration);Platform=Any CPU"
       ContinueOnError="false" />
+
+    <!-- Delete the publish files -->
+    <Message Importance="high" Text="Cleaning publish files..." ContinueOnError="false" />
+    <ItemGroup>
+      <PublishFiles Include="$(PublishDirectory)\**\*.*" />
+    </ItemGroup>
+    <Delete
+      Files="@(PublishFiles)"
+      ContinueOnError="false" />
+    <RemoveDir
+      Directories="$(PublishDirectory)"
+      ContinueOnError="false" />
+
+    <!-- Delete the package files -->
+    <Message Importance="high" Text="Cleaning package files..." ContinueOnError="false" />
+    <ItemGroup>
+      <PackageFiles Include="$(PackageDirectory)\**\*.*" />
+    </ItemGroup>
+    <Delete
+      Files="@(PackageFiles)"
+      ContinueOnError="false" />
+    <RemoveDir
+      Directories="$(PackageDirectory)"
+      ContinueOnError="false" />
   </Target>
 
   <PropertyGroup>
