@@ -7,7 +7,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "e825b4a2-d90b-44db-8509-1a2835bba745"
+          "7b0b91bd-6d0b-400c-9dcf-7cc3b7665adf"
         ],
         "accept-language": [
           "en-US"
@@ -30,20 +30,20 @@
         "Vary": [
           "Accept-Encoding"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "74999"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
         ],
         "__HandlingServerId__": [
-          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_3"
+          "shoeboxproxyustwo_shoeboxproxyustwo-red_MetricsMP_IN_1"
         ],
         "x-ms-request-id": [
-          "{486f3eb6-ffef-449a-9b92-a2b9d41fe8e5}"
+          "{bfcc3d73-5b14-4b0f-aee5-b8b45778e2fb}"
         ],
         "x-ms-correlation-request-id": [
-          "486f3eb6-ffef-449a-9b92-a2b9d41fe8e5"
+          "bfcc3d73-5b14-4b0f-aee5-b8b45778e2fb"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180613T204707Z:486f3eb6-ffef-449a-9b92-a2b9d41fe8e5"
+          "WESTUS2:20180618T172907Z:bfcc3d73-5b14-4b0f-aee5-b8b45778e2fb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,7 +55,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 13 Jun 2018 20:47:06 GMT"
+          "Mon, 18 Jun 2018 17:29:07 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -76,7 +76,7 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "57ca98c1-349f-4ffd-b79c-433bcb32b540"
+          "df22302d-7fd5-49a1-89cd-2c10e9133cc9"
         ],
         "accept-language": [
           "en-US"
@@ -99,20 +99,20 @@
         "Vary": [
           "Accept-Encoding"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "74998"
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14998"
         ],
         "__HandlingServerId__": [
-          "shoeboxproxyustwo_shoeboxproxyustwo-black_MetricsMP_IN_8"
+          "shoeboxproxyustwo_shoeboxproxyustwo-red_MetricsMP_IN_1"
         ],
         "x-ms-request-id": [
-          "{730cda47-fce7-4335-97ba-849055b18e47}"
+          "{1ad13b90-ce24-4fb2-a35e-f708c684a397}"
         ],
         "x-ms-correlation-request-id": [
-          "730cda47-fce7-4335-97ba-849055b18e47"
+          "1ad13b90-ce24-4fb2-a35e-f708c684a397"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180613T204712Z:730cda47-fce7-4335-97ba-849055b18e47"
+          "WESTUS2:20180618T172909Z:1ad13b90-ce24-4fb2-a35e-f708c684a397"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -124,7 +124,7 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 13 Jun 2018 20:47:12 GMT"
+          "Mon, 18 Jun 2018 17:29:08 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
