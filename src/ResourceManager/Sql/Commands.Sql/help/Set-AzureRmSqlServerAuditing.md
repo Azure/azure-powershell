@@ -66,7 +66,9 @@ The recommended set of action groups to use is the following combination - this 
 "BATCH_COMPLETED_GROUP",
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
 "FAILED_DATABASE_AUTHENTICATION_GROUP"
-This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.```yaml
+This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+
+```yaml
 Type: AuditActionGroups[]
 Parameter Sets: (All)
 Aliases:
@@ -80,7 +82,9 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.```yaml
+The credentials, account, tenant, and subscription used for communication with azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -93,7 +97,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}```yaml
+{{Fill PassThru Description}}
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
@@ -106,7 +112,9 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.```yaml
+The name of the resource group.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -119,7 +127,9 @@ Accept wildcard characters: False
 ```
 
 ### -RetentionInDays
-The number of retention days for the audit logs.```yaml
+The number of retention days for the audit logs.
+
+```yaml
 Type: UInt32
 Parameter Sets: (All)
 Aliases:
@@ -132,7 +142,9 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL server name.```yaml
+SQL server name.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -145,7 +157,9 @@ Accept wildcard characters: False
 ```
 
 ### -State
-The state of the policy.```yaml
+The state of the policy.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -162,7 +176,9 @@ Accept wildcard characters: False
 The name of the storage account. Wildcard characters are not permitted.
 This parameter is not required.
 If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
-If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.```yaml
+If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.
+
+```yaml
 Type: String
 Parameter Sets: DefaultParameterSet
 Aliases:
@@ -187,7 +203,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountSubscriptionId
-Specifies storage account subscription id```yaml
+Specifies storage account subscription id
+
+```yaml
 Type: Guid
 Parameter Sets: StorageAccountSubscriptionIdSet
 Aliases:
@@ -200,7 +218,9 @@ Accept wildcard characters: False
 ```
 
 ### -StorageKeyType
-Specifies which of the storage access keys to use.```yaml
+Specifies which of the storage access keys to use.
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
@@ -214,7 +234,9 @@ Accept wildcard characters: False
 ```
 
 ### -Confirm
-Prompts you for confirmation before running the cmdlet.```yaml
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
@@ -227,7 +249,9 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs. The cmdlet is not run.```yaml
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
