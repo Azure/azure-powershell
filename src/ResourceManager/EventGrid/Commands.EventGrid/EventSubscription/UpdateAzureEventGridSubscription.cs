@@ -146,7 +146,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public string SubjectBeginsWith { get; set; }
 
         [Parameter(
@@ -165,7 +164,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
             ParameterSetName = EventSubscriptionInputObjectParameterSet)]
-        [ValidateNotNullOrEmpty]
         public string SubjectEndsWith { get; set; }
 
         [Parameter(

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.6.1
+* Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
+
 ## Version 4.6.0
 * Updated the following cmdlets with optional LicenseType parameter
 	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase

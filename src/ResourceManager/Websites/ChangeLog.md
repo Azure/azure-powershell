@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 5.0.3
+* `Set-AzureRmWebApp` is updated to not overwrite the AppSettings when using -AssignIdentity
+* `New-AzureRmWebAppSlot` is updated to honor AppServicePlan as an optional parameter
+
 ## Version 5.0.2
 * `New-AzureRMWebApp` is updated to use common algorithms from the Strategy library.
 
