@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         protected const string InputObjectParameterSet = "InputObjectParameterSet";
         protected const string ManagementGroupNameParameterSet = "ManagementGroupNameParameterSet";
         protected const string IncludeDescendentsParameterSet = "IncludeDescendentsParameterSet";
-        protected const string PolicyDefinitionIdFilterParameterSet = "PolicyDefinitionIdFilterParameterSet";
         protected const string BuiltinFilterParameterSet = "BuiltinFilterParameterSet";
         protected const string CustomFilterParameterSet = "CustomFilterParameterSet";
         protected const string DefaultParameterSet = "DefaultParameterSet";

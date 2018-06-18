@@ -695,10 +695,10 @@ function Test-GetPolicyAssignmentParameters
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName } $policyAssignmentNotFound
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $goodScope } $policyAssignmentNotFound
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Id $someId } $parameterSetError
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -PolicyDefinitionId $someId } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -PolicyDefinitionId $someId } $policyAssignmentNotFound
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -IncludeDescendents } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -Id $someId } $parameterSetError
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinitionId $someId } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinitionId $someId } $missingSubscription
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -IncludeDescendents } $parameterSetError
 
     # validate remaining parameter combinations starting with -Scope
@@ -712,7 +712,7 @@ function Test-GetPolicyAssignmentParameters
 
     # validate remaining parameter combinations starting with -Id
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $goodId } $policyAssignmentNotFound
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -PolicyDefinitionId $someId } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -PolicyDefinitionId $someId } $missingSubscription
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -IncludeDescendents } $parameterSetError
 
     # validate remaining parameter combinations starting with -PolicyDefinitionId
