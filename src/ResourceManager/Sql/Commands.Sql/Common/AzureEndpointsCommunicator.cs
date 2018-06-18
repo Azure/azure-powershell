@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             StringBuilder uriBuilder = new StringBuilder(Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString());
             uriBuilder.AppendFormat("{0}/listKeys?api-version={1}",
                 storageAccountId,
-                isClassicStorage ? "2016-11-01" : "2017-06-01");
+                isClassicStorage ? ClassicStorageListKeysApiVersion : NonClassicStorageListKeysApiVersion);
 
             // Define an exception to be thrown on failure.
             //
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Commands.Sql.Common
             string secondaryKey = null;
             if (isClassicStorage)
             {
-                primaryKey = (string)storageAccountKeysResponse["primaryKey"];
-                secondaryKey = (string)storageAccountKeysResponse["secondaryKey"];
+                primaryKey = (string)storageAccountKeysResponse[PrimaryKey];
+                secondaryKey = (string)storageAccountKeysResponse[SecondaryKey];
             }
             else
             {
@@ -367,5 +367,19 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
             return JToken.Parse(await httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false));
         }
+        
+        /// <summary>
+        /// Verson of classic storage listKeys REST-API.
+        /// </summary>
+        private const string ClassicStorageListKeysApiVersion = "2016-11-01";
+        
+        /// <summary>
+        /// Verson of non classic storage listKeys REST-API.
+        /// </summary>
+        private const string NonClassicStorageListKeysApiVersion = "2017-06-01";
+        
+        private const string PrimaryKey = "primaryKey";
+        
+        private const string SecondaryKey = "secondaryKey";
     }
 }
