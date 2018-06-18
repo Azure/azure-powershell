@@ -37,7 +37,6 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
 
         private void Write(string message, params object[] arguments)
         {
-            /*
             try
             {
                 traceOutput.WriteLine(string.Format(message, arguments));
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.ServiceManagemenet.Common.Models
                 }
             }
             catch { }
-            */
         }
 
         public void Information(string message)
