@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+
+## Version 4.0.6
 * Updated the help file for Add-AzureRmTrafficManagerEndpointConfig
 
 ## Version 4.0.5

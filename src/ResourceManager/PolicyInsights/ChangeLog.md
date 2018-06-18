@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+
+## Version 1.0.1
 * Public release of Policy Insights cmdlets
     - Use API version 2018-04-04
     - Add PolicyDefinitionReferenceId to the results of Get-AzureRmPolicyStateSummary
