@@ -57,6 +57,7 @@ PS C:\>Set-AzureRmSqlDatabaseAuditing -State Disabled -ResourceGroupName "Resour
 ### Example 3: Enable the auditing policy of an Azure SQL database using a storage account from a different subscription
 ```
 PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+```
 
 ## PARAMETERS
 
