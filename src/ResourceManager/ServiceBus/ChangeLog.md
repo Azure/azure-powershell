@@ -21,7 +21,7 @@
 ## Current Release
 
 ## Version 0.6.5
-* Set minimum dependency of module to PowerShell 5.0
+* Set minimum dependency of module to PowerShell 5.0 
 
 ## Version 0.6.4
 * Added 'properties' in CorrelationFilter of Rules to support customproperties
