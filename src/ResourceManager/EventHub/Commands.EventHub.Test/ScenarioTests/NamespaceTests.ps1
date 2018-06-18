@@ -23,7 +23,8 @@ function NamespaceAuthTests
     $location = Get-Location
 	$resourceGroupName = getAssetName "RGName"
 	$namespaceName = getAssetName "Eventhub-Namespace-"
-	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule" 
+	$authRuleName =  getAssetName "Eventhub-Namespace-AuthorizationRule"
+	$keyvalue = "YskcXxK7Jk0qeOPlISv8J/JFHU5pGFfxI4p0W1voKIc="
     
     Write-Debug " Create resource group"
     Write-Debug "ResourceGroup name : $resourceGroupName"
@@ -110,8 +111,7 @@ function NamespaceAuthTests
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
     Assert-True { $updatedAuthRule.Rights -Contains "Manage" }
-
-
+	
     Write-Debug "Get namespace authorizationRules connectionStrings"
     $namespaceListKeys = Get-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName -Name $authRuleName
 
@@ -121,13 +121,19 @@ function NamespaceAuthTests
 	Write-Debug "Regenrate Authorizationrules Keys"
 	$policyKey = "PrimaryKey"
 
-	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey
+	$namespaceRegenerateKeys = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey -KeyValue $keyvalue
 	Assert-True {$namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey}
+	Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $keyvalue
 
 	$policyKey1 = "SecondaryKey"
 
-	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $keyvalue
 	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey}
+	Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $keyvalue
+
+
+	$namespaceRegenerateKeys1 = New-AzureRmEventHubKey -ResourceGroup $resourceGroupName -Namespace $namespaceName  -Name $authRuleName -RegenerateKey $policyKey1
+	Assert-True {$namespaceRegenerateKeys1.SecondaryKey -ne $keyvalue}
 
 	# Cleanup
     Write-Debug "Delete the created Namespace AuthorizationRule"
