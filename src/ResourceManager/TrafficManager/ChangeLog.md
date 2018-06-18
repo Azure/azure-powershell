@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.6
+* Updated the help file for Add-AzureRmTrafficManagerEndpointConfig
+
 ## Version 4.0.5
 * Update the parameters for `Get-AzureRmTrafficManagerProfile` so that -ResourceGroupName parameter is required when using -Name parameter.
 

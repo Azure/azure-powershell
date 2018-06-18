@@ -22,7 +22,6 @@ using Microsoft.Rest.Azure.OData;
 using CmdletModel = Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using ServiceClientModel = Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-using System.Net.Http;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -109,6 +108,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <returns>List of protection containers</returns>
         public List<ContainerBase> ListProtectionContainers()
         {
+            string vaultName = (string)ProviderData[VaultParams.VaultName];
+            string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string name = (string)ProviderData[ContainerParams.Name];
 
             ODataQuery<BMSContainerQueryObject> queryParams =
@@ -116,7 +117,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     q => q.FriendlyName == name &&
                          q.BackupManagementType == ServiceClientModel.BackupManagementType.MAB);
 
-            var listResponse = ServiceClientAdapter.ListContainers(queryParams);
+            var listResponse = ServiceClientAdapter.ListContainers(
+                queryParams,
+                vaultName: vaultName,
+                resourceGroupName: resourceGroupName);
 
             List<ContainerBase> containerModels = ConversionHelpers.GetContainerModelList(listResponse);
 
