@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 775AB0E8-EC3C-4F96-8AF8-51C1DFEEF082
@@ -26,7 +26,12 @@ The **New-AzureKeyVaultCertificateAdministratorDetails** cmdlet creates an in-me
 
 ### Example 1: Create a certificate administrator details object
 ```
-PS C:\>$AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+PS C:\> $AdminDetails = New-AzureKeyVaultCertificateAdministratorDetails -FirstName "Patti" -LastName "Fuller" -EmailAddress "patti.fuller@contoso.com" -PhoneNumber "5553334444"
+PS C:\> $AdminDetails
+
+FirstName LastName EmailAddress             PhoneNumber
+--------- -------- ------------             -----------
+Patti     Fuller   patti.fuller@contoso.com 5553334444
 ```
 
 This command creates an in-memory certificate administrator details object, and then stores it in the $AdminDetails variable.
@@ -54,7 +59,7 @@ Specifies the email address for the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,7 +74,7 @@ Specifies the first name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,7 +89,7 @@ Specifies the last name of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +104,7 @@ Specifies the phone number of the certificate administrator.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -144,9 +149,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateAdministratorDetails
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateAdministratorDetails
 
 ## NOTES
 

@@ -358,7 +358,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resource : {0}, not found.
+        ///   Looks up a localized string similar to Resource &apos;{0}&apos; not found.
         /// </summary>
         public static string ResourceNotFound {
             get {
@@ -480,6 +480,17 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         public static string VirtualNetworkGatewayNameNotSet {
             get {
                 return ResourceManager.GetString("VirtualNetworkGatewayNameNotSet", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to virtualNetworkGateway name.
+        /// </summary>
+        public static string VirtualNetworkGatewayName
+        {
+            get
+            {
+                return ResourceManager.GetString("VirtualNetworkGatewayName", resourceCulture);
             }
         }
     }

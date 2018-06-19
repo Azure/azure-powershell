@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: D4188DC6-A8AB-4B45-9781-94B74C338C63
@@ -15,12 +15,6 @@ Imports a certificate to a key vault.
 
 ### ImportCertificateFromFile (Default)
 ```
-Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ImportWithPrivateKeyFromFile
-```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
  [-Password <SecureString>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -36,7 +30,7 @@ Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> -Certific
 ### ImportWithPrivateKeyFromCollection
 ```
 Import-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String>
- -CertificateCollection <X509Certificate2Collection> [-Tag <Hashtable>]
+ [-CertificateCollection] <X509Certificate2Collection> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -51,9 +45,10 @@ You can create the certificate to import by using one of the following methods:
 ## EXAMPLES
 
 ### Example 1: Import a key vault certificate
-```
-PS C:\>$Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
+```powershell
+PS C:\> $Password = ConvertTo-SecureString -String "123" -AsPlainText -Force
 PS C:\> Import-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "ImportCert01" -FilePath "C:\Users\contosoUser\Desktop\import.pfx" -Password $Password
+
 Name        : importCert01
 Certificate : [Subject]
                 CN=contoso.com
@@ -62,7 +57,7 @@ Certificate : [Subject]
                 CN=contoso.com
 
               [Serial Number]
-                05979C5A2F0741D5A3B6F97673E8A118
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
               [Not Before]
                 2/8/2016 3:11:45 PM
@@ -71,9 +66,9 @@ Certificate : [Subject]
                 8/8/2016 4:21:45 PM
 
               [Thumbprint]
-                3E9B6848AD1834284157D68B060F748037F663C8
+                XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Thumbprint  : 3E9B6848AD1834284157D68B060F748037F663C8
+Thumbprint  : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 Tags        :
 Enabled     : True
 Created     : 2/8/2016 11:50:43 PM
@@ -93,12 +88,12 @@ Specifies the certificate collection to add to a key vault.
 ```yaml
 Type: X509Certificate2Collection
 Parameter Sets: ImportWithPrivateKeyFromCollection
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 2
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,7 +103,7 @@ Specifies a certificate string.
 ```yaml
 Type: String
 Parameter Sets: ImportWithPrivateKeyFromString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -137,8 +132,8 @@ Specifies the path of the certificate file that this cmdlet imports.
 
 ```yaml
 Type: String
-Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromFile
-Aliases: 
+Parameter Sets: ImportCertificateFromFile
+Aliases:
 
 Required: True
 Position: Named
@@ -168,8 +163,8 @@ Specifies the password for a certificate file.
 
 ```yaml
 Type: SecureString
-Parameter Sets: ImportWithPrivateKeyFromFile, ImportWithPrivateKeyFromString
-Aliases: 
+Parameter Sets: ImportCertificateFromFile, ImportWithPrivateKeyFromString
+Aliases:
 
 Required: False
 Position: Named
@@ -186,7 +181,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -202,7 +197,7 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key vault bas
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -247,9 +242,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Security.Cryptography.X509Certificates.X509Certificate2Collection
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.CertificateBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
 
 ## NOTES
 

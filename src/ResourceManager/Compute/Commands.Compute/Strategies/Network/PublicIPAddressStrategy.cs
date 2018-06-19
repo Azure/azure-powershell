@@ -13,11 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
@@ -26,7 +25,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
     {
         public static ResourceStrategy<PublicIPAddress> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "public IP address",
                 provider: "publicIPAddresses",
                 getOperations: client => client.PublicIPAddresses,
                 getAsync: (o, p) => o.GetAsync(
@@ -35,11 +33,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 15);
 
+        public enum Sku
+        {
+            Basic,
+            Standard,
+        }
+
         public static ResourceConfig<PublicIPAddress> CreatePublicIPAddressConfig(
             this ResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            Func<string> getDomainNameLabel,
-            string allocationMethod)
+            string domainNameLabel,
+            string allocationMethod,
+            Sku sku,
+            IList<string> zones)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
@@ -48,8 +54,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     PublicIPAllocationMethod = allocationMethod,
                     DnsSettings = new PublicIPAddressDnsSettings
                     {
-                        DomainNameLabel = getDomainNameLabel(),
-                    }
+                        DomainNameLabel = domainNameLabel,
+                    },
+                    Sku = new PublicIPAddressSku
+                    {
+                        Name = sku.ToString(),
+                    },
+                    Zones = zones,
                 });
 
         public static async Task<string> UpdateDomainNameLabelAsync(
@@ -60,11 +71,14 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
         {
             if (domainNameLabel == null)
             {
+                if (location == null)
+                {
+                    return null;
+                }
                 var networkClient = client.GetClient<NetworkManagementClient>();
                 do
                 {
-                    domainNameLabel = (name + '-' + Guid.NewGuid().ToString().Substring(0, 6))
-                        .ToLower();
+                    domainNameLabel = (name + '-' + UniqueId.Create().Substring(0, 6)).ToLower();
                 } while ((await networkClient.CheckDnsNameAvailabilityAsync(
                             location,
                             domainNameLabel))

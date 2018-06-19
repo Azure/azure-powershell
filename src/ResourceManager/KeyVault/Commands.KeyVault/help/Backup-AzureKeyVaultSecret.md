@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 80AAA327-77C6-4372-9461-FFED5A15E678
@@ -21,7 +21,7 @@ Backup-AzureKeyVaultSecret [-VaultName] <String> [-Name] <String> [[-OutputFile]
 
 ### BySecret
 ```
-Backup-AzureKeyVaultSecret [-Secret] <Secret> [[-OutputFile] <String>] [-Force]
+Backup-AzureKeyVaultSecret [-InputObject] <PSKeyVaultSecretIdentityItem> [[-OutputFile] <String>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,23 +39,29 @@ Typical reasons to use this cmdlet are:
 ## EXAMPLES
 
 ### Example 1: Back up a secret with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+
+C:\Users\username\mykeyvault-mysecret-1527029447.01191
 ```
 
 This command retrieves the secret named MySecret from the key vault named MyKeyVault and saves a backup of that secret to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a secret to a specified file name, overwriting the existing file without prompting
-```
-PS C:\>Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> Backup-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret' -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command retrieves the secret named MySecret from the key vaultnamed MyKeyVault and saves a backup of that secret to a file named Backup.blob.
 
 ### Example 3: Back up a secret previously retrieved to a specified file name
-```
-PS C:\>$secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
-PS C:\>Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> $secret = Get-AzureKeyVaultSecret -VaultName 'MyKeyVault' -Name 'MySecret'
+PS C:\> Backup-AzureKeyVaultSecret -Secret $secret -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command uses the $secret object's vault name and name to retrieves the secret and saves its backup to a file named Backup.blob.
@@ -83,12 +89,27 @@ Prompts you for confirmation before overwriting the output file, if that exists.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: False
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Secret to be backed up, pipelined in from the output of a retrieval call.
+
+```yaml
+Type: PSKeyVaultSecretIdentityItem
+Parameter Sets: BySecret
+Aliases: Secret
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -103,7 +124,7 @@ Aliases: SecretName
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,27 +136,12 @@ If you specify the name of an existing output file, the operation will not compl
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Secret
-Specifies the object whose name and vault should be used for the backup operation.
-
-```yaml
-Type: Secret
-Parameter Sets: BySecret
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,12 +151,12 @@ Specifies the name of the key vault that contains the secret to back up.
 ```yaml
 Type: String
 Parameter Sets: BySecretName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -190,10 +196,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+
 ## OUTPUTS
 
 ### String
-The cmdlet returns the path of the output file containing the backup of the key.
+The cmdlet returns the path of the output file containing the backup of the secret.
 
 ## NOTES
 

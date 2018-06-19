@@ -13,11 +13,21 @@ Changes the auditing settings for an Azure SQL database.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Set-AzureRmSqlDatabaseAuditing -State <String> [-PassThru] [-AuditActionGroup <AuditActionGroups[]>]
  [-AuditAction <String[]>] [-StorageAccountName <String>] [-StorageKeyType <String>]
  [-RetentionInDays <UInt32>] [-ServerName] <String> [-DatabaseName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### StorageAccountSubscriptionIdSet
+```
+Set-AzureRmSqlDatabaseAuditing -State <String> [-PassThru] [-AuditActionGroup <AuditActionGroups[]>]
+ [-AuditAction <String[]>] -StorageAccountName <String> [-StorageAccountSubscriptionId <Guid>]
+ [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-ServerName] <String> [-DatabaseName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,29 +54,33 @@ PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "Resourc
 PS C:\>Set-AzureRmSqlDatabaseAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
+### Example 3: Enable the auditing policy of an Azure SQL database using a storage account from a different subscription
+```
+PS C:\>Set-AzureRmSqlDatabaseAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+```
+
 ## PARAMETERS
 
 ### -AuditAction
-The set of audit actions.  
-The supported actions to audit are:  
-SELECT  
-UPDATE  
-INSERT  
-DELETE  
-EXECUTE  
-RECEIVE  
-REFERENCES  
-
+The set of audit actions.
+The supported actions to audit are:
+SELECT
+UPDATE
+INSERT
+DELETE
+EXECUTE
+RECEIVE
+REFERENCES
 The general form for defining an action to be audited is:
 
 [action] ON [object] BY [principal]
 
 Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
 
-For example:  
-SELECT on dbo.myTable by public  
-SELECT on DATABASE::myDatabase by public  
-SELECT on SCHEMA::mySchema by public  
+For example:
+SELECT on dbo.myTable by public
+SELECT on DATABASE::myDatabase by public
+SELECT on SCHEMA::mySchema by public
 
 For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
 
@@ -83,14 +97,12 @@ Accept wildcard characters: False
 ```
 
 ### -AuditActionGroup
-The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
-  
-"BATCH_COMPLETED_GROUP",  
-"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
-"FAILED_DATABASE_AUTHENTICATION_GROUP"  
+The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
 
-This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+"BATCH_COMPLETED_GROUP",
+"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+"FAILED_DATABASE_AUTHENTICATION_GROUP"
+This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
 Type: AuditActionGroups[]
@@ -145,7 +157,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,14 +224,41 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account. Wildcard characters are not permitted.  
-This parameter is not required.  
-If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.  
+The name of the storage account. Wildcard characters are not permitted.
+This parameter is not required.
+If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
 If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: StorageAccountSubscriptionIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountSubscriptionId
+Specifies storage account subscription id
+
+```yaml
+Type: Guid
+Parameter Sets: StorageAccountSubscriptionIdSet
 Aliases:
 
 Required: False
@@ -255,7 +294,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -270,7 +309,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -279,6 +318,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

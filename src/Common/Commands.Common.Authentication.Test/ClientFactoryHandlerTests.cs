@@ -24,6 +24,10 @@ using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Common.Authentication.Test
 {
@@ -51,7 +55,7 @@ namespace Common.Authentication.Test
             sub.SetTenant("common");
             AzureContext context = new AzureContext
             (
-                sub, 
+                sub,
                 account,
                 AzureEnvironment.PublicEnvironments["AzureCloud"]
             );
@@ -65,7 +69,66 @@ namespace Common.Authentication.Test
             client = factory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
             client = factory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
             client = factory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
-            Assert.Equal(5, MockDelegatingHandler.cloneCount); 
+            Assert.Equal(5, MockDelegatingHandler.cloneCount);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void AddsAppropriateRetryPolicy()
+        {
+            AzureSessionInitializer.InitializeAzureSession();
+            string userAccount = "user@contoso.com";
+            Guid subscriptionId = Guid.NewGuid();
+            var account = new AzureAccount()
+            {
+                Id = userAccount,
+                Type = AzureAccount.AccountType.User,
+            };
+            account.SetTenants("common");
+            var sub = new AzureSubscription()
+            {
+                Id = subscriptionId.ToString(),
+            };
+            sub.SetAccount(userAccount);
+            sub.SetEnvironment("AzureCloud");
+            sub.SetTenant("common");
+            AzureContext context = new AzureContext
+            (
+                sub,
+                account,
+                AzureEnvironment.PublicEnvironments["AzureCloud"]
+            );
+            AzureSession.Instance.AuthenticationFactory = new MockTokenAuthenticationFactory(userAccount, Guid.NewGuid().ToString());
+            var factory = new ClientFactory();
+            factory.AddHandler(new RetryTestHandler());
+            var client = factory.CreateClient<StorageManagementClient>(context, AzureEnvironment.Endpoint.ServiceManagement);
+            var hyakHandler = EnsureHyakRetryPolicy(client);
+            hyakHandler.MaxTries = 2;
+            Assert.Throws<InvalidOperationException>(() => client.StorageAccounts.List());
+            hyakHandler.MaxTries = 0;
+            Assert.Throws<TaskCanceledException>(() => client.StorageAccounts.List());
+            var autorestClient = factory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+            var autoRestHandler = EnsureAutoRestRetryPolicy(autorestClient);
+            autoRestHandler.MaxTries = 2;
+            var task = autorestClient.ResourceGroups.ListWithHttpMessagesAsync();
+            Assert.Throws<InvalidOperationException>(() => task.ConfigureAwait(false).GetAwaiter().GetResult());
+            autoRestHandler.MaxTries = 0;
+            task = autorestClient.ResourceGroups.ListWithHttpMessagesAsync();
+            Assert.Throws<TaskCanceledException>(() => task.ConfigureAwait(false).GetAwaiter().GetResult());
+        }
+
+        private CancelRetryHandler EnsureHyakRetryPolicy<T>( Hyak.Common.ServiceClient<T> client) where T: Hyak.Common.ServiceClient<T>
+        {
+            var handler = client.GetHttpPipeline().First(h => h.GetType() == typeof(CancelRetryHandler)) as CancelRetryHandler;
+            handler.WaitInterval = TimeSpan.Zero;
+            return handler;
+        }
+
+        private CancelRetryHandler EnsureAutoRestRetryPolicy<T>( Microsoft.Rest.ServiceClient<T> client) where T: Microsoft.Rest.ServiceClient<T>
+        {
+            var handler = client.HttpMessageHandlers.First(h => h is CancelRetryHandler)as CancelRetryHandler;
+            handler.WaitInterval = TimeSpan.Zero;
+            return handler;
         }
 
         private class MockDelegatingHandler : DelegatingHandler, ICloneable
@@ -76,6 +139,29 @@ namespace Common.Authentication.Test
             {
                 cloneCount++;
                 return this;
+            }
+        }
+
+
+        private class RetryTestHandler : DelegatingHandler, ICloneable
+        {
+            private static int times = -1;
+           
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                switch (Interlocked.Increment(ref times) % 3)
+                {
+                    case 0:
+                    case 1:
+                        throw new TaskCanceledException();
+                    default:
+                        throw new InvalidOperationException();
+                }
+            }
+
+            public object Clone()
+            {
+                return new RetryTestHandler();
             }
         }
     }

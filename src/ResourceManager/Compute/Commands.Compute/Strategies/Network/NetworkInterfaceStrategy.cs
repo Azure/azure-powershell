@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
     {
         public static ResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "network interface",
                 provider: "networkInterfaces",
                 getOperations: client => client.NetworkInterfaces,
                 getAsync: (o, p) => o.GetAsync(
@@ -42,32 +40,20 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
-                createModel: subscription => new NetworkInterface
+                createModel: engine => new NetworkInterface
                 {
                     IpConfigurations = new []
                     {
                         new NetworkInterfaceIPConfiguration
                         {
                             Name = name,
-                            Subnet = new Subnet { Id = subnet.GetId(subscription).IdToString() },
-                            PublicIPAddress = new PublicIPAddress
-                            {
-                                Id = publicIPAddress.GetId(subscription).IdToString()
-                            }
+                            Subnet = engine.GetReference(subnet) ,
+                            PublicIPAddress = engine.GetReference(publicIPAddress)
                         }
                     },
                     NetworkSecurityGroup = networkSecurityGroup == null 
                         ? null 
-                        : new NetworkSecurityGroup
-                        {
-                            Id = networkSecurityGroup.GetId(subscription).IdToString()
-                        }
-                },
-                dependencies: new IEntityConfig[] 
-                {
-                    subnet,
-                    publicIPAddress,
-                    networkSecurityGroup
+                        : engine.GetReference(networkSecurityGroup)
                 });
     }
 }

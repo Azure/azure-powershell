@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: E37ADC54-A37B-41BF-BE94-9E4052C234BB
@@ -13,9 +13,19 @@ Updates the properties of a DNS zone.
 
 ## SYNTAX
 
-### Fields
+### Fields (Default)
 ```
 Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+ [-RegistrationVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
+ [-ResolutionVirtualNetworkId <System.Collections.Generic.List`1[System.String]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### FieldsObjects
+```
+Set-AzureRmDnsZone -Name <String> -ResourceGroupName <String> [-Tag <Hashtable>]
+ [-RegistrationVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
+ [-ResolutionVirtualNetwork <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -64,6 +74,24 @@ PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myzone.com
 This command updates the tags for the zone named myzone.com without first explicitly getting the
 zone.
 
+### Example 3: Associating a private zone with a virtual network by specifying its ID
+```
+PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetworkId @($vnet.Id)
+```
+
+This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
+by specifying its ID.
+
+### Example 4: Associating a private zone with a virtual network by specifying the network object.
+```
+PS C:\>$vnet = Get-AzureRmVirualNetwork -ResourceGroupName "MyResourceGroup" -Name "myvnet"
+PS C:\>Set-AzureRmDNSZone -ResourceGroupName "MyResourceGroup" -Name "myprivatezone.com" -RegistrationVirtualNetwork @($vnet)
+```
+
+This command associates the Private DNS zone myprivatezone.com with the virtual network myvnet as a registration network
+by passing the virtual network object represented by $vnet variable to the Set-AzureRmDnsZone cmdlet.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -86,8 +114,8 @@ Specifies the name of the DNS zone to update.
 
 ```yaml
 Type: String
-Parameter Sets: Fields
-Aliases: 
+Parameter Sets: Fields, FieldsObjects
+Aliases:
 
 Required: True
 Position: Named
@@ -105,12 +133,72 @@ which updates the zone regardless of concurrent changes.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetwork
+The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]
+Parameter Sets: FieldsObjects
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RegistrationVirtualNetworkId
+The list of virtual network IDs that will register virtual machine hostnames records in this DNS zone, only available for private zones.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Fields
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetwork
+The list of virtual networks able to resolve records in this DNS zone, only available for private zones.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference]
+Parameter Sets: FieldsObjects
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResolutionVirtualNetworkId
+The list of virtual network IDs able to resolve records in this DNS zone, only available for private zones.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: Fields
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -122,8 +210,8 @@ Alternatively, you can specify the zone using a DnsZone object with the *Zone* p
 
 ```yaml
 Type: String
-Parameter Sets: Fields
-Aliases: 
+Parameter Sets: Fields, FieldsObjects
+Aliases:
 
 Required: True
 Position: Named
@@ -139,7 +227,7 @@ Key-value pairs in the form of a hash table. For example:
 
 ```yaml
 Type: Hashtable
-Parameter Sets: Fields
+Parameter Sets: Fields, FieldsObjects
 Aliases: Tags
 
 Required: False
@@ -157,7 +245,7 @@ Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupN
 ```yaml
 Type: DnsZone
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

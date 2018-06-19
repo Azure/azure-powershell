@@ -13,11 +13,20 @@ Modifies properties of an elastic database pool in Azure SQL Database.
 
 ## SYNTAX
 
+### DtuBasedPool (Default)
 ```
-Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
- [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
- [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int32>]
+ [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
+ [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VcoreBasedPool
+```
+Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-StorageMB <Int32>] [-VCore <Int32>]
+ [-ComputeGeneration <String>] [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
+ [-ZoneRedundant] [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeGeneration
+The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.
+
+```yaml
+Type: String
+Parameter Sets: VcoreBasedPool
+Aliases: Family
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DatabaseDtuMax
 Specifies the maximum number of DTUs that any single database in the pool can consume. 
 
@@ -100,7 +124,7 @@ values for different editions are as follows:
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
 Aliases:
 
 Required: False
@@ -119,7 +143,37 @@ The default value is zero (0).
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseVCoreMax
+The maxmium VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
+Type: Double
+Parameter Sets: VcoreBasedPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseVCoreMin
+The minimum VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
+Type: Double
+Parameter Sets: VcoreBasedPool
 Aliases:
 
 Required: False
@@ -158,7 +212,7 @@ editions are as follows:
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
 Aliases:
 
 Required: False
@@ -177,12 +231,16 @@ edition. The acceptable values for this parameter are:
 - Standard
 - Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
-Type: DatabaseEdition
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -203,6 +261,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -270,6 +343,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VCore
+The total shared number of Vcore for the Sql Azure Elastic Pool.
+
+```yaml
+Type: Int32
+Parameter Sets: VcoreBasedPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ZoneRedundant
 The zone redundancy to associate with the Azure Sql Elastic Pool
 
@@ -320,6 +408,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

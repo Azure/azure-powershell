@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.WebApps.Utilities;
 using Microsoft.Azure.Management.WebSites.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
@@ -32,6 +33,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         [ValidateNotNullOrEmpty]
         public string BlobName;
 
+        [Parameter(Mandatory = false, HelpMessage = "The name of the App Service Plan for the restored app. If left empty, the app's current App Service Plan is used.", ValueFromPipelineByPropertyName = true)]
+        public string AppServicePlan { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "The databases to restore. Must match the list of databases in the backup.", ValueFromPipelineByPropertyName = true)]
         public DatabaseBackupSetting[] Databases { get; set; }
 
@@ -44,13 +48,18 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
+            if (string.IsNullOrEmpty(AppServicePlan))
+            {
+                Site app = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+                this.AppServicePlan = app.ServerFarmId.Split('/').Last();
+            }
             RestoreRequest request = new RestoreRequest()
             {
-                Location = "",
                 StorageAccountUrl = this.StorageAccountUrl,
                 BlobName = this.BlobName,
                 SiteName = CmdletHelpers.GenerateSiteWithSlotName(Name, Slot),
                 Overwrite = this.Overwrite.IsPresent,
+                AppServicePlan = this.AppServicePlan,
                 IgnoreConflictingHostNames = this.IgnoreConflictingHostNames.IsPresent,
                 Databases = this.Databases,
                 OperationType = BackupRestoreOperationType.Default

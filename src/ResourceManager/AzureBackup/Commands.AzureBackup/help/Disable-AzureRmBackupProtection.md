@@ -25,11 +25,6 @@ This cmdlet can delete existing recovery points for the backup item.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

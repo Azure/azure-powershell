@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.CognitiveServices.dll-Help.xml
 Module Name: AzureRM.CognitiveServices
 ms.assetid: A2B4ACC1-6F53-47DE-A2D4-831E8AC89A5C
@@ -27,7 +27,23 @@ specified type and SKU.
 
 ### 1:
 ```
-New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'MyAccountName' -Type TextTranslation -SkuName F0 -Location 'usgovvirginia'
+PS C:\> New-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
+n 'WestUS'
+
+
+ResourceGroupName : cognitive-services-resource-group
+AccountName       : myluis
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                    nitiveServices/accounts/myluis
+Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location          : WestUS
+Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType       : LUIS
+ResourceType      : Microsoft.CognitiveServices/accounts
+Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState : Succeeded
+Tags              :
+
 ```
 
 ## PARAMETERS
@@ -53,7 +69,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,7 +84,7 @@ Specifies the location in which to create the account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -99,7 +115,7 @@ The resource group must already exist.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -124,7 +140,7 @@ For more information, see [Cognitive Service APIs](https://www.microsoft.com/cog
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -149,15 +165,26 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-Specifies the type of account to create.The acceptable values for this parameter are:
+Specifies the type of account to create. Current acceptable values for this parameter are:
 
+- Bing.Autosuggest.v7
+- Bing.CustomSearch
+- Bing.Search.v7
+- Bing.Speech
+- Bing.SpellCheck.v7
 - ComputerVision
+- ContentModerator
+- CustomSpeech
+- CustomVision.Prediction
+- CustomVision.Training
 - Emotion
 - Face
 - LUIS
-- Recommendations
-- Speech
+- QnAMaker
+- SpeakerRecognition
+- SpeechTranslation
 - TextAnalytics
+- TextTranslation
 - WebLM
 
 ```yaml
@@ -207,6 +234,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

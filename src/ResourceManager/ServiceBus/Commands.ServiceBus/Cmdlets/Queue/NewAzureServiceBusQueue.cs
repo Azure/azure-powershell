@@ -68,6 +68,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public bool? DeadLetteringOnMessageExpiration { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Enable Batched Operations - value that indicates whether server-side batched operations are enabled")]
+        public SwitchParameter EnableBatchedOperations { get; set; }
+
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "EnableExpress - a value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
         [ValidateSet("TRUE", "FALSE", IgnoreCase = true)]
         [ValidateNotNullOrEmpty]
@@ -118,43 +121,48 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             queueAttributes.EnablePartitioning = EnablePartitioning;
 
             if (LockDuration != null)
-                queueAttributes.LockDuration = LockDuration;
+            { queueAttributes.LockDuration = LockDuration; }
 
             if (AutoDeleteOnIdle != null)
-                queueAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle;
+            { queueAttributes.AutoDeleteOnIdle = AutoDeleteOnIdle; }
 
             if (DefaultMessageTimeToLive != null)
-                queueAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive;
+            { queueAttributes.DefaultMessageTimeToLive = DefaultMessageTimeToLive; }
 
             if (DuplicateDetectionHistoryTimeWindow != null)
-                queueAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow;            
+            { queueAttributes.DuplicateDetectionHistoryTimeWindow = DuplicateDetectionHistoryTimeWindow; }
 
             if (DeadLetteringOnMessageExpiration != null)
-                queueAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration;                       
+            { queueAttributes.DeadLetteringOnMessageExpiration = DeadLetteringOnMessageExpiration; }
 
-            if (MaxSizeInMegabytes != null)
-                queueAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes;
+            queueAttributes.EnableBatchedOperations = EnableBatchedOperations.IsPresent;
+
+            if (EnableExpress != null)
+            { queueAttributes.EnableExpress = EnableExpress; }
 
             if (MaxDeliveryCount != null)
-                queueAttributes.MaxDeliveryCount = MaxDeliveryCount;
+            { queueAttributes.MaxDeliveryCount = MaxDeliveryCount; }
+
+            if (MaxSizeInMegabytes != null)
+            { queueAttributes.MaxSizeInMegabytes = (int?)MaxSizeInMegabytes; }
 
             if (MessageCount != null)
-                queueAttributes.MessageCount = MessageCount;
+            { queueAttributes.MessageCount = MessageCount; }
 
             if (RequiresDuplicateDetection != null)
-                queueAttributes.RequiresDuplicateDetection = RequiresDuplicateDetection;
+            { queueAttributes.RequiresDuplicateDetection = RequiresDuplicateDetection; }
 
             if (RequiresSession != null)
-                queueAttributes.RequiresSession = RequiresSession;
+            { queueAttributes.RequiresSession = RequiresSession; }
 
             if (SizeInBytes != null)
-                queueAttributes.SizeInBytes = SizeInBytes;
+            { queueAttributes.SizeInBytes = SizeInBytes; }
 
             if (ForwardTo != null)
-                queueAttributes.ForwardTo = ForwardTo;
+            { queueAttributes.ForwardTo = ForwardTo; }
 
             if (ForwardDeadLetteredMessagesTo != null)
-                queueAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo;
+            { queueAttributes.ForwardDeadLetteredMessagesTo = ForwardDeadLetteredMessagesTo; }
 
 
             if (ShouldProcess(target: Name, action: string.Format(Resources.CreateQueue, Name, Namespace)))

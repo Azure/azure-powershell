@@ -27,32 +27,39 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Need to implement storage client mock.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-ValidateDeployment");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentFromTemplateFile");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NestedDeploymentFromTemplateFile");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestCrossResourceGroupDeploymentFromTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-CrossResourceGroupDeploymentFromTemplateFile");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSaveDeploymentTemplateFile()
         {
             ResourcesController.NewInstance.RunPsTest("Test-SaveDeploymentTemplateFile");
@@ -66,26 +73,31 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithKeyVaultReference()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReference");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithComplexPramaters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithComplexPramaters");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithParameterObject()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithParameterObject");
         }
 
-        [Fact]
+        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithDynamicParameters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithDynamicParameters");

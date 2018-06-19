@@ -19,6 +19,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
     /// </summary>
     public interface IResourceStrategy : IEntityStrategy
     {
-        string Type { get; }
+        ResourceType Type { get; }
     }
 }

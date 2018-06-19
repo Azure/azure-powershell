@@ -18,7 +18,7 @@ Get-AzureRmVpnClientConfiguration [-Name <String>] -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The Get-AzureRmVpnClientConfiguration returns the URL where the VPN client can be downloaded from.
 
 ## EXAMPLES
 
@@ -68,7 +68,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,4 +121,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

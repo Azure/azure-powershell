@@ -28,6 +28,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUD");
@@ -35,6 +36,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkCRUDWithDDoSProtection()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkCRUDWithDDoSProtection");
@@ -42,6 +44,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-subnetCRUD");
@@ -49,6 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkPeeringCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkPeeringCRUD");
@@ -56,6 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestResourceNavigationLinksOnSubnetCRUD()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-ResourceNavigationLinksCRUD");
@@ -63,6 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkUsage()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkUsage");
@@ -70,6 +76,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkSubnetServiceEndpoint()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetServiceEndpoint");

@@ -57,6 +57,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string AzureContainer = "Microsoft Azure";
 
         /// <summary>
+        /// FabricType - Azure.
+        /// </summary>
+        public const string Azure = "Azure";
+
+        /// <summary>
         ///     Azure fabric Id. In E2A context Recovery Server Id is always this.
         /// </summary>
         public const string AzureFabricId = "21a9403c-6ec1-44f2-b744-b4e50b792387";
@@ -77,6 +82,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public const string Classic = "Classic";
 
         /// <summary>
+        /// Classic compute namespace.
+        /// </summary>
+        public const string ClassicCompute = "Microsoft.ClassicCompute";
+
+        /// <summary>
         ///     Cloud service name prefix
         /// </summary>
         public const string CloudServiceNameExtensionPrefix = "CS-";
@@ -85,6 +95,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Cloud service name suffix
         /// </summary>
         public const string CloudServiceNameExtensionSuffix = "-RecoveryServices";
+
+        /// <summary>
+        /// Compute namespace.
+        /// </summary>
+        public const string Compute = "Microsoft.Compute";
 
         /// <summary>
         ///     Represents RecoveryVmCreationOption value for CreateVmIfNotFound in failback.
@@ -362,6 +377,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             "LatestAvailableApplicationConsistent";
 
         /// <summary>
+        ///     Recovery Tag for Latest Available Application Consistent Recovery Point.
+        /// </summary>
+        public const string RecoveryTagLatestAvailableCrashConsistent =
+            "LatestAvailableCrashConsistent";
+
+        /// <summary>
         ///     Represents direction secondary to primary.
         /// </summary>
         public const string RecoveryToPrimary = "RecoveryToPrimary";
@@ -485,6 +506,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         ///     Represents Yes.
         /// </summary>
         public const string Yes = "Yes";
+
+        /// <summary>
+        /// Represents use of recovery cloud service provided by user for test failover.
+        /// </summary>
+        public const string UseRecoveryCloudService = "UseRecoveryCloudService";
+
+        /// <summary>
+        /// Represents autocreation of cloud service for test failover.
+        /// </summary>
+        public const string AutoCreateCloudService = "AutoCreateCloudService";
     }
 
     /// <summary>

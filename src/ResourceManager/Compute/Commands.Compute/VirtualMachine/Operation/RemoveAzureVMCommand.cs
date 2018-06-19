@@ -12,10 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
+using System;
+using System.Management.Automation;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
-using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Compute
                         this.ResourceGroupName,
                         this.Name).GetAwaiter().GetResult();
                     var result = ComputeAutoMapperProfile.Mapper.Map<PSComputeLongRunningOperation>(op);
+                    result.StartTime = this.StartTime;
+                    result.EndTime = DateTime.Now;
                     WriteObject(result);
                 }
             });

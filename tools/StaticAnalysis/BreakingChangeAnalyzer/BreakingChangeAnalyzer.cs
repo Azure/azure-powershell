@@ -23,6 +23,11 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
+using Tools.Common.Loaders;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -41,7 +46,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         }
 
         /// <summary>
-        /// Given a set of directory paths containing PowerShell module folders, 
+        /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
@@ -50,10 +55,23 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             Analyze(cmdletProbingDirs, null, null);
         }
 
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, IEnumerable<string> modulesToAnalyze)
+        {
+            Analyze(cmdletProbingDirs, null, null, modulesToAnalyze);
+        }
+
+        public void Analyze(
+            IEnumerable<string> cmdletProbingDirs,
+            Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
+            Func<string, bool> cmdletFilter)
+        {
+            Analyze(cmdletProbingDirs, directoryFilter, cmdletFilter, null);
+        }
+
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders,
         /// analyze the breaking changes in the modules and report any issues
-        /// 
+        ///
         /// Filters can be added to find breaking changes for specific modules
         /// </summary>
         /// <param name="cmdletProbingDirs">Set of directory paths containing PowerShell module folders to be checked for breaking changes.</param>
@@ -62,7 +80,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         public void Analyze(
             IEnumerable<string> cmdletProbingDirs,
             Func<IEnumerable<string>, IEnumerable<string>> directoryFilter,
-            Func<string, bool> cmdletFilter)
+            Func<string, bool> cmdletFilter,
+            IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
@@ -73,7 +92,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                 cmdletProbingDirs = directoryFilter(cmdletProbingDirs);
             }
 
-            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") && 
+            foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
                                                                         !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
             {
                 List<string> probingDirectories = new List<string>();
@@ -84,6 +103,13 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                 foreach (var directory in probingDirectories)
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                    {
+                        continue;
+                    }
+
                     var service = Path.GetFileName(directory);
 
                     var manifestFiles = Directory.EnumerateFiles(directory, "*.psd1").ToList();
@@ -99,34 +125,44 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     }
 
                     var psd1 = manifestFiles.FirstOrDefault();
-
-                    var parentDirectory = Directory.GetParent(psd1);
+                    var parentDirectory = Directory.GetParent(psd1).FullName;
                     var psd1FileName = Path.GetFileName(psd1);
-
+                    IEnumerable<string> nestedModules = null;
+                    List<string> requiredModules = null;
                     PowerShell powershell = PowerShell.Create();
-                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory + 
-                                        " -FileName " + psd1FileName + 
-                                        " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules");
-
+                    powershell.AddScript("Import-LocalizedData -BaseDirectory " + parentDirectory +
+                                         " -FileName " + psd1FileName +
+                                         " -BindingVariable ModuleMetadata; $ModuleMetadata.NestedModules; $ModuleMetadata.RequiredModules | % { $_[\"ModuleName\"] };");
                     var cmdletResult = powershell.Invoke();
-                    var cmdletFiles = cmdletResult.Select(c => c.ToString().Substring(2));
+                    nestedModules = cmdletResult.Where(c => c.ToString().StartsWith(".")).Select(c => c.ToString().Substring(2));
+                    requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
 
-                    if (cmdletFiles.Any())
+                    if (nestedModules.Any())
                     {
-                        foreach (var cmdletFileName in cmdletFiles)
-                        {
-                            var cmdletFileFullPath = Path.Combine(directory, Path.GetFileName(cmdletFileName));
-                            
-                            if (File.Exists(cmdletFileFullPath))
-                            {
-                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = cmdletFileFullPath, "AssemblyFileName");
-                                processedHelpFiles.Add(cmdletFileName);
-                                var proxy = 
-                                    EnvironmentHelpers.CreateProxy<CmdletBreakingChangeLoader>(directory, out _appDomain);
-                                var newModuleMetadata = proxy.GetModuleMetadata(cmdletFileFullPath);
+                        Directory.SetCurrentDirectory(directory);
 
-                                string fileName = cmdletFileName + ".json";
-                                string executingPath = 
+                        requiredModules = requiredModules.Join(cmdletProbingDirs,
+                                                               module => 1,
+                                                               dir => 1,
+                                                               (module, dir) => Path.Combine(dir, module))
+                                                          .Where(f => Directory.Exists(f))
+                                                          .ToList();
+
+                        requiredModules.Add(directory);
+
+                        foreach (var nestedModule in nestedModules)
+                        {
+                            var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
+                            var assemblyFileName = Path.GetFileName(assemblyFile);
+                            if (File.Exists(assemblyFile))
+                            {
+                                issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
+                                processedHelpFiles.Add(assemblyFileName);
+                                var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
+                                var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
+
+                                string fileName = assemblyFileName + ".json";
+                                string executingPath =
                                     Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
 
                                 string filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
@@ -150,7 +186,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                                         string output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
                                             oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
 
-                                        output += string.Format("\nCmdlet file: {0}", cmdletFileFullPath);
+                                        output += string.Format("\nCmdlet file: {0}", assemblyFileName);
 
                                         oldModuleMetadata.FilterCmdlets(cmdletFilter);
                                         newModuleMetadata.FilterCmdlets(cmdletFilter);
@@ -173,6 +209,8 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
 
                                     RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
                                 }
+
+                                AppDomain.Unload(_appDomain);
                             }
                         }
                     }
@@ -249,7 +287,7 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
     public static class LogExtensions
     {
         public static void LogBreakingChangeIssue(
-            this ReportLogger<BreakingChangeIssue> issueLogger, CmdletBreakingChangeMetadata cmdlet,
+            this ReportLogger<BreakingChangeIssue> issueLogger, CmdletMetadata cmdlet,
             string description, string remediation, int severity, int problemId)
         {
             issueLogger.LogRecord(new BreakingChangeIssue

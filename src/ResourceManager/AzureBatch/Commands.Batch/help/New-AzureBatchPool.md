@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Batch.dll-Help.xml
 Module Name: AzureRM.Batch
 ms.assetid: C71C486E-34EB-42B5-B38A-D85B7DAA2F74
@@ -76,34 +76,48 @@ The **New-AzureBatchPool** cmdlet creates a pool in the Azure Batch service unde
 
 ## EXAMPLES
 
-### Example 1: Create a new pool using the TargetDedicated parameter set
+### Example 1: Create a new pool using the TargetDedicated parameter set using CloudServiceConfiguration
 ```
-PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -TargetDedicatedComputeNodes 3 -BatchContext $Context
+PS C:\>$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(4,"*")
+PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration  -TargetDedicatedComputeNodes 3 -BatchContext $Context
+```
+
+### Example 2: Create a new pool using the TargetDedicated parameter set using VirtualMachineConfiguration
+```
+PS C:\$imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
+PS C:\>$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.VirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
+PS C:\>New-AzureBatchPool -Id "MyPool" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -TargetDedicatedComputeNodes 3 -BatchContext $Context
 ```
 
 This command creates a new pool with ID MyPool using the TargetDedicated parameter set.
 The target allocation is three compute nodes.
 The pool is configured to use small virtual machines imaged with the latest operating system version of family four.
 
-### Example 2: Create a new pool using the AutoScale parameter set
+### Example 3: Create a new pool using the AutoScale parameter set
 ```
-PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetOSVersion "*" -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
+PS C:\$imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
+PS C:\>$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.VirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
+PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -AutoScaleFormula '$TargetDedicated=2;' -BatchContext $Context
 ```
 
 This command creates a new pool with ID AutoScalePool using the AutoScale parameter set.
 The pool is configured to use small virtual machines imaged with the latest operating system version of family four, and the target number of compute nodes are determined by the Autoscale formula.
 
-### Example 3: Create a pool with nodes in a subnet
+### Example 4: Create a pool with nodes in a subnet
 ```
+PS C:\$imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
+PS C:\>$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.VirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
 PS C:\>$networkConfig = New-Object Microsoft.Azure.Commands.Batch.Models.PSNetworkConfiguration
 PS C:\>$networkConfig.SubnetId = "/subscriptions/{subscription}/resourceGroups/{group}/providers/{provider}/virtualNetworks/{network}/subnets/{subnet}"
-PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetDedicatedComputeNodes 3 -NetworkConfiguration $networkConfig -BatchContext $Context
+PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -TargetDedicatedComputeNodes 3 -NetworkConfiguration $networkConfig -BatchContext $Context
 ```
 
-### Example 4: Create a pool with custom user accounts
+### Example 5: Create a pool with custom user accounts
 ```
+PS C:\$imageReference = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSImageReference" -ArgumentList @("WindowsServer", "MicrosoftWindowsServer", "2016-Datacenter", "*")
+PS C:\>$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.VirtualMachineConfiguration" -ArgumentList @($imageReference, "batch.node.windows amd64")
 PS C:\>$userAccount = New-Object Microsoft.Azure.Commands.Batch.Models.PSUserAccount -ArgumentList @("myaccount", "mypassword")
-PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -OSFamily "4" -TargetDedicatedComputeNodes 3 -UserAccount $userAccount
+PS C:\>New-AzureBatchPool -Id "AutoScalePool" -VirtualMachineSize "Small" -VirtualMachineConfiguration $configuration -TargetDedicatedComputeNodes 3 -UserAccount $userAccount
 ```
 
 ## PARAMETERS
@@ -143,7 +157,7 @@ The default value is 15 minutes, and the minimum value is 5 minutes.
 ```yaml
 Type: TimeSpan
 Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -158,7 +172,7 @@ Specifies the formula for automatically scaling the pool.
 ```yaml
 Type: String
 Parameter Sets: CloudServiceAndAutoScale, VirtualMachineAndAutoScale
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +188,7 @@ If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, t
 ```yaml
 Type: BatchAccountContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -205,7 +219,7 @@ Specifies configuration settings for a pool based on the Azure cloud service pla
 ```yaml
 Type: PSCloudServiceConfiguration
 Parameter Sets: CloudServiceAndTargetDedicated, CloudServiceAndAutoScale
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -235,7 +249,7 @@ Specifies the display name of the pool.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -250,7 +264,7 @@ Specifies the ID of the pool to create.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -265,7 +279,7 @@ Indicates that this cmdlet sets up the pool for direct communication between ded
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -280,7 +294,7 @@ Specifies the maximum number of tasks that can run on a single compute node.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -297,7 +311,7 @@ The value is the metadata value.
 ```yaml
 Type: IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -312,7 +326,7 @@ The network configuration for the pool.
 ```yaml
 Type: PSNetworkConfiguration
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -327,7 +341,7 @@ Specifies the time-out for allocating compute nodes to the pool.
 ```yaml
 Type: TimeSpan
 Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -343,7 +357,7 @@ The start task is run when a compute node joins the pool, or when the compute no
 ```yaml
 Type: PSStartTask
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -373,7 +387,7 @@ Specifies the target number of low-priority compute nodes to allocate to the poo
 ```yaml
 Type: Int32
 Parameter Sets: CloudServiceAndTargetDedicated, VirtualMachineAndTargetDedicated
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -388,7 +402,7 @@ Specifies the task scheduling policy, such as the ComputeNodeFillType.
 ```yaml
 Type: PSTaskSchedulingPolicy
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -403,7 +417,7 @@ The list of user accounts to be created on each node in the pool.
 ```yaml
 Type: PSUserAccount[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -418,7 +432,7 @@ Specifies configuration settings for a pool on the virtual machines infrastructu
 ```yaml
 Type: PSVirtualMachineConfiguration
 Parameter Sets: VirtualMachineAndTargetDedicated, VirtualMachineAndAutoScale
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -434,7 +448,7 @@ For more information about virtual machine sizes, see Sizes for virtual machines
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

@@ -18,7 +18,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Adds Azure Site Recovery Policy settings to a Protection Container.
+    ///     Deletes the specified Azure Site Recovery protection container mapping.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Remove,
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class RemoveAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Protection Container Mapping
+        ///     Gets or sets protection container mapping object corresponding to the protection container to be deleted.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

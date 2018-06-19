@@ -38,9 +38,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The PeeringType")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-           MNM.ExpressRouteCircuitPeeringType.AzurePrivatePeering,
-           MNM.ExpressRouteCircuitPeeringType.AzurePublicPeering,
-           MNM.ExpressRouteCircuitPeeringType.MicrosoftPeering,
+           MNM.ExpressRoutePeeringType.AzurePrivatePeering,
+           MNM.ExpressRoutePeeringType.AzurePublicPeering,
+           MNM.ExpressRoutePeeringType.MicrosoftPeering,
            IgnoreCase = true)]
         public string PeeringType { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "The PeerAsn")]
         [ValidateNotNullOrEmpty]
-        public int PeerASN { get; set; }
+        public uint PeerASN { get; set; }
 
         [Parameter(
             Mandatory = true,

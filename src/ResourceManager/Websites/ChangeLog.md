@@ -19,6 +19,35 @@
 -->
 ## Current Release
 
+## Version 5.0.3
+* `Set-AzureRmWebApp` is updated to not overwrite the AppSettings when using -AssignIdentity
+* `New-AzureRmWebAppSlot` is updated to honor AppServicePlan as an optional parameter
+
+## Version 5.0.2
+* `New-AzureRMWebApp` is updated to use common algorithms from the Strategy library.
+
+## Version 5.0.1
+* Set minimum dependency of module to PowerShell 5.0
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot
+
+## Version 5.0.0-preview
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for SetAzureWebApp
+
+## Version 4.2.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.1
+* Fixed the help for Remove-AzureRmWebAppSlot
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.2.0
+* Fixed issue with importing aliases
+* New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
+
 ## Version 4.1.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

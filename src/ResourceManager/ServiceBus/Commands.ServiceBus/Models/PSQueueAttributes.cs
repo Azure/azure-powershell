@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 UpdatedAt = quResource.UpdatedAt;
                 ForwardTo = quResource.ForwardTo;
                 ForwardDeadLetteredMessagesTo = quResource.ForwardDeadLetteredMessagesTo;
+                EnableBatchedOperations = quResource.EnableBatchedOperations;
 
             }
         }
@@ -177,6 +178,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets or sets queue/Topic name to forward the Dead Letter message
         /// </summary>
         public string ForwardDeadLetteredMessagesTo { get; set; }
+
+        /// <summary>
+        /// Value that indicates whether server-side batched operations are
+        /// enabled..
+        /// </summary>
+        public bool? EnableBatchedOperations { get; set; }
 
 
     }

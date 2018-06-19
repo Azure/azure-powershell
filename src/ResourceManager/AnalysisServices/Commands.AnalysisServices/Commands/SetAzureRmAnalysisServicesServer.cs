@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.AnalysisServices.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Analysis.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
@@ -30,6 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     {
         private const string ParamSetDefault = "Default";
         private const string ParamSetDisableBackup = "DisableBackup";
+        private const string ParamSetDisassociatGateway = "DisassociateGateway";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the server.")]
@@ -71,6 +73,32 @@ namespace Microsoft.Azure.Commands.AnalysisServices
             HelpMessage = "The switch to turn off backup of the server.")]
         public SwitchParameter DisableBackup { get; set; }
 
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The replica count of readonly pool")]
+        [ValidateRange(0, 7)]
+        public int ReadonlyReplicaCount
+        { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "The default connection mode to query server")]
+        [ValidateSet("All", "Readonly", IgnoreCase = true)]
+        public string DefaultConnectionMode { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            HelpMessage = "Firewall configuration")]
+        public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
+            HelpMessage = "Gateway resource ID")]
+        public string GatewayResourceId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDisassociatGateway,
+            HelpMessage = "Disassociate current gateway")]
+        public SwitchParameter DisassociateGateway { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (string.IsNullOrEmpty(Name))
@@ -103,7 +131,39 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     BackupBlobContainerUri = "-";
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri);
+                IPv4FirewallSettings setting = null;
+                if (FirewallConfig != null)
+                {
+                    setting = new IPv4FirewallSettings(new List<IPv4FirewallRule>(), "False");
+
+                    setting.EnablePowerBIService = FirewallConfig.EnablePowerBIService.ToString();
+
+                    if (FirewallConfig.FirewallRules != null)
+                    {
+                        foreach (var rule in FirewallConfig.FirewallRules)
+                        {
+                            setting.FirewallRules.Add(new IPv4FirewallRule()
+                            {
+                                FirewallRuleName = rule.FirewallRuleName,
+                                RangeStart = rule.RangeStart,
+                                RangeEnd = rule.RangeEnd
+                            });
+                        }
+                    }
+                }
+
+
+                if (!MyInvocation.BoundParameters.ContainsKey("ReadonlyReplicaCount"))
+                {
+                    ReadonlyReplicaCount = -1;
+                }
+
+                if (DisassociateGateway.IsPresent)
+                {
+                    GatewayResourceId = AnalysisServicesClient.DissasociateGateway;
+                }
+
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, GatewayResourceId);
 
                 if(PassThru.IsPresent)
                 {

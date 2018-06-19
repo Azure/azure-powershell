@@ -23,9 +23,12 @@ The **Remove-AzureRmCognitiveServicesAccount** cmdlet deletes the specified Cogn
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+This command doesn't return anything.
 
+```powershell
+PS C:\> Remove-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
+PS C:\> 
 ```
 
 ## PARAMETERS
@@ -125,6 +128,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

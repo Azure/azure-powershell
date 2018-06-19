@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Compute.Models;
+using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
@@ -22,10 +23,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 
         public ImageReference Image { get; }
 
-        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image)
+        public IList<int> DataDiskLuns { get; }
+
+        public ImageAndOsType(OperatingSystemTypes osType, ImageReference image, IList<int> dataDiskLuns)
         {
             OsType = osType;
             Image = image;
+            DataDiskLuns = dataDiskLuns;
         }
     }
 }

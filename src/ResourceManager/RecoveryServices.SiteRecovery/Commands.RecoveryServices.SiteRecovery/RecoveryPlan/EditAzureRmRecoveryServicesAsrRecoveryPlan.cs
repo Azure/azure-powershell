@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Updates Azure Site Recovery Recovery Plan object in memory.
+    ///     Edits a ASR Recovery plan in memory.
     /// </summary>
     [Cmdlet(
         VerbsData.Edit,
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets the ASR recovery plan object to be edited
         /// </summary>
         [Parameter(
             Mandatory = true,
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter
+        ///     Switch parameter to append a recovery plan group to the recovery plan object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AppendGroup,
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public SwitchParameter AppendGroup { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter
+        ///     Gets or sets the specified group from the recovery plan object to be removed.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.RemoveGroup,
@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlanGroup RemoveGroup { get; set; }
 
         /// <summary>
-        ///     Gets or sets group
+        ///     Gets or sets a recovery plan group.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,
@@ -73,7 +73,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlanGroup Group { get; set; }
 
         /// <summary>
-        ///     Gets or sets switch parameter
+        ///     Gets or sets the list of ASR replication protected items to be added to the recovery plan group 
+        ///     in the recovery plan object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AddReplicationProtectedItems,

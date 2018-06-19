@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Azure VM Network Id.
+        ///     Gets or sets the ASR network mapping object corresponding to the ASR network mapping to be updated 
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ById,
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRNetworkMapping InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets Recovery Network object.
+        ///     Gets or sets the recovery network object for the network mapping.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByNetworkObject,
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRNetwork RecoveryNetwork { get; set; }
 
         /// <summary>
-        ///     Gets or sets Azure VM Network Id.
+        ///     Gets or sets the recovery azure network ID for the network mapping.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ById,

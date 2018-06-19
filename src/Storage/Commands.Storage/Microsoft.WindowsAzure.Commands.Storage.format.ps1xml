@@ -166,6 +166,16 @@
             <width>15</width>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>IsDeleted</Label>
+            <Alignment>Left</Alignment>
+            <width>10</width>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>RemainingDaysBeforePermanentDelete</Label>
+            <width>10</width>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>ContentType</Label>
             <width>30</width>
             <Alignment>Left</Alignment>
@@ -197,6 +207,12 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.Length</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.IsDeleted</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Properties.RemainingDaysBeforePermanentDelete</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.Properties.ContentType</ScriptBlock>
@@ -401,6 +417,11 @@
             <Alignment>Left</Alignment>
             <Width>20</Width>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>IsDeleted</Label>
+            <Alignment>Left</Alignment>
+            <width>10</width>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -425,6 +446,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.SnapshotTime.UtcDateTime.ToString("u")</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.IsDeleted</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -565,16 +589,36 @@
                 <ScriptBlock>$_.Logging.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Metrics.Version</Label>
-                <ScriptBlock>$_.Metrics.Version</ScriptBlock>
+                <Label>HourMetrics.Version</Label>
+                <ScriptBlock>$_.HourMetrics.Version</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Metrics.MetricsLevel</Label>
-                <ScriptBlock>$_.Metrics.MetricsLevel</ScriptBlock>
+                <Label>HourMetrics.MetricsLevel</Label>
+                <ScriptBlock>$_.HourMetrics.MetricsLevel</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Metrics.RetentionDays</Label>
-                <ScriptBlock>$_.Metrics.RetentionDays</ScriptBlock>
+                <Label>HourMetrics.RetentionDays</Label>
+                <ScriptBlock>$_.HourMetrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.Version</Label>
+                <ScriptBlock>$_.MinuteMetrics.Version</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.MetricsLevel</Label>
+                <ScriptBlock>$_.MinuteMetrics.MetricsLevel</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>MinuteMetrics.RetentionDays</Label>
+                <ScriptBlock>$_.MinuteMetrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.RetentionDays</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>DefaultServiceVersion</Label>
@@ -629,6 +673,14 @@
               <ListItem>
                 <Label>MinuteMetrics.RetentionDays</Label>
                 <ScriptBlock>$_.MinuteMetrics.RetentionDays</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.Enabled</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>DeleteRetentionPolicy.RetentionDays</Label>
+                <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
                 <Label>Cors</Label>

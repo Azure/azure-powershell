@@ -86,12 +86,12 @@ function Upload-Modules(
                 -Name $_ `
                 -ContentLink $url `
                 -ErrorAction Stop
-            $moduleStatuses = Poll-ModuleProvisionState -automation $automation -moduleList $_
+        }
+        $moduleStatuses = Poll-ModuleProvisionState -automation $automation -moduleList $_
 
-            $failedModules = $moduleStatuses | Where-Object {$_.Success -eq $false} | ForEach-Object { $_.Name }
-            if ($failedModules.Count -gt 0) {
-                throw "Modules ($failedModules) failed to upload"
-            }
+        $failedModules = $moduleStatuses | Where-Object {$_.Success -eq $false} | ForEach-Object { $_.Name }
+        if ($failedModules.Count -gt 0) {
+            throw "Modules ($failedModules) failed to upload"
         }
     }
     Write-Verbose "Modules have been uploaded successfully."

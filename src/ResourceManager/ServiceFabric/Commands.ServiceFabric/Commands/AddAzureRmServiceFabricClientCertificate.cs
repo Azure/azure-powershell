@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
+            var cluster = GetCurrentCluster();
 
             if (ShouldProcess(target: this.Name, action: string.Format("Add client certificate")))
             {

@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -24,7 +23,6 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
     {
         public static ResourceStrategy<VirtualNetwork> Strategy { get; }
             = NetworkStrategy.Create(
-                type: "virtual network",
                 provider: "virtualNetworks",
                 getOperations: client => client.VirtualNetworks,
                 getAsync: (o, p) => o.GetAsync(

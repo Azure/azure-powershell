@@ -19,6 +19,56 @@
 --->
 
 ## Current Release
+
+## Version 6.2.0
+* Enable Traffic Analytics parameters on Network Watcher cmdlets
+
+## Version 6.1.1
+* Removed Default sku setting from New-AzureRmVirtualNetworkGateway cmdlet
+
+## Version 6.1.0
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+* Updated below commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - Updated New-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIpsecPolicy   [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+    - Updated Set-AzureRmVirtualNetworkGateway: Added optional parameter -VpnClientIPsecParameter [Pass the value from output of newly added command:- New-AzureRmVpnClientIpsecPolicy]
+* Added new commands for feature: Point to Site IPsec custom policy set/remove on Brooklyn Gateway.
+    - New-AzureRmVpnClientIpsecPolicy : Added for passing output from this command to existing commands: New-AzureRmVirtualNetworkGateway & Set-AzureRmVirtualNetworkGateway to set Vpn IPSec policy
+    - New-AzureRmVpnClientIpsecParameter
+	- Set-AzureRmVpnClientIpsecParameter
+	- Get-AzureRmVpnClientIpsecParameter
+	- Remove-AzureRmVpnClientIpsecParameter
+* Added a warning note for existing command: Set-AzureRmVirtualNetworkGatewayVpnClientConfig to let users know of its plan of removal in next release.
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
+* Added cmdlet to add a new circuit connection to an existing express route circuit.
+    - Add-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to remove a circuit connection from an existing express route circuit.
+    - Remove-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to retrieve a circuit connection
+    - Get-AzureRmExpressRouteCircuitConnectionConfig
+
+## Version 6.0.0
+* Bump up network sdk version from 17.0.0.preview to 18.0.0.preview
+* Set minimum dependency of module to PowerShell 5.0
+* Add support for DDoS protection plan resource
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+## Version 5.4.2
+* Fix error message with Network cmdlets
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.4.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.4.0
+* Updating model types for compatibility with DNS cmdlets.
+
+## Version 5.3.0
+* Fixed issue with importing aliases
+* Fix bug to serialize and display IPTags
+
+## Version 5.2.0
 * Added cmdlet to create a new connection monitor
     - New-AzureRmNetworkWatcherConnectionMonitor
 * Added cmdlet to update a connection monitor
@@ -34,6 +84,7 @@
 * Added cmdlet to remove connection monitor
     - Remove-AzureRmNetworkWatcherConnectionMonitor
 * Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Fix to support 32 bit AS Numbers in the Powershell API for Public and Private Expressroute Peerings
 * Added EnableHttp2 flag to Application Gateway
     - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
 * Add IpTags to PublicIpAddress

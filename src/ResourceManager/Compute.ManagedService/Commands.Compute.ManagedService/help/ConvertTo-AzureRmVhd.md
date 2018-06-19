@@ -1,7 +1,7 @@
----
+﻿---
 external help file: 
 Module Name: 
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute.managedservice/convertto-azurermvhd
 schema: 2.0.0
 ---
 

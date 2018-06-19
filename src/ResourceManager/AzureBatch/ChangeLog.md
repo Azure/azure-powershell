@@ -19,6 +19,20 @@
 -->
 ## Current Release
 
+## Version 4.1.0
+* Release new cmdlet Get-AzureBatchPoolNodeCounts
+* Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
+
+## Version 4.0.7
+* Set minimum dependency of module to PowerShell 5.0
+* Updated New-AzureBatchPool documentation to remove deprecated example
+
+## Version 4.0.6
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.0.5
+* Fix issue with Default Resource Group in CloudShell
+
 ## Version 4.0.4
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription

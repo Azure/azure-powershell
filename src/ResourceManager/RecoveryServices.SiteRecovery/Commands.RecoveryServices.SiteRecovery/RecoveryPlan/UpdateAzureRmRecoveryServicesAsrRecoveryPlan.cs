@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Creates Azure Site Recovery Recovery Plan object.
+    ///     Updates the contents of an Azure Site recovery plan.
     /// </summary>
     [Cmdlet(
         VerbsData.Update,
@@ -36,7 +36,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Plan.
+        ///     Gets or sets Name of the Recovery Plan object,
+        ///     the contents of which are used to update the recovery plan referred to by the object.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPObject,
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRRecoveryPlan InputObject { get; set; }
 
         /// <summary>
-        ///     Gets or sets RP JSON FilePath.
+        ///     Gets or sets the path of the recovery plan definition json file used to update the recovery plan.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByRPFile,
@@ -77,7 +78,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
                                 string.Format(
                                     Resources.FileNotFound,
                                     this.Path));
-
                             ;
                         }
 

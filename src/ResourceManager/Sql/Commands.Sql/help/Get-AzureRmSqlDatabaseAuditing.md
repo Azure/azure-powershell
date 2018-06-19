@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
@@ -27,16 +27,17 @@ To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName*
 ### Example 1: Get the auditing settings of an Azure SQL database
 ```
 PS C:\>Get-AzureRmSqlDatabaseAuditing -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
-DatabaseName           : database01
-AuditAction            : {}
-AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                          BATCH_COMPLETED_GROUP, ...}
-ResourceGroupName      : resourcegroup01
-ServerName             : server01
-AuditState             : Enabled
-StorageAccountName     : mystorage
-StorageKeyType         : Primary
-RetentionInDays        : 0
+DatabaseName                 : database01
+AuditAction                  : {}
+AuditActionGroup             : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                BATCH_COMPLETED_GROUP, ...}
+ResourceGroupName            : resourcegroup01
+ServerName                   : server01
+AuditState                   : Enabled
+StorageAccountName           : mystorage
+StorageKeyType               : Primary
+RetentionInDays              : 0
+StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 ```
 
 ## PARAMETERS
@@ -135,6 +136,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

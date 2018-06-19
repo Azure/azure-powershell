@@ -37,6 +37,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -315,8 +316,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             DeploymentExtended deployment;
 
             // Poll deployment state and deployment operations after RetryAfter.
-            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one 
-            // takes 400 seconds. In phase two, poll every 60 seconds. 
+            // If no RetryAfter provided: In phase one, poll every 5 seconds. Phase one
+            // takes 400 seconds. In phase two, poll every 60 seconds.
             const int counterUnit = 1000;
             int step = 5;
             int phaseOne = 400;
@@ -594,7 +595,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         {
             List<PSResourceGroup> result = new List<PSResourceGroup>();
 
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(name) || name.Contains("*"))
             {
                 List<ResourceGroup> resourceGroups = new List<ResourceGroup>();
 
@@ -605,6 +606,28 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 {
                     listResult = ResourceManagementClient.ResourceGroups.ListNext(listResult.NextPageLink);
                     resourceGroups.AddRange(listResult);
+                }
+
+                if (!string.IsNullOrEmpty(name))
+                {
+                    if (name.StartsWith("*"))
+                    {
+                        name = name.TrimStart('*');
+                        if (name.EndsWith("*"))
+                        {
+                            name = name.TrimEnd('*');
+                            resourceGroups = resourceGroups.Where(g => g.Name.Contains(name)).ToList();
+                        }
+                        else
+                        {
+                            resourceGroups = resourceGroups.Where(g => g.Name.EndsWith(name)).ToList();
+                        }
+                    }
+                    else if (name.EndsWith("*"))
+                    {
+                        name = name.TrimEnd('*');
+                        resourceGroups = resourceGroups.Where(g => g.Name.StartsWith(name)).ToList();
+                    }
                 }
 
                 resourceGroups = !string.IsNullOrEmpty(location)
@@ -851,6 +874,51 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 WriteVerbose(ProjectResources.TemplateValid);
             }
             return validationInfo.Errors.Select(e => e.ToPSResourceManagerError()).ToList();
+        }
+
+        public virtual IEnumerable<PSResource> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        {
+            return new GenericPageEnumerable<GenericResource>(
+                delegate()
+                {
+                    return ResourceManagementClient.Resources.List(filter);
+                }, ResourceManagementClient.Resources.ListNext, first, skip).Select(r => new PSResource(r));
+        }
+
+        public virtual IEnumerable<PSResource> ListByResourceGroup(
+            string resourceGroupName,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
+            ulong first = ulong.MaxValue,
+            ulong skip = ulong.MinValue)
+        {
+            return new GenericPageEnumerable<GenericResource>(
+                delegate ()
+                {
+                    return ResourceManagementClient.Resources.ListByResourceGroup(resourceGroupName, filter);
+                }, ResourceManagementClient.Resources.ListByResourceGroupNext, first, skip).Select(r => new PSResource(r));
+        }
+
+        public virtual PSResource GetById(string resourceId, string apiVersion)
+        {
+            PSResource result = null;
+            var resourceIdentifier = new ResourceIdentifier(resourceId);
+            var providers = ResourceManagementClient.Providers.List();
+            foreach (var provider in providers)
+            {
+                var resourceType = provider.ResourceTypes
+                                            .Where(t => string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType) == resourceIdentifier.ResourceType)
+                                            .FirstOrDefault();
+                if (resourceType != null)
+                {
+                    apiVersion = resourceType.ApiVersions.Contains(apiVersion) ? apiVersion : resourceType.ApiVersions.FirstOrDefault();
+                    if (!string.IsNullOrEmpty(apiVersion))
+                    {
+                        return new PSResource(ResourceManagementClient.Resources.GetById(resourceId, apiVersion));
+                    }
+                }
+            }
+
+            return result;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 200C68A3-A79C-4517-8E5D-8128F6C73A5C
@@ -13,8 +13,21 @@ Gets contacts that are registered for certificate notifications for a key vault.
 
 ## SYNTAX
 
+### VaultName (Default)
 ```
 Get-AzureKeyVaultCertificateContact [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Get-AzureKeyVaultCertificateContact [-InputObject] <PSKeyVault> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
+```
+
+### ByResourceId
+```
+Get-AzureKeyVaultCertificateContact [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -24,8 +37,13 @@ The **Get-AzureKeyVaultCertificateContact** cmdlet gets contacts that are regist
 ## EXAMPLES
 
 ### Example 1: Get all certificate contacts
-```
-PS C:\>$Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+```powershell
+PS C:\> $Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+
+Email                   VaultName
+-----                   ---------
+username@microsoft.com  Contoso
+username1@microsoft.com Contoso
 ```
 
 This command gets all of the contacts for the certificate objects in the Contoso key vault, and then stores them in the $Contacts variable.
@@ -47,13 +65,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VaultName
-Specifies the name of the key vault.
+### -InputObject
+KeyVault object.
+
+```yaml
+Type: PSKeyVault
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+KeyVault Id.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByResourceId
+Aliases:
 
 Required: True
 Position: 0
@@ -62,14 +95,31 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -VaultName
+Specifies the name of the key vault.
+
+```yaml
+Type: String
+Parameter Sets: VaultName
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.KeyVaultCertificateContact>
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 
