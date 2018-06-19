@@ -12,17 +12,30 @@ Deletes an entry from the ACL of a catalog or catalog item in Data Lake Analytic
 
 ## SYNTAX
 
-### RemoveCatalogAclEntryForUserOrGroup (Default)
+### RemoveCatalogAclEntryForUser (Default)
 ```
-Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ObjectId <Guid> [-Force] [-PassThru]
+Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveCatalogItemAclEntryForUser
+```
+Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid>
+ [-ItemType] <String> [-Path] <CatalogPathInstance> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveCatalogItemAclEntryForUserOrGroup
+### RemoveCatalogAclEntryForGroup
 ```
-Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ObjectId <Guid> [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RemoveCatalogItemAclEntryForGroup
+```
+Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid>
+ [-ItemType] <String> [-Path] <CatalogPathInstance> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,14 +45,14 @@ The **Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet removes an ent
 
 ### Example 1: Remove the user ACL for a catalog
 ```powershell
-PS C:\> Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id
+PS C:\> Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id
 ```
 
 This command removes the catalog ACL for Patti Fuller of the contosoadla account.
 
 ### Example 2: Remove the user ACL for a database
 ```powershell
-PS C:\> Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName"
+PS C:\> Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName"
 ```
 
 This command removes the database ACL for Patti Fuller of the contosoadla account.
@@ -91,6 +104,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Group
+Remove ACL entry of catalog for group.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RemoveCatalogAclEntryForGroup, RemoveCatalogItemAclEntryForGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ItemType
 Specifies the type of the catalog or catalog item(s). The acceptable values for this parameter are:
 - Catalog
@@ -98,7 +126,7 @@ Specifies the type of the catalog or catalog item(s). The acceptable values for 
 
 ```yaml
 Type: String
-Parameter Sets: RemoveCatalogItemAclEntryForUserOrGroup
+Parameter Sets: RemoveCatalogItemAclEntryForUser, RemoveCatalogItemAclEntryForGroup
 Aliases:
 Accepted values: Catalog, Database
 
@@ -115,7 +143,7 @@ The identity of the user to remove.
 ```yaml
 Type: Guid
 Parameter Sets: (All)
-Aliases: Id
+Aliases: Id, UserId
 
 Required: True
 Position: Named
@@ -145,11 +173,26 @@ The parts of the path should be separated by a period (.).
 
 ```yaml
 Type: CatalogPathInstance
-Parameter Sets: RemoveCatalogItemAclEntryForUserOrGroup
+Parameter Sets: RemoveCatalogItemAclEntryForUser, RemoveCatalogItemAclEntryForGroup
 Aliases:
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -User
+Remove ACL entry of catalog for user.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: RemoveCatalogAclEntryForUser, RemoveCatalogItemAclEntryForUser
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

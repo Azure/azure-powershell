@@ -869,20 +869,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 principalId = Guid.NewGuid();
             }
 
-            // If ACE type has not been set yet, it indicates that the ACE type can be inferred by principal ID,
-            // and the ACE type should be either user or group. The strategy of determining ACE type is,
-            // if an object ID does not represent group, for example, user or service principal, its ACE type will be user.
-            if (string.IsNullOrEmpty(aceType))
-            {
-                var adObject = _activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = principalId.ToString() });
-                if (adObject == null)
-                {
-                    throw new InvalidOperationException(Properties.Resources.PrincipalNotFound);
-                }
-
-                aceType = adObject.Type == "Group" ? AclType.Group : AclType.User;
-            }
-
             var parameters = new AclCreateOrUpdateParameters(aceType, principalId, GetPermissionType(permissions));
 
             // If catalog item type is not specified, grant an ACL entry to catalog
@@ -914,10 +900,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             string accountName,
             CatalogPathInstance path,
             string catalogItemType,
+            string aceType,
             Guid principalId)
         {
-            string aceType = string.Empty;
-
             // Make sure principal ID is not empty GUID. 
             // When principal ID is empty GUID:
             // If ACE type is User or Group: principal ID should be provided by end user so an exception will be thrown;
@@ -930,20 +915,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 }
 
                 principalId = Guid.NewGuid();
-            }
-
-            // If ACE type has not been set yet, it indicates that the ACE type can be inferred by principal ID,
-            // and the ACE type should be either user or group. The strategy of determining ACE type is,
-            // if an object ID does not represent group, for example, user or service principal, its ACE type will be user.
-            if (string.IsNullOrEmpty(aceType))
-            {
-                var adObject = _activeDirectoryClient.GetADObject(new ADObjectFilterOptions { Id = principalId.ToString() });
-                if (adObject == null)
-                {
-                    throw new InvalidOperationException(Properties.Resources.PrincipalNotFound);
-                }
-
-                aceType = adObject.Type == "Group" ? AclType.Group : AclType.User;
             }
 
             var parameters = new AclDeleteParameters(aceType, principalId);

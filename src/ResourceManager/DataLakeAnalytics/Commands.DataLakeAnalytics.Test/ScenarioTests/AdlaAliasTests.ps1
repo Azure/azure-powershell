@@ -1216,8 +1216,8 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-Throws {Get-AdlCatalogItem -AccountName $accountName -ItemType Secret -Path "$databaseName.$secretName2"}
 
 		# prepare to grant/revoke ACLs
-		$userPrincipalId = (Get-AzureRmADUser | Select-Object -First 1).Id.Guid
-		$groupPrincipalId = (Get-AzureRmADGroup | Select-Object -First 1).Id.Guid
+		$userPrincipalId = "027c28d5-c91d-49f0-98c5-d10134b169b3"
+		$groupPrincipalId = "58d2027c-d19c-0f94-5c89-1b43101d3b96"
 
 		# get the initial number of ACL by db
 		$aclByDbList = Get-AdlCatalogItemAclEntry -AccountName $accountName -ItemType Database -Path $databaseName
@@ -1228,7 +1228,7 @@ function Test-DataLakeAnalyticsCatalog
 		$aclInitialCount = $aclList.count
 
 		# grant ACL entry for user to the db
-		$aclByDbList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Id $userPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+		$aclByDbList = Set-AdlCatalogItemAclEntry -AccountName $accountName -User -Id $userPrincipalId -ItemType Database -Path $databaseName -Permissions Read
 
 		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
 		$found = $false
@@ -1248,13 +1248,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for user from the db
-		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Id $userPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -User -Id $userPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
 
 		$aclByDbList = Get-AdlCatalogItemAclEntry -AccountName $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
 
 		# grant ACL entry for group to the db
-		$aclByDbList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Id $groupPrincipalId -ItemType Database -Path $databaseName -Permissions Read
+		$aclByDbList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Group -Id $groupPrincipalId -ItemType Database -Path $databaseName -Permissions Read
 
 		Assert-AreEqual $($aclByDbInitialCount+1) $aclByDbList.count
 		$found = $false
@@ -1274,7 +1274,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for group from the db
-		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Id $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Group -Id $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
 
 		$aclByDbList = Get-AdlCatalogItemAclEntry -AccountName $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
@@ -1323,7 +1323,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-AreEqual None $currentDbGroupAcl.Permissions
 
 		# grant ACE for user to the catalog
-		$aclList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Id $userPrincipalId -Permissions Read
+		$aclList = Set-AdlCatalogItemAclEntry -AccountName $accountName -User -Id $userPrincipalId -Permissions Read
 		Assert-AreEqual $($aclInitialCount+1) $aclList.count
 		$found = $false
 		foreach($acl in $aclList)
@@ -1342,13 +1342,13 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the Catalog ACL list"
 
 		# revoke ACE for user from the catalog
-		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Id $userPrincipalId -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -User -Id $userPrincipalId -Force -PassThru} "Remove ACE failed."
 
 		$aclList = Get-AdlCatalogItemAclEntry -AccountName $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count
 
 		# grant ACL entry for group to the catalog
-		$aclList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Id $groupPrincipalId -Permissions Read
+		$aclList = Set-AdlCatalogItemAclEntry -AccountName $accountName -Group -Id $groupPrincipalId -Permissions Read
 
 		Assert-AreEqual $($aclInitialCount+1) $aclList.count
 		$found = $false
@@ -1365,12 +1365,12 @@ function Test-DataLakeAnalyticsCatalog
 			}
 		}
 
-		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
+		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the Catalog ACL list"
 
-		# revoke ACE for group from the db
-		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Id $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+		# revoke ACE for group from the catalog
+		Assert-True {Remove-AdlCatalogItemAclEntry -AccountName $accountName -Group -Id $groupPrincipalId -Force -PassThru} "Remove ACE failed."
 
-		$aclList = Get-AdlCatalogItemAclEntry -AccountName $accountName -ItemType Database -Path $databaseName
+		$aclList = Get-AdlCatalogItemAclEntry -AccountName $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count
 
 		# set ACL entry for other
