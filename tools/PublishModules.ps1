@@ -266,7 +266,7 @@ function Get-ClientModules {
 
             # Get all module directories
             if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* -Include *.Netcore
+                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.FullName.EndsWith(".Netcore")}
             } else {
                 $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.*, *.Netcore
             }
@@ -682,7 +682,7 @@ function Add-Module {
         Write-Output "No root module found, creating"
 
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ((!$IsNetCore) -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)) {
+        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
 
