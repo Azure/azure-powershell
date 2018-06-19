@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -154,7 +154,6 @@ namespace Microsoft.Azure.Commands.Scheduler.Test.ScenarioTests
                              "ScenarioTests\\Common.ps1",
                              "ScenarioTests\\" + callingClassName + ".ps1",
                              _helper.RMProfileModule,
-                             _helper.RMResourceModule,
                              _helper.GetRMModulePath(@"AzureRM.Scheduler.psd1"),
                              "AzureRM.Resources.ps1",
                              "AzureRM.Storage.ps1");

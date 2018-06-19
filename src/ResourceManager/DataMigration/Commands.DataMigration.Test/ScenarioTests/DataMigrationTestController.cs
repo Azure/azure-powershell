@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -106,7 +106,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DmsTest
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.DataMigration.psd1"),
                     "AzureRM.Resources.ps1"
                     );

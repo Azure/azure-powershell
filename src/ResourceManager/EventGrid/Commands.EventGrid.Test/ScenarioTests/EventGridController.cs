@@ -108,7 +108,6 @@ namespace Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     helper.GetRMModulePath(@"AzureRM.EventGrid.psd1"),
                     "AzureRM.Resources.ps1");
