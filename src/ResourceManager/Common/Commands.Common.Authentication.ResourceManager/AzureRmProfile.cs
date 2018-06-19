@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its defautl state
+        /// Set the container to its default state
         /// </summary>
         public void Clear()
         {
@@ -573,7 +573,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
                 TrySetContext(context.Key, context.Value);
             }
 
-            if (other.DefaultContext != null)
+            this.DefaultContextKey = other.DefaultContextKey;
+            if (other.DefaultContext != null && this.DefaultContext != other.DefaultContext)
             {
                 this.TrySetDefaultContext(other.DefaultContext);
             }

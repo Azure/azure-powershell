@@ -45,6 +45,7 @@
 
 ## Version 4.6.0
 * Updated to the latest version of the Azure ClientRuntime
+* Fixed issue with Import-AzureRmContext -Path and -AzureContext
 
 ## Version 4.5.0
 * Enable MSI authentication in unsupported scenarios
