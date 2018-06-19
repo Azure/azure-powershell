@@ -12,11 +12,32 @@ Modifies an entry in the ACL of a catalog or catalog item in Data Lake Analytics
 
 ## SYNTAX
 
-### SetCatalogAclEntryForUserOrGroup (Default)
+### SetCatalogAclEntryForUser (Default)
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ObjectId <Guid>
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid>
  [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### SetCatalogItemAclEntryForUser
+```
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid>
+ [-ItemType] <String> [-Path] <CatalogPathInstance> [-Permissions] <PermissionType>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SetCatalogAclEntryForGroup
+```
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid>
+ [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SetCatalogItemAclEntryForGroup
+```
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid>
+ [-ItemType] <String> [-Path] <CatalogPathInstance> [-Permissions] <PermissionType>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogAclEntryForOther
@@ -60,13 +81,6 @@ Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SetCatalogItemAclEntryForUserOrGroup
-```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ObjectId <Guid> [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet adds or modifies an entry (ACE) in the access control list (ACL) of a catalog or catalog item in Data Lake Analytics.
 
@@ -74,14 +88,14 @@ The **Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet adds or modifies 
 
 ### Example 1: Modify user permissions for a catalog
 ```powershell
-PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -Permissions Read
+PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -Permissions Read
 ```
 
 This command modifies the catalog ACE for Patti Fuller to have read permissions.
 
 ### Example 2: Modify user Permissions for a database
 ```powershell
-PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName" -Permissions Read
+PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName" -Permissions Read
 ```
 
 This command modifies the database ACE for Patti Fuller to have read permissions.
@@ -144,6 +158,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Group
+Set ACL entry of catalog for group.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: SetCatalogAclEntryForGroup, SetCatalogItemAclEntryForGroup
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -GroupOwner
 Set ACL entry of catalog for group owner.
 
@@ -166,7 +195,7 @@ Specifies the type of the catalog or catalog item(s). The acceptable values for 
 
 ```yaml
 Type: String
-Parameter Sets: SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner, SetCatalogItemAclEntryForUserOrGroup
+Parameter Sets: SetCatalogItemAclEntryForUser, SetCatalogItemAclEntryForGroup, SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner
 Aliases:
 Accepted values: Catalog, Database
 
@@ -182,8 +211,8 @@ The identity of the user to set.
 
 ```yaml
 Type: Guid
-Parameter Sets: SetCatalogAclEntryForUserOrGroup, SetCatalogItemAclEntryForUserOrGroup
-Aliases: Id
+Parameter Sets: SetCatalogAclEntryForUser, SetCatalogItemAclEntryForUser, SetCatalogAclEntryForGroup, SetCatalogItemAclEntryForGroup
+Aliases: Id, UserId
 
 Required: True
 Position: Named
@@ -213,7 +242,7 @@ The parts of the path should be separated by a period (.).
 
 ```yaml
 Type: CatalogPathInstance
-Parameter Sets: SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner, SetCatalogItemAclEntryForUserOrGroup
+Parameter Sets: SetCatalogItemAclEntryForUser, SetCatalogItemAclEntryForGroup, SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner
 Aliases:
 
 Required: True
@@ -239,6 +268,21 @@ Accepted values: None, Read, ReadWrite
 
 Required: True
 Position: 3
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -User
+Set ACL entry of catalog for user.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: SetCatalogAclEntryForUser, SetCatalogItemAclEntryForUser
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

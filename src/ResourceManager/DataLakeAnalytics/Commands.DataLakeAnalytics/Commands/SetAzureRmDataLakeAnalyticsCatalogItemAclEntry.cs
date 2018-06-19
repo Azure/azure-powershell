@@ -23,13 +23,15 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserOrGroupCatalogParameterSetName, SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserCatalogParameterSetName, SupportsShouldProcess = true),
      OutputType(typeof(List<PSDataLakeAnalyticsAcl>), typeof(PSDataLakeAnalyticsAcl))]
     [Alias("Set-AdlCatalogItemAclEntry")]
     public class SetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
-        private const string UserOrGroupCatalogParameterSetName = "SetCatalogAclEntryForUserOrGroup";
-        private const string UserOrGroupCatalogItemParameterSetName = "SetCatalogItemAclEntryForUserOrGroup";
+        private const string UserCatalogParameterSetName = "SetCatalogAclEntryForUser";
+        private const string UserCatalogItemParameterSetName = "SetCatalogItemAclEntryForUser";
+        private const string GroupCatalogParameterSetName = "SetCatalogAclEntryForGroup";
+        private const string GroupCatalogItemParameterSetName = "SetCatalogItemAclEntryForGroup";
         private const string OtherCatalogParameterSetName = "SetCatalogAclEntryForOther";
         private const string OtherCatalogItemParameterSetName = "SetCatalogItemAclEntryForOther";
         private const string UserOwnerCatalogParameterSetName = "SetCatalogAclEntryForUserOwner";
@@ -42,6 +44,18 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         [ValidateNotNullOrEmpty]
         [Alias("AccountName")]
         public string Account { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = UserCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for user.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for user.")]
+        public SwitchParameter User { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for group.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+            ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group.")]
+        public SwitchParameter Group { get; set; }
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             ParameterSetName = OtherCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for other.")]
@@ -61,58 +75,73 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
             ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group owner.")]
         public SwitchParameter GroupOwner { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogParameterSetName, HelpMessage = "The identity of the user or group to set.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogItemParameterSetName, HelpMessage = "The identity of the user or group to set.")]
-        [Alias("Id")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            ParameterSetName = UserCatalogParameterSetName, HelpMessage = "The identity of the user to set.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "The identity of the group to set.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "The identity of the user to set.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+            ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "The identity of the group to set.")]
+        [Alias("Id", "UserId")]
         public Guid ObjectId { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = OtherCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
         [PSArgumentCompleter("Database")]
         public string ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogItemParameterSetName,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = UserCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = GroupCatalogItemParameterSetName,
+            HelpMessage = "The catalog item path to search within, in the format:" +
+                          "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = OtherCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserOwnerCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupOwnerCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
         [ValidateNotNullOrEmpty]
         public CatalogPathInstance Path { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogParameterSetName,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = UserCatalogParameterSetName,
             HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = GroupCatalogParameterSetName,
+            HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = OtherCatalogParameterSetName,
             HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserOwnerCatalogParameterSetName,
             HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupOwnerCatalogParameterSetName,
             HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
-            ParameterSetName = UserOrGroupCatalogItemParameterSetName,
+            ParameterSetName = UserCatalogItemParameterSetName,
+            HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
+            ParameterSetName = GroupCatalogItemParameterSetName,
             HelpMessage = "The permissions to set for the ACE. Possible values include: 'None', 'Read', 'ReadWrite'.")]
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = OtherCatalogItemParameterSetName,
@@ -133,13 +162,13 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
             string target = string.Empty;
             switch (this.ParameterSetName)
             {
-                case UserOrGroupCatalogParameterSetName: case OtherCatalogParameterSetName:
+                case UserCatalogParameterSetName: case GroupCatalogParameterSetName: case OtherCatalogParameterSetName:
                 case UserOwnerCatalogParameterSetName: case GroupOwnerCatalogParameterSetName:
                     processMessage = string.Format(Resources.SetDataLakeCatalogAclEntry, Account);
                     target = Account;
                     break;
 
-                case UserOrGroupCatalogItemParameterSetName: case OtherCatalogItemParameterSetName:
+                case UserCatalogItemParameterSetName: case GroupCatalogItemParameterSetName: case OtherCatalogItemParameterSetName:
                 case UserOwnerCatalogItemParameterSetName: case GroupOwnerCatalogItemParameterSetName:
                     processMessage = string.Format(Resources.SetDataLakeCatalogItemAclEntry, Path.FullCatalogItemPath);
                     target = Path.FullCatalogItemPath;
@@ -148,20 +177,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
                 default: throw new ArgumentException($"Invalid parameter set: {this.ParameterSetName}");
             }
 
-            string aceType;
+            string aceType = string.Empty;
             string[] returnedAceTypes;
             switch (this.ParameterSetName)
             {
-                case UserOrGroupCatalogParameterSetName: case UserOrGroupCatalogItemParameterSetName:
-
-                    // We cannot determine ACE type directly by parameter set so we just set it as empty string here,
-                    // and let it be determined in somewhere else.
-                    aceType = string.Empty;
+                case UserCatalogParameterSetName: case UserCatalogItemParameterSetName:
+                    aceType = AclType.User;
                     returnedAceTypes = new[] {AclType.User, AclType.Group, AclType.Other};
                     break;
 
-                case OtherCatalogParameterSetName: case OtherCatalogItemParameterSetName:
-                    aceType = AclType.Other;
+                case GroupCatalogParameterSetName: case GroupCatalogItemParameterSetName:
+                    aceType = AclType.Group;
+                    returnedAceTypes = new[] {AclType.User, AclType.Group, AclType.Other};
+                    break;
+
+                case OtherCatalogParameterSetName: case OtherCatalogItemParameterSetName: aceType = AclType.Other;
                     returnedAceTypes = new[] {AclType.User, AclType.Group, AclType.Other};
                     break;
 
