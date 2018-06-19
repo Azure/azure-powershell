@@ -32,5 +32,12 @@ namespace Commands.Network.Test.ScenarioTests
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallCRUD");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAzureFirewallSetAndRemoveIpConfiguration()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallIpConfiguration");
+        }
     }
 }
