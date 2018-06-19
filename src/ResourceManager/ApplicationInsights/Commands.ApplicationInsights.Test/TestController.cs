@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -113,9 +113,6 @@ namespace Microsoft.Azure.Commands.ApplicationInsights.Test.ScenarioTests
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.RMStorageDataPlaneModule,
-                    helper.RMStorageModule,
                     helper.GetRMModulePath("AzureRm.ApplicationInsights.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",

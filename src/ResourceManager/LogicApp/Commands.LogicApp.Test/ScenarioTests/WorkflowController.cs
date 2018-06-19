@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// CSM test factory
         /// </summary>
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
-        
+
         /// <summary>
         /// EnvironmentSetupHelper instance
         /// </summary>
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 
         /// <summary>
         /// Authorization Api Version
-        /// </summary>       
+        /// </summary>
         private const string AuthorizationApiVersion = "2014-07-01-preview";
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         }
 
         /// <summary>
-        /// Initiliazes the workflow controller 
+        /// Initiliazes the workflow controller
         /// </summary>
         public WorkflowController()
         {
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -159,7 +159,6 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,                    
                     helper.GetRMModulePath(@"AzureRM.LogicApp.psd1"),
                     "ScenarioTests\\AzureRM.Resources.ps1");
 
