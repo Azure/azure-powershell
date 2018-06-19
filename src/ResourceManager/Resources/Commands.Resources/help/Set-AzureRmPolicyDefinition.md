@@ -45,14 +45,6 @@ Set-AzureRmPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
-```
-Set-AzureRmPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] -InputObject <PsPolicyDefinition> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Set-AzureRmPolicyDefinition** cmdlet modifies a policy definition.
 
@@ -193,21 +185,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The policy definition object to update that was output from another cmdlet.
-
-```yaml
-Type: PsPolicyDefinition
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: False
-```
-
 ### -ManagementGroupName
 The name of the management group of the policy definition to update.
 
@@ -324,7 +301,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
+### System.Management.Automation.PSObject
 
 ## NOTES
 

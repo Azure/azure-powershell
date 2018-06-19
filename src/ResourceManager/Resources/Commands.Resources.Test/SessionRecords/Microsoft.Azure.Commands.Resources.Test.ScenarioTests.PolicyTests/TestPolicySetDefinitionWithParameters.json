@@ -1,10 +1,10 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/ps1679?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczE2Nzk/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/ps7816?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczc4MTY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"ps1679\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"ps7816\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"mode\": \"All\"\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -23,7 +23,7 @@
           "New-AzureRmPolicyDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps1679\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps7816\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "618"
@@ -38,16 +38,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:36036f3f-b563-4de8-a741-8b5a2575ab10"
+          "westus:110634a2-c6a8-4af4-a3f3-a4b0015746f8"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1197"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "726a5a30-9afe-4db8-a764-a797f8379a6c"
+          "bda63ed8-2403-45a2-baee-8dd8fa68245d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010623Z:726a5a30-9afe-4db8-a764-a797f8379a6c"
+          "WESTUS:20180618T225147Z:bda63ed8-2403-45a2-baee-8dd8fa68245d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -59,7 +59,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:23 GMT"
+          "Mon, 18 Jun 2018 22:51:46 GMT"
         ],
         "Retry-After": [
           "0"
@@ -68,10 +68,10 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"ps6224\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"ps5887\",\r\n  \"properties\": {\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -90,10 +90,10 @@
           "New-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "828"
+          "829"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -105,16 +105,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:31e2237e-2b39-4ead-9af6-d2845cf9e26a"
+          "westus:2bbdba60-e9e6-4bc0-8711-d1fdb66abae0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "x-ms-correlation-request-id": [
-          "24115009-ecd3-4fc9-98dc-8903357c75b1"
+          "6f54d0c4-beb9-4d3d-b43b-78a49813ff47"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010635Z:24115009-ecd3-4fc9-98dc-8903357c75b1"
+          "WESTUS:20180618T225148Z:6f54d0c4-beb9-4d3d-b43b-78a49813ff47"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -126,7 +126,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:35 GMT"
+          "Mon, 18 Jun 2018 22:51:48 GMT"
         ],
         "Retry-After": [
           "0"
@@ -135,10 +135,10 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"name\": \"ps6224\",\r\n  \"properties\": {\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"name\": \"ps5887\",\r\n  \"properties\": {\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -157,10 +157,10 @@
           "Set-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "852"
+          "853"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -175,16 +175,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:44023367-a7d0-4ed7-af69-a54c7f5ccfea"
+          "westus:d95d5a25-ede5-4f83-88ec-de091fdcba21"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1196"
+          "1197"
         ],
         "x-ms-correlation-request-id": [
-          "fd5ed07f-4786-41b6-8fe1-9fa6d7b3d60c"
+          "7b0702e8-389e-40a9-82fd-5cacd90bbb43"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010637Z:fd5ed07f-4786-41b6-8fe1-9fa6d7b3d60c"
+          "WESTUS:20180618T225150Z:7b0702e8-389e-40a9-82fd-5cacd90bbb43"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -196,7 +196,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:37 GMT"
+          "Mon, 18 Jun 2018 22:51:49 GMT"
         ],
         "Retry-After": [
           "0"
@@ -205,8 +205,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -221,10 +221,10 @@
           "Get-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "828"
+          "829"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -239,16 +239,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:88b9089c-a1f0-4bc4-ab4f-714b3b470f14"
+          "westus:8492ec0a-70eb-4ca7-bde6-264f6625a585"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "aab85712-53af-4e8b-9726-86881462f70d"
+          "1c3388a1-e258-4f68-9678-4ad03f709e1f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010635Z:aab85712-53af-4e8b-9726-86881462f70d"
+          "WESTUS:20180618T225148Z:1c3388a1-e258-4f68-9678-4ad03f709e1f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -260,7 +260,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:35 GMT"
+          "Mon, 18 Jun 2018 22:51:47 GMT"
         ],
         "Retry-After": [
           "0"
@@ -269,8 +269,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -285,10 +285,10 @@
           "Set-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "828"
+          "829"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -303,16 +303,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:0100e367-475a-4cac-9075-79815311581c"
+          "westus:afc888ed-c9a3-4042-acc9-9fbe1c11732b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14989"
         ],
         "x-ms-correlation-request-id": [
-          "85304c87-b468-4859-b63b-0c7e1e47a938"
+          "b8f362f6-60bc-4e0f-adc8-882dc3ab7473"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010636Z:85304c87-b468-4859-b63b-0c7e1e47a938"
+          "WESTUS:20180618T225149Z:b8f362f6-60bc-4e0f-adc8-882dc3ab7473"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -324,7 +324,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:36 GMT"
+          "Mon, 18 Jun 2018 22:51:48 GMT"
         ],
         "Retry-After": [
           "0"
@@ -333,8 +333,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -349,10 +349,10 @@
           "Get-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "852"
+          "853"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -367,16 +367,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:fdc76441-115d-4117-851b-487b2ba0fa5b"
+          "westus:ee006e20-9d57-4fcc-9c88-29aff84069eb"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14994"
         ],
         "x-ms-correlation-request-id": [
-          "35068d86-5965-4457-af0e-878edb31e073"
+          "5c75d9c4-e9c9-411a-bc5a-6f66064055c6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010638Z:35068d86-5965-4457-af0e-878edb31e073"
+          "WESTUS:20180618T225150Z:5c75d9c4-e9c9-411a-bc5a-6f66064055c6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -388,7 +388,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:37 GMT"
+          "Mon, 18 Jun 2018 22:51:50 GMT"
         ],
         "Retry-After": [
           "0"
@@ -397,8 +397,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps6224?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczYyMjQ/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policysetdefinitions/ps5887?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lzZXRkZWZpbml0aW9ucy9wczU4ODc/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -413,10 +413,10 @@
           "Remove-AzureRmPolicySetDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"7104408656535631458\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps6224\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps6224\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"description\": \"Updated Unit test junk: sorry for littering. Please delete me!\",\r\n    \"metadata\": {\r\n      \"testName\": \"testValue\",\r\n      \"newTestName\": \"newTestValue\"\r\n    },\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"Array of allowed resource locations.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"Location Array\"\r\n        }\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionReferenceId\": \"17735228424454886845\",\r\n        \"policyDefinitionId\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n        \"parameters\": {\r\n          \"listOfAllowedLocations\": {\r\n            \"value\": \"[parameters('listOfAllowedLocations')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policySetDefinitions/ps5887\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"ps5887\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "852"
+          "853"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -431,16 +431,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:c6b478e9-4920-4980-a403-6e685a0d49bd"
+          "westus:c6b9cce2-2d5c-4659-b367-81c1de7d0fdd"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14996"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "eb2864ff-c426-4558-beeb-3859276ffa4b"
+          "d56058e0-1f78-4fef-9434-f5637f4ffe69"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010638Z:eb2864ff-c426-4558-beeb-3859276ffa4b"
+          "WESTUS:20180618T225151Z:d56058e0-1f78-4fef-9434-f5637f4ffe69"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -452,7 +452,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:38 GMT"
+          "Mon, 18 Jun 2018 22:51:51 GMT"
         ],
         "Retry-After": [
           "0"
@@ -461,8 +461,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/ps1679?api-version=2018-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczE2Nzk/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestUri": "/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policydefinitions/ps7816?api-version=2018-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lkZWZpbml0aW9ucy9wczc4MTY/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
@@ -477,7 +477,7 @@
           "Remove-AzureRmPolicyDefinition"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps1679\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps1679\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"policyType\": \"Custom\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Unit test junk: sorry for littering. Please delete me!\",\r\n    \"parameters\": {\r\n      \"listOfAllowedLocations\": {\r\n        \"type\": \"Array\",\r\n        \"metadata\": {\r\n          \"description\": \"An array of permitted locations for resources.\",\r\n          \"strongType\": \"location\",\r\n          \"displayName\": \"List of locations\"\r\n        }\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"not\": {\r\n          \"field\": \"location\",\r\n          \"in\": \"[parameters('listOfAllowedLocations')]\"\r\n        }\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"deny\"\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyDefinitions/ps7816\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"ps7816\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "618"
@@ -495,16 +495,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:db91d0ed-a469-450e-a97e-52042415594d"
+          "westus:43808e8d-9aed-4c5b-b72b-2b189d1fcb38"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "18849f61-00f9-4370-8adc-5127dfdde0a0"
+          "64a83e57-b8a3-47f8-a01a-cc309874378c"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180616T010640Z:18849f61-00f9-4370-8adc-5127dfdde0a0"
+          "WESTUS:20180618T225152Z:64a83e57-b8a3-47f8-a01a-cc309874378c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -516,7 +516,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sat, 16 Jun 2018 01:06:39 GMT"
+          "Mon, 18 Jun 2018 22:51:51 GMT"
         ],
         "Retry-After": [
           "0"
@@ -527,8 +527,8 @@
   ],
   "Names": {
     "Test-PolicySetDefinitionWithParameters": [
-      "ps1679",
-      "ps6224"
+      "ps7816",
+      "ps5887"
     ]
   },
   "Variables": {

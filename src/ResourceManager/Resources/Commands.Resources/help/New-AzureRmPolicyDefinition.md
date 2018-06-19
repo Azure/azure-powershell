@@ -290,7 +290,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
+### System.Management.Automation.PSObject
 
 ## NOTES
 

@@ -534,106 +534,6 @@ function Test-PolicySetDefinitionCRUDAtSubscription
 }
 
 <#
-.SYNOPSIS
-Tests Policy object piping 
-#>
-function Test-PolicyObjectPiping
-{
-    # setup
-    $rgname = Get-ResourceGroupName
-    $policySetDefName = Get-ResourceName
-    $policyDefName = Get-ResourceName
-    $policyAssName = Get-ResourceName
-    $subscriptionId = (Get-AzureRmContext).Subscription.Id
-
-    # make a policy definition and policy set definition that references it
-    $policyDefinition = New-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$TestOutputRoot\SamplePolicyDefinition.json" -Description $description
-    $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
-    $expected = New-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
-
-    # make a policy assignment by piping the policy definition to New-AzureRmPolicyAssignment
-    $rg = New-AzureRmResourceGroup -Name $rgname -Location "west us"
-
-    # assign the policy definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
-    Assert-NotNull $actual.Properties.PolicyDefinitionId
-    Assert-NotNull $expected.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
-    Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-    # delete the policy assignment
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
-    Assert-AreEqual True $remove
-
-    # assign the policy set definition to the resource group, get the assignment back and validate
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
-    Assert-NotNull $actual.Properties.PolicyDefinitionId
-    Assert-NotNull $expected.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
-    Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-
-    # update the policy definition
-    $actual = Get-AzureRmPolicyDefinition -Name $policyDefName | Set-AzureRmPolicyDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicyDefinition -Name $policyDefName
-    Assert-AreEqual $policyDefName $expected.Name
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual $expected.ResourceName $actual.ResourceName
-    Assert-AreEqual Microsoft.Authorization/policyDefinitions $actual.ResourceType
-    Assert-AreEqual $expected.ResourceType $actual.ResourceType
-    Assert-NotNull $expected.ResourceId
-    Assert-AreEqual $expected.ResourceId $actual.ResourceId
-    Assert-AreEqual $updatedDescription $actual.Properties.Description
-    Assert-AreEqual $updatedDescription $expected.Properties.Description
-
-    # update the policy set definition
-    $actual = Get-AzureRmPolicySetDefinition -Name $policySetDefName | Set-AzureRmPolicySetDefinition -Description $updatedDescription
-    $expected = Get-AzureRmPolicySetDefinition -Name $policySetDefName
-    Assert-AreEqual $policySetDefName $expected.Name
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual $expected.ResourceName $actual.ResourceName
-    Assert-AreEqual Microsoft.Authorization/policySetDefinitions $actual.ResourceType
-    Assert-AreEqual $expected.ResourceType $actual.ResourceType
-    Assert-NotNull $expected.ResourceId
-    Assert-AreEqual $expected.ResourceId $actual.ResourceId
-    Assert-AreEqual $updatedDescription $actual.Properties.Description
-    Assert-AreEqual $updatedDescription $expected.Properties.Description
-
-    # update the policy assignment
-    $actual = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Set-AzureRmPolicyAssignment -Description $updatedDescription
-    $expected = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
-    Assert-AreEqual $expected.Name $actual.Name
-    Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
-    Assert-AreEqual $expected.ResourceType $actual.ResourceType
-    Assert-NotNull $actual.Properties.PolicyDefinitionId
-    Assert-NotNull $expected.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
-    Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-    Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
-    Assert-AreEqual $updatedDescription $actual.Properties.Description
-    Assert-AreEqual $updatedDescription $expected.Properties.Description
-
-    # clean up
-    $remove = Get-AzureRmPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzureRmPolicyAssignment
-    Assert-AreEqual True $remove
-
-    $remove = Remove-AzureRmResourceGroup -Name $rgname -Force
-    Assert-AreEqual True $remove
-
-    $remove = Get-AzureRmPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicySetDefinition -Force
-    Assert-AreEqual True $remove
-
-    $remove = Get-AzureRmPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzureRmPolicyDefinition -Force
-    Assert-AreEqual True $remove
-}
-
-<#
 The following section contains tests for each cmdlet that validate as many combinations of
 parameters as possible/reasonable. Tests for all combinations of parameters are present here
 except for:
@@ -784,12 +684,6 @@ function Test-RemovePolicyAssignmentParameters
     # validate remaining parameter combinations starting with -Id
     $ok = Remove-AzureRmPolicyAssignment -Id $goodId
     Assert-AreEqual True $ok
-    Assert-ThrowsContains { Remove-AzureRmPolicyAssignment -Id $goodId -InputObject $goodObject } $parameterSetError
-
-    # skipping Remove-AzureRmPolicyAssignment -InputObject <assignment>
-    #  - $goodObject is a real assignment we don't want to delete from the environment
-    #  - Save time by avoiding create/delete of temporary real assignments
-    #  - Already tested elsewhere
 }
 
 <#
@@ -818,11 +712,6 @@ function Test-SetPolicyAssignmentParameters
 
     # validate remaining parameter combinations starting with -Id
     Assert-ThrowsContains { Set-AzureRmPolicyAssignment -Id $goodId } $policyAssignmentNotFound
-    Assert-ThrowsContains { Set-AzureRmPolicyAssignment -Id $goodId -InputObject $goodObject } $parameterError
-
-    # skipping Set-AzureRmPolicyAssignment -InputObject <assignment>
-    #  - Save time by avoiding create/update/delete of real assignments
-    #  - Already tested elsewhere
 }
 
 <#
@@ -935,10 +824,6 @@ function Test-RemovePolicyDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Remove-AzureRmPolicyDefinition -SubscriptionId $subscriptionId -Force } $missingParameters
-    Assert-ThrowsContains { Remove-AzureRmPolicyDefinition -SubscriptionId $subscriptionId -Force -InputObject $goodObject } $parameterSetError
-
-    # validate parameter combinations starting with -InputObject
-    Assert-ThrowsContains { Remove-AzureRmPolicyDefinition -InputObject $goodObject -Force } $authorizationFailed
 }
 
 <#
@@ -972,10 +857,6 @@ function Test-SetPolicyDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Set-AzureRmPolicyDefinition -SubscriptionId $subscriptionId } $missingParameters
-    Assert-ThrowsContains { Set-AzureRmPolicyDefinition -SubscriptionId $subscriptionId -InputObject $goodObject } $parameterSetError
-
-    # validate parameter combinations starting with -InputObject
-    Assert-ThrowsContains { Set-AzureRmPolicyDefinition -InputObject $goodObject } $authorizationFailed
 }
 
 <#
@@ -1076,7 +957,6 @@ function Test-RemovePolicySetDefinitionParameters
     Assert-AreEqual True $ok
     $ok = Remove-AzureRmPolicySetDefinition -Name $someName -SubscriptionId $subscriptionId -Force
     Assert-AreEqual True $ok
-    Assert-ThrowsContains { Remove-AzureRmPolicySetDefinition -Name $someName -SubscriptionId $subscriptionId -Force -InputObject $goodObject } $parameterSetError
 
     # validate parameter combinations starting with -Id
     $ok = Remove-AzureRmPolicySetDefinition -Id $goodId -Force
@@ -1089,10 +969,6 @@ function Test-RemovePolicySetDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Remove-AzureRmPolicySetDefinition -SubscriptionId $subscriptionId -Force } $httpMethodNotSupported
-    Assert-ThrowsContains { Remove-AzureRmPolicySetDefinition -SubscriptionId $subscriptionId -Force -InputObject $goodObject } $parameterSetError
-
-    # validate parameter combinations starting with -InputObject
-    Assert-ThrowsContains { Remove-AzureRmPolicySetDefinition -InputObject $goodObject -Force } $authorizationFailed
 }
 
 <#
@@ -1126,8 +1002,4 @@ function Test-SetPolicySetDefinitionParameters
 
     # validate parameter combinations starting with -SubscriptionId
     Assert-ThrowsContains { Set-AzureRmPolicySetDefinition -SubscriptionId $subscriptionId } $missingParameters
-    Assert-ThrowsContains { Set-AzureRmPolicySetDefinition -SubscriptionId $subscriptionId -InputObject $goodObject } $parameterSetError
-
-    # validate parameter combinations starting with -InputObject
-    Assert-ThrowsContains { Set-AzureRmPolicySetDefinition -InputObject $goodObject } $authorizationFailed
 }
