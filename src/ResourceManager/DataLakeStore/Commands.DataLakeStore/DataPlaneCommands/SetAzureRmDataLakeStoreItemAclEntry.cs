@@ -108,8 +108,27 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
                 : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
 
+            int numNonDefaultAcls = 0;
+
+            if (Recurse)
+            {
+                foreach (var aclEntry in aclSpec)
+                {
+                    if (aclEntry.Scope == AclScope.Access)
+                    {
+                        numNonDefaultAcls++;
+                    }
+                }
+            }
+
+            // For recurse and all acls are default, give a warning message
+            if (Recurse && numNonDefaultAcls == 0)
+            {
+                WriteWarning(Resources.SetOnlyDefaultAclRecursively);
+            }
+
             ConfirmAction(
-                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath) + (Recurse && numNonDefaultAcls == 0? "\n" + Resources.SetOnlyDefaultAclRecursively : ""),
                 Path.OriginalPath,
                 () =>
                 {
