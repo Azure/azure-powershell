@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public void RemoveIpConfiguration()
         {
-            this.IpConfigurations = null;
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration> ();
         }
 
         #endregion // Ip Configuration Operations
