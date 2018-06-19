@@ -58,13 +58,6 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
 
-### Example 3: Remove policy assignment in piped input
-```
-PS C:\> Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope (Get-AzureRmResourceGroup -Name 'ResourceGroup11').ResourceId | Remove-AzureRmPolicyAssignment
-```
-
-This command gets a resource group named ResourceGroup11, uses its **ResourceId** property to retrieve the policy assignment named 'PolicyAssignment07' and removes it by piping it to the Remove-AzureRmPolicyAssignment cmdlet.
-
 ## PARAMETERS
 
 ### -ApiVersion

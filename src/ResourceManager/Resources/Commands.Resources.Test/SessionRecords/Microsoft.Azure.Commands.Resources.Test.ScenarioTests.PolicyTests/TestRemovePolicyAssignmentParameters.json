@@ -35,16 +35,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus:2c10896c-74eb-4b93-b417-8720eb2f9b26"
+          "westus2:185e40d5-1fc9-4136-8c84-808684a3e8e7"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "c6383ba6-9f4a-41c9-891e-31da9608901f"
+          "29283be3-d4ea-4dbd-a9a4-ab3c9c367f6f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20180618T224330Z:c6383ba6-9f4a-41c9-891e-31da9608901f"
+          "WESTUS2:20180619T015050Z:29283be3-d4ea-4dbd-a9a4-ab3c9c367f6f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,7 +56,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Jun 2018 22:43:30 GMT"
+          "Tue, 19 Jun 2018 01:50:50 GMT"
         ],
         "Retry-After": [
           "0"
@@ -90,16 +90,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:afcaaa4b-31e2-4b69-96c9-b42641eebb01"
+          "westus2:6e757af3-6e1c-42c5-ab9e-0f95c2b157ba"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "13df75bf-b1f0-43d4-97c5-dde4d965dc3a"
+          "8e034d46-a2b2-4b81-8219-a97a457a464d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20180618T224331Z:13df75bf-b1f0-43d4-97c5-dde4d965dc3a"
+          "WESTUS2:20180619T015051Z:8e034d46-a2b2-4b81-8219-a97a457a464d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,7 +111,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Jun 2018 22:43:30 GMT"
+          "Tue, 19 Jun 2018 01:50:51 GMT"
         ],
         "Retry-After": [
           "0"
@@ -145,16 +145,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus:e0679550-7c27-4c27-859d-6e07cbd053fd"
+          "westus2:65d0d836-8131-4039-b1ee-ebfc81064160"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
-          "14998"
+          "14999"
         ],
         "x-ms-correlation-request-id": [
-          "8cf5361b-7602-41e7-91d4-78feecf9bb28"
+          "18d1fdf0-8197-4e62-ab8e-7f8db20665be"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20180618T224332Z:8cf5361b-7602-41e7-91d4-78feecf9bb28"
+          "WESTUS2:20180619T015052Z:18d1fdf0-8197-4e62-ab8e-7f8db20665be"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -166,7 +166,7 @@
           "no-cache"
         ],
         "Date": [
-          "Mon, 18 Jun 2018 22:43:31 GMT"
+          "Tue, 19 Jun 2018 01:50:52 GMT"
         ],
         "Retry-After": [
           "0"

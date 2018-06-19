@@ -26,9 +26,9 @@ Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitio
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### IncludeDescendentsParameterSet
+### IncludeDescendentParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Scope <String>] [-IncludeDescendents] [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -110,12 +110,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -IncludeDescendents
-Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
-
-```yaml
+### -IncludeDescendent
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.```yaml
 Type: SwitchParameter
-Parameter Sets: IncludeDescendentsParameterSet
+Parameter Sets: IncludeDescendentParameterSet
 Aliases:
 
 Required: True
@@ -214,7 +212,7 @@ Specifies the scope at which the policy is applied for the assignment that this 
 
 ```yaml
 Type: String
-Parameter Sets: NameParameterSet, IncludeDescendentsParameterSet
+Parameter Sets: NameParameterSet, IncludeDescendentParameterSet
 Aliases:
 
 Required: False

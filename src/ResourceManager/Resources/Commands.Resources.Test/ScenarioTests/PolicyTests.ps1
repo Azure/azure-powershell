@@ -125,7 +125,7 @@ function Test-PolicyAssignmentCRUD
     Assert-AreEqual 2 @($list).Count
 
     # ensure both are present in full listing
-    $list = Get-AzureRMPolicyAssignment -IncludeDescendents | ?{ $_.Name -in @('testPA', 'test2') }
+    $list = Get-AzureRMPolicyAssignment -IncludeDescendent | ?{ $_.Name -in @('testPA', 'test2') }
     Assert-AreEqual 2 @($list).Count
 
     # ensure neither are present in default listing (at subscription)
@@ -574,7 +574,7 @@ $missingSubscription = 'MissingSubscription : The request did not have a provide
 $undefinedPolicyParameter = 'UndefinedPolicyParameter : The policy assignment'
 $invalidPolicyRule = 'InvalidPolicyRule : Failed to parse policy rule: '
 $authorizationFailed = 'AuthorizationFailed : '
-$allSwitchNotSupported = 'The -IncludeDescendents switch is not supported for management group scopes.'
+$allSwitchNotSupported = 'The -IncludeDescendent switch is not supported for management group scopes.'
 $httpMethodNotSupported = "HttpMethodNotSupported : The http method 'DELETE' is not supported for a resource collection."
 
 <#
@@ -596,32 +596,32 @@ function Test-GetPolicyAssignmentParameters
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $goodScope } $policyAssignmentNotFound
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Id $someId } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -PolicyDefinitionId $someId } $policyAssignmentNotFound
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -IncludeDescendents } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -IncludeDescendent } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -Id $someId } $parameterSetError
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinitionId $someId } $missingSubscription
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -IncludeDescendents } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Name $someName -Scope $someScope -IncludeDescendent } $parameterSetError
 
     # validate remaining parameter combinations starting with -Scope
     $ok = Get-AzureRmPolicyAssignment -Scope $goodScope
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Scope $someScope -Id $someId } $parameterSetError
     $ok = Get-AzureRmPolicyAssignment -Scope $goodScope -PolicyDefinitionId $someId
     Assert-AreEqual 0 $ok.Count
-    $ok = Get-AzureRmPolicyAssignment -Scope $goodScope -IncludeDescendents
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Scope $mgScope -IncludeDescendents } $allSwitchNotSupported
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Scope $someScope -PolicyDefinitionId $someId -IncludeDescendents } $parameterSetError
+    $ok = Get-AzureRmPolicyAssignment -Scope $goodScope -IncludeDescendent
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Scope $mgScope -IncludeDescendent } $allSwitchNotSupported
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Scope $someScope -PolicyDefinitionId $someId -IncludeDescendent } $parameterSetError
 
     # validate remaining parameter combinations starting with -Id
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $goodId } $policyAssignmentNotFound
     Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -PolicyDefinitionId $someId } $missingSubscription
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -IncludeDescendents } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -Id $someId -IncludeDescendent } $parameterSetError
 
     # validate remaining parameter combinations starting with -PolicyDefinitionId
     $ok = Get-AzureRmPolicyAssignment -PolicyDefinitionId $someId
     Assert-AreEqual 0 $ok.Count
-    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -PolicyDefinitionId $someId -IncludeDescendents } $parameterSetError
+    Assert-ThrowsContains { Get-AzureRmPolicyAssignment -PolicyDefinitionId $someId -IncludeDescendent } $parameterSetError
 
-    # validate remaining parameter combinations starting with -IncludeDescendents
-    $ok = Get-AzureRmPolicyAssignment -IncludeDescendents
+    # validate remaining parameter combinations starting with -IncludeDescendent
+    $ok = Get-AzureRmPolicyAssignment -IncludeDescendent
 }
 
 <#

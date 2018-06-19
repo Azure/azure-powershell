@@ -58,13 +58,6 @@ The command stores that object in the $PolicySetDefinition variable.
 
 The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
-### Example 2: Update the description of a policy set definition piped to input
-```
-PS C:\> Get-AzureRmPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' | Set-AzureRmPolicySetDefinition -Description 'Updated policy to not allow virtual machine creation'
-```
-
-This command gets a policy set definition and updates its display name by piping it to Set-AzureRmPolicySetDefinition
-
 ## PARAMETERS
 
 ### -ApiVersion
