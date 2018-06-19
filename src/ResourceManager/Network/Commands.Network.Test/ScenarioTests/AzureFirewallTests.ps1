@@ -177,6 +177,7 @@ function Test-AzureFirewallCRUD
 
         # Get AzureFirewall
         $getAzureFirewall = Get-AzureRmFirewall -name $azureFirewallName -ResourceGroupName $rgName
+		$azureFirewallIpConfiguration = $getAzureFirewall.IpConfigurations
 
         #verification
         Assert-AreEqual $rgName $getAzureFirewall.ResourceGroupName
@@ -248,34 +249,20 @@ function Test-AzureFirewallCRUD
 		Assert-AreEqual $networkRc.Rules[0].DestinationPorts.Count $networkRule.DestinationPorts.Count
 		Assert-AreEqual $networkRc.Rules[0].DestinationPorts[0] $networkRule.DestinationPorts[0]
 
-        # Delete VirtualNetwork - should fail
-        $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
-        Assert-AreEqual false $delete
-
         # Delete AzureFirewall
         $delete = Remove-AzureRmFirewall -ResourceGroupName $rgname -name $azureFirewallName -PassThru -Force
         Assert-AreEqual true $delete
 
-        # Delete VirtualNetwork again - this time it should succeed
+        # Delete VirtualNetwork 
         $delete = Remove-AzureRmVirtualNetwork -ResourceGroupName $rgname -name $vnetName -PassThru -Force
         Assert-AreEqual true $delete
         
         $list = Get-AzureRmFirewall -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
-
-		# list all Azure Firewalls in the subscription
-        $list = Get-AzureRmFirewall 
-        Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $getAzureFirewall.ResourceGroupName
-        Assert-AreEqual $list[0].Name $getAzureFirewall.Name
-        Assert-AreEqual $list[0].Location $getAzureFirewall.Location
-        Assert-AreEqual $list[0].Etag $getAzureFirewall.Etag
-        Assert-AreEqual @($list[0].IpConfigurations).Count @($getAzureFirewall.IpConfigurations).Count
-        Assert-AreEqual @($list[0].ApplicationRuleCollections).Count @($getAzureFirewall.ApplicationRuleCollections).Count
     }
     finally
     {
         # Cleanup
-        #Clean-ResourceGroup $rgname
+        Clean-ResourceGroup $rgname
     }
 }

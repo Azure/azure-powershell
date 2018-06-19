@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The AzureFirewall")]
         public PSAzureFirewall AzureFirewall { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -38,12 +41,8 @@ namespace Microsoft.Azure.Commands.Network
             {
                 throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
             }
-
-            if (this.AzureFirewall.IpConfigurations.Count != 1)
-            {
-                throw new ArgumentException(string.Format("There must be exactly one IP configuration associated with the Azure Firewall, found {0}.", this.AzureFirewall.IpConfigurations.Count));
-            }
-            if (this.AzureFirewall.IpConfigurations[0].PublicIpAddress != null)
+            
+            if (this.AzureFirewall.IpConfigurations.Count > 0 && this.AzureFirewall.IpConfigurations[0].PublicIpAddress != null)
             {
                 this.AzureFirewall.IpConfigurations[0].InternalPublicIpAddress = this.AzureFirewall.IpConfigurations[0].PublicIpAddress;
                 this.AzureFirewall.IpConfigurations[0].PublicIpAddress = null;
