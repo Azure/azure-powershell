@@ -14,15 +14,16 @@ Update a `Reservation`.
 
 ### CommandLine (Default)
 ```
-Update-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -AppliedScopeType <String>
- [-AppliedScope <String>] [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] 
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -AppliedScopeType <String>
+ [-AppliedScope <String>] [-InstanceFlexibility <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>] 
- -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzureRmReservation -AppliedScopeType <String> [-AppliedScope <String>] [-InstanceFlexibility <String>]
+ -Reservation <PSReservation> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,7 +53,7 @@ SubscriptionId for this `Reservation` to be applied
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,26 +68,9 @@ Type of the Applied Scope
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Single, Shared
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceFlexibility
-If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-Accepted values: On, Off, NotSupported
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -108,13 +92,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InstanceFlexibility
+If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Reservation
 Pipe object parameter for `Reservation`
 
 ```yaml
 Type: PSReservation
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,9 +126,9 @@ Accept wildcard characters: False
 Id of the `Reservation` to update
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,9 +141,9 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` to update
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -197,4 +196,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
