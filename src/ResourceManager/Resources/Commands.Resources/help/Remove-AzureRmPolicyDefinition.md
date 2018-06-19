@@ -64,13 +64,6 @@ The command stores it in the $PolicyDefinition variable.
 
 The second command removes the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
-### Example 3: Remove policy definition piped to input
-```
-PS C:\> Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' | Remove-AzureRmPolicyDefinition
-```
-
-This command gets a policy definition named VMPolicyDefinition and removes it by piping it to the Remove-AzureRmPolicyDefinition cmdlet.
-
 ## PARAMETERS
 
 ### -ApiVersion

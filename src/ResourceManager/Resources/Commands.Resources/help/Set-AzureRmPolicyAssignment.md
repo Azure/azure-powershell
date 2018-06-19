@@ -50,14 +50,6 @@ The command stores that object in the $PolicyAssignment variable.
 
 The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
-### Example 2: Update the display name of the policy assignment piped to input
-```
-PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
-PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId | Set-AzureRmPolicyAssignment -DisplayName 'Do not allow VM creation'
-```
-
-The final command gets the policy assignment on the resource group identified by **ResourceId** property of $ResourceGroup and pipes it to Set-AzureRmPolicyAssignment cmdlet to update its display name
-
 ## PARAMETERS
 
 ### -ApiVersion

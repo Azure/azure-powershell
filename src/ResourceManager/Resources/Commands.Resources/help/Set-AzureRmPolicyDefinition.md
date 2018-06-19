@@ -61,13 +61,6 @@ The command stores that object in the $PolicyDefinition variable.
 
 The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
-### Example 2: Update the description of a policy definition piped to input
-```
-PS C:\> Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' | Set-AzureRmPolicyDefinition -Description 'Updated policy to not allow virtual machine creation'
-```
-
-This command gets the policy definition named VMPolicyDefinition and updates its description by piping it to Set-AzureRmPolicyDefinition cmdlet.
-
 ## PARAMETERS
 
 ### -ApiVersion
