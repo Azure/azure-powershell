@@ -62,6 +62,7 @@ namespace Microsoft.Azure.Commands.Compute
            ParameterSetName = IdParameterSet,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "The resource group name.")]
+        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
         [Alias("VMProfile")]

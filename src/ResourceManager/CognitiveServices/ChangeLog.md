@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update examples for CognitiveServices cmdlets
 
 ## Version 0.9.5
 * Set minimum dependency of module to PowerShell 5.0
