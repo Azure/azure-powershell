@@ -682,7 +682,7 @@ function Add-Module {
         Write-Output "No root module found, creating"
 
         $moduleVersion = $ModuleMetadata.ModuleVersion.ToString()
-        if ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null) {
+        if ((!$IsNetCore) -and ($ModuleMetadata.PrivateData.PSData.Prerelease -ne $null)) {
             $moduleVersion += ("-" + $ModuleMetadata.PrivateData.PSData.Prerelease -replace "--", "-")
         }
 
