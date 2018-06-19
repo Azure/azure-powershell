@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
@@ -108,6 +110,41 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
             return client;
         }
 
+        protected Management.Sql.LegacySdk.SqlManagementClient GetLegacySqlClient()
+        {
+            Management.Sql.LegacySdk.SqlManagementClient client =
+                TestBase.GetServiceClient<Management.Sql.LegacySdk.SqlManagementClient>(
+                    new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Storage.StorageManagementClient GetStorageClient()
+        {
+            Management.Storage.StorageManagementClient client = TestBase.GetServiceClient<Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected ResourceManagementClient GetResourcesClient()
+        {
+            ResourceManagementClient client = TestBase.GetServiceClient<ResourceManagementClient>(new CSMTestEnvironmentFactory());
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                client.LongRunningOperationInitialTimeout = 0;
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
         protected Management.Internal.Resources.ResourceManagementClient GetResourcesClient(RestTestFramework.MockContext context)
         {
             Management.Internal.Resources.ResourceManagementClient client =
@@ -176,6 +213,18 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 #if !NETSTANDARD
                 client.LongRunningOperationInitialTimeout = 0;
 #endif
+                client.LongRunningOperationRetryTimeout = 0;
+            }
+            return client;
+        }
+
+        protected Management.Storage.Version2017_10_01.StorageManagementClient GetCommonStorageClient(RestTestFramework.MockContext context)
+        {
+            var client =
+                context.GetServiceClient<Management.Storage.Version2017_10_01.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
                 client.LongRunningOperationRetryTimeout = 0;
             }
             return client;

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.Common.Authentication;

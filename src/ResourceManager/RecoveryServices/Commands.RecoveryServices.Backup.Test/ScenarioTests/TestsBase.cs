@@ -37,6 +37,7 @@ using NetworkMgmtNS = Microsoft.Azure.Management.Network;
 using ComputeMgmtNS = Microsoft.Azure.Management.Compute;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -56,6 +57,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public HyakRmNS.ResourceManagementClient HyakRmClient { get; private set; }
 
         public StorageMgmtNS.StorageManagementClient StorageClient { get; private set; }
+
+        public StorageManagementClient CommonStorageClient { get; private set; }
 
         public NetworkMgmtNS.NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -92,6 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
             RmRestClient = GetRmRestClient(context);
             HyakRmClient = GetHyakRmClient(context);
 
+            CommonStorageClient = GetCommonStorageManagementClient(context);
             StorageClient = GetStorageManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             InternalNetworkManagementClient = this.GetNetworkManagementClientInternal(context);
@@ -104,6 +108,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 RmRestClient,
                 HyakRmClient,
                 StorageClient,
+                CommonStorageClient,
                 NetworkManagementClient,
                 InternalNetworkManagementClient,
                 ComputeManagementClient);
@@ -112,6 +117,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         private StorageMgmtNS.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageMgmtNS.StorageManagementClient>(
+                TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private StorageManagementClient GetCommonStorageManagementClient(MockContext context)
+        {
+            return context.GetServiceClient<StorageManagementClient>(
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 

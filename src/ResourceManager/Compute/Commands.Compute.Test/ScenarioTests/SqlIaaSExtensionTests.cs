@@ -12,6 +12,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
+
 #if NETSTANDARD
         [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmVMSqlServerExtension");
         }
+
 
 #if NETSTANDARD
         [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
@@ -36,6 +38,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmVMSqlServerAKVExtension");
         }
 
+		
 #if NETSTANDARD
         [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
         [Trait(Category.RunType, Category.DesktopOnly)]

@@ -3327,7 +3327,7 @@ function Test-VirtualMachineWriteAcceleratorUpdate
 
         Assert-ThrowsContains {
             $st = $vm1 | Update-AzureRmVM -OsDiskWriteAccelerator $true; } `
-             "not supported on disks with Write Accelerator enabled";
+             "not supported on Virtual Machines with 'Write Accelerator' enabled.";
 
         $st = $vm1 | Update-AzureRmVM -OsDiskWriteAccelerator $false;
     }

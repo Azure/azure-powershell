@@ -25,9 +25,14 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
             var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageV2Client(context);
+            var sqlLegacyClient = GetLegacySqlClient();
+            var storageV2Client = GetStorageV2Client();
+            var commonStorageClient = GetCommonStorageClient(context);
+            var resourcesClient = GetResourcesClient();
             var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
+            var authorizationClient = GetAuthorizationManagementClient();
+            helper.SetupSomeOfManagementClients(sqlClient, sqlLegacyClient, storageV2Client, resourcesClient,
+                newResourcesClient, authorizationClient, commonStorageClient);
         }
 
         public ThreatDetectionTests(ITestOutputHelper output) : base(output)

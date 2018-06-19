@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Sql;
+using Microsoft.Azure.Management.Sql.Models;
 using System.Collections.Generic;
 using System.Linq;
 

@@ -14,13 +14,14 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
 using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.KeyVault;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -305,7 +306,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                     var thisVmss = this.VirtualMachineScaleSetClient.Get(this.ResourceGroupName, this.VMScaleSetName);
 
-                    Azure.Management.KeyVault.Models.Vault returnedKeyVault = null;
+                    Vault returnedKeyVault = null;
                     try
                     {
                         returnedKeyVault = keyVaultManagementFactory.Vaults.Get(rg, kv);

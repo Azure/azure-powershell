@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Management.Storage;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Storage.Auth;
 using System;

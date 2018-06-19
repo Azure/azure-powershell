@@ -49,6 +49,10 @@
       <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
       <Name>Commands.Common.Authentication.ResourceManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LegacySdk\SqlManagement.csproj">
       <Project>{04B53727-16E6-4EF0-9116-04C7F1C33842}</Project>
       <Name>SqlManagement</Name>
@@ -313,6 +317,14 @@
     <ProjectReference Include="..\Commands.Sql\Commands.Sql.csproj">
       <Project>{69ed499e-6f3c-488f-86b8-b74cfda4d47e}</Project>
       <Name>Commands.Sql</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj">
+      <Project>{836965C0-B198-4D01-B3D7-757DB62B49A0}</Project>
+      <Name>Commands.Common.KeyVault</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

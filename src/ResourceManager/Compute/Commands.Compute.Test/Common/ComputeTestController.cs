@@ -13,8 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Graph.RBAC;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Storage;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -43,7 +48,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
     {
         private readonly EnvironmentSetupHelper _helper;
 
-        public StorageManagementClient StorageClient { get; private set; }
+        public Azure.Management.Storage.Version2017_10_01.StorageManagementClient StorageClient { get; private set; }
+
+        public Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient KeyVaultClient { get; private set; }
+
+        public Azure.Management.Storage.StorageManagementClient StorageClientPublic { get; private set; }
+
+        public Azure.Management.KeyVault.KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public ComputeManagementClient ComputeManagementClient { get; private set; }
 
@@ -110,8 +121,8 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             d.Add("Microsoft.Authorization", null);
             d.Add("Microsoft.Compute", null);
             d.Add("Microsoft.Network", null);
+            d.Add("Microsoft.KeyVault", null);
             d.Add("Microsoft.Storage", null);
-
             var providersToIgnore = new Dictionary<string, string>();
             providersToIgnore.Add("Microsoft.Azure.Management.Resources.ResourceManagementClient", "2016-02-01");
             providersToIgnore.Add("Microsoft.Azure.Management.ResourceManager.ResourceManagementClient", "2017-05-10");
@@ -141,6 +152,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "AzureRM.Storage.ps1",
                     "AzureRM.Resources.ps1");
 
+
                 try
                 {
                     var psScripts = scriptBuilder?.Invoke();
@@ -160,6 +172,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         private void SetupManagementClients(MockContext context)
         {
             StorageClient = GetStorageManagementClient(context);
+            GalleryClient = GetGalleryClient();
+            StorageClientPublic = GetPublicStorageManagementClient(context);
+            //var eventsClient = GetEventsClient();
+            KeyVaultManagementClient = GetKeyVaultManagementClient(context);
+            KeyVaultClient = GetCommonKeyVaultClient(context);
+            NetworkManagementClient = this.GetNetworkManagementClientClient(context);
             ComputeManagementClient = GetComputeManagementClient(context);
             NetworkManagementClient = GetNetworkManagementClient(context);
             NetworkManagementClientInternal = GetNetworkManagementClientInternal(context);
@@ -168,6 +186,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
             _helper.SetupSomeOfManagementClients(
                 StorageClient,
+                GalleryClient,
+                StorageClientPublic,
+                //eventsClient,
+                KeyVaultManagementClient,
+                KeyVaultClient,
                 ComputeManagementClient,
                 NetworkManagementClient,
                 NetworkManagementClientInternal,
@@ -189,6 +212,40 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             return context.GetServiceClient<ResourceManagementClientInternal>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
+        private Azure.Management.Storage.Version2017_10_01.StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Azure.Management.Storage.Version2017_10_01.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.Storage.Version2017_10_01.StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Azure.Management.Storage.StorageManagementClient GetPublicStorageManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Azure.Management.Storage.StorageManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.Storage.StorageManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private GalleryClient GetGalleryClient()
+        {
+            return TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
+        }
+
+
+        private Azure.Management.KeyVault.KeyVaultManagementClient GetKeyVaultManagementClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Azure.Management.KeyVault.KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Azure.Management.KeyVault.KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+        }
+
+        private Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient GetCommonKeyVaultClient(RestTestFramework.MockContext context)
+        {
+            return testViaCsm
+                ? context.GetServiceClient<Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment())
+                : TestBase.GetServiceClient<Commands.Common.KeyVault.Version2016_10_1.KeyVaultManagementClient>(new RDFETestEnvironmentFactory());
+		}
+		
         private static StorageManagementClient GetStorageManagementClient(MockContext context)
         {
             return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());

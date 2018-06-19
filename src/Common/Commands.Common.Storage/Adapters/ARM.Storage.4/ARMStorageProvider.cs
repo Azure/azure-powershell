@@ -15,14 +15,15 @@
 using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using Microsoft.Azure.Commands.Compute;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class ARMStorageProvider : IStorageServiceProvider
     {
-        IStorageManagementClient _client;
+        Azure.Management.Storage.Version2017_10_01.IStorageManagementClient _client;
 
-        public ARMStorageProvider(IStorageManagementClient client)
+        public ARMStorageProvider(Azure.Management.Storage.Version2017_10_01.IStorageManagementClient client)
         {
             _client = client;
         }

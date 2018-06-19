@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Microsoft.WindowsAzure.Commands.Common.Storage;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
     public class ARMStorageService : IStorageService
     {
-        Azure.Management.Storage.Models.StorageAccount _account;
+        StorageAccount _account;
         List<string> _authenticationKeys = new List<string>();
-        public ARMStorageService(Azure.Management.Storage.Models.StorageAccount account,
+        public ARMStorageService(StorageAccount account,
             params string[] authenticationKeys)
         {
             _account = account;

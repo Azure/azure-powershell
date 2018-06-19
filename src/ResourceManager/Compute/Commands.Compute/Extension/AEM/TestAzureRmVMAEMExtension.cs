@@ -22,7 +22,8 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Storage;
-using Microsoft.Azure.Management.Storage.Models;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+using Microsoft.Azure.Management.Storage.Version2017_10_01.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -90,7 +91,7 @@ namespace Microsoft.Azure.Commands.Compute
         {
             this._Helper = new AEMHelper((err) => this.WriteError(err), (msg) => this.WriteVerbose(msg), (msg) => this.WriteWarning(msg),
                 this.CommandRuntime.Host.UI,
-                AzureSession.Instance.ClientFactory.CreateArmClient<StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
+                AzureSession.Instance.ClientFactory.CreateArmClient<Azure.Management.Storage.Version2017_10_01.StorageManagementClient>(DefaultProfile.DefaultContext, AzureEnvironment.Endpoint.ResourceManager),
                 this.DefaultContext.Subscription);
 
             this._Helper.WriteVerbose("Starting TestAzureRmVMAEMExtension");
