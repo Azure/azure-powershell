@@ -118,7 +118,9 @@ Accept wildcard characters: False
 ```
 
 ### -IncludeDescendent
-Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.```yaml
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: IncludeDescendentParameterSet
 Aliases:
