@@ -132,9 +132,6 @@
     <Compile Include="Implementation\Policy\PolicyHelpStrings.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
-    <Compile Include="Implementation\Policy\PsPolicyAssignment.cs" />
-    <Compile Include="Implementation\Policy\PsPolicySetDefinition.cs" />
-    <Compile Include="Implementation\Policy\PsPolicyDefinition.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\SetAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\ResourceGroups\ExportAzureResourceGroupCmdlet.cs" />

@@ -21,9 +21,9 @@ Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzu
 
 ### NameParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
+Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ### IncludeDescendentsParameterSet
@@ -33,16 +33,9 @@ Get-AzureRmPolicyAssignment [-Scope <String>] [-IncludeDescendents] [-ApiVersion
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### PolicyDefinitionIdFilterParameterSet
-```
-Get-AzureRmPolicyAssignment [-Scope <String>] -PolicyDefinitionId <String> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
 ### IdParameterSet
 ```
-Get-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicyAssignment -Id <String> [-PolicyDefinitionId <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -191,10 +184,10 @@ Specifies the ID of the policy definition of the policy assignments that this cm
 
 ```yaml
 Type: String
-Parameter Sets: PolicyDefinitionIdFilterParameterSet
+Parameter Sets: NameParameterSet, IdParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -221,7 +214,7 @@ Specifies the scope at which the policy is applied for the assignment that this 
 
 ```yaml
 Type: String
-Parameter Sets: NameParameterSet, IncludeDescendentsParameterSet, PolicyDefinitionIdFilterParameterSet
+Parameter Sets: NameParameterSet, IncludeDescendentsParameterSet
 Aliases:
 
 Required: False
@@ -241,7 +234,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
+### System.Management.Automation.PSObject
 
 ## NOTES
 

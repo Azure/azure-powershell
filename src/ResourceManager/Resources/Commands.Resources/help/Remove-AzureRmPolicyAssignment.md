@@ -27,13 +27,6 @@ Remove-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### InputObjectParameterSet
-```
-Remove-AzureRmPolicyAssignment -InputObject <PsPolicyAssignment> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 The **Remove-AzureRmPolicyAssignment** cmdlet removes the specified policy assignment.
 
@@ -156,21 +149,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The policy assignment object to remove that was output from another cmdlet.
-
-```yaml
-Type: PsPolicyAssignment
-Parameter Sets: InputObjectParameterSet
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
