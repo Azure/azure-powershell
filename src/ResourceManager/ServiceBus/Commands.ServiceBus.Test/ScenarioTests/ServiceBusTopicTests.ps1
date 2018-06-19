@@ -84,6 +84,7 @@ function ServiceBusTopicAuthTests
 	$namespaceName = getAssetName "Namespace-"
 	$TopicName = getAssetName "Topic-"
     $authRuleName = getAssetName "authorule-"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
 	$keyValue = "YskcXxK7Jk0qeOPlISv8J/JFHU5pGFfxI4p0W1voKIc="
 
 	# Create ResourceGroup

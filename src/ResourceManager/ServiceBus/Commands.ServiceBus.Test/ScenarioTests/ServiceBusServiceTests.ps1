@@ -76,6 +76,7 @@ function ServiceBusNameSpaceAuthTests
 	$namespaceName = getAssetName "Namespace-"
 	$authRuleName = getAssetName "authorule-"
 	$defaultNamespaceAuthRule = "RootManageSharedAccessKey"
+	<#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="...")]#>
 	$keyValue = "YskcXxK7Jk0qeOPlISv8J/JFHU5pGFfxI4p0W1voKIc="
 	
     Write-Debug " Create resource group"    
