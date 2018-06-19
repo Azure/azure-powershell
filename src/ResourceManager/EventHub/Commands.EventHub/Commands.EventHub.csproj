@@ -97,7 +97,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.EventHub.psd1">
+    <None Include="AzureRM.EventHub.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.EventHub.format.ps1xml">

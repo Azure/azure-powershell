@@ -599,7 +599,7 @@
     <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Network.psd1">
+    <None Include="AzureRM.Network.psd1">
       <Link>AzureRM.Network.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
