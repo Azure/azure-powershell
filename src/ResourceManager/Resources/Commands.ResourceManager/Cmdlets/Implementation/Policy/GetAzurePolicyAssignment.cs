@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// Gets or sets the policy assignment scope parameter.
         /// </summary>
         [Parameter(ParameterSetName = PolicyCmdletBase.NameParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
-        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentsParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
         [Parameter(ParameterSetName = PolicyCmdletBase.PolicyDefinitionIdFilterParameterSet, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentScopeHelp)]
         [ValidateNotNullOrEmpty]
         public string Scope { get; set; }
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the all switch
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentsParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentIncludeDescendentsHelp)]
-        public SwitchParameter IncludeDescendents { get; set; }
+        [Parameter(ParameterSetName = PolicyCmdletBase.IncludeDescendentParameterSet, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.GetPolicyAssignmentIncludeDescendentsHelp)]
+        public SwitchParameter IncludeDescendent { get; set; }
 
         /// <summary>
         /// Executes the cmdlet.
@@ -174,9 +174,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         private string GetFilterParam(string resourceId)
         {
             var isManagementGroupScope = IsManagementGroupScope(resourceId);
-            if (isManagementGroupScope && this.IncludeDescendents)
+            if (isManagementGroupScope && this.IncludeDescendent)
             {
-                throw new PSInvalidOperationException($"The -{nameof(this.IncludeDescendents)} switch is not supported for management group scopes.");
+                throw new PSInvalidOperationException($"The -{nameof(this.IncludeDescendent)} switch is not supported for management group scopes.");
             }
 
             if (!string.IsNullOrEmpty(this.PolicyDefinitionId))
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 return $"$filter=policyDefinitionId eq '{this.PolicyDefinitionId}'";
             }
 
-            return this.IncludeDescendents ? null : "$filter=atScope()";
+            return this.IncludeDescendent ? null : "$filter=atScope()";
         }
     }
 }
