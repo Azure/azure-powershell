@@ -131,7 +131,7 @@
     <Compile Include="Utilities\WebsitesClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.LogicApp.psd1">
+    <None Include="AzureRM.LogicApp.psd1">
       <Link>AzureRM.LogicApp.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

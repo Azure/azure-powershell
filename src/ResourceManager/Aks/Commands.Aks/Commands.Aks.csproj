@@ -41,7 +41,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Aks.psd1">
+    <None Include="AzureRM.Aks.psd1">
       <Link>AzureRM.Aks.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
