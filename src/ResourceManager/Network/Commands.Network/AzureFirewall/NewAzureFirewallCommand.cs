@@ -45,22 +45,23 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string ResourceGroupName { get; set; }
 
         [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "location.")]
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "location.")]
         [ValidateNotNullOrEmpty]
         public virtual string Location { get; set; }
 
         [Parameter(
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Virtual Network Name")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Virtual Network Name")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(
-         Mandatory = true,
-         ValueFromPipelineByPropertyName = true,
-         HelpMessage = "Public Ip Name")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Public Ip Name")]
         [ValidateNotNullOrEmpty]
         public string PublicIpName { get; set; }
 

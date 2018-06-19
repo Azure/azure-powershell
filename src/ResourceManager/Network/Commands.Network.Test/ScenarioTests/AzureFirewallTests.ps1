@@ -22,7 +22,7 @@ function Test-AzureFirewallCRUD
     $rgname = Get-ResourceGroupName
     $azureFirewallName = Get-ResourceName
     $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
-    $location = "centraluseuap" #Get-ProviderLocation $resourceTypeParent
+    $location = "eastus2euap" #Get-ProviderLocation $resourceTypeParent
 
     $vnetName = Get-ResourceName
     $subnetName = "AzureFirewallSubnet"
@@ -65,7 +65,7 @@ function Test-AzureFirewallCRUD
 	$networkRule1DestinationPort1 = "90"
 	$networkRule1DestinationPort2 = "900"
 	$networkRule1Protocol1 = "Udp"
-	$networkRule1Protocol2 = "Icmp"
+	$networkRule1Protocol2 = "Tcp"
 
 	# AzureFirewallNetworkRule 2
 	$networkRule2Name = "networkRule2"
@@ -166,7 +166,7 @@ function Test-AzureFirewallCRUD
 		Assert-AreEqual $networkRule1DestinationPort1 $networkRule.DestinationPorts[0]
 
 		# Create Network Rule Collection
-		$netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $netRule -ActionType $networkRcActionType
+		$netRc = New-AzureRmFirewallNetworkRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
 
 		# Update AzureFirewall with ApplicationRuleCollection and NetworkRuleCollection
 		$azureFirewall.ApplicationRuleCollections = $appRc

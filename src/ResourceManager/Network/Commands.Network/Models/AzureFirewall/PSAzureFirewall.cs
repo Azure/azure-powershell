@@ -77,17 +77,15 @@ namespace Microsoft.Azure.Commands.Network.Models
                 throw new ArgumentException($"Virtual Network {virtualNetwork.Name} should contain a Subnet named {AzureFirewallSubnetName}");
             }
 
-            var subnetSize = int.Parse(firewallSubnet.AddressPrefix.Split(new[] { '/' })[1]);
-            
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>
+            {
+                new PSAzureFirewallIpConfiguration
                 {
-                    new PSAzureFirewallIpConfiguration
-                    {
-                        Name = AzureFirewallIpConfigurationName,
-                        Subnet = new PSResourceId { Id = firewallSubnet.Id },
-                        InternalPublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
-                    }
-                };
+                    Name = AzureFirewallIpConfigurationName,
+                    Subnet = new PSResourceId { Id = firewallSubnet.Id },
+                    InternalPublicIpAddress = new PSResourceId {Id =  publicIpAddress.Id}
+                }
+            };
         }
 
         public void RemoveIpConfiguration()
