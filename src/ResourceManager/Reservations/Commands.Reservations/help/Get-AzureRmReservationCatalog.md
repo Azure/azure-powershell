@@ -13,7 +13,8 @@ Get the catalog of available reservations
 ## SYNTAX
 
 ```
-Get-AzureRmReservationCatalog [-SubscriptionId <String>] [-ReservedResourceType <String>] [-Location <String>] [<CommonParameters>]
+Get-AzureRmReservationCatalog [-SubscriptionId <Guid>] -ReservedResourceType <String> [-Location <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +38,27 @@ Get the SuseLinux catalog for the specified subscription
 
 ## PARAMETERS
 
-### -SubscriptionId
-Id of the subscription
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Specifies the location of the reserved resources in the catalog
+
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -58,8 +73,7 @@ Specifies the type of the reserved resources in the catalog
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
-Accepted values: VirtualMachines, SqlDatabases, SuseLinux
+Aliases:
 
 Required: True
 Position: Named
@@ -68,14 +82,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Specifies the location of the reserved resources in the catalog
-
+### -SubscriptionId
+Id of the subscription
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

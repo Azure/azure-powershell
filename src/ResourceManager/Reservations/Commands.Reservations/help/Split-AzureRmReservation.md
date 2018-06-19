@@ -14,14 +14,14 @@ Split a `Reservation`.
 
 ### CommandLine (Default)
 ```
-Split-AzureRmReservation -ReservationOrderId <String> -ReservationId <String> -Quantity <Nullable`1[]>
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Split-AzureRmReservation -ReservationOrderId <Guid> -ReservationId <Guid> -Quantity <Int32[]>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PipeObject
 ```
-Split-AzureRmReservation -Quantity <Nullable`1[]> -Reservation <PSReservation> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Split-AzureRmReservation -Quantity <Int32[]> -Reservation <PSReservation>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,13 +38,26 @@ Split the specified `Reservation` into two `Reservation`s with the corresponding
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Quantity
 Comma-separated integers for quantity field of the two `Reservation`s
 
 ```yaml
-Type: Nullable`1[]
+Type: Int32[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -59,7 +72,7 @@ Pipe object parameter for `Reservation`
 ```yaml
 Type: PSReservation
 Parameter Sets: PipeObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -72,9 +85,9 @@ Accept wildcard characters: False
 Id of the `Reservation` to split
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +100,9 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` that contains the `Reservation` that user wants to split
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: CommandLine
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -142,4 +155,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
