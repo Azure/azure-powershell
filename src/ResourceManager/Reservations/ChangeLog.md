@@ -19,14 +19,14 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.1.4
+* Updated to the latest .NET SDK version 1.8.0-preview
 * Updated Cmdlet Get-AzureRmReservationCatalog
     - Added parameters ReservedResourceType and Location.
-    - Removed Size and Tier from Catalog object.
+    - Removed Size and Tier from Catalog response.
+    - Renamed Capabilities to SkuProperties in Catalog response.
 * Updated Cmdlet Update-AzureRmReservation
     - Added optional InstanceFlexibility parameter.
-* Added properties to PSReservation
+* Added properties to Reservation response.
 
 ## Version 0.1.3
 * Change Guid paramters to Guid type, not string
