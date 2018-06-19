@@ -146,6 +146,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             Collection<PSObject> output,
             XunitTracingInterceptor xunitLogger)
         {
+            if (output != null)
+            {
+                LogPowerShellStream<PSObject>(xunitLogger, output, "OUTPUT");
+            }
+
             if (xunitLogger != null &&
                 powershell.Commands != null &&
                 powershell.Commands.Commands != null &&
