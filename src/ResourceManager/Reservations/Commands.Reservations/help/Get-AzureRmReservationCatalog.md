@@ -39,7 +39,9 @@ Get the SuseLinux catalog for the specified subscription
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.```yaml
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
@@ -53,7 +55,6 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the reserved resources in the catalog
-
 
 ```yaml
 Type: String
