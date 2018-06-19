@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add KeyVault secret reference support in parameters when using `TemplateParameterObject` in `New-AzureRmResourceGroupDeployment`
 
 ## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
