@@ -118,7 +118,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.DataLakeStore.psd1">
+    <None Include="AzureRM.DataLakeStore.psd1">
       <Link>AzureRM.DataLakeStore.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
