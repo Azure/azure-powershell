@@ -1,0 +1,904 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbj9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7228da76-6367-48a1-98bd-061db0f0c4f3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "[\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/BGInfo/versions/2.1\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/CustomScriptExtension/versions/1.8\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/CustomScriptForLinux/versions/1.5.2.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Linux\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Extensions/types/DockerExtension/versions/1.1.1606092330\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Linux\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Powershell/types/DSC/versions/2.19.0.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Security/types/IaaSAntimalware/versions/1.4.0.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Diagnostics/types/IaaSDiagnostics/versions/1.10.1.1\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/JsonADDomainExtension/versions/1.3\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.EnterpriseCloud.Monitoring/types/MicrosoftMonitoringAgent/versions/1.0.10900.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/OSPatchingForLinux/versions/2.3.0.1\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Linux\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/VMAccessAgent/versions/2.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Windows\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/VMAccessForLinux/versions/1.4.0.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Linux\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": false,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Succeeded\"\r\n    }\r\n  },\r\n  {\r\n    \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/jerff/types/idk/versions/0.1.0\",\r\n    \"name\": null,\r\n    \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n    \"location\": \"local\",\r\n    \"properties\": {\r\n      \"vmOsType\": \"Linux\",\r\n      \"computeRole\": \"N/A\",\r\n      \"vmScaleSetEnabled\": false,\r\n      \"supportMultipleExtensions\": true,\r\n      \"isSystemExtension\": false,\r\n      \"sourceBlob\": null,\r\n      \"provisioningState\": \"Failed\"\r\n    }\r\n  }\r\n]",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "6846"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvmwZ2ah7jmXoLBjsjVjlnaQ9zy2X1n8YpCJvGnadyS6s48V9sMFF1EBPMG8EJlUGztUhaZe03beZ5PIFxQV6IL0221LW58L4kntuUNSqhvMRtRs6qjiITa2BCccQKreFpGgc5lzdJXazgafHwdY8d"
+        ],
+        "x-ms-correlation-request-id": [
+          "80085dfd-fe27-4e12-94f8-0b3065d7724d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14858"
+        ],
+        "x-ms-request-id": [
+          "80085dfd-fe27-4e12-94f8-0b3065d7724d"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195418Z:80085dfd-fe27-4e12-94f8-0b3065d7724d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/BGInfo/versions/2.1?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5Db21wdXRlL3R5cGVzL0JHSW5mby92ZXJzaW9ucy8yLjE/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2fc4b256-b57d-453e-b5c2-5274b335a386"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/BGInfo/versions/2.1\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "510"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:17 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv+2rNtze2icTrADLtwLCVEa4OFIGsJPYM/szAmGCQAATS5TBsCd3CV/Ek7JcvLD6nxldV8pUd9xLaTY1Wn2jysJJ4V9Lp9v/wa0xBVZ2YKJ4DrRkbPmyz2J5HztV6FbffC09tKyIv1zY70RxN2k22"
+        ],
+        "x-ms-correlation-request-id": [
+          "a7d0c430-acd9-43dd-b02f-7db352e65a16"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14857"
+        ],
+        "x-ms-request-id": [
+          "a7d0c430-acd9-43dd-b02f-7db352e65a16"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195418Z:a7d0c430-acd9-43dd-b02f-7db352e65a16"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/CustomScriptExtension/versions/1.8?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5Db21wdXRlL3R5cGVzL0N1c3RvbVNjcmlwdEV4dGVuc2lvbi92ZXJzaW9ucy8xLjg/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "eae091c4-995e-45d0-bc19-d91a428fb78a"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/CustomScriptExtension/versions/1.8\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:18 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvvE5UabP0bm6INQwD7R9DiAJ+AuRoMHQEtxFcj6foX3CrNmpalUUs9kqIT0HLQ1o+xxJaUQVlH/1d8W3QUXkEztqaVaug8b7gBLWZWutbvePr4sfBqrokYNYJ2aN582ZFOanoayy53ceRKWg131eH"
+        ],
+        "x-ms-correlation-request-id": [
+          "0766b971-a303-42c1-95a3-c6fd85f10c8d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14856"
+        ],
+        "x-ms-request-id": [
+          "0766b971-a303-42c1-95a3-c6fd85f10c8d"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195418Z:0766b971-a303-42c1-95a3-c6fd85f10c8d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/CustomScriptForLinux/versions/1.5.2.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5PU1RDRXh0ZW5zaW9ucy90eXBlcy9DdXN0b21TY3JpcHRGb3JMaW51eC92ZXJzaW9ucy8xLjUuMi4wP2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4050d470-c38a-463d-b6ab-18c96967d66b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/CustomScriptForLinux/versions/1.5.2.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Linux\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "533"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:18 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvk18HhNwie3pttuCq3dcpVX5whf9FF3ZCdDDcjiPIhGxYqYVkiWgDdxZtqvXt2K0wCWS9/XbOJF2QrnynfyiMykY4WC0pCv3FpSMyVEFDIAuaqfuj9DfXI2DMENC967aC/awZkbB5Q/0s4zDoZEDu"
+        ],
+        "x-ms-correlation-request-id": [
+          "adcc9360-c4e1-4611-8a3c-8164fcae3b8b"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14855"
+        ],
+        "x-ms-request-id": [
+          "adcc9360-c4e1-4611-8a3c-8164fcae3b8b"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195418Z:adcc9360-c4e1-4611-8a3c-8164fcae3b8b"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Extensions/types/DockerExtension/versions/1.1.1606092330?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5BenVyZS5FeHRlbnNpb25zL3R5cGVzL0RvY2tlckV4dGVuc2lvbi92ZXJzaW9ucy8xLjEuMTYwNjA5MjMzMD9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7335880a-8147-4bbe-a680-ea5f306f80f4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Extensions/types/DockerExtension/versions/1.1.1606092330\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Linux\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "537"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:18 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvHbh7pUiWi0xEk0vuEKsB7eU0zakAxbyMfO7HJS6CvuHsIi92OMRmOBStRZn18b+8H4aGwGICg0RhNhS+in+YL+6PTFS/HUDTrWTK6s/Mj71bSiVNKcHQRc/WelXb32j14TZP/Pqu4iV0qP/uGQGQ"
+        ],
+        "x-ms-correlation-request-id": [
+          "cb8caeef-5a0b-40b8-b3e8-6d5bece1408f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14854"
+        ],
+        "x-ms-request-id": [
+          "cb8caeef-5a0b-40b8-b3e8-6d5bece1408f"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195419Z:cb8caeef-5a0b-40b8-b3e8-6d5bece1408f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Powershell/types/DSC/versions/2.19.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5Qb3dlcnNoZWxsL3R5cGVzL0RTQy92ZXJzaW9ucy8yLjE5LjAuMD9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "0f869705-c7c8-427a-a113-ad2f871dee4b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Powershell/types/DSC/versions/2.19.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "515"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:18 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvDerfq8iNEK1Xvb+wEEPpetRHMW6+bv1LzUrbgM9dBX+xdAXm++yDslk2bmQlxJtbe5rwWFdUX9znp7WH664GG3FRg0yBau3YDtSDPuKSZ2a/5Dhue+XVFXBpKwRal1XDEocLNAY2kBlFTH/PIq7u"
+        ],
+        "x-ms-correlation-request-id": [
+          "1c62b3b8-069d-4004-bb85-1a0974a15e34"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14853"
+        ],
+        "x-ms-request-id": [
+          "1c62b3b8-069d-4004-bb85-1a0974a15e34"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195419Z:1c62b3b8-069d-4004-bb85-1a0974a15e34"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Security/types/IaaSAntimalware/versions/1.4.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5BenVyZS5TZWN1cml0eS90eXBlcy9JYWFTQW50aW1hbHdhcmUvdmVyc2lvbnMvMS40LjAuMD9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "ec44079a-74d7-4dc4-96cb-fdc725e68934"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Security/types/IaaSAntimalware/versions/1.4.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "530"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:18 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvf+jyhWLYPA0o4MqjBiYFuI8CXqvYkS5v1bS8vO8TPdWzEETp6ae1Mr5GduJYNj5vk22eb3lyAUigQHEJgGM8Jt/S0tWG8Qu/yqM6ML1a2hg9FzoV4J2NcqhoKOB6icgfqZju3Kymsl03ly/nwrrE"
+        ],
+        "x-ms-correlation-request-id": [
+          "477ecd57-80c6-43ed-bf5c-68175162956c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14852"
+        ],
+        "x-ms-request-id": [
+          "477ecd57-80c6-43ed-bf5c-68175162956c"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195419Z:477ecd57-80c6-43ed-bf5c-68175162956c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Diagnostics/types/IaaSDiagnostics/versions/1.10.1.1?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5BenVyZS5EaWFnbm9zdGljcy90eXBlcy9JYWFTRGlhZ25vc3RpY3MvdmVyc2lvbnMvMS4xMC4xLjE/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1dd7d847-fb82-4232-ad31-925b33f87bf6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Azure.Diagnostics/types/IaaSDiagnostics/versions/1.10.1.1\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "534"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:19 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTRFzpWdZ9y4zrjKUAKkjE/6mtoIQ3fE0ZHa9z1vv9JD18n73VHtrJZGsfnj/dp/CEyrS4jPdEbWJd9oiwzJ50YanBV/1jV8lka1GTtyO+Gm/3wLeOfvBzUEHG9tfOWKfwJuWDSSSABuGg2rsvmXs"
+        ],
+        "x-ms-correlation-request-id": [
+          "86f19585-5ded-4929-9ab9-b4f1f8f94bdd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14851"
+        ],
+        "x-ms-request-id": [
+          "86f19585-5ded-4929-9ab9-b4f1f8f94bdd"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195419Z:86f19585-5ded-4929-9ab9-b4f1f8f94bdd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/JsonADDomainExtension/versions/1.3?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5Db21wdXRlL3R5cGVzL0pzb25BRERvbWFpbkV4dGVuc2lvbi92ZXJzaW9ucy8xLjM/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2e180939-f85e-4df6-86f5-a21c4fd8903b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/JsonADDomainExtension/versions/1.3\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "525"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:19 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvpscT6Z8QgZQsc0wT1qYLpPx8Uyrp8amJphN/luylXC4IPzVtJGfigBwXeLzSI+e6MoKZzqcbD2Tb+8XZApmfUaUf4sgs1IBf4scsUllU8BdcjnFgZqUQxhff3/TBTei+gut3suJxI9Xafwq9ZIfC"
+        ],
+        "x-ms-correlation-request-id": [
+          "02fbb744-572c-4353-986e-aff3d19994fe"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14850"
+        ],
+        "x-ms-request-id": [
+          "02fbb744-572c-4353-986e-aff3d19994fe"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195419Z:02fbb744-572c-4353-986e-aff3d19994fe"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.EnterpriseCloud.Monitoring/types/MicrosoftMonitoringAgent/versions/1.0.10900.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5FbnRlcnByaXNlQ2xvdWQuTW9uaXRvcmluZy90eXBlcy9NaWNyb3NvZnRNb25pdG9yaW5nQWdlbnQvdmVyc2lvbnMvMS4wLjEwOTAwLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "322d95b0-f030-4f98-9f20-78c276d0b807"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.EnterpriseCloud.Monitoring/types/MicrosoftMonitoringAgent/versions/1.0.10900.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "555"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:19 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvUG0zEKhIC1TqGzMMhZRItC9qLE++E27VnMKlhA1WtO/W2e4WluCVrJSOufeaG+C8e+55s2VaBFlOr+5W6AsaVCyjG3nF64RnypNWY3SoR8HlLMSoRu60bc1yWteJB0/1oC6WynbHiwXyV2vg0tlm"
+        ],
+        "x-ms-correlation-request-id": [
+          "ae22e0fc-e30b-4049-88e7-98ac026d63ae"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14849"
+        ],
+        "x-ms-request-id": [
+          "ae22e0fc-e30b-4049-88e7-98ac026d63ae"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195420Z:ae22e0fc-e30b-4049-88e7-98ac026d63ae"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/OSPatchingForLinux/versions/2.3.0.1?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5PU1RDRXh0ZW5zaW9ucy90eXBlcy9PU1BhdGNoaW5nRm9yTGludXgvdmVyc2lvbnMvMi4zLjAuMT9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "cd532ad8-8ef7-45e0-8faf-5855d3267832"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/OSPatchingForLinux/versions/2.3.0.1\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Linux\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "531"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:19 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRv/p7Yxx7HAMlK9pBjEhtEpeAfM3reYlf5L+726bprVw7tl5gAru93ZbQM/k4f9EOBd8aKn1QsLsufm4jFBSLEwPnYqqdaKDEUx1BK59ZcK3cX2+eD5LlK6dgUlrgYJmCpA1Obfay0tWFz9ryaaGtQ"
+        ],
+        "x-ms-correlation-request-id": [
+          "66086cd3-0edb-4d37-804e-b287e59a920e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14848"
+        ],
+        "x-ms-request-id": [
+          "66086cd3-0edb-4d37-804e-b287e59a920e"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195420Z:66086cd3-0edb-4d37-804e-b287e59a920e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/VMAccessAgent/versions/2.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5Db21wdXRlL3R5cGVzL1ZNQWNjZXNzQWdlbnQvdmVyc2lvbnMvMi4wP2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f6260083-60d2-4d79-a7c1-5b1f3a2e1864"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.Compute/types/VMAccessAgent/versions/2.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Windows\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "517"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:19 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvZy3nMuRHuBsQ2n+qIEiq5IvfO3npjQAiAFcDRnAG7yL0aQljRzWQ2SCI/suuWcwfqplmz6eSGcmpkZps0lW0qLI020P619djCaNg3LeOM9HCyKlg8/Wwl3uBdsEEjUqA1HesUDpssFBjeuZ2EMsM"
+        ],
+        "x-ms-correlation-request-id": [
+          "daf47c2b-594f-4982-9d95-5076e531a0c6"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14847"
+        ],
+        "x-ms-request-id": [
+          "daf47c2b-594f-4982-9d95-5076e531a0c6"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195420Z:daf47c2b-594f-4982-9d95-5076e531a0c6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/VMAccessForLinux/versions/1.4.0.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL01pY3Jvc29mdC5PU1RDRXh0ZW5zaW9ucy90eXBlcy9WTUFjY2Vzc0ZvckxpbnV4L3ZlcnNpb25zLzEuNC4wLjA/YXBpLXZlcnNpb249MjAxNS0xMi0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "df0ba978-913a-4cef-a910-8157b8fe1f5d"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/Microsoft.OSTCExtensions/types/VMAccessForLinux/versions/1.4.0.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Linux\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": false,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": null,\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "529"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvCEbRbIUc/Lx/hN4JPNiV4IcN9ie6DpH17Cfxp9/0bietAy5lhiNLPM+BHkmxdqet86C5woy3dNkQgzEBm3R7tg0/6xWJ+CkxPCUN69y0VAa/LRxRAkn/4WsqsGE0Ag7r8/95Q910YU/ZM+ewlnAL"
+        ],
+        "x-ms-correlation-request-id": [
+          "38f6f374-4f14-49d6-8f3d-8220218d7de9"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14846"
+        ],
+        "x-ms-request-id": [
+          "38f6f374-4f14-49d6-8f3d-8220218d7de9"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195420Z:38f6f374-4f14-49d6-8f3d-8220218d7de9"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/jerff/types/idk/versions/0.1.0?api-version=2015-12-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvYXJ0aWZhY3RUeXBlcy9WTUV4dGVuc2lvbi9wdWJsaXNoZXJzL2plcmZmL3R5cGVzL2lkay92ZXJzaW9ucy8wLjEuMD9hcGktdmVyc2lvbj0yMDE1LTEyLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "8c80bc78-c28a-4c7f-9fd9-735e7ccbb7e8"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.25211.01",
+          "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/artifactTypes/VMExtension/publishers/jerff/types/idk/versions/0.1.0\",\r\n  \"name\": null,\r\n  \"type\": \"Microsoft.Compute.Admin/locations/artifactTypes/VMExtension/publishers/types/versions/\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"vmOsType\": \"Linux\",\r\n    \"computeRole\": \"N/A\",\r\n    \"vmScaleSetEnabled\": false,\r\n    \"supportMultipleExtensions\": true,\r\n    \"isSystemExtension\": false,\r\n    \"sourceBlob\": {\r\n      \"uri\": \"https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip\"\r\n    },\r\n    \"provisioningState\": \"Failed\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "573"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Fri, 13 Oct 2017 19:54:20 GMT"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "WWW-Authenticate": [
+          "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvZsavVGswH8RVCLt8aDGEDhn/U6bNnf9FuIfJNXf7PtBlfVdr0GnoHIQgUwrDRm077raPGJsO+cw/0Q3bWHLy7KXsIFsY3BncqoqoJS1uWMRgDvfZH7VfZdzW8cJ1/iHj5o0uGUIkDC2XyDTmCyRZ"
+        ],
+        "x-ms-correlation-request-id": [
+          "2303e806-e098-431e-b530-ac511d4b76b8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14845"
+        ],
+        "x-ms-request-id": [
+          "2303e806-e098-431e-b530-ac511d4b76b8"
+        ],
+        "x-ms-routing-request-id": [
+          "LOCAL:20171013T195421Z:2303e806-e098-431e-b530-ac511d4b76b8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "0ff0bbbe-d68d-4314-8f68-80a808b5a6ec"
+  }
+}
