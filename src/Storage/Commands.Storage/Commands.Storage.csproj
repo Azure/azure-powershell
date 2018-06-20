@@ -206,7 +206,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\Azure.Storage.psd1">
+    <None Include="Azure.Storage.psd1">
       <Link>Azure.Storage.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

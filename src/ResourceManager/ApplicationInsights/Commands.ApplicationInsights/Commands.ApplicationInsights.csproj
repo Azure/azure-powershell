@@ -80,7 +80,7 @@
     <Compile Include="ApplicationInsights\ApplicationInsightsManagementClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.ApplicationInsights.psd1">
+    <None Include="AzureRM.ApplicationInsights.psd1">
       <Link>AzureRM.ApplicationInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
