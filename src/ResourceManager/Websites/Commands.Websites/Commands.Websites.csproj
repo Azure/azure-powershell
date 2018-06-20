@@ -132,7 +132,7 @@
     <Compile Include="Validations\ValidateWebAppNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Websites.psd1">
+    <None Include="AzureRM.Websites.psd1">
       <Link>AzureRM.Websites.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
