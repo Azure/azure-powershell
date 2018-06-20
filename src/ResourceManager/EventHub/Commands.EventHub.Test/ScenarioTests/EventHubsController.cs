@@ -14,9 +14,9 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.EventHub;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Azure.Management.EventHub;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
