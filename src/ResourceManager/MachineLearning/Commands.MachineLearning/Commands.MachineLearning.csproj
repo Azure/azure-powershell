@@ -99,7 +99,7 @@
     <Compile Include="Utilities\WebServicesClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.MachineLearning.psd1">
+    <None Include="AzureRM.MachineLearning.psd1">
       <Link>AzureRM.MachineLearning.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
