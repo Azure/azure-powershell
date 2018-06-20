@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.RedisCache.Netcore.psd1" Link="AzureRM.RedisCache.Netcore.psd1">
+    <None Include="AzureRM.RedisCache.Netcore.psd1" Link="AzureRM.RedisCache.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
