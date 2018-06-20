@@ -31,6 +31,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 {
@@ -923,6 +924,47 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         }
 
+        public string CheckBackupStatus()
+        {
+            string azureVmName = (string)ProviderData[ProtectionCheckParams.Name];
+            string azureVmResourceGroupName =
+                (string)ProviderData[ProtectionCheckParams.ResourceGroupName];
+
+            ODataQuery<ProtectedItemQueryObject> queryParams =
+                new ODataQuery<ProtectedItemQueryObject>(
+                    q => q.BackupManagementType
+                            == ServiceClientModel.BackupManagementType.AzureIaasVM &&
+                         q.ItemType == DataSourceType.VM);
+
+            var vaults = ServiceClientAdapter.ListVaults();
+            foreach (var vault in vaults)
+            {
+                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vault);
+
+                var items = ServiceClientAdapter.ListProtectedItem(
+                    queryParams,
+                    vaultName: vaultIdentifier.ResourceName,
+                    resourceGroupName: vaultIdentifier.ResourceGroupName);
+
+                if (items.Any(
+                    item =>
+                    {
+                        ResourceIdentifier vmIdentifier =
+                            new ResourceIdentifier(item.Properties.SourceResourceId);
+                        var itemVmName = vmIdentifier.ResourceName;
+                        var itemVmRgName = vmIdentifier.ResourceGroupName;
+
+                        return itemVmName.ToLower() == azureVmName.ToLower() &&
+                            itemVmRgName.ToLower() == azureVmResourceGroupName.ToLower();
+                    }))
+                {
+                    return vault;
+                }
+            }
+
+            return null;
+        }
+
         #region private
 
         private static CmdletModel.DailyRetentionFormat GetDailyRetentionFormat()
@@ -1286,8 +1328,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
         }
 
-        #endregion
-
         /// <summary>
         /// Generates ILR Response object for Windows VMs
         /// </summary>
@@ -1443,5 +1483,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             return password;
         }
+
+        #endregion
     }
 }
