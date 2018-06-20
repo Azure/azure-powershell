@@ -27,7 +27,23 @@ specified type and SKU.
 
 ### 1:
 ```
-New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'MyAccountName' -Type TextTranslation -SkuName F0 -Location 'usgovvirginia'
+PS C:\> New-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
+n 'WestUS'
+
+
+ResourceGroupName : cognitive-services-resource-group
+AccountName       : myluis
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                    nitiveServices/accounts/myluis
+Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location          : WestUS
+Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType       : LUIS
+ResourceType      : Microsoft.CognitiveServices/accounts
+Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState : Succeeded
+Tags              :
+
 ```
 
 ## PARAMETERS

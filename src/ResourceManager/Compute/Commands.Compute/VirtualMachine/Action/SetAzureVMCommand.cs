@@ -58,6 +58,7 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
           HelpMessage = "The resource group name.")]
         [ValidateNotNullOrEmpty]
+        [ResourceIdCompleter("Microsoft.Compute/virtualMachines")]
         public string Id { get; set; }
 
         [Parameter(
