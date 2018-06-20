@@ -16,29 +16,24 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ScenarioTest;
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class EventHubsTests : RMTestBase
+    public class EventHubsConsumerGroupsSkipTopTests : RMTestBase
     {
-        public EventHubsTests(ITestOutputHelper output)
+        public EventHubsConsumerGroupsSkipTopTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
-        
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EventHubsCRUD()
-        {
-            EventHubsController.NewInstance.RunPsTest("EventHubsTests");
+            TestExecutionHelpers.SetUpSessionAndProfile();
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void EventHubsAuthorizationRulesCRUD()
+        public void EventHubsConsumerGroupsskiptop()
         {
-            EventHubsController.NewInstance.RunPsTest("EventHubsAuthTests");
+            EventHubsController.NewInstance.RunPsTest("SkipTopTests");
         }
+        
     }
 }
