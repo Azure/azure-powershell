@@ -53,6 +53,6 @@
     "Test-GetAzureRmDiagnosticSetting": [ "" ]
   },
   "Variables": {
-    "SubscriptionId": "56bb45c9-5c14-4914-885e-c6fd6f130f7c"
+    "SubscriptionId": "a93fb07c-6c93-40be-bf3b-4f0deba10f4b"
   }
 }

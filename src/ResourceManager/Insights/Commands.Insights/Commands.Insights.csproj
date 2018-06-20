@@ -197,7 +197,7 @@
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Insights.psd1">
+    <None Include="AzureRM.Insights.psd1">
       <Link>AzureRM.Insights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
