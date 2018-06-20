@@ -18,6 +18,57 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
+* Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
+
+## Version 6.0.1
+* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Role`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`
+
+## Version 6.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted Users/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add convenience cmdlet for creating ServicePrincipals
+* Add Tab completers for Scope and ResourceType
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
+
+## Version 5.5.2
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 5.5.1
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 5.5.0
+* Fixed issue with importing aliases
+* Add Support for DataActions and NotDataActions to be passed in roledefinition create calls
+* Fix Roledefinitions calls to use the type filter
+
+## Version 5.4.0
+* Register-AzureRmProviderFeature: Added missing example in the docs
+* Register-AzureRmResourceProvider: Added missing example in the docs
+* Add proper error handling for Insufficient graph permission Issue whilst performing Roleassignment calls.
+* Fix roleassignment get calls when there are duplicate objectIds.
+* Fix RoleAssignment get to respect the ExpandPrincipalGroups parameter
+* Fix Roleassignment get calls to be used with roledefinition ID.
+
+## Version 5.3.0
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+
+## Version 5.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.

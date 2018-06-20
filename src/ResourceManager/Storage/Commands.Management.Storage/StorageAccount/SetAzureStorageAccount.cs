@@ -21,6 +21,7 @@ using Microsoft.Azure.Management.Storage.Models;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 using Microsoft.Azure.Commands.Management.Storage.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
@@ -102,16 +103,6 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Storage Service that will enable encryption.")]
-        public EncryptionSupportServiceEnum? EnableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "Storage Service that will disable encryption.")]
-        public EncryptionSupportServiceEnum? DisableEncryptionService { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Storage Account Tags.")]
         [AllowEmptyCollection]
@@ -145,7 +136,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool storageEncryption = false;
 
         [Parameter(HelpMessage = "Whether to set Storage Account encryption keySource to Microsoft.Keyvault or not. " +
-            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.", 
+            "If you specify KeyName, KeyVersion and KeyvaultUri, Storage Account Encryption KeySource will also be set to Microsoft.Keyvault weather this parameter is set or not.",
             Mandatory = false, ParameterSetName = KeyvaultEncryptionParameterSet)]
         public SwitchParameter KeyvaultEncryption
         {
@@ -243,13 +234,13 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         updateParameters.Identity = new Identity();
                     }
 
-                    if (this.EnableEncryptionService != null || this.DisableEncryptionService != null || StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
+                    if (StorageEncryption || (ParameterSetName == KeyvaultEncryptionParameterSet))
                     {
                         if (ParameterSetName == KeyvaultEncryptionParameterSet)
                         {
                             keyvaultEncryption = true;
                         }
-                        updateParameters.Encryption = ParseEncryption(EnableEncryptionService, DisableEncryptionService, StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
+                        updateParameters.Encryption = ParseEncryption(StorageEncryption, keyvaultEncryption, KeyName, KeyVersion, KeyVaultUri);
                     }
                     if (NetworkRuleSet != null)
                     {

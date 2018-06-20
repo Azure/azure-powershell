@@ -64,7 +64,7 @@ Specifies a list of profiles to add to the Autoscale setting, or $Null to add no
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]
 Parameter Sets: (All)
-Aliases: AutoscaleProfiles
+Aliases:
 
 Required: False
 Position: Named
@@ -139,7 +139,7 @@ Specifies a list of comma-separated notifications.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]
 Parameter Sets: (All)
-Aliases: Notifications
+Aliases:
 
 Required: False
 Position: Named
@@ -198,6 +198,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

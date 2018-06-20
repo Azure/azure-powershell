@@ -36,11 +36,33 @@ PS C:\>
 PS C:\> $GetHybrid = Get-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 PS C:\> $GetHybrid.UserMetadata = "Test UserMetadata"
 PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -InputObject $GetHybrid
+
+CreatedAt                   : 4/26/2017 10:04:15 PM
+UpdatedAt                   : 4/26/2017 10:08:11 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : Test UserMetadata
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
+                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
+                              n2
+Name                        : TestHybirdConnection2
+Type                        : Microsoft.Relay/HybridConnections
 ```
 
 ### Example 2
 ```
 PS C:\> Set-AzureRmRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection -UserMetadata = "Test UserMetadata updated"
+
+CreatedAt                   : 4/26/2017 10:04:15 PM
+UpdatedAt                   : 4/26/2017 10:10:25 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+UserMetadata                : Test UserMetadata updated
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
+                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
+                              n1
+Name                        : TestHybirdConnection1
+Type                        : Microsoft.Relay/HybridConnections
 ```
 
 Updates the specified HybridConnection with a new description in the specified namespace.
@@ -192,29 +214,7 @@ System.String
 
 ## OUTPUTS
 
-### Examples - 1 : InputObject
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:08:11 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : Test UserMetadata
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n2
-Name                        : TestHybirdConnection2
-Type                        : Microsoft.Relay/HybridConnections
-
-### Examples - 2 : Properties
-CreatedAt                   : 4/26/2017 10:04:15 PM
-UpdatedAt                   : 4/26/2017 10:10:25 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-UserMetadata                : Test UserMetadata updated
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-ServiceBus-WestUS
-                              /providers/Microsoft.Relay/namespaces/TestNameSpace-HybirdConnection/HybridConnections/TestHybirdConnectio
-                              n1
-Name                        : TestHybirdConnection1
-Type                        : Microsoft.Relay/HybridConnections
+### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
 
 ## NOTES
 

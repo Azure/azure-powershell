@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets name of the Policy.
+        ///     Gets or sets the name of the ASR replication policy.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByName,
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets friendly name of the Policy.
+        ///     Gets or sets the friendly name of the ASR replication policy.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByFriendlyName,

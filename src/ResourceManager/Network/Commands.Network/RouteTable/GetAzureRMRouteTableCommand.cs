@@ -19,7 +19,6 @@
 // Changes to this file may cause incorrect behavior and will be lost if the
 // code is regenerated.
 
-using AutoMapper;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.Network.Models;
@@ -30,10 +29,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using AutoMapper;
 using CNM = Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteTable"), OutputType(typeof(PSRouteTable))]
     public partial class GetAzureRmRouteTable : NetworkBaseCmdlet
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
         {
             base.Execute();
 
-            if(!string.IsNullOrEmpty(this.Name))
+            if (!string.IsNullOrEmpty(this.Name))
             {
                 var vRouteTable = this.NetworkClient.NetworkManagementClient.RouteTables.Get(ResourceGroupName, Name, ExpandResource);
                 var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<CNM.PSRouteTable>(vRouteTable);
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             else
             {
                 IPage<RouteTable> vRouteTablePage;
-                if(!string.IsNullOrEmpty(this.ResourceGroupName))
+                if (!string.IsNullOrEmpty(this.ResourceGroupName))
                 {
                     vRouteTablePage = this.NetworkClient.NetworkManagementClient.RouteTables.List(this.ResourceGroupName);
                 }

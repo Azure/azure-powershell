@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Retrieves Azure Site Recovery Points.
+    ///     Gets the available recovery points for a replication protected item.
     /// </summary>
     [Cmdlet(
         VerbsCommon.Get,
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets Name of the Recovery Point.
+        ///     Gets or sets the name of the recovery point to get.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
@@ -43,7 +43,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public string Name { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets the Azure Site Recovery Replication Protected Item object for which 
+        ///     to get the list of available recovery points.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,

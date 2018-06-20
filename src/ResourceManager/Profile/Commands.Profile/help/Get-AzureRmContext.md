@@ -32,7 +32,7 @@ Azure Resource Manager cmdlets use these settings by default when making Azure R
 
 ### Example 1: Getting the current context
 ```
-PS C:\> Add-AzureRmAccount
+PS C:\> Connect-AzureRmAccount
 PS C:\> Get-AzureRmContext
 
 Environment           : AzureCloud
@@ -43,7 +43,7 @@ SubscriptionName      : Test Subscription
 CurrentStorageAccount :
 ```
 
-In this example we are logging into our account with an Azure subscription using Add-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
+In this example we are logging into our account with an Azure subscription using Connect-AzureRmAccount, and then we are getting the context of the current session by calling Get-AzureRmContext.
 
 ### Example 2: Listing all available contexts
 ```
@@ -120,6 +120,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

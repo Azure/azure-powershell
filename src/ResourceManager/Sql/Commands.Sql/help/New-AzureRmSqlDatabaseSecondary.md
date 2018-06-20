@@ -13,10 +13,20 @@ Creates a secondary database for an existing database and starts data replicatio
 
 ## SYNTAX
 
+### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-SecondaryServiceObjectiveName <String>]
  [-SecondaryElasticPoolName <String>] [-Tags <Hashtable>] -PartnerResourceGroupName <String>
- -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-ServerName] <String>
+ -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob] [-LicenseType <String>]
+ [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+New-AzureRmSqlDatabaseSecondary [-DatabaseName] <String> [-Tags <Hashtable>] -PartnerResourceGroupName <String>
+ -PartnerServerName <String> [-AllowConnections <AllowConnections>] [-AsJob]
+ -SecondaryComputeGeneration <String> -SecondaryVCore <Int32> [-LicenseType <String>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -100,6 +110,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PartnerResourceGroupName
 Specifies the name of the Azure Resource Group to which this cmdlet assigns the secondary database.
 
@@ -145,12 +170,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SecondaryComputeGeneration
+The compute generation of teh Azure Sql Database secondary.
+
+```yaml
+Type: String
+Parameter Sets: VcoreBasedDatabase
+Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecondaryElasticPoolName
 Specifies the name of the elastic pool in which to put the secondary database.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
@@ -165,10 +205,25 @@ Specifies the name of the service objective to assign to the secondary database.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryVCore
+The Vcore numbers of the Azure Sql Database secondary.
+
+```yaml
+Type: Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -242,6 +297,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

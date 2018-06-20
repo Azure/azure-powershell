@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
@@ -23,19 +24,37 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
             Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTable()
         {
             RunPowerShellTest("Test-Table");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableWithDataFactoryParameter()
         {
             RunPowerShellTest("Test-TableWithDataFactoryParameter");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTablePiping()
         {
             RunPowerShellTest("Test-TablePiping");

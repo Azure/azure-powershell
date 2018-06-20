@@ -21,8 +21,9 @@ function Test-ExpressRouteBGPServiceCommunities
 	$communities = Get-AzureRmBgpServiceCommunity
 
 	Assert-NotNull $communities
-	Assert-NotNull $communities[0].BgpCommunities
-	Assert-AreEqual true $communities[0].BgpCommunities[0].IsAuthorizedToUse
+	$crmOnlineCommunity = $communities | Where-Object {$_.ServiceName -match "CRMOnline"}
+	Assert-NotNull $crmOnlineCommunity.BgpCommunities
+	Assert-AreEqual true $crmOnlineCommunity.BgpCommunities[0].IsAuthorizedToUse
 }
 
 <#
@@ -74,6 +75,7 @@ function Test-ExpressRouteRouteFilters
       Assert-AreEqual $filterName $filter.Name
       Assert-NotNull $filter.Location
       Assert-AreEqual 0 @($filter.Rules).Count
+
     }
     finally
     {
@@ -101,9 +103,9 @@ function Test-ExpressRouteCircuitStageCRUD
       
       # Create the ExpressRouteCircuit
 	  $job = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Standard -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 500 -AllowClassicOperations $true -AsJob
-      $job | Wait-Job
+	  $job | Wait-Job
 	  $circuit = $job | Receive-Job
-
+      
       $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname
       # set
       $circuit.AllowClassicOperations = $false
@@ -111,14 +113,13 @@ function Test-ExpressRouteCircuitStageCRUD
 	  
 	  		$actual = Get-AzureRmExpressRouteCircuitStats -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name 
 			Assert-AreEqual $actual.PrimaryBytesIn 0
-			
 
 	  #move
 	  $job = Move-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname -Location $location -ServiceKey $circuit.ServiceKey -Force -AsJob
-      $job | Wait-Job
-		      
+	  $job | Wait-Job
+
       # Delete Circuit
-      $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force -AsJob
+	  $job = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force -AsJob
 	  $job | Wait-Job
 	  $delete = $job | Receive-Job
       Assert-AreEqual true $delete
@@ -261,7 +262,7 @@ function Test-ExpressRouteCircuitPrivatePublicPeeringCRUD
 		Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 		Get-AzureRmExpressRouteCircuitRouteTableSummary -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
 		Get-AzureRmExpressRouteCircuitRouteTable -ResourceGroupName $rgname -ExpressRouteCircuitName $circuit.Name -PeeringType AzurePrivatePeering -DevicePath Primary
-
+		
 		# get peering
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name AzurePrivatePeering
 		Assert-AreEqual "AzurePrivatePeering" $p.Name
@@ -335,7 +336,7 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
         # Create the resource group
         $resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $rglocation    
         # Create the ExpressRouteCircuit with peering
-        $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 223 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC -LegacyMode $true 
+        $peering = New-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 33 -PrimaryPeerAddressPrefix "192.171.1.0/30" -SecondaryPeerAddressPrefix "192.171.2.0/30" -VlanId 224 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC -LegacyMode $true 
         $circuit = New-AzureRmExpressRouteCircuit -Name $circuitName -Location $location -ResourceGroupName $rgname -SkuTier Premium -SkuFamily MeteredData  -ServiceProviderName "equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 1000 -Peering $peering	
 
         #verification
@@ -354,9 +355,9 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		# Verify the peering
 		Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].Name
 		Assert-AreEqual "MicrosoftPeering" $circuit.Peerings[0].PeeringType
-		Assert-AreEqual "192.168.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
-		Assert-AreEqual "223" $circuit.Peerings[0].VlanId
+		Assert-AreEqual "192.171.1.0/30" $circuit.Peerings[0].PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.171.2.0/30" $circuit.Peerings[0].SecondaryPeerAddressPrefix
+		Assert-AreEqual "224" $circuit.Peerings[0].VlanId
 		Assert-NotNull $circuit.Peerings[0].MicrosoftPeeringConfig
 		Assert-AreEqual "1000" $circuit.Peerings[0].MicrosoftPeeringConfig.CustomerASN
 		Assert-AreEqual "AFRINIC" $circuit.Peerings[0].MicrosoftPeeringConfig.RoutingRegistryName
@@ -376,9 +377,9 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
 		Assert-AreEqual "MicrosoftPeering" $p.Name
 		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
-		Assert-AreEqual "223" $p.VlanId
+		Assert-AreEqual "192.171.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.171.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "224" $p.VlanId
 		Assert-NotNull $p.MicrosoftPeeringConfig
 		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
 		Assert-AreEqual "AFRINIC" $p.MicrosoftPeeringConfig.RoutingRegistryName
@@ -390,13 +391,13 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		Assert-AreEqual 1 @($listPeering).Count
 
 		# Set a new IPv4 peering
-	    $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix "192.168.1.0/30" -SecondaryPeerAddressPrefix "192.168.2.0/30" -VlanId 555 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC | Set-AzureRmExpressRouteCircuit 
+	    $circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Set-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix "192.171.1.0/30" -SecondaryPeerAddressPrefix "192.171.2.0/30" -VlanId 555 -MicrosoftConfigAdvertisedPublicPrefixes @("11.2.3.4/30", "12.2.3.4/30") -MicrosoftConfigCustomerAsn 1000 -MicrosoftConfigRoutingRegistryName AFRINIC | Set-AzureRmExpressRouteCircuit 
 		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
 		Assert-AreEqual "MicrosoftPeering" $p.Name
 		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
 		Assert-AreEqual "44" $p.PeerASN
-		Assert-AreEqual "192.168.1.0/30" $p.PrimaryPeerAddressPrefix
-		Assert-AreEqual "192.168.2.0/30" $p.SecondaryPeerAddressPrefix
+		Assert-AreEqual "192.171.1.0/30" $p.PrimaryPeerAddressPrefix
+		Assert-AreEqual "192.171.2.0/30" $p.SecondaryPeerAddressPrefix
 		Assert-AreEqual "555" $p.VlanId
 		Assert-NotNull $p.MicrosoftPeeringConfig
 		Assert-AreEqual "1000" $p.MicrosoftPeeringConfig.CustomerASN
@@ -428,12 +429,40 @@ function Test-ExpressRouteCircuitMicrosoftPeeringCRUD
 		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
 		Assert-AreEqual 1 @($listPeering).Count
 
-        # Delete Circuit
-        $delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
-        Assert-AreEqual true $delete
+		$deletePeering = Remove-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -ExpressRouteCircuit $circuit -PeerAddressType All | Set-AzureRmExpressRouteCircuit 
+
+		# List peering
+		$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname 
+		$listPeering = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig
+		Assert-AreEqual 0 @($listPeering).Count
+
+		# Set a new IPv6 peering
+		$primaryPeerAddressPrefixV6 = "fc00::/126";
+		$secondaryPeerAddressPrefixV6 = "fc00::/126";
+		$customerAsnV6 = 2000;
+		$routingRegistryNameV6 = "RADB";
+		$advertisedPublicPrefixesV6 = "fc02::1/128";
+		$circuit = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $rgname | Add-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering -PeeringType MicrosoftPeering -PeerASN 44 -PrimaryPeerAddressPrefix $primaryPeerAddressPrefixV6 -SecondaryPeerAddressPrefix $secondaryPeerAddressPrefixV6 -VlanId 555 -MicrosoftConfigAdvertisedPublicPrefixes @($advertisedPublicPrefixesV6) -MicrosoftConfigCustomerAsn $customerAsnV6 -MicrosoftConfigRoutingRegistryName $routingRegistryNameV6 -PeerAddressType IPv6 | Set-AzureRmExpressRouteCircuit 
+		$p = $circuit | Get-AzureRmExpressRouteCircuitPeeringConfig -Name MicrosoftPeering
+		Assert-AreEqual "MicrosoftPeering" $p.Name
+		Assert-AreEqual "MicrosoftPeering" $p.PeeringType
+		Assert-AreEqual "44" $p.PeerASN
+		Assert-AreEqual $primaryPeerAddressPrefixV6 $p.Ipv6PeeringConfig.PrimaryPeerAddressPrefix
+		Assert-AreEqual $secondaryPeerAddressPrefixV6 $p.Ipv6PeeringConfig.SecondaryPeerAddressPrefix
+		Assert-AreEqual "555" $p.VlanId
+		Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig
+		Assert-AreEqual $customerAsnV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN
+		Assert-AreEqual $routingRegistryNameV6 $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName
+		Assert-AreEqual 1 @($p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes).Count
+		Assert-NotNull $p.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixesState
+
+		# Delete Circuit
+		$delete = Remove-AzureRmExpressRouteCircuit -ResourceGroupName $rgname -name $circuitName -PassThru -Force
+		Assert-AreEqual true $delete
 		    
         $list = Get-AzureRmExpressRouteCircuit -ResourceGroupName $rgname
         Assert-AreEqual 0 @($list).Count
+
     }
     finally
     {
@@ -509,5 +538,61 @@ function Test-ExpressRouteCircuitAuthorizationCRUD
     # Cleanup
         Clean-ResourceGroup $rgname
     }
+}
+
+<#
+.SYNOPSIS
+Tests ExpressRouteCircuitConnectionCRUD.
+#>
+function Test-ExpressRouteCircuitConnectionCRUD
+{
+	$circuitName = "dedharcktpeer"
+	$groupName = "dedharpspeer"
+	$peerCircuitId = "/subscriptions/99c33776-9f4e-4e58-abe8-9263db1b9c6e/resourceGroups/dedharpsinit/providers/Microsoft.Network/expressRouteCircuits/dedhar-cktinit/peerings/AzurePrivatePeering"
+	$addressPrefix = "60.0.0.0/29"
+	$authorizationKey = "aaf441cf-4409-48ee-8e2d-a39cc7e428a8"
+	$connectionName = "transit"
+
+	try
+	{
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Create the circuit connection Resource
+		Add-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt -PeerExpressRouteCircuitPeering $peerCircuitId -AddressPrefix $addressPrefix -AuthorizationKey $authorizationKey
+
+		#Set on Express Route Circuit
+		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection fields
+		Assert-AreEqual "transit" $ckt.Peerings[0].Connections[0].Name
+		Assert-AreEqual "Succeeded" $ckt.Peerings[0].Connections[0].ProvisioningState
+		Assert-AreEqual "Connected" $ckt.Peerings[0].Connections[0].CircuitConnectionStatus
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+
+		#Delete the circuit connection Resource
+		Remove-AzureRmExpressRouteCircuitConnectionConfig -Name $connectionName -ExpressRouteCircuit $ckt
+
+		#Set on Express Route Circuit
+		Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+
+		#Get Express Route Circuit Resource
+		$ckt = Get-AzureRmExpressRouteCircuit -Name $circuitName -ResourceGroupName $groupName
+		$ckt
+
+		#Verify Circuit Connection does not exist
+		Assert-AreEqual 0 $ckt.Peerings[0].Connections.Count
+	}
+	finally
+	{
+		#Cleanup
+	}
 }
 

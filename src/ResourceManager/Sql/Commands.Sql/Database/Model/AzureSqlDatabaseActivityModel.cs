@@ -97,5 +97,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// Gets or sets the state of the properties associated with the request
         /// </summary>
         public DatabaseState Properties { get; set; }
+
+        /// <summary>
+        /// Gets or sets the estimated the completion time of the database operation
+        /// </summary>
+        public DateTime? EstimatedCompletionTime { get; set; }
+
+        /// <summary>
+        /// Gets or sets the detailed description of the database operation
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets the value to indicate if the database operation can be cancelled
+        /// </summary>
+        public bool? IsCancellable { get; set; }
     }
 }

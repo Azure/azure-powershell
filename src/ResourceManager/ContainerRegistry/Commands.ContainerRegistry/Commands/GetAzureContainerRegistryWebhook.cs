@@ -12,8 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.ContainerRegistry.Models;
-using System;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -31,6 +30,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ListWebhookByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 1, Mandatory = true, ParameterSetName = ShowWebhookByNameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
+        [ResourceGroupCompleter()]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
         public override void ExecuteCmdlet()
         {
-            if(string.Equals(ParameterSetName, ListWebhookByRegistryObjectParameterSet) ||
+            if (string.Equals(ParameterSetName, ListWebhookByRegistryObjectParameterSet) ||
                 string.Equals(ParameterSetName, ShowWebhookByRegistryObjectParameterSet))
             {
                 ResourceGroupName = Registry.ResourceGroupName;
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         private void ShowWebhookByResourceId()
         {
             string resourceGroup, registryName, childResourceName;
-            if(!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
+            if (!ConversionUtilities.TryParseRegistryRelatedResourceId(ResourceId, out resourceGroup, out registryName, out childResourceName))
             {
                 WriteInvalidResourceIdError(InvalidRegistryOrWebhookResourceIdErrorMessage);
                 return;
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             RegistryName = registryName;
 
             // If the resourceid is a registry id, then list all the webhooks under that registry
-            if(string.IsNullOrEmpty(Name))
+            if (string.IsNullOrEmpty(Name))
             {
                 ListWebhook();
             }
@@ -106,19 +106,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         {
             var webhook = RegistryClient.GetWebhook(ResourceGroupName, RegistryName, Name);
             var psWebhook = new PSContainerRegistryWebhook(webhook);
-            if(IncludeConfiguration)
+            if (IncludeConfiguration)
             {
                 SetWebhookConfig(psWebhook);
             }
             WriteObject(psWebhook);
         }
-        
+
         private void ListWebhook()
         {
             var webhooks = RegistryClient.ListAllWebhook(ResourceGroupName, RegistryName);
             if (IncludeConfiguration)
             {
-                foreach(var wk in webhooks)
+                foreach (var wk in webhooks)
                 {
                     SetWebhookConfig(wk);
                 }

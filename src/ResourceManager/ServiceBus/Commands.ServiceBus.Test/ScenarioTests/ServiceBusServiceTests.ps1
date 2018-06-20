@@ -14,121 +14,47 @@
 
 <#
 .SYNOPSIS
-Get valid resource group name
-#>
-function Get-ResourceGroupName
-{
-    return "RGName-" + (getAssetName)	
-}
-
-<#
-.SYNOPSIS
-Get valid Namespace name
-#>
-function Get-NamespaceName
-{
-    return "SBNamespace-" + (getAssetName)
-}
-
-
-<#
-.SYNOPSIS
-Get valid AuthorizationRule name
-#>
-function Get-AuthorizationRuleName
-{
-    return "Servicebus-Namespace-AuthorizationRule" + (getAssetName)
-	
-}
-
-<#
-.SYNOPSIS
 Tests EventHub Namespace Create List Remove operations.
 #>
 function ServiceBusTests
 {
      # Setup    
     $location = Get-Location
-	$namespaceName = Get-NamespaceName
-	$namespaceName2 = Get-NamespaceName
-	
+	$resourceGroupName = getAssetName "RGName-"
+	$namespaceName = getAssetName "Namespace1-"
+	$namespaceName2 = getAssetName "Namespace2-"
  
-    Write-Debug "Create resource group"
-    $resourceGroupName = Get-ResourceGroupName
+    Write-Debug "Create resource group"    
 	New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force 
      
+	# Check Namespace Name Availability
+	$checkNameResult = Test-AzureRmServiceBusName -NamespaceName $namespaceName 
+	Assert-True {$checkNameResult.NameAvailable}
+
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName" 
-    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" 
-    
-	
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard"
 	# Assert 
-	Assert-True {$result.ProvisioningState -eq "Succeeded"}
+	Assert-AreEqual $result.Name $namespaceName
+	Assert-AreEqual $result.ProvisioningState "Succeeded"
 
     Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+    $getNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+	Assert-AreEqual $getNamespace.Name $namespaceName "Get-ServicebusName- created namespace not found"
     
-	$UpdatedNameSpace = Set-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 10
-
-     $found = 0
-     if ($UpdatedNameSpace.Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $UpdatedNameSpace.Location.Replace(' ','')
-            #Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-            #Assert-AreEqual "ServiceBus" $createdNamespace.NamespaceType
-            break
-        }  
-
-   # Assert-True {$found -eq 0} "Namespace created earlier is not found." 
-
+	$UpdatedNameSpace = Set-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2	
+	Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
 
     Write-Debug "Namespace name : $namespaceName2"
-    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2
-    
+    $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName2    
 
     Write-Debug "Get all the namespaces created in the resourceGroup"
     $allCreatedNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName
-
-   $found = 0
-    for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
-    {
-        if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
-            #Assert-AreEqual "ServiceBus" $allCreatedNamespace[$i].NamespaceType
-            break
-        }
-    }
-
-    #Assert-True {$found -eq 0} "Namespace created earlier is not found in the List."
+	Assert-True {$allCreatedNamespace.Count -gt 1}
     
     Write-Debug "Get all the namespaces created in the subscription"
-    $allCreatedNamespace = Get-AzureRmServiceBusNamespace 
-
-    $found = 0
-    for ($i = 0; $i -lt $allCreatedNamespace.Count; $i++)
-    {
-        if ($allCreatedNamespace[$i].Name -eq $namespaceName)
-        {
-            $found = $found + 1
-            Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
-           # Assert-AreEqual "ServiceBus" $allCreatedNamespace[$i].NamespaceType
-        }
-
-       if ($allCreatedNamespace[$i].Name -eq $namespaceName2)
-        {
-            $found = $found + 1
-            #Assert-AreEqual $location.Replace(' ','') $allCreatedNamespace[$i].Location.Replace(' ','')
-            #Assert-AreEqual $resourceGroupName $allCreatedNamespace[$i].ResourceGroupName
-           # Assert-AreEqual "ServiceBus" $allCreatedNamespace[$i].NamespaceType
-        }
-    }
-
-    #Assert-True {$found -eq 0} "Namespaces created earlier is not found."
+    $allCreatedNamespace = Get-AzureRmServiceBusNamespace
+	Assert-True {$allCreatedNamespace.Count -gt 1 }
 
     Write-Debug " Delete namespaces"
     Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
@@ -145,46 +71,28 @@ Tests EventHub Namespace AuthorizationRules Create List Remove operations.
 function ServiceBusNameSpaceAuthTests
 {
     # Setup    
-    $location = "West US"
-    
-    Write-Debug " Create resource group"
-    $resourceGroupName = Get-ResourceGroupName
+    $location = Get-Location
+    $resourceGroupName = getAssetName "RGName-"
+	$namespaceName = getAssetName "Namespace-"
+	$authRuleName = getAssetName "authorule-"
+	$defaultNamespaceAuthRule = "RootManageSharedAccessKey"
+	
+    Write-Debug " Create resource group"    
     Write-Debug "ResourceGroup name : $resourceGroupName"
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force
-
-    $namespaceName = Get-NamespaceName
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location -Force    
     
     Write-Debug " Create new ServiceBus namespace"
-    Write-Debug "Namespace name : $namespaceName"
-	
+    Write-Debug "Namespace name : $namespaceName"	
     $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
-    
-    
+        
 	Write-Debug " Get the created namespace within the resource group"
     $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
-    Assert-True {$createdNamespace.Count -eq 1}
+    Assert-AreEqual $createdNamespace.Name $namespaceName
 
-    $found = 0
-    for ($i = 0; $i -lt $createdNamespace.Count; $i++)
-    {
-        if ($createdNamespace[$i].Name -eq $namespaceName)
-        {
-            $found = 1
-            Assert-AreEqual $location.Replace(' ','') $createdNamespace[$i].Location.Replace(' ','')
-           # Assert-AreEqual $resourceGroupName $createdNamespace[$i].ResourceGroupName
-           # Assert-AreEqual "Messaging" $createdNamespace[$i].NamespaceType
-            break
-        }
-    }
-
-   # Assert-True {$found -eq 0} "Namespace created earlier is not found."
-
-    Write-Debug "Create a Namespace Authorization Rule"
-    $authRuleName = Get-AuthorizationRuleName
+    Write-Debug "Create a Namespace Authorization Rule"    
     Write-Debug "Auth Rule name : $authRuleName"
     $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Rights @("Listen","Send")
-																																	  
-
+	
     Assert-AreEqual $authRuleName $result.Name
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
@@ -196,22 +104,19 @@ function ServiceBusNameSpaceAuthTests
     Assert-AreEqual $authRuleName $createdAuthRule.Name
     Assert-AreEqual 2 $createdAuthRule.Rights.Count
     Assert-True { $createdAuthRule.Rights -Contains "Listen" }
-    Assert-True { $createdAuthRule.Rights -Contains "Send" }   
+    Assert-True { $createdAuthRule.Rights -Contains "Send" }
 
-    Write-Debug "Get the default Namespace AuthorizationRule"
-    $defaultNamespaceAuthRule = "RootManageSharedAccessKey"
+    Write-Debug "Get the default Namespace AuthorizationRule"   
     $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $defaultNamespaceAuthRule
 
     Assert-AreEqual $defaultNamespaceAuthRule $result.Name
     Assert-AreEqual 3 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-    Assert-True { $result.Rights -Contains "Manage" }  
+    Assert-True { $result.Rights -Contains "Manage" }
 
     Write-Debug "Get All Namespace AuthorizationRule"
-    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName 
-    $count = $result.Count
-    Write-Debug "Auth Rule Count : $count"
+    $result = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 
     $found = 0
     for ($i = 0; $i -lt $result.Count; $i++)
@@ -234,9 +139,8 @@ function ServiceBusNameSpaceAuthTests
         }
     }
 
-    Assert-True {$found -eq 2} "Namespace AuthorizationRules created earlier is not found."
-
-	
+    Assert-AreEqual $found 2 "All Authorizationrules: Namespace AuthorizationRules created earlier is not found."
+		
     Write-Debug "Update Namespace AuthorizationRules ListKeys"
     
     $createdAuthRule.Rights.Add("Manage")
@@ -247,8 +151,7 @@ function ServiceBusNameSpaceAuthTests
     Assert-AreEqual 3 $updatedAuthRule.Rights.Count
     Assert-True { $updatedAuthRule.Rights -Contains "Listen" }
     Assert-True { $updatedAuthRule.Rights -Contains "Send" }
-    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }   
-    
+    Assert-True { $updatedAuthRule.Rights -Contains "Manage" }    
     
     Write-Debug "Get updated Namespace AuthorizationRules"
     $updatedAuthRule = Get-AzureRmServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName

@@ -30,6 +30,10 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
 
         public List<string> NotActions { get; set; }
 
+        public List<string> DataActions { get; set; }
+
+        public List<string> NotDataActions { get; set; }
+
         public List<string> AssignableScopes { get; set; }
     }
 }

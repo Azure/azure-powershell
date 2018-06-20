@@ -9,16 +9,16 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = '.\AzureRM.Resources.Netcore.psm1'
+# RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.10.0'
+ModuleVersion = '0.12.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
 
 # ID used to uniquely identify this module
-GUID = '48BB344D-4C24-441E-8EA0-589947784700'
+GUID = '48bb344d-4c24-441e-8ea0-589947784700'
 
 # Author of this module
 Author = 'Microsoft Corporation'
@@ -42,37 +42,41 @@ PowerShellVersion = '5.1'
 # PowerShellHostVersion = ''
 
 # Minimum version of Microsoft .NET Framework required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# DotNetFrameworkVersion = '4.0'
+# DotNetFrameworkVersion = ''
 
 # Minimum version of the common language runtime (CLR) required by this module. This prerequisite is valid for the PowerShell Desktop edition only.
-# CLRVersion = '4.0'
+# CLRVersion = ''
 
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.10.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.ResourceManager.dll', 
-                '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
-                '.\Microsoft.Extensions.Caching.Abstractions.dll', 
-                '.\Microsoft.Extensions.Caching.Memory.dll', 
-                '.\Microsoft.Extensions.Options.dll', 
-                '.\Microsoft.Extensions.Primitives.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Authorization.dll', 
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll', 
+    '.\Microsoft.Azure.Management.ResourceManager.dll', 
+    '.\Microsoft.Azure.Management.ManagementGroups.dll', 
+    '.\Microsoft.Extensions.Caching.Abstractions.dll', 
+    '.\Microsoft.Extensions.Caching.Memory.dll', 
+    '.\Microsoft.Extensions.DependencyInjection.Abstractions.dll', 
+    '.\Microsoft.Extensions.Options.dll', 
+    '.\Microsoft.Extensions.Primitives.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
-ScriptsToProcess = @() 
+ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
 TypesToProcess = '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = '.\Microsoft.Azure.Commands.Resources.format.ps1xml', 
-               '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll', '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.Resources.dll', 
+    '.\Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -83,15 +87,17 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Get-AzureRmRoleDefinition', 'New-AzureRmRoleDefinition', 
     'Set-AzureRmRoleDefinition', 'Remove-AzureRmRoleDefinition', 
     'Get-AzureRmADAppCredential', 'Get-AzureRmADApplication', 
-    'Get-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+    'Add-AzureRmADGroupMember', 'Get-AzureRmADGroupMember', 
+    'Remove-AzureRmADGroupMember', 'Get-AzureRmADGroup', 
+    'New-AzureRmADGroup', 'Remove-AzureRmADGroup', 
     'Get-AzureRmADServicePrincipal', 'Get-AzureRmADSpCredential', 
     'Get-AzureRmADUser', 'New-AzureRmADAppCredential', 
     'New-AzureRmADSpCredential', 'New-AzureRmADUser', 
     'Remove-AzureRmADAppCredential', 'Remove-AzureRmADApplication', 
     'New-AzureRmADApplication', 'Remove-AzureRmADServicePrincipal', 
     'New-AzureRmADServicePrincipal', 'Remove-AzureRmADSpCredential', 
-    'Remove-AzureRmADUser', 'Set-AzureRmADApplication', 
-    'Set-AzureRmADServicePrincipal', 'Set-AzureRmADUser', 
+    'Remove-AzureRmADUser', 'Update-AzureRmADApplication', 
+    'Update-AzureRmADServicePrincipal', 'Update-AzureRmADUser', 
     'Remove-AzureRmResourceGroup', 'Get-AzureRmProviderFeature', 
     'Register-AzureRmProviderFeature', 'Get-AzureRmLocation', 
     'Find-AzureRmResourceGroup', 'Export-AzureRmResourceGroup', 
@@ -122,13 +128,21 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
     'Set-AzureRmManagedApplicationDefinition', 
     'Remove-AzureRmManagedApplicationDefinition', 
     'Get-AzureRmManagedApplication', 'New-AzureRmManagedApplication', 
-    'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication'
+    'Set-AzureRmManagedApplication', 'Remove-AzureRmManagedApplication',
+    'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup',
+    'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup',
+    'New-AzureRmManagementGroupSubscription', 'Remove-AzureRmManagementGroupSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = @()
+AliasesToExport = 'Get-AzureRmResourceProviderAction', 
+    'Get-AzureRmADServicePrincipalCredential', 
+    'New-AzureRmADServicePrincipalCredential', 
+    'Remove-AzureRmADServicePrincipalCredential', 
+    'Set-AzureRmADApplication', 'Set-AzureRmADServicePrincipal', 
+    'Set-AzureRmADUser'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
@@ -145,7 +159,9 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Azure','ResourceManager','ARM','Provider','ResourceGroup','Deployment','ActiveDirectory','Authorization'
+        Tags = 'Azure', 'ResourceManager', 'ARM', 'Provider', 'ResourceGroup', 
+            'Deployment', 'ActiveDirectory', 'Authorization', 'Management', 
+            'ManagementGroups'
 
         # A URL to the license for this module.
         LicenseUri = 'https://aka.ms/azps-license'
@@ -159,12 +175,18 @@ PrivateData = @{
         # ReleaseNotes of this module
         ReleaseNotes = 'Updated for common code changes'
 
+        # Prerelease string of this module
+        # Prerelease = ''
+
+        # Flag to indicate whether the module requires explicit user acceptance for install/update/save
+        # RequireLicenseAcceptance = $false
+
         # External dependent modules of this module
-        # ExternalModuleDependencies = ''
+        # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
- } # End of PrivateData hashtable
+
+} # End of PrivateData hashtable
 
 # HelpInfo URI of this module
 # HelpInfoURI = ''

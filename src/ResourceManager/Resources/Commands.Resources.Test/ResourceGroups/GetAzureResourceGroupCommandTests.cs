@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
 
@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
 
             cmdlet.ExecuteCmdlet();
 
-            Assert.Equal(1, result.Count);
+            Assert.Single(result);
             Assert.Equal(resourceGroupName, result[0].ResourceGroupName);
             Assert.Equal(resourceGroupLocation, result[0].Location);
         }

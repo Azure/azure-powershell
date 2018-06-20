@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -42,14 +43,43 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
 
         public System.Collections.Generic.IDictionary<string, string> Tag { get; set; }
 
-        internal static AzureAnalysisServicesServerDetail FromAnalysisServicesServer(AnalysisServicesServer server)
+        public string DefaultConnectionMode { get; set; }
+
+        public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+
+        public ServerGateway GatewayInfo { get; set; }
+
+        internal static AzureAnalysisServicesServer FromAnalysisServicesServer(AnalysisServicesServer server)
         {
             if (server == null)
             {
                 return null;
             }
 
-            return new AzureAnalysisServicesServerDetail()
+            PsAzureAnalysisServicesFirewallConfig config = null;
+
+            if (server.IpV4FirewallSettings != null)
+            {
+                List<PsAzureAnalysisServicesFirewallRule> rules = null;
+                bool enablePowerBIService = false;
+                if (server.IpV4FirewallSettings.FirewallRules != null)
+                {
+                    rules = new List<PsAzureAnalysisServicesFirewallRule>();
+                    foreach (var rule in server.IpV4FirewallSettings.FirewallRules)
+                    {
+                        rules.Add(new PsAzureAnalysisServicesFirewallRule(rule.FirewallRuleName, rule.RangeStart, rule.RangeEnd));
+                    }
+                }
+               
+                if (server.IpV4FirewallSettings.EnablePowerBIService != null)
+                {
+                    enablePowerBIService = Convert.ToBoolean(server.IpV4FirewallSettings.EnablePowerBIService);
+                }
+
+                config = new PsAzureAnalysisServicesFirewallConfig(enablePowerBIService, rules);
+            }
+
+            return new AzureAnalysisServicesServer()
             {
                 AsAdministrators = server.AsAdministrators == null
                     ? new List<string>()
@@ -61,27 +91,25 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 ProvisioningState = server.ProvisioningState,
                 Id = server.Id,
                 ServerFullName = server.ServerFullName,
-                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku): new Dictionary<string, string>(),
+                Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
-                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri
+                BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
+                DefaultConnectionMode = server.QuerypoolConnectionMode.ToString(),
+                FirewallConfig = config,
+                GatewayInfo = server.GatewayDetails != null ? ServerGateway.FromResourceGateway(server.GatewayDetails) : null
             };
         }
 
-        internal static List<AzureAnalysisServicesServerDetail> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
+        internal static List<AzureAnalysisServicesServer> FromAnalysisServicesServerCollection(List<AnalysisServicesServer> list)
         {
             if (list == null)
             {
                 return null;
             }
 
-            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServerDetail>();
+            var listAzureAnalysisServicesServer = new List<AzureAnalysisServicesServer>();
             list.ForEach(server => listAzureAnalysisServicesServer.Add(FromAnalysisServicesServer(server)));
             return listAzureAnalysisServicesServer;
         }
-    }
-
-    public class AzureAnalysisServicesServerDetail : AzureAnalysisServicesServer
-    {
-        public new System.Collections.Generic.IDictionary<string, string> Sku { get; set; }
     }
 }

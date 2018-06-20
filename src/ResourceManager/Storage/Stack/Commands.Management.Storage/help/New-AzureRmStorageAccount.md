@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 ms.assetid: A3DA1205-B8FB-4B4C-9C40-AD303D038EDF
 online version: 
@@ -71,7 +71,9 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.```yaml
+Generate and assign a new Storage Account Identity for this storage account for use with key management services like Azure KeyVault.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -116,7 +118,9 @@ Accept wildcard characters: False
 ```
 
 ### -EnableHttpsTrafficOnly
-Indicates whether or not the Storage Account only enable https traffic.```yaml
+Indicates whether or not the Storage Account only enable https traffic.
+
+```yaml
 Type: Boolean
 Parameter Sets: (All)
 Aliases: 
@@ -300,6 +304,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

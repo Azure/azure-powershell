@@ -1,4 +1,897 @@
-﻿## 2017.12.8 Version 5.1.1
+﻿## 6.3.0 - June 2018
+#### AzureRM.Profile
+* Updated error messages for Enable-AzureRmContextAutoSave
+* Create a context for each subscription when running 'Connect-AzureRmAccount' with no previous context
+
+#### Azure.Storage
+* Added additional information about -Permissions parameter in help files.
+
+#### AzureRM.Compute
+* 'Get-AzureRmVmDiskEncryptionStatus' fixes an issue observed for VMs with no data disks 
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
+* Fixed following cmdlets to show 'operation ID' and 'operation status' correctly:
+    - Start-AzureRmVM
+    - Stop-AzureRmVM
+    - Restart-AzureRmVM
+    - Set-AzureRmVM
+    - Remove-AzuerRmVM
+    - Set-AzureRmVmss
+    - Start-AzureRmVmssRollingOSUpgrade
+    - Stop-AzureRmVmssRollingUpgrade
+    - Start-AzureRmVmss
+    - Restart-AzureRmVmss
+    - Stop-AzureRmVmss
+    - Remove-AzureRmVmss
+    - ConvertTo-AzureRmVMManagedDisk
+    - Revoke-AzureRmSnapshotAccess
+    - Remove-AzureRmSnapshot
+    - Revoke-AzureRmDiskAccess
+    - Remove-AzureRmDisk
+    - Remove-AzureRmContainerService
+    - Remove-AzureRmAvailabilitySet
+
+#### AzureRM.EventGrid
+* Remove ValidateNotNullOrEmpty validation conditions for SubjectBeginsWith/SubjectEndsWith in Update-AzureRmEventGridSubscription cmdlet to allow changing these parameters to empty string if needed.
+
+#### AzureRM.KeyVault
+* Fix issue where no Tags are being returned when Get-AzureRmKeyVault -Tag is run
+
+#### AzureRM.PolicyInsights
+* Public release of Policy Insights cmdlets
+    - Use API version 2018-04-04
+    - Add PolicyDefinitionReferenceId to the results of Get-AzureRmPolicyStateSummary
+
+#### AzureRM.RecoveryServices.Backup
+* Added -Vault parameter to RecoveryServices.Backup cmdlets. When passed, this will override the Set-AzureRmRecoveryServicesContext cmdlet.
+
+#### AzureRM.Sql
+* Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
+
+#### AzureRM.TrafficManager
+* Updated the help file for Add-AzureRmTrafficManagerEndpointConfig
+
+#### AzureRM.Websites
+* 'Set-AzureRmWebApp' is updated to not overwrite the AppSettings when using -AssignIdentity
+* 'New-AzureRmWebAppSlot' is updated to honor AppServicePlan as an optional parameter
+
+## 6.2.1 - June 2018
+### AzureRM.OperationalInsights
+* Updated PSWorkspace model to allow Network to use type as a parameter
+
+## 6.2.0 - June 2018
+#### AzureRM.Profile
+* Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
+
+#### AzureRM.Compute
+* VMSS VM Update feature
+    - Added 'Update-AzureRmVmssVM' and 'New-AzureRmVMDataDisk' cmdlets
+    - Add VirtualMachineScaleSetVM parameter to 'Add-AzureRmVMDataDisk' cmdlet to support adding a data disk to Vmss VM.
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:
+    - Added Configure factory repository operation
+    - Updated QuickBooks LinkedService to expose consumerKey and consumerSecret properties
+    - Updated Several model types from SecretBase to Object
+    - Added Blob Events trigger
+
+### AzureRM.KeyVault
+* Update documentation with example output
+
+### AzureRM.Network
+* Enable Traffic Analytics parameters on Network Watcher cmdlets
+
+#### AzureRM.Resources
+* Fix issue with 'Properties' property of 'PSResource' object(s) returned from 'Get-AzureRmResource'
+
+#### AzureRM.Scheduler
+* Fix issue with update ServiceBusQueueJob not setting new Auth values
+
+### AzureRM.Sql
+* Updated the following cmdlets with optional LicenseType parameter
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+#### AzureRM.Websites
+* 'New-AzureRMWebApp' is updated to use common algorithms from the Strategy library.
+
+## 6.1.1 - May 2018
+#### AzureRM.Resources
+* Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
+    - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions
+    - If a `Role` is provided, but no `Scope`, the service principal is created with the specified `Role` permissions over the current subscription
+    - If a `Scope` is provided, but no `Role`, the service principal is created with `Contributor` permissions over the specified `Scope`
+    - If both `Role` and `Scope` are provided, the service principal is created with the specified `Role` permissions over the specified `Scope`
+
+## 6.1.0 - May 2018
+#### AzureRM.Profile
+* Fix issue where running 'Clear-AzureRmContext' would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
+
+#### AzureRM.AnalysisServices
+* Enable Gateway assocaite/disassociate operations on AS.
+
+#### AzureRM.ApiManagement
+* Added support for ApiVersions, ApiReleases and ApiRevisions
+* Added suppport for ServiceFabric Backend
+* Added support for Application Insights Logger
+* Added support for recognizing 'Basic' sku as a valid sku of Api Management service
+* Added support for installing Certificates issued by private CA as Root or CA
+* Added support for accepting Custom SSL certificates via KeyVault and Multiple proxy hostnames
+* Added support for MSI identity
+* Added support for accepting Policies via Url
+NOTE: The following cmdlets will be deprecated in future release
+   - Import-AzureRmApiManagementHostnameCertificate
+   - New-AzureRmApiManagementHostnameConfiguration
+   - Set-AzureRmApiManagementHostnames
+   - Update-AzureRmApiManagementDeployment
+
+#### AzureRM.Batch
+* Release new cmdlet Get-AzureBatchPoolNodeCounts
+* Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload
+
+#### AzureRM.Consumption
+* Add new parameters Expand, ResourceGroup, InstanceName, InstanceId, Tags, and Top on Cmdlet Get-AzureRmConsumptionUsageDetail
+
+#### AzureRM.DataLakeStore
+* Fix example for Export-AzureRmDataLakeStoreChildItemProperties
+* Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry 
+* Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry 
+
+#### AzureRM.Network
+* Bump up Network SDK version from 18.0.0-preview to 19.0.0-preview
+* Added cmdlet to create protocol configuration
+    - New-AzureRmNetworkWatcherProtocolConfiguration
+* Added cmdlet to add a new circuit connection to an existing express route circuit.
+    - Add-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to remove a circuit connection from an existing express route circuit.
+    - Remove-AzureRmExpressRouteCircuitConnectionConfig
+* Added cmdlet to retrieve a circuit connection
+    - Get-AzureRmExpressRouteCircuitConnectionConfig
+
+#### AzureRM.ServiceFabric
+* Fixed server authentication usage with generated certificates (Issue #5998)
+
+#### AzureRM.Sql
+* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
+* Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
+* The updated cmdlets including: 
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+#### AzureRM.TrafficManager
+* Update the parameters for 'Get-AzureRmTrafficManagerProfile' so that -ResourceGroupName parameter is required when using -Name parameter.
+
+## 6.0.0 - May 2018
+#### General
+* Set minimum dependency of modules to PowerShell 5.0
+
+#### Azure.Storage
+* Support  as Storage blob container name
+	- New-AzureStorageBlobContainer
+	- Remove-AzureStorageBlobContainer
+	- Set-AzureStorageBlobContent
+	- Get-AzureStorageBlobContent
+* Fix the issue that some Storage cmdlets failure output not contain detail failure information
+
+#### AzureRM.ApiManagement
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Automation
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmAutomationRunbook'
+
+#### AzureRM.Batch
+* Updated New-AzureBatchPool documentation to remove deprecated example
+
+#### AzureRM.Cdn
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Compute
+* 'New-AzureRmVm' and 'New-AzureRmVmss' support verbose output of parameters
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support assigning user defined and(or) system defined identities to the VM(s).
+* VMSS Redeploy and PerformMaintenance feature
+    -  Add new switch parameter -Redeploy and -PerformMaintenance to 'Set-AzureRmVmss' and 'Set-AzureRmVmssVM'
+* Add DisableVMAgent switch parameter to 'Set-AzureRmVMOperatingSystem' cmdlet
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support a 'Win10' image.
+* 'Repair-AzureRmVmssServiceFabricUpdateDomain' cmdlet is added.
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more details
+* 'Set-AzureRmVmDiskEncryptionExtension' makes AAD parameters optional 
+
+#### AzureRM.DataFactories
+* Remove deprecated 'Tags' alias from cmdlets
+    - New-AzureRmDataFactory
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 0.7.0-preview containing following changes:
+    - Added execution parameters and connection managers property on ExecuteSSISPackage Activity
+    - Updated PostgreSql, MySql llinked service to use full connection string instead of server, database, schema, username and password
+    - Removed the schema from DB2 linked service
+    - Removed schema property from Teradata linked service
+    - Added LinkedService, Dataset, CopySource for Responsys
+
+#### AzureRM.DataLakeAnalytics
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'New-AzureRmDataLakeAnalyticsAccount'
+    - 'Set-AzureRmDataLakeAnalyticsAccount'
+
+#### AzureRM.DataLakeStore
+* Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add new cmdlet for retrieving the content summary under a directory
+* Add new cmdlet for retrieving the disk usage and Acl dump
+* Correct return type of Set-AzureRmDataLakeStoreItemAcl bool to IEnumerable<DataLakeStoreItemAce>
+* Correct return type of Set-AzureRmDataLakeStoreItemAclEntry bool to IEnumerable<DataLakeStoreItemAce>
+* Breaking changes in Export-AzureRmDataLakeStoreItem, Import-AzureRmDataLakeStoreItem, Remove-AzureRmDataLakeStoreItem
+
+#### AzureRM.Dns
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.EventHub
+* Updated Help for cmdlets with missing examples
+
+#### AzureRM.Insights
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.IotHub
+* Enable tags and Basic Sku to the IotHub
+
+#### AzureRM.KeyVault
+* Breaking changes to support piping scenarios
+* Added new cmdlets: Backup/Restore-AzureKeyVaultManagedStorageAccount, Backup/Restore-AzureKeyVaultCertificate, Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval, and Undo-AzureKeyVaultManagedStorageAccountRemoval
+
+#### AzureRM.MachineLearning
+* Remove deprecated 'Tags' alias from cmdlets
+    - Update-AzureRmMlCommitmentPlan
+
+#### AzureRM.Media
+* Remove deprecated 'Tags' alias from cmdlets
+    - 'Set-AzureRmMediaService'
+
+#### AzureRM.Network
+* Add support for DDoS protection plan resource
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.NotificationHubs
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.OperationalInsights
+* Introduce multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Profile
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Fixed Authentication Header in SiteRecovery scenarios
+
+#### AzureRM.RedisCache
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Resources
+* Remove obsolete parameter -AtScopeAndBelow from Get-AzureRmRoledefinition call
+* Include assignments to deleted USers/Groups/ServicePrincipals in Get-AzureRmRoleAssignment result
+* Add Tab completers for Scope and ResourceType
+* Add convenience cmdlet for creating ServicePrincipals
+* Merge Get- and Find- functionality in Get-AzureRmResource
+* Add AD Cmdlets:
+  - Remove-AzureRmADGroupMember
+  - Get-AzureRmADGroup
+  - New-AzureRmADGroup
+  - Remove-AzureRmADGroup
+  - Remove-AzureRmADUser
+  - Update-AzureRmADApplication
+  - Update-AzureRmADServicePrincipal
+  - Update-AzureRmADUser
+
+#### AzureRM.ServiceFabric
+* Update default Linux image version sku
+  - NewAzureServiceFabricCluster.cs default UbuntuServer1604 Sku update
+
+#### AzureRM.Storage
+* Introduced multiple breaking changes
+    - Please refer to the migration guide for more information
+
+#### AzureRM.Websites
+* Upgrade to latest version of the Websites SDK
+* Added -AssignIdentity & -Httpsonly properties for Set-AzureRmWebApp and Set-AzureRmWebAppSlot
+- Added two new cmdlets: Get-AzureRmWebAppSnapshots and Restore-AzureRmWebAppSnapshot
+
+## 5.7.0 - April 2018
+
+#### General
+* Updated to the latest version of the Azure ClientRuntime
+
+#### Azure.Storage
+* Fix the issue that upload Blob and upload File cmdlets fail on FIPS policy enabled machines
+	- Set-AzureStorageBlobContent
+	- Set-AzureStorageFileContent
+
+#### AzureRM.Billing
+* New Cmdlet Get-AzureRmEnrollmentAccount
+  - cmdlet to retrieve enrollment accounts
+
+#### AzureRM.CognitiveServices
+* Integrate with Cognitive Services Management SDK version 4.0.0.
+* Add Get-AzureRmCognitiveServicesAccountUsage operation.
+
+#### AzureRM.Compute
+* `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level
+* `Get-AzureRmVmssVmDiskEncryptionStatus` supports encryption status at data disk level
+* Update for Zone Resilient
+* 'New-AzureRmVm' and 'New-AzureRmVmss' (simple parameter set) support availability zones.
+
+#### AzureRM.ContainerRegistry
+* Decouple reliance on Commands.Resources.Rest and ARM/Storage SDKs.
+
+#### AzureRM.DataLakeStore
+* Add debug functionality
+* Update the version of the ADLS dataplane SDK to 1.1.2
+* Export-AzureRmDataLakeStoreItem - Deprecated parameters PerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Import-AzureRMDataLakeStoreItem - Deprecated parametersPerFileThreadCount, ConcurrentFileCount and introduced parameter Concurrency
+* Get-AzureRMDataLakeStoreItemContent - Fixed the tail behavior for contents greater than 4MB
+* Set-AzureRMDataLakeStoreItemExpiry - Introduced new parameter set SetRelativeExpiry for setting relative expiration time
+* Remove-AzureRmDataLakeStoreItem - Deprecated parameter Clean.
+
+#### AzureRM.EventHub
+* Fixed AlternameName in New-AzureRmEventHubGeoDRConfiguration
+
+#### AzureRM.KeyVault
+* Updated cmdlets to include piping scenarios
+* Add deprecation messages for upcoming breaking change release
+
+#### AzureRM.Network
+* Fix error message with Network cmdlets
+
+#### AzureRM.ServiceBus
+* Added 'properties' in CorrelationFilter of Rules to support customproperties
+* updated New-AzureRmServiceBusGeoDRConfiguration help and fixed Rules cmdlet output
+* Fixed auto-forward properties in New-AzureRmServiceBusQueue and New-AzureRmServiceBusSubscription cmdlet
+
+#### AzureRM.Sql
+* Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
+* Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
+
+## 5.6.0 - March 2018
+
+#### General
+* Fix issue with Default Resource Group in CloudShell
+* Fix issue where incorrect startup scripts were being executed during module import
+
+#### AzureRM.Profile
+* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
+
+#### AzureRM.AnalysisServices
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Cdn
+* Fixed issue with cleaning up scripts in build
+
+#### AzureRM.Compute
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support data disks.
+* 'New-AzureRmVM' and 'New-AzureRmVMSS' support custom image by name or by id.
+* Log analytic feature
+    - Added 'Export-AzureRmLogAnalyticRequestRateByInterval' cmdlet
+    - Added 'Export-AzureRmLogAnalyticThrottledRequests' cmdlet
+
+#### AzureRM.ContainerInstance
+* Fix parameter sets issue for container registry and azure file volume mount
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK to version 0.6.0-preview containing the following changes:
+    - Added new AzureDatabricks LinkedService and DatabricksNotebook Activity
+    - Added headNodeSize and dataNodeSize properties in HDInsightOnDemand LinkedService
+    - Added LinkedService, Dataset, CopySource for SalesforceMarketingCloud
+    - Added support for SecureOutput on all activities 
+    - Added new BatchCount property on ForEach activity which control how many concurrent activities to run
+    - Added new Filter Activity
+    - Added Linked Service Parameters support
+
+#### AzureRM.Dns
+* Support for Private DNS Zones (Public Preview)
+    - Adds ability to create DNS zones that are visible only to the associated virtual networks
+
+#### AzureRM.Network
+* Updating model types for compatibility with DNS cmdlets.
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Changes for ASR Azure to Azure Site Recovery (cmdlets are currently supporting operations for Enterprise to Enterprise, Enterprise to Azure, HyperV to Azure,VMware to Azure)
+    - New-AzureRmRecoveryServicesAsrProtectionContainer
+    - New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig
+    - Remove-AzureRmRecoveryServicesAsrProtectionContainer
+    - Update-AzureRmRecoveryServicesAsrProtectionDirection
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Websites
+* Fixed the help for Remove-AzureRmWebAppSlot
+
+## 5.5.0 - March 2018
+#### AzureRM.Profile
+* Fixed issue with importing aliases
+* Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
+
+#### Azure.Storage
+* Support Soft-Delete feature
+	- Enable-AzureStorageDeleteRetentionPolicy
+	- Disable-AzureStorageDeleteRetentionPolicy
+	- Get-AzureStorageBlob
+
+#### AzureRM.AnalysisServices
+* Fixed issue with importing aliases
+* Add support of firewall and query scaleout feature, as well as support of 2017-08-01 api version.
+
+#### AzureRM.Automation
+* Fixed issue with importing aliases
+
+#### AzureRM.Cdn
+* Fixed issue with importing aliases
+
+#### AzureRM.CognitiveServices
+* Update notice.txt and notice message.
+
+#### AzureRM.Compute
+* 'New-AzureRmVMSS' prints connection strings in verbose mode.
+* 'New-AzureRmVmss' supports public IP address, load balancing rules, inbound NAT rules.
+* WriteAccelerator feature
+    - Added WriteAccelerator switch parameter to the following cmdlets:
+	  Set-AzureRmVMOSDisk
+	  Set-AzureRmVMDataDisk
+	  Add-AzureRmVMDataDisk
+	  Add-AzureRmVmssDataDisk
+    - Added OsDiskWriteAccelerator switch parameter to the following cmdlet:
+          Set-AzureRmVmssStorageProfile.
+    - Added OsDiskWriteAccelerator Boolean parameter to the following cmdlets:
+          Update-AzureRmVM
+          Update-AzureRmVmss
+
+#### AzureRM.DataFactories
+* Fix credential encryption issue that caused no meaningful error for some encryption operations
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.DataFactoryV2
+* Add parameter "SetupScriptContainerSasUri" and "Edition" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable custom setup and edition selection functionality
+* Fix credential encryption issue that caused no meaningful error for some encryption operations. 
+* Enable integration runtime to be shared across data factory
+
+#### AzureRM.HDInsight
+* Fixed issue with importing aliases
+
+#### AzureRM.KeyVault
+* Fixed example for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Fixed issue with importing aliases
+
+#### AzureRM.OperationalInsights
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices
+* Fixed issue with importing aliases
+
+#### AzureRM.RecoveryServices.SiteRecovery
+* Fixed issue with importing aliases
+
+#### AzureRM.Resources
+* Fixed issue with importing aliases
+
+#### AzureRM.ServiceBus
+* Added EnableBatchedOperations property to Queue
+* Added DeadLetteringOnFilterEvaluationExceptions property to Subscriptions
+
+#### AzureRM.ServiceFabric
+* Service Fabric cmdlet refresh
+  - Updated ARM templates
+  - Failed operations no longer rollback
+  - Add-AzureRmServiceFabricNodeType
+    - VMs default to managed disks
+    - Existing VMSS subnet used
+    - All operations are idempotent
+  - Remove-AzureRmServiceFabricNodeType cleans up partially created VMSS and/or cluster node types
+  - Fixed output of PSCluster object for complex property types
+
+#### AzureRM.Sql
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+
+#### AzureRM.Websites
+* Fixed issue with importing aliases
+* New-AzureRMWebApp - added parameter set for simplified WebApp creation, with local git repository support.
+
+## 5.4.1 - February 2018
+#### AzureRM.Profile
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
+## 5.4.0 - February 2018
+#### AzureRM.Automation
+* Added alias from New-AzureRmAutomationModule to Import-AzureRmAutomationModule
+
+#### AzureRM.Compute
+* Fix ErrorAction issue for some of Get cmdlets.
+
+#### AzureRM.ContainerInstance
+* Apply Azure Container Instance SDK 2018-02-01
+    - Support DNS name label
+
+#### AzureRM.DevTestLabs
+* Fixed all of the GET cmdlets which previously weren't working.
+
+#### AzureRM.EventHub
+* Fix bug in Get-AzureRmEventHubGeoDRConfiguration help
+
+#### AzureRM.Network
+* Added cmdlet to create a new connection monitor
+    - New-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to update a connection monitor
+    - Set-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to get connection monitor or connection monitor list
+    - Get-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to query connection monitor
+    - Get-AzureRmNetworkWatcherConnectionMonitorReport
+* Added cmdlet to start connection monitor
+    - Start-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to stop connection monitor
+    - Stop-AzureRmNetworkWatcherConnectionMonitor
+* Added cmdlet to remove connection monitor
+    - Remove-AzureRmNetworkWatcherConnectionMonitor
+* Updated Set-AzureRmApplicationGatewayBackendAddressPool documentation to remove deprecated example
+* Added EnableHttp2 flag to Application Gateway
+    - Updated New-AzureRmApplicationGateway: Added optional parameter -EnableHttp2
+* Add IpTags to PublicIpAddress
+    - Updated New-AzureRmPublicIpAddress: Added IpTags
+    - New-AzureRmPublicIpTag to add Iptag
+* Add DisableBgpRoutePropagation property in RouteTable and effectiveRoute.
+
+#### AzureRM.Resources
+* Register-AzureRmProviderFeature: Added missing example in the docs
+* Register-AzureRmResourceProvider: Added missing example in the docs
+
+#### AzureRM.Storage
+* Obsolete following parameters in new and set Storage Account cmdlets: EnableEncryptionService and DisableEncryptionService, since Encryption at Rest is enabled by default and can't be disabled.
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+## 5.3.0 - February 2018
+#### AzureRM.Profile
+* Added deprecation warning for PowerShell 3 and 4
+* 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.
+* 'Remove-AzureRmAccount' has been renamed as 'Disconnect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Logout-AzAccount' and 'Logout-AzureRmAccount') have been redirected to the new cmdlet name.
+* Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
+* Add-AzureRmEnvironment and Set-AzureRmEnvironment
+  - Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.  
+
+#### AzureRM.AnalysisServices
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.Compute
+* Added 'AvailabilitySetName' parameter to the simplified parameterset of 'New-AzureRmVm'.
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* User assigned identity support for VM and VM scale set
+- IdentityType and IdentityId parameters are added to New-AzureRmVMConfig, New-AzureRmVmssConfig, Update-AzureRmVM and Update-AzureRmVmss
+* Added EnableIPForwarding parameter to Add-AzureRmVmssNetworkInterfaceConfig
+* Added Priority parameter to New-AzureRmVmssConfig
+
+#### AzureRM.DataLakeAnalytics
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.DataLakeStore
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+* Corrected the error message of 'Test-AzureRmDataLakeStoreAccount' when running this cmdlet without having logged in with 'Login-AzureRmAccount'
+
+#### AzureRM.EventGrid
+* Updated to use the 2018-01-01 API version.
+
+#### AzureRM.EventHub
+* Added below new commands for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmEventHubGeoDRConfigurationBreakPair [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmEventHubGeoDRConfigurationFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmEventHubGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+* Added below new commands for checking the Namespace Name and GeoDr Configuration Name - Alias availability. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name: 
+		- Test-AzureRmEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
+
+#### AzureRM.Insights
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.KeyVault
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+#### AzureRM.Network
+* Fix overwrite message 'Are you sure you want to overwriteresource'
+
+#### AzureRM.OperationalInsights
+* Added support for V2 API querying via Invoke-AzureRmOperationalInsightsQuery. See [https://dev.loganalytics.io/](https://dev.loganalytics.io/) for more info on the new API.
+
+#### AzureRM.Resources
+* Get-AzureRmADServicePrincipal: Removed -ServicePrincipalName from the default Empty parameter set as it was redundant with the SPN parameter set
+
+#### AzureRM.ServiceBus
+* Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
+* Added below new commandlets for Geo Disaster Recovery operations. 
+	-Creating a new Alias(Disaster Recovery configuration): 
+		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
+	-Retrieve Alias(Disaster Recovery configuration) : 
+		- Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
+		- Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Invoking Disaster Recovery failover and reconfigure the alias to point to the secondary namespace
+		- Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+	-Deleting an Alias(Disaster Recovery configuration)
+		- Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
+* Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations. 
+	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
+		- Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+
+#### AzureRM.UsageAggregates
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+## 5.2.0 - January 2018
+#### AzureRM.Profile
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add-AzureRmAccount
+  * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service
+  * Fixed KeyVault Authentication when logging in with user-provided access tokens
+
+#### Azure.Storage
+* Add cmdlets to get and set Storage service properties
+	- Get-AzureStorageServiceProperty
+	- Update-AzureStorageServiceProperty
+
+#### AzureRM.AnalysisServices
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.ApiManagement
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmApiManagementProperty, Set-AzureRmApiManagementProperty, and New-AzureRmApiManagement
+
+#### AzureRM.ApplicationInsights
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Automation
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Set-AzureRmAutomationRunbook
+
+#### AzureRM.Backup
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Batch
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Cdn
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmCdnEndpoint and New-AzureRmCdnProfile
+
+#### AzureRM.CognitiveServices
+* Integrate with Cognitive Services Management SDK version 3.0.0.
+
+#### AzureRM.Compute
+* Added simplified parameter set to New-AzureRmVmss, which creates a Virtual Machine Scale Set and all required resources using smart defaults
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmVm and Update-AzureRmVm
+* Fixed Get-AzureRmComputeResourceSku cmdlet when Zone is included in restriction.
+* Updated Diagnostics Agent configuration schema for Azure Monitor sink support.
+
+#### AzureRM.ContainerInstance
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.ContainerRegistry
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.DataFactories
+* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataFactory
+
+#### AzureRM.DataFactoryV2
+* Enabled Azure Key Vault support for all data store linked services
+* Added license type property for Azure SSIS integration runtime
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Add parameter "LicenseType" for "Set-AzureRmDataFactoryV2IntegrationRuntime" cmd to enable AHUB functionality
+
+#### AzureRM.DataLakeAnalytics
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeAnalyticsAccount and Set-AzureRmDataLakeAnalyticsAccount
+
+#### AzureRM.DataLakeStore
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeStoreAccount and Set-AzureRmDataLakeStoreAccount
+
+#### AzureRM.DevTestLabs
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Dns
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.EventGrid
+* Added the following new cmdlet:
+    - Update-AzureRmEventGridSubscription
+        - Update the properties of an Event Grid event subscription.
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.EventHub
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.HDInsight
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Insights
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.IotHub
+* Add Certificate support for IoTHub cmdlets
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.KeyVault
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob support for long-running KeyVault cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    * Affected cmdlet is: Remove-AzureRmKeyVault
+* Fixed bug in Set-AzureRmKeyVaultAccessPolicy where the AAD filter was setting SPN to the provided UPN, rather than setting the UPN
+   - See the following issue for more information: https://github.com/Azure/azure-powershell/issues/5201
+
+#### AzureRM.LogicApp
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.MachineLearning
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Update-AzureRmMlCommitmentPlan
+
+#### AzureRM.MachineLearningCompute
+* Add IncludeAllResources parameter to Remove-AzureRmMlOpCluster cmdlet
+    - Using this switch parameter will remove all resources that were created with the cluster originally
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Media
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for Set-AzureRmMediaService and New-AzureRmMediaService
+
+#### AzureRM.Network
+* Added -AsJob support for long-running Network cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.NotificationHubs
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmNotificationHubsNamespace and Set-AzureRmNotificationHubsNamespace
+
+#### AzureRM.OperationalInsights
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmOperationalInsightsSavedSearch, Set-AzureRmOperationalInsightsSavedSearch, New-AzureRmOperationalInsightsWorkspace, and Set-AzureRmOperationalInsightsWorkspace
+
+#### AzureRM.PowerBIEmbedded
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.RecoveryServices
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.RecoveryServices.Backup
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -UseOriginalStorageAccount option to the Restore-AzureRmRecoveryServicesBackupItem cmdlet. 
+	- Enabling this flag results in restoring disks to their original storage accounts which allows users to maintain the configuration of restored VM as close to the original VMs as possible. 
+	- It also helps in improving the performance of the restore operation.
+
+#### AzureRM.RedisCache
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added  3 new cmdlets for firewall rules
+* Added  3 new cmdlets for geo replication
+* Added support for zones and tags
+* Make ResourceGroup as optional whenever possible.
+
+#### AzureRM.Relay
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Resources
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob support for long-running Resources cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+* Added alias from Get-AzureRmProviderOperation to Get-AzureRmResourceProviderAction to conform with naming conventions
+
+#### AzureRM.Scheduler
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.ServerManagement
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Obsoleted -Tags in favor of -Tag for New-AzureRmServerManagementNode and New-AzureRmServerManagementGateway
+
+#### AzureRM.ServiceBus
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.ServiceFabric
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.SiteRecovery
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Sql
+* Update the Auditing commands parameters description
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob parameter to long running cmdlets
+* Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+
+#### AzureRM.Storage
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Fix a null reference issue of run cmdlet New-AzureRMStorageAccount with parameter -EnableEncryptionService None
+* Added -AsJob support for long-running Storage cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+    - Affected cmdlets are New-, Remove-, Add-, and Update- for Storage Account and Storage Account Network Rule.
+
+#### AzureRM.StreamAnalytics
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.TrafficManager
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+
+#### AzureRM.Websites
+* Added Location Completer to -Location parameters allowing tab completion through valid Locations
+* Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
+* Added -AsJob support for long-running Websites cmdlets. Allows selected cmdlets to run in the background and return a job to track and control progress.
+     - Affected cmdlets are New-, Remove-, Add-, and Set- for WebApps, AppServicePlan and Slots
+
+## 2017.12.8 Version 5.1.1
 * AnalysisServices
     - Change validate set of location to dynamic lookup so that all clouds are supported.
 * Automation

@@ -10,7 +10,6 @@
 
 namespace Microsoft.Azure.Commands.Resources.Properties {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.Commands.Resources.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,6 +75,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string ApplicationWithAppIdDoesntExist {
             get {
                 return ResourceManager.GetString("ApplicationWithAppIdDoesntExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application with display name &apos;{0}&apos; does not exist..
+        /// </summary>
+        internal static string ApplicationWithDisplayNameDoesntExist {
+            get {
+                return ResourceManager.GetString("ApplicationWithDisplayNameDoesntExist", resourceCulture);
             }
         }
         
@@ -238,6 +246,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string IncludeClassicAdminsNotSupported {
             get {
                 return ResourceManager.GetString("IncludeClassicAdminsNotSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User/Application doesn&apos;t have sufficient AAD graph permissions to perform the operation..
+        /// </summary>
+        internal static string InSufficientGraphPermission {
+            get {
+                return ResourceManager.GetString("InSufficientGraphPermission", resourceCulture);
             }
         }
         
@@ -539,6 +556,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to remove group with object id &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveGroupConfirmation {
+            get {
+                return ResourceManager.GetString("RemoveGroupConfirmation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Removing resource group ....
         /// </summary>
         internal static string RemoveResourceGroupMessage {
@@ -625,6 +651,15 @@ namespace Microsoft.Azure.Commands.Resources.Properties {
         internal static string RemovingApplication {
             get {
                 return ResourceManager.GetString("RemovingApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing group ....
+        /// </summary>
+        internal static string RemovingGroup {
+            get {
+                return ResourceManager.GetString("RemovingGroup", resourceCulture);
             }
         }
         

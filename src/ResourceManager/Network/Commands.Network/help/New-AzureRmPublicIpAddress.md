@@ -15,9 +15,11 @@ Creates a public IP address.
 
 ```
 New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
- -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>] [-ReverseFqdn <String>]
- [-IdleTimeoutInMinutes <Int32>] [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>]
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
+ [-IpTag <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]>]
+ [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +49,20 @@ pointing to the $customFqdn specified in the command. As a pre-requisite, the $c
 webapp.contoso.com) should have a DNS CNAME record (forward-lookup) pointing to
 $dnsPrefix.$location.cloudapp.azure.com.
 
+### 3: Create a new public IP address with IpTag
+```
+$ipTag = New-AzureRmPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
+$publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags ipTag
+```
+
+This command creates a new public IP address resource.A DNS record is created for
+$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
+public IP address is immediately allocated to this resource as the -AllocationMethod is specified
+as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
+start (or create) the associated resource (like a VM or load balancer). An Iptag is used to 
+specific the Tags associated with resource. Iptag can be specified using New-AzureRmPublicIpTag
+and passed as input through -IpTags.
+
 ## PARAMETERS
 
 ### -AllocationMethod
@@ -56,7 +72,7 @@ The acceptable values for this parameter are: Static or Dynamic.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Dynamic, Static
 
 Required: True
@@ -72,7 +88,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -102,7 +118,7 @@ Specifies the relative DNS name for a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -117,7 +133,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +148,7 @@ Specifies the idle time-out, in minutes.
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,8 +163,23 @@ Specifies the version of the IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IpTag
+IpTag List.
+
+```yaml
+Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -163,7 +194,7 @@ Specifies the region in which to create a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -193,7 +224,7 @@ Specifies the name of the resource group in which to create a public IP address.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -208,7 +239,7 @@ Specifies a reverse fully qualified domain name (FQDN).
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -223,7 +254,7 @@ The public IP Sku name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Standard
 
 Required: False
@@ -241,7 +272,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -256,7 +287,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -300,6 +331,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

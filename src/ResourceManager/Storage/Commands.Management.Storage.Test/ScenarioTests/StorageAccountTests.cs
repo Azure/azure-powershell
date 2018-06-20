@@ -118,12 +118,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccountStorageV2");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestNewAzureStorageAccountEncryptionServiceNone()
-        {
-            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountEncryptionServiceNone");
-        }
     }
 }

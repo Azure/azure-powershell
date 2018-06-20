@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebusnamespace
 schema: 2.0.0
 ---
@@ -28,7 +28,7 @@ The **Set-AzureRmServiceBusNamespace** cmdlet updates the description of the spe
 PS C:\> Set-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -Location WestUs -SkuName Premium -SkuCapacity 10 -Tag @{Tag2="Tag2Value"}
 
 Name               : SB-Example1
-Id                 : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
+Id                 : /subscriptions/{subscription id}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1
 Location           : West US
 Sku                : Name : Standard , Capacity : 10 , Tier : Standard
 ProvisioningState  : Succeeded
@@ -202,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.NamespaceAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## NOTES
 

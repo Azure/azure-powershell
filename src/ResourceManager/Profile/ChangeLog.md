@@ -18,6 +18,54 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.3.0
+* Updated error messages for Enable-AzureRmContextAutoSave
+* Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
+* Resource Id completer added.
+
+## Version 5.2.0
+* Added the following three values to the telemetry:
+  - Inner exception types
+  - ParameterSetName
+  - InvocationName
+* Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
+* Retry TaskCanceledException appropriately when connections are left open.
+
+## Version 5.1.0
+* Fix issue where running `Clear-AzureRmContext` would keep an empty context with the name of the previous default context, which prevented the user from creating a new context with the old name
+
+## Version 5.0.1
+* Fix issue where default environments weren''t being retrieved without a default context set
+
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Enable context autosave by default
+* Add USGovernmentOperationalInsightsEndpoint and USGovernmentOperationalInsightsEndpointResourceId properties to Azure environment for US Gov.
+
+## Version 4.6.0
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.5.0
+* Enable MSI authentication in unsupported scenarios
+* Add support for user-defined Managed Service Identity
+
+## Version 4.4.0
+* Fixed issue with importing aliases
+* Load version 10.0.3 of Newtonsoft.Json side-by-side with version 6.0.8
+
+## Version 4.3.1
+* Fix concurrent module import issue in PowerShell Workflow and Azure Automation
+
+## Version 4.3.0
+* Added deprecation warning for PowerShell 3 and 4
+* 'Add-AzureRmAccount' has been renamed as 'Connect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Login-AzAccount' and 'Login-AzureRmAccount') have been redirected to the new cmdlet name.
+* 'Remove-AzureRmAccount' has been renamed as 'Disconnect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Logout-AzAccount' and 'Logout-AzureRmAccount') have been redirected to the new cmdlet name.
+* Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
+* Add-AzureRmEnvironment and Set-AzureRmEnvironment
+  - Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.  
+
+## Version 4.2.0
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Add-AzureRmAccount
   * Added -MSI login for authenticationg using the credentials of the Managed Service Identity of the current VM / Service

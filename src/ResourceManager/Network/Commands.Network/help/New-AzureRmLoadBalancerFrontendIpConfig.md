@@ -79,7 +79,7 @@ Specifies the front-end IP configuration that this cmdlet creates.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -95,7 +95,7 @@ Specify this parameter only if you also specify the *Subnet* parameter.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,7 +110,7 @@ Specifies the **PublicIpAddress** object to associate with a front-end IP config
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,7 +125,7 @@ Specifies the ID of the **PublicIpAddress** object to associate with a front-end
 ```yaml
 Type: String
 Parameter Sets: SetByResourceIdPublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,7 +140,7 @@ Specifies the **Subnet** object in which to create a front-end IP configuration.
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResourceSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -155,7 +155,7 @@ Specifies the ID of the subnet in which to create a front-end IP configuration.
 ```yaml
 Type: String
 Parameter Sets: SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -170,7 +170,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,6 +183,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

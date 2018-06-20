@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Model;
 using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
+using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -43,6 +44,15 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
             HelpMessage = "The name of the Azure SQL Elastic Pool.")]
         [ValidateNotNullOrEmpty]
         public string ElasticPoolName { get; set; }
+
+        /// <summary>
+        /// Gets or sets the operation id to use.
+        /// </summary>
+        [Parameter(Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ID of the operation to retrieve.")]
+        [ValidateNotNullOrEmpty]
+        public Guid? OperationId { get; set; }
 
         /// <summary>
         /// Initializes the adapter

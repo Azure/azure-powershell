@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 ms.assetid: 0AC17275-17A9-47DE-BF04-C1A51DF057DC
 online version: 
@@ -80,7 +80,9 @@ To create a secure string, use the ConvertTo-SecureString cmdlet.
 ## PARAMETERS
 
 ### -BackupScheduleType
-Backup schedule type, manual or automated```yaml
+Backup schedule type, manual or automated
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -94,7 +96,9 @@ Accept wildcard characters: False
 ```
 
 ### -BackupSystemDbs
-Backup system databases```yaml
+Backup system databases
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: 
@@ -154,7 +158,9 @@ Accept wildcard characters: False
 ```
 
 ### -FullBackupFrequency
-Sql Server Full Backup frequency, daily or weekly```yaml
+Sql Server Full Backup frequency, daily or weekly
+
+```yaml
 Type: String
 Parameter Sets: (All)
 Aliases: 
@@ -168,7 +174,9 @@ Accept wildcard characters: False
 ```
 
 ### -FullBackupStartHour
-Hour of the day (0-23) when the Sql Server Full Backup should start```yaml
+Hour of the day (0-23) when the Sql Server Full Backup should start
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -181,7 +189,9 @@ Accept wildcard characters: False
 ```
 
 ### -FullBackupWindowInHours
-Sql Server Full Backup window in hours```yaml
+Sql Server Full Backup window in hours
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -194,7 +204,9 @@ Accept wildcard characters: False
 ```
 
 ### -LogBackupFrequencyInMinutes
-Sql Server Log Backup frequency, once every 1-60 minutes```yaml
+Sql Server Log Backup frequency, once every 1-60 minutes
+
+```yaml
 Type: Int32
 Parameter Sets: (All)
 Aliases: 
@@ -287,6 +299,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

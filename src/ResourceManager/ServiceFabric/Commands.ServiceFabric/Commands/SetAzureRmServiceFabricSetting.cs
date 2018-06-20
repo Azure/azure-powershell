@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
     {            
         public override void ExecuteCmdlet()
         {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
+            var cluster = GetCurrentCluster();
             var settings = FabricSettingsToDictionary(cluster.FabricSettings);
 
-            foreach (var setting in this.UpdatedSettingsSectionDescriptionListList)
+            foreach (var setting in this.UpdatedSettingsSectionDescriptionList)
             {
                 if (!settings.ContainsKey(setting.Name))
                 {

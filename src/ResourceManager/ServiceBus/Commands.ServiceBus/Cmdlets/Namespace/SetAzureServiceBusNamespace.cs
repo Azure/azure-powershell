@@ -23,17 +23,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Set-AzureRmServiceBusNamespace' Cmdlet updates the specified ServiceBus Namespace
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, ServiceBusNamespaceVerb  , SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
+    [Cmdlet(VerbsCommon.Set, ServiceBusNamespaceVerb  , SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
         /// Name of the resource group.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = "Resource Group Name.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         [ValidateNotNullOrEmpty]        
@@ -42,11 +38,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// ServiceBus Namespace Location.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 1,
-            HelpMessage = "ServiceBus Namespace Location.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Location")]
         [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -54,11 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// ServiceBus Namespace Name.
         /// </summary>
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 2,
-            HelpMessage = "ServiceBus Namespace Name.")]
+        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "ServiceBus Namespace Name")]
         [Alias(AliasNamespaceName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -66,14 +54,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// Namespace Sku Name.
         /// </summary>
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Namespace Sku Name.")]
-        [ValidateSet(SKU.Basic,
-          SKU.Standard,
-          SKU.Premium,
-          IgnoreCase = true)]
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Namespace Sku Name")]
+        [ValidateSet(SKU.Basic, SKU.Standard, SKU.Premium, IgnoreCase = true)]
         public string SkuName { get; set; }
 
         /// <summary>
@@ -88,10 +70,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// Hashtables which represents resource Tags.
         /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Hashtables which represents resource Tags.")]
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags")]
         public Hashtable Tag { get; set; }
         
         /// <summary>

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: A7C287C4-E9FD-407A-91BD-EFA17C33FC8B
@@ -13,9 +13,14 @@ Gets key vaults.
 
 ## SYNTAX
 
+### ListAllVaultsInSubscription (Default)
+```
+Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### GetVaultByName
 ```
-Get-AzureRmKeyVault [-VaultName] <String> [[-ResourceGroupName] <String>]
+Get-AzureRmKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,20 +30,9 @@ Get-AzureRmKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ListVaultsByResourceGroup
-```
-Get-AzureRmKeyVault [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
 ### ListAllDeletedVaultsInSubscription
 ```
 Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ListAllVaultsInSubscription
-```
-Get-AzureRmKeyVault [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,42 +46,125 @@ key vault, you should do so for better performance.
 ## EXAMPLES
 
 ### Example 1: Get all key vaults in your current subscription
-```
-PS C:\>Get-AzureRMKeyVault
+```powershell
+PS C:\> Get-AzureRMKeyVault
+
+Vault Name          : myvault1
+Resource Group Name : myrg
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Ke
+                      yVault/vaults/myvault1
+Tags                :
+
+
+Vault Name          : myvault2
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault2
+Tags                :
+
+Vault Name          : myvault3
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault3
+Tags                :
 ```
 
 This command gets all the key vaults in your current subscription.
 
 ### Example 2: Get a specific key vault
-```
-PS C:\>$MyVault = Get-AzureRMKeyVault -VaultName 'Contoso03Vault'
+```powershell
+PS C:\> Get-AzureRMKeyVault -VaultName 'myvault'
+
+Vault Name                       : myvault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/myvault
+Vault URI                        : https://myvault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : True
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : get, create, delete, list, update,
+                                   import, backup, restore, recover
+                                   Permissions to Secrets                     : get, list, set, delete, backup,
+                                   restore, recover
+                                   Permissions to Certificates                : get, delete, list, create, import,
+                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
+                                   setissuers, recover
+                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
+                                   listsas, regeneratekey, set, setsas, update
+
+Tags                             :
 ```
 
-This command gets the key vault named Contoso03Vault in your current subscription, and then stores
-it in the $MyVault variable. You can inspect the properties of $MyVault to get details about the
-key vault.
+This command gets the key vault named myvault in your current subscription.
 
 ### Example 3: Get key vaults in a resource group
-```
-PS C:\>Get-AzureRmKeyVault -ResourceGroupName 'ContosoPayRollResourceGroup'
+```powershell
+PS C:\> Get-AzureRmKeyVault -ResourceGroupName 'myrg1'
+
+Vault Name          : myvault2
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault2
+Tags                :
+
+Vault Name          : myvault3
+Resource Group Name : myrg1
+Location            : westus
+Resource ID         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg1/providers/Microsoft.Ke
+                      yVault/vaults/myvault3
+Tags                :
 ```
 
 This command gets all the key vaults in the resource group named ContosoPayRollResourceGroup.
 
 ### Example 4: Get all deleted key vaults in your current subscription
-```
-PS C:\>Get-AzureRmKeyVault -InRemovedState
+```powershell
+PS C:\> Get-AzureRmKeyVault -InRemovedState
+
+Vault Name           : myvault4
+Location             : westus
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/providers/Microsoft.KeyVault/locations/westu
+                       s/deletedVaults/myvault4
+Resource ID          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.K
+                       eyVault/vaults/myvault4
+Deletion Date        : 5/24/2018 9:33:24 PM
+Scheduled Purge Date : 8/22/2018 9:33:24 PM
+Tags                 :
 ```
 
 This command gets all the deleted key vaults in your current subscription.
 
 ### Example 5: Get a deleted key vault
-```
-PS C:\>Get-AzureRMKeyVault -VaultName 'Contoso03Vault'  -Location 'eastus2' -InRemovedState
+```powershell
+PS C:\> Get-AzureRMKeyVault -VaultName 'myvault4'  -Location 'westus' -InRemovedState
+
+Vault Name           : myvault4
+Location             : westus
+Id                   : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/providers/Microsoft.KeyVault/locations/westu
+                       s/deletedVaults/myvault4
+Resource ID          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.K
+                       eyVault/vaults/myvault4
+Deletion Date        : 5/24/2018 9:33:24 PM
+Scheduled Purge Date : 8/22/2018 9:33:24 PM
+Tags                 :
 ```
 
-This command gets the deleted key vault information named Contoso03Vault in your current
-subscription and in eastus2 region.
+This command gets the deleted key vault information named myvault4 in your current
+subscription and in westus region.
 
 ## PARAMETERS
 
@@ -112,7 +189,7 @@ Specifies whether to show the previously deleted vaults in the output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -127,10 +204,10 @@ The location of the deleted vault.
 ```yaml
 Type: String
 Parameter Sets: ByDeletedVault
-Aliases: 
+Aliases:
 
 Required: True
-Position: 2
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -142,21 +219,9 @@ Specifies the name of the resource group associated with the key vault or key va
 ```yaml
 Type: String
 Parameter Sets: GetVaultByName
-Aliases: 
+Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: String
-Parameter Sets: ListVaultsByResourceGroup
-Aliases: 
-
-Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -171,7 +236,7 @@ Key-value pairs in the form of a hash table. For example:
 ```yaml
 Type: Hashtable
 Parameter Sets: ListAllVaultsInSubscription
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +250,19 @@ Specifies the name of the key vault.
 
 ```yaml
 Type: String
-Parameter Sets: GetVaultByName, ByDeletedVault
+Parameter Sets: GetVaultByName
+Aliases: Name
+
+Required: False
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ByDeletedVault
 Aliases: Name
 
 Required: True
@@ -200,15 +277,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+This cmdlet does not accept any input.
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSVault
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSVaultIdentityItem]
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
 
-### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedVault]
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault
 
 ## NOTES
 

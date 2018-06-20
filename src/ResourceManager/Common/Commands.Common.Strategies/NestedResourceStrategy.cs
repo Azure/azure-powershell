@@ -18,7 +18,7 @@ using System.Linq;
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public sealed class NestedResourceStrategy<TModel, TParentModel> : IEntityStrategy
+    public sealed class NestedResourceStrategy<TModel, TParentModel> : INestedResourceStrategy
     {
         public Func<string, IEnumerable<string>> GetId { get; }
 
@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             where TParentModel : class
             => Create<TModel, TParentModel>(
                 provider,
-                (parentModel, name) => getList(parentModel)?.FirstOrDefault(model => getName(model) == name),
+                (parentModel, name) => getList(parentModel)
+                    ?.FirstOrDefault(model => getName(model) == name),
                 (parentModel, name, model) =>
                 {
                     setName(model, name);

@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -GracePeriodWithDataLossHours
-Interval before automatic failover is initiated if an outage occurs on the primary server and failover cannot be completed without data loss.
+Interval before automatic failover is initiated if an outage occurs on the primary server. This indicates that Azure SQL Database will not initiate automatic failover before the grace period expires. Please note that failover operation with AllowDataLoss option might cause data loss due to the nature of asynchronous synchronization.
 
 ```yaml
 Type: Int32

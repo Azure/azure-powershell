@@ -56,7 +56,7 @@ function Test-ApplicationGatewayCRUD
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -123,7 +123,7 @@ function Test-ApplicationGatewayCRUD
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
 
-		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authCertFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		
 		# Create match with undefined statuscode list
@@ -200,7 +200,7 @@ function Test-ApplicationGatewayCRUD
 		Assert-NotNull $getgw.Probes[1]
 		Assert-NotNull $getgw.Probes[1].Match
 		Assert-NotNull $getgw.Probes[1].Match.StatusCodes
-		Assert-AreEqual 0 $getgw.Probes[1].Match.StatusCodes.Count
+		Assert-AreEqual 1 $getgw.Probes[1].Match.StatusCodes.Count
 
 		# Get Application Gateway backend health with expanded resource
 		$job = Get-AzureRmApplicationGatewayBackendHealth -Name $appgwName -ResourceGroupName $rgname -ExpandResource "backendhealth/applicationgatewayresource" -AsJob
@@ -330,7 +330,7 @@ function Test-ApplicationGatewayCRUD2
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -388,7 +388,7 @@ function Test-ApplicationGatewayCRUD2
 
 		# frontend part
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert1.pfx"
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
@@ -415,7 +415,7 @@ function Test-ApplicationGatewayCRUD2
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01 -EnableHttp2
 
 		# Check get/set/remove for RedirectConfiguration
 		$redirect02 = Get-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirect01Name
@@ -424,6 +424,9 @@ function Test-ApplicationGatewayCRUD2
 
 		$getgw = Add-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirect03Name -RedirectType Permanent -TargetListener $listener01 -IncludePath $true
 		$getgw = Remove-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $getgw -Name $redirect03Name
+
+		# Check EnableHttp2 flag is true
+		Assert-AreEqual $getgw.EnableHttp2 $true
 
 		# Get for SslPolicy
 		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw
@@ -448,11 +451,15 @@ function Test-ApplicationGatewayCRUD2
 		Assert-NotNull $getgw.SslCertificates[0].Password
 
 		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert02Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert2.pfx"
+		$sslCert02Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert2.pfx"
 		$getgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert02Name -CertificateFile $sslCert02Path -Password $pw02
 
 		# Modify existing application gateway with new configuration
+		$getgw.EnableHttp2 = $false
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		# Check EnableHttp2 flag is false
+		Assert-AreEqual $getgw.EnableHttp2 $false
 
 		Assert-AreEqual "Running" $getgw.OperationalState
 

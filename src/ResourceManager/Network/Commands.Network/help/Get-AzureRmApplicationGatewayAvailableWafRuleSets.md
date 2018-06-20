@@ -61,4 +61,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 **List-AzureRmApplicationGatewayAvailableWafRuleSets** is an alias for the **Get-AzureRmApplicationGatewayAvailableWafRuleSets** cmdlet.
 
 ## RELATED LINKS
-

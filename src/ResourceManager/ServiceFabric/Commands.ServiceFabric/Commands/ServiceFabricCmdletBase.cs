@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
@@ -28,12 +29,6 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ServiceFabric.Common;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.KeyVault.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Management.KeyVault;
-using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.ServiceFabric;
 using Microsoft.Azure.Management.ServiceFabric.Models;
@@ -44,6 +39,12 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04.Models;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1;
+using Microsoft.Azure.Commands.Common.KeyVault.Version2016_10_1.Models;
+using Microsoft.Azure.KeyVault;
+using Microsoft.Azure.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -197,7 +198,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 throw new PSInvalidOperationException(
                     string.Format(
-                        ServiceFabricProperties.Resources.CannotFindTheNodeType, name));
+                        ServiceFabricProperties.Resources.CannotFindTheNodeType, 
+                        name));
             }
 
             return vmss;
@@ -229,17 +231,20 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         protected Vault TryGetKeyVault(string keyVaultResouceGroupName, string vaultName)
         {
-            if (!string.IsNullOrWhiteSpace(vaultName))
+            if (string.IsNullOrWhiteSpace(keyVaultResouceGroupName))
             {
-                return SafeGetResource(() => KeyVaultManageClient.Vaults.Get(
-                    keyVaultResouceGroupName,
-                    vaultName),
-                    false);
+                throw new PSArgumentException(keyVaultResouceGroupName);
             }
-            else
+
+            if (string.IsNullOrWhiteSpace(vaultName))
             {
                 throw new PSArgumentException(vaultName);
             }
+
+            return SafeGetResource(() => KeyVaultManageClient.Vaults.Get(
+                keyVaultResouceGroupName,
+                vaultName),
+                false);
         }
 
         protected Vault TryGetKeyVault(string secretIdentifier)
@@ -247,6 +252,16 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             var host = new Uri(secretIdentifier).Host;
             var vaultName = host.Split('.')[0];
             var keyVaultRgName = GetResourceGroupName(vaultName);
+            if (string.IsNullOrWhiteSpace(keyVaultRgName))
+            {
+                throw new PSInvalidOperationException(
+                    string.Format(
+                        CultureInfo.CurrentUICulture,
+                        ServiceFabricProperties.Resources.CannotFindVaultFromSecretId,
+                        vaultName,
+                        secretIdentifier));
+            }
+
             return TryGetKeyVault(keyVaultRgName, vaultName);
         }
 
@@ -305,7 +320,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 Location = vaultLocation,
                 Properties = new VaultProperties
                 {
-                    Sku = new Management.KeyVault.Models.Sku
+                    Sku = new Azure.Commands.Common.KeyVault.Version2016_10_1.Models.Sku
                     {
                         Name = SkuName.Standard,
                     },
@@ -344,12 +359,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             if (context.Account == null)
             {
                 throw new PSArgumentException("ARM account not found");
-            }
-
-            if (context.Account.Type != AzureAccount.AccountType.User &&
-                context.Account.Type != AzureAccount.AccountType.ServicePrincipal)
-            {
-                throw new PSArgumentException("Unsupported account type");
             }
 
             if (context.Subscription != null && context.Account != null)
@@ -432,7 +441,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                 }
                 ).GetAwaiter().GetResult();
 
-            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.CertificateIdentifier));
+            WriteVerboseWithTimestamp(string.Format("Certificate imported Azure KeyVault {0}", certificateBundle.Id));
 
             return certificateBundle;
         }
@@ -441,7 +450,6 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         {
             GraphClient.TenantID = GetTenantId(DefaultContext).ToString();
 
-            string objectId = null;
             try
             {
                 var user = GraphClient.Users.List(
@@ -449,12 +457,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         string.Format("$filter=userPrincipalName eq '{0}'", DefaultContext.Account.Id)
                         )).FirstOrDefault();
 
-                if (user == null)
-                {
-                    return null;
-                }
-
-                objectId = user.ObjectId;
+                return user?.ObjectId;
             }
             catch (GraphErrorException)
             {
@@ -463,15 +466,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                         string.Format("$filter=servicePrincipalNames/any(c: c eq '{0}')", DefaultContext.Account.Id))
                     ).FirstOrDefault();
 
-                if (user == null)
-                {
-                    return null;
-                }
-
-                objectId = user.ObjectId;  
+                return user?.ObjectId;
             }
-
-            return objectId;
         }
 
         protected Uri CreateVaultUri(string vaultName)
@@ -590,7 +586,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             {
                 exception = exception.InnerException;
             }
-          
+
             if (exception is CloudException)
             {
                 var cloudException = (CloudException)exception;
@@ -633,7 +629,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             var message = string.Format(
-                "Code:{0}, Message:{1} ,Details: {3}{2}",  
+                "Code: {0}, Message: {1}{2}Details: {3}{2}",  
                 error.Code,                      
                 error.Message,         
                 Environment.NewLine,  
@@ -650,7 +646,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
             }
 
             var message = string.Format(
-                "Code:{0}, Message:{1}{2}",
+                "Code: {0}, Message: {1}{2}",
                 error.Error.Code,
                 error.Error.Message,
                 Environment.NewLine);

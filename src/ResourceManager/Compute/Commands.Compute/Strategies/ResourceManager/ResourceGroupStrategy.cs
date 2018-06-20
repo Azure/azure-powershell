@@ -12,18 +12,17 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
-using System.Linq;
 
-namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
+namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
 {
     static class ResourceGroupStrategy
     {
         public static ResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(
-                type: "resource group",
-                providers: Enumerable.Empty<string>(),
+                type: ResourceType.ResourceGroup,
                 getOperations: (ResourceManagementClient client) => client.ResourceGroups,
                 getAsync: (o, p) => o.GetAsync(p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) 
@@ -34,6 +33,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.ResourceManager
                 compulsoryLocation: false);
 
         public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
-            => Strategy.CreateConfig(name, name);
+            => Strategy.CreateResourceConfig(null, name);
     }
 }

@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebussubscription
 schema: 2.0.0
 ---
@@ -25,6 +25,21 @@ The **Get-AzureRmServiceBusSubscription** cmdlet returns a subscription descript
 ### Example 1
 ```
 PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -SubscriptionName SB-TopicSubscription-Example1
+
+Name                                      : SB-TopicSubscription-Example1
+AccessedAt                                : 1/20/2017 3:18:54 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
+CreatedAt                                 : 1/20/2017 3:18:52 AM
+DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
+DeadLetteringOnMessageExpiration          : False
+EnableBatchedOperations                   : True
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 10
+MessageCount                              : 0
+RequiresSession                           : False
+Status                                    : Active
+UpdatedAt                                 : 1/20/2017 3:18:54 AM
 ```
 
 Returns a subscription description for the specified Service Bus topic.
@@ -129,21 +144,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.SubscriptionAttributes
-Name                                      : SB-TopicSubscription-Example1
-AccessedAt                                : 1/20/2017 3:18:54 AM
-AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
-CountDetails                              : Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails
-CreatedAt                                 : 1/20/2017 3:18:52 AM
-DefaultMessageTimeToLive                  : 10675199.02:48:05.4775807
-DeadLetteringOnMessageExpiration          : False
-EnableBatchedOperations                   : True
-LockDuration                              : 00:01:00
-MaxDeliveryCount                          : 10
-MessageCount                              : 0
-RequiresSession                           : False
-Status                                    : Active
-UpdatedAt                                 : 1/20/2017 3:18:54 AM
+### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
 ## NOTES
 

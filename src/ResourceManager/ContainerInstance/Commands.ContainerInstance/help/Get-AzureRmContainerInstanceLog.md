@@ -89,7 +89,7 @@ The container group name.
 ```yaml
 Type: String
 Parameter Sets: GetContainerInstanceLogByNamesParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,7 +119,7 @@ The input container group object.
 ```yaml
 Type: PSContainerGroup
 Parameter Sets: GetContainerInstanceLogByPSContainerGroupParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,7 +135,7 @@ Default: the same as the container group name
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -150,7 +150,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: GetContainerInstanceLogByNamesParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -165,7 +165,7 @@ The resource id.
 ```yaml
 Type: String
 Parameter Sets: GetContainerInstanceLogByResourceIdParamSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,7 +181,7 @@ If not specify, the cmdlet will return up to 4MB tailed log
 ```yaml
 Type: Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -204,4 +204,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests;
 using Microsoft.Azure.Commands.ServiceFabric.Commands;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -32,7 +31,8 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             AddAzureRmServiceFabricNodeType.dontRandom = true;
             ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 3;
             ServiceFabricCmdletBase.RunningTest = true;
-            ServiceFabricCmdletBase.TestThumbprint = "2394f562bf05258059fe32c0d7c63024ead13096";
+            //change the thumbprint in the common.ps1 file as well
+            ServiceFabricCmdletBase.TestThumbprint = "570BBCC85CBDAB98A442D08630996708F60A356D";
         }
 
         [Fact]
@@ -100,9 +100,38 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewAzureRmServiceFabricCluster()
+        {
+            TestController.NewInstance.RunPsTest("Test-NewAzureRmServiceFabricCluster");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAddAzureRmServiceFabricNode()
+        {
+            TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRemoveAzureRmServiceFabricNode()
+        {
+            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricNode");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmServiceFabricNodeType()
         {
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait("Re-record", "ClientRuntime changes")]
+        public void TestRemoveAzureRmServiceFabricNodeType()
+        {
+            TestController.NewInstance.RunPsTest("Test-RemoveAzureRmServiceFabricNodeType");
         }
     }
 }

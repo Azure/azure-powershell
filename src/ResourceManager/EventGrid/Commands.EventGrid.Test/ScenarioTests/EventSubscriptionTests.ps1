@@ -158,8 +158,8 @@ function EventSubscriptionTests_ResourceGroup {
     $updateResult = Update-AzureRmEventGridSubscription -ResourceGroup $resourceGroupName -EventSubscriptionName $eventSubscriptionName -SubjectEndsWith "NewSuffix" -Label $newLabels
     Assert-True {$updateResult.ProvisioningState -eq "Succeeded"}
     Assert-True {$updateResult.Filter.SubjectEndsWith -eq "NewSuffix"}
-	$updatedLabels = $updateResult.Labels
-	Assert-AreEqual 2 $updatedLabels.Count;
+    $updatedLabels = $updateResult.Labels
+    Assert-AreEqual 2 $updatedLabels.Count;
     Assert-AreEqual "Marketing" $updatedLabels[0];
     Assert-AreEqual "Sales" $updatedLabels[1];
 

@@ -23,16 +23,21 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureRmServiceFabricCluster), OutputType(typeof(IList<PSCluster>))]
+    [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureRmServiceFabricCluster, DefaultParameterSetName = "BySubscription"), OutputType(typeof(IList<PSCluster>))]
     public class GetAzureRmServiceFabricCluster : ServiceFabricClusterCmdlet
     {
-        [Parameter(Mandatory = false, Position = 0, ValueFromPipelineByPropertyName = true,
+        private const string ByResourceGroup = "ByResourceGroup";
+        private const string ByName = "ByName";
+
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByResourceGroup,
+                   HelpMessage = "Specify the name of the resource group.")]
+        [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
                    HelpMessage = "Specify the name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty()]
         public override string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = false, Position = 1, ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true, Position = 1, ValueFromPipelineByPropertyName = true, ParameterSetName = ByName,
                    HelpMessage = "Specify the name of the cluster")]
         [ValidateNotNullOrEmpty()]
         [Alias("ClusterName")]
@@ -40,27 +45,29 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
         public override void ExecuteCmdlet()
         {
-            if (ResourceGroupName != null && Name != null)
+            switch (ParameterSetName)
             {
-                var cluster = SFRPClient.Clusters.Get(ResourceGroupName, Name);
-                WriteObject(new List<PSCluster>() { new PSCluster(cluster) }, true);
-            }
-            else if (ResourceGroupName != null)
-            {
-                var clusters = SFRPClient.Clusters.
-                    ListByResourceGroup(ResourceGroupName).
-                    Select(c => new PSCluster(c)).ToList();
+                case ByName:
+                    {
+                        var cluster = GetCurrentCluster();
+                        WriteObject(new List<PSCluster>() { new PSCluster(cluster) }, true);
+                        break;
+                    }
+                case ByResourceGroup:
+                    {
+                        var clusters = SFRPClient.Clusters.
+                            ListByResourceGroup(ResourceGroupName).
+                            Select(c => new PSCluster(c)).ToList();
 
-                WriteObject(clusters, true);
-            }
-            else if (ResourceGroupName == null && Name == null)
-            {
-                var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
-                WriteObject(clusters, true);
-            }
-            else
-            {
-                throw new PSArgumentException(ServiceFabricProperties.Resources.InvalidInput);
+                        WriteObject(clusters, true);
+                        break;
+                    }
+                default:
+                    {
+                        var clusters = SFRPClient.Clusters.List().Select(c => new PSCluster(c)).ToList();
+                        WriteObject(clusters, true);
+                        break;
+                    }
             }
         }
     }

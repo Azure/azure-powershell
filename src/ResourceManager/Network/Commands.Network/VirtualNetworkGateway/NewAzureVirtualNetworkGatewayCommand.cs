@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "SetByResource",
             HelpMessage = "GatewayDefaultSite")]
         public PSLocalNetworkGateway GatewayDefaultSite { get; set; }
 
@@ -165,6 +164,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of VpnClientCertificates to be revoked.")]
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
+        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -260,19 +265,8 @@ namespace Microsoft.Azure.Commands.Network
             }
             else
             {
-                // If gateway sku param value is not passed, set gateway sku to VpnGw1 if VpnType is RouteBased and Basic if VpnType is PolicyBased
-                if (this.VpnType != null && this.VpnType.Equals(MNM.VpnType.RouteBased))
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.VpnGw1;
-                }
-                else
-                {
-                    vnetGateway.Sku = new PSVirtualNetworkGatewaySku();
-                    vnetGateway.Sku.Tier = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                    vnetGateway.Sku.Name = MNM.VirtualNetworkGatewaySkuTier.Basic;
-                }
+                // If gateway sku param value is not passed,  - Let NRP make the decision, just pass it as null here
+                vnetGateway.Sku = null;
             }
 
             if (this.EnableActiveActiveFeature.IsPresent && !this.VpnType.Equals(MNM.VpnType.RouteBased))
@@ -324,7 +318,8 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientAddressPool != null ||
                 this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
-                this.RadiusServerAddress != null)
+                this.RadiusServerAddress != null ||
+                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0))
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -353,6 +348,11 @@ namespace Microsoft.Azure.Commands.Network
                 if (this.VpnClientRevokedCertificates != null)
                 {
                     vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                }
+
+                if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
+                {
+                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
                 }
 
                 if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

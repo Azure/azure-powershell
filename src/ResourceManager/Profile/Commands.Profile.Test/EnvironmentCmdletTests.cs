@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             AzureSession.Instance.DataStore = dataStore;
         }
 
-        public void Cleanup()
+        private void Cleanup()
         {
             currentProfile = null;
         }
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.PublishSettingsFileUrl), dict["PublishSettingsFileUrl"]);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.ServiceManagement), dict["ServiceEndpoint"]);
             Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.ManagementPortalUrl), dict["ManagementPortalUrl"]);
-            Assert.Equal(env.GetEndpoint(AzureEnvironment.Endpoint.Gallery), "http://galleryendpoint.com");
+            Assert.Equal("http://galleryendpoint.com", env.GetEndpoint(AzureEnvironment.Endpoint.Gallery));
         }
 
         [Fact]
@@ -376,7 +376,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
                 TrafficManagerDnsSuffix = "TrafficManagerDnsSuffix",
                 GraphAudience = "GaraphAudience",
                 BatchEndpointResourceId = "BatchResourceId",
-                DataLakeAudience = "DataLakeAudience"
+                DataLakeAudience = "DataLakeAudience",
+                AzureOperationalInsightsEndpointResourceId = "AzureOperationalInsightsEndpointResourceId",
+                AzureOperationalInsightsEndpoint = "https://AzureOperationalInsights",
             };
 
             var dict = new Dictionary<string, object>();
@@ -398,6 +400,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             dict["GraphAudience"] = "GaraphAudience";
             dict["BatchEndpointResourceId"] = "BatchResourceId";
             dict["DataLakeAudience"] = "DataLakeAudience";
+            dict["AzureOperationalInsightsEndpointResourceId"] = "AzureOperationalInsightsEndpointResourceId";
+            dict["AzureOperationalInsightsEndpoint"] = "https://AzureOperationalInsights";
             cmdlet.SetBoundParameters(dict);
 
             cmdlet.InvokeBeginProcessing();
@@ -423,6 +427,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.Equal(cmdlet.GraphAudience, actual.GraphEndpointResourceId);
             Assert.Equal(cmdlet.BatchEndpointResourceId, actual.BatchEndpointResourceId);
             Assert.Equal(cmdlet.DataLakeAudience, actual.DataLakeEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpointResourceId, actual.AzureOperationalInsightsEndpointResourceId);
+            Assert.Equal(cmdlet.AzureOperationalInsightsEndpoint, actual.AzureOperationalInsightsEndpoint);
             commandRuntimeMock.Verify(f => f.WriteObject(It.IsAny<PSAzureEnvironment>()), Times.Once());
             IAzureEnvironment env = AzureRmProfileProvider.Instance.Profile.GetEnvironment("KaTaL");
             Assert.Equal(env.Name, cmdlet.Name);
@@ -516,7 +522,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(1, environments.Count);
+            Assert.Single(environments);
         }
 
         [Fact]
@@ -773,7 +779,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             }
         }
 
-        public void Dispose()
+        private void Dispose()
         {
             Cleanup();
         }

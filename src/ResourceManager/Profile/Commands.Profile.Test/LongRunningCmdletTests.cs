@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 if (job.JobStateInfo.State != JobState.Completed)
                 {
                     job.StopJob();
-                    this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10));
+                    this.jobCompleted.WaitOne(TimeSpan.FromHours(4));
                     Assert.Equal("Stopped", job.StatusMessage);
                 }
 
@@ -183,6 +183,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             Mock<ICommandRuntime> mock = new Mock<ICommandRuntime>();
             var cmdlet = new AzureParameterSetCmdlet();
             cmdlet.SetParameterSet("ParameterSetIsSet");
+            cmdlet.AsJobDynamicParameters = new RuntimeDefinedParameterDictionary();
             cmdlet.CommandRuntime = mock.Object;
             var job = cmdlet.ExecuteAsJob("Test parameter set job") as AzureLongRunningJob<AzureParameterSetCmdlet>;
             WaitForCompletion(job, j =>
@@ -232,7 +233,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             return cmdlet;
         }
 
-        public void HandleStateChange(object sender, JobStateEventArgs args)
+        private void HandleStateChange(object sender, JobStateEventArgs args)
         {
             lock (lockObject)
             {
@@ -264,7 +265,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             try
             {
                 HandleStateChange(job, new JobStateEventArgs(job.JobStateInfo, new JobStateInfo(JobState.NotStarted)));
-                this.jobCompleted.WaitOne(TimeSpan.FromSeconds(30));
+                jobCompleted.WaitOne(TimeSpan.FromHours(4));
                 validate(job);
             }
             finally
@@ -282,7 +283,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             Assert.Equal("Completed", job.StatusMessage);
             Assert.True(job.HasMoreData);
-            Assert.True(job.Debug.Any(t => t.Message == Debug));
+            Assert.Contains(job.Debug, t => t.Message == Debug);
             Assert.Collection(job.Warning, t => Assert.Equal(Warning, t.Message));
             Assert.Collection(job.Verbose, t => Assert.Equal(Verbose, t.Message));
             Assert.Collection(job.Progress, t => Assert.Equal(Progress, t));
@@ -388,6 +389,10 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 if (String.IsNullOrEmpty(this.ParameterSetName))
                 {
                     throw new InvalidOperationException("Parameter set must be set");
+                }
+                if (this.AsJobDynamicParameters == null)
+                {
+                    throw new InvalidOperationException("Dynamic parameters must be set");
                 }
             }
 

@@ -162,13 +162,13 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(1, providers.Length);
+                    Assert.Single(providers);
 
                     var provider = providers.Single();
                     Assert.Equal(RegisteredProviderNamespace, provider.ProviderNamespace);
                     Assert.Equal(ResourceManagerSdkClient.RegisteredStateName, provider.RegistrationState);
 
-                    Assert.Equal(1, provider.ResourceTypes.Length);
+                    Assert.Single(provider.ResourceTypes);
 
                     var resourceType = provider.ResourceTypes.Single();
                     Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);
@@ -198,7 +198,8 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.VerifyListCallPatternAndReset();
 
             // 3. List a single provider by name
-            this.cmdlet.ProviderNamespace = UnregisteredProviderNamespace;
+            this.cmdlet.ProviderNamespace = new string[] { UnregisteredProviderNamespace };
+            this.cmdlet.MyInvocation.BoundParameters.Add("ProviderNamespace", new string[] { UnregisteredProviderNamespace });
 
             this.providerOperationsMock
               .Setup(f => f.GetWithHttpMessagesAsync(It.IsAny<string>(), null, null, It.IsAny<CancellationToken>()))
@@ -214,7 +215,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(1, providers.Length);
+                    Assert.Single(providers);
 
                     var provider = providers.Single();
                     Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
@@ -225,6 +226,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
             this.cmdlet.ExecuteCmdlet();
 
             this.VerifyGetCallPatternAndReset();
+            this.cmdlet.MyInvocation.BoundParameters.Remove("ProviderNamespace");
 
             // 4. List only registered providers with location
             this.cmdlet.Location = "South US";
@@ -238,7 +240,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                     Assert.IsType<PSResourceProvider[]>(obj);
 
                     var providers = (PSResourceProvider[])obj;
-                    Assert.Equal(0, providers.Length);
+                    Assert.Empty(providers);
                 });
 
             this.cmdlet.ParameterSetOverride = GetAzureProviderCmdlet.ListAvailableParameterSet;
@@ -257,12 +259,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
               .Callback((object obj) =>
               {
                   var providers = (PSResourceProvider[])obj;
-                  Assert.Equal(0, providers.Length);
+                  Assert.Empty(providers);
 
                   var provider = providers.Single();
                   Assert.Equal(UnregisteredProviderNamespace, provider.ProviderNamespace);
 
-                  Assert.Equal(1, provider.ResourceTypes.Length);
+                  Assert.Single(provider.ResourceTypes);
 
                   var resourceType = provider.ResourceTypes.Single();
                   Assert.Equal(ResourceTypeName, resourceType.ResourceTypeName);

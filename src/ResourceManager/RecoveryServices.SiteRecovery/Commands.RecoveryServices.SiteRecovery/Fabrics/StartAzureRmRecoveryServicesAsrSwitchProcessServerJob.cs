@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models;
 namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
 {
     /// <summary>
-    ///     Initiates switching process server for load balancing.
+    ///     Switch replication from one Process server to another for load balancing.
     /// </summary>
     [Cmdlet(
         VerbsLifecycle.Start,
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     public class StartAzureRmRecoveryServicesAsrSwitchProcessServerJob : SiteRecoveryCmdletBase
     {
         /// <summary>
-        ///     Gets or sets the fabric name
+        ///     Gets or sets the fabric corresponding to the Configuration Server.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRFabric Fabric { get; set; }
 
         /// <summary>
-        ///     Gets or sets Process Server.
+        ///     Gets or sets the process server to switch replication out from.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProcessServer SourceProcessServer { get; set; }
 
         /// <summary>
-        ///     Gets or sets Process Server.
+        ///     Gets or sets process server to switch replication to.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         public ASRProcessServer TargetProcessServer { get; set; }
 
         /// <summary>
-        ///     Gets or sets Replication Protected Item.
+        ///     Gets or sets list of replication protected item whose process server to be switched.
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.Default,

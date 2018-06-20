@@ -26,7 +26,7 @@ this allows the users to create the Vpn profile package based on pre-configured 
 
 ### Example 1
 ```
-PS C:\> New-AzureRmVpnClientConfiguration -VirtualNetworkGatewayName "ContosoVirtualNetworkGateway" -ResourceGroupName "ContosoResourceGroup" -AuthenticationMethod "EAPTLS" -RadiusRootCert "C:\Users\Test\Desktop\VpnProfileRadiusCert.cer"
+PS C:\> New-AzureRmVpnClientConfiguration -ResourceGroupName "ContosoResourceGroup" -Name "ContosoVirtualNetworkGateway" -AuthenticationMethod "EAPTLS" -RadiusRootCertificateFile "C:\Users\Test\Desktop\VpnProfileRadiusCert.cer"
 ```
 
 This cmdlet is used to create a VPN client profile zip file for "ContosoVirtualNetworkGateway" in ResourceGroup "ContosoResourceGroup". The profile is generated for a pre-configured radius server that is configured to use "EAPTLS" authentication method with the VpnProfileRadiusCert certificate file.
@@ -40,7 +40,7 @@ Can take values EAPMSCHAPv2 or EAPTLS. When EAPMSCHAPv2 is specified then the cm
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: EAPTLS, EAPMSCHAPv2
 
 Required: True
@@ -55,7 +55,7 @@ A list of client root certificate paths
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ ProcessorArchitecture
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Amd64, X86
 
 Required: False
@@ -115,7 +115,7 @@ Radius server root certificate path. This is a mandatory parameter that has to b
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ The resource group name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -184,4 +184,3 @@ System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Cul
 ## NOTES
 
 ## RELATED LINKS
-

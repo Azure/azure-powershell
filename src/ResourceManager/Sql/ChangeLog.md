@@ -18,11 +18,55 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.6.1
+* Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
+
+## Version 4.6.0
+* Updated the following cmdlets with optional LicenseType parameter
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+## Version 4.5.0
+* Updated Auditing cmdlets to allow removing AuditActions or AuditActionGroups
+* Fixed issue with Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy when setting a new flexible retention policy where the command would fail with 'Configure long term retention policy with azure recovery service vault and policy is no longer supported. Please submit request with the new flexible retention policy'.
+* Update all Azure Sql Database/ElasticPool Creation/Update related cmdlets to use the new Database API, which support Sku property for scale and tier-related properties.
+* The updated cmdlets including: 
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+## Version 4.4.1
+* Set minimum dependency of module to PowerShell 5.0
+
+## Version 4.4.0
+* Add new cmdlet 'Stop-AzureRmSqlElasticPoolActivity' to support canceling the asynchronous operations on elastic pool
+* Update the response for cmdlets Get-AzureRmSqlDatabaseActivity and Get-AzureRmSqlElasticPoolActivity to reflect more information in the response
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.3.1
+* Fix issue with Default Resource Group in CloudShell
+* Fixed issue with cleaning up scripts in build
+
+## Version 4.3.0
+* Fixed issue with importing aliases
+* Get-AzureRmSqlServer, New-AzureRmSqlServer, and Remove-AzureRmSqlServer response now includes FullyQualifiedDomainName property.
+* Added Get-AzureRmSqlDatabaseLongTermRetentionBackup and Remove-AzureRmSqlDatabaseLongTermRetentionBackup
+* Updated Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy and Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy to work with Long Term Retention V2
+* Updated Restore-AzureRmSqlDatabase to work with Long Term Retention V2 resource IDs
+
+## Version 4.2.0
 * Update the Auditing commands parameters description
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Added -AsJob parameter to long running cmdlets
 * Obsoleted -DatabaseName parameter from Get-AzureRmSqlServiceObjective
+* Adding New-AzureRmSqlDatabaseRestorePoint, Remove-AzureRmSqlDatabaseRestorePoint and output model of Get-AzureRmSqlDatabaseRestorePoints will have one more field
 
 ## Version 4.1.1
 * Added ability to rename database using Set-AzureRmSqlDatabase
@@ -167,3 +211,4 @@
     - To configure ReadScale, user simply specify "ReadScale" paramter with "Enabled/Disabled" at database creation with New-AzureRmSqlDatabase cmdlet,
 
 ## Version 2.3.0
+

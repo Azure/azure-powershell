@@ -16,9 +16,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common;
+    using System;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagementHostnameConfiguration"), OutputType(typeof(PsApiManagementHostnameConfiguration))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "New-AzureRmApiManagementCustomHostnameConfiguration cmdlet from the AzureRM.ApiManagement module instead.",
+        false)]
     public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
     {
         [Parameter(

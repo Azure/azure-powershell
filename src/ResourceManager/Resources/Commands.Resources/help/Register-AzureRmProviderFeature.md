@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 83EE33E5-18EF-4A7A-AEF2-E93D7A3CA541
@@ -23,10 +23,12 @@ The **Register-AzureRmProviderFeature** cmdlet registers an Azure provider featu
 
 ## EXAMPLES
 
-### 1:
+### Example 1: Register a feature
+```
+PS C:\>Register-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
-```
+This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
 
 ## PARAMETERS
 
@@ -110,6 +112,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
