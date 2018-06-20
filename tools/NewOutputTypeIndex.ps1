@@ -6,8 +6,17 @@ param(
 )
 
 # Get all psd1 files
-$psd1Files = Get-Childitem C:\azure-powershell\src\Package\$BuildConfig\ResourceManager -Recurse | where {$_.Name -like "*.psd1" }
-$psd1Files += Get-Childitem C:\azure-powershell\src\Package\$BuildConfig\Storage -Recurse | where {$_.Name -like "*.psd1" }
+$psd1Files = Get-Childitem $PSScriptRoot\..\src\Package\$BuildConfig\ResourceManager -Recurse | where {$_.Name -like "*.psd1" }
+$psd1Files += Get-Childitem $PSScriptRoot\..\src\Package\$BuildConfig\Storage -Recurse | where {$_.Name -like "*.psd1" }
+
+$profilePsd1 = $psd1Files | Where-Object {$_.Name -like "*AzureRM.Profile.psd1"}
+Import-LocalizedData -BindingVariable "psd1File" -BaseDirectory $profilePsd1.DirectoryName -FileName $profilePsd1.Name
+foreach ($nestedModule in $psd1File.RequiredAssemblies)
+{
+    $dllPath = Join-Path -Path $profilePsd1.DirectoryName -ChildPath $nestedModule
+    $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
+}
+
 
 $outputTypes = New-Object System.Collections.Generic.HashSet[string]
 
