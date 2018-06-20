@@ -148,6 +148,8 @@ Accept wildcard characters: False
 ### -Permission
 Specifies permissions in the stored access policy to access the storage container.
 
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+
 ```yaml
 Type: String
 Parameter Sets: (All)

@@ -19,6 +19,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Reflection;
 using NetCorePsd1Sync.Model;
 using NetCorePsd1Sync.Utility;
 using static NetCorePsd1Sync.Model.PsDefinitionConstants;
@@ -87,18 +88,18 @@ namespace NetCorePsd1Sync
             return hashtable;
         }
 
-        public static IEnumerable<Hashtable> GetDesktopHashtables(IEnumerable<string> desktopFilePaths)
+        public static IEnumerable<Hashtable> GetHashtables(IEnumerable<string> filePaths)
         {
             using (var powershell = PowerShell.Create())
             {
-                foreach (var path in desktopFilePaths)
+                foreach (var path in filePaths)
                 {
                     yield return GetHashtable(powershell, path);
                 }
             }
         }
 
-        public static PsDefinition CreateNetCoreDefinition(Hashtable desktopData)
+        public static PsDefinition CreateNewNetCoreDefinition(Hashtable desktopData)
         {
             var psData = new PsData();
             var desktopPsData = desktopData.GetValueAsHashtable("PrivateData").GetValueAsHashtable("PSData");
@@ -136,6 +137,80 @@ namespace NetCorePsd1Sync
                 CmdletsToExport = desktopData.GetValueAsStringList("CmdletsToExport"),
                 VariablesToExport = null,
                 PrivateData = new PrivateData { PsData = psData }
+            };
+        }
+
+        private static ModuleReference CreateModuleReferenceFromHashtable(Hashtable data)
+        {
+            var guid = data.GetValueAsStringOrDefault("GUID");
+            return new ModuleReference
+            {
+                ModuleName = data.GetValueAsStringOrDefault("ModuleName"),
+                ModuleVersion = data.GetValueAsVersionOrDefault("ModuleVersion"),
+                Guid = String.IsNullOrEmpty(guid) ? (Guid?)null : Guid.Parse(guid)
+            };
+        }
+
+        private static List<ModuleReference> CreateModuleReferenceList(Hashtable data, string key) => 
+            data.GetValueAsArrayOrDefault(key)?.OfType<Hashtable>().Select(CreateModuleReferenceFromHashtable).ToList();
+
+        public static PsDefinition CreateDefinitionFromExisting(Hashtable existingDefinition, PsDefinitionHeader existingHeader)
+        {
+            var psData = new PsData();
+            var existingPsData = existingDefinition.GetValueAsHashtable("PrivateData").GetValueAsHashtable("PSData");
+            if (existingPsData.Any())
+            {
+                var licenseUri = existingPsData.GetValueAsStringOrDefault("LicenseUri");
+                var projectUri = existingPsData.GetValueAsStringOrDefault("ProjectUri");
+                var iconUri = existingPsData.GetValueAsStringOrDefault("IconUri");
+                var requireLicenseAcceptance = existingPsData.GetValueAsStringOrDefault("RequireLicenseAcceptance");
+                psData = new PsData
+                {
+                    Tags = existingPsData.GetValueAsStringListOrDefault("Tags"),
+                    LicenseUri = String.IsNullOrEmpty(licenseUri) ? null : new Uri(licenseUri),
+                    ProjectUri = String.IsNullOrEmpty(projectUri) ? null : new Uri(projectUri),
+                    IconUri = String.IsNullOrEmpty(iconUri) ? null : new Uri(iconUri),
+                    ReleaseNotes = existingPsData.GetValueAsStringOrDefault("ReleaseNotes"),
+                    Prerelease = existingPsData.GetValueAsStringOrDefault("Prerelease"),
+                    RequireLicenseAcceptance = String.IsNullOrEmpty(requireLicenseAcceptance) ? (bool?)null : Boolean.Parse(requireLicenseAcceptance),
+                    ExternalModuleDependencies = CreateModuleReferenceList(existingPsData, "ExternalModuleDependencies")
+                };
+            }
+
+            var processorArchitecture = existingDefinition.GetValueAsStringOrDefault("ProcessorArchitecture");
+            return new PsDefinition
+            {
+                ManifestHeader = existingHeader,
+                RootModule = existingDefinition.GetValueAsStringOrDefault("RootModule"),
+                ModuleVersion = existingDefinition.GetValueAsVersionOrDefault("ModuleVersion"),
+                CompatiblePsEditions = existingDefinition.GetValueAsStringListOrDefault("CompatiblePSEditions"),
+                Guid = Guid.Parse(existingDefinition.GetValueAsStringOrDefault("GUID")),
+                Author = existingDefinition.GetValueAsStringOrDefault("Author"),
+                CompanyName = existingDefinition.GetValueAsStringOrDefault("CompanyName"),
+                Copyright = existingDefinition.GetValueAsStringOrDefault("Copyright"),
+                Description = existingDefinition.GetValueAsStringOrDefault("Description"),
+                PowerShellVersion = existingDefinition.GetValueAsVersionOrDefault("PowerShellVersion"),
+                PowerShellHostName = existingDefinition.GetValueAsStringOrDefault("PowerShellHostName"),
+                PowerShellHostVersion = existingDefinition.GetValueAsVersionOrDefault("PowerShellHostVersion"),
+                DotNetFrameworkVersion = existingDefinition.GetValueAsVersionOrDefault("DotNetFrameworkVersion"),
+                ClrVersion = existingDefinition.GetValueAsVersionOrDefault("CLRVersion"),
+                ProcessorArchitecture = processorArchitecture != null ? Enum.Parse<ProcessorArchitecture>(processorArchitecture) : (ProcessorArchitecture?)null,
+                RequiredModules = CreateModuleReferenceList(existingDefinition, "RequiredModules"),
+                RequiredAssemblies = existingDefinition.GetValueAsStringListOrDefault("RequiredAssemblies"),
+                ScriptsToProcess = existingDefinition.GetValueAsStringListOrDefault("ScriptsToProcess"),
+                TypesToProcess = existingDefinition.GetValueAsStringListOrDefault("TypesToProcess"),
+                FormatsToProcess = existingDefinition.GetValueAsStringListOrDefault("FormatsToProcess"),
+                NestedModules = existingDefinition.GetValueAsStringListOrDefault("NestedModules")?.Select(m => new ModuleReference { ModuleName = m }).ToList(),
+                FunctionsToExport = existingDefinition.GetValueAsStringListOrDefault("FunctionsToExport"),
+                CmdletsToExport = existingDefinition.GetValueAsStringListOrDefault("CmdletsToExport"),
+                VariablesToExport = existingDefinition.GetValueAsStringListOrDefault("VariablesToExport"),
+                AliasesToExport = existingDefinition.GetValueAsStringListOrDefault("AliasesToExport"),
+                DscResourcesToExport = existingDefinition.GetValueAsStringListOrDefault("DscResourcesToExport"),
+                ModuleList = CreateModuleReferenceList(existingDefinition, "ModuleList"),
+                FileList = existingDefinition.GetValueAsStringListOrDefault("FileList"),
+                PrivateData = new PrivateData { PsData = psData },
+                HelpInfoUri = existingDefinition.GetValueAsStringOrDefault("HelpInfoURI"),
+                DefaultCommandPrefix = existingDefinition.GetValueAsStringOrDefault("DefaultCommandPrefix")
             };
         }
     }

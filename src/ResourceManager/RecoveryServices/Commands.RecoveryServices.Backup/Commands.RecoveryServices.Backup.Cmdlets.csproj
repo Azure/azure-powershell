@@ -75,6 +75,7 @@
     <Compile Include="ParamHelpMsgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecoveryServicesBackupCmdletBase.cs" />
+    <Compile Include="RSBackupVaultCmdletBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
@@ -111,7 +112,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.RecoveryServices.Backup.psd1">
+    <None Include="AzureRM.RecoveryServices.Backup.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">
