@@ -312,10 +312,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
         }
 
         /// <summary>
-        /// Set the contaienr to its defautl state
+        /// Set the contaienr to its default state
         /// </summary>
         public void Clear()
         {
+            this.GetTokenCache()?.Clear();
             Contexts.Clear();
             DefaultContextKey = "Default";
             DefaultContext = new AzureContext();
