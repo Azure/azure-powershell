@@ -95,10 +95,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                     _isDebugEnabled = !debugPreference.Equals("SilentlyContinue");
                 }
             }
-            
+
+            // Keep this outside if block because it is also used for diagnostic file loggind for BulkCopy
+            _adlsLoggerConfig = new LoggingConfiguration();
             if (_isDebugEnabled)
             {
-                _adlsLoggerConfig = new LoggingConfiguration();
                 // Custom target that logs the debug messages from the SDK to the powershell framework's debug message queue
                 var adlsTarget = new AdlsLoggerTarget
                 {
