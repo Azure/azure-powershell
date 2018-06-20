@@ -33,17 +33,24 @@ namespace Microsoft.Azure.Commands.Network
     public partial class GetAzureRmExpressRouteCrossConnection : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The resource group name of express route cross connection.",
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ListByResourceGroup")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The resource group name of express route cross connection.",
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ListSpecific")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The name of express route cross connection.",
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ListSpecific")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 

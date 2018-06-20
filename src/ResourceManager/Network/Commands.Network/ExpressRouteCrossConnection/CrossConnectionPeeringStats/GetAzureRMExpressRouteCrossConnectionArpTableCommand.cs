@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
@@ -28,7 +29,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The resource group name.")]
+             HelpMessage = "The resource group name.",
+            ParameterSetName = "SpecifyByParameterValues")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -37,9 +39,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The Name of Express Route Cross Connection")]
+             HelpMessage = "The Name of Express Route Cross Connection",
+            ParameterSetName = "SpecifyByParameterValues")]
         [ValidateNotNullOrEmpty]
         public string CrossConnectionName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Express Route Cross Connection",
+            ParameterSetName = "SpecifyByReference")]
+        [ValidateNotNullOrEmpty]
+        public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -54,13 +65,30 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The DevicePath, can be either Primary or Secondary")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            "Primary",
+            "Secondary",
+            IgnoreCase = true)]
         public DevicePathEnum DevicePath { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            var arpTables = this.ExpressRouteCrossConnectionClient.ListArpTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+            List<object> arpTables = null;
+            if (!string.IsNullOrWhiteSpace(CrossConnectionName))
+            {
+                arpTables = this.ExpressRouteCrossConnectionClient
+                    .ListArpTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value
+                    .Cast<object>().ToList();
+            }
+            else
+            {
+                arpTables = this.ExpressRouteCrossConnectionClient
+                    .ListArpTable(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name,
+                        PeeringType, DevicePath.ToString()).Value
+                    .Cast<object>().ToList();
+            }
+
             var psARPs = new List<PSExpressRouteCircuitArpTable>();
             foreach (var arpTable in arpTables)
             {

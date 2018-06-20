@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Network.Models;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -84,7 +86,15 @@ namespace Microsoft.Azure.Commands.Network
 
                    this.ExpressRouteCrossConnection.Peerings.Add(peering);
 
-                   WriteObject(this.ExpressRouteCrossConnection);
+                   // Map to the sdk operation
+                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<Management.Network.Models.ExpressRouteCrossConnection>(ExpressRouteCrossConnection);
+                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(ExpressRouteCrossConnection.Tag, validate: true);
+
+                   // Execute the Update ExpressRouteCrossConnection call
+                   ExpressRouteCrossConnectionClient.CreateOrUpdate(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, crossConnectionModel);
+
+                   var getExpressRouteCrossConnection = GetExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
+                   WriteObject(getExpressRouteCrossConnection);
                });
         }
     }

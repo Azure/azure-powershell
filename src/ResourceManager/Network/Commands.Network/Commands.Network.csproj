@@ -203,9 +203,7 @@
     <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\AddAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\AzureRMExpressRouteCrossConnectionPeeringBase.cs" />
     <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\GetAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
-    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\NewAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\RemoveAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
-    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\SetAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\ExpressRouteCrossConnectionBaseCmdlet.cs" />
     <Compile Include="ExpressRouteCrossConnection\GetAzureRMExpressRouteCrossConnectionCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\SetAzureRMExpressRouteCrossConnectionCommand.cs" />
