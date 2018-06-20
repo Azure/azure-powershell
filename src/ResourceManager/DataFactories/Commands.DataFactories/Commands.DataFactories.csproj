@@ -168,7 +168,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Models\DataFactoryClient.Pipelines.cs" />
-    <None Include="..\AzureRM.DataFactories.psd1">
+    <None Include="AzureRM.DataFactories.psd1">
       <Link>AzureRM.DataFactories.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
