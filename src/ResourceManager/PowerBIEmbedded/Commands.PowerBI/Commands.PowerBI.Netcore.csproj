@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.PowerBIEmbedded.Netcore.psd1" Link="AzureRM.PowerBIEmbedded.Netcore.psd1">
+    <None Include="..\Commands.Management.PowerBIEmbedded\AzureRM.PowerBIEmbedded.Netcore.psd1" Link="AzureRM.PowerBIEmbedded.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

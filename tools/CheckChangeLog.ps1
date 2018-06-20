@@ -47,7 +47,7 @@ foreach ($ChangeLog in $ChangeLogs)
 
 foreach ($File in $FilesChangedList)
 {
-    if ($File -like "*ChangeLog.md*")
+    if ($File -like "*ChangeLog.md*" -or $File -like "*.psd1*")
     {
         continue
     }
