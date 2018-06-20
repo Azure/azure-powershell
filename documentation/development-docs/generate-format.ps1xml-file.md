@@ -136,12 +136,20 @@ namespace Microsoft.WindowsAzure.Commands.Common.Attributes
         All = Table | List,
     }
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
     public sealed class Ps1XmlAttribute : Attribute
     {
         public string Label { get; set; }
 
         public ViewControl Target { get; set; } = ViewControl.Table;
+
+        public string ScriptBlock { get; set; }
+
+        public bool GroupByThis { get; set; }
+
+        public uint TableColumnWidth { get; set; }
+
+        public uint Position { get; set; } = Ps1XmlConstants.DefaultPosition;
     }
 }
 
@@ -150,6 +158,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Attributes
 With the attribute you can specify for a public property (or field) a target view (table view is default) and a label.
 
 # Ps1XmlAttribute attribute usage.
+
+## Properties of primitive types.
 
 Let's say for our example we want to only show these parameters in the output:
 * Id
@@ -214,6 +224,87 @@ namespace Microsoft.Azure.Commands.Profile.Models
 * If **Label** is not specified - the property name will be used. 
 
 * Since the **Ps1Xml attribute** definition is located in the [Commands.Common](https://github.com/Azure/azure-powershell/tree/preview/src/Common/Commands.Common) project and the Command.Common project is likely referenced from your project - to make the attribute visible - you only need to add ```using Microsoft.WindowsAzure.Commands.Common.Attributes;``` statement.
+
+## Properties of complex types.
+
+If you have a property of a complex type, for example, Account of type IAzureAccount:
+```Cs
+    public class PSAzureContext : IAzureContext
+    {
+        // code omitted for brevity
+
+        public IAzureAccount Account { get; set; }
+
+        // code omitted for brevity
+    }
+
+```
+where the IAzureAccount type has its own properties :
+
+```Cs
+    public interface IAzureAccount : IExtensibleModel
+    {
+        string Id { get; set; }
+
+        string Credential { get; set; }
+
+        string Type { get; set; }
+
+        IDictionary<string, string> TenantMap { get; }
+    }
+```
+
+To specify what goes into the table view - use the **ScriptBlock** attribute property. You can use as many attributes as you need to specify all desired complex type properties: 
+```Cs
+    public class PSAzureContext : IAzureContext
+    {
+        // code omitted for brevity
+
+        [Ps1Xml(Label = "Account Id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
+        [Ps1Xml(Label = "Account Type", Target = ViewControl.Table, ScriptBlock = "$_.Account.Type")]
+        public IAzureAccount Account { get; set; }
+
+        // code omitted for brevity
+    }
+
+```
+Note: **$_** symbol in PowerShell means the same as **this** key word means in C#. 
+
+These two attribute will result in 2 column in the table view:
+```Ps
+    Account Id  Account Type
+    ==========  ============
+```
+## GroupBy a property.
+
+If you need to group by a property - use the **GroupByThis** attribute property like this:
+```Cs
+public class PSAzureSubscription : IAzureSubscription
+{
+
+// code omitted for brevity
+
+    [Ps1Xml(Label = "Subscription Id", Target = ViewControl.Table, GroupByThis = true)]
+    public string Id { get; set; }
+
+// code omitted for brevity 
+``` 
+## Column order.
+
+The column order in the output table will be the same as the order of the properties in the class. If you need to change this behavior - use the **Position** (zero-based) attribute property like this:
+```Cs
+public class PSAzureSubscription : IAzureSubscription
+{
+
+// code omitted for brevity
+
+    [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, Position = 0)]
+    public string Name { get; set; }
+
+// code omitted for brevity 
+``` 
+
+This will place the column at the very beginning of the table.
 
 
 # How to generate format.ps1xml file.
