@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -669,6 +669,24 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string RemoveDatabaseDataMaskingRuleWarning {
             get {
                 return ResourceManager.GetString("RemoveDatabaseDataMaskingRuleWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
             }
         }
         

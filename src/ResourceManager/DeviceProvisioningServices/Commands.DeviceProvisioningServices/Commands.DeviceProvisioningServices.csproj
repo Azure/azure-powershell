@@ -86,7 +86,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.DeviceProvisioningServices.psd1">
+    <None Include="AzureRM.DeviceProvisioningServices.psd1">
       <Link>AzureRM.DeviceProvisioningServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

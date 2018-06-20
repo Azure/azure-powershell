@@ -92,7 +92,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.TrafficManager.psd1">
+    <None Include="AzureRM.TrafficManager.psd1">
       <Link>AzureRM.TrafficManager.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

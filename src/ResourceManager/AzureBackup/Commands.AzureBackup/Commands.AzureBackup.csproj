@@ -120,7 +120,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Backup.psd1">
+    <None Include="AzureRM.Backup.psd1">
       <Link>AzureRM.Backup.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

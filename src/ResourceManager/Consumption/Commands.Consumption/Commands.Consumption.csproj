@@ -86,7 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Consumption.psd1">
+    <None Include="AzureRM.Consumption.psd1">
       <Link>AzureRM.Consumption.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
