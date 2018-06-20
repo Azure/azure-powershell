@@ -23,14 +23,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <summary>
     /// 'Get-AzureRmRelayOperation' Cmdlet retrive the Operations List
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceBusOperation"), OutputType(typeof(List<OperationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmServiceBusOperation"), OutputType(typeof(List<PSOperationAttributes>))]
     public class GetAzureServiceBusOperations : AzureServiceBusCmdletBase
     {
         public override void ExecuteCmdlet()
-        {       //Get Relay Operations List
-            IEnumerable<OperationAttributes> GetOperationsResult = Client.GetOperations();
+        {
+            IEnumerable<PSOperationAttributes> GetOperationsResult = Client.GetOperations();
             WriteObject(GetOperationsResult, true);
-
         }
     }
 }

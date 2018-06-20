@@ -38,6 +38,16 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public long Length { get; private set; }
 
         /// <summary>
+        /// Blob IsDeleted
+        /// </summary>
+        public bool IsDeleted { get; private set; }
+
+        /// <summary>
+        /// Blob IsDeleted
+        /// </summary>
+        public int? RemainingDaysBeforePermanentDelete { get; private set; }
+
+        /// <summary>
         /// Blob content type
         /// </summary>
         public string ContentType { get; private set; }
@@ -67,6 +77,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             ICloudBlob = blob;
             BlobType = blob.BlobType;
             Length = blob.Properties.Length;
+            IsDeleted = blob.IsDeleted;
+            RemainingDaysBeforePermanentDelete = blob.Properties.RemainingDaysBeforePermanentDelete;
             ContentType = blob.Properties.ContentType;
             LastModified = blob.Properties.LastModified;
             SnapshotTime = blob.SnapshotTime;

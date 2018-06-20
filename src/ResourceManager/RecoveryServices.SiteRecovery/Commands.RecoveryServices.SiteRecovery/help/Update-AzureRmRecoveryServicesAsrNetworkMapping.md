@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.dll-Help.xml
 Module Name: AzureRM.RecoveryServices.SiteRecovery
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.siterecovery/update-azurermrecoveryservicesasrnetworkmapping
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzureRmRecoveryServicesAsrNetworkMapping
 
 ## SYNOPSIS
-Updates the specified ASR network mapping.
+Updates the specified azure site recovery network mapping.
 
 ## SYNTAX
 
@@ -54,8 +54,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-Input Object: Specifies the ASR network mapping object corresponding to the ASR network mapping to be updated 
+Input Object: Specifies the ASR network mapping object corresponding to the ASR network mapping to be updated.
 
 ```yaml
 Type: ASRNetworkMapping
@@ -75,7 +89,7 @@ Specifies the recovery azure network ID for the network mapping.
 ```yaml
 Type: String
 Parameter Sets: ById
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -90,7 +104,7 @@ Specifies the recovery network object for the network mapping.
 ```yaml
 Type: ASRNetwork
 Parameter Sets: ByNetworkObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -114,21 +128,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -143,4 +142,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

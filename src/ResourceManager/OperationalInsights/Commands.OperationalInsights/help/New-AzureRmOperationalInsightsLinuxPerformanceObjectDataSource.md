@@ -33,11 +33,6 @@ The **New-AzureRmOperationalInsightsLinuxPerformanceObjectDataSource** cmdlet ad
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CounterNames

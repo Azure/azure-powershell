@@ -119,8 +119,12 @@
                 <PropertyName>VirtualNetworkPeeringsText</PropertyName>
               </ListItem> 
               <ListItem>
-                <Label>EnableDDoSProtection</Label>
-                <PropertyName>EnableDDoSProtectionText</PropertyName>
+                <Label>EnableDdosProtection</Label>
+                <PropertyName>EnableDdosProtectionText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DdosProtectionPlan</Label>
+                <PropertyName>DdosProtectionPlanText</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>EnableVmProtection</Label>
@@ -163,6 +167,90 @@
               <ListItem>
                 <Label>ProvisioningState</Label>
                 <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Source</Label>
+                <PropertyName>SourceText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Destination</Label>
+                <PropertyName>DestinationText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MonitoringIntervalInSeconds</Label>
+                <PropertyName>MonitoringIntervalInSeconds</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AutoStart</Label>
+                <PropertyName>AutoStart</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>MonitoringStatus</Label>
+                <PropertyName>MonitoringStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tags</Label>
+                <PropertyName>TagsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorQueryResult</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorQueryResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>States</Label>
+                <PropertyName>StatesText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -553,6 +641,10 @@
               <ListItem> 
                 <Label>VpnClientRootCertificates</Label> 
                 <PropertyName>VpnClientRootCertificatesText</PropertyName> 
+              </ListItem>
+	      <ListItem> 
+                 <Label>VpnClientIpsecPolicies</Label> 
+                <PropertyName>VpnClientIpsecPoliciesText</PropertyName>
               </ListItem> 
             </ListItems> 
           </ListEntry> 
@@ -855,6 +947,32 @@
               <ListItem>
                 <Label>Sku</Label>
                 <PropertyName>SkuText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>IpTags</Label>
+                <PropertyName>IpTagsText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSPublicIpTag</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSPublicIpTag</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>IpTagType</Label>
+                <PropertyName>IpTagType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Tag</Label>
+                <PropertyName>Tag</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -1485,6 +1603,10 @@
               <ListItem>
                 <Label>RetentionPolicy</Label>
                 <PropertyName>RetentionPolicyText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FlowAnalyticsConfiguration</Label>
+                <PropertyName>FlowAnalyticsConfigurationText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2186,6 +2308,52 @@
       </ListControl>
     </View>
     <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnection</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitConnection</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AddresPrefix</Label>
+                <PropertyName>AddresPrefix</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>AuthorizationKey</Label>
+                <PropertyName>AuthorizationKey</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CircuitConnectionStatus</Label>
+                <PropertyName>CircuitConnectionStatus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PeerExpressRouteCircuitPeering</Label>
+                <PropertyName>PeerExpressRouteCircuitPeering</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
       <Name>Microsoft.Azure.Commands.Network.Models.PSExpressRouteServiceProvider</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.Azure.Commands.Network.Models.PSExpressRouteServiceProvider</TypeName>
@@ -2493,6 +2661,40 @@
           </CustomEntry>
         </CustomEntries>
       </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Network.Models.PSDdosProtectionPlan</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Etag</Label>
+                <PropertyName>Etag</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualNetworks</Label>
+                <PropertyName>VirtualNetworksText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
     </View>
   </ViewDefinitions>
 </Configuration>

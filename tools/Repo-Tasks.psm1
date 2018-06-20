@@ -1,4 +1,7 @@
-﻿$taskScriptDir = [System.IO.Path]::GetDirectoryName($PSCommandPath)
+﻿Import-Module ".\Modules\Build-Tasks.psd1"
+Import-Module ".\Modules\TestFx-Tasks.psd1"
+
+$taskScriptDir = [System.IO.Path]::GetDirectoryName($PSCommandPath)
 $env:repoRoot = [System.IO.Path]::GetDirectoryName($taskScriptDir)
 $userPsFileDir = [string]::Empty
 
@@ -38,6 +41,7 @@ else
 	Write-Host "Loading skipped. 'psuserpreferences' environment variable was not set to load user preferences." -ForegroundColor DarkYellow
 }
 
+Write-Host "For more information on the Repo-Tasks module, please see the following: https://github.com/Azure/azure-powershell/blob/preview/documentation/testing-docs/repo-tasks-module.md" -ForegroundColor Yellow
 
 #Execute Init
 #Init

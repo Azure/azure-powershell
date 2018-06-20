@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (DefaultProfile == null || DefaultProfile.DefaultContext == null || DefaultProfile.DefaultContext.Account == null)
                 {
-                    throw new PSInvalidOperationException("Run Login-AzureRmAccount to login.");
+                    throw new PSInvalidOperationException(Resources.RunConnectAccount);
                 }
 
                 return DefaultProfile.DefaultContext;
@@ -204,7 +204,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 ClientRequestId = this._clientRequestId,
                 SessionId = _sessionId,
                 IsSuccess = true,
+                ParameterSetName = this.ParameterSetName
             };
+
+            if (this.MyInvocation != null && !string.IsNullOrWhiteSpace(this.MyInvocation.InvocationName))
+            {
+                _qosEvent.InvocationName = this.MyInvocation.InvocationName;
+            }
 
             if (this.MyInvocation != null && this.MyInvocation.BoundParameters != null 
                 && this.MyInvocation.BoundParameters.Keys != null)

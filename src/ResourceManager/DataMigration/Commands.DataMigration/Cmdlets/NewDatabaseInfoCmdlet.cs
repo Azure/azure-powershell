@@ -1,40 +1,46 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="NewDatabaseInfoCmdlet.cs" company="Microsoft">
-//     Copyright (c) Microsoft Corporation.
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.DataMigration.Models;
 using System.Management.Automation;
+using Microsoft.Azure.Management.DataMigration.Models;
 
 namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     /// <summary>
     /// Class that creates a new instance of the Sql Server Connection Info.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationDatabaseInfo", SupportsShouldProcess = true), OutputType(typeof(DatabaseInfo))]
+    [Cmdlet(VerbsCommon.New, "AzureRmDataMigrationDatabaseInfo"), OutputType(typeof(DatabaseInfo))]
     [Alias("New-AzureRmDmsDBInfo")]
     public class NewDatabaseInfoCmdlet : DataMigrationCmdlet
     {
         [Parameter(
            Mandatory = true,
-           HelpMessage = "Source Database Name."
-               )]
+           HelpMessage = "Source Database Name.")]
         [ValidateNotNullOrEmpty]
         [Alias("SourceDBName")]
         public string SourceDatabaseName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.SourceDatabaseName, Resources.createDbInfo))
+            base.ExecuteCmdlet();
+
+            DatabaseInfo dbInfo = new DatabaseInfo
             {
-                base.ExecuteCmdlet();
+                SourceDatabaseName = SourceDatabaseName
+            };
 
-                DatabaseInfo dbInfo = new DatabaseInfo();
-                dbInfo.SourceDatabaseName = SourceDatabaseName;
-
-                WriteObject(dbInfo);
-            }
+            WriteObject(dbInfo);
         }
     }
 }

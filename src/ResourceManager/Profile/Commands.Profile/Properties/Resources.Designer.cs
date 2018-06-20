@@ -160,6 +160,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot create a context for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotCreateContext {
+            get {
+                return ResourceManager.GetString("CannotCreateContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to get context name for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotGetContextName {
+            get {
+                return ResourceManager.GetString("CannotGetContextName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to set default context &apos;{0}&apos;..
         /// </summary>
         internal static string CannotSetDefaultContext {
@@ -241,7 +259,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Login-AzureRmAccount..
+        ///   Looks up a localized string similar to Could not authenticate your user account {0} with the common tenant. Please login again using Connect-AzureRmAccount..
         /// </summary>
         internal static string CommonTenantAuthFailed {
             get {
@@ -250,7 +268,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Add-AzureRmAccount..
+        ///   Looks up a localized string similar to Context cannot be null.  Please log in using Connect-AzureRmAccount..
         /// </summary>
         internal static string ContextCannotBeNull {
             get {
@@ -466,7 +484,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Login-AzureRmAccount..
+        ///   Looks up a localized string similar to Please provide a valid tenant Id on the command line or execute Connect-AzureRmAccount..
         /// </summary>
         internal static string NoValidTenant {
             get {
@@ -637,6 +655,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run Connect-AzureRmAccount to login..
+        /// </summary>
+        internal static string RunLoginCmdlet {
+            get {
+                return ResourceManager.GetString("RunLoginCmdlet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change the current context.
         /// </summary>
         internal static string SelectContextPrompt {
@@ -772,7 +799,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Login-AzureRmAccount.
+        ///   Looks up a localized string similar to Could not authenticate with tenant {0}. Please ensure that your account has access to this tenant and log in with Connect-AzureRmAccount.
         /// </summary>
         internal static string TenantAuthFailed {
             get {
@@ -817,7 +844,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Login-AzureRmAccount to view the subscriptions in this tenant..
+        ///   Looks up a localized string similar to Could not authenticate user account &apos;{0}&apos; with tenant &apos;{1}&apos;. Subscriptions in this tenant will not be listed. Please login again using Connect-AzureRmAccount to view the subscriptions in this tenant..
         /// </summary>
         internal static string UnableToLogin {
             get {

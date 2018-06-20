@@ -15,11 +15,13 @@ Creates a virtual machine.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> -Credential <PSCredential>
- [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
+New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String[]>] -Name <String>
+ -Credential <PSCredential> [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
- [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-ImageName <String>]
- [-Size <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -35,7 +37,9 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux]
- [-Size <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,16 +48,34 @@ This cmdlet takes a virtual machine object as input.
 Use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
 
-The `StrategyParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
+The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
 ## EXAMPLES
 
 ### Example 1: Create a virtual machine
 ```
-PS C:\> New-AzureRmVM -Name MyVm
+PS C:\> New-AzureRmVM -Name MyVm -Credential (Get-Credential)
+
+VERBOSE: Use 'mstsc /v:myvm-222222.eastus.cloudapp.azure.com' to connect to the VM.
+
+ResourceGroupName        : MyVm
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MyVm/provi
+ders/Microsoft.Compute/virtualMachines/MyVm
+VmId                     : 11111111-1111-1111-1111-111111111111
+Name                     : MyVm
+Type                     : Microsoft.Compute/virtualMachines
+Location                 : eastus
+Tags                     : {}
+HardwareProfile          : {VmSize}
+NetworkProfile           : {NetworkInterfaces}
+OSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}
+ProvisioningState        : Succeeded
+StorageProfile           : {ImageReference, OsDisk, DataDisks}
+FullyQualifiedDomainName : myvm-222222.eastus.cloudapp.azure.com
 ```
 
 This example script shows how to create a virtual machine.
+The script will ask a user name and password for the VM.
 This script uses several other cmdlets.
 
 ### Example 2: Create a virtual machine from a custom user image
@@ -61,11 +83,11 @@ This script uses several other cmdlets.
 PS C:\> ## VM Account
 # Credentials for Local Admin account you created in the sysprepped (generalized) vhd image
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force 
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
 ## Azure Account
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
-# This a Premium_LRS storage account. 
+# This a Premium_LRS storage account.
 # It is required in order to run a client VM with efficiency and high performance.
 $StorageAccount = "Mydisk"
 
@@ -75,9 +97,9 @@ $ComputerName = "MyClientVM"
 $OSDiskUri = "https://Mydisk.blob.core.windows.net/disks/MyOSDisk.vhd"
 $SourceImageUri = "https://Mydisk.blob.core.windows.net/vhds/MyOSImage.vhd"
 $VMName = "MyVM"
-# Modern hardware environment with fast disk, high IOPs performance. 
+# Modern hardware environment with fast disk, high IOPs performance.
 # Required to run a client VM with efficiency and performance
-$VMSize = "Standard_DS3" 
+$VMSize = "Standard_DS3"
 $OSDiskCaching = "ReadWrite"
 $OSCreateOption = "FromImage"
 
@@ -95,7 +117,7 @@ $Vnet = New-AzureRmVirtualNetwork -Name $NetworkName -ResourceGroupName $Resourc
 $PIP = New-AzureRmPublicIpAddress -Name $PublicIPAddressName -DomainNameLabel $DNSNameLabel -ResourceGroupName $ResourceGroupName -Location $LocationName -AllocationMethod Dynamic
 $NIC = New-AzureRmNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $PIP.Id
 
-$Crededntial = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword); 
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
 $VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
@@ -160,6 +182,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -AvailabilitySetName
+Specifies a name for the availability set.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Credential
 The administrator credentials for the VM.
 
@@ -169,6 +206,21 @@ Parameter Sets: SimpleParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataDiskSizeInGb
+Specifies the sizes of data disks in GB.
+
+```yaml
+Type: Int32[]
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -199,7 +251,7 @@ Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -211,7 +263,7 @@ The local path to the virtual hard disk file to be uploaded to the cloud and for
 ```yaml
 Type: String
 Parameter Sets: DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -235,13 +287,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageName
+### -Image
 The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: ImageName
 
 Required: False
 Position: Named
@@ -255,7 +307,7 @@ Specifies a license type, which indicates that the image or disk for the virtual
 This value is used only for images that contain the Windows Server operating system.
 The acceptable values for this parameter are:
 
-- Windows_Client 
+- Windows_Client
 - Windows_Server
 
 This value cannot be updated.
@@ -279,7 +331,7 @@ Indicates whether the disk file is for Linux VM, if specified; or Windows, if no
 ```yaml
 Type: SwitchParameter
 Parameter Sets: DiskFileParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -447,6 +499,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SystemAssignedIdentity
+If the parameter is present then the VM is assingned a managed system identity that is auto generated.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Specifies that resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
@@ -455,12 +522,27 @@ Each resource or resource group can have a maximum of 15 tags.
 ```yaml
 Type: Hashtable
 Parameter Sets: DefaultParameterSet
-Aliases: Tags
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The name of a managed service identity that should be assigned to the VM.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -501,13 +583,25 @@ Specifies the zone list of the virtual machine.
 
 ```yaml
 Type: String[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
 Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

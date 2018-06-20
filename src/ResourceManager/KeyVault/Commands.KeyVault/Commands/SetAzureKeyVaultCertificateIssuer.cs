@@ -16,7 +16,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Management.Automation;
 using System.Security;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -26,9 +26,8 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Set, CmdletNoun.AzureKeyVaultCertificateIssuer,
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ExpandedParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(KeyVaultCertificatePolicy))]
+        DefaultParameterSetName = ExpandedParameterSet)]
+    [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
@@ -45,7 +44,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 0,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
@@ -55,7 +53,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    Position = 1,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Issuer name. Cmdlet constructs the FQDN of a certificate issuer from vault name, currently selected environment and issuer name.")]
         [ValidateNotNullOrEmpty]
         [Alias(Constants.IssuerName)]
@@ -65,8 +62,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// IssuerProvider
         /// </summary>
-        [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = true,
+                   ParameterSetName = ExpandedParameterSet,
                    HelpMessage = "Specifies the type of the issuer.")]
         [ValidateNotNullOrEmpty]
         public string IssuerProvider { get; set; }
@@ -75,7 +72,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// AccountId
         /// </summary>
         [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the account id to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
         public string AccountId { get; set; }
@@ -84,7 +80,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// ApiKey
         /// </summary>
         [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the api key to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
         public SecureString ApiKey { get; set; }
@@ -92,11 +87,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// <summary>
         /// OrganizationDetails
         /// </summary>
-        [Parameter(ParameterSetName = ExpandedParameterSet,
-                   ValueFromPipelineByPropertyName = true,
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ExpandedParameterSet,
+                   ValueFromPipeline = true,
                    HelpMessage = "Specifies the organization details to be used with the issuer.")]
         [ValidateNotNullOrEmpty]
-        public KeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
+        public PSKeyVaultCertificateOrganizationDetails OrganizationDetails { get; set; }
 
         #endregion
 
@@ -107,10 +103,11 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
                    ParameterSetName = ByValueParameterSet,
-                   ValueFromPipelineByPropertyName = true,
+                   ValueFromPipeline = true,
                    HelpMessage = "Specifies the certificate issuer to set.")]
         [ValidateNotNullOrEmpty]
-        public KeyVaultCertificateIssuer Issuer { get; set; }
+        [Alias("Issuer")]
+        public PSKeyVaultCertificateIssuerIdentityItem InputObject { get; set; }
 
         #endregion
 
@@ -122,33 +119,26 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         #endregion
 
-        protected override void ProcessRecord()
+        public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Name, Properties.Resources.SetCertificateIssuer))
             {
-                KeyVaultCertificateIssuer issuerToUse;
+                PSKeyVaultCertificateIssuer issuerToUse;
 
-                switch (ParameterSetName)
+                if (InputObject != null)
                 {
-                    case ExpandedParameterSet:
-
-                        issuerToUse = new KeyVaultCertificateIssuer
-                        {
-                            Name = Name,
-                            IssuerProvider = IssuerProvider,
-                            AccountId = AccountId,
-                            ApiKey = ApiKey,
-                            OrganizationDetails = OrganizationDetails,
-                        };
-
-                        break;
-
-                    case ByValueParameterSet:
-                        issuerToUse = Issuer;
-                        break;
-
-                    default:
-                        throw new ArgumentException(PSKeyVaultProperties.Resources.BadParameterSetName);
+                    issuerToUse = (PSKeyVaultCertificateIssuer) InputObject;
+                }
+                else
+                {
+                    issuerToUse = new PSKeyVaultCertificateIssuer
+                    {
+                        Name = Name,
+                        IssuerProvider = IssuerProvider,
+                        AccountId = AccountId,
+                        ApiKey = ApiKey,
+                        OrganizationDetails = OrganizationDetails,
+                    };
                 }
 
                 var resultantIssuer = this.DataServiceClient.SetCertificateIssuer(
@@ -161,7 +151,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                 if (PassThru.IsPresent)
                 {
-                    this.WriteObject(KeyVaultCertificateIssuer.FromIssuer(resultantIssuer));
+                    this.WriteObject(resultantIssuer);
                 }
             }
         }

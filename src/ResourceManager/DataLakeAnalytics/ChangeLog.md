@@ -18,6 +18,23 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.0
+* Set minimum dependency of module to PowerShell 5.0
+* Remove deprecated `Tags` alias from cmdlets
+    - `New-AzureRmDataLakeAnalyticsAccount`
+    - `Set-AzureRmDataLakeAnalyticsAccount`
+
+## Version 4.2.3
+* Updated to the latest version of the Azure ClientRuntime
+
+## Version 4.2.2
+* Fix issue with Default Resource Group in CloudShell
+
+## Version 4.2.1
+* Corrected usage of 'Login-AzureRmAccount' to use 'Connect-AzureRmAccount'
+
+## Version 4.2.0
 * Added Location Completer to -Location parameters allowing tab completion through valid Locations
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
 * Obsoleted -Tags in favor of -Tag for New-AzureRmDataLakeAnalyticsAccount and Set-AzureRmDataLakeAnalyticsAccount

@@ -27,10 +27,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 
-namespace Microsoft.Azure.Commands.Network.Automation
+namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New", "AzureRmRouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRoute))]
-     public class NewAzureRmRouteConfigCommand : NetworkBaseCmdlet
+    public class NewAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,

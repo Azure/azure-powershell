@@ -107,13 +107,17 @@ function Test-VirtualMachineSetRunCommand
 
         $path = 'ScenarioTests\test.ps1';
         
-        $job = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob
-		$job | Wait-Job
+        $job = Invoke-AzureRmVMRunCommand -ResourceGroupName $rgname -Name $vmname -CommandId $commandId -ScriptPath $path -Parameter $param -AsJob;
+        $result = $job | Wait-Job;
+        Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+
+        # BUG: Currently the result is null.  Need to verify the result shows something after the bug is fixed in the client library.
 
         # Remove All VMs
         Get-AzureRmVM -ResourceGroupName $rgname | Remove-AzureRmVM -Force;
         $vms = Get-AzureRmVM -ResourceGroupName $rgname;
-        Assert-AreEqual $vms $null;
+        Assert-AreEqual $vms $null; 
     }
     finally
     {

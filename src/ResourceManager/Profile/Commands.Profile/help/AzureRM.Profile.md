@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.Profile
 Module Guid: 342714fc-4009-4863-8afb-a9067e3db04b
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile
+Help Version: 4.6.0.0
 Locale: en-US
 ---
 
@@ -11,8 +11,8 @@ Locale: en-US
 Manages credentials and common configuration for all Azure modules.
 
 ## AzureRM.Profile Cmdlets
-### [Add-AzureRmAccount](Add-AzureRmAccount.md)
-Adds an authenticated account to use for Azure Resource Manager cmdlet requests.
+### [Connect-AzureRmAccount](Connect-AzureRmAccount.md)
+Connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
 
 ### [Add-AzureRmEnvironment](Add-AzureRmEnvironment.md)
 Adds endpoints and metadata for an instance of Azure Resource Manager.
@@ -54,8 +54,8 @@ Gets tenants that are authorized for the current user.
 ### [Import-AzureRmContext](Import-AzureRmContext.md)
 Loads Azure authentication information from a file.
 
-### [Remove-AzureRmAccount](Remove-AzureRmAccount.md)
-Remove all credentials and contexts associated with the given account.
+### [Disconnect-AzureRmAccount](Disconnect-AzureRmAccount.md)
+Disconnects from a connected Azure account and removes all credentials and contexts associated with that account.
 
 ### [Remove-AzureRmContext](Remove-AzureRmContext.md)
 Remove a context from the set of available contexts

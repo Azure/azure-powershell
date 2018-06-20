@@ -37,7 +37,7 @@ PS C:\> Resolve-AzureRmError -Last
    HistoryId: 3
 
 
-Message        : Run Login-AzureRmAccount to login.
+Message        : Run Connect-AzureRmAccount to login.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in AzureRmCmdlet.cs:line 269
                     at Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet.BeginProcessing() inAzurePSCmdlet.cs:line 299
@@ -99,7 +99,7 @@ HistoryId      : 8
    HistoryId: 5
 
 
-Message        : Run Login-AzureRmAccount to login.
+Message        : Run Connect-AzureRmAccount to login.
 StackTrace     :    at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.get_DefaultContext() in C:\zd\azur
                  e-powershell\src\ResourceManager\Common\Commands.ResourceManager.Common\AzureRmCmdlet.cs:line 85
                     at Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet.LogCmdletStartInvocationInfo() in

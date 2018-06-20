@@ -1,6 +1,6 @@
 ﻿---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.ServiceBus
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/set-azurermservicebusrule
 schema: 2.0.0
 ---
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ServiceBus Rules definition.
 
 ```yaml
-Type: RulesAttributes
+Type: PSRulesAttributes
 Parameter Sets: (All)
 Aliases: 
 
@@ -176,11 +176,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.RulesAttributes
+Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.RulesAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
 
 ## NOTES
 

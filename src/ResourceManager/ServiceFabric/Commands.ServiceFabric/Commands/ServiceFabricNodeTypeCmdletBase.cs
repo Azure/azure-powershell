@@ -18,12 +18,12 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ServiceFabric.Models;
-using Microsoft.Azure.Management.Compute;
-using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.ServiceFabric;
-using Microsoft.Azure.Management.Storage;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
+using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
                AzureEnvironment.Endpoint.ResourceManager));
         }
 
-        protected bool CheckNodeTypeExistence()
+        protected bool VmssExists()
         {
             var vmss = SafeGetResource(
                 () =>
@@ -71,21 +71,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 
             return vmss != null;
         }
-
-        protected PSCluster RemoveNodeTypeFromSfrp()
-        {
-            var cluster = SFRPClient.Clusters.Get(this.ResourceGroupName, this.Name);
-            cluster.NodeTypes.Remove(
-                cluster.NodeTypes.SingleOrDefault(
-                    c => string.Equals(
-                        c.Name,
-                        this.NodeType,
-                        StringComparison.InvariantCultureIgnoreCase)));
-
-            return SendPatchRequest(new Management.ServiceFabric.Models.ClusterUpdateParameters()
-            {
-                NodeTypes = cluster.NodeTypes
-            });
-        }  
     }
 }

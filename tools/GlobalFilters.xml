@@ -136,8 +136,8 @@
         <string>\\OneBox\\</string>
         <string>ART\\TSATest</string>
 	    <string>KeyVault\\KeyVault.Tests\\Resources\\localhost.pfx</string>
-        <string>ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\testcertificate.pfx</string>
-	    <string>ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx</string>
+        <string>ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\powershelltest.pfx</string>
+	    <string>ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\powershelltest.pfx</string>
 	    <string>ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewayAuthCert.cer</string>
 	    <string>ResourceManager\\Network\\Commands.Network.Test\\SessionRecords\\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\\TestApplicationGatewayCRUD.json</string>
 	    <string>Common\\Commands.Common.Authentication.Test\\Resources\\InvalidProfile.PublishSettings</string>

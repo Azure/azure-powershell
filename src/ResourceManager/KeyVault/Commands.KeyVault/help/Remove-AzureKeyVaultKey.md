@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
 ms.assetid: 817BF177-519F-47BA-86CF-4591FB402E2Dl
@@ -13,8 +13,15 @@ Deletes a key in a key vault.
 
 ## SYNTAX
 
+### ByVaultName (Default)
 ```
 Remove-AzureKeyVaultKey [-VaultName] <String> [-Name] <String> [-Force] [-PassThru] [-InRemovedState]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Remove-AzureKeyVaultKey [-InputObject] <PSKeyVaultKeyIdentityItem> [-Force] [-PassThru] [-InRemovedState]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,31 +33,44 @@ This cmdlet has a value of high for the **ConfirmImpact** property.
 ## EXAMPLES
 
 ### Example 1: Remove a key from a key vault
-```
-PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware'
+```powershell
+PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -PassThru
+
+Vault Name           : contoso
+Name                 : key2
+Id                   : https://contoso.vault.azure.net:443/keys/itsoftware/fdad15793ba0437e960497908ef9eb32
+Deleted Date         : 5/24/2018 11:28:25 PM
+Scheduled Purge Date : 8/22/2018 11:28:25 PM
+Enabled              : False
+Expires              : 10/11/2018 11:32:49 PM
+Not Before           : 4/11/2018 11:22:49 PM
+Created              : 4/12/2018 10:16:38 PM
+Updated              : 4/12/2018 10:16:38 PM
+Purge Disabled       : False
+Tags                 :
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
 
 ### Example 2: Remove a key without user confirmation
-```
-PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Force
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso.
-The command specifies the *Force* and *Confirm* parameters, and, therefore, the cmdlet does not prompt you for confirmation.
+The command specifies the *Force* parameter, and, therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 3: Purge a deleted key from the key vault permanently
-```
-PS C:\>Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
+```powershell
+PS C:\> Remove-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -InRemovedState
 ```
 
 This command removes the key named ITSoftware from the key vault named Contoso permanently.
 Executing this cmdlet requires the 'purge' permission, which must have been previously and explicitly granted to the user for this key vault.
 
 ### Example 4: Remove keys by using the pipeline operator
-```
-PS C:\>Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey
+```powershell
+PS C:\> Get-AzureKeyVaultKey -VaultName 'Contoso' | Where-Object {$_.Attributes.Enabled -eq $False} | Remove-AzureKeyVaultKey
 ```
 
 This command gets all the keys in the key vault named Contoso, and passes them to the **Where-Object** cmdlet by using the pipeline operator.
@@ -80,12 +100,27 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+KeyBundle Object
+
+```yaml
+Type: PSKeyVaultKeyIdentityItem
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -95,7 +130,7 @@ Remove the previously deleted key permanently.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,24 +145,24 @@ This cmdlet constructs the fully qualified domain name (FQDN) of a key based on 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByVaultName
 Aliases: KeyName
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.KeyBundle** object.
+Indicates that this cmdlet returns a **Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey** object.
 By default, this cmdlet does not generate any output.
 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -142,13 +177,13 @@ This cmdlet constructs the FQDN of a key vault based on the name that this param
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: ByVaultName
+Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -189,11 +224,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.DeletedKeyBundle
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 This cmdlet returns a value only if you specify the *PassThru* parameter.
 
 ## NOTES

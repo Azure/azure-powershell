@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: 5727E2CA-0A0B-4050-9F4A-7E06758D9B53
@@ -31,11 +31,6 @@ The **Remove-AzureRmCdnCustomDomain** cmdlet removes the custom domain from an A
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnCustomDomain
@@ -44,7 +39,7 @@ Specifies the custom domain that this cmdlet removes.
 ```yaml
 Type: PSCustomDomain
 Parameter Sets: ByObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -59,7 +54,7 @@ Specifies the resource name of the custom domain that this cmdlet removes.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -89,7 +84,7 @@ Specifies the name of the endpoint from which this cmdlet removes a custom domai
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,7 +100,7 @@ By default, this cmdlet does not generate any output.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,7 +115,7 @@ Specifies the name of the profile from which this cmdlet removes a custom domain
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,7 +130,7 @@ Specifies the name of the resource group from which this cmdlet removes a custom
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

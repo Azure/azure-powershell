@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.Network
          DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default,
          SupportsShouldProcess = true),
      OutputType(typeof(PSVirtualNetworkGateway))]
+    [Obsolete("Set-AzureRmVirtualNetworkGatewayVpnClientConfig command let will be removed in next release. Please use Set-AzureRmVirtualNetworkGateway command let instead.")]
     public class SetAzureVirtualNetworkGatewayVpnClientConfigCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
@@ -81,7 +82,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (!this.IsVirtualNetworkGatewayPresent(this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name))
             {
-                throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.VirtualNetworkGateway.Name));
             }
 
             if (this.VirtualNetworkGateway.VpnClientConfiguration == null)

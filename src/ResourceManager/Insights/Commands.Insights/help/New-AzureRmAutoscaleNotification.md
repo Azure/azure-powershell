@@ -46,7 +46,7 @@ Specifies a comma-separated list of email addresses.
 ```yaml
 Type: String[]
 Parameter Sets: (All)
-Aliases: CustomEmails
+Aliases:
 
 Required: False
 Position: 1
@@ -91,7 +91,7 @@ Indicates that this operation sends an email notification to the subscription co
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: SendEmailToSubscriptionCoAdministrators
+Aliases:
 
 Required: False
 Position: Named
@@ -106,7 +106,7 @@ Specifies a comma-separated list of Autoscale webhooks.
 ```yaml
 Type: WebhookNotification[]
 Parameter Sets: (All)
-Aliases: Webhooks
+Aliases:
 
 Required: False
 Position: 0
@@ -119,6 +119,9 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 

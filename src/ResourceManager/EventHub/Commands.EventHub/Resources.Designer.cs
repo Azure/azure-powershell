@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating new EventHub:{0} under NameSpace:{1}.
+        ///   Looks up a localized string similar to Creating new EventHub:{0} under Namespace:{1}.
         /// </summary>
         internal static string CreateEventHub {
             get {
@@ -102,6 +102,42 @@ namespace Microsoft.Azure.Commands.EventHub {
         internal static string CreateNamespaceAuthorizationrule {
             get {
                 return ResourceManager.GetString("CreateNamespaceAuthorizationrule", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}.
+        /// </summary>
+        internal static string DRBreakPairing {
+            get {
+                return ResourceManager.GetString("DRBreakPairing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}.
+        /// </summary>
+        internal static string DRFailOver {
+            get {
+                return ResourceManager.GetString("DRFailOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creating new Alias :{0} under Namespace:{1}.
+        /// </summary>
+        internal static string DRNew {
+            get {
+                return ResourceManager.GetString("DRNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deleting Alias: {0} of Namespace{1}.
+        /// </summary>
+        internal static string DRRemoveAlias {
+            get {
+                return ResourceManager.GetString("DRRemoveAlias", resourceCulture);
             }
         }
         
@@ -169,7 +205,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deleting EventHub: {0} of NnameSpace{1}.
+        ///   Looks up a localized string similar to Deleting EventHub: {0} of Namespace{1}.
         /// </summary>
         internal static string RemovingEventHub {
             get {
@@ -205,7 +241,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating EventHub:{0} of NameSpace:{1}.
+        ///   Looks up a localized string similar to Updating EventHub:{0} of Namespace:{1}.
         /// </summary>
         internal static string UpdateEventHub {
             get {
@@ -223,7 +259,7 @@ namespace Microsoft.Azure.Commands.EventHub {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update NameSpace:{0} from ResourceGroup:{1}.
+        ///   Looks up a localized string similar to Update Namespace:{0} from ResourceGroup:{1}.
         /// </summary>
         internal static string UpdateNamespace {
             get {

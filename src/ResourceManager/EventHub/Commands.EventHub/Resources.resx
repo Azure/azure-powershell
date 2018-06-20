@@ -121,7 +121,7 @@
     <value>Adding a new Consumer Group {0} under Eventhub {1}</value>
   </data>
   <data name="CreateEventHub" xml:space="preserve">
-    <value>Creating new EventHub:{0} under NameSpace:{1}</value>
+    <value>Creating new EventHub:{0} under Namespace:{1}</value>
   </data>
   <data name="CreateEventHubAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for EventHub: {1}</value>
@@ -131,6 +131,18 @@
   </data>
   <data name="CreateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Creating new AuthorizationRule named:{0} for Namespace: {1}</value>
+  </data>
+  <data name="DRBreakPairing" xml:space="preserve">
+    <value>Disabling the Disaster Recovery and stops replicating changes from primary namespace {0} to secondary namespace {1}</value>
+  </data>
+  <data name="DRFailOver" xml:space="preserve">
+    <value>Invoking Geo DR failover and reconfigure the alias - {0} to point to the secondary namespace - {1}</value>
+  </data>
+  <data name="DRNew" xml:space="preserve">
+    <value>Creating new Alias :{0} under Namespace:{1}</value>
+  </data>
+  <data name="DRRemoveAlias" xml:space="preserve">
+    <value>Deleting Alias: {0} of Namespace{1}</value>
   </data>
   <data name="FileDoesNotExist" xml:space="preserve">
     <value>File {0} does not exist</value>
@@ -154,7 +166,7 @@
     <value>Delete NameSpace:{0} from ResourceGroup:{1}</value>
   </data>
   <data name="RemovingEventHub" xml:space="preserve">
-    <value>Deleting EventHub: {0} of NnameSpace{1}</value>
+    <value>Deleting EventHub: {0} of Namespace{1}</value>
   </data>
   <data name="RemovingEventHubAuthorizationRule" xml:space="preserve">
     <value>Are you sure you want to remove AtuhorizationRule:{0} from EventHub: {1} of Namespace: {2}</value>
@@ -166,13 +178,13 @@
     <value>Updating ConsumerGroup: {0} for the Eventhub:{1}</value>
   </data>
   <data name="UpdateEventHub" xml:space="preserve">
-    <value>Updating EventHub:{0} of NameSpace:{1}</value>
+    <value>Updating EventHub:{0} of Namespace:{1}</value>
   </data>
   <data name="UpdateEventHubAuthorizationrule" xml:space="preserve">
     <value>Updating AuthorizationRule named:{0} for EventHub: {1}</value>
   </data>
   <data name="UpdateNamespace" xml:space="preserve">
-    <value>Update NameSpace:{0} from ResourceGroup:{1}</value>
+    <value>Update Namespace:{0} from ResourceGroup:{1}</value>
   </data>
   <data name="UpdateNamespaceAuthorizationrule" xml:space="preserve">
     <value>Updating  AuthorizationRule named:{0} for Namespace: {1}</value>

@@ -13,12 +13,16 @@
 // ----------------------------------------------------------------------------------
 
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Tools.Common.Helpers;
+using Tools.Common.Issues;
+using Tools.Common.Loaders;
+using Tools.Common.Loggers;
+using Tools.Common.Models;
 
 namespace StaticAnalysis.DependencyAnalyzer
 {
@@ -66,7 +70,12 @@ namespace StaticAnalysis.DependencyAnalyzer
         public AnalysisLogger Logger { get; set; }
         public string Name { get; private set; }
 
-        public void Analyze(IEnumerable<string> directories)
+        public void Analyze(IEnumerable<string> scopes)
+        {
+            Analyze(scopes, null);
+        }
+
+        public void Analyze(IEnumerable<string> directories, IEnumerable<String> modulesToAnalyze)
         {
             if (directories == null)
             {
@@ -82,6 +91,13 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 foreach (var directoryPath in Directory.EnumerateDirectories(baseDirectory))
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Where(m => directoryPath.EndsWith(m)).Any())
+                    {
+                        continue;
+                    }
+
                     if (!Directory.Exists(directoryPath))
                     {
                         throw new InvalidOperationException("Please pass a valid directory name as the first parameter");
@@ -391,6 +407,11 @@ namespace StaticAnalysis.DependencyAnalyzer
         /// </summary>
         /// <returns></returns>
         public AnalysisReport GetAnalysisReport()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
         {
             throw new NotImplementedException();
         }

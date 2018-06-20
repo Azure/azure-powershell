@@ -15,6 +15,7 @@
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 using System.Security;
 
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for the user.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
-        
+
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The userPrincipalName.")]
         [ValidateNotNullOrEmpty]
         public string UserPrincipalName { get; set; }
@@ -41,6 +42,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "ImmutableId - to be specified only if you are using a federated domain for the user's user principal name (upn) property.")]
         [ValidateNotNullOrEmpty]
         public string ImmutableId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The mail alias for the user.")]
+        public string MailNickname { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "It must be specified if the user should change the password on the next successful login. Default behavior is to not change the password on the next successful login.")]
         public SwitchParameter ForceChangePasswordNextLogin { get; set; }
@@ -61,7 +65,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 UserPrincipalName = UserPrincipalName
             };
 
-            if(!string.IsNullOrEmpty(ImmutableId))
+            if (this.IsParameterBound(c => c.MailNickname))
+            {
+                userCreateparameters.MailNickname = MailNickname;
+            }
+
+            if (this.IsParameterBound(c => c.ImmutableId))
             {
                 userCreateparameters.ImmutableId = ImmutableId;
             }

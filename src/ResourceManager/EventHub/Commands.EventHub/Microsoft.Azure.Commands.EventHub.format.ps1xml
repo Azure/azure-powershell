@@ -2,9 +2,9 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes</Name>
+      <Name>Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.EventHub.Models.NamespaceAttributes</TypeName>
+        <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>
@@ -58,9 +58,9 @@
       </ListControl>
     </View>  
     <View>
-      <Name>Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes</Name>
+      <Name>Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Commands.EventHub.Models.EventHubAttributes</TypeName>
+        <TypeName>Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes</TypeName>
       </ViewSelectedBy>
       <ListControl>
         <ListEntries>

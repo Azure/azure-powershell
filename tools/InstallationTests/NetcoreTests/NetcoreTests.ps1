@@ -100,7 +100,7 @@ function Run-TestProtectedAsJob
 
 # Login or skip if the context exists.
 if(!(Test-Path azpsTestContext.json)) {
-  Login-AzureRmAccount > $null
+  Connect-AzureRmAccount > $null
   Select-AzureRmSubscription -SubscriptionId c9cbd920-c00c-427c-852b-8aaf38badaeb > $null
   Save-AzureRmContext -Path azpsTestContext.json > $null
 }

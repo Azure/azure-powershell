@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.Common
     /// <typeparam name="T">The type of the cmdlet being executed</typeparam>
     public class AzureLongRunningJob<T> : AzureLongRunningJob, ICommandRuntime where T : AzurePSCmdlet
     {
+        const int MaxRecords = 1000;
         string _status = "Running";
         T _cmdlet;
         ICommandRuntime _runtime;
@@ -671,7 +672,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteCommandDetail(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Verbose.IsOpen)
+            if (Verbose.IsOpen && Verbose.Count < MaxRecords)
             {
                 Verbose.Add(new VerboseRecord(text));
             }
@@ -684,7 +685,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteDebug(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Debug.IsOpen)
+            if (Debug.IsOpen && Debug.Count < MaxRecords)
             {
                 Debug.Add(new DebugRecord(text));
             }
@@ -745,7 +746,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteProgress(ProgressRecord progressRecord)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Progress.IsOpen)
+            if (Progress.IsOpen && Progress.Count < MaxRecords)
             {
                 Progress.Add(progressRecord);
             }
@@ -769,7 +770,7 @@ namespace Microsoft.Azure.Commands.Common
         public void WriteVerbose(string text)
         {
             ThrowIfJobFailedOrCancelled();
-            if (Verbose.IsOpen)
+            if (Verbose.IsOpen && Verbose.Count < MaxRecords)
             {
                 Verbose.Add(new VerboseRecord(text));
             }

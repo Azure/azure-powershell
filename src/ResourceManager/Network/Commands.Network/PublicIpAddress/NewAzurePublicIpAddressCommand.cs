@@ -96,6 +96,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "IpTag List.")]
+        public List<PSPublicIpTag> IpTag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -168,6 +174,11 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
                 publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
                 publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
+            }
+
+            if (this.IpTag != null && this.IpTag.Count > 0)
+            {
+                publicIp.IpTags = this.IpTag;
             }
 
             var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);

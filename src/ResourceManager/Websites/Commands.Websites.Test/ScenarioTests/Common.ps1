@@ -89,7 +89,7 @@ function Get-WebsitesTestMode {
 .SYNOPSIS
 Gets the location for the Website. Default to West US if none found.
 #>
-function Get-Location
+function Get-WebLocation
 {
 	if ((Get-WebsitesTestMode) -ne 'Playback')
 	{
@@ -123,14 +123,14 @@ function Get-SecondaryLocation
   
 		if ($location -eq $null) 
 		{  
-			return "East US"  
+			return "West US"  
 		} else 
 		{  
 			return $location.Locations[1]  
 		}
 	}
 
-	return "EastUS"
+	return "WestUS"
 }
 
 <#
@@ -151,7 +151,7 @@ function PingWebApp($webApp)
 	{
 		try 
 		{
-			$result = Invoke-WebRequest $webApp.HostNames[0] 
+			$result = Invoke-WebRequest $webApp.HostNames[0] -UseBasicParsing
 			$statusCode = $result.StatusCode
 		} 
 		catch [System.Net.WebException ] 
