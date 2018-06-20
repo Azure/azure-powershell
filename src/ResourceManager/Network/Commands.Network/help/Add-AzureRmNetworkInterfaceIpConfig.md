@@ -66,7 +66,7 @@ Specifies a collection of application gateway backend address pool references to
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,7 +81,7 @@ Specifies a collection of application gateway backend address pool references to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +96,7 @@ Specifies a collection of application security group references to which this ne
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSApplicationSecurityGroup]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,7 +111,7 @@ Specifies a collection of application security group references to which this ne
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -141,7 +141,7 @@ Specifies a collection of load balancer backend address pool references to which
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSBackendAddressPool]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +156,7 @@ Specifies a collection of load balancer backend address pool references to which
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,7 +171,7 @@ Specifies a collection of load balancer inbound network address translation (NAT
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSInboundNatRule]
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -186,7 +186,7 @@ Specifies a collection of load balancer inbound NAT rule references to which thi
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -201,7 +201,7 @@ Specifies the name of the network interface IP configuration.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -217,7 +217,7 @@ This cmdlet adds a network interface IP configuration to the object that this pa
 ```yaml
 Type: PSNetworkInterface
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -245,7 +245,7 @@ Specifies the static IP address of the network interface IP configuration.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -264,7 +264,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -281,7 +281,7 @@ This cmdlet creates a reference to a public IP Address to associate with this ne
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -296,7 +296,7 @@ This cmdlet creates a reference to a public IP Address to associate with this ne
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -312,7 +312,7 @@ This cmdlet creates a reference to a subnet in which this network interface IP c
 ```yaml
 Type: PSSubnet
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -327,7 +327,7 @@ This cmdlet creates a reference to a subnet in which this network interface IP c
 ```yaml
 Type: String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

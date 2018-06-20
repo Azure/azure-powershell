@@ -135,6 +135,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, Slot, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
+                    //update reference to WebApp object after site configuration update
+                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, Slot);
+
                     if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
                     {
 

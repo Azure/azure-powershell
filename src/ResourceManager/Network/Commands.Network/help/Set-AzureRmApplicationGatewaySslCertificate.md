@@ -41,7 +41,7 @@ Specifies the application gateway with which the Secure Socket Layer (SSL) certi
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -56,7 +56,7 @@ Specifies the path of the SSL certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ Specifies the name of the SSL certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -101,7 +101,7 @@ Specifies the password of the SSL certificate.
 ```yaml
 Type: SecureString
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

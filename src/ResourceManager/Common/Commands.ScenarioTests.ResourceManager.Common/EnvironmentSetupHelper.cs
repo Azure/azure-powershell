@@ -92,6 +92,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             module = GetModuleManifest(StorageDirectory, "Azure.Storage");
             LogIfNotNull($"Storage Data Plane Module path: {module}");
             RMStorageDataPlaneModule = module;
+            module = GetModuleManifest(RmDirectory, "AzureRM.OperationalInsights");
+            LogIfNotNull($"Storage Data Plane Module path: {module}");
+            RMOperationalInsightsModule = module;
             module = GetModuleManifest(RmDirectory, "AzureRM.Network");
             LogIfNotNull($"Network Module path: {module}");
             RMNetworkModule = module;
@@ -152,7 +155,9 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 
         public string RMInsightsModule { get; private set; } 
 
-        public string RMStorageModule { get; private set; } 
+        public string RMStorageModule { get; private set; }
+
+        public string RMOperationalInsightsModule { get; private set; }
 
         //TODO: clarify (data plane should not be under ARM folder)
         public string RMStorageDataPlaneModule { get; private set; }
@@ -197,7 +202,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
                 if (Directory.Exists(baseDirectory))
                 {
-                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
+                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
+                        || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
                     {
                         result = Path.GetFullPath(result);
@@ -437,6 +445,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+
 #if !NETSTANDARD
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {

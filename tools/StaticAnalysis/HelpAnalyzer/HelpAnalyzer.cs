@@ -71,12 +71,18 @@ namespace StaticAnalysis.HelpAnalyzer
 
             return result;
         }
+
+        public void Analyze(IEnumerable<string> scopes)
+        {
+            Analyze(scopes, null);
+        }
+
         /// <summary>
         /// Given a set of directory paths containing PowerShell module folders, analyze the help
         /// in the module folders and report any issues
         /// </summary>
         /// <param name="scopes"></param>
-        public void Analyze(IEnumerable<string> scopes)
+        public void Analyze(IEnumerable<string> scopes, IEnumerable<string> modulesToAnalyze)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             var processedHelpFiles = new List<string>();
@@ -85,6 +91,13 @@ namespace StaticAnalysis.HelpAnalyzer
             {
                 foreach (var directory in Directory.EnumerateDirectories(Path.GetFullPath(baseDirectory)))
                 {
+                    if (modulesToAnalyze != null &&
+                        modulesToAnalyze.Any() &&
+                        !modulesToAnalyze.Where(m => directory.EndsWith(m)).Any())
+                    {
+                        continue;
+                    }
+
                     var dirs = Directory.EnumerateDirectories(directory);
                     if (dirs != null && dirs.Any((d) => string.Equals(Path.GetFileName(d), "help", StringComparison.OrdinalIgnoreCase)))
                     {
@@ -281,6 +294,11 @@ namespace StaticAnalysis.HelpAnalyzer
         /// </summary>
         /// <returns></returns>
         public AnalysisReport GetAnalysisReport()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Analyze(IEnumerable<string> cmdletProbingDirs, Func<IEnumerable<string>, IEnumerable<string>> directoryFilter, Func<string, bool> cmdletFilter, IEnumerable<string> modulesToAnalyze)
         {
             throw new NotImplementedException();
         }

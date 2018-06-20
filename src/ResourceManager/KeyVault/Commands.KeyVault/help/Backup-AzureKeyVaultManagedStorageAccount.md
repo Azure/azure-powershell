@@ -41,23 +41,29 @@ and specify a key vault in the second region.
 ## EXAMPLES
 
 ### Example 1: Back up a managed storage account with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+
+C:\Users\username\mykeyvault-mymsak-1527029447.01191
 ```
 
 This command retrieves the managed storage account named MyMSAK from the key vault named MyKeyVault and saves a backup of that managed storage account to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a managed storage account to a specified file name
-```
-PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyMSAK' -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyMSAK' -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command retrieves the managed storage account named MyMSAK from the key vault named MyKeyVault and saves a backup of that managed storage account to a file named Backup.blob.
 
 ### Example 3: Back up a previously retrieved managed storage account to a specified file name, overwriting the destination file without prompting.
-```
-PS C:\>$msak = Get-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
-PS C:\>Backup-AzureKeyVaultManagedStorageAccount -StorageAccount $msak -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> $msak = Get-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+PS C:\> Backup-AzureKeyVaultManagedStorageAccount -StorageAccount $msak -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command creates a backup of the managed storage account named $msak.Name in the vault named $msak.VaultName to a file named Backup.blob, silently overwriting the file if it exists already.
@@ -199,6 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The cmdlet returns the path of the output file containing the backup of the managed storage account.
 
 ## NOTES
 

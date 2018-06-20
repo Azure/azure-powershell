@@ -33,6 +33,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Websites
     public class ShowAzureWebsiteTests : WebsitesTestBase
     {
         [Fact(Skip = "Consider removing these.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ProcessShowWebsiteTest()
         {
             // Setup
