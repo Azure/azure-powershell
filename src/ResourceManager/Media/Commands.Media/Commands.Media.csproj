@@ -91,7 +91,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Media.psd1">
+    <None Include="AzureRM.Media.psd1">
       <Link>AzureRM.Media.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

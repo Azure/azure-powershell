@@ -699,12 +699,28 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
             }
         }
         
+        ///   Looks up a localized string similar to Failed retrieving id of storage account &apos;{0}&apos; under subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountIdUnderSubscriptionFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountIdUnderSubscriptionFailed", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe..
         /// </summary>
         internal static string ScanIdParameterIsRequired {
             get {
                 return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+        
+        ///   Looks up a localized string similar to Failed retrieving keys of storage &apos;{0}&apos;..
+        /// </summary>
+        internal static string RetrievingStorageAccountKeysFailed {
+            get {
+                return ResourceManager.GetString("RetrievingStorageAccountKeysFailed", resourceCulture);
             }
         }
         

@@ -28,6 +28,9 @@
 
 ## Version 4.6.1
 * Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
+* Updated Set-AzureRmSqlServerAuditing and Set-AzureRmSqlDatabaseAuditing Cmdlets
+    - Added a new parameter called StorageAccountSubscriptionId.
+	- Added a new example for each modified cmdlet.
 
 ## Version 4.6.0
 * Updated the following cmdlets with optional LicenseType parameter

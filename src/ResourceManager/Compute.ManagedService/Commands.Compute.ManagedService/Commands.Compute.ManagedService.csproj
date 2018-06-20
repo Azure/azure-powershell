@@ -97,7 +97,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Compute.ManagedService.psd1">
+    <None Include="AzureRM.Compute.ManagedService.psd1">
       <Link>AzureRM.Compute.ManagedService.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

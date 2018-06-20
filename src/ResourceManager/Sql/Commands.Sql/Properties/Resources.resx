@@ -419,5 +419,10 @@
   </data>
   <data name="ScanIdParameterIsRequired" xml:space="preserve">
     <value>ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe.</value>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
   </data>
 </root>
