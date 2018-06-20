@@ -20,8 +20,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Dns;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Network;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         protected void SetupManagementClients(MockContext context)
         {
-            this.ResourceManagementClient = this.GetResourceManagementClient();
+            this.ResourceManagementClient = this.GetResourceManagementClient(context);
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
             this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
@@ -170,9 +170,9 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
             }
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected NetworkManagementClient GetNetworkManagementClient(MockContext context)

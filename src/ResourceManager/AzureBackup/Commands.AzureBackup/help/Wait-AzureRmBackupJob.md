@@ -27,11 +27,6 @@ A script that includes this cmdlet can be simpler than one that polls the Backup
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile

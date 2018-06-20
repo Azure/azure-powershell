@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Accounts
             int nodeAgentCount = 0;
             foreach (PSNodeAgentSku p in pipeline)
             {
-                Assert.True(idsOfNodeAgentSkus.Contains(p.Id));
+                Assert.Contains(p.Id, idsOfNodeAgentSkus);
                 nodeAgentCount++;
             }
             Assert.Equal(idsOfNodeAgentSkus.Length, nodeAgentCount);

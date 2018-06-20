@@ -150,7 +150,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if (cloudException != null && cloudException.Response != null
                     && !string.IsNullOrEmpty(cloudException.Response.Content))
                 {
-                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(cloudException.Response.Content);
+                    rpError.Error error = JsonConvert.DeserializeObject<rpError.Error>(
+                        cloudException.Response.Content,
+                        new JsonSerializerSettings { DateFormatHandling = DateFormatHandling.MicrosoftDateFormat });
 
                     if (error.ErrorCode.Equals(
                         RpErrorCode.ResourceExtendedInfoNotFound.ToString(),

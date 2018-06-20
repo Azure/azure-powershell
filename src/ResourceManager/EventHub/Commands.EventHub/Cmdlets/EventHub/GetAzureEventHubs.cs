@@ -42,6 +42,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of EventHubs to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
@@ -55,9 +59,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             }
             else
             {
-                // Get all EventHubs
-                IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
-                WriteObject(eventHubsList.ToList(), true);
+                if (MaxCount.HasValue)
+                {
+                    IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
+                    WriteObject(eventHubsList.ToList(), true);
+                }
+                else
+                {
+                    // Get all EventHubs
+                    IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
+                    WriteObject(eventHubsList.ToList(), true);
+                }
             }
         }
     }
