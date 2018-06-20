@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.2.0
+* Added -Vault parameter to RecoveryServices.Backup cmdlets. When passed, this will override the Set-AzureRmRecoveryServicesContext cmdlet.
+
 ## Version 4.1.3
 * Set minimum dependency of module to PowerShell 5.0
 

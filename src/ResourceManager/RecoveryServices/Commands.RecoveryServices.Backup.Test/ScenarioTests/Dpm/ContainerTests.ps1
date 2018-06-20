@@ -15,20 +15,24 @@
 function Test-BmsGetContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
-	$containers = Get-AzureRmRecoveryServicesBackupManagementServer;	
+	$containers = Get-AzureRmRecoveryServicesBackupManagementServer -VaultId $vault.ID;
 
-	$namedContainer = Get-AzureRmRecoveryServicesBackupManagementServer -Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
+	$namedContainer = Get-AzureRmRecoveryServicesBackupManagementServer `
+		-VaultId $vault.ID `
+		-Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $namedContainer.FriendlyName "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 }
 
 function Test-BmsUnregisterContainer
 {
 	$vault = Get-AzureRmRecoveryServicesVault -ResourceGroupName "pstestrg" -Name "pstestrsvault";
-	Set-AzureRmRecoveryServicesVaultContext -Vault $vault;
 	
-	$container = Get-AzureRmRecoveryServicesBackupManagementServer -Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
+	$container = Get-AzureRmRecoveryServicesBackupManagementServer `
+		-VaultId $vault.ID `
+		-Name "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 	Assert-AreEqual $container.FriendlyName "PRCHIDEL-VEN2.FAREAST.CORP.MICROSOFT.COM";
 
-	Unregister-AzureRmRecoveryServicesBackupManagementServer -AzureRmBackupManagementServer $container;
+	Unregister-AzureRmRecoveryServicesBackupManagementServer `
+		-VaultId $vault.ID `
+		-AzureRmBackupManagementServer $container;
 }
