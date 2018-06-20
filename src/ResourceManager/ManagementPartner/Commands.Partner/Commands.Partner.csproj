@@ -71,7 +71,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.ManagementPartner.psd1">
+    <None Include="AzureRM.ManagementPartner.psd1">
       <Link>AzureRM.ManagementPartner.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
