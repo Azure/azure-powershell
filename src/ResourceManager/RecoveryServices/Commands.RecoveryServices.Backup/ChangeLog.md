@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+* Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and returns null (if this VM is not protected by any vault in the subscription) and the vault name (if the VM is protected by some vault). 
 
 ## Version 4.2.0
 * Added -Vault parameter to RecoveryServices.Backup cmdlets. When passed, this will override the Set-AzureRmRecoveryServicesContext cmdlet.
