@@ -31,7 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
+    <None Include="AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
