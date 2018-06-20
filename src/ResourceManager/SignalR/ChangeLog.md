@@ -19,7 +19,7 @@
 -->
 ## Current
 
-* `New-AzureRmSignalR` uses a new version of `Strategy` library (4.0).
+* `New-AzureRmSignalR` uses a new version of `Strategy` library (5.0).
 
 ## 0.1.1
 
