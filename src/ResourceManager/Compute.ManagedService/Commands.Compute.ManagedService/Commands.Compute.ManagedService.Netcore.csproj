@@ -32,7 +32,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Compute.ManagedService.Netcore.psd1" Link="AzureRM.Compute.ManagedService.Netcore.psd1">
+    <None Include="AzureRM.Compute.ManagedService.Netcore.psd1" Link="AzureRM.Compute.ManagedService.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
