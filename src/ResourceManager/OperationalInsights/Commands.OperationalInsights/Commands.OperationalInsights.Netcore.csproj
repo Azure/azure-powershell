@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.OperationalInsights.Netcore.psd1" Link="AzureRM.OperationalInsights.Netcore.psd1">
+    <None Include="AzureRM.OperationalInsights.Netcore.psd1" Link="AzureRM.OperationalInsights.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

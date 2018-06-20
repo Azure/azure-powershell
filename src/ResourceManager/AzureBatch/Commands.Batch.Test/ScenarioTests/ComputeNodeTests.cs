@@ -28,8 +28,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
@@ -51,8 +51,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootAndReimageComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
             BatchController controller = BatchController.NewInstance;
@@ -94,8 +94,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
             BatchController controller = BatchController.NewInstance;

@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string ConsumergroupPropertiesParameterSet = "ConsumergroupPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRParameterSet";
 
+        protected const string EventhubDefaultParameterSet = "EventhubDefaultSet";
+
         //Parametersets for Authorizationrules
         protected const string NamespaceParameterSet = "NamespaceParameterSet";
         protected const string AutoInflateParameterSet = "AutoInflateParameterSet";

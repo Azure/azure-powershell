@@ -202,7 +202,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
                 if (Directory.Exists(baseDirectory))
                 {
-                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
+                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
+                        || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
                     {
                         result = Path.GetFullPath(result);
@@ -442,6 +445,8 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             environment.GraphUrl = currentEnvironment.Endpoints.GraphUri.AbsoluteUri;
             environment.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix = currentEnvironment.Endpoints.DataLakeAnalyticsJobAndCatalogServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
             environment.AzureDataLakeStoreFileSystemEndpointSuffix = currentEnvironment.Endpoints.DataLakeStoreServiceUri.OriginalString.Replace("https://", ""); // because it is just a sufix
+            environment.StorageEndpointSuffix = AzureEnvironmentConstants.AzureStorageEndpointSuffix;
+
 #if !NETSTANDARD
             if (!ProfileClient.Profile.EnvironmentTable.ContainsKey(testEnvironmentName))
             {

@@ -121,6 +121,8 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions in the token to access the share and files under the share.
 
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+
 ```yaml
 Type: String
 Parameter Sets: SasPermission

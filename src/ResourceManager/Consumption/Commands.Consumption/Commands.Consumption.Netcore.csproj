@@ -32,11 +32,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="3.0.0.0" />
+    <PackageReference Include="Microsoft.Azure.Management.Consumption" Version="3.0.1.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Consumption.Netcore.psd1" Link="AzureRM.Consumption.Netcore.psd1">
+    <None Include="AzureRM.Consumption.Netcore.psd1" Link="AzureRM.Consumption.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
