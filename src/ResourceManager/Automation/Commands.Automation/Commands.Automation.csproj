@@ -193,7 +193,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\CompilationJobStreamType.cs" />
-    <None Include="..\AzureRM.Automation.psd1">
+    <None Include="AzureRM.Automation.psd1">
       <Link>AzureRM.Automation.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

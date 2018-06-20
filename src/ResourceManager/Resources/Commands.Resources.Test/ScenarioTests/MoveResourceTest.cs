@@ -15,6 +15,7 @@
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     using ServiceManagemenet.Common.Models;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;
     public class MoveResourceTest
@@ -25,8 +26,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "Need to re-record test")]
-        // TODO: test takes too long, reduce time and then add to Category.CheckIn
-        //[Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestMoveAzureResource()
         {
             ResourcesController.NewInstance.RunPsTest("Test-MoveAzureResource");
