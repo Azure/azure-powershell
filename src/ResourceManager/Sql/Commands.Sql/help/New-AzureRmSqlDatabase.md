@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation assign to the Azure SQL Database.
+Specifies the compute generation assigned to the Azure SQL Database.
 
 ```yaml
 Type: String
