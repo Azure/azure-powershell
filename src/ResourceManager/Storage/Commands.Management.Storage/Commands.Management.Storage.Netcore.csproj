@@ -40,6 +40,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />

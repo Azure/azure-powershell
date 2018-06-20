@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Profile.Common;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -142,25 +143,30 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
+        [Ps1Xml(Label = "Context Name", Target = ViewControl.Table)]
         public string Name { get; set; }
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
+        [Ps1Xml(Label = "Account id", Target = ViewControl.Table, ScriptBlock = "$_.Account.Id")]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
         /// The endpoint and connection metadata for the targeted instance of the Azure cloud.
         /// </summary>
+        [Ps1Xml(Label = "Environment Name", Target = ViewControl.Table, ScriptBlock = "$_.Environment.Name")]
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
         /// The subscription targeted in Azure.
         /// </summary>
+        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name")]
         public IAzureSubscription Subscription { get; set; }
 
         /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
+        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.Id")]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; }
