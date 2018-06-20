@@ -227,7 +227,7 @@
     <Content Include="Microsoft.Azure.Commands.Sql.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.Sql.psd1">
+    <None Include="AzureRM.Sql.psd1">
       <Link>AzureRM.Sql.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

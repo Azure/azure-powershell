@@ -1,0 +1,410 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2015-06-01-preview",
+    "title": "CommerceAdminClient",
+    "description": "Commerce Admin Client"
+  },
+  "host": "adminmanagement.local.azurestack.external",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/providers/Microsoft.Commerce.Admin/operations": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of supported rest operations.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of supported rest operations.",
+        "tags": [
+          "Commerce"
+        ],
+        "operationId": "Operations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationList"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates": {
+      "get": {
+        "x-ms-examples": {
+          "Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from users.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Gets a collection of SubscriberUsageAggregates, which are UsageAggregates from users.",
+        "tags": [
+          "Commerce"
+        ],
+        "operationId": "SubscriberUsageAggregates_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/ReportedStartTimeParameter"
+          },
+          {
+            "$ref": "#/parameters/ReportedEndTimeParameter"
+          },
+          {
+            "$ref": "#/parameters/AggregationGranularityParameter"
+          },
+          {
+            "$ref": "#/parameters/TenantSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ContinuationTokenParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/UsageAggregatePage"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Commerce.Admin/updateEncryption": {
+      "post": {
+        "x-ms-examples": {
+          "Update the encryption.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Update the encryption.",
+        "tags": [
+          "Commerce"
+        ],
+        "operationId": "UpdateEncryption",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "description": "Base Resource Object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "description": "URI of the resource.",
+          "type": "string"
+        },
+        "name": {
+          "readOnly": true,
+          "description": "Name of the resource.",
+          "type": "string"
+        },
+        "type": {
+          "readOnly": true,
+          "description": "Type of resource.",
+          "type": "string"
+        },
+        "location": {
+          "readOnly": true,
+          "description": "Location where resource is location.",
+          "type": "string"
+        },
+        "tags": {
+          "readOnly": true,
+          "description": "List of key value pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "UsageAggregate": {
+      "description": "Aggregate usage values for resource.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties for aggregate usage.",
+          "$ref": "#/definitions/UsageAggregateModel"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "UsageAggregateModel": {
+      "description": "Properties for aggregate usage.",
+      "type": "object",
+      "properties": {
+        "subscriptionId": {
+          "type": "string",
+          "description": "Subscription id of tenant using plan."
+        },
+        "usageStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC start time for the usage bucket to which this usage aggregate belongs."
+        },
+        "usageEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC end time for the usage bucket to which this usage aggregate belongs."
+        },
+        "instanceData": {
+          "description": "Key-value pairs of instance details represented as a string.",
+          "type": "string"
+        },
+        "quantity": {
+          "description": "The amount of the resource consumption that occurred in this time frame.",
+          "type": "string"
+        },
+        "meterId": {
+          "description": "Unique ID for the resource that was consumed (aka ResourceID).",
+          "type": "string"
+        }
+      }
+    },
+    "UsageAggregatePage": {
+      "description": "Holds an array of usage aggregates and the continuation token.",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UsageAggregate"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "Operation": {
+      "description": "Describes the supported rest operation.",
+      "properties": {
+        "name": {
+          "description": "The name of the operation being performed on this particular object. It should match the action name that appears in RBAC / the event service.",
+          "type": "string"
+        },
+        "display": {
+          "description": "Contains the localized display information for this particular operation / action..",
+          "$ref": "#/definitions/Display"
+        }
+      }
+    },
+    "Display": {
+      "description": "Contains the localized display information for this particular operation / action..",
+      "properties": {
+        "provider": {
+          "description": "The localized friendly form of the resource provider name – it is expected to also include the publisher/company responsible. It should use Title Casing and begin with \"Microsoft\" for 1st party services. e.g. \"Microsoft Monitoring Insights\" or \"Microsoft Compute.\"",
+          "type": "string"
+        },
+        "resource": {
+          "description": "The localized friendly form of the resource type related to this action/operation – it should match the public documentation for the resource provider.",
+          "type": "string"
+        },
+        "operation": {
+          "description": "The localized friendly name for the operation, as it should be shown to the user.",
+          "type": "string"
+        },
+        "description": {
+          "description": "The localized friendly description for the operation, as it should be shown to the user. It should be thorough, yet concise – it will be used in tool tips and detailed views.",
+          "type": "string"
+        }
+      }
+    },
+    "OperationList": {
+      "description": "List of Operations",
+      "properties": {
+        "value": {
+          "description": "Array of operations",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page of operations.",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+      "required": true,
+      "type": "string"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "Client Api Version.",
+      "required": true,
+      "type": "string",
+      "default": "2015-06-01-preview"
+    },
+    "ReportedStartTimeParameter": {
+      "description": "The reported start time (inclusive).",
+      "name": "reportedStartTime",
+      "in": "query",
+      "type": "string",
+      "required": true,
+      "format": "date-time",
+      "x-ms-parameter-location": "method"
+    },
+    "ReportedEndTimeParameter": {
+      "description": "The reported end time (exclusive).",
+      "name": "reportedEndTime",
+      "in": "query",
+      "type": "string",
+      "required": true,
+      "format": "date-time",
+      "x-ms-parameter-location": "method"
+    },
+    "AggregationGranularityParameter": {
+      "description": "The aggregation granularity.",
+      "name": "aggregationGranularity",
+      "in": "query",
+      "type": "string",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "TenantSubscriptionIdParameter": {
+      "description": "The tenant subscription identifier.",
+      "name": "subscriberId",
+      "in": "query",
+      "type": "string",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    },
+    "ContinuationTokenParameter": {
+      "description": "The continuation token.",
+      "name": "continuationToken",
+      "in": "query",
+      "type": "string",
+      "required": false,
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 Flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}
