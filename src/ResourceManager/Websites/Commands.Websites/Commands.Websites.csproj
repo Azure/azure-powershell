@@ -132,10 +132,13 @@
     <Compile Include="Validations\ValidateWebAppNameAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AzureRM.Websites.Netcore.psd1" />
     <None Include="AzureRM.Websites.psd1">
       <Link>AzureRM.Websites.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="AzureRM.Websites.psd1" />
+    <None Include="ChangeLog.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
