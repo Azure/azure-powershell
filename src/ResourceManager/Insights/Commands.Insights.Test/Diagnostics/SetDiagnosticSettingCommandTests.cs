@@ -216,7 +216,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.ExecuteCmdlet();
 
             DiagnosticSettingsResource expectedSettings = GetDefaultSetting();
-            expectedSettings.EventHubName = null;
 
             VerifyCalledOnce();
             VerifySettings(expectedSettings, this.calledSettings);
