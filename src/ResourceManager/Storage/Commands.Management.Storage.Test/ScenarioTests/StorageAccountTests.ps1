@@ -136,6 +136,7 @@ function Test-NewAzureStorageAccount
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
+        Assert-NotNull  $sto.PrimaryEndpoints.Web 
         
         Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
     }
@@ -662,6 +663,7 @@ function Test-SetAzureStorageAccountStorageV2
         Assert-AreEqual $stotype $sto.Sku.Name;
         Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
         Assert-AreEqual $kind $sto.Kind;
+        Assert-NotNull  $sto.PrimaryEndpoints.Web 
 
         Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
     }
