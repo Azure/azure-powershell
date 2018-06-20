@@ -40,11 +40,11 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
             IEnumerable<Usage> usages;
             if (Location == null)
             {
-                usages = this.StorageClient.Usage.List();
+                usages = this.StorageClient.Usages.List();
             }
             else
             {
-                usages = this.StorageClient.Usage.ListByLocation(Location);
+                usages = this.StorageClient.Usages.ListByLocation(Location);
             }
 
             //Output usage
