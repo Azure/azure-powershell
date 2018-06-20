@@ -52,6 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestSetVirtualNetworkGatewayCRUD()
         {
@@ -59,6 +60,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayActiveActiveFeatureTest()
         {
@@ -66,6 +68,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayRouteApiTest()
         {
@@ -73,6 +76,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestVirtualNetworkGatewayP2SVpnProfile()
         {
@@ -90,6 +94,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayVpnCustomIpsecPolicySetTest()
         {
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayVpnCustomIpsecPolicySet");

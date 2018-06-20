@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(List<PSUsageDetail>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(PSUsageDetail))]
     public class GetAzureRmConsumptionUsageDetail : AzureConsumptionCmdletBase
     {
         const int MaxNumberToFetch = 1000;
@@ -189,29 +189,65 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
             {
                 numberToFetch = this.MaxCount.Value;
             }
-
-            IPage<UsageDetail> usageDetails = null;         
+            
+            List<PSUsageDetail> result = new List<PSUsageDetail>();
+                  
             try
             {
+                IPage<UsageDetail> usageDetails = null;
+                string nextPageLink = null;
+
                 if (!string.IsNullOrWhiteSpace(this.BillingPeriodName))
                 {
-                    usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriod(BillingPeriodName,
-                        expand, filter, default(string), numberToFetch);
+                    do
+                    {
+                        if (!string.IsNullOrWhiteSpace(nextPageLink))
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriodNext(nextPageLink);
+                            nextPageLink = usageDetails.NextPageLink;
+                        }
+                        else
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListByBillingPeriod(BillingPeriodName,
+                                expand, filter, default(string), numberToFetch);
+                            nextPageLink = usageDetails.NextPageLink;
+                        }
+
+                        if (usageDetails != null)
+                        {
+                            result.AddRange(usageDetails.Select(x => new PSUsageDetail(x)));
+                        }
+                    } while (!this.Top.HasValue && !this.MaxCount.HasValue && !string.IsNullOrWhiteSpace(nextPageLink));                 
                 }
                 else
                 {
-                    usageDetails = ConsumptionManagementClient.UsageDetails.List(expand, filter, default(string), numberToFetch);
+                    do
+                    {
+                        if (!string.IsNullOrWhiteSpace(nextPageLink))
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.ListNext(nextPageLink);
+                            nextPageLink = usageDetails?.NextPageLink;
+                        }
+                        else
+                        {
+                            usageDetails = ConsumptionManagementClient.UsageDetails.List(expand, filter, default(string),
+                                numberToFetch);
+                            nextPageLink = usageDetails?.NextPageLink;
+                        }
+
+                        if (usageDetails != null)
+                        {
+                            result.AddRange(usageDetails.Select(x => new PSUsageDetail(x)));
+                        }
+                    } while (!this.Top.HasValue && !this.MaxCount.HasValue && !string.IsNullOrWhiteSpace(nextPageLink));
                 }                
             }
             catch (ErrorResponseException e)
             {
-                WriteWarning(e.Body.Error.Message);
+                WriteExceptionError(e);
             }
 
-            if (usageDetails != null)
-            {
-                WriteObject(usageDetails.Select(x => new PSUsageDetail(x)), true);
-            }            
+            WriteObject(result, true);         
         }
     }
 }

@@ -65,7 +65,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.AnalysisServices.psd1">
+    <None Include="AzureRM.AnalysisServices.psd1">
       <Link>AzureRM.AnalysisServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
