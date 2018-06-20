@@ -99,7 +99,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             if (_isDebugEnabled)
             {
                 _adlsLoggerConfig = new LoggingConfiguration();
-                cmdlet.WriteObject(null);
                 // Custom target that logs the debug messages from the SDK to the powershell framework's debug message queue
                 var adlsTarget = new AdlsLoggerTarget
                 {
@@ -112,9 +111,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 var rule = new LoggingRule("adls.dotnet.*", NLog.LogLevel.Debug, adlsTarget);
                 _adlsLoggerConfig.LoggingRules.Add(rule);
 
-               /* var powershellLoggingRule =
+               var powershellLoggingRule =
                     new LoggingRule("adls.powershell.WebTransport", NLog.LogLevel.Debug, adlsTarget);
-                _adlsLoggerConfig.LoggingRules.Add(powershellLoggingRule);*/
+                _adlsLoggerConfig.LoggingRules.Add(powershellLoggingRule);
 
                 // Enable the NLog configuration to use this
                 LogManager.Configuration = _adlsLoggerConfig;
@@ -207,8 +206,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                 if (trackProgress)
                 {
                     progress = new ProgressRecord(_uniqueActivityIdGenerator.Next(0, 10000000),
-                        string.Format($"Recursive acl change for path {path} and type {aclChangeType}"),
-                        $"Acl {aclChangeType}")
+                        string.Format($"Recursive acl change for path {path}"),
+                        $"Type of Acl Change: {aclChangeType}")
                     {
                         PercentComplete = 0
                     };
@@ -220,7 +219,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
                         {
                             progress.PercentComplete = 0;
                             progress.Activity =
-                                $"Acl {aclChangeType}: Files enumerated: {e.FilesProcessed} Directories enumerated:{e.DirectoryProcessed}";
+                                $"Files enumerated: {e.FilesProcessed} Directories enumerated:{e.DirectoryProcessed}";
 
                         }
                     };
@@ -793,10 +792,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
 
                 if (DateTime.Now - lastUpdate > TimeSpan.FromSeconds(1))
                 {
-                    lock (ConsoleOutputLock)
+                    if (taskProgress != null && !token.IsCancellationRequested &&
+                        !commandToUpdateProgressFor.Stopping) 
                     {
-                        if (taskProgress != null && !token.IsCancellationRequested &&
-                            !commandToUpdateProgressFor.Stopping)
+                        lock (ConsoleOutputLock)
                         {
                             commandToUpdateProgressFor.WriteProgress(taskProgress);
                         }
