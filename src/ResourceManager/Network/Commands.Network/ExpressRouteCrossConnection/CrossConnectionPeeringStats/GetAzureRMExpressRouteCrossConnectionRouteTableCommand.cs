@@ -28,7 +28,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The resource group name.")]
+             HelpMessage = "The resource group name.",
+            ParameterSetName = "SpecifyByParameterValues")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
@@ -37,9 +38,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
              Mandatory = true,
              ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The Name of Express Route Cross Connection")]
+             HelpMessage = "The Name of Express Route Cross Connection",
+            ParameterSetName = "SpecifyByParameterValues")]
         [ValidateNotNullOrEmpty]
         public string CrossConnectionName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The Express Route Cross Connection",
+            ParameterSetName = "SpecifyByReference")]
+        [ValidateNotNullOrEmpty]
+        public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -54,13 +64,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The DevicePath, can be either Primary or Secondary")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            "Primary",
+            "Secondary",
+            IgnoreCase = true)]
         public DevicePathEnum DevicePath { get; set; }
 
         public override void Execute()
         {
             base.Execute();
-            var routeTables = this.ExpressRouteCrossConnectionClient.ListRoutesTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value.Cast<object>().ToList();
+            List<object> routeTables = null;
+            if (!string.IsNullOrWhiteSpace(CrossConnectionName))
+            {
+                routeTables = this.ExpressRouteCrossConnectionClient
+                    .ListRoutesTable(ResourceGroupName, CrossConnectionName, PeeringType, DevicePath.ToString()).Value
+                    .Cast<object>().ToList();
+            }
+            else
+            {
+                routeTables = this.ExpressRouteCrossConnectionClient
+                    .ListRoutesTable(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, PeeringType, DevicePath.ToString()).Value
+                    .Cast<object>().ToList();
+            }
+
             var psRoutes = new List<PSExpressRouteCircuitRoutesTable>();
             foreach (var routeTable in routeTables)
             {

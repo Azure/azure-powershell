@@ -18,6 +18,8 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Management.Network;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -27,8 +29,47 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The ExpressRouteCrossConnection")]
+            HelpMessage = "The ExpressRouteCrossConnection",
+            ParameterSetName = "ModifyByCircuitReference")]
         public PSExpressRouteCrossConnection ExpressRouteCrossConnection { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipeline = true,
+            HelpMessage = "The ExpressRouteCrossConnection",
+            ParameterSetName = "ModifyByParameterValues")]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The name of express route cross connection.",
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "ModifyByParameterValues")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The service provider provisioning state to be set",
+            ParameterSetName = "ModifyByParameterValues")]
+        public string ServiceProviderProvisioningState { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The service provider notes",
+            ParameterSetName = "ModifyByParameterValues")]
+        public string ServiceProviderNotes { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The list of peerings for the cross connection",
+            ParameterSetName = "ModifyByParameterValues")]
+        public List<PSExpressRouteCrossConnectionPeering> Peerings { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -42,28 +83,77 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            ConfirmAction(
-               Force.IsPresent,
-               string.Format(Properties.Resources.OverwritingResource, ExpressRouteCrossConnection.Name),
-               Properties.Resources.CreatingResourceMessage,
-               ExpressRouteCrossConnection.Name,
-               () =>
-               {
-                   if (!IsExpressRouteCrossConnectionPresent(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name))
-                   {
-                       throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
-                   }
+            if (ExpressRouteCrossConnection != null)
+            {
+                // If ExpressRouteCrossConnection object is provided
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Properties.Resources.OverwritingResource, ExpressRouteCrossConnection.Name),
+                    Properties.Resources.CreatingResourceMessage,
+                    ExpressRouteCrossConnection.Name,
+                    () =>
+                    {
+                        var crossConnection = GetExistingExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
+                        if (crossConnection == null)
+                        {
+                            throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                        }
 
-                   // Map to the sdk object
-                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(ExpressRouteCrossConnection);
-                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(ExpressRouteCrossConnection.Tag, validate: true);
+                        // Map to the sdk operation
+                        var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(ExpressRouteCrossConnection);
+                        crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(ExpressRouteCrossConnection.Tag, validate: true);
 
-                   // Execute the Update ExpressRouteCrossConnection call
-                   ExpressRouteCrossConnectionClient.CreateOrUpdate(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, crossConnectionModel);
+                        // Execute the Update ExpressRouteCrossConnection call
+                        ExpressRouteCrossConnectionClient.CreateOrUpdate(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, crossConnectionModel);
 
-                   var getExpressRouteCircuit = GetExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
-                   WriteObject(getExpressRouteCircuit);
-               });
+                        var getExpressRouteCircuit = GetExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
+                        WriteObject(getExpressRouteCircuit);
+                    });
+            }
+            else
+            {
+                // If individual parameters are provided
+                ConfirmAction(
+                    Force.IsPresent,
+                    string.Format(Properties.Resources.OverwritingResource, Name),
+                    Properties.Resources.CreatingResourceMessage,
+                    Name,
+                    () =>
+                    {
+                        var crossConnection = GetExistingExpressRouteCrossConnection(ResourceGroupName, Name);
+                        if (crossConnection == null)
+                        {
+                            throw new ArgumentException(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(ServiceProviderNotes))
+                        {
+                            crossConnection.ServiceProviderNotes = ServiceProviderNotes;
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(ServiceProviderProvisioningState))
+                        {
+                            crossConnection.ServiceProviderProvisioningState = ServiceProviderProvisioningState;
+                        }
+
+                        if (Peerings != null && Peerings.Count > 0)
+                        {
+                            crossConnection.Peerings = Peerings;
+                        }
+
+                        // Map to the sdk operation
+                        var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCrossConnection>(crossConnection);
+                        crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(crossConnection.Tag, validate: true);
+
+                        // Execute the Update ExpressRouteCrossConnection call
+                        ExpressRouteCrossConnectionClient.CreateOrUpdate(ResourceGroupName, Name, crossConnectionModel);
+
+                        var getExpressRouteCrossConnection = GetExpressRouteCrossConnection(ResourceGroupName, Name);
+                        WriteObject(getExpressRouteCrossConnection);
+                    });
+            }
+
+            
         }
     }
 }

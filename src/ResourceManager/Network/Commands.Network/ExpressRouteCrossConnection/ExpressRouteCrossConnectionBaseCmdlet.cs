@@ -30,24 +30,25 @@ namespace Microsoft.Azure.Commands.Network
             }
         }
 
-        public bool IsExpressRouteCrossConnectionPresent(string resourceGroupName, string name)
+        public PSExpressRouteCrossConnection GetExistingExpressRouteCrossConnection(string resourceGroupName, string name)
         {
+            PSExpressRouteCrossConnection crossConnection = null;
             try
             {
-                GetExpressRouteCrossConnection(resourceGroupName, name);
+                crossConnection = GetExpressRouteCrossConnection(resourceGroupName, name);
             }
             catch (Microsoft.Rest.Azure.CloudException exception)
             {
                 if (exception.Response.StatusCode == HttpStatusCode.NotFound)
                 {
                     // Resource is not present
-                    return false;
+                    return null;
                 }
 
                 throw;
             }
 
-            return true;
+            return crossConnection;
         }
 
         public PSExpressRouteCrossConnection GetExpressRouteCrossConnection(string resourceGroupName, string name)

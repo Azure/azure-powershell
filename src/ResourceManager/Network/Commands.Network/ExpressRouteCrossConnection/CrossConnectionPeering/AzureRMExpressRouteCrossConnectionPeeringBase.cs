@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
@@ -98,6 +101,27 @@ namespace Microsoft.Azure.Commands.Network
            IPv6,
            IgnoreCase = true)]
         public string PeerAddressType { get; set; }
+        
+        public IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnectionClient
+        {
+            get
+            {
+                return NetworkClient.NetworkManagementClient.ExpressRouteCrossConnections;
+            }
+        }
+
+        public PSExpressRouteCrossConnection GetExpressRouteCrossConnection(string resourceGroupName, string name)
+        {
+            var crossConnection = this.ExpressRouteCrossConnectionClient.Get(resourceGroupName, name);
+
+            var psExpressRouteCrossConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCrossConnection>(crossConnection);
+            psExpressRouteCrossConnection.ResourceGroupName = resourceGroupName;
+
+            psExpressRouteCrossConnection.Tag =
+                TagsConversionHelper.CreateTagHashtable(crossConnection.Tags);
+
+            return psExpressRouteCrossConnection;
+        }
 
         public void ConstructMicrosoftConfig(PSExpressRouteCrossConnectionPeering peering)
         {

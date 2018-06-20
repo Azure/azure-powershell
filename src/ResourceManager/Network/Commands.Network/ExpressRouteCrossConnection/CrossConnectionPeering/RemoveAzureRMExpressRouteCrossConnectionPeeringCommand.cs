@@ -16,18 +16,14 @@ using Microsoft.Azure.Commands.Network.Models;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
 
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRMExpressRouteCrossConnectionPeering", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
     public class RemoveAzureRMExpressRouteCrossConnectionPeeringCommand : NetworkBaseCmdlet
     {
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The name of the Peering")]
-        [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
         [Parameter(
              Mandatory = true,
              ValueFromPipeline = true,
@@ -36,12 +32,18 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The name of the Peering")]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "The Address family of the peering")]
         [ValidateSet(
-           IPv4,
-           IPv6,
-           All,
-           IgnoreCase = true)]
+            IPv4,
+            IPv6,
+            All,
+            IgnoreCase = true)]
         public string PeerAddressType { get; set; }
 
         [Parameter(
@@ -105,8 +107,34 @@ namespace Microsoft.Azure.Commands.Network
                        }
                    }
 
-                   WriteObject(this.ExpressRouteCrossConnection);
+                   // Map to the sdk operation
+                   var crossConnectionModel = NetworkResourceManagerProfile.Mapper.Map<Management.Network.Models.ExpressRouteCrossConnection>(ExpressRouteCrossConnection);
+                   crossConnectionModel.Tags = TagsConversionHelper.CreateTagDictionary(ExpressRouteCrossConnection.Tag, validate: true);
+
+                   // Execute the Update ExpressRouteCrossConnection call
+                   ExpressRouteCrossConnectionClient.CreateOrUpdate(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name, crossConnectionModel);
+
+                   var getExpressRouteCrossConnection = GetExpressRouteCrossConnection(ExpressRouteCrossConnection.ResourceGroupName, ExpressRouteCrossConnection.Name);
+                   WriteObject(getExpressRouteCrossConnection);
                });
+        }
+
+        private IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnectionClient
+        {
+            get { return NetworkClient.NetworkManagementClient.ExpressRouteCrossConnections; }
+        }
+
+        private PSExpressRouteCrossConnection GetExpressRouteCrossConnection(string resourceGroupName, string name)
+        {
+            var crossConnection = this.ExpressRouteCrossConnectionClient.Get(resourceGroupName, name);
+
+            var psExpressRouteCrossConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCrossConnection>(crossConnection);
+            psExpressRouteCrossConnection.ResourceGroupName = resourceGroupName;
+
+            psExpressRouteCrossConnection.Tag =
+                TagsConversionHelper.CreateTagHashtable(crossConnection.Tags);
+
+            return psExpressRouteCrossConnection;
         }
     }
 }
