@@ -143,6 +143,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     // Update web app configuration
                     WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, siteConfig, AppSettings.ConvertToStringDictionary(), ConnectionStrings.ConvertToConnectionStringDictionary());
 
+                    //Update WebApp object after configuration update
+                    WebApp = WebsitesClient.GetWebApp(ResourceGroupName, Name, null);
+
                     if (parameters.Any(p => CmdletHelpers.SiteParameters.Contains(p)))
                     {
 

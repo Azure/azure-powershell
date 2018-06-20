@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -25,7 +26,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmRecoveryServicesBackupContainer",
         SupportsShouldProcess = true)]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
-        : RecoveryServicesBackupCmdletBase
+        : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Container model object to be unregistered from the vault.
@@ -47,6 +48,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 if (!((Container.ContainerType == ContainerType.Windows &&
                        Container.BackupManagementType == BackupManagementType.MARS) ||
                     (Container.ContainerType == ContainerType.AzureSQL &&
@@ -62,7 +67,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     containerName = ContainerConstansts.SqlContainerNamePrefix + containerName;
                 }
 
-                ServiceClientAdapter.UnregisterContainers(containerName);
+                ServiceClientAdapter.UnregisterContainers(
+                    containerName,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
                 if (PassThru.IsPresent)
                 {

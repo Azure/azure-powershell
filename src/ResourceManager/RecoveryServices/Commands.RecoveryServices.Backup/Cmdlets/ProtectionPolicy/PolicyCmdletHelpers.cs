@@ -58,14 +58,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <param name="policyName">Name of the policy to be fetched</param>
         /// <param name="serviceClientAdapter">Service client adapter with which to make calls</param>
         /// <returns></returns>
-        public static ProtectionPolicyResource GetProtectionPolicyByName(string policyName,
-                                                 ServiceClientAdapter serviceClientAdapter)
+        public static ProtectionPolicyResource GetProtectionPolicyByName(
+            string policyName,
+            ServiceClientAdapter serviceClientAdapter,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
             ProtectionPolicyResource response = null;
 
             try
             {
-                response = serviceClientAdapter.GetProtectionPolicy(policyName);
+                response = serviceClientAdapter.GetProtectionPolicy(
+                    policyName,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
                 Logger.Instance.WriteDebug("Successfully fetched policy from service: " + policyName);
             }
             catch (AggregateException exception)

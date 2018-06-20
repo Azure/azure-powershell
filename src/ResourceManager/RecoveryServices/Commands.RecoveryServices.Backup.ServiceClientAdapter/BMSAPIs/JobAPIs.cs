@@ -28,13 +28,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job</param>
         /// <returns>Job response returned by the service</returns>
-        public JobResource GetJob(string jobId)
+        public JobResource GetJob(
+            string jobId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
             return BmsAdapter.Client.JobDetails.GetWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 jobId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
         }
@@ -57,11 +58,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             DateTime startTime,
             DateTime endTime,
             string backupManagementType,
-            string skipToken = null)
+            string skipToken = null,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             ODataQuery<JobQueryObject> queryFilter = GetQueryObject(
                 backupManagementType,
                 startTime,
@@ -72,8 +72,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             Func<RestAzureNS.IPage<JobResource>> listAsync =
                 () => BmsAdapter.Client.BackupJobs.ListWithHttpMessagesAsync(
-                    resourceName,
-                    resourceGroupName,
+                    vaultName ?? BmsAdapter.GetResourceName(),
+                    resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                     queryFilter,
                     skipToken,
                     cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
@@ -91,14 +91,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="jobId">ID of the job to cancel</param>
         /// <returns>Cancelled job response from the service</returns>
-        public RestAzureNS.AzureOperationResponse CancelJob(string jobId)
+        public RestAzureNS.AzureOperationResponse CancelJob(
+            string jobId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.JobCancellations.TriggerWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 jobId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
@@ -110,14 +110,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="operationId">ID of the operation associated with the job</param>
         /// <returns>Job response returned by the service</returns>
         public RestAzureNS.AzureOperationResponse GetJobOperationStatus(
-            string jobId, string operationId)
+            string jobId,
+            string operationId,
+            string vaultName = null,
+            string resourceGroupName = null)
         {
-            string resourceName = BmsAdapter.GetResourceName();
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-
             return BmsAdapter.Client.JobOperationResults.GetWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 jobId,
                 operationId,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;

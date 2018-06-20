@@ -90,7 +90,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Reservations.psd1">
+    <None Include="AzureRM.Reservations.psd1">
       <Link>AzureRM.Reservations.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
