@@ -642,7 +642,7 @@
           ContinueOnError="ErrorAndContinue"/>
 
     <!-- Azure / Stack -->
-    <CallTarget Targets="InvokeXUnit" Condition="false"/>
+    <CallTarget Targets="InvokeXUnit" />
   </Target>
 
   <!-- Run Full switch with scenario tests -->
