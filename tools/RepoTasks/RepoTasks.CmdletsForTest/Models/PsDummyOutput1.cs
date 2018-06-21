@@ -21,10 +21,21 @@ namespace RepoTasks.CmdletsForTest.Models
         [Ps1Xml(Target = ViewControl.List)]
         public string Id { get; set; }
 
-        [Ps1Xml(Target = ViewControl.All)]
+        [Ps1Xml(
+            Target = ViewControl.All,
+            TableColumnWidth = 16, Position = 1)]
         public string Name { get; set; }
 
-        [Ps1Xml(Label = "PsDummyOutput1 Type", Target = ViewControl.Table)]
+        [Ps1Xml(Label = "PsDummyOutput1 Type", 
+            Target = ViewControl.All, 
+            Position = 3)]
         public string Type { get; set; }
+
+        [Ps1Xml(Label = "PsDummyOutput2 Name", 
+            Target = ViewControl.All, 
+            ScriptBlock = "$_.PsDummyOutput2.Name", 
+            GroupByThis = true)]
+        [Ps1Xml(Label = "PsDummyOutput2 Location", Target = ViewControl.All, ScriptBlock = "$_.PsDummyOutput2.Location", Position = 0)]
+        public PsDummyOutput2 PsDummyOutput2 { get; set; }
     }
 }

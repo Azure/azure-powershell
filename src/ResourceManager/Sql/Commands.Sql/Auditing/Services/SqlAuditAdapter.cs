@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         /// Caching the fetched storage account table name to prevent costly network interaction in cases it is not needed
         /// </summary>
         private string FetchedStorageAccountTableEndpoint { get; set; }
-        
+
 
         /// <summary>
         /// In cases when storage is not needed and not provided, there's no need to perform storage related network interaction that may fail
@@ -217,7 +217,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             var properties = policy.Properties;
             dbPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
+            ModelizeStorageInfo(dbPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse, properties.StorageAccountSubscriptionId);
             ModelizeAuditActionGroups(dbPolicyModel, properties.AuditActionsAndGroups);
             ModelizeAuditActions(dbPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(dbPolicyModel, properties.RetentionDays);
@@ -256,7 +256,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             model.RetentionInDays = Convert.ToUInt32(retentionDays);
         }
 
-        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool isSecondary)
+        private static void ModelizeStorageInfo(BaseBlobAuditingPolicyModel model, string storageEndpoint, bool isSecondary, string storageAccountSubscriptionId)
         {
             if (string.IsNullOrEmpty(storageEndpoint))
             {
@@ -266,6 +266,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             var accountNameEndIndex = storageEndpoint.IndexOf(".blob", StringComparison.InvariantCultureIgnoreCase);
             model.StorageAccountName = storageEndpoint.Substring(accountNameStartIndex, accountNameEndIndex- accountNameStartIndex);
             model.StorageKeyType = (isSecondary) ? StorageKeyKind.Secondary : StorageKeyKind.Primary;
+            model.StorageAccountSubscriptionId = Guid.Parse(storageAccountSubscriptionId);
         }
 
         /// <summary>
@@ -289,7 +290,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
         {
             var properties = policy.Properties;
             serverPolicyModel.AuditState = ModelizeAuditState(properties.State);
-            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse);
+            ModelizeStorageInfo(serverPolicyModel, properties.StorageEndpoint, properties.IsStorageSecondaryKeyInUse, properties.StorageAccountSubscriptionId);
             ModelizeAuditActionGroups(serverPolicyModel, properties.AuditActionsAndGroups);
             ModelizeRetentionInfo(serverPolicyModel, properties.RetentionDays);
         }
@@ -470,9 +471,12 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
             if (!IgnoreStorage && (model.AuditState == AuditStateType.Enabled))
             {
                 properties.StorageEndpoint = ExtractStorageAccountName(model, storageEndpointSuffix);
-                properties.StorageAccountAccessKey = ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType);
+                properties.StorageAccountAccessKey = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
+                    ExtractStorageAccountKey(model.StorageAccountName, model.StorageKeyType) :
+                    ExtractStorageAccountKey(model.StorageAccountSubscriptionId, model.StorageAccountName, model.StorageKeyType);
                 properties.IsStorageSecondaryKeyInUse = model.StorageKeyType == StorageKeyKind.Secondary;
-                properties.StorageAccountSubscriptionId = ExtractStorageAccountSubscriptionId(model.StorageAccountName);
+                properties.StorageAccountSubscriptionId = Subscription.GetId().Equals(model.StorageAccountSubscriptionId) ?
+                    ExtractStorageAccountSubscriptionId(model.StorageAccountName) : model.StorageAccountSubscriptionId.ToString();
             }
             properties.AuditActionsAndGroups = ExtractAuditActionsAndGroups(model);
             if (model.RetentionInDays != null)
@@ -618,6 +622,11 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 return FetchedStorageAccountResourceGroup;
             }
             return AzureCommunicator.GetStorageResourceGroup(storageName);
+        }
+
+        private string ExtractStorageAccountKey(Guid storageAccountSubscriptionId, string storageAccountName, StorageKeyKind storageKeyKind)
+        {
+            return AzureCommunicator.RetrieveStorageKeys(storageAccountSubscriptionId, storageAccountName)[storageKeyKind];
         }
 
         /// <summary>

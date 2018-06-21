@@ -79,7 +79,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.NotificationHubs.psd1">
+    <None Include="AzureRM.NotificationHubs.psd1">
       <Link>AzureRM.NotificationHubs.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
