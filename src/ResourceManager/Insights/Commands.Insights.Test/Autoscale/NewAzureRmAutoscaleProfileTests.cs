@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             return autocaseRuleCmd.CreateSettingRule();
         }
 
-        public void InitializeAutoscaleProfile(List<Management.Monitor.Management.Models.ScaleRule> rules = null)
+        internal void InitializeAutoscaleProfile(List<Management.Monitor.Management.Models.ScaleRule> rules = null)
         {
             List<Management.Monitor.Management.Models.ScaleRule> autoscaleRules = rules ?? new List<Management.Monitor.Management.Models.ScaleRule> { this.CreateAutoscaleRule() };
 
