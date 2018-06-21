@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         /// 64 characters and must be unique.
         /// </summary>
         [JsonProperty(PropertyName = "name")]
-        public string Name { get; set; }
+        public string RouteName { get; set; }
 
         /// <summary>
         /// The condition which is evaluated in order to apply the routing rule.
@@ -54,4 +54,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Models
         public string Source { get; set; }
 
     }
+
+    public class PSRouteProperties : PSRouteMetadata
+    { }
 }
