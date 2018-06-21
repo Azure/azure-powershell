@@ -57,6 +57,32 @@ Properties       : {
 
 In this example we get the flow logging status for a Network Security Group. The specified NSG has flow logging enabled, and no retention policy set.
 
+### Example 2: Get the Flow Logging and Traffic Analytics Status for a Specified NSG
+```
+PS C:\> $NW = Get-AzurermNetworkWatcher -ResourceGroupName NetworkWatcherRg -Name NetworkWatcher_westcentralus
+PS C:\> $nsg = Get-AzureRmNetworkSecurityGroup -ResourceGroupName NSGRG -Name appNSG
+
+PS C:\> Get-AzureRmNetworkWatcherFlowLogStatus -NetworkWatcher $NW -TargetResourceId $nsg.Id
+
+TargetResourceId : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Network/networkSecurityGroups/appNSG
+StorageId        : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NSGRG/providers/Microsoft.Storage/storageAccounts/contosostorageacct123
+Enabled          : True
+RetentionPolicy  : {
+                     "Days": 0,
+                     "Enabled": false
+                   }
+FlowAnalyticsConfiguration : {
+            "networkWatcherFlowAnalyticsConfiguration": {
+              "enabled": true,
+              "workspaceId": "bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb",
+              "workspaceRegion": "WorkspaceLocation",
+              "workspaceResourceId": "/subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourcegroups/WorkspaceRg/providers/microsoft.operationalinsights/workspaces/WorkspaceName"
+            }
+          }
+```
+
+In this example we get the flow logging and Traffic Analytics status for a Network Security Group. The specified NSG has flow logging and Traffic Analytics enabled, and no retention policy set.
+
 ## PARAMETERS
 
 ### -AsJob
