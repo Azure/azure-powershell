@@ -129,10 +129,10 @@ function Get-AzsVirtualNetwork {
             Get-TaskResult @GetTaskResult_params
 
             Write-Verbose -Message 'Flattening paged results.'
-            while ($PageResult -and $PageResult.Result -and (Get-Member -InputObject $PageResult.Result -Name 'nextLink') -and $PageResult.Result.'nextLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
-                $PageResult.Result = $null
-                Write-Debug -Message "Retrieving next page: $($PageResult.Result.'nextLink')"
-                $TaskResult = $NetworkAdminClient.VirtualNetworks.ListNextWithHttpMessagesAsync($PageResult.Result.'nextLink')
+            while ($PageResult -and $PageResult.Page -and (Get-Member -InputObject $PageResult.Page -Name 'nextPageLink') -and $PageResult.Page.'nextPageLink' -and (($TopInfo -eq $null) -or ($TopInfo.Max -eq -1) -or ($TopInfo.Count -lt $TopInfo.Max))) {
+                Write-Debug -Message "Retrieving next page: $($PageResult.Page.'nextPageLink')"
+                $TaskResult = $NetworkAdminClient.VirtualNetworks.ListNextWithHttpMessagesAsync($PageResult.Page.'nextPageLink')
+                $PageResult.Page = $null
                 $GetTaskResult_params['TaskResult'] = $TaskResult
                 $GetTaskResult_params['PageResult'] = $PageResult
                 Get-TaskResult @GetTaskResult_params
