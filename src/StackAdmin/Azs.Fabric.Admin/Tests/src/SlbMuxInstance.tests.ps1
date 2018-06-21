@@ -39,20 +39,20 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
 
 InModuleScope Azs.Fabric.Admin {
 
     Describe "SlbMuxInstances" -Tags @('SlbMuxInstance', 'Azs.Fabric.Admin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateSlbMuxInstance {
                 param(
@@ -84,7 +84,8 @@ InModuleScope Azs.Fabric.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -96,7 +97,8 @@ InModuleScope Azs.Fabric.Admin {
                     # Software Load Balancing Mux Instance
                     if ($Expected.BgpPeers -eq $null) {
                         $Found.BgpPeers        | Should Be $null
-                    } else {
+                    }
+                    else {
                         $Found.BgpPeers        | Should not Be $null
                         $Found.BgpPeers.Count  | Should Be $Expected.BgpPeers.Count
                     }
@@ -108,9 +110,9 @@ InModuleScope Azs.Fabric.Admin {
         }
 
 
-        It "TestListSlbMuxInstances" {
+        it "TestListSlbMuxInstances" -Skip:$('TestListSlbMuxInstances' -in $global:SkippedTests) {
             $global:TestName = 'TestListSlbMuxInstances'
-            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $ResourceGroup -Location $Location
+            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $global:ResourceGroupName -Location $Location
             $SlbMuxInstances | Should Not Be $null
             foreach ($SlbMuxInstance in $SlbMuxInstances) {
                 ValidateSlbMuxInstance -SlbMuxInstance $SlbMuxInstance
@@ -118,23 +120,23 @@ InModuleScope Azs.Fabric.Admin {
         }
 
 
-        It "TestGetSlbMuxInstance" {
+        it "TestGetSlbMuxInstance" -Skip:$('TestGetSlbMuxInstance' -in $global:SkippedTests) {
             $global:TestName = 'TestGetSlbMuxInstance'
 
-            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $ResourceGroup -Location $Location
+            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $global:ResourceGroupName -Location $Location
             foreach ($SlbMuxInstance in $SlbMuxInstances) {
-                $retrieved = Get-AzsSlbMuxInstance -ResourceGroupName $ResourceGroup -Location $Location -Name $SlbMuxInstance.Name
+                $retrieved = Get-AzsSlbMuxInstance -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $SlbMuxInstance.Name
                 AssertSlbMuxInstancesAreSame -Expected $SlbMuxInstance -Found $retrieved
                 break
             }
         }
 
-        It "TestGetAllSlbMuxInstances" {
+        it "TestGetAllSlbMuxInstances" -Skip:$('TestGetAllSlbMuxInstances' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllSlbMuxInstances'
 
-            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $ResourceGroup -Location $Location
+            $SlbMuxInstances = Get-AzsSlbMuxInstance -ResourceGroupName $global:ResourceGroupName -Location $Location
             foreach ($SlbMuxInstance in $SlbMuxInstances) {
-                $retrieved = Get-AzsSlbMuxInstance -ResourceGroupName $ResourceGroup -Location $Location -Name $SlbMuxInstance.Name
+                $retrieved = Get-AzsSlbMuxInstance -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $SlbMuxInstance.Name
                 AssertSlbMuxInstancesAreSame -Expected $SlbMuxInstance -Found $retrieved
             }
         }
