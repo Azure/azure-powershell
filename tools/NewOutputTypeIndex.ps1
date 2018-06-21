@@ -33,7 +33,11 @@ $psd1Files | ForEach {
             {
                 if ($attribute.AttributeType.Name -eq "OutputTypeAttribute")
                 {
-                    $outputTypes.Add($attribute.ConstructorArguments.Value.Value.FullName) | Out-Null
+                    $cmdletOutputTypes = $attribute.ConstructorArguments.Value.Value
+                    foreach ($cmdletOutputType in $cmdletOutputTypes)
+                    {
+                        $outputTypes.Add($cmdletOutputType.FullName) | Out-Null
+                    }
                 }
             }
         }
