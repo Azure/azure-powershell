@@ -121,7 +121,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DevSpaces.Models.PSController
-System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DevSpaces.Models.PSController, Microsoft.Azure.Commands.DevSpaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 
