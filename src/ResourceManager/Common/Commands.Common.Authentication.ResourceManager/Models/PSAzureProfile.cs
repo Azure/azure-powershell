@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Profile.Models
 {
@@ -79,6 +80,10 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// <summary>
         /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
+        [Ps1Xml(Label = "Account Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Account.Name")]
+        [Ps1Xml(Label = "Subscription Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Subscription.Name")]
+        [Ps1Xml(Label = "Tenant Id", Target = ViewControl.Table, ScriptBlock = "$_.Context.Tenant.Name")]
+        [Ps1Xml(Label = "Environment Name", Target = ViewControl.Table, ScriptBlock = "$_.Context.Environment.Name")]
         public PSAzureContext Context { get; set; }
 
         public override string ToString()

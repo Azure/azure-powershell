@@ -69,7 +69,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.MarketplaceOrdering.psd1">
+    <None Include="AzureRM.MarketplaceOrdering.psd1">
       <Link>AzureRM.MarketplaceOrdering.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
