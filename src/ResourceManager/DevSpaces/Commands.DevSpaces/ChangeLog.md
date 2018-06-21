@@ -18,6 +18,4 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 0.0.1
-* Initial command set for AKS
+* Initial command set for DevSpaces
