@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
 
 ## Version 4.6.1
 * Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
