@@ -65,6 +65,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of ConsumerGroups  to return.")]
+        [ValidateNotNull]
+        public int? MaxCount { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (!string.IsNullOrEmpty(Name))
@@ -75,9 +79,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             }
             else
             {
-                // Get all ConsumnerGroups
-                IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
-                WriteObject(consumergroupAttributesList.ToList(), true);
+                if (MaxCount.HasValue)
+                {
+                    // Get all ConsumnerGroups
+                    IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub, MaxCount);
+                    WriteObject(consumergroupAttributesList.ToList(), true);
+                }
+                else
+                {
+                    // Get all ConsumnerGroups
+                    IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
+                    WriteObject(consumergroupAttributesList.ToList(), true);
+                }
             }
         }
     }
