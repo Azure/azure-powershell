@@ -134,7 +134,7 @@ git config --global user.email "<Your email on GitHub>"
 ```
 git config --global user.name "<Your name>"
 ```
-Next, you will need to follow the steps [here](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide#environment-setup) to set up your local fork of Azure/azure-powershell.
+Next, you will need to follow the steps [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-developer-guide.md#environment-setup) to set up your local fork of Azure/azure-powershell.
 
 # Building and Running Tests
-This image has been set up to build and run tests immediately. To build the project, run msbuild build.proj in the Developer Command Prompt for VS2015. Once this has completed, you can open your module in Visual Studio and start development there. To record tests, follow the instructions [here](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide#recordingrunning-tests).
+This image has been set up to build and run tests immediately. To build the project, run msbuild build.proj in the Developer Command Prompt for VS2015. Once this has completed, you can open your module in Visual Studio and start development there. To record tests, follow the instructions [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests).

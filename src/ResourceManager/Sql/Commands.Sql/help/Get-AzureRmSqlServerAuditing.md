@@ -28,14 +28,15 @@ This cmdlet returns a policy that is used by the Azure SQL databases that are de
 ### Example 1: Get the auditing settings of an Azure SQL server
 ```
 PS C:\>Get-AzureRmSqlServerAuditing -ResourceGroupName "resourcegroup01" -ServerName "server01"
-AuditActionGroup       : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
-                          BATCH_COMPLETED_GROUP, ...}
-ResourceGroupName      : resourcegroup01
-ServerName             : server01
-AuditState             : Enabled
-StorageAccountName     : mystorage
-StorageKeyType         : Primary
-RetentionInDays        : 0
+AuditActionGroup             : {SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP,
+                                BATCH_COMPLETED_GROUP, ...}
+ResourceGroupName            : resourcegroup01
+ServerName                   : server01
+AuditState                   : Enabled
+StorageAccountName           : mystorage
+StorageKeyType               : Primary
+RetentionInDays              : 0
+StorageAccountSubscriptionId : 7fe3301d-31d3-4668-af5e-211a890ba6e3
 ```
 
 ## PARAMETERS

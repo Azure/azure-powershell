@@ -73,9 +73,14 @@ function Test-Disk
         $job = Grant-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access $access -DurationInSecond 5 -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Assert-NotNull $st.AccessSAS;
+
         $job = Revoke-AzureRmDiskAccess -ResourceGroupName $rgname -DiskName $diskname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
 
         # Config update test
         $updateconfig = New-AzureRmDiskUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
@@ -87,6 +92,8 @@ function Test-Disk
         $job = Remove-AzureRmDisk -ResourceGroupName $rgname -DiskName $diskname -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
     }
     finally
     {
@@ -148,9 +155,14 @@ function Test-Snapshot
         $job = Grant-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -Access $access -DurationInSecond 5 -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
-        Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
+        $st = $job | Receive-Job;
+        Assert-NotNull $st.AccessSAS;
+
+        $job = Revoke-AzureRmSnapshotAccess -ResourceGroupName $rgname -SnapshotName $snapshotname -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
 
         # Config update test
         $updateconfig = New-AzureRmSnapshotUpdateConfig -DiskSizeGB 10 -AccountType Premium_LRS -OsType Windows;
@@ -162,6 +174,8 @@ function Test-Snapshot
         $job = Remove-AzureRmSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        Verify-PSOperationStatusResponse $st;
     }
     finally
     {

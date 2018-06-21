@@ -61,6 +61,7 @@
     <Compile Include="BMSAPIs\ProtectableItemAPI.cs" />
     <Compile Include="BMSAPIs\RecoveryPointsAPIs.cs" />
     <Compile Include="BMSAPIs\RestoreDiskAPIs.cs" />
+    <Compile Include="BMSAPIs\VaultAPIs.cs" />
     <Compile Include="ClientProxy.cs" />
     <Compile Include="ClientProxyBase.cs" />
     <Compile Include="CultureHandler.cs" />
