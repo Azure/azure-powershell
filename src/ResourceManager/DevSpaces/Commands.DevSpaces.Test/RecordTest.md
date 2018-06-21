@@ -1,4 +1,4 @@
-###Pre-requisite to record DevSpaces tests
+### Pre-requisite to record DevSpaces tests
 
 - Test Name:	Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests.DevSpacesTests.TestAzureDevSpaces
 
