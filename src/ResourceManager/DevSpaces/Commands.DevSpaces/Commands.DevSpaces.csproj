@@ -90,7 +90,7 @@
     <Compile Include="Utils\ConversionUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="AzureRM.DevSpaces.psd1">
+    <None Include=".\AzureRM.DevSpaces.psd1">
       <Link>AzureRM.DevSpaces.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -130,6 +130,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="help\AzureRM.DevSpaces.md" />
     <None Include="help\Get-AzureRmDevSpacesController.md" />
     <None Include="help\New-AzureRmDevSpacesController.md" />
     <None Include="help\Remove-AzureRmDevSpacesController.md" />
