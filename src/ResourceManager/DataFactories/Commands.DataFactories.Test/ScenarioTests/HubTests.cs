@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
 #endif
         public void TestHubWithDataFactoryParameter()
         {
@@ -52,6 +53,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.RunType, Category.DesktopOnly)]
 #else
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
 #endif
         public void TestHubPiping()
         {

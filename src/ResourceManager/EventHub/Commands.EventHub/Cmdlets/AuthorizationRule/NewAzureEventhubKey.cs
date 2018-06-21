@@ -51,16 +51,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [ValidateSet(RegeneKeys.PrimaryKey, RegeneKeys.SecondaryKey, IgnoreCase = true)]
         public string RegenerateKey { get; set; }
 
+        [Parameter(Mandatory = false, Position = 5, HelpMessage = "A base64-encoded 256-bit key for signing and validating the SAS token.")]
+        public string KeyValue { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            var regenKey = new RegenerateAccessKeyParameters { Key = RegenerateKey };
-
             // Generate new Namespace List Keys for the specified AuthorizationRule
             if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                 {
-                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey));
+                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
                 }
             }
 
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             {
                 if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
                 {
-                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey));
+                    WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey, KeyValue));
                 }
             }
         }
