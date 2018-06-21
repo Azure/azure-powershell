@@ -58,7 +58,9 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation to assign to the new copy.```yaml
+The compute generation to assign to the new copy.
+
+```yaml
 Type: String
 Parameter Sets: VcoreBasedDatabase
 Aliases: Family
