@@ -271,7 +271,7 @@ function Test-AzureFirewallCRUD
 .SYNOPSIS
 Tests AzureFirewall Set and Remove IpConfiguration
 #>
-function Test-AzureFirewallIpConfiguration
+function Test-AzureFirewallAllocateAndDeallocate
 {
     # Setup
     $rgname = Get-ResourceGroupName
@@ -449,7 +449,7 @@ function Test-AzureFirewallIpConfiguration
 		Assert-AreEqual $networkRc.Rules[0].DestinationPorts[0] $networkRule.DestinationPorts[0]
 
 		# Set ip configuration
-		$getAzureFirewall.SetIpConfiguration($vnet, $publicip)
+		$getAzureFirewall.Allocate($vnet, $publicip)
 
 		# Set Azure Firewall
 		Set-AzureRmFirewall -AzureFirewall $getAzureFirewall
@@ -528,7 +528,7 @@ function Test-AzureFirewallIpConfiguration
 		Assert-AreEqual $networkRc.Rules[0].DestinationPorts[0] $networkRule.DestinationPorts[0]
 
 		# Remove ip configuration
-		$getAzureFirewall.RemoveIpConfiguration()
+		$getAzureFirewall.Deallocate()
 		$getAzureFirewall | Set-AzureRmFirewall
 
 		# Get AzureFirewall

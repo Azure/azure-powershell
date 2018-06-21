@@ -14,8 +14,8 @@ Saves a modified Firewall.
 ## SYNTAX
 
 ```
-Set-AzureRmFirewall -AzureFirewall <PSAzureFirewall> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzureRmFirewall -AzureFirewall <PSAzureFirewall> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ and Application Rule Collection are created, then the Firewall object is modifie
 the real configuration in cloud. For changes to be reflected in cloud, Set-AzureRmFirewall must be called.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureFirewall
 The AzureFirewall

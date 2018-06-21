@@ -15,10 +15,10 @@ Creates a Firewall Network Rule.
 
 ```
 New-AzureRmFirewallNetworkRule -Name <String> [-Description <String>]
- -Protocol <System.Collections.Generic.List`1[System.String]>
  -SourceAddress <System.Collections.Generic.List`1[System.String]>
  -DestinationAddress <System.Collections.Generic.List`1[System.String]>
- -DestinationPort <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ -DestinationPort <System.Collections.Generic.List`1[System.String]>
+ -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

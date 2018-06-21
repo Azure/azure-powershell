@@ -37,6 +37,62 @@ Get-AzureRmFirewall -ResourceGroupName rgName -Name azFw
 
 This example retrieves Firewall named "azFw" in resource group "rgName".
 
+### 3:  Retrieve a firewall and then add a application rule collection to the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$appRule = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
+$appRuleCollection = New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $appRule -ActionType "Allow"
+$azFw.AddApplicationRuleCollection($appRuleCollection)
+```
+
+This example retrieves a firewall, then adds a application rule collection to the firewall by calling method AddApplicationRuleCollection.
+
+### 4:  Retrieve a firewall and then add a network rule collection to the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$netRule = New-AzureRmFirewallNetworkRule -Name "all-udp-traffic" -Description "Rule for all UDP traffic" -Protocol "Udp" -SourceAddress "*" -DestinationAddress "*" -DestinationPort "*"
+$netRuleCollection = New-AzureRmFirewallNetworkRuleCollection -Name "MyNetworkRuleCollection" -Priority 100 -Rule $netRule -ActionType "Allow"
+$azFw.AddNetworkRuleCollection($netRuleCollection)
+```
+
+This example retrieves a firewall, then adds a network rule collection to the firewall by calling method AddNetworkRuleCollection.
+
+### 5:  Retrieve a firewall and then retrieve a application rule collection by name from the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$getAppRc=$azFw.GetApplicationRuleCollectionByName("MyAppRuleCollection")
+```
+
+This example retrieves a firewall and then gets a rule collection by name, calling method GetApplicationRuleCollectionByName on the 
+firewall object. The rule collection name for method GetApplicationRuleCollectionByName is case-insensitive.
+
+### 6:  Retrieve a firewall and then retrieve a network rule collection by name from the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$getNetRc=$azFw.GetNetworkRuleCollectionByName("MyNetworkRuleCollection")
+```
+
+This example retrieves a firewall and then gets a rule collection by name, calling method GetNetworkRuleCollectionByName on the 
+firewall object. The rule collection name for method GetNetworkRuleCollectionByName is case-insensitive.
+
+### 7:  Retrieve a firewall and then remove a application rule collection by name from the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw.RemoveApplicationRuleCollectionByName("MyAppRuleCollection")
+```
+
+This example retrieves a firewall and then removes a rule collection by name, calling method RemoveApplicationRuleCollectionByName on the 
+firewall object. The rule collection name for method RemoveApplicationRuleCollectionByName is case-insensitive.
+
+### 8:  Retrieve a firewall and then remove a network rule collection by name from the Firewall
+```
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw.RemoveNetworkRuleCollectionByName("MyNetworkRuleCollection")
+```
+
+This example retrieves a firewall and then removes a rule collection by name, calling method RemoveNetworkRuleCollectionByName on the 
+firewall object. The rule collection name for method RemoveNetworkRuleCollectionByName is case-insensitive.
+
 ## PARAMETERS
 
 ### -DefaultProfile

@@ -35,9 +35,9 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestAzureFirewallSetAndRemoveIpConfiguration()
+        public void TestAzureFirewallAllocateAndDeallocate()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallIpConfiguration");
+            NetworkResourcesController.NewInstance.RunPsTest("Test-AzureFirewallAllocateAndDeallocate");
         }
     }
 }

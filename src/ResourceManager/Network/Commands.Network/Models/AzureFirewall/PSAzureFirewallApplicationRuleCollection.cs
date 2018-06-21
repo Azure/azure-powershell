@@ -51,12 +51,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallApplicationRule GetRuleByName(string ruleName)
         {
-            if (null == ruleName)
+            if (string.IsNullOrEmpty(ruleName))
             {
-                return null;
+                throw new ArgumentException($"Rule name cannot be an empty string.");
             }
 
-            return this.Rules?.FirstOrDefault(rule => ruleName.Equals(rule.Name));
+            var rule = this.Rules?.FirstOrDefault(r => ruleName.Equals(r.Name, StringComparison.OrdinalIgnoreCase));
+
+            if (rule == null)
+            {
+                throw new ArgumentException($"Rule with name {ruleName} does not exist.");
+            }
+
+            return rule;
         }
 
         public void RemoveRuleByName(string ruleName)
