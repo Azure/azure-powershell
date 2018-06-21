@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Ps1Xml attribute added to the basic output types
 
 ## Version 5.3.0
 * Updated error messages for Enable-AzureRmContextAutoSave
