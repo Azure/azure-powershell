@@ -133,6 +133,8 @@
     <Compile Include="Alerts\AddAzureRmMetricAlertRuleTests.cs" />
     <Compile Include="Alerts\AddAzureRmWebtestAlertRuleTests.cs" />
     <Compile Include="Alerts\GetAzureRmAlertHistoryTests.cs" />
+    <Compile Include="Alerts\GetAzureRmAlertRuleTests.cs" />
+    <Compile Include="Alerts\RemoveAzureRmAlertRuleTests.cs" />
     <Compile Include="Autoscale\AddAzureRmAutoscaleSettingTests.cs" />
     <Compile Include="Autoscale\GetAzureRmAutoscaleHistoryTests.cs" />
     <Compile Include="Autoscale\GetAzureRmAutoscaleSettingTests.cs" />
