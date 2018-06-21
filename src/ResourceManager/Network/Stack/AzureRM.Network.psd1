@@ -337,8 +337,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* New-AzureRmIpsecPolicy: SALifeTimeSeconds and SADataSizeKilobytes are no longer mandatory parameters
-    - SALifeTimeSeconds defaults to 27000 seconds
-    - SADataSizeKilobytes defaults to 102400000 KB
+    - SALifeTimeSeconds defaults to 27000 seconds
+    - SADataSizeKilobytes defaults to 102400000 KB
 * Added support for custom cipher suite configuration using ssl policy and listing all ssl options api in Application Gateway
     - Added optional parameter -PolicyType, -PolicyName, -MinProtocolVersion, -Ciphersuite
         - Add-AzureRmApplicationGatewaySslPolicy

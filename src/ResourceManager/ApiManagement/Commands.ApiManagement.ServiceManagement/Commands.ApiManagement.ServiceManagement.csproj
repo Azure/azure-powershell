@@ -239,7 +239,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.ApiManagement.psd1">
+    <None Include="..\Commands.ApiManagement\AzureRM.ApiManagement.psd1">
       <Link>AzureRM.ApiManagement.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
