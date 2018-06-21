@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models
 {
 
     /// <summary>
-    /// Defines values for ExpressRouteCircuitPeeringType.
+    /// Defines values for ExpressRoutePeeringType.
     /// </summary>
     public static class ExpressRouteCircuitPeeringType
     {
