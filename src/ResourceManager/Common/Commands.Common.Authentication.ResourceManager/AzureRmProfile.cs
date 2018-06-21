@@ -325,6 +325,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             {
                 EnvironmentTable.Add(environment.Key, environment.Value);
             }
+
+            AzureRmProfileProvider.Instance.SetTokenCacheForProfile(this);
         }
 
         public bool TryAddContext(IAzureContext context, out string name)

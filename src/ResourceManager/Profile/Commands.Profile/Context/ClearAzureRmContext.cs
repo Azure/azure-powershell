@@ -13,10 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.IO;
 using System.Management.Automation;
 
@@ -34,7 +36,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
 
         public override void ExecuteCmdlet()
         {
-            switch (Scope)
+            switch (GetContextModificationScope())
             {
                 case ContextModificationScope.Process:
                     if (ShouldProcess(Resources.ClearContextProcessMessage, Resources.ClearContextProcessTarget))
@@ -62,7 +64,44 @@ namespace Microsoft.Azure.Commands.Profile.Context
             bool result = false;
             if (profile != null)
             {
-                profile.Clear();
+                var contexts = profile.Contexts.Values;
+                foreach (var context in contexts)
+                {
+                    client.TryRemoveContext(context);
+                }
+
+                var defaultContext = new AzureContext();
+                var cache = AzureSession.Instance.TokenCache;
+                if (GetContextModificationScope() == ContextModificationScope.CurrentUser)
+                {
+                    var fileCache = cache as ProtectedFileTokenCache;
+                    if (fileCache == null)
+                    {
+                        try
+                        {
+                            var session = AzureSession.Instance;
+                            fileCache = new ProtectedFileTokenCache(Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile), session.DataStore);
+                            fileCache.Clear();
+                        }
+                        catch
+                        {
+                            // ignore exceptions from creating a token cache
+                        }
+                    }
+
+                    cache.Clear();
+                }
+                else
+                {
+                    var localCache = cache as AuthenticationStoreTokenCache;
+                    if (localCache != null)
+                    {
+                        localCache.Clear();
+                    }
+                }
+
+                defaultContext.TokenCache = cache;
+                profile.TrySetDefaultContext(defaultContext);
                 result = true;
             }
 

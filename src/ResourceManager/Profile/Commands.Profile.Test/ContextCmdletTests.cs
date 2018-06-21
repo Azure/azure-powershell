@@ -609,6 +609,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             var cmdlet = new ClearAzureRmContext();
             var profile = CreateMultipleContextProfile();
             var defaultContext = profile.DefaultContext;
+            var cacheType = profile.DefaultContext.TokenCache.GetType();
             cmdlet.CommandRuntime = commandRuntimeMock;
             cmdlet.DefaultProfile = profile;
             cmdlet.Scope = ContextModificationScope.Process;
@@ -624,6 +625,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Profile.Test
             Assert.NotNull(profile.DefaultContext);
             Assert.Null(profile.DefaultContext.Account);
             Assert.Null(profile.DefaultContext.Subscription);
+            Assert.NotNull(profile.DefaultContext.TokenCache);
+            Assert.Equal(AzureSession.Instance.TokenCache.GetType(), profile.DefaultContext.TokenCache.GetType());
         }
 
         [Fact]

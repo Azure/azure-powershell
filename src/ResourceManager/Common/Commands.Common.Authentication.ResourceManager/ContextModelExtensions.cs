@@ -29,6 +29,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.ResourceManager
                 && container.DefaultContext.TokenCache.CacheData.Length > 0;
         }
 
+        public static void SetTokenCache(this IAzureContextContainer container, IAzureTokenCache cache)
+        {
+            if (container != null && container.DefaultContext != null)
+            {
+                container.DefaultContext.TokenCache = cache;
+            }
+        }
+
         public static IAzureTokenCache GetTokenCache(this IAzureContextContainer container)
         {
             IAzureTokenCache result = null;

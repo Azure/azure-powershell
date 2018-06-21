@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
 
 ## Version 5.3.0
 * Updated error messages for Enable-AzureRmContextAutoSave
