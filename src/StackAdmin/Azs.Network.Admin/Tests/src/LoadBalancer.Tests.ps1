@@ -24,14 +24,16 @@
     Run using our client creation path.
 
 .EXAMPLE
-    PS C:\> .\src\DelegatedProviderOffer.Tests.ps1
-	Describing DelegatedProviderOffer
-	  [+] TestListDelegatedProviderOffers 169ms
+    PS C:\> .\src\Network.Tests.ps1
+	Describing SubscriptionTests
+	[+] TestListRegionHealths 182ms
+	[+] TestGetRegionHealth 112ms
+	[+] TestGetAllRegionHealths 113ms
 
 .NOTES
-    Author: Mike Giesler
+    Author: Bala Ganapathy
 	Copyright: Microsoft
-    Date:   March 16, 2018
+    Date:   February 21, 2018
 #>
 param(
     [bool]$RunRaw = $false,
@@ -44,39 +46,29 @@ $global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-InModuleScope Azs.Subscriptions.Admin {
+InModuleScope Azs.Network.Admin {
 
-    Describe "DelegatedProviderOffer" -Tags @('DelegatedProviderOffers', 'SubscriptionsAdmin') {
+    Describe "LoadBalancerTests" {
 
         . $PSScriptRoot\Common.ps1
 
         BeforeEach {
 
-            function ValidateDelegatedProviderOffer {
-                param(
-                    [Parameter(Mandatory = $true)]
-                    $offer
-                )
-                # Overall
-                $offer            | Should Not Be $null
-
-                # Resource
-                $offer.Id         | Should Not Be $null
-                $offer.Location   | Should Not Be $null
-                $offer.Name       | Should Not Be $null
-                $offer.Type       | Should Not Be $null
-            }
         }
 
-        it "TestListDelegatedProviderOffers" -Skip:$('TestListDelegatedProviderOffers' -in $global:SkippedTests) {
-            $global:TestName = 'TestListDelegatedProviderOffers'
+        It "TestGetAllLoadBalancers" -Skip:$('TestGetAllLoadBalancers' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllLoadBalancers'
 
-            $providers = Get-AzsDelegatedProvider
-
-            foreach ($provider in $providers) {
-                $offers = Get-AzsDelegatedProviderManagedOffer -DelegatedProvider $provider.DelegatedProviderSubscriptionId
-                foreach ($offer in $offers) {
-                    ValidateDelegatedProviderOffer $offer
+            $Balancers = Get-AzsLoadBalancer
+            # This test should be using the SessionRecord which has an existing LoadBalancer created
+            if ($null -ne $Balancers) {
+                foreach ($Balancer in $Balancers) {
+                    ValidateBaseResources($Balancer)
+                    ValidateBaseResourceTenant($Balancer)
+                    $Balancer.PublicIpAddresses | Should Not Be $null
+                    foreach ($IpAddress in $Balancer.PublicIpAddresses) {
+                        $IpAddress | Should Not Be $null
+                    }
                 }
             }
         }
