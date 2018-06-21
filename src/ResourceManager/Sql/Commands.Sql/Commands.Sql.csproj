@@ -411,18 +411,24 @@
     <Compile Include="ServiceTierAdvisor\Services\AzureSqlServiceTierAdvisorCommunicator.cs" />
     <Compile Include="ThreatDetection\Services\SqlThreatDetectionAdapter.cs" />
     <Compile Include="ThreatDetection\Services\ThreatDetectionEndpointsCommunicator.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionActivityCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlDatabaseTransparentDataEncryptionCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\AzureSqlServerTransparentDataEncryptionProtectorCmdletBase.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryption.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlDatabaseTransparentDataEncryptionActivity.cs" />
+    <Compile Include="TransparentDataEncryption\Cmdlet\AddAzureRmSqlServerTransparentDataEncryptionCertificate.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlDatabaseTransparentDataEncryption.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\GetAzureSqlServerTransparentDataEncryptionProtector.cs" />
     <Compile Include="TransparentDataEncryption\Cmdlet\SetAzureSqlServerTransparentDataEncryptionProtector.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.cs" />
+    <Compile Include="TransparentDataEncryption\Model\AzureRmSqlServerTransparentDataEncryptionCertificateModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionActivityModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlDatabaseTransparentDataEncryptionModel.cs" />
     <Compile Include="TransparentDataEncryption\Model\AzureSqlServerTransparentDataEncryptionProtectorModel.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionArmAdapter.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionAdapter.cs" />
+    <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionArmCommunicator.cs" />
     <Compile Include="TransparentDataEncryption\Services\AzureSqlDatabaseTransparentDataEncryptionCommunicator.cs" />
     <Compile Include="ServerKeyVaultKey\Cmdlet\AddAzureSqlServerKeyVaultKey.cs" />
     <Compile Include="ServerKeyVaultKey\Cmdlet\AzureSqlServerKeyVaultKeyCmdletBase.cs" />
@@ -458,8 +464,7 @@
     </ProjectReference>
     <Reference Include="Microsoft.Azure.Management.Sql, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Sql.1.15.0-preview\lib\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\..\..\..\AzureSdkForNetMyFork\src\SDKs\SqlManagement\Management.Sql\bin\Debug\net452\Microsoft.Azure.Management.Sql.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
