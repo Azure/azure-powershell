@@ -38,7 +38,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.KeyVault.Netcore.psd1" Link="AzureRM.KeyVault.Netcore.psd1">
+    <None Include="AzureRM.KeyVault.Netcore.psd1" Link="AzureRM.KeyVault.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

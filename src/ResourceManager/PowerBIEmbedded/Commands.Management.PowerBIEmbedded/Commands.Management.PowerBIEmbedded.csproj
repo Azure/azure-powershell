@@ -116,7 +116,7 @@
     <Compile Include="WorkspaceCollection\WorkspaceCollectionBaseCmdlet.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.PowerBIEmbedded.psd1">
+    <None Include="AzureRM.PowerBIEmbedded.psd1">
       <Link>AzureRM.PowerBIEmbedded.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

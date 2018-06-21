@@ -48,5 +48,12 @@ namespace Microsoft.Azure.Commands.Profile.Test
         {
             ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-ResourceGroupCompleter");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestResourceIdCompleter()
+        {
+            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-ResourceIdCompleter");
+        }
     }
 }

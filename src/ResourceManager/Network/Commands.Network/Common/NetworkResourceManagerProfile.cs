@@ -540,6 +540,33 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.ExpressRouteCircuitAuthorization, CNM.PSExpressRouteCircuitAuthorization>();
 
+                // ExpressRouteCrossConnection
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteCrossConnection, MNM.ExpressRouteCrossConnection>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitReference, MNM.ExpressRouteCircuitReference>();
+                cfg.CreateMap<CNM.PSExpressRouteCrossConnectionPeering, MNM.ExpressRouteCrossConnectionPeering>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitArpTable, MNM.ExpressRouteCircuitArpTable>();
+                cfg.CreateMap<CNM.PSExpressRouteCircuitRoutesTable, MNM.ExpressRouteCircuitRoutesTable>();
+                cfg.CreateMap<CNM.PSExpressRouteCrossConnectionRoutesTableSummary, MNM.ExpressRouteCrossConnectionRoutesTableSummary>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteCrossConnection, CNM.PSExpressRouteCrossConnection>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitReference, CNM.PSExpressRouteCircuitReference>();
+                cfg.CreateMap<MNM.ExpressRouteCrossConnectionPeering, CNM.PSExpressRouteCrossConnectionPeering>();
+
+                // ExpressRouteCrossConnectionPeering
+                // CNM to MNM
+                cfg.CreateMap<CNM.PSExpressRouteCrossConnectionPeering, MNM.ExpressRouteCrossConnectionPeering>();
+                cfg.CreateMap<CNM.PSPeeringConfig, MNM.ExpressRouteCircuitPeeringConfig>();
+                cfg.CreateMap<CNM.PSIpv6PeeringConfig, MNM.Ipv6ExpressRouteCircuitPeeringConfig>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.ExpressRouteCrossConnectionPeering, CNM.PSExpressRouteCrossConnectionPeering>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitPeeringConfig, CNM.PSPeeringConfig>();
+                cfg.CreateMap<MNM.Ipv6ExpressRouteCircuitPeeringConfig, CNM.PSIpv6PeeringConfig>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitArpTable, CNM.PSExpressRouteCircuitArpTable>();
+                cfg.CreateMap<MNM.ExpressRouteCircuitRoutesTable, CNM.PSExpressRouteCircuitRoutesTable>();
+                cfg.CreateMap<MNM.ExpressRouteCrossConnectionRoutesTableSummary, CNM.PSExpressRouteCrossConnectionRoutesTableSummary>();
 
                 // Gateways
                 // CNM to MNM

@@ -144,6 +144,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.AuditAction = AuditAction;
             }
+
+            model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
         }
 
         private void ApplyUserInputToTableAuditingModel(DatabaseAuditingPolicyModel model)
