@@ -20,15 +20,20 @@ namespace Microsoft.Azure.Commands.Network.Models
 {
     public class PSAzureFirewallApplicationRule
     {
+        [JsonProperty(Order = 1)]
         public string Name { get; set; }
 
+        [JsonProperty(Order = 2)]
         public string Description { get; set; }
 
-        public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
-
+        [JsonProperty(Order = 3)]
         public List<string> SourceAddresses { get; set; }
 
+        [JsonProperty(Order = 4)]
         public List<string> TargetUrls { get; set; }
+
+        [JsonProperty(Order = 5)]
+        public List<PSAzureFirewallApplicationRuleProtocol> Protocols { get; set; }
 
         [JsonIgnore]
         public string ProtocolsText

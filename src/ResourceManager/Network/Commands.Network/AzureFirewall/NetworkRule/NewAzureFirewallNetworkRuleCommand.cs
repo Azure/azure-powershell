@@ -37,12 +37,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocols of the rule")]
-        [ValidateNotNullOrEmpty]
-        public List<string> Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             HelpMessage = "The source addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> SourceAddress { get; set; }
@@ -52,13 +46,19 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The destination addresses of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> DestinationAddress { get; set; }
-        
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "The destination ports of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> DestinationPort { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The protocols of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> Protocol { get; set; }
+        
         public override void Execute()
         {
             base.Execute();

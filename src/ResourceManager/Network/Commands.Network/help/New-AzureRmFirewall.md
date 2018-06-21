@@ -15,7 +15,7 @@ Creates a new Firewall in a resource group.
 
 ```
 New-AzureRmFirewall -Name <String> -ResourceGroupName <String> -Location <String>
- [-VirtualNetworkName <String>] -PublicIpName <String>
+ [-VirtualNetworkName <String>] [-PublicIpName <String>]
  [-ApplicationRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallApplicationRuleCollection]>]
  [-NetworkRuleCollection <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSAzureFirewallNetworkRuleCollection]>]
  [-Tag <Hashtable>] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
@@ -27,7 +27,7 @@ The **New-AzureRmFirewall** cmdlet creates an Azure Firewall.
 
 ## EXAMPLES
 
-### 1:  Create a Firewall attached to a virtual network 
+### 1:  Create a Firewall attached to a virtual network
 ```
 New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rg" -Location centralus -VirtualNetworkName "vnet" -PublicIpName "pip-name"
 ```
@@ -159,7 +159,7 @@ Type: String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

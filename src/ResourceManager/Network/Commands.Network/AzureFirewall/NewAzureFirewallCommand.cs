@@ -137,13 +137,13 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.virtualNetwork != null)
             {
-                firewall.SetIpConfiguration(this.virtualNetwork, this.publicIpAddress);
+                firewall.Allocate(this.virtualNetwork, this.publicIpAddress);
             }
 
             // Map to the sdk object
             var azureFirewallModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AzureFirewall>(firewall);
             azureFirewallModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
-
+            
             // Execute the Create AzureFirewall call
             this.AzureFirewallClient.CreateOrUpdate(this.ResourceGroupName, this.Name, azureFirewallModel);
             return this.GetAzureFirewall(this.ResourceGroupName, this.Name);

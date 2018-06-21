@@ -17,8 +17,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json;
-using Microsoft.WindowsAzure.Commands.Common.Attributes;
-
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
@@ -55,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         #region Ip Configuration Operations
 
-        public void SetIpConfiguration(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
+        public void Allocate(PSVirtualNetwork virtualNetwork, PSPublicIpAddress publicIpAddress)
         {
             if (virtualNetwork == null)
             {
@@ -88,7 +86,7 @@ namespace Microsoft.Azure.Commands.Network.Models
             };
         }
 
-        public void RemoveIpConfiguration()
+        public void Deallocate()
         {
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration> ();
         }
@@ -115,13 +113,13 @@ namespace Microsoft.Azure.Commands.Network.Models
         public void RemoveApplicationRuleCollectionByName(string ruleCollectionName)
         {
             var ruleCollection = this.GetApplicationRuleCollectionByName(ruleCollectionName);
-            this.ApplicationRuleCollections?.Remove(ruleCollection);
+            this.ApplicationRuleCollections.Remove(ruleCollection);
         }
 
         public void RemoveApplicationRuleCollectionByPriority(uint priority)
         {
             var ruleCollection = this.GetApplicationRuleCollectionByPriority(priority);
-            this.ApplicationRuleCollections?.Remove(ruleCollection);
+            this.ApplicationRuleCollections.Remove(ruleCollection);
         }
 
         #endregion // Application Rule Collections Operations
@@ -161,21 +159,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         private List<BaseRuleCollection> AddRuleCollection<BaseRuleCollection>(BaseRuleCollection ruleCollection, List<BaseRuleCollection> existingRuleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
         {
-            // Validate
-            if (existingRuleCollections != null)
-            {
-                if (existingRuleCollections.Any(rc => rc.Name.Equals(ruleCollection.Name)))
-                {
-                    throw new ArgumentException($"Rule Collection names must be unique. {ruleCollection.Name} name is already used.");
-                }
-
-                var samePriorityRuleCollections = existingRuleCollections.Where(rc => rc.Priority == ruleCollection.Priority);
-                if (existingRuleCollections.Any())
-                {
-                    throw new ArgumentException($"Rule Collection priorities must be unique. Priority {ruleCollection.Priority} is already used by Rule Collection {samePriorityRuleCollections.First().Name}.");
-                }
-            }
-            else
+            if (existingRuleCollections == null)
             {
                 existingRuleCollections = new List<BaseRuleCollection>();
             }
@@ -186,12 +170,19 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         private BaseRuleCollection GetRuleCollectionByName<BaseRuleCollection> (string ruleCollectionName, List<BaseRuleCollection> ruleCollections) where BaseRuleCollection : PSAzureFirewallBaseRuleCollection
         {
-            if (null == ruleCollectionName)
+            if (string.IsNullOrEmpty(ruleCollectionName))
             {
-                return null;
+                throw new ArgumentException($"Rule Collection name cannot be an empty string.");
             }
 
-            return ruleCollections?.FirstOrDefault(rc => ruleCollectionName.Equals(rc.Name));
+            var ruleCollection = ruleCollections?.FirstOrDefault(rc => ruleCollectionName.Equals(rc.Name));
+
+            if (ruleCollection == null)
+            {
+                throw new ArgumentException($"Rule Collection with name {ruleCollectionName} does not exist.");
+            }
+
+            return ruleCollection;
         }
 
         #endregion // Private Methods

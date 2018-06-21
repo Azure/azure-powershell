@@ -24,16 +24,49 @@ The **New-AzureRmFirewallApplicationRuleCollection** cmdlet creates a collection
 
 ## EXAMPLES
 
-### 1:  Create a collection of two rules
+### 1:  Create a collection with one rule
 ```
 $rule1 = New-AzureRmFirewallApplicationRule -Name "httpsRule" -Protocol "https:443" -TargetFqdn "*" -SourceAddress "10.0.0.0"
-New-AzureRmFirewallApplicationRuleCollection -Name "MyCollection" -Priority 1000 -Rule $rule1
+New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 1000 -Rule $rule1 -ActionType "Allow"
 ```
 
-This example creates a collection with 1 rule.
-The first rule if for all HTTPS traffic on port 443 from 10.0.0.0.
+This example creates a collection with one rule. All traffic that matches the conditions identified in $rule1 will be allowed.
+The first rule is for all HTTPS traffic on port 443 from 10.0.0.0. 
 If there is another application rule collection with higher priority (smaller number) which also matches traffic identified in $rule1,
 the action of the rule collection with higher priority will take in effect instead. 
+
+### 2:  Add a rule to a rule collection
+```
+$rule1 = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
+$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1 -ActionType "Allow"
+
+$rule2 = New-AzureRmFirewallApplicationRule -Name R2 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" 
+$ruleCollection.AddRule($rule2)
+```
+
+This example creates a new application rule collection with one rule and then adds a second rule to the rule collection using method
+AddRule on the rule collection object. Each rule name in a given rule collection must have a unique name and is case insensitive.
+
+### 3:  Get a rule from a rule collection
+```
+$rule1 = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
+$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1 -ActionType "Allow"
+$getRule=$ruleCollection.GetRuleByName("r1")
+```
+
+This example creates a new application rule collection with one rule and then gets the rule by name, calling method GetRuleByName on the 
+rule collection object. The rule name for method GetRuleByName is case-insensitive.
+
+### 4:  Remove a rule from a rule collection
+```
+$rule1 = New-AzureRmFirewallApplicationRule -Name R1 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" -SourceAddress "10.0.0.0"
+$rule2 = New-AzureRmFirewallApplicationRule -Name R2 -Protocol "http:80","https:443" -TargetFqdn "*google.com", "*microsoft.com" 
+$ruleCollection = New-AzureRmFirewallApplicationRuleCollection -Name "MyAppRuleCollection" -Priority 100 -Rule $rule1, $rule1 -ActionType "Allow"
+$ruleCollection.RemoveRuleByName("r1")
+```
+
+This example creates a new application rule collection with two rules and then removes the first rule from the rule collection by calling method
+RemoveRuleByName on the rule collection object. The rule name for method RemoveRuleByName is case-insensitive.
 
 ## PARAMETERS
 
@@ -44,6 +77,7 @@ The action of the rule collection
 Type: String
 Parameter Sets: (All)
 Aliases:
+Accepted values: Allow, Deny
 
 Required: True
 Position: Named

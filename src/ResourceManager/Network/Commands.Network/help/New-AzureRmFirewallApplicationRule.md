@@ -16,8 +16,8 @@ Creates a Firewall Application Rule.
 ```
 New-AzureRmFirewallApplicationRule -Name <String> [-Description <String>]
  [-SourceAddress <System.Collections.Generic.List`1[System.String]>]
- -Protocol <System.Collections.Generic.List`1[System.String]>
- -TargetFqdn <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
+ -TargetFqdn <System.Collections.Generic.List`1[System.String]>
+ -Protocol <System.Collections.Generic.List`1[System.String]> [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

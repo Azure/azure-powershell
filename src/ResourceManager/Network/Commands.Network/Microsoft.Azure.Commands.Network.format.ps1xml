@@ -2844,12 +2844,12 @@
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Protocols</Label>
-                <PropertyName>ProtocolsText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>TargetUrls</Label>
                 <PropertyName>TargetUrlsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>
@@ -2904,10 +2904,6 @@
                 <PropertyName>Description</PropertyName>
               </ListItem>
               <ListItem>
-                <Label>Protocols</Label>
-                <PropertyName>ProtocolsText</PropertyName>
-              </ListItem>
-              <ListItem>
                 <Label>SourceAddresses</Label>
                 <PropertyName>SourceAddressesText</PropertyName>
               </ListItem>
@@ -2918,6 +2914,10 @@
               <ListItem>
                 <Label>DestinationPorts</Label>
                 <PropertyName>DestinationPortsText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Protocols</Label>
+                <PropertyName>ProtocolsText</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

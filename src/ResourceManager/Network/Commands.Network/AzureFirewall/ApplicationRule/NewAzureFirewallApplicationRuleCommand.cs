@@ -45,16 +45,16 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
-            HelpMessage = "The protocols of the rule")]
-        [ValidateNotNullOrEmpty]
-        public List<string> Protocol { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            HelpMessage = "The target URLs of the rule")]
+            HelpMessage = "The target FQDNs of the rule")]
         [ValidateNotNullOrEmpty]
         public List<string> TargetFqdn { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "The protocols of the rule")]
+        [ValidateNotNullOrEmpty]
+        public List<string> Protocol { get; set; }
+        
         public override void Execute()
         {
             base.Execute();
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.TargetFqdn == null || this.TargetFqdn.Count == 0)
             {
-                throw new ArgumentException("At least one application rule target URL should be specified!");
+                throw new ArgumentException("At least one application rule target FQDN should be specified!");
             }
 
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Network
                 uint port;
                 if (!uint.TryParse(userPortText, out port))
                 {
-                    throw new ArgumentException($"Invalid protocol {userText}", nameof(Protocol));
+                    throw new ArgumentException($"Invalid port {userText}", nameof(Protocol));
                 }
 
                 return new PSAzureFirewallApplicationRuleProtocol
