@@ -111,11 +111,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### DataLakeStoreTrustedIdProvider
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider
 The details of the specified trusted identity provider.
-
-### IList<DataLakeStoreTrustedIdProvider>
-The list of trusted identity providers in the specified account.
 
 ## NOTES
 
