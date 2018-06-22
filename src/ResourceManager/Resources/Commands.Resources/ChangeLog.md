@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix error in `New-AzureRmRoleAssignment` help
 * Fixed formatting of OutputType in help files
 
 ## Version 6.1.0
