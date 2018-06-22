@@ -40,3 +40,26 @@ function Test-ResourceGroupCompleter
 	$expectResourceGroups = Get-AzureRmResourceGroup | ForEach-Object {$_.ResourceGroupName}
 	Assert-AreEqualArray $resourceGroups $expectResourceGroups
 }
+
+<#
+.SYNOPSIS
+Tests resource id completer
+#>
+function Test-ResourceIdCompleter
+{
+    $filePath = Join-Path -Path $PSScriptRoot -ChildPath "\Microsoft.Azure.Commands.ResourceManager.Common.dll"
+    [System.Reflection.Assembly]::LoadFrom($filePath)
+    $resourceType = "Microsoft.Storage/storageAccounts"
+    $expectResourceIds = Get-AzureRmResource -ResourceType  $resourceType | ForEach-Object {$_.Id}
+    # take data from Azure and put to cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
+    # take data from the cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
+    # change time to update the cache
+    [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::TimeToUpdate = [System.TimeSpan]::FromSeconds(0)
+    # take data from Azure again and put to cache
+    $resourceIds = [Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters.ResourceIdCompleterAttribute]::GetResourceIds($resourceType)
+    Assert-AreEqualArray $resourceIds $expectResourceIds
+}
