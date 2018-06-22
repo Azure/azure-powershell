@@ -24,9 +24,6 @@ namespace Microsoft.Azure.Commands.Network
 
     public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
     {
-        public const string IPv4 = "IPv4";
-        public const string IPv6 = "IPv6";
-
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the Peering")]

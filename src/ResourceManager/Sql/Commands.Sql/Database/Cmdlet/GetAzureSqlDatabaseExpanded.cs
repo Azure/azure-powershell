@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseExpanded", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
+    [OutputType(typeof(AzureSqlDatabaseModelExpanded))]
     public class GetAzureSqlDatabaseExpanded : AzureSqlCmdletBase<IEnumerable<AzureSqlDatabaseModelExpanded>, AzureSqlDatabaseAdapter>
     {
         /// <summary>

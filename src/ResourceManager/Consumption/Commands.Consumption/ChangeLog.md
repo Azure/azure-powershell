@@ -18,8 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
-## Version 0.4.0
+## Version 0.3.4
 * Add new cmdlets for managing budget 
     - Get/New/Set/Remove-AzureRmConsumptionBudget
     - Get-AzureRmConsumptionMarketplace

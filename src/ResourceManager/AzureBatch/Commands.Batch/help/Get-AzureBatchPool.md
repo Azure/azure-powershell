@@ -220,15 +220,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
-### String
+### System.String
 Parameter 'Id' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
-### PSCloudPool
+### Microsoft.Azure.Commands.Batch.Models.PSCloudPool
 
 ## NOTES
 
