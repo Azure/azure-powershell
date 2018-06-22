@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Site.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoverySite")]
-    [OutputType(typeof(List<ASRSite>))]
+    [OutputType(typeof(ASRSite))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

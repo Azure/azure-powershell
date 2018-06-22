@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Fixed formatting of OutputType in help files
 * Added new commands for feature: ExpressRoute Partner APIs via ARM
     - Added Get-AzureRmExpressRouteCrossConnection
     - Added Set-AzureRmExpressRouteCrossConnection
