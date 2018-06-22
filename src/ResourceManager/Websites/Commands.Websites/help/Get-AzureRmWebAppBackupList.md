@@ -117,12 +117,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
+### Microsoft.Azure.Management.WebSites.Models.Site
 Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup[]
+### Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup
 
 ## NOTES
 

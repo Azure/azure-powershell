@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet(VerbsCommon.Get, CmdletSuffix)]
-    [OutputType(typeof(PSOperationalizationCluster), typeof(List<PSOperationalizationCluster>))]
+    [OutputType(typeof(PSOperationalizationCluster))]
     public class GetAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
         protected const string GetByNameParameterSet = "GetByName";
