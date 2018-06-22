@@ -156,7 +156,7 @@ You can pipe input to this cmdlet by name, but not by value.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer, Microsoft.Azure.Commands.RedisCache, Version=4.0.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.RedisCache.Models.PSRedisLinkedServer
 
 ## NOTES
 

@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Gets the preview features of a certain azure resource provider.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
-    [OutputType(typeof(List<PSProviderFeature>))]
+    [OutputType(typeof(PSProviderFeature))]
     public class GetAzureProviderFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>

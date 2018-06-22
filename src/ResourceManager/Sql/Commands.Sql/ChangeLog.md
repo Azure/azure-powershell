@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 * Updated documentation of -ComputeGeneration parameter in several cmdlets
 
 ## Version 4.6.1
