@@ -145,14 +145,16 @@ InModuleScope Azs.Backup.Admin {
         It "TestUpdateBackupLocation" -Skip:$('TestUpdateBackupLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateBackupLocation'
 
+            $backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -BackupShare $global:path -EncryptionKey $global:encryptionKey -IsBackupSchedulerEnabled $global:isBackupSchedulerEnabled -BackupFrequencyInHours $global:backupFrequencyInHours -BackupRetentionPeriodInDays $global:backupRetentionPeriodInDays
 
-            $backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -BackupShare $global:path -EncryptionKey $global:encryptionKey
-
-            $backup 					| Should Not Be $Null
-            $backup.Path 				| Should Be $global:path
-            $backup.Username 			| Should be $global:username
-            $backup.Password 			| Should -BeNullOrEmpty
-            $backup.EncryptionKeyBase64 | Should -BeNullOrEmpty
+            $backup                             | Should Not Be $Null
+            $backup.Path                        | Should Be $global:path
+            $backup.Username                    | Should be $global:username
+            $backup.Password 			        | Should -BeNullOrEmpty
+            $backup.EncryptionKeyBase64         | Should -BeNullOrEmpty
+            $backup.IsBackupSchedulerEnabled    | Should be $global:isBackupSchedulerEnabled
+            $backup.BackupFrequencyInHours      | Should be $global:backupFrequencyInHours
+            $backup.BackupRetentionPeriodInDays | Should be $global:backupRetentionPeriodInDays
         }
 
         # Need to record new tests.
