@@ -73,6 +73,7 @@ function Set-AzsBackupShare {
         [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
         [ValidateNotNullOrEmpty()]
         [System.String]
+        [Alias("Path")]
         $BackupShare,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
@@ -89,9 +90,9 @@ function Set-AzsBackupShare {
         [securestring]
         $Password,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ResourceId')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'ResourceId')]
         [Parameter(Mandatory = $false, ParameterSetName = 'InputObject')]
-        [Parameter(Mandatory = $true, ParameterSetName = 'Update')]
+        [Parameter(Mandatory = $false, ParameterSetName = 'Update')]
         [ValidateNotNull()]
         [securestring]
         $EncryptionKey,
@@ -161,10 +162,25 @@ function Set-AzsBackupShare {
                     $InputObject = Get-AzsBackupLocation -ResourceGroupName $ResourceGroupName -Location $Location
                 }
 
-                $InputObject.Path = $BackupShare
-                $InputObject.UserName = $Username
-                $InputObject.Password = ConvertTo-String -SecureString $Password
-                $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                if ($PSBoundParameters.ContainsKey('BackupShare'))
+                {
+                    $InputObject.Path = $BackupShare
+                }
+
+                if ($PSBoundParameters.ContainsKey('Username'))
+                {
+                    $InputObject.UserName = $Username
+                }
+
+                if ($PSBoundParameters.ContainsKey('Password'))
+                {
+                    $InputObject.Password = ConvertTo-String -SecureString $Password
+                }
+
+                if ($PSBoundParameters.ContainsKey('EncryptionKey'))
+                {
+                    $InputObject.EncryptionKeyBase64 = ConvertTo-String $EncryptionKey
+                }
 
                 Write-Verbose -Message 'Performing operation update on $BackupAdminClient.'
                 $TaskResult = $BackupAdminClient.BackupLocations.UpdateWithHttpMessagesAsync($ResourceGroupName, $Location, $InputObject)
