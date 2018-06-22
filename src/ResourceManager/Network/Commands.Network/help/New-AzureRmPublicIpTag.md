@@ -24,11 +24,10 @@ The **New-AzureRmPublicIpTag** cmdlet creates a IP Tag.
 
 ### 1: Create a new IP Tag
 ```
-$ipTag = New-AzureRmPublicIpTag -IpTagType $ipTagType -Tag $tag
+$ipTag = New-AzureRmPublicIpTag -Tag $tag
 ```
 
-This command creates a new IP Tag with the Tagtype like "FirstPartyUsage"
-and tag like "/Sql". This is used in publicIpAddress creation with these
+This command creates a new IP Tag with the tag like "/Sql". This is used in publicIpAddress creation with these
 specific tags for allocation.
 
 ## PARAMETERS
@@ -45,22 +44,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IpTagType
-IpTag type Example:FirstPartyUsage
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-Accepted values: FirstPartyUsage, NetworkDomain
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
