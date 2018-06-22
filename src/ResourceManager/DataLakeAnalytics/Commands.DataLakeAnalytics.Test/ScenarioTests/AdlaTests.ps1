@@ -1250,7 +1250,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for user from the db
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
 
 		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
@@ -1275,7 +1275,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the ACL list of $databaseName"
 
 		# revoke ACE for group from the db
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -ItemType Database -Path $databaseName -PassThru} "Remove ACE failed."
 
 		$aclByDbList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -ItemType Database -Path $databaseName
 		Assert-AreEqual $aclByDbInitialCount $aclByDbList.count
@@ -1343,7 +1343,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $userPrincipalId in the Catalog ACL list"
 
 		# revoke ACE for user from the catalog
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -User -ObjectId $userPrincipalId -PassThru} "Remove ACE failed."
 
 		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count
@@ -1369,7 +1369,7 @@ function Test-DataLakeAnalyticsCatalog
 		Assert-True {$found} "Could not find the entry for $groupPrincipalId in the Catalog ACL list"
 
 		# revoke ACE for group from the catalog
-		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -Force -PassThru} "Remove ACE failed."
+		Assert-True {Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName -Group -ObjectId $groupPrincipalId -PassThru} "Remove ACE failed."
 
 		$aclList = Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account $accountName
 		Assert-AreEqual $aclInitialCount $aclList.count

@@ -56,6 +56,12 @@ The **Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet gets a list of en
 ### Example 1: Get the ACL for a catalog
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla"
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        None
 ```
 
 This command gets the ACL for the catalog of the specified Data Lake Analytics account
@@ -63,6 +69,10 @@ This command gets the ACL for the catalog of the specified Data Lake Analytics a
 ### Example 2: Get the ACL entry of user owner for a catalog
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner
+
+Type      Id                                   Permissions
+----      --                                   -----------
+UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
 ```
 
 This command gets ACL entry of the user owner for the catalog of the specified Data Lake Analytics account
@@ -70,6 +80,10 @@ This command gets ACL entry of the user owner for the catalog of the specified D
 ### Example 3: Get the ACL entry of group owner for a catalog
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner
+
+Type       Id                                   Permissions
+----       --                                   -----------
+GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
 ```
 
 This command gets ACL entry of the group owner for the catalog of the specified Data Lake Analytics account
@@ -77,6 +91,12 @@ This command gets ACL entry of the group owner for the catalog of the specified 
 ### Example 4: Get the ACL for a database
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ItemType Database -Path "databaseName"
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        None
 ```
 
 This command gets the ACL for the database of the specified Data Lake Analytics account
@@ -84,6 +104,10 @@ This command gets the ACL for the database of the specified Data Lake Analytics 
 ### Example 5: Get the ACL entry of user owner for a database
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName"
+
+Type      Id                                   Permissions
+----      --                                   -----------
+UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
 ```
 
 This command gets the ACL entry of the user owner for the database of the specified Data Lake Analytics account
@@ -91,6 +115,10 @@ This command gets the ACL entry of the user owner for the database of the specif
 ### Example 6: Get the ACL entry of group owner for a database
 ```powershell
 PS C:\> Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner -ItemType Database -Path "databaseName"
+
+Type       Id                                   Permissions
+----       --                                   -----------
+GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
 ```
 
 This command gets the ACL entry of the group owner for the database of the specified Data Lake Analytics account
@@ -138,7 +166,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -187,7 +215,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -201,7 +229,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### List\<PSDataLakeAnalyticsAcl>
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
 The list of ACL entries for the specified catalog or catalog item(s).
 
 ## NOTES

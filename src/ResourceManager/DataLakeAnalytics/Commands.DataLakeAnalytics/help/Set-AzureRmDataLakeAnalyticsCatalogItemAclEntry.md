@@ -89,6 +89,13 @@ The **Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry** cmdlet adds or modifies 
 ### Example 1: Modify user permissions for a catalog
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -Permissions Read
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        None
+User  bd0b55bb-3a57-442a-b2f6-78c95c10ef86        Read
 ```
 
 This command modifies the catalog ACE for Patti Fuller to have read permissions.
@@ -96,6 +103,13 @@ This command modifies the catalog ACE for Patti Fuller to have read permissions.
 ### Example 2: Modify user Permissions for a database
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName" -Permissions Read
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        None
+User  bd0b55bb-3a57-442a-b2f6-78c95c10ef86        Read
 ```
 
 This command modifies the database ACE for Patti Fuller to have read permissions.
@@ -103,6 +117,13 @@ This command modifies the database ACE for Patti Fuller to have read permissions
 ### Example 3: Modify other permissions for a catalog
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -Permissions Read
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        Read
+User  bd0b55bb-3a57-442a-b2f6-78c95c10ef86        Read
 ```
 
 This command modifies the catalog ACE for other to have read permissions.
@@ -110,11 +131,22 @@ This command modifies the catalog ACE for other to have read permissions.
 ### Example 4: Modify other Permissions for a database
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -ItemType Database -Path "databaseName" -Permissions Read
+
+Type  Id                                   Permissions
+----  --                                   -----------
+User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
+Group 902b155a-5601-4ca8-8178-ad3289211f88   ReadWrite
+Other 00000000-0000-0000-0000-000000000000        Read
+User  bd0b55bb-3a57-442a-b2f6-78c95c10ef86        Read
 ```
 
 ### Example 5: Modify user owner permissions for a catalog
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -Permissions Read
+
+Type      Id                                   Permissions
+----      --                                   -----------
+UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc        Read
 ```
 
 This command sets the owner permission for the account to Read.
@@ -122,6 +154,10 @@ This command sets the owner permission for the account to Read.
 ### Example 6: Modify user owner Permissions for a database
 ```powershell
 PS C:\> Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName" -Permissions Read
+
+Type       Id                                   Permissions
+----       --                                   -----------
+GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc        Read
 ```
 
 This command sets the owner permission for the database to Read.
@@ -169,7 +205,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -184,7 +220,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -232,7 +268,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -284,7 +320,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -299,7 +335,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -344,7 +380,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### List\<PSDataLakeAnalyticsAcl>
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
 The resulting list of ACL entries.
 
 ## NOTES

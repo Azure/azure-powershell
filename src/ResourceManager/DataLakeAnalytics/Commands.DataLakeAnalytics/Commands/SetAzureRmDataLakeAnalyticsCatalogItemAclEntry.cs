@@ -24,7 +24,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
     [Cmdlet(VerbsCommon.Set, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserCatalogParameterSetName, SupportsShouldProcess = true),
-     OutputType(typeof(List<PSDataLakeAnalyticsAcl>), typeof(PSDataLakeAnalyticsAcl))]
+     OutputType(typeof(PSDataLakeAnalyticsAcl))]
     [Alias("Set-AdlCatalogItemAclEntry")]
     public class SetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
@@ -45,43 +45,33 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for user.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for user.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for user.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for user.")]
         public SwitchParameter User { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for group.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for group.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group.")]
         public SwitchParameter Group { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = OtherCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for other.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = OtherCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for other.")]
+        [Parameter(Mandatory = true, ParameterSetName = OtherCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for other.")]
+        [Parameter(Mandatory = true, ParameterSetName = OtherCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for other.")]
         public SwitchParameter Other { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOwnerCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for user owner.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for user owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserOwnerCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for user owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for user owner.")]
         public SwitchParameter UserOwner { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupOwnerCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for group owner.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupOwnerCatalogParameterSetName, HelpMessage = "Set ACL entry of catalog for group owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "Set ACL entry of catalog item for group owner.")]
         public SwitchParameter GroupOwner { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserCatalogParameterSetName, HelpMessage = "The identity of the user to set.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "The identity of the group to set.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "The identity of the user to set.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "The identity of the group to set.")]
         [Alias("Id", "UserId")]
         public Guid ObjectId { get; set; }
@@ -223,7 +213,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
                     }
                     else
                     {
-                        WriteObject(toReturn);
+                        WriteObject(toReturn, true);
                     }
                 });
         }

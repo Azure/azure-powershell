@@ -291,9 +291,6 @@
   <data name="RemovingDataLakeAnalyticsCatalogAcl" xml:space="preserve">
     <value>Are you sure you want to remove Data Lake Analytics catalog ACL for '{0}'?</value>
   </data>
-  <data name="RemovingDataLakeAnalyticsCatalogItemAcl" xml:space="preserve">
-    <value>Are you sure you want to remove Data Lake Analytics catalog ACL at path: '{0}'?</value>
-  </data>
   <data name="SetDataLakeCatalogItemAclEntry" xml:space="preserve">
     <value>Setting Data Lake Analytics catalog item ACL entry at path: '{0}'  ...</value>
   </data>

@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = BaseCatalogParameterSetName),
-     OutputType(typeof(List<PSDataLakeAnalyticsAcl>), typeof(PSDataLakeAnalyticsAcl))]
+     OutputType(typeof(PSDataLakeAnalyticsAcl))]
     [Alias("Get-AdlCatalogItemAclEntry")]
     public class GetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
@@ -50,36 +50,32 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOwnerCatalogParameterSetName, HelpMessage = "Get ACL entry of catalog for user owner.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "Get ACL entry of catalog item for user owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserOwnerCatalogParameterSetName, HelpMessage = "Get ACL entry of catalog for user owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "Get ACL entry of catalog item for user owner.")]
         public SwitchParameter UserOwner { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupOwnerCatalogParameterSetName, HelpMessage = "Get ACL entry of catalog for group owner.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "Get ACL entry of catalog item for group owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupOwnerCatalogParameterSetName, HelpMessage = "Get ACL entry of catalog for group owner.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "Get ACL entry of catalog item for group owner.")]
         public SwitchParameter GroupOwner { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = BaseCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserOwnerCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupOwnerCatalogItemParameterSetName, HelpMessage = "The type of the catalog item(s).")]
         [PSArgumentCompleter("Database")]
         public string ItemType { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = BaseCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserOwnerCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupOwnerCatalogItemParameterSetName,
             HelpMessage = "The catalog item path to search within, in the format:" +
                           "'DatabaseName.<optionalSecondPart>.<optionalThirdPart>.<optionalFourthPart>'.")]
@@ -113,7 +109,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
             }
             else
             {
-                WriteObject(toReturn);
+                WriteObject(toReturn, true);
             }
         }
     }
