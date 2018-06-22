@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
 
         private void UpdateDevSpacesController()
         {
-            Controller updatedController = Client.Controllers.Update(ResourceGroupName, Name, new ControllerUpdateParameters(TagsConversionHelper.CreateTagDictionary(Tag, true)));
+            Controller updatedController = Client.Controllers.Update(ResourceGroupName, Name, TagsConversionHelper.CreateTagDictionary(Tag, true));
             WriteObject(new PSController(updatedController));
         }
     }

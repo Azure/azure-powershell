@@ -33,9 +33,8 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Azure.Management.DevSpaces">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DevSpaces.1.0.0\lib\net452\Microsoft.Azure.Management.DevSpaces.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Azure.Management.DevSpaces, Version=0.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DevSpaces.0.9.0-preview\lib\net452\Microsoft.Azure.Management.DevSpaces.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
