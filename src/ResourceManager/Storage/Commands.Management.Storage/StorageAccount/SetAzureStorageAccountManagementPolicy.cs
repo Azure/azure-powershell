@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess(this.StorageAccountName, Resources.SetManagementPolicy))
+            if (ShouldProcess(this.StorageAccountName, "Set Storage Account Management Policy"))
             {
                 switch (ParameterSetName)
                 {
