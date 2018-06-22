@@ -27,6 +27,7 @@
 * Updated Cmdlet Update-AzureRmReservation
     - Added optional InstanceFlexibility parameter.
 * Added properties to Reservation response.
+* Fixed formatting of OutputType in help files
 
 ## Version 0.1.3
 * Change Guid paramters to Guid type, not string
