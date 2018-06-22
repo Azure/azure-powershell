@@ -159,7 +159,7 @@ Gets policy event records generated in the last day for all resources (within th
 
 ### Example 13: Get policy events for a policy assignment in the specified resource group in the current subscription
 ```powershell
-PS C:\> Get-AzureRmPolicyEvent -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1" 
+PS C:\> Get-AzureRmPolicyEvent -ResourceGroupName "myResourceGroup" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
 Gets policy event records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the resource group in the subscription in current session context).
@@ -430,8 +430,8 @@ Accept wildcard characters: False
 ```
 
 ### -To
-ISO 8601 formatted timestamp specifying the start time of the interval to query.
-When not specified, defaults to 'To' parameter value minus 1 day.
+ISO 8601 formatted timestamp specifying the end time of the interval to query.
+When not specified, defaults to time of request.
 
 ```yaml
 Type: DateTime
@@ -469,7 +469,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent, Microsoft.Azure.Commands.PolicyInsights, Version=0.9.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.PolicyInsights.Models.PolicyEvent
 
 ## NOTES
 

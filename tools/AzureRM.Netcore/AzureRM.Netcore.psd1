@@ -83,6 +83,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0
     @{ModuleName = 'AzureRM.Media.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Network.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.NotificationHubs.Netcore'; ModuleVersion = '0.12.0'; }, 
+    @{ModuleName = 'AzureRM.PolicyInsights.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.OperationalInsights.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.PowerBIEmbedded.Netcore'; ModuleVersion = '0.12.0'; }, 
     @{ModuleName = 'AzureRM.Relay.Netcore'; ModuleVersion = '0.12.0'; }, 

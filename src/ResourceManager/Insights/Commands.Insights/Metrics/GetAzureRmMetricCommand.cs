@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Get the list of metric definition for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric[]))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric))]
     public class GetAzureRmMetricCommand : MonitorClientCmdletBase
     {
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";

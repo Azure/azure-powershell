@@ -47,7 +47,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.UsageAggregates.psd1">
+    <None Include="AzureRM.UsageAggregates.psd1">
       <Link>AzureRM.UsageAggregates.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

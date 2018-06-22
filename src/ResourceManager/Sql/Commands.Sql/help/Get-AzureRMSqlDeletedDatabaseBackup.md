@@ -159,6 +159,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDeletedDatabaseBackupModel
+
 ## NOTES
 
 ## RELATED LINKS

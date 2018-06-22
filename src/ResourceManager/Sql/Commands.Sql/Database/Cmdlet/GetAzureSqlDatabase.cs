@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabase", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
+    [OutputType(typeof(AzureSqlDatabaseModel))]
     public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
