@@ -54,14 +54,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 
         internal void AddAzureRmSqlServerTransparentDataEncryptionCertificate(AzureRmSqlServerTransparentDataEncryptionCertificateModel azureRmSqlServerTransparentDataEncryptionCertificateModel)
         {
-            //TODO: Added for testing remove
-            //return new AzureRmSqlServerTransparentDataEncryptionCertificateModel
-            //{
-            //    ResourceGroupName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ResourceGroupName,
-            //    ServerName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ServerName,
-            //    Name = "CertificateName"
-            //};
-
             string resourceGroupName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ResourceGroupName;
             string serverName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ServerName;
             string privateBlob = azureRmSqlServerTransparentDataEncryptionCertificateModel.PrivateBlob;
@@ -76,14 +68,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 
         internal void AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate(AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel)
         {
-            ////TODO: Added for testing remove
-            //return new AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel
-            //{
-            //    ResourceGroupName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ResourceGroupName,
-            //    ManagedInstanceName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ManagedInstanceName,
-            //    Name = "ManagedCertificateName"
-            //};
-
             string resourceGroupName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ResourceGroupName;
             string managedInstanceName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ManagedInstanceName;
             string privateBlob = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.PrivateBlob;
@@ -94,26 +78,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
                 managedInstanceName,
                 privateBlob,
                 password);
-        }
-
-        private AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel CreateAzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModelFromResponse(string resourceGroupName, string managedInstanceName, TdeCertificate tdeCertificate)
-        {
-            return new AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel
-            {
-                ResourceGroupName = resourceGroupName,
-                ManagedInstanceName = managedInstanceName,
-                Name = tdeCertificate.Name
-            };
-        }
-
-        private AzureRmSqlServerTransparentDataEncryptionCertificateModel CreateAzureRmSqlServerTransparentDataEncryptionCertificateModelFromResponse(string resourceGroupName, string serverName, TdeCertificate tdeCertificate)
-        {
-            return new AzureRmSqlServerTransparentDataEncryptionCertificateModel
-            {
-                ResourceGroupName = resourceGroupName,
-                ServerName = serverName,
-                Name = tdeCertificate.Name
-            };
         }
     }
 }
