@@ -115,8 +115,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-###  
-**Get-AzureRmVpnClientRevokedCertificate** returns instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate
 
 ## NOTES
 

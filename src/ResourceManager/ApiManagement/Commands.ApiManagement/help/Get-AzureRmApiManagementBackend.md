@@ -108,9 +108,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend
 The details of the Backend configured in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend>
-The list of Backend configured in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

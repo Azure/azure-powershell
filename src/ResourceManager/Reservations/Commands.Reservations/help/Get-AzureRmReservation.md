@@ -132,13 +132,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
-Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
+### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
+### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservationPage
-Microsoft.Azure.Commands.Reservations.Models.PSReservation
+### Microsoft.Azure.Commands.Reservations.Models.PSReservation
 
 ## NOTES
 
