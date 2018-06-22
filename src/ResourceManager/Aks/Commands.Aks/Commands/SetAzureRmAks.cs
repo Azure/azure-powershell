@@ -15,8 +15,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Aks.Generated;
-using Microsoft.Azure.Commands.Aks.Generated.Models;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
+using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31.Models;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;

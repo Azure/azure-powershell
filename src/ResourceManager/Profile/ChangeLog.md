@@ -20,6 +20,7 @@
 ## Current Release
 * Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
+* Extracted ARM sdk to common library to be reused by AzureRM.DevSpaces and AzureRM.AKS
 
 ## Version 5.2.0
 * Added the following three values to the telemetry:
