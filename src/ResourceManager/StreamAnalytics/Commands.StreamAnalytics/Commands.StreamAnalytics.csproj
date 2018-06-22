@@ -120,7 +120,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="..\AzureRM.StreamAnalytics.psd1">
+    <None Include="AzureRM.StreamAnalytics.psd1">
       <Link>AzureRM.StreamAnalytics.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

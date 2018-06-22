@@ -1052,7 +1052,7 @@ function Test-AzureDiskEncryptionExtensionSinglePass
 		$status = Get-AzureRmVmDiskEncryptionStatus -ResourceGroupName $vm.ResourceGroupName -VMName $vm.Name
 		Assert-NotNull $status
 		Assert-AreEqual $status.OsVolumeEncrypted Encrypted
-		Assert-AreEqual $status.DataVolumesEncrypted NotEncrypted
+		Assert-AreEqual $status.DataVolumesEncrypted Unknown
 
 		# verify encryption settings 
 		$settings = $status.OsVolumeEncryptionSettings
