@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// <summary>
     /// Get an Alert rule
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(List<PSAlertRule>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmAlertRule"), OutputType(typeof(PSAlertRule))]
     public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAlertRuleParamGroup = "GetByResourceGroup";

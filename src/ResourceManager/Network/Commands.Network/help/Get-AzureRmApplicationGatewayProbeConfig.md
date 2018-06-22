@@ -81,14 +81,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe
-
-### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe]
 
 ## NOTES
 

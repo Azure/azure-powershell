@@ -148,13 +148,11 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
-
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
 
 ## NOTES
 

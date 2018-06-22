@@ -116,7 +116,6 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.ServerFarmWithRichSku
-
 ### Microsoft.Azure.Management.WebSites.Models.ServerFarmCollection
 
 ## NOTES

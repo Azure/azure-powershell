@@ -80,7 +80,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 This cmdlet returns a profile object.
 
 ## NOTES
