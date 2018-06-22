@@ -123,7 +123,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSGatewayRoute[]
+### Microsoft.Azure.Commands.Network.Models.PSGatewayRoute
 
 ## NOTES
 This command is only applicable to Azure virtual network gateways with BGP enabled connections.

@@ -104,7 +104,18 @@ namespace RepoTasks.Cmdlets
                 var type = typeof(T);
                 if (type.FullName == null) throw new Exception("type fullname is null");
                 var worker = (T)domain.CreateInstanceFromAndUnwrap(type.Assembly.Location, type.FullName);
-                var outFilename = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
+                var res = worker.BuildFormatPs1Xml(assemblyPath, Cmdlet, OnlyMarkedProperties);
+
+                var warnings = res.Item2;
+                if (warnings.Count > 0)
+                {
+                    foreach (var warning in warnings)
+                    {
+                        WriteWarning(warning);
+                    }
+                }
+
+                var outFilename = res.Item1;
                 if (string.IsNullOrEmpty(outFilename))
                 {
                     WriteWarning(@"No output types found.");

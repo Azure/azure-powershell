@@ -24,7 +24,7 @@ using JobState = Microsoft.Azure.Management.DataLake.Analytics.Models.JobState;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsJobPipeline", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<PSJobPipelineInformation>), typeof(PSJobPipelineInformation))]
+     OutputType(typeof(PSJobPipelineInformation))]
     [Alias("Get-AdlJobPipeline")]
     public class GetAzureDataLakeAnalyticsJobPipeline : DataLakeAnalyticsCmdletBase
     {

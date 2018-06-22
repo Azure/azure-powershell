@@ -146,15 +146,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
-### PSComputeNode
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
 
 ## OUTPUTS
 
-### PSRemoteLoginSettings
+### Microsoft.Azure.Commands.Batch.Models.PSRemoteLoginSettings
 
 ## NOTES
 

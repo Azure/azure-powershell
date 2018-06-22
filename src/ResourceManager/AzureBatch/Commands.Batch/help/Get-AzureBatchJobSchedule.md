@@ -216,12 +216,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### BatchAccountContext
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
-### String
+### System.String
 Parameter 'Id' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
-### PSCloudJobSchedule
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJobSchedule
 
 ## NOTES
 
