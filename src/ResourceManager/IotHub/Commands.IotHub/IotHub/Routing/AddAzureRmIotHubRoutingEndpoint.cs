@@ -197,6 +197,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             [Parameter(Position = 6, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Name of the storage container")]
             [Parameter(Position = 6, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Name of the storage container")]
             [Parameter(Position = 7, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the storage container")]
+            [ValidateNotNullOrEmpty]
             public string ContainerName { get; set; }
         }
     }

@@ -162,8 +162,8 @@
   <data name="UpdateIotHub" xml:space="preserve">
     <value>Update IoT Hub </value>
   </data>
-  <data name="UpdateIotHubRoutingEndpoint" xml:space="preserve">
-    <value>Update Routing Endpoint</value>
+  <data name="UpdateIotHubRoute" xml:space="preserve">
+    <value>Update Route</value>
   </data>
   <data name="VerifyIotHubCertificate" xml:space="preserve">
     <value>Verify an Iot Hub Certificate</value>

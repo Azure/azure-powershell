@@ -148,6 +148,17 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
             return ConvertObject<IEnumerable<RouteProperties>, IEnumerable<PSRouteProperties>>(routeProperties);
         }
 
+        public static IEnumerable<PSRouteProperties> ToPSRouteProperties(IEnumerable<MatchedRoute> routes)
+        {
+            var psRouteProperties = new List<PSRouteProperties>();
+            foreach (var route in routes)
+            {
+                psRouteProperties.Add(ConvertObject<RouteProperties, PSRouteProperties>(route.Properties));
+            }
+
+            return psRouteProperties;
+        }
+
         public static PSRouteMetadata ToPSRouteMetadata(RouteProperties routeProperties)
         {
             return ConvertObject<RouteProperties, PSRouteMetadata>(routeProperties);
@@ -268,6 +279,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Common
         public static IEnumerable<PSRoutingStorageContainerProperties> ToPSRoutingStorageContainerProperties(IEnumerable<RoutingStorageContainerProperties> routingStorageContainerProperties)
         {
             return ConvertObject<IEnumerable<RoutingStorageContainerProperties>, IEnumerable<PSRoutingStorageContainerProperties>>(routingStorageContainerProperties.ToList());
+        }
+
+        public static PSTestRouteResult ToPSTestRouteResult(TestRouteResult testRouteResult)
+        {
+            return ConvertObject<TestRouteResult, PSTestRouteResult>(testRouteResult);
         }
 
         public static string GetResourceGroupName(string Id)

@@ -483,15 +483,15 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <Label>Route Name</Label>
+                <Label>RouteName</Label>
                 <ScriptBlock>$_.Name</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Data Source</Label>
+                <Label>DataSource</Label>
                 <ScriptBlock>$_.Source</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>Endpoint Names</Label>
+                <Label>EndpointNames</Label>
                 <ScriptBlock>$_.EndpointNames</ScriptBlock>
               </ListItem>
               <ListItem>
@@ -515,13 +515,13 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
-            <Label>Route Name</Label>
+            <Label>RouteName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Data Source</Label>
+            <Label>DataSource</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Endpoint Names</Label>
+            <Label>EndpointNames</Label>
           </TableColumnHeader>
           <TableColumnHeader>
           </TableColumnHeader>
@@ -541,6 +541,79 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>IsEnabled</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResult
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSTestRouteResult</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <PropertyName>Result</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>
+        Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError
+      </Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Management.IotHub.Models.PSRouteCompilationError</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ErrorMessage</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationStartLine</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationStartColumn</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationEndLine</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>LocationEndColumn</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <Wrap/>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.Message</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Severity</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location.Start.Line</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location.Start.Column</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location.End.Line</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location.End.Column</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

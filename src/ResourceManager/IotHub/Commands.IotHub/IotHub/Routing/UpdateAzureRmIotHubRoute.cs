@@ -24,9 +24,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Add, "AzureRmIotHubRoute", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, "AzureRmIotHubRoute", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSRouteMetadata))]
-    public class AddAzureRmIotHubRoute : IotHubBaseCmdlet
+    public class UpdateAzureRmIotHubRoute : IotHubBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -55,17 +55,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         [ValidateNotNullOrEmpty]
         public string RouteName { get; set; }
 
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Source of the route")]
-        [Parameter(Position = 2, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Source of the route")]
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Source of the route")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Source of the route")]
         [ValidateSet(new string[] { "Invalid", "DeviceMessages", "TwinChangeEvents", "DeviceLifecycleEvents", "DeviceJobLifecycleEvents" }, IgnoreCase = true)]
         public string Source { get; set; }
 
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = InputObjectParameterSet, HelpMessage = "Name of the routing endpoint")]
-        [Parameter(Position = 3, Mandatory = true, ParameterSetName = ResourceIdParameterSet, HelpMessage = "Name of the routing endpoint")]
-        [Parameter(Position = 4, Mandatory = true, ParameterSetName = ResourceParameterSet, HelpMessage = "Name of the routing endpoint")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Mandatory = false, HelpMessage = "Name of the routing endpoint")]
         public string EndpointName { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Condition that is evaluated to apply the routing rule")]
@@ -76,7 +70,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
         public override void ExecuteCmdlet()
         {
-            if (ShouldProcess(this.RouteName, Properties.Resources.AddIotHubRoute))
+            if (ShouldProcess(this.RouteName, Properties.Resources.UpdateIotHubRoute))
             {
                 IotHubDescription iotHubDescription;
                 if (ParameterSetName.Equals(InputObjectParameterSet))
@@ -96,17 +90,23 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                     iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
                 }
 
-                PSRoutingSource psRoutingSource;
-                if (Enum.TryParse<PSRoutingSource>(this.Source, true, out psRoutingSource))
+                if (iotHubDescription.Properties.Routing.Routes.Any(x => x.Name.Equals(this.RouteName, StringComparison.OrdinalIgnoreCase)))
                 {
-                    iotHubDescription.Properties.Routing.Routes.Add(
-                        new RouteProperties(
-                            this.RouteName,
-                            psRoutingSource.ToString(),
-                            new List<string>() { this.EndpointName },
-                            this.Enabled.IsPresent,
-                            string.IsNullOrEmpty(this.Condition) ? null : this.Condition
-                        ));
+                    RouteProperties routeProperties = iotHubDescription.Properties.Routing.Routes.FirstOrDefault(x => x.Name.Equals(this.RouteName, StringComparison.OrdinalIgnoreCase));
+                    PSRoutingSource psRoutingSource;
+                    if (Enum.TryParse<PSRoutingSource>(this.Source, true, out psRoutingSource))
+                    {
+                        routeProperties.Source = this.Source;
+                    }
+                    if (!string.IsNullOrEmpty(this.EndpointName))
+                    {
+                        routeProperties.EndpointNames = new List<string>() { this.EndpointName };
+                    }
+                    if (!string.IsNullOrEmpty(this.Condition))
+                    {
+                        routeProperties.Condition = this.Condition;
+                    }
+                    routeProperties.IsEnabled = this.Enabled.IsPresent;
 
                     this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
                     IotHubDescription updatedIotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 }
                 else
                 {
-                    throw new ArgumentException("Invalid Routing Source");
+                    throw new ArgumentException("Entered route doesn't exist.");
                 }
             }
         }

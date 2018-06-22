@@ -54,12 +54,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Type of the Routing Endpoint")]
-        [ValidateNotNullOrEmpty]
         [ValidateSet(new string[] { "EventHub", "ServiceBusQueue", "ServiceBusTopic", "AzureStorageContainer" }, IgnoreCase = true)]
         public string EndpointType { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Routing Endpoint")]
-        [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
         public override void ExecuteCmdlet()
@@ -67,8 +65,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             IotHubDescription iotHubDescription;
             if (ParameterSetName.Equals(InputObjectParameterSet))
             {
-                this.ResourceGroupName = this.InputObject.Resourcegroup;
-                this.Name = this.InputObject.Name;
                 iotHubDescription = IotHubUtils.ConvertObject<PSIotHub, IotHubDescription>(this.InputObject);
             }
             else
