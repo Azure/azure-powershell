@@ -93,6 +93,17 @@ $azFw.RemoveNetworkRuleCollectionByName("MyNetworkRuleCollection")
 This example retrieves a firewall and then removes a rule collection by name, calling method RemoveNetworkRuleCollectionByName on the 
 firewall object. The rule collection name for method RemoveNetworkRuleCollectionByName is case-insensitive.
 
+### 9:  Retrieve a firewall and then allocate the firewall
+```
+$vnet=Get-AzureRmVirtualNetwork -Name "vnet" -ResourceGroupName "rgName"
+$publicIp=Get-AzureRmPublicIpAddress -Name "firewallpip" -ResourceGroupName "rgName"
+$azFw=Get-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
+$azFw.Allocate($vnet, $publicIp)
+```
+
+This example retrieves a firewall and calls Allocate on the firewall to start the firewall service using the configuration
+(application and network rule collections) associated with the firewall.
+
 ## PARAMETERS
 
 ### -DefaultProfile

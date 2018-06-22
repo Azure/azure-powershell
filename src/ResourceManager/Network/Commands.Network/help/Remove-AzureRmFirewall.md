@@ -25,7 +25,7 @@ The **Remove-AzureRmFirewall** cmdlet removes an Azure Firewall.
 
 ### 1: Create and delete a Firewall
 ```
-New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus -VirtualNetworkName "vnet-name" -PublicIpName "pip-name"
+New-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus 
 
 Remove-AzureRmFirewall -Name "azFw" -ResourceGroupName "rgName"
 Confirm
@@ -33,7 +33,21 @@ Are you sure you want to remove resource 'azFw'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 ```
 
-This example creates a Firewall in a resource group and then deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
+This example creates a Firewall and then deletes it. To suppress the prompt when deleting the Firewall, use the -Force flag.
+
+### 2: Deallocate the Firewall, then delete the Firewall
+```
+$firewall=Get-AzureRmFirewall -ResourceGroupName rgName -Name azFw
+$firewall.Deallocate()
+Remove-AzureRmFirewall -ResourceGroupName rgName -Name azFw
+Confirm
+Are you sure you want to remove resource 'azFw'
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+```
+
+This example retrieves a Firewall, deallocates the firewall, and then deletes the firewall. The Deallocate command removes the running 
+service but preserves the firewall's configuration. If user wants to start the service again, the Allocate method should be called on the firewall.
+To suppress the prompt when deleting the Firewall, use the -Force flag.
 
 ## PARAMETERS
 
