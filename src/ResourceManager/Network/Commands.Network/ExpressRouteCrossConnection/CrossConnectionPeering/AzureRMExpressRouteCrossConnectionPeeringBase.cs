@@ -12,6 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Network;
+
 namespace Microsoft.Azure.Commands.Network
 {
     using System.Collections.Generic;
@@ -22,7 +25,7 @@ namespace Microsoft.Azure.Commands.Network
     using MNM = Microsoft.Azure.Management.Network.Models;
     using System.Linq;
 
-    public class AzureExpressRouteCircuitPeeringConfigBase : NetworkBaseCmdlet
+    public class AzureRMExpressRouteCrossConnectionPeeringBase : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -75,7 +78,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The MircosoftConfigAdvertisedPublicPrefixes")]
         [ValidateNotNullOrEmpty]
-        public List<string> MicrosoftConfigAdvertisedPublicPrefixes { get; set; }
+        public string[] MicrosoftConfigAdvertisedPublicPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,22 +93,6 @@ namespace Microsoft.Azure.Commands.Network
         public string MicrosoftConfigRoutingRegistryName { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilterId",
-            HelpMessage = "RouteFilterId")]
-        [ValidateNotNullOrEmpty]
-        public string RouteFilterId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            ParameterSetName = "MicrosoftPeeringConfigRoutFilter",
-            HelpMessage = "RouteFilter")]
-        [ValidateNotNullOrEmpty]
-        public PSRouteFilter RouteFilter { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "PeerAddressType")]
@@ -114,56 +101,61 @@ namespace Microsoft.Azure.Commands.Network
            IPv6,
            IgnoreCase = true)]
         public string PeerAddressType { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The legacy mode of the Peering")]
-        public bool LegacyMode { get; set; }
-
-        public void ConstructMicrosoftConfig(PSPeering peering)
+        
+        public IExpressRouteCrossConnectionsOperations ExpressRouteCrossConnectionClient
         {
-            if (this.MicrosoftConfigAdvertisedPublicPrefixes != null && this.MicrosoftConfigAdvertisedPublicPrefixes.Any())
+            get
+            {
+                return NetworkClient.NetworkManagementClient.ExpressRouteCrossConnections;
+            }
+        }
+
+        public PSExpressRouteCrossConnection GetExpressRouteCrossConnection(string resourceGroupName, string name)
+        {
+            var crossConnection = this.ExpressRouteCrossConnectionClient.Get(resourceGroupName, name);
+
+            var psExpressRouteCrossConnection = NetworkResourceManagerProfile.Mapper.Map<PSExpressRouteCrossConnection>(crossConnection);
+            psExpressRouteCrossConnection.ResourceGroupName = resourceGroupName;
+
+            psExpressRouteCrossConnection.Tag =
+                TagsConversionHelper.CreateTagHashtable(crossConnection.Tags);
+
+            return psExpressRouteCrossConnection;
+        }
+
+        public void ConstructMicrosoftConfig(PSExpressRouteCrossConnectionPeering peering)
+        {
+            if (MicrosoftConfigAdvertisedPublicPrefix != null && MicrosoftConfigAdvertisedPublicPrefix.Count() > 0)
             {
                 if (PeerAddressType == IPv6)
                 {
                     peering.Ipv6PeeringConfig.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
-                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefix.ToList();
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.CustomerASN = MicrosoftConfigCustomerAsn;
+                    peering.Ipv6PeeringConfig.MicrosoftPeeringConfig.RoutingRegistryName = MicrosoftConfigRoutingRegistryName;
                 }
                 else
                 {
                     // Set IPv4 config even if no PeerAddresType has been specified for backward compatibility
                     peering.MicrosoftPeeringConfig = new PSPeeringConfig();
-                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = this.MicrosoftConfigAdvertisedPublicPrefixes;
-                    peering.MicrosoftPeeringConfig.CustomerASN = this.MicrosoftConfigCustomerAsn;
-                    peering.MicrosoftPeeringConfig.RoutingRegistryName = this.MicrosoftConfigRoutingRegistryName;
+                    peering.MicrosoftPeeringConfig.AdvertisedPublicPrefixes = MicrosoftConfigAdvertisedPublicPrefix.ToList();
+                    peering.MicrosoftPeeringConfig.CustomerASN = MicrosoftConfigCustomerAsn;
+                    peering.MicrosoftPeeringConfig.RoutingRegistryName = MicrosoftConfigRoutingRegistryName;
                 }
             }
         }
 
-        public void SetIpv6PeeringParameters(PSPeering peering)
+        public void SetIpv6PeeringParameters(PSExpressRouteCrossConnectionPeering peering)
         {
             peering.Ipv6PeeringConfig = new PSIpv6PeeringConfig();
-            peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-            peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
-            if (!string.IsNullOrEmpty(this.RouteFilterId))
-            {
-                peering.Ipv6PeeringConfig.RouteFilter = new PSRouteFilter();
-                peering.Ipv6PeeringConfig.RouteFilter.Id = this.RouteFilterId;
-            }
+            peering.Ipv6PeeringConfig.PrimaryPeerAddressPrefix = PrimaryPeerAddressPrefix;
+            peering.Ipv6PeeringConfig.SecondaryPeerAddressPrefix = SecondaryPeerAddressPrefix;
         }
 
-        public void SetIpv4PeeringParameters(PSPeering peering)
+        public void SetIpv4PeeringParameters(PSExpressRouteCrossConnectionPeering peering)
         {
-            peering.PrimaryPeerAddressPrefix = this.PrimaryPeerAddressPrefix;
-            peering.SecondaryPeerAddressPrefix = this.SecondaryPeerAddressPrefix;
-            if (!string.IsNullOrEmpty(this.RouteFilterId))
-            {
-                peering.RouteFilter = new PSRouteFilter();
-                peering.RouteFilter.Id = this.RouteFilterId;
-            }
+            peering.PrimaryPeerAddressPrefix = PrimaryPeerAddressPrefix;
+            peering.SecondaryPeerAddressPrefix = SecondaryPeerAddressPrefix;
         }
     }
 }
