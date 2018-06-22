@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateContact,
         SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
-    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
+    [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names

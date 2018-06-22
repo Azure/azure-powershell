@@ -227,12 +227,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline, Microsoft.Azure.Commands.DataFactoryV2, Version=0.1.9.0, Culture=neutral, PublicKeyToken=null]]
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories

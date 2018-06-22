@@ -271,11 +271,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupVault
 
 ## OUTPUTS
 
-### AzureRmBackupJob[]
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupJob
 This cmdlet returns one or more Backup jobs.
 
 ## NOTES

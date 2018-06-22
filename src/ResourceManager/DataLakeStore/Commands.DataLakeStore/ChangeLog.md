@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 6.0.1
 * Fix example for Export-AzureRmDataLakeStoreChildItemProperties

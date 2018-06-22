@@ -146,7 +146,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber
+### Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber
 
 ## NOTES
 
