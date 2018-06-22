@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fixed formatting of OutputType in help files
+* Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag
 
 ## Version 5.0.2
 * Fix issue where no Tags are being returned when Get-AzureRmKeyVault -Tag is run
