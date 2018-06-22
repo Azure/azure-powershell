@@ -150,7 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation of the restored Azure Sql Database.
+The compute generation to assign to the restored database
 
 ```yaml
 Type: String

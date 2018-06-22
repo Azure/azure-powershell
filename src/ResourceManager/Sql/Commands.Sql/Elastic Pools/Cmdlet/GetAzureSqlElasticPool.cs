@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPool",
         ConfirmImpact = ConfirmImpact.None)]
+    [OutputType(typeof(AzureSqlElasticPoolModel))]
     public class GetAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>

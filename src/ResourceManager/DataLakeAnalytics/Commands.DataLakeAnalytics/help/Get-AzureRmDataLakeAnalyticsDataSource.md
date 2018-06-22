@@ -137,13 +137,13 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSStorageAccountInfo
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo
 The specified Azure Storage account details.
 
-### PSDataLakeStoreAccountInfo
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo
 The specified Data Lake Store account details
 
-### List<AdlDataSource>
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource
 The list of both Azure Storage accounts and Data Lake Store accounts in the specified Data Lake Analytics account.
 
 ## NOTES

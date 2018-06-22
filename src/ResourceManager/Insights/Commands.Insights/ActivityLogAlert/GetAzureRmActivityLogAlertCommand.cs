@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Get an Activity Log Alert
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(List<PSActivityLogAlertResource>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmActivityLogAlert"), OutputType(typeof(PSActivityLogAlertResource))]
     public class GetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string GetActivityLogAlertDefaultParamGroup = "GetByNameAndResourceGroup";

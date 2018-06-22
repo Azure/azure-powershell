@@ -167,9 +167,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription
 The detail of the subscription in the API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription>
-The list of subscription in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

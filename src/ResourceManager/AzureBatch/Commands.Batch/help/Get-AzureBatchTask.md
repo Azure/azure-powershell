@@ -262,15 +262,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
-### PSCloudJob
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
 Parameter 'Job' accepts value of type 'PSCloudJob' from the pipeline
 
 ## OUTPUTS
 
-### PSCloudTask
+### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
 
 ## NOTES
 
