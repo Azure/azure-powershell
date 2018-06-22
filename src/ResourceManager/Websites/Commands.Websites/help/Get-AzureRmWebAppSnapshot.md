@@ -115,13 +115,11 @@ Accept wildcard characters: False
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.WebSites.Models.Site
-
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
-
 
 ## NOTES
 

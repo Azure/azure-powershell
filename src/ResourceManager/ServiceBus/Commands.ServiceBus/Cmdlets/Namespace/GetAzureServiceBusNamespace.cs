@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// <para> If Namespace name provided, a single Namespace detials will be returned</para>
     /// <para> If Namespace name not provided, list of Namespace will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServiceBusNamespaceVerb), OutputType(typeof(List<PSNamespaceAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ServiceBusNamespaceVerb), OutputType(typeof(PSNamespaceAttributes))]
     public class GetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

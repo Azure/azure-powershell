@@ -136,8 +136,6 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataFactories.Models.PSHub]
-
 ### Microsoft.Azure.Commands.DataFactories.Models.PSHub
 
 ## NOTES
