@@ -109,6 +109,13 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         public List<string> Categories { get; set; }
 
         /// <summary>
+        /// Gets or sets the metrics category parameter of the cmdlet
+        /// </summary>
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of metric categories")]
+        [ValidateNotNullOrEmpty]
+        public List<string> MetricCategory { get; set; }
+
+        /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
@@ -194,7 +201,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
 
                     SetWorkspace(properties);
 
-                    if (this.Categories == null && this.Timegrains == null)
+                    if (this.Categories == null && this.MetricCategory == null && this.Timegrains == null)
                     {
                         WriteDebugWithTimestamp("Changing the enable properties");
                         SetAllCategoriesAndTimegrains(properties);
@@ -205,6 +212,11 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         if (this.Categories != null)
                         {
                             SetSelectedCategories(properties);
+                        }
+
+                        if (this.MetricCategory != null)
+                        {
+                            SetSelectedMetricsCategories(properties);
                         }
 
                         if (this.Timegrains != null)
@@ -319,6 +331,27 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 logSettings.Enabled = this.Enabled;
             }
         }
+
+        private void SetSelectedMetricsCategories(DiagnosticSettingsResource properties)
+        {
+            if (!this.isEnbledParameterPresent)
+            {
+                throw new ArgumentException("Parameter 'Enabled' is required by 'MetricCategory' parameter.");
+            }
+
+            foreach (string category in this.MetricCategory)
+            {
+                MetricSettings metricSettings = properties.Metrics.FirstOrDefault(x => string.Equals(x.Category, category, StringComparison.OrdinalIgnoreCase));
+
+                if (metricSettings == null)
+                {
+                    throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "Metric category '{0}' is not available", category));
+                }
+
+                metricSettings.Enabled = this.Enabled;
+            }
+        }
+
 
         private void SetAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
         {

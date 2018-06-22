@@ -190,6 +190,22 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
+
+            // Testing the new metric categories must be known before the cmdlet can add them
+            expectedSettings.Metrics[0].Enabled = false;
+            cmdlet.Categories = null;
+            cmdlet.MetricCategory = new List<string> { "MetricCat1" };
+            cmdlet.Enabled = false;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
+            cmdlet.ExecuteCmdlet();
+
+            VerifySettings(expectedSettings, this.calledSettings);
+
+            // Testing the new categories must be known before the cmdlet can add them
+            cmdlet.MetricCategory = new List<string> { "MetricCat3" };
+            cmdlet.Enabled = false;
+            cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
+            Assert.Throws<ArgumentException>(() => cmdlet.ExecuteCmdlet());
         }
 
         [Fact]
@@ -305,6 +321,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 {
                     var expected = expectedSettings.Metrics[i];
                     var actual = actualSettings.Metrics[i];
+                    Assert.Equal(expected.Category, actual.Category);
                     Assert.Equal(expected.TimeGrain, actual.TimeGrain);
                     Assert.Equal(expected.Enabled, actual.Enabled);
                     VerifyRetentionPolicy(expected.RetentionPolicy, actual.RetentionPolicy);
@@ -349,11 +366,13 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                 {
                     new MetricSettings
                     {
+                        Category = "MetricCat1",
                         TimeGrain = TimeSpan.FromMinutes(1),
                         Enabled = false
                     },
                     new MetricSettings
                     {
+                        Category = "MetricCat2",
                         TimeGrain = TimeSpan.FromHours(1),
                         Enabled = true
                     }
