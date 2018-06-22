@@ -996,6 +996,27 @@
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerDnsAliasTests\TestServerDnsAliasRemove.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerDefaultParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerDefaultParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerInputObjectParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerInputObjectParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerResourceIdParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerResourceIdParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.AddTransparentDataEncryptionCertificateTests\TestAddTdeCertificateForSqlServerWithPiping.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
