@@ -196,11 +196,11 @@ namespace Microsoft.Azure.Commands.Management.IotHub.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Routing Endpoint.
+        ///   Looks up a localized string similar to Update Route.
         /// </summary>
-        internal static string UpdateIotHubRoutingEndpoint {
+        internal static string UpdateIotHubRoute {
             get {
-                return ResourceManager.GetString("UpdateIotHubRoutingEndpoint", resourceCulture);
+                return ResourceManager.GetString("UpdateIotHubRoute", resourceCulture);
             }
         }
         

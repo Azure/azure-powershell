@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Route")]
-        [ValidateNotNullOrEmpty]
         public string RouteName { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -76,25 +75,19 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
             }
 
-            if (string.IsNullOrEmpty(this.RouteName))
+            if (ShouldProcess(RouteName, Properties.Resources.RemoveIotHubRoute))
             {
-                iotHubDescription.Properties.Routing.Routes = new List<RouteProperties>();
-            }
-            else
-            {
-                if (ShouldProcess(this.RouteName, Properties.Resources.RemoveIotHubRoute))
+
+                if (string.IsNullOrEmpty(this.RouteName))
                 {
-                    iotHubDescription.Properties.Routing.Routes = iotHubDescription.Properties.Routing.Routes.Where(x => x.Name.ToLowerInvariant() != this.RouteName.ToLowerInvariant()).ToList();
+                    iotHubDescription.Properties.Routing.Routes = new List<RouteProperties>();
                 }
                 else
                 {
-                    removeFlag = false;
+                    iotHubDescription.Properties.Routing.Routes = iotHubDescription.Properties.Routing.Routes.Where(x => x.Name.ToLowerInvariant() != this.RouteName.ToLowerInvariant()).ToList();
                 }
-            }
 
-            try
-            {
-                if (removeFlag)
+                try
                 {
                     this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
 
@@ -103,12 +96,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         this.WriteObject(true);
                     }
                 }
-            }
-            catch
-            {
-                if (PassThru.IsPresent)
+                catch
                 {
-                    this.WriteObject(false);
+                    if (PassThru.IsPresent)
+                    {
+                        this.WriteObject(false);
+                    }
                 }
             }
         }

@@ -50,7 +50,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Route")]
-        [ValidateNotNullOrEmpty]
         public string RouteName { get; set; }
 
         public override void ExecuteCmdlet()

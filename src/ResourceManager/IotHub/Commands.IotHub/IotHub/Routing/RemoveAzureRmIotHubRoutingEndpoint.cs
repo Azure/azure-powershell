@@ -53,7 +53,6 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Name of the Routing Endpoint")]
-        [ValidateNotNullOrEmpty]
         public string EndpointName { get; set; }
 
         [Parameter(Mandatory = false)]
@@ -80,31 +79,24 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
             }
 
-            if (string.IsNullOrEmpty(this.EndpointName))
+            if (ShouldProcess(EndpointName, Properties.Resources.RemoveIotHubRoutingEndpoint))
             {
-                iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();
-                iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = new List<RoutingServiceBusQueueEndpointProperties>();
-                iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = new List<RoutingServiceBusTopicEndpointProperties>();
-                iotHubDescription.Properties.Routing.Endpoints.StorageContainers = new List<RoutingStorageContainerProperties>();
-            }
-            else
-            {
-                if (ShouldProcess(EndpointName, Properties.Resources.RemoveIotHubRoutingEndpoint))
+                if (string.IsNullOrEmpty(this.EndpointName))
+                {
+                    iotHubDescription.Properties.Routing.Endpoints.EventHubs = new List<RoutingEventHubProperties>();
+                    iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = new List<RoutingServiceBusQueueEndpointProperties>();
+                    iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = new List<RoutingServiceBusTopicEndpointProperties>();
+                    iotHubDescription.Properties.Routing.Endpoints.StorageContainers = new List<RoutingStorageContainerProperties>();
+                }
+                else
                 {
                     iotHubDescription.Properties.Routing.Endpoints.EventHubs = iotHubDescription.Properties.Routing.Endpoints.EventHubs.Where(x => x.Name.ToLowerInvariant() != this.EndpointName.ToLowerInvariant()).ToList();
                     iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues = iotHubDescription.Properties.Routing.Endpoints.ServiceBusQueues.Where(x => x.Name.ToLowerInvariant() != this.EndpointName.ToLowerInvariant()).ToList();
                     iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics = iotHubDescription.Properties.Routing.Endpoints.ServiceBusTopics.Where(x => x.Name.ToLowerInvariant() != this.EndpointName.ToLowerInvariant()).ToList();
                     iotHubDescription.Properties.Routing.Endpoints.StorageContainers = iotHubDescription.Properties.Routing.Endpoints.StorageContainers.Where(x => x.Name.ToLowerInvariant() != this.EndpointName.ToLowerInvariant()).ToList();
                 }
-                else
-                {
-                    removeFlag = false;
-                }
-            }
 
-            try
-            {
-                if (removeFlag)
+                try
                 {
                     this.IotHubClient.IotHubResource.CreateOrUpdate(this.ResourceGroupName, this.Name, iotHubDescription);
 
@@ -113,12 +105,12 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                         this.WriteObject(true);
                     }
                 }
-            }
-            catch
-            {
-                if (PassThru.IsPresent)
+                catch
                 {
-                    this.WriteObject(false);
+                    if (PassThru.IsPresent)
+                    {
+                        this.WriteObject(false);
+                    }
                 }
             }
         }
