@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.
+The compute generation to assign.
 
 ```yaml
 Type: String
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseDtuMax
-Specifies the maximum number of DTUs that any single database in the pool can consume. 
+Specifies the maximum number of DTUs that any single database in the pool can consume.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default
 values for different editions are as follows:
@@ -199,9 +199,9 @@ Accept wildcard characters: False
 ```
 
 ### -Dtu
-Specifies the total number of shared DTUs for the elastic pool. 
+Specifies the total number of shared DTUs for the elastic pool.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default values for different
 editions are as follows:
