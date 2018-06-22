@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes.Model;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRouteTable"), OutputType(typeof(IEnumerable<IRouteTable>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRouteTable"), OutputType(typeof(IRouteTable))]
     public class GetAzureRouteTable : NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The new route table's name.")]

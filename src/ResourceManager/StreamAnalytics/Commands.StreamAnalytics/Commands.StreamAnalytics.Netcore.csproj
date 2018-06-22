@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.StreamAnalytics.Netcore.psd1" Link="AzureRM.StreamAnalytics.Netcore.psd1">
+    <None Include="AzureRM.StreamAnalytics.Netcore.psd1" Link="AzureRM.StreamAnalytics.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

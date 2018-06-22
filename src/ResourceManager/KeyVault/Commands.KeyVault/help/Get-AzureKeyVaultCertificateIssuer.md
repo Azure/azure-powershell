@@ -137,7 +137,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuer
 
 ## NOTES

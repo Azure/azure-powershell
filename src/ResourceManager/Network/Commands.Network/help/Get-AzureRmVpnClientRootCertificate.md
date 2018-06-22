@@ -117,8 +117,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-###  
-**Get-AzureRmVpnClientRootCertificate** gets instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate
 
 ## NOTES
 

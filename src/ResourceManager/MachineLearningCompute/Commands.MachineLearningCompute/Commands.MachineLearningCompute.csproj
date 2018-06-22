@@ -90,7 +90,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.MachineLearningCompute.psd1">
+    <None Include="AzureRM.MachineLearningCompute.psd1">
       <Link>AzureRM.MachineLearningCompute.psd1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

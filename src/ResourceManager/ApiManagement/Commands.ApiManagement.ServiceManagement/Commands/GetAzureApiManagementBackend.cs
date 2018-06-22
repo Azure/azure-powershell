@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementBackend, DefaultParameterSetName = GetAll)]
-    [OutputType(typeof(IList<PsApiManagementBackend>), ParameterSetName = new[] { GetAll })]
-    [OutputType(typeof(PsApiManagementBackend), ParameterSetName = new[] { GetById })]
+    [OutputType(typeof(PsApiManagementBackend))]
     public class GetAzureApiManagementBackend : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllBackends";

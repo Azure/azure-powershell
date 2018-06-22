@@ -128,9 +128,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct
 The details of the Product in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProduct>
-The list of Product in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS
