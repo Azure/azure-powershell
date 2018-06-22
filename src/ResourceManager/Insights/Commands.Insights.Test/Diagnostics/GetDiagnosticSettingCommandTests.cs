@@ -84,6 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                     {
                         new MetricSettings
                         {
+                            Category = "MetricCat1",
                             RetentionPolicy = new RetentionPolicy()
                             {
                                 Days = 7,
@@ -94,6 +95,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
                         },
                         new MetricSettings
                         {
+                            Category = "MetricCat2",
                             RetentionPolicy = new RetentionPolicy()
                             {
                                 Days = 3,
