@@ -37,25 +37,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserCatalogParameterSetName, HelpMessage = "Remove ACL entry of catalog for user.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "Remove ACL entry of catalog item for user.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserCatalogParameterSetName, HelpMessage = "Remove ACL entry of catalog for user.")]
+        [Parameter(Mandatory = true, ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "Remove ACL entry of catalog item for user.")]
         public SwitchParameter User { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "Remove ACL entry of catalog for group.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
-            ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "Remove ACL entry of catalog item for group.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "Remove ACL entry of catalog for group.")]
+        [Parameter(Mandatory = true, ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "Remove ACL entry of catalog item for group.")]
         public SwitchParameter Group { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserCatalogParameterSetName, HelpMessage = "The identity of the user to remove.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupCatalogParameterSetName, HelpMessage = "The identity of the group to remove.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = UserCatalogItemParameterSetName, HelpMessage = "The identity of the user to remove.")]
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 2, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true,
             ParameterSetName = GroupCatalogItemParameterSetName, HelpMessage = "The identity of the group to remove.")]
         [Alias("Id", "UserId")]
         public Guid ObjectId { get; set; }
@@ -79,29 +75,22 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         public CatalogPathInstance Path { get; set; }
 
         [Parameter(Mandatory = false,
-            HelpMessage = "Forces the command to run without asking for user confirmation.")]
-        public SwitchParameter Force { get; set; }
-
-        [Parameter(Mandatory = false,
             HelpMessage = "Indicates a boolean response should be returned indicating the result of the delete operation.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            string continueMessage = string.Empty;
             string processMessage = string.Empty;
             string target = string.Empty;
 
             switch (this.ParameterSetName)
             {
                 case UserCatalogParameterSetName: case GroupCatalogParameterSetName:
-                    continueMessage = string.Format(Resources.RemovingDataLakeAnalyticsCatalogAcl, Account);
                     processMessage = string.Format(Resources.RemoveDataLakeAnalyticsCatalogAcl, Account);
                     target = Account;
                     break;
 
                 case UserCatalogItemParameterSetName: case GroupCatalogItemParameterSetName:
-                    continueMessage = string.Format(Resources.RemovingDataLakeAnalyticsCatalogItemAcl, Path.FullCatalogItemPath);
                     processMessage = string.Format(Resources.RemoveDataLakeAnalyticsCatalogItemAcl, Path.FullCatalogItemPath);
                     target = Path.FullCatalogItemPath ?? Account;
                     break;
@@ -118,8 +107,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
             }
 
             ConfirmAction(
-                Force.IsPresent,
-                continueMessage,
                 processMessage,
                 target,
                 () =>

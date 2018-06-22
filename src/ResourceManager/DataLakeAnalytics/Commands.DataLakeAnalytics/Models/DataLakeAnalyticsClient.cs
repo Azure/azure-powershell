@@ -24,7 +24,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using System.Net;
-using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.DataLake.Analytics;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         private readonly DataLakeAnalyticsAccountManagementClient _accountClient;
         private readonly DataLakeAnalyticsCatalogManagementClient _catalogClient;
         private readonly DataLakeAnalyticsJobManagementClient _jobClient;
-        private readonly ActiveDirectoryClient _activeDirectoryClient;
         private readonly Guid _subscriptionId;
         private static Queue<Guid> jobIdQueue;
 
@@ -75,8 +73,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             _catalogClient = DataLakeAnalyticsCmdletBase.CreateAdlaClient<DataLakeAnalyticsCatalogManagementClient>(context,
                 AzureEnvironment.Endpoint.AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix, true);
-
-            _activeDirectoryClient = new ActiveDirectoryClient(context);
         }
 
         #region Account Related Operations

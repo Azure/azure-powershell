@@ -475,15 +475,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog ACL at path: &apos;{0}&apos;?.
-        /// </summary>
-        internal static string RemovingDataLakeAnalyticsCatalogItemAcl {
-            get {
-                return ResourceManager.GetString("RemovingDataLakeAnalyticsCatalogItemAcl", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to remove Data Lake Analytics catalog secret &apos;{0}&apos;?.
         /// </summary>
         internal static string RemovingDataLakeAnalyticsCatalogSecret {
