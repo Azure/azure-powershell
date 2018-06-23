@@ -62,7 +62,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
-Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
+### Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
 
 ## NOTES
 

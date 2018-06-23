@@ -112,6 +112,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseBackupLongTermRetentionPolicyModel
+
 ## NOTES
 
 ## RELATED LINKS

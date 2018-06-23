@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItemAce>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
 The list of ACL entries for the specified folder or file.
 
 ## NOTES
