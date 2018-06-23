@@ -10,7 +10,7 @@ $global:ResourceGroupName = "System.local"
 $global:username = "azurestack\AzureStackAdmin"
 [SecureString]$global:password = ConvertTo-SecureString -String "password" -AsPlainText -Force
 $global:path = "\\su1fileserver\SU1_Infrastructure_2\BackupStore"
-[SecureString]$global:encryptionKey = ConvertTo-SecureString -String "YVVOa0J3S2xTamhHZ1lyRU9wQ1pKQ0xWanhjaHlkaU5ZQnNDeHRPTGFQenJKdWZsRGtYT25oYmlaa1RMVWFKeQ==" -AsPlainText -Force
+[SecureString]$global:encryptionKey = ConvertTo-SecureString -String "Q09WR3dOUEtia0VFeFZFbGdqVXFySm9TbEtxaHNNZ2VxQkdzUUZaVGRCbWtpbHplR2N3Z2hmR05wY2lqTElIbw==" -AsPlainText -Force
 $global:isBackupSchedulerEnabled = $false
 $global:backupFrequencyInHours = 10
 $global:backupRetentionPeriodInDays = 6
