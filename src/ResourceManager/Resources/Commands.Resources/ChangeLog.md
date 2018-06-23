@@ -29,6 +29,10 @@
     - Add -ManagementGroupName parameter to apply operations to a given management group
     - Add -SubscriptionId parameter to apply operations to a given subscription
 
+## Version 6.1.1
+* Fix error in `New-AzureRmRoleAssignment` help
+* Fixed formatting of OutputType in help files
+
 ## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
 

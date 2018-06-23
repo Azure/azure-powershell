@@ -129,8 +129,6 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty]
-
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementProperty
 
 ## NOTES

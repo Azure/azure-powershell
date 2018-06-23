@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         Constants.IntegrationRuntime,
         DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),
         OutputType(
-            typeof(List<PSIntegrationRuntime>),
+            typeof(PSIntegrationRuntime),
             typeof(PSManagedIntegrationRuntime),
             typeof(PSSelfHostedIntegrationRuntime),
             typeof(PSLinkedIntegrationRuntime)

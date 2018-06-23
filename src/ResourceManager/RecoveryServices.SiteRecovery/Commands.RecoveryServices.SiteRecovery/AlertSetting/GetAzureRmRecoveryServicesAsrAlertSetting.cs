@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Get-ASRNotificationSetting",
         "Get-AzureRmRecoveryServicesAsrNotificationSetting",
         "Get-ASRAlertSetting")]
-    [OutputType(typeof(IEnumerable<ASRAlertSetting>))]
+    [OutputType(typeof(ASRAlertSetting))]
     public class GetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
     {
         /// <summary>

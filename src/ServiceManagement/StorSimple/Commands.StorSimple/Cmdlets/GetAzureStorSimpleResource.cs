@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.StorSimple.Cmdlets
     /// <summary>
     /// this commandlet returns all resources available in your subscription
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleResource"), OutputType(typeof(IEnumerable<ResourceCredentials>), typeof(ResourceCredentials))]
+    [Cmdlet(VerbsCommon.Get, "AzureStorSimpleResource"), OutputType(typeof(ResourceCredentials))]
     public class GetAzureStorSimpleResource : StorSimpleCmdletBase
     {
         [Alias("Name")]
