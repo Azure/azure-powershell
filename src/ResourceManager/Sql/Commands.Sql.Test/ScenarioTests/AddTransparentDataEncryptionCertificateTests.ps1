@@ -31,6 +31,8 @@ function Test-AddTdeCertificateForSqlServerDefaultParameterSetNoPassword
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -61,6 +63,8 @@ function Test-AddTdeCertificateForSqlServerDefaultParameterSetWithPassword
 			-Password $password
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -90,6 +94,8 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetNoPassword
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -115,6 +121,8 @@ function Test-AddTdeCertificateForManagedInstanceDefaultParameterSetWithPassword
 			-Password $password
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -140,6 +148,8 @@ function Test-AddTdeCertificateForSqlServerInputObjectParameterSetWithPassword
 			-Password $password
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -170,6 +180,8 @@ function Test-AddTdeCertificateForSqlServerResourceIdParameterSetWithPassword
 			-Password $password
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -198,6 +210,8 @@ function Test-AddTdeCertificateForSqlServerInputObjectParameterSetNoPassword
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -226,6 +240,8 @@ function Test-AddTdeCertificateForSqlServerResourceIdParameterSetNoPassword
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
@@ -253,6 +269,8 @@ function Test-AddTdeCertificateForSqlServerWithPiping
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
+		Write-Debug "##### Following exception occurred causing test failure #####"
+		Write-Debug  $_.Exception.Message
 		#throw if we catch an exception
 		Assert-AreEqual $true $false
 	}
