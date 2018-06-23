@@ -96,6 +96,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("PublicIPAddressDomainNameLabel")]
         public string DnsSetting { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public VirtualMachineScaleSetIpTag[] IpTag { get; set; }
+
         protected override void ProcessRecord()
         {
             if (ShouldProcess("VirtualMachineScaleSet", "New"))
@@ -159,6 +164,23 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
 
                 vIpConfigurations.PublicIPAddressConfiguration.DnsSettings.DomainNameLabel = this.DnsSetting;
+            }
+
+            // IpTag
+            if (this.IpTag != null)
+            {
+                if (vIpConfigurations.PublicIPAddressConfiguration == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration = new Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetPublicIPAddressConfiguration();
+                }
+                if (vIpConfigurations.PublicIPAddressConfiguration.IpTags == null)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration.IpTags = new List<Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag>();
+                }
+                foreach (var element in this.IpTag)
+                {
+                    vIpConfigurations.PublicIPAddressConfiguration.IpTags.Add(element);
+                }
             }
 
             // ApplicationGatewayBackendAddressPoolsId
