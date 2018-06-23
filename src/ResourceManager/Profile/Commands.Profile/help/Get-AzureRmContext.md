@@ -126,7 +126,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSAzureContext
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
 This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 
 ## NOTES

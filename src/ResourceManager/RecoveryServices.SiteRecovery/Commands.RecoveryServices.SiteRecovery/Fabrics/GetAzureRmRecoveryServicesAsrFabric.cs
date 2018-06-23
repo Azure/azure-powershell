@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrFabric",
         DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRFabric")]
-    [OutputType(typeof(List<ASRFabric>))]
+    [OutputType(typeof(ASRFabric))]
     public class GetAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
         /// <summary>

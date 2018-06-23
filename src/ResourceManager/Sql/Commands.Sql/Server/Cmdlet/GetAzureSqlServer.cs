@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlServerModel))]
     public class GetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>

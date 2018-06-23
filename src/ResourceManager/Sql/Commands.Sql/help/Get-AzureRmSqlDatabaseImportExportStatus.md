@@ -111,6 +111,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.ImportExport.Model.AzureSqlDatabaseImportExportStatusModel
+
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql
 
