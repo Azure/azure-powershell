@@ -408,6 +408,9 @@
   <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
   </data>
+  <data name="ServerAdvancedThreatProtectionIsNotDefined" xml:space="preserve">
+    <value>Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first.</value>
+  </data>
   <data name="RunSetVulnerabilityAssemenSettings" xml:space="preserve">
     <value>Vulnerability assessment settings are not defined. Please run Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first.</value>
   </data>

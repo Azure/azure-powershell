@@ -20,7 +20,7 @@ using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class VulnerabilityAssessmentTests : SqlTestsBase
+    public class AdvancedThreatProtectionTests : SqlTestsBase
     {
         protected override void SetupManagementClients(RestTestFramework.MockContext context)
         {
@@ -32,62 +32,15 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 newResourcesClient);
         }
 
-        public VulnerabilityAssessmentTests(ITestOutputHelper output) : base(output)
+        public AdvancedThreatProtectionTests(ITestOutputHelper output) : base(output)
         {
-        }
-
-        #region Policy Tests
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentWithAtpOffTest()
-        {
-            RunPowerShellTest("Test-VulnerabilityAssessmentWithAtpOffTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentWithSettingsNotDefinedTest()
+        public void AdvancedThreatProtectionPolicyTest()
         {
-            RunPowerShellTest("Test-VulnerabilityAssessmentWithSettingsNotDefinedTest");
+            RunPowerShellTest("Test-AdvancedThreatProtectionPolicyTest");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentSettingsTest()
-        {
-            RunPowerShellTest("Test-VulnerabilityAssessmentSettingsTest");
-        }
-
-        #endregion
-
-        #region Baseline Tests
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentBaselineTest()
-        {
-            RunPowerShellTest("Test-VulnerabilityAssessmentBaselineTest");
-        }
-
-        #endregion
-
-        #region Scan Tests
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentScanRecordGetListTest()
-        {
-            RunPowerShellTest("Test-VulnerabilityAssessmentScanRecordGetListTest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void VulnerabilityAssessmentScanConvertTest()
-        {
-            RunPowerShellTest("Test-VulnerabilityAssessmentScanConvertTest");
-        }
-
-        #endregion
     }
 }
