@@ -65,7 +65,7 @@ The **New-AzureRmAutomationSchedule** cmdlet creates a schedule in Azure Automat
 
 ### Example 1: Create a one-time schedule in local time
 ```
-PS C:\>$TimeZone = ([System.TimeZoneInfo]::Local)Id
+PS C:\>$TimeZone = ([System.TimeZoneInfo]::Local).Id
 PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 

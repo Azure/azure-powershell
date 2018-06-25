@@ -178,7 +178,8 @@ CmdletsToExport = 'Remove-AzureRmAvailabilitySet', 'Get-AzureRmAvailabilitySet',
                'Export-AzureRmLogAnalyticRequestRateByInterval', 
                'Export-AzureRmLogAnalyticThrottledRequests', 
                'Repair-AzureRmVmssServiceFabricUpdateDomain', 
-               'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM'
+               'New-AzureRmVMDataDisk', 'Update-AzureRmVmssVM',
+               'New-AzureRmVmssIpTagConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()

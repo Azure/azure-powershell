@@ -450,23 +450,74 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.MoveResourceTest\TestMoveAzureResource.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestGetPolicyAssignmentParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestGetPolicyDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestGetPolicySetDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestNewPolicyAssignmentParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestNewPolicyDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestNewPolicySetDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyAssignmentCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyAssignmentWithParameters.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionCRUDAtManagementGroup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionCRUDAtSubscription.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionWithParameters.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicyDefinitionWithUri.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicySetDefinitionCRUD.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicySetDefinitionCRUDAtManagementGroup.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicySetDefinitionCRUDAtSubscription.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestPolicySetDefinitionWithParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestRemovePolicyAssignmentParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestRemovePolicyDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestRemovePolicySetDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestSetPolicyAssignmentParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestSetPolicyDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.PolicyTests\TestSetPolicySetDefinitionParameters.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.ProviderFeatureTests\TestAzureProviderFeature.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
