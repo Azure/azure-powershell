@@ -20,6 +20,7 @@
 -->
 ## Current Release
 * Added optional Parameter -KeyValue to New-AzureRmServiceBusKey cmdlet, which enables user to provide KeyValue.
+* Fixed formatting of OutputType in help files
 
 ## Version 0.6.5
 * Set minimum dependency of module to PowerShell 5.0
