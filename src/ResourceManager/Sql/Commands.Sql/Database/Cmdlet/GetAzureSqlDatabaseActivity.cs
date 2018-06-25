@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseActivity", SupportsShouldProcess = true,
         ConfirmImpact = ConfirmImpact.None)]
+    [OutputType(typeof(AzureSqlDatabaseActivityModel))]
     public class GetAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
     {
         /// <summary>

@@ -154,11 +154,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.String
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventHub.Models.PSListKeysAttributes
-
 
 ## NOTES
 

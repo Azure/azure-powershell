@@ -167,6 +167,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.Sql.LegacySdk.Models.RecommendedDatabaseProperties
+
 ## NOTES
 
 ## RELATED LINKS

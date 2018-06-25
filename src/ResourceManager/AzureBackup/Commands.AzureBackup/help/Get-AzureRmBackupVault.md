@@ -129,10 +129,9 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupVault
 
 ## NOTES
-* None
 
 ## RELATED LINKS
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupJob"),
-        OutputType(typeof(JobBase), typeof(IList<JobBase>))]
+        OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>

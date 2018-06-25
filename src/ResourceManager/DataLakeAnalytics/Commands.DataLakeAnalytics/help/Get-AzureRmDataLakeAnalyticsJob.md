@@ -289,10 +289,10 @@ Parameter 'JobId' accepts value of type 'Guid' from the pipeline
 
 ## OUTPUTS
 
-### JobInformation
+### Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation
 The specified job information details
 
-### List<PSJobInformationBasic>
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic
 The list of jobs in the specified Data Lake Analytics account.
 
 ## NOTES

@@ -19,12 +19,13 @@
 -->
 ## Current Release
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Fixed formatting of OutputType in help files
 * Ps1Xml attribute added to the basic output types
 
 ## Version 5.3.0
 * Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
-* Resource Id completer added.
+* Extracted ARM sdk to common library to be reused by AzureRM.DevSpaces and AzureRM.AKS
 
 ## Version 5.2.0
 * Added the following three values to the telemetry:

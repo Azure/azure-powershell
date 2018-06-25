@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Management.Network.Models;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Routes
 {
-    [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(IEnumerable<EffectiveRouteTable>))]
+    [Cmdlet(VerbsCommon.Get, "AzureEffectiveRouteTable"), OutputType(typeof(EffectiveRouteTable))]
     public class GetAzureEffectiveRouteTable : NetworkCmdletBase
     {
         public const string IaaSGetEffectiveRouteTableParamSet = "IaaSGetEffectiveRouteTableParamSet";
