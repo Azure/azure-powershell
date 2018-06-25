@@ -178,6 +178,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            string parametersPassed = 
+                string.Format("ResourceGroupName: {0}, AutomationAccountName: {1}, AzureVMName: {2}, NodeConfigurationName: {3}, ConfigurationMode: {4}, ConfigurationModeFrequencyMins: {5}, RefreshFrequencyMins: {6}, RebootNodeIfNeeded: {7}, ActionAfterReboot: {8}, AllowModuleOverwrite: {9}, AzureVMResourceGroup: {10}, AzureVMLocation: {11}",
+                                this.ResourceGroupName,     this.AutomationAccountName,      this.AzureVMName,      this.NodeConfigurationName,      this.ConfigurationMode,      this.ConfigurationModeFrequencyMins,      this.RefreshFrequencyMins,      this.RebootNodeIfNeeded,      this.ActionAfterReboot,      this.AllowModuleOverwrite,      this.AzureVMResourceGroup,       this.AzureVMLocation);
+            WriteDebug(parametersPassed);
+
             this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation);
         }
     }
