@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using System;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -27,8 +28,8 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// </summary>
     public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
-        protected const string UseParentResourceParameterSet =
-            "Use Advanced Threat Protection policy from server resource";
+        protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
+        protected const string UseResourceIdParameterSet = "UseResourceIdParameterSet";
 
         /// <summary>
         /// Server resource
@@ -39,6 +40,16 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
             HelpMessage = "The server object to use with Advanced Threat Protection policy operation ")]
         [ValidateNotNullOrEmpty]
         public AzureSqlServerModel InputObject { get; set; }
+
+        /// <summary>
+        /// Advanced Threat Protection resource Id
+        /// </summary>
+        [Parameter(ParameterSetName = UseResourceIdParameterSet,
+            Mandatory = false,
+            ValueFromPipeline = true,
+            HelpMessage = "The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.")]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -55,12 +66,25 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         /// <returns>A model object</returns>
         protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
         {
+            string resourceGroupName = ResourceGroupName;
+            string serverName = ServerName;
+
             if (string.Equals(this.ParameterSetName, UseParentResourceParameterSet, StringComparison.OrdinalIgnoreCase))
             {
-                return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(InputObject.ResourceGroupName, InputObject.ServerName);
+                resourceGroupName = InputObject.ResourceGroupName;
+                serverName = InputObject.ServerName;
             }
 
-            return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(ResourceGroupName, ServerName);
+            if (string.Equals(this.ParameterSetName, UseResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            {
+                var resourceInfo = new ResourceIdentifier(ResourceId);
+                resourceGroupName = resourceInfo.ResourceGroupName;
+
+                var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
+                serverName = serverResourceInfo.ResourceName;
+            }
+
+            return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(resourceGroupName, serverName);
         }
 
         /// <summary>

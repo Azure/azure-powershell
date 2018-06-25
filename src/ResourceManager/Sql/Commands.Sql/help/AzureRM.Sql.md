@@ -26,6 +26,12 @@ Clears the vulnerability assessment settings of a database.
 ### [Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan](Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan.md)
 Converts a vulnerability assessment scan results to Excel format.
 
+### [Disable-AzureRmSqlServerAdvancedThreatProtection](Disable-AzureRmSqlServerAdvancedThreatProtection.md)
+Disables Advanced Threat Protection on a server.
+
+### [Enable-AzureRmSqlServerAdvancedThreatProtection](Enable-AzureRmSqlServerAdvancedThreatProtection.md)
+Enables Advanced Threat Protection on a server.
+
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.
 
@@ -133,6 +139,9 @@ Returns information about SQL Database servers.
 
 ### [Get-AzureRmSqlServerActiveDirectoryAdministrator](Get-AzureRmSqlServerActiveDirectoryAdministrator.md)
 Gets information about an Azure AD administrator for SQL Server.
+
+### [Get-AzureRmSqlServerAdvancedThreatProtectionPolicy](Get-AzureRmSqlServerAdvancedThreatProtectionPolicy.md)
+Gets Advanced Threat Protection policy of a server.
 
 ### [Get-AzureRmSqlServerAdvisor](Get-AzureRmSqlServerAdvisor.md)
 Gets one or more Advisors for an Azure SQL Server.
