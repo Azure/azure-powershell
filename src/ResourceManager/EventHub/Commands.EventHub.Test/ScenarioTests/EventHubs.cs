@@ -27,9 +27,8 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         }
 
         
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void EventHubsCRUD()
         {
             EventHubsController.NewInstance.RunPsTest("EventHubsTests");

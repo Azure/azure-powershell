@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
 {
 
     [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix)]
-    [OutputType(typeof(CommitmentPlan), typeof(CommitmentPlan[]))]
+    [OutputType(typeof(CommitmentPlan))]
     public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment association.")]

@@ -95,6 +95,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Management.WebSites.Models.Certificate
+
 ## NOTES
 
 ## RELATED LINKS

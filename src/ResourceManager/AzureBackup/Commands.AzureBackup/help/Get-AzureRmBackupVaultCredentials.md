@@ -79,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRMBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 
 ## OUTPUTS
 

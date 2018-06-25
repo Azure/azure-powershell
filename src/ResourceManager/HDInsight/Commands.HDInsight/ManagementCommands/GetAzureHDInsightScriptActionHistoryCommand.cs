@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(VerbsCommon.Get,
         Constants.CommandNames.AzureHDInsightScriptActionHistory),
-    OutputType(typeof(IList<AzureHDInsightRuntimeScriptActionDetail>))]
+    OutputType(typeof(AzureHDInsightRuntimeScriptActionDetail))]
     public class GetAzureHDInsightScriptActionHistory : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
