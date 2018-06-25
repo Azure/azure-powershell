@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlServerTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlServerTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
     {
+        private const string PrivateBlobHelpText =
+            "The Private blob for Transparent Data Encryption Certificate. For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep";
+
         /// <summary>
         /// Parameter sets
         /// </summary>
@@ -95,17 +98,17 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Mandatory = true,
             ParameterSetName = InputObjectParameterSet,
             Position = 1,
-            HelpMessage = "The Private blob for Transparent Data Encryption Certificate")]
+            HelpMessage = PrivateBlobHelpText)]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ResourceIdParameterSet,
             Position = 1,
-            HelpMessage = "The Private blob for Transparent Data Encryption Certificate")]
+            HelpMessage = PrivateBlobHelpText)]
         [Parameter(
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             Position = 2,
-            HelpMessage = "The Private blob for Transparent Data Encryption Certificate")]
+            HelpMessage = PrivateBlobHelpText)]
         [ValidateNotNullOrEmpty]
         public string PrivateBlob { get; set; }
 

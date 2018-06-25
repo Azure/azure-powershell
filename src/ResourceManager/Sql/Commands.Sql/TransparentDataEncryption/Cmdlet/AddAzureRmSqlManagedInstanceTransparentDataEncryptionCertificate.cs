@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Mandatory = true,
             ParameterSetName = DefaultParameterSet,
             Position = 2,
-            HelpMessage = "The Private blob for Transparent Data Encryption Certificate")]
+            HelpMessage = "The Private blob for Transparent Data Encryption Certificate. For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep")]
         [ValidateNotNullOrEmpty]
         public string PrivateBlob { get; set; }
 
