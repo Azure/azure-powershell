@@ -179,8 +179,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public override void ExecuteCmdlet()
         {
             string parametersPassed = 
-                string.Format("ResourceGroupName: {0}, AutomationAccountName: {1}, AzureVMName: {2}, NodeConfigurationName: {3}, ConfigurationMode: {4}, ConfigurationModeFrequencyMins: {5}, RefreshFrequencyMins: {6}, RebootNodeIfNeeded: {7}, ActionAfterReboot: {8}, AllowModuleOverwrite: {9}, AzureVMResourceGroup: {10}, AzureVMLocation: {11}",
-                                this.ResourceGroupName,     this.AutomationAccountName,      this.AzureVMName,      this.NodeConfigurationName,      this.ConfigurationMode,      this.ConfigurationModeFrequencyMins,      this.RefreshFrequencyMins,      this.RebootNodeIfNeeded,      this.ActionAfterReboot,      this.AllowModuleOverwrite,      this.AzureVMResourceGroup,       this.AzureVMLocation);
+                string.Format($"ResourceGroupName: {this.ResourceGroupName}, AutomationAccountName: {this.AutomationAccountName}, AzureVMName: {this.AzureVMName}, " +
+                $"NodeConfigurationName: {this.NodeConfigurationName}, ConfigurationMode: {this.ConfigurationMode}, ConfigurationModeFrequencyMins: {this.ConfigurationModeFrequencyMins}, " +
+                $"RefreshFrequencyMins: {this.RefreshFrequencyMins}, RebootNodeIfNeeded: {this.RebootNodeIfNeeded}, ActionAfterReboot: {this.ActionAfterReboot}, " +
+                $" AllowModuleOverwrite: {this.AllowModuleOverwrite}, AzureVMResourceGroup: {this.AzureVMResourceGroup}, AzureVMLocation: {this.AzureVMLocation}");
             WriteDebug(parametersPassed);
 
             this.AutomationClient.RegisterDscNode(this.ResourceGroupName, this.AutomationAccountName, this.AzureVMName, this.NodeConfigurationName, this.ConfigurationMode, this.ConfigurationModeFrequencyMins, this.RefreshFrequencyMins, this.RebootNodeIfNeeded, this.ActionAfterReboot, this.AllowModuleOverwrite, this.AzureVMResourceGroup, this.AzureVMLocation);

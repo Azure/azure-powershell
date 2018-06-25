@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 azureVmResourceGroup = resourceGroupName;
             }
 
-            string deploymentName = Guid.NewGuid().ToString();
+            var deploymentName = Guid.NewGuid().ToString();
 
             // get the endpoint and keys
             Model.AgentRegistration agentRegistrationInfo = this.GetAgentRegistration(
