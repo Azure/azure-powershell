@@ -281,7 +281,7 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.EnableFips = true;
             }
 
-            if (this.Zones != null)
+            if (this.Zone != null)
             {
                 applicationGateway.Zones = this.Zone;
             }

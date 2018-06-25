@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public bool? EnableHttp2 { get; set; }
 
-        public bool? EnableFIPS { get; set; }
+        public bool? EnableFips { get; set; }
 
         public List<string> Zones { get; set; }
 
