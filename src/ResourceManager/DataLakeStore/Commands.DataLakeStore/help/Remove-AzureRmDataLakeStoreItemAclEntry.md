@@ -16,14 +16,14 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 ### RemoveByACLObject (Default)
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Progress] [-Recurse] [-Concurrency <Int32>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveSpecificACE
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-Progress] [-Recurse] [-Concurrency <Int32>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -197,7 +197,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Progress
+### -ShowProgress
 If passed then progress status is showed. Only applicable when recursive Acl remove is done.
 
 ```yaml

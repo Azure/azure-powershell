@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             HelpMessage =
                 "If passed then progress status is showed. Only applicable when recursive Acl remove is done."
         )]
-        public SwitchParameter Progress { get; set; }
+        public SwitchParameter ShowProgress { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -114,7 +114,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                     if (Recurse)
                     {
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
-                            Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency, this, Progress, CmdletCancellationToken);
+                            Account, aclSpec, RequestedAclType.RemoveAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
                     }
                     else
                     {
