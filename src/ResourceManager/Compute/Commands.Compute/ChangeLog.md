@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` are updated to use the latest `Strategies` library.
+* Fixed formatting of OutputType in help files
 
 ## Version 5.1.1
 * ResourceId tab completer applied to the cmdelts top level resource id parameters if any.

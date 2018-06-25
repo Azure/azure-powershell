@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.HDInsight
         VerbsCommon.Get,
         Constants.CommandNames.AzureHDInsightCluster),
     OutputType(
-        typeof(List<AzureHDInsightCluster>))]
+        typeof(AzureHDInsightCluster))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

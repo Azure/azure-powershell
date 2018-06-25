@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayIPConfiguration"),
-        OutputType(typeof(PSApplicationGatewayIPConfiguration), typeof(IEnumerable<PSApplicationGatewayIPConfiguration>))]
+        OutputType(typeof(PSApplicationGatewayIPConfiguration))]
     public class GetAzureApplicationGatewayIPConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
