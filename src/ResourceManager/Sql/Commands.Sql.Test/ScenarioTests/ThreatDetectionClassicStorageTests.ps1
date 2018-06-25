@@ -25,7 +25,7 @@ function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 
 	try 
 	{
-		# Test - database poloicy
+		# Test - database policy
 		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
 		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
 	
@@ -34,11 +34,11 @@ function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 		Assert-AreEqual $policy.NotificationRecipientsEmails "koko1@mailTest.com"
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
 		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
 
-		# Test - server poloicy
+		# Test - server policy
 		Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko2@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability -StorageAccountName $params.storageAccount
 		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 	
@@ -46,7 +46,7 @@ function Test-ThreatDetectionUpdatePolicyWithClassicStorage
 		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails "koko2@mailTest.com"
 		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Length 1
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 	}
 	finally

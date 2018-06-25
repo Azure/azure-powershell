@@ -29,8 +29,8 @@ function Test-AdvancedThreatProtectionPolicyTest
 		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
-		Assert-AreEqual $params.rgname $settings.ResourceGroupName
-		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-AreEqual $params.rgname $policy.ResourceGroupName
+		Assert-AreEqual $params.serverName $policy.ServerName
 		Assert-False { $policy.IsEnabled }
 
 		# Enabled Advanced Threat Protection Policy
@@ -38,17 +38,17 @@ function Test-AdvancedThreatProtectionPolicyTest
 		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
-		Assert-AreEqual $params.rgname $settings.ResourceGroupName
-		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-AreEqual $params.rgname $policy.ResourceGroupName
+		Assert-AreEqual $params.serverName $policy.ServerName
 		Assert-True { $policy.IsEnabled }
 
 		# Disable Advanced Threat Protection Policy
 		Disable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
-		$policy = Get-AzurRmeSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
+		$policy = Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName 
 				
 		# Validate the policy
-		Assert-AreEqual $params.rgname $settings.ResourceGroupName
-		Assert-AreEqual $params.serverName $settings.ServerName
+		Assert-AreEqual $params.rgname $policy.ResourceGroupName
+		Assert-AreEqual $params.serverName $policy.ServerName
 		Assert-False { $policy.IsEnabled }
 	}
 	finally
