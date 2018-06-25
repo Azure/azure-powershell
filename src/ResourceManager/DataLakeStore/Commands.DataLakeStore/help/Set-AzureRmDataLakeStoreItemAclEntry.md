@@ -16,14 +16,14 @@ Modifies an entry in the ACL of a file or folder in Data Lake Store.
 ### SetByACLObject (Default)
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Progress] [-Recurse] [-Concurrency <Int32>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetSpecificACE
 ```
 Set-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru] [-Progress] [-Recurse]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Permissions] <Permission> [-Default] [-PassThru] [-ShowProgress] [-Recurse]
  [-Concurrency <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -221,8 +221,8 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-### -Progress
-If passed then progress status is showed. Only applicable when recursive Acl modufy is done.
+### -ShowProgress
+If passed then progress status is showed. Only applicable when recursive Acl modify is done.
 
 ```yaml
 Type: SwitchParameter
