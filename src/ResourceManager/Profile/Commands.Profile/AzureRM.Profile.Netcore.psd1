@@ -76,7 +76,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll',  
-    '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll'
+    '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll',
+	'.\Microsoft.Azure.Commands.Common.Aks.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
