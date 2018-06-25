@@ -505,7 +505,6 @@ function Test-ApplicationGatewayCRUD3
 
 	# Setup
 
-	$rglocation = Get-ProviderLocation ResourceManagement
 	$resourceTypeParent = "Microsoft.Network/applicationgateways"
 	$location = Get-ProviderLocation $resourceTypeParent
 
@@ -513,7 +512,6 @@ function Test-ApplicationGatewayCRUD3
 	$appgwName = Get-ResourceName
 	$vnetName = Get-ResourceName
 	$gwSubnetName = Get-ResourceName
-	$nicSubnetName = Get-ResourceName
 	$publicIpName = Get-ResourceName
 	$gipconfigname = Get-ResourceName
 
@@ -534,7 +532,7 @@ function Test-ApplicationGatewayCRUD3
 		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
 		# Create the Virtual Network
 		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
-		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
 		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
 		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
@@ -565,29 +563,18 @@ function Test-ApplicationGatewayCRUD3
 		# Create Application Gateway
 		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy
 
+		# Operational State
+		Assert-AreEqual "Running" $appgw.OperationalState
+
 		# Get for zones
 		Assert-AreEqual $appgw.Zones.Count 2
 
 		# Get for SslPolicy
-		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw
+		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $appgw
 		Assert-AreEqual $sslPolicy.MinProtocolVersion $sslPolicy01.MinProtocolVersion
 
-		# Set for sslPolicy
-		$getgw = Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
-
-		# Get Match
-		$probeHttp01 = Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name $probeHttpName
-		Assert-AreEqual $probeHttp.Match.Body $probeHttp01.Match.Body
-
-		# Get Application Gateway
-		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-
-		# Check SSLCertificates
-		Assert-NotNull $getgw.SslCertificates[0]
-		Assert-Null $getgw.SslCertificates[0].Password
-
 		# Stop Application Gateway
-		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
+		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $appgw
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
 
