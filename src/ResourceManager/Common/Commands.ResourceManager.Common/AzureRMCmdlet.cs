@@ -17,13 +17,17 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Properties;
 using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
+using System.Security.Authentication;
+using System.Text;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Common
 {
@@ -34,6 +38,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
     {
         protected ServiceClientTracingInterceptor _serviceClientTracingInterceptor;
         IAzureContextContainer _profile;
+
+        public const int MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER = 3;
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
@@ -65,6 +71,47 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             set
             {
                 _profile = value;
+            }
+        }
+
+        protected IDictionary<String, List<String>> GetAuxilaryAuthHeaderFromResourceIds(List<String> resourceIds)
+        {
+            IDictionary<String, List<String>> auxHeader = null;
+
+            //Get the subscriptions from the resource Ids
+            var subscriptionIds = resourceIds.Select(rId => (new ResourceIdentifier(rId))?.Subscription)?.Distinct();
+
+            //Checxk if we have access to all the subscriptions
+            CheckAccessToSubscriptions(subscriptionIds);
+
+            //get all the non default tenant ids for the subscriptions
+            var nonDeafultTenantIds = DefaultProfile.Subscriptions.Where(s => subscriptionIds.Contains(s.GetId().ToString()))?.Select(s => s.GetTenant())?.Distinct()?.Select(t => t != DefaultContext.Tenant.GetId().ToString());
+
+            if ((nonDeafultTenantIds != null) && (nonDeafultTenantIds.Count() > 0))
+            {
+                // WE can only fill in tokens for 3 tennats in the aux header, if tehre are more tenants fail now
+                if (nonDeafultTenantIds.Count() > MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER)
+                {
+                    throw new ArgumentException("Number of non default tenants required for supplied resources exceeds maximum allowed number of " + MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER);
+                }
+                //get the tokens for each tenant
+            }
+
+            return auxHeader;
+        }
+
+        private void CheckAccessToSubscriptions(IEnumerable<string> subscriptions)
+        {
+            var subscriptionWithNoAccess = subscriptions.ToList().Except(DefaultProfile.Subscriptions.Select(s => s.GetId().ToString()).ToList());
+
+            if (subscriptionWithNoAccess.Any())
+            {
+                //Found subscription(s) the user does not have acess to... throw exception
+                StringBuilder message = new StringBuilder();
+
+                message.Append(" The user does not have access to the following subscription(s) : ");
+                subscriptionWithNoAccess.Select(s => message.Append(" " + s));
+                throw new AuthenticationException(message.ToString());
             }
         }
 
