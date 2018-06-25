@@ -144,7 +144,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSAzureEnvironment
+### Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment
 
 ## NOTES
 

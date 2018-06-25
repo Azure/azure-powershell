@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Rest.Azure;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCacheFirewallRule"), OutputType(typeof(List<PSRedisFirewallRule>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRedisCacheFirewallRule"), OutputType(typeof(PSRedisFirewallRule))]
     public class GetAzureRedisCacheFirewallRule : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]

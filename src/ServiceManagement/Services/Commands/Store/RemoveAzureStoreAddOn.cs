@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Store
     /// <summary>
     /// Removes all purchased Add-Ons or specific Add-On
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureStoreAddOn"), OutputType(typeof(List<PSObject>))]
+    [Cmdlet(VerbsCommon.Remove, "AzureStoreAddOn"), OutputType(typeof(PSObject))]
     public class RemoveAzureStoreAddOnCommand : ServiceManagementBaseCmdlet
     {
         public StoreClient StoreClient { get; set; }

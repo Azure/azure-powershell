@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrNetworkMapping",
         DefaultParameterSetName = ASRParameterSets.ByObject)]
     [Alias("Get-ASRNetworkMapping")]
-    [OutputType(typeof(IEnumerable<ASRNetworkMapping>))]
+    [OutputType(typeof(ASRNetworkMapping))]
     public class GetAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
