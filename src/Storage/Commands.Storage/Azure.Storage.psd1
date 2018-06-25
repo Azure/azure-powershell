@@ -158,12 +158,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-<<<<<<< HEAD:src/Storage/Azure.Storage.psd1
-
         ReleaseNotes = '* Support creating Storage Context with OAuth credentials.'
-=======
-        ReleaseNotes = '* Added additional information about -Permissions parameter in help files.'
->>>>>>> f1377cb8c0a72a6b32a2e8f2017af38eb77f045c:src/Storage/Commands.Storage/Azure.Storage.psd1
 
         # Prerelease string of this module
         Prerelease = 'preview'
