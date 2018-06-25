@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
+* Fixed formatting of OutputType in help files
+* Updated documentation of -ComputeGeneration parameter in several cmdlets
 * Adding Server Advanced Threat Protection support with the following cmdlets:
 	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
 * Adding Vulnerability Assessment support with the following cmdlets:

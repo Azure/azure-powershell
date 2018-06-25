@@ -294,7 +294,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData
 
 ## NOTES
 

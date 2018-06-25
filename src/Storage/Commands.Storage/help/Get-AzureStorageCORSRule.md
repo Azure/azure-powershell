@@ -126,13 +126,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
 ## OUTPUTS
 
-###  
+### Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule
 This cmdlet returns an array of **PSCORSRule** objects which represent the CORS rules currently on a service.
 
 ## NOTES
