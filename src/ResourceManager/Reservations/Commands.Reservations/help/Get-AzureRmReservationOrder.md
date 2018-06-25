@@ -13,7 +13,8 @@ Get `ReservationOrder`
 ## SYNTAX
 
 ```
-Get-AzureRmReservationOrder [-ReservationOrderId <String>] [<CommonParameters>]
+Get-AzureRmReservationOrder [-ReservationOrderId <Guid>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,13 +38,28 @@ Get `ReservationOrder` with the specified ReservationOrderId
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservationOrderId
 Id of the specific ReservationOrder that user wants to see
 
 ```yaml
-Type: String
+Type: Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,4 +83,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
