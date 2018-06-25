@@ -318,7 +318,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## OUTPUTS
 

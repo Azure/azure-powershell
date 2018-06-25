@@ -88,7 +88,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSAzureTenant
+### Microsoft.Azure.Commands.Profile.Models.PSAzureTenant
 This cmdlet returns the tenant ID and associated domain information for tenants authorized for the current account.
 
 ## NOTES
