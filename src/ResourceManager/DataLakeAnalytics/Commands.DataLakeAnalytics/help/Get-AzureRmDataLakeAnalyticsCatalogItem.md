@@ -126,11 +126,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### CatalogItem
+### Microsoft.Azure.Management.DataLake.Analytics.Models.CatalogItem
 The specified catalog item.
-
-### List<CatalogItem>
-The list of the specified catalog items underneath their corresponding container.
 
 ## NOTES
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 0.3.6
 * Fixed server authentication usage with generated certificates (Issue #5998)

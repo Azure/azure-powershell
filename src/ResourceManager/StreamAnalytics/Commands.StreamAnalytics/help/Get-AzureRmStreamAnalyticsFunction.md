@@ -111,7 +111,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List[Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction, Microsoft.Azure.Commands.StreamAnalytics], Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction
+### Microsoft.Azure.Commands.StreamAnalytics.Models.PSFunction
 
 ## NOTES
 

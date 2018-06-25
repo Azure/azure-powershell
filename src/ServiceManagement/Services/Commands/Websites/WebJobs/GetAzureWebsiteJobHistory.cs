@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.WebSitesExtensions.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Websites.WebJobs
 {
-    [Cmdlet(VerbsCommon.Get, "AzureWebsiteJobHistory"), OutputType(typeof(List<TriggeredWebJobRun>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebsiteJobHistory"), OutputType(typeof(TriggeredWebJobRun))]
     public class GetAzureWebsiteJobHistoryCommand : WebsiteContextBaseCmdlet
     {
         private const string RunIdParameterSetName = "RunIdParameterSetName";
