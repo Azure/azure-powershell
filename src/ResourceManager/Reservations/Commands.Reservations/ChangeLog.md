@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 0.1.3
 * Change Guid paramters to Guid type, not string

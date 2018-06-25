@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
             }
             var listResult = Enumerable.Empty<PSKeyVaultIdentityItem>();
-            var resourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null;
+            var resourceType = KeyVaultManagementClient.VaultsResourceType;
             if (resourceGroupName != null)
             {
                 listResult = this.ListByResourceGroup(resourceGroupName,
