@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.1.3'
+ModuleVersion = '0.1.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,9 +72,9 @@ NestedModules = @('.\Microsoft.Azure.Commands.Reservations.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmReservationOrder', 'Get-AzureRmReservation', 
-               'Get-AzureRmReservationHistory', 'Update-AzureRmReservation', 
-               'Merge-AzureRmReservation', 'Split-AzureRmReservation', 
+CmdletsToExport = 'Get-AzureRmReservationOrder', 'Get-AzureRmReservation',
+               'Get-AzureRmReservationHistory', 'Update-AzureRmReservation',
+               'Merge-AzureRmReservation', 'Split-AzureRmReservation',
                'Get-AzureRmReservationOrderId', 'Get-AzureRmReservationCatalog'
 
 # Variables to export from this module
@@ -110,8 +110,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Change Guid paramters to Guid type, not string
-* Set minimum dependency of module to PowerShell 5.0'
+        ReleaseNotes = '* Updated to the latest .NET SDK version 1.8.0-preview
+* Updated Cmdlet Get-AzureRmReservationCatalog
+    - Added parameters ReservedResourceType and Location.
+    - Removed Size and Tier from Catalog response.
+    - Renamed Capabilities to SkuProperties in Catalog response.
+* Updated Cmdlet Update-AzureRmReservation
+    - Added optional InstanceFlexibility parameter.
+* Added properties to Reservation response.
+* Fixed formatting of OutputType in help files'
 
         # Prerelease string of this module
         # Prerelease = ''
@@ -123,7 +130,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
