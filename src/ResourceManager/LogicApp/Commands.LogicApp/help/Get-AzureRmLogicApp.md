@@ -128,6 +128,7 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Logic.Models.Workflow
+### Microsoft.Azure.Management.Logic.Models.WorkflowVersion
 
 ## NOTES
 

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Retrieves Azure Site Recovery Storage.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureSiteRecoveryStorage")]
-    [OutputType(typeof(IEnumerable<ASRStorage>))]
+    [OutputType(typeof(ASRStorage))]
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "equivalent cmdlet from the AzureRm.RecoveryServices.SiteRecovery module instead.",
         false)]

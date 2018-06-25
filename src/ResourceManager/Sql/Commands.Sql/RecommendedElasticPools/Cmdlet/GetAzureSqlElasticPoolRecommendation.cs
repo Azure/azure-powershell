@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlElasticPoolRecommendation",
         ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(UpgradeRecommendedElasticPoolProperties))]
     public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
 

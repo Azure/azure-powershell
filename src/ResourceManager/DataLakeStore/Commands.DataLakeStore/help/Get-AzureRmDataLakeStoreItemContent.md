@@ -245,10 +245,10 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### byte[]
+### System.Byte
 The byte stream representation of the file contents retrieved.
 
-### string
+### System.String
 The string representation (in the specified encoding) of the file contents retrieved.
 
 ## NOTES
