@@ -415,7 +415,7 @@ function Test-ApplicationGatewayCRUD2
 		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01 -EnableHttp2
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01, $fp02 -HttpListeners $listener01, $listener02 -RedirectConfiguration $redirect01 -RequestRoutingRules $rule01, $rule02 -Sku $sku -SslPolicy $sslPolicy -SslCertificates $sslCert01 -EnableHttp2 -EnableFIPS
 
 		# Check get/set/remove for RedirectConfiguration
 		$redirect02 = Get-AzureRmApplicationGatewayRedirectConfiguration -ApplicationGateway $appgw -Name $redirect01Name
@@ -427,6 +427,9 @@ function Test-ApplicationGatewayCRUD2
 
 		# Check EnableHttp2 flag is true
 		Assert-AreEqual $getgw.EnableHttp2 $true
+
+		# Check EnableFIPS flag is true
+		Assert-AreEqual $getgw.EnableFIPS $true
 
 		# Get for SslPolicy
 		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw
@@ -456,10 +459,14 @@ function Test-ApplicationGatewayCRUD2
 
 		# Modify existing application gateway with new configuration
 		$getgw.EnableHttp2 = $false
+		$getgw.EnableFIPS = $false
 		$getgw = Set-AzureRmApplicationGateway -ApplicationGateway $getgw
 
 		# Check EnableHttp2 flag is false
 		Assert-AreEqual $getgw.EnableHttp2 $false
+
+		# Check EnableFIPS flag is false
+		Assert-AreEqual $getgw.EnableFIPS $false
 
 		Assert-AreEqual "Running" $getgw.OperationalState
 
@@ -475,6 +482,115 @@ function Test-ApplicationGatewayCRUD2
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
  
+		# Delete Application Gateway
+		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway v2 tests
+#>
+function Test-ApplicationGatewayCRUD3
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+
+	$rglocation = Get-ProviderLocation ResourceManagement
+	$resourceTypeParent = "Microsoft.Network/applicationgateways"
+	$location = Get-ProviderLocation $resourceTypeParent
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$nicSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet, $nicSubnet
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Dynamic
+
+		# Create ip configuration
+		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+
+		#rule
+		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
+
+		# security part
+		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+
+		# Create Application Gateway
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy
+
+		# Get for zones
+		Assert-AreEqual $appgw.Zones.Count 2
+
+		# Get for SslPolicy
+		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw
+		Assert-AreEqual $sslPolicy.MinProtocolVersion $sslPolicy01.MinProtocolVersion
+
+		# Set for sslPolicy
+		$getgw = Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $getgw -PolicyType Predefined -PolicyName AppGwSslPolicy20170401
+
+		# Get Match
+		$probeHttp01 = Get-AzureRmApplicationGatewayProbeConfig -ApplicationGateway $getgw -Name $probeHttpName
+		Assert-AreEqual $probeHttp.Match.Body $probeHttp01.Match.Body
+
+		# Get Application Gateway
+		$getgw = Get-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+		# Check SSLCertificates
+		Assert-NotNull $getgw.SslCertificates[0]
+		Assert-Null $getgw.SslCertificates[0].Password
+
+		# Stop Application Gateway
+		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $getgw
+
+		Assert-AreEqual "Stopped" $getgw.OperationalState
+
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}
