@@ -2,7 +2,7 @@
 $rpName = "subscriptions"
 $name = "Subscriptions"
 $location = Get-Location
-$psswagger = "D:\github\PSswagger"
+$psswagger = "C:\RestApi\PSswagger"
 $module = "Module"
 $namespace = "Microsoft.AzureStack.Management.$name.Admin"
 $assembly = "$namespace.dll"
@@ -17,8 +17,8 @@ Write-Host $assembly
     -ModuleDirectory $module `
     -AzureStack `
     -PSSwaggerLocation $psswagger `
-    -GithubAccount bganapa `
-    -GithubBranch stack-admin `
+    -GithubAccount azure `
+    -GithubBranch master `
     -PredefinedAssemblies $assembly `
     -Name $name `
     -ClientTypeName $client `

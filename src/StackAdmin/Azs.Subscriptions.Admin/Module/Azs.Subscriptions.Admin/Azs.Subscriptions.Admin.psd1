@@ -80,6 +80,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Set-AzsUserSubscription',
     'Get-AzsPlanMetric', 'Get-AzsDelegatedProvider',
     'Remove-AzsUserSubscription', 'New-AzsUserSubscription',
+    'Move-AzsSubscription', 'Test-AzsMoveSubscription',
     'Remove-AzsSubscriptionPlan', 'New-AzsOffer',
     'New-AzsOfferDelegation',
     'Remove-AzsOffer', 'Get-AzsOfferMetric', 'Get-AzsManagedOffer',
