@@ -19,13 +19,13 @@
 --->
 
 ## Current Release
-
-## Version 6.2.0
-* Enable Traffic Analytics parameters on Network Watcher cmdlets
 * Updated below cmdlets for Application Gateway
     - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
     - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
     - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+
+## Version 6.2.0
+* Enable Traffic Analytics parameters on Network Watcher cmdlets
 
 ## Version 6.1.1
 * Removed Default sku setting from New-AzureRmVirtualNetworkGateway cmdlet
