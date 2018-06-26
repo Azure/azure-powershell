@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputTypes in help files
 
 ## Version 0.5.1
 * Set minimum dependency of module to PowerShell 5.0
