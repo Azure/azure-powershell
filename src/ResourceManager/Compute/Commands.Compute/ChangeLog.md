@@ -19,6 +19,13 @@
 -->
 ## Current Release
 * `New-AzureRmVm` and `New-AzureRmVmss` are updated to use the latest `Strategies` library.
+* IP Tag feature for VMSS
+    - `New-AzureRmVmssIpTagConfig` cmdlet is added
+    - IpTag parameter is added to New-AzureRmVmssIpConfig
+* Auto OS Rollback feature for VMSS
+    - DisableAutoRollback parameters are added to New-AzureRmVmssConfig and Update-AzureRmVmss
+* OS Upgrade History feature for Vmss
+    - OSUpgradeHistory switch parameter is added to Get-AzureRmVmss
 * Fixed formatting of OutputType in help files
 
 ## Version 5.1.1
