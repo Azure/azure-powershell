@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         IAzureContextContainer _profile;
 
         public const int MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER = 3;
+        public const string AUX_HEADER_NAME = "x-ms-authorization-auxiliary";
+        public const string AUX_TOKEN_PREFIX = "Bearer";
+        public const string AUX_TOKEN_APPEND_CHAR = ";";
 
         /// <summary>
         /// Creates new instance from AzureRMCmdlet and add the RPRegistration handler.
@@ -85,16 +88,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             CheckAccessToSubscriptions(subscriptionIds);
 
             //get all the non default tenant ids for the subscriptions
-            var nonDeafultTenantIds = DefaultProfile.Subscriptions.Where(s => subscriptionIds.Contains(s.GetId().ToString()))?.Select(s => s.GetTenant())?.Distinct()?.Select(t => t != DefaultContext.Tenant.GetId().ToString());
+            var nonDeafultTenantIds = DefaultProfile.Subscriptions.Where(s => subscriptionIds.Contains(s.GetId().ToString()))?.Select(s => s.GetTenant())?.Distinct()?.Where(t => t != DefaultContext.Tenant.GetId().ToString());
 
             if ((nonDeafultTenantIds != null) && (nonDeafultTenantIds.Count() > 0))
             {
                 // WE can only fill in tokens for 3 tennats in the aux header, if tehre are more tenants fail now
                 if (nonDeafultTenantIds.Count() > MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER)
                 {
-                    throw new ArgumentException("Number of non default tenants required for supplied resources exceeds maximum allowed number of " + MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER);
+                    throw new ArgumentException("Number of tenants (tenants other than the one in the current context), that the requested resources belongs to, exceeds maximum allowed number of " + MAX_NUMBER_OF_TOKENS_ALLOWED_IN_AUX_HEADER);
                 }
-                //get the tokens for each tenant
+
+                //get the tokens for each tenant and prepare the string in the following format :
+                //"Header Value :: Bearer <auxiliary token1>;EncryptedBearer <auxiliary token2>; Bearer <auxiliary token3>"
+
+                var tokens = nonDeafultTenantIds.Select(t => (new StringBuilder(AUX_TOKEN_PREFIX).Append(" ").Append(GetTokenForTenant(t)?.AccessToken))?.ToString())?.ConcatStrings(AUX_TOKEN_APPEND_CHAR);
+
+                auxHeader = new Dictionary<String, List<String>>();
+
+                List<string> headerValues = new List<string>(1);
+                headerValues.Add(tokens);
+                auxHeader.Add(AUX_HEADER_NAME, headerValues);
             }
 
             return auxHeader;
@@ -113,6 +126,18 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 subscriptionWithNoAccess.Select(s => message.Append(" " + s));
                 throw new AuthenticationException(message.ToString());
             }
+        }
+
+
+        private IAccessToken GetTokenForTenant(string tenantId)
+        {
+            return AzureSession.Instance.AuthenticationFactory.Authenticate(
+                DefaultContext.Account,
+                DefaultContext.Environment,
+                tenantId,
+                null,
+                ShowDialog.Never,
+                null);
         }
 
         protected override string DataCollectionWarning
