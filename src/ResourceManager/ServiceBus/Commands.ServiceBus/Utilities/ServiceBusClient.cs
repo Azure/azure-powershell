@@ -189,14 +189,20 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes SetRegenerateKeys(string resourceGroupName, string namespaceName, string authRuleName, string regenerateKeys, string keyValue=null)
         {
             AccessKeys regenerateKeyslistKeys;
-            if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
-            else
-                regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
 
+            if (regenerateKeys == "PrimaryKey")
+                regenParam.KeyType = KeyType.PrimaryKey;
+            else
+                regenParam.KeyType = KeyType.SecondaryKey;
+
+            regenParam.Key = keyValue;
+
+            regenerateKeyslistKeys = Client.Namespaces.RegenerateKeys(resourceGroupName, namespaceName, authRuleName, regenParam);
+            
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
 
@@ -317,13 +323,19 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes NewQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName, string regenerateKeys)
+        public PSListKeysAttributes NewQueueKey(string resourceGroupName, string namespaceName, string queueName, string authRuleName, string regenerateKeys, string keyValue = null)
         {
             AccessKeys regenerateKeyslistKeys;
+            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
+
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Queues.RegenerateKeys(resourceGroupName, namespaceName, queueName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenParam.KeyType = KeyType.PrimaryKey;
             else
-                regenerateKeyslistKeys = Client.Queues.RegenerateKeys(resourceGroupName, namespaceName, queueName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenParam.KeyType = KeyType.SecondaryKey;
+
+            regenParam.Key = keyValue;
+            
+            regenerateKeyslistKeys = Client.Queues.RegenerateKeys(resourceGroupName, namespaceName, queueName, authRuleName, regenParam);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }
@@ -435,13 +447,19 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSListKeysAttributes(listKeys);
         }
 
-        public PSListKeysAttributes NewTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName, string regenerateKeys)
-        {           
+        public PSListKeysAttributes NewTopicKey(string resourceGroupName, string namespaceName, string topicName, string authRuleName, string regenerateKeys, string keyValue=null)
+        {
             AccessKeys regenerateKeyslistKeys;
+            RegenerateAccessKeyParameters regenParam = new RegenerateAccessKeyParameters();
+
             if (regenerateKeys == "PrimaryKey")
-                regenerateKeyslistKeys = Client.Topics.RegenerateKeys(resourceGroupName, namespaceName, topicName, authRuleName, new RegenerateAccessKeyParameters(KeyType.PrimaryKey));
+                regenParam.KeyType = KeyType.PrimaryKey;
             else
-                regenerateKeyslistKeys = Client.Topics.RegenerateKeys(resourceGroupName, namespaceName, topicName, authRuleName, new RegenerateAccessKeyParameters(KeyType.SecondaryKey));
+                regenParam.KeyType = KeyType.SecondaryKey;
+
+            regenParam.Key = keyValue;
+
+            regenerateKeyslistKeys = Client.Topics.RegenerateKeys(resourceGroupName, namespaceName, topicName, authRuleName, regenParam);
 
             return new PSListKeysAttributes(regenerateKeyslistKeys);
         }

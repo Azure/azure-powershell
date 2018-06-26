@@ -128,6 +128,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj">
+      <Project>{87ba5687-5563-4491-8846-77d98d0605d3}</Project>
+      <Name>Commands.Common.Aks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
