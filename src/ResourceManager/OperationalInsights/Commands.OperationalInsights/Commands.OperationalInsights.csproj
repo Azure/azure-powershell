@@ -156,7 +156,7 @@
     <Compile Include="Workspaces\SetAzureOperationalInsightsWorkspaceCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.OperationalInsights.psd1">
+    <None Include="AzureRM.OperationalInsights.psd1">
       <Link>AzureRM.OperationalInsights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -191,6 +191,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
+      <Project>{1338F7AE-7111-4ED3-8916-2D0FECC876F4}</Project>
+      <Name>Commands.Common.Network</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

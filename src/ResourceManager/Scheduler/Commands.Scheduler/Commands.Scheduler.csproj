@@ -106,7 +106,7 @@
     <Compile Include="Utilities\SchedulerClient\SchedulerClient.UpdateJob.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Scheduler.psd1">
+    <None Include="AzureRM.Scheduler.psd1">
       <Link>AzureRM.Scheduler.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

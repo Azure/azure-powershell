@@ -35,35 +35,60 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionBasic()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionBasic");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionSepcifyStorageAccountName()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionSepcifyStorageAccountName");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionCantListSepcifyStorageAccountKey()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionCantListSepcifyStorageAccountKey");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Updated Storage, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDiagnosticsExtensionSupportJsonConfig()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-DiagnosticsExtensionSupportJsonConfig");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVmssDiagnosticsExtension()
         {
@@ -75,13 +100,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderMismatchAccountNames()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithWrongName.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithWrongName.json");
 
             var exception = Record.Exception(() => DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resouce-id", null, null));
-            Assert.IsType(typeof(ArgumentException), exception);
+            Assert.IsType<ArgumentException>(exception);
 
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithWrongName.xml")
             };
@@ -89,7 +114,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             foreach (var configPath in configs)
             {
                 exception = Record.Exception(() => DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(configPath, "wrong-name", "a-key", "an-endpoint"));
-                Assert.IsType(typeof(ArgumentException), exception);
+                Assert.IsType<ArgumentException>(exception);
             }
         }
 
@@ -98,13 +123,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithSasToken()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
 
             string sasTokenValue = "This-is-a-sas-token";
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
-            Assert.Equal<string>(sasTokenValue, result.Item2["storageAccountSasToken"] as string);
+            Assert.Equal(sasTokenValue, result.Item2["storageAccountSasToken"] as string);
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithSasToken.xml")
             };
@@ -114,7 +139,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                 var privateSettings = DiagnosticsHelper.GetPrivateDiagnosticsConfiguration(configPath, "[StorageAccountName]", "a-key", "an-endpoint");
                 Assert.Null(privateSettings["storageAccountKey"]);
                 Assert.NotNull(privateSettings["storageAccountEndPoint"]);
-                Assert.Equal<string>(sasTokenValue, privateSettings["storageAccountSasToken"] as string);
+                Assert.Equal(sasTokenValue, privateSettings["storageAccountSasToken"] as string);
             }
         }
 
@@ -123,14 +148,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestDiagnosticsConfigBuilderWithStorageType()
         {
             string pubJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPublicConfigWithStorageType.json");
-            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionprivateConfigWithSasToken.json");
+            string privJsonConfigPath = GetConfigFilePath("DiagnosticsExtensionPrivateConfigWithSasToken.json");
 
             string storageTypeValue = "TableAndBlob";
 
             var result = DiagnosticsHelper.GetConfigurationsFromFiles(pubJsonConfigPath, privJsonConfigPath, "a-resource-id", null, null);
-            Assert.Equal<string>(storageTypeValue, result.Item1["StorageType"] as string);
+            Assert.Equal(storageTypeValue, result.Item1["StorageType"] as string);
 
-            string[] configs = new[] {
+            string[] configs = {
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.json"),
                 GetConfigFilePath("DiagnosticsExtensionConfigWithStorageType.xml")
             };
@@ -138,7 +163,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             foreach (var configPath in configs)
             {
                 var publicSettings = DiagnosticsHelper.GetPublicDiagnosticsConfigurationFromFile(configPath, "[StorageAccountName]", "dummy", null);
-                Assert.Equal<string>(storageTypeValue, publicSettings["StorageType"] as string);
+                Assert.Equal(storageTypeValue, publicSettings["StorageType"] as string);
             }
         }
     }

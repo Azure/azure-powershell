@@ -160,6 +160,24 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot create a context for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotCreateContext {
+            get {
+                return ResourceManager.GetString("CannotCreateContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to get context name for subscription with id &apos;{0}&apos;..
+        /// </summary>
+        internal static string CannotGetContextName {
+            get {
+                return ResourceManager.GetString("CannotGetContextName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to set default context &apos;{0}&apos;..
         /// </summary>
         internal static string CannotSetDefaultContext {

@@ -491,23 +491,41 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         public void CreateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+#if NETSTANDARD
+            _catalogClient.Catalog.CreateCredential(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogCredentialCreateParameters
+                {
+                    Password = password,
+                    Uri = hostUri
+                });
+#else
             _catalogClient.Catalog.CreateSecret(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
                 });
+#endif
         }
 
         public USqlSecret UpdateSecret(string accountName, string databaseName,
             string secretName, string password, string hostUri)
         {
+#if NETSTANDARD
+            _catalogClient.Catalog.UpdateCredential(accountName, databaseName, secretName,
+                new DataLakeAnalyticsCatalogCredentialUpdateParameters
+                {
+                    Password = password,
+                    Uri = hostUri
+                });
+#else
             _catalogClient.Catalog.UpdateSecret(accountName, databaseName, secretName,
                 new DataLakeAnalyticsCatalogSecretCreateOrUpdateParameters
                 {
                     Password = password,
                     Uri = hostUri
                 });
+#endif
 
             // TODO: Remove this during the next breaking change release.
             return null;
@@ -515,6 +533,20 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
         public void DeleteSecret(string accountName, string databaseName, string secretName)
         {
+#if NETSTANDARD
+            if (string.IsNullOrEmpty(secretName))
+            {
+                var credentials = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
+                foreach (var credential in credentials)
+                {
+                    _catalogClient.Catalog.DeleteCredential(accountName, databaseName, credential.Name);
+                }
+            }
+            else
+            {
+                _catalogClient.Catalog.DeleteCredential(accountName, databaseName, secretName);
+            }
+#else
             if (string.IsNullOrEmpty(secretName))
             {
                 _catalogClient.Catalog.DeleteAllSecrets(accountName, databaseName);
@@ -523,12 +555,21 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             {
                 _catalogClient.Catalog.DeleteSecret(accountName, databaseName, secretName);
             }
+#endif
         }
 
+
+#if NETSTANDARD
+        public USqlCredential GetSecret(string accountName, string databaseName, string secretName)
+        {
+            return _catalogClient.Catalog.GetCredential(accountName, databaseName, secretName);
+        }
+#else
         public USqlSecret GetSecret(string accountName, string databaseName, string secretName)
         {
             return _catalogClient.Catalog.GetSecret(accountName, databaseName, secretName);
         }
+#endif
 
         public bool TestCatalogItem(string accountName, CatalogPathInstance path,
             DataLakeAnalyticsEnums.CatalogItemType itemType)
@@ -843,16 +884,23 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        private ObsoleteUSqlCredential GetCredential(string accountName,
-            string databaseName, string credName)
+#if NETSTANDARD
+        private USqlCredential GetCredential(string accountName, string databaseName, string credName)
         {
-            return
-                new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName,
-                    credName), databaseName, computeAccountName: accountName);
+            return _catalogClient.Catalog.GetCredential(accountName, databaseName, credName);
         }
+#else
+        private ObsoleteUSqlCredential GetCredential(string accountName, string databaseName, string credName)
+        {
+            return new ObsoleteUSqlCredential(_catalogClient.Catalog.GetCredential(accountName, databaseName, credName), databaseName, computeAccountName: accountName);
+        }
+#endif
 
-        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName,
-            string databaseName)
+#if NETSTANDARD
+        private IList<USqlCredential> GetCredentials(string accountName, string databaseName)
+#else
+        private IList<ObsoleteUSqlCredential> GetCredentials(string accountName, string databaseName)
+#endif
         {
             List<USqlCredential> toReturn = new List<USqlCredential>();
             var response = _catalogClient.Catalog.ListCredentials(accountName, databaseName);
@@ -863,7 +911,11 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
                 toReturn.AddRange(response);
             }
 
+#if NETSTANDARD
+            return toReturn;
+#else
             return toReturn.Select(element => new ObsoleteUSqlCredential(element, databaseName, computeAccountName: accountName)).ToList();
+#endif
         }
 
         private USqlSchema GetSchema(string accountName, string databaseName,
@@ -1116,8 +1168,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return toReturn;
         }
 
-        #endregion
-        #region Compute Policy Operations
+#endregion
+#region Compute Policy Operations
         public ComputePolicy CreateComputePolicy(string resourceGroupName, string accountName, string policyName, Guid objectId, string objectType, int? maxAnalyticsUnitsPerJob = null, int? minPriorityPerJob = null)
         {
             if (string.IsNullOrEmpty(resourceGroupName))
@@ -1189,8 +1241,8 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             _accountClient.ComputePolicies.Delete(resourceGroupName, accountName, policyName);
         }
 
-        #endregion
-        #region Job Related Operations
+#endregion
+#region Job Related Operations
 
         public JobRecurrenceInformation GetJobReccurence(string accountName, Guid recurrenceId, DateTimeOffset? start = null, DateTimeOffset? end = null)
         {
@@ -1302,9 +1354,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             return jobList.GetRange(0, Math.Min(curCount, top.Value));
         }
 
-        #endregion
+#endregion
 
-        #region internal helpers
+#region internal helpers
         internal string GetResourceGroupByAccountName(string accountName)
         {
             try
@@ -1355,9 +1407,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
             // default case requires both
             return string.Format("startswith({0},'{1}') and endswith({0},'{2}')", propertyName, subStrings[0], subStrings[1]);
         }
-        #endregion
+#endregion
 
-        #region private helpers
+#region private helpers
 
         private IPage<JobInformationBasic> ListJobsWithNextLink(string nextLink)
         {
@@ -1470,6 +1522,6 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
 
             return isList;
         }
-        #endregion
+#endregion
     }
 }

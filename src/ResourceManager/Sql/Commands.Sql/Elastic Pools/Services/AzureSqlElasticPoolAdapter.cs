@@ -115,7 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 {
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
-                }
+                },
+                LicenseType = model.LicenseType
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -147,7 +148,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 {
                     MinCapacity = model.DatabaseCapacityMin,
                     MaxCapacity = model.DatabaseCapacityMax
-                }
+                },
+                LicenseType = model.LicenseType
             });
 
             return CreateElasticPoolModelFromResponse(model.ResourceGroupName, model.ServerName, resp);
@@ -403,7 +405,8 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Services
                 Dtu = pool.Dtu,
                 DatabaseDtuMin = pool.DatabaseDtuMin,
                 DatabaseDtuMax = pool.DatabaseDtuMax,
-                Family = pool.Sku.Family
+                Family = pool.Sku.Family,
+                LicenseType = pool.LicenseType
             };
 
             return model;
