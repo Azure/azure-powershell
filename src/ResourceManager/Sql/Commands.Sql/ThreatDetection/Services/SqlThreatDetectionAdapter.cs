@@ -108,8 +108,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
 
             var serverThreatDetectionPolicyModel = new ServerThreatDetectionPolicyModel()
             {
-                ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionPolicy.ToString()),
-
+                ThreatDetectionState = ModelizeThreatDetectionState(threatDetectionPolicy.State.ToString()),
                 NotificationRecipientsEmails = string.Join(";", threatDetectionPolicy.EmailAddresses.ToArray()),
                 EmailAdmins = threatDetectionPolicy.EmailAccountAdmins == null ? false : threatDetectionPolicy.EmailAccountAdmins.Value,
                 RetentionInDays = (uint)threatDetectionPolicy.RetentionDays,
@@ -259,16 +258,29 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
                     ? SecurityAlertPolicyState.Enabled
                     : SecurityAlertPolicyState.Disabled,
                 DisabledAlerts = ExtractExcludedDetectionType(model),
-                EmailAddresses = model.NotificationRecipientsEmails.Split(';'),
+                EmailAddresses = model.NotificationRecipientsEmails.Split(';').Where(mail => !string.IsNullOrEmpty(mail)).ToList(),
                 EmailAccountAdmins = model.EmailAdmins,
                 RetentionDays = Convert.ToInt32(model.RetentionInDays),
-
             };
 
-            BaseSecurityAlertPolicyProperties legacyProperties = new BaseSecurityAlertPolicyProperties();
-            PopulateStoragePropertiesInPolicy(model, legacyProperties, storageEndpointSuffix);
-            policy.StorageEndpoint = legacyProperties.StorageEndpoint;
-            policy.StorageAccountAccessKey = legacyProperties.StorageAccountAccessKey;
+            if (policy.State == SecurityAlertPolicyState.Enabled && !policy.EmailAccountAdmins.Value && !policy.EmailAddresses.Any())
+            {
+                // For new TD policy, make sure EmailAccountAdmins is true
+                policy.EmailAccountAdmins = true;
+            }
+
+            if (string.IsNullOrEmpty(model.StorageAccountName))
+            {
+                policy.StorageEndpoint = null;
+                policy.StorageAccountAccessKey = null;
+            }
+            else
+            {
+                BaseSecurityAlertPolicyProperties legacyProperties = new BaseSecurityAlertPolicyProperties();
+                PopulateStoragePropertiesInPolicy(model, legacyProperties, storageEndpointSuffix);
+                policy.StorageEndpoint = legacyProperties.StorageEndpoint;
+                policy.StorageAccountAccessKey = legacyProperties.StorageAccountAccessKey;
+            }
 
             return policy;
         }
@@ -296,6 +308,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
             properties.RetentionDays = Convert.ToInt32(model.RetentionInDays);
             return properties;
         }
+
         private void PopulateStoragePropertiesInPolicy(BaseThreatDetectionPolicyModel model, BaseSecurityAlertPolicyProperties properties, string storageEndpointSuffix)
         {
             if (string.IsNullOrEmpty(model.StorageAccountName)) // can happen if the user didn't provide account name for a policy that lacked it 

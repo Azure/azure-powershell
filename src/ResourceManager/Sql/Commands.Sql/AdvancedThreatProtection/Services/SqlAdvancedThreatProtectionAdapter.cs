@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// The Threat Detection endpoints communicator used by this adapter
         /// </summary>
-        private ThreatDetectionEndpointsCommunicator ThreatDetectionCommunicator { get; set; }
+        private SqlThreatDetectionAdapter SqlThreatDetectionAdapter { get; set; }
 
         /// <summary>
         /// The Azure endpoints communicator used by this adapter
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         {
             Context = context;
             Subscription = context.Subscription;
-            ThreatDetectionCommunicator = new ThreatDetectionEndpointsCommunicator(Context);
+            SqlThreatDetectionAdapter = new SqlThreatDetectionAdapter(Context);
         }
 
         /// <summary>
@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         public ServerAdvancedThreatProtectionPolicyModel GetServerAdvancedThreatProtectionPolicy(string resourceGroup, string serverName)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
-            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(resourceGroup, serverName);
+            var threatDetectionPolicy = SqlThreatDetectionAdapter.GetServerThreatDetectionPolicy(resourceGroup, serverName);
             var serverAdvancedThreatProtectionPolicyModel = new ServerAdvancedThreatProtectionPolicyModel()
             {
                 ResourceGroupName = resourceGroup,
                 ServerName = serverName,
-                IsEnabled = (threatDetectionPolicy.State == SecurityAlertPolicyState.Enabled)
+                IsEnabled = (threatDetectionPolicy.ThreatDetectionState == ThreatDetectionStateType.Enabled)
             };
 
             return serverAdvancedThreatProtectionPolicyModel;
@@ -78,17 +78,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         public ServerAdvancedThreatProtectionPolicyModel SetServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
-            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName);
+            var threatDetectionPolicy = SqlThreatDetectionAdapter.GetServerThreatDetectionPolicy(model.ResourceGroupName, model.ServerName);
 
-            threatDetectionPolicy.State = model.IsEnabled ? SecurityAlertPolicyState.Enabled : SecurityAlertPolicyState.Disabled;
+            threatDetectionPolicy.ThreatDetectionState = model.IsEnabled ? ThreatDetectionStateType.Enabled : ThreatDetectionStateType.Disabled;
 
-            if (model.IsEnabled && !threatDetectionPolicy.EmailAccountAdmins.Value && !threatDetectionPolicy.EmailAddresses.Any())
-            {
-                // For new TD policy, make sure EmailAccountAdmins is true
-                threatDetectionPolicy.EmailAccountAdmins = true;
-            }
-
-            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, threatDetectionPolicy);
+            SqlThreatDetectionAdapter.SetServerThreatDetectionPolicy(threatDetectionPolicy, AzureEnvironment.Endpoint.StorageEndpointSuffix);
 
             return model;
         }

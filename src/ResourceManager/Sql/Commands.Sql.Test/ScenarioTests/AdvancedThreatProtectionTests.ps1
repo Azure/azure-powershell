@@ -52,23 +52,12 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Assert-False { $policy.IsEnabled }
 
 		# See that ATP cmdlets don't mess up the Threat Detection policy
-		Set-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType "Sql_Injection_Vulnerability" -StorageAccountName $params.storageAccount
-		$policy = Get-AzureRmSqlDatabaseThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	
-		Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
-
-		# Assert
-		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
-		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
-		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
-		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
-
+		Set-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability -StorageAccountName $params.storageAccount
 
 		Disable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
 
 		# Assert
+		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
 		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
 		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
 		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
@@ -76,6 +65,16 @@ function Test-AdvancedThreatProtectionPolicyTest
 		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
 		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 
+		Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName $params.rgname -ServerName $params.serverName 
+
+		# Assert
+		$policy = Get-AzureRmSqlServerThreatDetectionPolicy -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
+		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
+		Assert-AreEqual $policy.StorageAccountName $params.storageAccount
+		Assert-False {$policy.EmailAdmins}
+		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
+		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
 	}
 	finally
 	{
@@ -103,6 +102,7 @@ function Get-SqlAdvancedThreatProtectionTestEnvironmentParameters ($testSuffix)
 	return @{ rgname = "sql-atp-cmdlet-test-rg" +$testSuffix;
 			  serverName = "sql-atp-cmdlet-server" +$testSuffix;
 			  databaseName = "sql-atp-cmdlet-db" + $testSuffix;
+			  storageAccount = "sqlatpcmdlets" +$testSuffix
 		}
 }
 
