@@ -504,9 +504,7 @@ function Test-ApplicationGatewayCRUD3
 	)
 
 	# Setup
-
-	$resourceTypeParent = "Microsoft.Network/applicationgateways"
-	$location = Get-ProviderLocation $resourceTypeParent
+	$location = "centralus"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
