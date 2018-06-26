@@ -12,13 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.Rest;
+using Microsoft.Rest.Azure;
+using System.Globalization;
 using System.Management.Automation;
 using System.Net;
+using System.Threading;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
-    /// Get the list of events for at a subscription level.
+    /// Removes a named diagnostic setting or disables the setting called 'service' if the name argument is not present or if is 'service'.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmDiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
@@ -52,17 +58,91 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 target: string.Format("Remove a diagnostic setting for resource Id: {0}", this.ResourceId),
                 action: "Remove a diagnostic setting"))
             {
-                Rest.Azure.AzureOperationResponse result = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
-                    resourceUri: this.ResourceId,
-                    name: string.IsNullOrWhiteSpace(this.Name) ? TempServiceName : this.Name).Result;
+                // Name defaults to "service"
+                if (string.IsNullOrWhiteSpace(this.Name))
+                {
+                    this.Name = TempServiceName;
+                }
 
+                string requestId;
+                HttpStatusCode statusCode;
+                bool isService = string.Equals(TempServiceName, this.Name, System.StringComparison.OrdinalIgnoreCase);
+                if (isService)
+                {
+                    WriteDebugWithTimestamp("Getting 'service' diagnostic setting");
+                    AzureOperationResponse<DiagnosticSettingsResource> result = this.MonitorManagementClient.DiagnosticSettings.GetWithHttpMessagesAsync(resourceUri: this.ResourceId, name: TempServiceName).Result;
+                    if (result.Response == null)
+                    {
+                        WriteDebugWithTimestamp("Response was null");
+                        requestId = result.RequestId;
+                        statusCode = HttpStatusCode.OK;
+                    }
+                    else if (!result.Response.IsSuccessStatusCode)
+                    {
+                        // NotFound is still OK since this cmdlet want to delete
+                        WriteDebugWithTimestamp("Response marked as not successful");
+                        if (result.Response.StatusCode != HttpStatusCode.NotFound)
+                        {
+                            WriteErrorWithTimestamp(message: string.Format(CultureInfo.InvariantCulture, "Error removing Diagnostic Settings. Status code: {0}", result.Response.StatusCode));
+                            return;
+                        }
+
+                        WriteDebugWithTimestamp("Response marked as not NotFound");
+                        requestId = result.RequestId;
+                        statusCode = HttpStatusCode.OK;
+                    }
+                    else
+                    {
+                        WriteDebugWithTimestamp("Setting successfully recovered, disabling it");
+                        this.DisableAllCategoriesAndTimegrains(result.Body);
+
+                        AzureOperationResponse<DiagnosticSettingsResource> resultService = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateWithHttpMessagesAsync(
+                            resourceUri: this.ResourceId,
+                            parameters: result.Body,
+                            name: TempServiceName).Result;
+
+                        requestId = resultService.RequestId;
+                        statusCode = resultService.Response != null ? resultService.Response.StatusCode : HttpStatusCode.OK;
+                    }
+                }
+                else
+                {
+                    WriteDebugWithTimestamp("Removing named diagnostic setting: {0}", this.Name);
+                    Rest.Azure.AzureOperationResponse resultDelete = this.MonitorManagementClient.DiagnosticSettings.DeleteWithHttpMessagesAsync(
+                        resourceUri: this.ResourceId,
+                        name: this.Name).Result;
+
+                    requestId = resultDelete.RequestId;
+                    statusCode = resultDelete.Response != null ? resultDelete.Response.StatusCode : HttpStatusCode.OK;
+                }
+
+                WriteDebugWithTimestamp("Sending response");
                 var response = new AzureOperationResponse
                 {
-                    RequestId = result.RequestId,
-                    StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK
+                    RequestId = requestId,
+                    StatusCode = statusCode
                 };
 
                 WriteObject(response);
+            }
+        }
+
+        private void DisableAllCategoriesAndTimegrains(DiagnosticSettingsResource properties)
+        {
+            if (properties.Logs != null)
+            {
+                foreach (var log in properties.Logs)
+                {
+                    log.Enabled = false;
+                }
+            }
+
+            if (properties.Metrics != null)
+            {
+                foreach (var metric in properties.Metrics)
+                {
+                    metric.Enabled = false;
+                }
             }
         }
     }

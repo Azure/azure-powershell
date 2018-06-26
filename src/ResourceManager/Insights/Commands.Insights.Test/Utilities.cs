@@ -235,7 +235,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: null);
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
-            //// VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only start date
             cmdlet.StartTime = startDate;

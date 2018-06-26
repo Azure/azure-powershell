@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the diagnostics setting name parameter of the cmdlet
         /// </summary>
-        [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name. Defaults to 'service'")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The diagnostic setting name. Defaults to 'service'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
