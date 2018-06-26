@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.3'
+ModuleVersion = '5.0.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -134,11 +134,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
 
-        ReleaseNotes = '* Support Management Policy in Storage
-       - Remove-AzureRmStorageAccountNetworkRule
-	   - Set-AzureRmStorageAccountManagementPolicy
-	   - Get-AzureRmStorageAccountManagementPolicy
-	   - Remove-AzureRmStorageAccountManagementPolicy'
+        ReleaseNotes = '* Support create Storage account with Hierarchical Namespace enabled 
+       - New-AzureRmStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'
