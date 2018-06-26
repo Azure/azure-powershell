@@ -683,7 +683,8 @@ function Add-Module {
         }
         catch
         {
-            Remove-Item $TempRepoPath/$moduleName/$($ModuleMetadata.ModuleVersion.toString()) -Force
+            $nugetPackageName = $moduleName + "." + $ModuleMetadata.ModuleVersion.toString() + ".nupkg"
+            Remove-Item $TempRepoPath/$nugetPackageName -Force
             Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
         }
         
