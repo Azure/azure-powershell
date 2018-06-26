@@ -76,6 +76,9 @@
   "src/ResourceManager/DeviceProvisioningServices/": [
     ".\\src\\ResourceManager\\DeviceProvisioningServices\\Commands.DeviceProvisioningServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.DeviceProvisioningServices.dll"
   ],
+  "src/ResourceManager/DevSpaces/": [
+    ".\\src\\ResourceManager\\DevSpaces\\Commands.DevSpaces.Test\\bin\\Debug\\Microsoft.Azure.Commands.DevSpaces.Test.dll"
+  ],
   "src/ResourceManager/DevTestLabs/": [],
   "src/ResourceManager/Dns/": [
     ".\\src\\ResourceManager\\Dns\\Commands.Dns.Test\\bin\\Debug\\Microsoft.Azure.Commands.Dns.Test.dll"

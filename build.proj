@@ -280,7 +280,7 @@
 
     <Exec ContinueOnError="false"
       Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewHelpIndex.ps1 -OutputFile $(PackageDirectory)\index.json -BuildConfig $(Configuration) &quot;" 
-	    Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest' and $(CodeSign) == 'true'"/>
+	    Condition=" ('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'"/>
 	  
     <!-- Copying modules to be signed -->
 
@@ -317,7 +317,7 @@
 
     <Exec ContinueOnError="false"
       Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\NewOutputTypeIndex.ps1 -OutputFile $(PackageDirectory)\outputtypes.json -BuildConfig $(Configuration) &quot;" 
-      Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest' and $(CodeSign) == 'true'"/>
+      Condition=" ('$(Scope)' == 'All' or '$(Scope)' == 'Latest') and $(CodeSign) == 'true'"/>
       
     <!-- AzureRM -->
     <Copy SourceFiles="$(PackageDirectory)\$(Configuration)\AzureRM.psd1"
@@ -606,7 +606,7 @@
   <Target Name="ChangeLogCheck">
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CheckChangeLog.ps1 -FilesChanged '@(FilesChanged)' &quot;"
       ContinueOnError="false"
-      Condition="'$(Latest)' == 'true'"/>
+      Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest' "/>
     <OnError ExecuteTargets="ChangeLogErrorMessage"/>
   </Target>
 

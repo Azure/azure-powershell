@@ -18,7 +18,25 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Get-AzureRmPolicyAssignment cmdlets:
+    - Add support for listing -Scope values at management group level
+    - Add support for retrieving individual assignments with -Scope values at management group level
+    - Add -Effective and -All switches to control $filter parameter
+* Update Get/New/Remove/Set-AzureRmPolicyDefinition cmdlets
+    - Add -ManagementGroupName parameter to apply operations to a given management group
+    - Add -SubscriptionId parameter to apply operations to a given subscription
+* Update Get/New/Remove/Set-AzureRmPolicySetDefinition cmdlets
+    - Add -ManagementGroupName parameter to apply operations to a given management group
+    - Add -SubscriptionId parameter to apply operations to a given subscription
+* Add KeyVault secret reference support in parameters when using `TemplateParameterObject` in `New-AzureRmResourceGroupDeployment`
+
+## Version 6.1.1
+* Fix error in `New-AzureRmRoleAssignment` help
 * Fixed formatting of OutputType in help files
+* Fix issue where `-EndDate` parameter was ignored for `New-AzureRmADAppCredential`
+    - https://github.com/Azure/azure-powershell/issues/6505
+* Fix issue where `Add-AzureRmADGroupMember` used incorrect URL to make request
+    - https://github.com/Azure/azure-powershell/issues/6485
 
 ## Version 6.1.0
 * Fix issue with `Properties` property of `PSResource` object(s) returned from `Get-AzureRmResource`
@@ -92,7 +110,7 @@
 ## Version 5.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 4.4.1
 
 ## Version 4.4.0
@@ -116,7 +134,7 @@
 * Add -Mode parameter to New-AzureRmPolicyDefinition cmdlet
 * Add Support for removal of roleassignment using PSRoleAssignment object
     - Users can now use PSRoleassignmnet inputobject with Remove-AzureRMRoleAssignment commandlet to remove the roleassignment.
-    
+
 ## Version 4.3.1
 
 ## Version 4.3.0
@@ -136,7 +154,7 @@
 ## Version 4.1.0
 * Fixed issue where Get-AzureRMRoleAssignment would result in a Bad Request if the number of roleassignments where greater than 1000
     - Users can now use Get-AzureRMRoleAssignment even if the roleassignments to be returned is greater than 1000
-    
+
 ## Version 4.0.1
 
 ## Version 4.0.0
@@ -150,12 +168,12 @@
 ## Version 3.6.0
 * Support policy parameters for New-AzureRmPolicyDefinition and New-AzureRmPolicyAssignment
     - Users can now use Parameter parameter with New-AzureRmPolicyDefinition. This accepts both JSON string and file path.
-    - Users can now provide policy parameter values in New-AzureRmPolicyAssignment in a couple of ways, including JSON string, file path, PS object, and through PowerShell parameters. 
+    - Users can now provide policy parameter values in New-AzureRmPolicyAssignment in a couple of ways, including JSON string, file path, PS object, and through PowerShell parameters.
 
 ## Version 3.5.0
 * Support Tag as parameters for Find-AzureRmResource
     - Users can now use Tag parameter with Find-AzureRmResource
-    - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations. 
+    - Fixed the issue where illegal combinations of TagName, TagValue with other search parameters was allowed in Find-AzureRmResource and would result in users getting exception from the service by disallowing such combinations.
 
 ## Version 3.4.0
 * Support ResourceNameEquals and ResourceGroupNameEquals as parameters for Find-AzureRmResource
