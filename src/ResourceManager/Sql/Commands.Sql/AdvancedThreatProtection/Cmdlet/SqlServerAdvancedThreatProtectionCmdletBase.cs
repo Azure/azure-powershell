@@ -30,6 +30,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
         protected const string UseResourceIdParameterSet = "UseResourceIdParameterSet";
+        protected const string UseExplicitArgumentsParameterSet = "UseExplicitArgumentsParameterSet";
 
         /// <summary>
         /// Server resource
@@ -47,14 +48,15 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         [Parameter(ParameterSetName = UseResourceIdParameterSet,
             Mandatory = false,
             ValueFromPipeline = true,
-            HelpMessage = "The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.")]
+            HelpMessage = "The resource id of a Advanced Threat Protection (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
-        [Parameter(Mandatory = true,
+        [Parameter(ParameterSetName = UseExplicitArgumentsParameterSet,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]

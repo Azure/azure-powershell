@@ -14,16 +14,21 @@ Enables Advanced Threat Protection on a server.
 
 ### UseParentResourceParameterSet
 ```
-Enable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
+Enable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UseResourceIdParameterSet
 ```
-Enable-AzureRmSqlServerAdvancedThreatProtection [-ResourceId <String>] -ServerName <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Enable-AzureRmSqlServerAdvancedThreatProtection [-ResourceId <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UseExplicitArgumentsParameterSet
+```
+Enable-AzureRmSqlServerAdvancedThreatProtection -ServerName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +111,7 @@ SQL Database server name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: UseExplicitArgumentsParameterSet
 Aliases:
 
 Required: True

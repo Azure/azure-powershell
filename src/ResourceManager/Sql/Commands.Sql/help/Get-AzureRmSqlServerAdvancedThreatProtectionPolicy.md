@@ -14,14 +14,20 @@ Gets Advanced Threat Protection policy of a server.
 
 ### UseParentResourceParameterSet
 ```
-Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-InputObject <AzureSqlServerModel>] -ServerName <String>
+Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-InputObject <AzureSqlServerModel>]
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### UseResourceIdParameterSet
 ```
-Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-ResourceId <String>] -ServerName <String>
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-ResourceId <String>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### UseExplicitArgumentsParameterSet
+```
+Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ServerName <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +107,7 @@ SQL Database server name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: UseExplicitArgumentsParameterSet
 Aliases:
 
 Required: True
