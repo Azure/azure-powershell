@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
