@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Expose new Skus for Zone-Redundant VirtualNetworkGateways
 
 ## Version 6.2.0
 * Enable Traffic Analytics parameters on Network Watcher cmdlets
