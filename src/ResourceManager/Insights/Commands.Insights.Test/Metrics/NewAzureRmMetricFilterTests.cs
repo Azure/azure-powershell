@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
         {
             Cmdlet.Dimension = "City";
             Cmdlet.Operator = "eq";
-            Cmdlet.Values = new string[] { "Seattle", "New York" };
+            Cmdlet.Value = new string[] { "Seattle", "New York" };
             Cmdlet.ExecuteCmdlet();
             string expectedOutput = "City eq 'Seattle' or City eq 'New York'";
 
