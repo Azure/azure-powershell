@@ -559,7 +559,8 @@
           <ListEntry>
             <ListItems>
               <ListItem>
-                <PropertyName>Result</PropertyName>
+                <Label>Result</Label>
+                <ScriptBlock>if($_.Result) { $_.Result } else { "Error" }</ScriptBlock>
               </ListItem>
             </ListItems>
           </ListEntry>

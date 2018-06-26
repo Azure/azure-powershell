@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         public string Body { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "App properties of the route message")]
-        public Hashtable AppProperties { get; set; }
+        public Hashtable AppProperty { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "System properties of the route message")]
-        public Hashtable SystemProperties { get; set; }
+        public Hashtable SystemProperty { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = InputObjectTestRouteParameterSet, HelpMessage = "Show detailed error, if exist")]
         [Parameter(Mandatory = false, ParameterSetName = ResourceIdTestRouteParameterSet, HelpMessage = "Show detailed error, if exist")]
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
                 iotHubDescription = this.IotHubClient.IotHubResource.Get(this.ResourceGroupName, this.Name);
             }
 
-            RoutingMessage routingMessage = new RoutingMessage(this.Body, this.AppProperties != null ? this.AppProperties.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value) : null, this.SystemProperties != null ? this.SystemProperties.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value) : null);
+            RoutingMessage routingMessage = new RoutingMessage(this.Body, this.AppProperty != null ? this.AppProperty.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value) : null, this.SystemProperty != null ? this.SystemProperty.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value) : null);
 
             switch (ParameterSetName)
             {
