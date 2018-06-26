@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 5.0.4-preview
+* Support create Storage account with Hierarchical Namespace enabled 
+       - New-AzureRmStorageAccount
+
 ## Version 5.0.3-preview
 * Support Management Policy in Storage
        - Remove-AzureRmStorageAccountNetworkRule
