@@ -25,6 +25,16 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerAdvancedThreatProtectionCmdletBase
     {
         /// <summary>
+        /// Provides the model element that this cmdlet operates on
+        /// </summary>
+        /// <returns>A model object</returns>
+        protected override ServerAdvancedThreatProtectionPolicyModel GetEntity()
+        {
+            ServerAdvancedThreatProtectionPolicyModel model = base.GetEntity();
+            return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(model.ResourceGroupName, model.ServerName);
+        }
+
+        /// <summary>
         /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>

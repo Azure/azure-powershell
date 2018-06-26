@@ -76,8 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 resourceGroupName = InputObject.ResourceGroupName;
                 serverName = InputObject.ServerName;
             }
-
-            if (string.Equals(this.ParameterSetName, UseResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
+            else if (string.Equals(this.ParameterSetName, UseResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
             {
                 var resourceInfo = new ResourceIdentifier(ResourceId);
                 resourceGroupName = resourceInfo.ResourceGroupName;
@@ -86,7 +85,11 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
                 serverName = serverResourceInfo.ResourceName;
             }
 
-            return ModelAdapter.GetServerAdvancedThreatProtectionPolicy(resourceGroupName, serverName);
+            return new ServerAdvancedThreatProtectionPolicyModel()
+            {
+                ResourceGroupName = resourceGroupName,
+                ServerName = serverName
+            };
         }
 
         /// <summary>

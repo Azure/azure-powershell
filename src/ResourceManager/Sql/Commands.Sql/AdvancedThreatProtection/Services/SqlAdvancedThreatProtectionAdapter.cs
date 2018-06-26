@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using Microsoft.Azure.Management.Sql.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
 {
@@ -74,32 +75,20 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         /// <summary>
         /// Sets a server Advanced Threat Protection policy model for the given database
         /// </summary>
-        public ServerAdvancedThreatProtectionPolicyModel EnableServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
+        public ServerAdvancedThreatProtectionPolicyModel SetServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
         {
             // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
-            var policy = new Management.Sql.Models.ServerSecurityAlertPolicy()
+            var threatDetectionPolicy = ThreatDetectionCommunicator.GetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName);
+
+            threatDetectionPolicy.State = model.IsEnabled ? SecurityAlertPolicyState.Enabled : SecurityAlertPolicyState.Disabled;
+
+            if (model.IsEnabled && !threatDetectionPolicy.EmailAccountAdmins.Value && !threatDetectionPolicy.EmailAddresses.Any())
             {
-                State = SecurityAlertPolicyState.Enabled,
-                EmailAccountAdmins = true                
-            };
+                // For new TD policy, make sure EmailAccountAdmins is true
+                threatDetectionPolicy.EmailAccountAdmins = true;
+            }
 
-            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, policy);
-
-            return model;
-        }
-
-        /// <summary>
-        /// Disables the server Advanced Threat Protection policy model for the given database
-        /// </summary>
-        public ServerAdvancedThreatProtectionPolicyModel DisableServerAdvancedThreatProtection(ServerAdvancedThreatProtectionPolicyModel model)
-        {
-            // Currently Advanced Threat Protection policy is a TD policy until the backend will support Advanced Threat Protection APIs
-            var policy = new Management.Sql.Models.ServerSecurityAlertPolicy()
-            {
-                State = SecurityAlertPolicyState.Disabled
-            };
-
-            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, policy);
+            ThreatDetectionCommunicator.SetServerSecurityAlertPolicy(model.ResourceGroupName, model.ServerName, threatDetectionPolicy);
 
             return model;
         }

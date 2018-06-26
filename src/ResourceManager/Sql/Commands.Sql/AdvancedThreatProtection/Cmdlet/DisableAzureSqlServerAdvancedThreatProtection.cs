@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ServerAdvancedThreatProtectionPolicyModel PersistChanges(ServerAdvancedThreatProtectionPolicyModel model)
         {
             model.IsEnabled = false;
-            ModelAdapter.DisableServerAdvancedThreatProtection(model);
-            return null;
+            ModelAdapter.SetServerAdvancedThreatProtection(model);
+            return model;
         }
     }
 }

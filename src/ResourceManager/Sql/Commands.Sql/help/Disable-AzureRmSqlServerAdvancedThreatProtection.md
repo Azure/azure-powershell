@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.```yaml
+The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.
 Type: String
 Parameter Sets: UseResourceIdParameterSet
 Aliases:
