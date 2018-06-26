@@ -677,7 +677,16 @@ function Add-Module {
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $file.DirectoryName -FileName $file.Name
 
         Write-Output "Publishing the module $moduleName"
-        Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        try
+        {
+            Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        }
+        catch
+        {
+            Remove-Item $TempRepoPath/$moduleName/$($ModuleMetadata.ModuleVersion.toString()) -Force
+            Publish-Module -Path $Path -Repository $TempRepo -Force | Out-Null
+        }
+        
         Write-Output "$moduleName published"
 
         # Create a psm1 and alter psd1 dependencies to allow fine-grained
