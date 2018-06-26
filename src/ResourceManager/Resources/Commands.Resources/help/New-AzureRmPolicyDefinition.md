@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 31F2AF24-488D-4CAF-A9C8-C8DAE76E031F
@@ -13,11 +13,28 @@ Creates a policy definition.
 
 ## SYNTAX
 
+### NameParameterSet (Default)
 ```
 New-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] -Policy <String>
  [-Metadata <String>] [-Parameter <String>] [-Mode <PolicyDefinitionMode>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### ManagementGroupNameParameterSet
+```
+New-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] -Policy <String>
+ [-Metadata <String>] [-Parameter <String>] [-Mode <PolicyDefinitionMode>] -ManagementGroupName <String>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+New-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] -Policy <String>
+ [-Metadata <String>] [-Parameter <String>] [-Mode <PolicyDefinitionMode>] -SubscriptionId <Guid>
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,17 +44,17 @@ The **New-AzureRmPolicyDefinition** cmdlet creates a policy definition that incl
 
 ### Example 1: Create a policy definition by using a policy file
 ```
-PS C:\>New-AzureRmPolicyDefinition -Name "VMPolicyDefinition" -Policy C:\VMPolicy.json
+PS C:\> New-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' -Policy C:\VMPolicy.json
 ```
 
 This command creates a policy definition named VMPolicyDefinition that contains the policy rule specified in C:\VMPolicy.json.
 
-### Example 2: Create a policy definition inline
+### Example 2: Create a policy definition inline in a management group
 ```
-PS C:\>New-AzureRmPolicyDefinition -Name "VMPolicyDefinition" -DisplayName "Virtual Machine policy definition" -Policy "{""if"":{""source"":""action"",""equals"":""Microsoft.Compute/virtualMachines/write""},""then"":{""effect"":""deny""}}"
+PS C:\> New-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' -ManagementGroupName Dept42 -DisplayName 'Virtual Machine policy definition' -Policy '{"if":{"source":"action","equals":"Microsoft.Compute/virtualMachines/write"},"then":{"effect":"deny"}}'
 ```
 
-This command creates a policy definition named VMPolicyDefinition.
+This command creates a policy definition named VMPolicyDefinition in management group Dept42.
 The command specifies the policy as a string in valid JSON format.
 
 ## PARAMETERS
@@ -142,6 +159,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupName
+The name of the management group of the new policy definition.
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string
 
@@ -230,6 +262,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription ID of the new policy definition.
+
+```yaml
+Type: Guid
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

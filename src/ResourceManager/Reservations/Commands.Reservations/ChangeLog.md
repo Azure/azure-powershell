@@ -19,6 +19,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest .NET SDK version 1.8.0-preview
+* Updated Cmdlet Get-AzureRmReservationCatalog
+    - Added parameters ReservedResourceType and Location.
+    - Removed Size and Tier from Catalog response.
+    - Renamed Capabilities to SkuProperties in Catalog response.
+* Updated Cmdlet Update-AzureRmReservation
+    - Added optional InstanceFlexibility parameter.
+* Added properties to Reservation response.
 * Fixed formatting of OutputType in help files
 
 ## Version 0.1.3
