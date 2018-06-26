@@ -76,7 +76,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.CognitiveServices.psd1">
+    <None Include="AzureRM.CognitiveServices.psd1">
       <Link>AzureRM.CognitiveServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

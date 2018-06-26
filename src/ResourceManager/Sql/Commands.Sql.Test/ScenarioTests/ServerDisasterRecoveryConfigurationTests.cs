@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact(Skip = "TODO fix the test failure")]
-        [Trait(Category.AcceptanceType, Category.Sql)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestServerDisasterRecoveryConfiguration()
         {
             RunPowerShellTest("Test-ServerDisasterRecoveryConfiguration");

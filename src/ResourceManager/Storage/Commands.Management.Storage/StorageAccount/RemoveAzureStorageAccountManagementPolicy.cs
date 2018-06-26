@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
-            if (ShouldProcess(this.StorageAccountName, Resources.RemoveManagementPolicy))
+            if (ShouldProcess(this.StorageAccountName, "Remove Storage Account Management Policy"))
             {
                 switch (ParameterSetName)
                 {

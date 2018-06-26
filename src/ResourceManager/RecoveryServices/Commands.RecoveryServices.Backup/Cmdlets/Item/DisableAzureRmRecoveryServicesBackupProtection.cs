@@ -17,6 +17,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsLifecycle.Disable, "AzureRmRecoveryServicesBackupProtection", SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class DisableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
+    public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item whose protection needs to be disabled.
@@ -67,12 +68,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     Item.Name, () =>
                     {
                         base.ExecuteCmdlet();
+
+                        ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                        string vaultName = resourceIdentifier.ResourceName;
+                        string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                         PsBackupProviderManager providerManager =
                             new PsBackupProviderManager(new Dictionary<System.Enum, object>()
-                        {
-                                {ItemParams.Item, Item},
-                                {ItemParams.DeleteBackupData, this.DeleteBackupData},
-                        }, ServiceClientAdapter);
+                            {
+                                { VaultParams.VaultName, vaultName },
+                                { VaultParams.ResourceGroupName, resourceGroupName },
+                                { ItemParams.Item, Item },
+                                { ItemParams.DeleteBackupData, this.DeleteBackupData },
+                            }, ServiceClientAdapter);
 
                         IPsBackupProvider psBackupProvider =
                             providerManager.GetProviderInstance(Item.WorkloadType,
@@ -82,11 +90,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                         // Track Response and display job details
 
-                        HandleCreatedJob(itemResponse, Resources.DisableProtectionOperation);
+                        HandleCreatedJob(
+                            itemResponse,
+                            Resources.DisableProtectionOperation,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
                     }
                 );
             }, ShouldProcess(Item.Name, VerbsLifecycle.Disable));
-            
+
         }
     }
 }

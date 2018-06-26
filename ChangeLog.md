@@ -1,4 +1,106 @@
-﻿## 6.1.1 - May 2018
+﻿## 6.3.0 - June 2018
+#### AzureRM.Profile
+* Updated error messages for Enable-AzureRmContextAutoSave
+* Create a context for each subscription when running 'Connect-AzureRmAccount' with no previous context
+
+#### Azure.Storage
+* Added additional information about -Permissions parameter in help files.
+
+#### AzureRM.Compute
+* 'Get-AzureRmVmDiskEncryptionStatus' fixes an issue observed for VMs with no data disks 
+* Update Compute client library version to fix following cmdlets
+    - Grant-AzureRmDiskAccess
+    - Grant-AzureRmSnapshotAccess
+    - Save-AzureRmVMImage
+* Fixed following cmdlets to show 'operation ID' and 'operation status' correctly:
+    - Start-AzureRmVM
+    - Stop-AzureRmVM
+    - Restart-AzureRmVM
+    - Set-AzureRmVM
+    - Remove-AzuerRmVM
+    - Set-AzureRmVmss
+    - Start-AzureRmVmssRollingOSUpgrade
+    - Stop-AzureRmVmssRollingUpgrade
+    - Start-AzureRmVmss
+    - Restart-AzureRmVmss
+    - Stop-AzureRmVmss
+    - Remove-AzureRmVmss
+    - ConvertTo-AzureRmVMManagedDisk
+    - Revoke-AzureRmSnapshotAccess
+    - Remove-AzureRmSnapshot
+    - Revoke-AzureRmDiskAccess
+    - Remove-AzureRmDisk
+    - Remove-AzureRmContainerService
+    - Remove-AzureRmAvailabilitySet
+
+#### AzureRM.EventGrid
+* Remove ValidateNotNullOrEmpty validation conditions for SubjectBeginsWith/SubjectEndsWith in Update-AzureRmEventGridSubscription cmdlet to allow changing these parameters to empty string if needed.
+
+#### AzureRM.KeyVault
+* Fix issue where no Tags are being returned when Get-AzureRmKeyVault -Tag is run
+
+#### AzureRM.PolicyInsights
+* Public release of Policy Insights cmdlets
+    - Use API version 2018-04-04
+    - Add PolicyDefinitionReferenceId to the results of Get-AzureRmPolicyStateSummary
+
+#### AzureRM.RecoveryServices.Backup
+* Added -Vault parameter to RecoveryServices.Backup cmdlets. When passed, this will override the Set-AzureRmRecoveryServicesContext cmdlet.
+
+#### AzureRM.Sql
+* Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
+
+#### AzureRM.TrafficManager
+* Updated the help file for Add-AzureRmTrafficManagerEndpointConfig
+
+#### AzureRM.Websites
+* 'Set-AzureRmWebApp' is updated to not overwrite the AppSettings when using -AssignIdentity
+* 'New-AzureRmWebAppSlot' is updated to honor AppServicePlan as an optional parameter
+
+## 6.2.1 - June 2018
+### AzureRM.OperationalInsights
+* Updated PSWorkspace model to allow Network to use type as a parameter
+
+## 6.2.0 - June 2018
+#### AzureRM.Profile
+* Fix issue where version 10.0.3 of Newtonsoft.Json wasn't being loaded on module import
+
+#### AzureRM.Compute
+* VMSS VM Update feature
+    - Added 'Update-AzureRmVmssVM' and 'New-AzureRmVMDataDisk' cmdlets
+    - Add VirtualMachineScaleSetVM parameter to 'Add-AzureRmVMDataDisk' cmdlet to support adding a data disk to Vmss VM.
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:
+    - Added Configure factory repository operation
+    - Updated QuickBooks LinkedService to expose consumerKey and consumerSecret properties
+    - Updated Several model types from SecretBase to Object
+    - Added Blob Events trigger
+
+### AzureRM.KeyVault
+* Update documentation with example output
+
+### AzureRM.Network
+* Enable Traffic Analytics parameters on Network Watcher cmdlets
+
+#### AzureRM.Resources
+* Fix issue with 'Properties' property of 'PSResource' object(s) returned from 'Get-AzureRmResource'
+
+#### AzureRM.Scheduler
+* Fix issue with update ServiceBusQueueJob not setting new Auth values
+
+### AzureRM.Sql
+* Updated the following cmdlets with optional LicenseType parameter
+	- New-AzureRmSqlDatabase; Set-AzureRmSqlDatabase
+	- New-AzureRmSqlElasticPool; Set-AzureRmSqlElasticPool
+	- New-AzureRmSqlDatabaseCopy
+	- New-AzureRmSqlDatabaseSecondary
+	- Restore-AzureRmSqlDatabase
+
+#### AzureRM.Websites
+* 'New-AzureRMWebApp' is updated to use common algorithms from the Strategy library.
+
+## 6.1.1 - May 2018
 #### AzureRM.Resources
 * Revert change to `New-AzureRmADServicePrincipal` that gave service principals `Contributor` permissions over the current subscription if no values were provided for the `Role` or `Scope` parameters
     - If no values are provided for `Role` or `Scope`, the service principal is created with no permissions

@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
-    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.2.0" />
     <PackageReference Include="System.Collections.NonGeneric" Version="4.3.0" />
   </ItemGroup>
 

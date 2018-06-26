@@ -16,6 +16,8 @@
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.DataFactoryV2.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,6 +27,8 @@
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
@@ -33,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.DataFactoryV2.Netcore.psd1" Link="AzureRM.DataFactoryV2.Netcore.psd1">
+    <None Include="AzureRM.DataFactoryV2.Netcore.psd1" Link="AzureRM.DataFactoryV2.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

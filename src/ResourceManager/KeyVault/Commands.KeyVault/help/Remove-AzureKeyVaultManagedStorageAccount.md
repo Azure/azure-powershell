@@ -31,21 +31,41 @@ Disassociates an Azure Storage Account from Key Vault. This does not remove an A
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault managed Azure Storage Account and all associated SAS definitions.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount'
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -PassThru
+
+Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
+Vault Name          : myvault
+AccountName         : mystorageaccount
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/mystorageaccount
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
 ```
 
 Disassociates Azure Storage Account 'mystorageaccount' from Key Vault 'myvault' and stops Key Vault from managing its keys. The account 'mystorageaccount' will not be removed. All Key Vault managed Storage SAS definitions associated with this account will be removed.
 
 ### Example 2: Remove a Key Vault managed Azure Storage Account and all associated SAS definitions without user confirmation.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -PassThru -Force
+
+Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
+Vault Name          : myvault
+AccountName         : mystorageaccount
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/mystorageaccount
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
 ```
 
 Disassociates Azure Storage Account 'mystorageaccount' from Key Vault 'myvault' and stops Key Vault from managing its keys. The account 'mystorageaccount' will not be removed. All Key Vault managed Storage SAS definitions associated with this account will be removed.
 
 ### Example 3: Permanently delete (purge) a Key Vault managed Azure Storage Account and all associated SAS definitions from a soft-delete-enabled vault.
-```
+```powershell
 PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' 
 PS C:\> Get-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -InRemovedState
 PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -InRemovedState
@@ -201,11 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
 
 ## NOTES
 
