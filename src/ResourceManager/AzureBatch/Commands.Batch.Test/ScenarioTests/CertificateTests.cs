@@ -28,14 +28,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCertificateCrudOperations()
         {
             BatchController.NewInstance.RunPsTest("Test-CertificateCrudOperations");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestCancelCertificateDelete()
         {
             BatchController controller = BatchController.NewInstance;

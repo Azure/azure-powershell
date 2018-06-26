@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: C3B2C33F-8BD4-4E31-9450-EF6A3A6A5325
@@ -13,19 +13,20 @@ Modifies a policy assignment.
 
 ## SYNTAX
 
-### SetByPolicyAssignmentName (Default)
+### NameParameterSet (Default)
 ```
 Set-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-Description <String>] [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### SetByPolicyAssignmentId
+### IdParameterSet
 ```
-Set-AzureRmPolicyAssignment -Id <String> [-DisplayName <String>] [-Description <String>] [-Sku <Hashtable>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
+Set-AzureRmPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,9 +37,9 @@ Specify an assignment by ID or by name and scope.
 
 ### Example 1: Update the display name
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name "PolicyAssignment" -Scope $ResourceGroup.ResourceId
-PS C:\> Set-AzureRmPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName "Do not allow VM creation"
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId
+PS C:\> Set-AzureRmPolicyAssignment -Id $PolicyAssignment.ResourceId -DisplayName 'Do not allow VM creation'
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
@@ -47,7 +48,7 @@ The command stores that object in the $ResourceGroup variable.
 The second command gets the policy assignment named PolicyAssignment by using the Get-AzureRmPolicyAssignment cmdlet.
 The command stores that object in the $PolicyAssignment variable.
 
-The final command updates the display name on the policy assignment identified by the **ResourceId** property of $PolicyAssignment.
+The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ## PARAMETERS
 
@@ -117,7 +118,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: SetByPolicyAssignmentId
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -166,12 +167,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Metadata
+The updated metadata for the policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the policy assignment that this cmdlet modifies.
 
 ```yaml
 Type: String
-Parameter Sets: SetByPolicyAssignmentName
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
@@ -186,7 +202,7 @@ The policy assignment not scopes.
 
 ```yaml
 Type: String[]
-Parameter Sets: SetByPolicyAssignmentName
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -216,7 +232,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: String
-Parameter Sets: SetByPolicyAssignmentName
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True

@@ -88,7 +88,7 @@
     <None Include="StartupScripts\*.ps1">
       <!-- <CopyToOutputDirectory>Always</CopyToOutputDirectory> -->
     </None>
-    <None Include="..\AzureRM.ContainerInstance.psd1">
+    <None Include="AzureRM.ContainerInstance.psd1">
       <Link>AzureRM.ContainerInstance.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
