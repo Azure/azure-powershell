@@ -29,8 +29,13 @@ function New-MoveSubscriptionsDefinitionObject
         $TargetDelegatedProviderOffer
     )
     
-    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscriptions.Admin.Models.MoveSubscriptionsDefinition -ArgumentList @($resources,$targetDelegatedProviderOffer)
-
+    $Object = New-Object -TypeName Microsoft.AzureStack.Management.Subscriptions.Admin.Models.MoveSubscriptionsDefinition
+    $Object.Resources = $Resources
+    if(-not [string]::IsNullOrEmpty($DestinationDelegatedProviderOffer))
+    {
+        $Object.TargetDelegatedProviderOffer = $targetDelegatedProviderOffer
+    }  
+    
     if(Get-Member -InputObject $Object -Name Validate -MemberType Method)
     {
         $Object.Validate()

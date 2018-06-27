@@ -30,8 +30,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
     Move user subscriptions from a delegated provider to the Default Provider.
-    $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | Select -ExpandProperty Id
-    Move-AzsSubscription -ResoruceId $resourceIds
+    $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | where {$_.DelegatedProviderSubscriptionId -eq "798568b7-c6f1-4bf7-bb8f-2c8bebc7c777"} | Select -ExpandProperty Id
+    Move-AzsSubscription -ResourceId $resourceIds
 #>
 function Move-AzsSubscription
 {
