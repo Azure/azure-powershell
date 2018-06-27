@@ -87,7 +87,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.ContainerRegistry.psd1">
+    <None Include="AzureRM.ContainerRegistry.psd1">
       <Link>AzureRM.ContainerRegistry.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

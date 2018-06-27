@@ -21,7 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.ExpressRoute
 {
     using System;
 
-    [Cmdlet(VerbsCommon.Get, "AzureCrossConnection"), OutputType(typeof(AzureCrossConnection), typeof(IEnumerable<AzureCrossConnection>))]
+    [Cmdlet(VerbsCommon.Get, "AzureCrossConnection"), OutputType(typeof(AzureCrossConnection))]
     public class GetAzureCrossConnectionCommand : ExpressRouteBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true,

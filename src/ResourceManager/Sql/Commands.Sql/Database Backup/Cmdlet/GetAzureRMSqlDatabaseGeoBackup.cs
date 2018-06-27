@@ -19,6 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackup", SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlDatabaseGeoBackupModel))]
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
     {
         /// <summary>

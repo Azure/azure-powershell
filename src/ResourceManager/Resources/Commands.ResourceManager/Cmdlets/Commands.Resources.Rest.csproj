@@ -129,6 +129,7 @@
     <Compile Include="Implementation\ManagedApplications\NewAzureManagedApplication.cs" />
     <Compile Include="Implementation\ManagedApplications\ManagedApplicationCmdletBase.cs" />
     <Compile Include="Implementation\Policy\GetAzurePolicySetDefinition.cs" />
+    <Compile Include="Implementation\Policy\PolicyHelpStrings.cs" />
     <Compile Include="Implementation\Policy\NewAzurePolicySetDefinition.cs" />
     <Compile Include="Implementation\Policy\PolicyCmdletBase.cs" />
     <Compile Include="Implementation\Policy\RemoveAzurePolicySetDefinition.cs" />
@@ -220,7 +221,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\AzureRM.Resources.psd1">
+    <None Include="..\..\Commands.Resources\AzureRM.Resources.psd1">
       <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -176,6 +176,8 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
             {
                 model.AuditActionGroup = AuditActionGroup;
             }
+
+            model.StorageAccountSubscriptionId = Guid.Parse(DefaultProfile.DefaultContext.Subscription.Id);
         }
 
         protected override AuditingPolicyModel PersistChanges(AuditingPolicyModel model)

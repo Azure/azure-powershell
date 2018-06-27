@@ -408,4 +408,10 @@
   <data name="RemoveAzureSqlDatabaseLongTermRetentionBackupWarning" xml:space="preserve">
     <value>Are you sure you want to remove the Long Term Retention backup '{0}' on database '{1}' on server '{2}' in location '{3}'?</value>
   </data>
+  <data name="RetrievingStorageAccountIdUnderSubscriptionFailed" xml:space="preserve">
+    <value>Failed retrieving id of storage account '{0}' under subscription '{1}'.</value>
+  </data>
+  <data name="RetrievingStorageAccountKeysFailed" xml:space="preserve">
+    <value>Failed retrieving keys of storage '{0}'.</value>
+  </data>
 </root>
