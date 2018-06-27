@@ -30,7 +30,6 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
         protected const string UseResourceIdParameterSet = "UseResourceIdParameterSet";
-        protected const string UseExplicitArgumentsParameterSet = "UseExplicitArgumentsParameterSet";
 
         /// <summary>
         /// Server resource
@@ -43,20 +42,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         public AzureSqlServerModel InputObject { get; set; }
 
         /// <summary>
-        /// Advanced Threat Protection resource Id
-        /// </summary>
-        [Parameter(ParameterSetName = UseResourceIdParameterSet,
-            Mandatory = false,
-            ValueFromPipeline = true,
-            HelpMessage = "The resource id of a Advanced Threat Protection (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.")]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        /// <summary>
         /// Gets or sets the name of the database server to use.
         /// </summary>
-        [Parameter(ParameterSetName = UseExplicitArgumentsParameterSet,
-            Mandatory = true,
+        [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "SQL Database server name.")]
         [ValidateNotNullOrEmpty]
@@ -75,14 +63,6 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
             {
                 resourceGroupName = InputObject.ResourceGroupName;
                 serverName = InputObject.ServerName;
-            }
-            else if (string.Equals(this.ParameterSetName, UseResourceIdParameterSet, StringComparison.OrdinalIgnoreCase))
-            {
-                var resourceInfo = new ResourceIdentifier(ResourceId);
-                resourceGroupName = resourceInfo.ResourceGroupName;
-
-                var serverResourceInfo = new ResourceIdentifier(resourceInfo.ParentResource);
-                serverName = serverResourceInfo.ResourceName;
             }
 
             return new ServerAdvancedThreatProtectionPolicyModel()
