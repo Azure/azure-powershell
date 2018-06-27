@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using Microsoft.Azure.Commands.Sql.Server.Model;
 using System;
-using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -29,7 +28,6 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     public abstract class SqlServerAdvancedThreatProtectionCmdletBase : AzureSqlCmdletBase<ServerAdvancedThreatProtectionPolicyModel, SqlAdvancedThreatProtectionAdapter>
     {
         protected const string UseParentResourceParameterSet = "UseParentResourceParameterSet";
-        protected const string UseResourceIdParameterSet = "UseResourceIdParameterSet";
 
         /// <summary>
         /// Server resource
