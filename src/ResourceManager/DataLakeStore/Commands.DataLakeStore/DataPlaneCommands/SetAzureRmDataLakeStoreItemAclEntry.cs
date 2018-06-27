@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage =
                 "If passed then progress status is showed. Only applicable when recursive Acl modify is done."
         )]
@@ -106,29 +106,18 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
-                : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
+                : new List<AclEntry> { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
 
-            int numNonDefaultAcls = 0;
-
-            if (Recurse)
-            {
-                foreach (var aclEntry in aclSpec)
-                {
-                    if (aclEntry.Scope == AclScope.Access)
-                    {
-                        numNonDefaultAcls++;
-                    }
-                }
-            }
-
+            bool recurseAndDefaultAcls = Recurse && !aclSpec.Any(aclEntry => aclEntry.Scope == AclScope.Access);
+            
             // For recurse and all acls are default, give a warning message
-            if (Recurse && numNonDefaultAcls == 0)
+            if (recurseAndDefaultAcls)
             {
                 WriteWarning(Resources.SetOnlyDefaultAclRecursively);
             }
 
             ConfirmAction(
-                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath) + (Recurse && numNonDefaultAcls == 0? "\n" + Resources.SetOnlyDefaultAclRecursively : ""),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath) + (recurseAndDefaultAcls ? "\n" + Resources.SetOnlyDefaultAclRecursively : ""),
                 Path.OriginalPath,
                 () =>
                 {

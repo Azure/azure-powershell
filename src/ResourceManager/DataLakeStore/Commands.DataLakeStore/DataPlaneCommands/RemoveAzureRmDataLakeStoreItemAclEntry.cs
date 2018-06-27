@@ -94,8 +94,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
-            HelpMessage =
+        [Parameter(Mandatory = false, HelpMessage =
                 "If passed then progress status is showed. Only applicable when recursive Acl remove is done."
         )]
         public SwitchParameter ShowProgress { get; set; }
