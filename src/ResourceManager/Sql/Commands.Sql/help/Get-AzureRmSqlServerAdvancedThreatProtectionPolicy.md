@@ -12,22 +12,9 @@ Gets Advanced Threat Protection policy of a server.
 
 ## SYNTAX
 
-### UseParentResourceParameterSet
 ```
-Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-InputObject <AzureSqlServerModel>]
+Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### UseResourceIdParameterSet
-```
-Get-AzureRmSqlServerAdvancedThreatProtectionPolicy [-ResourceId <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### UseExplicitArgumentsParameterSet
-```
-Get-AzureRmSqlServerAdvancedThreatProtectionPolicy -ServerName <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +51,7 @@ The server object to use with Advanced Threat Protection policy operation
 
 ```yaml
 Type: AzureSqlServerModel
-Parameter Sets: UseParentResourceParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -89,25 +76,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.
-Type: String
-Parameter Sets: UseResourceIdParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ServerName
-SQL Database server name.
-
-```yaml
+SQL Database server name.```yaml
 Type: String
-Parameter Sets: UseExplicitArgumentsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True

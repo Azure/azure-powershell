@@ -380,9 +380,6 @@ Modifies TDE property for a database.
 ### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
-### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
-Updated the vulnerability assessment settings of a database.
-
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
 
@@ -463,6 +460,9 @@ Suspends a SQL Data Warehouse database.
 
 ### [Switch-AzureRmSqlDatabaseFailoverGroup](Switch-AzureRmSqlDatabaseFailoverGroup.md)
 Executes a failover of an Azure SQL Database Failover Group.
+
+### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Updates the vulnerability assessment settings of a database.
 
 ### [Update-AzureRmSqlSyncGroup](Update-AzureRmSqlSyncGroup.md)
 Updates an Azure SQL Database Sync Group.

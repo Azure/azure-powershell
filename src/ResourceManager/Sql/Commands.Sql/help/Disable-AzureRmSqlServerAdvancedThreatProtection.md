@@ -12,23 +12,10 @@ Disables Advanced Threat Protection on a server.
 
 ## SYNTAX
 
-### UseParentResourceParameterSet
 ```
-Disable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>]
+Disable-AzureRmSqlServerAdvancedThreatProtection [-InputObject <AzureSqlServerModel>] -ServerName <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### UseResourceIdParameterSet
-```
-Disable-AzureRmSqlServerAdvancedThreatProtection [-ResourceId <String>] [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### UseExplicitArgumentsParameterSet
-```
-Disable-AzureRmSqlServerAdvancedThreatProtection -ServerName <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +52,7 @@ The server object to use with Advanced Threat Protection policy operation
 
 ```yaml
 Type: AzureSqlServerModel
-Parameter Sets: UseParentResourceParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -90,25 +77,10 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id of the rule baseline (e.g. /subscriptions/00000000-1111-2222-3333-444444444444/resourceGroups/resourceGroups01/providers/Microsoft.Sql/servers/server01/advancedThreatProtection/default.
-Type: String
-Parameter Sets: UseResourceIdParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ServerName
-SQL Database server name.
-
-```yaml
+SQL Database server name.```yaml
 Type: String
-Parameter Sets: UseExplicitArgumentsParameterSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -134,8 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
 Type: SwitchParameter
