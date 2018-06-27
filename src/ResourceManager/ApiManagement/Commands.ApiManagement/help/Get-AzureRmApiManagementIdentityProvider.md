@@ -110,9 +110,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider
 The details of the Identity Provider configured in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProvider>
-The list of Identity Providers configured in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

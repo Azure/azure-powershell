@@ -99,60 +99,60 @@ function Create-KeyVault
 {
     Param
     (
-         [Parameter(Mandatory=$true, Position=0)]
-         [string] $resourceGroupName,
-         [Parameter(Mandatory=$true, Position=1)]
-         [string] $location,
-         [Parameter(Mandatory=$false, Position=2)]
-         [string] $vaultName
+        [Parameter(Mandatory=$true, Position=0)]
+        [string] $resourceGroupName,
+        [Parameter(Mandatory=$true, Position=1)]
+        [string] $location,
+        [Parameter(Mandatory=$false, Position=2)]
+        [string] $vaultName
     )
 
-	# initialize parameters if needed
-	if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
+    # initialize parameters if needed
+    if ([string]::IsNullOrEmpty($resourceGroupName)) { $resourceGroupName = Get-ComputeTestResourceName }
     if ([string]::IsNullOrEmpty($location)) { $location = Get-ComputeVMLocation }
     if ([string]::IsNullOrEmpty($vaultName)) { $vaultName = 'kv' + $resourceGroupName }
 
-	# create vault
-	$vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
-	$vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
+    # create vault
+    $vault = New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location -Sku standard
+    $vault = Get-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName
 
-	# create access policy
-	$servicePrincipalName = (Get-AzureRmContext).Account.Id
-	Assert-NotNull $servicePrincipalName
-	#Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys Create
-	Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
+    # create access policy
+    $servicePrincipalName = (Get-AzureRmContext).Account.Id
+    Assert-NotNull $servicePrincipalName
+    #Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -ServicePrincipalName $servicePrincipalName -PermissionsToKeys Create
+    Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -EnabledForDiskEncryption -EnabledForDeployment -EnabledForTemplateDeployment
 
-	# create key encryption key 
-	#$kekName = 'kek' + $resourceGroupName
-	#$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
+    # create key encryption key 
+    #$kekName = 'kek' + $resourceGroupName
+    #$kek = Add-AzureKeyVaultKey -VaultName $vaultName -Name $kekName -Destination "Software"
 
-	# return the newly created key vault properties
-	$properties = New-Object PSObject -Property @{
-		DiskEncryptionKeyVaultId = $vault.ResourceId
-		DiskEncryptionKeyVaultUrl = $vault.VaultUri
-		#KeyEncryptionKeyVaultId = $vault.ResourceId
-		#KeyEncryptionKeyUrl = $kek.Key.kid
-	}
-	return $properties
+    # return the newly created key vault properties
+    $properties = New-Object PSObject -Property @{
+        DiskEncryptionKeyVaultId = $vault.ResourceId
+        DiskEncryptionKeyVaultUrl = $vault.VaultUri
+        #KeyEncryptionKeyVaultId = $vault.ResourceId
+        #KeyEncryptionKeyUrl = $kek.Key.kid
+    }
+    return $properties
 }
 
 # Create a new virtual machine with other necessary resources configured
 function Create-VirtualMachine
-{	
+{
     Param
     (
-         [Parameter(Mandatory=$false, Position=0)]
-         [string] $rgname,
-         [Parameter(Mandatory=$false, Position=1)]
-         [string] $vmname,
-         [Parameter(Mandatory=$false, Position=2)]
-         [string] $loc		 
+        [Parameter(Mandatory=$false, Position=0)]
+        [string] $rgname,
+        [Parameter(Mandatory=$false, Position=1)]
+        [string] $vmname,
+        [Parameter(Mandatory=$false, Position=2)]
+        [string] $loc       
     )
 
     # initialize parameters if needed
-	if ([string]::IsNullOrEmpty($rgname)) { $rgname = Get-ComputeTestResourceName }
-	if ([string]::IsNullOrEmpty($vmname)) { $vmname = 'vm' + $rgname }
-	if ([string]::IsNullOrEmpty($loc)) { $loc = Get-ComputeVMLocation } 
+    if ([string]::IsNullOrEmpty($rgname)) { $rgname = Get-ComputeTestResourceName }
+    if ([string]::IsNullOrEmpty($vmname)) { $vmname = 'vm' + $rgname }
+    if ([string]::IsNullOrEmpty($loc)) { $loc = Get-ComputeVMLocation } 
 
     # Common
     $g = New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
@@ -556,65 +556,92 @@ function Get-ResourceProviderLocation
 
 function Get-ComputeVMLocation
 {
-     Get-Location "Microsoft.Compute" "virtualMachines" "East US";
+    Get-Location "Microsoft.Compute" "virtualMachines" "East US";
 }
 
 function Get-ComputeAvailabilitySetLocation
 {
-     Get-Location "Microsoft.Compute" "availabilitySets" "West US";
+    Get-Location "Microsoft.Compute" "availabilitySets" "West US";
 }
 
 function Get-ComputeVMExtensionLocation
 {
-     Get-Location "Microsoft.Compute" "virtualMachines/extensions" "West US";
+    Get-Location "Microsoft.Compute" "virtualMachines/extensions" "West US";
 }
 
 function Get-ComputeVMDiagnosticSettingLocation
 {
-     Get-Location "Microsoft.Compute" "virtualMachines/diagnosticSettings" "West US";
+    Get-Location "Microsoft.Compute" "virtualMachines/diagnosticSettings" "West US";
 }
 
 function Get-ComputeVMMetricDefinitionLocation
 {
-     Get-Location "Microsoft.Compute" "virtualMachines/metricDefinitions" "West US";
+    Get-Location "Microsoft.Compute" "virtualMachines/metricDefinitions" "West US";
 }
 
 function Get-ComputeOperationLocation
 {
-     Get-Location "Microsoft.Compute" "locations/operations" "West US";
+    Get-Location "Microsoft.Compute" "locations/operations" "West US";
 }
 
 function Get-ComputeVMSizeLocation
 {
-     Get-Location "Microsoft.Compute" "locations/vmSizes" "West US";
+    Get-Location "Microsoft.Compute" "locations/vmSizes" "West US";
 }
 
 function Get-ComputeUsageLocation
 {
-     Get-Location "Microsoft.Compute" "locations/usages" "West US";
+    Get-Location "Microsoft.Compute" "locations/usages" "West US";
 }
 
 function Get-ComputePublisherLocation
 {
-     Get-Location "Microsoft.Compute" "locations/publishers" "West US";
+    Get-Location "Microsoft.Compute" "locations/publishers" "West US";
 }
 
 function Get-SubscriptionIdFromResourceGroup
 {
-      param ([string] $rgname)
+    param ([string] $rgname)
 
-      $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
+    $rg = Get-AzureRmResourceGroup -ResourceGroupName $rgname;
 
-      $rgid = $rg.ResourceId;
+    $rgid = $rg.ResourceId;
 
-      # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
-      # So return the second part to get subscription Id
-      $first = $rgid.IndexOf('/', 1);
-      $last = $rgid.IndexOf('/', $first + 1);
-      return $rgid.Substring($first + 1, $last - $first - 1);
+    # ResouceId is a form of "/subscriptions/<subId>/resourceGroups/<resourgGroupName>"
+    # So return the second part to get subscription Id
+    $first = $rgid.IndexOf('/', 1);
+    $last = $rgid.IndexOf('/', $first + 1);
+    return $rgid.Substring($first + 1, $last - $first - 1);
 }
 
 function Get-ComputeVmssLocation
 {
-      Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
+    Get-ResourceProviderLocation "Microsoft.Compute/virtualMachineScaleSets"
 }
+
+function Verify-PSComputeLongRunningOperation
+{
+    param ($result)
+
+    Assert-NotNull $result;
+    $id = New-Object System.Guid;
+    Assert-True { [System.Guid]::TryParse($result.OperationId, [REF] $id) };
+    Assert-AreEqual "Succeeded" $result.Status;
+    Assert-NotNull $result.StartTime;
+    Assert-NotNull $result.EndTime;
+    Assert-Null $result.Error;
+}
+
+function Verify-PSOperationStatusResponse
+{
+    param ($result)
+
+    Assert-NotNull $result;
+    $id = New-Object System.Guid;
+    Assert-True { [System.Guid]::TryParse($result.Name, [REF] $id) };
+    Assert-AreEqual "Succeeded" $result.Status;
+    Assert-NotNull $result.StartTime;
+    Assert-NotNull $result.EndTime;
+    Assert-Null $result.Error;
+}
+

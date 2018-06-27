@@ -1,0 +1,142 @@
+{
+    "Entries": [
+        {
+            "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/UpdateQuota?api-version=2015-12-01-preview",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL1VwZGF0ZVF1b3RhP2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
+            "RequestMethod": "GET",
+            "RequestBody": "",
+            "RequestHeaders": {
+                "x-ms-client-request-id": [
+                    "031f65df-d902-4201-a3cb-3ec977d430d9"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.25211.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/Default Quota\",\r\n  \"name\": \"Default Quota\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 20,\r\n    \"coresLimit\": 50,\r\n    \"availabilitySetCount\": 10,\r\n    \"vmScaleSetCount\": 20\r\n  }\r\n}",
+            "ResponseHeaders": {
+                "Content-Length": [
+                    "316"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 13 Oct 2017 19:54:22 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvjD0+1DdJx1bfVQThLFav3rE+7dFUk4b/Mv/e6gokPw+hLH8N82PbwMKXbIfutvn6TzjIXClKNp5NNCXCtGO6j5RNfsL/b4iF/DrFkAHbehOD2J9pf+vY1wYvR7eDtSdswGNmHhVMocEc144jmMI4"
+                ],
+                "x-ms-correlation-request-id": [
+                    "cd6cfb0b-f064-4841-b60b-223da9ac348e"
+                ],
+                "x-ms-ratelimit-remaining-subscription-reads": [
+                    "14822"
+                ],
+                "x-ms-request-id": [
+                    "cd6cfb0b-f064-4841-b60b-223da9ac348e"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20171013T195423Z:cd6cfb0b-f064-4841-b60b-223da9ac348e"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ]
+            },
+            "StatusCode": 200
+        },
+        {
+            "RequestUri": "/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/UpdateQuota?api-version=2015-12-01-preview",
+            "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZmMGJiYmUtZDY4ZC00MzE0LThmNjgtODBhODA4YjVhNmVjL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS5BZG1pbi9sb2NhdGlvbnMvbG9jYWwvcXVvdGFzL1VwZGF0ZVF1b3RhP2FwaS12ZXJzaW9uPTIwMTUtMTItMDEtcHJldmlldw==",
+            "RequestMethod": "PUT",
+            "RequestBody": "{\r\n  \"properties\": {\r\n    \"availabilitySetCount\": 100,\r\n    \"coresLimit\": 100,\r\n    \"virtualMachineCount\": 100,\r\n    \"vmScaleSetCount\": 100\r\n  }\r\n}",
+            "RequestHeaders": {
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Content-Length": [
+                    "171"
+                ],
+                "x-ms-client-request-id": [
+                    "4613b7b8-9ca9-4276-ba21-e8b073626eed"
+                ],
+                "accept-language": [
+                    "en-US"
+                ],
+                "User-Agent": [
+                    "FxVersion/4.6.25211.01",
+                    "Microsoft.AzureStack.Management.Compute.Admin.ComputeAdminClient/0.1.0.0"
+                ]
+            },
+            "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0ff0bbbe-d68d-4314-8f68-80a808b5a6ec/providers/Microsoft.Compute.Admin/locations/local/quotas/UpdateQuota\",\r\n  \"name\": \"UpdateQuota\",\r\n  \"type\": \"Microsoft.Compute.Admin/quotas\",\r\n  \"location\": \"local\",\r\n  \"properties\": {\r\n    \"virtualMachineCount\": 100,\r\n    \"coresLimit\": 100,\r\n    \"availabilitySetCount\": 100,\r\n    \"vmScaleSetCount\": 100\r\n  }\r\n}",
+            "ResponseHeaders": {
+                "Content-Length": [
+                    "423"
+                ],
+                "Content-Type": [
+                    "application/json; charset=utf-8"
+                ],
+                "Expires": [
+                    "-1"
+                ],
+                "Cache-Control": [
+                    "no-cache"
+                ],
+                "Date": [
+                    "Fri, 13 Oct 2017 19:54:20 GMT"
+                ],
+                "Pragma": [
+                    "no-cache"
+                ],
+                "Server": [
+                    "Microsoft-HTTPAPI/2.0"
+                ],
+                "WWW-Authenticate": [
+                    "oYG3MIG0oAMKAQChCwYJKoZIgvcSAQICooGfBIGcYIGZBgkqhkiG9xIBAgICAG+BiTCBhqADAgEFoQMCAQ+iejB4oAMCARKicQRvTar1JNBFJ9WgK7Q8NCKIZwCq91b8PaWoWNYeuAflo66ndu0LDdjTK53g8CTVlBCg+PHNG79K7Zsg/vcHYFgdgsOwhtmQZE5htfhsyiBS6ACM4+iq2TJCIJAK/T7zlgfvhZ7eKxOTtA+aEHUubEzz"
+                ],
+                "x-ms-correlation-request-id": [
+                    "7d3c4616-acdb-4e20-b1f4-cd4087b3f647"
+                ],
+                "x-ms-ratelimit-remaining-subscription-writes": [
+                    "1194"
+                ],
+                "x-ms-request-id": [
+                    "7d3c4616-acdb-4e20-b1f4-cd4087b3f647"
+                ],
+                "x-ms-routing-request-id": [
+                    "LOCAL:20171013T195421Z:7d3c4616-acdb-4e20-b1f4-cd4087b3f647"
+                ],
+                "Strict-Transport-Security": [
+                    "max-age=31536000; includeSubDomains"
+                ],
+                "X-Content-Type-Options": [
+                    "nosniff"
+                ]
+            },
+            "StatusCode": 200
+        }
+    ],
+    "Names": {},
+    "Variables": {
+        "SubscriptionId": "0ff0bbbe-d68d-4314-8f68-80a808b5a6ec"
+    }
+}

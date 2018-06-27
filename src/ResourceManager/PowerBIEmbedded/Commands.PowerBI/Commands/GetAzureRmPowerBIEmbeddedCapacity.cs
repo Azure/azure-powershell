@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 namespace Microsoft.Azure.Commands.PowerBI
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmPowerBIEmbeddedCapacity", DefaultParameterSetName = ParameterSet),
-        OutputType(typeof(List<PSPowerBIEmbeddedCapacity>))]
+        OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class GetAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string ParameterSet = "ByCapacityOrResourceGroupOrSubscription";

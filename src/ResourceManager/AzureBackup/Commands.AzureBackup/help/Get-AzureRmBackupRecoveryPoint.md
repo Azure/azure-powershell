@@ -99,11 +99,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
 
 ## OUTPUTS
 
-### AzureRmBackupRecoveryPoint
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupRecoveryPoint
 
 ## NOTES
 

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureKeyVaultKey",        
         DefaultParameterSetName = ByVaultNameParameterSet)]
-    [OutputType(typeof(List<PSKeyVaultKeyIdentityItem>), typeof(PSKeyVaultKey), typeof(List<PSDeletedKeyVaultKeyIdentityItem>), typeof(PSDeletedKeyVaultKey))]
+    [OutputType(typeof(PSKeyVaultKeyIdentityItem), typeof(PSKeyVaultKey), typeof(PSDeletedKeyVaultKeyIdentityItem), typeof(PSDeletedKeyVaultKey))]
     public class GetAzureKeyVaultKey : KeyVaultCmdletBase
     {
 

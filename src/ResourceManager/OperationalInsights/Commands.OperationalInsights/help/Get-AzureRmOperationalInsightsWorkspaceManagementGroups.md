@@ -94,7 +94,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup]
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSManagementGroup
 
 ## NOTES
 

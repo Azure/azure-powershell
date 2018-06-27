@@ -182,10 +182,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ServerFarmWithRichSku
+### Microsoft.Azure.Management.WebSites.Models.AppServicePlan
 Parameter 'AppServicePlan' accepts value of type 'ServerFarmWithRichSku' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.ResourceMetric
 
 ## NOTES
 

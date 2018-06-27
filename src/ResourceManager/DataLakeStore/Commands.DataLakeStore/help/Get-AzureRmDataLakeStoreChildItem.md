@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItem>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem
 The list of Data Lake Store files and folders under the specified path.
 
 ## NOTES

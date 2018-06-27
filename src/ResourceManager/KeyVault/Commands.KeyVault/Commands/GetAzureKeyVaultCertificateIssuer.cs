@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet(VerbsCommon.Get, CmdletNoun.AzureKeyVaultCertificateIssuer,        
         DefaultParameterSetName = ByNameParameterSet)]
-    [OutputType(typeof(List<PSKeyVaultCertificateIssuerIdentityItem>), typeof(PSKeyVaultCertificateIssuer))]
+    [OutputType(typeof(PSKeyVaultCertificateIssuerIdentityItem), typeof(PSKeyVaultCertificateIssuer))]
     public class GetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names

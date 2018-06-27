@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"pool1\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"targetOSVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"enableInterNodeCommunication\": false\r\n}",
       "RequestHeaders": {
@@ -13,32 +13,32 @@
           "205"
         ],
         "client-request-id": [
-          "608b6f75-35ee-4858-b1dd-9932b08f997a"
+          "33ba1216-c9ff-499c-ad9e-483891e83320"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:32 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:30:33 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "e06cae54-b76d-4c35-ae37-87386e895a45"
+          "1732925d-0132-49d2-9a1e-de3468e9ec6c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -50,16 +50,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool1"
+          "https://batchtestaccount.westus.batch.azure.com/pools/pool1"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:32 GMT"
+          "Fri, 25 May 2018 18:40:11 GMT"
         ],
         "ETag": [
-          "0x8D50C6A99EE2A54"
+          "0x8D5C26EF351140F"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool1"
+          "https://batchtestaccount.westus.batch.azure.com/pools/pool1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -68,8 +68,8 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"id\": \"pool2\",\r\n  \"vmSize\": \"standard_a1\",\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"16.04.0-LTS\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"enableInterNodeCommunication\": false\r\n}",
       "RequestHeaders": {
@@ -80,32 +80,32 @@
           "338"
         ],
         "client-request-id": [
-          "8c8588c1-77de-49fb-9a9f-3691e5318390"
+          "31d54cde-0443-44f1-a171-6784f70c2011"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:33 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
       "ResponseHeaders": {
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:30:33 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "3bee0540-42d1-4f36-a657-a6e8bd824052"
+          "a25ace8b-e216-4b0f-b8e0-59194b82dece"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,16 +117,16 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2"
+          "https://batchtestaccount.westus.batch.azure.com/pools/pool2"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:32 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "ETag": [
-          "0x8D50C6A9A061E80"
+          "0x8D5C26EF37453B0"
         ],
         "Location": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2"
+          "https://batchtestaccount.westus.batch.azure.com/pools/pool2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -135,29 +135,29 @@
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0&$filter=id%20eq%20'pool1'%20or%20id%20eq%20'pool2'",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4wJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Bvb2wxJTI3JTIwb3IlMjBpZCUyMGVxJTIwJTI3cG9vbDIlMjc=",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1&$filter=id%20eq%20'pool1'%20or%20id%20eq%20'pool2'",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4xJiRmaWx0ZXI9aWQlMjBlcSUyMCUyN3Bvb2wxJTI3JTIwb3IlMjBpZCUyMGVxJTIwJTI3cG9vbDIlMjc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3070aef6-bee6-415f-98a9-977173194976"
+          "7dc1d07d-8b2d-4f17-93d1-627d851a5655"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:33 GMT"
+          "Fri, 25 May 2018 18:40:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8D50C6A99EE2A54\",\r\n      \"lastModified\": \"2017-10-06T03:30:33.1382356Z\",\r\n      \"creationTime\": \"2017-10-06T03:30:33.1382356Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:30:33.1382356Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T03:30:33.2472183Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D50C6A9A061E80\",\r\n      \"lastModified\": \"2017-10-06T03:30:33.2952192Z\",\r\n      \"creationTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8D5C26EF351140F\",\r\n      \"lastModified\": \"2018-05-25T18:40:12.7161359Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:12.7161359Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:12.7161359Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-25T18:40:12.8431045Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D5C26EF37453B0\",\r\n      \"lastModified\": \"2018-05-25T18:40:12.9471408Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n      \"allocationState\": \"resizing\",\r\n      \"allocationStateTransitionTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -166,7 +166,7 @@
           "chunked"
         ],
         "request-id": [
-          "2b028877-cf9c-4807-921f-75472bdbd4ec"
+          "59df33f0-2f61-4b60-aefe-c836d319a111"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -178,7 +178,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:32 GMT"
+          "Fri, 25 May 2018 18:40:12 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -187,8 +187,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/pool2/updateproperties?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxNy0wOS0wMS42LjA=",
+      "RequestUri": "/pools/pool2/updateproperties?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyL3VwZGF0ZXByb3BlcnRpZXM/YXBpLXZlcnNpb249MjAxOC0wMy0wMS42LjE=",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\"\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"applicationPackageReferences\": [],\r\n  \"metadata\": []\r\n}",
       "RequestHeaders": {
@@ -199,20 +199,20 @@
           "170"
         ],
         "client-request-id": [
-          "1df6822a-5c15-4bef-8d5a-c26ccff12a2d"
+          "dbed52a2-5eed-4c6f-8f75-7da0b00176c3"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:33 GMT"
+          "Fri, 25 May 2018 18:40:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -221,10 +221,10 @@
           "0"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "request-id": [
-          "3569183b-b3f1-4253-a55a-55749e7631c9"
+          "40d03728-1eed-49a7-ae79-603b7f74a65d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -236,13 +236,13 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2/updateproperties"
+          "https://batchtestaccount.westus.batch.azure.com/pools/pool2/updateproperties"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:34 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "ETag": [
-          "0x8D50C6A9B5F72B6"
+          "0x8D5C26EF4E58553"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -251,41 +251,41 @@
       "StatusCode": 204
     },
     {
-      "RequestUri": "/pools/pool2?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/pool2?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "bfcd02b5-e231-4f52-930f-fe849c0e1bf9"
+          "c46c497d-d35f-4788-a69d-d6afee8303c3"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8D50C6A9B5F72B6\",\r\n  \"lastModified\": \"2017-10-06T03:30:35.558367Z\",\r\n  \"creationTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2017-10-06T03:30:33.9862225Z\",\r\n  \"vmSize\": \"standard_a1\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": false\r\n  },\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"16.04.0-LTS\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"pool2\",\r\n  \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/pool2\",\r\n  \"eTag\": \"0x8D5C26EF4E58553\",\r\n  \"lastModified\": \"2018-05-25T18:40:15.3666899Z\",\r\n  \"creationTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2018-05-25T18:40:13.7551349Z\",\r\n  \"vmSize\": \"standard_a1\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"startTask\": {\r\n    \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n    \"userIdentity\": {\r\n      \"autoUser\": {\r\n        \"elevationLevel\": \"nonadmin\"\r\n      }\r\n    },\r\n    \"maxTaskRetryCount\": 0,\r\n    \"waitForSuccess\": false\r\n  },\r\n  \"certificateReferences\": [],\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"Canonical\",\r\n      \"offer\": \"UbuntuServer\",\r\n      \"sku\": \"16.04.0-LTS\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "Transfer-Encoding": [
           "chunked"
         ],
         "request-id": [
-          "49af8198-d387-4cfa-877c-8c190b6b8314"
+          "984db6aa-84ee-42e6-a7ac-d332ba6bd334"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -297,10 +297,10 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:34 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "ETag": [
-          "0x8D50C6A9B5F72B6"
+          "0x8D5C26EF4E58553"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -309,26 +309,26 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/pool1?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wxP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/pool1?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wxP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "557cda0e-df61-4617-a700-636df0a26337"
+          "e3e9518c-3d9a-4ed0-9393-36ffaeedd76b"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -337,7 +337,7 @@
           "chunked"
         ],
         "request-id": [
-          "3e3fd3b4-5c90-4843-979b-0c81ecb4ebc8"
+          "0eab8979-d0db-4320-a6fe-1b093f7ad580"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -349,7 +349,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:34 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -358,26 +358,26 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/pool2?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools/pool2?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzL3Bvb2wyP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "3fef6fba-7a60-454f-9231-21f87f37467c"
+          "f01007b8-4f7f-461c-8a1c-3c5d9eb0fa32"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
       "ResponseBody": "",
@@ -386,7 +386,7 @@
           "chunked"
         ],
         "request-id": [
-          "1b1b2ebe-9482-460f-b08c-b57c21dedf10"
+          "f2bc3393-caf0-424c-84c1-6f115ee5f70a"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -398,7 +398,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:34 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -407,29 +407,29 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools?api-version=2017-09-01.6.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTctMDktMDEuNi4w",
+      "RequestUri": "/pools?api-version=2018-03-01.6.1",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMTgtMDMtMDEuNi4x",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "e1ce3883-00d0-42b8-9598-58d6d8a72b46"
+          "aa43a121-8653-47e8-a4b7-8305b6f13993"
         ],
         "accept-language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 06 Oct 2017 03:30:35 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.0.0.0",
-          "AzurePowershell/v4.4.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/8.1.1.0",
+          "AzurePowershell/v6.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"mpiPool\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/mpiPool\",\r\n      \"eTag\": \"0x8D50C49712BACD3\",\r\n      \"lastModified\": \"2017-10-05T23:33:11.3626835Z\",\r\n      \"creationTime\": \"2017-10-05T23:33:11.3626835Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-05T23:33:11.3626835Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-05T23:34:45.8246391Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D50C6A9B849E2A\",\r\n      \"lastModified\": \"2017-10-06T03:30:35.8019626Z\",\r\n      \"creationTime\": \"2017-10-06T03:30:33.2952192Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2017-10-06T03:30:35.8019626Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T03:30:33.9862225Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testIaasPool\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testIaasPool\",\r\n      \"eTag\": \"0x8D50C647A6AEC93\",\r\n      \"lastModified\": \"2017-10-06T02:46:43.2883859Z\",\r\n      \"creationTime\": \"2017-10-06T02:46:43.2883859Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T02:46:43.2883859Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T02:48:29.1598949Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.5-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 14.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"testpool\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/testpool\",\r\n      \"eTag\": \"0x8D50C6621C8E394\",\r\n      \"lastModified\": \"2017-10-06T02:58:33.5804308Z\",\r\n      \"creationTime\": \"2017-10-06T02:58:33.5804308Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T02:58:33.5804308Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T02:59:22.8086339Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 2,\r\n      \"targetDedicatedNodes\": 2,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"ubuntu1604\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/ubuntu1604\",\r\n      \"eTag\": \"0x8D50C51C47E4E6A\",\r\n      \"lastModified\": \"2017-10-06T00:32:47.128945Z\",\r\n      \"creationTime\": \"2017-10-06T00:32:47.128945Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-06T00:32:47.128945Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-06T00:34:27.8120357Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"Ubuntu2\",\r\n      \"url\": \"https://matthchrwestcentralus.westcentralus.batch.azure.com/pools/Ubuntu2\",\r\n      \"eTag\": \"0x8D50C4B768C8076\",\r\n      \"lastModified\": \"2017-10-05T23:47:39.3793142Z\",\r\n      \"creationTime\": \"2017-10-05T23:47:39.3793142Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2017-10-05T23:47:39.3793142Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2017-10-05T23:48:43.9446808Z\",\r\n      \"vmSize\": \"standard_d1_v2\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"14.04.5-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 14.04\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://batchtestaccount.westus.batch.azure.com/$metadata#pools\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"mpiPool\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/mpiPool\",\r\n      \"eTag\": \"0x8D5C111BDDC236C\",\r\n      \"lastModified\": \"2018-05-24T01:00:28.6718828Z\",\r\n      \"creationTime\": \"2018-05-24T01:00:28.6718828Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-24T01:00:28.6718828Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-24T01:01:38.41035Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 3,\r\n      \"targetDedicatedNodes\": 3,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool1\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/pool1\",\r\n      \"eTag\": \"0x8D5C26EF512365D\",\r\n      \"lastModified\": \"2018-05-25T18:40:15.6595805Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:12.7161359Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:15.6595805Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-25T18:40:12.8431045Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"pool2\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/pool2\",\r\n      \"eTag\": \"0x8D5C26EF528A38C\",\r\n      \"lastModified\": \"2018-05-25T18:40:15.8065548Z\",\r\n      \"creationTime\": \"2018-05-25T18:40:12.9471408Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:40:15.8065548Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-25T18:40:13.7551349Z\",\r\n      \"vmSize\": \"standard_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 0,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"startTask\": {\r\n        \"commandLine\": \"/bin/bash -c 'echo start task'\",\r\n        \"userIdentity\": {\r\n          \"autoUser\": {\r\n            \"elevationLevel\": \"nonadmin\"\r\n          }\r\n        },\r\n        \"maxTaskRetryCount\": 0,\r\n        \"waitForSuccess\": false\r\n      },\r\n      \"certificateReferences\": [],\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04.0-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"Pool3\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/Pool3\",\r\n      \"eTag\": \"0x8D5B6C922B9F72F\",\r\n      \"lastModified\": \"2018-05-10T22:55:33.0087727Z\",\r\n      \"creationTime\": \"2018-05-03T00:12:37.910219Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2018-05-03T00:12:37.910219Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-10T22:57:03.6159727Z\",\r\n      \"vmSize\": \"basic_a1\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 1,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": false,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Pack\"\r\n      },\r\n      \"virtualMachineConfiguration\": {\r\n        \"imageReference\": {\r\n          \"publisher\": \"Canonical\",\r\n          \"offer\": \"UbuntuServer\",\r\n          \"sku\": \"16.04-LTS\",\r\n          \"version\": \"latest\"\r\n        },\r\n        \"nodeAgentSKUId\": \"batch.node.ubuntu 16.04\"\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"resizePool\",\r\n      \"url\": \"https://batchtestaccount.westus.batch.azure.com/pools/resizePool\",\r\n      \"eTag\": \"0x8D5C26EEA73E9B7\",\r\n      \"lastModified\": \"2018-05-25T18:39:57.8449335Z\",\r\n      \"creationTime\": \"2018-05-25T18:39:53.481687Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2018-05-25T18:39:57.8449335Z\",\r\n      \"allocationState\": \"steady\",\r\n      \"allocationStateTransitionTime\": \"2018-05-25T18:40:05.8643428Z\",\r\n      \"vmSize\": \"small\",\r\n      \"resizeTimeout\": \"PT15M\",\r\n      \"currentDedicatedNodes\": 0,\r\n      \"targetDedicatedNodes\": 1,\r\n      \"currentLowPriorityNodes\": 0,\r\n      \"targetLowPriorityNodes\": 0,\r\n      \"resizeErrors\": [\r\n        {\r\n          \"code\": \"ResizeStopped\",\r\n          \"message\": \"Desired number of dedicated nodes could not be allocated due to a stop resize operation\"\r\n        }\r\n      ],\r\n      \"enableAutoScale\": false,\r\n      \"enableInterNodeCommunication\": true,\r\n      \"maxTasksPerNode\": 1,\r\n      \"taskSchedulingPolicy\": {\r\n        \"nodeFillType\": \"Spread\"\r\n      },\r\n      \"cloudServiceConfiguration\": {\r\n        \"osFamily\": \"4\",\r\n        \"targetOSVersion\": \"*\",\r\n        \"currentOSVersion\": \"*\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "ResponseHeaders": {
         "Content-Type": [
           "application/json; odata=minimalmetadata"
@@ -438,7 +438,7 @@
           "chunked"
         ],
         "request-id": [
-          "13e3e053-fc96-49ab-a9fe-acbd8ef0ba22"
+          "568c343b-2cc9-4a88-8f78-80ac19401497"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -450,7 +450,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 06 Oct 2017 03:30:34 GMT"
+          "Fri, 25 May 2018 18:40:15 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -461,9 +461,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "2915bbd6-1252-405f-8173-6c00428146d9",
-    "AZURE_BATCH_ACCOUNT": "matthchrwestcentralus",
-    "AZURE_BATCH_ENDPOINT": "https://matthchrwestcentralus.westcentralus.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "matthchrwestcentralus"
+    "SubscriptionId": "ac86108b-e8ec-4858-8603-2f80105f96db",
+    "AZURE_BATCH_ACCOUNT": "batchtestaccount",
+    "AZURE_BATCH_ENDPOINT": "https://batchtestaccount.westus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "antoniowtestbatchrg"
   }
 }

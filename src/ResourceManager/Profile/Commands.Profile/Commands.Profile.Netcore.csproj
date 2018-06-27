@@ -31,7 +31,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
+    <None Include="AzureRM.Profile.Netcore.psd1" Link="AzureRM.Profile.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -50,6 +50,7 @@
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Common.Websites.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
