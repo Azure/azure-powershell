@@ -23,15 +23,28 @@ The **Enable-AzureRmSqlServerAdvancedThreatProtection** cmdlet enables Advanced 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Enable server Advanced Threat Protection
 ```powershell
-PS C:\> Enable-AzureRmSqlServerAdvancedThreatProtection -ResourceGroupName "ResourceGroup01" -ServerName "Server01" 
-ResourceGroupName             : ResourceGroup01
-ServerName                    : Server01
-IsEnabled                     : Database01
+PS C:\>  Enable-AzureRmSqlServerAdvancedThreatProtection `
+            -ResourceGroupName "ResourceGroup01" `
+            -ServerName "Server01" 
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : True
 ```
 
-{{ Add example description here }}
+### Example 2 - Enable server Advanced Threat Protection from server resource
+```powershell
+PS C:\>  Get-AzureRmSqlServer `
+           -ResourceGroupName "ResourceGroup01" `
+           -ServerName "Server01" `
+           | Enable-AzureRmSqlServerAdvancedThreatProtection
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : True
+```
 
 ## PARAMETERS
 

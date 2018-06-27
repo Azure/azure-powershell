@@ -23,12 +23,28 @@ The **Disable-AzureRmSqlServerAdvancedThreatProtection** cmdlet disables Advance
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Disable server Advanced Threat Protection
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Disable-AzureRmSqlServerAdvancedThreatProtection `
+            -ResourceGroupName "ResourceGroup01" `
+            -ServerName "Server01" 
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : False
 ```
 
-{{ Add example description here }}
+### Example 2 - Disable server Advanced Threat Protection from server resource
+```powershell
+PS C:\>  Get-AzureRmSqlServer `
+           -ResourceGroupName "ResourceGroup01" `
+           -ServerName "Server01" `
+           | Disable-AzureRmSqlServerAdvancedThreatProtection
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : False
+```
 
 ## PARAMETERS
 

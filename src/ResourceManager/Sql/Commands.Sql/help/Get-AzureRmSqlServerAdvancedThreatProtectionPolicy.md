@@ -22,12 +22,28 @@ The **Get-AzureRmSqlServerAdvancedThreatProtectionPolicy** cmdlet retrives the A
 
 ## EXAMPLES
 
-### Example 1
+### Example 1 - Gets server Advanced Threat Protection
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  Get-AzureRmSqlServerAdvancedThreatProtectionPolicy `
+            -ResourceGroupName "ResourceGroup01" `
+            -ServerName "Server01" 
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : True
 ```
 
-{{ Add example description here }}
+### Example 2 - Gets server Advanced Threat Protection from server resource
+```powershell
+PS C:\>  Get-AzureRmSqlServer `
+           -ResourceGroupName "ResourceGroup01" `
+           -ServerName "Server01" `
+           | Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+
+ResourceGroupName	         : ResourceGroup01
+ServerName		             : Server01
+IsEnabled		             : True
+```
 
 ## PARAMETERS
 
