@@ -42,12 +42,12 @@ This command removes the diagnostic setting called myDiagSetting for the resourc
 ## PARAMETERS
 
 ### -Name
-The name of the diagnostic setting. If not given the call default to "service" as it was in the previous API
+The name of the diagnostic setting. If not given the call default to "service" as it was in the previous API and this cmdlet will only disable all categories for metrics/logs.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: False
 Position: Named
@@ -62,7 +62,7 @@ Specifies the ID of the resource.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases:
+Aliases: 
 
 Required: True
 Position: Named
@@ -89,4 +89,3 @@ This cmdlet does not accept any input.
 
 [Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
 [Set-AzureRmDiagnosticSetting](./Set-AzureRmDiagnosticSetting.md)
-

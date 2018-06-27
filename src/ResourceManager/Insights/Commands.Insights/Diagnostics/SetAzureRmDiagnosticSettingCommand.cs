@@ -58,14 +58,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resourceId parameter of the cmdlet
         /// </summary>
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the diagnostic setting. Defaults to 'service'")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -165,6 +165,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 WriteWarningWithTimestamp("The arguments Categories and Timegrains now have aliases Category and Timegrain respectively. The plural names will be removed in future releases.");
                 DiagnosticSettingsResource properties;
 
+                // Name defaults to 'service'
+                string settingName = string.IsNullOrWhiteSpace(this.Name) ? TempServiceName : this.Name.Trim();
+
                 if (this.InputObject == null)
                 {
                     // If InputObject is null process the way it was done before
@@ -188,8 +191,8 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                         throw new ArgumentException("No operation is specified");
                     }
 
-                    WriteDebugWithTimestamp("Getting existing diagnostics setting");
-                    properties = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: TempServiceName, cancellationToken: CancellationToken.None).Result;
+                    WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Getting existing diagnostics setting called '{0}'", settingName));
+                    properties = this.MonitorManagementClient.DiagnosticSettings.GetAsync(resourceUri: this.ResourceId, name: settingName, cancellationToken: CancellationToken.None).Result;
 
                     WriteDebugWithTimestamp("Merging data. Existing setting is: {0}", properties == null ? "null" : "not null");
                     SetStorage(properties);
@@ -233,17 +236,35 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
                 }
                 else
                 {
+                    if (string.IsNullOrWhiteSpace(this.InputObject.Id) || string.IsNullOrWhiteSpace(this.InputObject.Name))
+                    {
+                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "InputObject is inconsistent: Id is incomplete or malformed, Id: '{0}', Name: '{1}'", this.InputObject.Id, this.InputObject.Name));
+                    }
+
                     // This is new functionality to keep the previous as it was before
                     WriteDebugWithTimestamp("Processing using InputObject");
                     properties = this.InputObject;
+
+                    // Take Name and ResourceId from the input Object
+                    string idSuffix = "/diagnosticSettings/" + this.InputObject.Name;
+                    bool foundCue = this.InputObject.Id.EndsWith(idSuffix);
+                    if (foundCue)
+                    {
+                        this.ResourceId = this.InputObject.Id.Substring(0, this.InputObject.Id.Length - idSuffix.Length);
+                        settingName = this.InputObject.Name;
+                    }
+                    else
+                    {
+                        throw new ArgumentException(string.Format(CultureInfo.InvariantCulture, "InputObject is inconsistent: Id is incomplete or malformed, Id: '{0}', Name: '{1}'", this.InputObject.Id, this.InputObject.Name));
+                    }
                 }
 
                 DiagnosticSettingsResource putParameters = CopySettings(properties);
 
-                WriteDebugWithTimestamp("Sending create/update request");
+                WriteDebugWithTimestamp(string.Format(CultureInfo.InvariantCulture, "Sending create/update request setting: {0}", settingName));
                 DiagnosticSettingsResource result = this.MonitorManagementClient.DiagnosticSettings.CreateOrUpdateAsync(
                     resourceUri: this.ResourceId, 
-                    name: string.IsNullOrWhiteSpace(this.Name) ? TempServiceName : this.Name.Trim(), 
+                    name: settingName, 
                     parameters: putParameters, 
                     cancellationToken: CancellationToken.None).Result;
 
