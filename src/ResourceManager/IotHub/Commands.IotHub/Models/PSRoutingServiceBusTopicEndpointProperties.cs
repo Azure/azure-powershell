@@ -14,7 +14,6 @@
 
 namespace Microsoft.Azure.Commands.Management.IotHub.Models
 {
-    using Common;
     using Newtonsoft.Json;
 
     /// <summary>
