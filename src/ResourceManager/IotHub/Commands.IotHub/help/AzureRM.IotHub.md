@@ -1,4 +1,4 @@
----
+﻿---
 Module Name: AzureRM.IotHub
 Module Guid: 51a3a993-fe39-4f8f-a437-2cb751584af5
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub
@@ -19,6 +19,12 @@ Creates an eventhub consumer group.
 
 ### [Add-AzureRmIotHubKey](Add-AzureRmIotHubKey.md)
 Creates an IotHub Key.
+
+### [Add-AzureRmIotHubRoute](Add-AzureRmIotHubRoute.md)
+{{Fill in the Synopsis}}
+
+### [Add-AzureRmIotHubRoutingEndpoint](Add-AzureRmIotHubRoutingEndpoint.md)
+{{Fill in the Synopsis}}
 
 ### [Get-AzureRmIotHub](Get-AzureRmIotHub.md)
 Gets information about the IotHubs in a subscription.
@@ -47,6 +53,12 @@ Gets the Quota Metrics for an IotHub.
 ### [Get-AzureRmIotHubRegistryStatistic](Get-AzureRmIotHubRegistryStatistic.md)
 Gets the RegistryStatistics for an IotHub.
 
+### [Get-AzureRmIotHubRoute](Get-AzureRmIotHubRoute.md)
+{{Fill in the Synopsis}}
+
+### [Get-AzureRmIotHubRoutingEndpoint](Get-AzureRmIotHubRoutingEndpoint.md)
+{{Fill in the Synopsis}}
+
 ### [Get-AzureRmIotHubValidSku](Get-AzureRmIotHubValidSku.md)
 Gets all valid skus that this IotHub can transition to.
 
@@ -71,11 +83,24 @@ Deletes an eventhub consumergroup.
 ### [Remove-AzureRmIotHubKey](Remove-AzureRmIotHubKey.md)
 Removes an IotHub Key.
 
+### [Remove-AzureRmIotHubRoute](Remove-AzureRmIotHubRoute.md)
+{{Fill in the Synopsis}}
+
+### [Remove-AzureRmIotHubRoutingEndpoint](Remove-AzureRmIotHubRoutingEndpoint.md)
+{{Fill in the Synopsis}}
+
 ### [Set-AzureRmIotHub](Set-AzureRmIotHub.md)
 Updates the properties of an IotHub.
 
 ### [Set-AzureRmIotHubVerifiedCertificate](Set-AzureRmIotHubVerifiedCertificate.md)
 Verifies an Azure IoT Hub certificate. 
 
+### [Test-AzureRmIotHubRoute](Test-AzureRmIotHubRoute.md)
+{{Fill in the Synopsis}}
+
 ### [Update-AzureRmIotHub](Update-AzureRmIotHub.md)
 Update an Azure IoT Hub.
+
+### [Update-AzureRmIotHubRoute](Update-AzureRmIotHubRoute.md)
+{{Fill in the Synopsis}}
+
