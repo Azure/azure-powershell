@@ -66,8 +66,6 @@ function Test-AzsMoveSubscription
     
     $ErrorActionPreference = 'Stop'
 
-    if(!$DestinationDelegatedProviderOffer) { Remove-Variable $DestinationDelegatedProviderOffer }
-
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
     }
