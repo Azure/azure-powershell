@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of values for the dimension")]
         [ValidateNotNullOrEmpty]
-        public string[] Values { get; set; }
+        public string[] Value { get; set; }
 
         /// <summary>
         /// Process the general parameters (i.e. defined in this class) and the particular parameters (i.e. the parameters added by the descendants of this class).
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         protected string ProcessParameters()
         {
             var buffer = new StringBuilder();
-            var metricFilter = this.Values
+            var metricFilter = this.Value
                 .Select(n => string.Concat(this.Dimension, " ", this.Operator, " '", n, "'"))
                 .Aggregate((a, b) => string.Concat(a, " or ", b));
             buffer.Append(metricFilter);

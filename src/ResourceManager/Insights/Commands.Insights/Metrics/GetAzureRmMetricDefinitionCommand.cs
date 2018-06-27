@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
         /// </summary>
-        [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "Return object with all the details of the records (the default is to return only some attributes, i.e. no detail)")]
+        [Parameter(HelpMessage = "Return object with all the details of the records (the default is to return only some attributes, i.e. no detail)")]
         public SwitchParameter DetailedOutput { get; set; }
 
         /// <summary>
