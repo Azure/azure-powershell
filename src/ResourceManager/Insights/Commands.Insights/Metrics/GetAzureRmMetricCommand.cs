@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// Gets or sets the resulttype parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The result type to be returned (metadata or data)")]
-        public ResultType? Resulttype { get; set; }
+        public ResultType? ResultType { get; set; }
 
         /// <summary>
         /// Gets or sets the metricfilter parameter of the cmdlet
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
             string aggregation = (this.AggregationType != null && this.AggregationType.HasValue) ? this.AggregationType.Value.ToString() : null;
             int? top = (this.Top == default(int?)) ? null : this.Top;
             string orderBy = (this.OrderBy == default(string)) ? null : this.OrderBy;
-            ResultType? resultType = (this.Resulttype == default(ResultType?)) ? null : this.Resulttype;
+            ResultType? resultType = (this.ResultType == default(ResultType?)) ? null : this.ResultType;
             string metricnamespace = (this.MetricNamespace == default(string)) ? null : this.MetricNamespace;
 
             var records = this.MonitorManagementClient.Metrics.List(

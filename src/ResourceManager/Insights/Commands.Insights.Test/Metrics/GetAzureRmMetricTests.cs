@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Metrics
             cmdlet.MetricNamespace = Utilities.MetricNamespace;
             cmdlet.Top = 5;
             cmdlet.OrderBy = "asc";
-            cmdlet.Resulttype = ResultType.Metadata;
+            cmdlet.ResultType = ResultType.Metadata;
             Assert.Equal(Utilities.ResourceUri, resourceId);
             Assert.Equal(expectedMetricNames, metricnames);
             Assert.Equal(AggregationType.Maximum.ToString(), aggregationType);

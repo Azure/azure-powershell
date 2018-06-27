@@ -42,7 +42,7 @@
     - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to "10", to be specified with $filter.
     - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
     - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
-    - Added new optional parameter 'Resulttype'. It is the result type to be returned (metadata or data).
+    - Added new optional parameter 'ResultType'. It is the result type to be returned (metadata or data).
     - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
 
 * **Get-AzureRmMetricDefinition**
