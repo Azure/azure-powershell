@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+        [Parameter(Mandatory = false,
             HelpMessage =
                 "If passed then progress status is showed. Only applicable when recursive Acl Set is done."
         )]
