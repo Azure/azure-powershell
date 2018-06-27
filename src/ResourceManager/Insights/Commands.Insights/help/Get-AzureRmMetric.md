@@ -24,7 +24,7 @@ Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-TimeGrain 
 
 ```
 Get-AzureRmMetric [-ResourceId] <String> [-MetricName] <String[]> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int>] [-OrderBy <String>] 
- [-MetricNamespace <String>] [-Resulttype <Resulttype>] [-MetricFilter <MetricFilter>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-MetricNamespace <String>] [-ResultType <ResultType>] [-MetricFilter <MetricFilter>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -363,11 +363,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Resulttype
+### -ResultType
 Specifies the result type to be returned (metadata or data).
 
 ```yaml
-Type: Resulttype
+Type: ResultType
 Parameter Sets: GetWithFullParameters
 Aliases:
 

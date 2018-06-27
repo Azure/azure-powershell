@@ -14,7 +14,7 @@ Creates a metric dimension filter that can be used to query metrics.
 ## SYNTAX
 
 ```
-New-AzureRmMetricFilter -ResourceId <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+New-AzureRmMetricFilter -Dimension <String> -Operator <String> -Value <String[]> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ The **New-AzureRmMetricFilter** cmdlet creates a metric dimension filter that ca
 
 ### Example 1: Create a metric dimension filter
 ```
-PS C:\>New-AzureRmMetricFilter -Dimension City -Operator eq -Values "Seattle","New York"
+PS C:\>New-AzureRmMetricFilter -Dimension City -Operator eq -Value "Seattle","New York"
 ```
 
 This command creates metric dimension filter of the format "City eq 'Seattle' or City eq 'New York'".
@@ -62,7 +62,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Values
+### -Value
 Specifies the array of metric dimension values.
 
 ```yaml
