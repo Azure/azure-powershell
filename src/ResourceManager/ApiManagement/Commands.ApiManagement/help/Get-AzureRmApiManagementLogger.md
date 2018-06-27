@@ -106,9 +106,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger
 The detail of the Logger configured in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementLogger>
-The list of Loggers configured in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

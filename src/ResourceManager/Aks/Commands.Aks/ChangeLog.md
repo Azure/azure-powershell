@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* No version update. Extracted AKS sdk to common for reuse in DevSpaces.
 
 ## Version 0.0.2
 * Updated to the latest version of the Azure ClientRuntime

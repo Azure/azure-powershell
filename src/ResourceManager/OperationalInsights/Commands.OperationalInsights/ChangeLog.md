@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed formatting of OutputType in help files
 
 ## Version 5.0.1
 * Updated PSWorkspace model to allow Network to use type as a parameter
