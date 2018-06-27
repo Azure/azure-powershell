@@ -380,8 +380,8 @@ Modifies TDE property for a database.
 ### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Sets the vulnerability assessment rule baseline.
 
-### [Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Set-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
-Sets the vulnerability assessment settings of a database.
+### [Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings](Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings.md)
+Updated the vulnerability assessment settings of a database.
 
 ### [Set-AzureRmSqlElasticPool](Set-AzureRmSqlElasticPool.md)
 Modifies properties of an elastic database pool in Azure SQL Database.
