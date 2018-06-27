@@ -995,5 +995,14 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on master database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase", resourceCulture);
+            }
+        }
     }
 }
