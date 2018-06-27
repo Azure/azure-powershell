@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ServerName
-SQL Database server name.```yaml
+SQL Database server name.
 Type: String
 Parameter Sets: (All)
 Aliases:
