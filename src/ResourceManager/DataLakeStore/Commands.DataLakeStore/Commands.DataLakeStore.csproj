@@ -92,6 +92,7 @@
     <Compile Include="DataPlaneModels\AdlsClientFactory.cs" />
     <Compile Include="DataPlaneModels\AdlsLoggerTarget.cs" />
     <Compile Include="DataPlaneModels\DataLakeStoreChildItemSummary.cs" />
+    <Compile Include="DataPlaneModels\EncodingCompleter.cs" />
     <Compile Include="Models\DataLakeStoreClient.cs" />
     <Compile Include="Models\DataLakeStoreCmdletBase.cs" />
     <Compile Include="DataPlaneModels\DataLakeStoreEnums.cs" />
