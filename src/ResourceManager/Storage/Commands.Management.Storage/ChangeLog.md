@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.0.5-preview
+* Support enable or disable FilesAadIntegration for SMB when create or update Storage account 
+       - New-AzureRmStorageAccount
+       - Set-AzureRmStorageAccount
+
 ## Version 5.0.4-preview
 * Support create Storage account with Hierarchical Namespace enabled 
        - New-AzureRmStorageAccount

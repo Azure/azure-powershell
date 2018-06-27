@@ -40,6 +40,8 @@ namespace Microsoft.Azure.Commands.Management.Storage
         protected const string AccountTypeAlias = "AccountType";
         protected const string Account_TypeAlias = "Type";
 
+        protected const string EnableFilesAadIntegrationAlias = "EnableFilesAADIntegration";
+
         protected const string StorageAccountKeySourceStr = StorageAccountNounStr + "EncryptionKeySource";
 
         protected const string TagsAlias = "Tags";

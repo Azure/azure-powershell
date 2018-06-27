@@ -17,8 +17,8 @@ Creates a Storage account.
 New-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <String>
  [-Location] <String> [-Kind <String>] [-AccessTier <String>] [-CustomDomainName <String>]
  [-UseSubDomain <Boolean>] [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableHierarchicalNamespace <Boolean>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableAzureFilesAadIntegrationForSMB <Boolean>]
+ [-EnableHierarchicalNamespace <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
 ```
 
 ## DESCRIPTION
@@ -59,12 +59,12 @@ PS C:\>New-AzureRmStorageAccount -ResourceGroupName MyResourceGroup -AccountName
 
 This command creates a Storage account that has NetworkRuleSet property from JSON
 
-### Example 5: Create a Storage account with Hierarchical Namespace enabled.
+### Example 5: Create a Storage account with Azure Files AAD Integration enabled, and Hierarchical Namespace enabled.
 ```
-PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2  -EnableHierarchicalNamespace $true
+PS C:\>New-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Location "US West" -SkuName "Standard_GRS" -Kind StorageV2 -EnableAzureFilesAadIntegrationForSMB $true -EnableHierarchicalNamespace $true
 ```
 
-This command creates a Storage account with Hierarchical Namespace enabled.
+This command creates a Storage account with with Azure Files AAD Integration enabled, and Hierarchical Namespace enabled.
 
 ## PARAMETERS
 
@@ -142,6 +142,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableAzureFilesAadIntegrationForSMB
+Indicates whether or not the Storage account enabled Azure Files AAD Integration for SMB.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: EnableFilesAADIntegration
 
 Required: False
 Position: Named
