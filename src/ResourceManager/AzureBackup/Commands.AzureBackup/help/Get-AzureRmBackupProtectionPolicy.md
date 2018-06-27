@@ -108,14 +108,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupVault
 
 ## OUTPUTS
 
-### AzureRmBackupProtectionPolicy
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupProtectionPolicy
 
 ## NOTES
-* None
 
 ## RELATED LINKS
 

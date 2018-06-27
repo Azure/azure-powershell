@@ -181,7 +181,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### System.String
 You can pipe input to the cmdlet by property name, but not by value.
 
 ## OUTPUTS

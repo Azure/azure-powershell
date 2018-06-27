@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Net;
 
     [Cmdlet(VerbsCommon.Get, Constants.FileCmdletName, DefaultParameterSetName = Constants.ShareNameParameterSetName)]
+    [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFile : AzureStorageFileCmdletBase
     {
         [Parameter(
