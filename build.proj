@@ -645,6 +645,8 @@
 
     <CallTarget Targets="BinScopeCheck" />
 
+    <CallTarget Targets="RunPoliCheck" />
+
     <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           ContinueOnError="ErrorAndContinue"/>
 
@@ -653,7 +655,7 @@
   </Target>
 
   <Target Name="BinScopeCheck">
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) &quot;"
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) &quot;"
           ContinueOnError="False"/>
     <OnError ExecuteTargets="BinScopeErrorMessage"/>
   </Target>
@@ -679,7 +681,7 @@
   </Target>
 
   <Target Name="RunPoliCheck">
-    <Exec Command="$(CIToolsPath)\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe /F:&quot;$PSScriptRoot\..&quot; /T:&quot;9&quot; /O:&quot;$PSScriptRoot\..\src\Package\PoliCheck-Scan.xml&quot;"/>
+    <Exec Command="$(CIToolsPath)\tools\PoliCheck\PoliCheck5.8.1\PoliCheck.exe /F:&quot;$PSScriptRoot\..\src\Package&quot; /T:&quot;9&quot; /O:&quot;$PSScriptRoot\..\src\Package\PoliCheck-Scan.xml&quot;"/>
   </Target>
 
 </Project>

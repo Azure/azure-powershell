@@ -3,10 +3,11 @@
 )]
 param(
     [Parameter(Mandatory = $false)]
-    [string] $BuildConfig = "Debug"
+    [string] $BuildConfig = "Debug",
+    [Parameter(Mandatory = $false)]
+    [string] $CIToolsPath
 )
 
-# BinScope
 $RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
@@ -14,8 +15,8 @@ $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceMana
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
 
 $RMFolders | ForEach-Object {
-    $dlls = Get-ChildItem $_.FullName -Recurse | Where-Object { $_ -like "*dll" } | ForEach-Object { $_.FullName }
-    BinScope.exe $dlls /OutDir "$PSScriptRoot/../src/Package/BinScope/" | Out-Null
+    $dlls = Get-ChildItem $_.FullName -Recurse | Where-Object { $_ -like "*dll" } | ForEach-Object { $_.FullName };
+    & "$CIToolsPath/tools/BinScope/BinScope7.0.7/BinScope.exe" $dlls /OutDir "$PSScriptRoot/../src/Package/BinScope/" /html | Out-Null
 }
 
 $shouldThrow = $false
