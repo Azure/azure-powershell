@@ -29,8 +29,8 @@ namespace StaticAnalysis
     {
         static IList<IStaticAnalyzer> Analyzers = new List<IStaticAnalyzer>()
         {
-            //new DependencyAnalyzer.DependencyAnalyzer(),
-            //new SignatureVerifier.SignatureVerifier(),
+            new DependencyAnalyzer.DependencyAnalyzer(),
+            new SignatureVerifier.SignatureVerifier(),
             new BreakingChangeAnalyzer.BreakingChangeAnalyzer()
         };
 

@@ -302,7 +302,7 @@ namespace VersionController.Models
                     CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
                     if (issueLogger.Records.Any())
                     {
-                        tempVersionBump = Version.PATCH;
+                        tempVersionBump = Version.MAJOR;
                     }
                     else if (!oldModuleMetadata.Equals(newModuleMetadata))
                     {

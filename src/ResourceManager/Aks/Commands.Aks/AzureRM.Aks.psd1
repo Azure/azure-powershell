@@ -54,9 +54,9 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\YamlDotNet.dll', 
-               '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll', 
-               '.\AutoMapper.dll', 'System.Management.Automation.dll'
+RequiredAssemblies = '.\YamlDotNet.dll',
+               '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
+               '.\AutoMapper.dll', '.\System.Management.Automation.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -74,8 +74,8 @@ NestedModules = @('.\Microsoft.Azure.Commands.Aks.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmAks', 'New-AzureRmAks', 'Remove-AzureRmAks', 
-               'Import-AzureRmAksCredential', 'Start-AzureRmAksDashboard', 
+CmdletsToExport = 'Get-AzureRmAks', 'New-AzureRmAks', 'Remove-AzureRmAks',
+               'Import-AzureRmAksCredential', 'Start-AzureRmAksDashboard',
                'Stop-AzureRmAksDashboard', 'Set-AzureRmAks'
 
 # Variables to export from this module
@@ -123,7 +123,7 @@ PrivateData = @{
         # ExternalModuleDependencies = @()
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
