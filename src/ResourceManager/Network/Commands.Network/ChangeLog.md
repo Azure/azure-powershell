@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 6.3.0
 * Fixed formatting of OutputType in help files
 * Added new commands for feature: ExpressRoute Partner APIs via ARM
     - Added Get-AzureRmExpressRouteCrossConnection
