@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation of teh Azure Sql Database copy.
+The compute generation to assign to the new copy.
 
 ```yaml
 Type: String

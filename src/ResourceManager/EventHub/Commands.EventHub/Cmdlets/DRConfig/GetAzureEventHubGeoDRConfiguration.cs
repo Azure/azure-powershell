@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Get-AzureEventHubDRConfiguration' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(List<PSEventHubDRConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, EventHubDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class GetEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

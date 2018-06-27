@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// <summary>
     /// Get list of protection policies
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmBackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy), typeof(List<AzureRMBackupProtectionPolicy>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmBackupProtectionPolicy"), OutputType(typeof(AzureRMBackupProtectionPolicy))]
     public class GetAzureRMBackupProtectionPolicy : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.PolicyName)]

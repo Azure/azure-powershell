@@ -162,10 +162,8 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel
-
-### Tables: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel
-
-### Columns: Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel
+### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel
 
 ## NOTES
 
