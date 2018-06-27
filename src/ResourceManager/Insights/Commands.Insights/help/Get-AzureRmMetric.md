@@ -306,7 +306,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric
 
 ## NOTES
 

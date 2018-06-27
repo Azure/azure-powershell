@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.MachineLearning.Netcore.psd1" Link="AzureRM.MachineLearning.Netcore.psd1">
+    <None Include="AzureRM.MachineLearning.Netcore.psd1" Link="AzureRM.MachineLearning.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

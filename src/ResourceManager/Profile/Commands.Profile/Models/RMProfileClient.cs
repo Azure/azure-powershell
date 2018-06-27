@@ -109,7 +109,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             SecureString password,
             bool skipValidation,
             Action<string> promptAction,
-            string name = null)
+            string name = null,
+            bool shouldPopulateContextList = true)
         {
             IAzureSubscription newSubscription = null;
             IAzureTenant newTenant = null;
@@ -226,6 +227,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
             }
 
+            shouldPopulateContextList &= _profile.DefaultContext?.Account == null;
             if (newSubscription == null)
             {
                 if (subscriptionId != null)
@@ -260,6 +262,35 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
 
             _profile.DefaultContext.TokenCache = _cache;
+            if (shouldPopulateContextList)
+            {
+                var defaultContext = _profile.DefaultContext;
+                var subscriptions = ListSubscriptions(tenantId).Take(25);
+                foreach (var subscription in subscriptions)
+                {
+                    IAzureTenant tempTenant = new AzureTenant()
+                    {
+                        Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
+                    };
+
+                    var tempContext = new AzureContext(subscription, account, environment, tempTenant);
+                    tempContext.TokenCache = _cache;
+                    string tempName = null;
+                    if (!_profile.TryGetContextName(tempContext, out tempName))
+                    {
+                        WriteWarningMessage(string.Format(Resources.CannotGetContextName, subscription.Id));
+                        continue;
+                    }
+
+                    if (!_profile.TrySetContext(tempName, tempContext))
+                    {
+                        WriteWarningMessage(string.Format(Resources.CannotCreateContext, subscription.Id));
+                    }
+                }
+
+                _profile.TrySetDefaultContext(defaultContext);
+                _profile.TryRemoveContext("Default");
+            }
 
             return _profile.ToProfile();
         }

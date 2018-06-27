@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningService", DefaultParameterSetName = ListIotDpsByRGParameterSet)]
     [Alias("Get-AzureRmIoTDps")]
-    [OutputType(typeof(PSProvisioningServiceDescription), typeof(List<PSProvisioningServicesDescription>))]
+    [OutputType(typeof(PSProvisioningServiceDescription))]
     public class GetAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
     {
         private const string GetIotDpsParameterSet = "GetIotDpsByName";

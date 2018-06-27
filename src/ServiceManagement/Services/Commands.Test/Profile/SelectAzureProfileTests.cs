@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.Test.Profile
     public class SelectAzureProfileTests
     {
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSelectDefaultProfile()
         {
             ProfileTestController.NewRdfeInstance.RunPSTestWithToken((context, token) => string.Format("Test-SelectDefaultProfile {0} {1} {2}", token, context.Account.Id, context.Subscription.Id));

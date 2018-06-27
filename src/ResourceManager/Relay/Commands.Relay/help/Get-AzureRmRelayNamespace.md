@@ -81,15 +81,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
 ProvisioningState  : Succeeded
 CreatedAt          : 4/12/2017 12:38:47 AM
 UpdatedAt          : 4/12/2017 12:39:10 AM

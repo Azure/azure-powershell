@@ -26,6 +26,7 @@ app.config
 *.userprefs
 *.sln.docstates
 .vscode
+*.userosscache
 
 # Build results
 [Dd]ebug/
