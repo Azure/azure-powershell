@@ -28,6 +28,7 @@
 * Update Get/New/Remove/Set-AzureRmPolicySetDefinition cmdlets
     - Add -ManagementGroupName parameter to apply operations to a given management group
     - Add -SubscriptionId parameter to apply operations to a given subscription
+* Add KeyVault secret reference support in parameters when using `TemplateParameterObject` in `New-AzureRmResourceGroupDeployment`
 
 ## Version 6.1.1
 * Fix error in `New-AzureRmRoleAssignment` help
