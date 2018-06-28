@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
 
 ## Version 6.2.0
 * Enable Traffic Analytics parameters on Network Watcher cmdlets
