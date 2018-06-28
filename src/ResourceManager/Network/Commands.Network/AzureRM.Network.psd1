@@ -363,7 +363,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed formatting of OutputType in help files
+        ReleaseNotes = '* Expose new Skus for Zone-Redundant VirtualNetworkGateways
+* Fixed formatting of OutputType in help files
 * Added new commands for feature: ExpressRoute Partner APIs via ARM
     - Added Get-AzureRmExpressRouteCrossConnection
     - Added Set-AzureRmExpressRouteCrossConnection

@@ -673,23 +673,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.4.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -6886,80 +6869,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster": {
-      "Namespace": "Microsoft.Azure.Commands.MachineLearningCompute.Models",
-      "Name": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster, Microsoft.Azure.Commands.MachineLearningCompute, Version=0.4.4.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ContainerService": "Microsoft.Azure.Management.MachineLearningCompute.Models.AcsClusterProperties",
-        "AppInsights": "Microsoft.Azure.Management.MachineLearningCompute.Models.AppInsightsProperties",
-        "ContainerRegistry": "Microsoft.Azure.Management.MachineLearningCompute.Models.ContainerRegistryProperties",
-        "GlobalServiceConfiguration": "Microsoft.Azure.Management.MachineLearningCompute.Models.GlobalServiceConfiguration",
-        "StorageAccount": "Microsoft.Azure.Management.MachineLearningCompute.Models.StorageAccountProperties",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "ProvisioningErrors": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.MachineLearningCompute.Models.ErrorResponseWrapper]",
-        "CreatedOn": "System.Nullable`1[System.DateTime]",
-        "ModifiedOn": "System.Nullable`1[System.DateTime]",
-        "Id": "System.String",
-        "Type": "System.String",
-        "Name": "System.String",
-        "Location": "System.String",
-        "Description": "System.String",
-        "ProvisioningState": "System.String",
-        "ClusterType": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ConvertToOperationalizationCluster",
-          "Parameters": [],
-          "ReturnType": "Microsoft.Azure.Management.MachineLearningCompute.Models.OperationalizationCluster"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "cluster",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     }
   }
 }

@@ -12,16 +12,55 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
+            "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "EventRequestMessage": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
+              "EventResponseMessage": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "webhookEvent",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2006,23 +2045,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -2578,23 +2600,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3446,23 +3451,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -13513,57 +13501,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent": {
-      "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-      "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "EventRequestMessage": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
-        "EventResponseMessage": "Microsoft.Azure.Management.ContainerRegistry.Models.EventResponseMessage",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "webhookEvent",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage": {
       "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
       "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSEventRequestMessage",
@@ -14295,183 +14232,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry": {
-      "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-      "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Usages": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.ContainerRegistry.Models.RegistryUsage]",
-        "AdminUserEnabled": "System.Nullable`1[System.Boolean]",
-        "CreationDate": "System.Nullable`1[System.DateTime]",
-        "Id": "System.String",
-        "ResourceGroupName": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String",
-        "SkuName": "System.String",
-        "SkuTier": "System.String",
-        "LoginServer": "System.String",
-        "ProvisioningState": "System.String",
-        "StorageAccountName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "registry",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication": {
-      "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-      "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "StatusTimestamp": "System.Nullable`1[System.DateTime]",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Location": "System.String",
-        "Type": "System.String",
-        "ProvisioningState": "System.String",
-        "Status": "System.String",
-        "StatusMessage": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "replication",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook": {
-      "Namespace": "Microsoft.Azure.Commands.ContainerRegistry",
-      "Name": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Config": "Microsoft.Azure.Management.ContainerRegistry.Models.CallbackConfig",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Actions": "System.Collections.Generic.IList`1[System.String]",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String",
-        "Status": "System.String",
-        "Scope": "System.String",
-        "ProvisioningState": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "webhook",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "System.TypeCode": {
       "Namespace": "System",

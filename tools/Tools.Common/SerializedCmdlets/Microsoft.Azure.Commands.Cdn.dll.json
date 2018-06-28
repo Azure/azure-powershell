@@ -245,16 +245,51 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.Commands.Cdn, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
+            "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.Commands.Cdn, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "optimizationType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15479,53 +15514,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType": {
-      "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Profile",
-      "Name": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType, Microsoft.Azure.Commands.Cdn, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "optimizationType",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Commands.Cdn.Models.Origin.PSOriginResourceState": {
       "Namespace": "Microsoft.Azure.Commands.Cdn.Models.Origin",

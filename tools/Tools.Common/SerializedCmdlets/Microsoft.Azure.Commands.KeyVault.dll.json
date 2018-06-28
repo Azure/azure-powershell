@@ -14205,16 +14205,49 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Email": "System.String",
+              "VaultName": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -14931,16 +14964,57 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15064,16 +15138,59 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -16630,16 +16747,49 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Email": "System.String",
+              "VaultName": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -17128,16 +17278,50 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Name": "System.String",
+              "IssuerProvider": "System.String",
+              "VaultName": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -20225,16 +20409,49 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Email": "System.String",
+              "VaultName": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -31549,16 +31766,63 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Hashtable",
+              "ResourceId": "System.String",
+              "VaultName": "System.String",
+              "ResourceGroupName": "System.String",
+              "Location": "System.String",
+              "TagsTable": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "resource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -31623,23 +31887,6 @@
                 "ReturnType": "System.Type"
               }
             ],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault"
-            ],
-            "Methods": [],
             "Constructors": []
           },
           "ParameterSets": [
@@ -43021,16 +43268,60 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "PurgeDisabled": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "RecoveryLevel": "System.String",
+              "TagsTable": "System.String",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -43101,16 +43392,62 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "PurgeDisabled": "System.Boolean",
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "RecoveryLevel": "System.String",
+              "TagsTable": "System.String",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -44732,16 +45069,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ContentType": "System.String",
+              "TagsTable": "System.String",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -44812,16 +45192,61 @@
         },
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
+            "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Tags": "System.Collections.Hashtable",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
+              "DeletedDate": "System.Nullable`1[System.DateTime]",
+              "Expires": "System.Nullable`1[System.DateTime]",
+              "NotBefore": "System.Nullable`1[System.DateTime]",
+              "Created": "System.Nullable`1[System.DateTime]",
+              "Updated": "System.Nullable`1[System.DateTime]",
+              "ContentType": "System.String",
+              "TagsTable": "System.String",
+              "VaultName": "System.String",
+              "Name": "System.String",
+              "Version": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -56023,205 +56448,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Email": "System.String",
-        "VaultName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
-        "DeletedDate": "System.Nullable`1[System.DateTime]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Name": "System.String",
-        "IssuerProvider": "System.String",
-        "VaultName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails": {
       "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
       "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOrganizationDetails",
@@ -56652,351 +56878,6 @@
         "Y": "System.Byte[]",
         "D": "System.Byte[]",
         "Curve": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Hashtable",
-        "ResourceId": "System.String",
-        "VaultName": "System.String",
-        "ResourceGroupName": "System.String",
-        "Location": "System.String",
-        "TagsTable": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "resource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AccessPolicies": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultAccessPolicy[]",
-        "NetworkAcls": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleSet",
-        "OriginalVault": "Microsoft.Azure.Management.KeyVault.Models.Vault",
-        "EnabledForDeployment": "System.Boolean",
-        "Tags": "System.Collections.Hashtable",
-        "TenantId": "System.Guid",
-        "EnablePurgeProtection": "System.Nullable`1[System.Boolean]",
-        "EnabledForTemplateDeployment": "System.Nullable`1[System.Boolean]",
-        "EnabledForDiskEncryption": "System.Nullable`1[System.Boolean]",
-        "EnableSoftDelete": "System.Nullable`1[System.Boolean]",
-        "DeletionDate": "System.Nullable`1[System.DateTime]",
-        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
-        "Location": "System.String",
-        "ResourceGroupName": "System.String",
-        "VaultName": "System.String",
-        "ResourceId": "System.String",
-        "Id": "System.String",
-        "AccessPoliciesText": "System.String",
-        "Sku": "System.String",
-        "TenantName": "System.String",
-        "VaultUri": "System.String",
-        "NetworkAclsText": "System.String",
-        "TagsTable": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": []
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "PurgeDisabled": "System.Boolean",
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "RecoveryLevel": "System.String",
-        "TagsTable": "System.String",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "PurgeDisabled": "System.Boolean",
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
-        "DeletedDate": "System.Nullable`1[System.DateTime]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "RecoveryLevel": "System.String",
-        "TagsTable": "System.String",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "ContentType": "System.String",
-        "TagsTable": "System.String",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem": {
-      "Namespace": "Microsoft.Azure.Commands.KeyVault.Models",
-      "Name": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultSecretIdentityItem, Microsoft.Azure.Commands.KeyVault, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Tags": "System.Collections.Hashtable",
-        "Enabled": "System.Nullable`1[System.Boolean]",
-        "ScheduledPurgeDate": "System.Nullable`1[System.DateTime]",
-        "DeletedDate": "System.Nullable`1[System.DateTime]",
-        "Expires": "System.Nullable`1[System.DateTime]",
-        "NotBefore": "System.Nullable`1[System.DateTime]",
-        "Created": "System.Nullable`1[System.DateTime]",
-        "Updated": "System.Nullable`1[System.DateTime]",
-        "ContentType": "System.String",
-        "TagsTable": "System.String",
-        "VaultName": "System.String",
-        "Name": "System.String",
-        "Version": "System.String",
-        "Id": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],

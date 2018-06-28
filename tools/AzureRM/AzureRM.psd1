@@ -191,6 +191,7 @@ AzureRM.KeyVault
 * Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag
 
 AzureRM.Network
+* Expose new Skus for Zone-Redundant VirtualNetworkGateways
 * Added new commands for feature: ExpressRoute Partner APIs via ARM
     - Added Get-AzureRmExpressRouteCrossConnection
     - Added Set-AzureRmExpressRouteCrossConnection

@@ -640,16 +640,83 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
+            "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Id": "System.Int64",
+              "Name": "System.String",
+              "Status": "System.String",
+              "ContainerType": "System.String",
+              "ContainerUniqueName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceName": "System.String",
+              "Location": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "vault",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "marsContainerResponse",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "vault",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -3072,23 +3139,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -3510,23 +3560,6 @@
       "SupportsPaging": false,
       "DefaultParameterSetName": "FiltersSet",
       "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
@@ -5540,23 +5573,6 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
             "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
             "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
             "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
@@ -5881,23 +5897,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -7581,23 +7580,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -9231,23 +9213,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -10243,23 +10208,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -11321,23 +11269,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault"
-            ],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -13717,85 +13648,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.Int64",
-        "Name": "System.String",
-        "Status": "System.String",
-        "ContainerType": "System.String",
-        "ContainerUniqueName": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceName": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "vault",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "marsContainerResponse",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "vault",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "containerInfo",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.TypeCode": {
       "Namespace": "System",
       "Name": "System.TypeCode",
@@ -13885,160 +13737,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "RecoveryPointsCount": "System.Int32",
-        "Name": "System.String",
-        "DataSourceStatus": "System.String",
-        "ProtectionStatus": "System.String",
-        "Type": "System.String",
-        "ProtectionPolicyName": "System.String",
-        "ProtectionPolicyId": "System.String",
-        "ItemName": "System.String",
-        "ContainerType": "System.String",
-        "ContainerUniqueName": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceName": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "datasource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "azureBackupContainer",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "pPOItem",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "azureBackupContainer",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "IsCancellable": "System.Boolean",
-        "IsRetriable": "System.Boolean",
-        "ErrorDetails": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AzureBackup.Models.ErrorInfo]",
-        "StartTime": "System.DateTime",
-        "EndTime": "System.Nullable`1[System.DateTime]",
-        "InstanceId": "System.String",
-        "WorkloadType": "System.String",
-        "Operation": "System.String",
-        "Status": "System.String",
-        "WorkloadName": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceName": "System.String",
-        "Location": "System.String",
-        "Duration": "System.TimeSpan"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "vault",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "serviceJob",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "jobName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.Collections.Generic.Dictionary`2[System.String,System.String]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.Dictionary`2[System.String,System.String]",
@@ -14108,209 +13806,6 @@
           "Parameters": [
             {
               "Name": "serviceTask",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "RetentionPolicy": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy]",
-        "DaysOfWeek": "System.Collections.Generic.List`1[System.String]",
-        "BackupTime": "System.DateTime",
-        "PolicyId": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "ScheduleType": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceName": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "vault",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sourcePolicy",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "policyId",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "RecoveryPointTime": "System.DateTime",
-        "RecoveryPointType": "System.String",
-        "RecoveryPointName": "System.String",
-        "ItemName": "System.String",
-        "ContainerType": "System.String",
-        "ContainerUniqueName": "System.String",
-        "ResourceGroupName": "System.String",
-        "ResourceName": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "recoveryPointInfo",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "azureBackupItem",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault": {
-      "Namespace": "Microsoft.Azure.Commands.AzureBackup.Models",
-      "Name": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault, Microsoft.Azure.Commands.AzureBackup, Version=4.0.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ResourceId": "System.String",
-        "Name": "System.String",
-        "ResourceGroupName": "System.String",
-        "Region": "System.String",
-        "Storage": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "resourceGroupName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "resourceName",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "region",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]

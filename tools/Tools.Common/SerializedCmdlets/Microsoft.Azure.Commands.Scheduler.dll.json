@@ -458,14 +458,55 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System",
-            "Name": "System.Object",
-            "AssemblyQualifiedName": "System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
+            "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition, Microsoft.Azure.Commands.Scheduler, Version=0.16.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ResourceGroupName": "System.String",
+              "JobCollectionName": "System.String",
+              "Location": "System.String",
+              "Plan": "System.String",
+              "State": "System.String",
+              "MaxJobCount": "System.String",
+              "MaxRecurrence": "System.String",
+              "Uri": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9923,6 +9964,16 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Type": {
+      "Namespace": "System",
+      "Name": "System.Type",
+      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails": {
       "Namespace": "Microsoft.Azure.Commands.Scheduler.Models",
       "Name": "Microsoft.Azure.Commands.Scheduler.Models.PSJobActionDetails",
@@ -10072,16 +10123,6 @@
       "Namespace": "System",
       "Name": "System.TypeCode",
       "AssemblyQualifiedName": "System.TypeCode, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Type": {
-      "Namespace": "System",
-      "Name": "System.Type",
-      "AssemblyQualifiedName": "System.Type, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
