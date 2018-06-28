@@ -326,7 +326,15 @@ CmdletsToExport = 'Add-AzureRmApplicationGatewayAuthenticationCertificate',
     'New-AzureRMNetworkWatcherProtocolConfiguration', 
     'Add-AzureRmExpressRouteCircuitConnectionConfig', 
     'Get-AzureRmExpressRouteCircuitConnectionConfig', 
-    'Remove-AzureRmExpressRouteCircuitConnectionConfig'
+    'Remove-AzureRmExpressRouteCircuitConnectionConfig',
+	'Get-AzureRmFirewall',
+    'Set-AzureRmFirewall',
+    'New-AzureRmFirewall',
+    'Remove-AzureRmFirewall',
+    'New-AzureRmFirewallApplicationRuleCollection',
+    'New-AzureRmFirewallApplicationRule',
+	'New-AzureRmFirewallNetworkRuleCollection',
+    'New-AzureRmFirewallNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
