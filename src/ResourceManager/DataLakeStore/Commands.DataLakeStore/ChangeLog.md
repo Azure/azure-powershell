@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties
+* Fix flushing of debug messages for cmdlets that does recursive operations
+* Fix location of test of DataLake cmdlets
 * Fixed formatting of OutputType in help files
 
 ## Version 6.0.1
