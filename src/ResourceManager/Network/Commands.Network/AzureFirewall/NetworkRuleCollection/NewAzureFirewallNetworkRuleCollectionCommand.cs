@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The priority of the rule collection")]
-        [ValidateNotNullOrEmpty]
+        [ValidateRange(100, 65000)]
         public uint Priority { get; set; }
 
         [Parameter(
@@ -55,17 +55,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-
-            if (this.Priority < 100 || this.Priority > 65000)
-            {
-                throw new ArgumentException("Rule collection priority should be set to a value between 100 and 65000.");
-            }
-
-            if (this.Rule == null || this.Rule.Count == 0)
-            {
-                throw new ArgumentException("At least one application rule should be specified!");
-            }
-
+            
             var networkRuleCollection = new PSAzureFirewallNetworkRuleCollection
             {
                 Name = this.Name,
