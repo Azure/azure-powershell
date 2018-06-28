@@ -28,7 +28,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
 {
     /// <summary>
-    /// Defines the Add-AzureRmSqlServerTransparentDataEncryptionCertificate cmdlet
+    /// Defines the Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// <summary>
         /// Parameter sets
         /// </summary>
-        protected const string DefaultParameterSet = "AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet";
+        protected const string DefaultParameterSet = "AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificateDefaultParameterSet";
 
         /// <summary>
         /// Gets or sets the resource group name

@@ -14,7 +14,7 @@ Adds a Transparent Data Encryption Certificate for the given managed instance
 
 ```
 Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate [-ResourceGroupName] <String>
- [-ManagedInstanceName] <String> [-PrivateBlob] <String> [-Password] <String>
+ [-ManagedInstanceName] <String> [-PrivateBlob] <String> [-Password <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

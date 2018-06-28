@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 0,
             HelpMessage = "The sql server input object")]
         [ValidateNotNullOrEmpty]
-        public AzureSqlServerModel InputObject { get; set; }
+        public AzureSqlServerModel SqlServer { get; set; }
 
         /// <summary>
         /// Gets or sets the Server Resource Id
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 0,
             HelpMessage = "The sql server resource id")]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string SqlServerResourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the resource group name
@@ -176,11 +176,11 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             switch (ParameterSetName)
             {
                 case InputObjectParameterSet:
-                    this.ResourceGroupName = InputObject.ResourceGroupName;
-                    this.ServerName = InputObject.ServerName;
+                    this.ResourceGroupName = SqlServer.ResourceGroupName;
+                    this.ServerName = SqlServer.ServerName;
                     break;
                 case ResourceIdParameterSet:
-                    var resourceInfo = new ResourceIdentifier(ResourceId);
+                    var resourceInfo = new ResourceIdentifier(SqlServerResourceId);
                     this.ResourceGroupName = resourceInfo.ResourceGroupName;
                     this.ServerName = resourceInfo.ResourceName;
                     break;
