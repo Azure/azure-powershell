@@ -89,7 +89,7 @@ InModuleScope Azs.Network.Admin {
                 )
 
                 Remove-AzsNetworkQuota -Name $quotaName -Location $location -Force
-                Start-Sleep -Seconds 5 # Is NRP really that terrible?
+                Start-Sleep -Seconds 5
             }
 
             function AssertQuotasAreSame {
