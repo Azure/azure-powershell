@@ -30,9 +30,11 @@
     - The argument ServiceBusRuleId has been added an alias "EventHubName" which will replace it in the future.
     - The response also includes a new field: EventHubName, but keeps the previous one "ServiceBusRuleId."
     - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
+    - One more argument has been added: MetricCategory to operate the same way the current Categories operates, but on Metrics Categories
+    - This cmdlet now supports pipelining and the InputObject argument.  When the InputObject is used, no other parameter is accepted.
 
 * **Remove-AzureRmDiagnosticSetting**
-    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible.
+    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible. For this a new parameter was added (Name) that defaults to 'service'. If the cmdlet is called using 'service' as name the cmdlet will only disable metrics and logs instead of removing the diagnostic setting.
 
 * **Get-AzureRmDiagnosticSetting**
     - Added new optional Name argument. It defaults to "service" for backward compatibility.
