@@ -126,7 +126,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity>
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
 
 ## NOTES
 

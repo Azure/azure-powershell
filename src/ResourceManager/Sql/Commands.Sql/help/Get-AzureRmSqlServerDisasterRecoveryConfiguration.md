@@ -127,6 +127,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model.AzureSqlServerDisasterRecoveryConfigurationModel
+
 ## NOTES
 
 ## RELATED LINKS

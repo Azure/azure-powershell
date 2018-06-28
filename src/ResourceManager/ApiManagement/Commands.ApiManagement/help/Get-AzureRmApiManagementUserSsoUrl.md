@@ -90,7 +90,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### string
+### System.String
 
 ## NOTES
 

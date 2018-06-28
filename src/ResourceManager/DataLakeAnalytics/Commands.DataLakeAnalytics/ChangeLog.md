@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add support for Catalog ACLs through the following commands:
+    - Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry
+    - Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry
+    - Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry
+* Fixed formatting of OutputType in help files
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0

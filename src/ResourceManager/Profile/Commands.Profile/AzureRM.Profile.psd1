@@ -80,7 +80,8 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
                '.\Microsoft.Threading.Tasks.Extensions.Desktop.dll', 
                '.\Microsoft.WindowsAzure.Management.dll', '.\Newtonsoft.Json.dll', 
                '.\Newtonsoft.Json.10.dll', '.\System.Net.Http.Extensions.dll', 
-               '.\System.Net.Http.Primitives.dll'
+               '.\System.Net.Http.Primitives.dll',
+               '.\Microsoft.Azure.Commands.Common.Aks.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()

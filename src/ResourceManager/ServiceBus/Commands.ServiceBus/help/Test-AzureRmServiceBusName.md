@@ -122,7 +122,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.5.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ServiceBus.Models.PSCheckNameAvailabilityResultAttributes
 
 
 ## NOTES

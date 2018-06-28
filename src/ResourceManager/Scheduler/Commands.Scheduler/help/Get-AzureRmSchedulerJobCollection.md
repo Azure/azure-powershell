@@ -80,7 +80,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition
 
 ## NOTES
 
