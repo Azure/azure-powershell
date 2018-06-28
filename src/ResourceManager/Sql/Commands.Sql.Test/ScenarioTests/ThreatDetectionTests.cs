@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
             RunPowerShellTest("Test-ThreatDetectionServerUpdatePolicy");
         }
 
-
 #if NETSTANDARD
         [Fact(Skip = "Storage version difference: Awaiting Storage.Common usage in Sql")]
         [Trait(Category.RunType, Category.DesktopOnly)]

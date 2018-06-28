@@ -178,6 +178,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Services
         /// </summary>
         private static void ModelizeDisabledAlerts(BaseThreatDetectionPolicyModel model, string[] disabledAlerts)
         {
+            disabledAlerts = disabledAlerts.Where(alert => !string.IsNullOrEmpty(alert)).ToArray();
+
             Func<string, DetectionType> toDetectionType = (s) =>
             {
                 DetectionType value;
