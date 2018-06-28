@@ -19,7 +19,7 @@
 -->
 ## Current Release
 
-## Version 4.7.0
+## Version 4.9.0
 * Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
 * Fixed formatting of OutputType in help files
 * Updated documentation of -ComputeGeneration parameter in several cmdlets
