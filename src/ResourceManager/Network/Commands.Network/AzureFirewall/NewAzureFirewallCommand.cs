@@ -52,15 +52,17 @@ namespace Microsoft.Azure.Commands.Network
         public virtual string Location { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "Virtual Network Name")]
         [ValidateNotNullOrEmpty]
         public string VirtualNetworkName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            ParameterSetName = "IpConfigurationParameterValues",
             HelpMessage = "Public Ip Name")]
         [ValidateNotNullOrEmpty]
         public string PublicIpName { get; set; }
@@ -93,15 +95,8 @@ namespace Microsoft.Azure.Commands.Network
 
         public override void Execute()
         {
-            var isVnetPresent = !string.IsNullOrEmpty(VirtualNetworkName);
-            var isPublicIpPresent = !string.IsNullOrEmpty(PublicIpName);
-
-            if ((isVnetPresent && !isPublicIpPresent) || (!isVnetPresent && isPublicIpPresent))
-            {
-                var msg = (isVnetPresent && !isPublicIpPresent) ? $"Virtual Network provided, but Public IP Address was not provided." : $"Public IP Address provided, but Virtual Network name was not provided.";
-                throw new ArgumentException(msg);
-            }
-
+            var isVnetPresent = VirtualNetworkName==null;
+            
             // Get the virtual network, get the public IP address
             if (isVnetPresent)
             {
@@ -113,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
             }
             
             base.Execute();
-            WriteWarning("The output object type of this cmdlet will be modified in a future release.");
+            
             var present = this.IsAzureFirewallPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,

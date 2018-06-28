@@ -58,17 +58,7 @@ namespace Microsoft.Azure.Commands.Network
         public override void Execute()
         {
             base.Execute();
-
-            if (this.Protocol == null || this.Protocol.Count == 0)
-            {
-                throw new ArgumentException("At least one application rule protocol should be specified!");
-            }
-
-            if (this.TargetFqdn == null || this.TargetFqdn.Count == 0)
-            {
-                throw new ArgumentException("At least one application rule target FQDN should be specified!");
-            }
-
+            
             var protocolsAsWeExpectThem = MapUserProtocolsToFirewallProtocols(Protocol);
 
             var applicationRule = new PSAzureFirewallApplicationRule

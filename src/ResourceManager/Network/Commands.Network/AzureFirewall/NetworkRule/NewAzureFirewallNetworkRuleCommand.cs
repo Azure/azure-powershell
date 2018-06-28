@@ -56,32 +56,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             HelpMessage = "The protocols of the rule")]
-        [ValidateNotNullOrEmpty]
+        [ValidateSet(
+            MNM.AzureFirewallNetworkRuleProtocol.Any,
+            MNM.AzureFirewallNetworkRuleProtocol.ICMP,
+            MNM.AzureFirewallNetworkRuleProtocol.TCP,
+            MNM.AzureFirewallNetworkRuleProtocol.UDP,
+            IgnoreCase = false)]
         public List<string> Protocol { get; set; }
         
         public override void Execute()
         {
             base.Execute();
-
-            if (this.Protocol == null || this.Protocol.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule protocol should be specified!");
-            }
-            if (this.SourceAddress == null || this.SourceAddress.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule source IP should be specified!");
-            }
-            if (this.DestinationAddress == null || this.DestinationAddress.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule destination IP should be specified!");
-            }
-            if (this.DestinationPort == null || this.DestinationPort.Count == 0)
-            {
-                throw new ArgumentException("At least one network rule destination port should be specified!");
-            }
-
-            ValidateProtocols(this.Protocol);
-
+            
             var networkRule = new PSAzureFirewallNetworkRule
             {
                 Name = this.Name,
@@ -92,22 +78,6 @@ namespace Microsoft.Azure.Commands.Network
                 DestinationPorts = this.DestinationPort
             };
             WriteObject(networkRule);
-        }
-
-        private void ValidateProtocols(List<string> protocols)
-        {
-            foreach (var protocol in protocols)
-            {
-                if (
-                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.Any, StringComparison.OrdinalIgnoreCase) &&
-                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.ICMP, StringComparison.OrdinalIgnoreCase) &&
-                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.TCP, StringComparison.OrdinalIgnoreCase) &&
-                    !string.Equals(protocol, MNM.AzureFirewallNetworkRuleProtocol.UDP, StringComparison.OrdinalIgnoreCase))
-                {
-                    throw new ArgumentException($"Invalid protocol {0}", protocol);
-                }
-            }
-
         }
     }
 }
