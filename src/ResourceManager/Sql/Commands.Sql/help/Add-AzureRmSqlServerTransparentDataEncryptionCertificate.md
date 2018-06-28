@@ -14,21 +14,21 @@ Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificate Input Object Parameter Set
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-InputObject] <AzureSqlServerModel>
- [-PrivateBlob] <String> [-Password] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-SqlServer] <AzureSqlServerModel>
+ [-PrivateBlob] <String> [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificate Resource Id Parameter Set
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-ResourceId] <String> [-PrivateBlob] <String>
- [-Password] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-SqlServerResourceId] <String> [-PrivateBlob] <String>
+ [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificate Default Parameter Set
 ```
 Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-ResourceGroupName] <String> [-ServerName] <String>
- [-PrivateBlob] <String> [-Password] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-PrivateBlob] <String> [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,6 +40,8 @@ The Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate adds a Tra
 ### Example 1
 ```powershell
 PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd" -Password "CertificatePassword"
+PS C:\>     $server | Add-AzureRmSqlServerTransparentDataEncryptionCertificate -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
 ```
 
 {{ Add example description here }}

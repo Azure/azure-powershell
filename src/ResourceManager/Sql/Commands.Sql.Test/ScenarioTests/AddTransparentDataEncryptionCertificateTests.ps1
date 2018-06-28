@@ -236,7 +236,7 @@ function Test-AddTdeCertificateForSqlServerResourceIdParameterSetNoPassword
 	try
 	{
 		Add-AzureRmSqlServerTransparentDataEncryptionCertificate `
-			-ResourceId $server.ResourceId `
+			-SqlServerResourceId $server.ResourceId `
 			-PrivateBlob $samplePrivateBlob
 	}
 	Catch{
