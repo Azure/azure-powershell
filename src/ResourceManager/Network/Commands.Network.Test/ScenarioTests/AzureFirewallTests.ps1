@@ -69,8 +69,8 @@ function Test-AzureFirewallCRUD
 	$networkRule1SourceAddress1 = "10.0.0.0"
 	$networkRule1SourceAddress2 = "111.1.0.0/24"
 	$networkRule1DestinationAddress1 = "*"
-	$networkRule1Protocol1 = "Udp"
-	$networkRule1Protocol2 = "Tcp"
+	$networkRule1Protocol1 = "UDP"
+	$networkRule1Protocol2 = "TCP"
 	$networkRule1DestinationPort1 = "90"
 
     try 
