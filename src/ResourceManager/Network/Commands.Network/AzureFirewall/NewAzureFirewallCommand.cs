@@ -23,9 +23,11 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmFirewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
+    [Cmdlet(VerbsCommon.New, "AzureRmFirewall", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet), OutputType(typeof(PSAzureFirewall))]
     public class NewAzureFirewallCommand : AzureFirewallBaseCmdlet
     {
+        private const string DefaultParameterSet = "Default";
+
         private PSVirtualNetwork virtualNetwork;
         private PSPublicIpAddress publicIpAddress;
 
@@ -68,15 +70,15 @@ namespace Microsoft.Azure.Commands.Network
         public string PublicIpName { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of AzureFirewallApplicationRuleCollections")]
         public List<PSAzureFirewallApplicationRuleCollection> ApplicationRuleCollection { get; set; }
 
         [Parameter(
-             Mandatory = false,
-             ValueFromPipelineByPropertyName = true,
-             HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The list of AzureFirewallNetworkRuleCollections")]
         public List<PSAzureFirewallNetworkRuleCollection> NetworkRuleCollection { get; set; }
 
         [Parameter(
@@ -90,12 +92,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Do not ask for confirmation if you want to overrite a resource")]
         public SwitchParameter Force { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            var isVnetPresent = VirtualNetworkName==null;
+            var isVnetPresent = VirtualNetworkName!=null;
             
             // Get the virtual network, get the public IP address
             if (isVnetPresent)
