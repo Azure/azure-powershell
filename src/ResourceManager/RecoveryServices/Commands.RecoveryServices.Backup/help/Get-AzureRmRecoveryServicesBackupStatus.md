@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.RecoveryServices.Backup.dll-Help.xml
-online version: 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupstatus
 schema: 2.0.0
 ---
 
@@ -14,12 +14,13 @@ Checks whether your ARM resource is backed up or not.
 ### Name (Default)
 ```
 Get-AzureRmRecoveryServicesBackupStatus -Name <String> -ResourceGroupName <String> -Type <String>
- [-DefaultProfile <IAzureContextContainer>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### Id
 ```
 Get-AzureRmRecoveryServicesBackupStatus -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,15 +31,13 @@ If it is protected, the relevant vault details will be returned.
 
 ### Example 1
 ```
-PS C:\> $isVMBackedUp = Get-AzureRmRecoveryServicesBackupStatus -Name “myAzureVM” -ResourceGroupName “myAzureVMRG” -ResourceType “AzureVM”
-PS C:\> If ($isVMBackedUp -eq “”) {
-Get-AzureRmRecoveryServicesVault -Name "testvault"  -ResourceGroupName "vaultResourceGroup" | Set-AzureRmRecoveryServicesVaultContext
-$defPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
-Enable-AzureRmRecoveryServicesBackupProtection -Policy $defpol -Name "myAzureVM" -ResourceGroupName "myAzureVMRG"
+PS C:\> $status = Get-AzureRmRecoveryServicesBackupStatus -Name "myAzureVM" -ResourceGroupName "myAzureVMRG" -ResourceType "AzureVM"
+PS C:\> If ($status.BackedUp -eq $false) {
+$vault = Get-AzureRmRecoveryServicesVault -Name "testvault" -ResourceGroupName "vaultResourceGroup"
+$defPolicy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Vault $vault -WorkloadType "AzureVM"
+Enable-AzureRmRecoveryServicesBackupProtection -Vault $vault -Policy $defpol -Name "myAzureVM" -ResourceGroupName "myAzureVMRG"
 }
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -118,15 +117,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+
 ## INPUTS
 
 ### System.String
 
-
 ## OUTPUTS
 
-### System.String
-
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ResourceBackupStatus
 
 ## NOTES
 

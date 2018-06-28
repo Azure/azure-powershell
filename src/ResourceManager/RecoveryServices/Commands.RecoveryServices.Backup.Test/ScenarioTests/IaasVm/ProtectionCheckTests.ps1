@@ -28,22 +28,22 @@ function Test-AzureVMProtectionCheck
 			-Type AzureVM
 
 		Assert-NotNull $status
-		Assert-False $status.BackedUp
+		Assert-False { $status.BackedUp }
 
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location
 		Enable-Protection $vault $vm
 		
 		$status = Get-AzureRmRecoveryServicesBackupStatus -ResourceId $vm.Id
 		Assert-NotNull $status
-		Assert-True $status.BackedUp
-		Assert-True { $status.VaultId -eq $vaultId }
+		Assert-True { $status.BackedUp }
+		Assert-True { $status.VaultId -eq $vault.ID }
 		
 		Delete-Vault $vault
 
 		$status = Get-AzureRmRecoveryServicesBackupStatus -ResourceId $vm.Id
 
 		Assert-NotNull $status
-		Assert-False $status.BackedUp
+		Assert-False { $status.BackedUp }
 	}
 	finally
 	{
