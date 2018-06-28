@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             throw new NotImplementedException();
         }
 
-        public string CheckBackupStatus()
+        public ResourceBackupStatus CheckBackupStatus()
         {
             throw new NotImplementedException();
         }

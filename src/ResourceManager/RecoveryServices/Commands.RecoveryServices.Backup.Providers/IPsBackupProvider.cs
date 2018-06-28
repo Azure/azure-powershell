@@ -62,6 +62,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         void RevokeItemLevelRecoveryAccess();
 
-        string CheckBackupStatus();
+        ResourceBackupStatus CheckBackupStatus();
     }
 }

@@ -924,7 +924,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
         }
 
-        public string CheckBackupStatus()
+        public ResourceBackupStatus CheckBackupStatus()
         {
             string azureVmName = (string)ProviderData[ProtectionCheckParams.Name];
             string azureVmResourceGroupName =
@@ -936,10 +936,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             == ServiceClientModel.BackupManagementType.AzureIaasVM &&
                          q.ItemType == DataSourceType.VM);
 
-            var vaults = ServiceClientAdapter.ListVaults();
-            foreach (var vault in vaults)
+            var vaultIds = ServiceClientAdapter.ListVaults();
+            foreach (var vaultId in vaultIds)
             {
-                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vault);
+                ResourceIdentifier vaultIdentifier = new ResourceIdentifier(vaultId);
 
                 var items = ServiceClientAdapter.ListProtectedItem(
                     queryParams,
@@ -958,11 +958,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                             itemVmRgName.ToLower() == azureVmResourceGroupName.ToLower();
                     }))
                 {
-                    return vault;
+                    return new ResourceBackupStatus(
+                        azureVmName,
+                        azureVmResourceGroupName,
+                        vaultId,
+                        true);
                 }
             }
 
-            return null;
+            return new ResourceBackupStatus(
+                azureVmName,
+                azureVmResourceGroupName,
+                null,
+                false);
         }
 
         #region private
