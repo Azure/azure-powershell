@@ -9083,16 +9083,143 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
+            "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
+              "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
+              "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
+              "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
+              "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
+              "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
+              "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
+              "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
+              "Capacity": "System.Int32",
+              "OrganizationName": "System.String",
+              "ResourceGroupName": "System.String",
+              "PublisherEmail": "System.String",
+              "ScmUrl": "System.String",
+              "ManagementApiUrl": "System.String",
+              "PortalUrl": "System.String",
+              "RuntimeRegionalUrl": "System.String",
+              "RuntimeUrl": "System.String",
+              "ProvisioningState": "System.String",
+              "Location": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "NotificationSenderEmail": "System.String",
+              "PrivateIPAddresses": "System.String[]",
+              "PublicIPAddresses": "System.String[]",
+              "StaticIPs": "System.String[]"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "AddRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
+              },
+              {
+                "Name": "RemoveRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "UpdateRegion",
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sku",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "capacity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualNetwork",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "apiServiceResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -12424,145 +12551,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement": {
-      "Namespace": "Microsoft.Azure.Commands.ApiManagement.Models",
-      "Name": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ScmCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
-        "ManagementCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
-        "PortalCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration",
-        "ProxyCustomHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]",
-        "PortalHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "ProxyHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "ManagementHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "ScmHostnameConfiguration": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration",
-        "Identity": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementServiceIdentity",
-        "Sku": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku",
-        "SystemCertificates": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]",
-        "VirtualNetwork": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork",
-        "VpnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "AdditionalRegions": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion]",
-        "Capacity": "System.Int32",
-        "OrganizationName": "System.String",
-        "ResourceGroupName": "System.String",
-        "PublisherEmail": "System.String",
-        "ScmUrl": "System.String",
-        "ManagementApiUrl": "System.String",
-        "PortalUrl": "System.String",
-        "RuntimeRegionalUrl": "System.String",
-        "RuntimeUrl": "System.String",
-        "ProvisioningState": "System.String",
-        "Location": "System.String",
-        "Name": "System.String",
-        "Id": "System.String",
-        "NotificationSenderEmail": "System.String",
-        "PrivateIPAddresses": "System.String[]",
-        "PublicIPAddresses": "System.String[]",
-        "StaticIPs": "System.String[]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "AddRegion",
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "capacity",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "virtualNetwork",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion"
-        },
-        {
-          "Name": "RemoveRegion",
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "UpdateRegion",
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "sku",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "capacity",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "virtualNetwork",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "apiServiceResource",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     }
   }
 }

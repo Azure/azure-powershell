@@ -1097,16 +1097,61 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.9.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
+            "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.9.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
+              "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
+              "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
+              "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
+              "State": "System.String",
+              "ProvisioningState": "System.String",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Type": "System.String",
+              "Location": "System.String",
+              "ServerFullName": "System.String",
+              "BackupBlobContainerUri": "System.String",
+              "DefaultConnectionMode": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4752,63 +4797,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer": {
-      "Namespace": "Microsoft.Azure.Commands.AnalysisServices.Models",
-      "Name": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesServer, Microsoft.Azure.Commands.AnalysisServices, Version=0.6.9.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "FirewallConfig": "Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallConfig",
-        "GatewayInfo": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerGateway",
-        "Sku": "Microsoft.Azure.Commands.AnalysisServices.Models.ServerSku",
-        "Tag": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "AsAdministrators": "System.Collections.Generic.List`1[System.String]",
-        "State": "System.String",
-        "ProvisioningState": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String",
-        "ServerFullName": "System.String",
-        "BackupBlobContainerUri": "System.String",
-        "DefaultConnectionMode": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
     }
   }
 }

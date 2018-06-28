@@ -647,16 +647,60 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CustomEmailAddress": "System.Collections.Generic.IList`1[System.String]",
+              "EmailSubscriptionOwner": "System.String",
+              "Locale": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "alertSettings",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1074,16 +1118,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ProviderSpecificEventDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventProviderSpecificDetails",
+              "EventSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventSpecificDetails",
+              "HealthErrors": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHealthError]",
+              "TimeOfOccurence": "System.DateTime",
+              "AffectedObjectFriendlyName": "System.String",
+              "Description": "System.String",
+              "EventCode": "System.String",
+              "EventType": "System.String",
+              "FabricId": "System.String",
+              "Name": "System.String",
+              "Severity": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "backendEvent",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1982,16 +2079,64 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FabricSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificDetails",
+              "Name": "System.String",
+              "FriendlyName": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "FabricType": "System.String",
+              "SiteIdentifier": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "fabric",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4327,16 +4472,68 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FabricSpecificNetworkMappingDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificNetworkMappingDetails",
+              "ID": "System.String",
+              "Name": "System.String",
+              "FriendlyName": "System.String",
+              "PrimaryNetworkId": "System.String",
+              "PrimaryNetworkFriendlyName": "System.String",
+              "PrimaryFabricFriendlyName": "System.String",
+              "RecoveryNetworkId": "System.String",
+              "RecoveryNetworkFriendlyName": "System.String",
+              "RecoveryFabricFriendlyName": "System.String",
+              "PairingStatus": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "networkMapping",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -4872,16 +5069,63 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "VmNetworkSubnetList": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet]",
+              "FriendlyName": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "FabricType": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "network",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -8637,16 +8881,71 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FabricSpecificVMDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificVMDetails",
+              "ProtectionReadinessErrors": "System.Collections.Generic.IList`1[System.String]",
+              "SupportedReplicationProviders": "System.Collections.Generic.IList`1[System.String]",
+              "Disks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrVirtualHardDisk]",
+              "FabricObjectId": "System.String",
+              "FriendlyName": "System.String",
+              "ID": "System.String",
+              "Name": "System.String",
+              "OS": "System.String",
+              "OSDiskId": "System.String",
+              "OSDiskName": "System.String",
+              "ProtectionContainerId": "System.String",
+              "ProtectionStatus": "System.String",
+              "ReplicationProtectedItemId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "pi",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9796,16 +10095,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "HealthErrorDetails": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.HealthError]",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Health": "System.String",
+              "PolicyFriendlyName": "System.String",
+              "PolicyId": "System.String",
+              "SourceFabricFriendlyName": "System.String",
+              "SourceProtectionContainerFriendlyName": "System.String",
+              "State": "System.String",
+              "TargetFabricFriendlyName": "System.String",
+              "TargetProtectionContainerFriendlyName": "System.String",
+              "TargetProtectionContainerId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "pcm",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -11655,16 +12007,74 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "AvailablePolicies": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy]",
+              "ProtectionContainerMappings": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping]",
+              "FriendlyName": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "FabricFriendlyName": "System.String",
+              "FabricType": "System.String",
+              "Role": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "pc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availablePolicies",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "protectionContainerMappings",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15409,16 +15819,62 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "RecoveryPointTime": "System.Nullable`1[System.DateTime]",
+              "ID": "System.String",
+              "Name": "System.String",
+              "RecoveryPointType": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "recoveryPoint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -15945,16 +16401,91 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ProviderSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProviderSpecificRPIDetails",
+              "CurrentScenario": "Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.CurrentScenarioDetails",
+              "ReplicationHealthErrors": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.HealthError]",
+              "AllowedOperations": "System.Collections.Generic.IList`1[System.String]",
+              "NicDetailsList": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRVMNicDetails]",
+              "LastSuccessfulFailoverTime": "System.Nullable`1[System.DateTime]",
+              "LastSuccessfulTestFailoverTime": "System.Nullable`1[System.DateTime]",
+              "ReplicationProvider": "System.String",
+              "TestFailoverState": "System.String",
+              "RecoveryAzureVMName": "System.String",
+              "ReplicationHealth": "System.String",
+              "RecoveryServicesProviderId": "System.String",
+              "RecoveryResourceGroupId": "System.String",
+              "RecoveryProtectionContainerFriendlyName": "System.String",
+              "RecoveryFabricId": "System.String",
+              "RecoveryFabricFriendlyName": "System.String",
+              "RecoveryAzureVMSize": "System.String",
+              "SelectedRecoveryAzureNetworkId": "System.String",
+              "ActiveLocation": "System.String",
+              "ProtectionState": "System.String",
+              "ProtectionStateDescription": "System.String",
+              "TestFailoverStateDescription": "System.String",
+              "ProtectedItemType": "System.String",
+              "ProtectableItemId": "System.String",
+              "PrimaryProtectionContainerFriendlyName": "System.String",
+              "PrimaryFabricFriendlyName": "System.String",
+              "PolicyID": "System.String",
+              "PolicyFriendlyName": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "FriendlyName": "System.String",
+              "FailoverRecoveryPointId": "System.String",
+              "RecoveryAzureStorageAccount": "System.String",
+              "Type": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "rpi",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -34763,16 +35294,74 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Groups": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlanGroup]",
+              "ReplicationProvider": "System.Collections.Generic.IList`1[System.String]",
+              "Name": "System.String",
+              "FriendlyName": "System.String",
+              "ServerId": "System.String",
+              "TargetServerId": "System.String",
+              "FailoverDeploymentModel": "System.String",
+              "Id": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "RefreshASRRecoveryPlanGroupNames",
+                "Parameters": [],
+                "ReturnType": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "recoveryPlan",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "replicationProtectedItems",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -36040,16 +36629,66 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Connected": "System.Boolean",
+              "LastHeartbeat": "System.DateTime",
+              "FriendlyName": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "FabricType": "System.String",
+              "ProviderVersion": "System.String",
+              "ServerVersion": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "provider",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -37442,16 +38081,73 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Errors": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRErrorDetails]",
+              "Tasks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRTask]",
+              "AllowedActions": "System.Collections.Generic.List`1[System.String]",
+              "StartTime": "System.Nullable`1[System.DateTime]",
+              "EndTime": "System.Nullable`1[System.DateTime]",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "JobType": "System.String",
+              "DisplayName": "System.String",
+              "ClientRequestId": "System.String",
+              "State": "System.String",
+              "StateDescription": "System.String",
+              "TargetObjectId": "System.String",
+              "TargetObjectType": "System.String",
+              "TargetObjectName": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "job",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -41205,16 +41901,63 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "ReplicationProviderSettings": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicyProviderSettingsDetails",
+              "FriendlyName": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "Type": "System.String",
+              "ReplicationProvider": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "policy",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -41490,16 +42233,50 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "FriendlyName": "System.String",
+              "Id": "System.String",
+              "Name": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -42104,16 +42881,51 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Id": "System.String",
+              "Name": "System.String",
+              "PrimaryClassificationId": "System.String",
+              "RecoveryClassificationId": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -43397,7 +44209,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
             "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.3.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
               "Name": "System.String",
@@ -43503,7 +44315,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
                   "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVault",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.3.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVault, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {
                     "Properties": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
                     "Name": "System.String",
@@ -44028,16 +44840,67 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
+            "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "LastHeartbeat": "System.Nullable`1[System.DateTime]",
+              "FriendlyName": "System.String",
+              "IpOrHostName": "System.String",
+              "Port": "System.String",
+              "Name": "System.String",
+              "ID": "System.String",
+              "FabricArmResourceName": "System.String",
+              "ProcessServerId": "System.String",
+              "AccountId": "System.String",
+              "DiscoveryStatus": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "vCenterServer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -46752,127 +47615,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAlertSetting, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "CustomEmailAddress": "System.Collections.Generic.IList`1[System.String]",
-        "EmailSubscriptionOwner": "System.String",
-        "Locale": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "alertSettings",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREvent, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "ProviderSpecificEventDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventProviderSpecificDetails",
-        "EventSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventSpecificDetails",
-        "HealthErrors": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRHealthError]",
-        "TimeOfOccurence": "System.DateTime",
-        "AffectedObjectFriendlyName": "System.String",
-        "Description": "System.String",
-        "EventCode": "System.String",
-        "EventType": "System.String",
-        "FabricId": "System.String",
-        "Name": "System.String",
-        "Severity": "System.String",
-        "Id": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "backendEvent",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventProviderSpecificDetails": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASREventProviderSpecificDetails",
@@ -47075,66 +47817,6 @@
           "Name": "",
           "ReturnType": null,
           "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "FabricSpecificDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificDetails",
-        "Name": "System.String",
-        "FriendlyName": "System.String",
-        "ID": "System.String",
-        "Type": "System.String",
-        "FabricType": "System.String",
-        "SiteIdentifier": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "fabric",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
         }
       ]
     },
@@ -47918,70 +48600,6 @@
         }
       ]
     },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "FabricSpecificNetworkMappingDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificNetworkMappingDetails",
-        "ID": "System.String",
-        "Name": "System.String",
-        "FriendlyName": "System.String",
-        "PrimaryNetworkId": "System.String",
-        "PrimaryNetworkFriendlyName": "System.String",
-        "PrimaryFabricFriendlyName": "System.String",
-        "RecoveryNetworkId": "System.String",
-        "RecoveryNetworkFriendlyName": "System.String",
-        "RecoveryFabricFriendlyName": "System.String",
-        "PairingStatus": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "networkMapping",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificNetworkMappingDetails": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificNetworkMappingDetails",
@@ -48104,65 +48722,6 @@
         }
       ]
     },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "VmNetworkSubnetList": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.RecoveryServices.SiteRecovery.Models.Subnet]",
-        "FriendlyName": "System.String",
-        "Name": "System.String",
-        "ID": "System.String",
-        "Type": "System.String",
-        "FabricType": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "network",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicyProviderSettingsDetails": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicyProviderSettingsDetails",
@@ -48214,73 +48773,6 @@
       "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "FabricSpecificVMDetails": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificVMDetails",
-        "ProtectionReadinessErrors": "System.Collections.Generic.IList`1[System.String]",
-        "SupportedReplicationProviders": "System.Collections.Generic.IList`1[System.String]",
-        "Disks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.AsrVirtualHardDisk]",
-        "FabricObjectId": "System.String",
-        "FriendlyName": "System.String",
-        "ID": "System.String",
-        "Name": "System.String",
-        "OS": "System.String",
-        "OSDiskId": "System.String",
-        "OSDiskName": "System.String",
-        "ProtectionContainerId": "System.String",
-        "ProtectionStatus": "System.String",
-        "ReplicationProtectedItemId": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "pi",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabricSpecificVMDetails": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
@@ -48581,76 +49073,6 @@
           "Parameters": [
             {
               "Name": "pcm",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "AvailablePolicies": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy]",
-        "ProtectionContainerMappings": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainerMapping]",
-        "FriendlyName": "System.String",
-        "Name": "System.String",
-        "ID": "System.String",
-        "Type": "System.String",
-        "FabricFriendlyName": "System.String",
-        "FabricType": "System.String",
-        "Role": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "pc",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "availablePolicies",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "protectionContainerMappings",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
@@ -49507,64 +49929,6 @@
         }
       ]
     },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPoint, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "RecoveryPointTime": "System.Nullable`1[System.DateTime]",
-        "ID": "System.String",
-        "Name": "System.String",
-        "RecoveryPointType": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "recoveryPoint",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRAzuretoAzureDiskReplicationConfig",
@@ -49751,234 +50115,10 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryServicesProvider, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Connected": "System.Boolean",
-        "LastHeartbeat": "System.DateTime",
-        "FriendlyName": "System.String",
-        "Name": "System.String",
-        "ID": "System.String",
-        "Type": "System.String",
-        "FabricType": "System.String",
-        "ProviderVersion": "System.String",
-        "ServerVersion": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "provider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Errors": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRErrorDetails]",
-        "Tasks": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRTask]",
-        "AllowedActions": "System.Collections.Generic.List`1[System.String]",
-        "StartTime": "System.Nullable`1[System.DateTime]",
-        "EndTime": "System.Nullable`1[System.DateTime]",
-        "Name": "System.String",
-        "ID": "System.String",
-        "Type": "System.String",
-        "JobType": "System.String",
-        "DisplayName": "System.String",
-        "ClientRequestId": "System.String",
-        "State": "System.String",
-        "StateDescription": "System.String",
-        "TargetObjectId": "System.String",
-        "TargetObjectType": "System.String",
-        "TargetObjectName": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "job",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "FriendlyName": "System.String",
-        "Id": "System.String",
-        "Name": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassificationMapping, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Id": "System.String",
-        "Name": "System.String",
-        "PrimaryClassificationId": "System.String",
-        "RecoveryClassificationId": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties": {
       "Namespace": "Microsoft.Azure.Commands.RecoveryServices",
       "Name": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.3.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties, Microsoft.Azure.Commands.RecoveryServices.ARM, Version=4.1.4.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ProvisioningState": "System.String"
       },
@@ -50016,69 +50156,6 @@
           "Name": "",
           "ReturnType": null,
           "Parameters": []
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter": {
-      "Namespace": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery",
-      "Name": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRvCenter, Microsoft.Azure.Commands.RecoveryServices.SiteRecovery, Version=0.2.6.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "LastHeartbeat": "System.Nullable`1[System.DateTime]",
-        "FriendlyName": "System.String",
-        "IpOrHostName": "System.String",
-        "Port": "System.String",
-        "Name": "System.String",
-        "ID": "System.String",
-        "FabricArmResourceName": "System.String",
-        "ProcessServerId": "System.String",
-        "AccountId": "System.String",
-        "DiscoveryStatus": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "vCenterServer",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
         }
       ]
     }

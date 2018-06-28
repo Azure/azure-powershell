@@ -247,23 +247,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -4521,23 +4504,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -7086,16 +7052,69 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
+            "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "LastWriteTime": "System.DateTimeOffset",
+              "LastAccessTime": "System.DateTimeOffset",
+              "Type": "System.Nullable`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+FileType]",
+              "AclBit": "System.Nullable`1[System.Boolean]",
+              "Expiration": "System.Nullable`1[System.DateTimeOffset]",
+              "AccessTime": "System.Nullable`1[System.Int64]",
+              "BlockSize": "System.Nullable`1[System.Int64]",
+              "ChildrenNum": "System.Nullable`1[System.Int64]",
+              "Length": "System.Nullable`1[System.Int64]",
+              "ModificationTime": "System.Nullable`1[System.Int64]",
+              "ExpirationTime": "System.Nullable`1[System.Int64]",
+              "Path": "System.String",
+              "Group": "System.String",
+              "Owner": "System.String",
+              "PathSuffix": "System.String",
+              "Permission": "System.String",
+              "Name": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "entry",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -7717,16 +7736,79 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce]",
-            "AssemblyQualifiedName": "System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
+            "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Type": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType",
+              "Scope": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType",
+              "Id": "System.String",
+              "Permission": "System.String",
+              "Entry": "System.String"
+            },
             "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce"
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Parse",
+                "Parameters": [
+                  {
+                    "Name": "aceString",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
             ],
-            "Methods": [],
-            "Constructors": []
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "scope",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "permission",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -8007,10 +8089,10 @@
         {
           "Type": {
             "Namespace": "System",
-            "Name": "System.Byte[]",
-            "AssemblyQualifiedName": "System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Name": "System.Byte",
+            "AssemblyQualifiedName": "System.Byte, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
-            "ElementType": "System.Byte",
+            "ElementType": null,
             "GenericTypeArguments": [],
             "Methods": [],
             "Constructors": []
@@ -11169,23 +11251,6 @@
       "SupportsPaging": false,
       "DefaultParameterSetName": "GetAllInSubscription",
       "OutputTypes": [
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
@@ -20375,56 +20440,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Name": "System.String",
-        "IdProvider": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "baseProvider",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance",
@@ -20643,197 +20658,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Name": "System.String",
-        "StartIpAddress": "System.String",
-        "EndIpAddress": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "baseRule",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "LastWriteTime": "System.DateTimeOffset",
-        "LastAccessTime": "System.DateTimeOffset",
-        "Type": "System.Nullable`1[Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+FileType]",
-        "AclBit": "System.Nullable`1[System.Boolean]",
-        "Expiration": "System.Nullable`1[System.DateTimeOffset]",
-        "AccessTime": "System.Nullable`1[System.Int64]",
-        "BlockSize": "System.Nullable`1[System.Int64]",
-        "ChildrenNum": "System.Nullable`1[System.Int64]",
-        "Length": "System.Nullable`1[System.Int64]",
-        "ModificationTime": "System.Nullable`1[System.Int64]",
-        "ExpirationTime": "System.Nullable`1[System.Int64]",
-        "Path": "System.String",
-        "Group": "System.String",
-        "Owner": "System.String",
-        "PathSuffix": "System.String",
-        "Permission": "System.String",
-        "Name": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "entry",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce": {
-      "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "Type": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType",
-        "Scope": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType",
-        "Id": "System.String",
-        "Permission": "System.String",
-        "Entry": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Parse",
-          "Parameters": [
-            {
-              "Name": "aceString",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "scope",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "permission",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
       "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType",
@@ -21024,42 +20848,29 @@
       ],
       "Constructors": []
     },
-    "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic": {
+    "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce": {
       "Namespace": "Microsoft.Azure.Commands.DataLakeStore.Models",
-      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
+      "Name": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce, Microsoft.Azure.Commands.DataLakeStore, Version=6.0.2.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
-        "EncryptionConfig": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionConfig",
-        "Identity": "Microsoft.Azure.Management.DataLake.Store.Models.EncryptionIdentity",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "FirewallRules": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallRule]",
-        "TrustedIdProviders": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProvider]",
-        "State": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountState]",
-        "ProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.DataLakeStoreAccountStatus]",
-        "EncryptionProvisioningState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionProvisioningState]",
-        "EncryptionState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.EncryptionState]",
-        "FirewallAllowAzureIps": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallAllowAzureIpsState]",
-        "FirewallState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.FirewallState]",
-        "NewTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
-        "CurrentTier": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TierType]",
-        "TrustedIdProviderState": "System.Nullable`1[Microsoft.Azure.Management.DataLake.Store.Models.TrustedIdProviderState]",
-        "CreationTime": "System.Nullable`1[System.DateTime]",
-        "LastModifiedTime": "System.Nullable`1[System.DateTime]",
-        "AccountId": "System.Nullable`1[System.Guid]",
-        "Location": "System.String",
-        "Endpoint": "System.String",
+        "Type": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType",
+        "Scope": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+ScopeType",
         "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "DefaultGroup": "System.String"
+        "Permission": "System.String",
+        "Entry": "System.String"
       },
       "ElementType": null,
       "GenericTypeArguments": [],
       "Methods": [
         {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
+          "Name": "Parse",
+          "Parameters": [
+            {
+              "Name": "aceString",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce"
         },
         {
           "Name": "ToString",
@@ -21093,7 +20904,19 @@
           "ReturnType": null,
           "Parameters": [
             {
-              "Name": "baseAccount",
+              "Name": "scope",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "type",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "id",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "permission",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]
