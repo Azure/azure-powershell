@@ -87,22 +87,9 @@
 
 
   <ItemGroup>
-    <CmdletSolutionsToBuild Include=".\src\Storage\Storage.sln"
-                            Condition=" '$(Scope)' == 'AzureStorage' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\ResourceManager\**\*.sln;"
-                           Exclude=".\src\ResourceManager\Intune\*.sln"
-                            Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\ServiceManagement\ServiceManagement.sln"
-                            Condition=" '$(Scope)' == 'ServiceManagement' or '$(Scope)' == 'All' or '$(Scope)' == 'Latest'"/>
-
-    <CmdletSolutionsToBuild Include=".\src\Stack.sln"
-                            Condition=" '$(Scope)' == 'All' or '$(Scope)' == 'Stack'"/>
-
+	<LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
     <StaticAnalysis   Include=".\tools\StaticAnalysis\StaticAnalysis.sln" />
     <LocalBuildTasks  Include="$(LibraryToolsFolder)\BuildPackagesTask\Microsoft.Azure.Build.Tasks.sln" />
-	  <LocalBuildTasks Include="$(LibraryToolsFolder)\RepoTasks\RepoTasks.sln" Condition="'$(NetCore)' == 'false'"/>
   </ItemGroup>
 
   <!-- Tasks -->
@@ -208,17 +195,14 @@
 
     <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(LocalFeedFolder)&quot; $(NuGetRestoreConfigSwitch)"/>
     <Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>
-    <!-- Restore packages -->
-    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
-          ContinueOnError="false" />
     <!-- Restore packages for static analysis-->
     <Exec Command="$(NuGetCommand) restore %(StaticAnalysis.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
           ContinueOnError="false" />
     <!-- Restore packages for local build tasks-->
-    <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetLocalBuildTaskPackages)"
+    <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
             ContinueOnError="false" />
     <!-- Restore packages for repo tasks tasks-->
-    <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRepoTasksPackages)"
+    <Exec Command="$(NuGetCommand) restore %(LocalBuildTasks.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
             ContinueOnError="false" />
     <Exec Command="$(NuGetCommand) restore %(SetupSln.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)"
             ContinueOnError="false" />
@@ -229,6 +213,9 @@
   </Target>
 
   <Target Name="FilterBuild">
+  	<Exec ContinueOnError="false"
+      Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot; . $(LibraryToolsFolder)\CreateFilterMappings.ps1 &quot;"/>
+
 	<!-- Get all of the files changed in the given pull request -->
   	<FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
   		<Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
@@ -243,14 +230,35 @@
     <Message Text="Total: @(ModulesChanged->Count())"/>
     <Message Text=""/>
 
-    <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-      <Output TaskParameter="Output" ItemName="XUnitTests"/>
-    </FilterTask>
-    <Message Text="Using these test assemblies:"/>
-    <Message Text="%(XUnitTests.Identity)"/>
-    <Message Text="Total: @(XunitTests->Count())"/>
-    <Message Text=""/>
+	<!-- Get the list of solutions to build -->
+	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\SolutionMappings.json">
+		<Output TaskParameter="Output" ItemName="CmdletSolutionsToBuild"/>
+	</FilterTask>
+	<Message Text="Filtering solutions to build by the following:"/>
+	<Message Text="%(CmdletSolutionsToBuild.Identity)"/>
+	<Message Text="Total: @(CmdletSolutionsToBuild->Count())"/>
+	<Message Text=""/>
+
+  	<!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
+	<FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
+		<Output TaskParameter="Output" ItemName="XUnitTests"/>
+	</FilterTask>
+	<Message Text="Using these test assemblies:"/>
+	<Message Text="%(XUnitTests.Identity)"/>
+	<Message Text="Total: @(XunitTests->Count())"/>
+	<Message Text=""/>
+
+	<!-- Restore packages -->
+    <Delete Files="$(NuGetRestoreConfigFile)" />
+    <WriteLinesToFile
+      File="$(NuGetRestoreConfigFile)"
+      Lines="&lt;configuration&gt;&lt;/configuration&gt;"
+      Overwrite="true"
+      Encoding="Unicode"/>
+    <Exec Command="$(NuGetCommand) sources add -Name LocalFeed -Source &quot;$(MSBuildProjectDirectory)\tools\LocalFeed&quot; $(NuGetRestoreConfigSwitch)"/>
+    <Exec Command="$(NuGetCommand) sources add -Name nugetRemote -Source &quot;https://api.nuget.org/v3/index.json&quot; $(NuGetRestoreConfigSwitch)"/>
+    <Exec Command="$(NuGetCommand) restore %(CmdletSolutionsToBuild.FullPath) $(NuGetRestoreConfigSwitch) $(NuGetRestorePackageSetting)" ContinueOnError="false" />
+    <Delete Files="$(NuGetRestoreConfigFile)" />
   </Target>
 
   <!-- Build all flavors of the Cmdlets -->
@@ -270,10 +278,19 @@
               BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />     
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
-          Condition="'$(SkipHelp)' == 'false'"
-          ContinueOnError="false"/>
+    <MSBuild
+      Projects="$(LibrarySourceFolder)\Common\Common.sln"
+      Targets="Build"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
 
+    <MSBuild
+      Projects="@(CmdletSolutionsToBuild)"
+      Targets="Build"
+      Properties="Configuration=$(Configuration);Platform=Any CPU"
+      BuildInParallel="$(BuildInParallel)"
+      ContinueOnError="false" />
  
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           Condition="'$(CodeSign)' == 'false'"/>
