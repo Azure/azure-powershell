@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage", "Commands.Storage\Commands.Storage.csproj", "{08CF7DA7-0392-4A19-B79B-E1FF67CDB81A}"
 EndProject
@@ -18,8 +18,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Storage.Test", "Commands.Storage.Test\Commands.Storage.Test.csproj", "{D6F470A6-7395-4B8B-9D29-44DF0EC8F624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage", "..\Common\Commands.Common.Storage\Commands.Common.Storage.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Storage.Management", "..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common", "..\Common\Commands.Common\Commands.Common.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
@@ -65,11 +63,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Network", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ResourceManager.Common", "..\ResourceManager\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.KeyVault", "..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Automation", "..\ServiceManagement\Automation\Commands.Automation\Commands.Automation.csproj", "{47CD7E95-5330-4384-ABCE-2C267C57085C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.WebSites", "..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.ExpressRoute", "..\ServiceManagement\ExpressRoute\Commands.ExpressRoute\Commands.ExpressRoute.csproj", "{45C2D687-E0CE-4C97-B731-335834DC2BF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Aks", "..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj", "{87BA5687-5563-4491-8846-77D98D0605D3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HDInsight", "..\ServiceManagement\HDInsight\Commands.HDInsight\HDInsight.csproj", "{137D404A-865A-43DB-930C-6DA67DA048DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.RecoveryServicesRdfe", "..\ServiceManagement\RecoveryServices\Commands.RecoveryServices\Commands.RecoveryServicesRdfe.csproj", "{98B10548-DF97-4FB1-8D82-2A12945D4F21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.SqlDatabase", "..\ServiceManagement\Sql\Commands.SqlDatabase\Commands.SqlDatabase.csproj", "{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.StorSimple", "..\ServiceManagement\StorSimple\Commands.StorSimple\Commands.StorSimple.csproj", "{11524D98-6C40-4091-A8E1-86463FEE607C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.TrafficManager", "..\ServiceManagement\TrafficManager\Commands.TrafficManager\Commands.TrafficManager.csproj", "{94E96A5C-B5AD-4E10-B13A-3BC16D102AED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -105,10 +111,6 @@ Global
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EE72C53-1720-4309-B54B-5FB79703195F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -197,18 +199,34 @@ Global
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}.Release|Any CPU.Build.0 = Release|Any CPU
-		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{836965C0-B198-4D01-B3D7-757DB62B49A0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47CD7E95-5330-4384-ABCE-2C267C57085C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47CD7E95-5330-4384-ABCE-2C267C57085C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47CD7E95-5330-4384-ABCE-2C267C57085C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47CD7E95-5330-4384-ABCE-2C267C57085C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C2D687-E0CE-4C97-B731-335834DC2BF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{137D404A-865A-43DB-930C-6DA67DA048DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98B10548-DF97-4FB1-8D82-2A12945D4F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98B10548-DF97-4FB1-8D82-2A12945D4F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98B10548-DF97-4FB1-8D82-2A12945D4F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98B10548-DF97-4FB1-8D82-2A12945D4F21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDF5D225-C9C5-42B7-BDB5-2C3646E479AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11524D98-6C40-4091-A8E1-86463FEE607C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11524D98-6C40-4091-A8E1-86463FEE607C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11524D98-6C40-4091-A8E1-86463FEE607C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11524D98-6C40-4091-A8E1-86463FEE607C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E96A5C-B5AD-4E10-B13A-3BC16D102AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E96A5C-B5AD-4E10-B13A-3BC16D102AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E96A5C-B5AD-4E10-B13A-3BC16D102AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E96A5C-B5AD-4E10-B13A-3BC16D102AED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

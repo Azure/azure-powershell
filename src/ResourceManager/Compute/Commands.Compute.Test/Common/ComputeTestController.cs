@@ -133,7 +133,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.RMStorageModule,
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
