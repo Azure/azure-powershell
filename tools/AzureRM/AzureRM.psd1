@@ -70,7 +70,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1';
                @{ModuleName = 'AzureRM.DataFactories'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.DataFactoryV2'; RequiredVersion = '0.5.6'; },
                @{ModuleName = 'AzureRM.DataLakeAnalytics'; RequiredVersion = '5.1.0'; },
-               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.0.2'; },
+               @{ModuleName = 'AzureRM.DataLakeStore'; RequiredVersion = '6.1.0'; },
                @{ModuleName = 'AzureRM.DevTestLabs'; RequiredVersion = '4.0.5'; },
                @{ModuleName = 'AzureRM.Dns'; RequiredVersion = '5.0.0'; },
                @{ModuleName = 'AzureRM.EventGrid'; RequiredVersion = '0.3.5'; },
@@ -181,6 +181,12 @@ AzureRM.DataLakeAnalytics
     - Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry
     - Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry
     - Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry
+
+AzureRM.DataLakeStore
+* Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties
+* Fix flushing of debug messages for cmdlets that does recursive operations
+* Fix location of test of DataLake cmdlets
 
 AzureRM.EventHub
 * Added Optional MaxCount parameter to List Operations cmdlet Get-AzureRmEventHub and Get-AzureRmEventHubConsumerGroup

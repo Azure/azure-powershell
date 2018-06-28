@@ -20,6 +20,12 @@
     - Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry
     - Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry
 
+#### AzureRM.DataLakeStore
+* Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
+* Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties
+* Fix flushing of debug messages for cmdlets that does recursive operations
+* Fix location of test of DataLake cmdlets
+
 #### AzureRM.EventHub
 * Added Optional MaxCount parameter to List Operations cmdlet Get-AzureRmEventHub and Get-AzureRmEventHubConsumerGroup
 * Fixed issue in New-AzureRmEventHub cmdlet where at least one parameter needed while creating New EventHub. Provided Default Parameter set.
