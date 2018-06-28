@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-atp-cmdlet-test-rgps8733?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-atp-cmdlet-test-rgps8415?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West Central US\"\r\n}",
       "RequestHeaders": {
@@ -13,7 +13,7 @@
           "37"
         ],
         "x-ms-client-request-id": [
-          "fc95542a-3eb0-4ca8-8318-1d85570f8095"
+          "5b768731-45f8-4ec9-a006-5112abb1d7b7"
         ],
         "accept-language": [
           "en-US"
@@ -25,7 +25,7 @@
           "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733\",\r\n  \"name\": \"sql-atp-cmdlet-test-rgps8733\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415\",\r\n  \"name\": \"sql-atp-cmdlet-test-rgps8415\",\r\n  \"location\": \"westcentralus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "216"
@@ -40,16 +40,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1194"
         ],
         "x-ms-request-id": [
-          "b6373480-17f1-49d7-8b88-eb8894803f8e"
+          "40eef0b5-578d-47f4-8b5f-fd73a3028fe7"
         ],
         "x-ms-correlation-request-id": [
-          "b6373480-17f1-49d7-8b88-eb8894803f8e"
+          "40eef0b5-578d-47f4-8b5f-fd73a3028fe7"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T110946Z:b6373480-17f1-49d7-8b88-eb8894803f8e"
+          "UKSOUTH:20180628T074232Z:40eef0b5-578d-47f4-8b5f-fd73a3028fe7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,19 +61,19 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:09:46 GMT"
+          "Thu, 28 Jun 2018 07:42:31 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9b8d196a-e57e-40ce-b13b-f86b05696ff2"
+          "76cbfdbd-92b0-4ccd-9baf-cb5c0a894d81"
         ],
         "accept-language": [
           "en-US"
@@ -85,7 +85,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733' under resource group 'sql-atp-cmdlet-test-rgps8733' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415' under resource group 'sql-atp-cmdlet-test-rgps8415' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "181"
@@ -103,13 +103,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "eced795f-925a-424a-bd62-7c58b5931a1c"
+          "59797f79-be14-4b37-976a-5c5e66eb70a7"
         ],
         "x-ms-correlation-request-id": [
-          "eced795f-925a-424a-bd62-7c58b5931a1c"
+          "59797f79-be14-4b37-976a-5c5e66eb70a7"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T110947Z:eced795f-925a-424a-bd62-7c58b5931a1c"
+          "UKSOUTH:20180628T074233Z:59797f79-be14-4b37-976a-5c5e66eb70a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -121,14 +121,14 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:09:47 GMT"
+          "Thu, 28 Jun 2018 07:42:32 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -139,7 +139,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8733.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8733\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "436"
@@ -154,16 +154,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8d7b3a4c-aaf0-4f92-9dbd-6d00be396517"
+          "46ab9c5a-dad5-461a-94c3-f64d14c5a32e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14927"
         ],
         "x-ms-correlation-request-id": [
-          "c9af3f12-af26-42b5-b1ca-e8e533699e5d"
+          "fcc66ad4-b952-4871-b98b-64497fa5a064"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111021Z:c9af3f12-af26-42b5-b1ca-e8e533699e5d"
+          "UKSOUTH:20180628T074327Z:fcc66ad4-b952-4871-b98b-64497fa5a064"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -175,7 +175,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:21 GMT"
+          "Thu, 28 Jun 2018 07:43:26 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -184,13 +184,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "be0fc8f0-8761-472a-88aa-c989d5926546"
+          "a67d7cef-dad8-4857-8dc2-18f4646a94f0"
         ],
         "accept-language": [
           "en-US"
@@ -202,7 +202,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8733.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8733\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "436"
@@ -217,16 +217,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3cee7720-f2c4-4497-b29f-ad535795c8ed"
+          "4c01f26b-cc9e-4bc3-a33a-3bd46b3f7b9b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14925"
         ],
         "x-ms-correlation-request-id": [
-          "0f4698f8-df38-4e9f-b803-ee7e21d3671a"
+          "4e99ee3f-6e25-4ffc-ac7b-6ee989f93bbc"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111022Z:0f4698f8-df38-4e9f-b803-ee7e21d3671a"
+          "UKSOUTH:20180628T074328Z:4e99ee3f-6e25-4ffc-ac7b-6ee989f93bbc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -238,7 +238,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:21 GMT"
+          "Thu, 28 Jun 2018 07:43:27 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -247,8 +247,827 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c49d9f33-a37c-40ae-976d-b4ef5b9d4bbd"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "990b9166-26ce-444b-ba90-bfb45bf661f7"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14920"
+        ],
+        "x-ms-correlation-request-id": [
+          "be1ae8c0-76be-4040-b609-10c9a409c725"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074417Z:be1ae8c0-76be-4040-b609-10c9a409c725"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:44:16 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f5fc5ca1-9fe6-4dad-ba5d-ed98c9e963d2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "049bf3a2-ffe8-4e1c-93cf-34a0ae3342ed"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14918"
+        ],
+        "x-ms-correlation-request-id": [
+          "a5c7447d-b293-488a-b405-4642a1f4b891"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074418Z:a5c7447d-b293-488a-b405-4642a1f4b891"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:44:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3523e752-be1f-435a-b7b7-fa526d0464c4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c774217d-53ce-4e8c-ba8d-6de9bc5dabed"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14916"
+        ],
+        "x-ms-correlation-request-id": [
+          "49239176-41a7-4f33-800d-64a91fda0fbc"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074418Z:49239176-41a7-4f33-800d-64a91fda0fbc"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:44:17 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "94262821-7c73-4cb3-afe6-987af1df0bf3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "a1cd55ff-0a05-467a-be7a-c0af53be8322"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14918"
+        ],
+        "x-ms-correlation-request-id": [
+          "0887a396-ceb6-474e-b721-595895569f7e"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074521Z:0887a396-ceb6-474e-b721-595895569f7e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:45:21 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d2acced2-aee4-4c08-872e-641beca90c2c"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "d4bc505f-1dfa-42c8-852e-7ae1af3f305f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14916"
+        ],
+        "x-ms-correlation-request-id": [
+          "c49fdbc5-f90c-46e1-81af-38f4c43acb37"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074522Z:c49fdbc5-f90c-46e1-81af-38f4c43acb37"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:45:21 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "90ed4261-044a-4440-8689-7db7aac57bd3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "bccf6985-352c-4989-a2c0-307d9515f13c"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14910"
+        ],
+        "x-ms-correlation-request-id": [
+          "8c801468-dfd4-4e4b-970e-c21f4e10c740"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074625Z:8c801468-dfd4-4e4b-970e-c21f4e10c740"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:46:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "3a450895-d4ac-4c18-ba63-5ce53813b833"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1abf007e-ea79-43eb-89a7-9df62ad84c42"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14908"
+        ],
+        "x-ms-correlation-request-id": [
+          "683865f8-eb19-4e0f-8921-aee390331ab1"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074625Z:683865f8-eb19-4e0f-8921-aee390331ab1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:46:24 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "19953ea8-7fea-4e34-b0b1-a89f25f270f3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "44fdd653-506d-436b-8b69-f253809fdf08"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14906"
+        ],
+        "x-ms-correlation-request-id": [
+          "6727fe07-29a1-465f-be2e-a6bfb6715a0c"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074626Z:6727fe07-29a1-465f-be2e-a6bfb6715a0c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:46:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "2e6d9eee-f0aa-493a-8bfe-1aae862c4872"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0b18dcc9-eec6-4c4a-8ef2-909c9665ee6f"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14902"
+        ],
+        "x-ms-correlation-request-id": [
+          "a72bcd5e-f2ed-4e27-a734-70c368f38e67"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074728Z:a72bcd5e-f2ed-4e27-a734-70c368f38e67"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:47:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b55d8e21-1c74-4c29-944e-2f9670303197"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "61be6608-b8ad-4b79-8dc1-bafb46dc801e"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14898"
+        ],
+        "x-ms-correlation-request-id": [
+          "2a425700-8fc6-4284-8a94-816be04bd6d1"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074830Z:2a425700-8fc6-4284-8a94-816be04bd6d1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:29 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "921f5cd9-1971-4b22-9afd-00da45cef268"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "07a24dfd-d2a4-4af6-9dbf-c4dd4fb66902"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14896"
+        ],
+        "x-ms-correlation-request-id": [
+          "8435e952-ebcb-4900-91f2-a4d87732b8f8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074831Z:8435e952-ebcb-4900-91f2-a4d87732b8f8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6d840810-09a3-4011-92eb-72a1ba1f6858"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c85430f0-4834-458f-aa53-4f644bcd433d"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14894"
+        ],
+        "x-ms-correlation-request-id": [
+          "3c2be0d6-26f4-47c5-868b-6979ef97f876"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074831Z:3c2be0d6-26f4-47c5-868b-6979ef97f876"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "d37b50aa-1f96-4771-a152-f315e9058377"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"kind\": \"v12.0\",\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"version\": \"12.0\",\r\n    \"state\": \"Ready\",\r\n    \"fullyQualifiedDomainName\": \"sql-atp-cmdlet-serverps8415.database.windows.net\"\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415\",\r\n  \"name\": \"sql-atp-cmdlet-serverps8415\",\r\n  \"type\": \"Microsoft.Sql/servers\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "436"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "b7bcdb2f-70aa-41df-b11d-2d7fd76df455"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14891"
+        ],
+        "x-ms-correlation-request-id": [
+          "badb063c-3f55-4d3d-89f2-cf629c3db0a6"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074933Z:badb063c-3f55-4d3d-89f2-cf629c3db0a6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:49:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTU/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"administratorLogin\": \"testusername\",\r\n    \"administratorLoginPassword\": \"t357ingP@s5w0rd!Sec\",\r\n    \"version\": \"12.0\"\r\n  },\r\n  \"location\": \"West Central US\"\r\n}",
       "RequestHeaders": {
@@ -259,7 +1078,7 @@
           "186"
         ],
         "x-ms-client-request-id": [
-          "2f0bf001-f4fd-43ba-b8c2-7f984c29fa14"
+          "94975b07-49ab-482b-a1f8-c9bee7932adb"
         ],
         "accept-language": [
           "en-US"
@@ -271,7 +1090,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"UpsertLogicalServer\",\r\n  \"startTime\": \"2018-06-24T11:09:50.453Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertLogicalServer\",\r\n  \"startTime\": \"2018-06-28T07:42:35.633Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "74"
@@ -289,19 +1108,19 @@
           "1"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/3d2cbe09-9b16-4d27-a073-9687db780f76?api-version=2015-05-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/a720efbe-4b74-474a-94c9-d4936ebe1583?api-version=2015-05-01-preview"
         ],
         "x-ms-request-id": [
-          "3d2cbe09-9b16-4d27-a073-9687db780f76"
+          "a720efbe-4b74-474a-94c9-d4936ebe1583"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "fd46454f-ff79-4c94-9002-721e403d6a70"
+          "aaaab2db-d97b-4b8d-9b7c-7b194b0eba25"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T110950Z:fd46454f-ff79-4c94-9002-721e403d6a70"
+          "UKSOUTH:20180628T074235Z:aaaab2db-d97b-4b8d-9b7c-7b194b0eba25"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -313,10 +1132,10 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:09:50 GMT"
+          "Thu, 28 Jun 2018 07:42:34 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/serverOperationResults/3d2cbe09-9b16-4d27-a073-9687db780f76?api-version=2015-05-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/serverOperationResults/a720efbe-4b74-474a-94c9-d4936ebe1583?api-version=2015-05-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -325,8 +1144,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/3d2cbe09-9b16-4d27-a073-9687db780f76?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvc2VydmVyQXp1cmVBc3luY09wZXJhdGlvbi8zZDJjYmUwOS05YjE2LTRkMjctYTA3My05Njg3ZGI3ODBmNzY/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/a720efbe-4b74-474a-94c9-d4936ebe1583?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvc2VydmVyQXp1cmVBc3luY09wZXJhdGlvbi9hNzIwZWZiZS00Yjc0LTQ3NGEtOTRjOS1kNDkzNmViZTE1ODM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -337,7 +1156,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3d2cbe09-9b16-4d27-a073-9687db780f76\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-24T11:09:50.453Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"a720efbe-4b74-474a-94c9-d4936ebe1583\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-28T07:42:35.633Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "108"
@@ -355,16 +1174,16 @@
           "20"
         ],
         "x-ms-request-id": [
-          "429b377e-3215-40aa-ae53-00f66e63ff7f"
+          "0fb79092-71f4-43b1-8828-3730a9a81dcc"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14930"
         ],
         "x-ms-correlation-request-id": [
-          "920cf050-e802-4d01-bc1d-214eb2e30da4"
+          "4c979512-04cf-4b79-8c0e-e8c3186ec3de"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111000Z:920cf050-e802-4d01-bc1d-214eb2e30da4"
+          "UKSOUTH:20180628T074246Z:4c979512-04cf-4b79-8c0e-e8c3186ec3de"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -376,7 +1195,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:00 GMT"
+          "Thu, 28 Jun 2018 07:42:46 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -385,8 +1204,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/3d2cbe09-9b16-4d27-a073-9687db780f76?api-version=2015-05-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvc2VydmVyQXp1cmVBc3luY09wZXJhdGlvbi8zZDJjYmUwOS05YjE2LTRkMjctYTA3My05Njg3ZGI3ODBmNzY/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/a720efbe-4b74-474a-94c9-d4936ebe1583?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvc2VydmVyQXp1cmVBc3luY09wZXJhdGlvbi9hNzIwZWZiZS00Yjc0LTQ3NGEtOTRjOS1kNDkzNmViZTE1ODM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -397,7 +1216,67 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"3d2cbe09-9b16-4d27-a073-9687db780f76\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-24T11:09:50.453Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"a720efbe-4b74-474a-94c9-d4936ebe1583\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-28T07:42:35.633Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "108"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "20"
+        ],
+        "x-ms-request-id": [
+          "d8ed4d72-3bdb-4719-adce-abc4baffa8ec"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14929"
+        ],
+        "x-ms-correlation-request-id": [
+          "c4d29a3f-a154-4cc8-923d-d16af7b93e27"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074306Z:c4d29a3f-a154-4cc8-923d-d16af7b93e27"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:43:06 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/serverAzureAsyncOperation/a720efbe-4b74-474a-94c9-d4936ebe1583?api-version=2015-05-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvc2VydmVyQXp1cmVBc3luY09wZXJhdGlvbi9hNzIwZWZiZS00Yjc0LTQ3NGEtOTRjOS1kNDkzNmViZTE1ODM/YXBpLXZlcnNpb249MjAxNS0wNS0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"a720efbe-4b74-474a-94c9-d4936ebe1583\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:42:35.633Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "107"
@@ -415,16 +1294,16 @@
           "15"
         ],
         "x-ms-request-id": [
-          "909f7e2b-7861-41e3-b514-2b9e1a4b347b"
+          "6654ee30-6138-4db5-8462-98445ffb51f4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14928"
         ],
         "x-ms-correlation-request-id": [
-          "2468eb51-599f-4179-98bd-455680fd7aae"
+          "21e63fad-ebdc-4b02-b9da-db6088308e98"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111021Z:2468eb51-599f-4179-98bd-455680fd7aae"
+          "UKSOUTH:20180628T074326Z:21e63fad-ebdc-4b02-b9da-db6088308e98"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -436,7 +1315,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:20 GMT"
+          "Thu, 28 Jun 2018 07:43:25 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -445,13 +1324,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/databases/sql-atp-cmdlet-dbps8733?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NzMzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/databases/sql-atp-cmdlet-dbps8415?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NDE1P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ad5db524-6fc0-4c71-8d29-eb9447ef57da"
+          "077d5c8b-e7b6-4652-a56f-5fbe5f3842fc"
         ],
         "accept-language": [
           "en-US"
@@ -463,7 +1342,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/databases/sql-atp-cmdlet-dbps8733' under resource group 'sql-atp-cmdlet-test-rgps8733' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/databases/sql-atp-cmdlet-dbps8415' under resource group 'sql-atp-cmdlet-test-rgps8415' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "215"
@@ -481,13 +1360,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "1f1afb50-ae2a-40ea-aacc-cdd736584bae"
+          "a1f439a8-fc80-48b7-b3c4-28276e25cc35"
         ],
         "x-ms-correlation-request-id": [
-          "1f1afb50-ae2a-40ea-aacc-cdd736584bae"
+          "a1f439a8-fc80-48b7-b3c4-28276e25cc35"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111021Z:1f1afb50-ae2a-40ea-aacc-cdd736584bae"
+          "UKSOUTH:20180628T074328Z:a1f439a8-fc80-48b7-b3c4-28276e25cc35"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -499,14 +1378,14 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:21 GMT"
+          "Thu, 28 Jun 2018 07:43:27 GMT"
         ]
       },
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/databases/sql-atp-cmdlet-dbps8733?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NzMzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/databases/sql-atp-cmdlet-dbps8415?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NDE1P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -517,10 +1396,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic\",\r\n    \"tier\": \"Basic\",\r\n    \"capacity\": 5\r\n  },\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 2147483648,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"dba8aeba-c728-4ce8-b5e2-778805aa7185\",\r\n    \"creationDate\": \"2018-06-24T11:11:01.73Z\",\r\n    \"currentServiceObjectiveName\": \"Basic\",\r\n    \"requestedServiceObjectiveName\": \"Basic\",\r\n    \"defaultSecondaryLocation\": \"westus2\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"earliestRestoreDate\": \"2018-06-24T11:41:01.73Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"currentSku\": {\r\n      \"name\": \"Basic\",\r\n      \"tier\": \"Basic\",\r\n      \"capacity\": 5\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/databases/sql-atp-cmdlet-dbps8733\",\r\n  \"name\": \"sql-atp-cmdlet-dbps8733\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
+      "ResponseBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic\",\r\n    \"tier\": \"Basic\",\r\n    \"capacity\": 5\r\n  },\r\n  \"kind\": \"v12.0,user\",\r\n  \"properties\": {\r\n    \"collation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"maxSizeBytes\": 2147483648,\r\n    \"status\": \"Online\",\r\n    \"databaseId\": \"2497db6e-7475-4aaf-a23f-bca38b4a984c\",\r\n    \"creationDate\": \"2018-06-28T07:44:04.437Z\",\r\n    \"currentServiceObjectiveName\": \"Basic\",\r\n    \"requestedServiceObjectiveName\": \"Basic\",\r\n    \"defaultSecondaryLocation\": \"westus2\",\r\n    \"catalogCollation\": \"SQL_Latin1_General_CP1_CI_AS\",\r\n    \"zoneRedundant\": false,\r\n    \"earliestRestoreDate\": \"2018-06-28T08:14:04.437Z\",\r\n    \"readScale\": \"Disabled\",\r\n    \"currentSku\": {\r\n      \"name\": \"Basic\",\r\n      \"tier\": \"Basic\",\r\n      \"capacity\": 5\r\n    }\r\n  },\r\n  \"location\": \"westcentralus\",\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/databases/sql-atp-cmdlet-dbps8415\",\r\n  \"name\": \"sql-atp-cmdlet-dbps8415\",\r\n  \"type\": \"Microsoft.Sql/servers/databases\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "881"
+          "883"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -532,16 +1411,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "7f0aaabc-c46a-40b6-83fa-62df61dd3485"
+          "80caf84c-a80f-48db-96b2-fe30d7e2015d"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14990"
+          "14921"
         ],
         "x-ms-correlation-request-id": [
-          "a268e1a4-1f39-4097-81e5-7ebaf9354ef1"
+          "748de79a-1e70-4ca3-8ce5-efdbb38dbb05"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111110Z:a268e1a4-1f39-4097-81e5-7ebaf9354ef1"
+          "UKSOUTH:20180628T074417Z:748de79a-1e70-4ca3-8ce5-efdbb38dbb05"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -553,7 +1432,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:11:09 GMT"
+          "Thu, 28 Jun 2018 07:44:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -562,8 +1441,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/databases/sql-atp-cmdlet-dbps8733?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NzMzP2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/databases/sql-atp-cmdlet-dbps8415?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvZGF0YWJhc2VzL3NxbC1hdHAtY21kbGV0LWRicHM4NDE1P2FwaS12ZXJzaW9uPTIwMTctMTAtMDEtcHJldmlldw==",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"sku\": {\r\n    \"name\": \"Basic\",\r\n    \"tier\": \"Basic\"\r\n  },\r\n  \"properties\": {\r\n    \"maxSizeBytes\": 0,\r\n    \"readScale\": \"Disabled\"\r\n  },\r\n  \"location\": \"westcentralus\"\r\n}",
       "RequestHeaders": {
@@ -574,7 +1453,7 @@
           "174"
         ],
         "x-ms-client-request-id": [
-          "a1d5c77f-d05c-43ef-b0b6-fad9d7b76b63"
+          "edbc2f12-e7cf-4b2c-948e-f913a4b53e13"
         ],
         "accept-language": [
           "en-US"
@@ -586,10 +1465,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"CreateLogicalDatabase\",\r\n  \"startTime\": \"2018-06-24T11:10:23.613Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"CreateLogicalDatabase\",\r\n  \"startTime\": \"2018-06-28T07:43:30.68Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "76"
+          "75"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -604,19 +1483,19 @@
           "15"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/4a1ac995-f771-419d-aadc-497385fb687e?api-version=2017-10-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/88878364-4555-4a79-8c93-de1b59b6a06f?api-version=2017-10-01-preview"
         ],
         "x-ms-request-id": [
-          "4a1ac995-f771-419d-aadc-497385fb687e"
+          "88878364-4555-4a79-8c93-de1b59b6a06f"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1198"
         ],
         "x-ms-correlation-request-id": [
-          "e6f64da9-a34f-4c25-aa8f-4b58c1e71161"
+          "c115a986-11ee-4bcf-a451-1dca24ca1cbc"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111023Z:e6f64da9-a34f-4c25-aa8f-4b58c1e71161"
+          "UKSOUTH:20180628T074330Z:c115a986-11ee-4bcf-a451-1dca24ca1cbc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -628,10 +1507,10 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:10:23 GMT"
+          "Thu, 28 Jun 2018 07:43:29 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/databaseOperationResults/4a1ac995-f771-419d-aadc-497385fb687e?api-version=2017-10-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/databaseOperationResults/88878364-4555-4a79-8c93-de1b59b6a06f?api-version=2017-10-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -640,8 +1519,8 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/4a1ac995-f771-419d-aadc-497385fb687e?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzRhMWFjOTk1LWY3NzEtNDE5ZC1hYWRjLTQ5NzM4NWZiNjg3ZT9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/88878364-4555-4a79-8c93-de1b59b6a06f?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzg4ODc4MzY0LTQ1NTUtNGE3OS04YzkzLWRlMWI1OWI2YTA2Zj9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -652,127 +1531,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"4a1ac995-f771-419d-aadc-497385fb687e\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-24T11:10:23.613Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "108"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "79266b9b-a382-4922-95a4-aae013558212"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
-        ],
-        "x-ms-correlation-request-id": [
-          "993bed90-10f6-454b-9f3e-23a07e2f1cec"
-        ],
-        "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111039Z:993bed90-10f6-454b-9f3e-23a07e2f1cec"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Sun, 24 Jun 2018 11:10:39 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/4a1ac995-f771-419d-aadc-497385fb687e?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzRhMWFjOTk1LWY3NzEtNDE5ZC1hYWRjLTQ5NzM4NWZiNjg3ZT9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.2650.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"4a1ac995-f771-419d-aadc-497385fb687e\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-24T11:10:23.613Z\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "108"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Retry-After": [
-          "15"
-        ],
-        "x-ms-request-id": [
-          "0fd43432-6ac6-44eb-afff-293f4f611528"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14992"
-        ],
-        "x-ms-correlation-request-id": [
-          "ca882566-b7ec-4b19-868f-a61c1b0c080e"
-        ],
-        "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111054Z:ca882566-b7ec-4b19-868f-a61c1b0c080e"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Sun, 24 Jun 2018 11:10:53 GMT"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ]
-      },
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/4a1ac995-f771-419d-aadc-497385fb687e?api-version=2017-10-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzRhMWFjOTk1LWY3NzEtNDE5ZC1hYWRjLTQ5NzM4NWZiNjg3ZT9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "FxVersion/4.7.2650.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"name\": \"4a1ac995-f771-419d-aadc-497385fb687e\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-24T11:10:23.613Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"88878364-4555-4a79-8c93-de1b59b6a06f\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-28T07:43:30.68Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "107"
@@ -790,16 +1549,16 @@
           "15"
         ],
         "x-ms-request-id": [
-          "fcbf8cb3-e77b-43cc-bda0-cc77372276e4"
+          "9b19556a-84ed-461c-8f48-50b74f39a983"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14924"
         ],
         "x-ms-correlation-request-id": [
-          "9a602a66-c77e-448b-93ad-99f9a23bbd3d"
+          "fd388e02-3645-46ad-8b60-e7044cfffc84"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111109Z:9a602a66-c77e-448b-93ad-99f9a23bbd3d"
+          "UKSOUTH:20180628T074346Z:fd388e02-3645-46ad-8b60-e7044cfffc84"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -811,7 +1570,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:11:09 GMT"
+          "Thu, 28 Jun 2018 07:43:45 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -820,13 +1579,133 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/88878364-4555-4a79-8c93-de1b59b6a06f?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzg4ODc4MzY0LTQ1NTUtNGE3OS04YzkzLWRlMWI1OWI2YTA2Zj9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"88878364-4555-4a79-8c93-de1b59b6a06f\",\r\n  \"status\": \"InProgress\",\r\n  \"startTime\": \"2018-06-28T07:43:30.68Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "684b65de-c652-4536-abcc-3ebab4403e48"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14923"
+        ],
+        "x-ms-correlation-request-id": [
+          "1e7f248e-2b25-439e-89c4-b580cd1e1231"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074401Z:1e7f248e-2b25-439e-89c4-b580cd1e1231"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:44:00 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/locations/westcentralus/databaseAzureAsyncOperation/88878364-4555-4a79-8c93-de1b59b6a06f?api-version=2017-10-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvbG9jYXRpb25zL3dlc3RjZW50cmFsdXMvZGF0YWJhc2VBenVyZUFzeW5jT3BlcmF0aW9uLzg4ODc4MzY0LTQ1NTUtNGE3OS04YzkzLWRlMWI1OWI2YTA2Zj9hcGktdmVyc2lvbj0yMDE3LTEwLTAxLXByZXZpZXc=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"88878364-4555-4a79-8c93-de1b59b6a06f\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:43:30.68Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-request-id": [
+          "a5629c48-a55d-4560-bf2c-460a6cadc933"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14922"
+        ],
+        "x-ms-correlation-request-id": [
+          "e44249c8-3750-4e41-a72d-1aef4aa64f88"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074416Z:e44249c8-3750-4e41-a72d-1aef4aa64f88"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:44:15 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "10aa86e4-7e9c-4403-8e91-4f5e35603826"
+          "75c15266-b58f-4350-8d9c-d67e1c90f476"
         ],
         "accept-language": [
           "en-US"
@@ -838,7 +1717,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "437"
@@ -853,16 +1732,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "c670cd44-3fa2-491d-921c-3596af92cae0"
+          "7d6cdb36-7a8c-415b-b95b-5d0a1b710cd6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14989"
+          "14919"
         ],
         "x-ms-correlation-request-id": [
-          "b0565c74-f1fc-45c6-adc9-e1f3524defc9"
+          "abedf118-e14e-4de2-92d2-9aa601d21516"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111110Z:b0565c74-f1fc-45c6-adc9-e1f3524defc9"
+          "UKSOUTH:20180628T074417Z:abedf118-e14e-4de2-92d2-9aa601d21516"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -874,7 +1753,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:11:10 GMT"
+          "Thu, 28 Jun 2018 07:44:16 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -883,13 +1762,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "6cb6fca6-6f60-4624-915a-dc120f49eaaf"
+          "ef24a952-bfb3-4ad5-89e2-77858c8666e4"
         ],
         "accept-language": [
           "en-US"
@@ -901,7 +1780,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "437"
@@ -916,16 +1795,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "950995fe-5575-4f39-b35c-c6b12946d00d"
+          "3865e33e-a148-4da8-9712-5270e0bff1b6"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
+          "14917"
         ],
         "x-ms-correlation-request-id": [
-          "db1d716e-cddf-463b-8ecd-d76b85025309"
+          "e2e1f096-b15b-4249-86cd-b8033bdbcb15"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111110Z:db1d716e-cddf-463b-8ecd-d76b85025309"
+          "UKSOUTH:20180628T074418Z:e2e1f096-b15b-4249-86cd-b8033bdbcb15"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -937,7 +1816,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:11:10 GMT"
+          "Thu, 28 Jun 2018 07:44:17 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -946,8 +1825,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -958,10 +1837,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "435"
+          "448"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -973,16 +1852,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "fdcc4284-3bbe-419f-b4d6-ea7f1d00ea6d"
+          "2782c9d8-554d-4381-9d02-7593520db43e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14986"
+          "14919"
         ],
         "x-ms-correlation-request-id": [
-          "3b49b1d4-bbc0-4c89-9063-5ef45edd5bda"
+          "3f272d72-b087-4e7f-9eb2-f07326703191"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111213Z:3b49b1d4-bbc0-4c89-9063-5ef45edd5bda"
+          "UKSOUTH:20180628T074521Z:3f272d72-b087-4e7f-9eb2-f07326703191"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -994,7 +1873,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:12:13 GMT"
+          "Thu, 28 Jun 2018 07:45:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1003,13 +1882,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8b6f082b-7cfb-474a-929b-ed462d3cea3c"
+          "6ee1da57-cc24-41fc-ad81-3ab18058aaba"
         ],
         "accept-language": [
           "en-US"
@@ -1021,10 +1900,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "435"
+          "448"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1036,16 +1915,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3bed816d-d8a6-4f62-90f3-ffc1c3b0315c"
+          "ddef5b2c-c104-48d3-9a4b-241c13a84e46"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14985"
+          "14917"
         ],
         "x-ms-correlation-request-id": [
-          "e70b77d6-8c6f-4aa8-b703-e9e7e263a02f"
+          "13182f41-9d10-4bc7-b32d-d8623107c6d2"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111213Z:e70b77d6-8c6f-4aa8-b703-e9e7e263a02f"
+          "UKSOUTH:20180628T074521Z:13182f41-9d10-4bc7-b32d-d8623107c6d2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1057,7 +1936,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:12:13 GMT"
+          "Thu, 28 Jun 2018 07:45:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1066,13 +1945,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "77fb59f3-f76e-4e99-8cd1-696dab919120"
+          "3b7c5f7f-8bef-43ac-a33f-f22bb9f5bcfb"
         ],
         "accept-language": [
           "en-US"
@@ -1084,10 +1963,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "435"
+          "448"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1099,16 +1978,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "1acc3f60-8971-4f74-8972-4c576de5da1e"
+          "42e1089a-d64e-4489-8a02-56fcb9d1e15c"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14984"
+          "14915"
         ],
         "x-ms-correlation-request-id": [
-          "ad12ace6-985e-45d0-ac63-3b8f8b4b4714"
+          "d9668038-5e08-4fdd-9b4d-a7f03bdb83f9"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111214Z:ad12ace6-985e-45d0-ac63-3b8f8b4b4714"
+          "UKSOUTH:20180628T074522Z:d9668038-5e08-4fdd-9b4d-a7f03bdb83f9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1120,7 +1999,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:12:13 GMT"
+          "Thu, 28 Jun 2018 07:45:21 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1129,8 +2008,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1141,10 +2020,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "437"
+          "449"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1156,16 +2035,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "65772941-cac6-4523-a420-0dcbf954cd25"
+          "cd1b327b-820c-4e3c-a125-96702be377f8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14982"
+          "14911"
         ],
         "x-ms-correlation-request-id": [
-          "377908c5-7fbd-49ea-86bc-8fb651a5813b"
+          "2b47cb3e-3a2f-4b11-bfbf-20dab2501215"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111315Z:377908c5-7fbd-49ea-86bc-8fb651a5813b"
+          "UKSOUTH:20180628T074624Z:2b47cb3e-3a2f-4b11-bfbf-20dab2501215"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1177,7 +2056,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:15 GMT"
+          "Thu, 28 Jun 2018 07:46:24 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1186,13 +2065,13 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0fb2f5f8-0151-43cd-a101-3e484cbd3007"
+          "2e45ca83-38c5-48ab-b274-5745bbebe7fb"
         ],
         "accept-language": [
           "en-US"
@@ -1204,10 +2083,10 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "437"
+          "449"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -1219,16 +2098,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "a15f4bc0-6208-468d-a75e-6c3b57c6c45f"
+          "94f9bd2c-4912-45f0-ac2a-d72b946856b7"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14981"
+          "14909"
         ],
         "x-ms-correlation-request-id": [
-          "efc0c2de-c6c8-4d30-aa1b-fc3ee6a7456f"
+          "b7191dff-f95a-47f0-a940-9b94a2b7cdb4"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111316Z:efc0c2de-c6c8-4d30-aa1b-fc3ee6a7456f"
+          "UKSOUTH:20180628T074625Z:b7191dff-f95a-47f0-a940-9b94a2b7cdb4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1240,7 +2119,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:16 GMT"
+          "Thu, 28 Jun 2018 07:46:24 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1249,19 +2128,505 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "841e2811-3f31-491f-b62c-bc345885b1b3"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"\"\r\n    ],\r\n    \"emailAccountAdmins\": true,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "449"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "76085dee-c600-44d9-81de-6220ac1a7543"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14907"
+        ],
+        "x-ms-correlation-request-id": [
+          "b81da12e-1799-4419-9bcd-b51413f7d4a8"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074625Z:b81da12e-1799-4419-9bcd-b51413f7d4a8"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:46:25 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0ee4c8d7-9e03-41fa-9e81-ffce1fad6730"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14903"
+        ],
+        "x-ms-correlation-request-id": [
+          "c8d11a9e-c910-4da0-8714-ebc5d5a15ac5"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074727Z:c8d11a9e-c910-4da0-8714-ebc5d5a15ac5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:47:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "96507bec-4188-4e03-a8fe-1a02ca1896a1"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "40b1de21-f96a-4ffb-af0d-6201d5fe50c8"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14901"
+        ],
+        "x-ms-correlation-request-id": [
+          "04547801-2aad-4a9f-ad2f-f75e74a1a2f7"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074728Z:04547801-2aad-4a9f-ad2f-f75e74a1a2f7"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:47:28 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "fa0880b0-52b6-4ad6-ab9a-baa55e1c8139"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14899"
+        ],
+        "x-ms-correlation-request-id": [
+          "4abffff5-5a40-427a-91b8-203b57ae8348"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074830Z:4abffff5-5a40-427a-91b8-203b57ae8348"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:29 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "4e510c7f-f460-4ee2-b4d6-93a9c9f06fc6"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "f2a6d2b7-5567-4693-80ca-80b4863649b0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14897"
+        ],
+        "x-ms-correlation-request-id": [
+          "5961c70d-e902-400b-ac61-c105e7a8dd29"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074830Z:5961c70d-e902-400b-ac61-c105e7a8dd29"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9544e97c-55ee-412e-8402-05f0dc3887e4"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "502"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "0d6f8265-885a-43da-ab8a-fd9d4e931fc1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14895"
+        ],
+        "x-ms-correlation-request-id": [
+          "517e673f-6230-49c3-9323-5b1e5b173f52"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074831Z:517e673f-6230-49c3-9323-5b1e5b173f52"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:30 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7e39a4d3-106e-4de6-8695-53b6f6b40ff2"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14892"
+        ],
+        "x-ms-correlation-request-id": [
+          "c9fae7cb-5317-4cb1-9e87-eb16b85765ee"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074933Z:c9fae7cb-5317-4cb1-9e87-eb16b85765ee"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:49:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "5c70061a-e04f-4104-8513-ac5b44cb813f"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"storageEndpoint\": \"\",\r\n    \"storageAccountAccessKey\": \"\",\r\n    \"retentionDays\": 0\r\n  },\r\n  \"id\": \"/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default\",\r\n  \"name\": \"Default\",\r\n  \"type\": \"Microsoft.Sql/servers/securityAlertPolicies\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "501"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "5b49ce40-f7c3-46bf-a117-9cc530ce1c97"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14890"
+        ],
+        "x-ms-correlation-request-id": [
+          "c962e0e3-550e-4c7a-85c5-6398213c4815"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074933Z:c962e0e3-550e-4c7a-85c5-6398213c4815"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:49:33 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"emailAccountAdmins\": true\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [],\r\n    \"emailAccountAdmins\": true,\r\n    \"retentionDays\": 0\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "85"
+          "193"
         ],
         "x-ms-client-request-id": [
-          "ecdd4f9b-6a79-4536-8fe8-fbf7cf82d706"
+          "86c88ca4-38fe-4b56-8089-b77674514b37"
         ],
         "accept-language": [
           "en-US"
@@ -1273,7 +2638,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-24T11:11:11.957Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-28T07:44:19.667Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "88"
@@ -1291,19 +2656,19 @@
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/272e3caa-b630-41fa-857d-e117e2cdf56d?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/dc194c4f-ca73-4c6c-8fd7-0a590e3fa487?api-version=2017-03-01-preview"
         ],
         "x-ms-request-id": [
-          "19482944-3546-4e90-b18b-a88e34d15ab1"
+          "cffe1d31-1004-41e1-ac6b-46f25bc17604"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1197"
         ],
         "x-ms-correlation-request-id": [
-          "996c7bed-bc9b-4ee8-ab6a-151808f0d29b"
+          "b49dc85d-9c4a-4839-aa6a-36427fce0246"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111112Z:996c7bed-bc9b-4ee8-ab6a-151808f0d29b"
+          "UKSOUTH:20180628T074420Z:b49dc85d-9c4a-4839-aa6a-36427fce0246"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1315,10 +2680,10 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:11:12 GMT"
+          "Thu, 28 Jun 2018 07:44:19 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/272e3caa-b630-41fa-857d-e117e2cdf56d?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/dc194c4f-ca73-4c6c-8fd7-0a590e3fa487?api-version=2017-03-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1327,19 +2692,19 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8733/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8733/securityAlertPolicies/Default?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzMvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg3MzMvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection\"\r\n    ],\r\n    \"emailAddresses\": [],\r\n    \"emailAccountAdmins\": true,\r\n    \"retentionDays\": 0\r\n  }\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "53"
+          "194"
         ],
         "x-ms-client-request-id": [
-          "425cceb8-cd1f-41f5-b3f3-4319c6f0d9db"
+          "92e398a4-a908-410c-97a8-4d866ca302b9"
         ],
         "accept-language": [
           "en-US"
@@ -1351,7 +2716,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-24T11:12:14.623Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-28T07:45:22.763Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "88"
@@ -1369,19 +2734,19 @@
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/b0586852-f1b2-443d-b322-7a79c6ee8647?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/aa0b9c95-ee68-4af5-a98b-9e947004833d?api-version=2017-03-01-preview"
         ],
         "x-ms-request-id": [
-          "c6e86214-44b4-4572-9fc8-c92940c15baf"
+          "0b06c2ac-fd03-4bbf-b5c3-43a3661e6791"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1196"
         ],
         "x-ms-correlation-request-id": [
-          "4251e130-6b09-4346-ba67-1a5f10e8e515"
+          "ec0ca836-4c35-4bdd-8c12-892293f11abb"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111215Z:4251e130-6b09-4346-ba67-1a5f10e8e515"
+          "UKSOUTH:20180628T074524Z:ec0ca836-4c35-4bdd-8c12-892293f11abb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1393,10 +2758,10 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:12:14 GMT"
+          "Thu, 28 Jun 2018 07:45:23 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/b0586852-f1b2-443d-b322-7a79c6ee8647?api-version=2017-03-01-preview"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/aa0b9c95-ee68-4af5-a98b-9e947004833d?api-version=2017-03-01-preview"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1405,8 +2770,242 @@
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/272e3caa-b630-41fa-857d-e117e2cdf56d?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vMjcyZTNjYWEtYjYzMC00MWZhLTg1N2QtZTExN2UyY2RmNTZkP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"retentionDays\": 0\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "270"
+        ],
+        "x-ms-client-request-id": [
+          "1059c74c-fe01-478e-a33b-a28d901ee5ab"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-28T07:46:26.7Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "86"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/db7f32df-6190-4492-8220-ef61714c6a4b?api-version=2017-03-01-preview"
+        ],
+        "x-ms-request-id": [
+          "0418d1bd-fc55-4438-ae76-ee2cbc8531e5"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1195"
+        ],
+        "x-ms-correlation-request-id": [
+          "4d25ba1a-518e-4129-b20e-d6e735072692"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074626Z:4d25ba1a-518e-4129-b20e-d6e735072692"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:46:26 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/db7f32df-6190-4492-8220-ef61714c6a4b?api-version=2017-03-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Disabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"retentionDays\": 0\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "271"
+        ],
+        "x-ms-client-request-id": [
+          "f9318d11-5898-49f6-819f-6ab4dab3ef14"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-28T07:47:28.93Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "87"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/7385512d-680f-43c5-a105-2978aac4a995?api-version=2017-03-01-preview"
+        ],
+        "x-ms-request-id": [
+          "d0f6e1e6-079b-4e63-a8a2-25b056b8f0f1"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1194"
+        ],
+        "x-ms-correlation-request-id": [
+          "c1fa1984-d14b-4812-bd67-d383b3c30580"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074729Z:c1fa1984-d14b-4812-bd67-d383b3c30580"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:47:29 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/7385512d-680f-43c5-a105-2978aac4a995?api-version=2017-03-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourceGroups/sql-atp-cmdlet-test-rgps8415/providers/Microsoft.Sql/servers/sql-atp-cmdlet-serverps8415/securityAlertPolicies/Default?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlR3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTUvcHJvdmlkZXJzL01pY3Jvc29mdC5TcWwvc2VydmVycy9zcWwtYXRwLWNtZGxldC1zZXJ2ZXJwczg0MTUvc2VjdXJpdHlBbGVydFBvbGljaWVzL0RlZmF1bHQ/YXBpLXZlcnNpb249MjAxNy0wMy0wMS1wcmV2aWV3",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"state\": \"Enabled\",\r\n    \"disabledAlerts\": [\r\n      \"Sql_Injection_Vulnerability\"\r\n    ],\r\n    \"emailAddresses\": [\r\n      \"koko@mailTest.com\",\r\n      \"koko1@mailTest.com\"\r\n    ],\r\n    \"emailAccountAdmins\": false,\r\n    \"retentionDays\": 0\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "270"
+        ],
+        "x-ms-client-request-id": [
+          "5ff5c9f8-7aaa-4450-bc44-80e8705329a2"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"operation\": \"UpsertServerThreatDetectionPolicy\",\r\n  \"startTime\": \"2018-06-28T07:48:32.197Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "88"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "60"
+        ],
+        "Azure-AsyncOperation": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/c037c183-144a-43db-ab73-f8dd98c643ce?api-version=2017-03-01-preview"
+        ],
+        "x-ms-request-id": [
+          "b96daea9-b685-4cf6-aa95-b3cea0599bdc"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1193"
+        ],
+        "x-ms-correlation-request-id": [
+          "60fa8a2d-ff7e-49ec-9a7e-9fe7e60f38cd"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074832Z:60fa8a2d-ff7e-49ec-9a7e-9fe7e60f38cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:32 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesOperationResults/c037c183-144a-43db-ab73-f8dd98c643ce?api-version=2017-03-01-preview"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/dc194c4f-ca73-4c6c-8fd7-0a590e3fa487?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vZGMxOTRjNGYtY2E3My00YzZjLThmZDctMGE1OTBlM2ZhNDg3P2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1417,7 +3016,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"272e3caa-b630-41fa-857d-e117e2cdf56d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-24T11:11:11.957Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"dc194c4f-ca73-4c6c-8fd7-0a590e3fa487\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:44:19.667Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "107"
@@ -1432,16 +3031,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b2577f38-861b-4765-bdc3-eed1b3456c9f"
+          "656d8efc-a34b-44f8-963b-63d2266c44e3"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14987"
+          "14920"
         ],
         "x-ms-correlation-request-id": [
-          "f9bb3ab3-5fd3-45fe-baeb-d648b6d73b5e"
+          "d799995c-b539-4b98-9e25-aa8561cb891b"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111213Z:f9bb3ab3-5fd3-45fe-baeb-d648b6d73b5e"
+          "UKSOUTH:20180628T074520Z:d799995c-b539-4b98-9e25-aa8561cb891b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1453,7 +3052,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:12:13 GMT"
+          "Thu, 28 Jun 2018 07:45:20 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1462,8 +3061,8 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/b0586852-f1b2-443d-b322-7a79c6ee8647?api-version=2017-03-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vYjA1ODY4NTItZjFiMi00NDNkLWIzMjItN2E3OWM2ZWU4NjQ3P2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/aa0b9c95-ee68-4af5-a98b-9e947004833d?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vYWEwYjljOTUtZWU2OC00YWY1LWE5OGItOWU5NDcwMDQ4MzNkP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1474,7 +3073,7 @@
           "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"b0586852-f1b2-443d-b322-7a79c6ee8647\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-24T11:12:14.623Z\"\r\n}",
+      "ResponseBody": "{\r\n  \"name\": \"aa0b9c95-ee68-4af5-a98b-9e947004833d\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:45:22.763Z\"\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "107"
@@ -1489,16 +3088,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "e6665347-0b38-433d-8e5f-86959f232458"
+          "41e5ecfa-c3f0-4951-bbce-23b537e7c3b4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14983"
+          "14912"
         ],
         "x-ms-correlation-request-id": [
-          "49f761bb-099d-4dc6-b1de-ce9d54189e19"
+          "3ea776d6-8f4d-4691-b454-655cc143814d"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111315Z:49f761bb-099d-4dc6-b1de-ce9d54189e19"
+          "UKSOUTH:20180628T074624Z:3ea776d6-8f4d-4691-b454-655cc143814d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1510,7 +3109,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:15 GMT"
+          "Thu, 28 Jun 2018 07:46:23 GMT"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -1519,13 +3118,184 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-atp-cmdlet-test-rgps8733?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg3MzM/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/db7f32df-6190-4492-8220-ef61714c6a4b?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vZGI3ZjMyZGYtNjE5MC00NDkyLTgyMjAtZWY2MTcxNGM2YTRiP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"db7f32df-6190-4492-8220-ef61714c6a4b\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:46:26.7Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "105"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1a35d088-0816-4650-be82-882ca7a9f923"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14904"
+        ],
+        "x-ms-correlation-request-id": [
+          "ac6aad9a-6d3a-4ae1-adf2-d9e41dcb49e2"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074727Z:ac6aad9a-6d3a-4ae1-adf2-d9e41dcb49e2"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:47:27 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/7385512d-680f-43c5-a105-2978aac4a995?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vNzM4NTUxMmQtNjgwZi00M2M1LWExMDUtMjk3OGFhYzRhOTk1P2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"7385512d-680f-43c5-a105-2978aac4a995\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:47:28.93Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "106"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "c3df2637-52d6-4b4e-a02c-112e67df3cdd"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14900"
+        ],
+        "x-ms-correlation-request-id": [
+          "18e2ff71-8657-42ca-a781-98ddef93ae43"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074830Z:18e2ff71-8657-42ca-a781-98ddef93ae43"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:48:29 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/providers/Microsoft.Sql/locations/westcentralus/securityAlertPoliciesAzureAsyncOperation/c037c183-144a-43db-ab73-f8dd98c643ce?api-version=2017-03-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Byb3ZpZGVycy9NaWNyb3NvZnQuU3FsL2xvY2F0aW9ucy93ZXN0Y2VudHJhbHVzL3NlY3VyaXR5QWxlcnRQb2xpY2llc0F6dXJlQXN5bmNPcGVyYXRpb24vYzAzN2MxODMtMTQ0YS00M2RiLWFiNzMtZjhkZDk4YzY0M2NlP2FwaS12ZXJzaW9uPTIwMTctMDMtMDEtcHJldmlldw==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Sql.SqlManagementClient/1.18.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"c037c183-144a-43db-ab73-f8dd98c643ce\",\r\n  \"status\": \"Succeeded\",\r\n  \"startTime\": \"2018-06-28T07:48:32.197Z\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "107"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "1fa82406-65a4-4f3a-9e7e-4668a120c93a"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14893"
+        ],
+        "x-ms-correlation-request-id": [
+          "7f129f02-cadc-41f6-a0a1-35dd5cac2aca"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T074932Z:7f129f02-cadc-41f6-a0a1-35dd5cac2aca"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:49:32 GMT"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/resourcegroups/sql-atp-cmdlet-test-rgps8415?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL3Jlc291cmNlZ3JvdXBzL3NxbC1hdHAtY21kbGV0LXRlc3Qtcmdwczg0MTU/YXBpLXZlcnNpb249MjAxNi0wOS0wMQ==",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b94b5477-ce31-4eee-a8c4-788099a689f9"
+          "68208776-35cd-4d20-9569-eda35e9618e0"
         ],
         "accept-language": [
           "en-US"
@@ -1555,13 +3325,13 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "4d57a10e-069e-446b-b3b8-fdf2be9fd3c7"
+          "99c2f22e-97fe-4c6d-84c4-1706fcb9e482"
         ],
         "x-ms-correlation-request-id": [
-          "4d57a10e-069e-446b-b3b8-fdf2be9fd3c7"
+          "99c2f22e-97fe-4c6d-84c4-1706fcb9e482"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111319Z:4d57a10e-069e-446b-b3b8-fdf2be9fd3c7"
+          "UKSOUTH:20180628T074936Z:99c2f22e-97fe-4c6d-84c4-1706fcb9e482"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1573,17 +3343,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:19 GMT"
+          "Thu, 28 Jun 2018 07:49:36 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1609,16 +3379,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14861"
+          "14999"
         ],
         "x-ms-request-id": [
-          "dfafe1d5-0c2c-484d-b5d2-8dfe83aa0a29"
+          "9273cdfc-e19b-4e10-8121-f669fc20dc29"
         ],
         "x-ms-correlation-request-id": [
-          "dfafe1d5-0c2c-484d-b5d2-8dfe83aa0a29"
+          "9273cdfc-e19b-4e10-8121-f669fc20dc29"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111335Z:dfafe1d5-0c2c-484d-b5d2-8dfe83aa0a29"
+          "UKSOUTH:20180628T074952Z:9273cdfc-e19b-4e10-8121-f669fc20dc29"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1630,17 +3400,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:34 GMT"
+          "Thu, 28 Jun 2018 07:49:51 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1666,16 +3436,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14860"
+          "14998"
         ],
         "x-ms-request-id": [
-          "10b3323f-af10-4cb9-a6a2-f7eae3b09427"
+          "3fc3280b-2035-4628-b250-f3570679e92f"
         ],
         "x-ms-correlation-request-id": [
-          "10b3323f-af10-4cb9-a6a2-f7eae3b09427"
+          "3fc3280b-2035-4628-b250-f3570679e92f"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111350Z:10b3323f-af10-4cb9-a6a2-f7eae3b09427"
+          "UKSOUTH:20180628T075007Z:3fc3280b-2035-4628-b250-f3570679e92f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1687,17 +3457,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:13:50 GMT"
+          "Thu, 28 Jun 2018 07:50:07 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1723,16 +3493,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14859"
+          "14997"
         ],
         "x-ms-request-id": [
-          "16997736-b7fc-4b16-a2a1-9ebb246bea06"
+          "502da2c9-bd8f-410a-b1ea-8f85ad8c0941"
         ],
         "x-ms-correlation-request-id": [
-          "16997736-b7fc-4b16-a2a1-9ebb246bea06"
+          "502da2c9-bd8f-410a-b1ea-8f85ad8c0941"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111405Z:16997736-b7fc-4b16-a2a1-9ebb246bea06"
+          "UKSOUTH:20180628T075022Z:502da2c9-bd8f-410a-b1ea-8f85ad8c0941"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1744,17 +3514,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:14:05 GMT"
+          "Thu, 28 Jun 2018 07:50:22 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1780,16 +3550,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14857"
+          "14996"
         ],
         "x-ms-request-id": [
-          "cc07be5a-a116-48c4-bfe6-db49f6f4419c"
+          "b58bc129-89d5-4351-9e74-d2521214ceab"
         ],
         "x-ms-correlation-request-id": [
-          "cc07be5a-a116-48c4-bfe6-db49f6f4419c"
+          "b58bc129-89d5-4351-9e74-d2521214ceab"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111421Z:cc07be5a-a116-48c4-bfe6-db49f6f4419c"
+          "UKSOUTH:20180628T075038Z:b58bc129-89d5-4351-9e74-d2521214ceab"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1801,17 +3571,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:14:20 GMT"
+          "Thu, 28 Jun 2018 07:50:37 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1837,16 +3607,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14856"
+          "14995"
         ],
         "x-ms-request-id": [
-          "29d9f59e-63a5-45ba-862b-0d42d3fc6e59"
+          "0267992e-9852-4e76-8a29-bab6013494c1"
         ],
         "x-ms-correlation-request-id": [
-          "29d9f59e-63a5-45ba-862b-0d42d3fc6e59"
+          "0267992e-9852-4e76-8a29-bab6013494c1"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111436Z:29d9f59e-63a5-45ba-862b-0d42d3fc6e59"
+          "UKSOUTH:20180628T075053Z:0267992e-9852-4e76-8a29-bab6013494c1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1858,17 +3628,17 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:14:35 GMT"
+          "Thu, 28 Jun 2018 07:50:53 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1894,16 +3664,16 @@
           "15"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14855"
+          "14994"
         ],
         "x-ms-request-id": [
-          "011bde41-c819-451c-b1da-c9236dd4cb6f"
+          "f7a81fbf-d90c-4602-99cd-d08d05418a49"
         ],
         "x-ms-correlation-request-id": [
-          "011bde41-c819-451c-b1da-c9236dd4cb6f"
+          "f7a81fbf-d90c-4602-99cd-d08d05418a49"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111451Z:011bde41-c819-451c-b1da-c9236dd4cb6f"
+          "UKSOUTH:20180628T075108Z:f7a81fbf-d90c-4602-99cd-d08d05418a49"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1915,17 +3685,188 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:14:51 GMT"
+          "Thu, 28 Jun 2018 07:51:08 GMT"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
         ]
       },
       "StatusCode": 202
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "444af545-2614-4a7d-91f6-166ab91e06a6"
+        ],
+        "x-ms-correlation-request-id": [
+          "444af545-2614-4a7d-91f6-166ab91e06a6"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T075124Z:444af545-2614-4a7d-91f6-166ab91e06a6"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:51:23 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "9123e2b8-7128-4b4d-ae12-5b8815d1f839"
+        ],
+        "x-ms-correlation-request-id": [
+          "9123e2b8-7128-4b4d-ae12-5b8815d1f839"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T075139Z:9123e2b8-7128-4b4d-ae12-5b8815d1f839"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:51:39 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
+        ]
+      },
+      "ResponseBody": "",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "0"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Retry-After": [
+          "15"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14991"
+        ],
+        "x-ms-request-id": [
+          "032a0378-e8b2-4c23-a32d-cf5c42390252"
+        ],
+        "x-ms-correlation-request-id": [
+          "032a0378-e8b2-4c23-a32d-cf5c42390252"
+        ],
+        "x-ms-routing-request-id": [
+          "UKSOUTH:20180628T075154Z:032a0378-e8b2-4c23-a32d-cf5c42390252"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Thu, 28 Jun 2018 07:51:54 GMT"
+        ],
+        "Location": [
+          "https://management.azure.com/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01"
+        ]
+      },
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1948,16 +3889,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14856"
+          "14990"
         ],
         "x-ms-request-id": [
-          "09e83ad9-9d0b-4617-a62c-fb6e2af89831"
+          "e2e682c5-1680-465c-b482-05ff2e1ebd92"
         ],
         "x-ms-correlation-request-id": [
-          "09e83ad9-9d0b-4617-a62c-fb6e2af89831"
+          "e2e682c5-1680-465c-b482-05ff2e1ebd92"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111507Z:09e83ad9-9d0b-4617-a62c-fb6e2af89831"
+          "UKSOUTH:20180628T075210Z:e2e682c5-1680-465c-b482-05ff2e1ebd92"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1969,14 +3910,14 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:15:06 GMT"
+          "Thu, 28 Jun 2018 07:52:09 GMT"
         ]
       },
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg3MzMtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzNNek10VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestUri": "/subscriptions/cca24ec8-99b5-4aa7-9ff6-486e886f304c/operationresults/eyJqb2JJZCI6IlJFU09VUkNFR1JPVVBERUxFVElPTkpPQi1TUUw6MkRBVFA6MkRDTURMRVQ6MkRURVNUOjJEUkdQUzg0MTUtV0VTVENFTlRSQUxVUyIsImpvYkxvY2F0aW9uIjoid2VzdGNlbnRyYWx1cyJ9?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2NhMjRlYzgtOTliNS00YWE3LTlmZjYtNDg2ZTg4NmYzMDRjL29wZXJhdGlvbnJlc3VsdHMvZXlKcWIySkpaQ0k2SWxKRlUwOVZVa05GUjFKUFZWQkVSVXhGVkVsUFRrcFBRaTFUVVV3Nk1rUkJWRkE2TWtSRFRVUk1SVlE2TWtSVVJWTlVPakpFVWtkUVV6ZzBNVFV0VjBWVFZFTkZUbFJTUVV4VlV5SXNJbXB2WWt4dlkyRjBhVzl1SWpvaWQyVnpkR05sYm5SeVlXeDFjeUo5P2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
@@ -1999,16 +3940,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14855"
+          "14989"
         ],
         "x-ms-request-id": [
-          "25f4d9d5-7a66-436a-ac65-08353fc5f8eb"
+          "64b01df7-81cc-407b-901f-e8fa28fdd961"
         ],
         "x-ms-correlation-request-id": [
-          "25f4d9d5-7a66-436a-ac65-08353fc5f8eb"
+          "64b01df7-81cc-407b-901f-e8fa28fdd961"
         ],
         "x-ms-routing-request-id": [
-          "UKSOUTH:20180624T111507Z:25f4d9d5-7a66-436a-ac65-08353fc5f8eb"
+          "UKSOUTH:20180628T075210Z:64b01df7-81cc-407b-901f-e8fa28fdd961"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -2020,7 +3961,7 @@
           "no-cache"
         ],
         "Date": [
-          "Sun, 24 Jun 2018 11:15:07 GMT"
+          "Thu, 28 Jun 2018 07:52:09 GMT"
         ]
       },
       "StatusCode": 200
@@ -2028,7 +3969,7 @@
   ],
   "Names": {
     "Test-AdvancedThreatProtectionPolicyTest": [
-      "ps8733"
+      "ps8415"
     ]
   },
   "Variables": {
