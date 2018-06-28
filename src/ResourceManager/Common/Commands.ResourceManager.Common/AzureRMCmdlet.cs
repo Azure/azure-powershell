@@ -85,10 +85,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             var subscriptionIds = resourceIds.Select(rId => (new ResourceIdentifier(rId))?.Subscription)?.Distinct();
 
             //Checxk if we have access to all the subscriptions
-            CheckAccessToSubscriptions(subscriptionIds);
+            var subscriptionList = CheckAccessToSubscriptions(subscriptionIds);
 
             //get all the non default tenant ids for the subscriptions
-            var nonDeafultTenantIds = DefaultProfile.Subscriptions.Where(s => subscriptionIds.Contains(s.GetId().ToString()))?.Select(s => s.GetTenant())?.Distinct()?.Where(t => t != DefaultContext.Tenant.GetId().ToString());
+            var nonDeafultTenantIds = subscriptionList?.Select(s => s.GetTenant())?.Distinct()?.Where(t => t != DefaultContext.Tenant.GetId().ToString());
 
             if ((nonDeafultTenantIds != null) && (nonDeafultTenantIds.Count() > 0))
             {
@@ -113,31 +113,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return auxHeader;
         }
 
-        private void CheckAccessToSubscriptions(IEnumerable<string> subscriptions)
+        private List<IAzureSubscription> CheckAccessToSubscriptions(IEnumerable<string> subscriptions)
         {
-            var subscriptionWithNoAccess = subscriptions.ToList().Except(DefaultProfile.Subscriptions.Select(s => s.GetId().ToString()).ToList());
+            var subscriptionsNotInDefaultProfile = subscriptions.ToList().Except(DefaultProfile.Subscriptions.Select(s => s.GetId().ToString()).ToList());
 
-            if (subscriptionWithNoAccess.Any())
+            List<IAzureSubscription> subscriptionObjects = DefaultProfile.Subscriptions.Where(s => subscriptions.Contains(s.GetId().ToString())).ToList();
+            if (subscriptionsNotInDefaultProfile.Any())
             {
-                //Found subscription(s) the user does not have acess to... throw exception
-                StringBuilder message = new StringBuilder();
+                //So we didnt find some subscriptions in the default profile.. 
+                //this does not mean that the user does not have access to the subs, it just menas that the local context did not have them
+                //We gotta now call into the subscription RP and see if the user really does not have access to these subscriptions
 
-                message.Append(" The user does not have access to the following subscription(s) : ");
-                subscriptionWithNoAccess.Select(s => message.Append(" " + s));
-                throw new AuthenticationException(message.ToString());
+                var result = Utilities.SubscriptionAndTenantHelper.GetTenantsForSubscriptions(subscriptionsNotInDefaultProfile.ToList(), DefaultContext);
+
+                if (result.Count < subscriptionsNotInDefaultProfile.Count())
+                {
+                    var subscriptionsNotFoundAtAll = subscriptionsNotInDefaultProfile.ToList().Except(result.Keys);
+                    //Found subscription(s) the user does not have acess to... throw exception
+                    StringBuilder message = new StringBuilder();
+
+                    message.Append(" The user does not have access to the following subscription(s) : ");
+                    subscriptionsNotFoundAtAll.ForEach(s => message.Append(" " + s));
+                    throw new AuthenticationException(message.ToString());
+                }
+                else
+                {
+                    subscriptionObjects.AddRange(result.Values);
+                }
             }
+
+            return subscriptionObjects;
         }
 
 
         private IAccessToken GetTokenForTenant(string tenantId)
         {
-            return AzureSession.Instance.AuthenticationFactory.Authenticate(
-                DefaultContext.Account,
+            return Utilities.SubscriptionAndTenantHelper.AcquireAccessToken(DefaultContext.Account,
                 DefaultContext.Environment,
-                tenantId,
-                null,
-                ShowDialog.Never,
-                null);
+                tenantId);
         }
 
         protected override string DataCollectionWarning
