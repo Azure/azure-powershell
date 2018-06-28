@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet)]
     [Alias("Get-AzureRmIoTDpsHub")]
-    [OutputType(typeof(PSIotHubDefinitionDescription), typeof(List<PSIotHubDefinitions>))]
+    [OutputType(typeof(PSIotHubDefinitionDescription), typeof(PSIotHubDefinitions))]
     public class GetAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

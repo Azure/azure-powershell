@@ -22,6 +22,7 @@
 * Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties
 * Fix flushing of debug messages for cmdlets that does recursive operations
 * Fix location of test of DataLake cmdlets
+* Fixed formatting of OutputType in help files
 
 ## Version 6.0.1
 * Fix example for Export-AzureRmDataLakeStoreChildItemProperties
