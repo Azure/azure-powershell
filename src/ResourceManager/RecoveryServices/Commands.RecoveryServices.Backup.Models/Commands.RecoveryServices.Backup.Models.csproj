@@ -57,6 +57,7 @@
     <Compile Include="AzureVmModels\AzureVmRecoveryPoint.cs" />
     <Compile Include="BaseObjects.cs" />
     <Compile Include="CmdletParamEnums.cs" />
+    <Compile Include="CommonModels\ResourceBackupStatus.cs" />
     <Compile Include="CommonModels\Utils.cs" />
     <Compile Include="CommonModels\Enums.cs" />
     <Compile Include="CommonModels\PolicyRetentionObjects.cs" />

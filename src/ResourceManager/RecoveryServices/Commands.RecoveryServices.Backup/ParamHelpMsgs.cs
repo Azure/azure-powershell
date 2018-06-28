@@ -107,5 +107,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string StorageAccountResourceGroupName = "Resource group name of Storage account name where the disks need to be recovered";
             public const string OsaOption = "Use this switch if the disks from the recovery point are to be restored to their original storage accounts";
         }
+
+        internal static class ProtectionCheck
+        {
+            public const string Name = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
+            public const string ResourceGroupName = "Name of the resource group of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
+            public const string Type = "Name of the Azure Resource whose representative item needs to be checked if it is already protected by some Recovery Services Vault in the subscription.";
+            public const string ResourceId = "ID of the Azure Resource whose representative item needs to be checked if it is already protected by some RecoveryServices Vault in the subscription.";
+        }
     }
 }
