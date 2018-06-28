@@ -54,7 +54,7 @@ Downloads a script to mount all the files of the recovery point.
 Gets a base schedule policy object.
 
 ### [Get-AzureRmRecoveryServicesBackupStatus](Get-AzureRmRecoveryServicesBackupStatus.md)
-The command returns null/empty if the specified resource is not protected under any Recovery Services vault in the subscription. If it is protected, the relevant vault details will be returned.
+Checks whether your ARM resource is backed up or not.
 
 ### [New-AzureRmRecoveryServicesBackupProtectionPolicy](New-AzureRmRecoveryServicesBackupProtectionPolicy.md)
 Creates a Backup protection policy.
