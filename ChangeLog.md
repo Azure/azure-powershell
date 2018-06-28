@@ -46,6 +46,9 @@
     - Added Get-AzureRMExpressRouteCrossConnectionRouteTable
     - Added Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
 
+#### AzureRM.RecoveryServices.Backup
+* Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and checks if the VM is protected by some vault in the subscription. If there exists such a vault, the cmdlet outputs the vault details.
+
 #### AzureRM.Resources
 * Update Get-AzureRmPolicyAssignment cmdlets:
     - Add support for listing -Scope values at management group level

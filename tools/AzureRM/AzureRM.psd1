@@ -54,7 +54,7 @@ CLRVersion = '4.0'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1'; },
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.3.1'; },
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.9'; },
-               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.1'; },
+               @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.2'; },
                @{ModuleName = 'AzureRM.ApiManagement'; RequiredVersion = '6.1.1'; },
                @{ModuleName = 'AzureRM.ApplicationInsights'; RequiredVersion = '0.1.4'; },
                @{ModuleName = 'AzureRM.Automation'; RequiredVersion = '5.0.1'; },
@@ -90,7 +90,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1';
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.2'; },
                @{ModuleName = 'AzureRM.PowerBIEmbedded'; RequiredVersion = '4.1.6'; },
                @{ModuleName = 'AzureRM.RecoveryServices'; RequiredVersion = '4.1.4'; },
-               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.2.1'; },
+               @{ModuleName = 'AzureRM.RecoveryServices.Backup'; RequiredVersion = '4.3.0'; },
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.6'; },
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.5'; },
@@ -207,6 +207,9 @@ AzureRM.Network
     - Added Get-AzureRMExpressRouteCrossConnectionArpTable
     - Added Get-AzureRMExpressRouteCrossConnectionRouteTable
     - Added Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+
+AzureRM.RecoveryServices.Backup
+* Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and checks if the VM is protected by some vault in the subscription. If there exists such a vault, the cmdlet outputs the vault details.
 
 AzureRM.Resources
 * Update Get-AzureRmPolicyAssignment cmdlets:
