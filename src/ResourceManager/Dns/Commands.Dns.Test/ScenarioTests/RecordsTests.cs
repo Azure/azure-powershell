@@ -28,6 +28,13 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestAliasRecordSet()
+        {
+            DnsTestsBase.NewInstance.RunPowerShellTest("Test-AliasRecordSet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRecordSetCrud()
         {
             DnsTestsBase.NewInstance.RunPowerShellTest("Test-RecordSetCrud");

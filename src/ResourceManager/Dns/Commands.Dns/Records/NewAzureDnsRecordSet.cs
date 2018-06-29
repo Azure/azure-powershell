@@ -27,32 +27,42 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
         OutputType(typeof(DnsRecordSet))]
-    public class NewAzureDnsRecordSet : DnsBaseCmdlet
+    public class NewAzureRmDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The zone in which to create the record set (without a terminating dot).", ParameterSetName = "AliasFields")]
         [ValidateNotNullOrEmpty]
         public string ZoneName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The resource group to which the zone belongs.", ParameterSetName = "AliasFields")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The DnsZone object representing the zone in which to create the record set.", ParameterSetName = "AliasObject")]
         [ValidateNotNullOrEmpty]
         public DnsZone Zone { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Fields")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "Object")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasObject")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The TTL value of all the records in this record set.", ParameterSetName = "AliasFields")]
         [ValidateNotNullOrEmpty]
         public uint Ttl { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The type of DNS records in this record set.")]
         [ValidateNotNullOrEmpty]
         public RecordType RecordType { get; set; }
+
+        [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasFields")]
+        [Parameter(Mandatory = true, HelpMessage = "Alias Target Resource Id.", ParameterSetName = "AliasObject")]
+        public string AliasTargetResourceId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A hash table which represents resource tags.")]
         public Hashtable Metadata { get; set; }
@@ -63,9 +73,6 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, HelpMessage = "Do not fail if the record set already exists.")]
         public SwitchParameter Overwrite { get; set; }
-
-        [Parameter(Mandatory = false, HelpMessage = "Alias Target Resource Id.")]
-        public string AliasTargetResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -78,12 +85,12 @@ namespace Microsoft.Azure.Commands.Dns
                 throw new System.ArgumentException(ProjectResources.Error_AddRecordSOA);
             }
 
-            if (ParameterSetName == "Fields")
+            if (ParameterSetName == "Fields" || ParameterSetName == "AliasFields")
             {
                 zoneName = this.ZoneName;
                 resourceGroupname = this.ResourceGroupName;
             }
-            else if (ParameterSetName == "Object")
+            else if (ParameterSetName == "Object" || ParameterSetName == "AliasObject")
             {
                 zoneName = this.Zone.Name;
                 resourceGroupname = this.Zone.ResourceGroupName;
