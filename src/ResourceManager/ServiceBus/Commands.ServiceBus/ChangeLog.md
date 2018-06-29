@@ -19,6 +19,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.6
+* Added optional Parameter -KeyValue to New-AzureRmServiceBusKey cmdlet, which enables user to provide KeyValue.
 * Fixed formatting of OutputType in help files
 
 ## Version 0.6.5
