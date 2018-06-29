@@ -24,9 +24,9 @@ Test all iothub routing cmdlets
 function Test-AzureRmIotHubRoutingLifecycle
 {
 	$Location = Get-Location "Microsoft.Devices" "IotHub" 
-	$IotHubName = 'sapan-iot-2' 
-	$ResourceGroupName = 'sapan-iot-rg' 
-	$namespaceName = getAssetName 
+	$IotHubName = getAssetName
+	$ResourceGroupName = getAssetName
+	$namespaceName = getAssetName 'eventHub'
 	$eventHubName = getAssetName
 	$authRuleName = getAssetName
 	$endpointName = getAssetName
@@ -34,14 +34,15 @@ function Test-AzureRmIotHubRoutingLifecycle
 	$Sku = "S1"
 
 	# Create or Update Resource Group
-	#$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
+	$resourceGroup = New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location 
 
 	# Create Iot Hub
-	#$iothub = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
+	$iothub = New-AzureRmIotHub -Name $IotHubName -ResourceGroupName $ResourceGroupName -Location $Location -SkuName $Sku -Units 1 
 
 	# Create new eventHub namespace  
     $eventHubNamespace = New-AzureRmEventHubNamespace -ResourceGroup $ResourceGroupName -NamespaceName $namespaceName -Location $Location
-	Assert-True {$result.ProvisioningState -eq "Succeeded"}
+	Wait-Seconds 15
+	Assert-True {$eventHubNamespace.ProvisioningState -eq "Succeeded"}
 	$regexMatches = $eventHubNamespace.Id | Select-String -Pattern '^/subscriptions/(.*)/resourceGroups/(.*)/providers/(.*)$'
 	$eventHubSubscriptionId = $regexMatches.Matches.Groups[1].Value
 	$eventHubResourceGroup = $regexMatches.Matches.Groups[2].Value
@@ -63,16 +64,16 @@ function Test-AzureRmIotHubRoutingLifecycle
 
 	# Add event hub endpoint
 	$newRoutingEndpoint = Add-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName -EndpointName $endpointName -EndpointType EventHub -EndpointResourceGroup $eventHubResourceGroup -EndpointSubscriptionId $eventHubSubscriptionId -ConnectionString $ehConnectionString
-	Assert-True { $newRoutingEndpoint.ResourceGroupName -eq $eventHubResourceGroup}
+	Assert-True { $newRoutingEndpoint.ResourceGroup -eq $eventHubResourceGroup}
 	Assert-True { $newRoutingEndpoint.SubscriptionId -eq $eventHubSubscriptionId}
-	Assert-True { $newRoutingEndpoint.EndpointName -eq $endpointName}
+	Assert-True { $newRoutingEndpoint.Name -eq $endpointName}
 
 	# Get all routing endpoints
-	$routingEndpoints = Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName
-	Assert-True { $routingEndpoints.Count -eq 1}
-	Assert-True { $routingEndpoints[0].ResourceGroupName -eq $eventHubResourceGroup}
-	Assert-True { $routingEndpoints[0].SubscriptionId -eq $eventHubSubscriptionId}
-	Assert-True { $routingEndpoints[0].EndpointName -eq $endpointName}
+	$updatedRoutingEndpoints = Get-AzureRmIotHubRoutingEndpoint -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Assert-True { $updatedRoutingEndpoints.Count -eq 1}
+	Assert-True { $updatedRoutingEndpoints[0].ResourceGroup -eq $eventHubResourceGroup}
+	Assert-True { $updatedRoutingEndpoints[0].SubscriptionId -eq $eventHubSubscriptionId}
+	Assert-True { $updatedRoutingEndpoints[0].Name -eq $endpointName}
 
 	# Get all routes
 	$routes = Get-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName
@@ -81,26 +82,34 @@ function Test-AzureRmIotHubRoutingLifecycle
 	# Add new route
 	$routeDataSource = 'DeviceMessages'
 	$newRoute = Add-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $routeDataSource -EndpointName $endpointName
-	Assert-True { $newRoute.RouteName -eq $routeName}
-	Assert-True { $newRoute.DataSource -eq $routeDataSource}
+	Assert-True { $newRoute.Name -eq $routeName}
+	Assert-True { $newRoute.Source -eq $routeDataSource}
 	Assert-True { $newRoute.EndpointNames -eq $endpointName}
 	Assert-False { $newRoute.IsEnabled }
 
 	# Get all routes
 	$routes = Get-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName
 	Assert-True { $routes.Count -eq 1}
-	Assert-True { $routes[0].RouteName -eq $routeName}
-	Assert-True { $routes[0].DataSource -eq $routeDataSource}
+	Assert-True { $routes[0].Name -eq $routeName}
+	Assert-True { $routes[0].Source -eq $routeDataSource}
 	Assert-True { $routes[0].EndpointNames -eq $endpointName}
 	Assert-False { $routes[0].IsEnabled }
 
 	# Update route 
 	$newRouteDataSource = 'TwinChangeEvents'
 	$updatedRoute = Update-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Source $newRouteDataSource -Enabled
-	Assert-True { $updatedRoute.RouteName -eq $routeName}
-	Assert-True { $updatedRoute.DataSource -eq $newRouteDataSource}
+	Assert-True { $updatedRoute.Name -eq $routeName}
+	Assert-True { $updatedRoute.Source -eq $newRouteDataSource}
 	Assert-True { $updatedRoute.EndpointNames -eq $endpointName}
 	Assert-True { $updatedRoute.IsEnabled }
+
+	# Test All Routes
+	$testRouteOutput = Test-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -Source $newRouteDataSource
+	Assert-True { $testRouteOutput.Count -eq 1}
+	Assert-True { $testRouteOutput[0].Name -eq $routeName}
+	Assert-True { $testRouteOutput[0].Source -eq $newRouteDataSource}
+	Assert-True { $testRouteOutput[0].EndpointNames -eq $endpointName}
+	Assert-True { $testRouteOutput[0].IsEnabled }
 
 	# Delete Route
 	$result = Remove-AzureRmIotHubRoute -ResourceGroupName $ResourceGroupName -Name $IotHubName -RouteName $routeName -Passthru
@@ -111,5 +120,5 @@ function Test-AzureRmIotHubRoutingLifecycle
 	Assert-True { $result }
 
 	# Remove IotHub
-	# Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
+	Remove-AzureRmIotHub -ResourceGroupName $ResourceGroupName -Name $IotHubName
 }
