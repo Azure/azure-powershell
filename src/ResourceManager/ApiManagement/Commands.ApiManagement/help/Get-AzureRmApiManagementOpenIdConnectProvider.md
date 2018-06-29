@@ -137,9 +137,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider
 The detail of the OpenId connect Provider configured in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOpenIdConnectProvider>
-The list of OpenId Connect Providers configured in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

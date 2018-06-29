@@ -161,41 +161,27 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String 
-
-### -NamespaceName
- System.String 
- 
-
-### -HybridConnectionsName
- System.String 
-
-### -WcfRelayName
- System.String 
-
-### -Name
- System.String
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleKeysAttributes
 
-### Example 1 - Namespace
+#### Example 1 - Namespace
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
 SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################
 PrimaryKey                : ############################################
 SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 
-### Example 2 - WcfRelay
+#### Example 2 - WcfRelay
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
 SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestWCFRelay1
 PrimaryKey                : ############################################
 SecondaryKey              : ############################################
 KeyName                   : AuthoRule1
 
-### Example 3 - HybridConnection
+#### Example 3 - HybridConnection
 PrimaryConnectionString   : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
 SecondaryConnectionString : Endpoint=sb://testnamespace-relay1.servicebus.windows.net/;SharedAccessKeyName=AuthoRule1;SharedAccessKey=############################################;EntityPath=TestHybridConnection
 PrimaryKey                : ############################################

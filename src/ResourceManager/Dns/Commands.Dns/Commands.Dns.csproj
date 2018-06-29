@@ -67,7 +67,7 @@
     <Compile Include="Zones\RemoveAzureDnsZone.cs" />
     <Compile Include="Zones\SetAzureDnsZone.cs" />
     <Compile Include="Zones\NewAzureDnsZone.cs" />
-    <None Include="..\AzureRM.Dns.psd1">
+    <None Include="AzureRM.Dns.psd1">
       <Link>AzureRM.Dns.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

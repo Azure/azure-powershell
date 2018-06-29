@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cmdlets\Backup\BackupAzureRmRecoveryServicesBackupItem.cs" />
+    <Compile Include="Cmdlets\Backup\GetAzureRmRecoveryServicesBackupStatus.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupManagementServer.cs" />
     <Compile Include="Cmdlets\Container\GetAzureRmRecoveryServicesBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRmRecoveryServicesBackupManagementServer.cs" />
@@ -112,7 +113,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.RecoveryServices.Backup.psd1">
+    <None Include="AzureRM.RecoveryServices.Backup.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml">

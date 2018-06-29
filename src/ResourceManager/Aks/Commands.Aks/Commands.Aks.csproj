@@ -41,7 +41,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Aks.psd1">
+    <None Include="AzureRM.Aks.psd1">
       <Link>AzureRM.Aks.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -72,31 +72,6 @@
     <Compile Include="Commands\SetAzureRmAks.cs" />
     <Compile Include="Commands\StartAzureRmAksDashboard.cs" />
     <Compile Include="Commands\StopAzureRmAksDashboard.cs" />
-    <Compile Include="Generated\ContainerServiceClient.cs" />
-    <Compile Include="Generated\IContainerServiceClient.cs" />
-    <Compile Include="Generated\IManagedClustersOperations.cs" />
-    <Compile Include="Generated\ManagedClustersOperations.cs" />
-    <Compile Include="Generated\ManagedClustersOperationsExtensions.cs" />
-    <Compile Include="Generated\Models\ContainerServiceAgentPoolProfile.cs" />
-    <Compile Include="Generated\Models\ContainerServiceDiagnosticsProfile.cs" />
-    <Compile Include="Generated\Models\ContainerServiceLinuxProfile.cs" />
-    <Compile Include="Generated\Models\ContainerServiceMasterProfile.cs" />
-    <Compile Include="Generated\Models\ContainerServiceServicePrincipalProfile.cs" />
-    <Compile Include="Generated\Models\ContainerServiceSshConfiguration.cs" />
-    <Compile Include="Generated\Models\ContainerServiceSshPublicKey.cs" />
-    <Compile Include="Generated\Models\ContainerServiceStorageProfileTypes.cs" />
-    <Compile Include="Generated\Models\ContainerServiceVMDiagnostics.cs" />
-    <Compile Include="Generated\Models\ContainerServiceVMSizeTypes.cs" />
-    <Compile Include="Generated\Models\ContainerServiceWindowsProfile.cs" />
-    <Compile Include="Generated\Models\KeyVaultSecretRef.cs" />
-    <Compile Include="Generated\Models\ManagedCluster.cs" />
-    <Compile Include="Generated\Models\ManagedClusterAccessProfile.cs" />
-    <Compile Include="Generated\Models\ManagedClusterPoolUpgradeProfile.cs" />
-    <Compile Include="Generated\Models\ManagedClusterUpgradeProfile.cs" />
-    <Compile Include="Generated\Models\OrchestratorProfile.cs" />
-    <Compile Include="Generated\Models\OSType.cs" />
-    <Compile Include="Generated\Models\Page.cs" />
-    <Compile Include="Generated\Models\Resource.cs" />
     <Compile Include="Models\AcsServicePrincipal.cs" />
     <Compile Include="Models\Mapper.cs" />
     <Compile Include="Models\PSContainerServiceAgentPoolProfile.cs" />
@@ -130,6 +105,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj">
+      <Project>{87ba5687-5563-4491-8846-77d98d0605d3}</Project>
+      <Name>Commands.Common.Aks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4AEF-B5BD-DB9186B8184B}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>

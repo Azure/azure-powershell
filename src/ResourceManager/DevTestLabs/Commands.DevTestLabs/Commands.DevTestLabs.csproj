@@ -69,7 +69,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="WellKnownPolicyNames.cs" />
-    <None Include="..\AzureRM.DevTestLabs.psd1">
+    <None Include="AzureRM.DevTestLabs.psd1">
       <Link>AzureRM.DevTestLabs.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -140,8 +140,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You cannot pipe input to this cmdlet.
+### None
 
 ## OUTPUTS
 
