@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
+<!-- Added the change again to unblock the change log check, will remove it later-->
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
