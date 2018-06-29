@@ -144,7 +144,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule>
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAlertRule
 
 ## NOTES
 

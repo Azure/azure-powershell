@@ -146,6 +146,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseRestorePointModel
+
 ## NOTES
 
 ## RELATED LINKS

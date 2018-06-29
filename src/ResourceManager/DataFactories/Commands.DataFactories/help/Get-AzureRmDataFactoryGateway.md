@@ -165,7 +165,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGateway]], Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGateway
+### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGateway
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

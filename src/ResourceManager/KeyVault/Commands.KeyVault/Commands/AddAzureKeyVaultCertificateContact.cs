@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureKeyVaultCertificateContact,
         SupportsShouldProcess = true,
         DefaultParameterSetName = InteractiveParameterSet)]
-    [OutputType(typeof(List<PSKeyVaultCertificateContact>))]
+    [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class AddAzureKeyVaultCertificateContact : KeyVaultCmdletBase
     {
         #region Parameter Set Names

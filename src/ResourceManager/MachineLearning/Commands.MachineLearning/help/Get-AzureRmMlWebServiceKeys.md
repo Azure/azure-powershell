@@ -108,12 +108,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 Parameter 'MlWebService' accepts value of type 'WebService' from the pipeline
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceKeys
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml

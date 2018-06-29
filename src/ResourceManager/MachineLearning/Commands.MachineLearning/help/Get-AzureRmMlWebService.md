@@ -110,7 +110,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServices
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml
