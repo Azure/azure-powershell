@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.0.3
 * No version update. Extracted AKS sdk to common for reuse in DevSpaces.
 
 ## Version 0.0.2
