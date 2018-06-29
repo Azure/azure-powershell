@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.6
+* Fixed formatting of OutputType in help files
+
 ## Version 4.1.5
 * Set minimum dependency of module to PowerShell 5.0
 

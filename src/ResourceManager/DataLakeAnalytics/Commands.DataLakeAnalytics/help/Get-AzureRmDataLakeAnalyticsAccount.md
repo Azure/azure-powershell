@@ -111,10 +111,10 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSDataLakeAnalyticsAccount
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccount
 The specified account details.
 
-### List<PSDataLakeAnalyticsAccountBasic>
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAccountBasic
 The list of accounts in the specified resource group or subscription.
 
 ## NOTES

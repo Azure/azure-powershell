@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 3.1.4
+* Fixed formatting of OutputType in help files
+
 ## Version 3.1.3
 * Set minimum dependency of module to PowerShell 5.0
 * Enable tags and Basic Sku to the IotHub
