@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),
-     OutputType(typeof(List<PSDataLakeStoreAccountBasic>), typeof(PSDataLakeStoreAccount))]
+     OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

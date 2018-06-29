@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     /// <summary>
     /// Gets the git deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebsiteDeployment"), OutputType(typeof(List<DeployResult>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebsiteDeployment"), OutputType(typeof(DeployResult))]
     public class GetAzureWebsiteDeploymentCommand : DeploymentBaseCmdlet
     {
         internal const int DefaultMaxResults = 20;

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.1.2
+* Fixed formatting of OutputType in help files
+
 ## Version 0.1.1
 * Set minimum dependency of module to PowerShell 5.0
 * Add powershell cmdlets for SQL to Azure SQL DB Managed Instance migration scenario.

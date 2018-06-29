@@ -43,6 +43,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.KeyVault", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.IotHub", "..\IotHub\Commands.IotHub\Commands.IotHub.csproj", "{78770A60-B18A-4442-A982-0CEE0356F8DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Aks", "..\..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj", "{87BA5687-5563-4491-8846-77D98D0605D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -125,6 +127,10 @@ Global
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78770A60-B18A-4442-A982-0CEE0356F8DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

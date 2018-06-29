@@ -88,7 +88,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration
-System.Collections.Generic.IEnumerable`1[[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayRedirectConfiguration, Microsoft.Azure.Commands.Network, Version=4.1.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 
