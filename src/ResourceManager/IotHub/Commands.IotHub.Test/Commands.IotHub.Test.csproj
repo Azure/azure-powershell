@@ -122,6 +122,9 @@
     <None Include="ScenarioTests\IotHubTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubRoutingTests\TestAzureIotHubRoutingLifeCycle.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.IotHub.Test.ScenarioTests.IotHubTests\TestAzureIotHubCertificateLifeCycle.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
