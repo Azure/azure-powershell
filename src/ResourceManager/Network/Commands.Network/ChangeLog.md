@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,8 +19,6 @@
 --->
 
 ## Current Release
-* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
-<!-- Added the change again to unblock the change log check, will remove it later-->
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
