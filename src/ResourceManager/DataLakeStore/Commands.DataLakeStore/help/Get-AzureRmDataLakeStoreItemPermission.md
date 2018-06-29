@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### string
+### System.String
 The string representation of the ownership octal
 
 ## NOTES
