@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.0
 * Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
 * Add cancellation support for Export-AzureRmDataLakeStoreChildItemProperties
 * Fix flushing of debug messages for cmdlets that does recursive operations
@@ -26,8 +28,8 @@
 
 ## Version 6.0.1
 * Fix example for Export-AzureRmDataLakeStoreChildItemProperties
-* Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry 
-* Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry 
+* Fix null parameter exception for Recurse case in Set-AzureRmDataLakeStoreItemAclEntry
+* Fix the help files for Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl, Remove-AzureRmDataLakeStoreItemAclEntry
 
 ## Version 6.0.0
 * Add new feature of recursive Acl Change to Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
