@@ -1,9 +1,6 @@
 ﻿using Microsoft.Azure.Management.Reservations.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Reservations.Models
 {
@@ -13,15 +10,11 @@ namespace Microsoft.Azure.Commands.Reservations.Models
 
         public string Name { get; private set; }
 
-        public string Tier { get; private set; }
-
-        public string Size { get; private set; }
-
         public IList<string> Terms { get; private set; }
 
         public IList<string> Locations { get; private set; }
 
-        public IList<SkuCapability> Capabilities { get; private set; }
+        public IList<SkuProperty> SkuProperties { get; private set; }
 
         public IList<SkuRestriction> Restrictions { get; private set; }
 
@@ -36,11 +29,9 @@ namespace Microsoft.Azure.Commands.Reservations.Models
             {
                 ResourceType = catalog.ResourceType;
                 Name = catalog.Name;
-                Tier = catalog.Tier;
-                Size = catalog.Size;
                 Terms = catalog.Terms;
                 Locations = catalog.Locations;
-                Capabilities = catalog.Capabilities;
+                SkuProperties = catalog.SkuProperties;
                 Restrictions = catalog.Restrictions;
             }
         }
@@ -69,24 +60,42 @@ namespace Microsoft.Azure.Commands.Reservations.Models
             return builder;
         }
 
-        public string PrintCapabilities()
+        public string PrintSkuProperties()
         {
+            bool first = true;
             string builder = "";
-            foreach (SkuCapability capability in Capabilities)
+            foreach (SkuProperty skuProperty in SkuProperties)
             {
-                builder += $"Name: {capability.Name}\nValue: {capability.Value}\n";
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    builder += "\n";
+                }
+                builder += $"{skuProperty.Name}: {skuProperty.Value}";
             }
             return builder;
         }
 
         public string PrintRestrictions()
         {
+            bool first = true;
             string builder = "";
             foreach (SkuRestriction restriction in Restrictions)
             {
+                if (first)
+                {
+                    first = false;
+                }
+                else
+                {
+                    builder += "\n";
+                }
                 string values = restriction.Values.Aggregate("", (current, value) => current + ", " + value);
                 values = values.Length > 2 ? values.Substring(2) : values;
-                builder += $"Type: {restriction.Type}\nValues: {values}\nReasonCode: {restriction.ReasonCode}\n";
+                builder += $"Type: {restriction.Type}\nValues: {values}\nReasonCode: {restriction.ReasonCode}";
             }
             return builder;
         }

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: DEC01722-EB1A-45CE-BD30-9DB861718573
@@ -13,14 +13,28 @@ Removes a policy definition.
 
 ## SYNTAX
 
-### RemoveByPolicyDefinitionName (Default)
+### NameParameterSet (Default)
 ```
 Remove-AzureRmPolicyDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByPolicyDefinitionId
+### ManagementGroupNameParameterSet
+```
+Remove-AzureRmPolicyDefinition -Name <String> [-Force] -ManagementGroupName <String> [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Remove-AzureRmPolicyDefinition -Name <String> [-Force] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Remove-AzureRmPolicyDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -34,14 +48,14 @@ The **Remove-AzureRmPolicyDefinition** cmdlet removes a policy definition.
 
 ### Example 1: Remove the policy definition by name
 ```
-PS C:\>Remove-AzureRmPolicyDefinition -Name "VMPolicyDefinition"
+PS C:\> Remove-AzureRmPolicyDefinition -Name 'VMPolicyDefinition'
 ```
 
 This command removes the specified policy definition.
 
 ### Example 2: Remove policy definition by resource ID
 ```
-PS C:\>$PolicyDefinition = Get-AzureRmPolicyDefinition -Name "VMPolicyDefinition" 
+PS C:\> $PolicyDefinition = Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' 
 PS C:\> Remove-AzureRmPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
 ```
 
@@ -103,7 +117,7 @@ Specifies the fully qualified resource ID for the policy definition that this cm
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByPolicyDefinitionId
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -152,12 +166,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupName
+The name of the management group of the policy definition to delete.
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the policy definition that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByPolicyDefinitionName
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -179,6 +220,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription ID of the policy definition to delete.
+
+```yaml
+Type: Guid
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

@@ -32,11 +32,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Network.Netcore.psd1" Link="AzureRM.Network.Netcore.psd1">
+    <None Include="AzureRM.Network.Netcore.psd1" Link="AzureRM.Network.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

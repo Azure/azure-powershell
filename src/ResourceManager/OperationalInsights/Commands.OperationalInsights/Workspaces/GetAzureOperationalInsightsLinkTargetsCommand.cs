@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Get, Constants.LinkTargets), OutputType(typeof(List<PSAccount>))]
+    [Cmdlet(VerbsCommon.Get, Constants.LinkTargets), OutputType(typeof(PSAccount))]
     public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
     {
         public override void ExecuteCmdlet()

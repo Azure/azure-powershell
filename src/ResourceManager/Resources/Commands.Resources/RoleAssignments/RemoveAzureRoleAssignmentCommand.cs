@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Resources
     /// Removes a given role assignment.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmRoleAssignment", SupportsShouldProcess = true,
-        DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(List<PSRoleAssignment>))]
+        DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class RemoveAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.Empty,
