@@ -479,6 +479,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             return itemModels;
         }
 
+        public ResourceBackupStatus CheckBackupStatus()
+        {
+            throw new NotImplementedException();
+        }
+
         #region private
         private void ValidateAzureSqlWorkloadType(CmdletModel.WorkloadType type)
         {
