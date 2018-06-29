@@ -1069,6 +1069,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The resource type {0} is currently not supported..
+        /// </summary>
+        public static string UnsupportedResourceTypeException {
+            get {
+                return ResourceManager.GetString("UnsupportedResourceTypeException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Selected storage account is of type: {0}. Blob storage accounts are not supported for Restore. Please select a Page blob type storage account..
         /// </summary>
         public static string UnsupportedStorageAccountException {
