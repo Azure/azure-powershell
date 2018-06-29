@@ -49,6 +49,7 @@ foreach ($ChangeLog in $ChangeLogs)
         # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
         $SplitPath = $ChangeLog -split '/'
         $BasePath = $SplitPath[0],$SplitPath[1],$SplitPath[2] -join "/"
+        Write-Host "Change log '$ChangeLog' processed to base path '$BasePath'"
         $UpdatedServicePaths.Add($BasePath) | Out-Null
     }
 }
