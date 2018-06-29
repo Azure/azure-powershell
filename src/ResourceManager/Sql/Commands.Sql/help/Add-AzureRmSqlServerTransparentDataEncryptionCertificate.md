@@ -40,11 +40,25 @@ The Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate adds a Tra
 ### Example 1
 ```powershell
 PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd" -Password "CertificatePassword"
-PS C:\>     $server | Add-AzureRmSqlServerTransparentDataEncryptionCertificate -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
-PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
 ```
 
-{{ Add example description here }}
+Add TDE certificate to a sql server using resource group name and SQL Server name
+
+### Example 2
+```powershell
+PS C:\>     $server = Get-AzureRmSqlServer -ServerName "YourServerName" -ResourceGroupName "YourResourceGroupName" 
+PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd" -Password "CertificatePassword"
+```
+
+Add TDE certificate to the servers using server resourceId
+
+### Example 3
+```powershell
+Get-AzureRmSqlServer | Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"-Password "CertificatePassword"
+
+```
+Add TDE certificate to all sql servers in a resource group
+
 
 ## PARAMETERS
 
