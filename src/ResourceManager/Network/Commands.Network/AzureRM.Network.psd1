@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.3.0'
+ModuleVersion = '6.3.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -363,17 +363,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Expose new Skus for Zone-Redundant VirtualNetworkGateways
-* Fixed formatting of OutputType in help files
-* Added new commands for feature: ExpressRoute Partner APIs via ARM
-    - Added Get-AzureRmExpressRouteCrossConnection
-    - Added Set-AzureRmExpressRouteCrossConnection
-    - Added Add-AzureRmExpressRouteCrossConnectionPeering
-    - Added Get-AzureRmExpressRouteCrossConnectionPeering
-    - Added Remove-AzureRmExpressRouteCrossConnectionPeering
-    - Added Get-AzureRMExpressRouteCrossConnectionArpTable
-    - Added Get-AzureRMExpressRouteCrossConnectionRouteTable
-    - Added Get-AzureRMExpressRouteCrossConnectionRouteTableSummary'
+        ReleaseNotes = '* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering'
 
         # Prerelease string of this module
         # Prerelease = ''
