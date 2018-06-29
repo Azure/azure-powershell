@@ -31,7 +31,11 @@ $ChangeLogs = $FilesChangedList | where { $_ -like "*ChangeLog.md*" }
 $UpdatedServicePaths = New-Object System.Collections.Generic.HashSet[string]
 foreach ($ChangeLog in $ChangeLogs)
 {
-    if ($ChangeLog -like "src/ServiceManagement*")
+    if ($ChangeLog -eq "ChangeLog.md")
+    {
+        continue
+    }
+    elseif ($ChangeLog -like "src/ServiceManagement*")
     {
         $UpdatedServicePaths.Add("src/ServiceManagement") | Out-Null
     }
@@ -47,6 +51,10 @@ foreach ($ChangeLog in $ChangeLogs)
         $UpdatedServicePaths.Add($BasePath) | Out-Null
     }
 }
+
+$message = "The following services were found to have a change log update:`n"
+$UpdatedServicePaths | % { $message += "`t- $_`n" }
+Write-Host "$message`n"
 
 $FlaggedFiles = @()
 foreach ($File in $FilesChangedList)
