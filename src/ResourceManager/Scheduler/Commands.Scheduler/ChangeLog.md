@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.16.6
+* Fixed formatting of OutputType in help files
+
 ## Version 0.16.5
 * Fix issue with update ServiceBusQueueJob not setting new Auth values
 

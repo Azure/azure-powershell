@@ -20,6 +20,9 @@
 
 ## Current Release
 
+## Version 0.5.6
+* Fixed formatting of OutputType in help files
+
 ## Version 0.5.5
 * Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:
     - Added Configure factory repository operation

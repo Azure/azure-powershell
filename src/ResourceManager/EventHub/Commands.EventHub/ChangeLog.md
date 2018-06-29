@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.5
+* Fixed formatting of OutputType in help files
 * Added Optional MaxCount parameter to List Operations cmdlet Get-AzureRmEventHub and Get-AzureRmEventHubConsumerGroup
 * Fixed issue in New-AzureRmEventHub cmdlet where at least one parameter needed while creating New EventHub. Provided Default Parameter set.
 * Added optional Parameter -KeyValue to New-AzureRmEventHubKey cmdlet, which enables user to provide KeyValue.

@@ -130,12 +130,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-System.Int32
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+### System.Int32
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels.DataLakeStoreChildItemSummary
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreChildItemSummary
 
 ## NOTES
 

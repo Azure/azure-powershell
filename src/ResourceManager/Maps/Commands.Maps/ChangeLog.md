@@ -19,5 +19,8 @@
 -->
 ## Current Release
 
+## Version 1.0.1
+* Fixed formatting of OutputType in help files
+
 ## Version 1.0.0
 * First release of Maps management cmdlets

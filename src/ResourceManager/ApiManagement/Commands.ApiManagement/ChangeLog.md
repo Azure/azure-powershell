@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 6.1.1
+* Fixed formatting of OutputType in help files
+
 ## Version 6.1.0
 * Added support for ApiVersions, ApiReleases and ApiRevisions
 * Added suppport for ServiceFabric Backend
