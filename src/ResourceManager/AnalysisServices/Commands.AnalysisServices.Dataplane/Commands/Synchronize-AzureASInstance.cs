@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     {
         private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
-        private static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
+        public static TimeSpan DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(10);
 
         private static string RootActivityIdHeaderName = "x-ms-root-activity-id";
 
