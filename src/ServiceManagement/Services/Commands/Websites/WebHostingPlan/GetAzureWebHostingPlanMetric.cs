@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites.WebHostingPlan
     /// <summary>
     /// Gets an azure website.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlanMetric"), OutputType(typeof(IList<MetricResponse>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebHostingPlanMetric"), OutputType(typeof(MetricResponse))]
     public class GetAzureWebHostingPlanMetricCommand : WebHostingPlanContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,

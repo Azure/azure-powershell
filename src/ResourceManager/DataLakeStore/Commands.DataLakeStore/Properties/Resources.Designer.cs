@@ -574,6 +574,15 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Default Acls are being set recursively without the Access Acls. Default Acls will not change the access acls of existing files..
+        /// </summary>
+        internal static string SetOnlyDefaultAclRecursively {
+            get {
+                return ResourceManager.GetString("SetOnlyDefaultAclRecursively", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The entry or entries you provided may already exist in the item&apos;s ACL. Are you sure you want to overwrite the existing entry or entries at item path &apos;{0}&apos;?.
         /// </summary>
         internal static string SettingDataLakeStoreItemAcl {

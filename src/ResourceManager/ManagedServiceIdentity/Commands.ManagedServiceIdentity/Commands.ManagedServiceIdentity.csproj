@@ -81,7 +81,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.ManagedServiceIdentity.psd1">
+    <None Include="AzureRM.ManagedServiceIdentity.psd1">
       <Link>AzureRM.ManagedServiceIdentity.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

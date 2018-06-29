@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Websites
     /// <summary>
     /// Gets an azure website.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureWebsiteMetric"), OutputType(typeof(IList<MetricResponse>))]
+    [Cmdlet(VerbsCommon.Get, "AzureWebsiteMetric"), OutputType(typeof(MetricResponse))]
     public class GetAzureWebsiteMetricCommand : WebsiteContextBaseCmdlet
     {
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true, 

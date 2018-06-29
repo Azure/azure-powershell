@@ -14,18 +14,12 @@
 
 function Get-ResourceGroupLocation
 {
-    $namespace = "Microsoft.RecoveryServices"
-    $type = "vaults"
-    $resourceProvider = Get-AzureRmResourceProvider -ProviderNamespace $namespace | where {$_.ResourceTypes[0].ResourceTypeName -eq $type}
-  
-    if ($resourceProvider -eq $null)
-    {
-        return "westus";
-    }
-	else
-    {
-		return $resourceProvider.Locations[0]
-    }
+	$location = Get-Location "Microsoft.RecoveryServices" "vaults" "West US";
+	$outputLocation = $location.ToLower()
+	$outputLocation = $outputLocation -replace '\s', ''
+	$outputLocation = $outputLocation -replace '-', ''
+	$outputLocation = $outputLocation -replace '_', ''
+	return $outputLocation;
 }
 
 function Get-RandomSuffix(
@@ -184,6 +178,44 @@ function Create-VM(
 
 		New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vmConfig | Out-Null
 		$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName
+	}
+
+	return $vm
+}
+
+function Create-GalleryVM(
+	[string] $resourceGroupName, 
+	[string] $location, 
+	[int] $nick = 0)
+{
+	$suffix = $(Get-RandomSuffix 5) + $nick
+	$vmName = "PSTestGVM" + $suffix
+
+	$vm = Get-AzureRmVM -ResourceGroupName $resourceGroupName -Name $vmName -ErrorAction Ignore
+
+	if ($vm -eq $null)
+	{
+		$subnetConfigName = "PSTestSNC" + $suffix
+		$vnetName = "PSTestVNET" + $suffix
+		$pipName = "pstestpublicdns" + $suffix
+		$nsgName = "PSTestNSG" + $suffix
+		$dnsLabel = "pstestdnslabel" + "-" + $suffix
+
+		$UserName='demouser'
+		$PasswordString = $(Get-RandomSuffix 12)
+		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
+		$Credential=New-Object PSCredential($UserName,$Password)
+
+		$vm = New-AzureRmVm `
+			-ResourceGroupName $resourceGroupName `
+			-Name $vmName `
+			-Location $location `
+			-SubnetName $subnetConfigName `
+			-SecurityGroupName $nsgName `
+			-PublicIpAddressName $pipName `
+			-ImageName "MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest" `
+			-Credential $Credential `
+			-DomainNameLabel $dnsLabel
 	}
 
 	return $vm
