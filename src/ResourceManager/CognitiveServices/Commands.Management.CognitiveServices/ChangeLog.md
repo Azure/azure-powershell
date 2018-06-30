@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.9.6
 * Update examples for CognitiveServices cmdlets
 
 ## Version 0.9.5

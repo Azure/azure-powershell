@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 3.1.4
 * Fixed formatting of OutputType in help files
 
 ## Version 3.1.3

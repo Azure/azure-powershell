@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.1
 * Fixed formatting of OutputType in help files
 
 * Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
