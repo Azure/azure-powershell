@@ -56,8 +56,13 @@
 	</Target>
 
 	<Target Name="InvokeXUnit">
-		<Message Importance="high" Text="Running XUnit tests" />
-		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		<PropertyGroup>
+			<TestName>$(XUnitTests.Split('\').Length)</TestName>
+			<TestNamePathLength>$([MSBuild]::Subtract($(TestName), 1))</TestNamePathLength>
+			<TestSubFileName>$(XUnitTests.Split('\')[$(TestNamePathLength)])</TestSubFileName>
+			<TestFileName>$(TestOutputDirectory)\$(TestSubFileName).html</TestFileName>
+		</PropertyGroup>
+		<Message Importance="high" Text="Running XUnit tests... $(TestFileName)" />
 
 		<xunit
 			Assemblies="@(XUnitTests)"
@@ -66,7 +71,7 @@
 			ParallelizeTestCollections="false"
 			ParallelizeAssemblies="true"
 			IncludeTraits="AcceptanceType=CheckIn"
-			Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
+			Html="$(TestFileName)"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
 			ContinueOnError="false"
