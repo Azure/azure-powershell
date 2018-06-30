@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using Microsoft.Rest.Azure;
 using System.Management.Automation;
 using Microsoft.Azure.DataLake.Store;
+using System.Text;
+using static Microsoft.Azure.Commands.DataLakeStore.Models.EncodingUtils;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -46,7 +48,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
                 "Optionally indicates the encoding for the content being uploaded as part of 'Value'. Default is UTF8")]
-        public FileSystemCmdletProviderEncoding Encoding { get; set; } = FileSystemCmdletProviderEncoding.UTF8;
+        [ArgumentToEncodingTransformationAttribute()]
+        [ArgumentCompletionsAttribute(
+            EncodingConversion.Unknown, EncodingConversion.String, EncodingConversion.Unicode, EncodingConversion.Byte, EncodingConversion.BigEndianUnicode, EncodingConversion.Ascii, EncodingConversion.Utf8, EncodingConversion.Utf7, EncodingConversion.Utf32, EncodingConversion.Default, EncodingConversion.Oem, EncodingConversion.BigEndianUtf32
+        )]
+        public Encoding Encoding { get; set; } = Encoding.UTF8;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage = "Optionally indicates that this new item is a folder and not a file.")]
