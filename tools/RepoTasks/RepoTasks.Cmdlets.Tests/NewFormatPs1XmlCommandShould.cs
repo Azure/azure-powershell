@@ -117,6 +117,7 @@ namespace RepoTasks.Cmdlets.Tests
                     powershell.Commands.AddCommand(cmdlet);
                     cmdlet.Parameters.Add("ModulePath", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Dummy.psd1"));
                     cmdlet.Parameters.Add("OnlyMarkedProperties");
+                    cmdlet.Parameters.Add("OutputPath", AppDomain.CurrentDomain.BaseDirectory);
 
                     var results = powershell.Invoke<string>();
 
