@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.3.1
 * Fixed formatting of OutputType in help files
 * Ps1Xml attribute added to the basic output types
 

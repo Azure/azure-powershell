@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.4
 * Updated to the latest .NET SDK version 1.8.0-preview
 * Updated Cmdlet Get-AzureRmReservationCatalog
     - Added parameters ReservedResourceType and Location.
