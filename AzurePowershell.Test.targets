@@ -65,7 +65,7 @@
 		<Message Importance="high" Text="Running XUnit tests... $(TestFileName)" />
 
 		<xunit
-			Assemblies="@(XUnitTests)"
+			Assemblies="$(XUnitTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
@@ -75,7 +75,7 @@
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
 			ContinueOnError="false"
-			Condition=" @(XUnitTests) != '' "/>
+			Condition=" $(XUnitTests) != '' "/>
 	</Target>
 
 	<Target Name="InvokeXUnitAll">
