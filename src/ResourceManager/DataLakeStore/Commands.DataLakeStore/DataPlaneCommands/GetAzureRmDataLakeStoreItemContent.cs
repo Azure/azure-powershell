@@ -17,7 +17,10 @@ using Microsoft.Azure.Commands.DataLakeStore.Properties;
 using System;
 using System.IO;
 using System.Management.Automation;
-
+using System.Text;
+using static Microsoft.Azure.Commands.DataLakeStore.Models.EncodingUtils;
+using System.Management.Automation;
+using System.Management.Automation.Internal;
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
@@ -85,7 +88,12 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = TailRowParameterSetName,
             Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
-        public FileSystemCmdletProviderEncoding Encoding { get; set; } = FileSystemCmdletProviderEncoding.UTF8;
+        [ArgumentToEncodingTransformationAttribute()]
+        [EncodingCompleterAttribute()]
+        /*[ArgumentCompletions(
+            EncodingConversion.Unknown, EncodingConversion.String, EncodingConversion.Unicode, EncodingConversion.Byte, EncodingConversion.BigEndianUnicode, EncodingConversion.Ascii, EncodingConversion.Utf8, EncodingConversion.Utf7, EncodingConversion.Utf32, EncodingConversion.Default, EncodingConversion.Oem, EncodingConversion.BigEndianUtf32
+        )]*/
+        public Encoding Encoding { get; set; } = Encoding.UTF8;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, ParameterSetName = BaseParameterSetName, Mandatory = false,
             HelpMessage = "If the length parameter is not specified or is less than or equal to zero, force returns all content of the file, otherwise it does nothing.")]
@@ -146,13 +154,11 @@ namespace Microsoft.Azure.Commands.DataLakeStore
             }
             else if (ParameterSetName.Equals(HeadRowParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
-                var encoding = GetEncoding(Encoding);
-                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, encoding), true);
+                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Head, Encoding), true);
             }
             else
             {
-                var encoding = GetEncoding(Encoding);
-                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, encoding, true), true);
+                WriteObject(DataLakeStoreFileSystemClient.GetStreamRows(Path.TransformedPath, Account, Tail, Encoding, true), true);
             }
         }
     }
