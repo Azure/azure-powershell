@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal(0, first.Duration);
             Assert.Equal(0, first.TaskCount);
-            Assert.Equal(null, first.Next);
+            Assert.Null(first.Next);
 
             var next = first.AddTask(50);
 
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal(0, next.Duration);
             Assert.Equal(0, next.TaskCount);
-            Assert.Equal(null, next.Next);
+            Assert.Null(next.Next);
 
             var next2 = first.AddTask(50);
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal(0, next2.Duration);
             Assert.Equal(0, next2.TaskCount);
-            Assert.Equal(null, next2.Next);
+            Assert.Null(next2.Next);
 
             var next3 = first.AddTask(30);
             Assert.Equal(30, first.Duration);
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal(0, next2.Duration);
             Assert.Equal(0, next2.TaskCount);
-            Assert.Equal(null, next2.Next);
+            Assert.Null(next2.Next);
 
             var next4 = first.AddTask(75);
             Assert.Equal(25, next2.Duration);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 
             Assert.Equal(0, next4.Duration);
             Assert.Equal(0, next4.TaskCount);
-            Assert.Equal(null, next4.Next);
+            Assert.Null(next4.Next);
         }
     }
 }

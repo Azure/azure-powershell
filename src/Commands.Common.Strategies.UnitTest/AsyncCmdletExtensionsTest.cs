@@ -34,11 +34,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 }
             }
 
-            public async Task<ResourceConfig<RG>> CreateConfigAsync()
-                => new ResourceConfig<RG>(
+            //https://stackoverflow.com/a/29923484/294804
+            public Task<ResourceConfig<RG>> CreateConfigAsync()
+                => Task.FromResult(new ResourceConfig<RG>(
                     new ResourceStrategy<RG>(
                         null,
-                        async (c, p) => new RG(),
+                        (c, p) => Task.FromResult(new RG()),
                         null,
                         null,
                         null,
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                     null,
                     null,
                     null,
-                    null);
+                    null));
         }
 
         class AsyncCmdlet : IAsyncCmdlet

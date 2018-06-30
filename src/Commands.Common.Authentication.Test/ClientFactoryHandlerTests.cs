@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.WindowsAzure.Management.Storage;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -28,6 +27,11 @@ using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using System.Threading;
 using System.Threading.Tasks;
+#if NETSTANDARD
+using Microsoft.Azure.Management.Storage.Version2017_10_01;
+#else
+using Microsoft.WindowsAzure.Management.Storage;
+#endif
 
 namespace Common.Authentication.Test
 {

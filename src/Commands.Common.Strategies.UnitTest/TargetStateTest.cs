@@ -1,9 +1,11 @@
-﻿using Microsoft.Rest;
+﻿using System;
+using Microsoft.Rest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
 using Xunit;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
@@ -34,11 +36,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
         public void TestDependencyGraph()
         {
             // resource group
+            //https://stackoverflow.com/a/29923484/294804
             var rgStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 ResourceType.ResourceGroup,
                 c => c,
-                async (c, m) => null,
-                async (c, m) => new Model(),
+                (c, m) => Task.FromResult((Model)null),
+                (c, m) => Task.FromResult(new Model()),
                 m => m.Location,
                 (m, location) => m.Location = location,
                 m => 0,
@@ -48,11 +51,12 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var rgConfig2 = rgStrategy.CreateResourceConfig(null, "rgname2");
 
             // resource
+            //https://stackoverflow.com/a/29923484/294804
             var resourceStrategy = ResourceStrategy.Create<Model, Client, Client>(
                 new ResourceType("Company.Namespace", "resourceProvider"),
                 c => c,
-                async (c, m) => null,
-                async (c, m) => new Model(),
+                (c, m) => Task.FromResult((Model)null),
+                (c, m) => Task.FromResult(new Model()),
                 m => m.Location,
                 (m, location) => m.Location = location,
                 m => 0,

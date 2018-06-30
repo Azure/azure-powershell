@@ -32,6 +32,9 @@ using Microsoft.WindowsAzure.ServiceManagemenet.Common.Models;
 using System.Net.Http;
 using System.Threading;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+#if NETSTANDARD
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+#endif
 
 namespace Microsoft.WindowsAzure.Commands.ScenarioTest
 {
