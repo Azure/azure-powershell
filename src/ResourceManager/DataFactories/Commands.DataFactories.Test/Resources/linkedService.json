@@ -1,9 +1,0 @@
-{
-    name: "foo2",
-    properties: {
-        type: "AzureStorage",
-        typeProperties: {
-            connectionString:  "myfakeconnectionstring"
-        }
-    }
-}

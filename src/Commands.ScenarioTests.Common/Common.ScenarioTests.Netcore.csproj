@@ -7,7 +7,7 @@
     <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.ScenarioTest.Common</AssemblyName>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <OutputPath>$(SolutionDir)artifacts\$(Configuration)\$(TargetFramework)</OutputPath>
+    <OutputPath>$(SolutionDir)artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
