@@ -1,4 +1,4 @@
-﻿## 6.4.0 - July 2018
+## 6.4.0 - July 2018
 #### General
 * Fixed formatting of OutputType in help files for most modules
 
