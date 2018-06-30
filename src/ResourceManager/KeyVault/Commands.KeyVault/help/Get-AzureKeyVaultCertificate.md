@@ -16,7 +16,7 @@ Gets a certificate from a key vault.
 ### ByName (Default)
 ```
 Get-AzureKeyVaultCertificate [-VaultName] <String> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersion
@@ -34,7 +34,7 @@ Get-AzureKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-IncludeVer
 ### ByNameInputObject
 ```
 Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionInputObject
@@ -52,7 +52,7 @@ Get-AzureKeyVaultCertificate [-InputObject] <PSKeyVault> [-Name] <String> [-Incl
 ### ByNameResourceId
 ```
 Get-AzureKeyVaultCertificate [-ResourceId] <String> [[-Name] <String>] [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-IncludePending] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByCertificateNameAndVersionResourceId
@@ -307,6 +307,21 @@ Aliases: CertificateVersion
 
 Required: True
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IncludePending
+Specifies whether to include pending certificates in the output
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

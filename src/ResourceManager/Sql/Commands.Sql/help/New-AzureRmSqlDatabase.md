@@ -161,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation to assign.
+The compute generation assign to the Azure SQL Database.
 
 ```yaml
 Type: String
@@ -476,4 +476,3 @@ This cmdlet does not accept any input.
 [Suspend-AzureRmSqlDatabase](./Suspend-AzureRmSqlDatabase.md)
 
 [SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
-

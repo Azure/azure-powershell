@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.3'
+ModuleVersion = '5.1.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.ActiveDirectory.GraphClient.dll', 
@@ -118,7 +118,10 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertifica
                'Backup-AzureKeyVaultManagedStorageAccount', 
                'Restore-AzureKeyVaultManagedStorageAccount', 
                'Undo-AzureKeyVaultManagedStorageSasDefinitionRemoval', 
-               'Undo-AzureKeyVaultManagedStorageAccountRemoval'
+               'Undo-AzureKeyVaultManagedStorageAccountRemoval',
+               'Add-AzureRmKeyVaultNetworkRule', 
+               'Update-AzureRmKeyVaultNetworkRuleSet', 
+               'Remove-AzureRmKeyVaultNetworkRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -155,11 +158,10 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fixed formatting of OutputType in help files
-* Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag'
+        ReleaseNotes = '* Adding support for listing certificates in a pending state'
 
         # Prerelease string of this module
-        # Prerelease = ''
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update
         # RequireLicenseAcceptance = $false
