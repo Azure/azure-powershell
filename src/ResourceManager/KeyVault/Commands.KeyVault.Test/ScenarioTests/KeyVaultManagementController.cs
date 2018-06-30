@@ -41,8 +41,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
         public ResourceManagementClient NewResourceManagementClient { get; private set; }
 
-        public RM.ResourceManagementClient ResourceClient { get; private set; }
-
         public KeyVaultManagementClient KeyVaultManagementClient { get; private set; }
 
         public GraphRbacManagementClient GraphClient { get; private set; }
