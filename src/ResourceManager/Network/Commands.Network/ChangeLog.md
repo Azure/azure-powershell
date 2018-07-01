@@ -19,6 +19,8 @@
 --->
 
 ## Current Release
+
+## Version 6.4.0-preview
 * Added new commands for feature: Azure Firewall via ARM
     - Added Get-AzureRmFirewall
     - Added Set-AzureRmFirewall
@@ -28,6 +30,20 @@
 	- Added New-AzureRmFirewallApplicationRule
 	- Added New-AzureRmFirewallNetworkRuleCollection
     - Added New-AzureRmFirewallNetworkRule
+
+
+## Version 6.3.0
+* Expose new Skus for Zone-Redundant VirtualNetworkGateways
+* Fixed formatting of OutputType in help files
+* Added new commands for feature: ExpressRoute Partner APIs via ARM
+    - Added Get-AzureRmExpressRouteCrossConnection
+    - Added Set-AzureRmExpressRouteCrossConnection
+    - Added Add-AzureRmExpressRouteCrossConnectionPeering
+    - Added Get-AzureRmExpressRouteCrossConnectionPeering
+    - Added Remove-AzureRmExpressRouteCrossConnectionPeering
+    - Added Get-AzureRMExpressRouteCrossConnectionArpTable
+    - Added Get-AzureRMExpressRouteCrossConnectionRouteTable
+    - Added Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
 
 ## Version 6.2.0
 * Enable Traffic Analytics parameters on Network Watcher cmdlets
