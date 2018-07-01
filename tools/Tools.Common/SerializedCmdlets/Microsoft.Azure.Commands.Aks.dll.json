@@ -118,23 +118,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "System.Collections.Generic",
-            "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster]",
-            "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.Commands.Aks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-            "Properties": {},
-            "ElementType": null,
-            "GenericTypeArguments": [
-              "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster"
-            ],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -7239,110 +7222,6 @@
       ],
       "Methods": [],
       "Constructors": []
-    },
-    "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster": {
-      "Namespace": "Microsoft.Azure.Commands.Aks.Models",
-      "Name": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.Commands.Aks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null",
-      "Properties": {
-        "LinuxProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceLinuxProfile",
-        "ServicePrincipalProfile": "Microsoft.Azure.Commands.Aks.Models.PSContainerServiceServicePrincipalProfile",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "AgentPoolProfiles": "System.Collections.Generic.IList`1[Microsoft.Azure.Commands.Aks.Models.PSContainerServiceAgentPoolProfile]",
-        "ProvisioningState": "System.String",
-        "DnsPrefix": "System.String",
-        "Fqdn": "System.String",
-        "KubernetesVersion": "System.String",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Type": "System.String",
-        "Location": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "provisioningState",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "dnsPrefix",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "fqdn",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "kubernetesVersion",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "agentPoolProfiles",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "linuxProfile",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "servicePrincipalProfile",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
     },
     "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext": {
       "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",

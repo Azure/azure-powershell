@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         internal string resourceGroupName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
