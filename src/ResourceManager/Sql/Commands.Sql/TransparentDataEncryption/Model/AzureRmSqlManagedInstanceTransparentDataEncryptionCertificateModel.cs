@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Security;
+
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
 {
     /// <summary>
@@ -32,12 +34,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model
         /// <summary>
         /// Gets or sets the private blob for the Transparent Data Encryption certificate
         /// </summary>
-        public string PrivateBlob { get; set; }
+        public SecureString PrivateBlob { get; set; }
 
         /// <summary>
         /// Gets or sets the password for the Transparent Data Encryption certificate
         /// </summary>
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         /// <summary>
         /// Gets or sets the name for the Transparent Data Encryption certificate

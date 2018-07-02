@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Sql.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
 {
@@ -56,8 +57,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         {
             string resourceGroupName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ResourceGroupName;
             string serverName = azureRmSqlServerTransparentDataEncryptionCertificateModel.ServerName;
-            string privateBlob = azureRmSqlServerTransparentDataEncryptionCertificateModel.PrivateBlob;
-            string password = azureRmSqlServerTransparentDataEncryptionCertificateModel.Password;
+            string privateBlob = azureRmSqlServerTransparentDataEncryptionCertificateModel.PrivateBlob.ConvertToString();
+            string password = azureRmSqlServerTransparentDataEncryptionCertificateModel.Password.ConvertToString();
 
             Communicator.AddAzureRmSqlServerTransparentDataEncryptionCertificate(
                 resourceGroupName,
@@ -70,8 +71,8 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         {
             string resourceGroupName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ResourceGroupName;
             string managedInstanceName = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.ManagedInstanceName;
-            string privateBlob = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.PrivateBlob;
-            string password = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.Password;
+            string privateBlob = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.PrivateBlob.ConvertToString();
+            string password = azureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel.Password.ConvertToString();
 
             Communicator.AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate(
                 resourceGroupName,
