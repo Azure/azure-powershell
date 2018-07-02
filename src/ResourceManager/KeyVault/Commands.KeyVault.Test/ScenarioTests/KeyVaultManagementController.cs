@@ -171,10 +171,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
-                UserDomain = environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
