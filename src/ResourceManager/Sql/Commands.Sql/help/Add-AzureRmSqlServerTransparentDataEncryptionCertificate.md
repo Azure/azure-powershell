@@ -14,21 +14,21 @@ Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet (Default)
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-ResourceGroupName] <String> [-ServerName] <String>
- [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
+ [-ServerName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServer <AzureSqlServerModel>
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] -SqlServer <AzureSqlServerModel>
  [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId <String>
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] -SqlServerResourceId <String>
  [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -81,6 +81,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+On Successful execution, returns certificate object that was added.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

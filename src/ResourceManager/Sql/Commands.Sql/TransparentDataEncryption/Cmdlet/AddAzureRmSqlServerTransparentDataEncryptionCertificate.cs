@@ -44,6 +44,12 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         protected const string DefaultParameterSet = "AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet";
         protected const string InputObjectParameterSet = "AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet";
         protected const string ResourceIdParameterSet = "AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet";
+        
+        /// <summary>
+        ///  Defines whether the certificate was successfully added
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         /// <summary>
         /// Gets or sets the Server Object
@@ -209,6 +215,6 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         /// Returns true if the model object that was constructed by this cmdlet should be written out
         /// </summary>
         /// <returns>True if the model object should be written out, False otherwise</returns>
-        protected override bool WriteResult() { return false; }
+        protected override bool WriteResult() { return PassThru; }
     }
 }
