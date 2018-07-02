@@ -58,6 +58,22 @@ namespace Commands.Network.Test.ScenarioTests
             NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkPeeringCRUD");
         }
 
+        [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, Category.brooklynft)]
+        public void TestMultiTenantVNetPCRUD()
+        {
+            //this test is special, it requires 2 vnets, one of them created in a tenant other than the current context
+            //The test assumes one of the vnet (n the other tenant) is already up and runing 
+            //The test will create the second vnet and the peer them
+            //The underlying cmdlet will actually get a token for the other tenant and pass it on in the REST call..
+            //Because of the need to get a token for the remote VNets's tenant, we cant ruin this under a service principal
+            //This test needs to be run in a live user mode only where the user is asusmed to  have access to both the tenants
+
+            NetworkResourcesController.NewInstance.RunPsTest("Test-MultiTenantVNetPCRUD");
+
+        }
+
         [Fact(Skip = "test is timing out , ahmed salma to fix")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.brooklynft)]
