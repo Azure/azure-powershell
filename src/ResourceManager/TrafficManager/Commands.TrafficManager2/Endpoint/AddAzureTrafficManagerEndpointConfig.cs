@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
         [ValidateCount(1, 8)]
-        public List<string> CustomHeaders { get; set; }
+        public List<string> CustomHeader { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
             }
 
             List<EndpointPropertiesCustomHeadersItem> customHeaderList = null;
-            if (this.CustomHeaders != null)
+            if (this.CustomHeader != null)
             {
                 var customHeaderSeparator = ':';
                 customHeaderList = new List<EndpointPropertiesCustomHeadersItem>();
-                foreach (var customHeader in this.CustomHeaders)
+                foreach (var customHeader in this.CustomHeader)
                 {
                     if (customHeader == null || !customHeader.Contains(customHeaderSeparator))
                     {
