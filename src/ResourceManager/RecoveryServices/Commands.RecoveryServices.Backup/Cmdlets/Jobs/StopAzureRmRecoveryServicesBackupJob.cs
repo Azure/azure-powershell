@@ -18,6 +18,7 @@ using System.Net;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Stop", "AzureRmRecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet,
         SupportsShouldProcess = true), OutputType(typeof(JobBase))]
-    public class StopAzureRmRecoveryServicesBackupJob : RecoveryServicesBackupCmdletBase
+    public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -59,13 +60,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 WriteDebug("Stopping job with ID: " + JobId);
 
-                var cancelResponse = ServiceClientAdapter.CancelJob(JobId);
+                var cancelResponse = ServiceClientAdapter.CancelJob(
+                    JobId,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
 
                 var operationStatus = TrackingHelpers.GetOperationResult(
                     cancelResponse,
-                    operationId => ServiceClientAdapter.GetCancelJobOperationResult(operationId));
+                    operationId => ServiceClientAdapter.GetCancelJobOperationResult(
+                        operationId,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName));
 
                 if (operationStatus.Response.StatusCode != HttpStatusCode.NoContent)
                 {
@@ -74,7 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
                 else
                 {
-                    WriteObject(JobConversions.GetPSJob(ServiceClientAdapter.GetJob(JobId)));
+                    WriteObject(JobConversions.GetPSJob(ServiceClientAdapter.GetJob(
+                        JobId,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName)));
                 }
             }, ShouldProcess(JobId, "Stop"));
         }

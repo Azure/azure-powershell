@@ -52,7 +52,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.Tags.psd1">
+    <None Include="AzureRM.Tags.psd1">
       <Link>AzureRM.Tags.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

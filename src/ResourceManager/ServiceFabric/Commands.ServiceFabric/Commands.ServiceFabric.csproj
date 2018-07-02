@@ -126,7 +126,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="..\AzureRM.ServiceFabric.psd1">
+    <None Include="AzureRM.ServiceFabric.psd1">
       <Link>AzureRM.ServiceFabric.psd1</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

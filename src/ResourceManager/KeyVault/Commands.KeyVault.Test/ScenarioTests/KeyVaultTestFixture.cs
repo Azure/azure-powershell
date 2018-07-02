@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         }
         public void Dispose()
         {
-            Dispose(true);
+            Dispose(false);
             GC.SuppressFinalize(this);
         }
 

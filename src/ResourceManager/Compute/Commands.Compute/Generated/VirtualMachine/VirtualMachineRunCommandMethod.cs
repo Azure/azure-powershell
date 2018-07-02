@@ -117,6 +117,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.VMName, VerbsLifecycle.Invoke))
@@ -153,7 +154,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     var result = VirtualMachinesClient.RunCommand(resourceGroupName, vmName, parameters);
                     var psObject = new PSRunCommandResult();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<RunCommandResult, PSRunCommandResult>(result, psObject);
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<IList<InstanceViewStatus>, PSRunCommandResult>(result, psObject);
                     WriteObject(psObject);
                 }
             });

@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         /// Gets or sets the compute generation of the database copy
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation of teh Azure Sql Database copy.")]
+            HelpMessage = "The compute generation to assign to the new copy.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         [ValidateNotNullOrEmpty]

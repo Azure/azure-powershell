@@ -171,9 +171,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
 The details of the Api in a given ApiManagement service
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi>
-The list of Apis in a given ApiManagement service
-
 ## NOTES
 
 ## RELATED LINKS

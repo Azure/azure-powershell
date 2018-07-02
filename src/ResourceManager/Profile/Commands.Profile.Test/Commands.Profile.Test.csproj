@@ -199,6 +199,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestResourceGroupCompleter.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.ArgumentCompleterTests\TestResourceIdCompleter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.Profile.Test.DefaultCmdletTests\DefaultResourceGroup.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

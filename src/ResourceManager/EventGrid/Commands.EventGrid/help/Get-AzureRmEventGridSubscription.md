@@ -265,13 +265,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-System.Management.Automation.SwitchParameter
+### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance, Microsoft.Azure.Commands.EventGrid, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance
 
 ## NOTES
 

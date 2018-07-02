@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Tags.Model.PSTag, Microsoft.Azure.Commands.Tags
+### Microsoft.Azure.Commands.Tags.Model.PSTag
 
 ## NOTES
 

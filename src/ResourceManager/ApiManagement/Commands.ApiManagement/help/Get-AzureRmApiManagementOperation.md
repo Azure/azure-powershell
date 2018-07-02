@@ -136,9 +136,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation
 The details of the API Operation in Api Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation>
-The list of API Operation in Api Management service.
-
 ## NOTES
 
 ## RELATED LINKS

@@ -104,7 +104,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### string
+### System.String
 The owner of the specified item.
 
 ## NOTES

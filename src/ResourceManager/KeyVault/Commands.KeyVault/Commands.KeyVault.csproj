@@ -137,7 +137,7 @@
     <Compile Include="Commands\RemoveAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Commands\SetAzureKeyVaultAccessPolicy.cs" />
     <Compile Include="Models\KeyVaultManagementCmdletBase.cs" />
-    <None Include="..\AzureRM.KeyVault.psd1">
+    <None Include="AzureRM.KeyVault.psd1">
       <Link>AzureRM.KeyVault.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
