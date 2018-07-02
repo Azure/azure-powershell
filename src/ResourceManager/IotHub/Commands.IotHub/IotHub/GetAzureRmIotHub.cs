@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHub", DefaultParameterSetName = "ListIotHubsByResourceGroup")]
-    [OutputType(typeof(PSIotHub), typeof(List<PSIotHub>))]
+    [OutputType(typeof(PSIotHub))]
     public class GetAzureRmIotHub : IotHubBaseCmdlet
     {
         const string GetIotHubParameterSet = "GetIotHubByName";

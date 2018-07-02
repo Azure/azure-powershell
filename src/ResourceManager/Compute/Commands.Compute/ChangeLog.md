@@ -19,6 +19,16 @@
 -->
 ## Current Release
 
+## Version 5.2.0
+* IP Tag feature for VMSS
+    - `New-AzureRmVmssIpTagConfig` cmdlet is added
+    - IpTag parameter is added to New-AzureRmVmssIpConfig
+* Auto OS Rollback feature for VMSS
+    - DisableAutoRollback parameters are added to New-AzureRmVmssConfig and Update-AzureRmVmss
+* OS Upgrade History feature for Vmss
+    - OSUpgradeHistory switch parameter is added to Get-AzureRmVmss
+* Fixed formatting of OutputType in help files
+
 ## Version 5.1.1
 * ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
 * `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <para> If consumerGroup name provided, a single Consumergroup detials will be returned</para>
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ConsumerGroupVerb), OutputType(typeof(List<PSConsumerGroupAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ConsumerGroupVerb), OutputType(typeof(PSConsumerGroupAttributes))]
     public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
 

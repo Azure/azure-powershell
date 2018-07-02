@@ -109,5 +109,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithInvalidParameters");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewDeploymentWithKeyVaultReferenceInParameterObject()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-NewDeploymentWithKeyVaultReferenceInParameterObject");
+        }
     }
 }

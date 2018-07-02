@@ -96,7 +96,6 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan
-Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml

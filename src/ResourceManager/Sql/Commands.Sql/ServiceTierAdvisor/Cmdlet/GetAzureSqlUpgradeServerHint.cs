@@ -23,6 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(UpgradeServerHint))]
     public class GetAzureSqlServerUpgradeHint : AzureSqlCmdletBase<UpgradeServerHint, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>

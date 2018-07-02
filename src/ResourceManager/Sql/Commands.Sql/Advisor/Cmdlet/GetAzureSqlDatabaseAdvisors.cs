@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// Defines the Get-AzureRmSqlDatabaseAdvisors cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseAdvisor")]
+    [OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
     public class GetAzureSqlDatabaseAdvisor : AzureSqlDatabaseAdvisorCmdletBase
     {
         /// <summary>

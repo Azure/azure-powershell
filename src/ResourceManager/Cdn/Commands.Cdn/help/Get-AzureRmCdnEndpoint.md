@@ -113,12 +113,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSProfile
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 This cmdlet returns an endpoint object.
 
 ## NOTES
