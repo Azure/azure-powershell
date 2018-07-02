@@ -13,7 +13,7 @@ Adds a Transparent Data Encryption Certificate for the given managed instance
 ## SYNTAX
 
 ```
-Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate [-ResourceGroupName] <String>
+Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate [-PassThru] [-ResourceGroupName] <String>
  [-ManagedInstanceName] <String> [-PrivateBlob] <SecureString> [-Password] <SecureString>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -59,6 +59,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+On Successful execution, returns certificate object that was added.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
