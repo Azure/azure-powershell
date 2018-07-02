@@ -150,7 +150,9 @@ Accept wildcard characters: False
 ```
 
 ### -SqlServer
-The sql server input object```yaml
+The sql server input object
+
+```yaml
 Type: AzureSqlServerModel
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
 Aliases:
@@ -163,7 +165,9 @@ Accept wildcard characters: False
 ```
 
 ### -SqlServerResourceId
-The sql server resource id```yaml
+The sql server resource id
+
+```yaml
 Type: String
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
 Aliases:
