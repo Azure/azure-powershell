@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.3.7
+* Fixed formatting of OutputType in help files
+
 ## Version 0.3.6
 * Fixed server authentication usage with generated certificates (Issue #5998)
 

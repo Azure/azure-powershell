@@ -183,9 +183,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup
 The details of the Group configured in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup>
-The list of Groups configured in API Management service.
-
 ## NOTES
 
 ## RELATED LINKS

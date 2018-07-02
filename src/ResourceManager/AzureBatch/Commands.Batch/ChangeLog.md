@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.1
+* Fixed formatting of OutputType in help files
+
 ## Version 4.1.0
 * Release new cmdlet Get-AzureBatchPoolNodeCounts
 * Release new cmdlet Start-AzureBatchComputeNodeServiceLogUpload

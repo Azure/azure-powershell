@@ -58,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.0.2-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +198,16 @@
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteCircuitRouteTableSummaryCommand.cs" />
     <Compile Include="ExpressRouteCircuit\Stats\GetAzureExpressRouteStatsCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeeringStats\GetAzureRMExpressRouteCrossConnectionArpTableCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeeringStats\GetAzureRMExpressRouteCrossConnectionRouteTableCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeeringStats\GetAzureRMExpressRouteCrossConnectionRouteTableSummaryCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\AddAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\AzureRMExpressRouteCrossConnectionPeeringBase.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\GetAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\CrossConnectionPeering\RemoveAzureRMExpressRouteCrossConnectionPeeringCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\ExpressRouteCrossConnectionBaseCmdlet.cs" />
+    <Compile Include="ExpressRouteCrossConnection\GetAzureRMExpressRouteCrossConnectionCommand.cs" />
+    <Compile Include="ExpressRouteCrossConnection\SetAzureRMExpressRouteCrossConnectionCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -228,6 +238,10 @@
     <Compile Include="Models\PSConnectionMonitorSource.cs" />
     <Compile Include="Models\PSConnectionStateSnapshot.cs" />
     <Compile Include="Models\PSEndpointServiceResult.cs" />
+    <Compile Include="Models\PSExpressRouteCircuitReference.cs" />
+    <Compile Include="Models\PSExpressRouteCrossConnectionRoutesTableSummary.cs" />
+    <Compile Include="Models\PSExpressRouteCrossConnection.cs" />
+    <Compile Include="Models\PSExpressRouteCrossConnectionPeering.cs" />
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHubJob")]
-    [OutputType(typeof(PSIotHubJobResponse), typeof(List<PSIotHubJobResponse>))]
+    [OutputType(typeof(PSIotHubJobResponse))]
     public class GetAzureRmIotHubJob : IotHubBaseCmdlet
     {
         [Parameter(

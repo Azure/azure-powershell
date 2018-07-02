@@ -102,16 +102,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 1099511627776
 Status                        : Online
 CreationDate                  : 8/24/2017 9:00:37 AM
 CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
 CurrentServiceObjectiveName   : S3
 RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The Compute generation for the Azure Sql database.
+The compute generation to assign.
 
 ```yaml
 Type: String

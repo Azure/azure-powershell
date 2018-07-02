@@ -88,7 +88,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster]
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightCluster
 
 ## NOTES
 

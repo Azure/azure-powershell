@@ -177,11 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVault
 
 ## OUTPUTS
 
-### AzureBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer
 
 ## NOTES
 * None
