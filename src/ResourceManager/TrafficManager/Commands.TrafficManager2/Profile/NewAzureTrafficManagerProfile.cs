@@ -92,11 +92,11 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
         [ValidateCount(1, 8)]
-        public List<string> CustomHeaders { get; set; }
+        public List<string> CustomHeader { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List of expected HTTP status code ranges for probe reuqests.")]
         [ValidateCount(1, 8)]
-        public List<string> ExpectedStatusCodeRanges { get; set; }
+        public List<string> ExpectedStatusCodeRange { get; set; }
 
         [Alias("Tags")]
         [Parameter(Mandatory = false, HelpMessage = "A hash table which represents resource tags.")]
@@ -130,8 +130,8 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     this.MonitorIntervalInSeconds,
                     this.MonitorTimeoutInSeconds,
                     this.MonitorToleratedNumberOfFailures,
-                    this.CustomHeaders,
-                    this.ExpectedStatusCodeRanges,
+                    this.CustomHeader,
+                    this.ExpectedStatusCodeRange,
                     this.Tag);
 
                     this.WriteVerbose(ProjectResources.Success);
