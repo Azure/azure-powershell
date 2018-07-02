@@ -12,24 +12,25 @@ Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
 ## SYNTAX
 
-### AddAzureRmSqlServerTransparentDataEncryptionCertificate Input Object Parameter Set
-```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-SqlServer] <AzureSqlServerModel>
- [-PrivateBlob] <String> [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### AddAzureRmSqlServerTransparentDataEncryptionCertificate Resource Id Parameter Set
-```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-SqlServerResourceId] <String> [-PrivateBlob] <String>
- [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AddAzureRmSqlServerTransparentDataEncryptionCertificate Default Parameter Set
+### AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet (Default)
 ```
 Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-ResourceGroupName] <String> [-ServerName] <String>
- [-PrivateBlob] <String> [-Password <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
+```
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServer <AzureSqlServerModel>
+ [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
+```
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId <String>
+ [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,26 +40,37 @@ The Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate adds a Tra
 
 ### Example 1
 ```powershell
-PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd" -Password "CertificatePassword"
+PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+PS C:\>     $password = "CertificatePassword"
+PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -ServerName "YourServerName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 Add TDE certificate to a sql server using resource group name and SQL Server name
 
 ### Example 2
 ```powershell
+PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+PS C:\>     $password = "CertificatePassword"
+PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
 PS C:\>     $server = Get-AzureRmSqlServer -ServerName "YourServerName" -ResourceGroupName "YourResourceGroupName" 
-PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd" -Password "CertificatePassword"
+PS C:\>     Add-AzureRmSqlServerTransparentDataEncryptionCertificate -SqlServerResourceId $server.ResourceId -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
 
 Add TDE certificate to the servers using server resourceId
 
 ### Example 3
 ```powershell
-Get-AzureRmSqlServer | Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -PrivateBlob "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"-Password "CertificatePassword"
-
+PS C:\>     $privateBlob = "MIIJ+QIBAzCCCbUGCSqGSIb3DQEHAaCCCaYEggmiMIIJnjCCBhcGCSqGSIb3Dasdsadasd"
+PS C:\>     $securePrivateBlob = $privateBlob  | ConvertTo-SecureString -AsPlainText -Force
+PS C:\>     $password = "CertificatePassword"
+PS C:\>     $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force
+Get-AzureRmSqlServer | Add-AzureRmSqlServerTransparentDataEncryptionCertificate -ResourceGroupName "YourResourceGroupName" -PrivateBlob $securePrivateBlob -Password $securePassword
 ```
-Add TDE certificate to all sql servers in a resource group
 
+Add TDE certificate to all sql servers in a resource group
 
 ## PARAMETERS
 
@@ -77,33 +89,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The sql server input object
-
-```yaml
-Type: AzureSqlServerModel
-Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificate Input Object Parameter Set
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Password
 The Password for Transparent Data Encryption Certificate
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -111,14 +108,14 @@ Accept wildcard characters: False
 The Private blob for Transparent Data Encryption Certificate
 
 ```yaml
-Type: String
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -127,28 +124,13 @@ The Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificate Default Parameter Set
+Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The sql server resource id
-
-```yaml
-Type: String
-Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificate Resource Id Parameter Set
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -157,11 +139,37 @@ The Server Name
 
 ```yaml
 Type: String
-Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificate Default Parameter Set
-Aliases: AgentServerName
+Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet
+Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlServer
+The sql server input object```yaml
+Type: AzureSqlServerModel
+Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SqlServerResourceId
+The sql server resource id```yaml
+Type: String
+Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -199,14 +207,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 System.String
-
 
 ## OUTPUTS
 

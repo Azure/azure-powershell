@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Security;
 
 
 namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
@@ -68,17 +69,17 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
             Position = 2,
             HelpMessage = "The Private blob for Transparent Data Encryption Certificate. For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep")]
         [ValidateNotNullOrEmpty]
-        public string PrivateBlob { get; set; }
+        public SecureString PrivateBlob { get; set; }
 
         /// <summary>
         /// Gets or sets the Password for Transparent Data Encryption Certificate
         /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ParameterSetName = DefaultParameterSet,
+            Position = 3,
             HelpMessage = "The Password for Transparent Data Encryption Certificate")]
-        [ValidateNotNullOrEmpty]
-        public string Password { get; set; }
+        public SecureString Password { get; set; }
 
         /// <summary>
         /// Intializes the model adapter
