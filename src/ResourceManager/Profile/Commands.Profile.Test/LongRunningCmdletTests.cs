@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 if (job.JobStateInfo.State != JobState.Completed)
                 {
                     job.StopJob();
-                    this.jobCompleted.WaitOne(FromSeconds(10));
+                    this.jobCompleted.WaitOne(TimeSpan.FromSeconds(10));
                     Assert.Equal("Stopped", job.StatusMessage);
                 }
 
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             try
             {
                 HandleStateChange(job, new JobStateEventArgs(job.JobStateInfo, new JobStateInfo(JobState.NotStarted)));
-                jobCompleted.WaitOne(FromSeconds(30));
+                jobCompleted.WaitOne(TimeSpan.FromSeconds(30));
                 validate(job);
             }
             finally
