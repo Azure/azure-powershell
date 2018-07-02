@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayBackendHttpSettings"),
-        OutputType(typeof(PSApplicationGatewayBackendHttpSettings), typeof(IEnumerable<PSApplicationGatewayBackendHttpSettings>))]
+        OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class GetAzureApplicationGatewayBackendHttpSettings : NetworkBaseCmdlet
     {
         [Parameter(
