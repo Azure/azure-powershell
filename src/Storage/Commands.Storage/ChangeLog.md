@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 4.4.1
+* Support Static Website configuration
+   - Enable-AzureStorageStaticWebsite
+   - Disable-AzureStorageStaticWebsite
+
 ## Version 4.3.1
 * Added additional information about -Permissions parameter in help files.
 
