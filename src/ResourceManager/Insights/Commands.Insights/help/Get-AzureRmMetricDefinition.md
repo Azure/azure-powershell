@@ -199,7 +199,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition[]
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetricDefinition
 
 ## NOTES
 

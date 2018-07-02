@@ -111,7 +111,6 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse
-
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse
 
 ## NOTES

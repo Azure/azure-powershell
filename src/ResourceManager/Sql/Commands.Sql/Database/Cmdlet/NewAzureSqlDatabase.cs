@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the compute generation for the Azure Sql database
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation to assign to the Azure SQL Database.")]
+            HelpMessage = "The compute generation to assign.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }

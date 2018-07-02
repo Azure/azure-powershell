@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// Defines the Get-AzureRmSqlServerRecommendedActions cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerRecommendedAction")]
+    [OutputType(typeof(AzureSqlServerRecommendedActionModel))]
     public class GetAzureSqlServerRecommendedAction : AzureSqlServerRecommendedActionCmdletBase
     {
         /// <summary>

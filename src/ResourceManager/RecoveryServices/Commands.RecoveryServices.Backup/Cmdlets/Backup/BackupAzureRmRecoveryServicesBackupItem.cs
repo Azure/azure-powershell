@@ -18,6 +18,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet(VerbsData.Backup, "AzureRmRecoveryServicesBackupItem", SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class BackupAzureRmRecoveryServicesBackupItem : RecoveryServicesBackupCmdletBase
+    public class BackupAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item on which backup has to be triggered.
@@ -51,18 +52,28 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
                     {
-                    {ItemParams.Item, Item},
-                    {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
+                        {VaultParams.VaultName, vaultName},
+                        {VaultParams.ResourceGroupName, resourceGroupName},
+                        {ItemParams.Item, Item},
+                        {ItemParams.ExpiryDateTimeUTC, ExpiryDateTimeUTC},
                     }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType);
                 var jobResponse = psBackupProvider.TriggerBackup();
 
-                HandleCreatedJob(jobResponse, Resources.TriggerBackupOperation);
+                HandleCreatedJob(
+                    jobResponse,
+                    Resources.TriggerBackupOperation,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
             }, ShouldProcess(Item.Name, VerbsData.Backup));
         }
     }

@@ -20,9 +20,9 @@ New-AzureRmSqlDatabaseRestorePoint -RestorePointLabel <String> [-ServerName] <St
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlDatabaseRestorePoint** cmdlet creates a new restore point that an Azure SQL Database can be restored from.
+The **New-AzureRmSqlDatabaseRestorePoint** cmdlet creates a new restore point that an Azure SQL Data Warehouse can be restored from.
 
-This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
+This cmdlet is currently supported for Azure SQL Data Warehouse.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ EarliestRestoreDate      :
 RestorePointLabel        : RestorePoint01
 ```
 
-This command creates a restore point for Azure SQL Database and returns the details of the restore point.
+This command creates a restore point for Azure SQL Data Warehouse and returns the details of the restore point.
 
 ## PARAMETERS
 

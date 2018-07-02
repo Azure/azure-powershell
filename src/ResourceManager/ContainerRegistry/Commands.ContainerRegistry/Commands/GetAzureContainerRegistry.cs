@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun, DefaultParameterSetName = ListRegistriesParameterSet)]
-    [OutputType(typeof(PSContainerRegistry), typeof(IList<PSContainerRegistry>))]
+    [OutputType(typeof(PSContainerRegistry))]
     public class GetAzureContainerRegistry : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ListRegistriesParameterSet, HelpMessage = "Resource Group Name.")]

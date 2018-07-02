@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -24,9 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Fetches backup management servers registered to the recovery services vault.
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesBackupManagementServer"),
-        OutputType(typeof(BackupEngineBase), typeof(IList<BackupEngineBase>))]
+        OutputType(typeof(BackupEngineBase))]
     public class GetAzureRmRecoveryServicesBackupManagementServer
-        : RecoveryServicesBackupCmdletBase
+        : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Name of the backup management server(s) to be fetched.
@@ -42,12 +43,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 PsBackupProviderManager providerManager = new PsBackupProviderManager(
                     new Dictionary<System.Enum, object>()
-                {
-                    {ContainerParams.ContainerType, ContainerType.Windows},
-                    {ContainerParams.Name, Name}
-                }, ServiceClientAdapter);
+                    {
+                        { VaultParams.VaultName, vaultName },
+                        { VaultParams.ResourceGroupName, resourceGroupName },
+                        { ContainerParams.ContainerType, ContainerType.Windows },
+                        { ContainerParams.Name, Name }
+                    }, ServiceClientAdapter);
 
                 IPsBackupProvider psBackupProvider =
                     providerManager.GetProviderInstanceForBackupManagementServer();

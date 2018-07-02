@@ -78,7 +78,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.RecoveryServices.psd1">
+    <None Include="AzureRM.RecoveryServices.psd1">
       <Link>AzureRM.RecoveryServices.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
