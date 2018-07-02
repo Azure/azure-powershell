@@ -640,14 +640,19 @@
 
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
-    <Message Importance="high" Text="Running check in tests... %(XUnitTests.Identity)" />
+    <Message Importance="high" Text="Running check in tests... " />
 
     <!-- Azure / Stack -->
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <MakeDir Directories="$(TestOutputDirectory)/PassingTests" ContinueOnError="false" />
+    <MakeDir Directories="$(TestOutputDirectory)/FailingTests" ContinueOnError="false" />
     <MSBuild  Projects="build.proj"
               Targets="InvokeXUnit"
               Properties="XUnitTests=%(XUnitTests.Identity);TestOutputDirectory=$(TestOutputDirectory)"
       ContinueOnError="false" />
+
+      <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
+          ContinueOnError="ErrorAndContinue"/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->
