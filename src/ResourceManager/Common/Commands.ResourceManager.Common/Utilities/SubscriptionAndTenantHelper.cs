@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Internal.Subscriptions;
 using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Rest;
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Utilities
 
         private static string GetCommonTenant(IAzureAccount account)
         {
-            string result = AuthenticationFactory.CommonAdTenant;
+            string result = AuthenticationFactorySettings.CommonAdTenant;
             if (account.IsPropertySet(AzureAccount.Property.Tenants))
             {
                 var candidate = account.GetTenants().FirstOrDefault();
