@@ -683,6 +683,18 @@
                 <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
+                <Label>StaticWebsite.Enabled</Label>
+                <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.IndexDocument</Label>
+                <ScriptBlock>$_.StaticWebsite.IndexDocument</ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StaticWebsite.ErrorDocument404Path</Label>
+                <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
+              </ListItem>
+              <ListItem>
                 <Label>Cors</Label>
                 <ScriptBlock>$_.Cors</ScriptBlock>
               </ListItem>

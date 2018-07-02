@@ -32,8 +32,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="WindowsAzure.Storage" Version="9.2.0" />
-    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.2" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.0" />
+    <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.7.3" />
   </ItemGroup>
 
   <ItemGroup>
