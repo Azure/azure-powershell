@@ -74,8 +74,13 @@
 			Html="$(TestFileName)"
 			MaxParallelThreads="10"
 			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" $(XUnitTests) != '' "/>
+			ContinueOnError="true"
+			Condition=" $(XUnitTests) != '' ">
+			<Output TaskParameter="ExitCode" ItemName="XUnitExitCode"/>
+		</xunit>
+
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupTestFiles.ps1 -ExitCode %(XUnitExitCode.Identity) -FileName $(TestSubFileName) -FolderName $(TestOutputDirectory) &quot;"/>
+
 	</Target>
 
 	<Target Name="InvokeXUnitAll">
