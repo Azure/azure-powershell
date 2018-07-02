@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,19 +24,19 @@ function Test-ProfileCrud
 	
 	try
 	{
-	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -CustomHeaders "header-name-1:header-value-1","header-name-2:header-value-2" -ExpectedStatusCodeRanges "200-300","400-404"
+	$createdProfile = New-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName -RelativeDnsName $relativeName -Ttl 50 -TrafficRoutingMethod "Performance" -MonitorProtocol "HTTP" -MonitorPort 80 -MonitorPath "/testpath.asp" -CustomHeader "header-name-1:header-value-1","header-name-2:header-value-2" -ExpectedStatusCodeRange "200-300","400-404"
 	Assert-NotNull $createdProfile
 	Assert-AreEqual $profileName $createdProfile.Name 
 	Assert-AreEqual $resourceGroup.ResourceGroupName $createdProfile.ResourceGroupName 
 	Assert-AreEqual "Performance" $createdProfile.TrafficRoutingMethod
-	Assert-AreEqual "header-name-1" $createdProfile.CustomHeaders[0].Name
-	Assert-AreEqual "header-value-1" $createdProfile.CustomHeaders[0].Value
-	Assert-AreEqual "header-name-2" $createdProfile.CustomHeaders[1].Name
-	Assert-AreEqual "header-value-2" $createdProfile.CustomHeaders[1].Value
-	Assert-AreEqual 200 $createdProfile.ExpectedStatusCodeRanges[0].Min
-	Assert-AreEqual 300 $createdProfile.ExpectedStatusCodeRanges[0].Max
-	Assert-AreEqual 400 $createdProfile.ExpectedStatusCodeRanges[1].Min
-	Assert-AreEqual 404 $createdProfile.ExpectedStatusCodeRanges[1].Max
+	Assert-AreEqual "header-name-1" $createdProfile.CustomHeader[0].Name
+	Assert-AreEqual "header-value-1" $createdProfile.CustomHeader[0].Value
+	Assert-AreEqual "header-name-2" $createdProfile.CustomHeader[1].Name
+	Assert-AreEqual "header-value-2" $createdProfile.CustomHeader[1].Value
+	Assert-AreEqual 200 $createdProfile.ExpectedStatusCodeRange[0].Min
+	Assert-AreEqual 300 $createdProfile.ExpectedStatusCodeRange[0].Max
+	Assert-AreEqual 400 $createdProfile.ExpectedStatusCodeRange[1].Min
+	Assert-AreEqual 404 $createdProfile.ExpectedStatusCodeRange[1].Max
 
 	$retrievedProfile = Get-AzureRmTrafficManagerProfile -Name $profileName -ResourceGroupName $resourceGroup.ResourceGroupName
 
