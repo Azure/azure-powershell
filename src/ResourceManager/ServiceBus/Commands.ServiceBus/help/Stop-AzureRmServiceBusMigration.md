@@ -5,42 +5,42 @@ online version:
 schema: 2.0.0
 ---
 
-# Set-AzureRmServiceBusCompleteMigration
+# Stop-AzureRmServiceBusMigration
 
 ## SYNOPSIS
-Cmdlets set the Migration from Standard to premium namespace as complete and connection strings of standard namespace now point to Premium namespace
+Cmdlets  tremitates the Migration between Standard to premium namespace
 
 ## SYNTAX
 
 ### MigrationConfigurationPropertiesSet (Default)
 ```
-Set-AzureRmServiceBusCompleteMigration [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
+Stop-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Set-AzureRmServiceBusCompleteMigration [-InputObject] <PSServiceBusDRConfigurationAttributes> [-PassThru]
+Stop-AzureRmServiceBusMigration [-InputObject] <PSServiceBusDRConfigurationAttributes> [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-Set-AzureRmServiceBusCompleteMigration [-ResourceId] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-AzureRmServiceBusMigration [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceBusCompleteMigration** cmdlets set the Migration from Standard to premium namespace as complete and connection strings of standard namespace now point to Premium namespace
+The **Stop-AzureRmServiceBusMigration** cmdlets  tremitates the Migration between Standard to premium namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzureRmServiceBusCompleteMigration -ResourceGroupName ardsouza-testRG -Name TestingNamespaceStandardMirgation
+PS C:\> Stop-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 ```
 
-Sets the Migration of 'TestingNamespaceStandardMirgation. namespace as complete
+cmdlet termitates the migration between Standard namespace and Premium namespace provided while creating the migration configuration.
 
 ## PARAMETERS
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Service Bus Migration configuration - Standard Namespace Object
+Service Bus Migration Configuration Standard Namespace Object
 
 ```yaml
 Type: PSServiceBusDRConfigurationAttributes
@@ -110,7 +110,7 @@ Resource Group Name
 ```yaml
 Type: String
 Parameter Sets: MigrationConfigurationPropertiesSet
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-Service Bus Migratio - Standard Namespace Resource Id
+Service Bus Migration Configuration Standard Namespace Resource Id
 
 ```yaml
 Type: String

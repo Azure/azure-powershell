@@ -199,6 +199,9 @@
     <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusMigrationConfigurationTests\ServiceBusMigrationConfigurationsCURD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusPaginationTests\ServiceBusPaginationTests_CURD.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests.ServiceBusQueueTests\ServiceBusQueueAuth_CURD.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

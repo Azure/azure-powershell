@@ -44,6 +44,22 @@ UpdatedAt                                 : 1/20/2017 3:18:54 AM
 
 Returns a subscription description for the specified Service Bus topic.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+
+```
+
+Returns list of subscriptions for specified Service Bus topic.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 30
+
+```
+
+Returns list of first 30 subscriptions for specified Service Bus topic.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -141,7 +157,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
+ 
+
+### -SubscriptionName
+ System.String
+ 
 
 ## OUTPUTS
 

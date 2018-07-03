@@ -96,7 +96,7 @@ CmdletsToExport = 'New-AzureRmServiceBusNamespace', 'Get-AzureRmServiceBusNamesp
                'Remove-AzureRmServiceBusGeoDRConfiguration', 
                'Set-AzureRmServiceBusGeoDRConfigurationBreakPair', 
                'Set-AzureRmServiceBusGeoDRConfigurationFailOver', 
-               'Test-AzureRmServiceBusName'
+               'Test-AzureRmServiceBusName', 'Get-AzureRmServiceBusMigration', 'Stop-AzureRmServiceBusMigration', 'Start-AzureRmServiceBusMigration', 'Complete-AzureRmServiceBusMigration', 'Remove-AzureRmServiceBusMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()

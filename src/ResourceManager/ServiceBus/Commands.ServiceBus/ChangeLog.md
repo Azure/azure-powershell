@@ -19,6 +19,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Added top and skip parameter to list cmdlets
+* Added Standard to Premium NameSpace migration cmdlets :
+	- Start-AzureRmServiceBusMigration
+	- Get-AzureRmServiceBusMigration
+	- Complete-AzureRmServiceBusMigration
+	- Stop-AzureRmServiceBusMigration
+	- Remove-AzureRmServiceBusMigration
+
 
 ## Version 0.6.6
 * Added optional Parameter -KeyValue to New-AzureRmServiceBusKey cmdlet, which enables user to provide KeyValue.
