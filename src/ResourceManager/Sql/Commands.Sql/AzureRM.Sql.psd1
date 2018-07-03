@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.2'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -191,7 +191,9 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
                'Set-AzureRmSqlServerDnsAlias', 
                'New-AzureRmSqlDatabaseRestorePoint', 
                'Remove-AzureRmSqlDatabaseRestorePoint', 
-               'Stop-AzureRmSqlElasticPoolActivity'
+               'Stop-AzureRmSqlElasticPoolActivity',
+               'Add-AzureRmSqlServerTransparentDataEncryptionCertificate',
+               'Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate'
 
 # Variables to export from this module
 # VariablesToExport = @()

@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1'; },
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.2'; },
                @{ModuleName = 'Azure.Storage'; RequiredVersion = '4.3.1'; },
                @{ModuleName = 'AzureRM.AnalysisServices'; RequiredVersion = '0.6.9'; },
                @{ModuleName = 'Azure.AnalysisServices'; RequiredVersion = '0.5.2'; },
@@ -84,7 +84,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1';
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.4'; },
                @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.3'; },
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.0'; },
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.3.0'; },
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.3.1'; },
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.2'; },
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.2'; },
@@ -197,16 +197,7 @@ AzureRM.KeyVault
 * Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag
 
 AzureRM.Network
-* Expose new Skus for Zone-Redundant VirtualNetworkGateways
-* Added new commands for feature: ExpressRoute Partner APIs via ARM
-    - Added Get-AzureRmExpressRouteCrossConnection
-    - Added Set-AzureRmExpressRouteCrossConnection
-    - Added Add-AzureRmExpressRouteCrossConnectionPeering
-    - Added Get-AzureRmExpressRouteCrossConnectionPeering
-    - Added Remove-AzureRmExpressRouteCrossConnectionPeering
-    - Added Get-AzureRMExpressRouteCrossConnectionArpTable
-    - Added Get-AzureRMExpressRouteCrossConnectionRouteTable
-    - Added Get-AzureRMExpressRouteCrossConnectionRouteTableSummary
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
 
 AzureRM.RecoveryServices.Backup
 * Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and checks if the VM is protected by some vault in the subscription. If there exists such a vault, the cmdlet outputs the vault details.

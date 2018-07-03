@@ -20,7 +20,7 @@ Set-AzureRmVMAccessExtension [-Credential <PSCredential>] [-ResourceGroupName] <
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine.
+The **Set-AzureRmVMAccessExtension** cmdlet adds the Virtual Machine Access (VMAccess) Virtual Machine VMAccess Extension to a virtual machine. VMAccess Extension can be used to set a temporary password and this should be immediately changed it after logging into the machine. This is not supported on Windows Domain Controllers.
 
 ## EXAMPLES
 
@@ -36,6 +36,9 @@ The command specifies the name and type handler version for VMAccess.
 
 ### -Credential
 Specifies the user name and password for the virtual machine as a **PSCredential** object.
+
+If you type a different name than the current local administrator account on your VM, the VMAccess extension will add a local administrator account with that name, and assign your specified password to that account. If the local administrator account on your VM exists, it will reset the password and if the account is disabled, the VMAccess extension enables it.
+
 To obtain a credential, use the Get-Credential cmdlet.
 For more information, type `Get-Help Get-Credential`.
 
@@ -144,7 +147,7 @@ Accept wildcard characters: False
 
 ### -TypeHandlerVersion
 Specifies the version of the extension to use for this virtual machine.
-To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
+To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter. The typeHandlerVersion must be 2.0 or greater, as version 1 is deprecated.
 
 ```yaml
 Type: String
