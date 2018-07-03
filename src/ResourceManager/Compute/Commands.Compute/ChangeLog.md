@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Update example for `Remove-AzureRmVmss`
+* Update help for `Set-AzureRmVMAccessExtension`
 
 ## Version 5.2.0
 * IP Tag feature for VMSS
