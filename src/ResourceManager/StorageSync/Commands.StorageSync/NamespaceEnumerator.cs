@@ -18,8 +18,8 @@
 
         public NamespaceEnumerator(IList<INamespaceEnumeratorListener> listeners)
         {
-            _listeners = listeners;
-            _namespaceInfo = new NamespaceInfo();
+            this._listeners = listeners;
+            this._namespaceInfo = new NamespaceInfo();
         }
         #endregion
 
@@ -44,7 +44,7 @@
         #region Private methods
         private void NotifyEndOfEnumeration()
         {
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.EndOfEnumeration(this._namespaceInfo);
             }
@@ -62,7 +62,7 @@
         /// <param name="cancelationCallback">function to consult with for cancelation</param>
         private void EnumeratePostOrderNonRecursive(IDirectoryInfo root, Func<bool> cancelationCallback = null)
         {
-            _namespaceInfo = new NamespaceInfo
+            this._namespaceInfo = new NamespaceInfo
             {
                 Path = root.FullName,
                 IsComplete = false
@@ -83,7 +83,7 @@
 
             stack1.Push(root);
 
-            _namespaceInfo.NumberOfDirectories++;
+            this._namespaceInfo.NumberOfDirectories++;
 
             while (stack1.Count > 0)
             {
@@ -117,7 +117,7 @@
                 foreach (IDirectoryInfo subdir in subdirs)
                 {
                     stack1.Push(subdir);
-                    _namespaceInfo.NumberOfDirectories++;
+                    this._namespaceInfo.NumberOfDirectories++;
                 }
             }
 
@@ -136,8 +136,8 @@
 
                 foreach (IFileInfo file in files)
                 {
-                    _namespaceInfo.NumberOfFiles++;
-                    _namespaceInfo.TotalFileSizeInBytes += file.Length;
+                    this._namespaceInfo.NumberOfFiles++;
+                    this._namespaceInfo.TotalFileSizeInBytes += file.Length;
 
                     NotifyNextFile(file);
                 }
@@ -146,12 +146,12 @@
                 NotifyEndDir(currentDirectory);
             }
 
-            _namespaceInfo.IsComplete = true;
+            this._namespaceInfo.IsComplete = true;
         }
 
         private void NotifyUnauthorizedDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.UnauthorizedDir(dir);
             }
@@ -159,7 +159,7 @@
 
         private void NotifyNextFile(IFileInfo file)
         {
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.NextFile(file);
             }
@@ -172,7 +172,7 @@
                 return;
             }
 
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.NamespaceHint(directoryCount, fileCount);
             }
@@ -180,7 +180,7 @@
 
         private void NotifyEndDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.EndDir(dir);
             }
@@ -188,7 +188,7 @@
 
         private void NotifyBeginDir(IDirectoryInfo dir)
         {
-            foreach (INamespaceEnumeratorListener listener in _listeners)
+            foreach (INamespaceEnumeratorListener listener in this._listeners)
             {
                 listener.BeginDir(dir);
             }

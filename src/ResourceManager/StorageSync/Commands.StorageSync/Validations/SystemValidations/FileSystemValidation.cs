@@ -14,32 +14,32 @@
         #region Constructors
         public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File System type", ValidationType.FileSystem)
         {
-            _driveLetter = new AfsPath(path).DriveLetter;
+            this._driveLetter = new AfsPath(path).DriveLetter;
         }
         #endregion
 
         #region Protected methods
         protected override IValidationResult DoValidateUsing(IPowershellCommandRunner commandRunner)
         {
-            if (!_driveLetter.HasValue)
+            if (!this._driveLetter.HasValue)
             {
-                return UnableToRunBecause(
+                return this.UnableToRunBecause(
                     @"Unable to perform the File System validation. In order to run this validation, specify 'Path' parameter such that it includes the drive letter, e.g. C:\MyDataSet or \\contoso-server\d$\data");
             }
 
             string filesystem;
             try
             {
-                commandRunner.AddScript($"Get-Volume -DriveLetter {_driveLetter.Value}");
+                commandRunner.AddScript($"Get-Volume -DriveLetter {this._driveLetter.Value}");
                 PSObject volume = commandRunner.Invoke()[0];
                 filesystem = (string)volume.Members["FileSystem"].Value;
             }
             catch (Exception e)
             {
-                return UnableToRunBecause($"The File System validation was not able to run. Cause: {e.Message}");
+                return this.UnableToRunBecause($"The File System validation was not able to run. Cause: {e.Message}");
             }
 
-            if (IsValid(filesystem))
+            if (this.IsValid(filesystem))
             {
                 return this.SuccessfulResult;
             }

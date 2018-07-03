@@ -1,10 +1,11 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation
 {
     using Interfaces;
+    using System.IO;
 
     class AfsNamedObjectInfo : INamedObjectInfo
     {
-        private static char[] Separators => new char[] { '\\', '/' };
+        private static char[] Separators => new char[] { Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar };
 
         public AfsNamedObjectInfo(string path)
         {

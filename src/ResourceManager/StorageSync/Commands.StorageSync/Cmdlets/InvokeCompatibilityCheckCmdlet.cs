@@ -12,12 +12,13 @@
     using Interfaces;
     using Validations;
     using Models;
+    using ResourceManager.Common;
 
     [Cmdlet(
         VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck", 
         DefaultParameterSetName="PathBased")]
     [OutputType(typeof(PSValidationResult))]
-    public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
+    public class InvokeCompatibilityCheckCmdlet : AzureRMCmdlet, ICmdlet
     {
         #region Fields and Properties
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "PathBased")]
@@ -57,7 +58,7 @@
         public SwitchParameter Quiet { get; set; }
 
         private bool CanRunNamespaceChecks => !string.IsNullOrEmpty(this.Path);
-        private bool CanRunEstimation => CanRunNamespaceChecks;
+        private bool CanRunEstimation => this.CanRunNamespaceChecks;
         private bool CanRunSystemChecks => !string.IsNullOrEmpty(this.ComputerNameValue);
 
         private TimeSpan MaximumDurationOfNamespaceEstimation => TimeSpan.FromSeconds(30);
@@ -85,8 +86,12 @@
             var systemValidations = new List<ISystemValidation>
             {
                 new OSVersionValidation(configuration),
-                new FileSystemValidation(configuration, Path)
             };
+
+            if (this.CanRunNamespaceChecks)
+            {
+                systemValidations.Add(new FileSystemValidation(configuration, this.Path));
+            }
 
             // construct validation descriptions
             List<IValidationDescription> validationDescriptions = new List<IValidationDescription>();
@@ -110,7 +115,7 @@
             this.WriteVerbose($"NumberOfNamespaceChecks = {namespaceValidations.Count}");
 
             long totalObjectsToScan = 0;
-            if (this.CanRunEstimation && !SkipNamespaceChecks.ToBool())
+            if (this.CanRunEstimation && !this.SkipNamespaceChecks.ToBool())
             {
                 IProgressReporter progressReporter = new NamespaceEstimationProgressReporter(this);
                 progressReporter.Show();
@@ -119,7 +124,7 @@
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 INamespaceInfo namespaceInfoEstimation = new NamespaceEnumerator().Run(
                     new AfsDirectoryInfo(this.Path),
-                    MaximumDurationOfNamespaceEstimation);
+                    this.MaximumDurationOfNamespaceEstimation);
                 stopwatch.Stop();
 
                 totalObjectsToScan += namespaceInfoEstimation.NumberOfDirectories + namespaceInfoEstimation.NumberOfFiles;
@@ -128,52 +133,52 @@
                 string namespaceCompleteness = namespaceInfoEstimation.IsComplete ? "complete" : "incomplete";
                 TimeSpan duration = stopwatch.Elapsed;
 
-                WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
+                this.WriteVerbose($"Namespace estimation took {duration.TotalSeconds:F3} seconds and is {namespaceCompleteness}");
             }
             else
             {
-                WriteVerbose("Skipping estimation.");
+                this.WriteVerbose("Skipping estimation.");
             }
 
-            if (this.CanRunSystemChecks && !SkipSystemChecks.ToBool())
+            if (this.CanRunSystemChecks && !this.SkipSystemChecks.ToBool())
             {
                 IProgressReporter progressReporter = new SystemCheckProgressReporter(this);
                 progressReporter.Show();
 
                 progressReporter.AddSteps(systemValidations.Count);
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                PerformSystemChecks(systemValidations, progressReporter, this, summaryWriter, psObjectsWriter);
+                this.PerformSystemChecks(systemValidations, progressReporter, this, summaryWriter, psObjectsWriter);
                 stopwatch.Stop();
                 progressReporter.Complete();
                 TimeSpan duration = stopwatch.Elapsed;
 
-                WriteVerbose($"System checks took {duration.TotalSeconds:F3} seconds");
+                this.WriteVerbose($"System checks took {duration.TotalSeconds:F3} seconds");
             }
             else
             {
-                WriteVerbose("Skipping system checks.");
+                this.WriteVerbose("Skipping system checks.");
             }
 
             INamespaceInfo namespaceInfo = null;
-            if (this.CanRunNamespaceChecks && !SkipNamespaceChecks.ToBool())
+            if (this.CanRunNamespaceChecks && !this.SkipNamespaceChecks.ToBool())
             {
                 IProgressReporter progressReporter = new NamespaceScanProgressReporter(this);
                 progressReporter.Show();
                 progressReporter.AddSteps(totalObjectsToScan);
 
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                namespaceInfo = PerformNamespaceChecks(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter);
+                namespaceInfo = this.PerformNamespaceChecks(namespaceValidations, progressReporter, this, summaryWriter, psObjectsWriter);
                 stopwatch.Stop();
                 progressReporter.Complete();
 
                 TimeSpan duration = stopwatch.Elapsed;
                 long namespaceFileCount = namespaceInfo.NumberOfFiles;
                 double fileThroughput = namespaceFileCount > 0 ? duration.TotalMilliseconds / namespaceFileCount : 0.0;
-                WriteVerbose($"Namespace scan took {duration.TotalSeconds:F3} seconds with throughput of {fileThroughput:F3} milliseconds per file");
+                this.WriteVerbose($"Namespace scan took {duration.TotalSeconds:F3} seconds with throughput of {fileThroughput:F3} milliseconds per file");
             }
             else
             {
-                WriteVerbose("Skipping namespace checks.");
+                this.WriteVerbose("Skipping namespace checks.");
             }
 
             if (!this.Quiet.ToBool())
@@ -182,7 +187,7 @@
             }
             else
             {
-                WriteVerbose("Skipping report.");
+                this.WriteVerbose("Skipping report.");
             }
         }
         #endregion
@@ -194,13 +199,13 @@
 
             try
             {
-                commandRunner = new PowerShellCommandRunner(ComputerNameValue, Credential);
+                commandRunner = new PowerShellCommandRunner(this.ComputerNameValue, this.Credential);
             }
             catch
             {
-                string user = Credential == null ? "the current user" : Credential.UserName;
+                string user = this.Credential == null ? "the current user" : this.Credential.UserName;
                 this.WriteWarning(
-                    $"Establishing management service connection with host '{ComputerNameValue}' as {user} didn't work." + Environment.NewLine +
+                    $"Establishing management service connection with host '{this.ComputerNameValue}' as {user} didn't work." + Environment.NewLine +
                     $"Ensure {user} has administrative rights and that the process is running with administrative permissions." + Environment.NewLine +
                     $"You can also use -SkipSystemChecks switch to skip system requirements checks.");
                 throw;
@@ -221,25 +226,25 @@
         {
             INamespaceInfo result = null;
 
-            if (Credential != null)
+            if (this.Credential != null)
             {
                 using (UncNetworkConnector connector = new UncNetworkConnector())
                 {
-                    NetworkCredential networkCredential = Credential.GetNetworkCredential();
-                    if (connector.NetUseWithCredentials(Path, networkCredential.UserName, networkCredential.Domain, networkCredential.Password))
+                    NetworkCredential networkCredential = this.Credential.GetNetworkCredential();
+                    if (connector.NetUseWithCredentials(this.Path, networkCredential.UserName, networkCredential.Domain, networkCredential.Password))
                     {
-                        result = StorageEval(validations, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
+                        result = this.StorageEval(validations, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
                     }
                     else
                     {
                         string errorMessage = connector.GetLastError();
-                        WriteError(new ErrorRecord(new Exception(errorMessage), errorMessage, ErrorCategory.ConnectionError, Path));
+                        WriteError(new ErrorRecord(new Exception(errorMessage), errorMessage, ErrorCategory.ConnectionError, this.Path));
                     }
                 }
             }
             else
             {
-                result = StorageEval(validations, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
+                result = this.StorageEval(validations, progressReporter, cmdlet, summaryWriter, psObjectsWriter);
             }
 
             return result;

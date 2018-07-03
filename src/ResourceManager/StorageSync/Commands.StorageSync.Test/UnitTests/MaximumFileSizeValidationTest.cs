@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests

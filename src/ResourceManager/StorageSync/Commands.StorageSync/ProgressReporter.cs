@@ -25,34 +25,34 @@
         #region Constructors
         public ProgressReporter(ICmdlet cmdlet, bool withProgressBar)
         {
-            _steps = 0;
-            _completedSteps = 0;
-            _lastCompletePercentage = 0;
-            _cmdlet = cmdlet;
-            _withProgressBar = withProgressBar;
-            _timer = Stopwatch.StartNew();
+            this._steps = 0;
+            this._completedSteps = 0;
+            this._lastCompletePercentage = 0;
+            this._cmdlet = cmdlet;
+            this._withProgressBar = withProgressBar;
+            this._timer = Stopwatch.StartNew();
         }
         #endregion
 
         #region Public methods
         public void AddSteps(long steps)
         {
-            _steps += steps;
+            this._steps += steps;
         }
 
         public void ReserveSteps(long steps)
         {
-            _reserveSteps += steps;
+            this._reserveSteps += steps;
         }
 
         public void ResetSteps(long steps)
         {
-            _steps = steps;
+            this._steps = steps;
         }
 
         public void Show()
         {
-            _cmdlet.WriteProgress(this.CreateProgressRecord(_lastCompletePercentage));
+            this._cmdlet.WriteProgress(this.CreateProgressRecord(this._lastCompletePercentage));
         }
 
         /// <summary>
@@ -62,25 +62,25 @@
         {
             bool shouldUpdateProgress = this.ShouldUpdateProgress();
 
-            _completedSteps += 1;
+            this._completedSteps += 1;
 
             // It is possible to have more actual steps than predicted
             // and if that happens, we might not have a good estimate on remaining work
             // we limit it to 100 to avoid going above the limit.
             // Callers can use AddSteps, ResetSteps or ReserveSteps to update number of steps
             // and make progress behave better if they can predict amount of pending work.
-            int newCompletePercentage = System.Math.Min(100, (int)(_completedSteps * 100 / System.Math.Max(_steps, _reserveSteps)));
+            int newCompletePercentage = System.Math.Min(100, (int)(this._completedSteps * 100 / System.Math.Max(this._steps, this._reserveSteps)));
 
-            if (newCompletePercentage != _lastCompletePercentage && shouldUpdateProgress)
+            if (newCompletePercentage != this._lastCompletePercentage && shouldUpdateProgress)
             {
-                _lastCompletePercentage = newCompletePercentage;
-                _cmdlet.WriteProgress(this.CreateProgressRecord(newCompletePercentage));
+                this._lastCompletePercentage = newCompletePercentage;
+                this._cmdlet.WriteProgress(this.CreateProgressRecord(newCompletePercentage));
             }
         }
 
         public void Complete()
         {
-            _cmdlet.WriteProgress(this.CreateCompletionRecord());
+            this._cmdlet.WriteProgress(this.CreateCompletionRecord());
         }
         #endregion
 
@@ -88,7 +88,7 @@
         protected ProgressRecord CreateProgressRecord(int percentage)
         {
             var result = new ProgressRecord(this.ActivityId, this.ActivityDescription, this.ActivityStatus);
-            if (_withProgressBar)
+            if (this._withProgressBar)
             {
                 result.PercentComplete = percentage;
             }
@@ -107,14 +107,14 @@
         #region Private methods
         private bool ShouldUpdateProgress()
         {
-            _timer.Stop();
-            if (_timer.Elapsed < _updateFrequency)
+            this._timer.Stop();
+            if (this._timer.Elapsed < this._updateFrequency)
             {
-                _timer.Start();
+                this._timer.Start();
                 return false;
             }
 
-            _timer.Restart();
+            this._timer.Restart();
             return true;
         }
         #endregion

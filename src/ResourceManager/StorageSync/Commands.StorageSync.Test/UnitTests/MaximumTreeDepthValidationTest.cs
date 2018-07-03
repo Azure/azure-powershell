@@ -2,6 +2,7 @@
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
     using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class MaximumTreeDepthValidationTest

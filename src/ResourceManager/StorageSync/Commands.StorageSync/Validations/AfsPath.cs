@@ -29,7 +29,7 @@
         private string _origin;
         private string _path;
 
-        private static Regex _pathPatterns = new Regex(
+        private static readonly Regex PathPatterns = new Regex(
             @"^(?:" +
             @"([a-zA-Z])\:|" +                                          // simpleDrive
             @"\\\\\?\\([a-zA-Z])\:|" +                                  // extDrive
@@ -51,44 +51,44 @@
         {
             get
             {
-                if (_driveLetter != default(char))
+                if (this._driveLetter != default(char))
                 {
-                    return _driveLetter;
+                    return this._driveLetter;
                 }
 
                 return null;
             }
         }
 
-        public string ComputerName => _computerName;
+        public string ComputerName => this._computerName;
 
-        public string ShareName => _shareName;
+        public string ShareName => this._shareName;
 
         public int Length
         {
             get
             {
-                if (!_length.HasValue)
+                if (!this._length.HasValue)
                 {
-                    switch (_pathKind)
+                    switch (this._pathKind)
                     {
                         case PathKind.SimpleDrive:
                         case PathKind.ExtDrive:
                         case PathKind.UncDrive:
                         case PathKind.ExtUncDrive:
                             {
-                                _length = _path.Length + 2; // adding two chars for drive and colon
+                                this._length = this._path.Length + 2; // adding two chars for drive and colon
                                 break;
                             }
                         default:
                             {
-                                _length = _path.Length;
+                                this._length = this._path.Length;
                                 break;
                             }
                     }
                 }
 
-                return _length.Value;
+                return this._length.Value;
             }
         }
 
@@ -96,17 +96,17 @@
         {
             get
             {
-                if (!_depth.HasValue)
+                if (!this._depth.HasValue)
                 {
-                    _depth = _path.Split(Path.DirectorySeparatorChar).Length;
+                    this._depth = this._path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar).Length;
 
-                    if (_path.StartsWith(@"\"))
+                    if (this._path.StartsWith(@"\"))
                     {
-                        _depth--;
+                        this._depth--;
                     }
                 }
 
-                return _depth.Value;
+                return this._depth.Value;
             }
         }
 
@@ -115,7 +115,7 @@
         #region Constructors
         public AfsPath(string fullName)
         {
-            _fullName = fullName;
+            this._fullName = fullName;
 
             if (!TryParsePath(
                 path: fullName,
@@ -141,7 +141,7 @@
             origin = null;
             dataPath = null;
 
-            Match match = _pathPatterns.Match(path);
+            Match match = PathPatterns.Match(path);
             if (!match.Success)
             {
                 pathKind = PathKind.Invalid;

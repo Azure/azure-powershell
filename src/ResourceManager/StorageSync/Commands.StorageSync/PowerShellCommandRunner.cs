@@ -27,34 +27,34 @@
                 connectionInfo.Credential = credential;
             }
 
-            _runspace = RunspaceFactory.CreateRunspace(connectionInfo);
-            _runspace.Open();
+            this._runspace = RunspaceFactory.CreateRunspace(connectionInfo);
+            this._runspace.Open();
 
-            _powerShell = PowerShell.Create();
-            _powerShell.Runspace = _runspace;
+            this._powerShell = PowerShell.Create();
+            this._powerShell.Runspace = this._runspace;
         }
 
         ~PowerShellCommandRunner()
         {
-            _powerShell?.Dispose();
-            _runspace?.Close();
+            this._powerShell?.Dispose();
+            this._runspace?.Close();
         }
         #endregion
 
         #region Public methods
         public void AddScript(string script)
         {
-            _powerShell.AddScript(script);
+            this._powerShell.AddScript(script);
         }
 
         public Collection<PSObject> Invoke()
         {
-            return _powerShell.Invoke();
+            return this._powerShell.Invoke();
         }
 
         public PSDataCollection<ErrorRecord> Errors()
         {
-            return _powerShell.Streams.Error;
+            return this._powerShell.Streams.Error;
         }
         #endregion
     }

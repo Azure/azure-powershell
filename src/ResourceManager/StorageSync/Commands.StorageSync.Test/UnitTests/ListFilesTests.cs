@@ -1,6 +1,7 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class ListFilesTests

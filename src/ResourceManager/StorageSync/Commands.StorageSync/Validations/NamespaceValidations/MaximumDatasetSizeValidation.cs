@@ -21,7 +21,7 @@
 
         protected override IValidationResult DoValidate(INamespaceInfo namespaceInfo)
         {
-            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > _maxDataSetSize;
+            bool dataSetTooBig = namespaceInfo.TotalFileSizeInBytes > this._maxDataSetSize;
             if (dataSetTooBig)
             {
                 return new ValidationResult
@@ -29,7 +29,7 @@
                     Result = Result.Fail,
                     Type = this.ValidationType,
                     Level = ResultLevel.Error,
-                    Description = $"The dataset is too big. Maximum dataset size is {_maxDataSetSize}.",
+                    Description = $"The dataset is too big. Maximum dataset size is {this._maxDataSetSize}.",
                     Path = namespaceInfo.Path 
                 };
             }
