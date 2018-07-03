@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help for `Get-AzureRmContextAutosaveSetting`
 
 ## Version 5.3.1
 * Fixed formatting of OutputType in help files
