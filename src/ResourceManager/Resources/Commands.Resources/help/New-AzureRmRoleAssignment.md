@@ -118,7 +118,7 @@ Grant Reader role access to a user at a resource group scope with the Role Assig
 ```
 PS C:\> Get-AzureRMADGroup -SearchString "Christine Koch Team"
 
-          DisplayName                    Type                           ObjectId
+          DisplayName                    Type                           Id
           -----------                    ----                           --------
           Christine Koch Team                                           2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb
 

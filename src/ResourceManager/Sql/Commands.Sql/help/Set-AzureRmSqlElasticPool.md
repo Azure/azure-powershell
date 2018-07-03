@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 555D58AB-1361-4BB1-ACD0-905C3C6F4F7E
@@ -13,11 +13,20 @@ Modifies properties of an elastic database pool in Azure SQL Database.
 
 ## SYNTAX
 
+### DtuBasedPool (Default)
 ```
-Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <DatabaseEdition>] [-Dtu <Int32>]
- [-StorageMB <Int32>] [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
- [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Dtu <Int32>] [-StorageMB <Int32>]
+ [-DatabaseDtuMin <Int32>] [-DatabaseDtuMax <Int32>] [-Tags <Hashtable>] [-ZoneRedundant]
+ [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### VcoreBasedPool
+```
+Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-StorageMB <Int32>] [-VCore <Int32>]
+ [-ComputeGeneration <String>] [-DatabaseVCoreMin <Double>] [-DatabaseVCoreMax <Double>] [-Tags <Hashtable>]
+ [-ZoneRedundant] [-LicenseType <String>] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,10 +94,25 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DatabaseDtuMax
-Specifies the maximum number of DTUs that any single database in the pool can consume. 
+### -ComputeGeneration
+The compute generation to assign.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+```yaml
+Type: String
+Parameter Sets: VcoreBasedPool
+Aliases: Family
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseDtuMax
+Specifies the maximum number of DTUs that any single database in the pool can consume.
+
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default
 values for different editions are as follows:
@@ -100,7 +124,7 @@ values for different editions are as follows:
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
 Aliases:
 
 Required: False
@@ -119,7 +143,37 @@ The default value is zero (0).
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseVCoreMax
+The maxmium VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
+Type: Double
+Parameter Sets: VcoreBasedPool
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatabaseVCoreMin
+The minimum VCore number any SqlAzure Database can consume in the pool.
+
+```yaml
+Type: Double
+Parameter Sets: VcoreBasedPool
 Aliases:
 
 Required: False
@@ -145,9 +199,9 @@ Accept wildcard characters: False
 ```
 
 ### -Dtu
-Specifies the total number of shared DTUs for the elastic pool. 
+Specifies the total number of shared DTUs for the elastic pool.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default values for different
 editions are as follows:
@@ -158,7 +212,7 @@ editions are as follows:
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: DtuBasedPool
 Aliases:
 
 Required: False
@@ -177,12 +231,16 @@ edition. The acceptable values for this parameter are:
 - Standard
 - Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
-Type: DatabaseEdition
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -203,6 +261,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+Accepted values: LicenseIncluded, BasePrice
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -262,6 +335,21 @@ form of a hash table. For example:
 Type: Hashtable
 Parameter Sets: (All)
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VCore
+The total shared number of Vcore for the Sql Azure Elastic Pool.
+
+```yaml
+Type: Int32
+Parameter Sets: VcoreBasedPool
+Aliases:
 
 Required: False
 Position: Named

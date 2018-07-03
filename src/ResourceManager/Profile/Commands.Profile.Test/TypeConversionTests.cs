@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (PSAzureRmAccount)(new AzureAccount());
             Assert.NotNull(account);
             Assert.Null(account.Id);
-            Assert.Equal(null, account.Type);
+            Assert.Null(account.Type);
             Assert.Null(account.ToString());
         }
 
@@ -498,7 +498,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             var account = (AzureAccount)(new PSAzureRmAccount());
             Assert.NotNull(account);
             Assert.Null(account.Id);
-            Assert.Equal(null, account.Type);
+            Assert.Null(account.Type);
         }
 
         [Theory,
@@ -596,11 +596,11 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Theory,
-        InlineData("user@contoso.org", "Test Subscription", "juststorageaccountname", "juststorageaccountname"),
-        InlineData("user@contoso.org", "Test Subscription", "AccountName=juststorageaccountname", "juststorageaccountname"),
-        InlineData("user@contoso.org", "Test Subscription", "key1 = value1; AccountName = juststorageaccountname", "juststorageaccountname")]
+        InlineData("user@contoso.org", "Test Subscription", "juststorageaccountname"),
+        InlineData("user@contoso.org", "Test Subscription", "AccountName=juststorageaccountname"),
+        InlineData("user@contoso.org", "Test Subscription", "key1 = value1; AccountName = juststorageaccountname")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void CanConvertValidPSAzureContexts(string account, string subscription, string storageAccount, string storageAccountName)
+        public void CanConvertValidPSAzureContexts(string account, string subscription, string storageAccount)
         {
             var tenantId = Guid.NewGuid();
             var subscriptionId = Guid.NewGuid();

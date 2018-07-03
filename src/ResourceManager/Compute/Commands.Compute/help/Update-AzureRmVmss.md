@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 9EE192A5-4E3F-41ED-A539-8E0A5D5EA4C9
@@ -17,10 +17,10 @@ Updates the state of a VMSS.
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>]
- [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>]
- [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>]
- [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>]
- [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-DisableAutoRollback <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>]
  [-Tag <Hashtable>] [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
  [-ImageReferencePublisher <String>] [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>]
@@ -35,10 +35,10 @@ Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
 ```
 Update-AzureRmVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [[-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>] [-ImageReferenceSku <String>] [-IdentityId <String[]>]
- [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>]
- [-ProvisionVMAgent <Boolean>] [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>]
- [-MaxBatchInstancePercent <Int32>] [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>]
- [-AutomaticOSUpgrade <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
+ [-ManagedDiskStorageAccountType <String>] [-PlanPublisher <String>] [-ProvisionVMAgent <Boolean>]
+ [-BootDiagnosticsEnabled <Boolean>] [-Overprovision <Boolean>] [-MaxBatchInstancePercent <Int32>]
+ [-TimeZone <String>] [-BootDiagnosticsStorageUri <String>] [-AutomaticOSUpgrade <Boolean>]
+ [-DisableAutoRollback <Boolean>] [-SinglePlacementGroup <Boolean>] [-CustomData <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-ImageReferenceId <String>] [-DisablePasswordAuthentication <Boolean>]
  [-Tag <Hashtable>] [-PlanName <String>] [-MaxUnhealthyUpgradedInstancePercent <Int32>]
  [-ImageReferencePublisher <String>] [-PlanProduct <String>] [-VhdContainer <String[]>] [-ImageUri <String>]
@@ -148,6 +148,21 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableAutoRollback
+Disable Auto Rollback for Auto OS Upgrade Policy
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

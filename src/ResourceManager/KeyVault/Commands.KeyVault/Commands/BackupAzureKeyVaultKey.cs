@@ -28,8 +28,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet(VerbsData.Backup, "AzureKeyVaultKey",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ByKeyNameParameterSet,
-        HelpUri = Constants.KeyVaultHelpUri)]
+        DefaultParameterSetName = ByKeyNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultKey : KeyVaultCmdletBase
     {
@@ -47,7 +46,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = ByKeyNameParameterSet,
                     HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.")]
         [ValidateNotNullOrEmpty]        
@@ -58,7 +56,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = true,
                     Position = 1,
-                    ValueFromPipelineByPropertyName = true,
                     ParameterSetName = ByKeyNameParameterSet,
                     HelpMessage = "Key name. Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.")]
         [ValidateNotNullOrEmpty]        
@@ -75,7 +72,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </remarks>
         [Parameter(Mandatory = true,
                     Position = 0,
-                    ValueFromPipelineByPropertyName = true,
                     ValueFromPipeline = true,
                     ParameterSetName = ByKeyObjectParameterSet,
                     HelpMessage = "Key bundle to back up, pipelined in from the output of a retrieval call.")]
@@ -88,7 +84,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter( Mandatory = false,
                     Position = 2,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Output file. The output file to store the backed up key blob in. If not present, a default filename is chosen.")]
         [ValidateNotNullOrEmpty]
         public string OutputFile { get; set; }
@@ -97,8 +92,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Instructs the cmdlet to overwrite the destination file, if it exists.
         /// </summary>
         [Parameter( Mandatory = false,
-                    Position = 3,
-                    ValueFromPipelineByPropertyName = true,
                     HelpMessage = "Overwrite the given file if it exists" )]
         public SwitchParameter Force { get; set; }
 

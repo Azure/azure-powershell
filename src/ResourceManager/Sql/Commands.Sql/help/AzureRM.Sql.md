@@ -1,8 +1,8 @@
 ---
 Module Name: AzureRM.Sql
 Module Guid: 150d9544-6348-4373-806f-10cd0b4de4cb
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.sql
+Help Version: 4.4.0.0
 Locale: en-US
 ---
 
@@ -14,8 +14,14 @@ This topic displays help topics for the Azure SQL Database Cmdlets.
 ### [Add-AzureRmSqlDatabaseToFailoverGroup](Add-AzureRmSqlDatabaseToFailoverGroup.md)
 Adds one or more databases to an Azure SQL Database Failover Group.
 
+### [Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate](Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given managed instance
+
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
+
+### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.

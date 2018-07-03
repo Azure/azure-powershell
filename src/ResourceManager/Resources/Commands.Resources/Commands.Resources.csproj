@@ -48,6 +48,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.ManagementGroups, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.ManagementGroups.1.1.0-preview\lib\net452\Microsoft.Azure.Management.ManagementGroups.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
     </Reference>
@@ -56,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectory\AddAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADGroupMemberCommand.cs" />
@@ -64,18 +68,21 @@
     <Compile Include="ActiveDirectory\GetAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\GetAzureADUserCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADAppCredentialCommand.cs" />
+    <Compile Include="ActiveDirectory\NewAzureADGroupCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADUserCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADAppCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADApplicationCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupCommand.cs" />
+    <Compile Include="ActiveDirectory\RemoveAzureADGroupMemberCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\NewAzureADServicePrincipalCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADSpCredentialCommand.cs" />
     <Compile Include="ActiveDirectory\RemoveAzureADUserCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADApplicationCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADServicePrincipalCommand.cs" />
-    <Compile Include="ActiveDirectory\SetAzureADUserCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADApplicationCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADServicePrincipalCommand.cs" />
+    <Compile Include="ActiveDirectory\UpdateAzureADUserCommand.cs" />
     <Compile Include="Extensions\ResourceExtensions.cs" />
     <Compile Include="Gallery\Artifact.cs" />
     <Compile Include="Gallery\DefinitionTemplates.cs" />
@@ -93,8 +100,26 @@
     <Compile Include="Gallery\OfferDetails.cs" />
     <Compile Include="Gallery\Plan.cs" />
     <Compile Include="Gallery\Product.cs" />
+    <Compile Include="ManagementGroups\Common\AzureManagementGroupsCmdletBase.cs" />
+    <Compile Include="ManagementGroups\Common\Constants.cs" />
+    <Compile Include="ManagementGroups\Common\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ManagementGroups\GetAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\NewAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\NewAzureRmManagementGroupSubscription.cs" />
+    <Compile Include="ManagementGroups\RemoveAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\RemoveAzureRmManagementGroupSubscription.cs" />
+    <Compile Include="ManagementGroups\UpdateAzureRmManagementGroup.cs" />
+    <Compile Include="ManagementGroups\Common\Utility.cs" />
     <Compile Include="Models.Authorization\AuthorizationHelper.cs" />
     <Compile Include="Models.Authorization\FilterRoleDefinitionOptions.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroup.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroupChildInfo.cs" />
+    <Compile Include="Models.ManagementGroups\PSManagementGroupInfo.cs" />
+    <Compile Include="Models.ManagementGroups\PSParentGroupInfo.cs" />
     <Compile Include="Models.ResourceGroups\BasePSResourceParameters.cs" />
     <Compile Include="Models.ResourceGroups\DeploymentVariable.cs" />
     <Compile Include="Models.ResourceGroups\FilterResourcesOptions.cs" />
@@ -121,7 +146,6 @@
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataAuthorization.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventDataHttpRequest.cs" />
     <Compile Include="Models.ResourceGroups\PSDeploymentEventData.cs" />
-    <Compile Include="Models.ResourceGroups\ResourceClient.Events.cs" />
     <Compile Include="Models.Authorization\AuthorizationClient.cs" />
     <Compile Include="Providers\GetAzureProviderOperationCmdlet.cs" />
     <Compile Include="RoleAssignments\RemoveAzureRoleAssignmentCommand.cs" />
@@ -165,10 +189,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.Resources.psd1">
+    <None Include="AzureRM.Resources.psd1">
       <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config" />
     <None Include="StartupScripts\*.ps1">
@@ -176,6 +201,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ManagementGroups\Common\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>

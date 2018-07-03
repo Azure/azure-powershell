@@ -15,8 +15,10 @@
 using Microsoft.ApplicationInsights;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
@@ -24,6 +26,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Text;
+using System.Collections.Generic;
 
 namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 {
@@ -137,13 +140,50 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
 
         protected abstract string DataCollectionWarning { get; }
 
+        private SessionState _sessionState;
+
+        public new SessionState SessionState
+        {
+            get
+            {
+                return _sessionState;
+            }
+            set
+            {
+                _sessionState = value;
+            }
+        }
+
+        private RuntimeDefinedParameterDictionary _asJobDynamicParameters;
+
+        public RuntimeDefinedParameterDictionary AsJobDynamicParameters
+        {
+            get
+            {
+                if (_asJobDynamicParameters == null)
+                {
+                    _asJobDynamicParameters = new RuntimeDefinedParameterDictionary();
+                }
+                return _asJobDynamicParameters;
+            }
+            set
+            {
+                _asJobDynamicParameters = value;
+            }
+        }
+
         /// <summary>
         /// Initializes AzurePSCmdlet properties.
         /// </summary>
         public AzurePSCmdlet()
         {
             DebugMessages = new ConcurrentQueue<string>();
+        }
 
+        // Register Dynamic Parameters for use in long running jobs
+        public void RegisterDynamicParameters(RuntimeDefinedParameterDictionary parameters)
+        {
+            this.AsJobDynamicParameters = parameters;
         }
 
 
@@ -252,6 +292,7 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         /// </summary>
         protected override void BeginProcessing()
         {
+            SessionState = base.SessionState;
             var profile = _dataCollectionProfile;
             //TODO: Inject from CI server
             lock (lockObject)
@@ -271,6 +312,10 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             SetupDebuggingTraces();
             SetupHttpClientPipeline();
             base.BeginProcessing();
+
+            //Now see if the cmdlet has any Breaking change attributes on it and process them if it does
+            //This will print any breaking change attribute messages that are applied to the cmdlet
+            BreakingChangeAttributeHelper.ProcessCustomAttributesAtRuntime(this.GetType(), this.MyInvocation, WriteWarning);
         }
 
         /// <summary>
@@ -644,6 +689,8 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
             }
         }
 
+        private string _implementationBackgroundJobDescription;
+
         /// <summary>
         /// Job Name paroperty iof this cmdlet is run as a job
         /// </summary>
@@ -651,15 +698,69 @@ namespace Microsoft.WindowsAzure.Commands.Utilities.Common
         {
             get
             {
-                string name = "Long Running Azure Operation";
-                string commandName = MyInvocation?.MyCommand?.Name;
-                if (!string.IsNullOrWhiteSpace(commandName))
+                if (_implementationBackgroundJobDescription != null)
                 {
-                    name = string.Format("Long Running Operation for '{0}'", commandName);
+                    return _implementationBackgroundJobDescription;
                 }
+                else
+                {
+                    string name = "Long Running Azure Operation";
+                    string commandName = MyInvocation?.MyCommand?.Name;
+                    string objectName = null;
+                    if (this.IsBound("Name"))
+                    {
+                        objectName = MyInvocation.BoundParameters["Name"].ToString();
+                    }
+                    else if (this.IsBound("InputObject") == true)
+                    {
+                        var type = MyInvocation.BoundParameters["InputObject"].GetType();
+                        var inputObject = Convert.ChangeType(MyInvocation.BoundParameters["InputObject"], type);
+                        if (type.GetProperty("Name") != null)
+                        {
+                            objectName = inputObject.GetType().GetProperty("Name").GetValue(inputObject).ToString();
+                        }
+                        else if (type.GetProperty("ResourceId") != null)
+                        {
+                            string[] tokens = inputObject.GetType().GetProperty("ResourceId").GetValue(inputObject).ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                            if (tokens.Length >= 8)
+                            {
+                                objectName = tokens[tokens.Length - 1];
+                            }
+                        }
+                    }
+                    else if (this.IsBound("ResourceId") == true)
+                    {
+                        string[] tokens = MyInvocation.BoundParameters["ResourceId"].ToString().Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (tokens.Length >= 8)
+                        {
+                            objectName = tokens[tokens.Length - 1];
+                        }
+                    }
 
-                return name;
+                    if (!string.IsNullOrWhiteSpace(commandName))
+                    {
+                        if (!string.IsNullOrWhiteSpace(objectName))
+                        {
+                            name = string.Format("Long Running Operation for '{0}' on resource '{1}'", commandName, objectName);
+                        }
+                        else
+                        {
+                            name = string.Format("Long Running Operation for '{0}'", commandName);
+                        }
+                    }
+
+                    return name;
+                }
             }
+            set
+            {
+                _implementationBackgroundJobDescription = value;
+            }
+        }
+
+        public void SetBackgroundJobDescription(string jobName)
+        {
+            ImplementationBackgroundJobDescription = jobName;
         }
 
         protected virtual void Dispose(bool disposing)

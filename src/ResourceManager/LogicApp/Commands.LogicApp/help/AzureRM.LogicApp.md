@@ -1,8 +1,8 @@
 ﻿---
 Module Name: AzureRM.LogicApp
 Module Guid: 8a7d44bb-e747-4265-8f22-b3937961d709
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.logicapp
+Help Version: 4.0.3.0
 Locale: en-US
 ---
 

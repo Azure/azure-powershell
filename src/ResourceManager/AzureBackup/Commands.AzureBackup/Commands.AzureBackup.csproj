@@ -77,8 +77,8 @@
     <Compile Include="Cmdlets\Container\GetAzureRMBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\RegisterAzureRMBackupContainer.cs" />
     <Compile Include="Cmdlets\Container\UnregisterAzureRMBackupContainer.cs" />
-    <Compile Include="Cmdlets\Item\Disable-AzureRmBackupProtection .cs" />
-    <Compile Include="Cmdlets\Item\Enable-AzureRmBackupProtection .cs" />
+    <Compile Include="Cmdlets\Item\Disable-AzureRmBackupProtection.cs" />
+    <Compile Include="Cmdlets\Item\Enable-AzureRmBackupProtection.cs" />
     <Compile Include="Cmdlets\Item\GetAzureRMBackupItem.cs" />
     <Compile Include="Cmdlets\Jobs\AzureBackupJobHelper.cs" />
     <Compile Include="Cmdlets\Jobs\GetAzureRMBackupJob.cs" />
@@ -120,13 +120,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Backup.psd1">
+    <None Include="AzureRM.Backup.psd1">
       <Link>AzureRM.Backup.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.AzureBackup.dll-help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
     </None>
     <None Include="Microsoft.Azure.Commands.AzureBackup.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

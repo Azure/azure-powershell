@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof(IEnumerable<DataLakeStoreItem>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreChildItem"), OutputType(typeof(DataLakeStoreItem))]
     [Alias("Get-AdlStoreChildItem")]
     public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Alias("AccountName")]
         public string Account { get; set; }
 
-        [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
+        [Parameter(ValueFromPipelineByPropertyName = true, Position = 1, Mandatory = true,
             HelpMessage =
                 "The path in the specified Data Lake account that should be retrieve. Can be a file or folder " +
                 "In the format '/folder/file.txt', " +

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 05E6155D-4F0E-406B-9312-77AD97EF66EE
@@ -15,12 +15,13 @@ Creates a virtual machine.
 
 ### SimpleParameterSet (Default)
 ```
-New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <String> -Credential <PSCredential>
- [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
+New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] [[-Zone] <String[]>] -Name <String>
+ -Credential <PSCredential> [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
- [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-ImageName <String>]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -36,8 +37,9 @@ New-AzureRmVM [[-ResourceGroupName] <String>] [[-Location] <String>] -Name <Stri
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux]
- [-Size <String>] [-AvailabilitySetName <String>] [-AsJob] [-DataDiskSizeInGb <Int32[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
+ [-AsJob] [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -285,13 +287,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageName
+### -Image
 The friendly image name upon which the VM will be built.  These include: Win2016Datacenter, Win2012R2Datacenter, Win2012Datacenter, Win2008R2SP1, UbuntuLTS, CentOS, CoreOS, Debian, openSUSE-Leap, RHEL, SLES.
 
 ```yaml
 Type: String
 Parameter Sets: SimpleParameterSet
-Aliases:
+Aliases: ImageName
 
 Required: False
 Position: Named
@@ -497,6 +499,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SystemAssignedIdentity
+If the parameter is present then the VM is assingned a managed system identity that is auto generated.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Tag
 Specifies that resources and resource groups can be tagged with a set of name-value pairs.
 Adding tags to resources enables you to group resources together across resource groups and to create your own views.
@@ -511,6 +528,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The name of a managed service identity that should be assigned to the VM.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -551,13 +583,25 @@ Specifies the zone list of the virtual machine.
 
 ```yaml
 Type: String[]
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String[]
 Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

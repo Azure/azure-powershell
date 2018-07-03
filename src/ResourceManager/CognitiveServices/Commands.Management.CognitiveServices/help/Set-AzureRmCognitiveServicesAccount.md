@@ -24,9 +24,23 @@ The **Set-AzureRmCognitiveServicesAccount** cmdlet modifies the SKU or tags of t
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
+PS C:\> Set-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -SkuName S0
 
+
+ResourceGroupName : cognitive-services-resource-group
+AccountName       : myluis
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                    nitiveServices/accounts/myluis
+Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location          : WESTUS
+Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType       : LUIS
+ResourceType      : Microsoft.CognitiveServices/accounts
+Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState : Succeeded
+Tags              :
 ```
 
 ## PARAMETERS

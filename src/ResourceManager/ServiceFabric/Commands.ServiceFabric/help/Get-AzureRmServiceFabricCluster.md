@@ -30,7 +30,7 @@ Get-AzureRmServiceFabricCluster [-ResourceGroupName] <String> [-Name] <String>
 ```
 
 ## DESCRIPTION
-The **Add-AzureRmServiceFabricCluster** will get the cluster resource details.
+The **Get-AzureRmServiceFabricCluster** will get the cluster resource details.
 
 ## EXAMPLES
 
@@ -97,7 +97,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster, Microsoft.Azure.Commands.ServiceFabric, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
 
 ## NOTES
 

@@ -69,14 +69,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="WellKnownPolicyNames.cs" />
-    <None Include="..\AzureRM.DevTestLabs.psd1">
+    <None Include="AzureRM.DevTestLabs.psd1">
       <Link>AzureRM.DevTestLabs.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.DevTestLabs.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="Microsoft.Azure.Commands.DevTestLabs.Help.pshproj" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you get a new Azure Websites using ARM APIs
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmWebApp")]
+    [OutputType(typeof(Site))]
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
     {
         private const string ParameterSet1 = "S1";
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
         [Parameter(ParameterSetName = ParameterSet2, Position = 0, Mandatory = true, HelpMessage = "The app service plan. Gets all web apps in specified service plan")]
         [ValidateNotNullOrEmpty]
-        public ServerFarmWithRichSku AppServicePlan { get; set; }
+        public AppServicePlan AppServicePlan { get; set; }
 
         [Parameter(ParameterSetName = ParameterSet3, Position = 0, Mandatory = true, HelpMessage = "The name of the web app location. Gets all web apps at location")]
         [LocationCompleter("Microsoft.Web/sites")]
@@ -114,7 +115,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetByResourceGroup()
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteExceptionError(e);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetBySubscription()
@@ -176,7 +177,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetByLocation()
@@ -213,18 +214,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 WriteProgress(progressRecord);
             }
 
-            WriteObject(list);
+            WriteObject(list, true);
         }
 
         private void GetByAppServicePlan()
         {
             WriteObject(WebsitesClient.ListWebAppsForAppServicePlan(AppServicePlan.ResourceGroup,
-#if !NETSTANDARD
-                AppServicePlan.ServerFarmWithRichSkuName
-#else
-                AppServicePlan.Name
-#endif
-                ).ToList());
+                AppServicePlan.Name).ToList(), true);
         }
     }
 }

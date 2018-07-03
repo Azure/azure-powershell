@@ -20,43 +20,57 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet( VerbsData.Update, CmdletNoun.AzureKeyVaultManagedStorageAccount,
-        SupportsShouldProcess = true,
-        HelpUri = Constants.KeyVaultHelpUri )]
-    [OutputType( typeof( ManagedStorageAccount ) )]
+        DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
+    [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
+        #region Parameter Set Names
+
+        private const string ByDefinitionNameParameterSet = "ByDefinitionName";
+        private const string ByInputObjectParameterSet = "ByInputObject";
+
+        #endregion
+
         #region Input Parameter Definitions
 
         [Parameter( Mandatory = true,
             Position = 0,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Vault name. Cmdlet constructs the FQDN of a vault based on the name and currently selected environment." )]
         [ValidateNotNullOrEmpty]
         public string VaultName { get; set; }
 
         [Parameter( Mandatory = true,
             Position = 1,
-            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = ByDefinitionNameParameterSet,
             HelpMessage = "Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently " +
                           "selected environment and manged storage account name." )]
         [ValidateNotNullOrEmpty]
         [Alias( Constants.StorageAccountName, Constants.Name )]
         public string AccountName { get; set; }
 
+        /// <summary>
+        /// PSKeyVaultManagedStorageAccountIdentityItem object
+        /// </summary>
+        [Parameter(Mandatory = true,
+            Position = 0,
+            ParameterSetName = ByInputObjectParameterSet,
+            ValueFromPipeline = true,
+            HelpMessage = "ManagedStorageAccount object.")]
+        [ValidateNotNullOrEmpty]
+        public PSKeyVaultManagedStorageAccountIdentityItem InputObject { get; set; }
+
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Active key name. If not specified, the existing value of managed storage account's active key name remains unchanged" )]
         [ValidateNotNullOrEmpty]
         public string ActiveKeyName { get; set; }
 
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Auto regenerate key. If not specified, the existing value of auto regenerate key of managed storage account remains unchanged" )]
         [ValidateNotNull]
         public bool? AutoRegenerateKey { get; set; }
 
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "Regeneration period. If auto regenerate key is enabled, this value specifies the timespan after which managed storage account's inactive key" +
                           "gets auto regenerated and becomes the active key. If not specified, the existing value of regeneration period of keys of managed storage " +
                           "account remains unchanged" )]
@@ -71,7 +85,6 @@ namespace Microsoft.Azure.Commands.KeyVault
         public bool? Enable { get; set; }
 
         [Parameter( Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "A hashtable representing tags of managed storage account. If not specified, the existing tags of the managed storage account remain " +
                           "unchanged. Remove tags by specifying an empty Hashtable." )]
         [Alias( Constants.TagsAlias )]
@@ -85,7 +98,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
-            if( ShouldProcess( AccountName, Properties.Resources.SetManagedStorageAccountKeysAttribute ) )
+            if (InputObject != null)
+            {
+                VaultName = InputObject.VaultName;
+                AccountName = InputObject.AccountName;
+            }
+
+            if ( ShouldProcess( AccountName, Properties.Resources.SetManagedStorageAccountKeysAttribute ) )
             {
                 var managedStorageAccount = DataServiceClient.UpdateManagedStorageAccount(
                     VaultName,
@@ -93,7 +112,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     ActiveKeyName,
                     AutoRegenerateKey,
                     RegenerationPeriod,
-                    new ManagedStorageAccountAttributes( Enable ),
+                    new PSKeyVaultManagedStorageAccountAttributes( Enable ),
                     Tag);
 
                 if( PassThru )

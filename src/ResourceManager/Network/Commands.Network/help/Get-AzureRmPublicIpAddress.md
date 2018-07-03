@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 0CD03BF8-8DB6-44BC-91F0-D863949DBD17
@@ -46,7 +46,7 @@ The **Get-AzureRmPublicIPAddress** cmdlet gets one or more public IP addresses i
 
 ### 1: Get a public IP resource
 ```
-$publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName $publicIp
+$publicIp = Get-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName
 ```
 
 This command gets a public IP address resource with name $publicIPName in the resource group $rgName.
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,7 +86,7 @@ Network Interface IP Configuration Name.
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -139,7 +139,7 @@ Virtual Machine Network Interface Name.
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -166,7 +166,7 @@ Specifies the name of the resource group that contains the public IP address tha
 ```yaml
 Type: String
 Parameter Sets: NoExpandStandAloneIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandStandAloneIp, NoExpandScaleSetIp, ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -192,7 +192,7 @@ Virtual Machine Index.
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -218,7 +218,7 @@ Virtual Machine Scale Set Name.
 ```yaml
 Type: String
 Parameter Sets: NoExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -230,7 +230,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ExpandScaleSetIp
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

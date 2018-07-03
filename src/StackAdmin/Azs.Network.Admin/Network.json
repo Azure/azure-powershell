@@ -1,0 +1,744 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2015-06-15",
+    "title": "NetworkAdminClient",
+    "description": "Network Admin Client"
+  },
+  "host": "adminmanagement.local.azurestack.external",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network.Admin/adminOverview": {
+      "get": {
+        "x-ms-examples": {
+          "Get overview of the state of the network resource provider": {
+            "parameters": {
+              "api-version": "2015-06-15",
+              "subscriptionId": "fc8456aa-4843-4079-a152-f3497c63aa73"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "name": "",
+                  "type": "Microsoft.Network.Admin/adminOverview",
+                  "location": "",
+                  "id": "/subscriptions/fc8456aa-4843-4079-a152-f3497c63aa73/providers/Microsoft.Network.Admin/adminOverview/",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "virtualNetworkHealth": {
+                      "totalResourceCount": 0,
+                      "healthyResourceCount": 0,
+                      "errorResourceCount": 0,
+                      "warningResourceCount": 0,
+                      "healthUnknownCount": 0
+                    },
+                    "loadBalancerMuxHealth": {
+                      "totalResourceCount": 1,
+                      "healthyResourceCount": 1,
+                      "errorResourceCount": 0,
+                      "warningResourceCount": 0,
+                      "healthUnknownCount": 0
+                    },
+                    "virtualGatewayHealth": {
+                      "totalResourceCount": 1,
+                      "healthyResourceCount": 1,
+                      "errorResourceCount": 0,
+                      "warningResourceCount": 0,
+                      "healthUnknownCount": 0
+                    },
+                    "publicIpAddressUsage": {
+                      "totalResourceCount": 255,
+                      "inUseResourceCount": 31
+                    },
+                    "backendIpUsage": {
+                      "totalResourceCount": 411,
+                      "inUseResourceCount": 11
+                    },
+                    "macAddressUsage": {
+                      "totalResourceCount": 3998720,
+                      "inUseResourceCount": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Network"
+        ],
+        "description": "Get an overview of the state of the network resource provider.",
+        "operationId": "ResourceProviderState_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AdminOverview"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network.Admin/locations/{location}/quotas": {
+      "get": {
+        "x-ms-examples": {
+          "List all quotas": {
+            "parameters": {
+              "api-version": "2015-06-15",
+              "subscriptionId": "fc8456aa-4843-4079-a152-f3497c63aa73",
+              "location": "local"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "name": "Default Quota",
+                      "etag": "W/\"8fbd9932-75d1-4f23-83ab-fefe9c9818b5\"",
+                      "type": "Microsoft.Network.Admin/quotas",
+                      "location": "local",
+                      "properties": {
+                        "provisioningState": "Succeeded",
+                        "maxPublicIpsPerSubscription": 50,
+                        "maxVnetsPerSubscription": 50,
+                        "maxVirtualNetworkGatewaysPerSubscription": 1,
+                        "maxVirtualNetworkGatewayConnectionsPerSubscription": 2,
+                        "maxLoadBalancersPerSubscription": 50,
+                        "maxNicsPerSubscription": 100,
+                        "maxSecurityGroupsPerSubscription": 50,
+                        "migrationPhase": "None"
+                      },
+                      "id": "/subscriptions/fc8456aa-4843-4079-a152-f3497c63aa73/providers/Microsoft.Network.Admin/locations/local/quotas/Default Quota"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quotas"
+        ],
+        "description": "List all quotas.",
+        "operationId": "Quotas_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/FilterParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QuotaList"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-odata": "#/definitions/Quota",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Network.Admin/locations/{location}/quotas/{resourceName}": {
+      "get": {
+        "x-ms-examples": {
+          "Get a quota by name": {
+            "parameters": {
+              "api-version": "2015-06-15",
+              "subscriptionId": "fc8456aa-4843-4079-a152-f3497c63aa73",
+              "location": "local",
+              "resourceName": "Default Quota"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "name": "Default Quota",
+                  "etag": "W/\"8fbd9932-75d1-4f23-83ab-fefe9c9818b5\"",
+                  "type": "Microsoft.Network.Admin/quotas",
+                  "location": "local",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "maxPublicIpsPerSubscription": 50,
+                    "maxVnetsPerSubscription": 50,
+                    "maxVirtualNetworkGatewaysPerSubscription": 1,
+                    "maxVirtualNetworkGatewayConnectionsPerSubscription": 2,
+                    "maxLoadBalancersPerSubscription": 50,
+                    "maxNicsPerSubscription": 100,
+                    "maxSecurityGroupsPerSubscription": 50,
+                    "migrationPhase": "None"
+                  },
+                  "id": "/subscriptions/fc8456aa-4843-4079-a152-f3497c63aa73/providers/Microsoft.Network.Admin/locations/local/quotas/Default Quota"
+                }
+              },
+              "404": {
+                "body": {
+                  "error": {
+                    "code": "NotFound",
+                    "message": "Resource /subscriptions/17f638c8-a0e3-404b-92b8-04c749c03b58/resourceGroups//providers/Microsoft.Network.Admin/quotas/TestQuotaForRemoval not found.",
+                    "details": []
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quotas"
+        ],
+        "description": "Get a quota by name.",
+        "operationId": "Quotas_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Quota"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Create or update a new quota": {
+            "parameters": {
+              "api-version": "2015-06-15",
+              "subscriptionId": "fc8456aa-4843-4079-a152-f3497c63aa73",
+              "location": "local",
+              "resourceName": "TestQuotaForUpdate"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "name": "TestQuotaForUpdate",
+                  "etag": "W/\"15b52511-9e47-47f8-a6d7-a32d6f6b9460\"",
+                  "type": "Microsoft.Network.Admin/quotas",
+                  "properties": {
+                    "provisioningState": "Updating",
+                    "maxPublicIpsPerSubscription": 32,
+                    "maxVnetsPerSubscription": 0,
+                    "maxVirtualNetworkGatewaysPerSubscription": 0,
+                    "maxVirtualNetworkGatewayConnectionsPerSubscription": 0,
+                    "maxLoadBalancersPerSubscription": 0,
+                    "maxNicsPerSubscription": 8,
+                    "maxSecurityGroupsPerSubscription": 0,
+                    "migrationPhase": "None"
+                  },
+                  "id": "/subscriptions/2a6b336c-6c7f-4a19-bab9-b51119d8fec8/providers/Microsoft.Network.Admin/locations/local/quotas/TestQuotaForUpdate"
+                }
+              },
+              "201": {
+                "body": {
+                  "name": "TestQuotaForRemoval",
+                  "etag": "W/\"8ca8c633-7bfb-4ac7-864d-9f07e1204c21\"",
+                  "type": "Microsoft.Network.Admin/quotas",
+                  "properties": {
+                    "provisioningState": "Succeeded",
+                    "maxPublicIpsPerSubscription": 32,
+                    "maxVnetsPerSubscription": 32,
+                    "maxVirtualNetworkGatewaysPerSubscription": 32,
+                    "maxVirtualNetworkGatewayConnectionsPerSubscription": 32,
+                    "maxLoadBalancersPerSubscription": 32,
+                    "maxNicsPerSubscription": 4,
+                    "maxSecurityGroupsPerSubscription": 2,
+                    "migrationPhase": "None"
+                  },
+                  "id": "/subscriptions/fc8456aa-4843-4079-a152-f3497c63aa73/providers/Microsoft.Network.Admin/locations/local/quotas/TestQuotaForRemoval"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Network"
+        ],
+        "description": "Create or update a quota.",
+        "operationId": "Quotas_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/QuotaParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Quota"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Quota"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Delete a quota by name.": {
+            "parameters": {
+              "api-version": "2015-06-15",
+              "subscriptionId": "fc8456aa-4843-4079-a152-f3497c63aa73",
+              "location": "local"
+            },
+            "responses": {
+              "200": {},
+              "202": {},
+              "204": {}
+            }
+          }
+        },
+        "tags": [
+          "Network"
+        ],
+        "description": "Delete a quota by name.",
+        "operationId": "Quotas_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "202": {
+            "description": "Accepted"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "description": "Base Resource Object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "description": "URI of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "name": {
+          "description": "Name of the resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "type": {
+          "description": "Type of resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "location": {
+          "description": "Region location of resource.",
+          "type": "string",
+          "readOnly": true
+        },
+        "tags": {
+          "description": "List of key value pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "ResourceTenant": {
+      "description": "Base Resource Tenant Object",
+      "type": "object",
+      "properties": {
+        "provisioningState": {
+          "description": "The provisioning state.",
+          "type": "string"
+        },
+        "subscriptionId": {
+          "description": "The subscription ID.",
+          "type": "string"
+        },
+        "tenantResourceUri": {
+          "description": "The tenant resource URI.",
+          "type": "string"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "AdminOverview": {
+      "description": "Admin overview resource object.",
+      "properties": {
+        "properties": {
+          "description": "Admin overview properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/AdminOverviewProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "AdminOverviewProperties": {
+      "description": "Admin overview properties.",
+      "properties": {
+        "provisioningState": {
+          "description": "The provisioning state.",
+          "type": "string"
+        },
+        "virtualNetworkHealth": {
+          "description": "Health for all virtual networks as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceHealth"
+        },
+        "loadBalancerMuxHealth": {
+          "description": "Health for all LB MUXes as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceHealth"
+        },
+        "virtualGatewayHealth": {
+          "description": "Health for all gateways as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceHealth"
+        },
+        "publicIpAddressUsage": {
+          "description": "Total Public IP usage as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceUsage"
+        },
+        "backendIpUsage": {
+          "description": "Total Backend IP usage as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceUsage"
+        },
+        "macAddressUsage": {
+          "description": "Total MAC address usage as reported by the NC.",
+          "$ref": "#/definitions/AdminOverviewResourceUsage"
+        }
+      }
+    },
+    "AdminOverviewResourceHealth": {
+      "description": "Resource health information.",
+      "properties": {
+        "totalResourceCount": {
+          "description": "Total number of resources.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "healthyResourceCount": {
+          "description": "Number of resources in the success state.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "errorResourceCount": {
+          "description": "Number of resources in the error state.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "warningResourceCount": {
+          "description": "Number of resources in the warning state.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "healthUnknownCount": {
+          "description": "Number of resources in an unknown state.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "AdminOverviewResourceUsage": {
+      "description": "Resource usage information.",
+      "properties": {
+        "totalResourceCount": {
+          "description": "Total number of resources.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "inUseResourceCount": {
+          "description": "Number of resources in use.",
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "Quota": {
+      "description": "Network quota resource.",
+      "properties": {
+        "properties": {
+          "description": "Network quota properties.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/QuotaProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "QuotaProperties": {
+      "description": "Properties of a quota.",
+      "properties": {
+        "maxPublicIpsPerSubscription": {
+          "description": "Maximum number of public IP addresses a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxVnetsPerSubscription": {
+          "description": "Maximum number of virtual networks a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxVirtualNetworkGatewaysPerSubscription": {
+          "description": "Maximum number of virtual network gateways a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxVirtualNetworkGatewayConnectionsPerSubscription": {
+          "description": "Maximum number of virtual network gateway Connections a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxLoadBalancersPerSubscription": {
+          "description": "Maximum number of load balancers a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxNicsPerSubscription": {
+          "description": "Maximum number of NICs a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "maxSecurityGroupsPerSubscription": {
+          "description": "Maximum number of security groups a tenant subscription can provision.",
+          "type": "integer",
+          "format": "int64"
+        },
+        "migrationPhase": {
+          "description": "State of migration such as None, Prepare, Commit, and Abort.",
+          "$ref": "#/definitions/MigrationPhase"
+        }
+      }
+    },
+    "QuotaList": {
+      "description": "A pageable list of network quotas.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of quotas on this page.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Quota"
+          }
+        },
+        "nextLink": {
+          "description": "The URI to the next page.",
+          "type": "string"
+        }
+      }
+    },
+    "MigrationPhase": {
+      "description": "State of migration such as None, Prepare, Commit, and Abort.",
+      "enum": [
+        "None",
+        "Prepare",
+        "Commit",
+        "Abort"
+      ],
+      "type": "string",
+      "x-ms-enum": {
+        "modelAsString": true,
+        "name": "MigrationPhaseType"
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.",
+      "required": true,
+      "type": "string"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "Client API Version.",
+      "required": true,
+      "type": "string",
+      "default": "2015-06-15"
+    },
+    "LocationParameter": {
+      "description": "Location of the resource.",
+      "name": "location",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "ResourceNameParameter": {
+      "description": "Name of the resource.",
+      "name": "resourceName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "FilterParameter": {
+      "description": "OData filter parameter.",
+      "name": "$filter",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "OrderByParameter": {
+      "description": "OData orderBy parameter.",
+      "name": "$orderBy",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "TopParameter": {
+      "description": "OData top parameter.",
+      "name": "$top",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "SkipParameter": {
+      "description": "OData skip parameter.",
+      "name": "$skip",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "InlineCountParameter": {
+      "description": "OData inline count parameter.",
+      "name": "$inlineCount",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "QuotaParameter": {
+      "name": "Quota",
+      "description": "New network quota to create.",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Quota"
+      },
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 flow.",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}

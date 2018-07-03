@@ -23,9 +23,12 @@ The **Remove-AzureRmCognitiveServicesAccount** cmdlet deletes the specified Cogn
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+This command doesn't return anything.
 
+```powershell
+PS C:\> Remove-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis
+PS C:\> 
 ```
 
 ## PARAMETERS

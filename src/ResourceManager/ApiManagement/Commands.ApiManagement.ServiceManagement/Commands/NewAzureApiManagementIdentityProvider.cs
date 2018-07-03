@@ -59,7 +59,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         {
             if (ShouldProcess(Type.ToString("g"), "Creates a new Identity Provider"))
             {
-                var identityProvider = Client.IdentityProviderCreate(Context, Type.ToString("G"), ClientId, ClientSecret,
+                var identityProvider = Client.IdentityProviderCreate(
+                    Context,
+                    Type.ToString("G"),
+                    ClientId,
+                    ClientSecret,
                     AllowedTenants);
 
                 WriteObject(identityProvider);

@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### DataLakeStoreItem
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem
 The file or folder at the path specified.
 
 ## NOTES

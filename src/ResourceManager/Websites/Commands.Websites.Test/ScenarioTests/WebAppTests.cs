@@ -37,11 +37,18 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
         }
 
-        [Fact(Skip = "TODO #5594: This test requires a pre-set AppService Environment with specific settings.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
             WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewWebAppSimple()
+        {
+            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSimple");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
@@ -79,7 +86,8 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
             WebsitesController.NewInstance.RunPsTest(xunitLogger, "Test-CloneNewWebAppAndDeploymentSlots");
         }
 
-        [Fact(Skip = "TODO #5594: This test requires a pre-set Traffic Manger Profile with specific settings.")]
+        // This test is failing with an HTTP 500 due to a bug in the clone service.
+        [Fact(Skip = "Test is being skipped until issue with cloning is resolved.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {

@@ -71,7 +71,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItem>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem
 The list of Data Lake Store files and folders under the specified path.
 
 ## NOTES

@@ -28,9 +28,13 @@ Use New-AzureRmCognitiveServicesAccountKey to regenerate a key.
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
+PS C:\> Get-AzureRmCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis
 
+Key1                             Key2
+----                             ----
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## PARAMETERS

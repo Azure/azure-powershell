@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.Websites
+Module Name: AzureRM.WebSites
 ms.assetid: B2FDB54F-0318-4037-BC1D-6113E77DDE7E
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappslotpublishingprofile
 schema: 2.0.0
@@ -152,10 +152,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
+### Microsoft.Azure.Management.WebSites.Models.Site
 Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
+
+### System.String
 
 ## NOTES
 

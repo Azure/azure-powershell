@@ -23,11 +23,6 @@ The **New-AzureRmApplicationGatewayAuthenticationCertificate** cmdlet creates an
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CertificateFile
@@ -36,7 +31,7 @@ Specifies the path of the authentication certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -66,7 +61,7 @@ Specifies a name for the authentication certificate.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

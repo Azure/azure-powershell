@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Cdn.dll-Help.xml
 Module Name: AzureRM.Cdn
 ms.assetid: F93D9D7C-AC2A-4D83-87EC-4A54CD45272B
@@ -30,11 +30,6 @@ The **Get-AzureRMCdnEndpoint** cmdlet gets an Azure Content Delivery Network (CD
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnProfile
@@ -43,7 +38,7 @@ Specifies the CDN profile object to which the endpoint belongs.
 ```yaml
 Type: PSProfile
 Parameter Sets: ByObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,7 +69,7 @@ The name of the endpoint is not the host name of the endpoint.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +84,7 @@ Specifies the name of the profile to which the endpoint belongs.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,7 +99,7 @@ Specifies the name of the resource group to which the endpoint belongs.
 ```yaml
 Type: String
 Parameter Sets: ByFieldsParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -118,12 +113,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSProfile
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 This cmdlet returns an endpoint object.
 
 ## NOTES

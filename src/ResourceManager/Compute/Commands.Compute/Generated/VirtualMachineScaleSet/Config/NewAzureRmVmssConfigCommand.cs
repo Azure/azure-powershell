@@ -150,6 +150,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AutoOSUpgrade { get; set; }
 
         [Parameter(
+            Mandatory = false)]
+        public bool DisableAutoRollback { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string HealthProbeId { get; set; }
@@ -293,6 +297,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
             vUpgradePolicy.AutomaticOSUpgrade = this.AutoOSUpgrade.IsPresent;
 
+            if (this.MyInvocation.BoundParameters.ContainsKey("DisableAutoRollback"))
+            {
+                if (vUpgradePolicy == null)
+                {
+                    vUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.UpgradePolicy();
+                }
+                if (vUpgradePolicy.AutoOSUpgradePolicy == null)
+                {
+                    vUpgradePolicy.AutoOSUpgradePolicy = new Microsoft.Azure.Management.Compute.Models.AutoOSUpgradePolicy();
+                }
+                vUpgradePolicy.AutoOSUpgradePolicy.DisableAutoRollback = this.DisableAutoRollback;
+            }
+
             if (this.MyInvocation.BoundParameters.ContainsKey("OsProfile"))
             {
                 if (vVirtualMachineProfile == null)
@@ -416,7 +433,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 Overprovision = this.MyInvocation.BoundParameters.ContainsKey("Overprovision") ? this.Overprovision : (bool?) null,
                 SinglePlacementGroup = this.MyInvocation.BoundParameters.ContainsKey("SinglePlacementGroup") ? this.SinglePlacementGroup : (bool?) null,
-                ZoneBalance = this.ZoneBalance.IsPresent,
+                ZoneBalance = this.ZoneBalance.IsPresent ? true : (bool?) null,
                 PlatformFaultDomainCount = this.MyInvocation.BoundParameters.ContainsKey("PlatformFaultDomainCount") ? this.PlatformFaultDomainCount : (int?) null,
                 Zones = this.MyInvocation.BoundParameters.ContainsKey("Zone") ? this.Zone : null,
                 Location = this.MyInvocation.BoundParameters.ContainsKey("Location") ? this.Location : null,

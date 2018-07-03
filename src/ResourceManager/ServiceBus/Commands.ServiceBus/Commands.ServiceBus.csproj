@@ -111,7 +111,7 @@
     <Compile Include="Utilities\ServiceBusClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.ServiceBus.psd1">
+    <None Include="AzureRM.ServiceBus.psd1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Content Include="Microsoft.Azure.Commands.ServiceBus.format.ps1xml">
