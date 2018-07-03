@@ -34,15 +34,8 @@ This command adds an extension to the VMSS.
 
 ### Example 2: Add an extension to the VMSS with settings and protected settings
 ```
-PS C:\> $vmssSettings = '{
-    "fileUris": ["https://testsa.blob.core.windows.net/vmsssa/samplebashscript.sh"],
-    "commandToExecute": " sh samplebashscript.sh"
-}'
-
-PS C:\> $vmssProtectedSettings = '{
-    "storageAccountName": "testsa",
-    "storageAccountKey": "5JH6cPMDYvZZjgEb166KuYh2fQVzNNXPx3lWX1pLYJdaxoa0hJ4+qcdt8hDFR5lajnw57Pz5lBfPdQthFlImTw=="
-}'
+PS C:\> $Settings = @{"fileUris" = "[]"; "commandToExecute" = ""};
+PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountKey" = $stokey};
 
 PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
