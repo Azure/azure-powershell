@@ -510,7 +510,7 @@ function Test-RaPropertiesValidation
                         -RoleDefinitionName $roleDef.Name `
                         -Scope $scope
 
-    $assignments = Get-AzureRmRoleAssignment
+    $assignments = Get-AzureRmRoleAssignment -ObjectId $users[0].Id.Guid
     Assert-NotNull $assignments
 
     foreach ($assignment in $assignments){

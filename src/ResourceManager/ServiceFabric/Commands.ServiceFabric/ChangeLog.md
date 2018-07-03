@@ -18,12 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update example for `New-AzureRmServiceFabricCluster`
 
 ## Version 0.3.7
 * Fixed formatting of OutputType in help files
 
 ## Version 0.3.6
-* Fixed server authentication usage with generated certificates (Issue #5998)
+* Fixed server authentication usage with generated certificates (Issue #5998) 
 
 ## Version 0.3.5
 * Update default Linux image version sku
