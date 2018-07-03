@@ -1,7 +1,6 @@
 ﻿namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets
 {
     using System.Collections.Generic;
-    using System.IO;
     using System.Management.Automation;
     using System.Net;
     using OutputWriters;
@@ -10,19 +9,29 @@
     using System;
     using System.Diagnostics;
     using Interfaces;
-    using Validations;
     using Models;
-    using ResourceManager.Common;
 
     [Cmdlet(
         VerbsLifecycle.Invoke, "AzureRmStorageSyncCompatibilityCheck", 
         DefaultParameterSetName="PathBased")]
     [OutputType(typeof(PSValidationResult))]
-    public class InvokeCompatibilityCheckCmdlet : AzureRMCmdlet, ICmdlet
+    public class InvokeCompatibilityCheckCmdlet : Cmdlet, ICmdlet
     {
         #region Fields and Properties
+
+        private string _path;
+
         [Parameter(Mandatory = true, Position = 0, ParameterSetName = "PathBased")]
-        public string Path { get; set; }
+        public string Path {
+            get
+            {
+                return this._path;
+            }
+            set
+            {
+                this._path = this.NormalizePath(value);
+            }
+        }
 
         [Parameter]
         public PSCredential Credential { get; set; }
@@ -272,6 +281,12 @@
             var namespaceInfo = namespaceEnumerator.Run(root);
 
             return namespaceInfo;
+        }
+
+        private string NormalizePath(string path)
+        {
+            string result = path?.Replace(System.IO.Path.AltDirectorySeparatorChar, System.IO.Path.DirectorySeparatorChar);
+            return result?.TrimEnd(System.IO.Path.DirectorySeparatorChar);
         }
         #endregion
     }
