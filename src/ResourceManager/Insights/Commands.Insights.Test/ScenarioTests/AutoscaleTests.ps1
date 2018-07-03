@@ -139,7 +139,7 @@ function Test-NewAzureRmAutoscaleNotification
     {
 		Assert-Throws { New-AzureRmAutoscaleNotification } "At least one Webhook or one CustomeEmail must be present, or the notification must be sent to the admin or co-admin"
 
-		$actual = New-AzureRmAutoscaleNotification -CustomEmail gu@ms.com, fu@net.net
+		$actual = New-AzureRmAutoscaleNotification -CustomEmail gu@ms.com, hu@net.net
 
         # Assert
 		Assert-Null $actual.Webhooks "webhooks"
