@@ -24,10 +24,24 @@ The **Get-AzureRmServiceBusRule** cmdlet gets the description of the specified r
 
 ### Example 1
 ```
-PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -NAme SBRule
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -Name SBRule
 ```
 
 Returns the specified rule description for a specified subscription.
+
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription
+```
+
+Returns list of rule descriptions for a specified subscription.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SBExample1 -Topic SBTopic -Subscription SBSubscription -MaxCount 30
+```
+
+Returns list of first 30 rule descriptions for a specified subscription.
 
 ## PARAMETERS
 

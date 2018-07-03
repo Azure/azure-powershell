@@ -5,52 +5,50 @@ online version:
 schema: 2.0.0
 ---
 
-# New-AzureRmServiceBusStartMigration
+# Start-AzureRmServiceBusMigration
 
 ## SYNOPSIS
-Creates an new Migration configuration and starts migrating entites from Standard to Premium namespaces
+Creates a new Migration configuration and starts migrating entities from Standard to Premium namespaces
 
 ## SYNTAX
 
 ### MigrationConfigurationPropertiesSet (Default)
 ```
-New-AzureRmServiceBusStartMigration [-ResourceGroupName] <String> [-Name] <String> [-TargetNameSpace] <String>
+Start-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> [-TargetNameSpace] <String>
  [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-New-AzureRmServiceBusStartMigration [-InputObject] <PSNamespaceAttributes> [-TargetNameSpace] <String>
+Start-AzureRmServiceBusMigration [-InputObject] <PSNamespaceAttributes> [-TargetNameSpace] <String>
  [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### NamespaceResourceIdParameterSet
 ```
-New-AzureRmServiceBusStartMigration [-ResourceId] <String> [-TargetNameSpace] <String>
+Start-AzureRmServiceBusMigration [-ResourceId] <String> [-TargetNameSpace] <String>
  [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmServiceBusStartMigration** cmdlet creates an new Migration configuration and starts migrating entites from Standard to Premium namespaces
-
-## EXAMPLES
+The **Start-AzureRmServiceBusMigration** cmdlet creates an new Migration configuration and starts migrating entities from Standard to Premium namespaces
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmServiceBusStartMigration -ResourceGroupName ardsouza-testRG -Name TestingNamespaceStandardMirgation -TargetNameSpace /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ardsouza-testRG/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation -PostMigrationName TestingNamespaceStandardMirgationPostMigration
+PS C:\> Start-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation -TargetNameSpace /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation -PostMigrationName TestingNamespaceStandardMirgationPostMigration
 
 Name              : TestingNamespaceStandardMirgation
-Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ardsouza-testRG/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
+Id                : /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
 Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
 ProvisioningState : Accepted
-TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ardsouza-testRG/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
+TargetNamespace   : /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
 PostMigrationName : TestingNamespaceStandardMirgationPostMigration
 ```
 
-Creates a new migration configuration for 'TestingNamespaceStandardMirgation' to 'TestingNamespacePremiumMirgation' namespaces 
+Creates a new migration configuration for 'TestingNamespaceStandardMirgation' to 'TestingNamespacePremiumMirgation' namespaces
 
 ## PARAMETERS
 

@@ -53,6 +53,22 @@ Type                                : Microsoft.ServiceBus/Queues
 
 Returns the description of the queue.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+
+```
+
+Returns list of queues for given namespace
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 30
+
+```
+
+Returns list of first 30 queues for given namespace
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -135,7 +151,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -QueueName
+ System.String 
 
 ## OUTPUTS
 

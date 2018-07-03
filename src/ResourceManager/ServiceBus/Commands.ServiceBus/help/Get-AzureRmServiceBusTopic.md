@@ -49,6 +49,20 @@ UpdatedAt                           : 1/20/2017 3:16:43 AM
 ```
 Returns the description of the specified topic for the given Service Bus namespace.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1
+
+```
+Returns list of topic for given Service Bus namespace.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -MaxCount 30
+
+```
+Returns list of first 30 topic for given Service Bus namespace.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -131,7 +145,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### -ResourceGroup
+ System.String
+ 
+
+### -NamespaceName
+ System.String
+ 
+
+### -TopicName
+ System.String
 
 ## OUTPUTS
 

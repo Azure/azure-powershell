@@ -37,13 +37,14 @@ The **Get-AzureRmServiceBusMigration** Retrieves Migration Configuration for the
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmServiceBusMigration -ResourceGroupName ardsouza-testRG -Name TestingNamespaceStandardMirgation
+PS C:\> Get-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 
 Name              : TestingNamespaceStandardMirgation
-Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ardsouza-testRG/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
+Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
 Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
 ProvisioningState : Succeeded
-TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ardsouza-testRG/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
+PendingReplicationOperationsCount : 40
+TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
 PostMigrationName : TestingNamespaceStandardMirgationPostMigration
 
 ```
@@ -139,7 +140,7 @@ Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.4.0, Culture=neutral, PublicKeyToken=null]]
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.6.0, Culture=neutral, PublicKeyToken=null]]
 
 
 ## NOTES

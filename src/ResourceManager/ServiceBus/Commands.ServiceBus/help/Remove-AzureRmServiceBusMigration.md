@@ -31,13 +31,13 @@ Remove-AzureRmServiceBusMigration [-ResourceId] <String> [-PassThru] [-AsJob]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmServiceBusMigration** cmdlet deletes the Migration configuration for Standard to Premium namespaces
+The **Remove-AzureRmServiceBusMigration** cmdlet deletes the Migration configuration for Standard to Premium namespaces
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmServiceBusMigration -ResourceGroupName ardsouza-testRG -Name TestingNamespaceStandardMirgation
+PS C:\> Remove-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 ```
 
 Deletes the 'TestingNamespaceStandardMirgation' migration configuration
