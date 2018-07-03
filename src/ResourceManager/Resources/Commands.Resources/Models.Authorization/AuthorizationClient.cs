@@ -15,12 +15,10 @@
 using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.Authorization.Models;
-using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,12 +126,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> GetAllRoleDefinitionsAtScopeAndBelow(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>();
-            return new GenericPageEnumerable<RoleDefinition>(
-                delegate()
-                {
-                    return AuthorizationManagementClient.RoleDefinitions.List(scope ?? string.Empty, odataQuery);
-                }, AuthorizationManagementClient.RoleDefinitions.ListNext, first, skip)
-                  .Select(r => r.ToPSRoleDefinition());
+			return AuthorizationManagementClient.RoleDefinitions.List(scope ?? string.Empty, odataQuery)
+				.Select(r => r.ToPSRoleDefinition());
         }
 
         /// <summary>
@@ -143,11 +137,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitionsByCustom(string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             var odataQuery = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(filter => filter.Type == AuthorizationClientExtensions.CustomRole);
-            return new GenericPageEnumerable<RoleDefinition>(
-                delegate()
-                {
-                    return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : odataQuery);
-                }, AuthorizationManagementClient.RoleDefinitions.ListNext, first, skip)
+            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataQuery : odataQuery)
                 .Select(r => r.ToPSRoleDefinition());
         }
 
@@ -219,22 +209,14 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                 if (!string.IsNullOrEmpty(options.Scope))
                 {
-                    var tempResult = new GenericPageEnumerable<RoleAssignment>(
-                        delegate ()
-                        {
-                            return AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
-                        }, AuthorizationManagementClient.RoleAssignments.ListForScopeNext, first, skip);
+					var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
                     result.AddRange(tempResult
                         .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
                 }
                 else
                 {
-                    var tempResult = new GenericPageEnumerable<RoleAssignment>(
-                        delegate ()
-                        {
-                            return AuthorizationManagementClient.RoleAssignments.List(odataQuery);
-                        }, AuthorizationManagementClient.RoleAssignments.ListNext, first, skip);
+                    var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
                     result.AddRange(tempResult
                         .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
@@ -248,23 +230,15 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else if (!string.IsNullOrEmpty(options.Scope))
             {
-                // Filter by scope and above directly
-                var tempResult = new GenericPageEnumerable<RoleAssignment>(
-                    delegate ()
-                    {
-                        return AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
-                    }, AuthorizationManagementClient.RoleAssignments.ListForScopeNext, first, skip);
+				// Filter by scope and above directly
+				var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
                 result.AddRange(tempResult
                     .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
             }
             else
             {
-                var tempResult = new GenericPageEnumerable<RoleAssignment>(
-                    delegate ()
-                    {
-                        return AuthorizationManagementClient.RoleAssignments.List(odataQuery);
-                    }, AuthorizationManagementClient.RoleAssignments.ListNext, first, skip);
+                var tempResult = AuthorizationManagementClient.RoleAssignments.List(odataQuery);
                 result.AddRange(tempResult
                      .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                      .ToPSRoleAssignments(this, ActiveDirectoryClient, AuthorizationHelper.GetSubscriptionScope(currentSubscription), options.ExcludeAssignmentsForDeletedPrincipals));
