@@ -142,9 +142,23 @@ function Clear-DataSetLocation
 
 function Perform-Test
 {
-    param ([switch]$Full, [switch]$SkipInvalidCharacters)
+    param ([switch]$Full, [switch]$SkipInvalidCharacters, [switch]$TrailingSlash, [switch]$AlternateSlash)
     
     $dataSetLocation = Get-DataSetLocation
+	$dataSetLocationForTest = $dataSetLocation
+
+	$slashCharacter = if ($AlternateSlash) { "/" } else { "\" }
+
+	if ($TrailingSlash)
+	{
+		$dataSetLocationForTest = "$($dataSetLocation)$($slashCharacter)"
+	}
+
+	if ($AlternateSlash)
+	{
+		$dataSetLocationForTest = $dataSetLocationForTest.Replace("\", $slashCharacter)
+		$dataSetLocationForTest = $dataSetLocationForTest.Replace("/", $slashCharacter)
+	}
 
     if ($Full)
     {
@@ -186,7 +200,7 @@ function Perform-Test
     }
 
     Write-Verbose "Invoking evaluation tool with path $dataSetLocation"
-    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck -Path $dataSetLocation -SkipSystemChecks
+    $errors = Invoke-AzureRmStorageSyncCompatibilityCheck -Path $dataSetLocationForTest -SkipSystemChecks
     Write-Verbose "Number of errors: $($errors.Count)"
 
     $reportLocation = Join-Path $env:TEMP "EvalReport.csv"
