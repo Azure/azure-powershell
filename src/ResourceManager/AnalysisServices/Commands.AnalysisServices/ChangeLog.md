@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.6.9
+* Fixed formatting of OutputType in help files
+
 ## Version 0.6.8
 * Enable Gateway assocaite/disassociate operations on AS.
 

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.0.5
+* Fixed formatting of OutputType in help files
+
 ## Version 4.0.4
 * Set minimum dependency of module to PowerShell 5.0
 * Stop-AzureRmLogicAppRun example documentation fix

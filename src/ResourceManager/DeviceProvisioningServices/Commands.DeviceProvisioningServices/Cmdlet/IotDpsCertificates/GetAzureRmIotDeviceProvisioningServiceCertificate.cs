@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIoTDeviceProvisioningServiceCertificate", DefaultParameterSetName = ResourceParameterSet)]
     [Alias("Get-AzureRmIoTDpsCertificate")]
-    [OutputType(typeof(PSCertificateResponse), typeof(List<PSCertificate>))]
+    [OutputType(typeof(PSCertificateResponse))]
     public class GetAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";

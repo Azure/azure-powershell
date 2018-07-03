@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
 
     [Cmdlet(VerbsCommon.Add, "AzureRmIoTDeviceProvisioningServiceAccessPolicy", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Add-AzureRmIoTDpsAccessPolicy")]
-    [OutputType(typeof(PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription), typeof(List<PSSharedAccessSignatureAuthorizationRuleAccessRights>))]
+    [OutputType(typeof(PSSharedAccessSignatureAuthorizationRuleAccessRightsDescription))]
     public class AddAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
     {
         private const string ResourceParameterSet = "ResourceSet";

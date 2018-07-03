@@ -87,7 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetwork
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
 
 ## OUTPUTS
