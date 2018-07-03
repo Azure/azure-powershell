@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix Get-AzureRmRoleAssignment cmdlet
+    - Fix -ExpandPrincipalGroups command parameter functionality
 
 ## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:
