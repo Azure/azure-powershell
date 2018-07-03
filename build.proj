@@ -640,7 +640,14 @@
 
   <!-- Run checkin tests for each pull request -->
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
-    <Message Importance="high" Text="Running check in tests... " />
+    <Message Importance="high" Text="Running check in tests..." />
+
+    <CallTarget Targets="BinScopeCheck" />
+
+    <CallTarget Targets="RunPoliCheck" />
+
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
+          ContinueOnError="ErrorAndContinue"/>
 
     <!-- Azure / Stack -->
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
@@ -653,6 +660,16 @@
 
       <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\Modules\Run-UnitTests.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
           ContinueOnError="ErrorAndContinue"/>
+  </Target>
+
+  <Target Name="BinScopeCheck">
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckBinScope.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) &quot;"
+          ContinueOnError="False"/>
+    <OnError ExecuteTargets="BinScopeErrorMessage"/>
+  </Target>
+
+  <Target Name="BinScopeErrorMessage">
+    <Error Text="Binscope failed, please check the files in src/Package/BinScope"/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->
@@ -669,6 +686,16 @@
   <Target Name="LiveTestsFilter" DependsOnTargets="Build;BeforeRunTests">
     <Message Importance="high" Text="Running live tests..." />
     <CallTarget Targets="LiveTests"/>
+  </Target>
+
+  <Target Name="RunPoliCheck">
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckPoliCheck.ps1 -BuildConfig $(Configuration) -CIToolsPath $(CIToolsPath) &quot;"
+          ContinueOnError="False"/>
+    <OnError ExecuteTargets="PoliCheckErrorMessage"/>
+  </Target>
+
+  <Target Name="PoliCheckErrorMessage">
+    <Error Text="PoliCheck failed with a Severity 1 issue, please check the report at in src/Package/PoliCheck-Scan.html"/>
   </Target>
 
 </Project>
