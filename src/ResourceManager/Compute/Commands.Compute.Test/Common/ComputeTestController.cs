@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
+        public void SetLogger(XunitTracingInterceptor logger)
+        {
+            _helper.TracingInterceptor = logger;
+        }
+
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
