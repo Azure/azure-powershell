@@ -1,7 +1,7 @@
-﻿---
+---
 Module Name: AzureRM.DataLakeAnalytics
 Module Guid: eca73aa1-a68f-4ceb-9775-70759316a57b
-Download Help Link: None
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.datalakeanalytics
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -22,6 +22,9 @@ Gets information about a Data Lake Analytics account.
 
 ### [Get-AzureRmDataLakeAnalyticsCatalogItem](Get-AzureRmDataLakeAnalyticsCatalogItem.md)
 Gets a Data Lake Analytics catalog item or types of items.
+
+### [Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+Gets an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
 
 ### [Get-AzureRmDataLakeAnalyticsComputePolicy](Get-AzureRmDataLakeAnalyticsComputePolicy.md)
 Gets a Data Lake Analytics compute policy or list of compute policies.
@@ -59,6 +62,9 @@ Deletes a Data Lake Analytics account.
 ### [Remove-AzureRmDataLakeAnalyticsCatalogCredential](Remove-AzureRmDataLakeAnalyticsCatalogCredential.md)
 Deletes an Azure Data Lake Analytics credential.
 
+### [Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+Deletes an entry from the ACL of a catalog or catalog item in Data Lake Analytics.
+
 ### [Remove-AzureRmDataLakeAnalyticsCatalogSecret](Remove-AzureRmDataLakeAnalyticsCatalogSecret.md)
 Deletes a Data Lake Analytics secret.
 
@@ -76,6 +82,9 @@ Modifies a Data Lake Analytics account.
 
 ### [Set-AzureRmDataLakeAnalyticsCatalogCredential](Set-AzureRmDataLakeAnalyticsCatalogCredential.md)
 Modifies an Azure Data Lake Analytics catalog credential password.
+
+### [Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry](Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry.md)
+Modifies an entry in the ACL of a catalog or catalog item in Data Lake Analytics.
 
 ### [Set-AzureRmDataLakeAnalyticsCatalogSecret](Set-AzureRmDataLakeAnalyticsCatalogSecret.md)
 Modifies a Data Lake Analytics catalog secret.

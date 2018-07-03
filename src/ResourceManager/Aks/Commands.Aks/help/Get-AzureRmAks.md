@@ -122,7 +122,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster, Microsoft.Azure.Commands.Aks, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## NOTES
 

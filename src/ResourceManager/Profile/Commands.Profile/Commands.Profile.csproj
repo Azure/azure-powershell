@@ -113,7 +113,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.Profile.psd1">
+    <None Include="AzureRM.Profile.psd1">
       <Link>AzureRM.Profile.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -128,6 +128,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj">
+      <Project>{87ba5687-5563-4491-8846-77d98d0605d3}</Project>
+      <Name>Commands.Common.Aks</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
       <Name>Commands.Common.Authentication.Abstractions</Name>
@@ -156,6 +160,18 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Commands.Common.Storage.Management.csproj">
+      <Project>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</Project>
+      <Name>Commands.Common.Storage.Management</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Commands.Common.KeyVault.csproj">
+      <Project>{836965C0-B198-4D01-B3D7-757DB62B49A0}</Project>
+      <Name>Commands.Common.KeyVault</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Commands.Common.Network.csproj">
+      <Project>{1338F7AE-7111-4ED3-8916-2D0FECC876F4}</Project>
+      <Name>Commands.Common.Network</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\Commands.Common\Commands.Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
       <Name>Commands.Common</Name>
@@ -167,6 +183,10 @@
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj">
+      <Project>{592b3e1b-49e3-4f3c-bf6b-e5d4133b1443}</Project>
+      <Name>Commands.Common.WebSites</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +209,6 @@
     </ItemGroup>
     <Copy SourceFiles="@(OutFiles)" DestinationFiles="@(OutFiles->'..\..\..\Stack\$(Configuration)\ResourceManager\AzureResourceManager\AzureRM.Profile\%(RecursiveDir)%(Filename)%(Extension)')" />
     <Copy SourceFiles="@(MarkdownFiles)" DestinationFolder="$(OutputPath)\help\" ContinueOnError="false" />
-    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFolder="$(OutputPath)\NewAssemblies\" ContinueOnError="false" />
+    <Copy SourceFiles="@(NewtonsoftJson)" DestinationFiles="$(OutputPath)\Newtonsoft.Json.10.dll" />
   </Target>
 </Project>

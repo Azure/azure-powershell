@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementbackend
@@ -55,7 +55,7 @@ This parameter is optional.
 ```yaml
 Type: String
 Parameter Sets: GetByBackendId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ This parameter is required.
 ```yaml
 Type: PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,9 +107,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend
 The details of the Backend configured in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementBackend>
-The list of Backend configured in API Management service.
 
 ## NOTES
 

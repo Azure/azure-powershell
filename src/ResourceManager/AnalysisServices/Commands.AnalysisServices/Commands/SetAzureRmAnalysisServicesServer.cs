@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices
     {
         private const string ParamSetDefault = "Default";
         private const string ParamSetDisableBackup = "DisableBackup";
+        private const string ParamSetDisassociatGateway = "DisassociateGateway";
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the server.")]
@@ -87,6 +88,16 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Firewall configuration")]
         public PsAzureAnalysisServicesFirewallConfig FirewallConfig { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDefault,
+            HelpMessage = "Gateway resource ID")]
+        public string GatewayResourceId { get; set; }
+
+        [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
+            ParameterSetName = ParamSetDisassociatGateway,
+            HelpMessage = "Disassociate current gateway")]
+        public SwitchParameter DisassociateGateway { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -147,7 +158,12 @@ namespace Microsoft.Azure.Commands.AnalysisServices
                     ReadonlyReplicaCount = -1;
                 }
 
-                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting);
+                if (DisassociateGateway.IsPresent)
+                {
+                    GatewayResourceId = AnalysisServicesClient.DissasociateGateway;
+                }
+
+                AnalysisServicesServer updatedServer = AnalysisServicesClient.CreateOrUpdateServer(ResourceGroupName, Name, location, Sku, Tag, Administrator, currentServer, BackupBlobContainerUri, ReadonlyReplicaCount, DefaultConnectionMode, setting, GatewayResourceId);
 
                 if(PassThru.IsPresent)
                 {

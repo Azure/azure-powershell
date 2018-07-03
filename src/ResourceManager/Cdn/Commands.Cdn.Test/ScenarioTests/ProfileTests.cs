@@ -62,5 +62,12 @@ namespace Microsoft.Azure.Commands.Cdn.Test.ScenarioTests.ScenarioTest
         {
             TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetResourceUsages");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void ProfileGetSupportedOptimizationType()
+        {
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ProfileGetSupportedOptimizationType");
+        }
     }
 }

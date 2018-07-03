@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             cmdlet.ExecuteCmdlet();
 
             // Verify that the cmdlet wrote the cert returned from the OM to the pipeline
-            Assert.Equal(1, pipeline.Count);
+            Assert.Single(pipeline);
             Assert.Equal(cmdlet.Thumbprint, pipeline[0].Thumbprint);
         }
 
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Certificates
             int poolCount = 0;
             foreach (PSCertificate c in pipeline)
             {
-                Assert.True(thumbprintsOfConstructedCerts.Contains(c.Thumbprint));
+                Assert.Contains(c.Thumbprint, thumbprintsOfConstructedCerts);
                 poolCount++;
             }
             Assert.Equal(thumbprintsOfConstructedCerts.Length, poolCount);

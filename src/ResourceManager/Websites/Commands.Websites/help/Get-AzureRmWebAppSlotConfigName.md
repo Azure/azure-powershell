@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.WebSites
 ms.assetid: EF2D377C-C000-4BCA-8EB9-58C805FA5C31
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebappslotconfigname
 schema: 2.0.0
@@ -104,10 +104,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
+### Microsoft.Azure.Management.WebSites.Models.Site
 Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.Azure.Management.WebSites.Models.SlotConfigNamesResource
 
 ## NOTES
 

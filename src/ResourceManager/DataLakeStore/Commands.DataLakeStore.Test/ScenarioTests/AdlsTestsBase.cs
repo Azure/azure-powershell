@@ -28,7 +28,7 @@ using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 using Microsoft.Azure.Management.DataLake.Store;
@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 

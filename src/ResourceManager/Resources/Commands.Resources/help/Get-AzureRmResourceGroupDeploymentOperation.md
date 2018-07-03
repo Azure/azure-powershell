@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 9F29DFCB-A02B-45A5-99B9-C054BF4FCA6C
@@ -174,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Guid
+### System.Guid
 Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
 
 ## OUTPUTS

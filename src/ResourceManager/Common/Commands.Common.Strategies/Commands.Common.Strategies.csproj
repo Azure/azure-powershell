@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Strategies</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.3</AssemblyName>
+    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.4</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -55,11 +55,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncCmdletExtensions.cs" />
     <Compile Include="Compute\ImageVersion.cs" />
     <Compile Include="DependencyEngine.cs" />
+    <Compile Include="IAsyncCmdlet.cs" />
+    <Compile Include="ICmdlet.cs" />
     <Compile Include="INestedResourceConfig.cs" />
     <Compile Include="INestedResourceConfigVisitor.cs" />
     <Compile Include="INestedResourceStrategy.cs" />
+    <Compile Include="IParameters.cs" />
     <Compile Include="IResourceId.cs" />
     <Compile Include="Property.cs" />
     <Compile Include="ResourceId.cs" />

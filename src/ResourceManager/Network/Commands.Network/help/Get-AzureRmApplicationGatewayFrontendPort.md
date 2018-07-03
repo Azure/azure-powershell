@@ -26,7 +26,7 @@ The **Get-AzureRmApplicationGatewayFrontendPort** cmdlet gets the front-end port
 ### Example 1: Get a specified front-end port
 ```
 PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FrontEndPort = Get-AzureRmApplicationGatewayFrontendIPort -Name "FrontEndPort01" -ApplicationGateway $AppGw
+PS C:\> $FrontEndPort = Get-AzureRmApplicationGatewayFrontendPort -Name "FrontEndPort01" -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.
@@ -35,7 +35,7 @@ The second command gets the front-end port named FrontEndPort01 from $AppGw and 
 ### Example 2: Get a list of front-end ports
 ```
 PS C:\>$AppGw = Get-AzureRmApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $FrontEndPorts = Get-AzureRmApplicationGatewayFrontendIPort  -ApplicationGateway $AppGw
+PS C:\> $FrontEndPorts = Get-AzureRmApplicationGatewayFrontendPort  -ApplicationGateway $AppGw
 ```
 
 The first command gets an application gateway named ApplicationGateway01 from the resource group named ResourceGroup01, and stores it in the $AppGw variable.
@@ -49,7 +49,7 @@ Specifies the application gateway object that contains the front-end port.
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -79,7 +79,7 @@ Specifies the name of the front-end port to get.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

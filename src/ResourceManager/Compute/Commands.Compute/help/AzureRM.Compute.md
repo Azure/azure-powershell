@@ -1,7 +1,7 @@
 ---
 Module Name: AzureRM.Compute
 Module Guid: 0a83c907-1ffb-4d87-a492-c65ac7d7ed37
-Download Help Link: 
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute
 Help Version: 3.5.0.0
 Locale: en-US
 ---
@@ -24,7 +24,7 @@ Uploads a virtual hard disk from an on-premises virtual machine to a blob in a c
 Adds information to the unattended Windows Setup answer file.
 
 ### [Add-AzureRmVMDataDisk](Add-AzureRmVMDataDisk.md)
-Adds a data disk to a virtual machine.
+Adds a data disk to a virtual machine or a Vmss VM.
 
 ### [Add-AzureRmVMNetworkInterface](Add-AzureRmVMNetworkInterface.md)
 Adds a network interface to a virtual machine.
@@ -227,6 +227,9 @@ Creates a virtual machine.
 ### [New-AzureRmVMConfig](New-AzureRmVMConfig.md)
 Creates a configurable virtual machine object.
 
+### [New-AzureRmVMDataDisk](New-AzureRmVMDataDisk.md)
+Creates a local data disk object for a virtual machine or a Vmss VM.
+
 ### [New-AzureRmVMSqlServerAutoBackupConfig](New-AzureRmVMSqlServerAutoBackupConfig.md)
 Creates a configuration object for SQL Server automatic backup.
 
@@ -244,6 +247,9 @@ Creates a VMSS configuration object.
 
 ### [New-AzureRmVmssIpConfig](New-AzureRmVmssIpConfig.md)
 Creates an IP configuration for a network interface of a VMSS.
+
+### [New-AzureRmVmssIpTagConfig](New-AzureRmVmssIpTagConfig.md)
+Creates an IP Tag object for a network interface of a VMSS.
 
 ### [New-AzureRmVmssVaultCertificateConfig](New-AzureRmVmssVaultCertificateConfig.md)
 Creates a Key Vault certificate configuration.
@@ -505,4 +511,7 @@ Updates the state of a VMSS.
 
 ### [Update-AzureRmVmssInstance](Update-AzureRmVmssInstance.md)
 Starts a manual upgrade of the VMSS instance.
+
+### [Update-AzureRmVmssVM](Update-AzureRmVmssVM.md)
+Updates the state of a Vmss VM.
 

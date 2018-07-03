@@ -24,11 +24,6 @@ The **Get-AzureRmSqlServerDisasterRecoveryConfiguration** cmdlet gets a SQL data
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -131,6 +126,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 This cmdlet does not accept any input.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model.AzureSqlServerDisasterRecoveryConfigurationModel
 
 ## NOTES
 

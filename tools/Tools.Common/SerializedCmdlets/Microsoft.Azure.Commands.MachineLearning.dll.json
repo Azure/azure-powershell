@@ -482,21 +482,6 @@
           "ParameterSets": [
             "__AllParameterSets"
           ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
         }
       ],
       "Parameters": [
@@ -719,13 +704,87 @@
         {
           "Type": {
             "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
+            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "PlanDeletionOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "PlanMigrationOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "PlanQuantitiesAfterUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "PlanQuantitiesBeforeUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "PlanUsageOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "Usage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
+              "UsageDate": "System.Nullable`1[System.DateTime]"
+            },
+            "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "planDeletionOverage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "planMigrationOverage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "planQuantitiesAfterUsage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "planQuantitiesBeforeUsage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "planUsageOverage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usage",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageDate",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -1677,9 +1736,7 @@
         },
         {
           "Name": "Tag",
-          "AliasList": [
-            "Tags"
-          ],
+          "AliasList": [],
           "Type": {
             "Namespace": "System.Collections",
             "Name": "System.Collections.Hashtable",
@@ -1873,9 +1930,7 @@
             {
               "ParameterMetadata": {
                 "Name": "Tag",
-                "AliasList": [
-                  "Tags"
-                ],
+                "AliasList": [],
                 "Type": {
                   "Namespace": "System.Collections",
                   "Name": "System.Collections.Hashtable",
@@ -2067,21 +2122,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-            "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.CommitmentPlan",
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -2904,21 +2944,6 @@
                 ]
               }
             ]
-          },
-          "ParameterSets": [
-            "__AllParameterSets"
-          ]
-        },
-        {
-          "Type": {
-            "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-            "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService[]",
-            "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService[], Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
-            "ElementType": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
-            "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9084,90 +9109,6 @@
       "Methods": [],
       "Constructors": []
     },
-    "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models",
-      "Name": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.CommitmentPlans.Models.PlanUsageHistory, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "PlanDeletionOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "PlanMigrationOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "PlanQuantitiesAfterUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "PlanQuantitiesBeforeUsage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "PlanUsageOverage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "Usage": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
-        "UsageDate": "System.Nullable`1[System.DateTime]"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "planDeletionOverage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "planMigrationOverage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "planQuantitiesAfterUsage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "planQuantitiesBeforeUsage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "planUsageOverage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "usage",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "usageDate",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
     "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,System.Nullable`1[System.Double]]",
@@ -10595,90 +10536,6 @@
             },
             {
               "Name": "certificateThumbprint",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ]
-        }
-      ]
-    },
-    "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService": {
-      "Namespace": "Microsoft.Azure.Management.MachineLearning.WebServices.Models",
-      "Name": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService, Microsoft.Azure.Management.MachineLearning, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {
-        "Properties": "Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServiceProperties",
-        "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
-        "Id": "System.String",
-        "Name": "System.String",
-        "Location": "System.String",
-        "Type": "System.String"
-      },
-      "ElementType": null,
-      "GenericTypeArguments": [],
-      "Methods": [
-        {
-          "Name": "Validate",
-          "Parameters": [],
-          "ReturnType": "System.Void"
-        },
-        {
-          "Name": "ToString",
-          "Parameters": [],
-          "ReturnType": "System.String"
-        },
-        {
-          "Name": "Equals",
-          "Parameters": [
-            {
-              "Name": "obj",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            }
-          ],
-          "ReturnType": "System.Boolean"
-        },
-        {
-          "Name": "GetHashCode",
-          "Parameters": [],
-          "ReturnType": "System.Int32"
-        },
-        {
-          "Name": "GetType",
-          "Parameters": [],
-          "ReturnType": "System.Type"
-        }
-      ],
-      "Constructors": [
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": []
-        },
-        {
-          "Name": "",
-          "ReturnType": null,
-          "Parameters": [
-            {
-              "Name": "location",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "properties",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "id",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "name",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "type",
-              "Type": "System.Reflection.RuntimeParameterInfo"
-            },
-            {
-              "Name": "tags",
               "Type": "System.Reflection.RuntimeParameterInfo"
             }
           ]

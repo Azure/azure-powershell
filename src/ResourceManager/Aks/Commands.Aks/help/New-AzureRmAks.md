@@ -20,12 +20,15 @@ New-AzureRmAks [-ResourceGroupName] <String> [-Name] <String> [[-ClientIdAndSecr
 ```
 
 ## DESCRIPTION
+
 Create a new managed Kubernetes cluster.
 
 ## EXAMPLES
 
 ### Example 1
-### Create a new managed Kubernetes cluster with default params
+
+Create a new managed Kubernetes cluster with default params.
+
 ```
 PS C:\> New-AzureRmAks -ResourceGroupName group -Name myCluster
 ```
@@ -184,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeOsDiskSize
-The default number of nodes for the node pools.
+Size in GB of the OS disk for each node in the node pool. Minimum 30 GB.
 
 ```yaml
 Type: Int32

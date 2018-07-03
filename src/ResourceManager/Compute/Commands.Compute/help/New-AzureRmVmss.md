@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 1A2C843C-6962-4B0E-ACBF-A5EFF609A5BE
@@ -28,6 +28,7 @@ New-AzureRmVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJ
  [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>] [-VmSize <String>]
  [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
  [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
+ [-SystemAssignedIdentity] [-UserAssignedIdentity <String>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -442,6 +443,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SystemAssignedIdentity
+If the parameter is present then the VM(s) in the scale set is(are) assingned a managed system identity that is auto generated.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UpgradePolicyMode
 The upgrade policy mode for VM instances in this Scale Set.  Upgrade policy could specify Automatic, Manual, or Rolling upgrades.
 
@@ -450,6 +466,21 @@ Type: UpgradeMode
 Parameter Sets: SimpleParameterSet
 Aliases:
 Accepted values: Automatic, Manual, Rolling
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The name of a managed service identity that should be assigned to the VM(s) in the scale set.
+
+```yaml
+Type: String
+Parameter Sets: SimpleParameterSet
+Aliases:
 
 Required: False
 Position: Named

@@ -58,7 +58,7 @@ Valid values are Amd64 and X86.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Amd64, X86
 
 Required: True
@@ -76,7 +76,7 @@ Resource groups categorize items to help simplify inventory management and gener
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,7 +91,7 @@ Specifies the name of the virtual network gateway where the client package infor
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -105,16 +105,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### System.String
 Parameter 'ResourceGroupName' accepts value of type 'String' from the pipeline
-
-### String
 Parameter 'VirtualNetworkGatewayName' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS
 
-###  
-**Get-AzureRmVpnClientPackage** returns instances of the System.String object.
+### System.String
 
 ## NOTES
 

@@ -23,11 +23,6 @@ The **Unregister-AzureRmResourceProvider** cmdlet unregisters an Azure resource 
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -ApiVersion
@@ -132,7 +127,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider]
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider
 
 ## NOTES
 

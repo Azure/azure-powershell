@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
@@ -36,14 +36,14 @@ The **Get-AzureRmApiManagement** cmdlet gets a list of all API Management servic
 ## EXAMPLES
 
 ### Example 1: Get all API Management services
-```
+```powershell
 PS C:\>Get-AzureRmApiManagement
 ```
 
 This command gets all API Management services within a subscription.
 
 ### Example 2: Get all API Management services by a specific name
-```
+```powershell
 PS C:\>Get-AzureRmApiManagement -ResourceGroupName "ContosoGroup" -Name "ContosoApi"
 ```
 
@@ -72,7 +72,7 @@ Specifies the name of API Management service.
 ```yaml
 Type: String
 Parameter Sets: GetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,7 +87,7 @@ Specifies the name of the resource group under in which this cmdlet gets the API
 ```yaml
 Type: String
 Parameter Sets: GetByResourceGroup, GetByResource
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement]
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 
 ## NOTES
 

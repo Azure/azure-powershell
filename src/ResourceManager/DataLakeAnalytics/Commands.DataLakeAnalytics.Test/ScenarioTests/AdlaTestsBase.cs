@@ -33,7 +33,7 @@ using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         internal string resourceGroupName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;

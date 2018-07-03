@@ -380,9 +380,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
+## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData
 
 ## NOTES
 

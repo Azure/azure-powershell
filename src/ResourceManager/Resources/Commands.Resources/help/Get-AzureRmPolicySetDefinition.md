@@ -12,42 +12,74 @@ Gets policy set definitions.
 
 ## SYNTAX
 
-### GetBySubscription (Default)
+### NameParameterSet (Default)
 ```
-Get-AzureRmPolicySetDefinition [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
-```
-
-### GetByNameAndResourceGroup
-```
-Get-AzureRmPolicySetDefinition -Name <String> [-ApiVersion <String>] [-Pre]
+Get-AzureRmPolicySetDefinition [-Name <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### GetById
+### ManagementGroupNameParameterSet
+```
+Get-AzureRmPolicySetDefinition [-Name <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Get-AzureRmPolicySetDefinition [-Name <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Get-AzureRmPolicySetDefinition -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### BuiltinFilterParameterSet
+```
+Get-AzureRmPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Builtin]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
+### CustomFilterParameterSet
+```
+Get-AzureRmPolicySetDefinition [-ManagementGroupName <String>] [-SubscriptionId <Guid>] [-Custom]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Get-AzureRmPolicySetDefinition** cmdlet gets all the policy set definitions or a specific policy set definition identified by name or ID.
+The **Get-AzureRmPolicySetDefinition** cmdlet gets a collection of policy set definitions or a specific policy set definition identified by name or ID.
 
 ## EXAMPLES
 
-### Example 1: Get all policy set definition
+### Example 1: Get all policy set definitions
 ```
-PS C:\>Get-AzureRmPolicySetDefinition
+PS C:\> Get-AzureRmPolicySetDefinition
 ```
 
 This command gets all the policy set definitions.
 
-### Example 2: Get policy set definition by name
+### Example 2: Get policy set definition from current subscription by name
 ```
-PS C:\>Get-AzureRmPolicySetDefinition -Name "VMPolicyDefinition"
+PS C:\> Get-AzureRmPolicySetDefinition -Name 'VMPolicySetDefinition'
 ```
 
-This command gets the policy set definition named VMPolicyDefinition.
+This command gets the policy set definition named VMPolicySetDefinition from the current default subscription.
+
+### Example 3: Get policy set definition from subscription by name
+```
+PS C:\> Get-AzureRmPolicySetDefinition -Name 'VMPolicySetDefinition' -subscriptionId '3bf44b72-c631-427a-b8c8-53e2595398ca'
+```
+
+This command gets the policy definition named VMPolicySetDefinition from the subscription with ID 3bf44b72-c631-427a-b8c8-53e2595398ca.
+
+### Example 4: Get all custom policy set definitions from management group
+```
+PS C:\> Get-AzureRmPolicySetDefinition -ManagementGroupName 'Dept42' -Custom
+```
+
+This command gets all custom policy set definitions from the management group named Dept42.
 
 ## PARAMETERS
 
@@ -61,6 +93,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Builtin
+Limits list of results to only built-in policy set definitions.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: BuiltinFilterParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Custom
+Limits list of results to only custom policy set definitions.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: CustomFilterParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,10 +151,37 @@ e.g.
 
 ```yaml
 Type: String
-Parameter Sets: GetById
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ManagementGroupName
+The name of the management group of the policy set definition(s) to get.
+
+```yaml
+Type: String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -104,10 +193,10 @@ The policy set definition name.
 
 ```yaml
 Type: String
-Parameter Sets: GetByNameAndResourceGroup
+Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -126,6 +215,33 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription ID of the policy set definition(s) to get.
+
+```yaml
+Type: Guid
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: Guid
+Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

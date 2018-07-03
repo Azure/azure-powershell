@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/remove-azurermiothubeventhubconsumergroup
@@ -149,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IEnumerable`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.String
 
 ## NOTES
 

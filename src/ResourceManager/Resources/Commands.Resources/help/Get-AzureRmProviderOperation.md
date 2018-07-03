@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6424B740-DBFB-490C-AEAA-EDD60952B435
@@ -81,7 +81,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
+### System.String
 Parameter 'OperationSearchString' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

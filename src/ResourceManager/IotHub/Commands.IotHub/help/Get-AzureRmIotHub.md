@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.IotHub.dll-Help.xml
 Module Name: AzureRM.IotHub
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.iothub/get-azurermiothub
@@ -120,7 +120,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
-System.Collections.Generic.List\`1\[\[Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub, Microsoft.Azure.Commands.IotHub, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null\]\]
 
 ## NOTES
 

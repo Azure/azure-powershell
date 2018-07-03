@@ -23,11 +23,6 @@ The **Get-AzureRmSchedulerJobCollection** cmdlet gets job collections in Azure S
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -85,7 +80,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Scheduler.Models.PSJobCollectionDefinition
 
 ## NOTES
 

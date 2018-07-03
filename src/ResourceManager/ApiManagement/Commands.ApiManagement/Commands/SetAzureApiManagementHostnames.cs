@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmApiManagementHostnames", DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(PsApiManagement))]
+    [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
+        "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
+        false)]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
         internal const string FromPsApiManagementInstanceSetName = "SetFromPsApiManagementInstance";
@@ -91,9 +94,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                 throw new Exception(string.Format("Unrecongnized parameter set: {0}", ParameterSetName));
             }
 
-            ExecuteLongRunningCmdletWrap(
-                () => Client.BeginSetHostnames(resourceGroupName, name, portalHostName, proxyHostName),
-                PassThru.IsPresent);
+            var apiManagementResource = Client.SetHostnames(resourceGroupName, name, portalHostName, proxyHostName);
+            if (PassThru.IsPresent)
+            {
+                this.WriteObject(apiManagementResource);
+            }
         }
     }
 }

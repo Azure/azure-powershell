@@ -27,7 +27,7 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ### Example 1: Get database object that has service tier advisor information
 ```
-PS C:\>Get-AzureSqlDatabaseExpanded -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+PS C:\>Get-AzureRmSqlDatabaseExpanded -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command returns the database that has expanded properties that contain the service tier advisor information.
@@ -134,6 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 This cmdlet does not accept any input.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModelExpanded
 
 ## NOTES
 

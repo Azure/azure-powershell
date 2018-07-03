@@ -96,7 +96,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
             new X509Certificate2(rawBytes, PfxPassword);
 
             var certificate = Client.CertificateSet(Context, CertificateId, rawBytes, PfxPassword);
-            WriteObject(certificate);
+            if (PassThru)
+            {
+                WriteObject(certificate);
+            }
         }
     }
 }

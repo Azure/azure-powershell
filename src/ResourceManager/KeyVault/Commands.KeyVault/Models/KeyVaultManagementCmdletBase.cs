@@ -17,29 +17,30 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 #else
 using Microsoft.Azure.ActiveDirectory.GraphClient;
 #endif
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.KeyVault.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Management.Internal.Resources.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
-using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Management.Internal.Resources;
+using Microsoft.Azure.Management.Internal.Resources.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using PSKeyVaultModels = Microsoft.Azure.Commands.KeyVault.Models;
+using PSKeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Rest.Azure;
 using KeyPerms = Microsoft.Azure.Management.KeyVault.Models.KeyPermissions;
 using SecretPerms = Microsoft.Azure.Management.KeyVault.Models.SecretPermissions;
 using CertPerms = Microsoft.Azure.Management.KeyVault.Models.CertificatePermissions;
 using StoragePerms = Microsoft.Azure.Management.KeyVault.Models.StoragePermissions;
+using Microsoft.Azure.Management.KeyVault.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
@@ -114,50 +115,64 @@ namespace Microsoft.Azure.Commands.KeyVault
                     throw new ArgumentException(PSKeyVaultProperties.Resources.InvalidTagFormat);
                 }
             }
-            IPage<GenericResource> listResult = null;
-            var resourceType = tag == null ? KeyVaultManagementClient.VaultsResourceType : null;
+            var listResult = Enumerable.Empty<PSKeyVaultIdentityItem>();
+            var resourceType = KeyVaultManagementClient.VaultsResourceType;
             if (resourceGroupName != null)
             {
-                listResult = armClient.ResourceGroups.ListResources(resourceGroupName,
+                listResult = this.ListByResourceGroup(resourceGroupName,
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
+                        r => r.ResourceType == resourceType));
             }
             else
             {
-                listResult = armClient.Resources.List(
+                listResult = this.ListResources(
                     new Rest.Azure.OData.ODataQuery<GenericResourceFilter>(
-                        r => r.ResourceType == resourceType &&
-                             r.Tagname == tagValuePair.Name &&
-                             r.Tagvalue == tagValuePair.Value));
+                        r => r.ResourceType == resourceType));
+            }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Name))
+            {
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.ConvertToDictionary().Keys.Where(k => string.Equals(k, tagValuePair.Name, StringComparison.OrdinalIgnoreCase)).Any());
+            }
+
+            if (!string.IsNullOrEmpty(tagValuePair.Value))
+            {
+                listResult = listResult.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.ConvertToDictionary().Values.Where(v => string.Equals(v, tagValuePair.Value, StringComparison.OrdinalIgnoreCase)).Any());
             }
 
             List<PSKeyVaultModels.PSKeyVaultIdentityItem> vaults = new List<PSKeyVaultModels.PSKeyVaultIdentityItem>();
             if (listResult != null)
             {
-                vaults.AddRange(listResult.Where(r => r.Type.Equals(KeyVaultManagementClient.VaultsResourceType, StringComparison.OrdinalIgnoreCase))
-                    .Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-            }
-
-            while (!string.IsNullOrEmpty(listResult.NextPageLink))
-            {
-                if (resourceGroupName != null)
-                {
-                    listResult = armClient.ResourceGroups.ListResourcesNext(listResult.NextPageLink);
-                }
-                else
-                {
-                    listResult = armClient.Resources.ListNext(listResult.NextPageLink);
-                }
-
-                if (listResult != null)
-                {
-                    vaults.AddRange(listResult.Select(r => new PSKeyVaultModels.PSKeyVaultIdentityItem(r)));
-                }
+                vaults.AddRange(listResult);
             }
 
             return vaults;
+        }
+
+        public virtual IEnumerable<PSKeyVaultIdentityItem> ListResources(Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter = null, ulong first = ulong.MaxValue, ulong skip = ulong.MinValue)
+        {
+            IResourceManagementClient armClient = this.ResourceClient;
+
+            return new GenericPageEnumerable<GenericResource>(
+                delegate ()
+                {
+                    return armClient.Resources.List(filter);
+                }, armClient.Resources.ListNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
+        }
+
+        private IEnumerable<PSKeyVaultIdentityItem> ListByResourceGroup(
+            string resourceGroupName,
+            Rest.Azure.OData.ODataQuery<GenericResourceFilter> filter,
+            ulong first = ulong.MaxValue,
+            ulong skip = ulong.MinValue)
+        {
+            IResourceManagementClient armClient = this.ResourceClient;
+
+            return new GenericPageEnumerable<GenericResource>(
+                delegate ()
+                {
+                    return armClient.ResourceGroups.ListResources(resourceGroupName, filter);
+                }, armClient.ResourceGroups.ListResourcesNext, first, skip).Select(r => new PSKeyVaultIdentityItem(r));
         }
 
         protected string GetResourceGroupName(string vaultName)
@@ -265,7 +280,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             if (!string.IsNullOrWhiteSpace(spn))
             {
 #if NETSTANDARD
-                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(new ADObjectFilterOptions() { SPN = spn }).SingleOrDefault();
+                var odataQuery = new Rest.Azure.OData.ODataQuery<Graph.RBAC.Version1_6.Models.ServicePrincipal>(s => s.ServicePrincipalNames.Contains(spn));
+                var servicePrincipal = ActiveDirectoryClient.FilterServicePrincipals(odataQuery).SingleOrDefault();
                 objId = servicePrincipal?.Id.ToString();
 #else
                 var servicePrincipal = ActiveDirectoryClient.ServicePrincipals.Where(s =>
@@ -425,7 +441,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             CertPerms.Managecontacts,
             CertPerms.Manageissuers,
             CertPerms.Setissuers,
-            CertPerms.Recover
+            CertPerms.Recover,
+            CertPerms.Backup,
+            CertPerms.Restore
         };
 
         protected readonly string[] DefaultPermissionsToStorage = 
@@ -440,6 +458,9 @@ namespace Microsoft.Azure.Commands.KeyVault
             StoragePerms.Set,
             StoragePerms.Setsas,
             StoragePerms.Update,
+            StoragePerms.Recover,
+            StoragePerms.Backup,
+            StoragePerms.Restore
         };
 
         protected readonly string DefaultSkuFamily = "A";

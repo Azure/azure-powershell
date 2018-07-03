@@ -149,7 +149,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
                     this.ResourceGroupName,
                     this.ServerName,
                     this.DatabaseName,
-                    ParameterSetName.Equals(LegacySet))
+                    !ParameterSetName.Equals(LegacySet))
             };
         }
 

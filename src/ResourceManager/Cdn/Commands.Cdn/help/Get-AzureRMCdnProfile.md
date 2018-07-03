@@ -23,11 +23,6 @@ The **Get-AzureRMCdnProfile** cmdlet gets an Azure Content Delivery Network (CDN
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -85,7 +80,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 This cmdlet returns a profile object.
 
 ## NOTES

@@ -26,14 +26,33 @@
 -->
 
 # Upcoming Breaking Changes
-
 The following cmdlets were affected this release:
 
 **Add-AzureKeyVaultCertificate**
 - The -Certificate parameter has become mandatory.
 
 **Set-AzureKeyVaultManagedStorageSasDefinition**
-- The -Parameter parameter has been removed and replaced by -TemplateUri and -SasType
+    - The cmdlet no longer accepts individual parameters that compose the access token; instead, the cmdlet replaces explicit token parameters such as Service or Permissions with a generic 'TemplateUri' parameter, corresponding to a sample access token defined elsewhere (presumably using Storage PowerShell cmdlets, or composed manually according to the Storage documentation.) The cmdlet retains the 'ValidityPeriod' parameter.
+	
+	For more information on composing shared access tokens for Azure Storage, please refer to the documentation pages, respectively:
+	- [Constructing a Service SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/Constructing-a-Service-SAS)
+	- [Constructing an Account SAS] (https://docs.microsoft.com/en-us/rest/api/storageservices/constructing-an-account-sas)
+    
+    ```powershell
+    # Old
+  
+    $sas = Set-AzureKeyVaultManagedStorageSasDefinition -VaultName myVault -Name myKey -Service Blob -Permissions 'rcw' -ValidityPeriod 180d
+        
+    
+    # New
+
+	$sctx=New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
+	$start=[System.DateTime]::Now.AddDays(-1)
+	$end=[System.DateTime]::Now.AddMonths(1)
+	$at=New-AzureStorageAccountSasToken -Service blob -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
+	$sas=Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))    
+    
+    ```
 
 **Set-AzureKeyVaultCertificateIssuer**
 - The -IssuerProvider parameter has become mandatory.
@@ -60,6 +79,8 @@ The following cmdlets were affected this release:
     - Get-AzureKeyVaultCertificateOperation
     - Get-AzureKeyVaultCertificatePolicy
     - Get-AzureKeyVaultKey
+    - Get-AzureKeyVaultManagedStorageAccount
+    - Get-AzureKeyVaultManagedStorageSasDefinition
     - Get-AzureKeyVaultSecret
     - Remove-AzureRmKeyVault
     - Remove-AzureRmKeyVaultAccessPolicy
@@ -68,6 +89,8 @@ The following cmdlets were affected this release:
     - Remove-AzureKeyVaultCertificateIssuer
     - Remove-AzureKeyVaultCertificateOperation
     - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultManagedStorageAccount
+    - Remove-AzureKeyVaultManagedStorageSasDefinition
     - Remove-AzureKeyVaultSecret
     - Restore-AzureKeyVaultKey
     - Restore-AzureKeyVaultSecret
@@ -76,6 +99,7 @@ The following cmdlets were affected this release:
     - Set-AzureKeyVaultCertificateIssuer
     - Set-AzureKeyVaultCertificatePolicy
     - Set-AzureKeyVaultKeyAttribute
+    - Set-AzureKeyVaultManagedStorageSasDefinition
     - Set-AzureKeyVaultSecret
     - Set-AzureKeyVaultSecretAttribute
     - Stop-AzureKeyVaultCertificateOperation
@@ -83,14 +107,19 @@ The following cmdlets were affected this release:
     - Undo-AzureKeyVaultKeyRemoval
     - Undo-AzureRmKeyVaultRemoval
     - Undo-AzureKeyVaultSecretRemoval
+    - Update-AzureKeyVaultManagedStorageAccount
+    - Update-AzureKeyVaultManagedStorageAccountKey
 - ConfirmImpact levels were removed from all cmdlets.  Those affected are:
     - Remove-AzureRmKeyVault
     - Remove-AzureKeyVaultCertificate
     - Remove-AzureKeyVaultCertificateIssuer
     - Remove-AzureKeyVaultCertificateOperation
     - Remove-AzureKeyVaultKey
+    - Remove-AzureKeyVaultManagedStorageAccount
+    - Remove-AzureKeyVaultManagedStorageSasDefinition
     - Remove-AzureKeyVaultSecret
     - Stop-AzureKeyVaultCertificateOperation
+    - Update-AzureKeyVaultManagedStorageAccountKey
 - The IKeyVaultDataServiceClient was updated so all Certificate operations return PSTypes instead of SDK types. This includes:
     - SetCertificateContacts
     - GetCertificateContacts

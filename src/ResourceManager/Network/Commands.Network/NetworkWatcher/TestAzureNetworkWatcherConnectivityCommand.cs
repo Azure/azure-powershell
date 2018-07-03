@@ -16,7 +16,10 @@ using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -54,6 +57,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The ID of the resource from which a connectivity check will be initiated.")]
         [ValidateNotNullOrEmpty]
@@ -86,6 +97,12 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateRange(1, int.MaxValue)]
         public int DestinationPort { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Protocal configuration on which check connectivity will be performed.")]
+        [ValidateNotNullOrEmpty]
+        public PSNetworkWatcherProtocolConfiguration ProtocolConfiguration { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -104,8 +121,36 @@ namespace Microsoft.Azure.Commands.Network
             parameters.Destination.Address = this.DestinationAddress;
             parameters.Destination.Port = this.DestinationPort;
 
+            if (this.ProtocolConfiguration !=null && string.Equals(this.ProtocolConfiguration.Protocol, "Http", StringComparison.OrdinalIgnoreCase))
+            {
+                IList<MNM.HTTPHeader> headers = new List<MNM.HTTPHeader>();
+                if (this.ProtocolConfiguration.Header != null)
+                {
+                    foreach (DictionaryEntry entry in this.ProtocolConfiguration.Header)
+                    {
+                        headers.Add(new MNM.HTTPHeader((string)entry.Key, (string)entry.Value));
+                    }
+                }
+
+                MNM.HTTPConfiguration httpConfiguration = new MNM.HTTPConfiguration(this.ProtocolConfiguration.Method, headers, this.ProtocolConfiguration.ValidStatusCode.OfType<int?>().ToList());
+                parameters.ProtocolConfiguration = new MNM.ProtocolConfiguration(httpConfiguration);
+            }
+
             MNM.ConnectivityInformation result = new MNM.ConnectivityInformation();
-            if (ParameterSetName.Contains("SetByResource"))
+            if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+            {
+                var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                if (networkWatcher == null)
+                {
+                    throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                }
+
+                this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                this.NetworkWatcherName = networkWatcher.Name;
+                result = this.NetworkWatcherClient.CheckConnectivity(this.ResourceGroupName, this.NetworkWatcherName, parameters);
+            }
+            else if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
             {
                 result = this.NetworkWatcherClient.CheckConnectivity(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, parameters);
             }

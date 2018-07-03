@@ -12,21 +12,19 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmKeyVault",
-        DefaultParameterSetName = ListVaultsBySubParameterSet,   
-        HelpUri = Constants.KeyVaultHelpUri)]
-    [OutputType(typeof(PSKeyVault), typeof(List<PSKeyVaultIdentityItem>),
-        typeof(PSDeletedKeyVault), typeof(List<PSDeletedKeyVault>))]
+        DefaultParameterSetName = ListVaultsBySubParameterSet)]
+    [OutputType(typeof(PSKeyVault), typeof(PSKeyVaultIdentityItem), typeof(PSDeletedKeyVault))]
     public class GetAzureKeyVault : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names

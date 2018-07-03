@@ -23,9 +23,13 @@ The **New-AzureRmCognitiveServicesAccountKey** cmdlet regenerates an API key for
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
+PS C:\> New-AzureRmCognitiveServicesAccountKey -ResourceGroupName cognitive-services-resource-group -name myluis -keyname Key1
 
+Key1                             Key2
+----                             ----
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ## PARAMETERS

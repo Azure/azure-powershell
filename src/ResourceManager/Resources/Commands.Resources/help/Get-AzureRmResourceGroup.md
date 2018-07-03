@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 5B17A241-BF36-48A6-BC29-4C32C08F5F94
@@ -15,7 +15,7 @@ Gets resource groups.
 
 ### GetByResourceGroupName (Default)
 ```
-Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmResourceGroup [-Name <String>] [-Location <String>] [-Tag <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -132,8 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the name of the resource group to get.
-Wildcard characters are not permitted.
+Specifies the name of the resource group to get. This parameter supports wildcards at the beginning and/or the end of the string.
 
 ```yaml
 Type: String
@@ -162,12 +161,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+The tag hashtable to filter resource groups by.
+
+```yaml
+Type: Hashtable
+Parameter Sets: GetByResourceGroupName
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### String
+### System.String
 You can pipe input to the cmdlet by property name, but not by value.
 
 ## OUTPUTS
