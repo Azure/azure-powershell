@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with `Get-AzureRmResource` where `-ResourceType` parameter was case sensitive
 
 ## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:
