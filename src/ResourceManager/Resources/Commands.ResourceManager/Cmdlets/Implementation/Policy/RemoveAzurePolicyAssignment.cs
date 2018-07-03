@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy assignment input object parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentInputObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = PolicyHelpStrings.RemovePolicyAssignmentInputObjectHelp)]
         public PsPolicyAssignment InputObject { get; set; }
 
         /// <summary>

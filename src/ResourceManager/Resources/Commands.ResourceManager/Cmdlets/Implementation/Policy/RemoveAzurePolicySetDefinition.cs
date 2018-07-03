@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         /// <summary>
         /// Gets or sets the policy set definition input object parameter.
         /// </summary>
-        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionInputObjectHelp)]
+        [Parameter(ParameterSetName = PolicyCmdletBase.InputObjectParameterSet, Mandatory = true, ValueFromPipeline = true, HelpMessage = PolicyHelpStrings.RemovePolicySetDefinitionInputObjectHelp)]
         public PsPolicySetDefinition InputObject { get; set; }
 
         /// <summary>
