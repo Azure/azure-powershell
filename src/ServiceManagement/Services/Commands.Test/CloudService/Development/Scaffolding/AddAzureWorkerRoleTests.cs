@@ -42,6 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleProcess()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -62,6 +63,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleWillRecreateDeploymentSettings()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))
@@ -86,6 +88,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development.Scaffold
         }
 
         [Fact(Skip = "TODO: Fix SetScaffolding in CloudServiceProject.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AddAzureWorkerRoleWithTemplateFolder()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

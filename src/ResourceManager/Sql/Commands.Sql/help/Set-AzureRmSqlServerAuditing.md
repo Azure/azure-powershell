@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 14814BF3-51AF-4E51-A8A6-661825BD88D1
@@ -13,11 +13,20 @@ Changes the auditing settings of an Azure SQL server.
 
 ## SYNTAX
 
+### DefaultParameterSet (Default)
 ```
 Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
  [-StorageAccountName <String>] [-StorageKeyType <String>] [-RetentionInDays <UInt32>] [-ServerName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+```
+
+### StorageAccountSubscriptionIdSet
+```
+Set-AzureRmSqlServerAuditing -State <String> [-AuditActionGroup <AuditActionGroups[]>] [-PassThru]
+ -StorageAccountName <String> [-StorageAccountSubscriptionId <Guid>] [-StorageKeyType <String>]
+ [-RetentionInDays <UInt32>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,17 +53,20 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceG
 PS C:\>Set-AzureRmSqlServerAuditing -State Disabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
+### Example 3: Enable the auditing policy of an Azure SQL server using a storage account from a different subscription
+```
+PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -StorageAccountName "Storage22" -StorageAccountSubscriptionId "7fe3301d-31d3-4668-af5e-211a890ba6e3"
+```
+
 ## PARAMETERS
 
 ### -AuditActionGroup
-The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:  
-  
-"BATCH_COMPLETED_GROUP",  
-"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",  
-"FAILED_DATABASE_AUTHENTICATION_GROUP"  
+The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
 
-This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs.
-For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
+"BATCH_COMPLETED_GROUP",
+"SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+"FAILED_DATABASE_AUTHENTICATION_GROUP"
+This above combination is also the set that is configured by default. These groups cover all SQL statements and stored procedures executed against the database, and should not be used in combination with other groups as this will result in duplicate audit logs. For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-action-groups.
 
 ```yaml
 Type: AuditActionGroups[]
@@ -94,7 +106,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -161,14 +173,41 @@ Accept wildcard characters: False
 ```
 
 ### -StorageAccountName
-The name of the storage account. Wildcard characters are not permitted.  
-This parameter is not required.  
-If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.  
+The name of the storage account. Wildcard characters are not permitted.
+This parameter is not required.
+If you do not specify this parameter, the cmdlet uses the storage account that was defined previously as part of the auditing policy.
 If this is the first time an auditing policy is defined and you do not specify this parameter, the cmdlet fails.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: String
+Parameter Sets: StorageAccountSubscriptionIdSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -StorageAccountSubscriptionId
+Specifies storage account subscription id
+
+```yaml
+Type: Guid
+Parameter Sets: StorageAccountSubscriptionIdSet
 Aliases:
 
 Required: False
@@ -204,7 +243,7 @@ Aliases: cf
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -219,7 +258,7 @@ Aliases: wi
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Common
         public const string OrderBy = "Ordering expression using OData notation. One or more comma-separated column names with an optional 'desc' (the default) or 'asc'.";
         public const string Select = "Select expression using OData notation. One or more comma-separated column names. Limits the columns on each record to just those requested.";
         public const string From = "ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, defaults to 'To' parameter value minus 1 day.";
-        public const string To = "ISO 8601 formatted timestamp specifying the start time of the interval to query. When not specified, defaults to time of request.";
+        public const string To = "ISO 8601 formatted timestamp specifying the end time of the interval to query. When not specified, defaults to time of request.";
         public const string Filter = "Filter expression using OData notation.";
         public const string Apply = "Apply expression for aggregations using OData notation.";
         public const string All = "Within the specified time interval, get all policy states instead of the latest only.";

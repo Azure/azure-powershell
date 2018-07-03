@@ -79,8 +79,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             string resourceGroupName = (string)ParseParameter(invokeMethodInputParameters[0]);
             string snapshotName = (string)ParseParameter(invokeMethodInputParameters[1]);
 
-            var result = SnapshotsClient.Delete(resourceGroupName, snapshotName);
-            WriteObject(result);
+            SnapshotsClient.Delete(resourceGroupName, snapshotName);
         }
     }
 
@@ -103,6 +102,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         public override void ExecuteCmdlet()
         {
+            base.ExecuteCmdlet();
             ExecuteClientAction(() =>
             {
                 if (ShouldProcess(this.SnapshotName, VerbsCommon.Remove)
@@ -113,10 +113,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string resourceGroupName = this.ResourceGroupName;
                     string snapshotName = this.SnapshotName;
 
-                    var result = SnapshotsClient.Delete(resourceGroupName, snapshotName);
-                    var psObject = new PSOperationStatusResponse();
-                    ComputeAutomationAutoMapperProfile.Mapper.Map<Azure.Management.Compute.Models.OperationStatusResponse, PSOperationStatusResponse>(result, psObject);
-                    WriteObject(psObject);
+                    var result = SnapshotsClient.DeleteWithHttpMessagesAsync(resourceGroupName, snapshotName).GetAwaiter().GetResult();
+                    PSOperationStatusResponse output = new PSOperationStatusResponse
+                    {
+                        StartTime = this.StartTime,
+                        EndTime = DateTime.Now
+                    };
+
+                    if (result != null && result.Request != null && result.Request.RequestUri != null)
+                    {
+                        output.Name = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
+                    }
+
+                    WriteObject(output);
                 }
             });
         }
