@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update example for `New-AzureRmServiceFabricCluster`
 
 ## Version 0.3.7
 * Fixed formatting of OutputType in help files
