@@ -111,10 +111,10 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSDataLakeStoreAccount
+### Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccount
 The specific Data Lake Store account asked for.
 
-### List<PSDataLakeStoreAccountBasic>
+### Microsoft.Azure.Commands.DataLakeStore.Models.PSDataLakeStoreAccountBasic
 A list of Data Lake Store accounts in the resource group or subscription specified.
 
 ## NOTES

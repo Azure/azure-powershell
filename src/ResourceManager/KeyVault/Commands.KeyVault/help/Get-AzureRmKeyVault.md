@@ -283,9 +283,7 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault
 
 ## NOTES

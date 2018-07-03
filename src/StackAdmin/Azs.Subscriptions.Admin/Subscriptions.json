@@ -1,0 +1,4155 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2015-11-01",
+    "title": "SubscriptionsAdminClient",
+    "description": "Subscriptions Admin Client"
+  },
+  "host": "adminmanagement.local.azurestack.external",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/providers/Microsoft.Subscriptions.Admin/operations": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of subscriptions.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "ListOperations",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OperationList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/updateEncryption": {
+      "post": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of subscriptions.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "UpdateEncryption",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/restoreData": {
+      "post": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Restores the data",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "RestoreData",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of subscriptions.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "Subscriptions_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/FilterParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": null
+        },
+        "x-ms-odata": "#/definitions/Subscription"
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/checkNameAvailability": {
+      "post": {
+        "x-ms-examples": {
+          "Checks name availability in the Microsoft.Subscriptions.Admin namespace": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of subscriptions.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "Subscriptions_CheckNameAvailability",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/CheckNameAvailabilityParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/CheckNameAvailabilityResponse"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{subscription}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a specified subscription.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "Subscriptions_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Creates a new subscription.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "Subscriptions_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewSubscriptionParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Get the list of subscriptions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of subscriptions.",
+        "tags": [
+          "Subscriptions"
+        ],
+        "operationId": "Subscriptions_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans": {
+      "get": {
+        "x-ms-examples": {
+          "Get a collection of all acquired plans that subscription has access to..": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a collection of all acquired plans that subscription has access to.",
+        "tags": [
+          "AcquiredPlans"
+        ],
+        "operationId": "AcquiredPlans_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/TargetSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlanAcquisitionList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/subscriptions/{targetSubscriptionId}/acquiredPlans/{planAcquisitionId}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the specifed acquired plan.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "AcquiredPlans"
+        ],
+        "description": "Get an acquired plan from name.",
+        "operationId": "AcquiredPlans_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/TargetSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanAcquisitionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlanAcquisition"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Deletes an acquired plan.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Deletes an acquired plan.",
+        "tags": [
+          "AcquiredPlans"
+        ],
+        "operationId": "AcquiredPlans_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/TargetSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanAcquisitionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Puts the acquired plan.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "AcquiredPlans"
+        ],
+        "description": "Creates an acquired plan.",
+        "operationId": "AcquiredPlans_Create",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/TargetSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanAcquisitionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewAcquiredPlanParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlanAcquisition"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/PlanAcquisition"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of delegatedProviders.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of delegatedProviders.",
+        "tags": [
+          "DelegatedProviders"
+        ],
+        "operationId": "DelegatedProviders_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/SubscriptionList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProvider}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of delegated providers.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of delegated providers.",
+        "tags": [
+          "DelegatedProviders"
+        ],
+        "operationId": "DelegatedProviders_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/DelegatedProviderParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of delegated provider offers.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of delegated provider offers.",
+        "tags": [
+          "DelegatedProviderOffers"
+        ],
+        "operationId": "DelegatedProviderOffers_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/DelegatedProviderSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DelegatedProviderOfferList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/delegatedProviders/{delegatedProviderSubscriptionId}/offers/{offer}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the specified delegated provider offer.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the specified delegated provider offer.",
+        "tags": [
+          "DelegatedProviderOffers"
+        ],
+        "operationId": "DelegatedProviderOffers_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/DelegatedProviderSubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DelegatedProviderOffer"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants": {
+      "get": {
+        "x-ms-examples": {
+          "Lists all the directory tenants under the current subscription and given resource group name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "DirectoryTenants"
+        ],
+        "description": "Lists all the directory tenants under the current subscription and given resource group name.",
+        "operationId": "DirectoryTenants_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DirectoryTenantList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/directoryTenants/{tenant}": {
+      "get": {
+        "x-ms-examples": {
+          "Get a directory tenant by name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a directory tenant by name.",
+        "tags": [
+          "DirectoryTenants"
+        ],
+        "operationId": "DirectoryTenants_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/DirectoryTenantParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DirectoryTenant"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Delete a directory tenant under a resource group.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete a directory tenant under a resource group.",
+        "tags": [
+          "DirectoryTenants"
+        ],
+        "operationId": "DirectoryTenants_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/DirectoryTenantParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Create or updates a directory tenant.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Create or updates a directory tenant.",
+        "tags": [
+          "DirectoryTenants"
+        ],
+        "operationId": "DirectoryTenants_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/DirectoryTenantParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewDirectoryTenantParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/DirectoryTenant"
+            }
+          },
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/DirectoryTenant"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of usage aggregates for all tenants.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a list of all AzureStack location.",
+        "tags": [
+          "Locations"
+        ],
+        "operationId": "Locations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LocationList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of usage aggregates for all tenants.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the specified location.",
+        "tags": [
+          "Locations"
+        ],
+        "operationId": "Locations_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Location"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/offers": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of offers.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of offers.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_ListAll",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OfferList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of offers under a resource group.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of offers under a resource group.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OfferList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the specified offer.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the specified offer.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Offer"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Create or update the offer.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Create or update the offer.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewOfferParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Offer"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Offer"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Delete the specified offer.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete the specified offer.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/Metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Get the offer metrics.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the offer metrics.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/MetricDefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Get the metric definitions.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the metric definitions.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/link": {
+      "post": {
+        "x-ms-examples": {
+          "Links a plan to an offer.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Links a plan to an offer.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_Link",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanLinkParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/unlink": {
+      "post": {
+        "x-ms-examples": {
+          "Unlink a plan from an offer.": {
+            "parameters": {
+              "subscriptionId": "0af9c33b-f7ac-4161-add5-17b2f0b6a669",
+              "api-version": "2015-11-01"
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer1",
+                      "name": "sampleoffer1",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "properties": {
+                        "name": "sampleoffer1",
+                        "displayName": "SampleOffer1",
+                        "description": "",
+                        "externalReferenceId": "",
+                        "state": "Public",
+                        "subscriptionCount": 1,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/RG1/providers/Microsoft.Subscriptions.Admin/plans/sampleplan1"
+                        ],
+                        "addonPlans": []
+                      }
+                    },
+                    {
+                      "id": "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/offers/sampleoffer2",
+                      "name": "sampleoffer2",
+                      "type": "Microsoft.Subscriptions.Admin/offers",
+                      "location": "local",
+                      "tags": {},
+                      "properties": {
+                        "name": "sampleoffer2",
+                        "displayName": "sampleoffer2",
+                        "state": "Public",
+                        "subscriptionCount": 0,
+                        "maxSubscriptionsPerAccount": 0,
+                        "basePlanIds": [
+                          "/subscriptions/0af9c33b-f7ac-4161-add5-17b2f0b6a669/resourceGroups/ascansubscrrg479/providers/Microsoft.Subscriptions.Admin/plans/sampleoffer2"
+                        ],
+                        "addonPlans": []
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "description": "Unlink a plan from an offer.",
+        "tags": [
+          "Offers"
+        ],
+        "operationId": "Offers_Unlink",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanLinkParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of delegated offers.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of delegated offers.",
+        "tags": [
+          "OfferDelegations"
+        ],
+        "operationId": "OfferDelegations_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OfferDelegationList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/offers/{offer}/offerDelegations/{offerDelegationName}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of offers.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of offers.",
+        "tags": [
+          "OfferDelegations"
+        ],
+        "operationId": "OfferDelegations_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferDelegationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OfferDelegation"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Get the list of offers.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of offers.",
+        "tags": [
+          "OfferDelegations"
+        ],
+        "operationId": "OfferDelegations_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferDelegationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewOfferDelegationParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/OfferDelegation"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/OfferDelegation"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Delete the .": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of offers.",
+        "tags": [
+          "OfferDelegations"
+        ],
+        "operationId": "OfferDelegations_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferParameter"
+          },
+          {
+            "$ref": "#/parameters/OfferDelegationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/plans": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "List all plans across all subscriptions.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_ListAll",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlanList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/PlanList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Plan"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "put": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_CreateOrUpdate",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/NewPlanParameter"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "schema": {
+              "$ref": "#/definitions/Plan"
+            }
+          },
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Plan"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      },
+      "delete": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_Delete",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/Metrics": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_ListMetrics",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MetricList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Subscriptions.Admin/plans/{plan}/MetricDefinitions": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of plans.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the list of plans.",
+        "tags": [
+          "Plans"
+        ],
+        "operationId": "Plans_ListMetricDefinitions",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/PlanParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/MetricDefinitionList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas": {
+      "get": {
+        "x-ms-examples": {
+          "Get the list of quotas at a location.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Quotas"
+        ],
+        "description": "Get the list of quotas at a location.",
+        "operationId": "Quotas_List",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/QuotaList"
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "x-ms-pageable": {
+          "nextLinkName": null
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/providers/Microsoft.Subscriptions.Admin/locations/{location}/quotas/{quota}": {
+      "get": {
+        "x-ms-examples": {
+          "Gets a quota by name.": {
+            "parameters": {
+              "subscriptionId": "20ff7fc3-e762-44dd-bd96-b71116dcdc23",
+              "location": "local",
+              "api-version": "2015-06-01-preview",
+              "reportedStartTime": "2017-08-01T00:00:00.00Z",
+              "reportedEndTime": "2017-08-02T00:00:00.00Z",
+              "aggregationGranularity": "",
+              "subscriberId": "",
+              "continuationToken": ""
+            },
+            "responses": {
+              "200": {
+                "body": {
+                  "value": [],
+                  "nextLink": ""
+                }
+              }
+            }
+          }
+        },
+        "description": "Gets a quota by name.",
+        "tags": [
+          "Quotas"
+        ],
+        "operationId": "Quotas_Get",
+        "parameters": [
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/LocationParameter"
+          },
+          {
+            "$ref": "#/parameters/QuotaParameter"
+          },
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Quota"
+            }
+          },
+          "404": {
+            "description": "NOT FOUND"
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "application/json"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "Resource": {
+      "description": "Base Resource Object",
+      "type": "object",
+      "properties": {
+        "id": {
+          "readOnly": true,
+          "description": "URI of the resource.",
+          "type": "string"
+        },
+        "name": {
+          "readOnly": true,
+          "description": "Name of the resource.",
+          "type": "string"
+        },
+        "type": {
+          "readOnly": true,
+          "description": "Type of resource.",
+          "type": "string"
+        },
+        "location": {
+          "description": "Location where resource is location.",
+          "type": "string"
+        },
+        "tags": {
+          "readOnly": true,
+          "description": "List of key-value pairs.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "x-ms-azure-resource": true
+    },
+    "Operation": {
+      "description": "Supported REST operation.",
+      "type": "object",
+      "properties": {
+        "display": {
+          "description": "Display information for the operation.",
+          "type": "object",
+          "properties": {
+            "description": {
+              "description": "Description for the operation.",
+              "type": "string",
+              "readOnly": true
+            },
+            "operation": {
+              "description": "Display name of the operation.",
+              "type": "string",
+              "readOnly": true
+            },
+            "provider": {
+              "description": "Resource provider display name.",
+              "type": "string",
+              "readOnly": true
+            },
+            "resource": {
+              "description": "Resource type display name related to the operation.",
+              "type": "string",
+              "readOnly": true
+            }
+          }
+        },
+        "name": {
+          "description": "Name of the operation being performed on an object.",
+          "type": "string",
+          "readOnly": true
+        },
+        "origin": {
+          "description": "Origin for the operation.",
+          "type": "string",
+          "readOnly": true
+        }
+      }
+    },
+    "OperationList": {
+      "description": "List of supported operations.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of supported operations.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Operation"
+          }
+        }
+      }
+    },
+    "CheckNameAvailabilityDefinition": {
+      "description": "The check name availability action definition.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "The resource name to verify.",
+          "type": "string"
+        },
+        "resourceType": {
+          "description": "The resource type to verify.",
+          "type": "string"
+        }
+      }
+    },
+    "CheckNameAvailabilityResponse": {
+      "description": "The check name availability response definition",
+      "type": "object",
+      "properties": {
+        "nameAvailable": {
+          "description": "A value indicating whether the name is available.",
+          "type": "boolean"
+        },
+        "reason": {
+          "description": "The reason for the unavailability of the name.",
+          "$ref": "#/definitions/NameUnavailabilityReason"
+        },
+        "message": {
+          "description": "The message explaining the reason.",
+          "type": "string"
+        }
+      }
+    },
+    "NameUnavailabilityReason": {
+      "description": "The reason that the name is not available.",
+      "type": "string",
+      "enum": [
+        "Invalid",
+        "AlreadyExists"
+      ],
+      "x-ms-enum": {
+        "name": "NameUnavailabilityReason",
+        "modelAsString": true
+      }
+    },
+    "Subscription": {
+      "description": "List of supported operations.",
+      "type": "object",
+      "properties": {
+        "delegatedProviderSubscriptionId": {
+          "description": "Parent DelegatedProvider subscription identifier.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Subscription name.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Fully qualified identifier.",
+          "type": "string"
+        },
+        "externalReferenceId": {
+          "description": "External reference identifier.",
+          "type": "string"
+        },
+        "offerId": {
+          "description": "Identifier of the offer under the scope of a delegated provider.",
+          "type": "string"
+        },
+        "owner": {
+          "description": "Subscription owner.",
+          "type": "string"
+        },
+        "routingResourceManagerType": {
+          "description": "Routing resource manager type.",
+          "$ref": "#/definitions/ResourceManagerType"
+        },
+        "state": {
+          "description": "Subscription state.",
+          "$ref": "#/definitions/SubscriptionState"
+        },
+        "subscriptionId": {
+          "description": "Subscription identifier.",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "Directory tenant identifier.",
+          "type": "string"
+        }
+      }
+    },
+    "SubscriptionList": {
+      "description": "List of subscriptions.",
+      "properties": {
+        "value": {
+          "type": "array",
+          "description": "Subscription definition.",
+          "items": {
+            "$ref": "#/definitions/Subscription"
+          }
+        },
+        "nextLink": {
+          "description": "URI to the next page.",
+          "type": "string"
+        }
+      }
+    },
+    "ResourceManagerType": {
+      "description": "Resource manager type.",
+      "type": "string",
+      "enum": [
+        "Default",
+        "Admin"
+      ],
+      "x-ms-enum": {
+        "name": "ResourceManagerType",
+        "modelAsString": true
+      }
+    },
+    "SubscriptionState": {
+      "description": "Subscription notification state.",
+      "type": "string",
+      "enum": [
+        "NotDefined",
+        "Enabled",
+        "Warned",
+        "PastDue",
+        "Disabled",
+        "Deleted",
+        "Deleting",
+        "PartiallyDeleted"
+      ],
+      "x-ms-enum": {
+        "name": "SubscriptionState",
+        "modelAsString": true
+      }
+    },
+    "Metric": {
+      "description": "The resource metric set that represents the metrics for a particular resource.",
+      "type": "object",
+      "properties": {
+        "metricUnit": {
+          "description": "Unit of metrics.",
+          "$ref": "#/definitions/MetricUnit"
+        },
+        "timeGrain": {
+          "description": "Timespan of the metric.",
+          "type": "string"
+        },
+        "startTime": {
+          "description": "Start time of the metric.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endTime": {
+          "description": "End time of the metric.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "metricValues": {
+          "description": "Collected metric values in the timespan.",
+          "$ref": "#/definitions/MetricValueList"
+        }
+      }
+    },
+    "MetricValue": {
+      "description": "Metric value",
+      "type": "object",
+      "properties": {
+        "timeStamp": {
+          "description": "Timestamp of when the metric value was collected.",
+          "type": "string",
+          "format": "date-time"
+        },
+        "average": {
+          "description": "Average value for metric sample period.",
+          "type": "number",
+          "format": "double"
+        },
+        "minimum": {
+          "description": "Minimum value for metric sample period.",
+          "type": "number",
+          "format": "double"
+        },
+        "maximum": {
+          "description": "Maximum value for metric sample period.",
+          "type": "number",
+          "format": "double"
+        },
+        "total": {
+          "description": "Total value for metric sample period.",
+          "type": "number",
+          "format": "double"
+        },
+        "count": {
+          "description": "Number of measurements for metric sample period.",
+          "type": "integer"
+        },
+        "properties": {
+          "x-ms-client-name": "extendedProperties",
+          "description": "Extended properties.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "MetricValueList": {
+      "description": "List of metric values.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricValue"
+      }
+    },
+    "MetricDefinition": {
+      "description": "Metric Definition",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Metric definition name.",
+          "type": "string"
+        },
+        "unit": {
+          "description": "Unit of metrics.",
+          "$ref": "#/definitions/MetricUnit"
+        },
+        "primaryAggregationType": {
+          "description": "Type of the primary aggregation.",
+          "$ref": "#/definitions/MetricPrimaryAggregationType"
+        },
+        "metricAvailabilities": {
+          "description": "Metric availabilities.",
+          "$ref": "#/definitions/MetricAvailabilityList"
+        }
+      }
+    },
+    "MetricUnit": {
+      "description": "The resource metric unit.",
+      "type": "string",
+      "enum": [
+        "Count",
+        "Bytes",
+        "Seconds",
+        "CountPerSecond",
+        "BytesPerSecond"
+      ],
+      "x-ms-enum": {
+        "name": "MetricUnit",
+        "modelAsString": true,
+        "values": [
+          {
+            "description": "The count.",
+            "name": "Count",
+            "value": "Count"
+          },
+          {
+            "description": "The bytes.",
+            "name": "Bytes",
+            "value": "Bytes"
+          },
+          {
+            "description": "The seconds.",
+            "name": "Seconds",
+            "value": "Seconds"
+          },
+          {
+            "description": "The count per second.",
+            "name": "CountPerSecond",
+            "value": "CountPerSecond"
+          },
+          {
+            "description": "The bytes per second.",
+            "name": "BytesPerSecond",
+            "value": "BytesPerSecond"
+          }
+        ]
+      }
+    },
+    "MetricPrimaryAggregationType": {
+      "description": "The primary aggregation type for resource metric.",
+      "type": "string",
+      "enum": [
+        "None",
+        "Average",
+        "Total",
+        "Minimum",
+        "Maximum",
+        "Last"
+      ],
+      "x-ms-enum": {
+        "name": "MetricPrimaryAggregationType",
+        "modelAsString": true,
+        "values": [
+          {
+            "description": "No aggregation applied to resource.",
+            "name": "None",
+            "value": "None"
+          },
+          {
+            "description": "The average aggregation type.",
+            "name": "Average",
+            "value": "Average"
+          },
+          {
+            "description": "The total aggregation type.",
+            "name": "Total",
+            "value": "Total"
+          },
+          {
+            "description": "The minimum aggregation type.",
+            "name": "Minimum",
+            "value": "Minimum"
+          },
+          {
+            "description": "The maximum aggregation type.",
+            "name": "Maximum",
+            "value": "Maximum"
+          },
+          {
+            "description": "The last aggregation type.",
+            "name": "Last",
+            "value": "Last"
+          }
+        ]
+      }
+    },
+    "MetricAvailability": {
+      "description": "Metric Definition",
+      "type": "object",
+      "properties": {
+        "timeGrain": {
+          "description": "The time grain. Metrics will be available for this time grain.",
+          "type": "string"
+        },
+        "retention": {
+          "description": "the retention. Metrics may be queried for this interval.",
+          "type": "string"
+        }
+      }
+    },
+    "MetricAvailabilityList": {
+      "description": "List of metric definitions.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/MetricAvailability"
+      }
+    },
+    "MetricList": {
+      "description": "Holds an array of usage aggregates and the continuation token.",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "MetricDefinitionList": {
+      "description": "Holds an array of usage aggregates and the continuation token.",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/MetricDefinition"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "PlanAcquisition": {
+      "description": "Represents the acquisition of an add-on plan for a subscription.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Represents the acquisition of an add-on plan for a subscription.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PlanAcquisitionProperties"
+        }
+      }
+    },
+    "PlanAcquisitionProperties": {
+      "description": "Represents the acquisition of an add-on plan for a subscription.",
+      "type": "object",
+      "properties": {
+        "acquisitionId": {
+          "description": "Acquisition identifier.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Identifier in the tenant subscription context.",
+          "type": "string"
+        },
+        "planId": {
+          "description": "Plan identifier in the tenant subscription context.",
+          "type": "string"
+        },
+        "externalReferenceId": {
+          "description": "External reference identifier.",
+          "type": "string"
+        },
+        "provisioningState": {
+          "description": "State of the provisioning.",
+          "$ref": "#/definitions/ProvisioningState"
+        },
+        "acquisitionTime": {
+          "description": "Acquisition time.",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "ProvisioningState": {
+      "description": "Provisioning state for subscriptions service resources, for example, resource provider registration.",
+      "type": "string",
+      "enum": [
+        "NotSpecified",
+        "Accepted",
+        "Failed",
+        "Succeeded"
+      ],
+      "x-ms-enum": {
+        "name": "ProvisioningState",
+        "modelAsString": true,
+        "values": [
+          {
+            "description": "The provisioning state is not specified.",
+            "name": "NotSpecified",
+            "value": "NotSpecified"
+          },
+          {
+            "description": "The provisioning state is accepted, and indicates provisioning is ongoing.",
+            "name": "Accepted",
+            "value": "Accepted"
+          },
+          {
+            "description": "The provisioning state is failed, and indicates the data is potentially out-of-sync with third parties.",
+            "name": "Failed",
+            "value": "Failed"
+          },
+          {
+            "description": "The provisioning state is succeeded, and indicates the data is in-sync with third-parties.",
+            "name": "Succeeded",
+            "value": "Succeeded"
+          }
+        ]
+      }
+    },
+    "PlanAcquisitionList": {
+      "description": "List of acquired plans.",
+      "properties": {
+        "value": {
+          "description": "List of acquired plans.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlanAcquisition"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URI to the next page."
+        }
+      }
+    },
+    "PlanProperties2": {
+      "description": "Properties of a plan.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Description of the plan.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Display name.",
+          "type": "string"
+        },
+        "externalReferenceId": {
+          "description": "External reference identifier.",
+          "type": "string"
+        },
+        "quotaIds": {
+          "description": "Quota identifiers under the plan.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Name of the plan.",
+          "type": "string"
+        },
+        "subscriptionCount": {
+          "description": "Subscription count.",
+          "type": "integer"
+        },
+        "skuIds": {
+          "description": "SKU identifiers.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "DelegatedProviderOffer": {
+      "description": "The delegated provider offer.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties for an delegated provider.",
+          "$ref": "#/definitions/DelegatedProviderOfferProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "DelegatedProviderOfferProperties": {
+      "description": "Properties for an delegated provider.",
+      "type": "object",
+      "properties": {
+        "subscriptionId": {
+          "type": "string",
+          "description": "Subscription ID of tenant using plan."
+        },
+        "usageStartTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC start time for the usage bucket to which this usage aggregate belongs."
+        },
+        "usageEndTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "UTC end time for the usage bucket to which this usage aggregate belongs."
+        },
+        "instanceData": {
+          "description": "Key-value pairs of instance details represented as a string.",
+          "type": "string"
+        },
+        "quantity": {
+          "description": "The amount of the resource consumption that occurred in this time frame.",
+          "type": "string"
+        },
+        "meterId": {
+          "description": "Unique ID for the resource that was consumed (aka ResourceID).",
+          "type": "string"
+        }
+      }
+    },
+    "DelegatedProviderOfferList": {
+      "description": "Holds an array of usage aggregates and the continuation token.",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DelegatedProviderOffer"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "DirectoryTenant": {
+      "description": "Directory tenant.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Directory tenant.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/DirectoryTenantProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "DirectoryTenantProperties": {
+      "description": "Directory tenant.",
+      "type": "object",
+      "properties": {
+        "tenantId": {
+          "description": "Tenant unique identifier.",
+          "type": "string"
+        }
+      }
+    },
+    "DirectoryTenantList": {
+      "description": "List of directory tenants.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of directory tenants.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DirectoryTenant"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "Location": {
+      "description": "Contains information about a geographical location where resource providers can be deployed.",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "description": "Display name of the location.",
+          "type": "string"
+        },
+        "id": {
+          "description": "Location identifier.",
+          "type": "string"
+        },
+        "latitude": {
+          "description": "Latitude of the location.",
+          "type": "string"
+        },
+        "longitude": {
+          "description": "Longitude of the location.",
+          "type": "string"
+        },
+        "name": {
+          "description": "Location name.",
+          "type": "string"
+        }
+      }
+    },
+    "LocationList": {
+      "description": "List of locations.",
+      "properties": {
+        "value": {
+          "description": "List of locations.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          }
+        },
+        "nextLink": {
+          "description": "URI to next page.",
+          "type": "string"
+        }
+      }
+    },
+    "Offer": {
+      "description": "Represents an offering of services against which a subscription can be created.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Represents an offering of services against which a subscription can be created.",
+          "$ref": "#/definitions/OfferProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "OfferProperties": {
+      "description": "Represents an offering of services against which a subscription can be created.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the Offer.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Display name of offer.",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of offer.",
+          "type": "string"
+        },
+        "externalReferenceId": {
+          "description": "External reference identifier.",
+          "type": "string"
+        },
+        "state": {
+          "description": "Offer accessibility state.",
+          "$ref": "#/definitions/AccessibilityState"
+        },
+        "subscriptionCount": {
+          "description": "Current subscription count.",
+          "type": "integer"
+        },
+        "maxSubscriptionsPerAccount": {
+          "description": "Maximum subscriptions per account.",
+          "type": "integer"
+        },
+        "basePlanIds": {
+          "description": "Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "addonPlanDefinition": {
+          "description": "References to add-on plans that a tenant can optionally acquire as a part of the offer.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AddonPlanDefinition"
+          }
+        }
+      }
+    },
+    "AccessibilityState": {
+      "type": "string",
+      "description": "Represents the state of the offer",
+      "enum": [
+        "Private",
+        "Public",
+        "Decommissioned"
+      ],
+      "x-ms-enum": {
+        "name": "AccessibilityState",
+        "modelAsString": true,
+        "values": [
+          {
+            "description": "The offer or plan is private. Only an Admin can see and manage it.",
+            "name": "Private",
+            "value": "Private"
+          },
+          {
+            "description": "The offer or plan is public. Users can see and self-subscribe to it.",
+            "name": "Public",
+            "value": "Public"
+          },
+          {
+            "description": "The offer or plan is decommissioned. Current subscriptions can still consume it but new subscriptions cannot.",
+            "name": "Decommissioned",
+            "value": "Decommissioned"
+          }
+        ]
+      }
+    },
+    "AddonPlanDefinition": {
+      "description": "Contains the name of the desired plan to be linked or unlinked from an offer.",
+      "type": "object",
+      "properties": {
+        "planId": {
+          "description": "Plan identifier.",
+          "type": "string"
+        },
+        "maxAcquisitionCount": {
+          "description": "Maximum number of instances that can be acquired by a single subscription. If not specified, the assumed value is 1.",
+          "type": "integer"
+        }
+      }
+    },
+    "OfferList": {
+      "description": "List of offers.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "List of offers.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Offer"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URI to next page."
+        }
+      }
+    },
+    "PlanLinkDefinition": {
+      "description": "Definition for linking and unlinking plans to offers.",
+      "type": "object",
+      "properties": {
+        "planName": {
+          "description": "Name of the plan.",
+          "type": "string"
+        },
+        "planLinkType": {
+          "description": "Type of the plan link.",
+          "$ref": "#/definitions/PlanLinkType"
+        },
+        "maxAcquisitionCount": {
+          "description": "The maximum acquisition count by subscribers",
+          "type": "integer"
+        }
+      }
+    },
+    "PlanLinkType": {
+      "description": "Plan link type.",
+      "type": "string",
+      "enum": [
+        "None",
+        "Base",
+        "Addon"
+      ],
+      "x-ms-enum": {
+        "name": "PlanLinkType",
+        "modelAsString": true
+      }
+    },
+    "OfferDelegation": {
+      "description": "Offer delegation.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "x-ms-client-flatten": true,
+          "description": "Properties for an offer.",
+          "$ref": "#/definitions/OfferDelegationProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "OfferDelegationProperties": {
+      "description": "Properties for an offer delegation.",
+      "type": "object",
+      "properties": {
+        "subscriptionId": {
+          "description": "Identifier of the subscription receiving the delegated offer.",
+          "type": "string"
+        }
+      }
+    },
+    "OfferDelegationList": {
+      "description": ".",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OfferDelegation"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "Plan": {
+      "description": "A plan represents a package of quotas and capabilities that are offered tenants. A tenant can acquire this plan through an offer to upgrade his access to underlying cloud services.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Properties of a plan.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/PlanProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "PlanProperties": {
+      "description": "Properties of a plan.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "Description of the plan.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Display name.",
+          "type": "string"
+        },
+        "externalReferenceId": {
+          "description": "External reference identifier.",
+          "type": "string"
+        },
+        "quotaIds": {
+          "description": "Quota identifiers under the plan.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "description": "Name of the plan.",
+          "type": "string"
+        },
+        "subscriptionCount": {
+          "description": "Subscription count.",
+          "type": "integer"
+        },
+        "skuIds": {
+          "description": "SKU identifiers.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "PlanList": {
+      "description": "Holds an array of usage aggregates and the continuation token.",
+      "properties": {
+        "value": {
+          "description": "Array of usage aggregates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Plan"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "Continuation token"
+        }
+      }
+    },
+    "Quota": {
+      "description": "Quotas for DelegatedProviders.",
+      "type": "object",
+      "properties": {
+        "properties": {
+          "description": "Quotas for DelegatedProviders.",
+          "x-ms-client-flatten": true,
+          "$ref": "#/definitions/QuotaProperties"
+        }
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/Resource"
+        }
+      ]
+    },
+    "QuotaProperties": {
+      "description": "Quotas for DelegatedProviders.",
+      "type": "object",
+      "properties": {
+        "allowCustomPortalBranding": {
+          "description": "Value indicating whether custom portal branding is allowed.",
+          "type": "boolean"
+        }
+      }
+    },
+    "QuotaList": {
+      "description": "List of quotas.",
+      "properties": {
+        "value": {
+          "description": "List of quotas.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Quota"
+          }
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "URI to next page."
+        }
+      }
+    }
+  },
+  "parameters": {
+    "SubscriptionIdParameter": {
+      "name": "subscriptionId",
+      "in": "path",
+      "description": "Subscription credentials which uniquely identify Microsoft Azure subscription.The subscription ID forms part of the URI for every service call.",
+      "required": true,
+      "type": "string"
+    },
+    "ApiVersionParameter": {
+      "name": "api-version",
+      "in": "query",
+      "description": "Client Api Version.",
+      "required": true,
+      "type": "string",
+      "default": "2015-11-01"
+    },
+    "ResourceGroupParameter": {
+      "description": "The resource group the resource is located under.",
+      "name": "resourceGroup",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "LocationParameter": {
+      "description": "The AzureStack location.",
+      "name": "location",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "SubscriptionParameter": {
+      "description": "Subscription parameter.",
+      "name": "subscription",
+      "in": "path",
+      "type": "string",
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "NewSubscriptionParameter": {
+      "description": "Subscription parameter.",
+      "name": "newSubscription",
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/Subscription"
+      },
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "OfferParameter": {
+      "description": "Name of an offer.",
+      "name": "offer",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "PlanParameter": {
+      "description": "Name of the plan.",
+      "name": "plan",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "DelegatedProviderParameter": {
+      "description": "DelegatedProvider identifier.",
+      "name": "delegatedProvider",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "DelegatedProviderSubscriptionIdParameter": {
+      "description": "Delegated provider subscription identifier.",
+      "name": "delegatedProviderSubscriptionId",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "CheckNameAvailabilityParameter": {
+      "description": "Check name availability parameter",
+      "name": "nameAvailabilityDefinition",
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/CheckNameAvailabilityDefinition"
+      },
+      "required": true,
+      "x-ms-parameter-location": "method"
+    },
+    "FilterParameter": {
+      "description": "OData filter parameter.",
+      "name": "$filter",
+      "in": "query",
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "TargetSubscriptionIdParameter": {
+      "name": "targetSubscriptionId",
+      "in": "path",
+      "description": "The target subscription ID.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "PlanAcquisitionIdParameter": {
+      "name": "planAcquisitionId",
+      "in": "path",
+      "description": "The plan acquisition Identifier",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "NewAcquiredPlanParameter": {
+      "name": "newAcquiredPlan",
+      "in": "body",
+      "description": "The new acquired plan.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/PlanAcquisitionProperties"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "NewDelegatedProviderParameter": {
+      "description": "New DelegatedProvider.",
+      "name": "newDelegatedProvider",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Subscription"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "DelegatedProviderOfferParameter": {
+      "description": "The delegated offer name",
+      "name": "delegatedProviderOffer",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "DirectoryTenantParameter": {
+      "description": "Directory tenant name.",
+      "name": "tenant",
+      "type": "string",
+      "required": true,
+      "in": "path",
+      "x-ms-parameter-location": "method"
+    },
+    "NewDirectoryTenantParameter": {
+      "description": "New directory tenant properties.",
+      "name": "newTenant",
+      "required": true,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/DirectoryTenant"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "NewLocationParameter": {
+      "description": "The new location",
+      "name": "newLocation",
+      "required": true,
+      "in": "body",
+      "schema": {
+        "$ref": "#/definitions/Location"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "NewOfferParameter": {
+      "description": "New offer.",
+      "name": "newOffer",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Offer"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "PlanLinkParameter": {
+      "description": "New plan link.",
+      "name": "planLink",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/PlanLinkDefinition"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "OfferDelegationParameter": {
+      "description": "Name of a offer delegation.",
+      "name": "offerDelegationName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "NewOfferDelegationParameter": {
+      "description": "New offer delegation parameter.",
+      "name": "newOfferDelegation",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/OfferDelegation"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "NewPlanParameter": {
+      "description": "New plan.",
+      "name": "newPlan",
+      "in": "body",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Plan"
+      },
+      "x-ms-parameter-location": "method"
+    },
+    "QuotaParameter": {
+      "name": "quota",
+      "in": "path",
+      "description": "Name of the quota.",
+      "required": true,
+      "type": "string",
+      "x-ms-parameter-location": "method"
+    },
+    "NewQuotaParameter": {
+      "name": "subscriptionId",
+      "in": "body",
+      "description": "New quota.",
+      "required": true,
+      "schema": {
+        "$ref": "#/definitions/Quota"
+      },
+      "x-ms-parameter-location": "method"
+    }
+  },
+  "securityDefinitions": {
+    "azure_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "https://login.microsoftonline.com/common/oauth2/authorize",
+      "flow": "implicit",
+      "description": "Azure Active Directory OAuth2 flow",
+      "scopes": {
+        "user_impersonation": "impersonate your user account"
+      }
+    }
+  },
+  "security": [
+    {
+      "azure_auth": [
+        "user_impersonation"
+      ]
+    }
+  ]
+}

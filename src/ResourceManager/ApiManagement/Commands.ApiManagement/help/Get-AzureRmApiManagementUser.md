@@ -225,9 +225,6 @@ This cmdlet does not accept any input.
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
 The details of User in API Management service.
 
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
-The list of User in the API Management  service.
-
 ## NOTES
 
 ## RELATED LINKS

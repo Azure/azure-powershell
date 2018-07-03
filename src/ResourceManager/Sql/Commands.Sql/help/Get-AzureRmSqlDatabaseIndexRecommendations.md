@@ -179,6 +179,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
+### Microsoft.Azure.Commands.Sql.Model.IndexRecommendation
+
 ## NOTES
 
 ## RELATED LINKS
