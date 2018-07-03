@@ -130,12 +130,12 @@ function Generate-StorageSyncMaml
         $script = Join-Path (Get-RepositoryRootDirectory) "tools\GenerateHelp.ps1"
         
         Write-Verbose "Executing command: ValidateMarkdownHelp"
-        $result = . $script -ValidateMarkdownHelp -BuildConfig $BuildConfig
+        $result = . $script -ValidateMarkdownHelp -BuildConfig $BuildConfig -FilteredModules $null
 
         if (! $WhatIf)
         {
             Write-Verbose "Executing command: GenerateMamlHelp"
-            $result = . $script -GenerateMamlHelp -BuildConfig $BuildConfig
+            $result = . $script -GenerateMamlHelp -BuildConfig $BuildConfig -FilteredModules $null
         }
     } 
     catch {
