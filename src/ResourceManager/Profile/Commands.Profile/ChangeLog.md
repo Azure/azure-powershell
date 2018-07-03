@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help for `Get-AzureRmContextAutosaveSetting`
 
 ## Version 5.3.2
 * Common code changes to enable cmdlets to request an Auxilary Auth header with tokens for multiple tenants given a list of resource IDs.
