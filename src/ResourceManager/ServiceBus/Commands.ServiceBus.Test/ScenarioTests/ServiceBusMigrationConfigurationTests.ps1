@@ -28,6 +28,12 @@ function WaitforStatetoBeSucceded
 		$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 	}
 
+	while($createdMigrationConfig.PendingReplicationOperationsCount -ne $null -and $createdMigrationConfig.PendingReplicationOperationsCount -gt 0)
+	{
+		Wait-Seconds 10
+		$createdMigrationConfig = Get-AzureRmServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
+	}
+
 	return $createdMigrationConfig
 }
 
@@ -128,37 +134,44 @@ function ServiceBusMigrationConfigurationTests
     Assert-AreEqual 2 $result.Rights.Count
     Assert-True { $result.Rights -Contains "Listen" }
     Assert-True { $result.Rights -Contains "Send" }
-
-	# Create Queue in Stanradrd namespace 
-	$resultQueue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $nameQueue
-	Assert-AreEqual $resultQueue.Name $nameQueue "In CreateQueue response Name not found"
-
-	# Create Topic in Standard namespace
-	Write-Debug "Create Topic"
-	$resultTopic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $nameTopic -EnablePartitioning $TRUE
-	Assert-AreEqual $resultTopic.Name $nameTopic "In CreateTopic response Name not found"
+	
+	# Create Queue in Stanradrd namespace
+	for ($count = 0; $count -lt 20 ; $count++)
+	{
+		$queueName = getAssetName "Queue-"
+		$resultQueue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $queueName
+	} 	
+	
+	# Create Topic in Stanradrd namespace
+	for ($count = 0; $count -lt 20 ; $count++)
+	{
+		$topicName = getAssetName "Topic-"
+		$resultTopic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $topicName -EnablePartitioning $TRUE		
+	} 
 				
 	# Create and Start MigrationConfiguration
 	Write-Debug " Create and Start MigrationConfiguration"
-	$result = New-AzureRmServiceBusStartMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
+	$result = Start-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
+	
+	# Wait till the Migration Provisioning  state changes to succeeded
+	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
+																			  
+	# Complete the Migration
+	$completMigration = Complete-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
 	# Wait till the Migration Provisioning  state changes to succeeded
 	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
-
-	# Complete the Migration
-	$completMigration = Set-AzureRmServiceBusCompleteMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
 	
 	# Get Premium Namespaces 
 	$GetPremiumNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 			
-	# Get queue using Premium namespace to check migration
-	$getQueue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $nameQueue
-	Assert-AreEqual $getQueue.Name $nameQueue "In CreateQueue response Name not found"
+	# Get queues using Premium namespace to check migration
+	$getQueueList = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+	Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 50"
 
-	# Get Topic using Premium namespace to check migration
-	Write-Debug "Create Topic"
-	$getTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2 -Name $nameTopic
-	Assert-AreEqual $getTopic.Name $nameTopic "In CreateTopic response Name not found"
+	# Get Topic using Premium namespace to check migration			
+	$getTopicList = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+	Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 50"
 
 	# Wait till the Namespace Provisioning  state changes to succeeded
 	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2

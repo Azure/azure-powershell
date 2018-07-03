@@ -34,6 +34,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 ProvisioningState = mcResource.ProvisioningState;
                 TargetNamespace = mcResource.TargetNamespace;
                 PostMigrationName = mcResource.PostMigrationName;
+                PendingReplicationOperationsCount = mcResource.PendingReplicationOperationsCount;
             }
         }
 
@@ -59,6 +60,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Namespace after migration
         /// </summary>
         public string PostMigrationName { get; set; }
+
+        /// <summary>
+        /// Gets number of entities pending to be replicated.
+        /// </summary>
+        public long? PendingReplicationOperationsCount { get; private set; }
 
     }
 }
