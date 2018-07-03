@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
         OutputType(typeof(DnsRecordSet))]
-    public class NewAzureRmDnsRecordSet : DnsBaseCmdlet
+    public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
