@@ -29,6 +29,7 @@ function Test-AEMExtensionBasicWindowsWAD
 
     try
     {
+		Assert-AreEqual 1 0
         # Setup
         $vm = Create-AdvancedVM -rgname $rgname -loc $loc
         $vmname = $vm.Name
