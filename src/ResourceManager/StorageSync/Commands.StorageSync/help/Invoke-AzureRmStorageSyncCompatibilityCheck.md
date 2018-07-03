@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzureRmStorageSyncCompatibilityCheck
 
 ## SYNOPSIS
-This cmdlet checks for potential compatibility issues between your system and Azure File Sync.
+Checks for potential compatibility issues between your system and Azure File Sync.
 
 ## SYNTAX
 
@@ -21,11 +21,20 @@ Invoke-AzureRmStorageSyncCompatibilityCheck [-Path] <String> [-Credential <PSCre
 ### ComputerNameBased
 ```
 Invoke-AzureRmStorageSyncCompatibilityCheck [-Credential <PSCredential>] -ComputerName <String>
- [-SkipSystemChecks] [-Quiet] [<CommonParameters>]
+ [-SkipSystemChecks] [-SkipNamespaceChecks] [-Quiet] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This cmdlet checks for potential compatibility issues between your system and Azure File Sync. Given a local or remote path, it performs a set of validations on the system and file namespace, and then returns any compatibility issues it finds.
+The **Invoke-AzureRmStorageSyncCompatibilityCheck** cmdlet checks for potential compatibility issues between your system and Azure File Sync. Given a local or remote path, it performs a set of validations on the system and file namespace, and then returns any compatibility issues it finds.
+System checks:
+- OS compatibility
+File namespace checks:
+- Unsupported characters
+- Maximum file size
+- Maximum path length
+- Maximum file length
+- Maximum dataset size
+- Maximum directory depth
 
 ## EXAMPLES
 
@@ -34,12 +43,27 @@ This cmdlet checks for potential compatibility issues between your system and Az
 PS C:\> Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
 ```
 
-Performs compatibility check of files and folders in C:\DATA.
+This command checks the compatibility of the system and also of files and folders in C:\DATA.
+
+### Example 2
+```powershell
+PS C:\> Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA -SkipSystemChecks
+```
+
+This command checks the compatibility of files and folders in C:\DATA, but does not perform a system compatibility check.
+
+### Example 3
+```powershell
+PS C:\> $errors = Invoke-AzureRmStorageSyncCompatibilityCheck C:\DATA
+PS C:\> $errors | Select-Object -Property Type, Path, Level, Description, Result | Export-Csv -Path C:\results 
+```
+
+This command checks the compatibility of the system and also of files and folders in C:\DATA, and then exports the results as a CSV file to C:\results.
 
 ## PARAMETERS
 
 ### -ComputerName
-The server you are performing this check on.
+The computer you are performing this check on.
 
 ```yaml
 Type: String
@@ -134,11 +158,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
+This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### System.Object
 
 ## NOTES
+* Keywords: azure, azurerm, arm, resource, management, storagesync, filesync
 
 ## RELATED LINKS

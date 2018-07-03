@@ -1,16 +1,16 @@
 ---
 Module Name: AzureRm.StorageSync
 Module Guid: 001b4bbc-9d7d-43b2-9e95-7a70325e9509
-Download Help Link: {{Please enter FwLink manually}}
-Help Version: {{Please enter version of help manually (X.X.X.X) format}}
+Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.storagesync
+Help Version: 1.0.0.0
 Locale: en-US
 ---
 
 # AzureRm.StorageSync Module
 ## Description
-This module contains cmdlets pertaining to Azure File Sync.
+The cmdlets in the Storage Sync module enable you to manage operations pertaining to Azure File Sync in PowerShell.
 
 ## AzureRm.StorageSync Cmdlets
 ### [Invoke-AzureRmStorageSyncCompatibilityCheck](Invoke-AzureRmStorageSyncCompatibilityCheck.md)
-This cmdlet checks for potential compatibility issues between your system and Azure File Sync.
+Checks for potential compatibility issues between your system and Azure File Sync.
 
