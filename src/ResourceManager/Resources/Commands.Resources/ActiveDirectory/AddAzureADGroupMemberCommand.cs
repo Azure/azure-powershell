@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberUPNWithGroupDisplayName, HelpMessage = "The display name of the group to add the member(s) to.")]
         public string TargetGroupDisplayName { get; set; }
 
-        [Parameter(Mandatory = true)]
+        [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 {
                     var groupAddMemberParams = new GroupAddMemberParameters()
                     {
-                        Url = string.Format("{0}/{1}/directoryObjects/{2}",
+                        Url = string.Format("{0}{1}/directoryObjects/{2}",
                                             AzureEnvironmentConstants.AzureGraphEndpoint,
-                                            AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant,
+                                            AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id,
                                             memberObjectId)
                     };
 

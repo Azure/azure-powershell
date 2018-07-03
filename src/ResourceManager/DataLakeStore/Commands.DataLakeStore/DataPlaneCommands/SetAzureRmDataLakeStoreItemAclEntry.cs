@@ -95,23 +95,38 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         )]
         public int Concurrency { get; set; } = -1;
 
+        [Parameter(Mandatory = false,
+            HelpMessage =
+                "If passed then progress status is showed. Only applicable when recursive Acl modify is done."
+        )]
+        public SwitchParameter ShowProgress { get; set; }
+
         public override void ExecuteCmdlet()
         {
             WriteWarning(Resources.IncorrectOutputTypeWarning);
             var aclSpec = ParameterSetName.Equals(BaseParameterSetName)
                 ? Acl.Select(entry => entry.ParseDataLakeStoreItemAce()).ToList()
-                : new List<AclEntry>() { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
+                : new List<AclEntry> { new AclEntry((AclType)AceType, Id.ToString(), Default ? AclScope.Default : AclScope.Access, (AclAction)Permissions) };
+
+            bool recurseAndDefaultAcls = Recurse && !aclSpec.Any(aclEntry => aclEntry.Scope == AclScope.Access);
+            
+            // For recurse and all acls are default, give a warning message
+            if (recurseAndDefaultAcls)
+            {
+                WriteWarning(Resources.SetOnlyDefaultAclRecursively);
+            }
 
             ConfirmAction(
-                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath),
+                string.Format(Resources.SetDataLakeStoreItemAcl, Path.OriginalPath) + (recurseAndDefaultAcls ? "\n" + Resources.SetOnlyDefaultAclRecursively : ""),
                 Path.OriginalPath,
                 () =>
                 {
                     if (Recurse)
                     {
+
                         DataLakeStoreFileSystemClient.ChangeAclRecursively(Path.TransformedPath,
                             Account,
-                            aclSpec, RequestedAclType.ModifyAcl, Concurrency);
+                            aclSpec, RequestedAclType.ModifyAcl, Concurrency, this, ShowProgress, CmdletCancellationToken);
                     }
                     else
                     {

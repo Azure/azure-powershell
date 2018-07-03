@@ -71,6 +71,9 @@
     "src/ResourceManager/DeviceProvisioningServices/": [
       "AzureRM.DeviceProvisioningServices"
     ],
+	"src/ResourceManager/DevSpaces/": [
+      "AzureRM.DevSpaces"
+    ],
     "src/ResourceManager/DevTestLabs/": [
       "AzureRM.DevTestLabs"
     ],

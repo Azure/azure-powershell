@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 4.9.0
+* Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
+* Fixed formatting of OutputType in help files
+* Updated documentation of -ComputeGeneration parameter in several cmdlets
+
 ## Version 4.6.1
 * Updated example in the help file for Get-AzureRmSqlDatabaseExpanded
 * Updated Set-AzureRmSqlServerAuditing and Set-AzureRmSqlDatabaseAuditing Cmdlets

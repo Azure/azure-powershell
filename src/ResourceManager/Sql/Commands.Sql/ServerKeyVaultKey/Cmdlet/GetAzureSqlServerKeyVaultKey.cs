@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
     /// Defines the Get-AzureRmSqlServerKeyVaultKey cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerKeyVaultKey", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
     public class GetAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
     {
         /// <summary>

@@ -87,7 +87,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### This cmdlet does not produce any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetSku
 
 ## NOTES
 

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(VerbsCommon.Get,
         Constants.CommandNames.AzureHDInsightPersistedScriptAction),
-    OutputType(typeof(IList<AzureHDInsightRuntimeScriptAction>))]
+    OutputType(typeof(AzureHDInsightRuntimeScriptAction))]
     public class GetAzureHDInsightPersistedScriptAction : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

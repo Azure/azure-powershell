@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.18.1
+* Fixed formatting of OutputType in help files
+
 ## Version 0.18.0
 * Set minimum dependency of module to PowerShell 5.0
 * Remove deprecated `Tags` alias from cmdlets
