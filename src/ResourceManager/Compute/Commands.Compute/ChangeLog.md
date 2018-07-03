@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update example for `Remove-AzureRmVmss`
 
 ## Version 5.2.0
 * IP Tag feature for VMSS
