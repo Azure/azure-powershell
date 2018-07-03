@@ -30,8 +30,28 @@ The **Add-AzureRmVmssExtension** cmdlet adds an extension to the Virtual Machine
 ```
 PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $VMSS -Name $ExtName -Publisher $Publisher -Type $ExtType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True
 ```
+This command adds an extension to the VMSS.
 
-This command adds an extension to the VMMS.
+### Example 2: Add an extension to the VMSS with settings and protected settings
+```
+PS C:\> $vmssSettings = '{
+    "fileUris": ["https://testsa.blob.core.windows.net/vmsssa/samplebashscript.sh"],
+    "commandToExecute": " sh samplebashscript.sh"
+}'
+
+PS C:\> $vmssProtectedSettings = '{
+    "storageAccountName": "testsa",
+    "storageAccountKey": "5JH6cPMDYvZZjgEb166KuYh2fQVzNNXPx3lWX1pLYJdaxoa0hJ4+qcdt8hDFR5lajnw57Pz5lBfPdQthFlImTw=="
+}'
+
+PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
+  -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
+  -Setting $vmssSettings -ProtectedSetting $vmssProtectedSettings
+```
+
+This command adds an extension to the VMSS with a sample bash script on a blob storage, specify the url of blob storage and executable command in settings and security access in protected settings. 
+
+
 
 ## PARAMETERS
 
