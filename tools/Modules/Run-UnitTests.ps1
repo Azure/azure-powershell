@@ -122,6 +122,7 @@ if ($Scope -in $StackScopes) {
     if (-not(Test-Path $SavePath)) {
         New-Item -Path $SavePath -ItemType Directory -Force | Out-Null
         Save-Module -Name AzureRM.Profile -RequiredVersion 3.4.1 -Repository PSGallery -Path $SavePath | Out-Null
+        Save-Module -Name AzureRM.Resource -RequiredVersion 4.4.1 -Repository PSGallery -Path $SavePath | Out-Null
     }
     $oldModulePath = $env:PSModulePath.Clone()
     $env:PSModulePath = "$env:PSModulePath;$SavePath"
