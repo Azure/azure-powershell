@@ -145,6 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Adapter
             server.Tags = TagsConversionHelper.CreateTagDictionary(TagsConversionHelper.CreateTagHashtable(resp.Tags), false);
             server.Identity = resp.Identity;
             server.FullyQualifiedDomainName = resp.FullyQualifiedDomainName;
+            server.ResourceId = resp.Id;
 
             return server;
         }

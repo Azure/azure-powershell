@@ -69,10 +69,9 @@
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
+			ParallelizeAssemblies="false"
 			IncludeTraits="AcceptanceType=CheckIn"
 			Html="$(TestFileName)"
-			MaxParallelThreads="10"
 			DiagnosticMessages="false"
 			ContinueOnError="true"
 			Condition=" $(XUnitTests) != '' ">
@@ -92,10 +91,9 @@
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
-			ParallelizeAssemblies="true"
+			ParallelizeAssemblies="false"
 			ExcludeTraits="RunType=LiveOnly;AcceptanceType=CheckIn"
 			Html="$(TestOutputDirectory)\AzurePowershellAllTestResults.html"
-			MaxParallelThreads="10"
 			DiagnosticMessages="false"
 			ContinueOnError="false"
 			Condition=" @(XUnitTests) != '' "/>
