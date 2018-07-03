@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             string principalId = null;
 
             PSADObject adObject = null;
-            var odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
+            Rest.Azure.OData.ODataQuery<RoleAssignmentFilter> odataQuery = null;
             if (options.ADObjectFilter.HasFilter)
             {
                 if (string.IsNullOrEmpty(options.ADObjectFilter.Id) || options.ExpandPrincipalGroups || options.IncludeClassicAdministrators)
@@ -210,10 +210,12 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     }
 
                     principalId = adObject.Id.ToString();
+                    odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.AssignedTo(principalId));
                 }
                 else
                 {
                     principalId = string.IsNullOrEmpty(options.ADObjectFilter.Id) ? adObject.Id.ToString() : options.ADObjectFilter.Id;
+                    odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                 }
 
                 odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
