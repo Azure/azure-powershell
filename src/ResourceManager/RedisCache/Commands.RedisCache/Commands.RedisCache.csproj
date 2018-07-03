@@ -118,7 +118,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.RedisCache.psd1">
+    <None Include="AzureRM.RedisCache.psd1">
       <Link>AzureRM.RedisCache.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

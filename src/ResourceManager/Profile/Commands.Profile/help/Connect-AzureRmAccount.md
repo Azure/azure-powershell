@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/add-azurermaccount
@@ -15,14 +15,15 @@ Connect to Azure with an authenticated account for use with Azure Resource Manag
 ### UserWithSubscriptionId (Default)
 ```
 Connect-AzureRmAccount [-Environment <String>] [[-Credential] <PSCredential>] [-TenantId <String>]
- [-Subscription <String>] [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ServicePrincipalWithSubscriptionId
 ```
 Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-ServicePrincipal]
- -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
+ -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
  [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,25 +31,27 @@ Connect-AzureRmAccount [-Environment <String>] [-Credential] <PSCredential> [-Se
 ### ServicePrincipalCertificateWithSubscriptionId
 ```
 Connect-AzureRmAccount [-Environment <String>] -CertificateThumbprint <String> -ApplicationId <String>
- [-ServicePrincipal] -TenantId <String> [-Subscription <String>] [-ContextName <String>] [-Force]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ServicePrincipal] -TenantId <String> [-Subscription <String>] [-ContextName <String>]
+ [-SkipContextPopulation] [-Force] [-Scope <ContextModificationScope>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccessTokenWithSubscriptionId
 ```
 Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] -AccessToken <String>
  [-GraphAccessToken <String>] [-KeyVaultAccessToken <String>] -AccountId <String> [-Subscription <String>]
- [-ContextName <String>] [-SkipValidation] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ContextName <String>] [-SkipValidation] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ManagedServiceLogin
 ```
 Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId <String>] [-Identity]
- [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-Subscription <String>]
- [-ContextName <String>] [-Force] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ManagedServicePort <Int32>] [-ManagedServiceHostName <String>] [-ManagedServiceSecret <SecureString>]
+ [-Subscription <String>] [-ContextName <String>] [-SkipContextPopulation] [-Force]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +60,8 @@ The Connect-AzureRmAccount cmdlet connects to Azure with an authenticated accoun
 You can use this authenticated account only with Azure Resource Manager cmdlets.
 
 To add an authenticated account for use with Service Management cmdlets, use the Add-AzureAccount or the Import-AzurePublishSettingsFile cmdlet.
+
+If no context is found for the current user, this command will populate the user's context list with a context for each of their (first 25) subscriptions. The list of contexts created for the user can be found by running "Get-AzureRmContext -ListAvailable". To skip this context population, you can run this command with the "-SkipContextPopulation" switch parameter.
 
 After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzureRmAccount.
 
@@ -142,7 +147,7 @@ Specifies an access token.
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +162,7 @@ Account Id for access token
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,7 +174,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,7 +189,7 @@ SPN
 ```yaml
 Type: String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -199,7 +204,7 @@ Certificate Hash (Thumbprint)
 ```yaml
 Type: String
 Parameter Sets: ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -214,7 +219,7 @@ Name of the default context from this login.  You will be able to select this co
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,7 +237,7 @@ The PSCredential object provides the user ID and password for organizational ID 
 ```yaml
 Type: PSCredential
 Parameter Sets: UserWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -244,7 +249,7 @@ Accept wildcard characters: False
 ```yaml
 Type: PSCredential
 Parameter Sets: ServicePrincipalWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -289,7 +294,7 @@ Overwrite the existing context with the same name, if any.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -304,7 +309,7 @@ AccessToken for Graph Service
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -334,7 +339,7 @@ AccessToken for KeyVault Service
 ```yaml
 Type: String
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -349,7 +354,7 @@ Host name for managed service login
 ```yaml
 Type: String
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -364,11 +369,26 @@ Port number for managed service login
 ```yaml
 Type: Int32
 Parameter Sets: ManagedServiceLogin
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: 50342
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagedServiceSecret
+Secret, used for some kinds of managed service login.
+
+```yaml
+Type: SecureString
+Parameter Sets: ManagedServiceLogin
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -379,7 +399,7 @@ Determines the scope of context changes, for example, whether changes apply only
 ```yaml
 Type: ContextModificationScope
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Process, CurrentUser
 
 Required: False
@@ -395,9 +415,24 @@ Indicates that this account authenticates by providing service principal credent
 ```yaml
 Type: SwitchParameter
 Parameter Sets: ServicePrincipalWithSubscriptionId, ServicePrincipalCertificateWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipContextPopulation
+Skips context population if no contexts are found.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -410,7 +445,7 @@ Skip validation for access token
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AccessTokenWithSubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -510,4 +545,3 @@ Credentials, subscription, account, and tenant information for the logged in use
 ## NOTES
 
 ## RELATED LINKS
-

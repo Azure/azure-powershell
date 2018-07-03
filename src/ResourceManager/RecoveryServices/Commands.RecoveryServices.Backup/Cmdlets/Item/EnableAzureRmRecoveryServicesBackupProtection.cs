@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet(VerbsLifecycle.Enable, "AzureRmRecoveryServicesBackupProtection",
         DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(JobBase))]
-    public class EnableAzureRmRecoveryServicesBackupProtection : RecoveryServicesBackupCmdletBase
+    public class EnableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
@@ -82,6 +83,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             {
                 base.ExecuteCmdlet();
 
+                ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
+                string vaultName = resourceIdentifier.ResourceName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+
                 string shouldProcessName = Name;
                 if (ParameterSetName == ModifyProtectionParameterSet)
                 {
@@ -89,17 +94,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 if (ShouldProcess(shouldProcessName, VerbsLifecycle.Enable))
-                {                    
+                {
                     PsBackupProviderManager providerManager =
                         new PsBackupProviderManager(new Dictionary<Enum, object>()
-                    {
-                    {ItemParams.AzureVMName, Name},
-                    {ItemParams.AzureVMCloudServiceName, ServiceName},
-                    {ItemParams.AzureVMResourceGroupName, ResourceGroupName},
-                    {ItemParams.Policy, Policy},
-                    {ItemParams.Item, Item},
-                    {ItemParams.ParameterSetName, this.ParameterSetName},
-                    }, ServiceClientAdapter);
+                        {
+                            { VaultParams.VaultName, vaultName },
+                            { VaultParams.ResourceGroupName, resourceGroupName },
+                            { ItemParams.AzureVMName, Name },
+                            { ItemParams.AzureVMCloudServiceName, ServiceName },
+                            { ItemParams.AzureVMResourceGroupName, ResourceGroupName },
+                            { ItemParams.Policy, Policy },
+                            { ItemParams.Item, Item },
+                            { ItemParams.ParameterSetName, this.ParameterSetName },
+                        }, ServiceClientAdapter);
 
                     IPsBackupProvider psBackupProvider = (Item != null) ?
                         providerManager.GetProviderInstance(Item.WorkloadType, Item.BackupManagementType)
@@ -108,7 +115,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     var itemResponse = psBackupProvider.EnableProtection();
 
                     // Track Response and display job details
-                    HandleCreatedJob(itemResponse, Resources.EnableProtectionOperation);
+                    HandleCreatedJob(
+                        itemResponse,
+                        Resources.EnableProtectionOperation,
+                        vaultName: vaultName,
+                        resourceGroupName: resourceGroupName);
                 }
             });
         }

@@ -37,13 +37,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string storageAccountId,
             string storageAccountLocation,
             string storageAccountType,
-            bool osaOption)
+            bool osaOption,
+            string vaultName = null,
+            string resourceGroupName = null,
+            string vaultLocation = null)
         {
             var useOsa = ShouldUseOsa(rp, osaOption);
 
-            string resourceGroupName = BmsAdapter.GetResourceGroupName();
-            string resourceName = BmsAdapter.GetResourceName();
-            string vaultLocation = BmsAdapter.GetResourceLocation();
+            vaultLocation = vaultLocation ?? BmsAdapter.GetResourceLocation();
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
             string protectedItemUri = HelperUtils.GetProtectedItemUri(uriDict, rp.Id);
@@ -78,8 +79,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             triggerRestoreRequest.Properties = restoreRequest;
 
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
-                resourceName,
-                resourceGroupName,
+                vaultName ?? BmsAdapter.GetResourceName(),
+                resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName,
                 containerUri,
                 protectedItemUri,

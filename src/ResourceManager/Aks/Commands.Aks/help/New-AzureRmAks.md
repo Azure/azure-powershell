@@ -187,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeOsDiskSize
-The default number of nodes for the node pools.
+Size in GB of the OS disk for each node in the node pool. Minimum 30 GB.
 
 ```yaml
 Type: Int32

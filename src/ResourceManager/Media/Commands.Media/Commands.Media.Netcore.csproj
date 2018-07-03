@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Media.Netcore.psd1" Link="AzureRM.Media.Netcore.psd1">
+    <None Include="AzureRM.Media.Netcore.psd1" Link="AzureRM.Media.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

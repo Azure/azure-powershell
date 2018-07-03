@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="MSSharedLibKey.snk" />
-    <None Include="..\AzureRM.DataMigration.psd1">
+    <None Include="AzureRM.DataMigration.psd1">
       <Link>AzureRM.DataMigration.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
