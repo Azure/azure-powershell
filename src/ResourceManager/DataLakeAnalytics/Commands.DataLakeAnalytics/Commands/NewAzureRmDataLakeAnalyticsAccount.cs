@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
                 }
             }
 
-            var defaultStorage = new DataLakeStoreAccountInfo
+            var defaultStorage = new AddDataLakeStoreWithAccountParameters
             {
                 Name = DefaultDataLakeStore
             };

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// </summary>
         /// <param name="dataSourceInfo">The data source information.</param>
         /// <param name="isDefault">if set to <c>true</c> [is default].</param>
-        public AdlDataSource(DataLakeStoreAccountInfo dataSourceInfo, bool isDefault = false)
+        public AdlDataSource(DataLakeStoreAccountInformation dataSourceInfo, bool isDefault = false)
         {
             Name = dataSourceInfo.Name;
             Type = DataLakeAnalyticsEnums.DataSourceType.DataLakeStore;
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Models
         /// Initializes a new instance of the <see cref="AdlDataSource"/> class.
         /// </summary>
         /// <param name="dataSourceInfo">The data source information.</param>
-        public AdlDataSource(StorageAccountInfo dataSourceInfo)
+        public AdlDataSource(StorageAccountInformation dataSourceInfo)
         {
             Name = dataSourceInfo.Name;
             Type = DataLakeAnalyticsEnums.DataSourceType.Blob;

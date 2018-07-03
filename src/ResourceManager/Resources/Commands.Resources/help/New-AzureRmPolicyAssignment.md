@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: BA40BD11-8167-48D7-AC71-72B2FD9924F2
@@ -13,46 +13,46 @@ Creates a policy assignment.
 
 ## SYNTAX
 
-### CreateWithoutParameters (Default)
+### DefaultParameterSet (Default)
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
- [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Sku <Hashtable>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-Description <String>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-Metadata <String>]
+ [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### CreateWithPolicyParameterObject
+### PolicyParameterObjectParameterSet
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
- -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ -PolicyParameterObject <Hashtable> [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### CreateWithPolicyParameterString
+### PolicyParameterStringParameterSet
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] -PolicyDefinition <PSObject> [-PolicySetDefinition <PSObject>]
- -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ -PolicyParameter <String> [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### CreateWithPolicySetParameterObject
+### PolicySetParameterObjectParameterSet
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
- -PolicyParameterObject <Hashtable> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ -PolicyParameterObject <Hashtable> [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### CreateWithPolicySetParameterString
+### PolicySetParameterStringParameterSet
 ```
 New-AzureRmPolicyAssignment -Name <String> -Scope <String> [-NotScope <String[]>] [-DisplayName <String>]
  [-Description <String>] [-PolicyDefinition <PSObject>] -PolicySetDefinition <PSObject>
- -PolicyParameter <String> [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
+ -PolicyParameter <String> [-Metadata <String>] [-Sku <Hashtable>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [<CommonParameters>]
 ```
@@ -65,27 +65,22 @@ Specify a policy and scope.
 
 ### Example 1: Policy assignment at resource group level
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> $Policy = Get-AzureRmPolicyDefinition -Name "VirtualMachinePolicy"
-PS C:\> New-AzureRmPolicyAssignment -Name "VirtualMachinePolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> $Policy = Get-AzureRmPolicyDefinition -Name 'VirtualMachinePolicy'
+PS C:\> New-AzureRmPolicyAssignment -Name 'VirtualMachinePolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-
-The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzureRmPolicyDefinition cmdlet.
-The command stores that object in the $Policy variable.
-
-The final command assigns the policy in $Policy at the level of a resource group.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The second command gets the policy definition named VirtualMachinePolicy by using the Get-AzureRmPolicyDefinition cmdlet and stores it in the $Policy variable.
+The final command assigns the policy in $Policy at the level of the resource group identified by the **ResourceId** property of $ResourceGroup.
 
 ### Example 2: Policy assignment at resource group level with policy parameter object
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
-PS C:\> $Locations = Get-AzureRmLocation | where displayname -like "*east*"
-PS C:\> $AllowedLocations = @{"listOfAllowedLocations"=($Locations.location)}
-PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> $Policy = Get-AzureRmPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
+PS C:\> $Locations = Get-AzureRmLocation | where displayname -like '*east*'
+PS C:\> $AllowedLocations = @{'listOfAllowedLocations'=($Locations.location)}
+PS C:\> New-AzureRmPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameterObject $AllowedLocations
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
@@ -117,19 +112,14 @@ Create a file called _AllowedLocations.json_ in the local working directory with
 ```
 
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> $Policy = Get-AzureRmPolicyDefinition | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations' -and $_.Properties.PolicyType -eq 'BuiltIn'}
-PS C:\> New-AzureRmPolicyAssignment -Name "RestrictLocationPolicyAssignment" -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> $Policy = Get-AzureRmPolicyDefinition -BuiltIn | Where-Object {$_.Properties.DisplayName -eq 'Allowed locations'}
+PS C:\> New-AzureRmPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -PolicyDefinition $Policy -Scope $ResourceGroup.ResourceId -PolicyParameter .\AllowedLocations.json
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-
-The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
-The command stores that object in the $Policy variable.
-
-The final command assigns the policy in $Policy at the level of a resource group using the policy parameter file AllowedLocations.json from the local working directory.
-The **ResourceId** property of $ResourceGroup identifies the resource group.
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet and stores it in the $ResourceGroup variable.
+The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet and stores it in the $Policy variable.
+The final command assigns the policy in $Policy at the resource group identified by the **ResourceId** property of $ResourceGroup using the policy parameter file AllowedLocations.json from the local working directory.
 
 ## PARAMETERS
 
@@ -233,6 +223,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Metadata
+The metadata for the new policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies a name for the policy assignment.
 
@@ -264,11 +269,11 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-Specifies a policy, as a **PSObject** object that contains the policy rule.
+Specifies a policy, as a **PsPolicyDefinition** object that contains the policy rule.
 
 ```yaml
 Type: PSObject
-Parameter Sets: CreateWithoutParameters, CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -280,10 +285,22 @@ Accept wildcard characters: False
 
 ```yaml
 Type: PSObject
-Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicyParameterString
+Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -295,7 +312,7 @@ The policy parameter file path or policy parameter string.
 
 ```yaml
 Type: String
-Parameter Sets: CreateWithPolicyParameterString, CreateWithPolicySetParameterString
+Parameter Sets: PolicyParameterStringParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
 Required: True
@@ -310,7 +327,7 @@ The policy parameter object.
 
 ```yaml
 Type: Hashtable
-Parameter Sets: CreateWithPolicyParameterObject, CreateWithPolicySetParameterObject
+Parameter Sets: PolicyParameterObjectParameterSet, PolicySetParameterObjectParameterSet
 Aliases:
 
 Required: True
@@ -325,7 +342,7 @@ The policy set definition object.
 
 ```yaml
 Type: PSObject
-Parameter Sets: CreateWithoutParameters, CreateWithPolicyParameterObject, CreateWithPolicyParameterString
+Parameter Sets: DefaultParameterSet
 Aliases:
 
 Required: False
@@ -337,7 +354,19 @@ Accept wildcard characters: False
 
 ```yaml
 Type: PSObject
-Parameter Sets: CreateWithPolicySetParameterObject, CreateWithPolicySetParameterString
+Parameter Sets: PolicyParameterObjectParameterSet, PolicyParameterStringParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: PSObject
+Parameter Sets: PolicySetParameterObjectParameterSet, PolicySetParameterStringParameterSet
 Aliases:
 
 Required: True
