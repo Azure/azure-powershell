@@ -18,12 +18,12 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return ValidateInternal(node);
+            return this.ValidateInternal(node);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return ValidateInternal(node);
+            return this.ValidateInternal(node);
         }
         #endregion
 

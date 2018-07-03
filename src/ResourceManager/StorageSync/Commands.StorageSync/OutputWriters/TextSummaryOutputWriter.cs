@@ -21,18 +21,18 @@
             IConsoleWriter consoleWriter, 
             IList<IValidationDescription> validationDescriptions)
         {
-            _consoleWriter = consoleWriter;
-            _validationErrorsHistogram = new Dictionary<ValidationType, long>();
-            _systemValidationResults = new List<IValidationResult>();
+            this._consoleWriter = consoleWriter;
+            this._validationErrorsHistogram = new Dictionary<ValidationType, long>();
+            this._systemValidationResults = new List<IValidationResult>();
 
-            _systemValidationTypes = new HashSet<ValidationType>(validationDescriptions
+            this._systemValidationTypes = new HashSet<ValidationType>(validationDescriptions
                 .Where(o => o.ValidationKind == ValidationKind.SystemValidation)
                 .Select(o => o.ValidationType));
 
-            _validationTypeDescriptions = new Dictionary<ValidationType, string>();
+            this._validationTypeDescriptions = new Dictionary<ValidationType, string>();
             foreach (IValidationDescription validationDescription in validationDescriptions)
             {
-                _validationTypeDescriptions[validationDescription.ValidationType] = validationDescription.DisplayName;
+                this._validationTypeDescriptions[validationDescription.ValidationType] = validationDescription.DisplayName;
             }
         }
         #endregion
@@ -40,52 +40,52 @@
         #region Public methods
         public void Write(IValidationResult validationResult)
         {
-            if (IsSystemValidation(validationResult))
+            if (this.IsSystemValidation(validationResult))
             {
-                _systemValidationResults.Add(validationResult);
+                this._systemValidationResults.Add(validationResult);
             }
             else
             {
                 if (IsError(validationResult))
                 {
-                    if (!_validationErrorsHistogram.ContainsKey(validationResult.Type))
+                    if (!this._validationErrorsHistogram.ContainsKey(validationResult.Type))
                     {
-                        _validationErrorsHistogram[validationResult.Type] = 0;
+                        this._validationErrorsHistogram[validationResult.Type] = 0;
                     }
 
-                    _validationErrorsHistogram[validationResult.Type] += 1;
+                    this._validationErrorsHistogram[validationResult.Type] += 1;
                 }
             }
         }
 
         public void WriteReport(string computerName, INamespaceInfo namespaceInfo)
         {
-            if (_systemValidationResults.Any())
+            if (this._systemValidationResults.Any())
             {
-                _consoleWriter.WriteLine(" ");
-                _consoleWriter.WriteLine($"Evaluated host: {computerName}");
-                _consoleWriter.WriteLine(" ");
-                _consoleWriter.WriteLine("Environment Validation Results");
-                WriteSystemValidationResults();
+                this._consoleWriter.WriteLine(" ");
+                this._consoleWriter.WriteLine($"Evaluated host: {computerName}");
+                this._consoleWriter.WriteLine(" ");
+                this._consoleWriter.WriteLine("Environment Validation Results");
+                this.WriteSystemValidationResults();
             }
 
             if (namespaceInfo != null)
             {
-                _consoleWriter.WriteLine(" ");
-                _consoleWriter.WriteLine($"Evaluated path: {namespaceInfo.Path}");
+                this._consoleWriter.WriteLine(" ");
+                this._consoleWriter.WriteLine($"Evaluated path: {namespaceInfo.Path}");
 
-                _consoleWriter.WriteLine(" ");
-                _consoleWriter.WriteLine("Namespace Validation Results");
-                _consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
-                _consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
-                _consoleWriter.WriteLine(" ");
+                this._consoleWriter.WriteLine(" ");
+                this._consoleWriter.WriteLine("Namespace Validation Results");
+                this._consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
+                this._consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
+                this._consoleWriter.WriteLine(" ");
                 if (!_validationErrorsHistogram.Any())
                 {
-                    _consoleWriter.WriteLine("There were no compatibility issues found with your files.");
+                    this._consoleWriter.WriteLine("There were no compatibility issues found with your files.");
                 }
                 else
                 {
-                    WriteCountOfErrorsFound();
+                    this.WriteCountOfErrorsFound();
                 }
             }
         }
@@ -95,7 +95,7 @@
         #region Private methods
         private bool IsSystemValidation(IValidationResult validationResult)
         {
-            return _systemValidationTypes.Contains(validationResult.Type);
+            return this._systemValidationTypes.Contains(validationResult.Type);
         }
 
         private bool IsError(IValidationResult validationResult)
@@ -105,18 +105,18 @@
 
         private void WriteCountOfErrorsFound()
         {
-            foreach (KeyValuePair<ValidationType, long> entry in _validationErrorsHistogram)
+            foreach (KeyValuePair<ValidationType, long> entry in this._validationErrorsHistogram)
             {
                 string description = DescriptionForValidationType(entry.Key);
-                _consoleWriter.WriteLine($"{description}: {entry.Value}");
+                this._consoleWriter.WriteLine($"{description}: {entry.Value}");
             }
         }
 
         private string DescriptionForValidationType(ValidationType validationType)
         {
-            if (_validationTypeDescriptions.ContainsKey(validationType))
+            if (this._validationTypeDescriptions.ContainsKey(validationType))
             {
-                return _validationTypeDescriptions[validationType];
+                return this._validationTypeDescriptions[validationType];
             }
 
             return validationType.ToString();
@@ -124,10 +124,10 @@
 
         private void WriteSystemValidationResults()
         {
-            foreach (IValidationResult validatonResult in _systemValidationResults)
+            foreach (IValidationResult validatonResult in this._systemValidationResults)
             {
-                string result = IsError(validatonResult) ? "Failed" : "Passed";
-                _consoleWriter.WriteLine($"{DescriptionForValidationType(validatonResult.Type)}: {result}.");
+                string result = this.IsError(validatonResult) ? "Failed" : "Passed";
+                this._consoleWriter.WriteLine($"{DescriptionForValidationType(validatonResult.Type)}: {result}.");
             }
         }
 

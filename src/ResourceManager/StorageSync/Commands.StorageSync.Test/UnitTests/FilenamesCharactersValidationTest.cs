@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceValidations;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {

@@ -4,6 +4,7 @@ using System.Management.Automation.Remoting;
 using System.Security;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Cmdlets;
 using Xunit;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
@@ -64,63 +65,5 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 
             return ss;
         }
-
-        /*
-        [Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
-        public void ItRunsAllSystemValidations()
-        {
-            string username = "testuser";
-            string password = "testpassword";
-            CreateUserOn(username, password, _computerName);
-            
-            string shareName = CreateShareOn(_computerName);
-            GiveAccessToOn(username, shareName, _computerName);
-            
-            InvokeStorageSyncEvalCmdlet cmdlet = new InvokeStorageSyncEvalCmdlet
-            {
-                ComputerName = _computerName,
-                Credential = new PSCredential(username, CreateSecureStringFrom(password))
-            };
-
-
-            IEnumerator results = cmdlet.Invoke().GetEnumerator();
-            results.MoveNext();
-            results.MoveNext();
-            results.MoveNext();
-        }
-
-        [Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]  
-        public void ItRunsNamespaceValidations()
-        {
-            string username = "AFS_test_username";
-            string password = "AFS_test_password";
-            CreateUserOn(username, password, _computerName);
-            
-            string shareName = CreateShareOn(_computerName);
-            GiveAccessToOn(username, shareName, _computerName);
-            
-            InvokeStorageSyncEvalCmdlet cmdlet = new InvokeStorageSyncEvalCmdlet
-            {
-                ComputerName = _computerName,
-                Credential = new PSCredential(username, CreateSecureStringFrom(password))
-            };
-
-
-            IEnumerator results = cmdlet.Invoke().GetEnumerator();
-            results.MoveNext();
-            results.MoveNext();
-            results.MoveNext();
-        }
-
-        private void CreateUserOn(string username, string password, string computerName)
-        {
-            IPowershellCommandRunner commandRunner = new PowerShellCommandRunner(computerName, new PSCredential("", CreateSecureStringFrom("")));
-            commandRunner.AddScript($"New-LocalUser -Name {username} -Password (ConvertTo-SecureString \"{password}\" -AsPlainText -Force) -AccountExpires ((Get-Date).AddMinutes(2))");
-            Collection<PSObject> results = commandRunner.Invoke();
-        }
-        */
-
     }
 }

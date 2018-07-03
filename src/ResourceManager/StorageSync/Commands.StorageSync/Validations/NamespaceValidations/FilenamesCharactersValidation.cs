@@ -35,7 +35,7 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo file)
         {
-            return ValidateInternal(file, isDirectory: false);
+            return this.ValidateInternal(file, isDirectory: false);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo directoryInfo)
@@ -46,7 +46,7 @@
                 return this.SuccessfulResult;
             }
 
-            return ValidateInternal(directoryInfo, isDirectory: true);
+            return this.ValidateInternal(directoryInfo, isDirectory: true);
         }
 
         #endregion

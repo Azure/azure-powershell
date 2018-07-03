@@ -18,4 +18,7 @@
         - Additional information about change #1
 -->
 
-## Version 1.0.0
+## Current Release
+
+* Add Azure File Sync evaluation cmdlet
+    - Invoke-AzureRmStorageSyncCompatibilityCheck

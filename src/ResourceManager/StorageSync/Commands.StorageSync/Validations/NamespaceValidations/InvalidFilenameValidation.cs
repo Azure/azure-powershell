@@ -23,12 +23,12 @@
         #region Protected methods
         protected override IValidationResult DoValidate(IFileInfo node)
         {
-            return Validate(node.Name, node.FullName);
+            return this.Validate(node.Name, node.FullName);
         }
 
         protected override IValidationResult DoValidate(IDirectoryInfo node)
         {
-            return Validate(node.Name, node.FullName);
+            return this.Validate(node.Name, node.FullName);
         }
         #endregion
 

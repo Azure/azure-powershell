@@ -13,7 +13,7 @@
         #region Constructors
         public PsObjectsOutputWriter(ICmdlet cmdlet)
         {
-            _cmdlet = cmdlet;
+            this._cmdlet = cmdlet;
         }
         #endregion
 
@@ -22,7 +22,7 @@
         {
             if (validationResult.Result != Result.Success)
             {
-                _cmdlet.WriteObject(new PSValidationResult(validationResult));
+                this._cmdlet?.WriteObject(new PSValidationResult(validationResult));
             }
 
         }

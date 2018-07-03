@@ -2,6 +2,7 @@
 {
     using Microsoft.Azure.Commands.StorageSync.Evaluation;
     using System;
+    using WindowsAzure.Commands.ScenarioTest;
     using Xunit;
 
     public class AfsPathTests

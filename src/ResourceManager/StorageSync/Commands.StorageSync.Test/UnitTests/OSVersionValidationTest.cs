@@ -7,6 +7,7 @@ using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations;
 using Xunit;
 using Moq;
 using Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.SystemValidations;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
 {
