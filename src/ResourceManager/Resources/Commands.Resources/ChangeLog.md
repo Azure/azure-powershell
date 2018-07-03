@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:
     - Add support for listing -Scope values at management group level
     - Add support for retrieving individual assignments with -Scope values at management group level
@@ -29,6 +31,10 @@
     - Add -ManagementGroupName parameter to apply operations to a given management group
     - Add -SubscriptionId parameter to apply operations to a given subscription
 * Add KeyVault secret reference support in parameters when using `TemplateParameterObject` in `New-AzureRmResourceGroupDeployment`
+* Fix issue where `-EndDate` parameter was ignored for `New-AzureRmADAppCredential`
+    - https://github.com/Azure/azure-powershell/issues/6505
+* Fix issue where `Add-AzureRmADGroupMember` used incorrect URL to make request
+    - https://github.com/Azure/azure-powershell/issues/6485
 
 ## Version 6.1.1
 * Fix error in `New-AzureRmRoleAssignment` help
