@@ -658,7 +658,7 @@
               Properties="XUnitTests=%(XUnitTests.Identity);TestOutputDirectory=$(TestOutputDirectory)"
       ContinueOnError="false" />
 
-    <CallTarget Targets="RunPoliCheck" />
+    <CallTarget Targets="TestFailureCheck" />
   </Target>
 
   <Target Name="BinScopeCheck">
