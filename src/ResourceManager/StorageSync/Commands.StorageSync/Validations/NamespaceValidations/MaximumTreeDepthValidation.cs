@@ -11,7 +11,7 @@
 
         #region Constructors
 
-        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Dataset depth limit", ValidationType.NodeDepth)
+        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Namespace depth limit", ValidationType.NodeDepth)
         {
             this._maxTreeDepth = configuration.MaximumTreeDepth();
         }

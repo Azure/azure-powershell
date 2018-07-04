@@ -11,6 +11,10 @@
     "6.3",
     "10.0"
   ],
+  "ValidOSSkus": [
+    "7",
+    "8"
+  ],
   "InvalidFilenames": [
     "AUX",
     "CLOCK$",
