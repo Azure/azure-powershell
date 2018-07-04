@@ -407,9 +407,14 @@ function Test-DataLakeStoreFileSystem
 		}
 
 		# define all the files and folders to create
+		$encodingFolder="/encodingFolder"
 		$folderToCreate = "/adlspstestfolder"
 		$emptyFilePath = "$folderToCreate\emptyfile.txt" # have one where the slash is in the wrong direction to make sure they get fixed.
 		$contentFilePath = "$folderToCreate/contentfile.txt"
+		$unicodeContentFilePath="$encodingFolder/unicodecontentfile.txt"
+		$unicodetext="I am unicode text"
+		$utf32ContentFilePath="$encodingFolder/unicodecontentfile.txt"
+		$utf32text="I am utf32 text"
 		$concatFile = "$folderToCreate/concatfile.txt"
 		$moveFile = "$folderToCreate/movefile.txt"
 		$movefolder = "/adlspstestmovefolder"
@@ -444,6 +449,19 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual "File" $result.Type
 		Assert-AreEqual $content.length $result.Length
 		
+		#Create empty file and add unicode content
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $unicodeContentFilePath
+		Assert-NotNull $result "No value was returned on content file creation"
+		Add-AzureRmDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Value $unicodetext -Encoding Unicode
+		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Encoding Unicode
+		Assert-AreEqual $unicodetext $retrievedContent
+
+		#Create utf32 file with content
+		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $utf32ContentFilePath -Value $utf32text -Encoding UTF32
+		Assert-NotNull $result "No value was returned on content file creation"
+		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $utf32ContentFilePath -Encoding UTF32
+		Assert-AreEqual $utf32text $retrievedContent
+
 		# set absolute expiration for content file
 		Assert-True {253402300800000 -ge $result.ExpirationTime -or 0 -le $result.ExpirationTime} # validate that expiration is currently max value
 		[DateTimeOffset]$timeToUse = [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::GetVariable("absoluteTime", [DateTimeOffset]::UtcNow.AddSeconds(120))

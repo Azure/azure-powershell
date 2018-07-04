@@ -18,9 +18,8 @@ using System;
 using System.IO;
 using System.Management.Automation;
 using System.Text;
-using static Microsoft.Azure.Commands.DataLakeStore.Models.EncodingUtils;
-using System.Management.Automation;
-using System.Management.Automation.Internal;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),
@@ -88,11 +87,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, ParameterSetName = TailRowParameterSetName,
             Mandatory = false,
             HelpMessage = "Optionally indicates the encoding for the content being downloaded. Default is UTF8")]
-        [ArgumentToEncodingTransformationAttribute()]
-        [EncodingCompleterAttribute()]
-        /*[ArgumentCompletions(
-            EncodingConversion.Unknown, EncodingConversion.String, EncodingConversion.Unicode, EncodingConversion.Byte, EncodingConversion.BigEndianUnicode, EncodingConversion.Ascii, EncodingConversion.Utf8, EncodingConversion.Utf7, EncodingConversion.Utf32, EncodingConversion.Default, EncodingConversion.Oem, EncodingConversion.BigEndianUtf32
-        )]*/
+        [ArgumentToEncodingTransformation]
+        [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32)]
+        
         public Encoding Encoding { get; set; } = Encoding.UTF8;
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 5, ParameterSetName = BaseParameterSetName, Mandatory = false,
@@ -141,14 +138,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
                             {
                                 Array.Resize(ref byteArray, (int)totalLengthRead);
                             }
-                            if (UsingByteEncoding(Encoding))
-                            {
-                                WriteObject(byteArray);
-                            }
-                            else
-                            {
-                                WriteObject(BytesToString(byteArray, Encoding));
-                            }
+
+                            WriteObject(BytesToString(byteArray, Encoding));
+                            
                         }
                     });
             }

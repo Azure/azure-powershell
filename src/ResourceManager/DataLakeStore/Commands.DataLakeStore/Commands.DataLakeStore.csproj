@@ -100,7 +100,6 @@
     <Compile Include="DataPlaneModels\DataLakeStoreFileSystemCmdletBase.cs" />
     <Compile Include="Models\DataLakeStoreTracingInterceptor.cs" />
     <Compile Include="Models\DataLakeStoreTraceLogger.cs" />
-    <Compile Include="Models\FileSystemCmdletProviderEncoding.cs" />
     <Compile Include="Models\PSDataLakeStoreAccountBasic.cs" />
     <Compile Include="Models\PSDataLakeStoreAccount.cs" />
     <Compile Include="Models\DataLakeStoreTrustedIdProvider.cs" />

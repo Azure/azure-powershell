@@ -83,48 +83,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
             return encoding.GetBytes(content);
         }
 
-        /// <summary>
-        /// Gets the Byte Encoding status of the StreamType parameter.  Returns true
-        /// if the stream was opened with "Byte" encoding, false otherwise.
-        /// </summary>
-        internal static bool UsingByteEncoding(Encoding encoding)
-        {
-            return encoding.GetType() == Encoding.UTF8.GetType();
-        } // UsingByteEncoding
-
         internal static byte[] GetBytes(object content, Encoding encoding)
         {
-            if (UsingByteEncoding(encoding))
-            {
-                // first attempt to convert it directly into a byte array
-                var byteArray = content as byte[];
-                if (byteArray != null)
-                {
-                    return byteArray;
-                }
-
-                // attempt to convert the object into an object array
-                var contentArray = content as object[];
-                if (contentArray == null)
-                {
-                    throw new CloudException(Resources.InvalidEncoding);
-                }
-
-                // now, for each element in the content array, ensure it is of type byte
-                var byteList = new List<byte>();
-                foreach (var entry in contentArray)
-                {
-                    if (!(entry is byte))
-                    {
-                        throw new CloudException(Resources.InvalidEncoding);
-                    }
-
-                    byteList.Add((byte)entry);
-                }
-
-                return byteList.ToArray();
-            }
-
             var contentString = content as string;
             if (contentString == null)
             {
@@ -147,11 +107,6 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Models
         protected CancellationToken CmdletCancellationToken;
     }
 
-    internal static class NativeMethods
-    {
-        [DllImport("api-ms-win-core-localization-l1-2-1.dll", SetLastError = false, CharSet = CharSet.Unicode)]
-        internal static extern uint GetOEMCP();
-    }
 
     #endregion
 }
