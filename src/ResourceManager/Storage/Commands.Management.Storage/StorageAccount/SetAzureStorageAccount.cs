@@ -181,6 +181,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable Azure Files AAD Integration for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        [Alias(EnableFilesAadIntegrationAlias)]
+        public bool EnableAzureFilesAadIntegrationForSMB
+        {
+            get
+            {
+                return enableAzureFilesAadIntegrationForSMB.Value;
+            }
+            set
+            {
+                enableAzureFilesAadIntegrationForSMB = value;
+            }
+        }
+        private bool? enableAzureFilesAadIntegrationForSMB = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
         public SwitchParameter UpgradeToStorageV2 { get; set; }
 
@@ -250,6 +268,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     if (UpgradeToStorageV2.IsPresent)
                     {
                         updateParameters.Kind = Kind.StorageV2;
+                    }
+                    if (enableAzureFilesAadIntegrationForSMB != null)
+                    {
+                        updateParameters.EnableAzureFilesAadIntegration = enableAzureFilesAadIntegrationForSMB;
                     }
 
                     var updatedAccountResponse = this.StorageClient.StorageAccounts.Update(

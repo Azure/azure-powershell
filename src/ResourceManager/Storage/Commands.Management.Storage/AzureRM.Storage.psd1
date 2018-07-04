@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.0.4'
+ModuleVersion = '5.0.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -134,8 +134,9 @@ PrivateData = @{
 
         # ReleaseNotes of this module
 
-        ReleaseNotes = '* Support create Storage account with Hierarchical Namespace enabled 
-       - New-AzureRmStorageAccount'
+        ReleaseNotes = '* Support enable or disable FilesAadIntegration for SMB when create or update Storage account
+       - New-AzureRmStorageAccount
+       - Set-AzureRmStorageAccount'
 
         # Prerelease string of this module
         Prerelease = 'preview'

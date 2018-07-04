@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Management.Storage.dll-Help.xml
 Module Name: AzureRM.Storage
 ms.assetid: 4D7EEDD7-89D4-4B1E-A9A1-B301E759CE72
@@ -16,18 +16,19 @@ Modifies a Storage account.
 ### StorageEncryption (Default)
 ```
 Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
- [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
- [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
- [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-StorageEncryption] [-AssignIdentity]
+ [-NetworkRuleSet <PSNetworkRuleSet>] [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
 ```
 Set-AzureRmStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
- [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>]
- [-Tag <Hashtable>] [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
- -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>] [-UpgradeToStorageV2] [-AsJob]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-KeyvaultEncryption] -KeyName <String> -KeyVersion <String>
+ -KeyVaultUri <String> [-AssignIdentity] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-EnableAzureFilesAadIntegrationForSMB <Boolean>] [-UpgradeToStorageV2] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -113,6 +114,13 @@ PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountN
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
+### Example 10: Enable Azure Files AAD Integration on a Storage account
+```
+PS C:\> Set-AzureRmStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureFilesAadIntegrationForSMB $true
+```
+
+The command enables Azure Files AAD Integration on a Storage account
+
 ## PARAMETERS
 
 ### -AccessTier
@@ -128,7 +136,7 @@ If the Storage account has Kind as Storage, do not specify the *AccessTier* para
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Hot, Cool
 
 Required: False
@@ -144,7 +152,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,7 +167,7 @@ Generate and assign a new Storage account Identity for this Storage account for 
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -174,7 +182,7 @@ Specifies the name of the custom domain.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -198,13 +206,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureFilesAadIntegrationForSMB
+Indicates whether or not the Storage account enabled Azure Files AAD Integration for SMB.
+
+```yaml
+Type: Boolean
+Parameter Sets: (All)
+Aliases: EnableFilesAADIntegration
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHttpsTrafficOnly
 Indicates whether or not the Storage account only enables HTTPS traffic.
 
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -219,7 +242,7 @@ Forces the change to be written to the Storage account.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -234,7 +257,7 @@ If using -KeyvaultEncryption to enable encryption with Key Vault, specify the Ke
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -250,7 +273,7 @@ If KeyName, KeyVersion, and KeyVaultUri are all set, KeySource will be set to Mi
 ```yaml
 Type: SwitchParameter
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -265,7 +288,7 @@ When using Key Vault Encryption by specifying the -KeyvaultEncryption parameter,
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -280,7 +303,7 @@ When using Key Vault Encryption by specifying the -KeyvaultEncryption parameter,
 ```yaml
 Type: String
 Parameter Sets: KeyvaultEncryption
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -310,7 +333,7 @@ NetworkRuleSet is used to define a set of configuration rules for firewalls and 
 ```yaml
 Type: PSNetworkRuleSet
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -325,7 +348,7 @@ Specifies the name of the resource group in which to modify the Storage account.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -366,7 +389,7 @@ Indicates whether or not to set the Storage account encryption to use Microsoft-
 ```yaml
 Type: SwitchParameter
 Parameter Sets: StorageEncryption
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -398,7 +421,7 @@ Upgrade Storage account Kind from  Storage or BlobStorage to StorageV2.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -413,7 +436,7 @@ Indicates whether to enable indirect CName validation.
 ```yaml
 Type: Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
