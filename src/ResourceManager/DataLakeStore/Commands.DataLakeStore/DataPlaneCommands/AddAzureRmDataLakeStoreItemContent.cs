@@ -15,7 +15,7 @@
 using Microsoft.Azure.Commands.DataLakeStore.Models;
 using System.Management.Automation;
 using System.Text;
-using static Microsoft.Azure.Commands.DataLakeStore.Models.EncodingUtils;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
@@ -46,10 +46,8 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 3, Mandatory = false,
             HelpMessage =
                 "Optionally indicates the encoding for the content being uploaded as part of 'Value'. Default is UTF8")]
-        [ArgumentToEncodingTransformationAttribute()]
-        [ArgumentCompletionsAttribute(
-            EncodingConversion.Unknown, EncodingConversion.String, EncodingConversion.Unicode, EncodingConversion.Byte, EncodingConversion.BigEndianUnicode, EncodingConversion.Ascii, EncodingConversion.Utf8, EncodingConversion.Utf7, EncodingConversion.Utf32, EncodingConversion.Default, EncodingConversion.Oem, EncodingConversion.BigEndianUtf32
-        )]
+        [ArgumentToEncodingTransformation]
+        [PSArgumentCompleter(EncodingUtils.Unknown, EncodingUtils.String, EncodingUtils.Unicode, EncodingUtils.BigEndianUnicode, EncodingUtils.Ascii, EncodingUtils.Utf8, EncodingUtils.Utf7, EncodingUtils.Utf32, EncodingUtils.Default, EncodingUtils.Oem, EncodingUtils.BigEndianUtf32)]
         public Encoding Encoding { get; set; } = Encoding.UTF8;
 
         public override void ExecuteCmdlet()
