@@ -30,6 +30,7 @@ using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
 {
@@ -85,11 +86,12 @@ namespace Microsoft.Azure.Commands.ScenarioTest.DnsTests
         }
 
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             string callingClassType = TestUtilities.GetCallingClass(2);
             string mockName = TestUtilities.GetCurrentMethodName(2);
 
+            helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 () => scripts,

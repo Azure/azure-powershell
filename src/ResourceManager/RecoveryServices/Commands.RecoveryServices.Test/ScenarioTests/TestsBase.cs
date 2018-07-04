@@ -24,6 +24,7 @@ using InternalRmNS = Microsoft.Azure.Management.Internal.Resources;
 using LegacyTest = Microsoft.Azure.Test;
 using ResourceManagementNS = Microsoft.Azure.Management.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
 {
@@ -75,10 +76,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 this.csmTestFactory);
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = LegacyTest.TestUtilities.GetCallingClass(2);
             var mockName = LegacyTest.TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
