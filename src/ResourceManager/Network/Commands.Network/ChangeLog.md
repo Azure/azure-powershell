@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,9 @@
 --->
 
 ## Current Release
+
+## Version 6.3.1
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
 
 ## Version 6.3.0
 * Expose new Skus for Zone-Redundant VirtualNetworkGateways
