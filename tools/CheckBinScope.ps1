@@ -41,6 +41,3 @@ else
 {
     Remove-Item $PSScriptRoot/../src/Package/BinScope
 }
-
-
-

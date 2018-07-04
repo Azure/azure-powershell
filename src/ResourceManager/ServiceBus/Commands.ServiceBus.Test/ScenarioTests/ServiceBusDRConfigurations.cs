@@ -16,6 +16,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+    using ServiceBus;
     using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
@@ -27,6 +28,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
+            ServiceBusClient.ServiceBusDRWaitTime = 0;
         }
 
         [Fact]

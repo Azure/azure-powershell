@@ -372,7 +372,7 @@ function Test-RemoveDatabaseRestorePoint
 
 		Remove-AzureRmSqlDatabaseRestorePoint -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName -RestorePointCreationDate $restorePoint.RestorePointCreationDate
 
-		Start-Sleep -s 60
+		Wait-Seconds 60
 	    # Get restore points from data warehouse database.
 		$restorePoints = Get-AzureRmSqlDatabaseRestorePoints -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $dwdb.DatabaseName
 
