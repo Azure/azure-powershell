@@ -92,11 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public IEnumerable<PSRoleDefinition> FilterRoleDefinitions(string name, string scope, ulong first = ulong.MaxValue, ulong skip = 0)
         {
             Rest.Azure.OData.ODataQuery<RoleDefinitionFilter> odataFilter = new Rest.Azure.OData.ODataQuery<RoleDefinitionFilter>(item => item.RoleName == name);
-            return new GenericPageEnumerable<RoleDefinition>(
-                delegate ()
-                {
-                    return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter);
-                }, AuthorizationManagementClient.RoleDefinitions.ListNext, first, skip)
+            return AuthorizationManagementClient.RoleDefinitions.List(scope, odataFilter)
                   .Select(r => r.ToPSRoleDefinition());
         }
 
@@ -209,7 +205,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                 if (!string.IsNullOrEmpty(options.Scope))
                 {
-					var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
+                    var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
                     result.AddRange(tempResult
                         .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                         .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
@@ -230,8 +226,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             }
             else if (!string.IsNullOrEmpty(options.Scope))
             {
-				// Filter by scope and above directly
-				var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
+                // Filter by scope and above directly
+                var tempResult = AuthorizationManagementClient.RoleAssignments.ListForScope(options.Scope, odataQuery);
                 result.AddRange(tempResult
                     .FilterRoleAssignmentsOnRoleId(AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromSubscriptionAndIdAsGuid(currentSubscription, options.RoleDefinitionId))
                     .ToPSRoleAssignments(this, ActiveDirectoryClient, options.Scope, options.ExcludeAssignmentsForDeletedPrincipals));
