@@ -74,7 +74,7 @@ namespace Commands.Network.Test.ScenarioTests
             //Because of the need to get a token for the remote VNets's tenant, we cant ruin this under a service principal
             //This test needs to be run in a live user mode only where the user is asusmed to  have access to both the tenants
 
-            NetworkResourcesController.NewInstance.RunPsTest("Test-MultiTenantVNetPCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiTenantVNetPCRUD");
 
         }
 
