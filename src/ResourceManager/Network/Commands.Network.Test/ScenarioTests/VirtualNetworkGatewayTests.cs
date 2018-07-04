@@ -101,7 +101,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.brooklynft)]
         public void VirtualNetworkGatewayOpenVPNTest()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkGatewayOpenVPN");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkGatewayOpenVPN");
         }
 
         [Fact]
