@@ -171,6 +171,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScenarioTests\TDECertificateTests.cs" />
     <Compile Include="ScenarioTests\BlobAuditingTests.cs" />
     <Compile Include="ScenarioTests\BlobAuditingClassicStorageTests.cs" />
     <Compile Include="ScenarioTests\AuditingClassicStorageTests.cs" />
@@ -190,6 +191,9 @@
     <Compile Include="ScenarioTests\DatabaseReplicationTests.cs" />
     <Compile Include="ScenarioTests\DatabaseCrudTests.cs" />
     <Compile Include="ScenarioTests\DataMaskingTests.cs" />
+    <None Include="ScenarioTests\TDECertificateTests.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\BlobAuditingTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -1025,6 +1029,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.ServerDnsAliasTests\TestServerDnsAliasRemove.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerDefaultParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerDefaultParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerInputObjectParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerInputObjectParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerResourceIdParameterSetNoPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerResourceIdParameterSetWithPassword.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include=".\SessionRecords\Microsoft.Azure.Commands.Sql.Test.ScenarioTests.TDECertificateTests\TestAddTdeCertificateForSqlServerWithPiping.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
