@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
+    using ServiceManagemenet.Common.Models;
     using System;
     using System.IO;
     using System.Linq;
@@ -77,10 +78,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
                 this.TrafficManagerManagementClient);
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             string callingClassType = TestUtilities.GetCallingClass(2);
             string mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             this.RunPsTestWorkflow(
                 () => scripts,

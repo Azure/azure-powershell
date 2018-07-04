@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestMabGetContainers()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Mab, "Test-MabGetContainers");
+                _logger, PsBackupProviderTypes.Mab, "Test-MabGetContainers");
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestMabUnregisterContainer()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.Mab, "Test-MabUnregisterContainer");
+                _logger, PsBackupProviderTypes.Mab, "Test-MabUnregisterContainer");
         }
     }
 }

@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
     using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
     using Microsoft.Azure.Management.WebSites.Version2016_09_01;
     using System.IO;
+    using ServiceManagemenet.Common.Models;
 
     /// <summary>
     /// Test controller for the logic app scenario testing
@@ -103,10 +104,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         /// Runs the PowerShell test
         /// </summary>
         /// <param name="scripts">script to be executed</param>
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,

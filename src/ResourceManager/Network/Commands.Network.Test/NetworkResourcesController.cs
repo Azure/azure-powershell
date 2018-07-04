@@ -27,7 +27,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Network.Test
 {
@@ -52,8 +52,9 @@ namespace Commands.Network.Test
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Compute", null);

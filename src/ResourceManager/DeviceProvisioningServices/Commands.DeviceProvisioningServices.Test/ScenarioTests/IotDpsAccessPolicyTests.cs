@@ -22,16 +22,19 @@ namespace Commands.DeviceProvisioningServices.Test
 {
     public class IotDpsAccessPolicyTests : RMTestBase
     {
-        public IotDpsAccessPolicyTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public IotDpsAccessPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IotDpsAccessPolicyLifeCycle()
         {
-            IotDpsController.NewInstance.RunPsTest("Test-AzureIotDpsAccessPolicyLifeCycle");
+            IotDpsController.NewInstance.RunPsTest(_logger, "Test-AzureIotDpsAccessPolicyLifeCycle");
         }
     }
 }

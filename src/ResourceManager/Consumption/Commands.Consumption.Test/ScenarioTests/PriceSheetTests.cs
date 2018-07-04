@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
     public class PriceSheetTests : RMTestBase
     {
-        public PriceSheetTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public PriceSheetTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -34,21 +37,21 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPriceSheets()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListPriceSheets");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListPriceSheets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListPriceSheetsWithMeterDetailsExpand()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListPriceSheetsWithMeterDetailsExpand");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListPriceSheetsWithMeterDetailsExpand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodPriceSheets()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListBillingPeriodPriceSheets");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodPriceSheets");
         }
     }
 }

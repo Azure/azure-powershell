@@ -68,11 +68,6 @@ namespace Microsoft.Azure.Commands.Maps.Test
         public void RunPsTest(XunitTracingInterceptor traceInterceptor, params string[] scripts)
         {
             helper.TracingInterceptor = traceInterceptor;
-            RunPsTest(scripts);
-        }
-
-        public void RunPsTest(params string[] scripts)
-        {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
 

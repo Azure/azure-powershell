@@ -36,6 +36,7 @@ using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtili
 using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
@@ -83,8 +84,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(bool createWasbAccount, params string[] scripts)
+        public void RunPsTest(bool createWasbAccount, XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
             RunPsTestWorkflow(createWasbAccount,
