@@ -414,7 +414,7 @@ function Test-DataLakeStoreFileSystem
 		$contentFilePath = "$folderToCreate/contentfile.txt"
 		$unicodeContentFilePath="$encodingFolder/unicodecontentfile.txt"
 		$unicodetext="I am unicode text"
-		$utf32ContentFilePath="$encodingFolder/unicodecontentfile.txt"
+		$utf32ContentFilePath="$encodingFolder/utf32contentfile.txt"
 		$utf32text="I am utf32 text"
 		$concatFile = "$folderToCreate/concatfile.txt"
 		$moveFile = "$folderToCreate/movefile.txt"
@@ -451,16 +451,16 @@ function Test-DataLakeStoreFileSystem
 		Assert-AreEqual $content.length $result.Length
 		
 		#Create empty file and add unicode content
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $unicodeContentFilePath
+		$result = New-AdlStoreItem -Account $accountName -path $unicodeContentFilePath
 		Assert-NotNull $result "No value was returned on content file creation"
-		Add-AzureRmDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Value $unicodetext -Encoding Unicode
-		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Encoding Unicode
+		Add-AdlStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Value $unicodetext -Encoding Unicode
+		$retrievedContent = Get-AdlStoreItemContent -Account $accountName -Path $unicodeContentFilePath -Encoding Unicode
 		Assert-AreEqual $unicodetext $retrievedContent
 
 		#Create utf32 file with content
-		$result = New-AzureRMDataLakeStoreItem -Account $accountName -path $utf32ContentFilePath -Value $utf32text -Encoding UTF32
+		$result = New-AdlStoreItem -Account $accountName -path $utf32ContentFilePath -Value $utf32text -Encoding UTF32
 		Assert-NotNull $result "No value was returned on content file creation"
-		$retrievedContent = Get-AzureRMDataLakeStoreItemContent -Account $accountName -Path $utf32ContentFilePath -Encoding UTF32
+		$retrievedContent = Get-AdlStoreItemContent -Account $accountName -Path $utf32ContentFilePath -Encoding UTF32
 		Assert-AreEqual $utf32text $retrievedContent
 
 		# set absolute expiration for content file
@@ -597,7 +597,8 @@ function Test-DataLakeStoreFileSystem
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $moveFolder}
     	Assert-True {Remove-AdlStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AdlStoreItem -Account $accountName -path $summaryFolder}
-		
+		Assert-True {Remove-AdlStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
+    
 		# Delete Data Lake account
 		Assert-True {Remove-AdlStore -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
 

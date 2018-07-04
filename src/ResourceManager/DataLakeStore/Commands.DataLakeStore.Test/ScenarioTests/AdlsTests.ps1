@@ -413,7 +413,7 @@ function Test-DataLakeStoreFileSystem
 		$contentFilePath = "$folderToCreate/contentfile.txt"
 		$unicodeContentFilePath="$encodingFolder/unicodecontentfile.txt"
 		$unicodetext="I am unicode text"
-		$utf32ContentFilePath="$encodingFolder/unicodecontentfile.txt"
+		$utf32ContentFilePath="$encodingFolder/utf32contentfile.txt"
 		$utf32text="I am utf32 text"
 		$concatFile = "$folderToCreate/concatfile.txt"
 		$moveFile = "$folderToCreate/movefile.txt"
@@ -595,6 +595,7 @@ function Test-DataLakeStoreFileSystem
 		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $moveFolder}
 		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $summaryFolder -force -recurse -passthru} "Remove folder failed"
 		Assert-Throws {Get-AzureRMDataLakeStoreItem -Account $accountName -path $summaryFolder}
+		Assert-True {Remove-AzureRMDataLakeStoreItem -Account $accountName -paths $encodingFolder -force -recurse -passthru} "Remove folder failed"
     
 		# Delete Data Lake account
 		Assert-True {Remove-AzureRMDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $accountName -Force -PassThru} "Remove Account failed."
