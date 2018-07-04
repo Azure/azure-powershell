@@ -16,7 +16,7 @@ Gets the contents of a file in Data Lake Store.
 ### PreviewFileContent (Default)
 ```
 Get-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Offset] <Int64>]
- [[-Length] <Int64>] [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Force]
+ [[-Length] <Int64>] [[-Encoding] <System.Encoding>] [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,7 +92,6 @@ The acceptable values for this parameter are:
 - Unknown
 - String
 - Unicode
-- Byte
 - BigEndianUnicode
 - UTF8
 - UTF7

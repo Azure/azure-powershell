@@ -15,7 +15,7 @@ Adds content to an item in a Data Lake Store.
 
 ```
 Add-AzureRmDataLakeStoreItemContent [-Account] <String> [-Path] <DataLakeStorePathInstance> [-Value] <Object>
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-DefaultProfile <IAzureContextContainer>]
+ [[-Encoding] <System.Encoding>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -70,7 +70,6 @@ The acceptable values for this parameter are:
 - Unknown
 - String
 - Unicode
-- Byte
 - BigEndianUnicode
 - UTF8
 - UTF7

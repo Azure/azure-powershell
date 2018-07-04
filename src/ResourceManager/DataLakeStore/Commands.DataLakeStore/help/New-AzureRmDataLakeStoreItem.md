@@ -15,7 +15,7 @@ Creates a new file or folder in Data Lake Store.
 
 ```
 New-AzureRmDataLakeStoreItem [-Account] <String> [-Path] <DataLakeStorePathInstance> [[-Value] <Object>]
- [[-Encoding] <FileSystemCmdletProviderEncoding>] [-Folder] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [[-Encoding] <System.Encoding>] [-Folder] [-Force] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -73,7 +73,6 @@ The acceptable values for this parameter are:
 - Unknown
 - String
 - Unicode
-- Byte
 - BigEndianUnicode
 - UTF8
 - UTF7
