@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.3
 * Fixed formatting of OutputType in help files
 * Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag
 

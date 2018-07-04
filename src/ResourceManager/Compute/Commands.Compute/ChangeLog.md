@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update help for `Set-AzureRmVMAccessExtension`
+
+## Version 5.2.0
 * IP Tag feature for VMSS
     - `New-AzureRmVmssIpTagConfig` cmdlet is added
     - IpTag parameter is added to New-AzureRmVmssIpConfig

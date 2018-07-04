@@ -8,8 +8,8 @@ schema: 2.0.0
 # Get-AzureRmContextAutosaveSetting
 
 ## SYNOPSIS
-Display metadata about the context autosave feature, including whterh the context is 
-automaticallys aved, and where saved context and credential information cna be found.
+Display metadata about the context autosave feature, including whether the context is 
+automatically saved, and where saved context and credential information can be found.
 
 ## SYNTAX
 

@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
