@@ -11,10 +11,14 @@
         #region Fields and Properties
         private readonly Dictionary<string, string> _osversions;
         private readonly Dictionary<uint, string> _editions;
+        private readonly IList<string> _validOsVersions;
+        private readonly IList<uint> _validOsSkus;
+        private readonly string _supportedVersionsString;
+        private readonly string _supportedEditionsStrings;
         #endregion
 
         #region Constructors
-        public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)
+        public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version", ValidationType.OsVersion)
         {
             this._osversions = new Dictionary<string, string>();
             this._osversions["10.0"] = "Windows Server 2016";
@@ -52,6 +56,12 @@
             this._editions[40] = "Standard Edition without Hyper-V, Server Core";
             this._editions[41] = "Enterprise Edition without Hyper-V, Server Core";
             this._editions[42] = "Hyper-V Server";
+
+            this._validOsVersions = configuration.ValidOsVersions().ToList();
+            this._validOsSkus = configuration.ValidOsSKU().ToList();
+            this._supportedVersionsString = String.Join(", ", this._validOsVersions.Where(o => this._osversions.ContainsKey(o)).Select(o => this._osversions[o]));
+            this._supportedEditionsStrings = String.Join(", ", this._validOsSkus.Where(o => this._editions.ContainsKey(o)).Select(o => this._editions[o]));
+
         }
         #endregion
 
@@ -76,25 +86,21 @@
 
             if (!IsValidVersion(osVersion))
             {
-                string supportedVersions = String.Join(", ", this.Configuration.ValidOsVersions().Where(o => this._osversions.ContainsKey(o)).Select(o => this._osversions[o]));
-
                 return new ValidationResult()
                 {
-                    Description = $"OS version {osVersion} is not supported. Supported versions are: {supportedVersions}",
+                    Description = $"OS version {osVersion} is not supported. Supported versions are: {this._supportedVersionsString}",
                     Level = ResultLevel.Error,
                     Type = this.ValidationType,
                     Result = Result.Fail
                 };
             }
 
-            if (!IsValidSKU(sku))
+            if (!this.IsValidSKU(sku))
             {
                 string skuEdition = this._editions.ContainsKey(sku) ? this._editions[sku] : sku.ToString();
-                string supportedSKU = String.Join(", ", this.Configuration.ValidOsSKU().Where(o => this._editions.ContainsKey(o)).Select(o => this._editions[o]));
-
                 return new ValidationResult()
                 {
-                    Description = $"OS edition '{skuEdition}' is not supported. Supported editions are: {supportedSKU}",
+                    Description = $"OS edition '{skuEdition}' is not supported. Supported editions are: {this._supportedEditionsStrings}",
                     Level = ResultLevel.Error,
                     Type = this.ValidationType,
                     Result = Result.Fail
@@ -108,7 +114,7 @@
         #region Private methods
         private bool IsValidVersion(string osVersion)
         {
-            foreach (string supportedOsVersion in this.Configuration.ValidOsVersions())
+            foreach (string supportedOsVersion in this._validOsVersions)
             {
                 if (osVersion.StartsWith($"{supportedOsVersion}."))
                 {
@@ -121,7 +127,7 @@
 
         private bool IsValidSKU(uint sku)
         {
-            return this.Configuration.ValidOsSKU().Contains(sku);
+            return this._validOsSkus.Contains(sku);
         }
         #endregion
     }

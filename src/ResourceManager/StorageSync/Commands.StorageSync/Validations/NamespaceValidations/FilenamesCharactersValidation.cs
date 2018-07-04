@@ -17,7 +17,7 @@
         public FilenamesCharactersValidation(
             IConfiguration configuration): base(
                 configuration,
-                "File/Directory with unsupported char",
+                "File/Directory names with unsupported characters",
                 ValidationType.FilenameCharacters)
         {
             var whitelistOfCodePointRanges = configuration.WhitelistOfCodePointRanges().ToList();

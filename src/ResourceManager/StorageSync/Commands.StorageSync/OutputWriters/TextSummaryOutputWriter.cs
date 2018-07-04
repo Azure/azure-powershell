@@ -63,19 +63,18 @@
             if (this._systemValidationResults.Any())
             {
                 this._consoleWriter.WriteLine(" ");
-                this._consoleWriter.WriteLine($"Evaluated host: {computerName}");
+                this._consoleWriter.WriteLine("Environment validation results:");
                 this._consoleWriter.WriteLine(" ");
-                this._consoleWriter.WriteLine("Environment Validation Results");
+                this._consoleWriter.WriteLine($"Computer name: {computerName}");
                 this.WriteSystemValidationResults();
             }
 
             if (namespaceInfo != null)
             {
                 this._consoleWriter.WriteLine(" ");
-                this._consoleWriter.WriteLine($"Evaluated path: {namespaceInfo.Path}");
-
+                this._consoleWriter.WriteLine("Namespace validation results:");
                 this._consoleWriter.WriteLine(" ");
-                this._consoleWriter.WriteLine("Namespace Validation Results");
+                this._consoleWriter.WriteLine($"Path: {namespaceInfo.Path}");
                 this._consoleWriter.WriteLine($"Number of files scanned: {namespaceInfo.NumberOfFiles}");
                 this._consoleWriter.WriteLine($"Number of directories scanned: {namespaceInfo.NumberOfDirectories}");
                 this._consoleWriter.WriteLine(" ");
@@ -85,6 +84,8 @@
                 }
                 else
                 {
+                    this._consoleWriter.WriteLine("The following compatibility issues were found:");
+                    this._consoleWriter.WriteLine("");
                     this.WriteCountOfErrorsFound();
                 }
             }

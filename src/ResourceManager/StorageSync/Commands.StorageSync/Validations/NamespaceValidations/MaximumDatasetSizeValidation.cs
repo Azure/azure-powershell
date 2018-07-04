@@ -10,7 +10,7 @@
 
         #region Constructors
 
-        public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Dataset size limit", ValidationType.DatasetSize)
+        public MaximumDatasetSizeValidation(IConfiguration configuration) : base(configuration, "Namespace size limit", ValidationType.DatasetSize)
         {
             this._maxDataSetSize = configuration.MaximumDatasetSizeInBytes();
         }

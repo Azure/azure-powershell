@@ -15,6 +15,7 @@
         {
             [DataMember] public List<string> ValidFilesystems;
             [DataMember] public List<string> ValidOSVersions;
+            [DataMember] public List<uint> ValidOSSkus;
             [DataMember] public List<string> InvalidFilenames;
             [DataMember] public List<CodePointRange> WhitelistOfCodePointRanges;
             [DataMember] public List<int> BlacklistOfCodePoints;
@@ -54,19 +55,9 @@
             using (Stream configStream = assembly.GetManifestResourceStream(resourceName))
             {
                 DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
-                _validationsConfiguration =
+                this._validationsConfiguration =
                     (ValidationsConfiguration)validationsConfigurationJsonSerializer.ReadObject(configStream);
             }
-
-            // this code loads configuration from file
-            // commented out due to a decision of using embedded resource instead
-            //
-            //string pathToExecutingAssembly = ExecutingAssemblyPath();
-            //string pathToConfigFile = Path.Combine(pathToExecutingAssembly, Configuration.ConfigFilename);
-            //Stream configStream = new FileStream(pathToConfigFile, FileMode.Open, FileAccess.Read);
-            //DataContractJsonSerializer validationsConfigurationJsonSerializer = new DataContractJsonSerializer(typeof(ValidationsConfiguration));
-            //_validationsConfiguration =
-            //    (ValidationsConfiguration) validationsConfigurationJsonSerializer.ReadObject(configStream);
 		}
 
         private string ExecutingAssemblyPath()
@@ -82,59 +73,57 @@
 
         public IEnumerable<string> ValidFilesystems()
         {
-            return _validationsConfiguration.ValidFilesystems;
+            return this._validationsConfiguration.ValidFilesystems;
         }
 
         public IEnumerable<string> ValidOsVersions()
         {
-            return _validationsConfiguration.ValidOSVersions;
+            return this._validationsConfiguration.ValidOSVersions;
         }
 
         public IEnumerable<uint> ValidOsSKU()
         {
-            return new uint[] {
-                7, 8, 9, 10
-            };
+            return this._validationsConfiguration.ValidOSSkus;
         }
 
         public IEnumerable<string> InvalidFileNames()
         {
-            return _validationsConfiguration.InvalidFilenames;
+            return this._validationsConfiguration.InvalidFilenames;
         }
 
         public IEnumerable<CodePointRange> WhitelistOfCodePointRanges()
         {
-            return _validationsConfiguration.WhitelistOfCodePointRanges;
+            return this._validationsConfiguration.WhitelistOfCodePointRanges;
         }
 
         public IEnumerable<int> BlacklistOfCodePoints()
         {
-            return _validationsConfiguration.BlacklistOfCodePoints;
+            return this._validationsConfiguration.BlacklistOfCodePoints;
         }
 
         public int MaximumFilenameLength()
         {
-            return _validationsConfiguration.MaximumFilenameLength;
+            return this._validationsConfiguration.MaximumFilenameLength;
         }
 
         public long MaximumFileSizeInBytes()
         {
-            return _validationsConfiguration.MaximumFileSizeInBytes;
+            return this._validationsConfiguration.MaximumFileSizeInBytes;
         }
 
         public int MaximumPathLength()
         {
-            return _validationsConfiguration.MaximumPathLength;
+            return this._validationsConfiguration.MaximumPathLength;
         }
 
         public int MaximumTreeDepth()
         {
-            return _validationsConfiguration.MaximumTreeDepth;
+            return this._validationsConfiguration.MaximumTreeDepth;
         }
 
         public long MaximumDatasetSizeInBytes()
         {
-            return _validationsConfiguration.MaximumDatasetSizeInBytes;
+            return this._validationsConfiguration.MaximumDatasetSizeInBytes;
         }
     }
 }
