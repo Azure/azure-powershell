@@ -218,7 +218,6 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                     odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                 }
 
-                odataQuery = new Rest.Azure.OData.ODataQuery<RoleAssignmentFilter>(f => f.PrincipalId == principalId);
                 if (!string.IsNullOrEmpty(options.Scope))
                 {
                     var tempResult = new GenericPageEnumerable<RoleAssignment>(
