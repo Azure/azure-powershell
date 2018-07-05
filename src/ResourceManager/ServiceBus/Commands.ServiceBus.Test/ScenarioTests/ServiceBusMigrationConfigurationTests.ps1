@@ -113,78 +113,85 @@ function ServiceBusMigrationConfigurationTests
 	# Assert
 	Assert-AreEqual $result2.Name $namespaceName2
 
-	# get the created ServiceBus Namespace  1
-	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace1 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
+	Try
+	{
+		# get the created ServiceBus Namespace  1
+		Write-Debug " Get the created namespace within the resource group"
+		$createdNamespace1 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName1
 	
-	Assert-AreEqual $createdNamespace1.Name $namespaceName1 "Namespace created earlier is not found."
+		Assert-AreEqual $createdNamespace1.Name $namespaceName1 "Namespace created earlier is not found."
 
-	# get the created ServiceBus Namespace  2
-	Write-Debug " Get the created namespace within the resource group"
-	$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+		# get the created ServiceBus Namespace  2
+		Write-Debug " Get the created namespace within the resource group"
+		$createdNamespace2 = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 	
-	Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found."
+		Assert-AreEqual $createdNamespace2.Name $namespaceName2 "Namespace created earlier is not found."
 
-	# Create AuthorizationRule
-	Write-Debug "Create a Namespace Authorization Rule"
-    Write-Debug "Auth Rule name : $authRuleName"
-    $result = New-AzureRmServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
+		# Create AuthorizationRule
+		Write-Debug "Create a Namespace Authorization Rule"
+		Write-Debug "Auth Rule name : $authRuleName"
+		$result = New-AzureRmServiceBusAuthorizationRule -ResourceGroup $resourceGroupName -Namespace $namespaceName1 -Name $authRuleName -Rights @("Listen","Send")
 																																	  
-    Assert-AreEqual $authRuleName $result.Name
-    Assert-AreEqual 2 $result.Rights.Count
-    Assert-True { $result.Rights -Contains "Listen" }
-    Assert-True { $result.Rights -Contains "Send" }
+		Assert-AreEqual $authRuleName $result.Name
+		Assert-AreEqual 2 $result.Rights.Count
+		Assert-True { $result.Rights -Contains "Listen" }
+		Assert-True { $result.Rights -Contains "Send" }
 	
-	# Create Queue in Stanradrd namespace
-	for ($count = 0; $count -lt 20 ; $count++)
-	{
-		$queueName = getAssetName "Queue-"
-		$resultQueue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $queueName
-	} 	
+		# Create Queue in Stanradrd namespace
+		for ($count = 0; $count -lt 20 ; $count++)
+		{
+			$queueName = getAssetName "Queue-"
+			$resultQueue = New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $queueName
+		} 	
 	
-	# Create Topic in Stanradrd namespace
-	for ($count = 0; $count -lt 20 ; $count++)
-	{
-		$topicName = getAssetName "Topic-"
-		$resultTopic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $topicName -EnablePartitioning $TRUE		
-	} 
+		# Create Topic in Stanradrd namespace
+		for ($count = 0; $count -lt 20 ; $count++)
+		{
+			$topicName = getAssetName "Topic-"
+			$resultTopic = New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName1 -Name $topicName -EnablePartitioning $TRUE		
+		} 
 				
-	# Create and Start MigrationConfiguration
-	Write-Debug " Create and Start MigrationConfiguration"
-	$result = Start-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
+		# Create and Start MigrationConfiguration
+		Write-Debug " Create and Start MigrationConfiguration"
+		$result = Start-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1 -TargetNameSpace $result2.Id -PostMigrationName $postmigrationName
 	
-	# Wait till the Migration Provisioning  state changes to succeeded
-	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
+		# Wait till the Migration Provisioning  state changes to succeeded
+		WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
 																			  
-	# Complete the Migration
-	$completMigration = Complete-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
+		# Complete the Migration
+		$completMigration = Complete-AzureRmServiceBusMigration -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
-	# Wait till the Migration Provisioning  state changes to succeeded
-	WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
+		# Wait till the Migration Provisioning  state changes to succeeded
+		WaitforStatetoBeSucceded $resourceGroupName $namespaceName1
 	
-	# Get Premium Namespaces 
-	$GetPremiumNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
+		# Get Premium Namespaces 
+		$GetPremiumNamespace = Get-AzureRmServiceBusNamespace -ResourceGroup $resourceGroupName -NamespaceName $namespaceName2
 			
-	# Get queues using Premium namespace to check migration
-	$getQueueList = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
-	Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 50"
+		# Get queues using Premium namespace to check migration
+		$getQueueList = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+		Assert-AreEqual $getQueueList.Count 20 "Total Queue count not 50"
 
-	# Get Topic using Premium namespace to check migration			
-	$getTopicList = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
-	Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 50"
+		# Get Topic using Premium namespace to check migration			
+		$getTopicList = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName2
+		Assert-AreEqual $getTopicList.Count 20 "Total Topic count not 50"
 
-	# Wait till the Namespace Provisioning  state changes to succeeded
-	WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
+		# Wait till the Namespace Provisioning  state changes to succeeded
+		WaitforStatetoBeSucceded_namespace $resourceGroupName $namespaceName2
 
-	# Wait till the migrationConfiguration Provisioning  state changes to succeeded
-	WaitforStatetoBeSuccededGeoDR $resourceGroupName $namespaceName2 $namespaceName1
+		# Wait till the migrationConfiguration Provisioning  state changes to succeeded
+		WaitforStatetoBeSuccededGeoDR $resourceGroupName $namespaceName2 $namespaceName1
+	}
+	Finally
+	{
+		Write-Debug " Delete namespaces"
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
 
-	Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName1
+		Write-Debug " Delete namespaces"
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
 
-	Write-Debug " Delete namespaces"
-    Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName2
+		Write-Debug " Delete resourcegroup"
+		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	}
 
-	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	
 }
