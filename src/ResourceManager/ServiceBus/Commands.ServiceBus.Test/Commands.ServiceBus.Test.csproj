@@ -240,6 +240,10 @@
       <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
       <Name>Commands.Resources</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Commands.ServiceBus\Commands.ServiceBus.csproj">
+      <Project>{C26229EF-8700-4A4B-99DD-DCA77E0B96DC}</Project>
+      <Name>Commands.ServiceBus</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

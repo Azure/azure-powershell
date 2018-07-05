@@ -60,11 +60,11 @@ $pass="Password#1234" | ConvertTo-SecureString -AsPlainText -Force
 $RGname="test01"
 $clusterloc="SouthCentralUS"
 $subname="{0}.{1}.cloudapp.azure.com" -f $RGname, $clusterloc
-$pfxfolder="~\Documents"
+$pfxfolder="c:\certs"
 
 Write-Output "Create cluster in '$clusterloc' with cert subject name '$subname' and cert output path '$pfxfolder'"
 
-New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 3 -VmPassword $pass -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -OS WindowsServer2016Datacenter
+New-AzureRmServiceFabricCluster -ResourceGroupName $RGname -Location $clusterloc -ClusterSize 5 -VmPassword $pass -CertificateSubjectName $subname -CertificateOutputFolder $pfxfolder -CertificatePassword $pass -OS WindowsServer2016Datacenter
 ```
 
 This command specifies only the cluster size, the cert subject name, and the OS to deploy a cluster.
