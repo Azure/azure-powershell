@@ -37,69 +37,76 @@ function ServiceBusPaginationTests
     Write-Debug "NamespaceName : $namespaceName" 
     $result = New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName
     
-    Write-Debug "Get the created namespace within the resource group"
-    $createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
-
-	Assert-AreEqual $createdNamespace.Name $namespaceName
-
-    Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
-
-	#Create Queue
-	while($count -lt 50)
+    Try
 	{
-		$queueNameNew = $nameQueue + "_" +$count
-		New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueNameNew
-		$count = $count + 1
-	}
+		Write-Debug "Get the created namespace within the resource group"
+		$createdNamespace = Get-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+
+		Assert-AreEqual $createdNamespace.Name $namespaceName
+
+		Assert-AreEqual $createdNamespace.Name $namespaceName "Namespace created earlier is not found."
+
+		#Create Queue
+		while($count -lt 50)
+		{
+			$queueNameNew = $nameQueue + "_" +$count
+			New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $queueNameNew
+			$count = $count + 1
+		}
 	
-	$get30Queue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30
-	Assert-AreEqual 30 $get30Queue.Count "Get Queue with MaxCount 30 not returned total 30"
+		$get30Queue = Get-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30
+		Assert-AreEqual 30 $get30Queue.Count "Get Queue with MaxCount 30 not returned total 30"
 
-	#Create Topic
-	$count = 0
-	$topicNameNew = $nameTopic + "_" +$count
-	while($count -lt 50)
-	{
+		#Create Topic
+		$count = 0
 		$topicNameNew = $nameTopic + "_" +$count
-		New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $topicNameNew -EnablePartitioning $TRUE
-		$count = $count + 1
-	}
+		while($count -lt 50)
+		{
+			$topicNameNew = $nameTopic + "_" +$count
+			New-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $topicNameNew -EnablePartitioning $TRUE
+			$count = $count + 1
+		}
 	
-	$get30Topic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30	
-	Assert-AreEqual 30 $get30Topic.Count "Get Topic with MaxCount 30 not returned total 30"
+		$get30Topic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -MaxCount 30	
+		Assert-AreEqual 30 $get30Topic.Count "Get Topic with MaxCount 30 not returned total 30"
 
-	#Create Subscription
-	$count = 0
-	$subscriptionNameNew = $subName + "_" +$count
-	while($count -lt 50)
-	{
+		#Create Subscription
+		$count = 0
 		$subscriptionNameNew = $subName + "_" +$count
-		New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Name $subscriptionNameNew
-		$count = $count + 1
-	}
+		while($count -lt 50)
+		{
+			$subscriptionNameNew = $subName + "_" +$count
+			New-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Name $subscriptionNameNew
+			$count = $count + 1
+		}
 	
-	$get30Sub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -MaxCount 30	
-	Assert-AreEqual 30 $get30Sub.Count "Get Subscription with MaxCount 30 not returned total 30"	
+		$get30Sub = Get-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -MaxCount 30	
+		Assert-AreEqual 30 $get30Sub.Count "Get Subscription with MaxCount 30 not returned total 30"	
 
-	#Create Rules
-	$count = 0
-	$ruleNameNew = $ruleName + "_" +$count
-	while($count -lt 50)
-	{
+		#Create Rules
+		$count = 0
 		$ruleNameNew = $ruleName + "_" +$count
-		New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -Name $ruleNameNew -SqlExpression "myproperty='test'"
-		$count = $count + 1
-	}
+		while($count -lt 50)
+		{
+			$ruleNameNew = $ruleName + "_" +$count
+			New-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -Name $ruleNameNew -SqlExpression "myproperty='test'"
+			$count = $count + 1
+		}
 	
-	$get30Rule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -MaxCount 25	
-	Assert-AreEqual 25 $get30Rule.Count "Get Rules with MaxCount 30 not returned total 30"
+		$get30Rule = Get-AzureRmServiceBusRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $topicNameNew -Subscription $subscriptionNameNew -MaxCount 25	
+		Assert-AreEqual 25 $get30Rule.Count "Get Rules with MaxCount 30 not returned total 30"
+	}
+	Finally
+	{
+		# Cleanup
+		# Delete namespace
 
-	# Cleanup
-	# Delete namespace
+		Write-Debug "Delete NameSpace"
+		Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
 
-	Write-Debug "Delete NameSpace"
-	Remove-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
+		Write-Debug " Delete resourcegroup"
+		Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	}
 
-	Write-Debug " Delete resourcegroup"
-	Remove-AzureRmResourceGroup -Name $resourceGroupName -Force
+	
 }
