@@ -18,8 +18,11 @@ namespace RepoTasks.CmdletsForTest.Models
 
     public class PsDummyOutput1 : PsOperation
     {
-        [Ps1Xml(Target = ViewControl.List)]
+        [Ps1Xml(Label = "PsDummyOutput1 Id", Target = ViewControl.List, ScriptBlock = "S_.Foo")]
         public string Id { get; set; }
+
+        [Ps1Xml(Target = ViewControl.List, ScriptBlock = "S_.Foo")]
+        public string ScriptBlock { get; set; }
 
         [Ps1Xml(
             Target = ViewControl.All,
