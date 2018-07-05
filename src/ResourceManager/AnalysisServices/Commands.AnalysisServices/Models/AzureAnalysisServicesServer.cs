@@ -15,6 +15,7 @@
 using System;
 using Microsoft.Azure.Management.Analysis.Models;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.AnalysisServices.Models
 {
@@ -80,9 +81,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 config = new PsAzureAnalysisServicesFirewallConfig(enablePowerBIService, rules);
             }
 
-            var rgStart = server.Id.IndexOf("resourceGroups/", StringComparison.InvariantCultureIgnoreCase) + ("resourceGroups/".Length);
-            var rgLength = (server.Id.IndexOf("/providers/", StringComparison.InvariantCultureIgnoreCase)) - rgStart;
-            string resourceGroupName = server.Id.Substring(rgStart, rgLength);
+            ResourceIdentifier resourceIdentifier = new ResourceIdentifier(server.Id);
 
             return new AzureAnalysisServicesServer()
             {
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Models
                 Sku = server.Sku != null ? ServerSku.FromResourceSku(server.Sku) : new ServerSku(),
                 Tag = server.Tags != null ? new Dictionary<string, string>(server.Tags) : new Dictionary<string, string>(),
                 BackupBlobContainerUri = server.BackupBlobContainerUri == null ? String.Empty : server.BackupBlobContainerUri,
-                ResourceGroupName = resourceGroupName,
+                ResourceGroupName = resourceIdentifier.ResourceGroupName,
                 DefaultConnectionMode = server.QuerypoolConnectionMode.ToString(),
                 FirewallConfig = config,
                 GatewayInfo = server.GatewayDetails != null ? ServerGateway.FromResourceGateway(server.GatewayDetails) : null
