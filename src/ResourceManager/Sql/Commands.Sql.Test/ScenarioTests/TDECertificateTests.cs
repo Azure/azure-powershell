@@ -20,9 +20,9 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AddTransparentDataEncryptionCertificateTests : SqlTestsBase
+    public class TDECertificateTests : SqlTestsBase
     {
-        public AddTransparentDataEncryptionCertificateTests(ITestOutputHelper output) : base(output)
+        public TDECertificateTests(ITestOutputHelper output) : base(output)
         {
         }
 

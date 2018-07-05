@@ -386,17 +386,19 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
-
+    
     $assignments = Get-AzureRmRoleAssignment -SignInName $users[0].UserPrincipalName -ExpandPrincipalGroups
 
     Assert-NotNull $assignments
     foreach ($assignment in $assignments){
         Assert-NotNull $assignment
-        Assert-AreEqual $assignment.SignInName $users[0].UserPrincipalName
+        if(!($assignment.ObjectType -eq "User" -or $assignment.ObjectType -eq "Group")){
+            Assert-Throws "Invalid object type received."
+        }
     }
-    # cleanup
+    # cleanup 
     DeleteRoleAssignment $newAssignment
-
+    
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
