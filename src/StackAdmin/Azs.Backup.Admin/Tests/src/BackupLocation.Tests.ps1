@@ -151,8 +151,8 @@ InModuleScope Azs.Backup.Admin {
             $backup 					| Should Not Be $Null
             $backup.Path 				| Should Be $global:path
             $backup.Username 			| Should be $global:username
-            $backup.Password 			| Should be ""
-            $backup.EncryptionKeyBase64 | Should be ""
+            $backup.Password 			| Should be $Null
+            $backup.EncryptionKeyBase64 | Should be $Null
         }
 
         # Need to record new tests.
