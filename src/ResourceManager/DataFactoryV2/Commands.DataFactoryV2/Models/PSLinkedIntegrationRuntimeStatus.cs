@@ -52,6 +52,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public string AuthorizationType { get; private set; }
 
-        private new IList<LinkedIntegrationRuntime> Links { get; set; }
+        private new IList<object> Links { get; set; }
     }
 }

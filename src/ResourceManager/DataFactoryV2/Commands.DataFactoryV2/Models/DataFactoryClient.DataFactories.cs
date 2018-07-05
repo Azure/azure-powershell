@@ -138,7 +138,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             {
                                 Location = parameters.Location,
                                 Tags = parameters.Tags?.ToDictionary(),
-                                Identity = new FactoryIdentity()
+                                Identity = new FactoryIdentity(),
+                                RepoConfiguration = new FactoryGitHubConfiguration()
                             }),
                         parameters.ResourceGroupName);
             };
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
                 return dataFactory != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

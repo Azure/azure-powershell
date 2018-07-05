@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
+
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -165,7 +167,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         "Type");
                 }
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -186,12 +188,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     else
                     {
                         var selfHosted = new SelfHostedIntegrationRuntime();
-                        if (AuthKey != null)
-                        {
-                            var authKey = ConvertToUnsecureString(AuthKey);
-                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
-                        }
-
                         resource.Properties = selfHosted;
                     }
                 }

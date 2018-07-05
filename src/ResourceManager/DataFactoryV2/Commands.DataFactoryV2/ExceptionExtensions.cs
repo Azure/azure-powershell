@@ -23,9 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     internal static class ExceptionExtensions
     {
-        public static ErrorResponseException CreateFormattedException(this ErrorResponseException errorResponseException)
+        public static CloudException CreateFormattedException(this CloudException errorResponseException)
         {
-            return new ErrorResponseException(
+            return new CloudException(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
@@ -36,32 +36,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     DateTime.UtcNow));
         }
 
-        public static CloudException CreateFormattedException(this CloudException cloudException)
-        {
-            return new CloudException(
-                string.Format(
-                    CultureInfo.InvariantCulture,
-                    Resources.FormattedCloudExceptionMessageTemplate,
-                    cloudException.Response.StatusCode,
-                    cloudException.Body != null && cloudException.Body.Code != null ? cloudException.Body.Code : cloudException.Response.StatusCode.ToString(),
-                    cloudException.Body != null && cloudException.Body.Message != null ? cloudException.Body.Message : cloudException.Message,
-                    cloudException.GetRequestId(),
-                    DateTime.UtcNow));
-        }
-
-        public static string GetRequestId(this ErrorResponseException exception)
-        {
-            IEnumerable<string> strings;
-
-            if (exception.Response != null
-                && exception.Response.Headers != null
-                && exception.Response.Headers.TryGetValue("x-ms-request-id", out strings))
-            {
-                return string.Join(";", strings);
-            }
-
-            return string.Empty;
-        }
+        //public static CloudException CreateFormattedException(this CloudException cloudException)
+        //{
+        //    return new CloudException(
+        //        string.Format(
+        //            CultureInfo.InvariantCulture,
+        //            Resources.FormattedCloudExceptionMessageTemplate,
+        //            cloudException.Response.StatusCode,
+        //            cloudException.Body != null && cloudException.Body.Code != null ? cloudException.Body.Code : cloudException.Response.StatusCode.ToString(),
+        //            cloudException.Body != null && cloudException.Body.Message != null ? cloudException.Body.Message : cloudException.Message,
+        //            cloudException.GetRequestId(),
+        //            DateTime.UtcNow));
+        //}
 
         public static string GetRequestId(this CloudException exception)
         {

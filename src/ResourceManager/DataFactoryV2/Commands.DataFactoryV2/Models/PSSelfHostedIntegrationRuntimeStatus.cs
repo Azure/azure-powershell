@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
 
         public IList<SelfHostedIntegrationRuntimeNode> Nodes => _status.Nodes;
 
-        public IList<LinkedIntegrationRuntime> Links => _status.Links;
+        public IList<object> Links => null;
 
         private TimeSpan? ConvertStringTimeSpan(string ts)
         {
