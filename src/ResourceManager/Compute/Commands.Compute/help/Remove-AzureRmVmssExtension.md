@@ -30,6 +30,24 @@ The **Remove-AzureRmVmssExtension** cmdlet removes an extension from the Virtual
 
 ## EXAMPLES
 
+### Example 1: Remove a VMSS extension
+```
+PS C:\> $vmss = Get-AzureRmVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
+PS C:\> Remove-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName
+PS C:\> Update-AzureRmVmss -ResourceGroupName $RGName -Name $vmssName -VirtualMachineScaleSet $vmss
+```
+
+This command removes the extension of a VMSS and update the VMSS after the modification.
+
+### Example 2: Remove an instance from within a VMSS
+```
+PS C:\> $vmss = Get-AzureRmVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
+PS C:\> Remove-AzureRmVmss -ResourceGroupName "Group002" -VirtualMachineScaleSet $vmss -Id $extensionId
+```
+
+This command removes specify extension id from the VMSS that belongs to the resource group named Group002.
+
+
 ## PARAMETERS
 
 ### -DefaultProfile
