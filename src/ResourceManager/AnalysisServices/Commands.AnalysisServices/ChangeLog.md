@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add required property ResourceGroupName to AS.
 
 ## Version 0.6.9
 * Fixed formatting of OutputType in help files
