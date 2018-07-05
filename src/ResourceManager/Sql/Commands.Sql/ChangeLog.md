@@ -18,6 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.10.0
+* Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
+	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
+	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
+## Version 4.9.0
 * Clarified User-Defined Restore Points for SQLDW in New-AzureRmSqlDatabaseRestorePoint help
 * Fixed formatting of OutputType in help files
 * Updated documentation of -ComputeGeneration parameter in several cmdlets
