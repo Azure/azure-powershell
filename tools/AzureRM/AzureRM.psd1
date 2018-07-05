@@ -94,7 +94,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.1';
                @{ModuleName = 'AzureRM.RecoveryServices.SiteRecovery'; RequiredVersion = '0.2.6'; },
                @{ModuleName = 'AzureRM.RedisCache'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.Relay'; RequiredVersion = '0.3.5'; },
-               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.2.0'; },
+               @{ModuleName = 'AzureRM.Resources'; RequiredVersion = '6.2.1'; },
                @{ModuleName = 'AzureRM.Scheduler'; RequiredVersion = '0.16.6'; },
                @{ModuleName = 'AzureRM.ServiceBus'; RequiredVersion = '0.6.6'; },
                @{ModuleName = 'AzureRM.ServiceFabric'; RequiredVersion = '0.3.7'; },

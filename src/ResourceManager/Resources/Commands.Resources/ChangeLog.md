@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.2.1
 * Update Policy cmdlets
     - Add piping scenarios
     - Change to strongly-typed input/output objects

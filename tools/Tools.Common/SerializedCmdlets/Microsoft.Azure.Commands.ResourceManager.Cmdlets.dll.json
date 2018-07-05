@@ -661,7 +661,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FeatureName": "System.String",
               "ProviderName": "System.String",
@@ -1040,7 +1040,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSProviderFeature, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "FeatureName": "System.String",
               "ProviderName": "System.String",
@@ -1267,7 +1267,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderLocation, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Providers": "System.Collections.Generic.List`1[System.String]",
               "DisplayName": "System.String",
@@ -5825,7 +5825,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -6216,7 +6216,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationLockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -6672,7 +6672,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -7033,7 +7033,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Application.ApplicationKind, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -7290,14 +7290,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -8435,14 +8480,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -9550,6 +9640,69 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ApiVersion",
           "AliasList": [],
           "Type": {
@@ -10341,6 +10494,190 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -10357,14 +10694,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -10539,6 +10921,69 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ApiVersion",
           "AliasList": [],
           "Type": {
@@ -11603,6 +12048,286 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DisplayName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PolicyDefinition",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Metadata",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
             {
               "ParameterMetadata": {
                 "Name": "DisplayName",
@@ -12233,7 +12958,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -12818,7 +13543,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -13089,7 +13814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProvider, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "ResourceTypes": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
               "ZoneMappings": "System.Collections.Hashtable",
@@ -13360,7 +14085,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -13915,7 +14640,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroupDeployment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Mode": "Microsoft.Azure.Management.ResourceManager.Models.DeploymentMode",
               "TemplateLink": "Microsoft.Azure.Management.ResourceManager.Models.TemplateLink",
@@ -18648,7 +19373,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
               "Code": "System.String",
@@ -21348,7 +22073,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -21952,7 +22677,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -22358,7 +23083,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceGroup, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Tags": "System.Collections.Hashtable",
               "ResourceGroupName": "System.String",
@@ -27042,7 +27767,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -27421,7 +28146,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -27772,7 +28497,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -28075,7 +28800,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -28354,7 +29079,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -28681,7 +29406,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -29032,7 +29757,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -29284,7 +30009,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -29563,7 +30288,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -29818,14 +30543,61 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "System.Management.Automation.PSObject",
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyAssignmentId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -30025,30 +30797,6 @@
             {
               "ParameterMetadata": {
                 "Name": "Scope",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PolicyDefinitionId",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System",
@@ -30298,6 +31046,145 @@
           ]
         },
         {
+          "Name": "PolicyDefinitionIdFilterParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "Scope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PolicyDefinitionId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
           "Name": "IdParameterSet",
           "Parameters": [
             {
@@ -30322,30 +31209,6 @@
                 "ValidateNotNullOrEmpty": true
               },
               "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": true
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "PolicyDefinitionId",
-                "AliasList": [],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
-                  "Properties": {},
-                  "ElementType": null,
-                  "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
-                },
-                "ValidateSet": [],
-                "ValidateRangeMin": null,
-                "ValidateRangeMax": null,
-                "ValidateNotNullOrEmpty": true
-              },
-              "Mandatory": false,
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
@@ -30548,14 +31411,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -31693,14 +32601,61 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "System.Management.Automation.PSObject",
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyAssignmentId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -31802,14 +32757,59 @@
           "Name": "PolicyDefinition",
           "AliasList": [],
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -31820,14 +32820,59 @@
           "Name": "PolicySetDefinition",
           "AliasList": [],
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicySetDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ValidateSet": [],
           "ValidateRangeMin": null,
@@ -32106,14 +33151,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32130,14 +33220,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32295,14 +33430,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32319,14 +33499,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32604,14 +33829,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32772,14 +34042,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -32937,14 +34252,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33105,14 +34465,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33270,14 +34675,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33438,14 +34888,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33603,14 +35098,59 @@
                 "Name": "PolicySetDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicySetDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33771,14 +35311,59 @@
                 "Name": "PolicyDefinition",
                 "AliasList": [],
                 "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "Properties": {},
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
                   "ElementType": null,
                   "GenericTypeArguments": [],
-                  "Methods": [],
-                  "Constructors": []
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
                 },
                 "ValidateSet": [],
                 "ValidateRangeMin": null,
@@ -33943,14 +35528,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -34072,7 +35702,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -34348,7 +35978,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -34633,7 +36263,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -34920,7 +36550,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -35116,6 +36746,71 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "System.Management.Automation.PSObject",
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyAssignmentId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ApiVersion",
@@ -35354,6 +37049,168 @@
               "Position": -2147483648,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Sku": "System.Management.Automation.PSObject",
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyAssignmentId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -35659,6 +37516,69 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "ApiVersion",
           "AliasList": [],
           "Type": {
@@ -36450,6 +38370,190 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -36466,14 +38570,61 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "System.Management.Automation.PSObject",
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyAssignmentId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -36628,6 +38779,71 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "System.Management.Automation.PSObject",
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceGroupName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyAssignmentId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ApiVersion",
@@ -37411,6 +39627,290 @@
               "ValueFromPipelineByPropertyName": false
             }
           ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Sku": "System.Management.Automation.PSObject",
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceGroupName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyAssignmentId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "NotScope",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": "System.String",
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DisplayName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Metadata",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Sku",
+                "AliasList": [
+                  "SkuObject"
+                ],
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
         }
       ],
       "AliasList": []
@@ -37427,14 +39927,59 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "System.Management.Automation",
-            "Name": "System.Management.Automation.PSObject",
-            "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-            "Properties": {},
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [],
-            "Constructors": []
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -37607,6 +40152,69 @@
           "ValidateRangeMin": null,
           "ValidateRangeMax": null,
           "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+            "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Properties": "System.Management.Automation.PSObject",
+              "Name": "System.String",
+              "ResourceId": "System.String",
+              "ResourceName": "System.String",
+              "ResourceType": "System.String",
+              "SubscriptionId": "System.String",
+              "PolicyDefinitionId": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "input",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
         },
         {
           "Name": "ApiVersion",
@@ -38673,6 +41281,286 @@
         {
           "Name": "__AllParameterSets",
           "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "DisplayName",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Description",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Policy",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Metadata",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Parameter",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ApiVersion",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Pre",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "InputObjectParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy",
+                  "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Properties": "System.Management.Automation.PSObject",
+                    "Name": "System.String",
+                    "ResourceId": "System.String",
+                    "ResourceName": "System.String",
+                    "ResourceType": "System.String",
+                    "SubscriptionId": "System.String",
+                    "PolicyDefinitionId": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "input",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": true,
+              "Position": -2147483648,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
             {
               "ParameterMetadata": {
                 "Name": "DisplayName",
@@ -45719,7 +48607,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -46098,7 +48986,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -46449,7 +49337,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -46752,7 +49640,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47031,7 +49919,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47358,7 +50246,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47709,7 +50597,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -47961,7 +50849,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -48240,7 +51128,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks",
                   "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -48497,7 +51385,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
             "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Identity": "Microsoft.Azure.Management.ResourceManager.Models.Identity",
               "Plan": "Microsoft.Azure.Management.ResourceManager.Models.Plan",
@@ -49921,6 +52809,16 @@
       "Methods": [],
       "Constructors": []
     },
+    "System.Management.Automation.PSObject": {
+      "Namespace": "System.Management.Automation",
+      "Name": "System.Management.Automation.PSObject",
+      "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [],
+      "Constructors": []
+    },
     "System.Guid": {
       "Namespace": "System",
       "Name": "System.Guid",
@@ -49934,7 +52832,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[]",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType[], Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
       "GenericTypeArguments": [],
@@ -49944,7 +52842,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceProviderResourceType, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "ZoneMappings": "System.Collections.Hashtable",
         "ResourceTypeName": "System.String",
@@ -50170,7 +53068,7 @@
     "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.Dictionary`2[System.String,Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable]",
-      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -50183,7 +53081,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.DeploymentVariable, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Value": "System.Object",
         "Type": "System.String"
@@ -50248,7 +53146,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -50260,7 +53158,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {
         "Details": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError]",
         "Code": "System.String",
@@ -50307,7 +53205,7 @@
     "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode": {
       "Namespace": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy",
       "Name": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.1.0.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Policy.PolicyDefinitionMode, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.2.1.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
@@ -50727,16 +53625,6 @@
       "GenericTypeArguments": [
         "System.Int32"
       ],
-      "Methods": [],
-      "Constructors": []
-    },
-    "System.Management.Automation.PSObject": {
-      "Namespace": "System.Management.Automation",
-      "Name": "System.Management.Automation.PSObject",
-      "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-      "Properties": {},
-      "ElementType": null,
-      "GenericTypeArguments": [],
       "Methods": [],
       "Constructors": []
     }
