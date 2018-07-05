@@ -11,8 +11,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
-
 namespace RepoTasks.Cmdlets.Tests
 {
     using System;
@@ -68,7 +66,7 @@ namespace RepoTasks.Cmdlets.Tests
                     var config = xelement.Elements().ToList();
 
                     TestXml(config, 
-                        new[] { "RequestId", "StatusCode", "Id", "Name", "Type", "PsDummyOutput2" },
+                        new[] { "RequestId", "ScriptBlock", "StatusCode", "Id", "Name", "Type", "PsDummyOutput2" },
                         $"{ExpectedAssemblyName}.Models.PsDummyOutput1");
 
                     TestXml(config,
@@ -143,13 +141,14 @@ namespace RepoTasks.Cmdlets.Tests
                             // entrytype (1), prop-name or script-block (2), target (3), label (4), table-column-width (5), position (6), group-by-this-param (7)
                             new List<Tuple<EntryType, string, View, string, uint?, uint?, bool>>
                             {
-                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "Id", View.List, null, 0, null, false),
-                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "RequestId", View.Both, null, null, 1, false),
+                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "S_.Foo", View.List, "PsDummyOutput1 Id", 0, null, false),
+                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "RequestId", View.Both, "RequestId", null, 1, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "Name", View.Both, null, 16, null, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "Type", View.Both, "PsDummyOutput1 Type", null, 3, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "$_.PsDummyOutput2.Name", View.Both, "PsDummyOutput2 Name", null, null, true),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "$_.PsDummyOutput2.Location", View.Both, "PsDummyOutput2 Location", null, 0, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "StatusCode", View.None, null, null, null, false),
+                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "S_.Foo", View.List, null, null, null, false),
                             },
                             $"{ExpectedAssemblyName}.Models.PsDummyOutput1");
 
@@ -176,8 +175,8 @@ namespace RepoTasks.Cmdlets.Tests
             public IList<TableHeaderFromXml> TableHeaders { get; set; }
             public IList<string> TableRowPropNameValues { get; set; }
             public IList<string> TableRowScriptBlockValues { get; set; }
-            public IList<string> ListPropNameValues { get; set; }
-            public IList<string> ListScriptBlockValues { get; set; }
+            public IList<ListItem> ListPropNameItems { get; set; }
+            public IList<ListItem> ListScriptBlockItems { get; set; }
             public IList<XElement> TableRowEntries { get; set; }
             public IList<XElement> ListEntries { get; set; }
         }
@@ -237,20 +236,30 @@ namespace RepoTasks.Cmdlets.Tests
             var listEntriesRes = listEntriesQuery.ToList();
 
             var listEntriesPropNamesQuery =
-                from propertyName in listEntriesRes.Elements("PropertyName")
-                select propertyName.Value;
+                from scriptBlockItems in listEntriesRes
+                where scriptBlockItems.Element("PropertyName") != null
+                select new ListItem
+                {
+                    Label = scriptBlockItems.Element("Label")?.Value,
+                    PropertyName = scriptBlockItems.Element("PropertyName")?.Value,
+                };
 
             var listEntrieScriptBlocksQuery =
-                from scriptBlock in listEntriesRes.Elements("ScriptBlock")
-                select scriptBlock.Value;
+                from scriptBlockItems in listEntriesRes
+                where scriptBlockItems.Element("ScriptBlock") != null
+                select new ListItem
+                {
+                    Label = scriptBlockItems.Element("Label")?.Value,
+                    ScriptBlock = scriptBlockItems.Element("ScriptBlock")?.Value,
+                };
 
             return new XmlData()
             {
                 TableHeaders = tableHeadersQuery.ToList(),
                 TableRowPropNameValues = tableRowEntriesPropNamesQuery.ToList(),
                 TableRowScriptBlockValues = tableRowEntriesScriptBlocksQuery.ToList(),
-                ListPropNameValues = listEntriesPropNamesQuery.ToList(),
-                ListScriptBlockValues = listEntrieScriptBlocksQuery.ToList(),
+                ListPropNameItems = listEntriesPropNamesQuery.ToList(),
+                ListScriptBlockItems = listEntrieScriptBlocksQuery.ToList(),
                 TableRowEntries = tableRowEntriesRes,
                 ListEntries = listEntriesRes,
             };
@@ -269,7 +278,7 @@ namespace RepoTasks.Cmdlets.Tests
             Assert.Equal(expectedPropsOrdered.Count, tableRowPropertyNames.Count);
             Assert.Equal(expectedPropsOrdered, tableRowPropertyNames);
 
-            var listEntriesList = xmlData.ListPropNameValues.OrderBy(i => i).ToList();
+            var listEntriesList = xmlData.ListPropNameItems.Select(i=>i.PropertyName).OrderBy(i=>i).ToList();
             Assert.Equal(expectedPropsOrdered.Count, listEntriesList.Count);
             Assert.Equal(expectedPropsOrdered, listEntriesList);
         }
@@ -278,6 +287,8 @@ namespace RepoTasks.Cmdlets.Tests
         {
             var xmlData = GetDataFromXml(config, typeName);
             var expectedPropsOrdered = expectedProps.ToList();
+
+            #region Table
 
             var tableHeaders = xmlData.TableHeaders;
             var expectedTableHeaders = expectedPropsOrdered
@@ -294,11 +305,11 @@ namespace RepoTasks.Cmdlets.Tests
                     })
                 .ToList();
 
-            var comparer = new Comparer<TableHeaderFromXml>(
+            var tableHeaderComparer = new Comparer<TableHeaderFromXml>(
                 (l, r) => l.Label == r.Label && l.Width == r.Width);
 
             Assert.Equal(expectedTableHeaders.Count, tableHeaders.Count);
-            Assert.Equal(expectedTableHeaders.OrderBy(i=>i.Label), tableHeaders.OrderBy(i=>i.Label), comparer);
+            Assert.Equal(expectedTableHeaders.OrderBy(i=>i.Label), tableHeaders.OrderBy(i=>i.Label), tableHeaderComparer);
 
             var  expectedPosTableHeaders = expectedPropsOrdered
                 .Where(tuple => (tuple.Item3 & View.Table) != View.None)
@@ -330,7 +341,7 @@ namespace RepoTasks.Cmdlets.Tests
             var expectedTableScriptBlockValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.ScriptBlock)
                 .Where(tuple => (tuple.Item3 & View.Table) != View.None)
-                .Where(tuple => !tuple.Item7)
+                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
                 .Select(tuple => tuple.Item2)
                 .ToList();
 
@@ -358,27 +369,43 @@ namespace RepoTasks.Cmdlets.Tests
                 Assert.Equal(pti.Item, value);
             }
 
-            var listPropNameEntries = xmlData.ListPropNameValues;
+            #endregion
+
+            #region List 
+
+            var listItemComparer = new Comparer<ListItem>(
+                (l, r) => l.Label == r.Label && l.ScriptBlock == r.ScriptBlock && l.PropertyName == r.PropertyName);
+
+            var listPropNameEntries = xmlData.ListPropNameItems;
             var expectedListPropNameValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.PropertyName)
                 .Where(tuple => (tuple.Item3 & View.List) != View.None)
-                .Where(tuple => !tuple.Item7)
-                .Select(tuple => tuple.Item2)
+                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
+                //.Select(tuple => tuple.Item2)
+                .Select(tuple => new ListItem
+                    {
+                        Label = tuple.Item4,
+                        PropertyName = tuple.Item2
+                    })
                 .ToList();
 
             Assert.Equal(expectedListPropNameValues.Count, listPropNameEntries.Count);
-            Assert.Equal(expectedListPropNameValues.OrderBy(i=>i), listPropNameEntries.OrderBy(i=>i));
+            Assert.Equal(expectedListPropNameValues.OrderBy(i=>i.PropertyName), listPropNameEntries.OrderBy(i=>i.PropertyName), listItemComparer);
 
-            var listScriptBlocksEntries = xmlData.ListScriptBlockValues;
+            var listScriptBlocksEntries = xmlData.ListScriptBlockItems;
             var expectedListScriptBlocksValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.ScriptBlock)
                 .Where(tuple => (tuple.Item3 & View.List) != View.None)
-                .Where(tuple => !tuple.Item7)
-                .Select(tuple => tuple.Item2)
+                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
+                .Select(tuple => new ListItem
+                    {
+                        Label = tuple.Item4,
+                        ScriptBlock = tuple.Item2
+                    })
                 .ToList();
 
             Assert.Equal(expectedListScriptBlocksValues.Count, listScriptBlocksEntries.Count);
-            Assert.Equal(expectedListScriptBlocksValues, listScriptBlocksEntries);
+            Assert.Equal(expectedListScriptBlocksValues.OrderBy(i => i.ScriptBlock), listScriptBlocksEntries.OrderBy(i => i.ScriptBlock), listItemComparer);
 
             var  expectedPosListItems = expectedPropsOrdered
                 .Where(tuple => (tuple.Item3 & View.List) != View.None)
@@ -401,6 +428,10 @@ namespace RepoTasks.Cmdlets.Tests
                 Assert.Equal(pli.Item, value);
             }
 
+            #endregion
+
+            #region Excluded
+
             var expectedExcludedValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item3 == View.None)
                 .Select(tuple => tuple.Item2)
@@ -408,13 +439,15 @@ namespace RepoTasks.Cmdlets.Tests
 
             foreach (var expectedExcludedValue in expectedExcludedValues)
             {
-                Assert.DoesNotContain(expectedExcludedValue, listPropNameEntries);
-                Assert.DoesNotContain(expectedExcludedValue, listScriptBlocksEntries);
+                Assert.DoesNotContain(expectedExcludedValue, listPropNameEntries.Select(i=>i.PropertyName));
+                Assert.DoesNotContain(expectedExcludedValue, listScriptBlocksEntries.Select(i=>i.ScriptBlock));
                 Assert.DoesNotContain(expectedExcludedValue, tableHeaders.Select(h=>h.Label));
                 Assert.DoesNotContain(expectedExcludedValue, tableRowPropNameValues);
                 Assert.DoesNotContain(expectedExcludedValue, tableRowScriptBlockValues);
             }
-        }
+
+            #endregion
+       }
 
         private static void TestXmlGroupBy(IEnumerable<XElement> config,
             IList<Tuple<GroupBy,View>> expected, string typeName)
@@ -470,6 +503,7 @@ namespace RepoTasks.Cmdlets.Tests
         private class Comparer<T> : IEqualityComparer<T>
         {
             private readonly Func<T, T, bool> _isEqual;
+
             public Comparer(Func<T,T,bool> isEqual)
             {
                 _isEqual = isEqual;
