@@ -15,7 +15,7 @@ Modifies the ACL of a file or folder in Data Lake Store.
 
 ```
 Set-AzureRmDataLakeStoreItemAcl [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ The second command sets the ACL for the file Test.txt to the one in $ACL.
 ### Example 2: Set the ACL for folder recursively
 ```
 PS C:\>$ACL = Get-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path /Folder1
-PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recursive -Concurrency 128
+PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder2" -Acl $ACL -Recurse -Concurrency 128
 ```
 
 The first command gets the ACL for the directory Folder1 of the ContosoADL account, and then stores it in the $ACL variable.
@@ -131,6 +131,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShowProgress
+If passed then progress status is showed. Only applicable when recursive Acl set is done.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/new-azurermdiskconfig
@@ -13,8 +13,8 @@ Creates a configurable disk object.
 ## SYNTAX
 
 ```
-New-AzureRmDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>]
- [[-DiskSizeGB] <Int32>] [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-CreateOption <String>]
+New-AzureRmDiskConfig [[-SkuName] <String>] [[-OsType] <OperatingSystemTypes>] [[-DiskSizeGB] <Int32>]
+ [[-Location] <String>] [-Zone <String[]>] [-Tag <Hashtable>] [-CreateOption <String>]
  [-StorageAccountId <String>] [-ImageReference <ImageDiskReference>] [-SourceUri <String>]
  [-SourceResourceId <String>] [-EncryptionSettingsEnabled <Boolean>]
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]

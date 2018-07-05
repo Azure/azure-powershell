@@ -49,11 +49,6 @@ You can filter the results based on the kind of data source.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -224,12 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### PSWorkspace
 Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
-
 ## OUTPUTS
-
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource]
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSDataSource
 

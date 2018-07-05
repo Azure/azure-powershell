@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
+    [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
     {
         /// <summary>

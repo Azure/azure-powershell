@@ -16,14 +16,14 @@ Removes an entry from the ACL of a file or folder in Data Lake Store.
 ### RemoveByACLObject (Default)
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-Acl] <DataLakeStoreItemAce[]> [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveSpecificACE
 ```
 Remove-AzureRmDataLakeStoreItemAclEntry [-Account] <String> [-Path] <DataLakeStorePathInstance>
- [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-Recurse] [-Concurrency <Int32>]
+ [-AceType] <AceType> [[-Id] <Guid>] [-Default] [-PassThru] [-ShowProgress] [-Recurse] [-Concurrency <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,7 +41,14 @@ This command removes the user ACE for Patti Fuller from the ContosoADL account.
 
 ### Example 2: Remove a user entry recursively
 ```
-PS C:\>Remove-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Recursive -Concurrency 128
+PS C:\>Remove-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzureRmADUser -Mail "PattiFuller@contoso.com").ObjectId -Recurse -Concurrency 128
+```
+
+### Example 3: Remove permissions for an ACE recursively using Acl object
+```
+PS C:\>$fullAcl="user:userid1,default:user:userid1
+PS C:\>$newFullAcl = $fullAcl.Split("{,}")
+PS C:\>Remove-AzureRmDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128
 ```
 
 This command removes the user ACE for Patti Fuller from the root and recursively from all it's subdirectories and files for account ContosoADL.
@@ -185,6 +192,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ShowProgress
+If passed then progress status is showed. Only applicable when recursive Acl remove is done.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

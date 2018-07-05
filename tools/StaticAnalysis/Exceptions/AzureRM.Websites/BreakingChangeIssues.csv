@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.Websites.dll","Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.GetAzureWebAppBackupList","Get-AzureRmWebAppBackupList","0","1020","The cmdlet 'Get-AzureRmWebAppBackupList' no longer has output type 'Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup[]'.","Make cmdlet 'Get-AzureRmWebAppBackupList' return type 'Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup[]'."

@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         VerbsCommon.Get,
         EventGridEventSubscriptionVerb,
         DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),
-     OutputType(typeof(PSEventSubscription), typeof(List<PSEventSubscriptionListInstance>))]
+     OutputType(typeof(PSEventSubscription))]
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = false,

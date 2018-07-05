@@ -38,15 +38,18 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataLake.Analytics, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.1.2-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataLake.Analytics.3.3.0-preview\lib\net452\Microsoft.Azure.Management.DataLake.Analytics.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\GetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobRecurrence.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsJobPipeline.cs" />
+    <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\GetAzureRmDataLakeAnalyticsComputePolicy.cs" />
+    <Compile Include="Commands\SetAzureRmDataLakeAnalyticsCatalogItemAclEntry.cs" />
     <Compile Include="Commands\UpdateAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\NewAzureRmDataLakeAnalyticsComputePolicy.cs" />
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsFirewallRule.cs" />
@@ -75,6 +78,7 @@
     <Compile Include="Commands\RemoveAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Commands\SetAzureRmDataLakeAnalyticsAccount.cs" />
     <Compile Include="Models\DataLakeAnalyticsFirewallRule.cs" />
+    <Compile Include="Models\PSDataLakeAnalyticsAcl.cs" />
     <Compile Include="Models\PSDataLakeAnalyticsAccountBasic.cs" />
     <Compile Include="Models\PSJobInformationBasic.cs" />
     <Compile Include="Models\PSJobRecurrenceInformation.cs" />
@@ -101,11 +105,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="..\AzureRM.DataLakeAnalytics.psd1">
+    <None Include="AzureRM.DataLakeAnalytics.psd1">
       <Link>AzureRM.DataLakeAnalytics.psd1</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.DataLakeAnalytics.dll-help.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
@@ -118,6 +119,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

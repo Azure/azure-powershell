@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// <summary>
     /// 'Get-AzureServicebusGeoDRConfigurations' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(List<PSServiceBusDRConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ServicebusDRConfigurationVerb, DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
     public class GetServiceBusGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

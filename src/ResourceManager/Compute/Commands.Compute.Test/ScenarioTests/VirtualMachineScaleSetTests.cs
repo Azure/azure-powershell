@@ -66,28 +66,48 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetNextLink");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetBootDiagnostics()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetBootDiagnostics");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetIdentity()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetIdentity");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetUserIdentity()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetUserIdentity");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetNetworking()
         {
@@ -101,7 +121,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetRollingUpgrade");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetPriority()
         {
@@ -122,11 +147,52 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetForceUDWalk");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetRedeploy()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetRedeploy");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetVMUpdate()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetVMUpdate");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetAutoRollback()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetAutoRollback");
+        }
+
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetProfile()
+        {
+            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineScaleSetProfile");
         }
     }
 }

@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.ServiceBus;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
@@ -24,6 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Azure.Management.Internal.Resources;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             ServiceBusManagementClient = GetServiceBusManagementClient(context);
             AuthorizationManagementClient = GetAuthorizationManagementClient();
@@ -156,9 +156,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
             return LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private ServiceBusManagementClient GetServiceBusManagementClient(MockContext context)

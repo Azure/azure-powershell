@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Sql.Database.Model;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmSqlDatabaseGeoBackupPolicy")]
+    [OutputType(typeof(AzureSqlDatabaseGeoBackupPolicyModel))]
     public class GetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
     {
         /// <summary>

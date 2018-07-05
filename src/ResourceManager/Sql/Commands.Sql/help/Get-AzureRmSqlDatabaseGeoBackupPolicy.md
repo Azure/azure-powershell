@@ -24,11 +24,6 @@ This is an Azure Backup resource that is used to define backup storage policy.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DatabaseName
@@ -100,6 +95,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 This cmdlet does not accept any input.
 
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseGeoBackupPolicyModel
 
 ## NOTES
 

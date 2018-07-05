@@ -26,11 +26,6 @@ You must register a server before Backup can send backup data to the vault.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -84,7 +79,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRMBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 
 ## OUTPUTS
 

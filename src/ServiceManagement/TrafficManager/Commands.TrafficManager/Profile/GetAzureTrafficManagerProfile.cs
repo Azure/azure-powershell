@@ -19,7 +19,7 @@ using Microsoft.WindowsAzure.Commands.TrafficManager.Utilities;
 
 namespace Microsoft.WindowsAzure.Commands.TrafficManager.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureTrafficManagerProfile"), OutputType(typeof(IEnumerable<SimpleProfile>))]
+    [Cmdlet(VerbsCommon.Get, "AzureTrafficManagerProfile"), OutputType(typeof(SimpleProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false)]
