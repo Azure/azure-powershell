@@ -18,11 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-<<<<<<< HEAD:src/ResourceManager/ApiManagement/ChangeLog.md
-* Update package dependencies for ApiManagement
-=======
+
+## Version 6.1.1
 * Fixed formatting of OutputType in help files
->>>>>>> 377a473e9d775d67d78b8d27888796b626ed00db:src/ResourceManager/ApiManagement/Commands.ApiManagement/ChangeLog.md
 
 ## Version 6.1.0
 * Added support for ApiVersions, ApiReleases and ApiRevisions
