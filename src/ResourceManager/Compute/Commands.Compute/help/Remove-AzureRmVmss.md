@@ -27,10 +27,12 @@ You can use the *InstanceId* parameter to remove a specific virtual machine insi
 
 ### Example 1: Remove a VMSS
 ```
-PS C:\> Remove-AzureRmVmss -ResourceGroupName "Group001" -VMScaleSetName "VMScaleSet001"
+PS C:\> $vmss = Get-AzureRmVmss -ResourceGroupName $RGName -VMScaleSetName $vmssName 
+PS C:\> Remove-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName
+PS C:\> Update-AzureRmVmss -ResourceGroupName $RGName -Name $vmssName -VirtualMachineScaleSet $vmss
 ```
 
-This command removes the VMSS named VMScaleSet001 that belongs to the resource group named Group001.
+This command removes the extension of a VMSS and update the VMSS after the modification.
 
 ### Example 2: Remove a virtual machine from within a VMSS
 ```
