@@ -15,7 +15,9 @@ $PathsToCheck = @(
 $PathStringsToIgnore = @(
     "Test",
     ".sln",
-    "Nuget.config"
+    "Nuget.config",
+    ".psd1",
+    "NotificationHubs"
 )
 
 $FilesChangedList = $FilesChanged -split ';'
@@ -30,7 +32,11 @@ $ChangeLogs = $FilesChangedList | where { $_ -like "*ChangeLog.md*" }
 $UpdatedServicePaths = New-Object System.Collections.Generic.HashSet[string]
 foreach ($ChangeLog in $ChangeLogs)
 {
-    if ($ChangeLog -like "src/ServiceManagement*")
+    if ($ChangeLog -eq "ChangeLog.md")
+    {
+        continue
+    }
+    elseif ($ChangeLog -like "src/ServiceManagement*")
     {
         $UpdatedServicePaths.Add("src/ServiceManagement") | Out-Null
     }
@@ -43,9 +49,14 @@ foreach ($ChangeLog in $ChangeLogs)
         # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
         $SplitPath = $ChangeLog -split '/'
         $BasePath = $SplitPath[0],$SplitPath[1],$SplitPath[2] -join "/"
+        Write-Host "Change log '$ChangeLog' processed to base path '$BasePath'"
         $UpdatedServicePaths.Add($BasePath) | Out-Null
     }
 }
+
+$message = "The following services were found to have a change log update:`n"
+$UpdatedServicePaths | % { $message += "`t- $_`n" }
+Write-Host "$message`n"
 
 $FlaggedFiles = @()
 foreach ($File in $FilesChangedList)
