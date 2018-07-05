@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.LegacySdk;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Sql.Auditing.Services
 {
@@ -133,7 +134,7 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Services
                 {
                     break;
                 }
-                Task.Delay(2000); // wait 2 seconds between each poll
+                TestMockSupport.Delay(2000); // wait 2 seconds between each poll
             }
         }
 

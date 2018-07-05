@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.WindowsAzure.Commands.ServiceManagement.Network.NetworkSecurityGroup
 {
-    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroup"), OutputType(typeof(IEnumerable<INetworkSecurityGroup>))]
+    [Cmdlet(VerbsCommon.Get, "AzureNetworkSecurityGroup"), OutputType(typeof(INetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroup: NetworkCmdletBase
     {
         [Parameter(Position = 0, Mandatory = false)]

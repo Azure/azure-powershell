@@ -82,7 +82,7 @@ Specifies the ExpressRoute circuit authorization.
 ```yaml
 Type: PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,7 +99,7 @@ Specifies the name of the ExpressRoute circuit authorization that this cmdlet ge
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -113,15 +113,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCircuit
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 **Get-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
 **Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
 
 ## OUTPUTS
 
-### PSExpressRouteCircuitAuthorization
-**Get-AzureRmExpressRouteCircuitAuthorization** returns instances of the
-**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization** object.
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuitAuthorization
 
 ## NOTES
 

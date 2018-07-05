@@ -32,9 +32,23 @@ If you do not specify the *ResoureGroupName* parameter, this cmdlet gets all Cog
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
+PS C:\> New-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locati
+on 'WestUS'
 
+ResourceGroupName : cognitive-services-resource-group
+AccountName       : myluis
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                    nitiveServices/accounts/myluis
+Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location          : WESTUS
+Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType       : LUIS
+ResourceType      : Microsoft.CognitiveServices/accounts
+Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState : Succeeded
+Tags              :
 ```
 
 ## PARAMETERS

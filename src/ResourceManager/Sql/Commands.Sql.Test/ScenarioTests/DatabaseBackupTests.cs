@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
@@ -80,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
                 RunPowerShellTest("Test-ServerBackupLongTermRetentionVault");
             }
         }
-        [Fact]
+        [Fact(Skip = "LTR-V1 restore service is retiring in Prod.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRestoreLongTermRetentionBackup()
         {

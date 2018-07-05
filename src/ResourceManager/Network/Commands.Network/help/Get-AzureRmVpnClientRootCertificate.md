@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 16754F70-9619-4F68-86E9-5C8B27812707
@@ -68,7 +68,7 @@ Resource groups categorize items to help simplify inventory management and gener
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -83,7 +83,7 @@ Specifies the name of the virtual network gateway where the root certificate is 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -117,8 +117,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-###  
-**Get-AzureRmVpnClientRootCertificate** gets instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate
 
 ## NOTES
 

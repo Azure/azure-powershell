@@ -30,11 +30,6 @@ The **Get-AzureRmCdnCustomDomain** cmdlet gets an Azure Content Delivery Network
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
@@ -133,12 +128,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSEndpoint
+### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
 This cmdlet returns a custom domain object.
 
 ## NOTES

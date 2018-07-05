@@ -111,11 +111,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### DataLakeStoreFirewallRule
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule
 The specified firewall rule to retrieve
-
-### IList<DataLakeStoreFirewallRule>
-The list of firewall rules in the specified account.
 
 ## NOTES
 

@@ -28,9 +28,15 @@ Paid tiers include S0, S1, S2, and so on.
 
 ## EXAMPLES
 
-### 1:
-```
+### Example 1
+```powershell
+PS C:\> (Get-AzureRmCognitiveServicesAccountSkus -ResourceGroupName cognitive-services-resource-group -Name myluis).Value | Select-Object -E
+xpandProperty Sku;
 
+Name     Tier
+----     ----
+F0       Free
+S0   Standard
 ```
 
 ## PARAMETERS

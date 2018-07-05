@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.EventHub;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
@@ -26,7 +27,6 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.IotHub;
-    using Microsoft.Azure.Management.Resources;
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 
         private void SetupManagementClients(MockContext context)
         {
-            ResourceManagementClient = GetResourceManagementClient();
+            ResourceManagementClient = GetResourceManagementClient(context);
             SubscriptionClient = GetSubscriptionClient();
             IotHubClient = GetIotHubClient(context);
            EHClient = GetEHClient(context);
@@ -166,9 +166,9 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
             return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private SubscriptionClient GetSubscriptionClient()

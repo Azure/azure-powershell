@@ -120,6 +120,8 @@ Accept wildcard characters: False
 ### -Permission
 Specifies permissions for a storage queue.
 
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+
 ```yaml
 Type: String
 Parameter Sets: SasPermission

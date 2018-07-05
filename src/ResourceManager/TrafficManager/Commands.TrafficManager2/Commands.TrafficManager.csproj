@@ -92,12 +92,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.TrafficManager.psd1">
+    <None Include="AzureRM.TrafficManager.psd1">
       <Link>AzureRM.TrafficManager.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="Microsoft.Azure.Commands.TrafficManager.dll-help.psd1">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">

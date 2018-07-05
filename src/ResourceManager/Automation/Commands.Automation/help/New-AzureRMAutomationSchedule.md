@@ -65,7 +65,7 @@ The **New-AzureRmAutomationSchedule** cmdlet creates a schedule in Azure Automat
 
 ### Example 1: Create a one-time schedule in local time
 ```
-PS C:\>$TimeZone = ([System.TimeZoneInfo]::Local)Id
+PS C:\>$TimeZone = ([System.TimeZoneInfo]::Local).Id
 PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule01" -StartTime "23:00" -OneTime -ResourceGroupName "ResourceGroup01" -TimeZone $TimeZone
 ```
 
@@ -76,7 +76,7 @@ The second command creates a schedule that runs one time on the current date at 
 ```
 PS C:\>$StartTime = Get-Date "13:00:00"
 PS C:\> $EndTime = $StartTime.AddYears(1)
-PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DailyInterval 1 -ResourceGroupName "ResourceGroup01"
+PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.

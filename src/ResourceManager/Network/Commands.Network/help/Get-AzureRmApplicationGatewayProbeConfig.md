@@ -37,7 +37,7 @@ Specifies the application gateway to which this cmdlet gets a probe configuratio
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -67,7 +67,7 @@ Specifies the name of the probe.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -81,14 +81,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe
-
-### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayProbe]
 
 ## NOTES
 
