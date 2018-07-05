@@ -27,6 +27,13 @@ Remove-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Remove-AzureRmPolicyAssignment -InputObject <PsPolicyAssignment> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmPolicyAssignment** cmdlet removes the specified policy assignment.
 
@@ -57,6 +64,13 @@ The second command gets the policy assignment at a resource group level, and the
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 The final command removes the policy assignment that the **ResourceId** property of $PolicyAssignment identifies.
+
+### Example 3: Remove policy assignment in piped input
+```
+PS C:\> Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope (Get-AzureRmResourceGroup -Name 'ResourceGroup11').ResourceId | Remove-AzureRmPolicyAssignment
+```
+
+This command gets a resource group named ResourceGroup11, uses its **ResourceId** property to retrieve the policy assignment named 'PolicyAssignment07' and removes it by piping it to the Remove-AzureRmPolicyAssignment cmdlet.
 
 ## PARAMETERS
 
@@ -142,6 +156,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy assignment object to remove that was output from another cmdlet.
+
+```yaml
+Type: PsPolicyAssignment
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -35,16 +35,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:454a5d33-7fb8-4382-922c-d00b6d7e50f4"
+          "westus2:a31efe5b-2667-4a5e-a0c2-6672042ed374"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "47e67086-0ad3-4dc2-9c38-12652edc9e5a"
+          "41c85a69-044a-423c-8b4f-352f6afbeb02"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015614Z:47e67086-0ad3-4dc2-9c38-12652edc9e5a"
+          "WESTUS2:20180619T022109Z:41c85a69-044a-423c-8b4f-352f6afbeb02"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,7 +56,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:13 GMT"
+          "Tue, 19 Jun 2018 02:21:08 GMT"
         ],
         "Retry-After": [
           "0"
@@ -96,16 +96,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:9d38ae27-b7a9-4b2e-a246-811b9ec14d5f"
+          "westus2:56f6c270-0cf2-4c1a-a8b0-867c7d51e454"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14984"
         ],
         "x-ms-correlation-request-id": [
-          "72c1bb38-7243-4762-8753-4d39282b77d1"
+          "970d9fda-b154-4cda-bf6b-18c2686550cc"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015615Z:72c1bb38-7243-4762-8753-4d39282b77d1"
+          "WESTUS2:20180619T022110Z:970d9fda-b154-4cda-bf6b-18c2686550cc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,68 +117,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:15 GMT"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/Subscriptions/d0610b27-9663-4c05-89f8-5b4be01e86a5/providers/Microsoft.Authorization/policyassignments/someName?api-version=2018-03-01",
-      "EncodedRequestUri": "L1N1YnNjcmlwdGlvbnMvZDA2MTBiMjctOTY2My00YzA1LTg5ZjgtNWI0YmUwMWU4NmE1L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lhc3NpZ25tZW50cy9zb21lTmFtZT9hcGktdmVyc2lvbj0yMDE4LTAzLTAx",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v6.2.1",
-          "PSVersion/v5.1.16299.431"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Get-AzureRmPolicyAssignment"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"PolicyAssignmentNotFound\",\r\n    \"message\": \"The policy assignment 'someName' is not found.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "104"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-request-id": [
-          "westus2:5f155eeb-27a4-4877-ba1d-50110b89dc85"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "14988"
-        ],
-        "x-ms-correlation-request-id": [
-          "0c80bf91-d108-4040-bf54-ffb3ee3d30f9"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015615Z:0c80bf91-d108-4040-bf54-ffb3ee3d30f9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 19 Jun 2018 01:56:15 GMT"
+          "Tue, 19 Jun 2018 02:21:10 GMT"
         ],
         "Retry-After": [
           "0"
@@ -218,16 +157,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:22cbbd60-31f0-4c7f-a524-ba8a8175a006"
+          "westus2:74d1332d-53f7-4a86-9b19-0240c64583c5"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14991"
+          "14992"
         ],
         "x-ms-correlation-request-id": [
-          "74c4151b-d5ab-4196-96fb-531a83b9a07b"
+          "5a799f7f-46a1-4edb-8890-cfb79be318b3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015615Z:74c4151b-d5ab-4196-96fb-531a83b9a07b"
+          "WESTUS2:20180619T022110Z:5a799f7f-46a1-4edb-8890-cfb79be318b3"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -239,68 +178,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:14 GMT"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someScope/providers/Microsoft.Authorization/policyassignments/someName?api-version=2018-03-01",
-      "EncodedRequestUri": "L3NvbWVTY29wZS9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcG9saWN5YXNzaWdubWVudHMvc29tZU5hbWU/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v6.2.1",
-          "PSVersion/v5.1.16299.431"
-        ],
-        "ParameterSetName": [
-          "NameParameterSet"
-        ],
-        "CommandName": [
-          "Get-AzureRmPolicyAssignment"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a provided subscription. All requests must have an associated subscription Id.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "156"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "25fd0f42-0214-445b-a542-25fafe6f00d2"
-        ],
-        "x-ms-correlation-request-id": [
-          "25fd0f42-0214-445b-a542-25fafe6f00d2"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015616Z:25fd0f42-0214-445b-a542-25fafe6f00d2"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 19 Jun 2018 01:56:15 GMT"
+          "Tue, 19 Jun 2018 02:21:10 GMT"
         ],
         "Retry-After": [
           "0"
@@ -343,16 +221,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:1fcf8353-e2cc-42df-9fab-bc92f4af98fd"
+          "westus2:0e359859-2503-4904-9375-e0d78c500d61"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "44f0f2ff-4740-4644-a905-bdbc535aa492"
+          "c7201bd9-c62a-4105-b6a2-2aa09952c5b6"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015616Z:44f0f2ff-4740-4644-a905-bdbc535aa492"
+          "WESTUS2:20180619T022110Z:c7201bd9-c62a-4105-b6a2-2aa09952c5b6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -364,7 +242,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:15 GMT"
+          "Tue, 19 Jun 2018 02:21:10 GMT"
         ],
         "Retry-After": [
           "0"
@@ -383,7 +261,7 @@
           "PSVersion/v5.1.16299.431"
         ],
         "ParameterSetName": [
-          "NameParameterSet"
+          "PolicyDefinitionIdFilterParameterSet"
         ],
         "CommandName": [
           "Get-AzureRmPolicyAssignment"
@@ -407,16 +285,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:7bfc6227-33c1-4e10-9114-bf537a0ab13c"
+          "westus2:7101f5e8-29d8-43d4-a9b9-4e586f35949f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "39fad44e-a918-496c-b981-540f606250ab"
+          "e2956b3d-ca0d-43fc-9b2c-63180e18a6a7"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015617Z:39fad44e-a918-496c-b981-540f606250ab"
+          "WESTUS2:20180619T022111Z:e2956b3d-ca0d-43fc-9b2c-63180e18a6a7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -428,7 +306,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:16 GMT"
+          "Tue, 19 Jun 2018 02:21:10 GMT"
         ],
         "Retry-After": [
           "0"
@@ -471,16 +349,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:945895de-1580-4911-b05b-844fe18afced"
+          "westus2:5af737e3-bcce-497a-971f-2f8aa1d57f4e"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14995"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "3db66b85-7a1f-4de7-9045-58983be4a321"
+          "b4c21095-711a-4bc9-945a-2c745fb767c8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015617Z:3db66b85-7a1f-4de7-9045-58983be4a321"
+          "WESTUS2:20180619T022111Z:b4c21095-711a-4bc9-945a-2c745fb767c8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -492,7 +370,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:16 GMT"
+          "Tue, 19 Jun 2018 02:21:11 GMT"
         ],
         "Retry-After": [
           "0"
@@ -532,16 +410,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:4f95ac2b-2b79-4807-afce-587fb892bc6b"
+          "westus2:e07d1f6f-74da-4225-9138-2a3a7e830d13"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "bb0579ad-2b27-4553-85e6-3adfe13eebe3"
+          "b38644db-e4cd-476c-96b9-69891d1e8034"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015618Z:bb0579ad-2b27-4553-85e6-3adfe13eebe3"
+          "WESTUS2:20180619T022113Z:b38644db-e4cd-476c-96b9-69891d1e8034"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -553,68 +431,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:18 GMT"
-        ],
-        "Retry-After": [
-          "0"
-        ]
-      },
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/someId?$filter=policyDefinitionId%20eq%20'someId'&api-version=2018-03-01",
-      "EncodedRequestUri": "L3NvbWVJZD8kZmlsdGVyPXBvbGljeURlZmluaXRpb25JZCUyMGVxJTIwJ3NvbWVJZCcmYXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "User-Agent": [
-          "AzurePowershell/v6.2.1",
-          "PSVersion/v5.1.16299.431"
-        ],
-        "ParameterSetName": [
-          "IdParameterSet"
-        ],
-        "CommandName": [
-          "Get-AzureRmPolicyAssignment"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingSubscription\",\r\n    \"message\": \"The request did not have a provided subscription. All requests must have an associated subscription Id.\"\r\n  }\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "156"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "f6e4e86c-a6ff-4f28-bed4-2a261ae570e3"
-        ],
-        "x-ms-correlation-request-id": [
-          "f6e4e86c-a6ff-4f28-bed4-2a261ae570e3"
-        ],
-        "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015619Z:f6e4e86c-a6ff-4f28-bed4-2a261ae570e3"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Tue, 19 Jun 2018 01:56:18 GMT"
+          "Tue, 19 Jun 2018 02:21:13 GMT"
         ],
         "Retry-After": [
           "0"
@@ -633,7 +450,7 @@
           "PSVersion/v5.1.16299.431"
         ],
         "ParameterSetName": [
-          "NameParameterSet"
+          "PolicyDefinitionIdFilterParameterSet"
         ],
         "CommandName": [
           "Get-AzureRmPolicyAssignment"
@@ -657,16 +474,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:73e8203b-2af7-4265-9881-5380da1bd6d3"
+          "westus2:ae54a783-8d57-42c0-872e-6ce07286358b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14998"
+          "14995"
         ],
         "x-ms-correlation-request-id": [
-          "bf0c8d6c-b81a-4b0e-a05e-3bc7a61e40c4"
+          "0c36d0be-c469-4302-99eb-eae30c245785"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015619Z:bf0c8d6c-b81a-4b0e-a05e-3bc7a61e40c4"
+          "WESTUS2:20180619T022113Z:0c36d0be-c469-4302-99eb-eae30c245785"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -678,7 +495,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:18 GMT"
+          "Tue, 19 Jun 2018 02:21:12 GMT"
         ],
         "Retry-After": [
           "0"
@@ -721,16 +538,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:4b614ba2-66f1-4fdb-a0d2-89801ccf8590"
+          "westus2:0ebdc225-de3e-4ccd-86ba-6abc40f9fd08"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14993"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "42f79af7-597c-4322-b4fb-43c57c883c41"
+          "29be70f5-7c3d-4d45-b2f8-c9152ed9de64"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015619Z:42f79af7-597c-4322-b4fb-43c57c883c41"
+          "WESTUS2:20180619T022114Z:29be70f5-7c3d-4d45-b2f8-c9152ed9de64"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -742,7 +559,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:56:19 GMT"
+          "Tue, 19 Jun 2018 02:21:13 GMT"
         ],
         "Retry-After": [
           "0"

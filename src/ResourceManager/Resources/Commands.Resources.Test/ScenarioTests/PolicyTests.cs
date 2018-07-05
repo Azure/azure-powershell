@@ -107,6 +107,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestPolicyObjectPiping()
+        {
+            ResourcesController.NewInstance.RunPsTest("Test-PolicyObjectPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPolicyAssignmentParameters()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetPolicyAssignmentParameters");

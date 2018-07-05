@@ -41,6 +41,13 @@ Remove-AzureRmPolicyDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pr
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Remove-AzureRmPolicyDefinition [-Force] -InputObject <PsPolicyDefinition> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Remove-AzureRmPolicyDefinition** cmdlet removes a policy definition.
 
@@ -63,6 +70,13 @@ The first command gets a policy definition named VMPolicyDefinition by using the
 The command stores it in the $PolicyDefinition variable.
 
 The second command removes the policy definition identified by the **ResourceId** property of $PolicyDefinition.
+
+### Example 3: Remove policy definition piped to input
+```
+PS C:\> Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' | Remove-AzureRmPolicyDefinition
+```
+
+This command gets a policy definition named VMPolicyDefinition and removes it by piping it to the Remove-AzureRmPolicyDefinition cmdlet.
 
 ## PARAMETERS
 
@@ -163,6 +177,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy definition object to remove that was output from another cmdlet.
+
+```yaml
+Type: PsPolicyDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

@@ -35,16 +35,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:aaa9fd52-dcaa-40fd-89d0-2ce2483f7d4b"
+          "westus2:1e726819-583f-4146-817b-5a083c881a41"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14998"
         ],
         "x-ms-correlation-request-id": [
-          "5b925a1b-bef6-4611-a4aa-f6b16285a213"
+          "2369d98d-4c72-4687-bbeb-a1b4faa79a5d"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015230Z:5b925a1b-bef6-4611-a4aa-f6b16285a213"
+          "WESTUS2:20180619T021557Z:2369d98d-4c72-4687-bbeb-a1b4faa79a5d"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,7 +56,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:52:30 GMT"
+          "Tue, 19 Jun 2018 02:15:56 GMT"
         ],
         "Retry-After": [
           "0"
@@ -96,16 +96,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:c4056728-fe43-4856-a279-0d2ee78e34c7"
+          "westus2:615e1205-c5f2-4a18-b798-1fbb3cb3ca6f"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14999"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "05cca4f8-e30f-4ae4-a076-6edf32a2b342"
+          "7a41204c-8f3f-46e7-8070-43ceb0d2766f"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015231Z:05cca4f8-e30f-4ae4-a076-6edf32a2b342"
+          "WESTUS2:20180619T021558Z:7a41204c-8f3f-46e7-8070-43ceb0d2766f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +117,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:52:31 GMT"
+          "Tue, 19 Jun 2018 02:15:58 GMT"
         ],
         "Retry-After": [
           "0"
@@ -157,16 +157,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:28cc9cc7-4fd5-4a85-bd67-566d8488c3d3"
+          "westus2:4a9fefaa-e589-4e5f-8444-249b5d10adbd"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "14999"
         ],
         "x-ms-correlation-request-id": [
-          "61e0fe6c-ff46-4190-a15f-f0cdfdd926a8"
+          "22a4f4ca-66da-4fe0-8583-367800262482"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015232Z:61e0fe6c-ff46-4190-a15f-f0cdfdd926a8"
+          "WESTUS2:20180619T021559Z:22a4f4ca-66da-4fe0-8583-367800262482"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -178,7 +178,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:52:31 GMT"
+          "Tue, 19 Jun 2018 02:15:59 GMT"
         ],
         "Retry-After": [
           "0"
@@ -218,16 +218,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:82ce6606-10b1-4580-b933-51b03b0601da"
+          "westus2:edcd4d06-a7c7-4205-809c-178369871582"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
-          "14998"
+          "14994"
         ],
         "x-ms-correlation-request-id": [
-          "f5e65c02-a6f3-40ac-88f9-5873f3116705"
+          "53d03777-8116-4d40-8cc8-3463056c5353"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015232Z:f5e65c02-a6f3-40ac-88f9-5873f3116705"
+          "WESTUS2:20180619T021559Z:53d03777-8116-4d40-8cc8-3463056c5353"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -239,7 +239,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:52:31 GMT"
+          "Tue, 19 Jun 2018 02:15:58 GMT"
         ],
         "Retry-After": [
           "0"
@@ -279,16 +279,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:8529a021-da2b-4c3d-ad27-312caf2647ee"
+          "westus2:89fff6d2-ee9f-4c3e-99f1-a37f28823c4b"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "622fda87-543e-4ed8-80a0-9e46a55c08fe"
+          "f8f102b5-a435-4007-b29e-6627bf0eb679"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015232Z:622fda87-543e-4ed8-80a0-9e46a55c08fe"
+          "WESTUS2:20180619T021559Z:f8f102b5-a435-4007-b29e-6627bf0eb679"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -300,13 +300,147 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:52:32 GMT"
+          "Tue, 19 Jun 2018 02:15:59 GMT"
         ],
         "Retry-After": [
           "0"
         ]
       },
       "StatusCode": 404
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lTZXREZWZpbml0aW9ucy8xZjNhZmRmOS1kMGM5LTRjM2QtODQ3Zi04OWRhNjEzZTcwYTg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v6.2.1",
+          "PSVersion/v5.1.16299.431"
+        ],
+        "ParameterSetName": [
+          "InputObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzureRmPolicySetDefinition"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"[Preview]: Enable Monitoring in Azure Security Center\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"description\": \"Monitor all the available security recommendations in Azure Security Center. This is the default policy for Azure Security Center.\",\r\n    \"metadata\": {\r\n      \"category\": \"Security Center\"\r\n    },\r\n    \"parameters\": {\r\n      \"systemUpdatesMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor system updates \",\r\n          \"description\": \"Enable or disable system updates monitoring\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"systemConfigurationsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor OS vulnerabilities\",\r\n          \"description\": \"Enable or disable OS vulnerabilities monitoring (based on a configured baseline)\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"endpointProtectionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor endpoint protection\",\r\n          \"description\": \"Enable or disable endpoint protection monitoring\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"diskEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor disk encryption\",\r\n          \"description\": \"Enable or disable Enable or disable the monitoring of unencrypted VM disks\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"networkSecurityGroupsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor network security groups\",\r\n          \"description\": \"Enable or disable monitoring of Network Security Groups with too permissive rules\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"webApplicationFirewallMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor web application firewall\",\r\n          \"description\": \"Enable or disable the monitoring of unprotected web application\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"nextGenerationFirewallMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Enable next generation firewall monitoring\",\r\n          \"description\": \"Enable or disable monitoring network endpoints without a Next Generation Firewall\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"vulnerabilityAssesmentMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor vulnerability assesment\",\r\n          \"description\": \"Enable or disable the detection of VM Vulnerabilities by a Vulnerability Assessment solution\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"storageEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor storage encryption\",\r\n          \"description\": \"Enable or disable the monitoring of blob encryption for storage accounts\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Audit\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Audit\"\r\n      },\r\n      \"jitNetworkAccessMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor JIT network access\",\r\n          \"description\": \"Enable or disable the monitoring of network Just In Time access\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"adaptiveApplicationControlsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor application whitelisting\",\r\n          \"description\": \"Enable or disable the monitoring of a possible application whitelist in Security Center\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"sqlAuditingMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor SQL auditing\",\r\n          \"description\": \"Enable or disable the monitoring of unaudited SQL database\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"sqlEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor SQL encryption\",\r\n          \"description\": \"Enable or disable the monitoring of unencrypted SQL database\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      }\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/a8bef009-a5c9-4d0f-90d7-6018734e8a16\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('sqlEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/af8051bf-258b-44e2-a2bf-165330459f9d\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('sqlAuditingMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/86b3d65f-7626-441e-b690-81a8b71cff60\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('systemUpdatesMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/655cb504-bcee-4362-bd4c-402e6aa38759\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('storageEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/b0f33259-77d7-4c9e-aac6-3aabcfae693c\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('jitNetworkAccessMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/47a6b606-51aa-4496-8bb7-64b11cf66adc\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('adaptiveApplicationControlsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/44452482-524f-4bf4-b852-0bff7cc4a3ed\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('networkSecurityGroupsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/e1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('systemConfigurationsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/af6cd1bd-1635-48cb-bde7-5b15693900b9\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('endpointProtectionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/0961003e-5a0a-4549-abde-af6a37f2724d\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('diskEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/760a85ff-6162-42b3-8d70-698e268f648c\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('vulnerabilityAssesmentMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/201ea587-7c90-41c3-910f-c280ae01cfd6\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('webApplicationFirewallMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/9daedab3-fb2d-461e-b861-71790eead4f6\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('nextGenerationFirewallMonitoringEffect')]\"\r\n          }\r\n        }\r\n      }\r\n    ]\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n  \"type\": \"Microsoft.Authorization/policySetDefinitions\",\r\n  \"name\": \"1f3afdf9-d0c9-4c3d-847f-89da613e70a8\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "6798"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14993"
+        ],
+        "x-ms-request-id": [
+          "westus2:a3a28ce6-8680-45c3-ba80-a41a052eff2a"
+        ],
+        "x-ms-correlation-request-id": [
+          "e8cad87b-d628-4926-893b-641a25688b73"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180619T021559Z:e8cad87b-d628-4926-893b-641a25688b73"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 19 Jun 2018 02:15:59 GMT"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lTZXREZWZpbml0aW9ucy8xZjNhZmRmOS1kMGM5LTRjM2QtODQ3Zi04OWRhNjEzZTcwYTg/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"1f3afdf9-d0c9-4c3d-847f-89da613e70a8\",\r\n  \"properties\": {\r\n    \"description\": \"Monitor all the available security recommendations in Azure Security Center. This is the default policy for Azure Security Center.\",\r\n    \"displayName\": \"[Preview]: Enable Monitoring in Azure Security Center\",\r\n    \"metadata\": {\r\n      \"category\": \"Security Center\"\r\n    },\r\n    \"policyDefinitions\": [\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/a8bef009-a5c9-4d0f-90d7-6018734e8a16\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('sqlEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/af8051bf-258b-44e2-a2bf-165330459f9d\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('sqlAuditingMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/86b3d65f-7626-441e-b690-81a8b71cff60\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('systemUpdatesMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/655cb504-bcee-4362-bd4c-402e6aa38759\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('storageEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/b0f33259-77d7-4c9e-aac6-3aabcfae693c\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('jitNetworkAccessMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/47a6b606-51aa-4496-8bb7-64b11cf66adc\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('adaptiveApplicationControlsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/44452482-524f-4bf4-b852-0bff7cc4a3ed\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('networkSecurityGroupsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/e1e5fd5d-3e4c-4ce1-8661-7d1873ae6b15\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('systemConfigurationsMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/af6cd1bd-1635-48cb-bde7-5b15693900b9\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('endpointProtectionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/0961003e-5a0a-4549-abde-af6a37f2724d\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('diskEncryptionMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/760a85ff-6162-42b3-8d70-698e268f648c\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('vulnerabilityAssesmentMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/201ea587-7c90-41c3-910f-c280ae01cfd6\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('webApplicationFirewallMonitoringEffect')]\"\r\n          }\r\n        }\r\n      },\r\n      {\r\n        \"policyDefinitionId\": \"/providers/Microsoft.Authorization/policyDefinitions/9daedab3-fb2d-461e-b861-71790eead4f6\",\r\n        \"parameters\": {\r\n          \"effect\": {\r\n            \"value\": \"[parameters('nextGenerationFirewallMonitoringEffect')]\"\r\n          }\r\n        }\r\n      }\r\n    ],\r\n    \"parameters\": {\r\n      \"systemUpdatesMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor system updates \",\r\n          \"description\": \"Enable or disable system updates monitoring\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"systemConfigurationsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor OS vulnerabilities\",\r\n          \"description\": \"Enable or disable OS vulnerabilities monitoring (based on a configured baseline)\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"endpointProtectionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor endpoint protection\",\r\n          \"description\": \"Enable or disable endpoint protection monitoring\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"diskEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor disk encryption\",\r\n          \"description\": \"Enable or disable Enable or disable the monitoring of unencrypted VM disks\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"networkSecurityGroupsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor network security groups\",\r\n          \"description\": \"Enable or disable monitoring of Network Security Groups with too permissive rules\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"webApplicationFirewallMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor web application firewall\",\r\n          \"description\": \"Enable or disable the monitoring of unprotected web application\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"nextGenerationFirewallMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Enable next generation firewall monitoring\",\r\n          \"description\": \"Enable or disable monitoring network endpoints without a Next Generation Firewall\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"vulnerabilityAssesmentMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor vulnerability assesment\",\r\n          \"description\": \"Enable or disable the detection of VM Vulnerabilities by a Vulnerability Assessment solution\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"storageEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor storage encryption\",\r\n          \"description\": \"Enable or disable the monitoring of blob encryption for storage accounts\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"Audit\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"Audit\"\r\n      },\r\n      \"jitNetworkAccessMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor JIT network access\",\r\n          \"description\": \"Enable or disable the monitoring of network Just In Time access\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"adaptiveApplicationControlsMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor application whitelisting\",\r\n          \"description\": \"Enable or disable the monitoring of a possible application whitelist in Security Center\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"sqlAuditingMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor SQL auditing\",\r\n          \"description\": \"Enable or disable the monitoring of unaudited SQL database\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      },\r\n      \"sqlEncryptionMonitoringEffect\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Monitor SQL encryption\",\r\n          \"description\": \"Enable or disable the monitoring of unencrypted SQL database\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"AuditIfNotExists\",\r\n          \"Disabled\"\r\n        ],\r\n        \"defaultValue\": \"AuditIfNotExists\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "9546"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v6.2.1",
+          "PSVersion/v5.1.16299.431"
+        ],
+        "ParameterSetName": [
+          "InputObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzureRmPolicySetDefinition"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '094435f3-a5d5-4c38-abfb-238662bec758' with object id '094435f3-a5d5-4c38-abfb-238662bec758' does not have authorization to perform action 'Microsoft.Authorization/policySetDefinitions/write' over scope '/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "362"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "aa0827b7-04f6-4b11-a825-2a4384f7bac1"
+        ],
+        "x-ms-correlation-request-id": [
+          "aa0827b7-04f6-4b11-a825-2a4384f7bac1"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180619T021600Z:aa0827b7-04f6-4b11-a825-2a4384f7bac1"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 19 Jun 2018 02:15:59 GMT"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "StatusCode": 403
     }
   ],
   "Names": {},

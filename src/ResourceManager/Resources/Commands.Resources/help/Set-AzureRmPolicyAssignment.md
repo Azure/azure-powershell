@@ -29,6 +29,14 @@ Set-AzureRmPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <S
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Set-AzureRmPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Sku <Hashtable>] -InputObject <PsPolicyAssignment> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzureRmPolicyAssignment** cmdlet modifies a policy assignment.
 Specify an assignment by ID or by name and scope.
@@ -49,6 +57,14 @@ The second command gets the policy assignment named PolicyAssignment by using th
 The command stores that object in the $PolicyAssignment variable.
 
 The final command updates the display name on the policy assignment on the resource group identified by the **ResourceId** property of $ResourceGroup.
+
+### Example 2: Update the display name of the policy assignment piped to input
+```
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name 'PolicyAssignment' -Scope $ResourceGroup.ResourceId | Set-AzureRmPolicyAssignment -DisplayName 'Do not allow VM creation'
+```
+
+The final command gets the policy assignment on the resource group identified by **ResourceId** property of $ResourceGroup and pipes it to Set-AzureRmPolicyAssignment cmdlet to update its display name
 
 ## PARAMETERS
 
@@ -167,6 +183,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The policy assignment object to update that was output from another cmdlet.
+
+```yaml
+Type: PsPolicyAssignment
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The updated metadata for the policy assignment. This can either be a path to a file name containing the metadata, or the metadata as a string.
 
@@ -267,7 +298,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyAssignment
 
 ## NOTES
 

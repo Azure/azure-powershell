@@ -45,6 +45,14 @@ Set-AzureRmPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Set-AzureRmPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] -InputObject <PsPolicyDefinition> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzureRmPolicyDefinition** cmdlet modifies a policy definition.
 
@@ -60,6 +68,13 @@ The first command gets a policy definition named VMPolicyDefinition by using the
 The command stores that object in the $PolicyDefinition variable.
 
 The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
+
+### Example 2: Update the description of a policy definition piped to input
+```
+PS C:\> Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' | Set-AzureRmPolicyDefinition -Description 'Updated policy to not allow virtual machine creation'
+```
+
+This command gets the policy definition named VMPolicyDefinition and updates its description by piping it to Set-AzureRmPolicyDefinition cmdlet.
 
 ## PARAMETERS
 
@@ -175,6 +190,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy definition object to update that was output from another cmdlet.
+
+```yaml
+Type: PsPolicyDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -294,7 +324,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicyDefinition
 
 ## NOTES
 

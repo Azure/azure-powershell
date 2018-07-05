@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Policy cmdlets
+    - Add piping scenarios
+    - Change to strongly-typed input/output objects
+    - Eliminate a handful of invalid parameter combinations
 
 ## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Creates the new policy definition.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmPolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PSObject))]
+    [Cmdlet(VerbsCommon.New, "AzureRmPolicyDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyDefinition))]
     public class NewAzurePolicyDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
@@ -119,8 +119,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
             var activity = string.Format("PUT {0}", managementUri.PathAndQuery);
             var result = this.GetLongRunningOperationTracker(activityName: activity, isResourceCreateOrUpdate: true)
                 .WaitOnOperation(operationResult: operationResult);
-
-            this.WriteObject(this.GetOutputObjects("PolicyDefinitionId", JObject.Parse(result)), enumerateCollection: true);
+            this.WriteObject(this.GetOutputPolicyDefinitions(JObject.Parse(result)), enumerateCollection: true);
         }
 
         /// <summary>

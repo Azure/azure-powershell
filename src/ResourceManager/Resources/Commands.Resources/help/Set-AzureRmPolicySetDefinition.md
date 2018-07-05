@@ -42,6 +42,13 @@ Set-AzureRmPolicySetDefinition -Id <String> [-DisplayName <String>] [-Descriptio
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObjectParameterSet
+```
+Set-AzureRmPolicySetDefinition [-DisplayName <String>] [-Description <String>] [-PolicyDefinition <String>]
+ [-Metadata <String>] [-Parameter <String>] -InputObject <PsPolicySetDefinition> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Set-AzureRmPolicySetDefinition** cmdlet modifies a policy definition.
 
@@ -57,6 +64,13 @@ The first command gets a policy set definition by using the Get-AzureRmPolicySet
 The command stores that object in the $PolicySetDefinition variable.
 
 The second command updates the description of the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
+
+### Example 2: Update the description of a policy set definition piped to input
+```
+PS C:\> Get-AzureRmPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition' | Set-AzureRmPolicySetDefinition -Description 'Updated policy to not allow virtual machine creation'
+```
+
+This command gets a policy set definition and updates its display name by piping it to Set-AzureRmPolicySetDefinition
 
 ## PARAMETERS
 
@@ -135,6 +149,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The policy set definition object to update that was output from another cmdlet.
+
+```yaml
+Type: PsPolicySetDefinition
+Parameter Sets: InputObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -282,7 +311,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation.Policy.PsPolicySetDefinition
 
 ## NOTES
 

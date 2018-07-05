@@ -35,16 +35,16 @@
           "Accept-Encoding"
         ],
         "x-ms-request-id": [
-          "westus2:cb4aa33a-359b-42f5-861b-8b5ffea5babb"
+          "westus2:4a1c79de-aa3e-43a2-86ae-85582e30ffd4"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14997"
+          "14996"
         ],
         "x-ms-correlation-request-id": [
-          "6f2990eb-613a-48aa-bc9c-3ef1b4d1e939"
+          "51572f8f-8118-4529-9018-7f1ab204f363"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015850Z:6f2990eb-613a-48aa-bc9c-3ef1b4d1e939"
+          "WESTUS2:20180619T022458Z:51572f8f-8118-4529-9018-7f1ab204f363"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -56,7 +56,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:58:50 GMT"
+          "Tue, 19 Jun 2018 02:24:57 GMT"
         ],
         "Retry-After": [
           "0"
@@ -96,16 +96,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:c0ca7160-9ea5-45c7-84ef-3953c2e0bd87"
+          "westus2:33d3b75f-d900-4d2b-b7f2-c0fd48e048ce"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "3710b705-db61-4f58-a26c-5a81d0a6199d"
+          "d7697fe3-41e4-42a7-8077-289fd1aa180b"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015903Z:3710b705-db61-4f58-a26c-5a81d0a6199d"
+          "WESTUS2:20180619T022511Z:d7697fe3-41e4-42a7-8077-289fd1aa180b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -117,7 +117,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:59:03 GMT"
+          "Tue, 19 Jun 2018 02:25:10 GMT"
         ],
         "Retry-After": [
           "0"
@@ -157,16 +157,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:6223f486-841d-4d7e-9267-dcb4a431167d"
+          "westus2:199a049f-9a25-4691-969b-c2785c18bbf1"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14994"
+          "14997"
         ],
         "x-ms-correlation-request-id": [
-          "dfc69eab-9ae7-4bd4-a481-94d586cd7c96"
+          "d254e09a-02c2-436d-939a-fca62314a5d8"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015904Z:dfc69eab-9ae7-4bd4-a481-94d586cd7c96"
+          "WESTUS2:20180619T022511Z:d254e09a-02c2-436d-939a-fca62314a5d8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -178,7 +178,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:59:03 GMT"
+          "Tue, 19 Jun 2018 02:25:11 GMT"
         ],
         "Retry-After": [
           "0"
@@ -218,16 +218,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:b15c96cf-6cab-4c63-a8b1-7703dcde5e3b"
+          "westus2:faa112de-8935-4c6c-97ec-a72da189d579"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
           "14995"
         ],
         "x-ms-correlation-request-id": [
-          "e30fc3a3-4bb1-4b2d-b487-4fef2cbb23e7"
+          "74ce1cc3-d4e6-4aee-8436-b1c76bc5f435"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015904Z:e30fc3a3-4bb1-4b2d-b487-4fef2cbb23e7"
+          "WESTUS2:20180619T022511Z:74ce1cc3-d4e6-4aee-8436-b1c76bc5f435"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -239,7 +239,7 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:59:03 GMT"
+          "Tue, 19 Jun 2018 02:25:11 GMT"
         ],
         "Retry-After": [
           "0"
@@ -279,16 +279,16 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "westus2:b8c464a0-5720-4359-b732-e40d21d7b0dd"
+          "westus2:030b229f-ec3c-4090-b4af-190e3d0a6cc8"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "14996"
+          "14993"
         ],
         "x-ms-correlation-request-id": [
-          "08dd0056-6180-4558-aaa5-11c42d47bc14"
+          "ecd14587-5638-4030-8d09-e42ed721b377"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180619T015904Z:08dd0056-6180-4558-aaa5-11c42d47bc14"
+          "WESTUS2:20180619T022512Z:ecd14587-5638-4030-8d09-e42ed721b377"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -300,13 +300,147 @@
           "no-cache"
         ],
         "Date": [
-          "Tue, 19 Jun 2018 01:59:03 GMT"
+          "Tue, 19 Jun 2018 02:25:12 GMT"
         ],
         "Retry-After": [
           "0"
         ]
       },
       "StatusCode": 404
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a12?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8wNmE3OGUyMC05MzU4LTQxYzktOTIzYy1mYjczNmQzODJhMTI/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "User-Agent": [
+          "AzurePowershell/v6.2.1",
+          "PSVersion/v5.1.16299.431"
+        ],
+        "ParameterSetName": [
+          "InputObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzureRmPolicyDefinition"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"displayName\": \"Audit SQL DB Level Audit Setting\",\r\n    \"policyType\": \"BuiltIn\",\r\n    \"mode\": \"All\",\r\n    \"description\": \"Audit DB level audit setting for SQL databases\",\r\n    \"metadata\": {\r\n      \"category\": \"SQL\",\r\n      \"deprecated\": true\r\n    },\r\n    \"parameters\": {\r\n      \"setting\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Audit Setting\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"enabled\",\r\n          \"disabled\"\r\n        ]\r\n      }\r\n    },\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"field\": \"type\",\r\n        \"equals\": \"Microsoft.Sql/servers/databases\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"AuditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.Sql/servers/databases/auditingSettings\",\r\n          \"name\": \"default\",\r\n          \"existenceCondition\": {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Sql/auditingSettings.state\",\r\n                \"equals\": \"[parameters('setting')]\"\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    }\r\n  },\r\n  \"id\": \"/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a12\",\r\n  \"type\": \"Microsoft.Authorization/policyDefinitions\",\r\n  \"name\": \"06a78e20-9358-41c9-923c-fb736d382a12\"\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "852"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Vary": [
+          "Accept-Encoding"
+        ],
+        "x-ms-ratelimit-remaining-tenant-reads": [
+          "14992"
+        ],
+        "x-ms-request-id": [
+          "westus2:157e1121-633b-4f68-950d-fbc4a1d74a94"
+        ],
+        "x-ms-correlation-request-id": [
+          "d6787bf7-01df-4262-b88d-5c0cdf482a1f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180619T022512Z:d6787bf7-01df-4262-b88d-5c0cdf482a1f"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 19 Jun 2018 02:25:12 GMT"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a12?api-version=2018-03-01",
+      "EncodedRequestUri": "L3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0aG9yaXphdGlvbi9wb2xpY3lEZWZpbml0aW9ucy8wNmE3OGUyMC05MzU4LTQxYzktOTIzYy1mYjczNmQzODJhMTI/YXBpLXZlcnNpb249MjAxOC0wMy0wMQ==",
+      "RequestMethod": "PUT",
+      "RequestBody": "{\r\n  \"name\": \"06a78e20-9358-41c9-923c-fb736d382a12\",\r\n  \"properties\": {\r\n    \"description\": \"Audit DB level audit setting for SQL databases\",\r\n    \"displayName\": \"Audit SQL DB Level Audit Setting\",\r\n    \"policyRule\": {\r\n      \"if\": {\r\n        \"field\": \"type\",\r\n        \"equals\": \"Microsoft.Sql/servers/databases\"\r\n      },\r\n      \"then\": {\r\n        \"effect\": \"AuditIfNotExists\",\r\n        \"details\": {\r\n          \"type\": \"Microsoft.Sql/servers/databases/auditingSettings\",\r\n          \"name\": \"default\",\r\n          \"existenceCondition\": {\r\n            \"allOf\": [\r\n              {\r\n                \"field\": \"Microsoft.Sql/auditingSettings.state\",\r\n                \"equals\": \"[parameters('setting')]\"\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      }\r\n    },\r\n    \"metadata\": {\r\n      \"category\": \"SQL\",\r\n      \"deprecated\": true\r\n    },\r\n    \"parameters\": {\r\n      \"setting\": {\r\n        \"type\": \"String\",\r\n        \"metadata\": {\r\n          \"displayName\": \"Audit Setting\"\r\n        },\r\n        \"allowedValues\": [\r\n          \"enabled\",\r\n          \"disabled\"\r\n        ]\r\n      }\r\n    }\r\n  }\r\n}",
+      "RequestHeaders": {
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1100"
+        ],
+        "User-Agent": [
+          "AzurePowershell/v6.2.1",
+          "PSVersion/v5.1.16299.431"
+        ],
+        "ParameterSetName": [
+          "InputObjectParameterSet"
+        ],
+        "CommandName": [
+          "Set-AzureRmPolicyDefinition"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"AuthorizationFailed\",\r\n    \"message\": \"The client '094435f3-a5d5-4c38-abfb-238662bec758' with object id '094435f3-a5d5-4c38-abfb-238662bec758' does not have authorization to perform action 'Microsoft.Authorization/policyDefinitions/write' over scope '/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a12'.\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "356"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "6d27fdbc-cd52-4bd3-8501-3514c41615fd"
+        ],
+        "x-ms-correlation-request-id": [
+          "6d27fdbc-cd52-4bd3-8501-3514c41615fd"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180619T022512Z:6d27fdbc-cd52-4bd3-8501-3514c41615fd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Connection": [
+          "close"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Tue, 19 Jun 2018 02:25:11 GMT"
+        ],
+        "Retry-After": [
+          "0"
+        ]
+      },
+      "StatusCode": 403
     }
   ],
   "Names": {},
