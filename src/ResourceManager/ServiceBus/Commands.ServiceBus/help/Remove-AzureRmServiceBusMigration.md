@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/remove-azurermservicebusmigration
 schema: 2.0.0
 ---
 
@@ -100,12 +100,12 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Specifying this will return true if the command was successful.
 
 ```yaml
 Type: SwitchParameter
@@ -130,7 +130,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,8 +186,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
+System.String
 
 
 ## OUTPUTS

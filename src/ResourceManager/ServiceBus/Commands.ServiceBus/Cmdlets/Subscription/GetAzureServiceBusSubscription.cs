@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Subscriptions to return.")]
-        [ValidateNotNull]
+        [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }
 
         public override void ExecuteCmdlet()

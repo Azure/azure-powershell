@@ -22,18 +22,18 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 {
     /// <summary>
-    /// 'Set-AzureRmServiceBusRevertMigration' Cmdlet disables the Migration and stops replicating changes from standard to premium
+    /// 'Stop-AzureRmServiceBusMigration' Cmdlet disables the Migration and stops replicating changes from standard to premium
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class StopAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         [Alias("ResourceGroup")]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Standard Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 1, HelpMessage = "Standard Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -52,53 +52,23 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         {
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                ResourceIdentifier getParamMigration = GetResourceDetailsFromId(InputObject.Id);
-                if (getParamMigration.ResourceGroupName != null && getParamMigration.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getParamMigration.ResourceName, action: string.Format(Resources.RevertMigrationConfiguration)))
-                    {
-                        Client.SetServiceBusRevertMigrationConfiguration(getParamMigration.ResourceGroupName, getParamMigration.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceIdentifier Identifier = GetResourceDetailsFromId(InputObject.Id);
+                ResourceGroupName = Identifier.ResourceGroupName;
+                Name = Identifier.ResourceName;                
+            }
+            else if (ParameterSetName == NamespaceResourceIdParameterSet)
+            {
+                ResourceIdentifier Identifier = GetResourceDetailsFromId(ResourceId);
+                ResourceGroupName = Identifier.ResourceGroupName;
+                Name = Identifier.ResourceName;
             }
 
-            if (ParameterSetName == NamespaceResourceIdParameterSet)
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RevertMigrationConfiguration)))
             {
-                ResourceIdentifier getParamMigration = GetResourceDetailsFromId(ResourceId);
-                if (getParamMigration.ResourceGroupName != null && getParamMigration.ResourceName != null)
+                Client.SetServiceBusRevertMigrationConfiguration(ResourceGroupName, Name);
+                if (PassThru)
                 {
-                    if (ShouldProcess(target: getParamMigration.ResourceName, action: string.Format(Resources.RevertMigrationConfiguration)))
-                    {
-                        Client.SetServiceBusRevertMigrationConfiguration(getParamMigration.ResourceGroupName, getParamMigration.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
-            }
-
-            if (ParameterSetName == MigrationConfigurationParameterSet)
-            {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.RevertMigrationConfiguration)))
-                {
-                    Client.SetServiceBusRevertMigrationConfiguration(ResourceGroupName, Name);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(true);
                 }
             }
         }
