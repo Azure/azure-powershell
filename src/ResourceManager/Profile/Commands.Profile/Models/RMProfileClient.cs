@@ -445,6 +445,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
             List<IAzureSubscription> subscriptions = new List<IAzureSubscription>();
+            if(string.IsNullOrEmpty(tenantIdOrDomain) && _profile.DefaultContext.Account.Type == AzureAccount.AccountType.AccessToken)
+            {
+                tenantIdOrDomain = _profile.DefaultContext.Account.GetTenants().FirstOrDefault();
+            }
             var tenants = ListTenants(tenantIdOrDomain);
             foreach (var tenant in tenants)
             {
