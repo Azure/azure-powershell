@@ -320,7 +320,7 @@ Accept wildcard characters: False
 ### -StartTime
 Specifies the start time of a schedule as a **DateTimeOffset** object.
 You can specify a string that can be converted to a valid **DateTimeOffset**.
-. If the *TimeZone* parameter is specified, the offset will be ignored and the time zone specified is used.
+If the *TimeZone* parameter is specified, the offset will be ignored and the time zone specified is used.
 
 ```yaml
 Type: DateTimeOffset
