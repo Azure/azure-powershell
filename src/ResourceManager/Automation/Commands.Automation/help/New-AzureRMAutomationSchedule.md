@@ -87,6 +87,19 @@ The command specifies a future time.
 
 The final command creates a daily schedule named Schedule02 to begin at the time stored in $StartDate and expire at the time stored in $EndDate.
 
+### Example 3: Create a weekly recurring schedule
+```
+PS C:\> $StartTime = (Get-Date "13:00:00").AddDays(1)
+PS C:\> [System.DayOfWeek[]]$WeekDays = @([System.DayOfWeek]::Monday..[System.DayOfWeek]::Friday)
+PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "Schedule03" -StartTime $StartTime - WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
+```
+
+The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
+
+The second command creates an array of week days that contains Monday, Tuesday, Wednesday, Thursday and Friday.
+
+The final command creates a daily schedule named Schedule03 that will run Monday to Friday each week at 13:00. The schedule will never expire.
+
 ## PARAMETERS
 
 ### -AutomationAccountName
