@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Get the list of metric definitions for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(PSMetricDefinition[]))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmMetricDefinition"), OutputType(typeof(PSMetricDefinition))]
     public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>
