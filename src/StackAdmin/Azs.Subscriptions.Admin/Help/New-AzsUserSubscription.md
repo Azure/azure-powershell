@@ -33,38 +33,8 @@ Creates a new user subscription
 
 ## PARAMETERS
 
-### -Owner
-Subscription owner.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferId
-Identifier of the offer under the scope of a delegated provider.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantId
-Directory tenant identifier.
+### -DelegatedProviderSubscriptionId
+Parent DelegatedProvider subscription identifier.
 
 ```yaml
 Type: String
@@ -72,7 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -93,8 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelegatedProviderSubscriptionId
-Parent DelegatedProvider subscription identifier.
+### -ExternalReferenceId
+External reference identifier.
 
 ```yaml
 Type: String
@@ -102,7 +72,37 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferId
+Identifier of the offer under the scope of a delegated provider.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Owner
+Subscription owner.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -119,21 +119,6 @@ Aliases:
 Required: False
 Position: 6
 Default value: Default
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,17 +153,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -TenantId
+Directory tenant identifier.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
-Aliases: wi
+Aliases:
 
 Required: False
-Position: Named
+Position: 3
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -191,6 +175,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

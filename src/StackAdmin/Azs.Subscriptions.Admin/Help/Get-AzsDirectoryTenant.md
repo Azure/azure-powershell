@@ -56,6 +56,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+{{Fill ResourceGroupName Description}}
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The resource id.
 
@@ -71,24 +86,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Name of the resource group.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Top
-Return the top N items as specified by the parameter value.
-Applies after the -Skip parameter.
+### -Skip
+Skip the first N items as specified by the parameter value.
 
 ```yaml
 Type: Int32
@@ -102,8 +101,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Skip the first N items as specified by the parameter value.
+### -Top
+Return the top N items as specified by the parameter value.
+Applies after the -Skip parameter.
 
 ```yaml
 Type: Int32

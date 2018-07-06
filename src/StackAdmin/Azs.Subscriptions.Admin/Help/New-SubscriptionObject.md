@@ -33,8 +33,8 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -TenantId
-Directory tenant identifier.
+### -DelegatedProviderSubscriptionId
+Parent DelegatedProvider subscription identifier.
 
 ```yaml
 Type: String
@@ -42,22 +42,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
+Position: 4
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -78,8 +63,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DelegatedProviderSubscriptionId
-Parent DelegatedProvider subscription identifier.
+### -ExternalReferenceId
+External reference identifier.
 
 ```yaml
 Type: String
@@ -87,7 +72,22 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Fully qualified identifier.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -103,6 +103,21 @@ Aliases:
 
 Required: False
 Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OfferId
+Identifier of the offer under the scope of a delegated provider.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -138,21 +153,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -State
 Subscription state.
 
@@ -168,8 +168,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Fully qualified identifier.
+### -SubscriptionId
+Subscription identifier.
 
 ```yaml
 Type: String
@@ -177,14 +177,14 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 10
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfferId
-Identifier of the offer under the scope of a delegated provider.
+### -TenantId
+Directory tenant identifier.
 
 ```yaml
 Type: String
@@ -192,7 +192,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 11
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -44,36 +44,6 @@ Updates a subscription
 
 ## PARAMETERS
 
-### -SubscriptionId
-Subscription identifier.
-
-```yaml
-Type: Guid
-Parameter Sets: Set
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Subscription name.
-
-```yaml
-Type: String
-Parameter Sets: Set
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DelegatedProviderSubscriptionId
 Parent DelegatedProvider subscription identifier.
 
@@ -89,38 +59,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Owner
-Subscription owner.
-
-```yaml
-Type: String
-Parameter Sets: Set
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TenantId
-Directory tenant identifier.
-
-```yaml
-Type: String
-Parameter Sets: Set
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RoutingResourceManagerType
-Routing resource manager type.
+### -DisplayName
+Subscription name.
 
 ```yaml
 Type: String
@@ -149,18 +89,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -State
-Subscription state.
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
 
 ```yaml
-Type: String
-Parameter Sets: Set
-Aliases:
+Type: Subscription
+Parameter Sets: InputObject
+Aliases: Subscription
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -194,6 +134,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Owner
+Subscription owner.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 The resource ID.
 
@@ -209,29 +164,58 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Network.Admin.Models.Quota.
+### -RoutingResourceManagerType
+Routing resource manager type.
 
 ```yaml
-Type: Subscription
-Parameter Sets: InputObject
-Aliases: Subscription
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Subscription state.
+
+```yaml
+Type: String
+Parameter Sets: Set
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription identifier.
+
+```yaml
+Type: Guid
+Parameter Sets: Set
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -TenantId
+Directory tenant identifier.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: String
+Parameter Sets: Set
+Aliases:
 
 Required: False
 Position: Named
@@ -247,6 +231,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named
