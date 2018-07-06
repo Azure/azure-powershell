@@ -12,6 +12,17 @@
     <WarningsAsErrors />
   </PropertyGroup>
 
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Aks</Title>
+    <Description>Microsoft Azure PowerShell Aks library</Description>
+    <PackageTags>azure;powershell;aks</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
+    <PackageOutputPath>$(SolutionDir)artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>

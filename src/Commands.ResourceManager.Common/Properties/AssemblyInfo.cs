@@ -16,10 +16,11 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure PowerShell - Resource Manager Common Library")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell ResourceManager")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell ResourceManager library")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]

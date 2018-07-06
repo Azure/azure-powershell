@@ -19,14 +19,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.Common.Websites")]
-[assembly: AssemblyDescription("Network library generated from AutoRest")]
-[assembly: AssemblyConfiguration("")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Websites")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Websites library")]
+[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
-[assembly: AssemblyProduct("Microsoft. Azure PowerShell")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

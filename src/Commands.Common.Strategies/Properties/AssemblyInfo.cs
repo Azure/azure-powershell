@@ -5,14 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.Common.Strategies")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Commands.Common.Strategies")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2017")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Strategies")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Strategies library")]
+[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

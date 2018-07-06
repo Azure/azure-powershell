@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Common Authentication Library for Azure Resource Manager")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Microsoft Azure PowerSHell")]
-[assembly: AssemblyCopyright("Copyright (c) Microsoft Corporation")]
-[assembly: AssemblyDescription("Authentication types for Azure Resource Manager Modules")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Authentication ResourceManager")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Authentication ResourceManager library")]
+[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

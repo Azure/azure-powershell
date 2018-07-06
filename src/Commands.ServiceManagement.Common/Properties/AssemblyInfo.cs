@@ -17,10 +17,11 @@ using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Common Library")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyProduct)]
-[assembly: AssemblyCopyright(Microsoft.WindowsAzure.Commands.Common.AzurePowerShell.AssemblyCopyright)]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell ServiceManagement")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell ServiceManagement library")]
+[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]

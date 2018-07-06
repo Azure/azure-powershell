@@ -19,11 +19,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Commands.Common.Graph.RBAC")]
-[assembly: AssemblyDescription("Graph.RBAC library generated from AutoRest")]
-[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell RBAC")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell RBAC library")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4cca7339-15bf-4066-9fa1-6a23a58f2cee}</ProjectGuid>
+    <ProjectGuid>{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Storage.Management</RootNamespace>
@@ -136,12 +136,6 @@
     <Compile Include="Version2017-10-01\StorageManagementClient.cs" />
     <Compile Include="Version2017-10-01\UsageOperations.cs" />
     <Compile Include="Version2017-10-01\UsageOperationsExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
-      <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

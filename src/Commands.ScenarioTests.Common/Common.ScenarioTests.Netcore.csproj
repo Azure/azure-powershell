@@ -4,13 +4,24 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
     <AssemblyName>Microsoft.WindowsAzure.Commands.ScenarioTest.Common</AssemblyName>
+    <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell ScenarioTest</Title>
+    <Description>Microsoft Azure PowerShell ScenarioTest library</Description>
+    <PackageTags>azure;powershell;scenariotest</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
+    <PackageOutputPath>$(SolutionDir)artifacts\Package\$(Configuration)</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

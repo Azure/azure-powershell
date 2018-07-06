@@ -16,10 +16,11 @@ using System;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Microsoft Azure Powershell - Common Storage MAnagement Library")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("Microsoft Azure Powershell")]
-[assembly: AssemblyCopyright("Copyright © Microsoft")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Storage Management")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Storage Management library")]
+[assembly: AssemblyProduct("Microsoft Azure PowerShell")]
+[assembly: AssemblyCompany("Microsoft Corporation")]
+[assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]
 
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]

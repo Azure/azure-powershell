@@ -11,7 +11,18 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
-  
+
+  <PropertyGroup>
+    <Title>Microsoft Azure PowerShell Storage Management</Title>
+    <Description>Microsoft Azure PowerShell Storage Management library</Description>
+    <PackageTags>azure;powershell;storage;management</PackageTags>
+    <Authors>Microsoft Corporation</Authors>
+    <Copyright>Copyright © Microsoft Corporation</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
+    <PackageOutputPath>$(SolutionDir)artifacts\Package\$(Configuration)</PackageOutputPath>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
