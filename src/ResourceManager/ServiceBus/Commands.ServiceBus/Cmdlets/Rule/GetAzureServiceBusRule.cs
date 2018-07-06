@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Rules to return.")]
-        [ValidateNotNull]
+        [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }
 
         public override void ExecuteCmdlet()

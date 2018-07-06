@@ -25,12 +25,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     [Cmdlet(VerbsCommon.Remove, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Standard Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 1, HelpMessage = "Standard Namespace Name")]
         [ValidateNotNullOrEmpty]   
         public string Name { get; set; }
 
@@ -52,53 +52,25 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         {
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                ResourceIdentifier getParamMigration = GetResourceDetailsFromId(InputObject.Id);
+                ResourceIdentifier Identifier = GetResourceDetailsFromId(InputObject.Id);
 
-                if (getParamMigration.ResourceGroupName != null && getParamMigration.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getParamMigration.ResourceName, action: string.Format(Resources.RemoveMigrationConfiguration)))
-                    {
-                        Client.DeleteServiceBusMigrationConfiguration(getParamMigration.ResourceGroupName, getParamMigration.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = Identifier.ResourceGroupName;
+                Name = Identifier.ResourceName;                
             }
-            if (ParameterSetName == NamespaceResourceIdParameterSet)
+            else if (ParameterSetName == NamespaceResourceIdParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+                ResourceIdentifier Identifier = GetResourceDetailsFromId(ResourceId);
 
-                if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getParamGeoDR.ResourceName, action: string.Format(Resources.RemoveMigrationConfiguration)))
-                    {
-                        Client.DeleteServiceBusMigrationConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = Identifier.ResourceGroupName;
+                Name = Identifier.ResourceName;
             }
-            if (ParameterSetName == MigrationConfigurationParameterSet)
+
+            if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveMigrationConfiguration)))
             {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveMigrationConfiguration)))
+                Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
+                if (PassThru)
                 {
-                    Client.DeleteServiceBusMigrationConfiguration(ResourceGroupName, Name);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(true);
                 }
             }
         }

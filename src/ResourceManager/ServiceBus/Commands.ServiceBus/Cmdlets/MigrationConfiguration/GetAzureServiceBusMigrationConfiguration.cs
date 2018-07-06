@@ -25,15 +25,15 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// <summary>
     /// 'Get-GetAzureServiceBusMigrationConfiguration' CmdletRetrieves Migration Configuration for Standard to Premium    
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet), OutputType(typeof(List<PSServiceBusMigrationConfigurationAttributes>))]
+    [Cmdlet(VerbsCommon.Get, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet), OutputType(typeof(PSServiceBusMigrationConfigurationAttributes))]
     public class GetAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 1, HelpMessage = "Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -52,29 +52,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
             {
                 getParamMigrationconfig = GetResourceDetailsFromId(InputObject.Id);
 
-                if (getParamMigrationconfig.ResourceGroupName != null && getParamMigrationconfig.ResourceName != null)
-                {
-                    PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(getParamMigrationconfig.ResourceGroupName, getParamMigrationconfig.ResourceName);
-                    WriteObject(migrationConfiguration);
-                }
+                ResourceGroupName = getParamMigrationconfig.ResourceGroupName;
+                Name = getParamMigrationconfig.ResourceName;
             }
-
-            if (ParameterSetName == ResourceIdParameterSet)
+            else if (ParameterSetName == ResourceIdParameterSet)
             {
                 getParamMigrationconfig = GetResourceDetailsFromId(ResourceId);
 
-                if (getParamMigrationconfig.ResourceGroupName != null && getParamMigrationconfig.ResourceName != null)
-                {
-                    PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(getParamMigrationconfig.ResourceGroupName, getParamMigrationconfig.ResourceName);
-                    WriteObject(migrationConfiguration);
-                }
+                ResourceGroupName = getParamMigrationconfig.ResourceGroupName;
+                Name = getParamMigrationconfig.ResourceName;
             }
 
-            if (ParameterSetName == MigrationConfigurationParameterSet)
-            {
-                PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Name);
-                WriteObject(migrationConfiguration);
-            }
+            PSServiceBusMigrationConfigurationAttributes migrationConfiguration = Client.GetServiceBusMigrationConfiguration(ResourceGroupName, Name);
+            WriteObject(migrationConfiguration);
+            
         }
     }
 }

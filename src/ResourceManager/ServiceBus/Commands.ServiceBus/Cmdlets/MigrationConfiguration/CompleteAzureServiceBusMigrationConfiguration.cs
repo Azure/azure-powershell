@@ -27,12 +27,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     [Cmdlet(VerbsLifecycle.Complete, ServicebusMigrationConfigurationVerb, DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class CompleteAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter]
          public string ResourceGroupName { get; set; }
 
-        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Standard Namespace Name")]
+        [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 1, HelpMessage = "Standard Namespace Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -48,58 +48,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
-        {
+        {           
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
                 ResourceIdentifier getMigrationConfig = GetResourceDetailsFromId(InputObject.Id);
 
-                if (getMigrationConfig.ResourceGroupName != null && getMigrationConfig.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getMigrationConfig.ResourceName, action: string.Format(Resources.CompleteMigrationConfiguration)))
-                    {
-                        Client.SetServiceBusCompleteMigrationConfiguration(getMigrationConfig.ResourceGroupName, getMigrationConfig.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getMigrationConfig.ResourceGroupName;
+                Name = getMigrationConfig.ResourceName;
             }
-
-            if (ParameterSetName == NamespaceResourceIdParameterSet)
+            else if (ParameterSetName == NamespaceResourceIdParameterSet)
             {
                 ResourceIdentifier getMigrationConfig = GetResourceDetailsFromId(ResourceId);
 
-                if (getMigrationConfig.ResourceGroupName != null && getMigrationConfig.ResourceName != null)
-                {
-                    if (ShouldProcess(target: getMigrationConfig.ResourceName, action: string.Format(Resources.CompleteMigrationConfiguration)))
-                    {
-                        Client.SetServiceBusCompleteMigrationConfiguration(getMigrationConfig.ResourceGroupName, getMigrationConfig.ResourceName);
-                        if (PassThru)
-                        {
-                            WriteObject(true);
-                        }
-                    }
-                }
-                else
-                {
-                    WriteObject(false);
-                }
+                ResourceGroupName = getMigrationConfig.ResourceGroupName;
+                Name = getMigrationConfig.ResourceName;
             }
 
-            if (ParameterSetName == MigrationConfigurationParameterSet)
+            if (ShouldProcess(target: Name, action: string.Format(Resources.CompleteMigrationConfiguration)))
             {
-                if (ShouldProcess(target: Name, action: string.Format(Resources.CompleteMigrationConfiguration)))
+                Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
+                if (PassThru)
                 {
-                    Client.SetServiceBusCompleteMigrationConfiguration(ResourceGroupName, Name);
-                    if (PassThru)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(true);
                 }
             }
         }

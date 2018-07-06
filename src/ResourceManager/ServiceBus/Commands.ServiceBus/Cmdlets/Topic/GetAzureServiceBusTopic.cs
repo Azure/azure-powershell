@@ -44,11 +44,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         public string Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Topics to return.")]
-        [ValidateNotNull]
+        [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }
 
         public override void ExecuteCmdlet()
-        {
+        {            
             if (!string.IsNullOrEmpty(Name))
             {
                 PSTopicAttributes topicAttributes = Client.GetTopic(ResourceGroupName, Namespace, Name);
@@ -67,8 +67,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
                     WriteObject(topicAttributes, true);
                 }
             }
-
-
         }
     }
 }

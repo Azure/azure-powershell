@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version:
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/start-azurermservicebusmigration
 schema: 2.0.0
 ---
 
@@ -12,23 +12,8 @@ Creates a new Migration configuration and starts migrating entities from Standar
 
 ## SYNTAX
 
-### MigrationConfigurationPropertiesSet (Default)
 ```
 Start-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> [-TargetNameSpace] <String>
- [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### NamespaceInputObjectSet
-```
-Start-AzureRmServiceBusMigration [-InputObject] <PSNamespaceAttributes> [-TargetNameSpace] <String>
- [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### NamespaceResourceIdParameterSet
-```
-Start-AzureRmServiceBusMigration [-ResourceId] <String> [-TargetNameSpace] <String>
  [-PostMigrationName] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -82,33 +67,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Standard Namespace Object
-
-```yaml
-Type: PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Standard Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: MigrationConfigurationPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,7 +93,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -132,28 +102,13 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: MigrationConfigurationPropertiesSet
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Standard Namespace Resource Id
-
-```yaml
-Type: String
-Parameter Sets: NamespaceResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -168,7 +123,7 @@ Aliases:
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -209,8 +164,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+### None
 
 
 ## OUTPUTS
