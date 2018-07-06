@@ -202,7 +202,10 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var baseDirectory = Path.Combine(srcDirectory, targetDirectory);
                 if (Directory.Exists(baseDirectory))
                 {
-                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault();
+                    result = Directory.EnumerateDirectories(baseDirectory).FirstOrDefault(
+                        (dir) => ! string.IsNullOrWhiteSpace(dir) 
+                        && (dir.EndsWith("Debug", StringComparison.OrdinalIgnoreCase)
+                        || dir.EndsWith("Release", StringComparison.OrdinalIgnoreCase)));
                     if (result != null)
                     {
                         result = Path.GetFullPath(result);
@@ -637,11 +640,11 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 catch (Exception psException)
                 {
                     powershell.LogPowerShellException(psException, TracingInterceptor);
+                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     throw;
                 }
                 finally
                 {
-                    powershell.LogPowerShellResults(output, TracingInterceptor);
                     powershell.Streams.Error.Clear();
                 }
             }

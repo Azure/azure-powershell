@@ -20,7 +20,6 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementApiRelease)]
-    [OutputType(typeof(IList<PsApiManagementApiRelease>))]
     [OutputType(typeof(PsApiManagementApiRelease))]
     public class GetAzureApiManagementApiRelease : AzureApiManagementCmdletBase
     {        

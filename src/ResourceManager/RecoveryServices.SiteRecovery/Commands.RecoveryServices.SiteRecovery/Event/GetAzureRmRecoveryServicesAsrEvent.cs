@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrEvent",
         DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASREvent")]
-    [OutputType(typeof(IEnumerable<ASREvent>))]
+    [OutputType(typeof(ASREvent))]
     public class GetAzureRmRecoveryServicesAsrEvents : SiteRecoveryCmdletBase
     {
         /// <summary>

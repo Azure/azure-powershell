@@ -77,7 +77,7 @@
     <Compile Include="Utilities\PowerBIUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.PowerBIEmbedded.psd1">
+    <None Include="..\Commands.Management.PowerBIEmbedded\AzureRM.PowerBIEmbedded.psd1">
       <Link>AzureRM.PowerBIEmbedded.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
