@@ -18,12 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add required property ResourceGroupName to AS.
 
 ## Version 0.6.9
 * Fixed formatting of OutputType in help files
 
 ## Version 0.6.8
-* Enable Gateway assocaite/disassociate operations on AS.
+* Enable Gateway assocaite/disassociate operations on AS. 
 
 ## Version 0.6.7
 * Set minimum dependency of module to PowerShell 5.0
