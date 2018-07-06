@@ -107,7 +107,7 @@ InModuleScope Azs.Subscriptions.Admin {
 			Test-AzsNameAvailability -Name "Test Sub" -ResourceType "Microsoft.Subscriptions.Admin/plans"
 		}
         It "TestMoveSubscription" {
-			$global:TestName = 'MoveSubscription'
+            $global:TestName = 'MoveSubscription'
             $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | Select -ExpandProperty Id
             Move-AzsSubscription -DestinationDelegatedProviderOffer $Null -ResourceId $resourceIds
 		}
