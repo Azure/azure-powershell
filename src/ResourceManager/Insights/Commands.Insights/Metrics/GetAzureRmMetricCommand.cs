@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// <summary>
     /// Get the list of metric definition for a resource.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmMetric"), OutputType(typeof(PSMetric[]))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmMetric", DefaultParameterSetName = GetAzureRmAMetricParamGroup), OutputType(typeof(PSMetric))]
     public class GetAzureRmMetricCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// Gets or sets the top parameter of the cmdlet
         /// </summary>
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The maximum number of records to retrieve (default:10), to be specified with $filter")]
+        [ValidateRange(1, int.MaxValue)]
         public int? Top { get; set; }
 
         /// <summary>
