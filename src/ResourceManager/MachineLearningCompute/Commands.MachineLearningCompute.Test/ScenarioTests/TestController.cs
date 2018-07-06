@@ -93,7 +93,6 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.MachineLearningCompute.psd1"),
                     "AzureRM.Resources.ps1");
 
