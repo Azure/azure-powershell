@@ -244,7 +244,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyFilterIsUsable(filter: filter);
             VerifyStartDateInFilter(filter: filter, startDate: startDate);
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
-            //// VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only start and end date
             cmdlet.EndTime = startDate.AddSeconds(2);
@@ -255,7 +254,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             VerifyStartDateInFilter(filter: filter, startDate: startDate);
             VerifyEndDateInFilter(filter: filter, endDate: startDate.AddSeconds(2));
             VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
-            //// VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with only caller
             cmdlet.EndTime = null;
@@ -264,7 +262,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
             cmdlet.ExecuteCmdlet();
 
             VerifyCallerInCall(filter: filter, startDate: startDate, filedName: requiredFieldName, fieldValue: requiredFieldValue);
-            //// VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with caller and status
             cmdlet.Status = Utilities.Status;
@@ -273,7 +270,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
 
             VerifyStatusAndCallerInCall(filter: filter, startDate: startDate, filedName: requiredFieldName, fieldValue: requiredFieldValue);
             VerifyDetailedOutput(cmdlet: cmdlet);
-            //// VerifyContinuationToken(nextLink: nextLink);
 
             // Calling with maxEvents (Note: # of returned objects is not testable here, only the call is being tested)
             var cmdLetLogs = cmdlet as GetAzureRmLogCommand;
@@ -297,9 +293,6 @@ namespace Microsoft.Azure.Commands.Insights.Test
                 VerifyFilterIsUsable(filter: filter);
                 VerifyStartDateInFilter(filter: filter, startDate: null);
                 VerifyConditionInFilter(filter: filter, field: requiredFieldName, value: requiredFieldValue);
-
-                // The default should have been used, check continuation token
-                // VerifyContinuationToken(nextLink: nextLink);
 
                 cmdLetLogs.MaxRecord = 0;
             }

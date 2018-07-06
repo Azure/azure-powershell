@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Current Release
-
-## Version 5.0.1
 * Fixed formatting of OutputType in help files
 
 * Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
@@ -54,6 +52,8 @@
 
 * **New-AzureRmMetricFilter**
     - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
+
+## Version 5.0.1
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
