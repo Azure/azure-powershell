@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(PSServiceDiagnosticSettings))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmDiagnosticSetting", SupportsShouldProcess = true, DefaultParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         internal const string SetAzureRmDiagnosticSettingOldParamGroup = "OldSetDiagnosticSetting";
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the InputObject parameter of the cmdlet
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The complete spec of a DiagnosticSettingSetting")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingNewParamGroup, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The complete spec of a DiagnosticSettingSetting")]
         [ValidateNotNullOrEmpty]
         public PSServiceDiagnosticSettings InputObject { get; set; }
 
