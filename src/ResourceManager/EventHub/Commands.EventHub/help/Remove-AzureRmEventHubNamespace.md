@@ -5,15 +5,22 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.event
 schema: 2.0.0
 ---
 
-# Remove-AzureRmEventHubNamespace
+# Remove-AzureRmServiceBusNamespace
 
 ## SYNOPSIS
 Removes the specified Event Hubs namespace.
 
 ## SYNTAX
 
+### NamespacePropertiesSet (Default)
 ```
-Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String>
+Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### NamespaceInputObjectSet
+```
+Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,6 +35,13 @@ PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -
 ```
 
 Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
+
+### Example 2
+```
+PS C:\> Remove-AzureRmEventHubNamespace -InputObject $inputObject
+```
+
+Removes the Event Hubs namespace provided by $inputObject.
 
 ## PARAMETERS
 
@@ -46,12 +60,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Service Bus Namespace Object
+
+```yaml
+Type: PSNamespaceAttributes
+Parameter Sets: NamespaceInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-EventHub Namespace Name
+Namespace Name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: NamespacePropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -62,12 +91,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The name of the resource group
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: NamespacePropertiesSet
+Aliases: ResourceGroup
 
 Required: True
 Position: 0
@@ -114,6 +143,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 
 ## OUTPUTS
