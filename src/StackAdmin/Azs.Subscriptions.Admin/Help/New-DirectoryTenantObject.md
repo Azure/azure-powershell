@@ -47,8 +47,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Type
-Type of resource.
+### -Location
+Location of the resource.
 
 ```yaml
 Type: String
@@ -56,22 +56,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tags
-List of key-value pairs.
-
-```yaml
-Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tags
+List of key-value pairs.
+
+```yaml
+Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TenantId
 Tenant unique identifier.
 
@@ -107,8 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
+### -Type
+Type of resource.
 
 ```yaml
 Type: String
@@ -116,7 +116,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

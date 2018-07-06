@@ -43,6 +43,81 @@ Updates the specified plan
 
 ## PARAMETERS
 
+### -Description
+Description of the plan.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Display name.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalReferenceId
+External reference identifier.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
+
+```yaml
+Type: Plan
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases: ArmLocation
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of the plan.
 
@@ -52,6 +127,21 @@ Parameter Sets: Update
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QuotaIds
+Quota identifiers under the plan.
+
+```yaml
+Type: String[]
+Parameter Sets: Update
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -85,48 +175,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name.
+### -ResourceId
+The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -QuotaIds
-Quota identifiers under the plan.
-
-```yaml
-Type: String[]
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Plan.
-
-```yaml
-Type: Plan
-Parameter Sets: InputObject
+Parameter Sets: ResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -137,51 +197,6 @@ SKU identifiers.
 Type: String[]
 Parameter Sets: Update
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description of the plan.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases: ArmLocation
 
 Required: False
 Position: Named
@@ -205,18 +220,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource id.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases:
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -228,21 +243,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

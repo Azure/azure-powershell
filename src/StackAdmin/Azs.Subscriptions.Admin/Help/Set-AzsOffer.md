@@ -44,6 +44,126 @@ Update the offer.
 
 ## PARAMETERS
 
+### -AddonPlanDefinition
+References to add-on plans that a tenant can optionally acquire as a part of the offer.
+
+```yaml
+Type: AddonPlanDefinition[]
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BasePlanIds
+Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer.
+
+```yaml
+Type: String[]
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Description of offer.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Display name of offer.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalReferenceId
+External reference identifier.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer.
+
+```yaml
+Type: Offer
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: String
+Parameter Sets: Update
+Aliases: ArmLocation
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MaxSubscriptionsPerAccount
+Maximum subscriptions per account.
+
+```yaml
+Type: Int64
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: 0
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of an offer.
 
@@ -86,78 +206,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name of offer.
+### -ResourceId
+The resource id.
 
 ```yaml
 Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BasePlanIds
-Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer.
-
-```yaml
-Type: String[]
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Offer.
-
-```yaml
-Type: Offer
-Parameter Sets: InputObject
+Parameter Sets: ResourceId
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Description
-Description of offer.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -168,21 +228,6 @@ Offer accessibility state.
 Type: String
 Parameter Sets: Update
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location of the resource.
-
-```yaml
-Type: String
-Parameter Sets: Update
-Aliases: ArmLocation
 
 Required: False
 Position: Named
@@ -206,48 +251,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSubscriptionsPerAccount
-Maximum subscriptions per account.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: Int64
-Parameter Sets: Update
-Aliases:
-
-Required: False
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AddonPlanDefinition
-References to add-on plans that a tenant can optionally acquire as a part of the offer.
-
-```yaml
-Type: AddonPlanDefinition[]
-Parameter Sets: Update
-Aliases:
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceId
-The resource id.
-
-```yaml
-Type: String
-Parameter Sets: ResourceId
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -259,21 +274,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

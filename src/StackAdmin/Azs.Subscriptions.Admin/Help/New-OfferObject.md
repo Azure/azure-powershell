@@ -34,61 +34,16 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -Tags
-List of key-value pairs.
+### -AddonPlanDefinition
+References to add-on plans that a tenant can optionally acquire as a part of the offer.
 
 ```yaml
-Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Type: AddonPlanDefinition[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Type of resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MaxSubscriptionsPerAccount
-Maximum subscriptions per account.
-
-```yaml
-Type: Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of the resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 4
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -109,21 +64,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DisplayName
-Display name of offer.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Description
 Description of offer.
 
@@ -139,6 +79,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+Display name of offer.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExternalReferenceId
 External reference identifier.
 
@@ -149,21 +104,6 @@ Aliases:
 
 Required: False
 Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-Offer accessibility state.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 9
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -199,6 +139,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxSubscriptionsPerAccount
+Maximum subscriptions per account.
+
+```yaml
+Type: Int64
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Name of the resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 4
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Offer accessibility state.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionCount
 Current subscription count.
 
@@ -214,16 +199,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AddonPlanDefinition
-References to add-on plans that a tenant can optionally acquire as a part of the offer.
+### -Tags
+List of key-value pairs.
 
 ```yaml
-Type: AddonPlanDefinition[]
+Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Type
+Type of resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

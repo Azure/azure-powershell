@@ -44,6 +44,36 @@ Updates the offer delegation.
 
 ## PARAMETERS
 
+### -InputObject
+The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.OfferDelegation.
+
+```yaml
+Type: OfferDelegation
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Location of the resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Name of a offer delegation.
 
@@ -89,21 +119,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Identifier of the subscription receiving the delegated offer.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceId
 The resource id.
 
@@ -119,44 +134,13 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Location
-Location of the resource.
+### -SubscriptionId
+Identifier of the subscription receiving the delegated offer.
 
 ```yaml
 Type: String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The input object of type Microsoft.AzureStack.Management.Subscriptions.Admin.Models.OfferDelegation.
-
-```yaml
-Type: OfferDelegation
-Parameter Sets: InputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
@@ -172,6 +156,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

@@ -33,46 +33,16 @@ Creates a new offer.
 
 ## PARAMETERS
 
-### -Name
-Name of an offer.
+### -AddonPlanDefinition
+References to add-on plans that a tenant can optionally acquire as a part of the offer.
 
 ```yaml
-Type: String
+Type: AddonPlanDefinition[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name of offer.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group the resource is located under.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 3
+Required: False
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -108,6 +78,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisplayName
+Display name of offer.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExternalReferenceId
 External reference identifier.
 
@@ -119,21 +104,6 @@ Aliases:
 Required: False
 Position: 6
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -State
-Offer accessibility state.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 7
-Default value: Private
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,6 +138,51 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of an offer.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The resource group the resource is located under.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -State
+Offer accessibility state.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: Private
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionCount
 Current subscription count.
 
@@ -183,16 +198,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AddonPlanDefinition
-References to add-on plans that a tenant can optionally acquire as a part of the offer.
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: AddonPlanDefinition[]
+Type: SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: cf
 
 Required: False
-Position: 11
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -206,21 +221,6 @@ The cmdlet is not run.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named

@@ -38,17 +38,32 @@ Resumes a previously started update run that failed.
 
 ## PARAMETERS
 
-### -Name
-Update run identifier.
+### -AsJob
+{{Fill AsJob Description}}
 
 ```yaml
-Type: String
-Parameter Sets: UpdateRuns_Rerun
+Type: SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Flag to remove the item without confirmation.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -62,6 +77,21 @@ Parameter Sets: UpdateRuns_Rerun
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Update run identifier.
+
+```yaml
+Type: String
+Parameter Sets: UpdateRuns_Rerun
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -83,36 +113,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UpdateName
-Display name of the update.
-
-```yaml
-Type: String
-Parameter Sets: UpdateRuns_Rerun
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AsJob
-Run asynchronous as a job and return the job object.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceId
 The resource id.
 
@@ -128,31 +128,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Force
-Flag to remove the item without confirmation.
+### -UpdateName
+Display name of the update.
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
+Type: String
+Parameter Sets: UpdateRuns_Rerun
 Aliases:
 
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,6 +150,22 @@ Prompts you for confirmation before running the cmdlet.
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
 
 Required: False
 Position: Named

@@ -32,8 +32,8 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -ProvisioningState
-State of the provisioning.
+### -AcquisitionId
+Acquisition identifier.
 
 ```yaml
 Type: String
@@ -41,7 +41,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: 5
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -57,6 +57,21 @@ Aliases:
 
 Required: False
 Position: 2
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalReferenceId
+External reference identifier.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -92,8 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AcquisitionId
-Acquisition identifier.
+### -ProvisioningState
+State of the provisioning.
 
 ```yaml
 Type: String
@@ -101,22 +116,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

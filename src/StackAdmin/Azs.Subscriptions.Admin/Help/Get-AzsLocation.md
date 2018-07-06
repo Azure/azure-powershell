@@ -37,7 +37,7 @@ Get a list of all AzureStack locations.
 ## PARAMETERS
 
 ### -Name
-Name of the location.
+{{Fill Name Description}}
 
 ```yaml
 Type: String
