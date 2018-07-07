@@ -25,7 +25,7 @@ resource manifest is immutable.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
+PS C:\> New-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
 
 ProvisioningState  : Succeeded
 CreatedAt          : 4/12/2017 12:38:47 AM
