@@ -52,7 +52,6 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
-        [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
 
         /// <summary>

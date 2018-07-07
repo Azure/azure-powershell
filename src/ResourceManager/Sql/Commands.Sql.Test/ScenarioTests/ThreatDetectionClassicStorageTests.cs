@@ -34,8 +34,10 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         {
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // Commenting out the test until a fix will be added
+        // [Fact]
+        // [Trait(Category.AcceptanceType, Category.CheckIn)]
+        // See issue https://github.com/Azure/azure-powershell/issues/6601
         public void ThreatDetectionUpdatePolicyWithClassicStorage()
         {
             RunPowerShellTest("Test-ThreatDetectionUpdatePolicyWithClassicStorage");
