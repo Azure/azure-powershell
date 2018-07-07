@@ -56,7 +56,7 @@ Creates authorization rule `AuthoRule1` with **Listen** rights for the WcfRelay 
 PS C:\>New-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Listen"
 ```
 
-Creates `AuthoRule1` with **Listen** rights for the namespace `TestNameSpace-Relay1`.
+Creates `AuthoRule1` with **Listen** rights for the Hybrid Connection `TestHybridConnection`.
 
 ## PARAMETERS
 
