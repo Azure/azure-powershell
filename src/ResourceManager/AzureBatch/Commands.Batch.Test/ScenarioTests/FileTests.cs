@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByTask()
         {
@@ -53,11 +53,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetNodeFileContentByComputeNode()
         {
@@ -72,11 +72,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
-            TestUtilities.GetCallingClass(),
-            TestUtilities.GetCurrentMethodName());
+            MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+            MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestGetRemoteDesktopProtocolFile()
         {
@@ -91,11 +91,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, poolId);
             },
             null,
-            TestUtilities.GetCallingClass(),
-            TestUtilities.GetCurrentMethodName());
+            MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+            MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByTask()
         {
@@ -118,11 +118,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDeleteNodeFileByComputeNode()
         {
@@ -147,8 +147,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

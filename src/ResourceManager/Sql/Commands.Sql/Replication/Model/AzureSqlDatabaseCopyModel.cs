@@ -76,5 +76,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Model
         /// Gets or sets the Capacity of the database
         /// </summary>
         public int? Capacity { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type of the database
+        /// </summary>
+        public string LicenseType { get; set; }
     }
 }

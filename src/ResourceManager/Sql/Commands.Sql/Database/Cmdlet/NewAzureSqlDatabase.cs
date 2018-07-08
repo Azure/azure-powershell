@@ -144,10 +144,20 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         /// Gets or sets the compute generation for the Azure Sql database
         /// </summary>
         [Parameter(ParameterSetName = VcoreDatabaseParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation to assign to the Azure SQL Database.")]
+            HelpMessage = "The compute generation to assign.")]
         [Alias("Family")]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -207,7 +217,8 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 ElasticPoolName = ElasticPoolName,
                 ReadScale = ReadScale,
-                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null
+                ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
+                LicenseType = LicenseType // note: default license type will be LicenseIncluded in SQL RP if not specified
             };
 
             if(ParameterSetName == DtuDatabaseParameterSet)
@@ -221,7 +232,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
                 newDbModel.Edition = Edition;
                 newDbModel.Capacity = VCore;
                 newDbModel.Family = ComputeGeneration;
-            }          
+            }
 
             dbCreateUpdateModel.Database = newDbModel;
             dbCreateUpdateModel.SampleName = SampleName;
@@ -238,7 +249,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         {
             // Use AutoRest Sdk
             AzureSqlDatabaseModel upsertedDatabase = ModelAdapter.UpsertDatabaseWithNewSdk(this.ResourceGroupName, this.ServerName, entity);
-            
+
             return new AzureSqlDatabaseCreateOrUpdateModel
             {
                 Database = upsertedDatabase

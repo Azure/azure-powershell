@@ -56,6 +56,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -78,7 +84,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "A list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
-            MNM.VpnClientProtocol.IkeV2)]
+            MNM.VpnClientProtocol.IkeV2,
+            MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientProtocol { get; set; }
 
@@ -93,6 +100,12 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of revoked VPN client certificates. A VPN client presenting a certificate that matches one of these will be told to go away.")]
         public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
+        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -188,11 +201,13 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.GatewayDefaultSite.Id = this.GatewayDefaultSite.Id;
             }
 
+
             if ((this.VpnClientAddressPool != null ||
                  this.VpnClientRootCertificates != null ||
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
-                 this.RadiusServerSecret != null) &&
+                 this.RadiusServerSecret != null ||
+                 (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -217,6 +232,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientRevokedCertificates != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+            }
+
+            if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
             }
 
             if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

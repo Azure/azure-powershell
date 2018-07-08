@@ -91,6 +91,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact(Skip = "TODO: Fix the broken test.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureTagsEndToEnd()
         {
             ResourcesController.NewInstance.RunPsTest("Test-AzureTagsEndToEnd");
@@ -105,12 +106,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
         [Trait("Re-record", "ClientRuntime changes")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveDeployment()
         {
             ResourcesController.NewInstance.RunPsTest("Test-RemoveDeployment");
         }
 
         [Fact(Skip = "Doesn't add any value. Will improve negative tests in a future release")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingResourceGroupWithDebugStream()
         {
             ResourcesController.NewInstance.RunPsTest("Test-GetNonExistingResourceGroupWithDebugStream");

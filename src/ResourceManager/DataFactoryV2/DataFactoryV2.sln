@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27428.2037
+VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{95C16AED-FD57-42A0-86C3-2CF4300A4817}"
 EndProject
@@ -37,6 +37,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.DataFactoryV2.Test", "Commands.DataFactoryV2.Test\Commands.DataFactoryV2.Test.csproj", "{8E5612F5-4F26-49CA-B9AC-67A4C1DB74F3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.WebSites", "..\..\Common\Commands.Common.Websites\Commands.Common.WebSites.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Commands.Common.Aks", "..\..\Common\Commands.Common.Aks\Commands.Common.Aks.csproj", "{87BA5687-5563-4491-8846-77D98D0605D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -112,6 +114,10 @@ Global
 		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87BA5687-5563-4491-8846-77D98D0605D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

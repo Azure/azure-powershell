@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestJobScheduleCRUD()
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDisableEnableTerminateJobSchedule()
         {
@@ -52,8 +52,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJobSchedule(controller, context, jobScheduleId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

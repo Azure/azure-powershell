@@ -24,16 +24,25 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Resources -> ResourceManager, needs re-recorded")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGetRunCommand()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineGetRunCommand");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+#if NETSTANDARD
+        [Fact(Skip = "Get-Location in Common.ps1 is not working correctly for NETSTANDARD")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestVirtualMachineSetRunCommand()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineSetRunCommand");

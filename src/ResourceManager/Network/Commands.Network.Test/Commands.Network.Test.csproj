@@ -64,8 +64,11 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.0.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Azure.Management.OperationalInsights, Version=0.18.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.OperationalInsights.0.18.0-preview\lib\net45\Microsoft.Azure.Management.OperationalInsights.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.ResourceManager">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.ResourceManager.1.6.0-preview\lib\net452\Microsoft.Azure.Management.ResourceManager.dll</HintPath>
@@ -80,7 +83,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.18.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.20.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Redis">
@@ -174,6 +177,7 @@
     <Compile Include="ScenarioTests\DdosProtectionPlanTests.cs" />
     <Compile Include="ScenarioTests\ApplicationSecurityGroupTests.cs" />
     <Compile Include="ScenarioTests\AvailableEndpointServicesTests.cs" />
+    <Compile Include="ScenarioTests\ExpressRouteCrossConnectionTests.cs" />
     <Compile Include="ScenarioTests\MultiIpConfigOnNicTests.cs" />
     <Compile Include="ScenarioTests\ExpressRouteServiceProviderTests.cs" />
     <Compile Include="ScenarioTests\NetworkInterfaceTests.cs" />
@@ -229,6 +233,9 @@
     </None>
     <None Include="ScenarioTests\Data\VmssDeploymentTemplate.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ScenarioTests\ExpressRouteCrossConnectionTests.ps1">
+	<CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="ScenarioTests\ExpressRouteServiceProviderTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -399,6 +406,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteServiceProviderTests\TestExpressRouteServiceProviderList.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCrossConnectionTests\TestExpressRouteCrossConnectionApis.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.LoadBalancerTests\TestCreateEmptyLoadBalancer.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -558,6 +568,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayConnectionwithIpsecPoliciesCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\TestVirtualNetworkGatewayP2SAndSKU.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayConnectionTests\TestVirtualNetworkGatewayVpnDeviceConfigurationScripts.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -615,7 +628,13 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayIkeV2Test.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayOpenVPNTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayRouteApiTest.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkGatewayTests\VirtualNetworkGatewayVpnCustomIpsecPolicySetTest.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.VirtualNetworkTests\TestResourceNavigationLinksOnSubnetCRUD.json">
@@ -678,6 +697,10 @@
     <ProjectReference Include="..\Commands.Network\Commands.Network.csproj">
       <Project>{98cfd96b-a6bc-4f15-ae2c-603fc2b58981}</Project>
       <Name>Commands.Network</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OperationalInsights\Commands.OperationalInsights\Commands.OperationalInsights.csproj">
+      <Project>{5BE35A94-C20F-4659-AA29-9B9AEBCFAF36}</Project>
+      <Name>Commands.OperationalInsights</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

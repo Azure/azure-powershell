@@ -53,7 +53,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Compute">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.18.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Compute.20.0.0\lib\net452\Microsoft.Azure.Management.Compute.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.KeyVault, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -321,6 +321,7 @@
     <Compile Include="VirtualMachine\VirtualMachineBaseCmdlet.cs" />
     <Compile Include="Common\ConstantStringTypes.cs" />
     <Compile Include="Models\PSVirtualMachine.cs" />
+    <Compile Include="Models\PSVirtualMachineDataDisk.cs" />
     <Compile Include="VirtualMachine\Operation\NewAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StartAzureVMCommand.cs" />
     <Compile Include="VirtualMachine\Action\StopAzureVMCommand.cs" />
@@ -334,6 +335,7 @@
     </Compile>
     <Compile Include="VirtualMachine\Config\SetAzureVMOperatingSystemCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMDataDiskCommand.cs" />
+    <Compile Include="VirtualMachine\Config\NewAzureVMDataDiskCommand.cs" />
     <Compile Include="VirtualMachine\Config\AddAzureVMNetworkInterfaceCommand.cs" />
     <Compile Include="VirtualMachine\VirtualMachineCmdletHelper.cs" />
   </ItemGroup>
@@ -372,7 +374,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.Compute.psd1">
+    <None Include="AzureRM.Compute.psd1">
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

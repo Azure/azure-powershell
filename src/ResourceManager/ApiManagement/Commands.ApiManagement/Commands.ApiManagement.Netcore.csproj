@@ -16,6 +16,8 @@
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.ApiManagement.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,23 +27,26 @@
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
     <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.2-preview" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.ApiManagement.Netcore.psd1" Link="AzureRM.ApiManagement.Netcore.psd1">
+    <None Include="AzureRM.ApiManagement.Netcore.psd1" Link="AzureRM.ApiManagement.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 

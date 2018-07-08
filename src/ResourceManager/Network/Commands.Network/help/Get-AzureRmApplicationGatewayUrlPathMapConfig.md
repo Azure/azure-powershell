@@ -38,7 +38,7 @@ Specifies the application gateway to which this cmdlet gets a URL path map confi
 ```yaml
 Type: PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -68,7 +68,7 @@ Specifies the URL path map name in which this cmdlet get the path map configurat
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -82,14 +82,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap
-
-### System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayUrlPathMap]
 
 ## NOTES
 

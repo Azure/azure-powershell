@@ -13,9 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Test;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
+using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestJobCRUD()
         {
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void TestDisableEnableTerminateJob()
         {
@@ -54,11 +53,11 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
-        [Fact(Skip = "Need Batch team to re-record failing test. See the following issue: https://github.com/Azure/azure-powershell/issues/5006")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.Flaky)]
         public void IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails()
         {
@@ -77,8 +76,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     AssertJobIsCompleteDueToTaskFailure(completedJob);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         private void AssertJobIsCompleteDueToTaskFailure(PSCloudJob job)

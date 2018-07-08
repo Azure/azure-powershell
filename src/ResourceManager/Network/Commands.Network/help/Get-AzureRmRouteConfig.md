@@ -63,7 +63,7 @@ Specifies the name of the route that this cmdlet gets.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +78,7 @@ Specifies the route table from which this cmdlet gets routes.
 ```yaml
 Type: PSRouteTable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,7 +92,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRouteTable
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
 Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
 
 ## OUTPUTS

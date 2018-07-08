@@ -29,9 +29,11 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
 
             AddAzureRmServiceFabricNodeType.dontRandom = true;
-            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 3;
+            ServiceFabricCmdletBase.WriteVerboseIntervalInSec = 0;
             ServiceFabricCmdletBase.RunningTest = true;
-            ServiceFabricCmdletBase.TestThumbprint = "2F51AC39C590551FC7391A7A0A187A67BF8256CA";
+            ServiceFabricCmdletBase.NewCreatedKeyVaultWaitTimeInSec = 0;
+            //change the thumbprint in the common.ps1 file as well
+            ServiceFabricCmdletBase.TestThumbprint = "570BBCC85CBDAB98A442D08630996708F60A356D";
         }
 
         [Fact]
@@ -125,7 +127,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Test.ScenarioTests
             TestController.NewInstance.RunPsTest("Test-AddAzureRmServiceFabricNodeType");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestRemoveAzureRmServiceFabricNodeType()

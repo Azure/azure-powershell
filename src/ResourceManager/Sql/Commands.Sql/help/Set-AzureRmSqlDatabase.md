@@ -17,17 +17,17 @@ Sets properties for a database, or moves an existing database into an elastic po
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### VcoreBasedDatabase
 ```
 Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
- [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-Vcore <Int32>] [-ComputeGeneration <String>]
- [-ServerName] <String> [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Rename
@@ -102,16 +102,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 1099511627776
 Status                        : Online
 CreationDate                  : 8/24/2017 9:00:37 AM
 CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
 CurrentServiceObjectiveName   : S3
 RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The Compute generation for the Azure Sql database.
+The compute generation to assign.
 
 ```yaml
 Type: String
@@ -183,16 +183,20 @@ Specifies the edition for the database.
 The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
 Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
+Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -206,8 +210,23 @@ Specifies name of the elastic pool in which to move the database.
 
 ```yaml
 Type: String
+Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+```yaml
+Type: String
 Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
+Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -269,7 +288,7 @@ in the Microsoft Developer Network Library.
 
 ```yaml
 Type: String
-Parameter Sets: Update, VcoreBasedDatabase
+Parameter Sets: Update
 Aliases:
 
 Required: False
@@ -326,7 +345,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Vcore
+### -VCore
 The Vcore number for the Azure Sql database
 
 ```yaml

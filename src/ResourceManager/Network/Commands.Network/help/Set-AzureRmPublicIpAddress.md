@@ -66,7 +66,7 @@ Run cmdlet in the background
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -96,7 +96,7 @@ Specifies a **PublicIpAddress** object that represents the goal state to which t
 ```yaml
 Type: PSPublicIpAddress
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

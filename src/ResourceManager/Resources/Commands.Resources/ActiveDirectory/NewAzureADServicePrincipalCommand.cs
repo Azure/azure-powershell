@@ -56,7 +56,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The display name for the application.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.DisplayNameWithKeyCredential,
             HelpMessage = "The display name for the application.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The display name for the application. If a display name is not provided, " +
+            "this value will default to 'azure-powershell-MM-dd-yyyy-HH-mm-ss', where the suffix is the time of application creation.")]
         [ValidateNotNullOrEmpty]
         public string DisplayName { get; set; }
 
@@ -96,7 +97,8 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.ApplicationObjectWithPasswordPlain,
             HelpMessage = "The value for the password credential associated with the application that will be valid for one year by default.")]
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The value for the password credential associated with the application. If a " +
+            "password is not provided, a random GUID will be generated and used as the password.")]
         [ValidateNotNullOrEmpty]
         public SecureString Password { get; set; }
 
@@ -141,11 +143,14 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             HelpMessage = "The end date till which password or key is valid. Default value is one year after the start date.")]
         public DateTime EndDate { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The scope that the service principal has permissions on.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The scope that the service principal has permissions on. If a value for Role is provided, but " +
+            "no value is provided for Scope, then Scope will default to the current subscription.")]
         [ScopeCompleter]
         public string Scope { get; set; }
 
-        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The role that the service principal has over the scope.")]
+        [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "The role that the service principal has over the scope. If a value for Scope is provided, but " +
+            "no value is provided for Role, then Role will default to the 'Contributor' role.")]
+        [PSArgumentCompleter("Reader", "Contributor", "Owner")]
         public string Role { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = SimpleParameterSet, HelpMessage = "If set, will skip creating the default role assignment for the service principal.")]
@@ -345,16 +350,22 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 }
             };
 
-            if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: string.Format("Adding a new service principal to be associated with an application having AppId '{0}'", createParameters.ApplicationId)))
+            var shouldProcessMessage = SkipRoleAssignment() ?
+                                        string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with no permissions.", createParameters.ApplicationId) :
+                                        string.Format("Adding a new service principal to be associated with an application " +
+                                                      "having AppId '{0}' with '{1}' role over scope '{2}'.", createParameters.ApplicationId, this.Role, this.Scope);
+            if (ShouldProcess(target: createParameters.ApplicationId.ToString(), action: shouldProcessMessage))
             {
                 var servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
                 WriteObject(servicePrincipal);
-                if (this.IsParameterBound(c => c.SkipAssignment))
+                if (SkipRoleAssignment())
                 {
                     WriteVerbose("Skipping role assignment for the service principal.");
                     return;
                 }
 
+                WriteWarning(string.Format("Assigning role '{0}' over scope '{1}' to the new service principal.", this.Role, this.Scope));
                 FilterRoleAssignmentsOptions parameters = new FilterRoleAssignmentsOptions()
                 {
                     Scope = this.Scope,
@@ -390,6 +401,11 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                     }
                 }
             }
+        }
+
+        private bool SkipRoleAssignment()
+        {
+            return this.IsParameterBound(c => c.SkipAssignment) || (!this.IsParameterBound(c => c.Role) && !this.IsParameterBound(c => c.Scope));
         }
     }
 }

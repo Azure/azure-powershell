@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         ///   (Available ComputeGeneration in the format of: Gen4, Gen5).
         /// </summary>
         [Parameter(ParameterSetName = VcorePoolParameterSet, Mandatory = true,
-            HelpMessage = "The compute generation for the Azure SQL Elastic Pool. e.g. 'Gen4', 'Gen5'.")]
+            HelpMessage = "The compute generation to assign.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Gen4", "Gen5")]
         public string ComputeGeneration { get; set; }
@@ -140,6 +140,16 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The zone redundancy to associate with the Azure SQL Elastic Pool")]
         public SwitchParameter ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the license type for the Azure Sql database
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The license type for the Azure Sql database.")]
+        [PSArgumentCompleter(
+            Management.Sql.Models.DatabaseLicenseType.LicenseIncluded,
+            Management.Sql.Models.DatabaseLicenseType.BasePrice)]
+        public string LicenseType { get; set; }
 
         /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
@@ -201,10 +211,11 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 Tags = TagsConversionHelper.CreateTagDictionary(Tags, validate: true),
                 Location = location,
                 ZoneRedundant = MyInvocation.BoundParameters.ContainsKey("ZoneRedundant") ? (bool?)ZoneRedundant.ToBool() : null,
-                MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null
+                MaxSizeBytes = MyInvocation.BoundParameters.ContainsKey("StorageMB") ? (long?)(StorageMB * Megabytes) : null,
+                LicenseType = LicenseType
             };
 
-            
+
             if (ParameterSetName == DtuPoolParameterSet)
             {
                 string edition = string.IsNullOrWhiteSpace(Edition) ? null : Edition;
@@ -217,7 +228,7 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
                 }
 
                 newModel.DatabaseCapacityMin = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMin") ? (double?)DatabaseDtuMin : null;
-                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;              
+                newModel.DatabaseCapacityMax = MyInvocation.BoundParameters.ContainsKey("DatabaseDtuMax") ? (double?)DatabaseDtuMax : null;
             }
             else
             {

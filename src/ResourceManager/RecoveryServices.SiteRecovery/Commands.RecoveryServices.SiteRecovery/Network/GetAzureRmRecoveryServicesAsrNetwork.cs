@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "AzureRmRecoveryServicesAsrNetwork",
         DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRNetwork")]
-    [OutputType(typeof(IEnumerable<ASRNetwork>))]
+    [OutputType(typeof(ASRNetwork))]
     public class GetAzureRmRecoveryServicesAsrNetwork : SiteRecoveryCmdletBase
     {
         /// <summary>

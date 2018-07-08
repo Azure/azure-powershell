@@ -161,11 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupContainer
 
 ## OUTPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
 
 ## NOTES
 

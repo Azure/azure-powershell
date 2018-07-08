@@ -134,10 +134,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### AzureRmBackupJobDetails
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupJobDetails
 
 ## NOTES
-* None
 
 ## RELATED LINKS
 

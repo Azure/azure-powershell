@@ -96,20 +96,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String
- 
-
-### -Namespace
- System.String
- 
-
-### -Name
- System.String 
+### System.String
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
 RelayType                   : NetTcp
 CreatedAt                   : 4/12/2017 2:23:08 AM
 UpdatedAt                   : 4/12/2017 2:23:08 AM
