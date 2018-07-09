@@ -1117,7 +1117,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription. Please create vault &apos;{0}&apos; in current subscirption, or switch to the correct subscription to modifiy the Access Policies of this vault..
+        ///   Looks up a localized string similar to Vault &apos;{0}&apos; does not exist in current subscription.  If this vault exists in your tenant, please switch to the correct subscription in order to modifiy the Access Policies of this vault..
         /// </summary>
         internal static string VaultDoesNotExist {
             get {
