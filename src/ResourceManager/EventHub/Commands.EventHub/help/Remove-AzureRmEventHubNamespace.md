@@ -5,22 +5,15 @@ online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.event
 schema: 2.0.0
 ---
 
-# Remove-AzureRmServiceBusNamespace
+# Remove-AzureRmEventHubNamespace
 
 ## SYNOPSIS
 Removes the specified Event Hubs namespace.
 
 ## SYNTAX
 
-### NamespacePropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusNamespace [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### NamespaceInputObjectSet
-```
-Remove-AzureRmServiceBusNamespace [-InputObject] <PSNamespaceAttributes>
+Remove-AzureRmEventHubNamespace [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -60,27 +53,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Service Bus Namespace Object
-
-```yaml
-Type: PSNamespaceAttributes
-Parameter Sets: NamespaceInputObjectSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
-Namespace Name.
+EventHub Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: NamespacePropertiesSet
+Parameter Sets: (All)
 Aliases: NamespaceName
 
 Required: True
@@ -91,12 +69,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group
+Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: NamespacePropertiesSet
-Aliases: ResourceGroup
+Parameter Sets: (All)
+Aliases:
 
 Required: True
 Position: 0
@@ -143,7 +121,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 
 
 ## OUTPUTS
