@@ -20,7 +20,7 @@ $PathStringsToIgnore = @(
     "NotificationHubs",
     "Stack"
 )
-
+Write-Host "Files changed: $FilesChanged"
 $FilesChangedList = @()
 while ($true)
 {
