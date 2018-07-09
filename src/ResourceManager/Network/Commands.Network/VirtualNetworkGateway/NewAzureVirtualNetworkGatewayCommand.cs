@@ -127,6 +127,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VirtualNetworkGatewaySkuTier.VpnGw1,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw2,
             MNM.VirtualNetworkGatewaySkuTier.VpnGw3,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.VpnGw3AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw1AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw2AZ,
+            MNM.VirtualNetworkGatewaySkuTier.ErGw3AZ,
             IgnoreCase = true)]
         public string GatewaySku { get; set; }
 
@@ -149,7 +155,8 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The list of P2S VPN client tunneling protocols")]
         [ValidateSet(
             MNM.VpnClientProtocol.SSTP,
-            MNM.VpnClientProtocol.IkeV2)]
+            MNM.VpnClientProtocol.IkeV2,
+            MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
         public List<string> VpnClientProtocol { get; set; }
 

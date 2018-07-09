@@ -18,6 +18,18 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add examples for `Remove-AzureRmVmssExtension`
+* Update help for `Set-AzureRmVMAccessExtension`
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+
+## Version 5.2.0
+* IP Tag feature for VMSS
+    - `New-AzureRmVmssIpTagConfig` cmdlet is added
+    - IpTag parameter is added to New-AzureRmVmssIpConfig
+* Auto OS Rollback feature for VMSS
+    - DisableAutoRollback parameters are added to New-AzureRmVmssConfig and Update-AzureRmVmss
+* OS Upgrade History feature for Vmss
+    - OSUpgradeHistory switch parameter is added to Get-AzureRmVmss
 * Fixed formatting of OutputType in help files
 
 ## Version 5.1.1

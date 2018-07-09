@@ -22,6 +22,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
     /// </summary>
     public class AuthenticationFactorySettings : IExtensibleSettings
     {
+        public const string CommonAdTenant = "Common";
+
         /// <summary>
         /// The default token cache used for the authentication factory
         /// </summary>

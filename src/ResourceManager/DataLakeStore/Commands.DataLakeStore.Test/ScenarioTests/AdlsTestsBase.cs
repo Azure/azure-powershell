@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string AuthorizationApiVersion = "2014-07-01-preview";
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         public ResourceManagementClient ResourceManagementClient { get; private set; }
 
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
+                helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
 
                 try
                 {

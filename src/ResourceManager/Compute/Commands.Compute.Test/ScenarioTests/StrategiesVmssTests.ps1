@@ -40,6 +40,7 @@ function Test-SimpleNewVmss
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+		Assert-False { $x.SinglePlacementGroup }
 		Assert-Null $x.Identity  
     }
     finally
@@ -62,7 +63,7 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -SystemAssignedIdentity -SinglePlacementGroup
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -76,6 +77,7 @@ function Test-SimpleNewVmssWithSystemAssignedIdentity
 		Assert-AreEqual "SystemAssigned" $x.Identity.Type     
 		Assert-NotNull  $x.Identity.PrincipalId
 		Assert-NotNull  $x.Identity.TenantId
+		Assert-True { $x.SinglePlacementGroup }
 		Assert-Null $x.Identity.IdentityIds  
     }
     finally
@@ -113,7 +115,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
 		$newUserId = "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourcegroups/UAITG123456/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UAITG123456Identity"
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -UserAssignedIdentity $newUserId -SystemAssignedIdentity -SinglePlacementGroup
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -130,6 +132,7 @@ function Test-SimpleNewVmssWithsystemAssignedUserAssignedIdentity
 		Assert-NotNull $x.Identity.IdentityIds
 		Assert-AreEqual 1 $x.Identity.IdentityIds.Count
 		Assert-AreEqual $newUserId  $x.Identity.IdentityIds[0]
+		Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {
@@ -159,6 +162,7 @@ function Test-SimpleNewVmssImageName
 			-Name $vmssname `
 			-Credential $cred `
 			-DomainNameLabel $domainNameLabel `
+			-SinglePlacementGroup `
 			-ImageName "MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest"
 
         Assert-AreEqual $vmssname $x.Name;
@@ -170,6 +174,7 @@ function Test-SimpleNewVmssImageName
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+		Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {
@@ -190,7 +195,7 @@ function Test-SimpleNewVmssWithoutDomainName
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -SinglePlacementGroup
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -201,6 +206,7 @@ function Test-SimpleNewVmssWithoutDomainName
         Assert-AreEqual "2016-Datacenter" $x.VirtualMachineProfile.StorageProfile.ImageReference.Sku
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].LoadBalancerBackendAddressPools;
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
+		Assert-True { $x.SinglePlacementGroup }
     }
     finally
     {
