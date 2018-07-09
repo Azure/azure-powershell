@@ -32,7 +32,7 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
     public class EventHubsController
-    {       
+    {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 return new EventHubsController();
             }
         }
-        
+
         public EventHubsController()
         {
             helper = new EnvironmentSetupHelper();
@@ -69,12 +69,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
         }
-        
+
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action<LegacyTest.CSMTestEnvironmentFactory> initialize,
@@ -107,7 +107,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.EventHub.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -139,7 +138,7 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
             EventHubsManagementClient = GetEventHubsManagementClient(context);
             helper.SetupManagementClients(EventHubsManagementClient);
             helper.SetupManagementClients(ResourceManagementClient,EventHubsManagementClient);
-        }        
+        }
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -158,6 +157,6 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         private SubscriptionClient GetSubscriptionClient()
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
-        }        
+        }
     }
 }

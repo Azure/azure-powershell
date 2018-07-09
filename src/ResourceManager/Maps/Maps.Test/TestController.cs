@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Maps.Test
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -118,7 +118,6 @@ namespace Microsoft.Azure.Commands.Maps.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
                     helper.GetRMModulePath("AzureRM.Maps.psd1")
                 );

@@ -102,7 +102,6 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.OperationalInsights.psd1"),
                     "AzureRM.Resources.ps1");
 

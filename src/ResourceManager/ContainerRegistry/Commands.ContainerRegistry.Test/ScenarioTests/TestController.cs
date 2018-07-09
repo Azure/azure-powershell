@@ -79,9 +79,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Test.ScenarioTests
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
+                    "AzureRM.Resources.ps1",
                     "ScenarioTests\\Common.ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.ContainerRegistry.psd1"));
 
                 if (scripts != null)

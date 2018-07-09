@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -137,7 +137,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Test.ScenarioTests
                 modules.Add(psFile);
                 modules.Add(rmProfileModule);
                 modules.Add(rmModulePath);
-                modules.Add(helper.RMResourceModule);
                 modules.Add("AzureRM.Resources.ps1");
 
                 helper.SetupModules(AzureModule.AzureResourceManager, modules.ToArray());

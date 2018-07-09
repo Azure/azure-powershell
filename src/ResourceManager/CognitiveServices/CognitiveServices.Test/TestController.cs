@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -114,7 +114,6 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTes
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
                     helper.GetRMModulePath("AzureRM.CognitiveServices.psd1")
                 );
