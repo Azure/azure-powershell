@@ -414,7 +414,9 @@ Accept wildcard characters: False
 ```
 
 ### -SinglePlacementGroup
-Use this to create the Scale set in a single placement group, default is multiple groups```yaml
+Use this to create the Scale set in a single placement group, default is multiple groups.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: SimpleParameterSet
 Aliases:
