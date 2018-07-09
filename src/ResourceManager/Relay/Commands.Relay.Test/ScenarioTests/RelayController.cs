@@ -32,7 +32,7 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {
     public class RelayController
-    {       
+    {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -109,7 +109,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.Relay.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
             helper.SetupManagementClients(ResourceManagementClient, RelayManagementClient);
         }
 
-        
+
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -163,6 +162,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
-        
+
     }
 }

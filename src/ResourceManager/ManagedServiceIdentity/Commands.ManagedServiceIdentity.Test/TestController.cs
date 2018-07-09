@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -79,7 +79,6 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.Test
                                         .Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRm.ManagedServiceIdentity.psd1"),
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "AzureRM.Resources.ps1");

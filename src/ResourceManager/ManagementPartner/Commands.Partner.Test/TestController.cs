@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -110,7 +110,6 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     "AzureRM.Resources.ps1",
                     helper.GetRMModulePath("AzureRM.ManagementPartner.psd1")
                 );
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
             SubscriptionClient = GetSubscriptionClient();
             ACEProvisioningManagementPartnerAPIClient = GetACEProvisioningGSMAPIClient(context);
             GalleryClient = GetGalleryClient();
-            
+
 
             helper.SetupManagementClients(
                 ResourceManagementClient,

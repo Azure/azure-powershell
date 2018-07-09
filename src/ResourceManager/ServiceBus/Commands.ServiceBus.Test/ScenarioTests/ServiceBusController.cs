@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -115,8 +115,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
-                    helper.GetRMModulePath(@"AzureRM.ServiceBus.psd1"),                    
+                    helper.GetRMModulePath(@"AzureRM.ServiceBus.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {

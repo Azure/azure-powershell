@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -118,12 +118,11 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"), 
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
         {
             return context.GetServiceClient<PowerBIDedicatedManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-        
+
         private GalleryClient GetGalleryClient()
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);
