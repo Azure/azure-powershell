@@ -17,10 +17,11 @@ $PathStringsToIgnore = @(
     ".sln",
     "Nuget.config",
     ".psd1",
-    "NotificationHubs"
+    "NotificationHubs",
+    "Stack"
 )
 
-$FilesChangedList = $FilesChanged -split ';'
+$FilesChangedList = $FilesChanged.Split(";")
 
 if ([string]::IsNullOrEmpty($FilesChanged) -or ($FilesChangedList.Count -eq 300))
 {
@@ -47,7 +48,7 @@ foreach ($ChangeLog in $ChangeLogs)
     else
     {
         # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
-        $SplitPath = $ChangeLog -split '/'
+        $SplitPath = $ChangeLog.Split("/")
         $BasePath = $SplitPath[0],$SplitPath[1],$SplitPath[2] -join "/"
         Write-Host "Change log '$ChangeLog' processed to base path '$BasePath'"
         $UpdatedServicePaths.Add($BasePath) | Out-Null
