@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Root>$(MSBuildThisFileDirectory)..\</Root>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Artifacts>$(Root)artifacts\</Artifacts>
+    <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
+  </PropertyGroup>
+
+  <Target Name="net452">
+    <PropertyGroup>
+      <Framework>net452</Framework>
+      <Tools>$(Root)tools\</Tools>
+      <NuGet>$(Tools)NuGet-4.7.0\nuget.exe</NuGet>
+      <Solution>$(Root)Azure.PowerShell.Common.sln</Solution>
+      <NuGetConfig>$(Root)NuGet.config</NuGetConfig>
+      <OutputDir>$(Artifacts)$(Configuration)\$(Framework)\</OutputDir>
+      <xUnitRunner>$(Tools)xunit.runner.console.2.3.1\$(Framework)\xunit.console.exe</xUnitRunner>
+    </PropertyGroup>
+
+    <Exec Command="$(NuGet) restore $(Solution) -ConfigFile $(NuGetConfig)"/>
+    <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" ContinueOnError="ErrorAndStop" />
+    <ItemGroup>
+      <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
+    </ItemGroup>
+    <Exec Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
+  </Target>
+
+  <Target Name="netcoreapp20">
+    <Exec Command="dotnet build $(Root)Azure.PowerShell.Common.Netcore.sln -c $(Configuration)"/>
+    <Exec Command="dotnet test $(Root)Azure.PowerShell.Common.Netcore.sln --filter $(TestFilter) --configuration $(Configuration)"/>
+  </Target>
+
+  <Target Name="Build" DependsOnTargets="net452;netcoreapp20">
+  </Target>
+</Project>
