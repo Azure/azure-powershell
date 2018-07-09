@@ -56,7 +56,7 @@
 	</Target>
 
 	<Target Name="InvokeXUnit">
-		<PropertyGroup>
+		<PropertyGroup> <!-- Create the file path for the test dll (src/TestResults/<dll name>.html -->
 			<TestName>$(XUnitTests.Split('\').Length)</TestName>
 			<TestNamePathLength>$([MSBuild]::Subtract($(TestName), 1))</TestNamePathLength>
 			<TestSubFileName>$(XUnitTests.Split('\')[$(TestNamePathLength)])</TestSubFileName>
@@ -78,7 +78,7 @@
 			<Output TaskParameter="ExitCode" ItemName="XUnitExitCode"/>
 		</xunit>
 
-		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. $(LibraryToolsFolder)\CleanupTestFiles.ps1 -ExitCode %(XUnitExitCode.Identity) -FileName $(TestSubFileName) -FolderName $(TestOutputDirectory) &quot;"/>
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/$(if(%(XUnitExitCode.Identity) -eq 0){&quot;PassingTests&quot;}else{&quot;FailingTest&quot;})/$(TestSubFileName).html &quot;"/>
 
 	</Target>
 

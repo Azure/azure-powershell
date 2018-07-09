@@ -672,7 +672,7 @@
   </Target>
 
   <Target Name="TestFailureCheck">
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;$(MSBuildProjectDirectory)\tools\CheckTestFailures.ps1 -FailedTestFolder $(TestOutputDirectory)/FailingTests &quot;"
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Get-ChildItem $(TestOutputDirectory)/FailingTests | % { throw &quot;Failing tests, please check files in src/TestResults/FailingTests&quot; } &quot;"
           ContinueOnError="False"/>
     <OnError ExecuteTargets="TestFailureErrorMessage"/>
   </Target>
