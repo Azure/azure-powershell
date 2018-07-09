@@ -143,6 +143,34 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         null));
             }
 
+            string installedTypeHandlerVersion = null;
+            if (vmParameters.Resources != null)
+            {
+                foreach (VirtualMachineExtension vme in vmParameters.Resources)
+                {
+                    if (vme.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher) &&
+                         (vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultType) ||
+                          vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType)))
+                    {
+                        installedTypeHandlerVersion = vme.TypeHandlerVersion;
+                        break;
+                    }
+                }
+            }
+
+            if (installedTypeHandlerVersion == null)
+            {
+                ThrowTerminatingError(
+                    new ErrorRecord(
+                        new ApplicationException(
+                            string.Format(
+                                CultureInfo.CurrentUICulture,
+                                "Disable-AzureDiskEncryption did not find an installed version of the extension on the VM")),
+                        "InvalidResult",
+                        ErrorCategory.InvalidResult,
+                        null));
+            }
+
             VirtualMachineExtension vmExtensionParameters = null;
             if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
@@ -153,7 +181,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion,
+                    TypeHandlerVersion = installedTypeHandlerVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -168,7 +196,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType,
-                    TypeHandlerVersion = this.TypeHandlerVersion ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion,
+                    TypeHandlerVersion = installedTypeHandlerVersion,
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -275,28 +303,37 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    // +---------+---------------+----------------------------+
-                    // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
-                    // +---------+---------------+----------------------------+
-                    // | Windows | OS            | Yes                        |
-                    // | Windows | Data          | No                         |
-                    // | Windows | Not Specified | Yes                        |
-                    // | Linux   | OS            | N/A                        |
-                    // | Linux   | Data          | Yes                        |
-                    // | Linux   | Not Specified | N/A                        |
-                    // +---------+---------------+----------------------------+
-
-                    if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
-                        !string.IsNullOrEmpty(VolumeType) &&
-                        VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
+                    if (parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion))
                     {
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
-                        WriteObject(result);
+                        // +---------+---------------+----------------------------+
+                        // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
+                        // +---------+---------------+----------------------------+
+                        // | Windows | OS            | Yes                        |
+                        // | Windows | Data          | No                         |
+                        // | Windows | Not Specified | Yes                        |
+                        // | Linux   | OS            | N/A                        |
+                        // | Linux   | Data          | Yes                        |
+                        // | Linux   | Not Specified | N/A                        |
+                        // +---------+---------------+----------------------------+
+
+                        if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
+                            !string.IsNullOrEmpty(VolumeType) &&
+                            VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
+                            WriteObject(result);
+                        }
+                        else
+                        {
+                            var opVm = UpdateVmEncryptionSettings();
+                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
+                            WriteObject(result);
+                        }
                     }
                     else
                     {
-                        var opVm = UpdateVmEncryptionSettings();
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
+                        // single pass, no secondary update of encryption settings is required 
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
                         WriteObject(result);
                     }
                 }
