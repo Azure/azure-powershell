@@ -96,7 +96,6 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     "Microsoft.Azure.Commands.Batch.Test.dll",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Batch.psd1"),
                     "AzureRM.Resources.ps1");
 
