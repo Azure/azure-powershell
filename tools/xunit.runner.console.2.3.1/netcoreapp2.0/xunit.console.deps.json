@@ -1,0 +1,168 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "14b77be710e658fc67d1252c845ee0509afcc877"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "xunit.console/99.99.99-dev": {
+        "dependencies": {
+          "xunit.runner.reporters": "99.99.99-dev"
+        },
+        "runtime": {
+          "xunit.console.dll": {}
+        }
+      },
+      "Microsoft.NETCore.Targets/1.0.1": {},
+      "System.IO/4.1.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0",
+          "System.Text.Encoding": "4.0.11",
+          "System.Threading.Tasks": "4.0.11"
+        }
+      },
+      "System.Reflection/4.1.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.IO": "4.1.0",
+          "System.Reflection.Primitives": "4.0.1",
+          "System.Runtime": "4.1.0"
+        }
+      },
+      "System.Reflection.Primitives/4.0.1": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
+        }
+      },
+      "System.Runtime/4.1.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1"
+        }
+      },
+      "System.Runtime.Loader/4.0.0": {
+        "dependencies": {
+          "System.IO": "4.1.0",
+          "System.Reflection": "4.1.0",
+          "System.Runtime": "4.1.0"
+        }
+      },
+      "System.Text.Encoding/4.0.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
+        }
+      },
+      "System.Threading.Tasks/4.0.11": {
+        "dependencies": {
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "System.Runtime": "4.1.0"
+        }
+      },
+      "xunit.abstractions/2.0.1": {
+        "runtime": {
+          "lib/netstandard1.0/xunit.abstractions.dll": {}
+        }
+      },
+      "xunit.runner.reporters/99.99.99-dev": {
+        "dependencies": {
+          "xunit.runner.utility": "99.99.99-dev"
+        },
+        "runtime": {
+          "xunit.runner.reporters.netcoreapp10.dll": {}
+        }
+      },
+      "xunit.runner.utility/99.99.99-dev": {
+        "dependencies": {
+          "System.Runtime.Loader": "4.0.0",
+          "xunit.abstractions": "2.0.1"
+        },
+        "runtime": {
+          "xunit.runner.utility.netcoreapp10.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "xunit.console/99.99.99-dev": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.NETCore.Targets/1.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+mly19As6R32Qei8j7yPvEv5QXtLGoWpaX8v05ZLQKQ5LIFYdDYFHfniqtw6UmwhrqdKjnjCmyg4LLKNOjpiPw==",
+      "path": "microsoft.netcore.targets/1.0.1",
+      "hashPath": "microsoft.netcore.targets.1.0.1.nupkg.sha512"
+    },
+    "System.IO/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+3gD6u3isZkZb8s+gUPeN35BRLGdV4mgF7Tkbj0TCioWbOK7QMNP1Buci4pY2VP4bCfhz2DpEnMjyoqFcNZcCA==",
+      "path": "system.io/4.1.0",
+      "hashPath": "system.io.4.1.0.nupkg.sha512"
+    },
+    "System.Reflection/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FjBmWyqNRTiwY1F8l+gTUAdfHSOneVqB1exyKp3J5HFtNpECjha/5ZHW/f1nLrvJgJVGUY48iCbrTm7PzanJsQ==",
+      "path": "system.reflection/4.1.0",
+      "hashPath": "system.reflection.4.1.0.nupkg.sha512"
+    },
+    "System.Reflection.Primitives/4.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-vv1KIz9SvqWGPxqOjs5LzWvSC+ffwzdzu82+rP/VawIdALRuCK72+HFTjgu+0qRCaa2BnWSfIBI8DgjMtRBQpg==",
+      "path": "system.reflection.primitives/4.0.1",
+      "hashPath": "system.reflection.primitives.4.0.1.nupkg.sha512"
+    },
+    "System.Runtime/4.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5szIbAtI7iYhNTTkFkis2hQC5Zcl8VQwXBrQtOp25o9agQ3z2T6fWltF7uUZDNWdc5YTzwao481UN42MbMZ34w==",
+      "path": "system.runtime/4.1.0",
+      "hashPath": "system.runtime.4.1.0.nupkg.sha512"
+    },
+    "System.Runtime.Loader/4.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4XWJKx7QfOmAN3NTw5pK4gk3qrOmRxocNj9AbsyeDjF01ZIhlBAntGUGZ+yn3IfeOYDgjSb14vEpicfprYUX1Q==",
+      "path": "system.runtime.loader/4.0.0",
+      "hashPath": "system.runtime.loader.4.0.0.nupkg.sha512"
+    },
+    "System.Text.Encoding/4.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-GF57j2sdteSPSoq9k723kxR9FoO1LPplJrrPEZKSI3/f7XL35xAkEcVQjXUJ3l50T1wv/xjvTn3oi2D3nuAZvQ==",
+      "path": "system.text.encoding/4.0.11",
+      "hashPath": "system.text.encoding.4.0.11.nupkg.sha512"
+    },
+    "System.Threading.Tasks/4.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lXsVXEfaOGNPXkCzT5ou7Q/lVxIkTI3s4jjl0FzGcVDexGTpWb7HLc0lbIBBn+btlrhUoDok8YgiQReQePeVxw==",
+      "path": "system.threading.tasks/4.0.11",
+      "hashPath": "system.threading.tasks.4.0.11.nupkg.sha512"
+    },
+    "xunit.abstractions/2.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bDm/zdG5rnRDsobKuKwrvL4HccBdC0uvT12be6fG12P3d1U7u9Wkvfoq/PM2GeyIeb0Dtcmm/7k2oaawiqQ2Dg==",
+      "path": "xunit.abstractions/2.0.1",
+      "hashPath": "xunit.abstractions.2.0.1.nupkg.sha512"
+    },
+    "xunit.runner.reporters/99.99.99-dev": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "xunit.runner.utility/99.99.99-dev": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ScenarioTests.ResourceManager.Common</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.ScenarioTests.ResourceManager</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.Common</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(SolutionDir)artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
