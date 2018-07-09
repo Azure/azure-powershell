@@ -21,7 +21,19 @@ $PathStringsToIgnore = @(
     "Stack"
 )
 
-$FilesChangedList = $FilesChanged.Split(";")
+$FilesChangedList = @()
+while ($true)
+{
+    $Idx = $FilesChanged.IndexOf(";")
+    if ($Idx -lt 0)
+    {
+        $FilesChangedList += $FilesChanged
+        break
+    }
+
+    $FilesChangedList += $FilesChanged.Substring(0, $Idx)
+    $FilesChanged = $FilesChanged.Substring($Idx + 1)
+}
 
 if ([string]::IsNullOrEmpty($FilesChanged) -or ($FilesChangedList.Count -eq 300))
 {
@@ -48,7 +60,20 @@ foreach ($ChangeLog in $ChangeLogs)
     else
     {
         # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
-        $SplitPath = $ChangeLog.Split("/")
+        $SplitPath = @()
+        while ($true)
+        {
+            $Idx = $ChangeLog.IndexOf("/")
+            if ($Idx -lt 0)
+            {
+                $SplitPath += $ChangeLog
+                break
+            }
+
+            $SplitPath += $ChangeLog.Substring(0, $Idx)
+            $ChangeLog = $ChangeLog.Substring($Idx + 1)
+        }
+
         $BasePath = $SplitPath[0],$SplitPath[1],$SplitPath[2] -join "/"
         Write-Host "Change log '$ChangeLog' processed to base path '$BasePath'"
         $UpdatedServicePaths.Add($BasePath) | Out-Null
