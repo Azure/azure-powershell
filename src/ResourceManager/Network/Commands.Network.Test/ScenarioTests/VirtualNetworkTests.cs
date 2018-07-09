@@ -59,7 +59,7 @@ namespace Commands.Network.Test.ScenarioTests
         }
 
         [Fact(Skip ="We need to update the way tokens are aquired, as of now aquiring tokens for multiple tenants is broken")]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         [Trait(Category.Owner, Category.brooklynft)]
         public void TestMultiTenantVNetPCRUD()
         {

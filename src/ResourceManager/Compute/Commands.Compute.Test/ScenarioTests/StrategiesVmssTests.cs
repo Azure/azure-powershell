@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmss()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmss");
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #else
         [Fact]
 #endif
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestSimpleNewVmssWithSystemAssignedUserAssignedIdentity()
         {
             /**

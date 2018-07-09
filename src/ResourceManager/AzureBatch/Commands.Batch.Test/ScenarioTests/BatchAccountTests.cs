@@ -25,14 +25,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBatchAccountEndToEnd()
         {
             BatchController.NewInstance.RunPsTest("Test-BatchAccountEndToEnd");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListNodeAgentSkus()
         {
             BatchController.NewInstance.RunPsTest("Test-GetBatchNodeAgentSkus");
