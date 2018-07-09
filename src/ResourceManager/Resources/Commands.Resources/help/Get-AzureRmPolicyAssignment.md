@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 2DBAF415-A039-479E-B3CA-E00FD5E476C9
@@ -13,20 +13,27 @@ Gets policy assignments.
 
 ## SYNTAX
 
-### GetAllPolicyAssignments (Default)
+### DefaultParameterSet (Default)
 ```
 Get-AzureRmPolicyAssignment [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### GetPolicyAssignmentName
+### NameParameterSet
 ```
-Get-AzureRmPolicyAssignment [-Name <String>] -Scope <String> [-PolicyDefinitionId <String>]
+Get-AzureRmPolicyAssignment [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-InformationAction <ActionPreference>] [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### GetPolicyAssignmentId
+### IncludeDescendentParameterSet
+```
+Get-AzureRmPolicyAssignment [-Scope <String>] [-IncludeDescendent] [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Get-AzureRmPolicyAssignment -Id <String> [-PolicyDefinitionId <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -41,20 +48,18 @@ Identify a policy assignment to get by name and scope or by ID.
 
 ### Example 1: Get all policy assignments
 ```
-PS C:\>Get-AzureRmPolicyAssignment
+PS C:\> Get-AzureRmPolicyAssignment
 ```
 
 This command gets all the policy assignments.
 
 ### Example 2: Get a specific policy assignment
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> Get-AzureRmPolicyAssignment -Name "PolicyAssignment07" -Scope $ResourceGroup.ResourceId
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
 ```
 
-The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
-The command stores that object in the $ResourceGroup variable.
-
+The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdletand stores it in the $ResourceGroup variable.
 The second command get the policy assignment named PolicyAssignment07 for the scope that the **ResourceId** property of $ResourceGroup identifies.
 
 ## PARAMETERS
@@ -95,8 +100,23 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: GetPolicyAssignmentId
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -IncludeDescendent
+Causes the list of returned policy assignments to include all assignments related to the given scope, including those from ancestor scopes and those from descendent scopes.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: IncludeDescendentParameterSet
+Aliases:
 
 Required: True
 Position: Named
@@ -149,7 +169,7 @@ Specifies the name of the policy assignment that this cmdlet gets.
 
 ```yaml
 Type: String
-Parameter Sets: GetPolicyAssignmentName
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: False
@@ -164,7 +184,7 @@ Specifies the ID of the policy definition of the policy assignments that this cm
 
 ```yaml
 Type: String
-Parameter Sets: GetPolicyAssignmentName, GetPolicyAssignmentId
+Parameter Sets: NameParameterSet, IdParameterSet
 Aliases:
 
 Required: False
@@ -194,10 +214,10 @@ Specifies the scope at which the policy is applied for the assignment that this 
 
 ```yaml
 Type: String
-Parameter Sets: GetPolicyAssignmentName
+Parameter Sets: NameParameterSet, IncludeDescendentParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

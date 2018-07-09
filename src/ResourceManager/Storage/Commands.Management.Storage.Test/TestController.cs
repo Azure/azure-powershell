@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 
             RunPsTestWorkflow(
                 () => scripts,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -84,7 +84,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
                                         .Last();
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.RMStorageModule,
                     "ScenarioTests\\Common.ps1",

@@ -892,13 +892,10 @@ function Test-VirtualMachinePIRv2
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
@@ -1617,7 +1614,7 @@ function Test-VirtualMachinePlan2
 
         # Image Reference
         # Pick a VMM Image
-        $imgRef = (Get-MarketplaceImage)[0];
+        $imgRef = Get-FirstMarketplaceImage;
         $plan = $imgRef.PurchasePlan;
         $p = Set-AzureRmVMSourceImage -VM $p -PublisherName $imgRef.PublisherName -Offer $imgRef.Offer -Skus $imgRef.Skus -Version $imgRef.Version;
         $p = Set-AzureRmVMPlan -VM $p -Name $plan.Name -Publisher $plan.Publisher -Product $plan.Product;
@@ -1656,13 +1653,10 @@ function Test-VirtualMachineTags
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
@@ -2223,8 +2217,7 @@ function Test-VirtualMachineWithPremiumStorageAccount
         New-AzureRmResourceGroup -Name $rgname_storage  -Location $loc -Force;
         $stoname1 = 'sto' + $rgname_storage;
         $stotype1 = 'Standard_GRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname_storage -Name $stoname1 -Location $loc -Type $stotype1;
-        $stoaccount1 = Get-AzureRmStorageAccount -ResourceGroupName $rgname_storage -Name $stoname1;
+        $stoaccount1 = New-AzureRmStorageAccount -ResourceGroupName $rgname_storage -Name $stoname1 -Location $loc -Type $stotype1;
 
         # Create a resource group
         New-AzureRmResourceGroup -Name $rgname -Location $loc -Force;
@@ -2232,8 +2225,7 @@ function Test-VirtualMachineWithPremiumStorageAccount
         # Create a premium Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Premium_LRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $stoaccount = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
 
         # VM Profile & Hardware
         $vmsize = 'Standard_DS1';
@@ -2244,13 +2236,10 @@ function Test-VirtualMachineWithPremiumStorageAccount
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
@@ -2915,13 +2904,10 @@ function Test-VirtualMachineManagedDiskConversion
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         $p = Add-AzureRmVMNetworkInterface -VM $p -Id $nicId;
@@ -3055,20 +3041,16 @@ function Test-VirtualMachinePerformanceMaintenance
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         # Storage Account (SA)
         $stoname = 'sto' + $rgname;
         $stotype = 'Standard_GRS';
-        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
-        $stoaccount = Get-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname;
+        $stoaccount = New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype;
 
         $osDiskName = 'osDisk';
         $osDiskCaching = 'ReadWrite';
@@ -3297,13 +3279,10 @@ function Test-VirtualMachineWriteAcceleratorUpdate
         # NRP
         $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
         $vnet = New-AzureRmVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
-        $vnet = Get-AzureRmVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
         $subnetId = $vnet.Subnets[0].Id;
         $pubip = New-AzureRmPublicIpAddress -Force -Name ('pubip' + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel ('pubip' + $rgname);
-        $pubip = Get-AzureRmPublicIpAddress -Name ('pubip' + $rgname) -ResourceGroupName $rgname;
         $pubipId = $pubip.Id;
         $nic = New-AzureRmNetworkInterface -Force -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
-        $nic = Get-AzureRmNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname;
         $nicId = $nic.Id;
 
         # OS & Image

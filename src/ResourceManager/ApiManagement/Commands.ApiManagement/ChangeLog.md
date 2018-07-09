@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.1
 * Fixed formatting of OutputType in help files
 
 ## Version 6.1.0
@@ -64,7 +66,7 @@ NOTE: The following cmdlets will be deprecated in future release
 * Updated Cmdlet Get-AzureRmApiManagementUser to fix issue https://github.com/Azure/azure-powershell/issues/4510
 * Updated Cmdlet New-AzureRmApiManagementApi to create Api with Empty Path https://github.com/Azure/azure-powershell/issues/4069
 * Add support for online help
-    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser 
+    - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
 
 ## Version 4.4.1
 
@@ -96,7 +98,7 @@ NOTE: The following cmdlets will be deprecated in future release
 * Created supporting cmdlets to create in-memory objects required while Creating or Updating Backend entity
     - New-AzureRmApiManagementBackendCredential
     - New-AzureRmApiManagementBackendProxy
-	
+
 ## Version 3.4.0
 
 ## Version 3.3.0

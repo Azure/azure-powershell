@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -148,9 +148,6 @@ namespace Microsoft.Azure.Commands.Media.Test.ScenarioTests
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
-                    _helper.RMStorageDataPlaneModule,
-                    _helper.RMStorageModule,
                     @"AzureRM.Media.psd1",
                     "AzureRM.Resources.ps1",
                     "AzureRM.Storage.ps1");

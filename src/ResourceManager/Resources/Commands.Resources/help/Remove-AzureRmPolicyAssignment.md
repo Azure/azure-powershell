@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 36399302-3EA5-45A3-A042-536CC7EC2E6D
@@ -13,14 +13,14 @@ Removes a policy assignment.
 
 ## SYNTAX
 
-### RemoveByPolicyAssignmentName (Default)
+### NameParameterSet (Default)
 ```
 Remove-AzureRmPolicyAssignment -Name <String> -Scope <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByPolicyAssignmentId
+### IdParameterSet
 ```
 Remove-AzureRmPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -34,8 +34,8 @@ The **Remove-AzureRmPolicyAssignment** cmdlet removes the specified policy assig
 
 ### Example 1: Remove policy assignment by name and scope
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11"
-PS C:\> Remove-AzureRmPolicyAssignment -Name "PolicyAssignment07" -Scope $ResourceGroup.ResourceId -Force
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11'
+PS C:\> Remove-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId -Force
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
@@ -46,8 +46,8 @@ The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 2: Remove policy assignment by ID
 ```
-PS C:\>$ResourceGroup = Get-AzureRmResourceGroup -Name "ResourceGroup11" 
-PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name "PolicyAssignment07" -Scope $ResourceGroup.ResourceId
+PS C:\> $ResourceGroup = Get-AzureRmResourceGroup -Name 'ResourceGroup11' 
+PS C:\> $PolicyAssignment = Get-AzureRmPolicyAssignment -Name 'PolicyAssignment07' -Scope $ResourceGroup.ResourceId
 PS C:\> Remove-AzureRmPolicyAssignment -Id $PolicyAssignment.ResourceId -Force
 ```
 
@@ -96,7 +96,7 @@ Specifies the fully qualified resource ID for the policy assignment that this cm
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByPolicyAssignmentId
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -150,7 +150,7 @@ Specifies the name of the policy assignment that this cmdlet removes.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByPolicyAssignmentName
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True
@@ -180,7 +180,7 @@ Specifies the scope at which the policy is applied.
 
 ```yaml
 Type: String
-Parameter Sets: RemoveByPolicyAssignmentName
+Parameter Sets: NameParameterSet
 Aliases:
 
 Required: True

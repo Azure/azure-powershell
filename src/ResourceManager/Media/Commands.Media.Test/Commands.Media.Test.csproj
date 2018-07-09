@@ -36,6 +36,10 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Azure.Management.Authorization, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.3.0.0\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
@@ -54,10 +58,6 @@
     <Reference Include="Microsoft.Azure.Gallery">
       <HintPath>..\..\..\packages\Microsoft.Azure.Gallery.2.6.2-preview\lib\net40\Microsoft.Azure.Gallery.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Azure.Management.Authorization">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Authorization.2.0.0\lib\net40\Microsoft.Azure.Management.Authorization.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.Azure.ResourceManager, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Resources.2.20.0-preview\lib\net40\Microsoft.Azure.ResourceManager.dll</HintPath>
@@ -66,7 +66,7 @@
       <HintPath>..\..\..\packages\Microsoft.Azure.Test.Framework.1.0.6179.26854-prerelease\lib\net45\Microsoft.Azure.Test.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.6-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Test.HttpRecorder.1.6.7-preview\lib\net45\Microsoft.Azure.Test.HttpRecorder.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -167,10 +167,6 @@
     <ProjectReference Include="..\Commands.Media\Commands.Media.csproj">
       <Project>{A505E64B-6AA8-43AC-90E7-22A94FD38A0F}</Project>
       <Name>Commands.Media</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

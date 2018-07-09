@@ -19,6 +19,12 @@
 -->
 ## Current Release
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Updated help for `Get-AzureRmContextAutosaveSetting`
+
+## Version 5.3.2
+* Common code changes to enable cmdlets to request an Auxilary Auth header with tokens for multiple tenants given a list of resource IDs.
+
+## Version 5.3.1
 * Fixed formatting of OutputType in help files
 * Ps1Xml attribute added to the basic output types
 
