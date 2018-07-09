@@ -31,7 +31,9 @@ while ($true)
         break
     }
 
-    $FilesChangedList += $FilesChanged.Substring(0, $Idx)
+    $TempFile = $FilesChanged.Substring(0, $Idx)
+    Write-Host "Adding '$TempFile' to 'FilesChangedList'"
+    $FilesChangedList += $TempFile
     $FilesChanged = $FilesChanged.Substring($Idx + 1)
 }
 
@@ -70,7 +72,9 @@ foreach ($ChangeLog in $ChangeLogs)
                 break
             }
 
-            $SplitPath += $ChangeLog.Substring(0, $Idx)
+            $TempPath = $ChangeLog.Substring(0, $Idx)
+            Write-Host "Adding '$TempPath' to 'SplitPath'"
+            $SplitPath += $TempPath
             $ChangeLog = $ChangeLog.Substring($Idx + 1)
         }
 
