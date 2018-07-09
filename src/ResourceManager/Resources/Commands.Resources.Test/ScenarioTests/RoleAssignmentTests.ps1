@@ -275,7 +275,7 @@ function Test-RaValidateInputParameters ($cmdName)
     Assert-Throws { &$cmdName -Scope $scope -ObjectId $groups[0].Id.Guid -RoleDefinitionName $definitionName } $invalidScope
 
     # Check if ResourceType is valid
-    Assert-AreEqual $resource.ResourceType "Microsoft.Solutions/applications"
+    Assert-AreEqual $resource.ResourceType "Microsoft.Web/sites"
     $subscription = Get-AzureRmSubscription | Select-Object -Last 1 -Wait
     # Below invalid resource type should not return 'Not supported api version'.
     $resource.ResourceType = "Microsoft.KeyVault/"
@@ -386,17 +386,19 @@ function Test-RaGetByUPNWithExpandPrincipalGroups
                         -SignInName $users[0].UserPrincipalName `
                         -RoleDefinitionName $definitionName `
                         -ResourceGroupName $resourceGroups[0].ResourceGroupName
-
+    
     $assignments = Get-AzureRmRoleAssignment -SignInName $users[0].UserPrincipalName -ExpandPrincipalGroups
 
     Assert-NotNull $assignments
     foreach ($assignment in $assignments){
         Assert-NotNull $assignment
-        Assert-AreEqual $assignment.SignInName $users[0].UserPrincipalName
+        if(!($assignment.ObjectType -eq "User" -or $assignment.ObjectType -eq "Group")){
+            Assert-Throws "Invalid object type received."
+        }
     }
-    # cleanup
+    # cleanup 
     DeleteRoleAssignment $newAssignment
-
+    
     VerifyRoleAssignmentDeleted $newAssignment
 }
 
@@ -496,7 +498,7 @@ function Test-RaPropertiesValidation
     $roleDef.Name = "Custom Reader Properties Test"
     $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
     $roleDef.Description = "Read, monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("ff9cd1ab-d763-486f-b253-51a816c92bbf")
     New-AzureRmRoleDefinition -Role $roleDef

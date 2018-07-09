@@ -73,7 +73,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.DataFactoryV2.psd1"),
                     "AzureRM.Resources.ps1");
 

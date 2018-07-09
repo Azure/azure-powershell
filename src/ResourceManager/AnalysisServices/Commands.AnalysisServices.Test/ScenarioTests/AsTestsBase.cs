@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.AnalysisServices.psd1"), helper.GetRMModulePath(@"Azure.AnalysisServices.psd1"), "AzureRM.Resources.ps1");
+                helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.AnalysisServices.psd1"), helper.GetRMModulePath(@"Azure.AnalysisServices.psd1"), "AzureRM.Resources.ps1");
 
                 try
                 {
@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.ScenarioTests
         {
             return context.GetServiceClient<AnalysisServicesManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-        
+
         private GalleryClient GetGalleryClient()
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);

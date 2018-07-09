@@ -25,7 +25,7 @@ The **Set-AzureRmRelayNamespace** cmdlet updates the description of the specifie
 
 ### Example 1
 ```
-PS C:\> Set-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
+PS C:\> Set-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Tag @{Tag2="Tag2Value"}
 
 ProvisioningState  :
 CreatedAt          : 4/12/2017 12:38:47 AM
