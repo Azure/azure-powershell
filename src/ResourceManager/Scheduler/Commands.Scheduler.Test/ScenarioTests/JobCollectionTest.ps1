@@ -66,6 +66,7 @@ function Test-CreateJobCollection
     {
         Clean-ResourceGroup $resourceGroupName
     }
+    Assert-AreEqual 1 0
 }
 
 
