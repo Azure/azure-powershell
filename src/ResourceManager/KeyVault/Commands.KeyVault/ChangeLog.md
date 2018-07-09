@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update error message for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 5.0.3
 * Fixed formatting of OutputType in help files
