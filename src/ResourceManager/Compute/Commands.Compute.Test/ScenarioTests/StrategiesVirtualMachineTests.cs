@@ -31,14 +31,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVm()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVm");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewVmWin10()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-NewVmWin10");
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #else
         [Fact]
 #endif
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestSimpleNewVmWithSystemAssignedAndUserAssignedIdentity()
         {
             /**
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithAvailabilitySet2()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmWithAvailabilitySet2");
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmWithDefaultDomainName2()
         {
             var i = 0;
@@ -137,14 +137,14 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmImageName()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageName");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmImageNameMicrosoftSqlUbuntu()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-SimpleNewVmImageNameMicrosoftSqlUbuntu");

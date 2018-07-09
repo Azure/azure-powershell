@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestComputeNodeUserEndToEnd()
         {
             BatchController controller = BatchController.NewInstance;

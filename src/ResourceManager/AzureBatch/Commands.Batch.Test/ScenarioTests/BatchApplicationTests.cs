@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     public class BatchApplicationTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddApplication()
         {
             BatchController.NewInstance.RunPsTest(string.Format("Test-AddApplication"));
