@@ -78,7 +78,9 @@
 			<Output TaskParameter="ExitCode" ItemName="XUnitExitCode"/>
 		</xunit>
 
-		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/$(if(%(XUnitExitCode.Identity) -eq 0){&quot;PassingTests&quot;}else{&quot;FailingTest&quot;})/$(TestSubFileName).html &quot;"/>
+
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/PassingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) == 0"/>
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/FailingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) != 0"/>
 
 	</Target>
 
