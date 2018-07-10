@@ -17,7 +17,8 @@ $PathStringsToIgnore = @(
     ".sln",
     "Nuget.config",
     ".psd1",
-    "NotificationHubs"
+    "NotificationHubs",
+    "Stack"
 )
 
 $FilesChangedList = $FilesChanged -split ';'

@@ -56,20 +56,32 @@
 	</Target>
 
 	<Target Name="InvokeXUnit">
-		<Message Importance="high" Text="Running XUnit tests" />
-		<MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+		<PropertyGroup> <!-- Create the file path for the test dll (src/TestResults/<dll name>.html -->
+			<TestName>$(XUnitTests.Split('\').Length)</TestName>
+			<TestNamePathLength>$([MSBuild]::Subtract($(TestName), 1))</TestNamePathLength>
+			<TestSubFileName>$(XUnitTests.Split('\')[$(TestNamePathLength)])</TestSubFileName>
+			<TestFileName>$(TestOutputDirectory)\$(TestSubFileName).html</TestFileName>
+		</PropertyGroup>
+		<Message Importance="high" Text="Running XUnit tests... $(TestFileName)" />
 
 		<xunit
-			Assemblies="@(XUnitTests)"
+			Assemblies="$(XUnitTests)"
 			AppDomains="true"
 			ShadowCopy="false"
 			ParallelizeTestCollections="false"
 			ParallelizeAssemblies="false"
 			IncludeTraits="AcceptanceType=CheckIn"
-			Html="$(TestOutputDirectory)\AzurePowershellTestResults.html"
+			Html="$(TestFileName)"
 			DiagnosticMessages="false"
-			ContinueOnError="false"
-			Condition=" @(XUnitTests) != '' "/>
+			ContinueOnError="true"
+			Condition=" $(XUnitTests) != '' ">
+			<Output TaskParameter="ExitCode" ItemName="XUnitExitCode"/>
+		</xunit>
+
+
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/PassingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) == 0"/>
+		<Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;. Move-Item -Path $(TestOutputDirectory)/$(TestSubFileName).html -Destination $(TestOutputDirectory)/FailingTests/$(TestSubFileName).html &quot;" Condition="%(XUnitExitCode.Identity) != 0"/>
+
 	</Target>
 
 	<Target Name="InvokeXUnitAll">

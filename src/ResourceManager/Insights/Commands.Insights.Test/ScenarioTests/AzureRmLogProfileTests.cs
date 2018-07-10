@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,30 +21,33 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class AzureRmLogProfileTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AzureRmLogProfileTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            //ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmLogProfile");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmLogProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmLogProfile()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfile");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmLogProfile");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmLogProfileWithRetention()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAzureRmLogProfileWithRetention");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmLogProfileWithRetention");
         }
     }
 }

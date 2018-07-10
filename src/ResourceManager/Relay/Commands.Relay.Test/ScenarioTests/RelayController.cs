@@ -27,11 +27,12 @@ using System.Linq;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
 {
     public class RelayController
-    {       
+    {
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
         private const string TenantIdKey = "TenantId";
@@ -58,16 +59,18 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -106,7 +109,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath(@"AzureRM.Relay.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -140,7 +142,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
             helper.SetupManagementClients(ResourceManagementClient, RelayManagementClient);
         }
 
-        
+
 
         private AuthorizationManagementClient GetAuthorizationManagementClient()
         {
@@ -160,6 +162,6 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         {
             return LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
         }
-        
+
     }
 }
