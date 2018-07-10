@@ -7,6 +7,11 @@
     <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
 
+  <Message Importance="high" Text="SMA Path: $(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll">
+  <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Exists">
+  <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Does Not Exist">
+  <Exec Command='powershell -Command "$PSVersionTable.PSVersion"' ContinueOnError="ErrorAndStop" />
+
   <Target Name="net452">
     <Message Importance="high" Text="Build: net452 started" />
     <PropertyGroup>
@@ -19,9 +24,9 @@
       <xUnitRunner>$(Tools)xunit.runner.console.2.3.1\$(Framework)\xunit.console.exe</xUnitRunner>
     </PropertyGroup>
 
-    <Message Importance="high" Text="net452: Restoring %(Solution.Filename)" />
+    <Message Importance="high" Text="net452: Restoring $(Solution.Filename)" />
     <Exec Command="$(NuGet) restore $(Solution) -ConfigFile $(NuGetConfig)"/>
-    <Message Importance="high" Text="net452: Building %(Solution.Filename)" />
+    <Message Importance="high" Text="net452: Building $(Solution.Filename)" />
     <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" ContinueOnError="ErrorAndStop" />
     <ItemGroup>
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
@@ -36,9 +41,9 @@
       <Solution>$(Root)Azure.PowerShell.Common.Netcore.sln</Solution>
     </PropertyGroup>
 
-    <Message Importance="high" Text="netcoreapp20: Building %(Solution.Filename)" />
+    <Message Importance="high" Text="netcoreapp20: Building $(Solution.Filename)" />
     <Exec Command="dotnet build $(Solution) -c $(Configuration)"/>
-    <Message Importance="high" Text="netcoreapp20: Testing %(Solution.Filename)" />
+    <Message Importance="high" Text="netcoreapp20: Testing $(Solution.Filename)" />
     <Exec Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
   </Target>
 
