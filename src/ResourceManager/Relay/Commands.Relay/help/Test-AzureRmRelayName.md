@@ -24,16 +24,28 @@ The **Test-AzureRmRelayName** Cmdlet Check Availability of the NameSpace Name
 ### Example 1
 ```
 PS C:\> Test-AzureRmRelayName -Namespace TestingtheAvailability
+
+NameAvailable Reason Message
+------------- ------ -------
+         True   None
 ```
 
 ### Example 2
 ```
 PS C:\> Test-AzureRmRelayName -Namespace Testi
+
+NameAvailable      Reason Message
+-------------      ------ -------
+        False InvalidName The specified service namespace is invalid.
 ```
 
 ### Example 3
 ```
 PS C:\> Test-AzureRmRelayName -Namespace Test123
+
+NameAvailable    Reason Message
+-------------    ------ -------
+        False NameInUse The specified service namespace is not available.
 ```
 
 Returns the status on availability of the namespace name
@@ -61,7 +73,7 @@ Relay Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -81,21 +93,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### [Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]
-
-### Example 1
-NameAvailable Reason Message
-------------- ------ -------
-         True   None
-
-### Example 2
-NameAvailable      Reason Message
--------------      ------ -------
-        False InvalidName The specified service namespace is invalid.
-
-### Example 3
-NameAvailable    Reason Message
--------------    ------ -------
-        False NameInUse The specified service namespace is not available.
 
 ## NOTES
 
