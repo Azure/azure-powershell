@@ -127,23 +127,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public PSDataFactory CreatePSDataFactory(CreatePSDataFactoryParameters parameters)
         {
             PSDataFactory dataFactory = null;
+          
             Action createDataFactory = () =>
             {
                 dataFactory =
-                    new PSDataFactory(
-                        this.DataFactoryManagementClient.Factories.CreateOrUpdate(
-                            parameters.ResourceGroupName,
-                            parameters.DataFactoryName,
-                            new Factory
-                            {
-                                Location = parameters.Location,
-                                Tags = parameters.Tags?.ToDictionary(),
-                                Identity = new FactoryIdentity(),
-                                RepoConfiguration = new FactoryGitHubConfiguration()
-                            }),
-                        parameters.ResourceGroupName);
+                new PSDataFactory(
+                    this.DataFactoryManagementClient.Factories.CreateOrUpdate(
+                        parameters.ResourceGroupName,
+                        parameters.DataFactoryName,
+                        new Factory
+                        {
+                            Location = parameters.Location,
+                            Tags = parameters.Tags?.ToDictionary(),
+                            Identity = new FactoryIdentity(),
+                            RepoConfiguration = parameters.repo
+                        }),
+                    parameters.ResourceGroupName);
             };
-
             parameters.ConfirmAction(
                 parameters.Force,    // prompt only if the data factory exists
                 string.Format(
