@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.4
 * Update error message for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 5.0.3
