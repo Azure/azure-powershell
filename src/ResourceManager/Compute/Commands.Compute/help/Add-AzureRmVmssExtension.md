@@ -39,7 +39,7 @@ PS C:\> $ProtectedSettings = @{"storageAccountName" = $stoname; "storageAccountK
 
 PS C:\> Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $vmssExtensionName -Publisher $vmssPublisher  `
   -Type $vmssExtensionType -TypeHandlerVersion $ExtVer -AutoUpgradeMinorVersion $True  `
-  -Setting $vmssSettings -ProtectedSetting $vmssProtectedSettings
+  -Setting $Settings -ProtectedSetting $ProtectedSettings
 ```
 
 This command adds an extension to the VMSS with a sample bash script on a blob storage, specify the url of blob storage and executable command in settings and security access in protected settings. 
