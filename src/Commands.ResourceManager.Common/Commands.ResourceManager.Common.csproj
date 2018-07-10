@@ -236,5 +236,5 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\..\tools\Common.Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\Common.Dependencies.targets" />
 </Project>
