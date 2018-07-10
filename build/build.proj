@@ -7,9 +7,9 @@
     <TestFilter>"AcceptanceType=CheckIn"</TestFilter>
   </PropertyGroup>
 
-  <Message Importance="high" Text="SMA Path: $(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll">
-  <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Exists">
-  <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Does Not Exist">
+  <Message Importance="high" Text="SMA Path: $(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll" />
+  <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Exists" />
+  <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Does Not Exist" />
   <Exec Command='powershell -Command "$PSVersionTable.PSVersion"' ContinueOnError="ErrorAndStop" />
 
   <Target Name="net452">
