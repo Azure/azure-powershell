@@ -25,26 +25,26 @@ function Test-RoleDefinitionCreateTests
     New-AzureRmRoleDefinition -InputFile .\Resources\NewRoleDefinition.json
 
     $rd = Get-AzureRmRoleDefinition -Name $rdName
-	Assert-AreEqual "Test role" $rd.Description
-	Assert-AreEqual $true $rd.IsCustom
-	Assert-NotNull $rd.Actions
-	Assert-AreEqual "Microsoft.Authorization/*/read" $rd.Actions[0]
-	Assert-AreEqual "Microsoft.Support/*" $rd.Actions[1]
-	Assert-NotNull $rd.AssignableScopes
+    Assert-AreEqual "Test role" $rd.Description
+    Assert-AreEqual $true $rd.IsCustom
+    Assert-NotNull $rd.Actions
+    Assert-AreEqual "Microsoft.Authorization/*/read" $rd.Actions[0]
+    Assert-AreEqual "Microsoft.Support/*" $rd.Actions[1]
+    Assert-NotNull $rd.AssignableScopes
     Assert-Null $rd.DataActions
     Assert-Null $rd.NotDataActions
 
-	# Basic positive case - read from object
-	$roleDef = Get-AzureRmRoleDefinition -Name "Reader"
-	$roleDef.Id = $null
-	$roleDef.Name = "New Custom Reader"
-	$roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
-	$roleDef.Description = "Read, monitor and restart virtual machines"
-    $roleDef.AssignableScopes[0] = "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    # Basic positive case - read from object
+    $roleDef = Get-AzureRmRoleDefinition -Name "Reader"
+    $roleDef.Id = $null
+    $roleDef.Name = "New Custom Reader"
+    $roleDef.Actions.Add("Microsoft.ClassicCompute/virtualMachines/restart/action")
+    $roleDef.Description = "Read, monitor and restart virtual machines"
+    $roleDef.AssignableScopes[0] = "/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
 
     [Microsoft.Azure.Commands.Resources.Models.Authorization.AuthorizationClient]::RoleDefinitionNames.Enqueue("678c13e9-6637-4471-8414-e95f7a660b0b")
-	New-AzureRmRoleDefinition -Role $roleDef
-	$addedRoleDef = Get-AzureRmRoleDefinition -Name "New Custom Reader"
+    New-AzureRmRoleDefinition -Role $roleDef
+    $addedRoleDef = Get-AzureRmRoleDefinition -Name "New Custom Reader"
 
     Assert-NotNull $addedRoleDef.Actions
     Assert-AreEqual $roleDef.Description $addedRoleDef.Description
