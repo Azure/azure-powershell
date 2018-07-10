@@ -46,6 +46,7 @@ ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
 AlternateName	  :
 Role              : Primary
+PendingReplicationOperationsCount : 0
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"

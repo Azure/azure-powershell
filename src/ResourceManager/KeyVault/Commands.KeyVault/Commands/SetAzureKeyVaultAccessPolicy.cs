@@ -486,6 +486,11 @@ namespace Microsoft.Azure.Commands.KeyVault
                 }
 
                 ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                if (ResourceGroupName == null)
+                {
+                    throw new ArgumentException(string.Format(Resources.VaultDoesNotExist, VaultName));
+                }
+
                 PSKeyVault vault = null;
 
                 // Get the vault to be updated
