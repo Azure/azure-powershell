@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support Upload Blob or File with write only Sas token
+- Set-AzureStorageBlobContent
+- Set-AzureStorageFileContent
 
 ## Version 4.3.1
 * Added additional information about -Permissions parameter in help files.
