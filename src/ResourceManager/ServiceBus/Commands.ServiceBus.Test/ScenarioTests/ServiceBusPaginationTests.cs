@@ -21,16 +21,19 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
     using Xunit.Abstractions;
     public class ServiceBusPaginationTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ServiceBusPaginationTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ServiceBusPaginationTests_CURD()
         {
-            ServiceBusController.NewInstance.RunPsTest("ServiceBusPaginationTests");
+            ServiceBusController.NewInstance.RunPsTest(_logger, "ServiceBusPaginationTests");
         }        
     }
 }
