@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <Target Name="net452">
+    <Message Importance="high" Text="Build: net452 started" />
     <PropertyGroup>
       <Framework>net452</Framework>
       <Tools>$(Root)tools\</Tools>
@@ -18,17 +19,27 @@
       <xUnitRunner>$(Tools)xunit.runner.console.2.3.1\$(Framework)\xunit.console.exe</xUnitRunner>
     </PropertyGroup>
 
+    <Message Importance="high" Text="net452: Restoring %(Solution.Filename)" />
     <Exec Command="$(NuGet) restore $(Solution) -ConfigFile $(NuGetConfig)"/>
+    <Message Importance="high" Text="net452: Building %(Solution.Filename)" />
     <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" ContinueOnError="ErrorAndStop" />
     <ItemGroup>
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
     </ItemGroup>
+    <Message Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
     <Exec Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
   </Target>
 
   <Target Name="netcoreapp20">
-    <Exec Command="dotnet build $(Root)Azure.PowerShell.Common.Netcore.sln -c $(Configuration)"/>
-    <Exec Command="dotnet test $(Root)Azure.PowerShell.Common.Netcore.sln --filter $(TestFilter) --configuration $(Configuration)"/>
+    <Message Importance="high" Text="Build: netcoreapp20 started" />
+    <PropertyGroup>
+      <Solution>$(Root)Azure.PowerShell.Common.Netcore.sln</Solution>
+    </PropertyGroup>
+
+    <Message Importance="high" Text="netcoreapp20: Building %(Solution.Filename)" />
+    <Exec Command="dotnet build $(Solution) -c $(Configuration)"/>
+    <Message Importance="high" Text="netcoreapp20: Testing %(Solution.Filename)" />
+    <Exec Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
   </Target>
 
   <Target Name="Build" DependsOnTargets="net452;netcoreapp20">
