@@ -48,9 +48,9 @@
     </CreateItem>
 
     <ItemGroup>
-       <Packs Include="@(NetCoreApp20Packages)" Condition=" '@(Net452Packages)' == '@(NetCoreApp20Packages)' and %(Identity) != '' " />
+      <Packs Include="@(NetCoreApp20Packages)" Condition=" '@(Net452Packages)' == '@(NetCoreApp20Packages)' and %(Identity) != '' " />
     </ItemGroup>
-    <!-- <Message Importance="high" Text="$(NupkgMerge) -P %(Packs.TargetPath) -S $(Net452PackDir)@(Packs) -O %(Packs.TargetPath)"/> -->
+
     <Exec Command="$(NupkgMerge) -P %(Packs.TargetPath) -S $(Net452PackDir)@(Packs) -O %(Packs.TargetPath)"/>
   </Target>
 </Project>
