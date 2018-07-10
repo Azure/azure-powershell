@@ -660,7 +660,15 @@
           ContinueOnError="ErrorAndContinue"/>
 
     <!-- Azure / Stack -->
-    <CallTarget Targets="InvokeXUnit" />
+    <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
+    <MakeDir Directories="$(TestOutputDirectory)/PassingTests" ContinueOnError="false" />
+    <MakeDir Directories="$(TestOutputDirectory)/FailingTests" ContinueOnError="false" />
+    <MSBuild  Projects="build.proj"
+              Targets="InvokeXUnit"
+              Properties="XUnitTests=%(XUnitTests.Identity);TestOutputDirectory=$(TestOutputDirectory)"
+      ContinueOnError="false" />
+
+    <CallTarget Targets="TestFailureCheck" />
   </Target>
 
   <Target Name="BinScopeCheck">
@@ -671,6 +679,16 @@
 
   <Target Name="BinScopeErrorMessage">
     <Error Text="Binscope failed, please check the files in src/Package/BinScope"/>
+  </Target>
+
+  <Target Name="TestFailureCheck">
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;if ((Get-ChildItem $(TestOutputDirectory)/FailingTests).Count -ge 1) { throw &quot;Failing tests, please check files in src/TestResults/FailingTests&quot; } &quot;"
+          ContinueOnError="False"/>
+    <OnError ExecuteTargets="TestFailureErrorMessage"/>
+  </Target>
+
+  <Target Name="TestFailureErrorMessage">
+    <Error Text="Test failures occured, check the files in src/TestResults/FailingTests."/>
   </Target>
 
   <!-- Run Full switch with scenario tests -->

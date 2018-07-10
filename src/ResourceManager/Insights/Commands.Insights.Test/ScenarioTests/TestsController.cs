@@ -56,20 +56,6 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
                 mockName);
         }
 
-        public void RunPsTest(params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom cleanup 
-                null,
-                callingClassType,
-                mockName);
-        }
-
         public void RunPsTestWorkflow(
             Func<string[]> scriptBuilder,
             Action cleanup,
