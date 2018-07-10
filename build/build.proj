@@ -13,8 +13,8 @@
     <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Does Not Exist" />
     <Exec Command='powershell -Command "$PSVersionTable.PSVersion"' ContinueOnError="ErrorAndStop" /> -->
 
-    <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Exists" />
-    <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Does Not Exist" />
+    <!-- <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Exists" />
+    <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Does Not Exist" /> -->
 
     <Message Importance="high" Text="Build: net452 started" />
     <PropertyGroup>
