@@ -1,4 +1,52 @@
-﻿## 6.4.0 - July 2018
+﻿## 6.5.0 - July 2018
+#### AzureRM.Profile
+* Updated help for 'Get-AzureRmContextAutosaveSetting'
+
+#### Azure.Storage
+* Support Upload Blob or File with write only Sas token
+- Set-AzureStorageBlobContent
+- Set-AzureStorageFileContent
+
+#### AzureRM.AnalysisServices
+* Add required property ResourceGroupName to AS.
+
+#### AzureRM.Automation
+* Update help and add example for 'New-AzureRMAutomationSchedule'
+
+#### AzureRM.Compute
+* Add example for 'Add-AzureRmVmssExtension'
+* Add examples for 'Remove-AzureRmVmssExtension'
+* Update help for 'Set-AzureRmVMAccessExtension'
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter 'SinglePlacementGroup' that enables the user to create the VMSS in a single placement group.
+
+#### AzureRM.EventHub
+* Added a readonly property 'PendingReplicationOperationsCount' to PSEventHubDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
+#### AzureRM.KeyVault
+* Update error message for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+
+#### AzureRM.Relay
+* Updated markdown files, fix for the parameter name issue in example
+
+#### AzureRM.Resources
+* Update Roleassignment and roledefinition cmdlets:
+    - Remove extra roledefinition calls done as part of paging.
+* Fix Get-AzureRmRoleAssignment cmdlet
+    - Fix -ExpandPrincipalGroups command parameter functionality
+* Fix issue with 'Get-AzureRmResource' where '-ResourceType' parameter was case sensitive
+
+#### AzureRM.ServiceFabric
+* Update example for 'New-AzureRmServiceFabricCluster'
+
+#### AzureRM.Sql
+* Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
+	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
+	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
+## 6.4.0 - July 2018
 #### General
 * Fixed formatting of OutputType in help files for most modules
 
