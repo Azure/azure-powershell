@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.2.1
 * Add example for `Add-AzureRmVmssExtension`
 * Add examples for `Remove-AzureRmVmssExtension`
 * Update help for `Set-AzureRmVMAccessExtension`
