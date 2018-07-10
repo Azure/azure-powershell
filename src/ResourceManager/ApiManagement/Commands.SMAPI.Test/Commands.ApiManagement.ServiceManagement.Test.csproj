@@ -155,7 +155,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ScenarioTests\ApiManagementTests.cs" />
-    <Compile Include="ScenarioTests\ApiManagementTestsFixture.cs" />
     <Compile Include="ScenarioTests\TestsFixture.cs" />
   </ItemGroup>
   <ItemGroup>

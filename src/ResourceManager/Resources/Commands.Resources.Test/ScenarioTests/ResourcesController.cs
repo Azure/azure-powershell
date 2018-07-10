@@ -67,13 +67,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor interceptor, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
             RunPsTestWorkflow(
+                interceptor,
                 () => scripts,
                 // no custom cleanup
                 null,
@@ -89,15 +90,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             string mockName)
         {
             _helper.TracingInterceptor = interceptor;
-            RunPsTestWorkflow(scriptBuilder, cleanup, callingClassType, mockName);
-        }
-
-        public void RunPsTestWorkflow(
-            Func<string[]> scriptBuilder,
-            Action cleanup,
-            string callingClassType,
-            string mockName)
-        {
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

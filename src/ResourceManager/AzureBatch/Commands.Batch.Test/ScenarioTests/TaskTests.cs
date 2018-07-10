@@ -15,14 +15,18 @@
 using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class TaskTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TaskTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -33,6 +37,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string jobId = "taskCrudJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-TaskCRUD '{0}'", jobId) }; },
                 () =>
                 {
@@ -55,6 +60,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string jobId = "createTaskCollectionJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-CreateTaskCollection '{0}'", jobId) }; },
                 () =>
                 {
@@ -79,6 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId1 = "testTask1";
             string taskId2 = "testTask2";
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}'", jobId, taskId1, taskId2) }; },
                 () =>
                 {
@@ -106,6 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int numInstances = 3;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-ListAllSubtasks '{0}' '{1}' '{2}'", jobId, taskId, numInstances) }; },
                 () =>
                 {
