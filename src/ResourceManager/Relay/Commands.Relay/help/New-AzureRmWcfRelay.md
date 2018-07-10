@@ -38,6 +38,19 @@ PS C:\> $GetWcfRelay.UserMetadata = "TestWCFRelay2"
 PS C:\> $GetWcfRelay.RequiresClientAuthorization = $False
 PS C:\> $GetWcfRelay.RelayType = "Http"
 PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay2 -InputObject
+
+RelayType                   : Http
+CreatedAt                   : 4/26/2017 5:14:46 PM
+UpdatedAt                   : 4/26/2017 5:14:46 PM
+ListenerCount               :
+RequiresClientAuthorization : False
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : TestWCFRelay2
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
+                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay2
+Name                        : TestWCFRelay2
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
 Creates a new WcfRelay \`TestWCFRelay2\` in the specified Relay namespace \`TestNameSpace-Relay\`.
@@ -45,6 +58,19 @@ Creates a new WcfRelay \`TestWCFRelay2\` in the specified Relay namespace \`Test
 ### Example 2 - Properties
 ```
 PS C:\> New-AzureRmWcfRelay -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay -WcfRelayType "NetTcp"  -RequiresClientAuthorization $True -RequiresTransportSecurity $True -UserMetadata "User Meta data"
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/26/2017 5:20:08 PM
+UpdatedAt                   : 4/26/2017 5:20:08 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
+                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+Name                        : TestWCFRelay
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
 Creates a new WcfRelay \`TestWCFRelay\` in the specified Relay namespace \`TestNameSpace-Relay1\`.
@@ -72,7 +98,7 @@ WcfRelay object.
 ```yaml
 Type: WcfRelayAttributes
 Parameter Sets: WcfRelayInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -87,7 +113,7 @@ WcfRelay Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -102,7 +128,7 @@ Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -117,7 +143,7 @@ true if client authorization is needed for this relay; otherwise, false
 ```yaml
 Type: Boolean
 Parameter Sets: WcfRelayPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,7 +158,7 @@ true if transport security is needed for this relay; otherwise, false
 ```yaml
 Type: Boolean
 Parameter Sets: WcfRelayPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +173,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -163,7 +189,7 @@ it can be used to store  descriptive data, such as list of teams and their conta
 ```yaml
 Type: String
 Parameter Sets: WcfRelayPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,7 +205,7 @@ Possible values include: 'NetTcp' or 'Http'
 ```yaml
 Type: String
 Parameter Sets: WcfRelayPropertiesSet
-Aliases: 
+Aliases:
 Accepted values: NetTcp, Http
 
 Required: False
@@ -251,37 +277,7 @@ System.String
 
 ## OUTPUTS
 
-### Example 1 - InputObject
-
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-RelayType                   : Http
-CreatedAt                   : 4/26/2017 5:14:46 PM
-UpdatedAt                   : 4/26/2017 5:14:46 PM
-ListenerCount               :
-RequiresClientAuthorization : False
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : TestWCFRelay2
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
-                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay2
-Name                        : TestWCFRelay2
-Type                        : Microsoft.Relay/WcfRelays
-
-### Example 2 - Properties
-
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-RelayType                   : NetTcp
-CreatedAt                   : 4/26/2017 5:20:08 PM
-UpdatedAt                   : 4/26/2017 5:20:08 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
-                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
-Name                        : TestWCFRelay
-Type                        : Microsoft.Relay/WcfRelays
 
 ## NOTES
 
