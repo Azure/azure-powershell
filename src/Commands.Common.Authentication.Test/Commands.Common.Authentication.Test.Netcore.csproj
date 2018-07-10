@@ -7,7 +7,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <OutputPath>$(SolutionDir)artifacts\$(Configuration)</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>

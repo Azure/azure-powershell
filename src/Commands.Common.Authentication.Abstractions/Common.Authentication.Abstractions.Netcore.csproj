@@ -7,7 +7,7 @@
     <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Abstractions</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Abstractions</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <OutputPath>$(SolutionDir)artifacts\$(Configuration)</OutputPath>
+    <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
-    <PackageOutputPath>$(SolutionDir)artifacts\Package\$(Configuration)</PackageOutputPath>
+    <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
