@@ -25,8 +25,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         public ServiceBusDRConfigurationTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-
-            ServiceBusClient.ServiceBusDRWaitTime = 0;
         }
 
         [Fact]

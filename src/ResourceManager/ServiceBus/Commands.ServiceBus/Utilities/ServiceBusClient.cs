@@ -26,6 +26,7 @@ using System.Net;
 using System.Xml.Linq;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ServiceBus
 {
@@ -40,8 +41,6 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public Action<string> ErrorLogger { get; set; }
 
         public Action<string> WarningLogger { get; set; }
-
-        public static int ServiceBusDRWaitTime = 5;
 
         public ServiceBusClient(IAzureContext context)
         {
@@ -271,11 +270,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
         public IEnumerable<PSQueueAttributes> ListQueues(string resourceGroupName, string namespaceName, int? maxCount = null)
         {
-            //Rest.Azure.IPage<SBQueue> response = Client.Queues.ListByNamespace(resourceGroupName, namespaceName);
-            //IEnumerable<PSQueueAttributes> resourceList = response.Select(resource => new PSQueueAttributes(resource));
-            //return resourceList;
-
-
+           
             IEnumerable<PSQueueAttributes> resourceList = Enumerable.Empty<PSQueueAttributes>();
             int? skip = 0;
             switch (ReturnmaxCountvalueForSwtich(maxCount))
@@ -699,14 +694,14 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public bool DeleteServiceBusDRConfiguration(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.Delete(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(ServiceBusDRWaitTime));
+            TestMockSupport.Delay(5000);
             return true;
         }
 
         public void SetServiceBusDRConfigurationBreakPairing(string resourceGroupName, string namespaceName, string alias)
         {
             Client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, namespaceName, alias);
-            Thread.Sleep(TimeSpan.FromSeconds(ServiceBusDRWaitTime));            
+            TestMockSupport.Delay(5000);
         }
 
         public void SetServiceBusDRConfigurationFailOver(string resourceGroupName, string namespaceName, string alias)
@@ -761,26 +756,26 @@ namespace Microsoft.Azure.Commands.ServiceBus
         public bool DeleteServiceBusMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
             Client.MigrationConfigs.Revert(resourceGroupName, namespaceName);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            TestMockSupport.Delay(5000);
             return true;
         }
 
         public void SetServiceBusCompleteMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
             Client.MigrationConfigs.CompleteMigration(resourceGroupName, namespaceName);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            TestMockSupport.Delay(5000);
         }
 
         public void SetServiceBusStartMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
             Client.MigrationConfigs.CompleteMigration(resourceGroupName, namespaceName);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            TestMockSupport.Delay(5000);
         }
 
         public void SetServiceBusRevertMigrationConfiguration(string resourceGroupName, string namespaceName)
         {
             Client.MigrationConfigs.Revert(resourceGroupName, namespaceName);
-            Thread.Sleep(TimeSpan.FromSeconds(5));
+            TestMockSupport.Delay(5000);
         }
         #endregion
 
