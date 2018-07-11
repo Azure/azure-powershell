@@ -27,7 +27,7 @@ namespace Commands.Common.Tests
             Assert.False(GeneralUtilities.Probe("foo"));
         }
 
-        [Fact]
+        [Fact(Skip = "Test does not make sense for CI without PS6")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TrueWhenProgramDoesExistTest()
         {
@@ -47,7 +47,7 @@ namespace Commands.Common.Tests
                     }));
         }
 
-        [Fact]
+        [Fact(Skip = "Test does not make sense for CI without PS6")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TrueIfStdOutDoesMatchTest()
         {
