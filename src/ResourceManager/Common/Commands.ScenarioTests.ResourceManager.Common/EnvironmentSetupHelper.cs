@@ -641,6 +641,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 {
                     powershell.LogPowerShellException(psException, TracingInterceptor);
                     powershell.LogPowerShellResults(output, TracingInterceptor);
+                    TracingInterceptor?.Flush();
                     throw;
                 }
                 finally

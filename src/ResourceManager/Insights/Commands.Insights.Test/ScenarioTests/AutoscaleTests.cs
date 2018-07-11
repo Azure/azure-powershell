@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
@@ -20,58 +21,61 @@ namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
     public class AutoscaleTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public AutoscaleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-AddAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-AddAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAutoscaleSettingByName()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleSettingByName");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAutoscaleSettingByName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureRmAutoscaleSetting()
         {
-            TestsController.NewInstance.RunPsTest("Test-RemoveAzureRmAutoscaleSetting");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureRmAutoscaleSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmAutoscaleHistory()
         {
-            TestsController.NewInstance.RunPsTest("Test-GetAzureRmAutoscaleHistory");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmAutoscaleHistory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmAutoscaleNotification()
         {
-            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleNotification");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmAutoscaleNotification");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureRmAutoscaleWebhook()
         {
-            TestsController.NewInstance.RunPsTest("Test-NewAzureRmAutoscaleWebhook");
+            TestsController.NewInstance.RunPsTest(_logger, "Test-NewAzureRmAutoscaleWebhook");
         }
     }
 }
