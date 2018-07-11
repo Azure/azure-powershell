@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact(Skip = "TODO: only works for live mode due to key vault dependency")]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
