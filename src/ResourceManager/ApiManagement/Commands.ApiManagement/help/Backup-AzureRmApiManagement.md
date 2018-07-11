@@ -39,8 +39,6 @@ This command backs up an API Management service to a Storage blob.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
-
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer

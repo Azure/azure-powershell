@@ -84,7 +84,6 @@ Accept wildcard characters: False
 ### -IpConfigurationName
 Network Interface IP Configuration Name.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: NoExpandScaleSetIp
@@ -138,7 +137,6 @@ Accept wildcard characters: False
 
 ### -NetworkInterfaceName
 Virtual Machine Network Interface Name.
-
 
 ```yaml
 Type: System.String
@@ -194,7 +192,6 @@ Accept wildcard characters: False
 ### -VirtualMachineIndex
 Virtual Machine Index.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: NoExpandScaleSetIp
@@ -221,7 +218,6 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSetName
 Virtual Machine Scale Set Name.
-
 
 ```yaml
 Type: System.String

@@ -38,8 +38,6 @@ This command restores an API Management service from Azure storage blob.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
-
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer

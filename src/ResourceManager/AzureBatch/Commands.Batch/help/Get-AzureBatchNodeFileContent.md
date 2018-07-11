@@ -140,7 +140,6 @@ Accept wildcard characters: False
 ### -ByteRangeEnd
 The end of the byte range to be downloaded.
 
-
 ```yaml
 Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
@@ -155,7 +154,6 @@ Accept wildcard characters: False
 
 ### -ByteRangeStart
 The start of the byte range to be downloaded.
-
 
 ```yaml
 Type: System.Nullable`1[System.Int64]

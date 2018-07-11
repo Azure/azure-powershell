@@ -36,15 +36,6 @@ Creates a firewall config object with two rules while also enabling access from 
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -61,17 +52,6 @@ Accept wildcard characters: False
 ### -EnablePowerBIService
 A flag to indicate if the firewall is allowing access from Power BI
 
-yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -86,31 +66,6 @@ Accept wildcard characters: False
 
 ### -FirewallRule
 A list of firewall rules
-
-yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]
-Parameter Sets: (All)
-Aliases: 
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-
-
-
-
-yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]

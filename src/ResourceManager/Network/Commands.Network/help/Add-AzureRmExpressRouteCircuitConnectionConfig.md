@@ -132,7 +132,6 @@ Accept wildcard characters: False
 ### -PeerExpressRouteCircuitPeering
 Resource Id for Private Peering of remote circuit which will be peered with the current circuit.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId

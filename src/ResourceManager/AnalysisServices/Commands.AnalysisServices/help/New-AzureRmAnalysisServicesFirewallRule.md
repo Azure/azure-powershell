@@ -33,15 +33,6 @@ Creates a firewall rule named rule1 with start range 0.0.0.0 and end range 255.2
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -58,17 +49,6 @@ Accept wildcard characters: False
 ### -FirewallRuleName
 Name of firewall rule
 
-yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -84,17 +64,6 @@ Accept wildcard characters: False
 ### -RangeEnd
 The range end of a firewall rule
 
-yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -109,31 +78,6 @@ Accept wildcard characters: False
 
 ### -RangeStart
 The range start of a firewall rule
-
-yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-
-
-
-
-yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 
 ```yaml
 Type: System.String

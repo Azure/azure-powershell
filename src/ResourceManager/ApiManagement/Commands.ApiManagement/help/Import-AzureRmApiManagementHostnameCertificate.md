@@ -36,8 +36,6 @@ This command imports a certificate for a proxy custom hostname.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
-
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
