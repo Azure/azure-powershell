@@ -23,7 +23,7 @@
     <Message Importance="high" Text="net452: Restoring $([System.IO.Path]::GetFileName($(Solution)))" />
     <Exec Command="$(NuGet) restore $(Solution) -ConfigFile $(NuGetConfig)" />
     <Message Importance="high" Text="net452: Building $([System.IO.Path]::GetFileName($(Solution)))" />
-    <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" ContinueOnError="ErrorAndStop" />
+    <MSBuild Projects="$(Solution)" Properties="Configuration=$(Configuration)" />
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
       <CurrentDate>$([System.DateTime]::Now.ToString(yyyy-MM-dd_hh_mm_ss))</CurrentDate>
@@ -47,7 +47,7 @@
     <Exec Command="dotnet build $(Solution) -c $(Configuration) -NoLogo" />
 
     <Message Condition=" '$(Configuration)' == 'Debug' " Importance="high" Text="netcoreapp20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" />
+    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration) --logger trx -NoLogo" ContinueOnError="ErrorAndContinue" />
     <ItemGroup Condition=" '$(Configuration)' == 'Debug' ">
       <TestResults Include="$(Root)src\**\TestResults\*.trx" />
     </ItemGroup>
