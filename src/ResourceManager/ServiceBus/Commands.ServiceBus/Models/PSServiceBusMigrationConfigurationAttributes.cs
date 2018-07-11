@@ -19,23 +19,22 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.ServiceBus.Models
 {
 
-    public class PSServiceBusDRConfigurationAttributes
+    public class PSServiceBusMigrationConfigurationAttributes
     {
-        public PSServiceBusDRConfigurationAttributes()
+        public PSServiceBusMigrationConfigurationAttributes()
         { }
 
-        public PSServiceBusDRConfigurationAttributes(ArmDisasterRecovery drResource)
+        public PSServiceBusMigrationConfigurationAttributes(MigrationConfigProperties mcResource)
         {
-            if (drResource != null)
+            if (mcResource != null)
             {
-                Name = drResource.Name;
-                Id = drResource.Id;
-                Type = drResource.Type;
-                ProvisioningState = drResource.ProvisioningState;
-                PartnerNamespace = drResource.PartnerNamespace;
-                Role = drResource.Role;
-                AlternateName = drResource.AlternateName;
-                PendingReplicationOperationsCount = drResource.PendingReplicationOperationsCount;
+                Name = mcResource.Name;
+                Id = mcResource.Id;
+                Type = mcResource.Type;
+                ProvisioningState = mcResource.ProvisioningState;
+                TargetNamespace = mcResource.TargetNamespace;
+                PostMigrationName = mcResource.PostMigrationName;
+                PendingReplicationOperationsCount = mcResource.PendingReplicationOperationsCount;
             }
         }
 
@@ -46,26 +45,21 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets provisioning state of the disaster recovery
+        /// Gets provisioning state of Migration Configuration
         /// </summary>
-        public ProvisioningStateDR? ProvisioningState { get; set; }
+        public string ProvisioningState { get; private set; }
 
         /// <summary>
-        /// Gets or sets a value that indicates partner namespace
+        /// Gets or sets existing premium Namespace name which has no entities,
+        /// will be used for migration
         /// </summary>
-        public string PartnerNamespace { get; set; }
+        public string TargetNamespace { get; set; }
 
         /// <summary>
-        /// Gets or sets a value that indicates Alternate namespace name, when Alias name and namespace name are same.
+        /// Gets or sets name to access connection strings of the Primary
+        /// Namespace after migration
         /// </summary>
-        public string AlternateName { get; set; }
-
-        /// <summary>
-        /// Gets enumerates the possible values for the encoding format of
-        /// capture description. Possible values include:
-        /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
-        /// </summary>
-        public RoleDisasterRecovery? Role { get; set; }
+        public string PostMigrationName { get; set; }
 
         /// <summary>
         /// Gets number of entities pending to be replicated.

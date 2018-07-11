@@ -38,6 +38,16 @@
     - Fix -ExpandPrincipalGroups command parameter functionality
 * Fix issue with 'Get-AzureRmResource' where '-ResourceType' parameter was case sensitive
 
+#### AzureRM.ServiceBus
+* Added top and skip parameter to list cmdlets
+* Added Standard to Premium NameSpace migration cmdlets :
+	- Start-AzureRmServiceBusMigration
+	- Get-AzureRmServiceBusMigration
+	- Complete-AzureRmServiceBusMigration
+	- Stop-AzureRmServiceBusMigration
+	- Remove-AzureRmServiceBusMigration
+* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
 #### AzureRM.ServiceFabric
 * Update example for 'New-AzureRmServiceFabricCluster'
 
@@ -45,6 +55,11 @@
 * Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
 	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
 	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
+#### AzureRM.Websites
+* `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
+* `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated
+* `Set-AzureRmWebApp -PhpVersion` supports off as a valid php version
 
 ## 6.4.0 - July 2018
 #### General
