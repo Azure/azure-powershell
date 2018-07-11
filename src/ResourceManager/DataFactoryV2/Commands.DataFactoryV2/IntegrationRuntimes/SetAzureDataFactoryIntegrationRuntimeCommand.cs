@@ -137,6 +137,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public System.Security.SecureString AuthKey { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpSharedIntegrationRuntimeResourceId)]
+        [ValidateNotNull]
+        public string SharedIntegrationRuntimeResourceId { get; set; }
+
+        [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
@@ -145,6 +151,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
+
+            if (AuthKey != null && !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InvalidIntegrationRuntimeSharingParameters),
+                    "SharedIntegrationRuntimeResourceId");
+            }
 
             IntegrationRuntimeResource resource = null;
             var isUpdate = false;
@@ -166,6 +181,16 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             base.Name),
                         "Type");
                 }
+
+                if (AuthKey != null)
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.UpdateAuthKeyNotAllowed,
+                            base.Name),
+                        "AuthKey");
+                }
             }
             catch (CloudException e)
             {
@@ -183,11 +208,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resource = new IntegrationRuntimeResource();
                     if (Type.Equals(Constants.IntegrationRuntimeTypeManaged, StringComparison.OrdinalIgnoreCase))
                     {
+                        if (AuthKey != null || !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                        {
+                            throw new PSArgumentException(
+                                string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    Resources.InvalidIntegrationRuntimeSharing),
+                                "AuthKey");
+                        }
+
                         resource.Properties = new ManagedIntegrationRuntime();
                     }
                     else
                     {
                         var selfHosted = new SelfHostedIntegrationRuntime();
+                        if (AuthKey != null)
+                        {
+                            var authKey = ConvertToUnsecureString(AuthKey);
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
+                        }
+
                         resource.Properties = selfHosted;
                     }
                 }
@@ -197,13 +237,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
+            if (resource.Properties is SelfHostedIntegrationRuntime selfHostedIr)
+            {
+                if (string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                {
+                    selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                }
+            }
+
             if (!string.IsNullOrWhiteSpace(Description))
             {
                 resource.Properties.Description = Description;
             }
 
-            var managedIr = resource.Properties as ManagedIntegrationRuntime;
-            if (managedIr != null)
+            if (resource.Properties is ManagedIntegrationRuntime managedIr)
             {
                 HandleManagedIntegrationRuntime(managedIr);
             }
