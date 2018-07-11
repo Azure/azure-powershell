@@ -39,7 +39,7 @@ The second command updates the SKU of the application gateway.
 Specifies the application gateway object with which this cmdlet associates the SKU.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Specifies the instance count of the application gateway.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ The acceptable values for this parameter are:
 - WAF_Large
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large
@@ -111,7 +111,7 @@ The acceptable values for this parameter are:
 - WAF
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, WAF

@@ -42,7 +42,7 @@ Merge the two specified `Reservation`s into one `Reservation`
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -57,7 +57,7 @@ Accept wildcard characters: False
 Comma-separated strings of two ReservationIds to merge
 
 ```yaml
-Type: PSReservation[]
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation[]
 Parameter Sets: PipeObject
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 ReservationOrderId for the `ReservationOrder` that contains the two `Reservation`s
 
 ```yaml
-Type: Guid[]
+Type: System.Guid[]
 Parameter Sets: CommandLine
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 {{Fill ReservationOrderId Description}}
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

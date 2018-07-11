@@ -80,7 +80,7 @@ This command gets all user groups with the user ID named 0123456789.
 Specifies an instance of PsApiManagementContext.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -94,8 +94,10 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
  
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +113,7 @@ Specifies the group ID.
 If specified, the cmdlet attempts to find the group by the identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByGroupId
 Aliases:
 
@@ -126,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the management group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +145,7 @@ If specified will return all groups the product assigned to.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -159,7 +161,7 @@ Specifies the identifier of existing product.
 If specified the cmdlet will return all groups the product assigned to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
 Aliases:
 

@@ -54,7 +54,7 @@ The second command modifies the redirect configuration for the application gatew
 The applicationGateway
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Include path in the redirected url.
 Default is true.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Include query string in the redirected url.
 Default is true.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 The name of the Redirect Configuration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 The type of redirect
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Permanent, Found, SeeOther, Temporary
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 HTTPListener to redirect the request to
 
 ```yaml
-Type: PSApplicationGatewayHttpListener
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
 Parameter Sets: SetByResource
 Aliases:
 
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ID of  listener to redirect the request to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 Target URL fo redirection
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByURL
 Aliases:
 

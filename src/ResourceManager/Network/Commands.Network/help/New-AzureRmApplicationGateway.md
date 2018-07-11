@@ -103,7 +103,7 @@ The tenth command creates the gateway using the objects set by the previous comm
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,7 +178,7 @@ Accept wildcard characters: False
 Whether HTTP2 is enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -268,7 +268,7 @@ Accept wildcard characters: False
 Specifies the region in which to create the application gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -283,7 +283,7 @@ Accept wildcard characters: False
 Specifies the name of application gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -343,7 +343,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group in which to create the application gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -358,7 +358,7 @@ Accept wildcard characters: False
 Specifies the stock keeping unit (SKU) of the application gateway.
 
 ```yaml
-Type: PSApplicationGatewaySku
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySku
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +388,7 @@ Accept wildcard characters: False
 Specifies an SSL policy for the application gateway.
 
 ```yaml
-Type: PSApplicationGatewaySslPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewaySslPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +405,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -436,7 +436,7 @@ Specifies a web application firewall (WAF) configuration. You can use the
 Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration cmdlet to get a WAF.
 
 ```yaml
-Type: PSApplicationGatewayWebApplicationFirewallConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayWebApplicationFirewallConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -451,7 +451,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -467,7 +467,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

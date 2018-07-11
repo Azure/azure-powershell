@@ -73,8 +73,10 @@ Returns the replication policy with the specified friendly name.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +91,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the ASR replication policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFriendlyName
 Aliases:
 
@@ -104,7 +106,7 @@ Accept wildcard characters: False
 Specifies the name of the ASR replication policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 

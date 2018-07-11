@@ -53,7 +53,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -67,8 +67,10 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
  
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,10 +87,10 @@ If specified will try to find identity provider configuration by the identifier.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementIdentityProviderType
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
 Parameter Sets: IdentityProviderByType
 Aliases:
-Accepted values: Facebook, Google, Microsoft, Twitter, Aad
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
 
 Required: True
 Position: Named

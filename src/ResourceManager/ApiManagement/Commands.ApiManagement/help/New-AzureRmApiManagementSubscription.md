@@ -38,7 +38,7 @@ This command subscribes an existing user to a product.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -52,8 +52,10 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
  
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +70,7 @@ Accept wildcard characters: False
 Specifies the subscription name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +87,7 @@ If this parameter is not specified the key is generated automatically.
 This parameter must be 1 to 300 characters long.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +102,7 @@ Accept wildcard characters: False
 Specifies the ID of the product to which to subscribe.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +119,7 @@ This parameter is generated automatically if it is not specified.
 This parameter must be 1 to 300 characters long.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +135,7 @@ Specifies the subscription state.
 The default value is $Null.
 
 ```yaml
-Type: PsApiManagementSubscriptionState
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscriptionState]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Suspended, Active, Expired, Submitted, Rejected, Cancelled
@@ -150,7 +152,7 @@ Specifies the subscription ID.
 This parameter is generated if not specified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -165,7 +167,7 @@ Accept wildcard characters: False
 Specifies the subscriber ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

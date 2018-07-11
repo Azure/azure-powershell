@@ -91,7 +91,7 @@ The fourth command adds a front-end IP configuration named FrontendIP02 using $S
 Specifies an application gateway object in which to modify the front-end IP configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP configuration that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +137,7 @@ Specifies the private IP address.
 If specified, this IP is statically allocated from the subnet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies the public IP address.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResource
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Specifies the ID of the public IP address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -185,7 +185,7 @@ If the *PrivateIPAddress* address is specified, it should belong to this subnet.
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -203,7 +203,7 @@ If the *PrivateIPAddress* parameter is specified, it should belong to this subne
 If *PrivateIPAddress* is not specified, one of the IP addresses from this subnet is dynamically picked up as the front-end IP address of the application gateway.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 

@@ -57,7 +57,7 @@ This command gets a public IP address resource with name $publicIPName in the re
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
 Aliases:
 
@@ -83,8 +83,10 @@ Accept wildcard characters: False
 
 ### -IpConfigurationName
 Network Interface IP Configuration Name.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
 Aliases:
 
@@ -96,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
 Aliases:
 
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 Specifies the name of the public IP address that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneIp, NoExpandScaleSetIp
 Aliases: ResourceName
 
@@ -123,7 +125,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, ExpandScaleSetIp
 Aliases: ResourceName
 
@@ -136,8 +138,10 @@ Accept wildcard characters: False
 
 ### -NetworkInterfaceName
 Virtual Machine Network Interface Name.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
 Aliases:
 
@@ -149,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
 Aliases:
 
@@ -164,7 +168,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the public IP address that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandStandAloneIp
 Aliases:
 
@@ -176,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandStandAloneIp, NoExpandScaleSetIp, ExpandScaleSetIp
 Aliases:
 
@@ -189,8 +193,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineIndex
 Virtual Machine Index.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
 Aliases:
 
@@ -202,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
 Aliases:
 
@@ -215,8 +221,10 @@ Accept wildcard characters: False
 
 ### -VirtualMachineScaleSetName
 Virtual Machine Scale Set Name.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpandScaleSetIp
 Aliases:
 
@@ -228,7 +236,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ExpandScaleSetIp
 Aliases:
 

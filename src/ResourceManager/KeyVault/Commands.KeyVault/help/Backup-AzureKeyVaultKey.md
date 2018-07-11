@@ -74,7 +74,7 @@ This command creates a backup of the key named $key.Name in the vault named $key
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Overwrite the given file if it exists
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Key bundle to back up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyVaultKeyIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKey
 Aliases: Key
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Specifies the name of the key to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByKeyName
 Aliases: KeyName
 
@@ -136,7 +136,7 @@ If you do not specify this parameter, this cmdlet generates a file name for you.
 If you specify the name of an existing output file, the operation will not complete and returns an error message that the backup file already exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault that contains the key to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByKeyName
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -182,7 +182,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

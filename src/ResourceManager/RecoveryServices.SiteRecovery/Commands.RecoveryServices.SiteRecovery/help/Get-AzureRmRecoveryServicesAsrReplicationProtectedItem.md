@@ -52,8 +52,10 @@ Lists all replication protected items in the specified ASR protection container.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +70,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the replication protected item to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithFriendlyName
 Aliases:
 
@@ -83,7 +85,7 @@ Accept wildcard characters: False
 Specifies the name of the replication protected item to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -98,7 +100,7 @@ Accept wildcard characters: False
 Specifies an ASR protectable item object. The cmdlet gets the ASR replication protected item corresponding to the specified ASR protectable item if the item is protected.
 
 ```yaml
-Type: ASRProtectableItem
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
 Parameter Sets: ByProtectableItemObject
 Aliases:
 
@@ -113,7 +115,7 @@ Accept wildcard characters: False
 Specifies the ASR protection container object of the ASR protection container corresponding to the replication protected item. 
 
 ```yaml
-Type: ASRProtectionContainer
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
 Parameter Sets: ByObject, ByObjectWithName, ByObjectWithFriendlyName
 Aliases:
 

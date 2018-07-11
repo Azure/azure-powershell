@@ -36,8 +36,10 @@ This command is updating alias which was previously pointing to oldServer to poi
 
 ### -AsJob
 Run cmdlet in the background
+
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +69,7 @@ Accept wildcard characters: False
 The Azure Sql Server Dns Alias name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DnsAliasName
 
@@ -82,7 +84,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: TargetResourceGroupName
 
@@ -97,7 +99,7 @@ Accept wildcard characters: False
 The name of Azure Sql Server to which alias is currently pointing.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +114,7 @@ Accept wildcard characters: False
 The name of resource group of the source server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +129,7 @@ Accept wildcard characters: False
 The subscription id of the source server
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +144,7 @@ Accept wildcard characters: False
 The name of Azure Sql Server to which alias should point.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +159,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -173,7 +175,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
