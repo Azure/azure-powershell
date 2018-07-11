@@ -15,10 +15,10 @@
 
     <!-- <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Exists" />
     <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Does Not Exist" /> -->
-    <Exec Command='powershell -Command "$PSVersionTable"' ContinueOnError="ErrorAndStop" />
-    <Exec Command="powershell -Command &quot;(Get-Item '$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll').LastWriteTime&quot;" ContinueOnError="ErrorAndStop" />
+    <!-- <Exec Command='powershell -Command "$PSVersionTable"' ContinueOnError="ErrorAndStop" />
+    <Exec Command="powershell -Command &quot;(Get-Item '$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll').LastWriteTime&quot;" ContinueOnError="ErrorAndStop" /> -->
     <!-- <Exec Command="powershell -Command &quot;Write-Output '$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll'&quot;" ContinueOnError="ErrorAndStop" /> -->
-    <Error Text="Test" />
+    <!-- <Error Text="Test" /> -->
 
     <Message Importance="high" Text="Build: net452 started" />
     <PropertyGroup>
