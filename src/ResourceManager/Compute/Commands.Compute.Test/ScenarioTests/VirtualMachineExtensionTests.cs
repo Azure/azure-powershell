@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAzureDiskEncryptionExtensionSinglePassDisableAndRemove()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AzureDiskEncryptionExtensionSinglePassDisableAndRemove");
         }
 
 #if NETSTANDARD
