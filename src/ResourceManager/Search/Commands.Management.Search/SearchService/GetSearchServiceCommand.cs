@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             }
             catch(Exception e)
             {
-
+                // the method throws an exception when there the service does not exist.
             }
         }
     }

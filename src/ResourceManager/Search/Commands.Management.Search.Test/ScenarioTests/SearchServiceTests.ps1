@@ -22,9 +22,9 @@ function Test-NewAzureRmSearchService
 	$rgname = "TestAzureSearchPsGroup"
 	$loc = "West US"
 	$svcName = "pstestazuresearch"
-	$sku = "Standard2"
-	$partitionCount = 2
-	$replicaCount = 2
+	$sku = "Standard"
+	$partitionCount = 1
+	$replicaCount = 1
 	$hostingMode = "Default"
 
 	try
@@ -36,12 +36,12 @@ function Test-NewAzureRmSearchService
 		
 		# Assert
 		Assert-NotNull $newSearchService
-		Assert-AreEqual $newSearchService.Name $svcName
-		Assert-AreEqual $newSearchService.Sku $sku
-		Assert-AreEqual $newSearchService.Location $loc
-		Assert-AreEqual $newSearchService.PartitionCount $partitionCount
-		Assert-AreEqual $newSearchService.ReplicaCount $replicaCount
-		Assert-AreEqual $newSearchService.HostingMode $hostingMode
+		Assert-AreEqual $svcName $newSearchService.Name 
+		Assert-AreEqual $sku $newSearchService.Sku
+		Assert-AreEqual $loc $newSearchService.Location
+		Assert-AreEqual $partitionCount $newSearchService.PartitionCount
+		Assert-AreEqual $replicaCount $newSearchService.ReplicaCount
+		Assert-AreEqual $hostingMode $newSearchService.HostingMode
 	}
 	finally
     {
@@ -124,7 +124,7 @@ function Test-RemoveAzureRmSearchService
 		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch1" -Sku $sku -Location $loc
 
 		# Can Get
-		#$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
+		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
 		Assert-NotNull $retrievedSvc
 
 		# Remove by InputObject
@@ -158,7 +158,7 @@ function Test-RemoveAzureRmSearchService
 		Assert-NotNull $retrievedSvc
 		
 		# Remove by ResourceGroup + Name
-		Remove-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName
+		Remove-AzureRmSearchService -ResourceGroupName $rgname -Name $retrievedSvc.Name
 
 		# Assert Get nothing
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
