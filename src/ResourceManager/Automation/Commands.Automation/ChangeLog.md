@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 * Update help and add example for `New-AzureRMAutomationSchedule`
 
 ## Version 5.0.1

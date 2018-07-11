@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 
 ## Version 4.3.1
 * Added additional information about -Permissions parameter in help files.
