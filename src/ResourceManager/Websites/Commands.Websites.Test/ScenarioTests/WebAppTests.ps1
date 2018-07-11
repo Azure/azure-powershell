@@ -629,7 +629,7 @@ function Test-SetWebApp
         # Assert
         Assert-NotNull  $webApp.Identity
         # AssignIdentity adds an appsetting to handle enabling / disabling AssignIdentity
-        Assert-AreEqual ($appSettings.Keys.Count + 1) $webApp.SiteConfig.AppSettings.Count
+        Assert-AreEqual ($appSettings.Keys.Count) $webApp.SiteConfig.AppSettings.Count
         Assert-NotNull  $webApp.Identity
 
         # set app settings and connection strings

@@ -157,7 +157,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
-                       // Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
                     }
 
