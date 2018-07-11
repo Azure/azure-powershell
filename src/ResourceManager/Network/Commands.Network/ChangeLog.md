@@ -19,6 +19,7 @@
 --->
 
 ## Current Release
+* Regenerated RouteTable cmdlets with the latest generator version
 
 ## Version 6.3.1
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
