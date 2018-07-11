@@ -26,8 +26,8 @@
     <ItemGroup>
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
     </ItemGroup>
-    <Message Condition=" '$(Configuration)' != 'Debug' " Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
-    <Exec Condition=" '$(Configuration)' != 'Debug' " Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
+    <Message Condition=" '$(Configuration)' == 'Debug' " Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
+    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
   </Target>
 
   <Target Name="netcoreapp20">
@@ -38,8 +38,8 @@
 
     <Message Importance="high" Text="netcoreapp20: Building $([System.IO.Path]::GetFileName($(Solution)))" />
     <Exec Command="dotnet build $(Solution) -c $(Configuration)"/>
-    <Message Condition=" '$(Configuration)' != 'Debug' " Importance="high" Text="netcoreapp20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Condition=" '$(Configuration)' != 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
+    <Message Condition=" '$(Configuration)' == 'Debug' " Importance="high" Text="netcoreapp20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
+    <Exec Condition=" '$(Configuration)' == 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
   </Target>
 
   <Target Name="Build" DependsOnTargets="net452;netcoreapp20">
