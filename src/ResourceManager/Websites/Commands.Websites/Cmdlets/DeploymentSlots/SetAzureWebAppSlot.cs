@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                         {
                             DefaultDocuments = parameters.Contains("DefaultDocuments") ? DefaultDocuments : null,
                             NetFrameworkVersion = parameters.Contains("NetFrameworkVersion") ? NetFrameworkVersion : null,
-                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion : null,
+                            PhpVersion = parameters.Contains("PhpVersion") ? PhpVersion.ToLower() == "off" ? "" : PhpVersion : null,
                             RequestTracingEnabled =
                                 parameters.Contains("RequestTracingEnabled") ? (bool?)RequestTracingEnabled : null,
                             HttpLoggingEnabled = parameters.Contains("HttpLoggingEnabled") ? (bool?)HttpLoggingEnabled : null,
