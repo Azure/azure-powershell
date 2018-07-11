@@ -123,7 +123,6 @@ Accept wildcard characters: False
 ### -RelativeFileExpiryOption
 Relative expiry options. RelativeToNow or RelativeToCreationDate are current options
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathRelativeExpiryOptions
 Parameter Sets: SetRelativeExpiry
@@ -139,7 +138,6 @@ Accept wildcard characters: False
 
 ### -RelativeTime
 The relative time in milliseconds with respect to now or creation time
-
 
 ```yaml
 Type: System.Int64

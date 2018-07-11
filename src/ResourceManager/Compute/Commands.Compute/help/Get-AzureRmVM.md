@@ -92,13 +92,9 @@ Accept wildcard characters: False
 
 ### -DisplayHint
 Determines how the virtual machine object is displayed.
-
 Valid values are:
-
 -- Compact: displays only top level properties
-
 -- Expand: displays all properties in all levels
-
 
 ```yaml
 Type: Microsoft.Azure.Commands.Compute.Models.DisplayHintType

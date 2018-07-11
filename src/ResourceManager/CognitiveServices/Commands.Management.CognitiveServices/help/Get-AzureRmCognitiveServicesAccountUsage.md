@@ -100,7 +100,6 @@ Accept wildcard characters: False
 ### -InputObject
 Cognitive Services Account Object.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Management.CognitiveServices.Models.PSCognitiveServicesAccount
 Parameter Sets: InputObjectParameterSet
@@ -145,7 +144,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Cognitive Services Account Resource ID.
-
 
 ```yaml
 Type: System.String
