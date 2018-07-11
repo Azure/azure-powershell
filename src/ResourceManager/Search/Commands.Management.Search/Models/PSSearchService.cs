@@ -30,9 +30,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public SkuName? Sku { get; private set; }
 
-        public int? ReplicationCount { get; private set; }
+        public int? ReplicaCount { get; private set; }
 
         public int? PartitionCount { get; private set; }
+
+        public HostingMode? HostingMode { get; private set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
@@ -43,8 +45,9 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             Id = searchService.Id;
             Location = searchService.Location;
             Sku = searchService.Sku.Name;
-            ReplicationCount = searchService.ReplicaCount;
+            ReplicaCount = searchService.ReplicaCount;
             PartitionCount = searchService.PartitionCount;
+            HostingMode = searchService.HostingMode;
             Tags = searchService.Tags;
         }
 

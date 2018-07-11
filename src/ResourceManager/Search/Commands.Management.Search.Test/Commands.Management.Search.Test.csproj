@@ -135,7 +135,13 @@
     <None Include="ScenarioTests\SearchServiceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests.SearchServiceTests\TestNewAccount.json">
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests.SearchServiceTests\TestGetSearchService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests.SearchServiceTests\TestNewSearchService.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests.SearchServiceTests\TestRemoveSearchService.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
