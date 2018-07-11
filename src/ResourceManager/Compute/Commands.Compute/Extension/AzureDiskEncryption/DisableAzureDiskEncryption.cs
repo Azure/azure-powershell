@@ -303,37 +303,28 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                                                             this.Name,
                                                             parameters).GetAwaiter().GetResult();
 
-                    if (parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion))
-                    {
-                        // +---------+---------------+----------------------------+
-                        // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
-                        // +---------+---------------+----------------------------+
-                        // | Windows | OS            | Yes                        |
-                        // | Windows | Data          | No                         |
-                        // | Windows | Not Specified | Yes                        |
-                        // | Linux   | OS            | N/A                        |
-                        // | Linux   | Data          | Yes                        |
-                        // | Linux   | Not Specified | N/A                        |
-                        // +---------+---------------+----------------------------+
+                    // +---------+---------------+----------------------------+
+                    // | OSType  |  VolumeType   | UpdateVmEncryptionSettings |
+                    // +---------+---------------+----------------------------+
+                    // | Windows | OS            | Yes                        |
+                    // | Windows | Data          | No                         |
+                    // | Windows | Not Specified | Yes                        |
+                    // | Linux   | OS            | N/A                        |
+                    // | Linux   | Data          | Yes                        |
+                    // | Linux   | Not Specified | N/A                        |
+                    // +---------+---------------+----------------------------+
 
-                        if (OperatingSystemTypes.Windows.Equals(currentOSType) &&
-                            !string.IsNullOrEmpty(VolumeType) &&
-                            VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase))
-                        {
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
-                            WriteObject(result);
-                        }
-                        else
-                        {
-                            var opVm = UpdateVmEncryptionSettings();
-                            var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
-                            WriteObject(result);
-                        }
+                    if ((OperatingSystemTypes.Windows.Equals(currentOSType) && parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion)) ||
+                        (OperatingSystemTypes.Linux.Equals(currentOSType) && parameters.TypeHandlerVersion.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion)) ||
+                        (OperatingSystemTypes.Windows.Equals(currentOSType) && !string.IsNullOrEmpty(VolumeType) && VolumeType.Equals(AzureDiskEncryptionExtensionContext.VolumeTypeData, StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
+                        WriteObject(result);
                     }
                     else
                     {
-                        // single pass, no secondary update of encryption settings is required 
-                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opExt);
+                        var opVm = UpdateVmEncryptionSettings();
+                        var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(opVm);
                         WriteObject(result);
                     }
                 }
