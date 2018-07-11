@@ -153,26 +153,11 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                         {
                             Location = location,
                             ServerFarmId = WebApp.ServerFarmId,
-                            Identity = parameters.Contains("AssignIdentity") && AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : WebApp.Identity,
+                            Identity = parameters.Contains("AssignIdentity") ? AssignIdentity ? new ManagedServiceIdentity("SystemAssigned", null, null) : new ManagedServiceIdentity("None", null, null) : WebApp.Identity,
                             HttpsOnly = parameters.Contains("HttpsOnly") ? HttpsOnly : WebApp.HttpsOnly
                         };
 
-                        Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
-                        if (parameters.Contains("AssignIdentity"))
-                        {
-
-                            // Add or update the appsettings property
-                            appSettings["WEBSITE_DISABLE_MSI"] = (!AssignIdentity).ToString();
-                            WebsitesClient.UpdateWebAppConfiguration(ResourceGroupName, location, Name, null, WebApp.SiteConfig, appSettings,
-                                                                     WebApp.SiteConfig.ConnectionStrings.
-                                                                        ToDictionary(nvp => nvp.Name,
-                                                                        nvp => new ConnStringValueTypePair
-                                                                        {
-                                                                            Type = nvp.Type.Value,
-                                                                            Value = nvp.ConnectionString
-                                                                        },
-                                                                        StringComparer.OrdinalIgnoreCase));
-                        }
+                       // Dictionary<string, string> appSettings = WebApp.SiteConfig?.AppSettings?.ToDictionary(x => x.Name, x => x.Value);
                         WebsitesClient.UpdateWebApp(ResourceGroupName, location, Name, null, WebApp.ServerFarmId, site);
                     }
 

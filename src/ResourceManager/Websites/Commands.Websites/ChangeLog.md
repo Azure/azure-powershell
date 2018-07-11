@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `Set-AzureRmWebApp -AssignIdentity` set to false will now remove the Identity property from the site object.Removing preview tag as well.
 
 ## Version 5.0.4
 * Fixed formatting of OutputType in help files
