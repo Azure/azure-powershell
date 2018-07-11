@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignIdentity
-Enable/disable MSI on an existing azure webapp or functionapp [PREVIEW]
+Enable/disable MSI on an existing azure webapp or functionapp
 
 ```yaml
 Type: Boolean
