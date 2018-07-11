@@ -162,7 +162,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Object
+### PSValidationResult
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, storagesync, filesync
