@@ -1,54 +1,55 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusgeodrconfiguration
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusmigration
 schema: 2.0.0
 ---
 
-# Get-AzureRmServiceBusGeoDRConfiguration
+# Get-AzureRmServiceBusMigration
 
 ## SYNOPSIS
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+Retrieves MigrationConfiguration for the namespace
 
 ## SYNTAX
 
-### GeoDRPropertiesSet (Default)
+### MigrationConfigurationPropertiesSet (Default)
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
+Get-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### NamespaceInputObjectSet
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-InputObject] <PSNamespaceAttributes> [[-Name] <String>]
+Get-AzureRmServiceBusMigration [-InputObject] <PSNamespaceAttributes>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Get-AzureRmServiceBusGeoDRConfiguration [-ResourceId] <String> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmServiceBusMigration [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzureRmServiceBusGeoDRConfiguration** Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+The **Get-AzureRmServiceBusMigration** Retrieves Migration Configuration for the namespace
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmServiceBusGeoDRConfiguration -ResourceGroupName "SampleResourceGroup" -Namespace "SampleNamespace_Primary" -Name "SampleDRCongifName"
+PS C:\> Get-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation
 
-Name              : SampleDRCongifName
-Id                : /subscriptions/{SubscriptionId}/resourceGroups/SampleResourceGroup/providers/Microsoft.ServiceBus/namespaces/SampleNamespace_Primary/disasterRecoveryConfigs/SampleDRCongifName
-Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
-ProvisioningState : Accepted
-PartnerNamespace  : SampleNamespace_Secondary
-Role              : Primary
-PendingReplicationOperationsCount : 0
+Name              : TestingNamespaceStandardMirgation
+Id                : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespaceStandardMirgation/migrationConfigurations/$default
+Type              : Microsoft.ServiceBus/Namespaces/migrationconfigurations
+ProvisioningState : Succeeded
+PendingReplicationOperationsCount : 40
+TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
+PostMigrationName : TestingNamespaceStandardMirgationPostMigration
+
 ```
 
-Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"
+Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgation'
 
 ## PARAMETERS
 
@@ -83,32 +84,17 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-DR Configuration Name
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Namespace
 Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: MigrationConfigurationPropertiesSet
 Aliases:
 
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -117,13 +103,13 @@ Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: GeoDRPropertiesSet
+Parameter Sets: MigrationConfigurationPropertiesSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,12 +134,14 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+System.String
+
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes
+
 
 ## NOTES
 
