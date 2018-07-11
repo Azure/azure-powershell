@@ -8,18 +8,6 @@
   </PropertyGroup>
 
   <Target Name="net452">
-    <!-- <Message Importance="high" Text="SMA Path: $(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll" />
-    <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Exists" />
-    <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll')" Text="SMA Does Not Exist" />
-    <Exec Command='powershell -Command "$PSVersionTable.PSVersion"' ContinueOnError="ErrorAndStop" /> -->
-
-    <!-- <Message Importance="high" Condition="Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Exists" />
-    <Message Importance="high" Condition="!Exists('$(MSBuildProgramFiles32)\Microsoft Visual Studio\2017\Enterprise\Team Tools\Static Analysis Tools\Rule Sets\MinimumRecommendedRules.ruleset')" Text="RuleSet Does Not Exist" /> -->
-    <!-- <Exec Command='powershell -Command "$PSVersionTable"' ContinueOnError="ErrorAndStop" />
-    <Exec Command="powershell -Command &quot;(Get-Item '$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll').LastWriteTime&quot;" ContinueOnError="ErrorAndStop" /> -->
-    <!-- <Exec Command="powershell -Command &quot;Write-Output '$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\WindowsPowerShell\3.0\System.Management.Automation.dll'&quot;" ContinueOnError="ErrorAndStop" /> -->
-    <!-- <Error Text="Test" /> -->
-
     <Message Importance="high" Text="Build: net452 started" />
     <PropertyGroup>
       <Framework>net452</Framework>
@@ -38,8 +26,8 @@
     <ItemGroup>
       <TestAssemblies Include="$(OutputDir)*.Tests.dll;$(OutputDir)*.Test.dll;$(OutputDir)*.UnitTest.dll" />
     </ItemGroup>
-    <Message Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
-    <Exec Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
+    <Message Condition=" '$(Configuration)' != 'Debug' " Importance="high" Text="net452: Testing %(TestAssemblies.Filename)" />
+    <Exec Condition=" '$(Configuration)' != 'Debug' " Command="$(xUnitRunner) @(TestAssemblies, ' ') -trait $(TestFilter)"/>
   </Target>
 
   <Target Name="netcoreapp20">
@@ -50,8 +38,8 @@
 
     <Message Importance="high" Text="netcoreapp20: Building $([System.IO.Path]::GetFileName($(Solution)))" />
     <Exec Command="dotnet build $(Solution) -c $(Configuration)"/>
-    <Message Importance="high" Text="netcoreapp20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
-    <Exec Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
+    <Message Condition=" '$(Configuration)' != 'Debug' " Importance="high" Text="netcoreapp20: Testing $([System.IO.Path]::GetFileName($(Solution)))" />
+    <Exec Condition=" '$(Configuration)' != 'Debug' " Command="dotnet test $(Solution) --filter $(TestFilter) --configuration $(Configuration)"/>
   </Target>
 
   <Target Name="Build" DependsOnTargets="net452;netcoreapp20">
