@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: DC400E32-CAB9-4354-99B2-ABA4AA776030
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/restore-azurermwebappbackup
 schema: 2.0.0
@@ -43,10 +43,12 @@ Restores a backup of the specified app ContosoWebApp that is within resource gro
 
 ### -AppServicePlan
 The name of the App Service Plan for the restored app. If left empty, the app's current App Service Plan is used.
+
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -59,9 +61,9 @@ Accept wildcard characters: False
 Blob Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -74,9 +76,9 @@ Accept wildcard characters: False
 Databases of type DatabaseBackupSetting[]
 
 ```yaml
-Type: DatabaseBackupSetting[]
+Type: Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,9 +106,9 @@ Accept wildcard characters: False
 Ignore Conflicting HostNames Option
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -119,9 +121,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -134,9 +136,9 @@ Accept wildcard characters: False
 Overwrite Option
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +151,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -164,9 +166,9 @@ Accept wildcard characters: False
 WebApp Slot Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FromResourceName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -179,9 +181,9 @@ Accept wildcard characters: False
 Storage Account Url
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -194,9 +196,9 @@ Accept wildcard characters: False
 WebApp Object
 
 ```yaml
-Type: Site
+Type: Microsoft.Azure.Management.WebSites.Models.Site
 Parameter Sets: FromWebApp
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -218,4 +220,3 @@ Parameter 'WebApp' accepts value of type 'Site' from the pipeline
 ## NOTES
 
 ## RELATED LINKS
-

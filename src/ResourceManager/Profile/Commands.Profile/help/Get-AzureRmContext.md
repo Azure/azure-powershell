@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermcontext
@@ -74,7 +74,7 @@ In this example, all currently available contexts are displayed.  The user may s
 The credentials, account, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 List all available contexts in the current session.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ListAllContexts
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,10 +104,10 @@ Accept wildcard characters: False
 The name of the context
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetSingleContext
-Aliases: 
-Accepted values: Default
+Aliases:
+Accepted values: Azure SDK Infrastructure, [maclayto@microsoft.com, 33f39d49-6173-49bf-9789-db5548ee6d73], AzureSDKADGraph2,  - 8bc48661-1801-4b7a-8ca1-6a3cadfb4870, [maddieclayton1@gmail.com], Node CLI Test, Azure SDK Powershell Test - Manual - 9e223dbe-3399-4e19-88eb-0975f02ac87f, Scottph Internal Consumption, AzureSDKADGraph2 - 0b1f6471-1bf0-4dda-aec3-cb9272f09590, Azure SDK Powershell Test - c9cbd920-c00c-427c-852b-8aaf38badaeb, [maclayto@microsoft.com, 92ad8d84-3287-4990-b83d-5e983832f7ce], Azure SDK Powershell Test - Manual, Network Traffic Analytics Subscription 3 - af15e575-f948-49ac-bce0-252d028e9379, Pay-As-You-Go, Azure SDK Powershell Test
 
 Required: False
 Position: 0

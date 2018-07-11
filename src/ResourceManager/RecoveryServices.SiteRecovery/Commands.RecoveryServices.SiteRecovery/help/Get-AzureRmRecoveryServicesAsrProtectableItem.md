@@ -92,8 +92,10 @@ Gets all the protectable items in specified ASR protection container.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -108,7 +110,7 @@ Accept wildcard characters: False
 Specifies the friendly name of the ASR protectable item.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithFriendlyName
 Aliases:
 
@@ -123,7 +125,7 @@ Accept wildcard characters: False
 Specifies the name of the ASR protectable item.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectWithName
 Aliases:
 
@@ -138,7 +140,7 @@ Accept wildcard characters: False
 Specifies the Azure Site Recovery Protection Container object.
 
 ```yaml
-Type: ASRProtectionContainer
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
 Parameter Sets: (All)
 Aliases:
 

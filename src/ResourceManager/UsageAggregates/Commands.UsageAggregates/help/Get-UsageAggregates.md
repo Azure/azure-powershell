@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.UsageAggregates.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.UsageAggregates
 ms.assetid: 52B3ECCB-80E5-4E16-954A-B83D0BDC7E22
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.usageaggregates/get-usageaggregates
 schema: 2.0.0
@@ -50,9 +50,9 @@ Valid values are: Daily and Hourly.
 The default value is Daily.
 
 ```yaml
-Type: AggregationGranularity
+Type: Microsoft.Azure.Commerce.UsageAggregates.Models.AggregationGranularity
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Daily, Hourly
 
 Required: False
@@ -70,9 +70,9 @@ If you do not specify this parameter, the data is retrieved from the beginning o
 We recommend that you follow the next link in the response to page though the data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,9 +105,9 @@ Even though you query by reported time, the cmdlet aggregates the response data 
 The resource usage data is the useful pivot for analyzing the data.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Specifies the reported start time for when resource usage was recorded in the Azure billing system.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -141,9 +141,9 @@ For example, if you are running three websites, by default you will get three li
 However, when the value is $False, all the data for the same **subscriptionId**, **meterId**, **usageStartTime**, and **usageEndTime** is collapsed into a single line item.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -167,4 +167,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

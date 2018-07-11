@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 43D01A97-75B9-46CE-B007-26FE6A97C31C
@@ -46,7 +46,7 @@ The current cmdlet updates the container service to reflect the changes that wer
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies a local **ContainerService** object that contains changes.
 
 ```yaml
-Type: PSContainerService
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 Specifies the name of the container service that this cmdlet updates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Specifies the resource group of the container service that this cmdlet updates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -138,7 +138,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

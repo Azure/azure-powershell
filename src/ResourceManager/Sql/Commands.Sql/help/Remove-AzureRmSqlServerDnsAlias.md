@@ -46,8 +46,10 @@ Removes Azure SQL Server DNS Alias with the name aliasName from the server with 
 
 ### -AsJob
 Run cmdlet in the background
+
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -62,7 +64,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +79,7 @@ Accept wildcard characters: False
 Skip confirmation message for performing the action
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 The Server Dns Alias object to remove
 
 ```yaml
-Type: AzureSqlServerDnsAliasModel
+Type: Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
 Parameter Sets: Remove a Server Dns Alias from AzureSqlServerDnsAliasModel instance definition
 Aliases:
 
@@ -107,7 +109,7 @@ Accept wildcard characters: False
 Azure Sql Server Dns Alias name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
 Aliases: DnsAliasName
 
@@ -122,7 +124,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
 Aliases:
 
@@ -137,7 +139,7 @@ Accept wildcard characters: False
 The resource id of Server Dns Alias object to remove
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Remove a Server Dns Alias from an Azure resource id
 Aliases:
 
@@ -152,7 +154,7 @@ Accept wildcard characters: False
 The Azure Sql Server name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Remove a Server Dns Alias from cmdlet input parameters
 Aliases:
 
@@ -167,7 +169,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -183,7 +185,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

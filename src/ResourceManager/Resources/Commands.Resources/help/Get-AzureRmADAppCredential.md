@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 6AC9DA05-756D-4D59-BD97-DBAAFBB3C7AC
@@ -65,7 +65,7 @@ Gets the application with object id '1f99cf81-0146-4f4e-beae-2007d0668476' and p
 The id of the application to retrieve credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationIdParameterSet
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The application object to retrieve credentials from.
 
 ```yaml
-Type: PSADApplication
+Type: Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
 Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The display name of the application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DisplayNameParameterSet
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 The object id of the application to retrieve credentials from.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ApplicationObjectIdParameterSet
 Aliases:
 

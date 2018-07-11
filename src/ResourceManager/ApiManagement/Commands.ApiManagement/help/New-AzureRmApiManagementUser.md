@@ -39,7 +39,7 @@ This command registers a new user named Patti Fuller.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -53,8 +53,10 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
  
+
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +71,7 @@ Accept wildcard characters: False
 Specifies the email address of the user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +87,7 @@ Specifies the first name of the user.
 This parameter must be 1 to 100 characters long.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +103,7 @@ Specifies the last name of the user.
 This parameter must be 1 to 100 characters long.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +120,7 @@ This parameter is optional.
 The default value is $Null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +136,7 @@ Specifies the user password.
 This parameter is required.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +153,7 @@ This parameter is optional.
 The default value of this parameter is $Null.
 
 ```yaml
-Type: PsApiManagementUserState
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Active, Blocked, Deleted, Pending
@@ -169,7 +171,7 @@ This parameter is optional.
 If this parameter is not specified, this cmdlet generates a user ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.HDInsight
 Module Guid: 3fd1475f-cb23-4ffb-bf08-33d94b7d1acb
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.hdinsight

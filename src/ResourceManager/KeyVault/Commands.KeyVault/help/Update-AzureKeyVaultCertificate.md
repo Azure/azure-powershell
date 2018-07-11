@@ -75,7 +75,7 @@ The second command sets the tags value of the certificate named TestCert01 to be
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,7 +92,7 @@ Disable a certificate if value is false.
 If not specified, the existing value of the certificate's enabled/disabled state remains unchanged.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Certificate object
 
 ```yaml
-Type: PSKeyVaultCertificateIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -123,7 +123,7 @@ Certificate name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: CertificateName
 
@@ -139,7 +139,7 @@ Cmdlet does not return object by default.
 If this switch is specified, return certificate object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ If not specified, the existing tags of the sertificate remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -188,7 +188,7 @@ Certificate version.
 Cmdlet constructs the FQDN of a certificate from vault name, currently selected environment, certificate name and certificate version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CertificateVersion
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -219,7 +219,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
