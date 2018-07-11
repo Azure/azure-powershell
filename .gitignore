@@ -224,13 +224,9 @@ groupMapping*.json
 *.wixpdb
 
 .vscode/
-/tools/AutomationTestFramework/Runbooks
 Results
 Package
 .DS_Store
 .idea
-/src/ResourceManager/RecoveryServices.Backup/**/bin
 launchSettings.json
-/src/StackAdmin/AzureRM/AzureRM.psm1
-/src/StackAdmin/AzureStack/AzureStack.psm1
-/tools/AzureRM.Netcore/AzureRM.Netcore.psm1
+/artifacts
