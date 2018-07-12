@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
 {
@@ -48,10 +49,12 @@ namespace Microsoft.Azure.Commands.ContainerInstance.Test.ScenarioTests
             }
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> providers = new Dictionary<string, string>()
             {

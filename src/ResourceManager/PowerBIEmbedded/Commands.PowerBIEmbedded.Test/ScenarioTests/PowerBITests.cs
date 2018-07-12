@@ -22,51 +22,54 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
 {
     public class PowerBITests : RMTestBase
     {
-        public PowerBITests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public PowerBITests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWorkspaceCollectionListAll()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-GetWorkspaceCollection_ListAll");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-GetWorkspaceCollection_ListAll");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWorkspaceCollectionListByResourceGroup()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-GetWorkspaceCollection_ListByResourceGroup");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-GetWorkspaceCollection_ListByResourceGroup");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWorkspaceCollectionByName()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-GetWorkspaceCollection_ByName");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-GetWorkspaceCollection_ByName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWorkspaceEmptyCollection()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-GetWorkspace_EmptyCollection");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-GetWorkspace_EmptyCollection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetWorkspaceCollectionAccessKeys1()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-ResetWorkspaceCollectionAccessKeys_Key1");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-ResetWorkspaceCollectionAccessKeys_Key1");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResetWorkspaceCollectionAccessKeys2()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-ResetWorkspaceCollectionAccessKeys_Key2");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-ResetWorkspaceCollectionAccessKeys_Key2");
         }
 
 
@@ -74,14 +77,14 @@ namespace Microsoft.Azure.Commands.PowerBIEmbedded.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWorkspaceCollectionAccessKeys()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-GetWorkspaceCollectionAccessKeys");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-GetWorkspaceCollectionAccessKeys");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWorkspaceCollection()
         {
-            PowerBIController.NewInstance.RunPsTest("Test-RemoveWorkspaceCollection");
+            PowerBIController.NewInstance.RunPsTest(_logger, "Test-RemoveWorkspaceCollection");
         }
     }
 }
