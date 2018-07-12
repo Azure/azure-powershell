@@ -21,9 +21,12 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
     using Xunit.Abstractions;
     public class RelayNamespaceTests : RMTestBase
     {
-        public RelayNamespaceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public RelayNamespaceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -31,7 +34,7 @@ namespace Microsoft.Azure.Commands.Relay.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void RelayNamespaceCRUD()
         {
-            RelayController.NewInstance.RunPsTest("RelayNamespaceTests");
+            RelayController.NewInstance.RunPsTest(_logger, "RelayNamespaceTests");
         }        
     }
 }

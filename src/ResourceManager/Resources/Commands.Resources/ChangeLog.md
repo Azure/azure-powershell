@@ -18,10 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update Roleassignment and roledefinition cmdlets:
+    - Remove extra roledefinition calls done as part of paging.
 * Fix Get-AzureRmRoleAssignment cmdlet
     - Fix -ExpandPrincipalGroups command parameter functionality
 * Fix issue with `Get-AzureRmResource` where `-ResourceType` parameter was case sensitive
-
 
 ## Version 6.2.0
 * Update Get-AzureRmPolicyAssignment cmdlets:
