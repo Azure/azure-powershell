@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Common.Netcore.Dependencies.targets" />
+  <Import Project="$(ProjectDir)..\Dependencies.Netcore.targets" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
