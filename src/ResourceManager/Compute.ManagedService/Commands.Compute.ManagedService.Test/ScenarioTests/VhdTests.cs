@@ -20,16 +20,19 @@ namespace ManagedComputeServicesTests
 {
     public class VhdTests
     {
+        public XunitTracingInterceptor _logger;
+
         public VhdTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
-        
+
         [Fact]
         [Trait(Category.RunType, Category.CheckIn)]
         public void TestVhd()
         {
-            ManagedComputeServicesTestController.NewInstance.RunPsTest("Test-ConvertToAzureRmVhd");
+            ManagedComputeServicesTestController.NewInstance.RunPsTest(_logger, "Test-ConvertToAzureRmVhd");
         }
     }
 }

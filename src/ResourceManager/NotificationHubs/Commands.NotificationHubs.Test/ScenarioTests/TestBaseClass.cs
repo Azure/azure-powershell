@@ -30,6 +30,7 @@ namespace Commands.NotificationHubs.Test
     using System;
     using System.Linq;
     using System.IO;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
     public abstract class TestBaseClass : RMTestBase
     {
@@ -52,10 +53,12 @@ namespace Commands.NotificationHubs.Test
                                             authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
