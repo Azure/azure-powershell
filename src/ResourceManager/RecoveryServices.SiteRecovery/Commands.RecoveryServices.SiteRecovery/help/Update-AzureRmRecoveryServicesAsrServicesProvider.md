@@ -34,7 +34,6 @@ Starts the operation of refreshing the information from the specified ASR servic
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)

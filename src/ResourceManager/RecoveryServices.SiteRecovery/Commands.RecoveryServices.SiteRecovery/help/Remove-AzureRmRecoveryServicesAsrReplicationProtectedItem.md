@@ -36,7 +36,6 @@ Starts the disable replication operation for the specified replication protected
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)

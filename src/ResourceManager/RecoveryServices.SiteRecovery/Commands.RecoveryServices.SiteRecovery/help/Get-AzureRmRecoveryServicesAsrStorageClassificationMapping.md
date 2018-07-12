@@ -42,7 +42,6 @@ List all storage classification mappings corresponding to the specified storage 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)

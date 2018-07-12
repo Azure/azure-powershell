@@ -105,7 +105,6 @@ Accept wildcard characters: False
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -212,7 +211,6 @@ Accept wildcard characters: False
 ### -RadiusServerAddress
 P2S External Radius server address.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: RadiusServerConfiguration
@@ -227,7 +225,6 @@ Accept wildcard characters: False
 
 ### -RadiusServerSecret
 P2S External Radius server secret.
-
 
 ```yaml
 Type: System.Security.SecureString
@@ -276,7 +273,6 @@ Accept wildcard characters: False
 ### -VpnClientIpsecPolicy
 A list of IPSec policies for P2S VPN client tunneling protocols.
 
-
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
 Parameter Sets: (All)
@@ -291,7 +287,6 @@ Accept wildcard characters: False
 
 ### -VpnClientProtocol
 A list of P2S VPN client tunneling protocols
-
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]

@@ -36,7 +36,6 @@ Starts the storage classification mapping creation operation with the specified 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)

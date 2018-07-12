@@ -63,6 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -76,6 +77,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectionType
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -105,6 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBgp
+
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
@@ -118,6 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
+
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -133,7 +137,6 @@ Accept wildcard characters: False
 ### -IpsecPolicies
 A list of IPSec policies.
 
-
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
 Parameter Sets: (All)
@@ -147,6 +150,7 @@ Accept wildcard characters: False
 ```
 
 ### -LocalNetworkGateway2
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
@@ -160,6 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -173,6 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -186,6 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -Peer
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSPeering
 Parameter Sets: SetByResource
@@ -199,6 +206,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerId
+
 ```yaml
 Type: System.String
 Parameter Sets: SetByResourceId
@@ -212,6 +220,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -225,6 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -RoutingWeight
+
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
@@ -238,6 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### -SharedKey
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -283,6 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkGateway1
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
@@ -296,6 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualNetworkGateway2
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)

@@ -81,7 +81,6 @@ See [https://dev.loganalytics.io/documentation/Using-the-API/RequestOptions](htt
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
