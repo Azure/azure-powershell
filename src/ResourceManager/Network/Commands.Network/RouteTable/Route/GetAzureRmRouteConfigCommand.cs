@@ -23,6 +23,7 @@
 // </auto-generated>
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;

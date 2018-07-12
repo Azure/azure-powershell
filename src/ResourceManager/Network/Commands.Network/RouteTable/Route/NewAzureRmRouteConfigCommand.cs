@@ -23,6 +23,7 @@
 // </auto-generated>
 
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
@@ -50,13 +51,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "The type of Azure hop the packet should be sent to.",
             ValueFromPipelineByPropertyName = true)]
-        [ValidateSet(
+        [PSArgumentCompleter(
             "VirtualNetworkGateway",
             "VnetLocal",
             "Internet",
             "VirtualAppliance",
-            "None",
-            IgnoreCase = true)]
+            "None"
+        )]
         public string NextHopType { get; set; }
 
         [Parameter(
