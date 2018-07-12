@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

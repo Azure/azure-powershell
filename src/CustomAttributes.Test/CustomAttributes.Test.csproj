@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.CustomAttributes.Test</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.CustomAttributes.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.CustomAttributes.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <BaseIntermediateOutputPath>$(ProjectDir)obj\$(Configuration)\net452</BaseIntermediateOutputPath>

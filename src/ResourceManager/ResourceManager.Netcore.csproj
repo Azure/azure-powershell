@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ResourceManager.Common</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ResourceManager.Common</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

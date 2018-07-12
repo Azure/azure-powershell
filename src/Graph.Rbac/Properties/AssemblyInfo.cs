@@ -19,8 +19,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Microsoft Azure PowerShell RBAC")]
-[assembly: AssemblyDescription("Microsoft Azure PowerShell RBAC library")]
+[assembly: AssemblyTitle("Microsoft Azure PowerShell Graph Rbac")]
+[assembly: AssemblyDescription("Microsoft Azure PowerShell Graph Rbac library")]
 [assembly: AssemblyProduct("Microsoft Azure PowerShell")]
 [assembly: AssemblyCompany("Microsoft Corporation")]
 [assembly: AssemblyCopyright("Copyright © Microsoft Corporation")]

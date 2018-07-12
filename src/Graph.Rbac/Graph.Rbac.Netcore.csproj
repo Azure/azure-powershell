@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Graph.RBAC</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Graph.Rbac</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Graph.RBAC</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell RBAC</Title>
-    <Description>Microsoft Azure PowerShell RBAC library</Description>
-    <PackageTags>azure;powershell;rbac</PackageTags>
+    <Title>Microsoft Azure PowerShell Graph Rbac</Title>
+    <Description>Microsoft Azure PowerShell Graph Rbac library</Description>
+    <PackageTags>azure;powershell;graph;rbac</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>

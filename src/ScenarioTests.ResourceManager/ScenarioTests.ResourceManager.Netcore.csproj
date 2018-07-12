@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.ScenarioTest.Common</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
@@ -13,9 +13,9 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Title>Microsoft Azure PowerShell ScenarioTests ResourceManager</Title>
-    <Description>Microsoft Azure PowerShell ScenarioTests ResourceManager library</Description>
-    <PackageTags>azure;powershell;scenariotests;resourcemanager</PackageTags>
+    <Title>Microsoft Azure PowerShell ScenarioTest ResourceManager</Title>
+    <Description>Microsoft Azure PowerShell ScenarioTest ResourceManager library</Description>
+    <PackageTags>azure;powershell;scenariotest;resourcemanager</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>

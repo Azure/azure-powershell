@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Storage</RootNamespace>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.Common.Storage</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Storage</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

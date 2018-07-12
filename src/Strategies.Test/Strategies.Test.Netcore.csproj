@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Strategies.UnitTest</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Strategies.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Strategies.UnitTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

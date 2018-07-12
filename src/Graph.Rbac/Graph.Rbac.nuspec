@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>Microsoft.Azure.Commands.Common.Graph.RBAC</id>
+    <id>Microsoft.Azure.PowerShell.Graph.Rbac</id>
     <version>1.0.0</version>
-    <title>Microsoft Azure PowerShell RBAC</title>
+    <title>Microsoft Azure PowerShell Graph Rbac</title>
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
-    <description>Microsoft Azure PowerShell RBAC library</description>
+    <description>Microsoft Azure PowerShell Graph Rbac library</description>
     <copyright>Copyright © Microsoft Corporation</copyright>
-    <tags>azure powershell rbac</tags>
+    <tags>azure powershell graph rbac</tags>
   </metadata>
 </package>

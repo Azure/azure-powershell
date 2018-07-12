@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.ServiceManagement.Common</RootNamespace>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.ServiceManagement.Common</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.ServiceManagement</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Websites</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Websites</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Websites</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

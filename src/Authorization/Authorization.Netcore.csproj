@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authorization</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authorization</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authorization</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

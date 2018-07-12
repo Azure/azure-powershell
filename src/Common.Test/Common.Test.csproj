@@ -11,7 +11,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Test</RootNamespace>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.Common.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

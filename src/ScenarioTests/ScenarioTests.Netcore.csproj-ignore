@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.WindowsAzure.Commands.ScenarioTest.Common</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.ScenarioTest</AssemblyName>
     <RootNamespace>Microsoft.WindowsAzure.Commands.ScenarioTest</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

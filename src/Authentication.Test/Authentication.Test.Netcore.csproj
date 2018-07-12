@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.Test</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>

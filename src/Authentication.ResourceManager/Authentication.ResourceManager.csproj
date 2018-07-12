@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.Common.Authentication.ResourceManager</AssemblyName>
+    <AssemblyName>Microsoft.Azure.PowerShell.Authentication.ResourceManager</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
