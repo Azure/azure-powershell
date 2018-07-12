@@ -10,7 +10,7 @@
     <ProjectGuid>{3B48A77B-5956-4A62-9081-92BA04B02B27}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.WindowsAzure.Commands.Common.Test</RootNamespace>
+    <RootNamespace>Microsoft.WindowsAzure.Test</RootNamespace>
     <AssemblyName>Microsoft.Azure.PowerShell.Common.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -219,29 +219,29 @@
     <Compile Include="TestExecutionHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
+      <Name>Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+    <ProjectReference Include="..\Authentication\Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
+      <Name>Authentication</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common.Storage\Commands.Common.Storage.csproj">
+    <ProjectReference Include="..\Storage\Storage.csproj">
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
-      <Name>Commands.Common.Storage</Name>
+      <Name>Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+      <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+    <ProjectReference Include="..\ScenarioTest\ScenarioTest.csproj">
       <Project>{c1bda476-a5cc-4394-914d-48b0ec31a710}</Project>
-      <Name>Commands.ScenarioTests.Common</Name>
+      <Name>ScenarioTest</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+    <ProjectReference Include="..\ServiceManagement\ServiceManagement.csproj">
       <Project>{cff09e81-1e31-444e-b4d4-a21e946c29e2}</Project>
-      <Name>Commands.ServiceManagement.Common</Name>
+      <Name>ServiceManagement</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

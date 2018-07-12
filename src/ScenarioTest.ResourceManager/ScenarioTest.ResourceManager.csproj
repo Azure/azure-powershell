@@ -183,29 +183,29 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.csproj">
       <Project>{70527617-7598-4aef-b5bd-db9186b8184b}</Project>
-      <Name>Commands.Common.Authentication.Abstractions</Name>
+      <Name>Authentication.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common.Authentication\Commands.Common.Authentication.csproj">
+    <ProjectReference Include="..\Authentication\Authentication.csproj">
       <Project>{d3804b64-c0d3-48f8-82ec-1f632f833c9e}</Project>
-      <Name>Commands.Common.Authentication</Name>
+      <Name>Authentication</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+      <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ServiceManagement.Common\Commands.ServiceManagement.Common.csproj">
+    <ProjectReference Include="..\ServiceManagement\ServiceManagement.csproj">
       <Project>{CFF09E81-1E31-444E-B4D4-A21E946C29E2}</Project>
-      <Name>Commands.ServiceManagement.Common</Name>
+      <Name>ServiceManagement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.Common.Authentication.ResourceManager\Commands.Common.Authentication.ResourceManager.csproj">
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj">
       <Project>{69c2eb6b-cd63-480a-89a0-c489706e9299}</Project>
-      <Name>Commands.Common.Authentication.ResourceManager</Name>
+      <Name>Authentication.ResourceManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+      <Name>ResourceManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

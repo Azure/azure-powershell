@@ -73,13 +73,13 @@
     <Compile Include="Version2016-04-preview\ComputeManagementClientShould.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Compute\Commands.Common.Compute.csproj">
+    <ProjectReference Include="..\Compute\Compute.csproj">
       <Project>{f6d508d1-be2d-475d-aa0f-dfb5c615cc9d}</Project>
-      <Name>Commands.Common.Compute</Name>
+      <Name>Compute</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ScenarioTests.Common\Commands.ScenarioTests.Common.csproj">
+    <ProjectReference Include="..\ScenarioTest\ScenarioTest.csproj">
       <Project>{C1BDA476-A5CC-4394-914D-48B0EC31A710}</Project>
-      <Name>Commands.ScenarioTests.Common</Name>
+      <Name>ScenarioTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

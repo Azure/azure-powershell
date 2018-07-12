@@ -36,8 +36,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

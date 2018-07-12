@@ -62,22 +62,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AzureRMTestCmdletDefinitiona.cs" />
+    <Compile Include="AzureRMTestCmdletDefinition.cs" />
     <Compile Include="BreakingChangeAttributeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common\Commands.Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{5ee72c53-1720-4309-b54b-5fb79703195f}</Project>
-      <Name>Commands.Common</Name>
+      <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ResourceManager.Common\Commands.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\ResourceManager\ResourceManager.csproj">
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
-      <Name>Commands.ResourceManager.Common</Name>
+      <Name>ResourceManager</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj">
       <Project>{3436A126-EDC9-4060-8952-9A1BE34CDD95}</Project>
-      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
+      <Name>ScenarioTest.ResourceManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

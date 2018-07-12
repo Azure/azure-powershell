@@ -76,13 +76,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Strategies\Commands.Common.Strategies.csproj">
+    <ProjectReference Include="..\Strategies\Strategies.csproj">
       <Project>{eea69772-d41b-482a-9252-2b4595c59e53}</Project>
-      <Name>Commands.Common.Strategies</Name>
+      <Name>Strategies</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
-      <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
+      <Name>ScenarioTest.ResourceManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

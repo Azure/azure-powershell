@@ -21,8 +21,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Compute\Common.Compute.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+    <ProjectReference Include="..\Compute\Compute.Netcore.csproj" />
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
 </Project>

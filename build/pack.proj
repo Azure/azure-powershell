@@ -52,5 +52,10 @@
     </ItemGroup>
 
     <Exec Command="$(NupkgMerge) -P %(Packs.TargetPath) -S $(Net452PackDir)@(Packs) -O %(Packs.TargetPath)"/>
+
+    <ItemGroup>
+      <Net452OnlyPackages Include="$(Net452PackDir)Microsoft.Azure.PowerShell.ScenarioTest.*.nupkg;$(Net452PackDir)Microsoft.Azure.PowerShell.ServiceManagement.*.nupkg" Exclude="$(Net452PackDir)Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.*.nupkg" />
+    </ItemGroup>
+    <Copy SourceFiles="@(Net452OnlyPackages)" DestinationFolder="$(NetCoreApp20PackDir)" />
   </Target>
 </Project>

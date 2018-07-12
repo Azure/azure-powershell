@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Common.Netcore.Dependencies.Test.targets" />
+  <Import Project="$(ProjectDir)..\Common.Netcore.Dependencies.targets" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
@@ -21,6 +21,10 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
+    <IsPackable>true</IsPackable>
+    <NoPackageAnalysis>true</NoPackageAnalysis>
+    <ContentTargetFolders>tools</ContentTargetFolders>
+    <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,6 +41,10 @@
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" />
+    <PackageReference Include="xunit" Version="2.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,26 +53,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.Netcore.csproj" />
+    <ProjectReference Include="..\ResourceManager\ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json">
+    <Content Include="Assert.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="Assert.ps1">
+    </Content>
+    <Content Include="Common.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Common.ps1">
+    </Content>
+    <Content Include="AzureRM.Resources.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
+    <Content Include="AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

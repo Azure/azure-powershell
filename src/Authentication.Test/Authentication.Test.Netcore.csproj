@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="$(ProjectDir)..\Common.Netcore.Dependencies.Test.targets" />
+  <Import Project="$(ProjectDir)..\Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>Microsoft.Azure.PowerShell.Authentication.Test</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.Common.Authentication.Test</RootNamespace>
+    <RootNamespace>Microsoft.Azure.Authentication.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <OutputPath>$(ProjectDir)..\..\artifacts\$(Configuration)</OutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -21,11 +21,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.Common\Common.Netcore.csproj" />
-    <ProjectReference Include="..\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj" />
+    <ProjectReference Include="..\Authentication\Authentication.Netcore.csproj" />
+    <ProjectReference Include="..\Storage.Management\Storage.Management.Netcore.csproj" />
+    <ProjectReference Include="..\Common\Common.Netcore.csproj" />
+    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj" />
   </ItemGroup>
 
 </Project>

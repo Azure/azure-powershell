@@ -3,45 +3,45 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Netcore", "src\Commands.Common\Common.Netcore.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Netcore", "src\Common\Common.Netcore.csproj", "{5EE72C53-1720-4309-B54B-5FB79703195F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Authentication.Netcore", "src\Commands.Common.Authentication\Common.Authentication.Netcore.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Netcore", "src\Authentication\Authentication.Netcore.csproj", "{D3804B64-C0D3-48F8-82EC-1F632F833C9E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Authentication.Abstractions.Netcore", "src\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.Abstractions.Netcore", "src\Authentication.Abstractions\Authentication.Abstractions.Netcore.csproj", "{70527617-7598-4AEF-B5BD-DB9186B8184B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Authorization.Netcore", "src\Commands.Common.Authorization\Common.Authorization.Netcore.csproj", "{24508E26-154D-47F1-80EE-439BF0710996}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Netcore", "src\Authorization\Authorization.Netcore.csproj", "{24508E26-154D-47F1-80EE-439BF0710996}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Compute.Netcore", "src\Commands.Common.Compute\Common.Compute.Netcore.csproj", "{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Netcore", "src\Compute\Compute.Netcore.csproj", "{F6D508D1-BE2D-475D-AA0F-DFB5C615CC9D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Rbac.Netcore", "src\Commands.Common.Graph.RBAC\Common.Rbac.Netcore.csproj", "{269ACF73-0A34-42DC-AB9C-4B15931A489D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph.Rbac.Netcore", "src\Graph.Rbac\Graph.Rbac.Netcore.csproj", "{269ACF73-0A34-42DC-AB9C-4B15931A489D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.KeyVault.Netcore", "src\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault.Netcore", "src\KeyVault\KeyVault.Netcore.csproj", "{836965C0-B198-4D01-B3D7-757DB62B49A0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Network.Netcore", "src\Commands.Common.Network\Common.Network.Netcore.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network.Netcore", "src\Network\Network.Netcore.csproj", "{1338F7AE-7111-4ED3-8916-2D0FECC876F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Netcore", "src\Commands.Common.Storage\Common.Storage.Netcore.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Netcore", "src\Storage\Storage.Netcore.csproj", "{65C3A86A-716D-4E7D-AB67-1DB00B3BF72D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Storage.Management.Netcore", "src\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage.Management.Netcore", "src\Storage.Management\Storage.Management.Netcore.csproj", "{4CCA7339-15BF-4066-9FA1-6A23A58F2CEE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Websites.Netcore", "src\Commands.Common.Websites\Common.Websites.Netcore.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Websites.Netcore", "src\Websites\Websites.Netcore.csproj", "{592B3E1B-49E3-4F3C-BF6B-E5D4133B1443}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.Authentication.Netcore", "src\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj", "{69C2EB6B-CD63-480A-89A0-C489706E9299}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authentication.ResourceManager.Netcore", "src\Authentication.ResourceManager\Authentication.ResourceManager.Netcore.csproj", "{69C2EB6B-CD63-480A-89A0-C489706E9299}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Strategies.Netcore", "src\Commands.Common.Strategies\Common.Strategies.Netcore.csproj", "{EEA69772-D41B-482A-9252-2B4595C59E53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strategies.Netcore", "src\Strategies\Strategies.Netcore.csproj", "{EEA69772-D41B-482A-9252-2B4595C59E53}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.Netcore", "src\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceManager.Netcore", "src\ResourceManager\ResourceManager.Netcore.csproj", "{3819D8A7-C62C-4C47-8DDD-0332D9CE1252}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.ResourceManager.ScenarioTests.Netcore", "src\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScenarioTest.ResourceManager.Netcore", "src\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.Netcore.csproj", "{3436A126-EDC9-4060-8952-9A1BE34CDD95}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Aks.Netcore", "src\Commands.Common.Aks\Commands.Common.Aks.Netcore.csproj", "{87BA5687-5563-4491-8846-77D98D0605D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aks.Netcore", "src\Aks\Aks.Netcore.csproj", "{87BA5687-5563-4491-8846-77D98D0605D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{625CE04D-FD62-471D-BBCF-E7B716B5FE56}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Tests.Netcore", "src\Commands.Common.Tests\Common.Tests.Netcore.csproj", "{3B48A77B-5956-4A62-9081-92BA04B02B27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Probe.Test.Netcore", "src\Probe.Test\Probe.Test.Netcore.csproj", "{3B48A77B-5956-4A62-9081-92BA04B02B27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Compute.Tests.Netcore", "src\Commands.Common.Compute.Tests\Common.Compute.Tests.Netcore.csproj", "{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Test.Netcore", "src\Compute.Test\Compute.Test.Netcore.csproj", "{8A4E00AA-5F65-4A95-B9B0-FEC06486555E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.Common.Strategies.UnitTest.Netcore", "src\Commands.Common.Strategies.UnitTest\Commands.Common.Strategies.UnitTest.Netcore.csproj", "{6756A7F2-1141-4065-BA23-0C555D2A2BC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Strategies.Test.Netcore", "src\Strategies.Test\Strategies.Test.Netcore.csproj", "{6756A7F2-1141-4065-BA23-0C555D2A2BC3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -74,7 +74,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Common
                 SetupManagementClients();
 
                 List<string> modules = new List<string>();
-                modules.Add("Microsoft.WindowsAzure.Commands.Common.Test.dll");
+                modules.Add("Microsoft.Azure.PowerShell.Common.Test.dll");
 
                 helper.SetupEnvironment(AzureModule.AzureServiceManagement);
                 helper.SetupModules(modules.ToArray());
