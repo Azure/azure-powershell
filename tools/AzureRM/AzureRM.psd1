@@ -63,7 +63,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.3';
                @{ModuleName = 'AzureRM.Billing'; RequiredVersion = '0.14.3'; },
                @{ModuleName = 'AzureRM.Cdn'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.CognitiveServices'; RequiredVersion = '0.9.6'; },
-               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.2.1'; },
+               @{ModuleName = 'AzureRM.Compute'; RequiredVersion = '5.3.0'; },
                @{ModuleName = 'AzureRM.Consumption'; RequiredVersion = '0.3.5'; },
                @{ModuleName = 'AzureRM.ContainerInstance'; RequiredVersion = '0.2.6'; },
                @{ModuleName = 'AzureRM.ContainerRegistry'; RequiredVersion = '1.0.6'; },
@@ -79,12 +79,12 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.3';
                @{ModuleName = 'AzureRM.Insights'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.IotHub'; RequiredVersion = '3.1.4'; },
                @{ModuleName = 'AzureRM.KeyVault'; RequiredVersion = '5.0.4'; },
-               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.0.5'; },
+               @{ModuleName = 'AzureRM.LogicApp'; RequiredVersion = '4.1.0'; },
                @{ModuleName = 'AzureRM.MachineLearning'; RequiredVersion = '0.18.1'; },
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.4'; },
                @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.3'; },
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.0'; },
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.3.1'; },
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.3.2'; },
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.2'; },
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.2'; },
@@ -176,6 +176,7 @@ AzureRM.Automation
 * Update help and add example for ''New-AzureRMAutomationSchedule''
 
 AzureRM.Compute
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
 * Add example for ''Add-AzureRmVmssExtension''
 * Add examples for ''Remove-AzureRmVmssExtension''
 * Update help for ''Set-AzureRmVMAccessExtension''
@@ -187,8 +188,12 @@ AzureRM.EventHub
 AzureRM.KeyVault
 * Update error message for Set-AzureRmKeyVaultAccessPolicy
 
+AzureRM.LogicApp
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
+
 AzureRM.Network
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Regenerated RouteTable cmdlets with the latest generator version
 
 AzureRM.Relay
 * Updated markdown files, fix for the parameter name issue in example
