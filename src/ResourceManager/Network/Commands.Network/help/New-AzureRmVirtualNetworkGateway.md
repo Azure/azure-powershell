@@ -136,6 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Asn
+
 ```yaml
 Type: System.UInt32
 Parameter Sets: (All)
@@ -150,7 +151,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
-
 
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
@@ -180,6 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableBgp
+
 ```yaml
 Type: System.Boolean
 Parameter Sets: (All)
@@ -208,6 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayDefaultSite
+
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
 Parameter Sets: (All)
@@ -221,6 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewaySku
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -235,6 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -GatewayType
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -249,6 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpConfigurations
+
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration]
 Parameter Sets: (All)
@@ -262,6 +267,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -275,6 +281,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -288,6 +295,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerWeight
+
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
@@ -302,7 +310,6 @@ Accept wildcard characters: False
 
 ### -RadiusServerAddress
 P2S External Radius server address.
-
 
 ```yaml
 Type: System.String
@@ -319,7 +326,6 @@ Accept wildcard characters: False
 ### -RadiusServerSecret
 P2S External Radius server secret.
 
-
 ```yaml
 Type: System.Security.SecureString
 Parameter Sets: RadiusServerConfiguration
@@ -333,6 +339,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -363,6 +370,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientAddressPool
+
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
@@ -377,7 +385,6 @@ Accept wildcard characters: False
 
 ### -VpnClientIpsecPolicy
 A list of IPSec policies for P2S VPN client tunneling protocols.
-
 
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy]
@@ -394,7 +401,6 @@ Accept wildcard characters: False
 ### -VpnClientProtocol
 The list of P2S VPN client tunneling protocols
 
-
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
@@ -409,6 +415,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientRevokedCertificates
+
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate]
 Parameter Sets: (All)
@@ -422,6 +429,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnClientRootCertificates
+
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate]
 Parameter Sets: (All)
@@ -435,6 +443,7 @@ Accept wildcard characters: False
 ```
 
 ### -VpnType
+
 ```yaml
 Type: System.String
 Parameter Sets: (All)
