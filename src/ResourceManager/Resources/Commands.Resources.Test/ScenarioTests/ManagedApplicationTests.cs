@@ -13,29 +13,23 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ManagedApplicationTests : RMTestBase
+    public class ManagedApplicationTests : TestManagerBuilder// : RMTestBase
     {
-        public XunitTracingInterceptor _logger;
-
-        public ManagedApplicationTests(ITestOutputHelper output)
+        public ManagedApplicationTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedApplicationCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ManagedApplicationCRUD");
+            TestManager.RunTestScript("Test-ManagedApplicationCRUD");
         }
     }
 }

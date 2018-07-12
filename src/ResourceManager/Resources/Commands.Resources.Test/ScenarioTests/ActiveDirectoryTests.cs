@@ -18,17 +18,16 @@ using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ActiveDirectoryTests : RMTestBase
+    public class ActiveDirectoryTests: TestManagerBuilder
     {
         XunitTracingInterceptor interceptor { get; set; }
 
-        public ActiveDirectoryTests(ITestOutputHelper output)
+        public ActiveDirectoryTests(ITestOutputHelper output) : base(output)
         {
             interceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(interceptor);
@@ -88,7 +87,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADGroupWithBadSearchString");
+            //ResourcesController.NewInstance.RunPsTest("Test-GetADGroupWithBadSearchString");
+            TestManager.RunTestScript("Test-GetADGroupWithBadSearchString");
         }
 
         [Fact]
@@ -145,7 +145,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADGroupWithBadObjectId");
+            TestManager.RunTestScript("Test-GetADGroupWithBadObjectId");
         }
 
         [Fact]
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADGroupMemberWithBadGroupObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADGroupMemberWithBadGroupObjectId");
+            TestManager.RunTestScript("Test-GetADGroupMemberWithBadGroupObjectId");
         }
 
         [Fact]
@@ -299,7 +299,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADServicePrincipalWithBadObjectId");
+            TestManager.RunTestScript("Test-GetADServicePrincipalWithBadObjectId");
         }
 
         [Fact]
@@ -359,7 +359,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSPN()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADServicePrincipalWithBadSPN");
+            TestManager.RunTestScript("Test-GetADServicePrincipalWithBadSPN");
         }
 
         [Fact]
@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADServicePrincipalWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADServicePrincipalWithBadSearchString");
+            TestManager.RunTestScript("Test-GetADServicePrincipalWithBadSearchString");
         }
 
         [Fact]
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadObjectId()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADUserWithBadObjectId");
+            TestManager.RunTestScript("Test-GetADUserWithBadObjectId");
         }
 
         [Fact]
@@ -533,14 +533,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithFPOUPN()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADUserWithFPOUPN");
+            TestManager.RunTestScript("Test-GetADUserWithFPOUPN");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadUPN()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADUserWithBadUPN");
+            TestManager.RunTestScript("Test-GetADUserWithBadUPN");
         }
 
         [Fact]
@@ -572,49 +572,49 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetADUserWithBadSearchString()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-GetADUserWithBadSearchString");
+            TestManager.RunTestScript("Test-GetADUserWithBadSearchString");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADApplication()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-NewADApplication");
+            TestManager.RunTestScript("Test-NewADApplication");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithoutApp()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-NewADServicePrincipalWithoutApp");
+            TestManager.RunTestScript("Test-NewADServicePrincipalWithoutApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithReaderRole()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-NewADServicePrincipalWithReaderRole");
+            TestManager.RunTestScript("Test-NewADServicePrincipalWithReaderRole");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewADServicePrincipalWithCustomScope()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-NewADServicePrincipalWithCustomScope");
+            TestManager.RunTestScript("Test-NewADServicePrincipalWithCustomScope");
         }
 
         [Fact(Skip = "Not working in playback.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteAppPasswordCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteAppPasswordCredentials");
+            TestManager.RunTestScript("Test-CreateDeleteAppPasswordCredentials");
         }
 
         [Fact(Skip = "Not working in playback.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDeleteSpPasswordCredentials()
         {
-            ResourcesController.NewInstance.RunPsTest(interceptor, "Test-CreateDeleteSpPasswordCredentials");
+            TestManager.RunTestScript("Test-CreateDeleteSpPasswordCredentials");
         }
 
         [Fact]

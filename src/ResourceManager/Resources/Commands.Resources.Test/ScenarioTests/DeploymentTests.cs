@@ -12,28 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DeploymentTests
+    public class DeploymentTests : TestManagerBuilder
     {
-        public XunitTracingInterceptor _logger;
-
-        public DeploymentTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DeploymentTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "Need to implement storage client mock.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestValidateDeployment()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ValidateDeployment");
+            TestManager.RunTestScript("Test-ValidateDeployment");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -41,7 +36,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentFromTemplateFile()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentFromTemplateFile");
+            TestManager.RunTestScript("Test-NewDeploymentFromTemplateFile");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -49,7 +44,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedDeploymentFromTemplateFile()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NestedDeploymentFromTemplateFile");
+            TestManager.RunTestScript("Test-NestedDeploymentFromTemplateFile");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -57,7 +52,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestCrossResourceGroupDeploymentFromTemplateFile()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-CrossResourceGroupDeploymentFromTemplateFile");
+            TestManager.RunTestScript("Test-CrossResourceGroupDeploymentFromTemplateFile");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -65,21 +60,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSaveDeploymentTemplateFile()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SaveDeploymentTemplateFile");
+            TestManager.RunTestScript("Test-SaveDeploymentTemplateFile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNestedErrorsDisplayed()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NestedErrorsDisplayed");
+            TestManager.RunTestScript("Test-NestedErrorsDisplayed");
         }
 
         [Fact(Skip = "Fix acquisition of TenantId in KeyVault Test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithKeyVaultReference()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithKeyVaultReference");
+            TestManager.RunTestScript("Test-NewDeploymentWithKeyVaultReference");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -87,7 +82,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithComplexPramaters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithComplexPramaters");
+            TestManager.RunTestScript("Test-NewDeploymentWithComplexPramaters");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -95,7 +90,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithParameterObject()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithParameterObject");
+            TestManager.RunTestScript("Test-NewDeploymentWithParameterObject");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -103,21 +98,21 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestNewDeploymentWithDynamicParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithDynamicParameters");
+            TestManager.RunTestScript("Test-NewDeploymentWithDynamicParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithInvalidParameters()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithInvalidParameters");
+            TestManager.RunTestScript("Test-NewDeploymentWithInvalidParameters");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewDeploymentWithKeyVaultReferenceInParameterObject()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-NewDeploymentWithKeyVaultReferenceInParameterObject");
+            TestManager.RunTestScript("Test-NewDeploymentWithKeyVaultReferenceInParameterObject");
         }
     }
 }

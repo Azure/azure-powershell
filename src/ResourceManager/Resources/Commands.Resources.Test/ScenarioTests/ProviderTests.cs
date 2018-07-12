@@ -15,45 +15,41 @@
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using ServiceManagemenet.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
-    public class ProviderTests
-    {
-        public XunitTracingInterceptor _logger;
 
-        public ProviderTests(ITestOutputHelper output)
+    public class ProviderTests : TestManagerBuilder
+    {
+        public ProviderTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProvider");
+            TestManager.RunTestScript("Test-AzureProvider");
         }
 
         [Fact(Skip = "ZoneMapping removed.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProvider_WithZoneMappings()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProvider-WithZoneMappings");
+            TestManager.RunTestScript("Test-AzureProvider-WithZoneMappings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperation()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProviderOperation");
+            TestManager.RunTestScript("Test-AzureProviderOperation");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderOperationDataActions()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProviderOperationDataActions");
+            TestManager.RunTestScript("Test-AzureProviderOperationDataActions");
         }
     }
 }

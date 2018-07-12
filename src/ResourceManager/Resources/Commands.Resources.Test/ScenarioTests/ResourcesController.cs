@@ -57,7 +57,6 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         public ManagementGroupsAPIClient ManagementGroupsApiClient { get; private set; }
 
-
         public string UserDomain { get; private set; }
 
         public static ResourcesController NewInstance => new ResourcesController();

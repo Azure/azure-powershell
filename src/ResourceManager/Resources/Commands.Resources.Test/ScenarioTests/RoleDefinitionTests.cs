@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class RoleDefinitionTests : RMTestBase
+    public class RoleDefinitionTests : TestManagerBuilder
     {
-        public XunitTracingInterceptor _logger;
-
-        public RoleDefinitionTests(ITestOutputHelper output)
+        public RoleDefinitionTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionCreateTests()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RoleDefinitionCreateTests");
+            TestManager.RunTestScript("Test-RoleDefinitionCreateTests");
         }
 
 #if NETSTANDARD
@@ -51,7 +45,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionDataActionsCreateTests()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RoleDefinitionDataActionsCreateTests");
+            TestManager.RunTestScript("Test-RoleDefinitionDataActionsCreateTests");
         }
 
 #if NETSTANDARD
@@ -63,7 +57,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RdNegativeScenarios");
+            TestManager.RunTestScript("Test-RdNegativeScenarios");
         }
 
 #if NETSTANDARD
@@ -75,7 +69,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdPositiveScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDPositiveScenarios");
+            TestManager.RunTestScript("Test-RDPositiveScenarios");
         }
 
 #if NETSTANDARD
@@ -87,7 +81,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDUpdate()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDUpdate");
+            //ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
+            TestManager.RunTestScript("Test-RDUpdate");
         }
 
 #if NETSTANDARD
@@ -99,7 +94,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDCreateFromFile()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDCreateFromFile");
+            TestManager.RunTestScript("Test-RDCreateFromFile");
         }
 
 #if NETSTANDARD
@@ -109,10 +104,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Fact]
 #endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void RDFilter()
-		{
-			ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDFilter");
-		}
+        public void RDFilter()
+        {
+            TestManager.RunTestScript("Test-RDFilter");
+        }
 
 #if NETSTANDARD
         [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
@@ -123,7 +118,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDRemoveScenario()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDRemove");
+            TestManager.RunTestScript("Test-RDRemove");
         }
 
 #if NETSTANDARD
@@ -135,7 +130,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetCustomRoles()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDGetCustomRoles");
+            TestManager.RunTestScript("Test-RDGetCustomRoles");
         }
 
 #if NETSTANDARD
@@ -147,7 +142,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDDataActionsNegativeTestCases()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDDataActionsNegativeTestCases");
+            TestManager.RunTestScript("Test-RDDataActionsNegativeTestCases");
         }
 
 #if NETSTANDARD
@@ -159,18 +154,17 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetScenario()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDGet");
+            TestManager.RunTestScript("Test-RDGet");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdValidateInputParameters()
         {
-            var instance = ResourcesController.NewInstance;
-            instance.RunPsTest(_logger, "Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
-            instance.RunPsTest(_logger, "Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
-            instance.RunPsTest(_logger, "Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");
-            instance.RunPsTest(_logger, "Test-RdValidateInputParameters2 Set-AzureRmRoleDefinition");
+            TestManager.RunTestScript("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
+            TestManager.RunTestScript("Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
+            TestManager.RunTestScript("Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");
+            TestManager.RunTestScript("Test-RdValidateInputParameters2 Set-AzureRmRoleDefinition");
         }
     }
 }

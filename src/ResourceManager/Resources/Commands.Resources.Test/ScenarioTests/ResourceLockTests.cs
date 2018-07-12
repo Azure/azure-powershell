@@ -13,36 +13,30 @@
 // ----------------------------------------------------------------------------------
 
 
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceLockTests : RMTestBase
+    public class ResourceLockTests : TestManagerBuilder// : RMTestBase
     {
-        public XunitTracingInterceptor _logger;
-
-        public ResourceLockTests(ITestOutputHelper output)
+        public ResourceLockTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceLockCRUDTest()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ResourceLockCRUD");
+            TestManager.RunTestScript("Test-ResourceLockCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceLockNonExisting()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ResourceLockNonExisting");
+            TestManager.RunTestScript("Test-ResourceLockNonExisting");
         }
     }
 }
