@@ -52,7 +52,6 @@ This command gets the service objectives for the server named Server01 and the d
 ### -DatabaseName
 SQL Database name.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)

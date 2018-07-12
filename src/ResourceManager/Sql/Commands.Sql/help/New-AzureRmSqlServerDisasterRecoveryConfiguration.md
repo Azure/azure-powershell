@@ -30,7 +30,6 @@ The **New-AzureRmSqlServerDisasterRecoveryConfiguration** cmdlet creates a SQL d
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

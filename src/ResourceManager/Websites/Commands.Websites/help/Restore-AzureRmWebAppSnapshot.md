@@ -89,7 +89,6 @@ Accept wildcard characters: False
 ### -InputObject
 The Azure Web App snapshot.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
 Parameter Sets: (All)
@@ -104,7 +103,6 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the web app.
-
 
 ```yaml
 Type: System.String
@@ -136,7 +134,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The name of the resource group.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: FromResourceName
@@ -152,7 +149,6 @@ Accept wildcard characters: False
 ### -Slot
 The name of the web app slot.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: FromResourceName
@@ -167,7 +163,6 @@ Accept wildcard characters: False
 
 ### -WebApp
 The web app object
-
 
 ```yaml
 Type: Microsoft.Azure.Management.WebSites.Models.Site

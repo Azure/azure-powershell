@@ -43,7 +43,6 @@ This command creates a version 12 Azure SQL Database server.
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

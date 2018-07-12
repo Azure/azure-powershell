@@ -121,7 +121,6 @@ Specifies permissions in the stored access policy to access the container.
 
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
