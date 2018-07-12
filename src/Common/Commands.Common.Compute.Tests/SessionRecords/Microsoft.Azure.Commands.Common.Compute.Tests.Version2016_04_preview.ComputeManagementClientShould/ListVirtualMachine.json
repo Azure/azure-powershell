@@ -1,0 +1,72 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/providers/Microsoft.Compute/virtualMachines?api-version=2016-04-30-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzljYmQ5MjAtYzAwYy00MjdjLTg1MmItOGFhZjM4YmFkYWViL3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXM/YXBpLXZlcnNpb249MjAxNi0wNC0zMC1wcmV2aWV3",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "96f4af86-d1b0-4a99-a6f5-0af7f54dc28b"
+        ],
+        "accept-language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.7.3110.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.17134",
+          "Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.ComputeManagementClient/1.0.0.0"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"properties\": {\r\n        \"vmId\": \"101b7f2e-e501-4de3-94f6-80d050b571c5\",\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_A4\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"MicrosoftWindowsServer\",\r\n            \"offer\": \"WindowsServer\",\r\n            \"sku\": \"2008-R2-SP1\",\r\n            \"version\": \"2.127.20170628\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Windows\",\r\n            \"name\": \"vmcrptestps7596_OsDisk_1_978dd480e37c4bacb0d31416324bf793\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"ReadWrite\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Standard_LRS\",\r\n              \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps7596/providers/Microsoft.Compute/disks/vmcrptestps7596_OsDisk_1_978dd480e37c4bacb0d31416324bf793\"\r\n            },\r\n            \"diskSizeGB\": 127\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"test\",\r\n          \"adminUsername\": \"Foo12\",\r\n          \"windowsConfiguration\": {\r\n            \"provisionVMAgent\": true,\r\n            \"enableAutomaticUpdates\": false\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/crptestps7596/providers/Microsoft.Network/networkInterfaces/niccrptestps7596\",\r\n              \"properties\": {\r\n                \"primary\": true\r\n              }\r\n            }\r\n          ]\r\n        },\r\n        \"diagnosticsProfile\": {\r\n          \"bootDiagnostics\": {\r\n            \"enabled\": true,\r\n            \"storageUri\": \"https://stocrptestps7596.blob.core.windows.net/\"\r\n          }\r\n        },\r\n        \"provisioningState\": \"Updating\"\r\n      },\r\n      \"resources\": [\r\n        {\r\n          \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/CRPTESTPS7596/providers/Microsoft.Compute/virtualMachines/vmcrptestps7596/extensions/BGInfo\"\r\n        }\r\n      ],\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"eastus2\",\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/CRPTESTPS7596/providers/Microsoft.Compute/virtualMachines/vmcrptestps7596\",\r\n      \"name\": \"vmcrptestps7596\"\r\n    },\r\n    {\r\n      \"properties\": {\r\n        \"vmId\": \"445871d2-a782-41f4-bc1f-c25bd029924c\",\r\n        \"hardwareProfile\": {\r\n          \"vmSize\": \"Standard_DS1_v2\"\r\n        },\r\n        \"storageProfile\": {\r\n          \"imageReference\": {\r\n            \"publisher\": \"Canonical\",\r\n            \"offer\": \"UbuntuServer\",\r\n            \"sku\": \"16.04-LTS\",\r\n            \"version\": \"latest\"\r\n          },\r\n          \"osDisk\": {\r\n            \"osType\": \"Linux\",\r\n            \"name\": \"vm1_OsDisk_1_59e4de3d8570465985cb158dc5fc5492\",\r\n            \"createOption\": \"FromImage\",\r\n            \"caching\": \"ReadWrite\",\r\n            \"managedDisk\": {\r\n              \"storageAccountType\": \"Premium_LRS\",\r\n              \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/tjp-rg/providers/Microsoft.Compute/disks/vm1_OsDisk_1_59e4de3d8570465985cb158dc5fc5492\"\r\n            },\r\n            \"diskSizeGB\": 30\r\n          },\r\n          \"dataDisks\": []\r\n        },\r\n        \"osProfile\": {\r\n          \"computerName\": \"vm1\",\r\n          \"adminUsername\": \"trpresco\",\r\n          \"linuxConfiguration\": {\r\n            \"disablePasswordAuthentication\": true,\r\n            \"ssh\": {\r\n              \"publicKeys\": [\r\n                {\r\n                  \"path\": \"/home/trpresco/.ssh/authorized_keys\",\r\n                  \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLkUy/BFb7o47gQqFcMiioYD4w3Tu/7bpy7t/3pQVhjmsEEaWk09dA1Ju1UbukKaLpOprch/r9bgUWu1oTEP7E5evwaJl0TvLX0gsxGGItfPc58bbQ77uxuXhMfYEZ6oiS+Ybt5nUjjDUUNhSIrKSLhCHCmQ9JnOd/AObf9G4iR38bsABIAVxmbYT6OQKm4oRwNs1c99B5TsfnREFs7yawCV3hjKVHsD3bRo83bBbBG3d/CHYfcnEbpK4weagw899YodAXDiUh0qYfOy0mGz4zWaQ4rcCitk9od/WSDhLAOy74cqwzKJwoR9DcALxkWVMuJW7xBF9tWEroVvFrh6/N\"\r\n                }\r\n              ]\r\n            }\r\n          },\r\n          \"secrets\": []\r\n        },\r\n        \"networkProfile\": {\r\n          \"networkInterfaces\": [\r\n            {\r\n              \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/tjp-rg/providers/Microsoft.Network/networkInterfaces/vm1VMNic\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisioningState\": \"Succeeded\"\r\n      },\r\n      \"type\": \"Microsoft.Compute/virtualMachines\",\r\n      \"location\": \"westus\",\r\n      \"tags\": {},\r\n      \"id\": \"/subscriptions/c9cbd920-c00c-427c-852b-8aaf38badaeb/resourceGroups/TJP-RG/providers/Microsoft.Compute/virtualMachines/vm1\",\r\n      \"name\": \"vm1\"\r\n    }\r\n  ]\r\n}",
+      "ResponseHeaders": {
+        "Content-Length": [
+          "3252"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-original-request-ids": [
+          "b0656306-378b-4782-bb7f-58957e8c94fb",
+          "7538a576-d3c7-4795-a506-eca731f4c0af"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "14999"
+        ],
+        "x-ms-request-id": [
+          "7a408ec4-7c80-4507-88e0-df04def5605c"
+        ],
+        "x-ms-correlation-request-id": [
+          "7a408ec4-7c80-4507-88e0-df04def5605c"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS2:20180711T192729Z:7a408ec4-7c80-4507-88e0-df04def5605c"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Date": [
+          "Wed, 11 Jul 2018 19:27:29 GMT"
+        ]
+      },
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "c9cbd920-c00c-427c-852b-8aaf38badaeb"
+  }
+}
