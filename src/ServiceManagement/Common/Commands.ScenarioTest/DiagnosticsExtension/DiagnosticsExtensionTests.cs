@@ -59,7 +59,6 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
                 var modules = new List<string>
                 {
                     @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\AzurePreview.psd1",
-                    @"..\..\..\..\..\Package\Debug\ServiceManagement\Azure\Compute\PIR.psd1",
                     "Resources\\ServiceManagement\\Common.ps1",
                     "Resources\\DiagnosticsExtension\\DiagnosticsExtensionTests.ps1"
                 };

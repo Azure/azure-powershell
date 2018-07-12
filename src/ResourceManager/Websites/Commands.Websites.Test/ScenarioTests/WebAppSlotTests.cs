@@ -23,79 +23,82 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppSlotTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public WebAppSlotTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSlot");
         }
 
         [Fact(Skip = "TODO #5594: This test requires a pre-set AppService Environment with specific settings.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebAppSlotOnAse()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppSlotOnAse");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSlotOnAse");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppSlot");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppSlotMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppSlotMetrics");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppSlotMetrics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSlotPublishingProfile()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppSlotPublishingProfile");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSlotPublishingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppToSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppToSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneWebAppToSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-StartStopRestartWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebAppSlot()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetWebAppSlot");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebAppSlot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManageSlotSlotConfigName()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-ManageSlotSlotConfigName");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-ManageSlotSlotConfigName");
         }
 
         [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
@@ -103,21 +106,21 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestWebAppRegularSlotSwap()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppRegularSlotSwap");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppRegularSlotSwap");
         }
 
         [Fact(Skip = "iss#6044 The test needs to be re-written")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSwapWithPreviewResetSlotSwap()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewResetSlotSwap");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSwapWithPreviewResetSlotSwap");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppSwapWithPreviewCompleteSlotSwap()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppSwapWithPreviewCompleteSlotSwap");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppSwapWithPreviewCompleteSlotSwap");
         }
     }
 }

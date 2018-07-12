@@ -23,17 +23,21 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class RouteTableTestsGenerated : RMTestBase
     {
-        public RouteTableTestsGenerated(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public RouteTableTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-RouteCRUDMinimalParameters"));
         }
 
         [Fact]
@@ -41,7 +45,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteCRUDAllParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-RouteCRUDAllParameters"));
         }
 
         [Fact]
@@ -49,7 +53,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteTableCRUDMinimalParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDMinimalParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-RouteTableCRUDMinimalParameters"));
         }
 
         [Fact]
@@ -57,7 +61,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.wanrpdev)]
         public void TestRouteTableCRUDAllParameters()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-RouteTableCRUDAllParameters"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-RouteTableCRUDAllParameters"));
         }
     }
 }
