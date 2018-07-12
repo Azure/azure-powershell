@@ -38,7 +38,6 @@ This command creates Azure SQL Server DNS Alias with the name aliasName that is 
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

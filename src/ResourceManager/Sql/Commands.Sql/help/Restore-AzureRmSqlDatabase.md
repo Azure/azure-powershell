@@ -138,7 +138,6 @@ The second command restores the backup in $GeoBackup to the SQL database named R
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -314,7 +313,6 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
-
 
 ```yaml
 Type: System.String

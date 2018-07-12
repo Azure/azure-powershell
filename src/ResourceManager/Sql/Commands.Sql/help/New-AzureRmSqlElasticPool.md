@@ -63,7 +63,6 @@ in. The command specifies DTU property values for the pool and the databases in 
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -100,7 +99,6 @@ The default values for the different editions are as follows:
 - Premium. 125 DTUs
 
 For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)
-
 
 ```yaml
 Type: System.Int32
@@ -257,7 +255,6 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
-
 
 ```yaml
 Type: System.String

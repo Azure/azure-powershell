@@ -37,7 +37,6 @@ This command is updating alias which was previously pointing to oldServer to poi
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

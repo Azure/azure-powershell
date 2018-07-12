@@ -46,7 +46,6 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -166,7 +165,6 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
-
 
 ```yaml
 Type: System.String

@@ -122,7 +122,6 @@ This command updates a database named Database01 to set its max size to 1 TB.
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -223,7 +222,6 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
-
 
 ```yaml
 Type: System.String

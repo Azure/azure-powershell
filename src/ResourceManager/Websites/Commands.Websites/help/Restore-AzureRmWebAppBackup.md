@@ -44,7 +44,6 @@ Restores a backup of the specified app ContosoWebApp that is within resource gro
 ### -AppServicePlan
 The name of the App Service Plan for the restored app. If left empty, the app's current App Service Plan is used.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)

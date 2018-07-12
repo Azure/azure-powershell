@@ -35,7 +35,6 @@ Deletes an existing Azure SQL Server virtual network rule
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)

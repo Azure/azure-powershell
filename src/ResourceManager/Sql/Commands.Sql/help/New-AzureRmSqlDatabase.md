@@ -119,7 +119,6 @@ This command creates a Vcore database named Database03 on server Server01.
 ### -AsJob
 Run cmdlet in the background
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -261,7 +260,6 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
-
 
 ```yaml
 Type: System.String
