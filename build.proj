@@ -260,7 +260,8 @@
   <Target Name="Build" DependsOnTargets="RestoreNugetPackages;BuildMsBuildTask;FilterBuild">
 
     <Message Importance="high" Text="Building Cmdlets for scope $(Scope)..." />
-    <CallTarget targets="ChangeLogCheck" ContinueOnError="false" />
+    <!-- Investigate why the ChangeLogCheck target removes the 8080th character -->
+    <!-- <CallTarget targets="ChangeLogCheck" ContinueOnError="false" /> -->
 
     <MakeDir  Directories="$(PackageDirectory)"
               Condition="'$(Scope)' != 'Stack'" />
