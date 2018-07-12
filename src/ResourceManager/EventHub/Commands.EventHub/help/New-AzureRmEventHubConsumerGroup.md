@@ -19,6 +19,7 @@ New-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <Str
 ```
 
 ## DESCRIPTION
+Creates a new consumer group for the specified Event Hub.
 
 ## EXAMPLES
 
