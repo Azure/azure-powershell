@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+* Fix bug in example for `New-AzureRmSubscription`
 
 ## Version 0.2.1
 * Set minimum dependency of module to PowerShell 5.0

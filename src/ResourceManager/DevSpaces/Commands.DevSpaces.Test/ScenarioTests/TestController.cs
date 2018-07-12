@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Aks.Generated.Version2017_08_31;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Management.DevSpaces;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -55,10 +56,12 @@ namespace Microsoft.Azure.Commands.DevSpaces.Test.ScenarioTests
                 context.GetServiceClient<DevSpacesManagementClient>(TestEnvironmentFactory.GetTestEnvironment()));
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);

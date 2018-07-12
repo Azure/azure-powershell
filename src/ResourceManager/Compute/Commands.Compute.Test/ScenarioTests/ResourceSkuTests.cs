@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,16 +20,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class ResourceSkuTests
     {
+        XunitTracingInterceptor _logger;
+
         public ResourceSkuTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetResourceSku()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-GetResourceSku");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-GetResourceSku");
         }
     }
 }

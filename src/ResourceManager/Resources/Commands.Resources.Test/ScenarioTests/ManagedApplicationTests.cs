@@ -23,16 +23,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class ManagedApplicationTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public ManagedApplicationTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestManagedApplicationCRUD()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-ManagedApplicationCRUD");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-ManagedApplicationCRUD");
         }
     }
 }
