@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Name = id.ResourceName;
             }
 
-            if (ShouldProcess(Name, string.Format(CultureInfo.CurrentCulture, DeletingProcessMessage, Name))
+            if (ShouldProcess(Name, string.Format(CultureInfo.CurrentCulture, DeletingSearchServicePrompt, Name))
                ||
                Force.IsPresent)
             {

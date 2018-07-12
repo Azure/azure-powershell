@@ -16,30 +16,31 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
+using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr), OutputType(typeof(Models.PSSearchService))]
-    public class SetSearchServiceCommand : SearchServiceBaseCmdlet
+    [Cmdlet(VerbsCommon.Remove, SearchServiceQueryKeyNounStr, SupportsShouldProcess = true)]
+    public class RemoveSearchServiceQueryKey : SearchServiceBaseCmdlet
     {
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipeline = true,
-            ParameterSetName = InputObjectParameterSetName,
+            ParameterSetName = ParentObjectParameterSetName,
             HelpMessage = InputObjectHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public PSSearchService InputObject { get; set; }
+        public PSSearchService ParentObject { get; set; }
 
         [Parameter(
             Position = 0,
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            ParameterSetName = ResourceIdParameterSetName,
+            ParameterSetName = ParentResourceIdParameterSetName,
             HelpMessage = ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
+        public string ParentResourceId { get; set; }
 
         [Parameter(
             Position = 0,
@@ -58,46 +59,38 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
+        public string ServiceName { get; set; }
 
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = PartitionCountHelpMessage)]
-        public int? PartitionCount { get; set; }
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = QueryKeyValueHelpMessage)]
+        [ValidateNotNullOrEmpty]
+        public string KeyValue { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = ReplicaCountHelpMessage)]
-        public int? ReplicaCount { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
-            if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
+            if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
             {
-                ResourceGroupName = InputObject.ResourceGroupName;
-                Name = InputObject.Name;
+                ResourceGroupName = ParentObject.ResourceGroupName;
+                ServiceName = ParentObject.Name;
             }
-            else if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
+            else if (ParameterSetName.Equals(ParentResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
-                var id = new ResourceIdentifier(ResourceId);
+                var id = new ResourceIdentifier(ParentResourceId);
                 ResourceGroupName = id.ResourceGroupName;
-                Name = id.ResourceName;
+                ServiceName = id.ResourceName;
             }
 
-            // GET
-            var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
-
-            // UPDATE
-            service.PartitionCount = PartitionCount;
-            service.ReplicaCount = ReplicaCount;
-            service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
-
-            // OUTPUT
-            WriteSearchService(service);
+            if (ShouldProcess(KeyValue, string.Format(CultureInfo.CurrentCulture, DeletingQueryKeyPrompt, KeyValue))
+               ||
+               Force.IsPresent)
+            {
+                var res = SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Result;
+            }
         }
     }
 }

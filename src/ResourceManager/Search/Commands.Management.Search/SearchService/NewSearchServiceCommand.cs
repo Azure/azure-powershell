@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
 
-    [Cmdlet(VerbsCommon.New, SearchServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(Models.PSSearchService))]
+    [Cmdlet(VerbsCommon.New, SearchServiceNounStr), OutputType(typeof(Models.PSSearchService))]
     public class NewSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
