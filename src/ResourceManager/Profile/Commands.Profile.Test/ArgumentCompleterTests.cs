@@ -12,48 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using  Microsoft.Azure.Commands.TestFw;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class ArgumentCompleterTests : RMTestBase
+    public class ArgumentCompleterTests
     {
-        private XunitTracingInterceptor xunitLogger;
+        private readonly ITestRunnable _testManager;
 
         public ArgumentCompleterTests(ITestOutputHelper output)
         {
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
-
-            xunitLogger = new XunitTracingInterceptor(output);
+            _testManager = TestManager.CreateInstance()
+                .WithXunitTracingInterceptor(output)
+                .Build();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLocationCompleter()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-LocationCompleter");
+            _testManager.RunTestScript("Test-LocationCompleter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceGroupCompleter()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-ResourceGroupCompleter");
+            _testManager.RunTestScript("Test-ResourceGroupCompleter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestResourceIdCompleter()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-ResourceIdCompleter");
+            _testManager.RunTestScript("Test-ResourceIdCompleter");
         }
     }
 }

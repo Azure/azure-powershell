@@ -12,35 +12,30 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.Resources.Test.ScenarioTests;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using System.Threading;
+using  Microsoft.Azure.Commands.TestFw;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {
-    public class DefaultCmdletTests : RMTestBase
+    public class DefaultCmdletTests
     {
-        private XunitTracingInterceptor xunitLogger;
+        private readonly ITestRunnable _testManager;
 
         public DefaultCmdletTests(ITestOutputHelper output)
         {
-            TestExecutionHelpers.SetUpSessionAndProfile();
-            ResourceManagerProfileProvider.InitializeResourceManagerProfile(true);
-
-            xunitLogger = new XunitTracingInterceptor(output);
+            _testManager = TestManager.CreateInstance()
+                .WithXunitTracingInterceptor(output)
+                .Build();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DefaultResourceGroup()
         {
-            ProfileController.NewInstance.RunPsTest(xunitLogger, "72f988bf-86f1-41af-91ab-2d7cd011db47", "Test-DefaultResourceGroup");
+            _testManager.RunTestScript("Test-DefaultResourceGroup");
         }
     }
 }

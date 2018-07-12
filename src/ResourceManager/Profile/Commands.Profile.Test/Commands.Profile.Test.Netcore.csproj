@@ -32,6 +32,7 @@
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.TestFw\Commands.TestFw.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

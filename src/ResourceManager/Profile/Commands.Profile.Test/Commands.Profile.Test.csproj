@@ -246,6 +246,10 @@
       <Project>{3819d8a7-c62c-4c47-8ddd-0332d9ce1252}</Project>
       <Name>Commands.ResourceManager.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\Commands.TestFw\Commands.TestFw.csproj">
+      <Project>{8c625de3-0067-454a-af2c-efd672eeb31a}</Project>
+      <Name>Commands.TestFw</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Commands.Profile\Commands.Profile.csproj">
       <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
       <Name>Commands.Profile</Name>
