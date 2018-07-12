@@ -125,6 +125,72 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return null;
         }
 
+        private bool IsDiskEncryptionSettingPresent(VirtualMachine vm)
+        {
+            bool isPresent = false; 
+            if (vm != null && 
+                vm.InstanceView != null &&
+                vm.InstanceView.Disks != null &&
+                vm.InstanceView.Disks.Count > 0)
+            {
+                foreach ( DiskInstanceView d in vm.InstanceView.Disks )
+                {
+                    if (d.EncryptionSettings != null && d.EncryptionSettings.Count>0)
+                    {
+                        isPresent = true;
+                    }
+                }
+            }
+            return isPresent;
+        }
+
+        private string GetVersionForDisable(VirtualMachine vm)
+        {
+            // if there is currently an extension installed, use that version for disable as well 
+            if (vm.Resources != null)
+            {
+                foreach (VirtualMachineExtension vme in vm.Resources)
+                {
+                    if (vme.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher) &&
+                         (vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultType) ||
+                          vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType)))
+                    {
+                        return vme.TypeHandlerVersion;
+                    }
+                }
+            }
+
+            // If we reach this point, there was no extension currently installed, so we begin a process of identifying
+            // which version of the extension had been installed previously. 
+
+            // This supports a corner case when the extension is removed from teh VM first without first disabling it, and 
+            // only later deciding to disable encryption on the VM by adding the extension back to disable it.  
+            // The disable operation must be done with a version that matches the version that was used at time of enable.
+            // So we will derive which strategy (single or dual) encrypted the VM and then return the corresponding version. 
+
+            // If per disk encryption settings are found, use the single pass version to disable:
+            if (IsDiskEncryptionSettingPresent(vm))
+            {
+                switch (currentOSType)
+                {
+                    case OperatingSystemTypes.Windows:
+                        return AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion;
+                    case OperatingSystemTypes.Linux:
+                        return AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion;
+                }
+            }
+
+            // Otherwise, retain consistency and use the default dual pass version:
+            if (currentOSType == OperatingSystemTypes.Linux)
+            {
+                return AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion;
+            }
+            else
+            {
+                return AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion;
+            }
+        }
+
         private VirtualMachineExtension GetVmExtensionParameters(VirtualMachine vmParameters)
         {
             Hashtable SettingString = GetExtensionPublicSettings();
@@ -143,34 +209,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         null));
             }
 
-            string installedTypeHandlerVersion = null;
-            if (vmParameters.Resources != null)
-            {
-                foreach (VirtualMachineExtension vme in vmParameters.Resources)
-                {
-                    if (vme.Publisher.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher) &&
-                         (vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.ExtensionDefaultType) ||
-                          vme.VirtualMachineExtensionType.Equals(AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType)))
-                    {
-                        installedTypeHandlerVersion = vme.TypeHandlerVersion;
-                        break;
-                    }
-                }
-            }
-
-            if (installedTypeHandlerVersion == null)
-            {
-                ThrowTerminatingError(
-                    new ErrorRecord(
-                        new ApplicationException(
-                            string.Format(
-                                CultureInfo.CurrentUICulture,
-                                "Disable-AzureDiskEncryption did not find an installed version of the extension on the VM")),
-                        "InvalidResult",
-                        ErrorCategory.InvalidResult,
-                        null));
-            }
-
             VirtualMachineExtension vmExtensionParameters = null;
             if (OperatingSystemTypes.Windows.Equals(currentOSType))
             {
@@ -181,7 +219,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.ExtensionDefaultType,
-                    TypeHandlerVersion = installedTypeHandlerVersion,
+                    TypeHandlerVersion = GetVersionForDisable(vmParameters),
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -196,7 +234,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                     Location = vmParameters.Location,
                     Publisher = this.ExtensionPublisherName ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultPublisher,
                     VirtualMachineExtensionType = this.ExtensionType ?? AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultType,
-                    TypeHandlerVersion = installedTypeHandlerVersion,
+                    TypeHandlerVersion = GetVersionForDisable(vmParameters),
                     Settings = SettingString,
                     ProtectedSettings = ProtectedSettingString,
                     AutoUpgradeMinorVersion = !DisableAutoUpgradeMinorVersion.IsPresent
@@ -257,7 +295,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
             ExecuteClientAction(() =>
             {
-                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName));
+                VirtualMachine virtualMachineResponse = (this.ComputeClient.ComputeManagementClient.VirtualMachines.Get(this.ResourceGroupName, this.VMName, InstanceViewTypes.InstanceView));
 
                 if ((virtualMachineResponse == null) ||
                     (virtualMachineResponse.StorageProfile == null) ||
