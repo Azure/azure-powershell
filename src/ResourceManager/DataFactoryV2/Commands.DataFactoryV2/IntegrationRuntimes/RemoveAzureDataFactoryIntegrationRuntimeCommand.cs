@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Globalization;
 using System.Management.Automation;
 using System.Net;
@@ -27,6 +28,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     public class RemoveAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(Mandatory = false,
+            HelpMessage = Constants.HelpIntegrationRuntimeLinks)]
+        public SwitchParameter Links { get; set; }
+
+        [Parameter(Mandatory = false,
+            HelpMessage = Constants.HelpLinkedFactoryName)]
+        public string LinkedDataFactoryName { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
@@ -35,6 +44,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
+
+            if (Links.IsPresent && string.IsNullOrWhiteSpace(LinkedDataFactoryName))
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InvalidLinkedDataFactoryName),
+                    "LinkedDataFactoryName");
+            }
+
+            Action removeLinks = () => { ExecuteRemoveLinks(LinkedDataFactoryName); };
 
             ConfirmAction(
                 Force.IsPresent,
@@ -49,7 +69,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     Name,
                     DataFactoryName),
                 Name,
-                ExecuteDelete);
+                Links.IsPresent ? removeLinks : ExecuteDelete);
         }
 
         private void ExecuteDelete()
@@ -64,6 +84,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 WriteWarning(string.Format(
                     CultureInfo.InvariantCulture, Resources.IntegrationRuntimeNotFound, Name, DataFactoryName));
             }
+        }
+
+        private void ExecuteRemoveLinks(string linkedDataFactoryName)
+        {
+            DataFactoryClient.RemoveIntegrationRuntimeLinksAsync(
+                ResourceGroupName,
+                DataFactoryName,
+                Name,
+                linkedDataFactoryName).ConfigureAwait(true).GetAwaiter().GetResult();
         }
     }
 }

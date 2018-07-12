@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntimeName);
         }
 
-        public virtual async Task<PSSelfHostedIntegrationRuntime> UpdateIntegrationRuntimeAsync(
+        public virtual async Task<PSIntegrationRuntime> UpdateIntegrationRuntimeAsync(
             string resourceGroupName,
             string dataFactoryName,
             string integrationRuntimeName,
@@ -358,12 +358,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName,
                 integrationRuntimeName,
                 request);
-            var selfHostedStatus = response.Properties as SelfHostedIntegrationRuntime;
 
             return new PSSelfHostedIntegrationRuntime(
                 response,
                 resourceGroupName,
                 dataFactoryName);
+        }
+
+        public virtual async Task<HttpStatusCode> RemoveIntegrationRuntimeLinksAsync(
+            string resourceGroupName,
+            string dataFactoryName,
+            string integrationRuntimeName,
+            string linkedDataFactoryName)
+        {
+            var response = await this.DataFactoryManagementClient.IntegrationRuntimes.RemoveLinksWithHttpMessagesAsync(
+                resourceGroupName,
+                dataFactoryName,
+                integrationRuntimeName,
+                new LinkedIntegrationRuntimeRequest(linkedDataFactoryName));
+
+            return response.Response.StatusCode;
         }
 
         internal async Task<bool> CheckIntegrationRuntimeExistsAsync(
@@ -419,9 +433,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             else
             {
-                var selfHosted = integrationRuntime.Properties as SelfHostedIntegrationRuntime;
-                if (selfHosted != null)
+                if (integrationRuntime.Properties is SelfHostedIntegrationRuntime selfHosted)
                 {
+                    if (selfHosted.LinkedInfo != null)
+                    {
+                        return new PSLinkedIntegrationRuntimeStatus(
+                            integrationRuntime,
+                            (SelfHostedIntegrationRuntimeStatus) status.Properties,
+                            resourceGroupName,
+                            dataFactoryName,
+                            DataFactoryManagementClient.DeserializationSettings,
+                            selfHosted.LinkedInfo is LinkedIntegrationRuntimeKeyAuthorization
+                                ? Constants.LinkedIntegrationRuntimeKeyAuth
+                                : Constants.LinkedIntegrationRuntimeRbacAuth,
+                            status.Name,
+                            status.Properties.DataFactoryName);
+                    }
+
                     return new PSSelfHostedIntegrationRuntimeStatus(
                         integrationRuntime,
                         (SelfHostedIntegrationRuntimeStatus)status.Properties,
@@ -466,9 +494,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             var selfHosted = integrationRuntime.Properties as SelfHostedIntegrationRuntime;
             if (selfHosted != null)
             {
-                psIntegrationRuntime = new PSSelfHostedIntegrationRuntime(integrationRuntime,
-                        resourceGroupName,
-                        dataFactoryName);
+                if (selfHosted.LinkedInfo != null)
+                {
+                    psIntegrationRuntime = new PSLinkedIntegrationRuntime(integrationRuntime,
+                            resourceGroupName,
+                            dataFactoryName)
+                    {
+                        AuthorizationType = selfHosted.LinkedInfo is LinkedIntegrationRuntimeKeyAuthorization
+                            ? Constants.LinkedIntegrationRuntimeKeyAuth
+                            : Constants.LinkedIntegrationRuntimeRbacAuth
+                    };
+                }
+                else
+                {
+                    psIntegrationRuntime = new PSSelfHostedIntegrationRuntime(integrationRuntime,
+                            resourceGroupName,
+                            dataFactoryName);
+                }
             }
 
             return psIntegrationRuntime;
