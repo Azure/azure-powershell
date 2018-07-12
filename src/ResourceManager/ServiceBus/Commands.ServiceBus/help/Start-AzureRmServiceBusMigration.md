@@ -21,6 +21,8 @@ Start-AzureRmServiceBusMigration [-ResourceGroupName] <String> [-Name] <String> 
 ## DESCRIPTION
 The **Start-AzureRmServiceBusMigration** cmdlet creates an new Migration configuration and starts migrating entities from Standard to Premium namespaces
 
+## EXAMPLES
+
 ### Example 1
 ```powershell
 PS C:\> Start-AzureRmServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMirgation -TargetNameSpace /subscriptions/SubscriptionId/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation -PostMigrationName TestingNamespaceStandardMirgationPostMigration
