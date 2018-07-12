@@ -59,6 +59,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DeviceProvisioning
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Test.Netcore", "ResourceManager\PolicyInsights\Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TestFw.Netcore", "ResourceManager\Common\Commands.TestFw\Commands.TestFw.Netcore.csproj", "{BFACE421-52D9-4D41-BDE9-444A8A721330}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -405,6 +407,18 @@ Global
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x64.Build.0 = Release|Any CPU
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x86.ActiveCfg = Release|Any CPU
 		{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}.Release|x86.Build.0 = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|x64.Build.0 = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Debug|x86.Build.0 = Debug|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|x64.ActiveCfg = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|x64.Build.0 = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|x86.ActiveCfg = Release|Any CPU
+		{BFACE421-52D9-4D41-BDE9-444A8A721330}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
