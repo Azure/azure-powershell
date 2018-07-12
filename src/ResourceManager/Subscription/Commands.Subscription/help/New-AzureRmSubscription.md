@@ -25,7 +25,7 @@ The **New-AzureRmSubscription** cmdlet creates an Azure subscription.
 
 ### Example 1
 ```
-PS C:\> New-AzureRmSubscription -Name "My Subscription" -EnrollmentAccountObjectId (Get-AzureRmEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
+PS C:\> New-AzureRmSubscription -Name "My Subscription" -EnrollmentAccountObjectId ((Get-AzureRmEnrollmentAccount)[0].ObjectId) -OfferType MS-AZR-0017P
 
 Name        : My Subscription
 Id          : 86869d42-1782-4337-98b0-c905fb937d46
