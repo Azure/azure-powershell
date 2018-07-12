@@ -177,3 +177,78 @@ function Test-UpdateDataFactory
     }
 }
 
+<#
+.SYNOPSIS
+Add a Github DataFactory
+#>
+function Test-SetFactoryGithub{
+	$dfname = Get-DataFactoryName
+	$rgname = Get-ResourceGroupName
+	$dfloaction = Get-ProviderLocation DataFactoryManagement
+	$rglocation = Get-ProviderLocation ResourceManagement
+	
+	$repoType = "githubPrivate" 
+	$repoAccountName = "testAccount"
+	$repoName = "testRepo"
+	$repoCollaborationBranch = "testBranch"
+	$repoRootFolder = "testRoot"
+	$repoLastCommitId = "testId"
+	$githubHostName = "testHost"
+
+	$actual = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname repositoryType $repotype -repositoryAccountName $repoAccountName -repositoryName $repositoryName -repositoryCollborationBranch $repoColborationBranch -repositoryRootFolder $reporootfolder -repositoryLastCommitId $repolasCommitId -githubHostName $gitbutHostName
+	$expected = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+	Assert-AreEqualObjectProperties $expected $actual
+}
+
+
+<#
+.SYNOOSIS
+Add a VSTS DataFactory With TenantName
+#>
+function Test-SetFactoryVSTS{
+	$dfname = Get-DataFactoryName
+	$rgname = Get-ResourceGroupName
+	$dfloaction = Get-ProviderLocation DataFactoryManagement
+	$rglocation = Get-ProviderLocation ResourceManagement
+	
+	$repoType = "VSTSPrivate" 
+	$repoAccountName = "testAccount"
+	$repoName = "testRepo"
+	$repoCollaborationBranch = "testBranch"
+	$repoRootFolder = "testRoot"
+	$repoLastCommitId = "testId"
+	$VSTSProjectName = "testVSTSProject"
+	$VSTSTenantName = "testTenant"
+
+	$actual = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname repositoryType $repotype -repositoryAccountName $repoAccountName -repositoryName $repositoryName -repositoryCollborationBranch $repoColborationBranch -repositoryRootFolder $reporootfolder -repositoryLastCommitId $repolasCommitId  -VSTSProjectName $VSTSProjectName -VSTSTenantName $VSTSTenantName
+	$expected = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+
+	Assert-AreEqualObjcetProperties $expected $actual
+}
+
+<#
+.SYNOOSIS
+Add a VSTS DataFactory witout TenantName
+#>
+function Test-SetFactoryVSTS{
+	$dfname = Get-DataFactoryName
+	$rgname = Get-ResourceGroupName
+	$dfloaction = Get-ProviderLocation DataFactoryManagement
+	$rglocation = Get-ProviderLocation ResourceManagement
+	
+	$repoType = "VSTSPrivate" 
+	$repoAccountName = "testAccount"
+	$repoName = "testRepo"
+	$repoCollaborationBranch = "testBranch"
+	$repoRootFolder = "testRoot"
+	$repoLastCommitId = "testId"
+	$VSTSProjectName = "testVSTSProject"
+
+	$actual = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname repositoryType $repotype -repositoryAccountName $repoAccountName -repositoryName $repositoryName -repositoryCollborationBranch $repoColborationBranch -repositoryRootFolder $reporootfolder -repositoryLastCommitId $repolasCommitId  -VSTSProjectName $VSTSProjectName
+	$expected = Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+	Assert-AreEqualObjcetProperties $expected $actual
+}
+
