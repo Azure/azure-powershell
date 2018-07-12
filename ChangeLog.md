@@ -14,6 +14,7 @@
 * Update help and add example for 'New-AzureRMAutomationSchedule'
 
 #### AzureRM.Compute
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
 * Add example for 'Add-AzureRmVmssExtension'
 * Add examples for 'Remove-AzureRmVmssExtension'
 * Update help for 'Set-AzureRmVMAccessExtension'
@@ -25,8 +26,12 @@
 #### AzureRM.KeyVault
 * Update error message for Set-AzureRmKeyVaultAccessPolicy
 
+#### AzureRM.LogicApp
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
+
 #### AzureRM.Network
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Regenerated RouteTable cmdlets with the latest generator version
 
 #### AzureRM.Relay
 * Updated markdown files, fix for the parameter name issue in example
