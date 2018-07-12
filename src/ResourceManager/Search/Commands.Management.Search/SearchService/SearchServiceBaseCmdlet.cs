@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Management.Search.Models;
 using Microsoft.Azure.Commands.Management.Search.SearchService;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Search;
+using Microsoft.Azure.Management.Search.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 
@@ -24,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.Search
     public abstract class SearchServiceBaseCmdlet : AzureRMCmdlet
     {
         protected const string SearchServiceNounStr = "AzureRmSearchService";
+        protected const string SearchServiceAdminKeyNounStr = "AzureRmSearchAdminKey";
+        protected const string SearchServiceAdminKeyPairNounStr = "AzureRmSearchAdminKeyPair";
+        protected const string SearchServiceQueryKeyNounStr = "AzureRmSearchQueryKey";
 
         protected const string InputObjectParameterSetName = "InputObjectParameterSet";
         protected const string ResourceNameParameterSetName = "ResourceNameParameterSet";
@@ -32,17 +36,24 @@ namespace Microsoft.Azure.Commands.Management.Search
 
         protected const string InputObjectHelpMessage = "Search Service Input Object.";
         protected const string ResourceIdHelpMessage = "Search Service Resource Id.";
-        protected const string ForceHelpMessage = "Don't ask for confirmation.";
+        protected const string ForceHelpMessage = "Do not ask for confirmation.";
 
-        protected const string ResourceGroupHelpMessage = "Resource Group Name.";
-        protected const string ResourceNameHelpMessage = "Search Service Name.";
+        protected const string ResourceGroupHelpMessage = "Resource Group name.";
+        protected const string ResourceNameHelpMessage = "Search Service name.";
         protected const string SkuHelpMessage = "Search Service Sku.";
-        protected const string LocationHelpMessage = "Search Service Location.";
-        protected const string PartitionCountHelpMessage = "Search Service Partition Count.";
-        protected const string ReplicaCountHelpMessage = "Search Service Replica Count.";
-        protected const string HostingModeHelpMessage = "Search Service Hosting Mode.";
+        protected const string LocationHelpMessage = "Search Service location.";
+        protected const string PartitionCountHelpMessage = "Search Service partition count.";
+        protected const string ReplicaCountHelpMessage = "Search Service replica count.";
+        protected const string HostingModeHelpMessage = "Search Service hosting mode.";
+        protected const string KeyKindHelpMessage = "Search Service admin key kind (Primary/Secondary).";
+        protected const string QueryKeyNameHelpMessage = "Search Service query key name.";
+        protected const string QueryKeyValueHelpMessage = "Search Service query key value.";
 
-        protected const string DeletingProcessMessage = "Deleting Search Service {0}.";
+        protected const string ParentObjectParameterSetName = "ParentObjectParameterSet";
+        protected const string ParentResourceIdParameterSetName = "ParentResourceIdParameterSet";
+
+        protected const string DeletingSearchServicePrompt = "Deleting Search Service {0}.";
+        protected const string DeletingQueryKeyPrompt = "Deleting Search Service Query Key {0}.";
 
         private SearchManagementClientWrapper searchClientWrapper;
 
@@ -75,12 +86,39 @@ namespace Microsoft.Azure.Commands.Management.Search
             }
         }
 
-        protected void WriteSearchServicesAccountList(IEnumerable<Azure.Management.Search.Models.SearchService> searchServices)
+        protected void WriteSearchServiceList(IEnumerable<Azure.Management.Search.Models.SearchService> searchServices)
         {
             var output = new List<PSSearchService>();
             if (searchServices != null)
             {
                 searchServices.ForEach(svc => output.Add(PSSearchService.Create(svc)));
+            }
+
+            WriteObject(output, true);
+        }
+
+        protected void WriteAdminKey(AdminKeyResult adminKeyResult)
+        {
+            if(adminKeyResult != null)
+            {
+                WriteObject(PSSearchAdminKey.Create(adminKeyResult));
+            }
+        }
+
+        protected void WriteQueryKey(QueryKey queryKey)
+        {
+            if(queryKey != null)
+            {
+                WriteObject(PSSearchQueryKey.Create(queryKey));
+            }
+        }
+
+        protected void WriteQueryKeyList(IEnumerable<QueryKey> queryKeys)
+        {
+            var output = new List<PSSearchQueryKey>();
+            if (queryKeys != null)
+            {
+                queryKeys.ForEach(key => output.Add(PSSearchQueryKey.Create(key)));
             }
 
             WriteObject(output, true);

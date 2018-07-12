@@ -3,10 +3,6 @@ using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -42,6 +38,27 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
         public void TestRemoveSearchService()
         {
             TestController.NewInstance.RunPsTest("Test-RemoveAzureRmSearchService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetSearchService()
+        {
+            TestController.NewInstance.RunPsTest("Test-SetAzureRmSearchService");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSearchServiceAdminKey()
+        {
+            TestController.NewInstance.RunPsTest("Test-ManageAzureRmSearchServiceAdminKey");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManageSearchServiceQueryKey()
+        {
+            TestController.NewInstance.RunPsTest("Test-ManageAzureRmSearchServiceQueryKey");
         }
     }
 }
