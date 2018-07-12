@@ -12,9 +12,28 @@ Creates a data factory.
 
 ## SYNTAX
 
+### ByFactoryName
 ```
 Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Tag] <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVSTS
+```
+Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ -VSTSProjectName <String> [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByGithub
+```
+Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -77,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GitHubHostName
+GitHub repo host name.
+
+```yaml
+Type: String
+Parameter Sets: ByGithub
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The data factory is created in this region.
 
@@ -107,6 +141,81 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RepositoryAccountName
+The account name associated with the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryCollaborationBranch
+The collaboration branch on the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryLastCommitId
+The id of the last commit.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryName
+The name of the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryRootFolder
+The root folder of the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -134,6 +243,36 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VSTSProjectName
+VSTS project name.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VSTSTenantId
+VSTS tenant id.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
