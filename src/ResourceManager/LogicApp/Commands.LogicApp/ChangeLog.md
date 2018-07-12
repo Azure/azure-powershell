@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
 
 ## Version 4.0.5
 * Fixed formatting of OutputType in help files
