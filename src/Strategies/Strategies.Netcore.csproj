@@ -18,8 +18,8 @@
     <PackageTags>azure;powershell;strategies</PackageTags>
     <Authors>Microsoft Corporation</Authors>
     <Copyright>Copyright © Microsoft Corporation</Copyright>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/Azure/azure-powershell</PackageProjectUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell-common/master/LICENSE.txt</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/Azure/azure-powershell-common</PackageProjectUrl>
     <PackageOutputPath>$(ProjectDir)..\..\artifacts\Package\$(Configuration)</PackageOutputPath>
     <PackageVersion>1.0.0-preview</PackageVersion>
   </PropertyGroup>

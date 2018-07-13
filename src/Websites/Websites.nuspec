@@ -7,8 +7,8 @@
     <authors>Microsoft Corporation</authors>
     <owners>Microsoft Corporation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/preview/LICENSE.txt</licenseUrl>
-    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell-common/master/LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell-common</projectUrl>
     <description>Microsoft Azure PowerShell Websites library</description>
     <copyright>Copyright © Microsoft Corporation</copyright>
     <tags>azure powershell websites</tags>
