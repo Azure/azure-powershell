@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.6.10
 * Add required property ResourceGroupName to AS.
 
 ## Version 0.6.9

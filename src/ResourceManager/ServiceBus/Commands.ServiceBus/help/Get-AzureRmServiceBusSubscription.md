@@ -1,7 +1,7 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebussubscription
+online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebussubscription
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Returns a subscription description for the specified topic.
 
 ```
 Get-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [[-Name] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Name] <String>] [-MaxCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,10 +44,26 @@ UpdatedAt                                 : 1/20/2017 3:18:54 AM
 
 Returns a subscription description for the specified Service Bus topic.
 
+### Example 2
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+
+```
+
+Returns list of subscriptions for specified Service Bus topic.
+
+### Example 3
+```
+PS C:\> Get-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1 -MaxCount 30
+
+```
+
+Returns list of first 30 subscriptions for specified Service Bus topic.
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: IAzureContextContainer
@@ -61,8 +77,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MaxCount
+Determine the maximum number of Subscriptions to return.
+
+```yaml
+Type: Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
-Subscription Name.
+Subscription Name
 
 ```yaml
 Type: String
@@ -77,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
 Type: String
@@ -107,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -Topic
-Topic Name.
+Topic Name
 
 ```yaml
 Type: String
@@ -122,17 +153,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
 
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
+
 ## NOTES
 
 ## RELATED LINKS
-
