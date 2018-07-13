@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.8
 * Update example for `New-AzureRmServiceFabricCluster`
 
 ## Version 0.3.7
