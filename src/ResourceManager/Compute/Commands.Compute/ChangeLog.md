@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add example for `New-AzureRmVM`
 * Add example for `Add-AzureRmVmssExtension`
 * Add examples for `Remove-AzureRmVmssExtension`
 * Update help for `Set-AzureRmVMAccessExtension`
