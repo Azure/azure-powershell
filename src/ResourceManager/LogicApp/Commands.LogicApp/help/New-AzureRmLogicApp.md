@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 8679240C-EA47-41C5-B8C1-A3C99547F42B
@@ -16,14 +16,14 @@ Creates a logic app in a resource group.
 ### LogicAppWithDefinitionParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-Definition <Object>] [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
+ -Definition <Object> [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogicAppWithDefinitionFileParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
+ -DefinitionFilePath <String> [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -180,9 +180,9 @@ Specifies the definition for your logic app as an object or a string in JavaScri
 ```yaml
 Type: Object
 Parameter Sets: LogicAppWithDefinitionParameterSet
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -195,9 +195,9 @@ Specifies the definition of a logic app as the path of a definition file in JSON
 ```yaml
 Type: String
 Parameter Sets: LogicAppWithDefinitionFileParameterSet
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +210,7 @@ Specifies an integration account ID for the logic app.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,7 +227,7 @@ You can place a logic app in any location.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -257,7 +257,7 @@ Specifies the path of a JSON formatted parameter file.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -273,7 +273,7 @@ Specify a hash table, Dictionary\<string\>, or Dictionary\<string, WorkflowParam
 ```yaml
 Type: Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -288,7 +288,7 @@ Specifies the name of a resource group.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -304,7 +304,7 @@ The acceptable values for this parameter are: Enabled and Disabled.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
