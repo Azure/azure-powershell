@@ -134,6 +134,40 @@ This script can be used for automatic provisioning because it uses the local vir
 This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 
+### Example 3: Create a VM from a marketplace image without a Public IP
+```
+$VMLocalAdminUser = "LocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$LocationName = "westus"
+$ResourceGroupName = "MyResourceGroup"
+$ComputerName = "MyVM"
+$VMName = "MyVM"
+$VMSize = "Standard_DS3"
+
+$NetworkName = "MyNet"
+$NICName = "MyNIC"
+$SubnetName = "MySubnet"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+
+$SingleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+$Vnet = New-AzureRmVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+$NIC = New-AzureRmNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupName -Location $LocationName -SubnetId $Vnet.Subnets[0].Id
+
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+$VirtualMachine = New-AzureRmVMConfig -VMName $VMName -VMSize $VMSize
+$VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+$VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+$VirtualMachine = Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2012-R2-Datacenter' -Version latest
+
+New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM $VirtualMachine -Verbose
+```
+
+This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
+
+This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
+
 ## PARAMETERS
 
 ### -AddressPrefix
