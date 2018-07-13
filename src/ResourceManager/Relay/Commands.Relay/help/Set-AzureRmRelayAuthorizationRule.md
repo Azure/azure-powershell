@@ -58,6 +58,11 @@ PS C:\> $getAutoRule = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Defa
  AuthoRule1
 PS C:\> $getAutoRule.Rights.Add("Send")
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/AuthoRule1
 ```
 
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
@@ -65,6 +70,11 @@ Adds **Send** from the access rights of the authorization rule `AuthoRule1` in n
 ### Example 1.2 - Namespace with Rights parameter
 ```
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/AuthoRule1
 ```
 
 Adds **Send** from the access rights of the authorization rule `AuthoRule1` in namespace `TestNameSpace-Relay1`.
@@ -74,6 +84,11 @@ Adds **Send** from the access rights of the authorization rule `AuthoRule1` in n
 PS C:\> $getWcfRelayAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1
 PS C:\> $getWcfRelayAutho.Rights.Add("Send")
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -InputObject $getWcfRelayAutho
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay1/authorizationRules/AuthoRule1
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
@@ -81,6 +96,11 @@ Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the
 ### Example 2.2 - WcfRelay with Rights parameter
 ```
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -WcfRelay TestWCFRelay1 -Name AuthoRule1 -Rights "Send"
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay1/authorizationRules/AuthoRule1
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the WcfRelay `TestWCFRelay1`.
@@ -90,6 +110,11 @@ Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the
 PS C:\> $GetHybirdAutho = Get-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1
 PS C:\> $GetHybirdAutho.Rights.Add("Send")
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -InputObject $GetHybirdAutho
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/TestHybridConnection/authorizationRules/AuthoRule1
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
@@ -97,6 +122,11 @@ Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the
 ### Example 3.2 - HybridConnection with Rights parameter
 ```
 PS C:\> Set-AzureRmRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -HybridConnection TestHybridConnection -Name AuthoRule1 -Rights "Send"
+
+Rights : {Listen, Send}
+Name   : AuthoRule1
+Type   : Microsoft.Relay/AuthorizationRules
+Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/TestHybridConnection/authorizationRules/AuthoRule1
 ```
 
 Adds **Send** to the access rights of the authorization rule `AuthoRule1` of the HybridConnection `TestHybridConnection`.
@@ -124,7 +154,7 @@ HybridConnection Name.
 ```yaml
 Type: String
 Parameter Sets: HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -139,7 +169,7 @@ Relay AuthorizationRule Object
 ```yaml
 Type: AuthorizationRuleAttributes
 Parameter Sets: NamespaceAuthorizationRuleSet, WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -151,7 +181,7 @@ Accept wildcard characters: False
 ```yaml
 Type: AuthorizationRuleAttributes
 Parameter Sets: AuthoRuleInputObjectSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -166,7 +196,7 @@ AuthorizationRule Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -181,7 +211,7 @@ Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: NamespaceAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -193,7 +223,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String
 Parameter Sets: WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -208,7 +238,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -218,13 +248,13 @@ Accept wildcard characters: False
 ```
 
 ### -Rights
-Rights, e.g. 
+Rights, e.g.
 @("Listen","Send","Manage")
 
 ```yaml
 Type: String[]
 Parameter Sets: NamespaceAuthorizationRuleSet, WcfRelayAuthorizationRuleSet, HybridConnectionAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -236,7 +266,7 @@ Accept wildcard characters: False
 ```yaml
 Type: String[]
 Parameter Sets: AuthoRulePropertiesSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -251,7 +281,7 @@ WcfRelay Name.
 ```yaml
 Type: String
 Parameter Sets: WcfRelayAuthorizationRuleSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -297,25 +327,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### -ResourceGroupName
- System.String 
+ System.String
 
 ### -Namespace
- System.String 
- 
+ System.String
+
 
 ### -WcfRelay
- System.String 
+ System.String
 
 ### -HybridConnection
- System.String 
- 
+ System.String
+
 
 ### -Name
  System.String
 
 ### -InputObject
  Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
- 
+
 
 ### -Rights
  System.String []
@@ -323,24 +353,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
-
-### Example 1 - Namespace
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/AuthorizationRules/AuthoRule1
-
-### Example 2 - WcfRelay
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay1/authorizationRules/AuthoRule1
-
-### Example 3 - HybridConnection
-Rights : {Listen, Send}
-Name   : AuthoRule1
-Type   : Microsoft.Relay/AuthorizationRules
-Id     : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/HybridConnections/TestHybridConnection/authorizationRules/AuthoRule1
 
 ## NOTES
 

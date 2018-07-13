@@ -37,11 +37,38 @@ PS C:\> $getWcfRelay = Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus
 PS C:\> $getWcfRelay.UserMetadata = "usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
 riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored."
 PS C:\> Set-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -InputObject $getWcfRelay
+
+RelayType                   : Http
+CreatedAt                   : 4/26/2017 5:14:46 PM
+UpdatedAt                   : 4/26/2017 5:16:50 PM
+ListenerCount               :
+RequiresClientAuthorization : False
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
+riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
+                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay2
+Name                        : TestWCFRelay2
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
 ### Example 2 - Properties
 ```
 PS C:\> Set-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1 -UserMetadata "User Meta data"
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/26/2017 5:20:08 PM
+UpdatedAt                   : 4/26/2017 5:26:09 PM
+ListenerCount               :
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
+                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
+Name                        : TestWCFRelay
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
 Updates the specified WcfRelay with a new description in the specified namespace.
@@ -70,7 +97,7 @@ WcfRelay object.
 ```yaml
 Type: WcfRelayAttributes
 Parameter Sets: WcfRelayInputObjectSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,7 +112,7 @@ WcfRelay Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -100,7 +127,7 @@ Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -115,7 +142,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -131,7 +158,7 @@ it can be used to store  descriptive data, such as list of teams and their conta
 ```yaml
 Type: String
 Parameter Sets: WcfRelayPropertiesSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -197,39 +224,6 @@ System.String
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-
-### Example 1 - InputObject
-
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-RelayType                   : Http
-CreatedAt                   : 4/26/2017 5:14:46 PM
-UpdatedAt                   : 4/26/2017 5:16:50 PM
-ListenerCount               :
-RequiresClientAuthorization : False
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : usermetadata is a placeholder to store user-defined string data for the HybridConnection endpoint.e.g. it can be used to store  desc
-riptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
-                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay2
-Name                        : TestWCFRelay2
-Type                        : Microsoft.Relay/WcfRelays
-
-### Example 2 - Properties
-
-### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-RelayType                   : NetTcp
-CreatedAt                   : 4/26/2017 5:20:08 PM
-UpdatedAt                   : 4/26/2017 5:26:09 PM
-ListenerCount               :
-RequiresClientAuthorization : True
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : User Meta data
-Id                          : /subscriptions/55f3dcd4-cac7-43b4-990b-a139d62a1eb2/resourceGroups/Default-Storage-WestUS/providers/Microsoft.Rel
-                              ay/namespaces/TestNameSpace-Relay1/WcfRelays/TestWCFRelay
-Name                        : TestWCFRelay
-Type                        : Microsoft.Relay/WcfRelays
 
 ## NOTES
 

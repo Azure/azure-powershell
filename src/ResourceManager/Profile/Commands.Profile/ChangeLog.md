@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.3.3
 * Updated help for `Get-AzureRmContextAutosaveSetting`
 
 ## Version 5.3.2
