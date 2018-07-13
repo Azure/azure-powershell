@@ -215,7 +215,7 @@ function Test-SetFactoryVSTS
 	$repoRootFolder = "testRoot"
 	$repoLastCommitId = "testId"
 	$VSTSProjectName = "testVSTSProject"
-	$VSTSTenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"#"12345678-1234-1234-1234-1234567890ab"
+	$VSTSTenantId = "12345678-1234-1234-1234-1234567890ab"
 
     try
     {
