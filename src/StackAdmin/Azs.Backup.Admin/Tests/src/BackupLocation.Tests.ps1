@@ -72,8 +72,8 @@ InModuleScope Azs.Backup.Admin {
                 $BackupLocation.Location    | Should Not Be $null
 
                 # Subscriber Usage Aggregate
-                $BackupLocation.Password    			| Should Be $null
-                $BackupLocation.EncryptionKeyBase64     | Should Be $null
+                $BackupLocation.Password    			| Should -BeNullOrEmpty
+                $BackupLocation.EncryptionKeyBase64     | Should -BeNullOrEmpty
             }
 
             function AssertAreEqual {
@@ -84,7 +84,7 @@ InModuleScope Azs.Backup.Admin {
                     $found
                 )
                 # Resource
-                if ($expected -eq $null) {
+                if ($null -eq $expected) {
                     $found												    | Should Be $null
                 }
                 else {
