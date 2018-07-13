@@ -20,7 +20,11 @@
 
 ## Current Release
 
-## Version 6.3.2
+## Version 6.4.0
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
 * Regenerated RouteTable cmdlets with the latest generator version
 
 ## Version 6.3.1
