@@ -54,6 +54,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     "LinkedDataFactoryName");
             }
 
+            if (!Links.IsPresent && !string.IsNullOrWhiteSpace(LinkedDataFactoryName))
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.LinksSwitchMissing),
+                    "Links");
+            }
+
             Action removeLinks = () => { ExecuteRemoveLinks(LinkedDataFactoryName); };
 
             ConfirmAction(

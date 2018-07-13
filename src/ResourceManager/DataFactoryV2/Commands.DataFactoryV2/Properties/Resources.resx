@@ -383,4 +383,7 @@ Are you sure you want to continue?</value>
   <data name="InvalidLinkedDataFactoryName" xml:space="preserve">
     <value>The linked data factory name is invlaid.</value>
   </data>
+  <data name="LinksSwitchMissing" xml:space="preserve">
+    <value>LinkedDataFactoryName parameter is working together with '-Links' switch parameter.</value>
+  </data>
 </root>
