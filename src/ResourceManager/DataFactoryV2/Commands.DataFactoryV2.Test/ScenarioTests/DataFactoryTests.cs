@@ -72,5 +72,27 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest("Test-UpdateDataFactory");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2Github()
+        {
+            RunPowerShellTest("Test-SetFactoryGithub");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2VSTS()
+        {
+            RunPowerShellTest("Test-SetFactoryVSTS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2VSTSNoTenant()
+        {
+            RunPowerShellTest("Test-SetFactoryVSTSNoTenant");
+        }
     }
 }

@@ -59,15 +59,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The tags of the data factory.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The tags of the data factory.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The tags of the data factory.")]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
         
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS,  Mandatory = true, HelpMessage = "The type of the data factory repository configuration.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The type of the data factory repository configuration.")]
-        public string RepositoryType { get; set; }
-           
         [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "The account name associated with the repository.")]
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The account name associated with the repository.")]
         public string RepositoryAccountName { get; set; }
