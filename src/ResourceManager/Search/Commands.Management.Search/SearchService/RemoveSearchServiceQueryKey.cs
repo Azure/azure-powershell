@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
-using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
@@ -85,12 +85,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 ServiceName = id.ResourceName;
             }
 
-            if (ShouldProcess(KeyValue, string.Format(CultureInfo.CurrentCulture, DeletingQueryKeyPrompt, KeyValue))
-               ||
-               Force.IsPresent)
-            {
-                var res = SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Result;
-            }
+            ConfirmAction(Force.IsPresent,
+                string.Format(Resources.RemovingQueryKey, KeyValue),
+                string.Format(Resources.RemoveQueryKey, KeyValue),
+                KeyValue,
+                () =>
+                {
+                    SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Wait();
+                }
+             );
         }
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSearchService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create an Azure Search service.
 
 ## SYNTAX
 
@@ -19,16 +19,27 @@ New-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmSearchService** cmdlet creates an Azure Search service with specified parameters.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default
+
+
+ResourceGroupName : TestAzureSearchPsGroup
+Name              : pstestazuresearch01
+Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers/Microsoft.Search/searchServices/pstestazuresearch01
+Location          : West US
+Sku               : Standard
+ReplicaCount      : 1
+PartitionCount    : 1
+HostingMode       : Default
+Tags              : 
 ```
 
-{{ Add example description here }}
+The command creates an Azure Search service.
 
 ## PARAMETERS
 
@@ -160,11 +171,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
-Microsoft.Azure.Management.Search.Models.SkuName
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Nullable`1[[Microsoft.Azure.Management.Search.Models.HostingMode, Microsoft.Azure.Management.Search, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
+### None
 
 ## OUTPUTS
 
@@ -174,3 +181,9 @@ System.Nullable`1[[Microsoft.Azure.Management.Search.Models.HostingMode, Microso
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+
+[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+
+[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)

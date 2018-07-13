@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzureRmSearchService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Update an Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,27 @@ Set-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Partit
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Set-AzureRmSearchService** cmdlet modifies an Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
+
+
+ResourceGroupName : TestAzureSearchPsGroup
+Name              : pstestazuresearch01
+Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers/Microsoft.Search/searchServices/pstestazuresearch01
+Location          : West US
+Sku               : Standard
+ReplicaCount      : 2
+PartitionCount    : 2
+HostingMode       : Default
+Tags              : 
 ```
 
-{{ Add example description here }}
+The example changes partition count and replica count of the Azure Search service to 2.
 
 ## PARAMETERS
 
@@ -155,10 +166,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
 
@@ -168,3 +176,9 @@ System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, Pub
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+
+[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+
+[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)

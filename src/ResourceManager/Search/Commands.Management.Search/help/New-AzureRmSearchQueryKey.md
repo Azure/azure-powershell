@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSearchQueryKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Create a new query key for the Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,24 @@ New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmSearchQueryKey** cmdlet creates a new query key for the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1"
+
+Name         Key                             
+----         ---                             
+NewQueryKey1 65FBCF561228C5F0E01F8F2114C80459
+
+
+
+PS C:\> 
 ```
 
-{{ Add example description here }}
+The example creates a new query key for the Azure Search Service.
 
 ## PARAMETERS
 
@@ -140,9 +148,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
 
@@ -152,3 +158,7 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSearchQueryKey.md](./Get-AzureRmSearchQueryKey.md)
+
+[Remove-AzureRmSearchQueryKey.md](./Remove-AzureRmSearchQueryKey.md)

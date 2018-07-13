@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Search.Models;
@@ -68,6 +69,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public AdminKeyKind KeyKind { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
@@ -82,8 +86,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 ServiceName = id.ResourceName;
             }
 
-            var res = SearchClient.AdminKeys.RegenerateWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyKind).Result;
-            WriteAdminKey(res.Body);
+            ConfirmAction(Force.IsPresent,
+                string.Format(Resources.RegeneratingAdminKey, KeyKind.ToString(), ServiceName),
+                string.Format(Resources.RegenerateAdminKey, KeyKind, ServiceName),
+                KeyKind.ToString(),
+                () =>
+                {
+                    var res = SearchClient.AdminKeys.RegenerateWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyKind).Result;
+                    WriteAdminKey(res.Body);
+                }
+             );
         }
     }
 }

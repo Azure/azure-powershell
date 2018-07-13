@@ -74,8 +74,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             var searchService = new Azure.Management.Search.Models.SearchService(name: Name,
                                                                                 location: Location,
                                                                                 sku: new Sku(Sku),

@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr), OutputType(typeof(Models.PSSearchService))]
+    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr), OutputType(typeof(PSSearchService))]
     public class SetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -74,8 +74,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;

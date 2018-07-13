@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSearchService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get an Azure Search service.
 
 ## SYNTAX
 
@@ -30,16 +30,28 @@ Get-AzureRmSearchService [-ResourceId] <String> [-DefaultProfile <IAzureContextC
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmSearchService** cmdlet gets the specified Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch"
+
+
+ResourceGroupName : TestAzureSearchPsGroup
+Name              : pstestazuresearch
+Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers
+                    /Microsoft.Search/searchServices/pstestazuresearch
+Location          : West US
+Sku               : Standard
+ReplicaCount      : 1
+PartitionCount    : 1
+HostingMode       : Default
+Tags              :
 ```
 
-{{ Add example description here }}
+Get an Azure Search service with specified parameters.
 
 ## PARAMETERS
 
@@ -109,7 +121,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### System.String
+You can pipe input to this cmdlet.
 
 
 ## OUTPUTS
@@ -120,3 +132,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+
+[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+
+[Remove-AzureRmSearchService](./Remove-AzureRmSearchService.md)

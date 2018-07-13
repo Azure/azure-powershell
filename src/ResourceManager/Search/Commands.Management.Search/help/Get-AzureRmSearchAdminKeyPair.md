@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSearchAdminKeyPair
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get Admin Key pair of the Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,23 @@ Get-AzureRmSearchAdminKeyPair [-ResourceGroupName] <String> [-ServiceName] <Stri
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmSearchAdminKeyPair** cmdlet gets the Admin Key pair of the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmSearchAdminKeyPair -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+
+Primary                          Secondary
+-------                          ---------
+44EE0AA1CD9FCE46E05D899222D96417 CEF791D5BAC2E6C0B232C56702F21E87
+
+
+PS C:\>
 ```
 
-{{ Add example description here }}
+The example gets Admin Key pair of the Azure Search Service.
 
 ## PARAMETERS
 
@@ -125,9 +132,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
 
@@ -137,3 +142,5 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchAdminKey](./New-AzureRmSearchAdminKey.md)

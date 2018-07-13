@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSearchService
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove an Azure Search service.
 
 ## SYNTAX
 
@@ -31,16 +31,21 @@ Remove-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-For
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmSearchService** cmdlet removes an Azure Search Service with specified paramters.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01"
+
+Confirm
+Are you sure you want to remove Search Service 'pstestazuresearch01'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\>
 ```
 
-{{ Add example description here }}
+The example removes an Azure Search Service.
 
 ## PARAMETERS
 
@@ -182,3 +187,10 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchService](./New-AzureRmSearchService.md)
+
+[Get-AzureRmSearchService](./Get-AzureRmSearchService.md)
+
+[Set-AzureRmSearchService](./Set-AzureRmSearchService.md)
+
