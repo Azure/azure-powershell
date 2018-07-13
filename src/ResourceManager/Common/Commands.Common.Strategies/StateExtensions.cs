@@ -70,7 +70,19 @@ namespace Microsoft.Azure.Commands.Common.Strategies
         {
             public bool Visit<TModel>(ResourceConfig<TModel> config, IState context)
                 where TModel : class
-                => context.Contains(config);
+            {
+                TModel currendEntityConfig = context.Get(config);
+
+                //If the current cnfig for the entity exists, check if the config is compatible with what the 
+                //cmdlet requires
+                if (currendEntityConfig != null && !config.Strategy.EvaluatePreexistingConfiguration(currendEntityConfig))
+                {
+                    //if not, throw an exception
+                    throw new System.ArgumentException("Resource Type " + config.DefaultIdStr() + " already exists and its current configuration is not compatible with the requirements for the cmdlet. Kindly delete the resource and try again");
+                }
+
+                return currendEntityConfig != null;
+            }
 
             public bool Visit<TModel, TParentModel>(
                 NestedResourceConfig<TModel, TParentModel> config, IState context)
