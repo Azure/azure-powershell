@@ -31,6 +31,10 @@
 
 #### AzureRM.Network
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
 * Regenerated RouteTable cmdlets with the latest generator version
 
 #### AzureRM.Relay

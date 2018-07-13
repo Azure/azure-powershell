@@ -84,7 +84,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.3';
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.4'; },
                @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.3'; },
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.0'; },
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.3.2'; },
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.4.0'; },
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.1'; },
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.2'; },
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.2'; },
@@ -193,6 +193,10 @@ AzureRM.LogicApp
 
 AzureRM.Network
 * Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
 * Regenerated RouteTable cmdlets with the latest generator version
 
 AzureRM.Relay
