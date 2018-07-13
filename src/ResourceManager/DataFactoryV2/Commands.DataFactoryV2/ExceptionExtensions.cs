@@ -23,31 +23,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     internal static class ExceptionExtensions
     {
-        public static CloudException CreateFormattedException(this CloudException errorResponseException)
+        public static CloudException CreateFormattedException(this CloudException cloudException)
         {
             return new CloudException(
                 string.Format(
                     CultureInfo.InvariantCulture,
                     Resources.FormattedCloudExceptionMessageTemplate,
-                    errorResponseException.Response.StatusCode,
-                    errorResponseException.Body != null && errorResponseException.Body.Code != null ? errorResponseException.Body.Code : errorResponseException.Response.StatusCode.ToString(),
-                    errorResponseException.Body != null && errorResponseException.Body.Message != null ? errorResponseException.Body.Message : errorResponseException.Message,
-                    errorResponseException.GetRequestId(),
+                    cloudException.Response.StatusCode,
+                    cloudException.Body != null && cloudException.Body.Code != null ? cloudException.Body.Code : cloudException.Response.StatusCode.ToString(),
+                    cloudException.Body != null && cloudException.Body.Message != null ? cloudException.Body.Message : cloudException.Message,
+                    cloudException.GetRequestId(),
                     DateTime.UtcNow));
         }
-
-        //public static CloudException CreateFormattedException(this CloudException cloudException)
-        //{
-        //    return new CloudException(
-        //        string.Format(
-        //            CultureInfo.InvariantCulture,
-        //            Resources.FormattedCloudExceptionMessageTemplate,
-        //            cloudException.Response.StatusCode,
-        //            cloudException.Body != null && cloudException.Body.Code != null ? cloudException.Body.Code : cloudException.Response.StatusCode.ToString(),
-        //            cloudException.Body != null && cloudException.Body.Message != null ? cloudException.Body.Message : cloudException.Message,
-        //            cloudException.GetRequestId(),
-        //            DateTime.UtcNow));
-        //}
 
         public static string GetRequestId(this CloudException exception)
         {
