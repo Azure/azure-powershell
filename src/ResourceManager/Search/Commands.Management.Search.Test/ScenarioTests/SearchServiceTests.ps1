@@ -129,7 +129,7 @@ function Test-RemoveAzureRmSearchService
 		Assert-NotNull $retrievedSvc
 
 		# Remove by InputObject
-		$retrievedSvc | Remove-AzureRmSearchService
+		$retrievedSvc | Remove-AzureRmSearchService -Force
 
 		# Assert Get nothing
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -144,7 +144,7 @@ function Test-RemoveAzureRmSearchService
 		Assert-NotNull $retrievedSvc
 		
 		# Remove by ResourceId
-		Remove-AzureRmSearchService -ResourceId $retrievedSvc.Id
+		Remove-AzureRmSearchService -ResourceId $retrievedSvc.Id -Force
 
 		# Assert Get nothing
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -159,7 +159,7 @@ function Test-RemoveAzureRmSearchService
 		Assert-NotNull $retrievedSvc
 		
 		# Remove by ResourceGroup + Name
-		Remove-AzureRmSearchService -ResourceGroupName $rgname -Name $retrievedSvc.Name
+		Remove-AzureRmSearchService -ResourceGroupName $rgname -Name $retrievedSvc.Name -Force
 
 		# Assert Get nothing
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -269,9 +269,9 @@ function Test-ManageAzureRmSearchServiceAdminKey
 		Assert-AreEqual $adminKeyPair2.Secondary $adminKeyPair3.Secondary
 
 		# New
-		$newKeyPair1 = $newSearchService | New-AzureRmSearchAdminKey -KeyKind Primary
-		$newKeyPair2 = New-AzureRmSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary
-		$newKeyPair3 = New-AzureRmSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary
+		$newKeyPair1 = $newSearchService | New-AzureRmSearchAdminKey -KeyKind Primary -Force
+		$newKeyPair2 = New-AzureRmSearchAdminKey -ParentResourceId $newSearchService.Id -KeyKind Secondary -Force
+		$newKeyPair3 = New-AzureRmSearchAdminKey -ResourceGroupName $rgname -ServiceName $svcName -KeyKind Primary -Force
 
 		# 1
 		Assert-NotNull $newKeyPair1
@@ -352,9 +352,9 @@ function Test-ManageAzureRmSearchServiceQueryKey
 		Assert-AreEqual 4 $allKeys.Count
 
 		# Remove
-		$newSearchService | Remove-AzureRmSearchQueryKey -KeyValue $newQueryKey1.Key
-		Remove-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id -KeyValue $newQueryKey2.Key
-		Remove-AzureRmSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -KeyValue $newQueryKey3.Key
+		$newSearchService | Remove-AzureRmSearchQueryKey -KeyValue $newQueryKey1.Key -Force
+		Remove-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id -KeyValue $newQueryKey2.Key -Force
+		Remove-AzureRmSearchQueryKey -ResourceGroupName $rgname -ServiceName $svcName -KeyValue $newQueryKey3.Key -Force
 
 		$allKeys = Get-AzureRmSearchQueryKey -ParentResourceId $newSearchService.Id
 

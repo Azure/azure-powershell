@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzureRmSearchQueryKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Get query key(s) of the Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,24 @@ Get-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String>
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Get-AzureRmSearchQueryKey** cmdlet gets query key(s) of the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+
+Name Key                             
+---- ---                             
+     896AA09C167541072D404E1BE0442CE9
+
+
+
+PS C:\> 
 ```
 
-{{ Add example description here }}
+The example gets all query key(s) of the Azure Search Service.
 
 ## PARAMETERS
 
@@ -125,9 +133,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
 
@@ -137,3 +143,7 @@ System.String
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchQueryKey.md](./New-AzureRmSearchQueryKey.md)
+
+[Remove-AzureRmSearchQueryKey.md](./Remove-AzureRmSearchQueryKey.md)

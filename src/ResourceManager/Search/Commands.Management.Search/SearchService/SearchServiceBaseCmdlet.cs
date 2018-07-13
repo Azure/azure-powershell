@@ -52,9 +52,6 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string ParentObjectParameterSetName = "ParentObjectParameterSet";
         protected const string ParentResourceIdParameterSetName = "ParentResourceIdParameterSet";
 
-        protected const string DeletingSearchServicePrompt = "Deleting Search Service {0}.";
-        protected const string DeletingQueryKeyPrompt = "Deleting Search Service Query Key {0}.";
-
         private SearchManagementClientWrapper searchClientWrapper;
 
         public ISearchManagementClient SearchClient

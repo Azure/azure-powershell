@@ -59,8 +59,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             if(ParameterSetName.Equals(ResourceGroupParameterSetName, StringComparison.InvariantCulture))
             {
                 var svcs = SearchClient.Services.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).Result;

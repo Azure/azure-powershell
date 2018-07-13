@@ -13,10 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
-using System.Globalization;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
@@ -66,8 +66,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         public override void ExecuteCmdlet()
         {
-            base.ExecuteCmdlet();
-
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
@@ -80,12 +78,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Name = id.ResourceName;
             }
 
-            if (ShouldProcess(Name, string.Format(CultureInfo.CurrentCulture, DeletingSearchServicePrompt, Name))
-               ||
-               Force.IsPresent)
-            {
-                SearchClient.Services.DeleteWithHttpMessagesAsync(ResourceGroupName, Name);
-            }
+            ConfirmAction(Force.IsPresent,
+                string.Format(Resources.RemovingSearchService, Name),
+                string.Format(Resources.RemoveSearchService, Name),
+                Name,
+                () =>
+                {
+                    SearchClient.Services.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).Wait();
+                }
+             );
         }
     }
 }

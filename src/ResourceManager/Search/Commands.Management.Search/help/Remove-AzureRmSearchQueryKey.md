@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzureRmSearchQueryKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Remove the query key from the Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,21 @@ Remove-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **Remove-AzureRmSearchQueryKey** cmdlet removes the query key from the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyValue 65FBCF561228C5F0E01F8F2114C80459
+
+Confirm
+Are you sure you want to remove query key '65FBCF561228C5F0E01F8F2114C80459'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+PS C:\>
 ```
 
-{{ Add example description here }}
+The example removes the query key from the Azure Search Service.
 
 ## PARAMETERS
 
@@ -186,14 +191,14 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
-
-### System.Object
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzureRmSearchQueryKey.md](./New-AzureRmSearchQueryKey.md)
+
+[Get-AzureRmSearchQueryKey.md](./Get-AzureRmSearchQueryKey.md)

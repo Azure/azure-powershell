@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzureRmSearchAdminKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+Regenerate an Admin Key of the Azure Search Service.
 
 ## SYNTAX
 
@@ -31,16 +31,24 @@ New-AzureRmSearchAdminKey [-ResourceGroupName] <String> [-ServiceName] <String> 
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+The **New-AzureRmSearchAdminKey** cmdlet regenerates an Admin Key of the Azure Search Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzureRmSearchAdminKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyKind Primary
+
+Confirm
+Are you sure you want to regenerate 'Primary' key for Search Service 'pstestazuresearch01'?
+[Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
+
+Primary                          Secondary
+-------                          ---------
+85B3813D11904B591BE8A196C2C743A1 CEF791D5BAC2E6C0B232C56702F21E87
 ```
 
-{{ Add example description here }}
+The example regenerates Primary key of the Azure Search Service.
 
 ## PARAMETERS
 
@@ -172,9 +180,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-Microsoft.Azure.Management.Search.Models.AdminKeyKind
+You can pipe input to this cmdlet.
 
 
 ## OUTPUTS
@@ -185,3 +191,5 @@ Microsoft.Azure.Management.Search.Models.AdminKeyKind
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzureRmSearchAdminKeyPair](./Get-AzureRmSearchAdminKeyPair.md)
