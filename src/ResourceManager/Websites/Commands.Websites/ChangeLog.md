@@ -19,6 +19,11 @@
 -->
 ## Current Release
 
+## Version 5.0.5
+* `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
+* `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated
+* `Set-AzureRmWebApp -PhpVersion` supports off as a valid php version
+
 ## Version 5.0.4
 * Fixed formatting of OutputType in help files
 
@@ -60,7 +65,7 @@
 ## Version 4.0.0
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 3.4.1
 
 ## Version 3.4.0
