@@ -21,24 +21,26 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
     using Xunit.Abstractions;
     public class EventHubsTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public EventHubsTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest("EventHubsTests");
+            EventHubsController.NewInstance.RunPsTest(_logger, "EventHubsTests");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventHubsAuthorizationRulesCRUD()
         {
-            EventHubsController.NewInstance.RunPsTest("EventHubsAuthTests");
+            EventHubsController.NewInstance.RunPsTest(_logger, "EventHubsAuthTests");
         }
     }
 }

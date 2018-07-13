@@ -29,6 +29,13 @@ PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -
 
 Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
 
+### Example 2
+```
+PS C:\> Remove-AzureRmEventHubNamespace -InputObject $inputObject
+```
+
+Removes the Event Hubs namespace provided by $inputObject.
+
 ## PARAMETERS
 
 ### -DefaultProfile

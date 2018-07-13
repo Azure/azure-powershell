@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,9 +20,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineNetworkInterfaceTests
     {
+        XunitTracingInterceptor _logger;
+
         public VirtualMachineNetworkInterfaceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD
@@ -33,7 +37,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineSingleNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterface");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterface");
         }
 
 #if NETSTANDARD
@@ -45,7 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineMultipleNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-MultipleNetworkInterface");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-MultipleNetworkInterface");
         }
 
 #if NETSTANDARD
@@ -57,7 +61,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceDnsSettings()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceDnsSettings");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterfaceDnsSettings");
         }
 
 #if NETSTANDARD
@@ -69,7 +73,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAddNetworkInterface()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-AddNetworkInterface");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-AddNetworkInterface");
         }
 
 
@@ -82,7 +86,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEffectiveRoutesAndNsg()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-EffectiveRoutesAndNsg");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-EffectiveRoutesAndNsg");
         }
 
 #if NETSTANDARD
@@ -94,7 +98,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSingleNetworkInterfaceWithAcceleratedNetworking()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-SingleNetworkInterfaceWithAcceleratedNetworking");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SingleNetworkInterfaceWithAcceleratedNetworking");
         }
 
 #if NETSTANDARD
@@ -106,7 +110,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVMNicWithAcceleratedNetworkingValidations()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VMNicWithAcceleratedNetworkingValidations");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VMNicWithAcceleratedNetworkingValidations");
         }
     }
 }

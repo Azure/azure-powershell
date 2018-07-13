@@ -25,6 +25,17 @@ The **Get-AzureRmRelayNamespace** cmdlet gets a description for the specified Re
 ### Example 1
 ```
 PS C:\> Get-AzureRmRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1
+
+ProvisioningState  : Succeeded
+CreatedAt          : 4/12/2017 12:38:47 AM
+UpdatedAt          : 4/12/2017 12:39:10 AM
+ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
+MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
+Location           : West US
+Tags               : {[tag1, Tag1Value]}
+Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
+Name               : TestNameSpace-Relay1
+Type               : Microsoft.Relay/namespaces
 ```
 
 Returns a description of the specified Relay namespace.
@@ -52,7 +63,7 @@ Relay Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -67,7 +78,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -86,16 +97,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.RelayNamespaceAttributes
-ProvisioningState  : Succeeded
-CreatedAt          : 4/12/2017 12:38:47 AM
-UpdatedAt          : 4/12/2017 12:39:10 AM
-ServiceBusEndpoint : https://TestNameSpace-Relay1.servicebus.windows.net:443/
-MetricId           : 854d368f-1828-428f-8f3c-f2affa9b2f7d:testnamespace-relay1
-Location           : West US
-Tags               : {[tag1, Tag1Value]}
-Id                 : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1
-Name               : TestNameSpace-Relay1
-Type               : Microsoft.Relay/namespaces
 
 ## NOTES
 

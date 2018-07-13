@@ -906,7 +906,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             foreach (var provider in providers)
             {
                 var resourceType = provider.ResourceTypes
-                                            .Where(t => string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType) == resourceIdentifier.ResourceType)
+                                            .Where(t => string.Equals(string.Format("{0}/{1}", provider.NamespaceProperty, t.ResourceType), resourceIdentifier.ResourceType, StringComparison.OrdinalIgnoreCase))
                                             .FirstOrDefault();
                 if (resourceType != null)
                 {
