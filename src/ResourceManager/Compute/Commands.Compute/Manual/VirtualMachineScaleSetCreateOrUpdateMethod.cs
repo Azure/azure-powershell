@@ -284,6 +284,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             {
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = true;
             }
+            else
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
+            }
 
             var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
 
