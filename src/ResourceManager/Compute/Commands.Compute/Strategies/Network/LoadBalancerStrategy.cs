@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             // TODO: Figure out the differences in the two configs n see if we can work with the existing resource.
             // If we can use the resource return true, otherwise return false
 
-            //Generate the model using 
-            return false;
+            //Throw in case the config for the existing LB is not cvompatible with the one expected by the cmdlet
+            throw new System.ArgumentException("Existing loadbalancer config is not compatible with the required by the cmdlet. Kindly rerun the cmdlet after deleting the existing LB : " + configToCompare.Name);
         }
 
         public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(

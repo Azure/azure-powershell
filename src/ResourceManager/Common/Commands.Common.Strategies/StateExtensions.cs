@@ -75,10 +75,10 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
                 //If the current cnfig for the entity exists, check if the config is compatible with what the 
                 //cmdlet requires
-                if (currendEntityConfig != null && !config.Strategy.EvaluatePreexistingConfiguration(currendEntityConfig))
+                if (currendEntityConfig != null)
                 {
-                    //if not, throw an exception
-                    throw new System.ArgumentException("Resource Type " + config.DefaultIdStr() + " already exists and its current configuration is not compatible with the requirements for the cmdlet. Kindly delete the resource and try again");
+                    //run the config validator to see if the old config is compatible with the new
+                    config.Strategy.EvaluatePreexistingConfiguration(currendEntityConfig);
                 }
 
                 return currendEntityConfig != null;
