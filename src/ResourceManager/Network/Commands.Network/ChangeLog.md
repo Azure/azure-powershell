@@ -19,10 +19,14 @@
 --->
 
 ## Current Release
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
 * Regenerated RouteTable cmdlets with the latest generator version
 
 ## Version 6.3.1
-* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering 
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
 
 ## Version 6.3.0
 * Expose new Skus for Zone-Redundant VirtualNetworkGateways
