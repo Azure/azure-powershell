@@ -125,23 +125,12 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return null;
         }
 
-        private bool IsDiskEncryptionSettingPresent(VirtualMachine vm)
+        private bool IsVmModelEncryptionSet(VirtualMachine vm)
         {
-            bool isPresent = false; 
-            if (vm != null && 
-                vm.InstanceView != null &&
-                vm.InstanceView.Disks != null &&
-                vm.InstanceView.Disks.Count > 0)
-            {
-                foreach ( DiskInstanceView d in vm.InstanceView.Disks )
-                {
-                    if (d.EncryptionSettings != null && d.EncryptionSettings.Count>0)
-                    {
-                        isPresent = true;
-                    }
-                }
-            }
-            return isPresent;
+            return (vm != null &&
+                vm.StorageProfile != null &&
+                vm.StorageProfile.OsDisk != null &&
+                vm.StorageProfile.OsDisk.EncryptionSettings != null);
         }
 
         private string GetVersionForDisable(VirtualMachine vm)
@@ -160,34 +149,33 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
             }
 
-            // If we reach this point, there was no extension currently installed, so we begin a process of identifying
-            // which version of the extension had been installed previously. 
+            // If we reach this point, no extension is currently installed, even if the VM is encrypted.
+            // To disable encryption, we will select the extension version matching the encryption 
+            // settings present on the VM and then use that version to issue the disable operation. 
 
-            // This supports a corner case when the extension is removed from teh VM first without first disabling it, and 
-            // only later deciding to disable encryption on the VM by adding the extension back to disable it.  
-            // The disable operation must be done with a version that matches the version that was used at time of enable.
-            // So we will derive which strategy (single or dual) encrypted the VM and then return the corresponding version. 
-
-            // If per disk encryption settings are found, use the single pass version to disable:
-            if (IsDiskEncryptionSettingPresent(vm))
+            if (IsVmModelEncryptionSet(vm))
             {
-                switch (currentOSType)
+                // encryption settings present in VM model, use default dual pass version
+                if (currentOSType == OperatingSystemTypes.Linux)
                 {
-                    case OperatingSystemTypes.Windows:
-                        return AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion;
-                    case OperatingSystemTypes.Linux:
-                        return AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion;
+                    return AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion;
                 }
-            }
-
-            // Otherwise, retain consistency and use the default dual pass version:
-            if (currentOSType == OperatingSystemTypes.Linux)
-            {
-                return AzureDiskEncryptionExtensionContext.LinuxExtensionDefaultVersion;
+                else
+                {
+                    return AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion;
+                }
             }
             else
             {
-                return AzureDiskEncryptionExtensionContext.ExtensionDefaultVersion;
+                // encryption settings not present in the VM model, use single pass version
+                if (currentOSType == OperatingSystemTypes.Linux)
+                {
+                    return AzureDiskEncryptionExtensionContext.LinuxExtensionSinglePassVersion;
+                }
+                else
+                {
+                    return AzureDiskEncryptionExtensionContext.ExtensionSinglePassVersion;
+                }
             }
         }
 
