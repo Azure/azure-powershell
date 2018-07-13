@@ -176,9 +176,8 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-System.String
-
+### None
+You can pipe input to this cmdlet.
 
 ## OUTPUTS
 
