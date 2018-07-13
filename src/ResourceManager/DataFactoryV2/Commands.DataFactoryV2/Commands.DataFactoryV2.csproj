@@ -59,6 +59,7 @@
     <Reference Include="System.Globalization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFactories\SetAzureDataFactoryRepoConfiguration.cs" />
     <Compile Include="DataFactories\UpdateAzureDataFactoryCommand.cs" />
     <Compile Include="DataFactoryContextBaseGetCmdlet.cs" />
     <Compile Include="DataFactoryContextBaseSetCmdlet.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\ConfigurePSDataFactoryParameters.cs" />
     <Compile Include="Models\PSLinkedIntegrationRuntime.cs" />
     <Compile Include="Models\PSLinkedIntegrationRuntimeStatus.cs" />
     <Compile Include="Models\UpdatePSDataFactoryParameters.cs" />
