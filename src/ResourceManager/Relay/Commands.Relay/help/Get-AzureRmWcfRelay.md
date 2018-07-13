@@ -25,9 +25,22 @@ The **Get-AzureRmWcfRelay** cmdlet returns a description of the specified WcfRel
 ### Example 1
 ```
 PS C:\> Get-AzureRmWcfRelay -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestWCFRelay1
+
+RelayType                   : NetTcp
+CreatedAt                   : 4/12/2017 2:23:08 AM
+UpdatedAt                   : 4/12/2017 2:23:08 AM
+ListenerCount               : 0
+RequiresClientAuthorization : True
+RequiresTransportSecurity   : True
+IsDynamic                   : False
+UserMetadata                : User Meta data
+Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
+                              cfRelays/TestWCFRelay1
+Name                        : TestWCFRelay1
+Type                        : Microsoft.Relay/WcfRelays
 ```
 
-Returns the description of the WcfRelay. 
+Returns the description of the WcfRelay.
 
 ## PARAMETERS
 
@@ -52,7 +65,7 @@ WcfRelay Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -67,7 +80,7 @@ Namespace Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -82,7 +95,7 @@ Resource Group Name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -101,18 +114,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-RelayType                   : NetTcp
-CreatedAt                   : 4/12/2017 2:23:08 AM
-UpdatedAt                   : 4/12/2017 2:23:08 AM
-ListenerCount               : 0
-RequiresClientAuthorization : True
-RequiresTransportSecurity   : True
-IsDynamic                   : False
-UserMetadata                : User Meta data
-Id                          : /subscriptions/854d368f-1828-428f-8f3c-f2affa9b2f7d/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.Relay/namespaces/TestNameSpace-Relay1/W
-                              cfRelays/TestWCFRelay1
-Name                        : TestWCFRelay1
-Type                        : Microsoft.Relay/WcfRelays
 
 ## NOTES
 
