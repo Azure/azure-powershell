@@ -12,6 +12,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using System.Reflection;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Commands.Aks.Test.ScenarioTests
 {
@@ -34,10 +35,12 @@ namespace Commands.Aks.Test.ScenarioTests
 
         public GraphRbacManagementClient GraphRbacManagementClient { get; private set; }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Features", null);

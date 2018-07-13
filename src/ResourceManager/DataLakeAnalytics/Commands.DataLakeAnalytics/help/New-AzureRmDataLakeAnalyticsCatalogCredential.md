@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseName
-Specifies the name of the database in the Data Lake Analytics acocunt that the credential will be stored in.
+Specifies the name of the database in the Data Lake Analytics account that the credential will be stored in.
 
 ```yaml
 Type: String

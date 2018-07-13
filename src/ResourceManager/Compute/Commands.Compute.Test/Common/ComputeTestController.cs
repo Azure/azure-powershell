@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             _helper = new EnvironmentSetupHelper();
         }
 
+        public void SetLogger(XunitTracingInterceptor logger)
+        {
+            _helper.TracingInterceptor = logger;
+        }
+
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var sf = new StackTrace().GetFrame(1);
@@ -71,22 +76,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var mockName = sf.GetMethod().Name;
 
             _helper.TracingInterceptor = logger;
-            RunPsTestWorkflow(
-                () => scripts,
-                // no custom initializer
-                null,
-                // no custom cleanup
-                null,
-                callingClassType,
-                mockName);
-        }
-
-        public void RunPsTest(params string[] scripts)
-        {
-            var sf = new StackTrace().GetFrame(1);
-            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
-            var mockName = sf.GetMethod().Name;
-
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
@@ -133,7 +122,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     "ScenarioTests\\ComputeTestCommon.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
                     _helper.RMProfileModule,
-                    _helper.RMResourceModule,
                     _helper.RMStorageDataPlaneModule,
                     _helper.RMStorageModule,
                     _helper.GetRMModulePath("AzureRM.Compute.psd1"),
