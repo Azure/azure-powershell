@@ -191,5 +191,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
 
         public const string IntegrationRuntimeBasePrice = "BasePrice";
+
+        public const string DeprecatingParameter = "Parameter is being deprecated without being replaced";
     }
 }
