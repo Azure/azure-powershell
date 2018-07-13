@@ -64,6 +64,24 @@ PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Locat
 
 This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.
 
+### Example 2: Create a data factory with VSTS repo configuration
+```
+PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"  -RepositoryAccountName "MyRepoAccount" 
+		-RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
+		-RepositoryLastCommitId "123456abcd" -VSTSProjectName "MyProject"
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+	RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryRepoConfiguration
+```
+
+This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location and sets its repo configuration.
+
 ## PARAMETERS
 
 ### -DefaultProfile
