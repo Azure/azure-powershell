@@ -1,19 +1,19 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/ps6115?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWU0MjU5MWYtMWYwYy00YzVhLWI3ZjItYTI2OGY2MTA1ZWM1L3Jlc291cmNlZ3JvdXBzL3BzNjExNT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourcegroups/ps5087?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlZ3JvdXBzL3BzNTA4Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "36"
+          "29"
         ],
         "x-ms-client-request-id": [
-          "77dd8941-d66b-45ef-9e45-26900cd4a864"
+          "240e5946-215f-48c1-a0bb-813720bb52c1"
         ],
         "accept-language": [
           "en-US"
@@ -25,10 +25,10 @@
           "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/ps6115\",\r\n  \"name\": \"ps6115\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps5087\",\r\n  \"name\": \"ps5087\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "170"
+          "165"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -40,16 +40,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1178"
         ],
         "x-ms-request-id": [
-          "2e894c51-fa00-4fb2-9840-781551380e12"
+          "5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "x-ms-correlation-request-id": [
-          "2e894c51-fa00-4fb2-9840-781551380e12"
+          "5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180711T022449Z:2e894c51-fa00-4fb2-9840-781551380e12"
+          "NORTHEUROPE:20180713T201046Z:5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,25 +61,25 @@
           "no-cache"
         ],
         "Date": [
-          "Wed, 11 Jul 2018 02:24:49 GMT"
+          "Fri, 13 Jul 2018 20:10:46 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/ps6115/providers/Microsoft.DataFactory/factories/ps1616?api-version=2018-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWU0MjU5MWYtMWYwYy00YzVhLWI3ZjItYTI2OGY2MTA1ZWM1L3Jlc291cmNlR3JvdXBzL3BzNjExNS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczE2MTY/YXBpLXZlcnNpb249MjAxOC0wNi0wMQ==",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps5087/providers/Microsoft.DataFactory/factories/ps876?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3BzNTA4Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczg3Nj9hcGktdmVyc2lvbj0yMDE4LTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"repoConfiguration\": {\r\n      \"type\": \"FactoryGithubConfiguration\",\r\n      \"accountName\": \"testAccount\",\r\n      \"repositoryName\": \"testRepo\",\r\n      \"collaborationBranch\": \"testBranch\",\r\n      \"rootFolder\": \"testRoot\",\r\n      \"lastCommitId\": \"testId\"\r\n    }\r\n  },\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"repoConfiguration\": {\r\n      \"type\": \"FactoryGithubConfiguration\",\r\n      \"accountName\": \"testAccount\",\r\n      \"repositoryName\": \"testRepo\",\r\n      \"collaborationBranch\": \"testBranch\",\r\n      \"rootFolder\": \"testRoot\",\r\n      \"lastCommitId\": \"testId\"\r\n    }\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "377"
+          "370"
         ],
         "x-ms-client-request-id": [
-          "3d5332f9-7d45-4e91-86c3-ae957b54ba7a"
+          "3fa7cdca-17c6-4eec-9a83-dee6f294ab56"
         ],
         "accept-language": [
           "en-US"
@@ -88,7 +88,7 @@
           "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
           "OSVersion/6.3.16299",
-          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.8.0.0"
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/1.0.0.0"
         ]
       },
       "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPropertyValue\",\r\n    \"message\": \"Invalid value for property 'repoConfiguration'\",\r\n    \"target\": null,\r\n    \"details\": null\r\n  }\r\n}",
@@ -112,22 +112,22 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1164"
         ],
         "x-ms-request-id": [
-          "2bf79c68-3754-46ba-b794-8f9b3c353a19"
+          "8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "x-ms-correlation-request-id": [
-          "2bf79c68-3754-46ba-b794-8f9b3c353a19"
+          "8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20180711T022508Z:2bf79c68-3754-46ba-b794-8f9b3c353a19"
+          "NORTHEUROPE:20180713T201052Z:8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Wed, 11 Jul 2018 02:25:08 GMT"
+          "Fri, 13 Jul 2018 20:10:52 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -141,11 +141,11 @@
   ],
   "Names": {
     "Test-SetFactoryGithub": [
-      "ps1616",
-      "ps6115"
+      "ps876",
+      "ps5087"
     ]
   },
   "Variables": {
-    "SubscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
+    "SubscriptionId": "c39dce18-cead-4065-8fb1-3af7683a5038"
   }
 }
