@@ -1,25 +1,34 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/876407bb-5bd3-45c4-9c07-cd74a964b2fc/resourcegroups/onesdk4319?api-version=2016-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODc2NDA3YmItNWJkMy00NWM0LTljMDctY2Q3NGE5NjRiMmZjL3Jlc291cmNlZ3JvdXBzL29uZXNkazQzMTk/YXBpLXZlcnNpb249MjAxNi0wMi0wMQ==",
+      "RequestUri": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourcegroups/ps9133?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWU0MjU5MWYtMWYwYy00YzVhLWI3ZjItYTI2OGY2MTA1ZWM1L3Jlc291cmNlZ3JvdXBzL3BzOTEzMz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"location\": \"West Europe\"\r\n}",
+      "RequestBody": "{\r\n  \"location\": \"East US 2 EUAP\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "33"
+          "36"
+        ],
+        "x-ms-client-request-id": [
+          "2621d207-2277-4c68-a563-bcc8b91fa18f"
+        ],
+        "accept-language": [
+          "en-US"
         ],
         "User-Agent": [
-          "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0"
+          "FxVersion/4.7.2650.0",
+          "OSName/Windows10Enterprise",
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/876407bb-5bd3-45c4-9c07-cd74a964b2fc/resourceGroups/onesdk4319\",\r\n  \"name\": \"onesdk4319\",\r\n  \"location\": \"westeurope\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/ps9133\",\r\n  \"name\": \"ps9133\",\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "177"
+          "170"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -31,52 +40,55 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1116"
+          "1199"
         ],
         "x-ms-request-id": [
-          "32df6570-8154-431e-a658-25c7342b6e28"
+          "6c71bf93-0044-44a0-a003-5d8701695b79"
         ],
         "x-ms-correlation-request-id": [
-          "32df6570-8154-431e-a658-25c7342b6e28"
+          "6c71bf93-0044-44a0-a003-5d8701695b79"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20171003T021525Z:32df6570-8154-431e-a658-25c7342b6e28"
+          "WESTUS2:20180711T022839Z:6c71bf93-0044-44a0-a003-5d8701695b79"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 03 Oct 2017 02:15:25 GMT"
+          "Wed, 11 Jul 2018 02:28:39 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/876407bb-5bd3-45c4-9c07-cd74a964b2fc/resourceGroups/onesdk4319/providers/Microsoft.DataFactory/factories/onesdk2811?api-version=2017-09-01-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvODc2NDA3YmItNWJkMy00NWM0LTljMDctY2Q3NGE5NjRiMmZjL3Jlc291cmNlR3JvdXBzL29uZXNkazQzMTkvcHJvdmlkZXJzL01pY3Jvc29mdC5EYXRhRmFjdG9yeS9mYWN0b3JpZXMvb25lc2RrMjgxMT9hcGktdmVyc2lvbj0yMDE3LTA5LTAxLXByZXZpZXc=",
+      "RequestUri": "/subscriptions/1e42591f-1f0c-4c5a-b7f2-a268f6105ec5/resourceGroups/ps9133/providers/Microsoft.DataFactory/factories/ps6804?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMWU0MjU5MWYtMWYwYy00YzVhLWI3ZjItYTI2OGY2MTA1ZWM1L3Jlc291cmNlR3JvdXBzL3BzOTEzMy9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczY4MDQ/YXBpLXZlcnNpb249MjAxOC0wNi0wMQ==",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a6622e6c-5ab2-4218-a148-12eda0ce318d"
+          "533d5523-5dc9-4e37-ab89-ab4bb7d82866"
         ],
         "accept-language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.7.2110.0",
+          "FxVersion/4.7.2650.0",
           "OSName/Windows10Enterprise",
-          "OSVersion/6.3.15063",
-          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.2.0.0"
+          "OSVersion/6.3.16299",
+          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/0.8.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataFactory/factories/onesdk2811' under resource group 'onesdk4319' was not found.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.DataFactory/factories/ps6804' under resource group 'ps9133' was not found.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "156"
+          "148"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -91,22 +103,25 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "8fec0a55-fe4c-4f4b-98a1-a88cfa79085c"
+          "66c4f9e3-7513-4f66-ad1e-9314eea96974"
         ],
         "x-ms-correlation-request-id": [
-          "8fec0a55-fe4c-4f4b-98a1-a88cfa79085c"
+          "66c4f9e3-7513-4f66-ad1e-9314eea96974"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20171003T021526Z:8fec0a55-fe4c-4f4b-98a1-a88cfa79085c"
+          "WESTUS2:20180711T022839Z:66c4f9e3-7513-4f66-ad1e-9314eea96974"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Tue, 03 Oct 2017 02:15:25 GMT"
+          "Wed, 11 Jul 2018 02:28:39 GMT"
         ]
       },
       "StatusCode": 404
@@ -114,11 +129,11 @@
   ],
   "Names": {
     "Test-GetNonExistingDataFactory": [
-      "onesdk2811",
-      "onesdk4319"
+      "ps6804",
+      "ps9133"
     ]
   },
   "Variables": {
-    "SubscriptionId": "876407bb-5bd3-45c4-9c07-cd74a964b2fc"
+    "SubscriptionId": "1e42591f-1f0c-4c5a-b7f2-a268f6105ec5"
   }
 }

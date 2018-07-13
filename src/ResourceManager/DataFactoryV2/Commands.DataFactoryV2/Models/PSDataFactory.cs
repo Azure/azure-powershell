@@ -96,5 +96,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         {
             get { return dataFactory.ProvisioningState; }
         }
+
+        public FactoryRepoConfiguration RepoConfiguration
+        {
+            get { return dataFactory.RepoConfiguration; }
+        }
     }
 }

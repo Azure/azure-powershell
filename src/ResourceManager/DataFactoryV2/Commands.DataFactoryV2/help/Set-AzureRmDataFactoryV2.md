@@ -12,9 +12,28 @@ Creates a data factory.
 
 ## SYNTAX
 
+### ByFactoryName
 ```
 Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-Tag] <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByVSTS
+```
+Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ -VSTSProjectName <String> [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByGithub
+```
+Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
+ [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,6 +64,24 @@ PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Locat
 
 This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.
 
+### Example 2: Create a data factory with VSTS repo configuration
+```
+PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"  -RepositoryAccountName "MyRepoAccount" 
+		-RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
+		-RepositoryLastCommitId "123456abcd" -VSTSProjectName "MyProject"
+
+    DataFactoryName   : WikiADF
+    DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
+    ResourceGroupName : ADF
+    Location          : EastUS
+    Tags              : {}
+    Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
+    ProvisioningState : Succeeded
+	RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryRepoConfiguration
+```
+
+This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location and sets its repo configuration.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -68,6 +105,21 @@ Runs the cmdlet without prompting for confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -GitHubHostName
+GitHub repo host name.
+
+```yaml
+Type: String
+Parameter Sets: ByGithub
 Aliases: 
 
 Required: False
@@ -107,6 +159,81 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -RepositoryAccountName
+The account name associated with the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryCollaborationBranch
+The collaboration branch on the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryLastCommitId
+The id of the last commit.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryName
+The name of the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RepositoryRootFolder
+The root folder of the repository.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS, ByGithub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -134,6 +261,36 @@ Required: False
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -VSTSProjectName
+VSTS project name.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VSTSTenantId
+VSTS tenant id.
+
+```yaml
+Type: String
+Parameter Sets: ByVSTS
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

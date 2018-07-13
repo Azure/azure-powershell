@@ -626,6 +626,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to LinkedDataFactoryName parameter is working together with &apos;-Links&apos; switch parameter..
+        /// </summary>
+        internal static string LinksSwitchMissing {
+            get {
+                return ResourceManager.GetString("LinksSwitchMissing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An error occurred while requesting the status of Integration Runtime, but you can manually execute the following command: Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyIR -Status.
         /// </summary>
         internal static string LongRunningStatusError {

@@ -37,7 +37,7 @@ Gets the default location for a provider
 function Get-ProviderLocation($provider)
 {
     # A Dogfood data center for ADF cmdlet mock testing
-    "West Europe"
+    "East US 2 EUAP"
 }
 
 <#

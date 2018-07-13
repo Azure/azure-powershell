@@ -239,7 +239,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
             if (resource.Properties is SelfHostedIntegrationRuntime selfHostedIr)
             {
-                if (string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                if (!string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
                 {
                     selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
                 }
