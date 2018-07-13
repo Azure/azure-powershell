@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+
+## Version 5.0.4
 * Update error message for Set-AzureRmKeyVaultAccessPolicy
 
 ## Version 5.0.3

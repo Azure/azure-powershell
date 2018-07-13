@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+
+## Version 6.2.1
 * Update Roleassignment and roledefinition cmdlets:
     - Remove extra roledefinition calls done as part of paging.
 * Fix Get-AzureRmRoleAssignment cmdlet

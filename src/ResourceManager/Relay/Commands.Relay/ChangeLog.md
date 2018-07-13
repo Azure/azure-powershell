@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+
+## Version 0.3.6
 * Updated markdown files, fix for the parameter name issue in example
 
 ## Version 0.3.5

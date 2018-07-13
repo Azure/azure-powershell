@@ -65,12 +65,12 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
             set { this._status = value; }
         }
 
-        [Parameter(Mandatory = false, HelpMessage = "The definition of the workflow.",
+        [Parameter(Mandatory = true, HelpMessage = "The definition of the workflow.",
             ParameterSetName = ParameterSet.LogicAppWithDefinition)]
         [ValidateNotNullOrEmpty]
         public object Definition { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = "The physical file path of the workflow definition.",
+        [Parameter(Mandatory = true, HelpMessage = "The physical file path of the workflow definition.",
             ParameterSetName = ParameterSet.LogicAppWithDefinitionFile)]
         [ValidateNotNullOrEmpty]
         public string DefinitionFilePath { get; set; }
