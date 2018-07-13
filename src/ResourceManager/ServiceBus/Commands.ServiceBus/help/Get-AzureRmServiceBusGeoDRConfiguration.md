@@ -45,6 +45,7 @@ Type              : Microsoft.ServiceBus/Namespaces/disasterrecoveryconfigs
 ProvisioningState : Accepted
 PartnerNamespace  : SampleNamespace_Secondary
 Role              : Primary
+PendingReplicationOperationsCount : 0
 ```
 
 Retrieves alias "SampleDRCongifName" configuration for primary namespace "SampleNamespace_Primary"

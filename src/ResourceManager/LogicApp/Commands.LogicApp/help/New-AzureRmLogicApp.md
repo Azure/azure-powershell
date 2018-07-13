@@ -16,14 +16,14 @@ Creates a logic app in a resource group.
 ### LogicAppWithDefinitionParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-Definition <Object>] [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
+ -Definition <Object> [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogicAppWithDefinitionFileParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
+ -DefinitionFilePath <String> [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -182,7 +182,7 @@ Type: System.Object
 Parameter Sets: LogicAppWithDefinitionParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -197,7 +197,7 @@ Type: System.String
 Parameter Sets: LogicAppWithDefinitionFileParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
