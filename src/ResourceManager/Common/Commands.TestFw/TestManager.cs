@@ -235,8 +235,8 @@ namespace  Microsoft.Azure.Commands.TestFw
             const string tenantIdKey = "TenantId";
             const string domainKey = "Domain";
             const string subscriptionIdKey = "SubscriptionId";
-            const string zeroGuild = "00000000-0000-0000-0000-000000000000";
             const string undefined = "Undefined";
+            var zeroGuild = Guid.Empty.ToString();
 
             string tenantId =  null;
             string userDomain = null;
