@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -262,6 +263,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
+            bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
+
             ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
@@ -275,7 +278,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
+            // If the user did not specify a load balancer name, As in we are using a
+            // just
+            if (!loadBalancerNamePassedIn)
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = true;
+            }
+
             var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+
 
             if (result != null)
             {
