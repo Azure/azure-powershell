@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.OperationalInsights.dll-Help.xml
 Module Name: AzureRM.OperationalInsights
 ms.assetid: 438F549D-1AF6-49FE-83AC-B45BAB701AB6
@@ -84,7 +84,7 @@ This script starts a search and waits until it completes before displaying the r
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 End of the queried time range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 If an id is given, the search results for that id will be retrieved using the original query parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 8
@@ -127,9 +127,9 @@ Accept wildcard characters: False
 
 ### -PostHighlight
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -140,9 +140,9 @@ Accept wildcard characters: False
 
 ### -PreHighlight
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -155,9 +155,9 @@ Accept wildcard characters: False
 The search query that will be executed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -170,9 +170,9 @@ Accept wildcard characters: False
 The name of the resource group that contains the workspace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -185,9 +185,9 @@ Accept wildcard characters: False
 Start of the queried time range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -200,9 +200,9 @@ Accept wildcard characters: False
 The maximum number of results to be returned, limited to 5000.
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -215,7 +215,7 @@ Accept wildcard characters: False
 Specifies a workspace name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 

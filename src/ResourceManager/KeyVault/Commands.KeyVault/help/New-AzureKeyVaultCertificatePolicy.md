@@ -76,7 +76,7 @@ This command creates a certificate policy that is valid for six months and reuse
 Specifies the type of certificate to the issuer.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 Indicates that the certificate policy is disabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 Specifies how many days before expiry the automatic notification process begins.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 Specifies the percentage of the lifetime after which the automatic process for the notification begins.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Specifies the name of the issuer for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 Indicates that the key is not exportable.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -215,7 +215,7 @@ The acceptable values for this parameter are:
 - RSA-HSM
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: RSA, RSA-HSM
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Specifies the number of days before expiry after which the automatic process for certificate renewal begins.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Specifies the percentage of the lifetime after which the automatic process for certificate renewal begins.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -277,7 +277,7 @@ Accept wildcard characters: False
 Indicates that the certificate reuse the key during renewal.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -296,7 +296,7 @@ The acceptable values for this parameter are:
 - application/x-pem-file
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: application/x-pkcs12, application/x-pem-file
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 Specifies the subject name of the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubjectName
 Aliases:
 
@@ -324,7 +324,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DNSNames
 Aliases:
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 Specifies the number of months the certificate is valid.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +354,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -370,7 +370,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
