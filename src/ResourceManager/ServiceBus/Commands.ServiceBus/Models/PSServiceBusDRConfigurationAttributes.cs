@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 PartnerNamespace = drResource.PartnerNamespace;
                 Role = drResource.Role;
                 AlternateName = drResource.AlternateName;
+                PendingReplicationOperationsCount = drResource.PendingReplicationOperationsCount;
             }
         }
 
@@ -65,6 +66,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
         /// </summary>
         public RoleDisasterRecovery? Role { get; set; }
+
+        /// <summary>
+        /// Gets number of entities pending to be replicated.
+        /// </summary>
+        public long? PendingReplicationOperationsCount { get; private set; }
 
     }
 }

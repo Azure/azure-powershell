@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/resolve-azurermerror
@@ -172,7 +172,7 @@ Get details of the specified error.
 The credentials, tenant and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,9 +187,9 @@ Accept wildcard characters: False
 One or more error records to resolve.  If no parameters are specified, all errors in the session are resolved.
 
 ```yaml
-Type: ErrorRecord[]
+Type: System.Management.Automation.ErrorRecord[]
 Parameter Sets: AnyErrorParameterSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -202,9 +202,9 @@ Accept wildcard characters: False
 Resolve only the last error that occurred in the session.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: LastErrorParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -234,4 +234,3 @@ Information about errors in cleint/server communications.  This will often conta
 ## NOTES
 
 ## RELATED LINKS
-

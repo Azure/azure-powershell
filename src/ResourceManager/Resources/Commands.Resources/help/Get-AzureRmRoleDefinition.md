@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 7740AC3B-F643-4F8D-8DC5-ACBF59323BD8
@@ -57,7 +57,7 @@ Lists all RBAC role definitions
 If specified, only displays the custom created roles in the directory.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: RoleDefinitionCustomParameterSet
 Aliases:
 
@@ -72,7 +72,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Role definition Id.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleDefinitionIdParameterSet
 Aliases:
 
@@ -104,7 +104,7 @@ For e.g.
 Reader, Contributor, Virtual Machine Contributor.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RoleDefinitionNameParameterSet
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Role definition scope.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

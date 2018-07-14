@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.6.10
 * Add required property ResourceGroupName to AS.
 
 ## Version 0.6.9
