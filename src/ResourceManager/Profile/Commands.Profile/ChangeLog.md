@@ -19,6 +19,9 @@
 -->
 ## Current Release
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Updated help files to include full parameter types.
+
+## Version 5.3.3
 * Updated help for `Get-AzureRmContextAutosaveSetting`
 
 ## Version 5.3.2

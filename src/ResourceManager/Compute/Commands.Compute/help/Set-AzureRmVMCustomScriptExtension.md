@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 64AB1BAE-A756-43A8-A40F-10B746EA0946
@@ -50,7 +50,7 @@ The script file is contososcript.exe.
 Specifies arguments that the script extension passes to the script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure storage container where this cmdlet stores the script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 
 ### -DisableAutoUpgradeMinorVersion
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Specifies the name of the script file. If the file is stored in Azure Blob stora
 value is case-senstive. File names of files stored in Azure File storage are not case-senstive.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
 Aliases:
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Specifies the URI of the script file.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: SetCustomScriptExtensionByUriLinks
 Aliases:
 
@@ -142,7 +142,7 @@ The value can be any string different from the current value.
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifies the location of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Specifies the name of the custom script extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 Specifies the command to use that runs your script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RunFile, Command
 
@@ -218,7 +218,7 @@ Indicates that this cmdlet makes sure that the value of the *Run* parameter is n
 The value of *Run* might contain secrets or passwords to be passed to the script file securely.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Specifies the key for the Azure storage container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure storage account where this cmdlet stores the script.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
 Aliases:
 
@@ -263,7 +263,7 @@ Accept wildcard characters: False
 Specifies the storage endpoint suffix.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetCustomScriptExtensionByContainerAndFileNames
 Aliases:
 
@@ -279,7 +279,7 @@ Specifies the version of the extension to use for this virtual machine.
 To obtain the version, run the Get-AzureRmVMExtensionImage cmdlet with a value of Microsoft.Compute for the *PublisherName* parameter and VMAccessAgent for the *Type* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -295,7 +295,7 @@ Specifies the name of a virtual machine.
 This cmdlet adds the custom script extension for the virtual machine that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -310,7 +310,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -327,7 +327,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

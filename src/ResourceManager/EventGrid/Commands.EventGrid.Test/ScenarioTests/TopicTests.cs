@@ -23,37 +23,40 @@ namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
     public class TopicTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TopicTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest("TopicTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsSet()
         {
-            EventGridController.NewInstance.RunPsTest("TopicSetTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicSetTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsGetKey()
         {
-            EventGridController.NewInstance.RunPsTest("TopicGetKeyTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicGetKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_TopicsNewKey()
         {
-            EventGridController.NewInstance.RunPsTest("TopicNewKeyTests");
+            EventGridController.NewInstance.RunPsTest(_logger, "TopicNewKeyTests");
         }
     }
 }

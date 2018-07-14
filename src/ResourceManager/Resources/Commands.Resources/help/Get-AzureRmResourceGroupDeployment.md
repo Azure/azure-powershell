@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 20CB842B-F7A9-4052-85D9-0DF9586D5FEA
@@ -74,7 +74,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the ID of the resource group deployment to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentId
 Aliases: DeploymentId, ResourceId
 
@@ -120,7 +120,7 @@ Specifies the name of the deployment to get.
 Wildcard characters are not permitted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentName
 Aliases: DeploymentName
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +153,7 @@ Wildcard characters are not permitted.
 This parameter is required and you can specify only one resource group in each command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroupDeploymentName
 Aliases:
 
