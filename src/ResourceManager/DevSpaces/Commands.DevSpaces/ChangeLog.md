@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 
 ## Version 0.0.1
 * Initial command set for DevSpaces

@@ -51,7 +51,7 @@ This command regenerates the primary account key on the Batch account named pful
 Specifies the name of the Batch account for which this cmdlet regenerates a key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -85,7 +85,7 @@ Valid values are:
 - Secondary
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Primary, Secondary
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies the resource group of the account for which this cmdlet regenerates a key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
