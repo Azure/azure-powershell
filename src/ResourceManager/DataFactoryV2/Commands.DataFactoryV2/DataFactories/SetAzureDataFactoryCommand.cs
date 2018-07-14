@@ -48,53 +48,53 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Name { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, 
-            HelpMessage = "The geographic region to create the data factory.")]
+            HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geographic region to create the data factory.")]
+            HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The geographic region to create the data factory.")]
+            HelpMessage = Constants.HelpFactoryLocation)]
         [LocationCompleter("Microsoft.DataFactory/factories")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The tags of the data factory.")]
+            HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The tags of the data factory.")]
+            HelpMessage = Constants.HelpTagsForFactory)]
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The tags of the data factory.")]
+            HelpMessage = Constants.HelpTagsForFactory)]
         public Hashtable Tag { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
         
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "The account name associated with the repository.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The account name associated with the repository.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryAccountName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryAccountName)]
         public string RepositoryAccountName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "The name of the repository.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The name of the repository.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryName)]
         public string RepositoryName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "The collaboration branch on the repository.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The collaboration branch on the repository.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryCollaborationBranch)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryCollaborationBranch)]
         public string RepositoryCollaborationBranch { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "The root folder of the repository.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = "The root folder of the repository.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryRootFolder)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryRootFolder)]
         public string RepositoryRootFolder { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = "The id of the last commit.")]
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = "The id of the last commit.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
         public string RepositoryLastCommitId { get; set; }
         
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = "GitHub repo host name.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpGithubHostName)]
         public string GitHubHostName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = "VSTS project name.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpVSTSProjectName)]
         public string VSTSProjectName { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = "VSTS tenant id.")]
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = Constants.HelpVSTSTenantId)]
         public string VSTSTenantId { get; set; }
         
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

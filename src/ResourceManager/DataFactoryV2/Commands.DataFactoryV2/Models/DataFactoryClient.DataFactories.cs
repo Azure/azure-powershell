@@ -125,35 +125,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
         public PSDataFactory ConfigurePSDDataFactory(ConfigurePSDataFactoryParameters parameters)
         {
-            PSDataFactory dataFactory = null;
-            Action configureDataFactory = () =>
-             {
-                 dataFactory =
-                 new PSDataFactory(this.DataFactoryManagementClient.Factories.ConfigureFactoryRepo(parameters.LocationId,
-                 new FactoryRepoUpdate(parameters.FactoryResourceId, parameters.Repo)),parameters.ResourceGroupName);
-             };
-            parameters.ConfirmAction(
-                parameters.Force,
-                string.Format(
-                  CultureInfo.InvariantCulture,
-                  Resources.DataFactoryExists,
-                  parameters.DataFactoryName,
-                  parameters.ResourceGroupName),
-                string.Format(
-                  CultureInfo.InvariantCulture,
-                  Resources.DataFactoryCreating,
-                  parameters.DataFactoryName,
-                  parameters.ResourceGroupName),
-                parameters.DataFactoryName,
-                configureDataFactory,
-                ()=>CheckDataFactoryExists(parameters.ResourceGroupName,parameters.DataFactoryName,out dataFactory)
-            );
-            if (!DataFactoryCommonUtilities.IsSucceededProvisioningState(dataFactory.ProvisioningState))
-            {
-                throw new ProvisioningFailedException(Resources.DataFactoryProvisioningError);
-            }
-            return dataFactory;
+            return new PSDataFactory(this.DataFactoryManagementClient.Factories.ConfigureFactoryRepo(parameters.LocationId,
+                                     new FactoryRepoUpdate(parameters.FactoryResourceId, parameters.Repo)),parameters.ResourceGroupName);
         }
+
         public PSDataFactory CreatePSDataFactory(CreatePSDataFactoryParameters parameters)
         {
             PSDataFactory dataFactory = null;

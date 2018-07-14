@@ -14,8 +14,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Models
         public string FactoryResourceId { get; set; }
         public string LocationId { get; set; }
         public FactoryRepoConfiguration Repo { get; set; }
-
-        //TODO do we need tags or not.
-        public Hashtable Tags { get; set; }
     }
 }

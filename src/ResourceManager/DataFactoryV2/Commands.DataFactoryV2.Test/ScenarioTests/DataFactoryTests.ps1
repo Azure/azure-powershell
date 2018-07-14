@@ -192,7 +192,9 @@ function Test-SetFactoryGithub
 	$repoLastCommitId = "testId"
 	$githubHostName = "testHost"
 
-	Assert-ThrowsContains { Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GithubHostName $githubHostName }  "BadRequest"
+	Assert-ThrowsContains { Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation `
+	-Force -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
+	-RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GithubHostName $githubHostName }  "BadRequest"
 }
 
 
@@ -269,6 +271,97 @@ function Test-SetFactoryVSTSNoTenant
 		Assert-AreEqual $repoRootFolder $actual.RepoConfiguration.RootFolder
 		Assert-AreEqual $repoLastCommitId $actual.RepoConfiguration.LastCommitId
 		Assert-AreEqual $VSTSProjectName $actual.RepoConfiguration.ProjectName
+	}
+	finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOOSIS
+Test setting VSTS repo configuration
+#>
+function Test-SetConfigRepoVSTS
+{
+	$dfname = Get-DataFactoryName
+	$rgname = Get-ResourceGroupName
+	$dflocation = Get-ProviderLocation DataFactoryManagement
+	$rglocation = Get-ProviderLocation ResourceManagement
+	
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+	$repoAccountName = "testAccount"
+	$repoName = "testRepo"
+	$repoCollaborationBranch = "testBranch"
+	$repoRootFolder = "testRoot"
+	$repoLastCommitId = "testId"
+	$VSTSProjectName = "testVSTSProject"
+	$subId = "c39dce18-cead-4065-8fb1-3af7683a5038"
+	$factoryResourceId = "/subscriptions/" + `
+		         $subId + "/resourceGroups/" + $rgname + "/providers/Microsoft.DataFactory/factories/" + $dfname
+
+    try
+    {
+		Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+		$actual = Set-AzureRMDataFactoryV2RepoConfiguration -Location $dflocation -FactoryResourceId  $factoryResourceId `
+				 -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
+				 -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -VSTSProjectName $VSTSProjectName
+		$expected = Get-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+		ValidateFactoryProperties $expected $actual
+		Assert-AreEqual $repoAccountName $actual.RepoConfiguration.AccountName
+		Assert-AreEqual $repoName $actual.RepoConfiguration.RepositoryName
+		Assert-AreEqual $repoCollaborationBranch $actual.RepoConfiguration.CollaborationBranch
+		Assert-AreEqual $repoRootFolder $actual.RepoConfiguration.RootFolder
+		Assert-AreEqual $repoLastCommitId $actual.RepoConfiguration.LastCommitId
+		Assert-AreEqual $VSTSProjectName $actual.RepoConfiguration.ProjectName
+		Assert-AreEqual $VSTSTenantId $actual.RepoConfiguration.TenantId
+	}
+	finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOOSIS
+Test setting Github repo configuration
+#>
+function Test-SetConfigRepoGithub
+{
+	$dfname = Get-DataFactoryName
+	$rgname = Get-ResourceGroupName
+	$dflocation = Get-ProviderLocation DataFactoryManagement
+	$rglocation = Get-ProviderLocation ResourceManagement
+	
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+	$repoAccountName = "testAccount"
+	$repoName = "testRepo"
+	$repoCollaborationBranch = "testBranch"
+	$repoRootFolder = "testRoot"
+	$repoLastCommitId = "testId"
+	$githubHostName = "github.com"
+	$subId = "c39dce18-cead-4065-8fb1-3af7683a5038"
+	$factoryResourceId = "/subscriptions/" + `
+		         $subId + "/resourceGroups/" + $rgname + "/providers/Microsoft.DataFactory/factories/" + $dfname
+
+    try
+    {
+		Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
+		$actual = Set-AzureRMDataFactoryV2RepoConfiguration -Location $dflocation -FactoryResourceId  $factoryResourceId `
+				  -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
+				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GitHubConfig -GithubHostName $githubHostName
+		$expected = Get-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
+
+		ValidateFactoryProperties $expected $actual
+		Assert-AreEqual $repoAccountName $actual.RepoConfiguration.AccountName
+		Assert-AreEqual $repoName $actual.RepoConfiguration.RepositoryName
+		Assert-AreEqual $repoCollaborationBranch $actual.RepoConfiguration.CollaborationBranch
+		Assert-AreEqual $repoRootFolder $actual.RepoConfiguration.RootFolder
+		Assert-AreEqual $repoLastCommitId $actual.RepoConfiguration.LastCommitId
+		Assert-AreEqual $githubHostName $actual.RepoConfiguration.HostName
 	}
 	finally
     {

@@ -1,35 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections;
-using System.Management.Automation;
-
-using Microsoft.Azure.Commands.DataFactoryV2.Models;
+﻿using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.DataFactory.Models;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using System;
+using System.Management.Automation;
+using System.Security.Permissions;
 
-namespace Microsoft.Azure.Commands.DataFactoryV2.DataFactories
+namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    class SetAzureDataFactoryRepoConfiguration:DataFactoryBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, Constants.ConfigureRepository, DefaultParameterSetName = ParameterSetNames.ByGitHub,
+        SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
+    public class SetAzureDataFactoryRepoConfiguration : DataFactoryBaseCmdlet
     {
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryResourceId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryResourceId)]
+        [ValidateNotNullOrEmpty]
         public string FactoryResourceId { get; set; }
-        public string ResourceGroupName { get; set; }
-        public string Name { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryLocation)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, ValueFromPipelineByPropertyName = true,
+            HelpMessage = Constants.HelpFactoryLocation)]
+        [LocationCompleter("Microsoft.DataFactory/factories")]
+        [ValidateNotNullOrEmpty]
         public string Location { get; set; }
-        public Hashtable Tag { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
-        public string RepositoryType { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryAccountName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryAccountName)]
         public string RepositoryAccountName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryName)]
         public string RepositoryName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryCollaborationBranch)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryCollaborationBranch)]
         public string RepositoryCollaborationBranch { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpRepositoryRootFolder)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpRepositoryRootFolder)]
         public string RepositoryRootFolder { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
         public string RepositoryLastCommitId { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubHostName)]
+        public SwitchParameter GitHubConfig { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpGithubHostName)]
         public string GitHubHostName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = true, HelpMessage = Constants.HelpVSTSProjectName)]
         public string VSTSProjectName { get; set; }
+
+        [Parameter(ParameterSetName = ParameterSetNames.ByVSTS, Mandatory = false, HelpMessage = Constants.HelpVSTSTenantId)]
         public string VSTSTenantId { get; set; }
 
+        [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
         {
             FactoryRepoConfiguration repo = null;
@@ -55,13 +88,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.DataFactories
                     this.GitHubHostName
                     );
             }
+            var parsedResourceId = new ResourceIdentifier(FactoryResourceId);
             var parameters = new ConfigurePSDataFactoryParameters()
             {
+                ResourceGroupName = parsedResourceId.ResourceGroupName,
+                DataFactoryName = parsedResourceId.ResourceName,
                 FactoryResourceId = FactoryResourceId,
-                ResourceGroupName = ResourceGroupName,
-                DataFactoryName = Name,
                 LocationId = Location,
-                Tags = Tag,
                 Force = Force.IsPresent,
                 ConfirmAction = ConfirmAction,
                 Repo = repo

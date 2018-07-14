@@ -166,49 +166,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Models\DataFactoryClient.Pipelines.cs" />
+    <None Include="AzureRM.DataFactoryV2.Netcore.psd1" />
     <None Include="AzureRM.DataFactoryV2.psd1">
       <Link>AzureRM.DataFactoryV2.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="help\AzureRM.DataFactoryV2.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2ActivityRun.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2Dataset.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2IntegrationRuntimeKey.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2IntegrationRuntimeMetric.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2IntegrationRuntimeNode.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2LinkedService.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2Pipeline.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2PipelineRun.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2Trigger.md" />
-    <None Include="help\Get-AzureRmDataFactoryV2TriggerRun.md" />
-    <None Include="help\Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade.md" />
-    <None Include="help\Invoke-AzureRmDataFactoryV2Pipeline.md" />
-    <None Include="help\New-AzureRmDataFactoryV2IntegrationRuntimeKey.md" />
-    <None Include="help\New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2Dataset.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2IntegrationRuntimeNode.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2LinkedService.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2Pipeline.md" />
-    <None Include="help\Remove-AzureRmDataFactoryV2Trigger.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2Dataset.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2LinkedService.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2Pipeline.md" />
-    <None Include="help\Set-AzureRmDataFactoryV2Trigger.md" />
-    <None Include="help\Start-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Start-AzureRmDataFactoryV2Trigger.md" />
-    <None Include="help\Stop-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Stop-AzureRmDataFactoryV2PipelineRun.md" />
-    <None Include="help\Stop-AzureRmDataFactoryV2Trigger.md" />
-    <None Include="help\Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential.md" />
-    <None Include="help\Update-AzureRmDataFactoryV2.md" />
-    <None Include="help\Update-AzureRmDataFactoryV2IntegrationRuntime.md" />
-    <None Include="help\Update-AzureRmDataFactoryV2IntegrationRuntimeNode.md" />
+    <None Include="AzureRM.DataFactoryV2.psd1" />
+    <None Include="Changelog.md" />
+    <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

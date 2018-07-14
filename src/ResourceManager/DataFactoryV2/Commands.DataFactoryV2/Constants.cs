@@ -48,6 +48,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string PipelineRunWithSummary = "AzureRmDataFactoryV2PipelineRunWithSummary";
 
+        public const string ConfigureRepository = "AzureRmDataFactoryV2RepoConfiguration";
+
         public const string HelpResourceId = "The Azure resource ID.";
 
         public const string HelpResourceGroup = "The resource group name.";
@@ -193,5 +195,28 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeBasePrice = "BasePrice";
 
         public const string DeprecatingParameter = "Parameter is being deprecated without being replaced";
+
+        public const string HelpFactoryResourceId = "ResourceId for Factory";
+
+        public const string HelpFactoryLocation = "The geographic region of the data factory.";
+
+        public const string HelpRepositoryAccountName = "The account name associated with the repository.";
+
+        public const string HelpRepositoryName = "The name of the repository.";
+
+        public const string HelpRepositoryCollaborationBranch = "The collaboration branch of the repository.";
+
+        public const string HelpRepositoryRootFolder = "The root folder of the repository.";
+
+        public const string HelpRepositoryLastCommitId = "The ID of the last commit.";
+
+        public const string HelpGithubHostName = "The Github repo host name.";
+
+        public const string HelpGithubConfig = "The repo configuration is for GitHub.";
+
+        public const string HelpVSTSProjectName = "The name of the VSTS project.";
+
+        public const string HelpVSTSTenantId = "The ID of the VSTS tenant.";
+            
     }
 }

@@ -106,7 +106,8 @@ CmdletsToExport = 'Set-AzureRmDataFactoryV2', 'Update-AzureRmDataFactoryV2',
     'Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade', 
     'Sync-AzureRmDataFactoryV2IntegrationRuntimeCredential', 
     'Update-AzureRmDataFactoryV2IntegrationRuntime', 
-    'Get-AzureRmDataFactoryV2TriggerRun'
+    'Get-AzureRmDataFactoryV2TriggerRun',
+    'Set-AzureRmDataFactoryV2RepoConfiguration'
 
 # Variables to export from this module
 # VariablesToExport = @()
