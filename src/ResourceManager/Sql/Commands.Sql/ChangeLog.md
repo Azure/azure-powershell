@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
 * Updated help files to include full parameter types.
 
 ## Version 4.10.0
