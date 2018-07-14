@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 9FF4F649-F50C-4C27-842F-1CD6C5BC7A2B
@@ -52,7 +52,7 @@ The current cmdlet starts backing up the virtual machine in the container.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +67,9 @@ Accept wildcard characters: False
 Specifies a Backup item for which this cmdlet starts a backup operation.
 
 ```yaml
-Type: AzureRMBackupItem
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

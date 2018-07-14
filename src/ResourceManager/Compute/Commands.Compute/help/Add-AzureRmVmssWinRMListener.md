@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 987BD670-20F3-4105-A5BE-03E712AB2B56
@@ -41,7 +41,7 @@ The second command adds an HTTP protocol WinRM listener with the certificate at 
 Specifies a link, as a URL, of the certificate with which new virtual machines are provisioned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ The acceptable values for this parameter are:
 - Https
 
 ```yaml
-Type: ProtocolTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ProtocolTypes]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
@@ -92,7 +92,7 @@ Specifies the VMSS object.
 You can use the New-AzureRmVmssConfig cmdlet to create the object.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -19,6 +19,7 @@
 -->
 
 ## Current Release
+* Updated help files to include full parameter types.
 
 ## Version 0.5.6
 * Fixed formatting of OutputType in help files

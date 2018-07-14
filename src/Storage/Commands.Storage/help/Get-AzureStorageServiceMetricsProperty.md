@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 3B5B828A-6B3E-49BD-8BA9-916F8B69B8E9
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageservicemetricsproperty
 schema: 2.0.0
@@ -36,9 +37,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -53,9 +54,9 @@ This cmdlet gets the Azure Storage service metrics properties for the metrics ty
 The acceptable values for this parameter are: Hour and Minute.
 
 ```yaml
-Type: ServiceMetricsType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Hour, Minute
 
 Required: True
@@ -78,9 +79,9 @@ The acceptable values for this parameter are:
 The value of File is not currently supported.
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True

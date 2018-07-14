@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 5490BB24-127E-4C21-B85F-B70D817B659A
@@ -66,9 +66,9 @@ Note that *DownloadLogs* is not specified.
 Specifies a **PSDataFactory** object.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -82,9 +82,9 @@ Specifies the name of a data factory.
 This cmdlet downloads log files for the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,9 +113,9 @@ Indicates that this cmdlet downloads log files to your local computer.
 If *Ouptut* folder is not specified, files are saved to Documents folder under a subfolder.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -129,9 +129,9 @@ Specifies the ID of the activity run for the data slice.
 Use the Get-AzureRmDataFactoryRun cmdlet to get an ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Specifies the output folder in which the downloaded log files are saved.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -160,9 +160,9 @@ Specifies the name of an Azure resource group.
 This cmdlet creates a data factory that belongs to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

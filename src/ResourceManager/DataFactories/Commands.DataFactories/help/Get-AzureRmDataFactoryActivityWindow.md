@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: F8C67F7B-64C5-45E4-A0BF-32212BEBE885
@@ -105,9 +105,9 @@ Specifies the name of the activity.
 This cmdlet gets activity windows for the activity that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -121,9 +121,9 @@ Specifies a **PSDataFactory** object returned by a cmdlet.
 This cmdlet gets activity windows that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -137,9 +137,9 @@ Specifies the name of the data factory.
 This cmdlet gets activity windows that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -153,9 +153,9 @@ Specifies the name of the dataset.
 This cmdlet gets activity windows that belong to the dataset that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,9 +185,9 @@ For information about the grammar, see OData Expression Syntax for Azure Searchh
 The activity windows list is filtered by the search string that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -205,9 +205,9 @@ By default, the order is ascending order (ASC).
 Specify DESC if you want to order the list in descending order.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -221,9 +221,9 @@ Specifies the name of the pipeline.
 This cmdlet gets activity windows that belong to the pipeline that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -237,9 +237,9 @@ Specifies the name of the resource group.
 This cmdlet gets activity windows that belong to the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -253,9 +253,9 @@ Specifies the end time of the activity window run.
 This cmdlet gets activity windows whose run times fall between *RunStart* and *RunEnd* times.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -269,9 +269,9 @@ Specifies the start time of the activity window run.
 This cmdlet gets activity windows whose run times fall between *RunStart* and *RunEnd* times.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -284,9 +284,9 @@ Accept wildcard characters: False
 Specifies the maximum number of activity windows that this cmdlet returns.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -300,9 +300,9 @@ Specifies the end time of activity window.
 This cmdlet gets activity windows whose times fall between *WindowStart* and *WindowEnd* times.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -316,9 +316,9 @@ Specifies the start time of activity window.
 This cmdlet gets activity windows whose times fall between *WindowStart* and *WindowEnd* times.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -341,9 +341,9 @@ The acceptable values for this parameter are:
 This cmdlet gets activity windows that are in the state that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -363,9 +363,9 @@ The acceptable values for this parameter are:
 This cmdlet gets activity windows that are in the substate that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

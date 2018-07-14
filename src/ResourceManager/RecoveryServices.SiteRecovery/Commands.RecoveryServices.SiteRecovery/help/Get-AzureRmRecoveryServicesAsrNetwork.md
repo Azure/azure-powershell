@@ -46,8 +46,9 @@ Gets all known networks in the specified fabric.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ASR fabric object
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 Friendly name of network ASR object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFriendlyName
 Aliases:
 
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 Name of network ASR object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 

@@ -73,7 +73,7 @@ in the $Zone variable.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the name of the DNS zone to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Specifies the resource group in which to create the zone.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -180,7 +180,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -195,7 +195,7 @@ Accept wildcard characters: False
 The type of the zone, Public or Private. Zones without a type or with a type of Public are made available on the public DNS serving plane for use in the DNS hierarchy. Zones with a type of Private are only visible from with the set of associated virtual networks (this feature is in preview). This property cannot be changed for a zone.
 
 ```yaml
-Type: ZoneType
+Type: System.Nullable`1[Microsoft.Azure.Management.Dns.Models.ZoneType]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Public, Private
@@ -211,7 +211,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -226,7 +226,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
