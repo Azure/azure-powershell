@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 
 ## Version 4.10.0
 * Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance

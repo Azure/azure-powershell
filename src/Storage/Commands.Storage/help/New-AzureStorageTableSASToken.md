@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 3CFA6E31-E243-4B22-AE8F-1942DD324639
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragetablesastoken
 schema: 2.0.0
@@ -64,9 +65,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -79,7 +80,7 @@ Accept wildcard characters: False
 Specifies the partition key of the end of the range for the token that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: endpk
 
@@ -94,7 +95,7 @@ Accept wildcard characters: False
 Specifies the row key for the end of the range for the token that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: endrk
 
@@ -109,9 +110,9 @@ Accept wildcard characters: False
 Specifies when the SAS token expires.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,9 +125,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet returns the full queue URI with the SAS token.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,9 +141,9 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +157,7 @@ Specifies the name of an Azure Storage table.
 This cmdlet creates an SAS token for the table that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Table
 
@@ -173,9 +174,9 @@ Specifies permissions for an Azure Storage table.
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -188,9 +189,9 @@ Accept wildcard characters: False
 Specifies a stored access policy, which includes the permissions for this SAS token.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -208,9 +209,9 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: SharedAccessProtocol
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -224,7 +225,7 @@ Accept wildcard characters: False
 Specifies the partition key of the start of the range for the token that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: startpk
 
@@ -239,7 +240,7 @@ Accept wildcard characters: False
 Specifies the row key for the start of the range for the token that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: startrk
 
@@ -254,9 +255,9 @@ Accept wildcard characters: False
 Specifies when the SAS token becomes valid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

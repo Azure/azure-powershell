@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 
 ## Version 0.3.8
 * Update example for `New-AzureRmServiceFabricCluster`

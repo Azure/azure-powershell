@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: B2B4E132-4A71-4DB8-A7B9-9ED3FE7EB292
@@ -39,7 +39,7 @@ The command specifies the name and version of the extension.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,7 +55,7 @@ Indicates that this cmdlet prevents the Azure guest agent from automatically upd
 By default, this cmdlet enables the guest agent to update the extension.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ The value can be any string different from the current value.
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the location of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Specifies the name of the BGInfo extension that this cmdlet adds to a virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ExtensionName
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine to which this cmdlet adds an extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 Specifies the version of the extension that this cmdlet adds to the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: HandlerVersion, Version
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine to which this cmdlet adds the BGInfo extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -163,7 +163,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

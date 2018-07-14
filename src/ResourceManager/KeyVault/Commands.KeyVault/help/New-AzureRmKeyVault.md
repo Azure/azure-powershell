@@ -113,7 +113,7 @@ Premium for the *SKU* parameter to create a Premium key vault.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,7 +129,7 @@ Enables the Microsoft.Compute resource provider to retrieve secrets from this ke
 key vault is referenced in resource creation, for example when creating a virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Enables the Azure disk encryption service to get secrets and unwrap keys from this key vault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -191,7 +191,7 @@ Specifies that the soft-delete functionality is enabled for this key vault. When
 For more information about this functionality, see [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete). For how-to instructions, see [How to use Key Vault soft-delete with PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Specifies the Azure region in which to create the key vault. Use the command [Get-AzureLocation](https://docs.microsoft.com/powershell/module/Azure/Get-AzureLocation) to see your choices.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 Specifies a name of the key vault to create. The name can be any combination of letters, digits, or hyphens. The name must start and end with a letter or digit. The name must be universally unique.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: VaultName
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 Specifies the name of an existing resource group in which to create the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 Specifies the SKU of the key vault instance. For information about which features are available for each SKU, see the Azure Key Vault Pricing website (https://go.microsoft.com/fwlink/?linkid=512521).
 
 ```yaml
-Type: SkuName
+Type: Microsoft.Azure.Management.KeyVault.Models.SkuName
 Parameter Sets: (All)
 Aliases:
 Accepted values: Standard, Premium
@@ -269,7 +269,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -300,7 +300,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

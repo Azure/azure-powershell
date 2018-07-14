@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: C274DFBD-6C93-4043-AF93-DAF7BEA1F11F
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/stop-azurestorageblobcopy
 schema: 2.0.0
@@ -65,9 +66,9 @@ This example stops the copy operation by passing the container on the pipeline f
 Specifies the name of the blob.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamePipeline, ContainerPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -82,9 +83,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -98,7 +99,7 @@ Specifies a **CloudBlob** object from Azure Storage Client library.
 To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 
 ```yaml
-Type: CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -114,9 +115,9 @@ Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
 You can create the object or use the Get-AzureStorageContainer cmdlet.
 
 ```yaml
-Type: CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -133,9 +134,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -148,9 +149,9 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NamePipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -164,9 +165,9 @@ Specifies the Azure storage context.
 You can create the context by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,9 +180,9 @@ Accept wildcard characters: False
 Specifies the copy ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -194,9 +195,9 @@ Accept wildcard characters: False
 Stops the current copy task on the specified blob without prompting for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -210,9 +211,9 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -241,7 +242,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
