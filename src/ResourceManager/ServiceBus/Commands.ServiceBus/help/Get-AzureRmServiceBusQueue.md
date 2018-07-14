@@ -48,7 +48,6 @@ Id                                  : /subscriptions/{subscription id}/resourceG
                                       B-Queue_example1
 Name                                : SB-Queue_example1
 Type                                : Microsoft.ServiceBus/Queues
-
 ```
 
 Returns the description of the queue.
@@ -75,7 +74,7 @@ Returns list of first 30 queues for given namespace
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -105,7 +104,7 @@ Accept wildcard characters: False
 Queue Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: QueueName
 
@@ -120,7 +119,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: NamespaceName
 
@@ -135,7 +134,7 @@ Accept wildcard characters: False
 The name of the resource group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 

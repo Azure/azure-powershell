@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: B831ABE6-348C-4DD6-9295-18D23A1FDF63
@@ -59,7 +59,7 @@ This example gets all of the DNS zones in the current Azure subscription, and th
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,9 +77,9 @@ If you do not specify a value for the *Name* parameter, this cmdlet gets all DNS
 If you also omit the *ResourceGroupName* parameter, this cmdlet gets all DNS zones in the current Azure subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroup
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -95,9 +95,9 @@ If you do not specify the *ResourceGroupName*, then you must also omit the *Name
 In this case, this cmdlet gets all DNS zones in the current Azure subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

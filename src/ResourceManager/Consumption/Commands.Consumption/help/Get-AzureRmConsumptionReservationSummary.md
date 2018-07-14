@@ -36,7 +36,7 @@ ReservedHour:  288
 SkuName:  Standard_DS2_v2
 Type:  Microsoft.Consumption/reservationSummaries
 UsageDate:  9/1/2017 12:00:00 AM
-UsedHour:  288			
+UsedHour:  288
 ```
 
 ### Example 2: Get reservation summaries with reservation order Id and reservation Id for monthly grain
@@ -53,7 +53,7 @@ ReservedHour:  288
 SkuName:  Standard_DS2_v2
 Type:  Microsoft.Consumption/reservationSummaries
 UsageDate:  9/1/2017 12:00:00 AM
-UsedHour:  288	
+UsedHour:  288
 ```
 
 ### Example 3: Get reservation summaries with reservation order Id for daily grain provided date range
@@ -96,7 +96,7 @@ UsedHour:  24
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The end data (YYYY-MM-DD in UTC) of the reservation summary, required only for daily grain.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The time grain of the reservation summaryy, can be daily or monthly.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: daily, monthly
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The identifier of a reservation within a reservation order.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The identifier of a reservation purchase.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The start data (YYYY-MM-DD in UTC) of the reservation summary, required only for daily grain.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -184,18 +184,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### None
 
-
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Consumption.Models.PSReservationSummary
-
 
 ## NOTES
 
