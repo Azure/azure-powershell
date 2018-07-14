@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 1246C3AC-A123-4EA1-B99E-458A85789109
@@ -78,9 +78,9 @@ Specifies the name of an Automation account.
 This cmdlet exports reports for a DSC node that belongs to the account that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +109,9 @@ Specifies an end time.
 This cmdlet gets reports that Automation received before this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC node report for this cmdlet to get.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ById
 Aliases: ReportId
 
@@ -139,9 +139,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets the latest DSC report for the specified node only.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByLatest
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -154,9 +154,9 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC node for which this cmdlet gets reports.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -169,9 +169,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the DSC node for which this cmdlet gets reports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -185,9 +185,9 @@ Specifies a start time.
 This cmdlet gets reports that Automation received after this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: ByAll
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

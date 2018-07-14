@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.RecoveryServices
 Module Guid: 4aa53b7e-fcfe-4e22-979c-9a4e6380de58
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.recoveryservices

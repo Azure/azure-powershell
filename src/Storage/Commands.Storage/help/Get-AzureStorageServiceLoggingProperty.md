@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageserviceloggingproperty
 schema: 2.0.0
@@ -36,9 +37,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -60,9 +61,9 @@ The acceptable values for this parameter are:
 The value of File is not currently supported.
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True

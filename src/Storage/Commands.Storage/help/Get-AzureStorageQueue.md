@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: C2EBCCF0-56CE-4D49-A138-74E52FC3A9AC
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeue
 schema: 2.0.0
@@ -55,9 +56,9 @@ Specifies the Azure storage context.
 You can create it by using the **New-AzureStorageContext** cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -72,7 +73,7 @@ If no name is specified, the cmdlet gets a list of all the queues.
 If a full or partial name is specified, the cmdlet gets all queues that match the name pattern.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: QueueName
 Aliases: N, Queue
 
@@ -80,16 +81,16 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Prefix
 Specifies a prefix used in the name of the queues you want to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: QueuePrefix
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

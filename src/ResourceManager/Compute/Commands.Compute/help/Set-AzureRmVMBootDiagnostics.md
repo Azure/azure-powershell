@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 9A6F140C-9F1C-4701-9603-FC6107FCAF92
@@ -48,7 +48,7 @@ Diagnostics data is stored in the specified account.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet disables the boot diagnostics for the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DisableBootDiagnostics
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables the boot diagnostics for the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EnableBootDiagnostics
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableBootDiagnostics
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Specifies the name of the storage account in which to save boot diagnostics data.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnableBootDiagnostics
 Aliases:
 
@@ -124,7 +124,7 @@ Specifies the virtual machine for which this cmdlet changes boot diagnostics.
 To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 

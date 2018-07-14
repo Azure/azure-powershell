@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 5287D4DB-2709-4A3C-97D5-DB494CEEFD18
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/set-azurermtrafficmanagerendpoint
 schema: 2.0.0
@@ -49,7 +49,7 @@ The third command updates the endpoint in Traffic Manager to match the local val
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -65,9 +65,9 @@ Specifies a local **TrafficManagerEndpoint** object.
 This cmdlet updates Traffic Manager to match this local object.
 
 ```yaml
-Type: TrafficManagerEndpoint
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -92,4 +92,3 @@ This cmdlet returns a **TrafficManagerEndpoint** object.
 ## NOTES
 
 ## RELATED LINKS
-
