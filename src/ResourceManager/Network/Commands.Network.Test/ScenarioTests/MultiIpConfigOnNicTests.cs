@@ -21,18 +21,20 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class MultiIpConfigOnNicTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public MultiIpConfigOnNicTests(ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestMultiIpConfigCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-MultiIpConfigCRUD");
-        }
-
-        public MultiIpConfigOnNicTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-MultiIpConfigCRUD");
         }
 
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
@@ -41,7 +43,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestLBWithMultiIpConfigNICCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-LBWithMultiIpConfigNICCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LBWithMultiIpConfigNICCRUD");
         }
 
 
@@ -50,7 +52,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, Category.sdnnrp)]
         public void TestAddNICToLBWithMultiIpConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-AddNICToLBWithMultiIpConfig");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-AddNICToLBWithMultiIpConfig");
         }
 
         [Fact(Skip = "NRP code to be there to test this scenario, skipping it until NRP is ready")]
@@ -60,7 +62,7 @@ namespace Commands.Network.Test.ScenarioTests
         public void TestLBWithMultiIpConfigMultiNIC()
         {
 
-            NetworkResourcesController.NewInstance.RunPsTest("Test-LBWithMultiIpConfigMultiNIC");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-LBWithMultiIpConfigMultiNIC");
         }
     }
 }

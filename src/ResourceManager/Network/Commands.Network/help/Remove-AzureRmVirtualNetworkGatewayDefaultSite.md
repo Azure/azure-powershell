@@ -46,7 +46,7 @@ The second command then uses **Remove-AzureRmVirtualNetworkGatewayDefaultSite** 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -62,7 +62,7 @@ Specifies an object reference to the virtual network gateway containing the defa
 You can create an object reference to a virtual network gateway by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 

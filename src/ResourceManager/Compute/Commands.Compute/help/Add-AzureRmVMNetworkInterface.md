@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: BF80D456-DAB1-4B51-B50F-A75C2C66A472
@@ -63,7 +63,7 @@ The final command updates the state of the virtual machine stored in $VirtualMac
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ Specifies the ID of a network interface to add to a virtual machine.
 You can use the [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) cmdlet to obtain a network interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetNicFromNicId
 Aliases: NicId, NetworkInterfaceId
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet adds the network interface as the primary interface.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetNicFromNicId
 Aliases:
 
@@ -126,7 +126,7 @@ To create a virtual machine, use the **New-AzureRmVMConfig** cmdlet.
 To obtain an existing virtual machine, use the **Get-AzureRmVM** cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 

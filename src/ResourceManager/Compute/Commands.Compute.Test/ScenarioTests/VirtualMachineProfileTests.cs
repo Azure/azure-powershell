@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,23 +20,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class VirtualMachineProfileTests
     {
+        XunitTracingInterceptor _logger;
+
         public VirtualMachineProfileTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineProfile()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineProfile");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineProfileWithoutAUC()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-VirtualMachineProfileWithoutAUC");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-VirtualMachineProfileWithoutAUC");
         }
     }
 }

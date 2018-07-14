@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: FF44BCD2-AD8E-4F5C-AB10-BD6BD69E7F45
@@ -39,9 +39,9 @@ This command suspends the job that has the specified ID.
 Specifies the name of an Automation account in which this cmdlet suspends a job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies the ID of a job that this cmdlet suspends.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases: JobId
 
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 Specifies the ID of a job that this cmdlet suspends.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

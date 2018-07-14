@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 488229AF-FD6D-4E1B-B3DA-E57CA781D91E
@@ -189,7 +189,7 @@ Gets role assignments at the 'site1' website scope.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,7 +205,7 @@ If specified, returns roles directly assigned to the user and to the groups of w
 Supported only for a user principal.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ObjectIdParameterSet, SignInNameParameterSet
 Aliases:
 
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 If specified, also lists subscription classic administrators (co-admins, service admins, etc.) role assignments.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
 Aliases:
 
@@ -236,7 +236,7 @@ The Azure AD ObjectId of the User, Group or Service Principal.
 Filters all assignments that are made to the specified principal.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet
 Aliases: Id, PrincipalId
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases: Id, PrincipalId
 
@@ -264,7 +264,7 @@ The parent resource in the hierarchy of the resource specified using ResourceNam
 Must be used in conjunction with ResourceGroupName, ResourceType, and ResourceName parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
 Aliases:
 
@@ -281,7 +281,7 @@ Lists role assignments that are effective at the specified resource group.
 When used in conjunction with ResourceName, ResourceType, and ParentResource parameters, the command lists assignments effective at resources within the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet
 Aliases:
 
@@ -299,7 +299,7 @@ storageaccountprod.
 Must be used in conjunction with ResourceGroupName, ResourceType, and (optionally)ParentResource parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
 Aliases:
 
@@ -317,7 +317,7 @@ Microsoft.Network/virtualNetworks.
 Must be used in conjunction with ResourceGroupName, ResourceName, and (optionally)ParentResource parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceWithObjectIdParameterSet, ResourceWithSignInNameParameterSet, ResourceWithSPNParameterSet, ResourceParameterSet
 Aliases:
 
@@ -332,7 +332,7 @@ Accept wildcard characters: False
 Id of the Role that is assigned to the principal.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
@@ -348,7 +348,7 @@ Role that is assigned to the principal i.e.
 Reader, Contributor, Virtual Network Administrator, etc.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EmptyParameterSet, ObjectIdParameterSet, ResourceGroupWithObjectIdParameterSet, ResourceWithObjectIdParameterSet, ScopeWithObjectIdParameterSet, ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet, ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet, ResourceGroupParameterSet, ResourceParameterSet, ScopeParameterSet
 Aliases:
 
@@ -368,7 +368,7 @@ It must start with "/subscriptions/{id}".
 The command filters all assignments that are effective at that scope.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ScopeWithObjectIdParameterSet, ScopeWithSignInNameParameterSet, ScopeWithSPNParameterSet, ScopeParameterSet
 Aliases:
 
@@ -380,7 +380,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RoleIdWithScopeAndObjectIdParameterSet
 Aliases:
 
@@ -396,7 +396,7 @@ The ServicePrincipalName of the service principal.
 Filters all assignments that are made to the specified Azure AD application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithSPNParameterSet, ResourceWithSPNParameterSet, ScopeWithSPNParameterSet, SPNParameterSet
 Aliases: SPN
 
@@ -412,7 +412,7 @@ The email address or the user principal name of the user.
 Filters all assignments that are made to the specified user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupWithSignInNameParameterSet, ResourceWithSignInNameParameterSet, ScopeWithSignInNameParameterSet, SignInNameParameterSet
 Aliases: Email, UserPrincipalName
 

@@ -23,100 +23,103 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class StorageAccountTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public StorageAccountTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveAzureStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-RemoveAzureStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-RemoveAzureStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureStorageAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-GetAzureStorageAccountKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-GetAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewAzureStorageAccountKey()
         {
-            TestController.NewInstance.RunPsTest("Test-NewAzureStorageAccountKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingGetAccountToGetKey()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingGetAccountToGetKey");
+            TestController.NewInstance.RunPsTest(_logger, "Test-PipingGetAccountToGetKey");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPipingSetStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-PipingToSetAzureRmCurrentStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-PipingToSetAzureRmCurrentStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetCurrentStorageAccount()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmCurrentStorageAccount");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmCurrentStorageAccount");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmStorageAccountKeySource()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureRmStorageAccountKeySource");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmStorageAccountKeySource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNetworkRule()
         {
-            TestController.NewInstance.RunPsTest("Test-NetworkRule");
+            TestController.NewInstance.RunPsTest(_logger, "Test-NetworkRule");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureStorageAccountStorageV2()
         {
-            TestController.NewInstance.RunPsTest("Test-SetAzureStorageAccountStorageV2");
+            TestController.NewInstance.RunPsTest(_logger, "Test-SetAzureStorageAccountStorageV2");
         }
     }
 }

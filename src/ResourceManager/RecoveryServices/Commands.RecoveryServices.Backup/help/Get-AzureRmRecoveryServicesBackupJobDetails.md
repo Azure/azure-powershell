@@ -51,7 +51,7 @@ The final command displays error details for the failed jobs.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,9 +67,9 @@ Specifies the job to get.
 To obtain a **BackupJob** object, use the Get-AzureRmRecoveryServicesBackupJob cmdlet.
 
 ```yaml
-Type: JobBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 Parameter Sets: JobFilterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -83,9 +83,9 @@ Specifies the ID of a Backup job.
 The ID is the InstanceId property of a **BackupJob** object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdFilterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
