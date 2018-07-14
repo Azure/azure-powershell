@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
         public string RepositoryLastCommitId { get; set; }
 
-        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubHostName)]
+        [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubConfig)]
         public SwitchParameter GitHubConfig { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Mandatory = false, HelpMessage = Constants.HelpGithubHostName)]

@@ -29,7 +29,7 @@ Set-AzureRmDataFactoryV2RepoConfiguration -FactoryResourceId <String> -Location 
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository configuration for a data factory with the specified parameters. This cmdlet requires admin permissions on the subscription.
+The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository configuration for a data factory with the specified parameters. This cmdlet requires special permissions.
 
 ## EXAMPLES
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -GitHubConfig
-The Github repo host name.
+The repo configuration is for GitHub.
 
 ```yaml
 Type: SwitchParameter
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The data factory is created in this region.
+The geographic region of the data factory.
 
 ```yaml
 Type: String
@@ -193,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -RepositoryLastCommitId
-The id of the last commit.
+The ID of the last commit.
 
 ```yaml
 Type: String
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -VSTSTenantId
-VSTS tenant id.
+VSTS tenant ID.
 
 ```yaml
 Type: String
