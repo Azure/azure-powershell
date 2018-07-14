@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
 
         public IDictionary<string, string> ExtendedProperties { get; } = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
 
-        internal string CurrentStorageAccount
+        public string CurrentStorageAccount
         {
             get
             {
