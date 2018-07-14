@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// Gets or sets the name of the storage account to use.
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
-        public string StorageAccountName { get; set; }
+        [ValidateNotNullOrEmpty]
+		public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the number of retention days for the audit logs table.
