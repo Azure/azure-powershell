@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: 505562A4-30BC-44E7-94EF-579763B8D794
@@ -16,8 +16,8 @@ Deletes a record set.
 ### Fields
 ```
 Remove-AzureRmDnsRecordSet -Name <String> -RecordType <RecordType> -ZoneName <String>
- -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Mixed
@@ -78,7 +78,7 @@ Confirmation prompts are suppressed.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,9 +96,9 @@ When specifying the record set by name, the DNS zone must be specified using eit
 Alternatively, the record set can be specified using a **RecordSet** object, passed using the *RecordSet* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields, Mixed
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -113,9 +113,9 @@ This provides protection for concurrent changes.
 This can be suppressed using the *Overwrite* parameter, which deletes the record set regardless of concurrent changes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,9 +128,9 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,9 +145,9 @@ Specifies the **RecordSet** object to remove.
 Alternatively, the record set can be specified using the *Name* and *Zone* parameters, or using the *Name*, *ZoneName*, and *ResourceGroupName* parameters.
 
 ```yaml
-Type: DnsRecordSet
+Type: Microsoft.Azure.Commands.Dns.DnsRecordSet
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -174,9 +174,9 @@ SOA records are deleted automatically when the zone is deleted.
 You cannot manually delete SOA records.
 
 ```yaml
-Type: RecordType
+Type: Microsoft.Azure.Management.Dns.Models.RecordType
 Parameter Sets: Fields, Mixed
-Aliases: 
+Aliases:
 Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: True
@@ -193,9 +193,9 @@ This parameter is applicable only when the record set and DNS zone are specified
 Alternatively, you can specify the record set using either the *RecordSet* parameter, or the *Name* and *Zone* parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,9 +211,9 @@ This parameter is applicable only when specifying the record set using the *Name
 Alternatively, you can specify the record set using either the *RecordSet* parameter, or the *Name*, *ZoneName*, and *ResourceGroupName* parameters.
 
 ```yaml
-Type: DnsZone
+Type: Microsoft.Azure.Commands.Dns.DnsZone
 Parameter Sets: Mixed
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -229,9 +229,9 @@ You must also specify the *Name* and *ResourceGroupName* parameters.
 Alternatively, the record set can be specified using either the *RecordSet* parameter, or the *Name* and *Zone* parameters.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -260,7 +260,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

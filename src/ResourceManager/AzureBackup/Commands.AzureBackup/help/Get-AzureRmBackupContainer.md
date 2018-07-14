@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: F3774658-A5E4-40BE-9A85-B33C70BC0A09
@@ -77,7 +77,7 @@ This command gets the registered virtual machines from the vault in $Vault.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,9 +93,9 @@ Specifies the name of the resource group associated with the container.
 This name is the same value that you specified for the *ServiceName* or *ResourceGroupName* parameter of the Register-AzureRmBackupContainer cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Specifies the name of the container that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -128,9 +128,9 @@ The acceptable values for this parameter are:
 - Registering
 
 ```yaml
-Type: AzureBackupContainerRegistrationStatus
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerRegistrationStatus
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Registered, Registering, NotRegistered
 
 Required: False
@@ -144,9 +144,9 @@ Accept wildcard characters: False
 Specifies the type of containers that this cmdlet gets.
 
 ```yaml
-Type: AzureBackupContainerType
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainerType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Windows, SCDPM, AzureVM, AzureBackupServer, Other
 
 Required: True
@@ -161,9 +161,9 @@ Specifies a Backup vault from which this cmdlet gets containers.
 To obtain an **AzureRmBackupVault**, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

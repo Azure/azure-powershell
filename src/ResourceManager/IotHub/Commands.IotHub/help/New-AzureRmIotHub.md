@@ -46,7 +46,7 @@ $psCloudToDeviceProperties = New-Object Microsoft.Azure.Commands.Management.IotH
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,9 +61,9 @@ Accept wildcard characters: False
 Location where the IoT hub needs to be created. 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -76,9 +76,9 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 Properties of the IoT hub. 
 
 ```yaml
-Type: PSIotHubInputProperties
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubInputProperties
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,9 +106,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -121,10 +121,10 @@ Accept wildcard characters: False
 Name of the sku
 
 ```yaml
-Type: PSIotHubSku
+Type: Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku
 Parameter Sets: (All)
-Aliases: 
-Accepted values: F1, S1, S2, S3
+Aliases:
+Accepted values: F1, S1, S2, S3, B1, B2, B3
 
 Required: True
 Position: Named
@@ -137,9 +137,9 @@ Accept wildcard characters: False
 Number of units
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -168,7 +168,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -194,4 +194,3 @@ Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubSku System.Int64 Micro
 ## NOTES
 
 ## RELATED LINKS
-
