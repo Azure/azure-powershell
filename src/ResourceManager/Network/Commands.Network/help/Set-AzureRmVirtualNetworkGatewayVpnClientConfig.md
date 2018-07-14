@@ -65,7 +65,7 @@ The second command in the example then uses the **Set-AzureRmVirtualNetworkGatew
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 P2S External Radius server address.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 P2S External Radius server secret.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: RadiusServerConfiguration
 Aliases:
 
@@ -111,7 +111,7 @@ Specifies an object reference to the virtual network gateway that contains the V
 You can create an object reference to a virtual network gateway by using the Get-AzureRmVirtualNetworkGateway and specifying the name of the gateway.
 
 ```yaml
-Type: PSVirtualNetworkGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

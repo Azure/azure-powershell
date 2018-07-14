@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: 73E6DF02-7171-481B-966F-DECEC122A602
@@ -43,9 +43,9 @@ Valid values are:
 - StopConfiguration
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: ContinueConfiguration, StopConfiguration
 
 Required: False
@@ -59,9 +59,9 @@ Accept wildcard characters: False
 Specifies whether new configurations that this DSC node downloads from the Azure Automation DSC pull server replace the existing modules already on the target node.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 Specifies the name of an Automation account in which this cmdlet registers a virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -90,9 +90,9 @@ Specifies the location in which this cmdlet registers a virtual machine.
 To obtain valid locations, use the Get-AzureRMLocation cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure virtual machine that this cmdlet registers for management.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the Azure virtual machine that this cmdlet registers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,9 +140,9 @@ Valid values are:
 - ApplyOnly
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: ApplyAndMonitor, ApplyAndAutocorrect, ApplyOnly
 
 Required: False
@@ -156,9 +156,9 @@ Accept wildcard characters: False
 Specifies the frequency, in minutes, at which the background application of DSC attempts to implement the current configuration on the target node.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,9 +186,9 @@ Accept wildcard characters: False
 Specifies the name of the node configuration that this cmdlet configures the virtual machine to pull from Azure Automation DSC.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -201,9 +201,9 @@ Accept wildcard characters: False
 Specifies whether to restart the virtual machine, if needed.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -216,9 +216,9 @@ Accept wildcard characters: False
 Specifies the frequency, in minutes, at which the local Configuration Manager contacts the Azure Automation DSC pull server to download the latest node configuration.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,9 +232,9 @@ Specifies the name of a resource group.
 The Automation account with which this cmdlet registers a virtual machine belongs to the resource group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

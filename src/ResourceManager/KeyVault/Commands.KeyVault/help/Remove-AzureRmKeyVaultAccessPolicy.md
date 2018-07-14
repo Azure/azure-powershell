@@ -184,7 +184,7 @@ This command removes permission for the Microsoft.Compute resource provider to g
 Specifies the ID of application whose permissions should be removed
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Specifies the user email address of the user whose access you want to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByEmail, InputObjectByEmail, ResourceIdByEmail
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -259,7 +259,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -274,7 +274,7 @@ Accept wildcard characters: False
 Key Vault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmail, InputObjectForVault
 Aliases:
 
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -305,7 +305,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -321,7 +321,7 @@ Specifies the name of the resource group associated with the key vault whose acc
 If not specified, this cmdlet searches for the key vault in the current subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
 Aliases:
 
@@ -336,7 +336,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmail, ResourceIdForVault
 Aliases:
 
@@ -352,7 +352,7 @@ Specifies the service principal name of the application whose permissions you wa
 Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName, ResourceIdByServicePrincipalName
 Aliases: SPN
 
@@ -367,7 +367,7 @@ Accept wildcard characters: False
 Specifies the user principal name of the user whose access you want to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName, ResourceIdByUserPrincipalName
 Aliases: UPN
 
@@ -383,7 +383,7 @@ Specifies the name of the key vault.
 This cmdlet removes permissions for the key vault that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
 Aliases:
 
@@ -398,7 +398,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -414,7 +414,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: 910239BE-9E48-4DC5-85EA-CC6D466FE62F
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/new-azurermwebappsslbinding
 schema: 2.0.0
@@ -74,9 +74,9 @@ Specifies the file path for the certificate to be uploaded.
 The *CertificateFilePath* parameter is only required if the certificate has not yet been uploaded to Azure.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1, S3
-Aliases: 
+Aliases:
 
 Required: True
 Position: 4
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 Specifies the decryption password for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1, S3
-Aliases: 
+Aliases:
 
 Required: True
 Position: 5
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,9 +119,9 @@ Accept wildcard characters: False
 Specifies the name of the Web App.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -136,9 +136,9 @@ Specifies the name of the resource group that the certificate is assigned to.
 You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1, S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -155,9 +155,9 @@ Deployment slots provide a way for you to stage and validate web apps without th
 Typically you will deploy your changes to a staging site, validate those changes, and then deploy to the production (Internet-accessible) site.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1, S2
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -171,9 +171,9 @@ Specifies whether the certificate is enabled.
 Set the *SSLState* parameter to 1 to enable the certificate, or set *SSLState* to 0 to disable the certificate.
 
 ```yaml
-Type: SslState
+Type: System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SslState]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Disabled, SniEnabled, IpBasedEnabled
 
 Required: False
@@ -187,9 +187,9 @@ Accept wildcard characters: False
 Specifies the unique identifier for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S2, S4
-Aliases: 
+Aliases:
 
 Required: True
 Position: 6
@@ -205,9 +205,9 @@ To get a Web App, use the Get-AzureRmWebApp cmdlet.
 You cannot use the *WebApp* parameter in the same command as the *ResourceGroupName* parameter and/or the *WebAppName*.
 
 ```yaml
-Type: Site
+Type: Microsoft.Azure.Management.WebSites.Models.Site
 Parameter Sets: S3, S4
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -222,9 +222,9 @@ Specifies the name of the Web App for which the new SSL binding is being created
 You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1, S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

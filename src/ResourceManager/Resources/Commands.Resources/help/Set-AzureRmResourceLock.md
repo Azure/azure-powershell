@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 770093CD-CE2A-4076-8A28-F4DCFFB7A075
@@ -88,7 +88,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Specifies the ID of the lock that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByLockId
 Aliases: Id, ResourceId
 
@@ -188,7 +188,7 @@ Specifies the level for the lock.
 Currently, the only valid value is CanNotDelete.
 
 ```yaml
-Type: LockLevel
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.Entities.Locks.LockLevel
 Parameter Sets: (All)
 Aliases: Level
 
@@ -203,7 +203,7 @@ Accept wildcard characters: False
 Specifies the name of the lock that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySpecifiedScope, ByResourceGroup, ByResourceGroupLevel, BySubscription, BySubscriptionLevel, ByTenantLevel
 Aliases: ExtensionResourceName, Name
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 Specifies the notes for the lock.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Notes
 
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +248,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which the lock applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup, ByResourceGroupLevel
 Aliases:
 
@@ -266,7 +266,7 @@ For instance, to specify a database, use the following format:
 Server`/`Database
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
 Aliases:
 
@@ -281,7 +281,7 @@ Accept wildcard characters: False
 Specifies the resource type for which the lock applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
 Aliases:
 
@@ -303,7 +303,7 @@ To specify a resource group, use the following format:
 `/subscriptions/`subscription ID`/resourceGroups/`resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySpecifiedScope
 Aliases:
 
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByTenantLevel
 Aliases:
 
@@ -333,7 +333,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -349,7 +349,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
