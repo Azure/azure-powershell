@@ -385,6 +385,9 @@
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ApplicationGatewayTests\TestApplicationGatewayCRUD3.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Commands.Network.Test.ScenarioTests.ExpressRouteCircuitTests\TestExpressRouteRouteFilterCRUD.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

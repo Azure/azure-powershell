@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: F20A5FD3-6EC3-4EFE-988C-75F8583961A4
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/set-azurestorageblobcontent
 schema: 2.0.0
@@ -101,9 +102,9 @@ Specifies the name of a blob.
 This cmdlet uploads a file to the Azure Storage blob that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SendManual, ContainerPipeline
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -122,9 +123,9 @@ The acceptable values for this parameter are:
 The default value is Block.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Block, Page, Append
 
 Required: False
@@ -140,9 +141,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,7 +157,7 @@ Specifies a **CloudBlob** object.
 To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 
 ```yaml
-Type: CloudBlob
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -173,9 +174,9 @@ This cmdlet uploads content to a blob in the container that this parameter speci
 To obtain a **CloudBlobContainer** object, use the Get-AzureStorageContainer cmdlet.
 
 ```yaml
-Type: CloudBlobContainer
+Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
 Parameter Sets: ContainerPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -192,9 +193,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -208,9 +209,9 @@ Specifies the name of a container.
 This cmdlet uploads a file to a blob in the container that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SendManual
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -224,9 +225,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -239,7 +240,7 @@ Accept wildcard characters: False
 Specifies a local file path for a file to upload as blob content.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SendManual
 Aliases: FullName
 
@@ -251,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerPipeline, BlobPipeline
 Aliases: FullName
 
@@ -266,9 +267,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet overwrites an existing blob without prompting you for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -281,9 +282,9 @@ Accept wildcard characters: False
 Specifies metadata for the uploaded blob.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -296,9 +297,10 @@ Accept wildcard characters: False
 Page Blob Tier
 
 ```yaml
-Type: PremiumPageBlobTier
+Type: Microsoft.WindowsAzure.Storage.Blob.PremiumPageBlobTier
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+Accepted values: Unknown, P4, P6, P10, P20, P30, P40, P50, P60
 
 Required: False
 Position: Named
@@ -312,9 +314,9 @@ Specifies properties for the uploaded blob.
 The supported properties are: CacheControl, ContentDisposition, ContentEncoding, ContentLanguage, ContentMD5, ContentType.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -328,9 +330,9 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -343,7 +345,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -359,7 +361,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

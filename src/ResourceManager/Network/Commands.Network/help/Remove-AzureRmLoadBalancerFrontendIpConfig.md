@@ -39,7 +39,7 @@ The second command removes the associated frontend IP configuration from the loa
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 Specifies the load balancer that contains the front-end IP configuration to remove.
 
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies the name of the front-end IP address configuration to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Scheduler.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Scheduler
 ms.assetid: 2C8C98B8-7A3B-4F24-BDF1-0B7B81049956
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.scheduler/set-azurermschedulerservicebusqueuejob
 schema: 2.0.0
@@ -39,7 +39,7 @@ If you omit a required parameter, the cmdlet prompts you for the value.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -55,9 +55,9 @@ Specifies an end time, as a **DateTime** object, for the job.
 To obtain a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,9 +77,9 @@ The acceptable values for this parameter are:
 - ServiceBusTopic
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Http, Https, StorageQueue, ServiceBusQueue, ServiceBusTopic
 
 Required: False
@@ -94,9 +94,9 @@ Specifies how many times the job runs.
 By default, a job recurs indefinitely.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -116,9 +116,9 @@ The acceptable values for this parameter are:
 - Month
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Minute, Hour, Day, Week, Month
 
 Required: False
@@ -132,9 +132,9 @@ Accept wildcard characters: False
 Specifies an interval of recurrence for the job.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the name of the job collection to which the job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name, ResourceName
 
@@ -162,9 +162,9 @@ Accept wildcard characters: False
 Specifies the name of the job that this cmdlet modifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -181,9 +181,9 @@ The acceptable values for this parameter are:
 - Disabled
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -197,9 +197,9 @@ Accept wildcard characters: False
 Specifies the resource group to which the job belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -212,9 +212,9 @@ Accept wildcard characters: False
 Specifies a service bus queue message.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -227,9 +227,9 @@ Accept wildcard characters: False
 Specifies a service bus namespace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -242,9 +242,9 @@ Accept wildcard characters: False
 Specifies a service bus queue name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -257,9 +257,9 @@ Accept wildcard characters: False
 Specifies a shared access signature key name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -272,9 +272,9 @@ Accept wildcard characters: False
 Specifies a shared access signature key value.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -291,9 +291,9 @@ The acceptable values for this parameter are:
 - AMQP
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: NetMessaging, AMQP
 
 Required: True
@@ -307,9 +307,9 @@ Accept wildcard characters: False
 Specifies the start time, as a **DateTime** object, for the job.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -322,7 +322,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -338,7 +338,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

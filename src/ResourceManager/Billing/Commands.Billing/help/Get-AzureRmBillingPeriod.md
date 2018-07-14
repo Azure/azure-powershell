@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Billing.dll-Help.xml
 Module Name: AzureRM.Billing
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.billing/get-azurermbillingperiod
@@ -55,7 +55,7 @@ Get at most 2 billing periods of the subscription.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,9 +70,9 @@ Accept wildcard characters: False
 Determine the maximum number of records to return.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: List
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -87,7 +87,7 @@ Name of a specific billing period to get.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: Single
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,4 +110,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 3BA94976-DE88-4F07-9C06-41FEEDE1B829
@@ -57,7 +57,7 @@ This ensures that the namespace will be displayed any time you filter for items 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Specifies the display name of the datacenter that will host the Namespace.
 Although you can set this parameter to any valid location, for optimal performance you might want to use a datacenter located near the majority of your users.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Specifies the name of the new namespace.
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Specifies the resource group to which the namespace will be assigned.
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and administration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Sku tier of the namespace
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +141,7 @@ For instance, in Department:IT, the tag name is Department and the tag value is 
 To add a tag, use hash table syntax similar to this, which creates the tag CalendarYear:2016:
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

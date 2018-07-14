@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DevTestLabs.dll-Help.xml
 Module Name: AzureRM.DevTestLabs
 ms.assetid: 9FD4DB8C-B242-4F9A-92E5-0B3EDED00521
@@ -30,7 +30,7 @@ The cmdlet returns the enabled or disabled status of the policy and the days of 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -45,9 +45,9 @@ Accept wildcard characters: False
 Specifies the name of the lab for which this cmdlet gets the auto start policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that the lab belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
