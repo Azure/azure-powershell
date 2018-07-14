@@ -54,19 +54,19 @@ PowerShellVersion = '5.1'
 # RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll', 
-    '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
-    '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll', 
-    '.\Microsoft.Azure.Commands.Common.Authorization.dll', 
-    '.\Microsoft.Azure.Commands.Common.Compute.dll', 
-    '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll', 
-    '.\Microsoft.Azure.Commands.Common.Network.dll', 
-    '.\Microsoft.Azure.Commands.ResourceManager.Common.dll', 
-    '.\Microsoft.WindowsAzure.Commands.Common.dll', 
-    '.\Microsoft.WindowsAzure.Commands.Common.Storage.dll', 
-    '.\Microsoft.Azure.Commands.Common.KeyVault.dll', 
-    '.\Microsoft.Azure.Commands.Common.Storage.Management.dll', 
-    '.\Microsoft.Azure.Commands.Common.Websites.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.PowerShell.Authentication.Abstractions.dll', 
+    '.\Microsoft.Azure.PowerShell.Authentication.dll', 
+    '.\Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll', 
+    '.\Microsoft.Azure.PowerShell.Authorization.dll', 
+    '.\Microsoft.Azure.PowerShell.Compute.dll', 
+    '.\Microsoft.Azure.PowerShell.Graph.Rbac.dll', 
+    '.\Microsoft.Azure.PowerShell.Network.dll', 
+    '.\Microsoft.Azure.PowerShell.ResourceManager.dll', 
+    '.\Microsoft.Azure.PowerShell.Common.dll', 
+    '.\Microsoft.Azure.PowerShell.Storage.dll', 
+    '.\Microsoft.Azure.PowerShell.Storage.Management.dll', 
+    '.\Microsoft.Azure.PowerShell.KeyVault.dll', 
+    '.\Microsoft.Azure.PowerShell.Websites.dll', 
     '.\Hyak.Common.dll', '.\Microsoft.ApplicationInsights.dll', 
     '.\Microsoft.Azure.Common.dll', 
     '.\Microsoft.IdentityModel.Clients.ActiveDirectory.dll', 
@@ -75,9 +75,10 @@ RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstracti
     '.\Microsoft.Rest.ClientRuntime.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.dll', 
     '.\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll', 
-    '.\Microsoft.WindowsAzure.Storage.dll',  
+    '.\Microsoft.WindowsAzure.Storage.dll', 
     '.\Microsoft.Azure.Management.Storage.dll', '.\Newtonsoft.Json.dll',
-	'.\Microsoft.Azure.Commands.Common.Aks.dll'
+    '.\Microsoft.Azure.PowerShell.Aks.dll', 
+    '.\Microsoft.Azure.PowerShell.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
