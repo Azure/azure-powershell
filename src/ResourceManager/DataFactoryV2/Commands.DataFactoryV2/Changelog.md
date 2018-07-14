@@ -30,7 +30,9 @@ Azure Data Factory new capabilities now fall under General Availability SLA. ADF
     - Added If-Match header support on put calls and If-None-Match header support for get calls for ADF resources and sub resources.
     - The response of PATCH on IR has been fixed to return IR resource.
  * Added new cmdlet Set-AzureRmDatafactoryV2RepoConfiguration
- * Fixed formatting of OutputType in help files
+
+## Version 0.5.6
+* Fixed formatting of OutputType in help files
 
 ## Version 0.5.5
 * Updated the ADF .Net SDK version to 0.8.0-preview containing following changes:

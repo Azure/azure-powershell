@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.0.2
+* Update help and add example for `New-AzureRMAutomationSchedule`
+
+## Version 5.0.1
 * Documentation update for New-AzureRmAutomationSchedule
 
 ## Version 5.0.0

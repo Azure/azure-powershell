@@ -148,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Specifying this will return true if the command was successful.
 
 ```yaml
 Type: SwitchParameter
