@@ -137,7 +137,7 @@ You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 ### Example 3: Create a VM from a marketplace image without a Public IP
 ```
 $VMLocalAdminUser = "LocalAdminUser"
-$VMLocalAdminSecurePassword = ConvertTo-SecureString "Password" -AsPlainText -Force
+$VMLocalAdminSecurePassword = ConvertTo-SecureString <password> -AsPlainText -Force
 $LocationName = "westus"
 $ResourceGroupName = "MyResourceGroup"
 $ComputerName = "MyVM"
