@@ -72,7 +72,7 @@ This command uses the $secret object's vault name and name to retrieves the secr
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before overwriting the output file, if that exists.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Secret to be backed up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 Parameter Sets: BySecret
 Aliases: Secret
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 Specifies the name of the secret to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName
 Aliases: SecretName
 
@@ -134,7 +134,7 @@ If you do not specify this parameter, this cmdlet generates a file name for you.
 If you specify the name of an existing output file, the operation will not complete and returns an error message that the backup file already exists.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault that contains the secret to back up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySecretName
 Aliases:
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -180,7 +180,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
