@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 1.0.6
+* Fixed formatting of OutputType in help files
 
 ## Version 1.0.5
 * Set minimum dependency of module to PowerShell 5.0

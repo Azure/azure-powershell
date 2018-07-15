@@ -18,10 +18,30 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Add example for `New-AzureRmVM`
+* Updated help files to include full parameter types.
+
+## Version 5.3.0
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
+* Add example for `Add-AzureRmVmssExtension`
+* Add examples for `Remove-AzureRmVmssExtension`
+* Update help for `Set-AzureRmVMAccessExtension`
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+* Fixed Disable-AzureRmVmDiskEncryption to work for VMs encrypted without AAD parameters
+
+## Version 5.2.0
+* IP Tag feature for VMSS
+    - `New-AzureRmVmssIpTagConfig` cmdlet is added
+    - IpTag parameter is added to New-AzureRmVmssIpConfig
+* Auto OS Rollback feature for VMSS
+    - DisableAutoRollback parameters are added to New-AzureRmVmssConfig and Update-AzureRmVmss
+* OS Upgrade History feature for Vmss
+    - OSUpgradeHistory switch parameter is added to Get-AzureRmVmss
+* Fixed formatting of OutputType in help files
 
 ## Version 5.1.1
 * ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
-* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks
 * Update Compute client library version to fix following cmdlets
     - Grant-AzureRmDiskAccess
     - Grant-AzureRmSnapshotAccess
@@ -64,7 +84,7 @@
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more details
-* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional 
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level

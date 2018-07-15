@@ -18,11 +18,22 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 5.3.3
+* Updated help for `Get-AzureRmContextAutosaveSetting`
+
+## Version 5.3.2
+* Common code changes to enable cmdlets to request an Auxilary Auth header with tokens for multiple tenants given a list of resource IDs.
+
+## Version 5.3.1
+* Fixed formatting of OutputType in help files
+* Ps1Xml attribute added to the basic output types
 
 ## Version 5.3.0
 * Updated error messages for Enable-AzureRmContextAutoSave
 * Create a context for each subscription when running `Connect-AzureRmAccount` with no previous context
-* Resource Id completer added.
+* Extracted ARM sdk to common library to be reused by AzureRM.DevSpaces and AzureRM.AKS
 
 ## Version 5.2.0
 * Added the following three values to the telemetry:

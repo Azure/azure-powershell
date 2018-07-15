@@ -98,7 +98,7 @@ by passing the virtual network object represented by $vnet variable to the Set-A
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies the name of the DNS zone to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields, FieldsObjects
 Aliases:
 
@@ -131,7 +131,7 @@ protection for concurrent changes. You can suppress this behavior with the *Over
 which updates the zone regardless of concurrent changes.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: Object
 Aliases:
 
@@ -209,7 +209,7 @@ You must also specify the ZoneName parameter.
 Alternatively, you can specify the zone using a DnsZone object with the *Zone* parameter or the pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields, FieldsObjects
 Aliases:
 
@@ -226,7 +226,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: Fields, FieldsObjects
 Aliases: Tags
 
@@ -243,7 +243,7 @@ Specifies the DNS zone to update.
 Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
-Type: DnsZone
+Type: Microsoft.Azure.Commands.Dns.DnsZone
 Parameter Sets: Object
 Aliases:
 
@@ -258,7 +258,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -273,7 +273,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

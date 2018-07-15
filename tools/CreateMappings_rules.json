@@ -135,6 +135,6 @@
     { "regex": "ManagedServiceIdentity", "group": "Managed Service Identity", "alias": "Managed Service Identity" },
 
     { "regex":  "ManagementPartner", "alias":  "Management Partner"  },
-
+    { "regex": "DevSpaces", "group": "DevSpaces", "alias": "DevSpaces" },
     { "regex": "SignalR", "alias": "SignalR" }
 ]

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 5422429E-C609-4C1F-A021-E2A085B5F74E
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/set-azurestorageserviceloggingproperty
 schema: 2.0.0
@@ -39,9 +40,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -62,9 +63,9 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: LoggingOperations[]
+Type: Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingOperations[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Read, Write, Delete, All
 
 Required: False
@@ -79,9 +80,9 @@ Indicates that this cmdlet returns the updated logging properties.
 If you do not specify this parameter, this cmdlet does not return a value.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -94,9 +95,9 @@ Accept wildcard characters: False
 Specifies the number of days that the Azure Storage service retains logged information.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,9 +119,9 @@ The acceptable values for this parameter are:
 The value of File is not currently supported.
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True
@@ -135,9 +136,9 @@ Specifies the version of the Azure Storage service logging.
 The default value is 1.0.
 
 ```yaml
-Type: Double
+Type: System.Nullable`1[System.Double]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

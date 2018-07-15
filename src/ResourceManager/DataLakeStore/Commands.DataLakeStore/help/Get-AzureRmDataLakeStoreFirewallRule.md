@@ -45,7 +45,7 @@ Returns all firewall rules in account "ContosoADL"
 The Data Lake Store account to retrieve the firewall rule from.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The name of the firewall rule to retrieve
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 Name of resource group under which want to retrieve the specified account's specified firewall rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,11 +111,8 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### DataLakeStoreFirewallRule
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule
 The specified firewall rule to retrieve
-
-### IList<DataLakeStoreFirewallRule>
-The list of firewall rules in the specified account.
 
 ## NOTES
 

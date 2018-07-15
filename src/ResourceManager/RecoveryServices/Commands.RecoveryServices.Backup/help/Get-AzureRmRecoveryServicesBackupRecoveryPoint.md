@@ -65,7 +65,7 @@ The last command gets an array of recovery points for the item in $BackupItem, a
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -80,9 +80,9 @@ Accept wildcard characters: False
 Specifies the end of the date range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DateTimeFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -96,9 +96,9 @@ Specifies the item for which this cmdlet gets recovery points.
 To obtain an **AzureRmRecoveryServicesBackupItem** object, use the Get-AzureRmRecoveryServicesBackupItem cmdlet.
 
 ```yaml
-Type: ItemBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -111,9 +111,9 @@ Accept wildcard characters: False
 Specifies the location to download the input file to restore the KeyVault key for an encrypted virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RecoveryPointId
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -126,9 +126,9 @@ Accept wildcard characters: False
 Specifies the recovery point ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RecoveryPointId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -141,9 +141,9 @@ Accept wildcard characters: False
 Specifies the start of the date range.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: DateTimeFilter
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -156,9 +156,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -178,8 +178,6 @@ Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase
-
-### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RecoveryPointBase]
 
 ## NOTES
 

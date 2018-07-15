@@ -172,7 +172,7 @@ subscription and in westus region.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Specifies whether to show the previously deleted vaults in the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByDeletedVault, ListAllDeletedVaultsInSubscription
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 The location of the deleted vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group associated with the key vault or key vaults being queried.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVaultByName
 Aliases:
 
@@ -234,7 +234,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: ListAllVaultsInSubscription
 Aliases:
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetVaultByName
 Aliases: Name
 
@@ -261,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault
 Aliases: Name
 
@@ -283,9 +283,7 @@ This cmdlet does not accept any input.
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault
 
 ## NOTES

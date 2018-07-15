@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Gets the integration account agreement by name 
     /// </summary>
     [Cmdlet(VerbsCommon.Get, "AzureRmIntegrationAccountAgreement")]
-    [OutputType(typeof(IntegrationAccountAgreement), typeof(IList<IntegrationAccountAgreement>))]
+    [OutputType(typeof(IntegrationAccountAgreement))]
     public class GetAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
     {
 

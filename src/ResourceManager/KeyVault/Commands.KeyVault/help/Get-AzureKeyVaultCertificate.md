@@ -184,7 +184,7 @@ This command will return metadata such as the deletion date, and the scheduled p
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 Indicates that this operation gets all versions of the certificate.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByCertificateAllVersions, ByCertificateAllVersionsInputObject, ByCertificateAllVersionsResourceId
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByNameInputObject, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject
 Aliases:
 
@@ -229,7 +229,7 @@ Accept wildcard characters: False
 Specifies whether to include previously deleted certificates in the output
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
 Aliases:
 
@@ -244,7 +244,7 @@ Accept wildcard characters: False
 Specifies the name of the certificate to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName, ByNameInputObject, ByNameResourceId
 Aliases: CertificateName
 
@@ -256,7 +256,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateNameAndVersion, ByCertificateAllVersions, ByCertificateNameAndVersionInputObject, ByCertificateAllVersionsInputObject, ByCertificateNameAndVersionResourceId, ByCertificateAllVersionsResourceId
 Aliases: CertificateName
 
@@ -271,7 +271,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByNameResourceId, ByCertificateNameAndVersionResourceId, ByCertificateAllVersionsResourceId
 Aliases:
 
@@ -286,7 +286,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName, ByCertificateNameAndVersion, ByCertificateAllVersions
 Aliases:
 
@@ -301,7 +301,7 @@ Accept wildcard characters: False
 Specifies the version of a certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateNameAndVersion, ByCertificateNameAndVersionInputObject, ByCertificateNameAndVersionResourceId
 Aliases: CertificateVersion
 
@@ -322,11 +322,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificate
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificateIdentityItem
-
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultCertificate
 
 ## NOTES
