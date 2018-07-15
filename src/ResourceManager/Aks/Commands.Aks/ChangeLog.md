@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.0.3
+* No version update. Extracted AKS sdk to common for reuse in DevSpaces.
 
 ## Version 0.0.2
 * Updated to the latest version of the Azure ClientRuntime

@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 5.0.4
+* Update error message for Set-AzureRmKeyVaultAccessPolicy
+
+## Version 5.0.3
+* Fixed formatting of OutputType in help files
+* Fix issue where all resources were being returned by Get-AzureRmKeyVault -Tag
 
 ## Version 5.0.2
 * Fix issue where no Tags are being returned when Get-AzureRmKeyVault -Tag is run

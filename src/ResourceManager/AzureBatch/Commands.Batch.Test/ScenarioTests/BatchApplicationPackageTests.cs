@@ -16,6 +16,7 @@ using System.Reflection;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -23,6 +24,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         private readonly string filePath = "Resources\\TestApplicationPackage.zip".AsAbsoluteLocation();
         private const string version = "foo";
+        public XunitTracingInterceptor _logger;
+
+        public BatchApplicationPackageTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -33,6 +41,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new string[]
@@ -63,6 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new string[]
@@ -94,6 +104,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new string[]
@@ -123,6 +134,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () =>
                 {
                     return new string[]

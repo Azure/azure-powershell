@@ -126,7 +126,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -139,8 +139,9 @@ Accept wildcard characters: False
 
 ### -ByteRangeEnd
 The end of the byte range to be downloaded.
+
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,8 +154,9 @@ Accept wildcard characters: False
 
 ### -ByteRangeStart
 The start of the byte range to be downloaded.
+
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +171,7 @@ Accept wildcard characters: False
 Specifies the ID of the compute node that contains the node file that this cmdlet returns.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComputeNode_Id_Path, ComputeNode_Id_Stream
 Aliases:
 
@@ -184,7 +186,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -199,7 +201,7 @@ Accept wildcard characters: False
 Specifies the file path where this cmdlet saves the node file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Task_Id_Path, ComputeNode_Id_Path, InputObject_Path
 Aliases:
 
@@ -215,7 +217,7 @@ Specifies the stream into which this cmdlet writes the node file contents.
 This cmdlet does not close or rewind this stream.
 
 ```yaml
-Type: Stream
+Type: System.IO.Stream
 Parameter Sets: Task_Id_Stream, ComputeNode_Id_Stream, InputObject_Stream
 Aliases:
 
@@ -231,7 +233,7 @@ Specifies the file that this cmdlet gets, as a **PSNodeFile** object.
 To obtain a node file object, use the Get-AzureBatchNodeFile cmdlet.
 
 ```yaml
-Type: PSNodeFile
+Type: Microsoft.Azure.Commands.Batch.Models.PSNodeFile
 Parameter Sets: InputObject_Path, InputObject_Stream
 Aliases:
 
@@ -246,7 +248,7 @@ Accept wildcard characters: False
 Specifies the ID of the job that contains the target task.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Task_Id_Path, Task_Id_Stream
 Aliases:
 
@@ -261,7 +263,7 @@ Accept wildcard characters: False
 The path of the node file to download.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Task_Id_Path, Task_Id_Stream, ComputeNode_Id_Path, ComputeNode_Id_Stream
 Aliases: Name
 
@@ -276,7 +278,7 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute node that contains the node file that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ComputeNode_Id_Path, ComputeNode_Id_Stream
 Aliases:
 
@@ -291,7 +293,7 @@ Accept wildcard characters: False
 Specifies the ID of the task.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Task_Id_Path, Task_Id_Stream
 Aliases:
 
@@ -307,13 +309,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
 
-### PSNodeFile
+### Microsoft.Azure.Commands.Batch.Models.PSNodeFile
 Parameter 'InputObject' accepts value of type 'PSNodeFile' from the pipeline
 
 ## OUTPUTS
+
+### None
 
 ## NOTES
 

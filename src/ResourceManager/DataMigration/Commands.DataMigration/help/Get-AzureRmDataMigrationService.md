@@ -55,7 +55,7 @@ The above example retrieves Azure Database Migration Services in the resource gr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Name of Database Migration Service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameGroupSet
 Aliases: ServiceName
 
@@ -85,9 +85,9 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ServiceNameGroupSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -112,9 +112,9 @@ Accept wildcard characters: False
 DataMigrationService Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -132,9 +132,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService, Microsoft.Azure.Commands.DataMigration, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
 
 ## NOTES
 
 ## RELATED LINKS
-

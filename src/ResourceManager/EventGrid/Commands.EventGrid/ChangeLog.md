@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.3.5
+* Fixed formatting of OutputType in help files
 
 ## Version 0.3.4
 * Remove ValidateNotNullOrEmpty validation conditions for SubjectBeginsWith/SubjectEndsWith in Update-AzureRmEventGridSubscription cmdlet to allow changing these parameters to empty string if needed.

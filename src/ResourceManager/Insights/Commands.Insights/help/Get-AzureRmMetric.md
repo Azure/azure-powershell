@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
@@ -15,8 +15,8 @@ Gets the metric values of a resource.
 
 ### GetWithDefaultParameters
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
@@ -165,9 +165,10 @@ This command gets detailed output for the Requests metric.
 The aggregation type of the query
 
 ```yaml
-Type: AggregationType
+Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases:
+Accepted values: None, Average, Count, Minimum, Maximum, Total
 
 Required: False
 Position: Named
@@ -180,7 +181,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -196,9 +197,9 @@ Indicates that this cmdlet displays detailed output.
 By default, output is summarized.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -212,9 +213,9 @@ Specifies the end time of the query in local time.
 The default is the current time.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,11 +228,11 @@ Accept wildcard characters: False
 Specifies an array of names of metrics.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: GetWithDefaultParameters
 Aliases: MetricNames
 
-Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -239,12 +240,12 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases: MetricNames
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -254,9 +255,9 @@ Accept wildcard characters: False
 Specifies the resource ID of the metric.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -270,9 +271,9 @@ Specifies the start time of the query in local time.
 The default is the current local time minus one hour.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -285,12 +286,12 @@ Accept wildcard characters: False
 Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -306,7 +307,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric[]
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric
 
 ## NOTES
 

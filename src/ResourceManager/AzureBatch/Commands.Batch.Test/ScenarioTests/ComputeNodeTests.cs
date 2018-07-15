@@ -15,6 +15,7 @@
 using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -22,10 +23,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string iaasPoolId = ScenarioTestHelpers.SharedIaasPool;
+        public XunitTracingInterceptor _logger;
 
         public ComputeNodeTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -36,6 +39,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string removeNodePoolId = "removenodepool";
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-RemoveComputeNodes '{0}'", removeNodePoolId) }; },
                 () =>
                 {
@@ -60,6 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string computeNodeId2 = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-RebootAndReimageComputeNode '{0}' '{1}' '{2}'", poolId, computeNodeId, computeNodeId2) }; },
                 () =>
                 {
@@ -82,6 +87,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}'", poolId, computeNodeId) }; },
                 () =>
                 {
@@ -103,6 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
 
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-GetRemoteLoginSettings '{0}' '{1}'", iaasPoolId, computeNodeId) }; },
                 () =>
                 {

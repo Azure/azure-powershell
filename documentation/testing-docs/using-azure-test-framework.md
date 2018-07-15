@@ -157,7 +157,7 @@ AZURE_TEST_MODE=Record
 
 ## Record or Playback Tests
 
-- [Run the tests](https://github.com/Azure/azure-powershell/wiki/Azure-Powershell-Developer-Guide#running-tests) and make sure that you got a generated `.json` file that matches the test name in the bin folder under the `SessionRecords` folder
+- [Run the tests](https://github.com/Azure/azure-powershell/blob/preview/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you got a generated `.json` file that matches the test name in the bin folder under the `SessionRecords` folder
 - Copy the `SessionRecords` folder inside the test project and add all `*.json` files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
 - To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback" and run the tests
 

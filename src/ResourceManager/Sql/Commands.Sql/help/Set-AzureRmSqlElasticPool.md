@@ -82,8 +82,9 @@ storage for an elastic pool to 2 TB.
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -95,10 +96,10 @@ Accept wildcard characters: False
 ```
 
 ### -ComputeGeneration
-The compute generation for the Sql Azure Elastic Pool. e.g. 'Gen4', 'Gen5'.
+The compute generation to assign.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VcoreBasedPool
 Aliases: Family
 
@@ -110,9 +111,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseDtuMax
-Specifies the maximum number of DTUs that any single database in the pool can consume. 
+Specifies the maximum number of DTUs that any single database in the pool can consume.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default
 values for different editions are as follows:
@@ -123,7 +124,7 @@ values for different editions are as follows:
 
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: DtuBasedPool
 Aliases:
 
@@ -142,7 +143,7 @@ For details about which values are valid, see the table for your specific size p
 The default value is zero (0).
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: DtuBasedPool
 Aliases:
 
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 The maxmium VCore number any SqlAzure Database can consume in the pool.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: VcoreBasedPool
 Aliases:
 
@@ -172,7 +173,7 @@ Accept wildcard characters: False
 The minimum VCore number any SqlAzure Database can consume in the pool.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: VcoreBasedPool
 Aliases:
 
@@ -187,7 +188,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -199,9 +200,9 @@ Accept wildcard characters: False
 ```
 
 ### -Dtu
-Specifies the total number of shared DTUs for the elastic pool. 
+Specifies the total number of shared DTUs for the elastic pool.
 
-For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool). 
+For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 The default values for different
 editions are as follows:
@@ -211,7 +212,7 @@ editions are as follows:
 - Premium. 125 DTUs
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: DtuBasedPool
 Aliases:
 
@@ -237,10 +238,9 @@ edition. The acceptable values for this parameter are:
 - BusinessCritical
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: None, Basic, Standard, Premium, DataWarehouse, Free, Stretch, GeneralPurpose, BusinessCritical
 
 Required: False
 Position: Named
@@ -253,7 +253,7 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -266,11 +266,11 @@ Accept wildcard characters: False
 
 ### -LicenseType
 The license type for the Azure Sql database.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: LicenseIncluded, BasePrice
 
 Required: False
 Position: Named
@@ -283,7 +283,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the elastic pool is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +298,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the elastic pool.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -314,7 +314,7 @@ Specifies the storage limit, in megabytes, for the elastic pool. For more inform
 New-AzureRmSqlElasticPool cmdlet.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -332,7 +332,7 @@ form of a hash table. For example:
 `@{key0="value0";"key 1"=$null;key2="value2"}`
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -347,7 +347,7 @@ Accept wildcard characters: False
 The total shared number of Vcore for the Sql Azure Elastic Pool.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: VcoreBasedPool
 Aliases:
 
@@ -362,7 +362,7 @@ Accept wildcard characters: False
 The zone redundancy to associate with the Azure Sql Elastic Pool
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -377,7 +377,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -393,7 +393,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

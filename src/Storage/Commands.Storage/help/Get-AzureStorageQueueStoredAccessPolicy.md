@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: F1EC601C-3ADD-402A-A5F7-84A95D312187
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeuestoredaccesspolicy
 schema: 2.0.0
@@ -43,9 +44,9 @@ Specifies the Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -58,9 +59,9 @@ Accept wildcard characters: False
 Specifies a stored access policy, which includes the permissions for this Shared Access Signature (SAS) token.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -73,7 +74,7 @@ Accept wildcard characters: False
 Specifies the Azure storage queue name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Name
 
@@ -89,12 +90,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
-### String
-
+### System.String
 Parameter 'Queue' accepts value of type 'String' from the pipeline
 
 ## OUTPUTS

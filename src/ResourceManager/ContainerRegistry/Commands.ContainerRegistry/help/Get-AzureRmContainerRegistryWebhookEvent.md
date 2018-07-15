@@ -14,7 +14,7 @@ Gets events of a container registry webhook.
 
 ### ListWebhookEventsByNameResourceGroupParameterSet (Default)
 ```
-Get-AzureRmContainerRegistryWebhookEvent -WebhookName <String> [-ResourceGroupName] <String>
+Get-AzureRmContainerRegistryWebhookEvent [-WebhookName] <String> [-ResourceGroupName] <String>
  [-RegistryName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Gets all the events of a webhook.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Container Registry Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListWebhookEventsByNameResourceGroupParameterSet
 Aliases: ContainerRegistryName
 
@@ -92,9 +92,9 @@ Accept wildcard characters: False
 Resource Group Name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListWebhookEventsByNameResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 The container registry Webhook resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases: Id
 
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 Container Registry Object.
 
 ```yaml
-Type: PSContainerRegistryWebhook
+Type: Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
 Parameter Sets: ListWebhookEventsByWebhookObjectParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -135,13 +135,14 @@ Accept wildcard characters: False
 
 ### -WebhookName
 Webhook Name.
+
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ListWebhookEventsByNameResourceGroupParameterSet
-Aliases: 
+Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -156,7 +157,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent, Microsoft.Azure.Commands.ContainerRegistry, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhookEvent
 
 ## NOTES
 

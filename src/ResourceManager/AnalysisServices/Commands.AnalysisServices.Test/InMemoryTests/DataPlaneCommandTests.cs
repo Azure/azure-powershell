@@ -71,6 +71,8 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Test.InMemoryTests
         public DataPlaneCommandTests(ITestOutputHelper output)
         {
             XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+
+            SynchronizeAzureAzureAnalysisServer.DefaultRetryIntervalForPolling = TimeSpan.FromSeconds(0);
         }
 
         [Fact]

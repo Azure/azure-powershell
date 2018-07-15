@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Profile.dll-Help.xml
 Module Name: AzureRM.Profile
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.profile/get-azurermenvironment
@@ -108,7 +108,7 @@ This example shows how to get the endpoints and metadata for the AzureUSGovernme
 The credentials, account, tenant and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 Specifies the name of the Azure instance to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -144,7 +144,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### PSAzureEnvironment
+### Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment
 
 ## NOTES
 

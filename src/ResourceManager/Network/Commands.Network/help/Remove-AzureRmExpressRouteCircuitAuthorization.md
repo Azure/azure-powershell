@@ -53,7 +53,7 @@ ExpressRoute circuit stored in the $Circuit variable.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Specifies the ExpressRouteCircuit object that this cmdlet removes.
 
 ```yaml
-Type: PSExpressRouteCircuit
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of the circuit authorization that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -226,5 +226,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             return psBackupProvider;
         }
+
+        public IPsBackupProvider GetProviderInstance(string resourceType)
+        {
+            if (resourceType == "Microsoft.Compute/virtualMachines" ||
+                resourceType == "Microsoft.ClassicCompute/virtualMachines" ||
+                resourceType == "AzureVM")
+            {
+                return GetProviderInstance(PsBackupProviderTypes.IaasVm);
+            }
+            else
+            {
+                throw new ArgumentException(
+                    string.Format(Resources.UnsupportedResourceTypeException,
+                    resourceType));
+            }
+        }
     }
 }

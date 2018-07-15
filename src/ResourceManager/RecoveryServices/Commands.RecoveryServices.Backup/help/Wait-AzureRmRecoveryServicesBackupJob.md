@@ -55,7 +55,7 @@ This script polls the first job that is currently in progress until the job has 
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +71,9 @@ Specifies the job to wait for.
 To obtain a **BackupJob** object, use the Get-AzureRmRecoveryServicesBackupJob cmdlet.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -87,9 +87,9 @@ Specifies the maximum time, in seconds, that this cmdlet waits for the job to fi
 It is recommended to specify a time-out value.
 
 ```yaml
-Type: Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -102,9 +102,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -125,7 +125,7 @@ Parameter 'Job' accepts value of type 'Object' from the pipeline
 
 ### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 
-### System.Collections.Generic.IList`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase]
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 
 ## NOTES
 

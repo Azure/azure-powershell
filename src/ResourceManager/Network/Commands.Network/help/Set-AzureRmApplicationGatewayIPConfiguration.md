@@ -53,7 +53,7 @@ The forth command sets the IP configuration of the application gateway stored in
 Specifies an application gateway object with which this cmdlet associates an IP configuration.
 
 ```yaml
-Type: PSApplicationGateway
+Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Specifies the name of the IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Specifies the subnet.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResource
 Aliases:
 
@@ -115,7 +115,7 @@ Specifies the subnet ID.
 This is the subnet in which the application gateway is deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 

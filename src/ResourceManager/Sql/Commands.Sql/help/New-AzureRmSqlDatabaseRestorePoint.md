@@ -20,9 +20,9 @@ New-AzureRmSqlDatabaseRestorePoint -RestorePointLabel <String> [-ServerName] <St
 ```
 
 ## DESCRIPTION
-The **New-AzureRmSqlDatabaseRestorePoint** cmdlet creates a new restore point that an Azure SQL Database can be restored from.
+The **New-AzureRmSqlDatabaseRestorePoint** cmdlet creates a new restore point that an Azure SQL Data Warehouse can be restored from.
 
-This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
+This cmdlet is currently supported for Azure SQL Data Warehouse.
 
 ## EXAMPLES
 
@@ -39,7 +39,7 @@ EarliestRestoreDate      :
 RestorePointLabel        : RestorePoint01
 ```
 
-This command creates a restore point for Azure SQL Database and returns the details of the restore point.
+This command creates a restore point for Azure SQL Data Warehouse and returns the details of the restore point.
 
 ## PARAMETERS
 
@@ -47,7 +47,7 @@ This command creates a restore point for Azure SQL Database and returns the deta
 Specifies the name of the SQL Database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to which the SQL Database is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 Specifies the label of the restore point for easy identification.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 Specifies the name of the AzureSQL Server that hosts the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -138,7 +138,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

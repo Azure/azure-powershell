@@ -56,7 +56,7 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.EventHub, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.0.3\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.EventHub.2.2.0\lib\net452\Microsoft.Azure.Management.EventHub.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Test.HttpRecorder">
@@ -67,7 +67,7 @@
     </Reference>
     <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.28.3.860, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
-    </Reference>
+    </Reference>    
     <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Microsoft.Rest.ClientRuntime.Azure.Authentication.2.2.12\lib\net45\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
     </Reference>
@@ -127,6 +127,7 @@
   <ItemGroup>
     <Compile Include="ScenarioTests\ConsumerGroups.cs" />
     <Compile Include="ScenarioTests\DRConfigurations.cs" />
+    <Compile Include="ScenarioTests\EventHubsConsumerGroupsSkipTopTests.cs" />
     <Compile Include="ScenarioTests\Namespace.cs" />
     <Compile Include="ScenarioTests\EventHubsController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -158,6 +159,9 @@
     <None Include="ScenarioTests\DRConfigurationTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="ScenarioTests\EventHubsConsumerGroupsSkipTopTests.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="ScenarioTests\NamespaceTests.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -171,6 +175,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.DRConfigurationTests\DRConfigurationsCURDAlternateName.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsConsumerGroupsSkipTopTests\EventHubsConsumerGroupsskiptop.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.EventHub.Test.ScenarioTests.EventHubsTests\EventHubsAuthorizationRulesCRUD.json">
@@ -206,14 +213,6 @@
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.ResourceManager\Cmdlets\Commands.Resources.Rest.csproj">
-      <Project>{8058d403-06e3-4bed-8924-d166ce303961}</Project>
-      <Name>Commands.Resources.Rest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Resources\Commands.Resources\Commands.Resources.csproj">
-      <Project>{e1f5201d-6067-430e-b303-4e367652991b}</Project>
-      <Name>Commands.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 6420CBE1-BF9D-493D-BCA8-E8C6688FAF3B
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragefilecontent
 schema: 2.0.0
@@ -70,9 +71,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -89,9 +90,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,9 +109,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,9 +128,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: ShareName
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +150,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -167,9 +168,9 @@ To obtain a directory, use the New-AzureStorageDirectory cmdlet.
 You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
 
 ```yaml
-Type: CloudFileDirectory
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -184,9 +185,9 @@ This cmdlet gets the file that this parameter specifies.
 To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
 
 ```yaml
-Type: CloudFile
+Type: Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter Sets: File
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -203,9 +204,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,9 +223,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -239,9 +240,9 @@ This cmdlet gets the contents the file that this parameter specifies.
 If the file does not exist, this cmdlet returns an error.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName, Share, Directory
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -258,9 +259,9 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -277,9 +278,9 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: CloudFileShare
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter Sets: Share
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -293,9 +294,9 @@ Specifies the name of the file share.
 This cmdlet downloads the contents of the file in the share this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -308,7 +309,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -324,7 +325,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -340,23 +341,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
 
-### CloudFileDirectory
-
+### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
 Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
 
-### CloudFile
-
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter 'File' accepts value of type 'CloudFile' from the pipeline
 
-### CloudFileShare
-
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
 
 ## OUTPUTS
+
+### Microsoft.WindowsAzure.Storage.File.CloudFile
 
 ## NOTES
 

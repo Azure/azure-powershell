@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 85492E00-3776-4F20-A444-9C28CC6154B7
@@ -30,8 +30,8 @@ Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] 
 ### GetByResourceGroup
 ```
 Get-AzureRmLog [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>] [-Caller <String>]
- [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-DetailedOutput] [-ResourceGroupName] <String> [-MaxRecord <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetByResourceProvider
@@ -202,9 +202,9 @@ This command lists at most 1000 events associated with the specified resource pr
 Specifies a caller.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -218,9 +218,9 @@ Specifies the correlation ID.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByCorrelationId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -233,7 +233,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -249,9 +249,9 @@ Indicates that this cmdlet displays detailed output.
 By default, output is summarized.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -268,9 +268,9 @@ The value must be later than *StartTime*.
 You can use the Get-Date cmdlet to get a **DateTime** object.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -284,7 +284,7 @@ Specifies the total number of records to fetch for the specified filter.
 The default value is 1000 and the maximum value accepted is 100000. Negative values and 0 are ignored and the default value will be used.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -299,7 +299,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup
 Aliases: ResourceGroup
 
@@ -314,9 +314,9 @@ Accept wildcard characters: False
 Specifies the resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -329,9 +329,9 @@ Accept wildcard characters: False
 Specifies a filter by resource provider.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceProvider
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -347,9 +347,9 @@ The default value is *EndTime* minus seven days.
 You can use the Get-Date cmdlet to get a **DateTime** object.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -362,9 +362,9 @@ Accept wildcard characters: False
 Specifies the status.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -380,11 +380,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
+## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData
 
 ## NOTES
 
 ## RELATED LINKS
-

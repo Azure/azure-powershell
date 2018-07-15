@@ -53,9 +53,9 @@ This command gets all API Management service by name.
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Specifies the name of API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResource
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group under in which this cmdlet gets the API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup, GetByResource
 Aliases:
 
@@ -106,7 +106,7 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement]
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
 
 ## NOTES
 
