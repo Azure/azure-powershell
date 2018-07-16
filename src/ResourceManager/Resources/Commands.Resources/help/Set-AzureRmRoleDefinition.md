@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Resources.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 115A7612-4856-47AE-AEE4-918350CD7009
@@ -84,7 +84,7 @@ PS C:\> Set-AzureRmRoleDefinition -InputFile C:\Temp\roleDefinition.json
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,7 +101,7 @@ Only include the properties that are to be updated in the JSON.
 Id property is Required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
 Aliases:
 
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 Role definition object to be updated
 
 ```yaml
-Type: PSRoleDefinition
+Type: Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition
 Parameter Sets: RoleDefinitionParameterSet
 Aliases:
 

@@ -42,20 +42,20 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
 
 InModuleScope Azs.Storage.Admin {
 
     Describe "StorageQuotas" -Tags @('StorageQuotas', 'Azs.Storage.Admin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateStorageQuota {
                 param(
@@ -84,7 +84,8 @@ InModuleScope Azs.Storage.Admin {
                 # Resource
                 if ($expected -eq $null) {
                     $found												    | Should Be $null
-                } else {
+                }
+                else {
                     $found												    | Should Not Be $null
                     # Validate Storage quota properties
                     $expected.CapacityInGb | Should Be $found.CapacityInGb
@@ -93,7 +94,7 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
-        It "TestListAllStorageQuotas" {
+        it "TestListAllStorageQuotas" -Skip:$('TestListAllStorageQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
@@ -102,7 +103,7 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
-        It "TestGetStorageQuota" {
+        it "TestGetStorageQuota" -Skip:$('TestGetStorageQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestGetStorageQuota'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
@@ -111,7 +112,7 @@ InModuleScope Azs.Storage.Admin {
             AssertAreEqual -expected $quotas[0] -found $quota
         }
 
-        It "TestGetAllStorageQuotas" {
+        it "TestGetAllStorageQuotas" -Skip:$('TestGetAllStorageQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllStorageQuotas'
 
             $quotas = Get-AzsStorageQuota -Location $global:Location
@@ -122,7 +123,7 @@ InModuleScope Azs.Storage.Admin {
             }
         }
 
-        It "TestCreateStorageQuota" {
+        it "TestCreateStorageQuota" -Skip:$('TestCreateStorageQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateStorageQuota'
 
             $name = "TestCreateQuota"
@@ -134,13 +135,13 @@ InModuleScope Azs.Storage.Admin {
         }
 
         # Recorded test sessions cannot deal with two PUTs on the same URIs but with different bodies.
-        It "TestUpdateStorageQuota" {
+        it "TestUpdateStorageQuota" -Skip:$('TestUpdateStorageQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestUpdateStorageQuota'
 
             $name = "TestUpdateQuota"
 
             $quota = Get-AzsStorageQuota -Name $name -Location $global:Location
-            if($quota -eq $null) {
+            if ($quota -eq $null) {
                 $quota = New-AzsStorageQuota -CapacityInGb 10 -NumberOfStorageAccounts 123 -Location $global:Location -Name $name
             }
 
@@ -162,7 +163,7 @@ InModuleScope Azs.Storage.Admin {
             Remove-AzsStorageQuota -Location $global:Location -Name $name -Force
         }
 
-        It "TestDeleteStorageQuota" {
+        it "TestDeleteStorageQuota" -Skip:$('TestDeleteStorageQuota' -in $global:SkippedTests) {
             $global:TestName = 'TestDeleteStorageQuota'
 
             $name = "TestDeleteQuota"

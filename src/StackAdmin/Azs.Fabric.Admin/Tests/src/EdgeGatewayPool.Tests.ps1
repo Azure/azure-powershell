@@ -36,102 +36,101 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "EdgeGatewayPools" -Tags @('EdgeGatewayPool', 'Azs.Fabric.Admin') {
+    Describe "EdgeGatewayPools" -Tags @('EdgeGatewayPool', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
+            function ValidateEdgeGatewayPool {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $EdgeGatewayPool
+                )
 
-			function ValidateEdgeGatewayPool {
-				param(
-					[Parameter(Mandatory=$true)]
-					$EdgeGatewayPool
-				)
+                $EdgeGatewayPool          | Should Not Be $null
 
-				$EdgeGatewayPool          | Should Not Be $null
+                # Resource
+                $EdgeGatewayPool.Id       | Should Not Be $null
+                $EdgeGatewayPool.Location | Should Not Be $null
+                $EdgeGatewayPool.Name     | Should Not Be $null
+                $EdgeGatewayPool.Type     | Should Not Be $null
 
-				# Resource
-				$EdgeGatewayPool.Id       | Should Not Be $null
-				$EdgeGatewayPool.Location | Should Not Be $null
-				$EdgeGatewayPool.Name     | Should Not Be $null
-				$EdgeGatewayPool.Type     | Should Not Be $null
+                # Edge Gateway Pool
+                $EdgeGatewayPool.GatewayType      | Should Not Be $null
+                $EdgeGatewayPool.PublicIpAddress  | Should Not Be $null
+                $EdgeGatewayPool.NumberOfGateways | Should Not Be $null
+            }
 
-				# Edge Gateway Pool
-				$EdgeGatewayPool.GatewayType      | Should Not Be $null
-				$EdgeGatewayPool.PublicIpAddress  | Should Not Be $null
-				$EdgeGatewayPool.NumberOfGateways | Should Not Be $null
-			}
+            function AssertEdgeGatewayPoolsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-			function AssertEdgeGatewayPoolsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                } else {
+                    $Found                  | Should Not Be $null
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
-
-					# Edge Gateway Pool
-					$Found.GatewayType      | Should Be $Expected.GatewayType
-					$Found.PublicIpAddress  | Should Be $Expected.PublicIpAddress
-					$Found.NumberOfGateways | Should Be $Expected.NumberOfGateways
-				}
-			}
-		}
-
-
-		It "TestListEdgeGatewayPools" {
-			$global:TestName = 'TestListEdgeGatewayPools'
-			$edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $ResourceGroup -Location $Location
-			$edgeGatewayPools | Should Not Be $null
-			foreach($edgeGatewayPool in $edgeGatewayPools) {
-				ValidateEdgeGatewayPool -EdgeGatewayPool $edgeGatewayPool
-			}
-	    }
+                    # Edge Gateway Pool
+                    $Found.GatewayType      | Should Be $Expected.GatewayType
+                    $Found.PublicIpAddress  | Should Be $Expected.PublicIpAddress
+                    $Found.NumberOfGateways | Should Be $Expected.NumberOfGateways
+                }
+            }
+        }
 
 
-		It "TestGetEdgeGatewayPool" {
+        It "TestListEdgeGatewayPools" -Skip:$('TestListEdgeGatewayPools' -in $global:SkippedTests) {
+            $global:TestName = 'TestListEdgeGatewayPools'
+            $edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $edgeGatewayPools | Should Not Be $null
+            foreach ($edgeGatewayPool in $edgeGatewayPools) {
+                ValidateEdgeGatewayPool -EdgeGatewayPool $edgeGatewayPool
+            }
+        }
+
+
+        It "TestGetEdgeGatewayPool" -Skip:$('TestGetEdgeGatewayPool' -in $global:SkippedTests) {
             $global:TestName = 'TestGetEdgeGatewayPool'
 
-			$edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($edgeGatewayPool in $edgeGatewayPools) {
-				$retrieved = Get-AzsEdgeGatewayPool -ResourceGroupName $ResourceGroup -Location $Location -Name $edgeGatewayPool.Name
-				AssertEdgeGatewayPoolsAreSame -Expected $edgeGatewayPool -Found $retrieved
-				break
-			}
-		}
+            $edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($edgeGatewayPool in $edgeGatewayPools) {
+                $retrieved = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $edgeGatewayPool.Name
+                AssertEdgeGatewayPoolsAreSame -Expected $edgeGatewayPool -Found $retrieved
+                break
+            }
+        }
 
-		It "TestGetAllEdgeGatewayPools" {
-			$global:TestName = 'TestGetAllEdgeGatewayPools'
+        It "TestGetAllEdgeGatewayPools" -Skip:$('TestGetAllEdgeGatewayPools' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllEdgeGatewayPools'
 
-			$edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($edgeGatewayPool in $edgeGatewayPools) {
-				$retrieved = Get-AzsEdgeGatewayPool -ResourceGroupName $ResourceGroup -Location $Location -Name $edgeGatewayPool.Name
-				AssertEdgeGatewayPoolsAreSame -Expected $edgeGatewayPool -Found $retrieved
-			}
-		}
+            $edgeGatewayPools = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($edgeGatewayPool in $edgeGatewayPools) {
+                $retrieved = Get-AzsEdgeGatewayPool -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $edgeGatewayPool.Name
+                AssertEdgeGatewayPoolsAreSame -Expected $edgeGatewayPool -Found $retrieved
+            }
+        }
 
     }
 }

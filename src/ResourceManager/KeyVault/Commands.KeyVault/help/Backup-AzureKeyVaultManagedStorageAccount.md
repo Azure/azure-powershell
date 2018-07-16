@@ -74,7 +74,7 @@ This command creates a backup of the managed storage account named $msak.Name in
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Overwrite the given file if it exists
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Storage account bundle to be backed up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyVaultManagedStorageAccountIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 Parameter Sets: ByStorageAccount
 Aliases: StorageAccount
 
@@ -120,7 +120,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByStorageAccountName
 Aliases: StorageAccountName
 
@@ -137,7 +137,7 @@ The output file to store the storage account backup.
 If not specified, a default filename will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +153,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByStorageAccountName
 Aliases:
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -184,7 +184,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

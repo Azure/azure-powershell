@@ -75,7 +75,7 @@ This cmdlet provides a list of all services / regions, BGP communities, and asso
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -101,6 +101,7 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
+
 [Move-AzureRmExpressRouteCircuit](Move-AzureRmExpressRouteCircuit.md)
 
 [New-AzureRmExpressRouteCircuit](New-AzureRmExpressRouteCircuit.md)
