@@ -79,3 +79,4 @@ Verifies an Azure IoT Hub certificate.
 
 ### [Update-AzureRmIotHub](Update-AzureRmIotHub.md)
 Update an Azure IoT Hub.
+

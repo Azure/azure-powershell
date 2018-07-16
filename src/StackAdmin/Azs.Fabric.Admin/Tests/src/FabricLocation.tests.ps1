@@ -36,91 +36,92 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "FabricLocations" -Tags @('FabricLocation', 'Azs.Fabric.Admin') {
+    Describe "FabricLocations" -Tags @('FabricLocation', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateFabricLocation {
-				param(
-					[Parameter(Mandatory=$true)]
-					$FabricLocation
-				)
+            function ValidateFabricLocation {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $FabricLocation
+                )
 
-				$FabricLocation          | Should Not Be $null
+                $FabricLocation          | Should Not Be $null
 
-				# Resource
-				$FabricLocation.Id       | Should Not Be $null
-				$FabricLocation.Location | Should Not Be $null
-				$FabricLocation.Name     | Should Not Be $null
-				$FabricLocation.Type     | Should Not Be $null
+                # Resource
+                $FabricLocation.Id       | Should Not Be $null
+                $FabricLocation.Location | Should Not Be $null
+                $FabricLocation.Name     | Should Not Be $null
+                $FabricLocation.Type     | Should Not Be $null
 
-			}
+            }
 
-			function AssertFabricLocationsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertFabricLocationsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-				}
-			}
-		}
+                }
+            }
+        }
 
-		It "TestListFabricLocations" {
-			$global:TestName = 'TestListFabricLocations'
-			$fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $ResourceGroup
-			$fabricLocations | Should Not Be $null
-			foreach($fabricLocation in $fabricLocations) {
-				ValidateFabricLocation -FabricLocation $fabricLocation
-			}
-	    }
+        It "TestListFabricLocations" -Skip:$('TestListFabricLocations' -in $global:SkippedTests) {
+            $global:TestName = 'TestListFabricLocations'
+            $fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName
+            $fabricLocations | Should Not Be $null
+            foreach ($fabricLocation in $fabricLocations) {
+                ValidateFabricLocation -FabricLocation $fabricLocation
+            }
+        }
 
-		It "TestGetFabricLocation" {
+        It "TestGetFabricLocation" -Skip:$('TestGetFabricLocation' -in $global:SkippedTests) {
             $global:TestName = 'TestGetFabricLocation'
 
-			$fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $ResourceGroup
-			foreach($fabricLocation in $fabricLocations) {
-				$retrieved = Get-AzsInfrastructureLocation -ResourceGroupName $ResourceGroup -Location $fabricLocation.Name
-				AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
-				break
-			}
-		}
+            $fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName
+            foreach ($fabricLocation in $fabricLocations) {
+                $retrieved = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName -Location $fabricLocation.Name
+                AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
+                break
+            }
+        }
 
-		It "TestGetAllFabricLocations" {
-			$global:TestName = 'TestGetAllFabricLocations'
+        It "TestGetAllFabricLocations" -Skip:$('TestGetAllFabricLocations' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllFabricLocations'
 
-			$fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $ResourceGroup
-			foreach($fabricLocation in $fabricLocations) {
-				$retrieved = Get-AzsInfrastructureLocation -ResourceGroupName $ResourceGroup -Location $fabricLocation.Name
-				AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
-			}
-		}
+            $fabricLocations = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName
+            foreach ($fabricLocation in $fabricLocations) {
+                $retrieved = Get-AzsInfrastructureLocation -ResourceGroupName $global:ResourceGroupName -Location $fabricLocation.Name
+                AssertFabricLocationsAreSame -Expected $fabricLocation -Found $retrieved
+            }
+        }
     }
 }

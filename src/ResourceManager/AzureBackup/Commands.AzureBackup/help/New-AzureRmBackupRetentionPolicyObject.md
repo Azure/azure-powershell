@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 9574CEB5-B699-4606-8C5E-CE2C0D01092D
@@ -107,9 +107,9 @@ The second command displays the contents of $Monthly.
 Indicates that this cmdlet creates a Daily retention policy.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: DailyRetentionParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,7 +126,7 @@ Specify this parameter if you specify the *DailyRetention*, *MonthlyRetentionInD
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: MonthlyRetentionInDailyFormatParamSet, YearlyRetentionInDailyFormatParamSet
-Aliases: 
+Aliases:
 Accepted values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, Last
 
 Required: True
@@ -155,9 +155,9 @@ Be sure that the days of the week you select for backup and for retention are al
 For example, if your backup is set for Saturdays, the retention policies must also use Saturday.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: WeeklyRetentionParamSet, MonthlyRetentionInWeeklyFormatParamSet, YearlyRetentionInWeeklyFormatParamSet
-Aliases: 
+Aliases:
 Accepted values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
 
 Required: True
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -186,9 +186,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a Monthly policy in Daily format.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: MonthlyRetentionInDailyFormatParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -201,9 +201,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a Monthly policy in Weekly format.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: MonthlyRetentionInWeeklyFormatParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,9 +217,9 @@ Specifies which months of the year have the recovery points that Backup retains 
 The acceptable values for this parameter are: names of months, such as January or February.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: YearlyRetentionInDailyFormatParamSet, YearlyRetentionInWeeklyFormatParamSet
-Aliases: 
+Aliases:
 Accepted values: January, February, March, April, May, June, July, August, September, October, November, December
 
 Required: True
@@ -235,9 +235,9 @@ The unit depends on whether this cmdlet selects a daily, monthly, or yearly rete
 For example, if specify the *DailyRetention* parameter, the cmdlet interprets the current parameter as a number of days.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -250,9 +250,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a Weekly retention policy.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WeeklyRetentionParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -272,9 +272,9 @@ The acceptable values for this parameter are:
 - Last
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: MonthlyRetentionInWeeklyFormatParamSet, YearlyRetentionInWeeklyFormatParamSet
-Aliases: 
+Aliases:
 Accepted values: First, Second, Third, Fourth, Last
 
 Required: True
@@ -288,9 +288,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a Yearly retention policy in Daily format.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: YearlyRetentionInDailyFormatParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -303,9 +303,9 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a Yearly retention policy in Weekly format.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: YearlyRetentionInWeeklyFormatParamSet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
