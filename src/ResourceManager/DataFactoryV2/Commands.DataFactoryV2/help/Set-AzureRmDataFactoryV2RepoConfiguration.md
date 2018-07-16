@@ -12,30 +12,64 @@ Sets the repository configuration for a data factory.
 
 ## SYNTAX
 
-### ByGithub (Default)
+### ByFactoryNameByVSTS (Default)
 ```
-Set-AzureRmDataFactoryV2RepoConfiguration -FactoryResourceId <String> -Location <String> [-Force]
- -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
- -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] [-GitHubConfig] [-GitHubHostName <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFactoryName <String>
+ -Location <String> [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ -VSTSProjectName <String> [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
-### ByVSTS
+### ByFactoryNameByGitHub
 ```
-Set-AzureRmDataFactoryV2RepoConfiguration -FactoryResourceId <String> -Location <String> [-Force]
+Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFactoryName <String>
+ -Location <String> [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+ -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
+ [-GitHubConfig] [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByResourceIdByVSTS
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String> [-Force]
  -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
  -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] -VSTSProjectName <String>
  [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### ByResourceIdByGitHub
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String> [-Force]
+ -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
+ -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] [-GitHubConfig] [-GitHubHostName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObjectByVSTS
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] -RepositoryAccountName <String>
+ -RepositoryName <String> -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String>
+ [-RepositoryLastCommitId <String>] -VSTSProjectName <String> [-VSTSTenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObjectByGitHub
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] -RepositoryAccountName <String>
+ -RepositoryName <String> -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String>
+ [-RepositoryLastCommitId <String>] [-GitHubConfig] [-GitHubHostName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository configuration for a data factory with the specified parameters. This cmdlet requires special permissions.
+The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository configuration for a data factory with the specified parameters. This cmdlet requires for the user to have a permission to perform 'Microsoft.DataFactory/locations/configureFactoryRepo' operation.
 
 ## EXAMPLES
 
 ### Example 1: Set a GitHub repository on a factory
 ```
-PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -FactoryResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
+PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -ResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
         -Location "EastUS" -RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
         -RepositoryLastCommitId "123456abcd" -GitHubConfig
 
@@ -53,7 +87,7 @@ This command sets the repository of the WikiADF factory using specified properti
 
 ### Example 2: Set a VSTS repository on a factory
 ```
-PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -FactoryResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
+PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -ResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
         -Location "WestUS"  -RepositoryAccountName "MyRepoAccount" 
         -RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
         -RepositoryLastCommitId "123456abcd" -VSTSProjectName "MyProject"
@@ -72,6 +106,21 @@ This command sets the repository of the WikiADF factory using specified properti
 
 ## PARAMETERS
 
+### -DataFactoryName
+The data factory name.
+
+```yaml
+Type: String
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
@@ -84,21 +133,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -FactoryResourceId
-ResourceId for Factory
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -122,7 +156,7 @@ The repo configuration is for GitHub.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: ByGithub
+Parameter Sets: ByFactoryNameByGitHub, ByResourceIdByGitHub, ByFactoryObjectByGitHub
 Aliases: 
 
 Required: True
@@ -137,7 +171,7 @@ GitHub repo host name.
 
 ```yaml
 Type: String
-Parameter Sets: ByGithub
+Parameter Sets: ByFactoryNameByGitHub, ByResourceIdByGitHub, ByFactoryObjectByGitHub
 Aliases: 
 
 Required: False
@@ -147,12 +181,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The data factory object.
+
+```yaml
+Type: PSDataFactory
+Parameter Sets: ByFactoryObjectByVSTS, ByFactoryObjectByGitHub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Location
 The geographic region of the data factory.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub, ByResourceIdByVSTS, ByResourceIdByGitHub
 Aliases: 
 
 Required: True
@@ -237,12 +286,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGroupName
+The resource group name.
+
+```yaml
+Type: String
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+The geographic region of the data factory.
+
+```yaml
+Type: String
+Parameter Sets: ByResourceIdByVSTS, ByResourceIdByGitHub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VSTSProjectName
 VSTS project name.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS
+Parameter Sets: ByFactoryNameByVSTS, ByResourceIdByVSTS, ByFactoryObjectByVSTS
 Aliases: 
 
 Required: True
@@ -257,7 +336,7 @@ VSTS tenant ID.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS
+Parameter Sets: ByFactoryNameByVSTS, ByResourceIdByVSTS, ByFactoryObjectByVSTS
 Aliases: 
 
 Required: False

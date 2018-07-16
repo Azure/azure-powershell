@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     internal static class Constants
     {
+        public const string DataFactoryQualifiedType = "Microsoft.DataFactory/factories";
+
         public const string DataFactory = "AzureRmDataFactoryV2";
 
         public const string LinkedService = "AzureRmDataFactoryV2LinkedService";

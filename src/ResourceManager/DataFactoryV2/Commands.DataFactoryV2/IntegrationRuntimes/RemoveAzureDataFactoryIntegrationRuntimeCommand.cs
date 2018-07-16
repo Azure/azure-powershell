@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     {
         [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpIntegrationRuntimeLinks)]
-        public SwitchParameter Links { get; set; }
+        public SwitchParameter Link { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpLinkedFactoryName)]
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
 
-            if (Links.IsPresent && string.IsNullOrWhiteSpace(LinkedDataFactoryName))
+            if (Link.IsPresent && string.IsNullOrWhiteSpace(LinkedDataFactoryName))
             {
                 throw new PSArgumentException(
                     string.Format(
@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     "LinkedDataFactoryName");
             }
 
-            if (!Links.IsPresent && !string.IsNullOrWhiteSpace(LinkedDataFactoryName))
+            if (!Link.IsPresent && !string.IsNullOrWhiteSpace(LinkedDataFactoryName))
             {
                 throw new PSArgumentException(
                     string.Format(
@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     Name,
                     DataFactoryName),
                 Name,
-                Links.IsPresent ? removeLinks : ExecuteDelete);
+                Link.IsPresent ? removeLinks : ExecuteDelete);
         }
 
         private void ExecuteDelete()

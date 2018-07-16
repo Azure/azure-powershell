@@ -33,5 +33,11 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         internal const string ByIntegrationRuntimeObject = "ByIntegrationRuntimeObject";
         internal const string ByGitHub = "ByGithub";
         internal const string ByVSTS = "ByVSTS";
+        internal const string ByFactoryNameByVSTS = "ByFactoryNameByVSTS";
+        internal const string ByFactoryObjectByVSTS = "ByFactoryObjectByVSTS";
+        internal const string ByResourceIdByVSTS = "ByResourceIdByVSTS";
+        internal const string ByFactoryNameByGitHub = "ByFactoryNameByGitHub";
+        internal const string ByFactoryObjectByGitHub = "ByFactoryObjectByGitHub";
+        internal const string ByResourceIdByGitHub = "ByResourceIdByGitHub";
     }
 }

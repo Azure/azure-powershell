@@ -433,7 +433,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             else
             {
-                if (integrationRuntime.Properties is SelfHostedIntegrationRuntime selfHosted)
+                var selfHosted = integrationRuntime.Properties as SelfHostedIntegrationRuntime;
+                if (selfHosted != null)
                 {
                     if (selfHosted.LinkedInfo != null)
                     {

@@ -23,7 +23,8 @@ using Microsoft.Azure.Management.DataFactory.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.DataFactory, SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
+    [Cmdlet(VerbsCommon.Set, Constants.DataFactory, DefaultParameterSetName = ParameterSetNames.ByFactoryName,
+        SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
     [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {

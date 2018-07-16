@@ -112,5 +112,19 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest(_logger, "Test-SetConfigRepoGithub");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoParameterSetsVSTS()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoParameterSetsVSTS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoParameterSetsGithub()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoParameterSetsGithub");
+        }
     }
 }

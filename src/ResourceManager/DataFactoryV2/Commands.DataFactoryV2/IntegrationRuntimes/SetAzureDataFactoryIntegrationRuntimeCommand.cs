@@ -237,11 +237,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 }
             }
 
-            if (resource.Properties is SelfHostedIntegrationRuntime selfHostedIr)
+            if (!string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
             {
-                if (!string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                var selfHostedIr = resource.Properties as SelfHostedIntegrationRuntime;
+                if (selfHostedIr != null)
                 {
                     selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                }
+                else
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidIntegrationRuntimeSharing),
+                        "SharedIntegrationRuntimeResourceId");
                 }
             }
 
@@ -250,7 +259,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 resource.Properties.Description = Description;
             }
 
-            if (resource.Properties is ManagedIntegrationRuntime managedIr)
+            var managedIr = resource.Properties as ManagedIntegrationRuntime;
+            if (managedIr != null)
             {
                 HandleManagedIntegrationRuntime(managedIr);
             }
