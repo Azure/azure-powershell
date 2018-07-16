@@ -49,7 +49,7 @@ Name                 BlobType  Length          ContentType                    La
 ----                 --------  ------          -----------                    ------------         ---------- ------------         --------- 
 test1                BlockBlob 403116          application/octet-stream       2017-11-08 07:53:19Z            2017-11-08 08:19:32Z True      
 test1                BlockBlob 403116          application/octet-stream       2017-11-08 09:00:29Z                                 True      
-test2                BlockBlob 403116          application/octet-stream       2017-11-08 07:53:00Z                                 False      
+test2                BlockBlob 403116          application/octet-stream       2017-11-08 07:53:00Z                                 False
 ```
 
 This command uses the pipeline to get all blobs (include blobs in Deleted status) in a container.
@@ -96,15 +96,15 @@ If no blob name is specified, the cmdlet lists all the blobs in the specified co
 If a value is specified for this parameter, the cmdlet lists all blobs with names that match this parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BlobName
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -ClientTimeoutPerRequest
@@ -113,9 +113,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,9 +132,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Name
 
@@ -163,9 +163,9 @@ Specifies the Azure storage account from which you want to get a list of blobs.
 You can use the New-AzureStorageContext cmdlet to create a storage context.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,9 +179,9 @@ Specifies a continuation token for the blob list.
 Use this parameter and the *MaxCount* parameter to list blobs in multiple batches.
 
 ```yaml
-Type: BlobContinuationToken
+Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -194,9 +194,9 @@ Accept wildcard characters: False
 Include Deleted Blob, by default get blob won't include deleted blob.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -209,9 +209,9 @@ Accept wildcard characters: False
 Specifies the maximum number of objects that this cmdlet returns.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -227,9 +227,9 @@ This means that if the container has only blobs named "My", "MyBlob1", and "MyBl
 However, if you specify "-Prefix My", the cmdlet returns "My", "MyBlob1", and "MyBlob2".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BlobPrefix
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -243,9 +243,9 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

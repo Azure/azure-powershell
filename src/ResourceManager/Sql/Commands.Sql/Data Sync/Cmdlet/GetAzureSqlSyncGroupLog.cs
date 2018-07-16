@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
             return ModelAdapter.ListSyncGroupLogs(this.ResourceGroupName, this.ServerName, this.DatabaseName, new SyncGroupLogGetParameters
             {
                 SyncGroupName = this.SyncGroupName,
-                StartTime = this.StartTime.ToString(),
-                EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString() : DateTime.Now.ToString(),
+                StartTime = this.StartTime.ToString("s"),
+                EndTime = MyInvocation.BoundParameters.ContainsKey("EndTime") ? this.EndTime.ToString("s") : DateTime.Now.ToString("s"),
                 Type = MyInvocation.BoundParameters.ContainsKey("LogLevel") ? this.LogLevel : LogType.All.ToString()
             });
         }

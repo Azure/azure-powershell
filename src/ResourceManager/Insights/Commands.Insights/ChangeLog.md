@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
+
 * Fixed formatting of OutputType in help files
+* Updated help files to include full parameter types.
 
 * Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
     - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
@@ -16,8 +16,8 @@ Gets the metric values of a resource.
 ### GetWithDefaultParameters
 
 ```
-Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
@@ -199,9 +199,10 @@ This command gets summarized output for the PageViews metric with specified dime
 The aggregation type of the query
 
 ```yaml
-Type: AggregationType
+Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]
 Parameter Sets: GetWithFullParameters
-Aliases: 
+Aliases:
+Accepted values: None, Average, Count, Minimum, Maximum, Total
 
 Required: False
 Position: Named
@@ -214,7 +215,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -230,9 +231,9 @@ Indicates that this cmdlet displays detailed output.
 By default, output is summarized.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -246,9 +247,9 @@ Specifies the end time of the query in local time.
 The default is the current time.
 
 ```yaml
-Type: DateTime
-Parameter Sets: (All)
-Aliases: 
+Type: System.DateTime
+Parameter Sets: GetWithFullParameters
+Aliases:
 
 Required: False
 Position: Named
@@ -261,11 +262,23 @@ Accept wildcard characters: False
 Specifies an array of names of metrics.
 
 ```yaml
-Type: String[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: GetWithDefaultParameters
 Aliases: MetricNames
 
-Required: False (GetWithDefaultParameters), True (GetAzureRmAMetricFullParamGroup)
+Required: False
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String[]
+Parameter Sets: GetWithFullParameters
+Aliases: MetricNames
+
+Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -276,9 +289,9 @@ Accept wildcard characters: False
 Specifies the resource ID of the metric.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
