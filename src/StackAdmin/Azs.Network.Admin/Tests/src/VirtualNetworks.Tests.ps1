@@ -48,50 +48,48 @@ $global:TestName = ""
 
 InModuleScope Azs.Network.Admin {
 
-    Describe "NetworkTests" {
+    Describe "VirtualNetworksTests" {
 
         . $PSScriptRoot\Common.ps1
 
         BeforeEach {
 
-            function AssertAdminOverviewResourceHealth {
+            function ValidateConfigurationState {
                 param(
-                    [Parameter(Mandatory = $true)]
-                    $Health
+                    $state
                 )
 
-                $Health          | Should Not Be $null
-                $Health.ErrorResourceCount       | Should Not Be $null
-                $Health.HealthUnknownCount       | Should Not Be $null
-                $Health.HealthyResourceCount     | Should Not Be $null
-            }
-
-            function AssertAdminOverviewResourceUsage {
-                param(
-                    [Parameter(Mandatory = $true)]
-                    $Usage
-                )
-
-                $Usage                  	| Should Not Be $null
-                $Usage.InUseResourceCount   | Should Not Be $null
-                $Usage.TotalResourceCount   | Should Not Be $null
+                $state | Should Not Be $null
+                $state.Status | Should Not Be $null
+                $state.LastUpdatedTime | Should Not Be $null
+                $state.VirtualNetworkInterfaceErrors | Should Not Be $null
+                $state.HostErrors | Should Not Be $null
             }
         }
 
+        It "TestGetAllVirtualNetworks" -Skip:$('TestGetAllVirtualNetworks' -in $global:SkippedTests) {
+            $global:TestName = "TestGetAllVirtualNetworks"
 
-        It "TestGetAdminOverview" -Skip:$('TestGetAdminOverview' -in $global:SkippedTests) {
-            $global:TestName = 'TestGetAdminOverview'
+            $networks = Get-AzsVirtualNetwork
+            foreach ($network in $networks) {
+                ValidateBaseResources $network
+                ValidateBaseResourceTenant $network
+                ValidateConfigurationState $network.ConfigurationState
+            }
+        }
+        # Uncomment this test once ODATA assembly has been added
+        It "TestGetAllVirtualNetworksOData" -Skip:$("TestGetAllVirtualNetworksOData" -in $global:SkippedTests) {
+            $global:TestName = "TestGetAllVirtualNetworksOData"
 
-            $Overview = Get-AzsNetworkAdminOverview
-            $Overview | Should Not Be $null
-
-            AssertAdminOverviewResourceHealth($Overview.LoadBalancerMuxHealth);
-            AssertAdminOverviewResourceHealth($Overview.VirtualNetworkHealth);
-            AssertAdminOverviewResourceHealth($Overview.VirtualGatewayHealth);
-
-            AssertAdminOverviewResourceUsage($Overview.MacAddressUsage);
-            AssertAdminOverviewResourceUsage($Overview.PublicIpAddressUsage);
-            AssertAdminOverviewResourceUsage($Overview.BackendIpUsage);
+            [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Rest.Azure.OData.ODataQuery")
+            $oDataQuery = New-Object -TypeName [Microsoft.Rest.Azure.OData.ODataQuery] -ArgumentList VirtualNetwork
+            $oDataQuery.Top = 10
+            $networks = Get-AzsVirtualNetwork -Filter $oDataQuery
+            foreach ($network in $networks) {
+                ValidateBaseResources $network
+                ValidateBaseResourceTenant $network
+                ValidateConfigurationState $network.ConfigurationState
+            }
         }
     }
 }
