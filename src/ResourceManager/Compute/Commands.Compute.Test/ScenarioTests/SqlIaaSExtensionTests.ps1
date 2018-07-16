@@ -69,7 +69,7 @@ function Test-SetAzureRmVMSqlServerAKVExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -113,10 +113,10 @@ function Test-SetAzureRmVMSqlServerAKVExtension
     finally
     {
         # Cleanup
-        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        {
+        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        #{
              #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        }
+        #}
     }
 }
 
@@ -178,7 +178,7 @@ function Test-SetAzureRmVMSqlServerExtension
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
 
         $p = Set-AzureRmVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent;
-        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP1-WS2012R2 -Skus Enterprise -Version "latest"
+        $p = Set-AzureRmVMSourceImage -VM $p -PublisherName MicrosoftSQLServer -Offer SQL2014SP2-WS2012R2 -Skus Enterprise -Version "latest"
 
         # Virtual Machine
         New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $p;
@@ -190,7 +190,7 @@ function Test-SetAzureRmVMSqlServerExtension
         # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
         $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
 		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString
         Set-AzureRmVMSqlServerExtension -AutoPatchingSettings $aps -AutoBackupSettings $abs -ResourceGroupName $rgname -VMName $vmname -Version "1.2" -Verbose -Name $extensionName;
@@ -227,10 +227,10 @@ function Test-SetAzureRmVMSqlServerExtension
     finally
     {
         # Cleanup
-        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        {
+        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        #{
             #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        }
+        #}
     }
 }
 
@@ -305,7 +305,7 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
         # 1) Installs the SqlIaaS extension by calling Set-AzureRmVMSqlServerExtension cmdlet on a VM, with auto patching and auto backup settings.
         $aps = New-AzureRmVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 20 -MaintenanceWindowDuration 120 -PatchCategory "Important"
 		$storageBlobUrl = "https://$stoname.blob.core.windows.net";
-		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname).Key1;
+		$storageKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $rgname -Name $stoname)[0].Value;
 		$storageKeyAsSecureString = ConvertTo-SecureString -String $storageKey -AsPlainText -Force;
 		$abs = New-AzureRmVMSqlServerAutoBackupConfig -Enable -RetentionPeriodInDays 5 -ResourceGroupName $rgname -StorageUri $storageBlobUrl -StorageKey $storageKeyAsSecureString `
 			-BackupScheduleType Manual -BackupSystemDbs -FullBackupStartHour 10 -FullBackupWindowInHours 5 -FullBackupFrequency Daily -LogBackupFrequencyInMinutes 30
@@ -351,10 +351,10 @@ function Test-SetAzureRmVMSqlServerExtensionWith2016Image
     finally
     {
         # Cleanup
-        if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
-        {
+        #if(Get-AzureRmResourceGroup -Name $rgname -Location $loc)
+        #{
             #Remove-AzureRmResourceGroup -Name $rgname -Force;
-        }
+        #}
     }
 }
 
