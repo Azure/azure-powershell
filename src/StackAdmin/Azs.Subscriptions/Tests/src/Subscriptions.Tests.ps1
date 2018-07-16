@@ -35,88 +35,91 @@
     Date:   March 20, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
 InModuleScope Azs.Subscriptions {
 
-	Describe "Subscriptions" -Tags @('Subscriptions', 'Offers') {
+    Describe "Subscriptions" -Tags @('Subscriptions', 'Offers') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateSubscription {
-				param(
-					[Parameter(Mandatory=$true)]
-					$subscription
-				)
+            function ValidateSubscription {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $subscription
+                )
 
-				$subscription          | Should Not Be $null
+                $subscription          | Should Not Be $null
 
-				# Resource
-				$subscription.Id       | Should Not Be $null
+                # Resource
+                $subscription.Id       | Should Not Be $null
 
-				# Subscription
-				$subscription.DisplayName	    | Should Not Be $null
-				$subscription.SubscriptionId	| Should Not Be $null
-				$subscription.TenantId			| Should Not Be $null
-				$subscription.State             | Should Not Be $null
-				$subscription.OfferId           | Should Not Be $null
-			}
+                # Subscription
+                $subscription.DisplayName	    | Should Not Be $null
+                $subscription.SubscriptionId	| Should Not Be $null
+                $subscription.TenantId			| Should Not Be $null
+                $subscription.State             | Should Not Be $null
+                $subscription.OfferId           | Should Not Be $null
+            }
 
-			function AssertSubscriptionsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertSubscriptionsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found          | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found          | Should Not Be $null
 
-					# Resource
-					$Found.Id       | Should Be $Expected.Id
+                    # Resource
+                    $Found.Id       | Should Be $Expected.Id
 
-					# Subscription
-					$Found.DisplayName	    | Should Not Be $null
-					$Found.SubscriptionId	| Should Not Be $null
-					$Found.TenantId			| Should Not Be $null
-					$Found.State            | Should Not Be $null
-					$Found.OfferId          | Should Not Be $null
-				}
-			}
-		}
+                    # Subscription
+                    $Found.DisplayName	    | Should Not Be $null
+                    $Found.SubscriptionId	| Should Not Be $null
+                    $Found.TenantId			| Should Not Be $null
+                    $Found.State            | Should Not Be $null
+                    $Found.OfferId          | Should Not Be $null
+                }
+            }
+        }
 
 
-		It "TestListSubscriptions" {
-			$global:TestName = 'TestListSubscriptions'
+        it "TestListSubscriptions" -Skip:$('TestListSubscriptions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListSubscriptions'
 
-			$subscriptions = Get-AzsSubscription
-			$subscriptions | Should Not Be $null
-			foreach($subscription in $subscriptions) {
-				ValidateSubscription -Subscription $subscription
-			}
-	    }
+            $subscriptions = Get-AzsSubscription
+            $subscriptions | Should Not Be $null
+            foreach ($subscription in $subscriptions) {
+                ValidateSubscription -Subscription $subscription
+            }
+        }
 
-		It "TestGetSubscription" {
+        it "TestGetSubscription" -Skip:$('TestGetSubscription' -in $global:SkippedTests) {
             $global:TestName = 'TestGetSubscription'
 
-			$subscriptions = Get-AzsSubscription
-			$subscriptions | Should Not Be $null
-			foreach($subscription in $subscriptions) {
-				$retrieved = Get-AzsSubscription -SubscriptionId $subscription.SubscriptionId
-				AssertSubscriptionsAreSame -Expected $subscription -Found $retrieved
-				break
-			}
-		}
+            $subscriptions = Get-AzsSubscription
+            $subscriptions | Should Not Be $null
+            foreach ($subscription in $subscriptions) {
+                $retrieved = Get-AzsSubscription -SubscriptionId $subscription.SubscriptionId
+                AssertSubscriptionsAreSame -Expected $subscription -Found $retrieved
+                break
+            }
+        }
     }
 }
