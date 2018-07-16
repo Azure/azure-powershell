@@ -149,7 +149,7 @@ if ($Scope -in $StackScopes) {
     $IgnoredStackModules = @()
 
     [System.String[]]$ModulesToTest = $AllStackModules | Where-Object { !($_ -in $IgnoredStackModules) }
-    Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest -FailFast
+    Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest
 
     [Environment]::SetEnvironmentVariable("PSModulePath",$oldModulePath)
 }
