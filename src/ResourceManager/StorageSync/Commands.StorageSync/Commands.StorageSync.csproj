@@ -108,7 +108,7 @@
     <None Include="debug.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="..\AzureRM.StorageSync.psd1">
+    <None Include="AzureRM.StorageSync.psd1">
       <Link>AzureRM.StorageSync.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
