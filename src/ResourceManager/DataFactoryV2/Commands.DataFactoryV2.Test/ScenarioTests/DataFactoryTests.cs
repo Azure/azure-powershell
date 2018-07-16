@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFactoryV2Github()
         {
-            RunPowerShellTest("Test-SetFactoryGithub");
+            RunPowerShellTest(_logger, "Test-SetFactoryGithub");
         }
 
 
@@ -89,28 +89,28 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFactoryV2VSTS()
         {
-            RunPowerShellTest("Test-SetFactoryVSTS");
+            RunPowerShellTest(_logger, "Test-SetFactoryVSTS");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetFactoryV2VSTSNoTenant()
         {
-            RunPowerShellTest("Test-SetFactoryVSTSNoTenant");
+            RunPowerShellTest(_logger, "Test-SetFactoryVSTSNoTenant");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetConfigRepoVSTS()
         {
-            RunPowerShellTest("Test-SetConfigRepoVSTS");
+            RunPowerShellTest(_logger, "Test-SetConfigRepoVSTS");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetConfigRepoGithub()
         {
-            RunPowerShellTest("Test-SetConfigRepoGithub");
+            RunPowerShellTest(_logger, "Test-SetConfigRepoGithub");
         }
     }
 }

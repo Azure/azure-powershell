@@ -50,9 +50,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             RunPowerShellTest(_logger, "Test-IntegrationRuntime-Piping");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestSsisAzureIntegrationRuntime()
         {
             RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
