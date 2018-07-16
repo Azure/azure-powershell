@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: A06D36D7-3F72-4D21-8995-9DBBB9A9B880
@@ -54,9 +54,9 @@ This command imports an updated version of an existing module named ContosoModul
 Specifies the name of the Automation account for which this cmdlet updates a module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies the URL of the .zip file that contains the new version of a module that this cmdlet imports.
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
 Aliases: ContentLink
 
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 Specifies the version of the module to which this cmdlet updates Automation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -114,9 +114,9 @@ Accept wildcard characters: False
 Specifies the name of the module that this cmdlet imports.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -129,9 +129,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group for which this cmdlet updates a module.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

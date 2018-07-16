@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 42EEAAA8-F13B-486B-82BD-F646EF0DCDBA
@@ -84,7 +84,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Specifies the ID of the lock that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByLockId
 Aliases: Id, ResourceId
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 Specifies the name of the lock that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup, ByResourceGroupLevel, BySpecifiedScope, BySubscription, BySubscriptionLevel, ByTenantLevel
 Aliases: ExtensionResourceName, Name
 
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +213,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for which the lock applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroup, ByResourceGroupLevel
 Aliases:
 
@@ -231,7 +231,7 @@ For instance, to specify a database, use the following format:
 Server`/`Database
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
 Aliases:
 
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 Specifies the resource type of the resource for which the lock applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceGroupLevel, BySubscriptionLevel, ByTenantLevel
 Aliases:
 
@@ -261,7 +261,7 @@ Accept wildcard characters: False
 Specifies the scope to which the lock applies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BySpecifiedScope
 Aliases:
 
@@ -276,7 +276,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet operates at the tenant level.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByTenantLevel
 Aliases:
 
@@ -291,7 +291,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -307,7 +307,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

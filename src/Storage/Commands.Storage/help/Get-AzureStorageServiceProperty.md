@@ -39,7 +39,6 @@ DeleteRetentionPolicy.Enabled       : True
 DeleteRetentionPolicy.RetentionDays : 70
 Cors                                : 
 DefaultServiceVersion               : 2017-07-29
-
 ```
 
 This command gets DefaultServiceVersion property of the Blob service.
@@ -51,9 +50,9 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -73,9 +72,9 @@ The acceptable values for this parameter are:
 - File
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True
@@ -99,4 +98,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
