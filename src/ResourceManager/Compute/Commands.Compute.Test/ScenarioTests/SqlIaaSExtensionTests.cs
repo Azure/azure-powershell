@@ -1,15 +1,17 @@
-﻿using Microsoft.WindowsAzure.Commands.ScenarioTest;
+﻿using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class SqlIaaSExtensionTests
     {
-        ServiceManagemenet.Common.Models.XunitTracingInterceptor _logger;
+        XunitTracingInterceptor _logger;
+
         public SqlIaaSExtensionTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            _logger = new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
 #if NETSTANDARD

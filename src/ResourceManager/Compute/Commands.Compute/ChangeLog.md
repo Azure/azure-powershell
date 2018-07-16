@@ -19,8 +19,16 @@
 -->
 ## Current Release
 * Move dependencies on Keyvault and Storage to the common dependencies.
+* Add example for `New-AzureRmVM`
+* Updated help files to include full parameter types.
+
+## Version 5.3.0
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
+* Add example for `Add-AzureRmVmssExtension`
 * Add examples for `Remove-AzureRmVmssExtension`
 * Update help for `Set-AzureRmVMAccessExtension`
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+* Fixed Disable-AzureRmVmDiskEncryption to work for VMs encrypted without AAD parameters
 
 ## Version 5.2.0
 * IP Tag feature for VMSS
@@ -34,7 +42,7 @@
 
 ## Version 5.1.1
 * ResourceId tab completer applied to the cmdelts top level resource id parameters if any.
-* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks 
+* `Get-AzureRmVmDiskEncryptionStatus` fixes an issue observed for VMs with no data disks
 * Update Compute client library version to fix following cmdlets
     - Grant-AzureRmDiskAccess
     - Grant-AzureRmSnapshotAccess
@@ -77,7 +85,7 @@
 * Set minimum dependency of module to PowerShell 5.0
 * Introduce multiple breaking changes
     - Please refer to the migration guide for more details
-* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional 
+* `Set-AzureRmVmDiskEncryptionExtension` makes AAD parameters optional
 
 ## Version 4.6.0
 * `Get-AzureRmVmssDiskEncryptionStatus` supports encryption status at data disk level

@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.NotificationHubs
 Module Guid: f875725d-8ce4-423f-a6af-ea880bc63f13
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.notificationhubs
