@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 2B12BC19-EF8F-43F5-AF04-C570FEEA1AE6
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragecontainer
 schema: 2.0.0
@@ -46,9 +47,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -65,9 +66,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,9 +81,9 @@ Accept wildcard characters: False
 Specifies a context for the new container.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -95,7 +96,7 @@ Accept wildcard characters: False
 Specifies a name for the new container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Container
 
@@ -123,10 +124,10 @@ Clients cannot enumerate blobs in the container by using anonymous request.
 Which restricts access to only the storage account owner.
 
 ```yaml
-Type: BlobContainerPublicAccessType
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Blob.BlobContainerPublicAccessType]
 Parameter Sets: (All)
 Aliases: PublicAccess
-Accepted values: Off, Container, Blob
+Accepted values: Off, Container, Blob, Unknown
 
 Required: False
 Position: 1
@@ -140,9 +141,9 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

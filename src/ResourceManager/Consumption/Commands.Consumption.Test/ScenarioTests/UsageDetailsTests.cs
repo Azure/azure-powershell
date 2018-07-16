@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
     public class UsageDetailsTests : RMTestBase
     {
-        public UsageDetailsTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public UsageDetailsTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -34,42 +37,42 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListUsageDetails()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListUsageDetails");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListUsageDetails");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListUsageDetailsWithMeterDetailsExpand()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListUsageDetailsWithMeterDetailsExpand");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListUsageDetailsWithMeterDetailsExpand");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListUsageDetailsWithDateFilter()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListUsageDetailsWithDateFilter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListUsageDetailsWithDateFilter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodUsageDetails()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListBillingPeriodUsageDetails");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodUsageDetails");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodUsageDetailsWithFilterOnInstanceName()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodUsageDetailsWithFilterOnInstanceName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingPeriodUsageDetailsWithDateFilter()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListBillingPeriodUsageDetailsWithDateFilter");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingPeriodUsageDetailsWithDateFilter");
         }
 
     }

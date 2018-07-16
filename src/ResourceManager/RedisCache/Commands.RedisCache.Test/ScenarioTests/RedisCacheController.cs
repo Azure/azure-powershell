@@ -27,6 +27,7 @@ using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
 using Microsoft.Azure.Management.Storage;
 using System.Collections.Generic;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
 {
@@ -73,10 +74,12 @@ namespace Microsoft.Azure.Commands.RedisCache.Test.ScenarioTests
                 InsightsManagementClient);
         }
 
-        public void RunPowerShellTest(params string[] scripts)
+        public void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);

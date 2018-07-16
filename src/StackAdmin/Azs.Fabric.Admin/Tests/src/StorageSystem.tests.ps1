@@ -46,20 +46,20 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
 
 InModuleScope Azs.Fabric.Admin {
 
     Describe "StorageSystems" -Tags @('StorageSystem', 'Azs.Fabric.Admin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateStorageSystem {
                 param(
@@ -89,7 +89,8 @@ InModuleScope Azs.Fabric.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -105,9 +106,9 @@ InModuleScope Azs.Fabric.Admin {
         }
 
 
-        It "TestListStorageSystems" {
+        it "TestListStorageSystems" -Skip:$('TestListStorageSystems' -in $global:SkippedTests) {
             $global:TestName = 'TestListStorageSystems'
-            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
+            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
             $StorageSystems | Should Not Be $null
             foreach ($StorageSystem in $StorageSystems) {
                 ValidateStorageSystem -StorageSystem $StorageSystem
@@ -115,23 +116,23 @@ InModuleScope Azs.Fabric.Admin {
         }
 
 
-        It "TestGetStorageSystem" {
+        it "TestGetStorageSystem" -Skip:$('TestGetStorageSystem' -in $global:SkippedTests) {
             $global:TestName = 'TestGetStorageSystem'
 
-            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
+            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
             foreach ($StorageSystem in $StorageSystems) {
-                $retrieved = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location -Name $StorageSystem.Name
+                $retrieved = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $StorageSystem.Name
                 AssertStorageSystemsAreSame -Expected $StorageSystem -Found $retrieved
                 break
             }
         }
 
-        It "TestGetAllStorageSystems" {
+        it "TestGetAllStorageSystems" -Skip:$('TestGetAllStorageSystems' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllStorageSystems'
 
-            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location
+            $StorageSystems = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location
             foreach ($StorageSystem in $StorageSystems) {
-                $retrieved = Get-AzsStorageSystem -ResourceGroupName $ResourceGroup -Location $Location -Name $StorageSystem.Name
+                $retrieved = Get-AzsStorageSystem -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $StorageSystem.Name
                 AssertStorageSystemsAreSame -Expected $StorageSystem -Found $retrieved
             }
         }

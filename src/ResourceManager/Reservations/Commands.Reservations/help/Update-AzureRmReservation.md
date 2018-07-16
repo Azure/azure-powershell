@@ -51,7 +51,7 @@ Updates the AppliedScopeType of the specified `Reservation` to Shared and Instan
 SubscriptionId for this `Reservation` to be applied
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Type of the Applied Scope
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 If present, updates the InstanceFlexibility value of the `Reservation`. If not specified, the existing value remains unchanged.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Pipe object parameter for `Reservation`
 
 ```yaml
-Type: PSReservation
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservation
 Parameter Sets: PipeObject
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Id of the `Reservation` to update
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` to update
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
