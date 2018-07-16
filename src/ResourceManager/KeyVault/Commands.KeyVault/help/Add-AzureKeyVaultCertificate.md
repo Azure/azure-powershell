@@ -94,7 +94,7 @@ The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certif
 Specifies a **KeyVaultCertificatePolicy** object.
 
 ```yaml
-Type: PSKeyVaultCertificatePolicy
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 Specifies the name of the certificate to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CertificateName
 
@@ -141,7 +141,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -187,7 +187,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

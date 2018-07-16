@@ -55,7 +55,7 @@ Get specific `Reservation` details.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Id of the `Reservation` to look at
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Pipe object parameter for `ReservationOrder`
 
 ```yaml
-Type: PSReservationOrder
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservationOrder
 Parameter Sets: PipeObject
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Id of the `ReservationOrder` that contains the `Reservation`. Required.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: CommandLine
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Pipe object parameter for `ReservationOrder`
 
 ```yaml
-Type: PSReservationOrderPage
+Type: Microsoft.Azure.Commands.Reservations.Models.PSReservationOrderPage
 Parameter Sets: PagePipeObject
 Aliases:
 

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 26E06BA3-C550-40A5-B8E3-FEC8E9BF3867
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azurestoragecorsrule
 schema: 2.0.0
@@ -40,9 +41,9 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -59,9 +60,9 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -75,9 +76,9 @@ Specifies the Azure storage context.
 To obtain the storage context, the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -90,9 +91,9 @@ Accept wildcard characters: False
 Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -111,9 +112,9 @@ The acceptable values for this parameter are:
 - File
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True
