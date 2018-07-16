@@ -39,147 +39,143 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Backup.Admin {
 
-	Describe "BackupLocations" -Tags @('BackupLocation', 'Azs.Backup.Admin') {
+    Describe "BackupLocations" -Tags @('BackupLocation', 'Azs.Backup.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateBackupLocation {
-				param(
-					[Parameter(Mandatory=$true)]
-					$BackupLocation
-				)
+            function ValidateBackupLocation {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $BackupLocation
+                )
 
-				$BackupLocation          | Should Not Be $null
+                $BackupLocation          | Should Not Be $null
 
-				# Resource
-				$BackupLocation.Id			| Should Not Be $null
-				$BackupLocation.Name		| Should Not Be $null
-				$BackupLocation.Type		| Should Not Be $null
-				$BackupLocation.Location    | Should Not Be $null
+                # Resource
+                $BackupLocation.Id			| Should Not Be $null
+                $BackupLocation.Name		| Should Not Be $null
+                $BackupLocation.Type		| Should Not Be $null
+                $BackupLocation.Location    | Should Not Be $null
 
-				# Subscriber Usage Aggregate
-				$BackupLocation.Password    			| Should Be $null
-				$BackupLocation.EncryptionKeyBase64     | Should Be $null
-			}
+                # Subscriber Usage Aggregate
+                $BackupLocation.Password    			| Should -BeNullOrEmpty
+                $BackupLocation.EncryptionKeyBase64     | Should -BeNullOrEmpty
+            }
 
-			function AssertAreEqual {
-				param(
-					[Parameter(Mandatory=$true)]
-					$expected,
-					[Parameter(Mandatory=$true)]
-					$found
-				)
-				# Resource
-				if($expected -eq $null){
-					$found												    | Should Be $null
-				}
-				else{
-					$found												    | Should Not Be $null
-					# Validate Farm properties
-					$expected.Id							| Should Be $found.Id
-					$expected.Type							| Should Be $found.Type
-					$expected.Name							| Should Be $found.Name
-					$expected.Location						| Should Be $found.Location
-					$expected.AvailableCapacity				| Should Be $found.AvailableCapacity
-					$expected.BackupFrequencyInHours		| Should Be $found.BackupFrequencyInHours
-					$expected.EncryptionKeyBase64			| Should Be $found.EncryptionKeyBase64
-					$expected.IsBackupSchedulerEnabled		| Should Be $found.IsBackupSchedulerEnabled
-					$expected.LastBackupTime				| Should Be $found.LastBackupTime
-					$expected.NextBackupTime				| Should Be $found.NextBackupTime
-					$expected.LastBackupTime				| Should Be $found.LastBackupTime
-					$expected.Password						| Should Be $found.Password
-					$expected.Path							| Should Be $found.Path
-					$expected.UserName						| Should Be $found.UserName
-				}
-			}
-		}
+            function AssertAreEqual {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $expected,
+                    [Parameter(Mandatory = $true)]
+                    $found
+                )
+                # Resource
+                if ($null -eq $expected) {
+                    $found												    | Should Be $null
+                }
+                else {
+                    $found												    | Should Not Be $null
+                    # Validate Farm properties
+                    $expected.Id							| Should Be $found.Id
+                    $expected.Type							| Should Be $found.Type
+                    $expected.Name							| Should Be $found.Name
+                    $expected.Location						| Should Be $found.Location
+                    $expected.AvailableCapacity				| Should Be $found.AvailableCapacity
+                    $expected.BackupFrequencyInHours		| Should Be $found.BackupFrequencyInHours
+                    $expected.EncryptionKeyBase64			| Should Be $found.EncryptionKeyBase64
+                    $expected.IsBackupSchedulerEnabled		| Should Be $found.IsBackupSchedulerEnabled
+                    $expected.LastBackupTime				| Should Be $found.LastBackupTime
+                    $expected.NextBackupTime				| Should Be $found.NextBackupTime
+                    $expected.LastBackupTime				| Should Be $found.LastBackupTime
+                    $expected.Password						| Should Be $found.Password
+                    $expected.Path							| Should Be $found.Path
+                    $expected.UserName						| Should Be $found.UserName
+                }
+            }
+        }
 
-		It "TestListBackupLocation" {
-			$global:TestName = 'TestListBackupLocations'
+        It "TestListBackupLocation" -Skip:$('TestListBackupLocation' -in $global:SkippedTests) {
+            $global:TestName = 'TestListBackupLocations'
 
-			$backupLocations = Get-AzsBackupLocation -Location $global:Location
-			$backupLocations  | Should Not Be $null
-			foreach($backupLocation in $backupLocations) {
-				ValidateBackupLocation -BackupLocation $backupLocation
-			}
-		}
+            $backupLocations = Get-AzsBackupLocation -Location $global:Location
+            $backupLocations  | Should Not Be $null
+            foreach ($backupLocation in $backupLocations) {
+                ValidateBackupLocation -BackupLocation $backupLocation
+            }
+        }
 
-		It "TestGetBackupLocation" {
-			$global:TestName = 'TestGetBackupLocation'
+        It "TestGetBackupLocation" -Skip:$('TestGetBackupLocation' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetBackupLocation'
 
-			$backupLocations = Get-AzsBackupLocation -Location $global:Location
-			$backupLocations  | Should Not Be $null
-			foreach($backupLocation in $backupLocations) {
-			    $result = Get-AzsBackupLocation -Location (Select-Name $backupLocation.Name)
-				ValidateBackupLocation -BackupLocation $result
-				AssertAreEqual -expected $backupLocation -found $result
-			}
-		}
+            $backupLocations = Get-AzsBackupLocation -Location $global:Location
+            $backupLocations  | Should Not Be $null
+            foreach ($backupLocation in $backupLocations) {
+                $result = Get-AzsBackupLocation -Location (Select-Name $backupLocation.Name)
+                ValidateBackupLocation -BackupLocation $result
+                AssertAreEqual -expected $backupLocation -found $result
+            }
+        }
 
-		It "TestGetAllBackupLocation" {
-			$global:TestName = 'TestGetAllBackupLocation'
+        It "TestGetAllBackupLocation" -Skip:$('TestGetAllBackupLocation' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllBackupLocation'
 
-			$backupLocations = Get-AzsBackupLocation -Location $global:Location
-			$backupLocations  | Should Not Be $null
-			foreach($backupLocation in $backupLocations) {
-			    $result = Get-AzsBackupLocation -Location (Select-Name $backupLocation.Name)
-				ValidateBackupLocation -BackupLocation $result
-				AssertAreEqual -expected $backupLocation -found $result
-			}
-		}
+            $backupLocations = Get-AzsBackupLocation -Location $global:Location
+            $backupLocations  | Should Not Be $null
+            foreach ($backupLocation in $backupLocations) {
+                $result = Get-AzsBackupLocation -Location (Select-Name $backupLocation.Name)
+                ValidateBackupLocation -BackupLocation $result
+                AssertAreEqual -expected $backupLocation -found $result
+            }
+        }
 
-		It "TestUpdateBackupLocation" {
-			$global:TestName = 'TestUpdateBackupLocation'
+        It "TestUpdateBackupLocation" -Skip:$('TestUpdateBackupLocation' -in $global:SkippedTests) {
+            $global:TestName = 'TestUpdateBackupLocation'
 
-			[String]$username = "azurestack\AzureStackAdmin"
-			[SecureString]$password = ConvertTo-SecureString -String "password" -AsPlainText -Force
-			[String]$path = "\\192.168.1.1\Share"
-			[SecureString]$encryptionKey = ConvertTo-SecureString -String "YVVOa0J3S2xTamhHZ1lyRU9wQ1pKQ0xWanhjaHlkaU5ZQnNDeHRPTGFQenJKdWZsRGtYT25oYmlaa1RMVWFKeQ==" -AsPlainText -Force
 
-			$backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroup -Location $global:Location -Username $username -Password $password -BackupShare $path -EncryptionKey $encryptionKey
+            $backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Username $global:username -Password $global:password -BackupShare $global:path -EncryptionKey $global:encryptionKey
 
-			$backup 					| Should Not Be $Null
-			$backup.Path 				| Should Be $path
-			$backup.Username 			| Should be $username
-			$backup.Password 			| Should be ""
-			$backup.EncryptionKeyBase64 | Should be ""
-		}
+            $backup 					| Should Not Be $Null
+            $backup.Path 				| Should Be $global:path
+            $backup.Username 			| Should be $global:username
+            $backup.Password 			| Should -BeNullOrEmpty
+            $backup.EncryptionKeyBase64 | Should -BeNullOrEmpty
+        }
 
-		# Need to record new tests.
-		It "TestCreateBackup" -Skip {
-			$global:TestName = 'TestCreateBackup'
+        # Need to record new tests.
+        It "TestCreateBackup" -Skip:$('TestCreateBackup' -in $global:SkippedTests) {
+            $global:TestName = 'TestCreateBackup'
 
-			$backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroup -Location $global:Location -Force
-			$backup 					| Should Not Be $Null
+            $backup = Start-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:Location -Force
+            $backup 					| Should Not Be $Null
 
-		}
+        }
 
-		It "TestRestoreBackup" -Skip {
-			$global:TestName = 'TestRestoreBackup'
+        It "TestRestoreBackup" -Skip:$('TestRestoreBackup' -in $global:SkippedTests) {
+            $global:TestName = 'TestRestoreBackup'
 
-			[String]$username = "azurestack\AzureStackAdmin"
-			[SecureString]$password = ConvertTo-SecureString -String "password" -AsPlainText -Force
-			[String]$path = "\\su1fileserver\SU1_Infrastructure_2"
-			[SecureString]$encryptionKey = ConvertTo-SecureString -String "YVVOa0J3S2xTamhHZ1lyRU9wQ1pKQ0xWanhjaHlkaU5ZQnNDeHRPTGFQenJKdWZsRGtYT25oYmlaa1RMVWFKeQ==" -AsPlainText -Force
+            [String]$username = "azurestack\AzureStackAdmin"
+            [SecureString]$password = ConvertTo-SecureString -String "password" -AsPlainText -Force
+            [String]$path = "\\su1fileserver\SU1_Infrastructure_2"
+            [SecureString]$encryptionKey = ConvertTo-SecureString -String "YVVOa0J3S2xTamhHZ1lyRU9wQ1pKQ0xWanhjaHlkaU5ZQnNDeHRPTGFQenJKdWZsRGtYT25oYmlaa1RMVWFKeQ==" -AsPlainText -Force
 
-			$backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroup -Location $global:ResourceGroup -Username $username -Password $password -BackupShare $path -EncryptionKey $encryptionKey
+            $backup = Set-AzsBackupShare -ResourceGroupName $global:ResourceGroupName -Location $global:ResourceGroupName -Username $username -Password $password -BackupShare $path -EncryptionKey $encryptionKey
 
-			$backup 					| Should Not Be $Null
-			Restore-AzsBackup -ResourceGroupName $global:ResourceGroup -Location $global:ResourceGroup -Backup (Select-Name $backup.Name)
-		}
-	}
+            $backup 					| Should Not Be $Null
+            Restore-AzsBackup -ResourceGroupName $global:ResourceGroupName -Location $global:ResourceGroupName -Backup (Select-Name $backup.Name)
+        }
+    }
 }

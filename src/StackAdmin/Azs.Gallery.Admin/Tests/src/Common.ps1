@@ -16,8 +16,12 @@ $global:TestName = ""
 
 if(-not $RunRaw) {
 		# Load the script block
-		$scriptBlock = { 
+		$scriptBlock = {
 			Get-MockClient -ClassName 'GalleryAdminClient' -TestName $global:TestName
 		}
-		Mock New-ServiceClient $scriptBlock -ModuleName "Azs.Gallery.Admin"
+		Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
+}
+
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }

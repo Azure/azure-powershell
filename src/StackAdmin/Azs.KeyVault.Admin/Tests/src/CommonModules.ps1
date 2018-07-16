@@ -12,20 +12,20 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$ModuleName = "Azs.KeyVault.Admin"
+$global:ModuleName = "Azs.KeyVault.Admin"
 
 if ($global:UseInstalled) {
-    Import-Module $ModuleName -Force
+    Import-Module $global:ModuleName -Force
 } else {
-    Import-Module ..\Module\$ModuleName -Force
+    Import-Module ..\Module\$global:ModuleName -Force
 }
 
 if (-not $global:RunRaw) {
     if (Test-Path bin\Debug) {
-        Import-Module ".\bin\Debug\$ModuleName.Tests.dll" -Force
+        Import-Module ".\bin\Debug\$global:ModuleName.Tests.dll" -Force
     } elseif (Test-Path bin\Release) {
-        Import-Module ".\bin\Release\$ModuleName.Tests.dll" -Force
+        Import-Module ".\bin\Release\$global:ModuleName.Tests.dll" -Force
     } else {
-        throw "Cannot load test dll: $ModuleName.Tests.dll"
+        throw "Cannot load test dll: $global:ModuleName.Tests.dll"
     }
 }
