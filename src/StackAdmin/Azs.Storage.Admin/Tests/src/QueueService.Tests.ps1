@@ -36,83 +36,83 @@
     Date:   February 28, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "QueueServices" -Tags @('QueueServices', 'Azs.Storage.Admin') {
+    Describe "QueueServices" -Tags @('QueueServices', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateQueueService {
-				param(
-					[Parameter(Mandatory=$true)]
-					$queueService
-				)
-				# Resource
-				$queueService								| Should Not Be $null
+            function ValidateQueueService {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $queueService
+                )
+                # Resource
+                $queueService								| Should Not Be $null
 
-				# Validate QueueService properties
-				$queueService.FrontEndCallbackThreadsCount					| Should Not Be $null
-				$queueService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds					| Should Not Be $null
-				$queueService.FrontEndCpuBasedKeepAliveThrottlingEnabled							| Should Not Be $null
-				$queueService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold						| Should Not Be $null
-				$queueService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle							| Should Not Be $null
-				$queueService.FrontEndHttpListenPort					| Should Not Be $null
-				$queueService.FrontEndHttpsListenPort				| Should Not Be $null
-				$queueService.FrontEndMaxMillisecondsBetweenMemorySamples							| Should Not Be $null
-				$queueService.FrontEndMemoryThrottleThresholdSettings						| Should Not Be $null
-				$queueService.FrontEndMemoryThrottlingEnabled					| Should Not Be $null
-				$queueService.FrontEndMinThreadPoolThreads					| Should Not Be $null
-				$queueService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold					| Should Not Be $null
-				$queueService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds							| Should Not Be $null
-				$queueService.FrontEndThreadPoolBasedKeepAlivePercentage						| Should Not Be $null
-				$queueService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold							| Should Not Be $null
-				$queueService.FrontEndUseSlaTimeInAvailability					| Should Not Be $null
-				$queueService.Id				| Should Not Be $null
-				$queueService.Location							| Should Not Be $null
-				$queueService.Type				| Should Not Be $null
-				$queueService.Version							| Should Not Be $null
-				$queueService.Name						| Should Not Be $null
-			}
-		}
+                # Validate QueueService properties
+                $queueService.FrontEndCallbackThreadsCount					| Should Not Be $null
+                $queueService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds					| Should Not Be $null
+                $queueService.FrontEndCpuBasedKeepAliveThrottlingEnabled							| Should Not Be $null
+                $queueService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold						| Should Not Be $null
+                $queueService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle							| Should Not Be $null
+                $queueService.FrontEndHttpListenPort					| Should Not Be $null
+                $queueService.FrontEndHttpsListenPort				| Should Not Be $null
+                $queueService.FrontEndMaxMillisecondsBetweenMemorySamples							| Should Not Be $null
+                $queueService.FrontEndMemoryThrottleThresholdSettings						| Should Not Be $null
+                $queueService.FrontEndMemoryThrottlingEnabled					| Should Not Be $null
+                $queueService.FrontEndMinThreadPoolThreads					| Should Not Be $null
+                $queueService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold					| Should Not Be $null
+                $queueService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds							| Should Not Be $null
+                $queueService.FrontEndThreadPoolBasedKeepAlivePercentage						| Should Not Be $null
+                $queueService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold							| Should Not Be $null
+                $queueService.FrontEndUseSlaTimeInAvailability					| Should Not Be $null
+                $queueService.Id				| Should Not Be $null
+                $queueService.Location							| Should Not Be $null
+                $queueService.Type				| Should Not Be $null
+                $queueService.Version							| Should Not Be $null
+                $queueService.Name						| Should Not Be $null
+            }
+        }
 
-		It "TestGetQueueService" {
-			$global:TestName = 'TestGetQueueService'
+        it "TestGetQueueService" -Skip:$('TestGetQueueService' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetQueueService'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$queueService = Get-AzsQueueService -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				ValidateQueueService -queueService $queueService
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $queueService = Get-AzsQueueService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                ValidateQueueService -queueService $queueService
+            }
+        }
 
-		It "TestListAllQueueServiceMetricDefinitions" {
-			$global:TestName = 'TestListAllQueueServiceMetricDefinitions'
+        it "TestListAllQueueServiceMetricDefinitions" -Skip:$('TestListAllQueueServiceMetricDefinitions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllQueueServiceMetricDefinitions'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) | Out-Null
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                Get-AzsQueueServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) | Out-Null
+            }
+        }
 
-		It "TestListAllQueueServiceMetrics" {
-			$global:TestName = 'TestListAllQueueServiceMetrics'
+        it "TestListAllQueueServiceMetrics" -Skip:$('TestListAllQueueServiceMetrics' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllQueueServiceMetrics'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) | Out-Null
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                Get-AzsQueueServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) | Out-Null
+            }
+        }
+    }
 }
