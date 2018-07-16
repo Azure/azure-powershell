@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 #else
         [Fact]
 #endif
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.RunType, Category.LiveOnly)]
         public void TestWithValidVhdDiskFile()
         {
             ComputeTestController.NewInstance.RunPsTest("Test-NewAzureRmVhdVMWithValidDiskFile");

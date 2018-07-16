@@ -30,6 +30,7 @@
     <PackageReference Include="Microsoft.Azure.Management.Compute" Version="20.0.0" />
     <PackageReference Include="Microsoft.Azure.Management.KeyVault" Version="2.4.1-alpha" />
     <PackageReference Include="Microsoft.Azure.Management.Network" Version="19.1.0-preview" />
+	<PackageReference Include="Microsoft.Azure.Management.Storage" Version="7.1.0-preview" />
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
 
@@ -38,6 +39,8 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Network\Common.Network.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Storage\Common.Storage.Netcore.csproj" />
+	<ProjectReference Include="..\..\..\Common\Commands.Common.KeyVault\Common.KeyVault.Netcore.csproj" />
+	<ProjectReference Include="..\..\..\Common\Commands.Common.Storage.Management\Common.Storage.Management.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.Common.Strategies\Common.Strategies.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
@@ -78,10 +81,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ps1" Link="Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Remove="AzureRM.Resources.ps1" />
-    <None Include="AzureRM.Resources.Netcore.ps1" Link="ScenarioTests\AzureRM.Resources.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="AzureRM.Resources.Netcore.ps1" Link="AzureRM.Resources.ps1">

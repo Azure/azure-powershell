@@ -584,7 +584,21 @@ function Get-Location
 {
     param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
     $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
-    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType}
+	$resourceTypes = $null
+	$nameFound = $provider.ResourceTypes[0]| Get-Member | where-Object { $_.Name -eq "Name" }
+	#foreach ($resource in $provider.ResourceTypes)
+    #{
+    #    $data = $resource | Get-Member
+    #    $members += "`n Resource : " + $data + "`n"
+    #} 
+	#throw "Reources : " + $members
+	if ( $nameFound -eq $null )
+	{
+	    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceType -eq $resourceType }
+	} else 
+	{
+        $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType }
+	}
     $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
     if ($location -eq $null)
     {
