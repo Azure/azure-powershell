@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
@@ -112,7 +112,7 @@ The list of action groups for the activity log alert.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertActionGroup]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +153,7 @@ The list of conditions for the activity log alert.
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.ActivityLogAlertLeafCondition]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -205,9 +205,9 @@ Accept wildcard characters: False
 The description of the alert resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -217,9 +217,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -232,9 +232,9 @@ Accept wildcard characters: False
 Allows the user to create a disabled the activity log alert. If not given, the alerts are created enabled.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,9 +247,9 @@ Accept wildcard characters: False
 Sets the InputObject tags property of the call to extract the required name, and resource group name properties.
 
 ```yaml
-Type: PSActivityLogAlertResource
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -262,9 +262,9 @@ Accept wildcard characters: False
 The location where the activity log alert will exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,9 +274,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -289,9 +289,9 @@ Accept wildcard characters: False
 The name of the activity log alert.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -304,9 +304,9 @@ Accept wildcard characters: False
 The name of the resource group where the alert resource is going to exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -319,9 +319,9 @@ Accept wildcard characters: False
 Sets the ResourceId tags property of the call to extract the required name, resource group name properties.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -336,7 +336,7 @@ The list of scopes for the activity log alert.
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByNameAndResourceGroup
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -348,7 +348,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -360,7 +360,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -375,7 +375,7 @@ Sets the tags property of the activity log alert resource.
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: SetByNameAndResourceGroup, SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -387,7 +387,7 @@ Accept wildcard characters: False
 ```yaml
 Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: SetByInputObject
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -400,7 +400,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -415,7 +415,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

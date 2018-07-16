@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataLakeAnalytics.dll-Help.xml
 Module Name: AzureRM.DataLakeAnalytics
 ms.assetid: A0293D80-5935-4D2C-AF11-2837FEC95760
@@ -53,7 +53,7 @@ This command gets jobs submitted in the past week.
 Specifies the name of a Data Lake Analytics account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +89,9 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: ExtendedJobData
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData
 Parameter Sets: GetBySpecificJobInformation
-Aliases: 
+Aliases:
 Accepted values: None, All, DebugInfo, Statistics
 
 Required: False
@@ -105,9 +105,9 @@ Accept wildcard characters: False
 Specifies the ID of the job to get.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: GetBySpecificJobInformation
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -126,9 +126,9 @@ The acceptable values for this parameter are:
 - All
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -141,9 +141,9 @@ Accept wildcard characters: False
 An optional ID that indicates only jobs part of the specified pipeline should be returned.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,9 +156,9 @@ Accept wildcard characters: False
 An optional ID that indicates only jobs part of the specified recurrence should be returned.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -177,9 +177,9 @@ The acceptable values for this parameter are:
 - Succeeded
 
 ```yaml
-Type: JobResult[]
+Type: Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult[]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 Accepted values: None, Succeeded, Cancelled, Failed
 
 Required: False
@@ -204,9 +204,9 @@ The acceptable values for this parameter are:
 - Ended
 
 ```yaml
-Type: JobState[]
+Type: Microsoft.Azure.Management.DataLake.Analytics.Models.JobState[]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 Accepted values: Accepted, Compiling, Ended, New, Queued, Running, Scheduling, Starting, Paused, WaitingForCapacity
 
 Required: False
@@ -221,9 +221,9 @@ Specifies a date filter.
 Use this parameter to filter the job list result to jobs submitted after the specified date.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -237,9 +237,9 @@ Specifies a date filter.
 Use this parameter to filter the job list result to jobs submitted before the specified date.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -253,9 +253,9 @@ Specifies the email address of a user.
 Use this parameter to filter the job list results to jobs submitted by a specified user.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -268,9 +268,9 @@ Accept wildcard characters: False
 An optional value which indicates the number of jobs to return. Default value is 500
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: GetAllInResourceGroupAndAccount
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

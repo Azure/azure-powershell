@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 4E5C059B-36F3-41C8-9FDB-69F5318CF39B
@@ -83,7 +83,7 @@ Specifies the API version that is supported by the resource Provider.
 You can specify a different version than the default version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies the ID of the resource group to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceGroupId
 Aliases: ResourceGroupId, ResourceId
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceGroupName
 Aliases: ResourceGroupName
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +171,7 @@ tag, enter a hash table with all tags currently applied to the resource group, f
 resource group, specify an empty hash table: `@{}`.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
