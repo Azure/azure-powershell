@@ -61,7 +61,43 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Regenerating {0} key for Search Service &apos;{1}&apos; ....
+        ///   Looks up a localized string similar to Create query key &apos;{0}&apos;..
+        /// </summary>
+        internal static string CreateQueryKey {
+            get {
+                return ResourceManager.GetString("CreateQueryKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create query key &apos;{0}&apos;?.
+        /// </summary>
+        internal static string CreateQueryKeyWarning {
+            get {
+                return ResourceManager.GetString("CreateQueryKeyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create Search Service &apos;{0}&apos;..
+        /// </summary>
+        internal static string CreateSearchService {
+            get {
+                return ResourceManager.GetString("CreateSearchService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to create Search Service &apos;{0}&apos;?.
+        /// </summary>
+        internal static string CreateSearchServiceWarning {
+            get {
+                return ResourceManager.GetString("CreateSearchServiceWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Regenerate {0} key for Search Service &apos;{1}&apos;..
         /// </summary>
         internal static string RegenerateAdminKey {
             get {
@@ -72,14 +108,14 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Are you sure you want to regenerate &apos;{0}&apos; key for Search Service &apos;{1}&apos;?.
         /// </summary>
-        internal static string RegeneratingAdminKey {
+        internal static string RegenerateAdminKeyWarning {
             get {
-                return ResourceManager.GetString("RegeneratingAdminKey", resourceCulture);
+                return ResourceManager.GetString("RegenerateAdminKeyWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing query key &apos;{0}&apos; .....
+        ///   Looks up a localized string similar to Remove query key &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveQueryKey {
             get {
@@ -88,7 +124,16 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Removing Search Service &apos;{0}&apos; ....
+        ///   Looks up a localized string similar to Are you sure you want to remove query key &apos;{0}&apos;?.
+        /// </summary>
+        internal static string RemoveQueryKeyWarning {
+            get {
+                return ResourceManager.GetString("RemoveQueryKeyWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove Search Service &apos;{0}&apos;..
         /// </summary>
         internal static string RemoveSearchService {
             get {
@@ -97,20 +142,29 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove query key &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Are you sure you want to remove Search Service &apos;{0}&apos;?.
         /// </summary>
-        internal static string RemovingQueryKey {
+        internal static string RemoveSearchServiceWarning {
             get {
-                return ResourceManager.GetString("RemovingQueryKey", resourceCulture);
+                return ResourceManager.GetString("RemoveSearchServiceWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove Search Service &apos;{0}&apos;?.
+        ///   Looks up a localized string similar to Update Search Service &apos;{0}&apos;..
         /// </summary>
-        internal static string RemovingSearchService {
+        internal static string UpdateSearchService {
             get {
-                return ResourceManager.GetString("RemovingSearchService", resourceCulture);
+                return ResourceManager.GetString("UpdateSearchService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to update Search Service &apos;{0}&apos;?.
+        /// </summary>
+        internal static string UpdateSearchServiceWarning {
+            get {
+                return ResourceManager.GetString("UpdateSearchServiceWarning", resourceCulture);
             }
         }
     }

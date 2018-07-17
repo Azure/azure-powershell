@@ -45,9 +45,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\PSHostingMode.cs" />
     <Compile Include="Models\PSSearchAdminKey.cs" />
+    <Compile Include="Models\PSSearchAdminKeyKind.cs" />
     <Compile Include="Models\PSSearchQueryKey.cs" />
     <Compile Include="Models\PSSearchService.cs" />
+    <Compile Include="Models\PSSkuName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

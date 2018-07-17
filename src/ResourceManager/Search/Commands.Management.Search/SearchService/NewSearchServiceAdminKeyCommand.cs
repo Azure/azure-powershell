@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
            Mandatory = true,
            HelpMessage = KeyKindHelpMessage)]
         [ValidateNotNullOrEmpty]
-        public AdminKeyKind KeyKind { get; set; }
+        public PSSearchAdminKeyKind KeyKind { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
@@ -84,12 +84,12 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             }
 
             ConfirmAction(Force.IsPresent,
-                string.Format(Resources.RegeneratingAdminKey, KeyKind.ToString(), ServiceName),
+                string.Format(Resources.RegenerateAdminKeyWarning, KeyKind.ToString(), ServiceName),
                 string.Format(Resources.RegenerateAdminKey, KeyKind.ToString(), ServiceName),
                 KeyKind.ToString(),
                 () =>
                 {
-                    var res = SearchClient.AdminKeys.RegenerateWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyKind).Result;
+                    var res = SearchClient.AdminKeys.RegenerateWithHttpMessagesAsync(ResourceGroupName, ServiceName, (AdminKeyKind)(KeyKind)).Result;
                     WriteAdminKey(res.Body);
                 }
              );

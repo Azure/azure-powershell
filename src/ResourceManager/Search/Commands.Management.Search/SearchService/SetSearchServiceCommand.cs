@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
@@ -20,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr), OutputType(typeof(PSSearchService))]
+    [Cmdlet(VerbsCommon.Set, SearchServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSSearchService))]
     public class SetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -72,6 +73,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = ReplicaCountHelpMessage)]
         public int? ReplicaCount { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(InputObjectParameterSetName, StringComparison.InvariantCulture))
@@ -86,16 +90,24 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Name = id.ResourceName;
             }
 
-            // GET
-            var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
+            ConfirmAction(Force.IsPresent,
+               string.Format(Resources.UpdateSearchServiceWarning, Name),
+               string.Format(Resources.UpdateSearchService, Name),
+               Name,
+               () =>
+               {
+                   // GET
+                   var service = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result.Body;
 
-            // UPDATE
-            service.PartitionCount = PartitionCount;
-            service.ReplicaCount = ReplicaCount;
-            service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
+                   // UPDATE
+                   service.PartitionCount = PartitionCount;
+                   service.ReplicaCount = ReplicaCount;
+                   service = SearchClient.Services.UpdateWithHttpMessagesAsync(ResourceGroupName, Name, service).Result.Body;
 
-            // OUTPUT
-            WriteSearchService(service);
+                   // OUTPUT
+                   WriteSearchService(service);
+               }
+            );
         }
     }
 }
