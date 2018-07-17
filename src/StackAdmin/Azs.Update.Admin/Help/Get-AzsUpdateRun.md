@@ -44,21 +44,6 @@ Get a list of all attempts to apply a specific update.
 
 ## PARAMETERS
 
-### -Location
-The name of the update location.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Update run identifier.
 
@@ -68,6 +53,36 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UpdateName
+Name of the update.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The name of the update location.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,21 +146,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: -1
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UpdateName
-Name of the update.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

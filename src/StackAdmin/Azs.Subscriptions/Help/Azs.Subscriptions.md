@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Subscriptions Module
 ## Description
-{{Manually Enter Description Here}}
+Preview version of the azurestack subscriptions module for the tenant users. This provides functianality view and subscribe to public offers and to manage subscriptions.
 
 ## Azs.Subscriptions Cmdlets
 ### [Get-AzsDelegatedProviderOffer](Get-AzsDelegatedProviderOffer.md)

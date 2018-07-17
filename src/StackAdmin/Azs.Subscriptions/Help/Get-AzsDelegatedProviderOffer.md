@@ -37,12 +37,12 @@ Get the list of offers for the specified delegated provider.
 
 ## PARAMETERS
 
-### -DelegatedProviderId
-Id of the delegated provider.
+### -OfferName
+Name of the offer.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -52,12 +52,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -OfferName
-Name of the offer.
+### -DelegatedProviderId
+Id of the delegated provider.
 
 ```yaml
 Type: String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
 Required: True

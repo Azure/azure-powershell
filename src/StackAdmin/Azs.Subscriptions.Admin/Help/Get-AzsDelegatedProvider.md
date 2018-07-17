@@ -44,7 +44,7 @@ Get the a specific delegated provider.
 ## PARAMETERS
 
 ### -DelegatedProviderId
-{{Fill DelegatedProviderId Description}}
+Subscription ID of the delegated provider
 
 ```yaml
 Type: String

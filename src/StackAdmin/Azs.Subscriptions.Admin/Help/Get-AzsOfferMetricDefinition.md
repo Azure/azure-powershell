@@ -1,66 +1,60 @@
 ---
 external help file: Azs.Subscriptions.Admin-help.xml
 Module Name: Azs.Subscriptions.Admin
-online version:
+online version: 
 schema: 2.0.0
 ---
 
-# Get-AzsUserSubscription
+# Get-AzsOfferMetricDefinition
 
 ## SYNOPSIS
-Get the list of user subscriptions as administrator.
+Get the offer metric definitions.
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzsUserSubscription [-Filter <String>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzsUserSubscription -SubscriptionId <Guid> [<CommonParameters>]
+Get-AzsOfferMetricDefinition [-OfferName] <String> [-ResourceGroupName] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the list of user subscriptions as administrator.
+Get the offer metric definitions.
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### -------------------------- EXAMPLE 1 --------------------------
 ```
-Get-AzsUserSubscription
+Get-AzsOfferMetricDefinition -ResourceGroupName rg1 -OfferName offername1
 ```
 
-Get the list of user subscriptions as administrator.
+Get the offer metric definitions.
 
 ## PARAMETERS
 
-### -SubscriptionId
-Subscription Id parameter.
+### -OfferName
+Name of an offer.
 
 ```yaml
-Type: Guid
-Parameter Sets: Get
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: True
-Position: Named
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Filter
-OData filter parameter.
+### -ResourceGroupName
+The resource group the resource is located under.
 
 ```yaml
 Type: String
-Parameter Sets: List
-Aliases:
+Parameter Sets: (All)
+Aliases: 
 
-Required: False
-Position: Named
+Required: True
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -73,8 +67,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.AzureStack.Management.Subscriptions.Admin.Models.Subscription
+### Microsoft.AzureStack.Management.Subscriptions.Admin.Models.MetricDefinition
 
 ## NOTES
 
 ## RELATED LINKS
+
