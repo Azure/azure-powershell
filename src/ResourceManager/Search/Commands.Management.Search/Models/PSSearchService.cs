@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Search.Models;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public PSSearchService(Azure.Management.Search.Models.SearchService searchService)
         {
-            ResourceGroupName = ParseResourceGroupFromId(searchService.Id);
+            ResourceGroupName = new ResourceIdentifier(searchService.Id).ResourceGroupName;
             Name = searchService.Name;
             Id = searchService.Id;
             Location = searchService.Location;
@@ -54,17 +55,6 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
         public static PSSearchService Create(Azure.Management.Search.Models.SearchService searchService)
         {
             return new PSSearchService(searchService);
-        }
-
-        private static string ParseResourceGroupFromId(string resouceId)
-        {
-            if (!string.IsNullOrEmpty(resouceId))
-            {
-                string[] tokens = resouceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-                return tokens[3];
-            }
-
-            return null;
         }
     }
 }

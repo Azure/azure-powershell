@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.New, SearchServiceQueryKeyNounStr), OutputType(typeof(PSSearchQueryKey))]
+    [Cmdlet(VerbsCommon.New, SearchServiceQueryKeyNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchQueryKey))]
     public class NewSearchServiceQueryKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -44,7 +44,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ResourceGroupCompleter()]
@@ -54,7 +53,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -62,7 +60,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = QueryKeyNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }

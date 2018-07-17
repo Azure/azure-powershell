@@ -10,11 +10,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Test.ScenarioTests
 {
     public class SearchServiceTests : RMTestBase
     {
-        XunitTracingInterceptor traceInterceptor;
+        private readonly XunitTracingInterceptor traceInterceptor;
 
         public SearchServiceTests(ITestOutputHelper output)
         {
-            this.traceInterceptor = new XunitTracingInterceptor(output);
+            traceInterceptor = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(this.traceInterceptor);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }

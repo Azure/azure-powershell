@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.New, SearchServiceAdminKeyNounStr, SupportsShouldProcess = true), OutputType(typeof(PSSearchAdminKey))]
+    [Cmdlet(VerbsCommon.New, SearchServiceAdminKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
     public class NewSearchServiceAdminKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ResourceGroupCompleter()]
@@ -56,7 +55,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -64,7 +62,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = KeyKindHelpMessage)]
         [ValidateNotNullOrEmpty]
         public AdminKeyKind KeyKind { get; set; }
@@ -88,7 +85,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
             ConfirmAction(Force.IsPresent,
                 string.Format(Resources.RegeneratingAdminKey, KeyKind.ToString(), ServiceName),
-                string.Format(Resources.RegenerateAdminKey, KeyKind, ServiceName),
+                string.Format(Resources.RegenerateAdminKey, KeyKind.ToString(), ServiceName),
                 KeyKind.ToString(),
                 () =>
                 {

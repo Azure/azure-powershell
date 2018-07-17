@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Get, SearchServiceNounStr), OutputType(typeof(Models.PSSearchService))]
+    [Cmdlet(VerbsCommon.Get, SearchServiceNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(Models.PSSearchService))]
     public class GetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -28,21 +28,14 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             ParameterSetName = ResourceGroupParameterSetName,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = ResourceGroupHelpMessage)]
-        [Parameter(
-            Position = 0,
-            Mandatory = true,
-            ParameterSetName = ResourceNameParameterSetName,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = ResourceGroupHelpMessage)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Position = 1,
-            Mandatory = true,
-            ParameterSetName = ResourceNameParameterSetName,
-            ValueFromPipelineByPropertyName = true,
+            Mandatory = false,
+            ParameterSetName = ResourceGroupParameterSetName,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -54,18 +47,20 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             ValueFromPipelineByPropertyName = true,
             HelpMessage = ResourceIdHelpMessage)]
         [ValidateNotNullOrEmpty]
-        [ResourceGroupCompleter()]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName.Equals(ResourceGroupParameterSetName, StringComparison.InvariantCulture))
+            if (ParameterSetName.Equals(ResourceGroupParameterSetName, StringComparison.InvariantCulture))
             {
-                var svcs = SearchClient.Services.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).Result;
-                WriteSearchServiceList(svcs.Body);
-                return;
+                if (Name == null)
+                {
+                    var svcs = SearchClient.Services.ListByResourceGroupWithHttpMessagesAsync(ResourceGroupName).Result;
+                    WriteSearchServiceList(svcs.Body);
+                    return;
+                }
             }
-            else if(ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
+            else if (ParameterSetName.Equals(ResourceIdParameterSetName, StringComparison.InvariantCulture))
             {
                 var id = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = id.ResourceGroupName;
@@ -77,7 +72,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 var svc = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result;
                 WriteSearchService(svc.Body);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 // the method throws an exception when there the service does not exist.
             }

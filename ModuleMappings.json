@@ -155,6 +155,9 @@
     "src/ResourceManager/Scheduler/": [
       "AzureRM.Scheduler"
     ],
+    "src/ResourceManager/Search/": [
+      "AzureRM.Search"
+    ],
     "src/ResourceManager/ServiceBus/": [
       "AzureRM.ServiceBus"
     ],
