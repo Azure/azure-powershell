@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public virtual string CreatePipelineRun(string resourceGroupName, string dataFactoryName, string pipelineName, Dictionary<string, object> paramDictionary)
         {
-            CreateRunResponse response = this.DataFactoryManagementClient.Pipelines.CreateRun(resourceGroupName, dataFactoryName, pipelineName, paramDictionary);
+            CreateRunResponse response = this.DataFactoryManagementClient.Pipelines.CreateRun(resourceGroupName, dataFactoryName, pipelineName, parameters: paramDictionary);
 
             return response.RunId;
         }
 
         public void StopPipelineRun(string resourceGroupName, string dataFactoryName, string pipelineRunId)
         {
-            this.DataFactoryManagementClient.Factories.CancelPipelineRun(resourceGroupName, dataFactoryName, pipelineRunId);
+            this.DataFactoryManagementClient.PipelineRuns.Cancel(resourceGroupName, dataFactoryName, pipelineRunId);
         }
 
         public virtual List<PSPipeline> FilterPSPipelines(AdfEntityFilterOptions filterOptions)
@@ -181,7 +181,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PSPipeline pipeline = GetPipeline(resourceGroupName, dataFactoryName, pipelineName);
                 return pipeline != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

@@ -12,14 +12,11 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Commands.DataFactoryV2.Models;
-using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.DataFactory.Models;
-using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -35,21 +32,21 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             var pipelineRuns = new List<PSPipelineRun>();
 
-            var runFilters = new PipelineRunFilterParameters()
+            var runFilters = new RunFilterParameters()
             {
                 LastUpdatedAfter = pipelineRunFilter.LastUpdatedAfter,
                 LastUpdatedBefore = pipelineRunFilter.LastUpdatedBefore,
-                Filters = new List<PipelineRunQueryFilter>(),
-                OrderBy = new List<PipelineRunQueryOrderBy>(),
+                Filters = new List<RunQueryFilter>(),
+                OrderBy = new List<RunQueryOrderBy>(),
             };
 
             if (pipelineRunFilter.PipelineName != null)
             {
                 runFilters.Filters.Add(
-                    new PipelineRunQueryFilter()
+                    new RunQueryFilter()
                     {
-                        Operand = PipelineRunQueryFilterOperand.PipelineName,
-                        OperatorProperty = PipelineRunQueryFilterOperator.Equals,
+                        Operand = RunQueryFilterOperand.PipelineName,
+                        OperatorProperty = RunQueryFilterOperator.Equals,
                         Values = new List<string>() { pipelineRunFilter.PipelineName }
                     });
             }
@@ -65,14 +62,14 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             else
             {
                 runFilters.OrderBy.Add(
-                    new PipelineRunQueryOrderBy()
+                    new RunQueryOrderBy()
                     {
-                        Order = PipelineRunQueryOrder.DESC,
-                        OrderBy = PipelineRunQueryOrderByField.RunEnd
+                        Order = RunQueryOrder.DESC,
+                        OrderBy = RunQueryOrderByField.RunEnd
                     });
             }
 
-            PipelineRunQueryResponse response = this.DataFactoryManagementClient.PipelineRuns.QueryByFactory(pipelineRunFilter.ResourceGroupName, pipelineRunFilter.DataFactoryName, runFilters);
+            PipelineRunsQueryResponse response = this.DataFactoryManagementClient.PipelineRuns.QueryByFactory(pipelineRunFilter.ResourceGroupName, pipelineRunFilter.DataFactoryName, runFilters);
 
             pipelineRuns.AddRange(response.Value.Select(pr =>
                  new PSPipelineRun(pr, pipelineRunFilter.ResourceGroupName, pipelineRunFilter.DataFactoryName)));
@@ -94,23 +91,44 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public virtual List<PSTriggerRun> ListTriggerRuns(TriggerRunFilterOptions triggerRunFilter)
         {
             List<PSTriggerRun> triggerRuns = new List<PSTriggerRun>();
-            IPage<TriggerRun> response = this.DataFactoryManagementClient.Triggers.ListRuns(
+            var runFilters = new RunFilterParameters()
+            {
+                LastUpdatedAfter = triggerRunFilter.TriggerRunStartedAfter,
+                LastUpdatedBefore = triggerRunFilter.TriggerRunStartedBefore,
+                Filters = new List<RunQueryFilter>(),
+                OrderBy = new List<RunQueryOrderBy>(),
+            };
+
+            if (triggerRunFilter.TriggerName != null)
+            {
+                runFilters.Filters.Add(
+                    new RunQueryFilter()
+                    {
+                        Operand = RunQueryFilterOperand.TriggerName,
+                        OperatorProperty = RunQueryFilterOperator.Equals,
+                        Values = new List<string>() { triggerRunFilter.TriggerName }
+                    });
+            }
+
+            TriggerRunsQueryResponse response = this.DataFactoryManagementClient.TriggerRuns.QueryByFactory(
                     triggerRunFilter.ResourceGroupName,
                     triggerRunFilter.DataFactoryName,
-                    triggerRunFilter.TriggerName,
-                    triggerRunFilter.TriggerRunStartedAfter,
-                    triggerRunFilter.TriggerRunStartedBefore);
+                    runFilters);
 
-            triggerRuns.AddRange(response.Select(tr =>
+            triggerRuns.AddRange(response.Value.Select(tr =>
                  new PSTriggerRun(tr, triggerRunFilter.ResourceGroupName, triggerRunFilter.DataFactoryName)));
 
-            string nextLink = response.NextPageLink;
-            while (nextLink.IsNextPageLink())
+            string continuationToken = response.ContinuationToken;
+            while (!string.IsNullOrWhiteSpace(continuationToken))
             {
-                response = this.DataFactoryManagementClient.Triggers.ListRunsNext(nextLink);
-                triggerRuns.AddRange(response.Select(tr =>
+                runFilters.ContinuationToken = continuationToken;
+                response = this.DataFactoryManagementClient.TriggerRuns.QueryByFactory(triggerRunFilter.ResourceGroupName,
+                    triggerRunFilter.DataFactoryName, runFilters);
+
+                triggerRuns.AddRange(response.Value.Select(tr =>
                      new PSTriggerRun(tr, triggerRunFilter.ResourceGroupName, triggerRunFilter.DataFactoryName)));
-                nextLink = response.NextPageLink;
+
+                continuationToken = response.ContinuationToken;
             }
             return triggerRuns;
         }
@@ -118,26 +136,54 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public virtual List<PSActivityRun> ListActivityRuns(ActivityRunFilterOptions activityRunFilter)
         {
             List<PSActivityRun> activityRuns = new List<PSActivityRun>();
-            IPage<ActivityRun> response = this.DataFactoryManagementClient.ActivityRuns.ListByPipelineRun(
+            var runFilters = new RunFilterParameters()
+            {
+                LastUpdatedAfter = activityRunFilter.RunStartedAfter,
+                LastUpdatedBefore = activityRunFilter.RunStartedBefore,
+                Filters = new List<RunQueryFilter>(),
+                OrderBy = new List<RunQueryOrderBy>(),
+            };
+
+            if (activityRunFilter.ActivityName != null)
+            {
+                runFilters.Filters.Add(
+                    new RunQueryFilter()
+                    {
+                        Operand = RunQueryFilterOperand.ActivityName,
+                        OperatorProperty = RunQueryFilterOperator.Equals,
+                        Values = new List<string>() { activityRunFilter.ActivityName }
+                    });
+            }
+            if (activityRunFilter.Status != null)
+            {
+                runFilters.Filters.Add(
+                    new RunQueryFilter()
+                    {
+                        Operand = RunQueryFilterOperand.Status,
+                        OperatorProperty = RunQueryFilterOperator.Equals,
+                        Values = new List<string>() { activityRunFilter.Status }
+                    });
+            }
+            ActivityRunsQueryResponse response = this.DataFactoryManagementClient.ActivityRuns.QueryByPipelineRun(
                     activityRunFilter.ResourceGroupName,
                     activityRunFilter.DataFactoryName,
                     activityRunFilter.PipelineRunId,
-                    activityRunFilter.RunStartedAfter,
-                    activityRunFilter.RunStartedBefore,
-                    activityRunFilter.Status,
-                    activityRunFilter.ActivityName,
-                    activityRunFilter.LinkedServiceName);
+                    runFilters);
 
-            activityRuns.AddRange(response.Select(ar => 
+            activityRuns.AddRange(response.Value.Select(ar => 
                  new PSActivityRun(ar, activityRunFilter.ResourceGroupName, activityRunFilter.DataFactoryName)));
 
-            string nextLink = response.NextPageLink;
-            while (nextLink.IsNextPageLink())
+            string continuationToken = response.ContinuationToken;
+            while (!string.IsNullOrWhiteSpace(continuationToken))
             {
-                response = this.DataFactoryManagementClient.ActivityRuns.ListByPipelineRunNext(nextLink);
-                activityRuns.AddRange(response.Select(ar => 
+                runFilters.ContinuationToken = continuationToken;
+                response = this.DataFactoryManagementClient.ActivityRuns.QueryByPipelineRun(activityRunFilter.ResourceGroupName,
+                    activityRunFilter.DataFactoryName, activityRunFilter.PipelineRunId, runFilters);
+
+                activityRuns.AddRange(response.Value.Select(ar =>
                      new PSActivityRun(ar, activityRunFilter.ResourceGroupName, activityRunFilter.DataFactoryName)));
-                nextLink = response.NextPageLink;
+
+                continuationToken = response.ContinuationToken;
             }
             return activityRuns;
         }
