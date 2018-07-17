@@ -43,7 +43,7 @@ Get the list of update locations.
 ## PARAMETERS
 
 ### -Location
-{{Fill Location Description}}
+Name of the Location.
 
 ```yaml
 Type: String

@@ -41,21 +41,6 @@ Get the list of subscription resource provider quotas at a location.
 
 ## PARAMETERS
 
-### -Location
-The AzureStack location.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases: ArmLocation
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the quota.
 
@@ -65,6 +50,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The AzureStack location.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases: ArmLocation
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

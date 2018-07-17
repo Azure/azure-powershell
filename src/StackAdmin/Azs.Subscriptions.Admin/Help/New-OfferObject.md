@@ -34,38 +34,23 @@ PS C:\> {{ Add example code here }}
 
 ## PARAMETERS
 
-### -AddonPlanDefinition
-References to add-on plans that a tenant can optionally acquire as a part of the offer.
+### -Tags
+List of key-value pairs.
 
 ```yaml
-Type: AddonPlanDefinition[]
+Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 13
+Position: 1
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BasePlanIds
-Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer.
-
-```yaml
-Type: String[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 5
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Description
-Description of offer.
+### -Type
+Type of resource.
 
 ```yaml
 Type: String
@@ -73,67 +58,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisplayName
-Display name of offer.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExternalReferenceId
-External reference identifier.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 8
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-URI of the resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 10
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Location where resource is location.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 11
+Position: 2
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -169,6 +94,66 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BasePlanIds
+Identifiers of the base plans that become available to the tenant immediately when a tenant subscribes to the offer.
+
+```yaml
+Type: String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 5
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplayName
+Display name of offer.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 6
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Description
+Description of offer.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExternalReferenceId
+External reference identifier.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -State
 Offer accessibility state.
 
@@ -179,6 +164,36 @@ Aliases:
 
 Required: False
 Position: 9
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+URI of the resource.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 10
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Location where resource is location.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 11
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -199,31 +214,16 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
-List of key-value pairs.
+### -AddonPlanDefinition
+References to add-on plans that a tenant can optionally acquire as a part of the offer.
 
 ```yaml
-Type: System.Collections.Generic.Dictionary`2[System.String,System.String]
+Type: AddonPlanDefinition[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-Type of resource.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 2
+Position: 13
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

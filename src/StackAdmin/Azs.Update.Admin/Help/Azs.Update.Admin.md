@@ -8,7 +8,10 @@ Locale: en-US
 
 # Azs.Update.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+Preview release of the Azure Stack Update administrator module.  In this module administrators can:
+- List and install available updates
+- Resume interrupted updates
+- View installed updates
 
 ## Azs.Update.Admin Cmdlets
 ### [Get-AzsUpdate](Get-AzsUpdate.md)

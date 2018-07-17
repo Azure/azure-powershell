@@ -30,21 +30,6 @@ Get the list of public offers.
 
 ## PARAMETERS
 
-### -Provider
-{{Fill Provider Description}}
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 3
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Skip
 Skip the first N items as specified by the parameter value.
 
@@ -72,6 +57,21 @@ Aliases:
 Required: False
 Position: 2
 Default value: -1
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Provider
+Optional parameter to specify the delegated provider name. This parameter is not being used and will be deprecated in future.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 3
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

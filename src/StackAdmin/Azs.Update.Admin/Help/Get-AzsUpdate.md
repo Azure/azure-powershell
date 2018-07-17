@@ -50,21 +50,6 @@ Get the specific update.
 
 ## PARAMETERS
 
-### -Location
-The name of the update location.
-
-```yaml
-Type: String
-Parameter Sets: List, Get
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the update.
 
@@ -75,6 +60,21 @@ Aliases: Update
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+The name of the update location.
+
+```yaml
+Type: String
+Parameter Sets: List, Get
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
