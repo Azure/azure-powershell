@@ -18,9 +18,9 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-SharedIntegrationRuntimeResourceId <String>] [-Force]
+ [-Name] <String> [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
@@ -29,8 +29,8 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-SharedIntegrationRuntimeResourceId <String>] [-Force]
+ [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
@@ -39,8 +39,9 @@ Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <Strin
  [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-InputObject] <PSIntegrationRuntime>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-SharedIntegrationRuntimeResourceId <String>] [-Force]
+ [-InputObject] <PSIntegrationRuntime> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -343,6 +344,21 @@ The SAS URI of the Azure blob container that contains the custom setup script.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedIntegrationRuntimeResourceId
+The resource id of the shared self-hosted integration runtime.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
 
 Required: False
 Position: Named
