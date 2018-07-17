@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             HelpMessage = Constants.HelpFactoryLocation)]
         [Parameter(ParameterSetName = ParameterSetNames.ByGitHub, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpFactoryLocation)]
-        [LocationCompleter("Microsoft.DataFactory/factories")]
+        [LocationCompleter(Constants.DataFactoryQualifiedType)]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
