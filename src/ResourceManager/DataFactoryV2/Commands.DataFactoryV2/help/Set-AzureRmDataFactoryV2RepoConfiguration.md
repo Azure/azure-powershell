@@ -26,7 +26,7 @@ Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFacto
 Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFactoryName <String>
  -Location <String> [-Force] -RepositoryAccountName <String> -RepositoryName <String>
  -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
- [-GitHubConfig] [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String
 ```
 Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String> [-Force]
  -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
- -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] [-GitHubConfig] [-GitHubHostName <String>]
+ -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] [-GitHubHostName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] 
 ```
 Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] -RepositoryAccountName <String>
  -RepositoryName <String> -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String>
- [-RepositoryLastCommitId <String>] [-GitHubConfig] [-GitHubHostName <String>]
+ [-RepositoryLastCommitId <String>] [-GitHubHostName <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -71,7 +71,7 @@ The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository con
 ```
 PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -ResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
         -Location "EastUS" -RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
-        -RepositoryLastCommitId "123456abcd" -GitHubConfig
+        -RepositoryLastCommitId "123456abcd"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
@@ -145,21 +145,6 @@ Parameter Sets: (All)
 Aliases: 
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -GitHubConfig
-The repo configuration is for GitHub.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: ByFactoryNameByGitHub, ByResourceIdByGitHub, ByFactoryObjectByGitHub
-Aliases: 
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

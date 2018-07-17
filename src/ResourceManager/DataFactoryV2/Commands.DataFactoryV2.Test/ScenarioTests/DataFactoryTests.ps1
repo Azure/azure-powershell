@@ -352,7 +352,7 @@ function Test-SetConfigRepoGithub
 		Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
 		$actual = Set-AzureRMDataFactoryV2RepoConfiguration -Location $dflocation -ResourceId  $factoryResourceId `
 				  -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
-				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GitHubConfig -GithubHostName $githubHostName
+				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GithubHostName $githubHostName
 		$expected = Get-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
 		ValidateFactoryProperties $expected $actual
@@ -397,7 +397,7 @@ function Test-SetConfigRepoParameterSetsGithub
 		Set-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname -Location $dflocation -Force
 		$actual = Set-AzureRMDataFactoryV2RepoConfiguration -ResourceGroupName $rgname -DataFactoryName $dfname -Location $dflocation `
 				  -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
-				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GitHubConfig -GithubHostName $githubHostName
+				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GithubHostName $githubHostName
 		$expected = Get-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 
 		ValidateFactoryProperties $expected $actual
@@ -410,7 +410,7 @@ function Test-SetConfigRepoParameterSetsGithub
 
 		$actual = Set-AzureRMDataFactoryV2RepoConfiguration -InputObject $expected `
 				  -RepositoryAccountName $repoAccountName -RepositoryName $repoName -RepositoryCollaborationBranch $repoCollaborationBranch `
-				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GitHubConfig -GithubHostName $githubHostName
+				  -RepositoryRootFolder $reporootfolder -RepositoryLastCommitId $repoLastCommitId -GithubHostName $githubHostName
 		$expected = Get-AzureRMDataFactoryV2 -ResourceGroupName $rgname -Name $dfname
 		
 		ValidateFactoryProperties $expected $actual

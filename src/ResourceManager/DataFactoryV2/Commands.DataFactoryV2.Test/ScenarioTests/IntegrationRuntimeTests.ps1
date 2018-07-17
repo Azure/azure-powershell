@@ -123,11 +123,9 @@ function Test-SsisAzure-IntegrationRuntime
             $catalogAdminUsername = 'fakeuser'
         }
 
-		//[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
         if ($catalogAdminPassword -eq $null){
             $catalogAdminPassword = 'fakepassord'
         }
-		//[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
 
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)

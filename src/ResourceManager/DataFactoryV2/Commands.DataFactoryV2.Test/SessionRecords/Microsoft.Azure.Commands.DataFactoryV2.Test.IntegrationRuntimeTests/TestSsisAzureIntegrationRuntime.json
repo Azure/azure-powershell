@@ -336,78 +336,80 @@
       },
       "StatusCode": 200
     },
-    {
-      "RequestUri": "/subscriptions/b371d9e7-d3c2-4b1a-83ec-84e1f50c2222/resourceGroups/ps3659/providers/Microsoft.DataFactory/factories/ps5317/integrationRuntimes/ssis-azure-ir?api-version=2018-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM3MWQ5ZTctZDNjMi00YjFhLTgzZWMtODRlMWY1MGMyMjIyL3Jlc291cmNlR3JvdXBzL3BzMzY1OS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczUzMTcvaW50ZWdyYXRpb25SdW50aW1lcy9zc2lzLWF6dXJlLWlyP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",
-      "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yanzhangnightlywesteurope.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"Passw0rd1\"\r\n          },\r\n          \"catalogPricingTier\": \"Basic\"\r\n        },\r\n        \"licenseType\": \"LicenseIncluded\",\r\n        \"edition\": \"Enterprise\"\r\n      }\r\n    },\r\n    \"description\": \"SSIS-Azure integration runtime\"\r\n  }\r\n}",
-      "RequestHeaders": {
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Content-Length": [
-          "767"
-        ],
-        "x-ms-client-request-id": [
-          "98aca7c7-c925-483e-ae62-1b6198f5e532"
-        ],
-        "accept-language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.7.3131.0",
-          "OSName/Windows10Enterprise",
-          "OSVersion/6.3.17134",
-          "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/1.0.0.0"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/b371d9e7-d3c2-4b1a-83ec-84e1f50c2222/resourceGroups/ps3659/providers/Microsoft.DataFactory/factories/ps5317/integrationruntimes/ssis-azure-ir\",\r\n  \"name\": \"ssis-azure-ir\",\r\n  \"type\": \"Microsoft.DataFactory/factories/integrationruntimes\",\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yanzhangnightlywesteurope.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"**********\"\r\n          },\r\n          \"catalogPricingTier\": \"Basic\"\r\n        },\r\n        \"licenseType\": \"LicenseIncluded\",\r\n        \"edition\": \"Enterprise\"\r\n      }\r\n    },\r\n    \"description\": \"SSIS-Azure integration runtime\",\r\n    \"state\": \"Initial\"\r\n  },\r\n  \"etag\": \"11011a3f-0000-0000-0000-5b4c2aba0000\"\r\n}",
-      "ResponseHeaders": {
-        "Content-Length": [
-          "827"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
-        ],
-        "x-ms-request-id": [
-          "6011496e-ad0f-4613-913f-fa95977c7335"
-        ],
-        "x-ms-correlation-request-id": [
-          "6011496e-ad0f-4613-913f-fa95977c7335"
-        ],
-        "x-ms-routing-request-id": [
-          "AUSTRALIAEAST:20180716T051850Z:6011496e-ad0f-4613-913f-fa95977c7335"
-        ],
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Date": [
-          "Mon, 16 Jul 2018 05:18:50 GMT"
-        ],
-        "Server": [
-          "Microsoft-IIS/8.5"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ]
-      },
-      "StatusCode": 200
-    },
+			{
+				"RequestUri": "/subscriptions/b371d9e7-d3c2-4b1a-83ec-84e1f50c2222/resourceGroups/ps3659/providers/Microsoft.DataFactory/factories/ps5317/integrationRuntimes/ssis-azure-ir?api-version=2018-06-01",
+				"EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM3MWQ5ZTctZDNjMi00YjFhLTgzZWMtODRlMWY1MGMyMjIyL3Jlc291cmNlR3JvdXBzL3BzMzY1OS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczUzMTcvaW50ZWdyYXRpb25SdW50aW1lcy9zc2lzLWF6dXJlLWlyP2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",
+				"RequestMethod": "PUT",
+				//[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+				"RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yanzhangnightlywesteurope.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"Passw0rd1\"\r\n          },\r\n          \"catalogPricingTier\": \"Basic\"\r\n        },\r\n        \"licenseType\": \"LicenseIncluded\",\r\n        \"edition\": \"Enterprise\"\r\n      }\r\n    },\r\n    \"description\": \"SSIS-Azure integration runtime\"\r\n  }\r\n}",
+				//[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+				"RequestHeaders": {
+					"Content-Type": [
+						"application/json; charset=utf-8"
+					],
+					"Content-Length": [
+						"767"
+					],
+					"x-ms-client-request-id": [
+						"98aca7c7-c925-483e-ae62-1b6198f5e532"
+					],
+					"accept-language": [
+						"en-US"
+					],
+					"User-Agent": [
+						"FxVersion/4.7.3131.0",
+						"OSName/Windows10Enterprise",
+						"OSVersion/6.3.17134",
+						"Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/1.0.0.0"
+					]
+				},
+				"ResponseBody": "{\r\n  \"id\": \"/subscriptions/b371d9e7-d3c2-4b1a-83ec-84e1f50c2222/resourceGroups/ps3659/providers/Microsoft.DataFactory/factories/ps5317/integrationruntimes/ssis-azure-ir\",\r\n  \"name\": \"ssis-azure-ir\",\r\n  \"type\": \"Microsoft.DataFactory/factories/integrationruntimes\",\r\n  \"properties\": {\r\n    \"type\": \"Managed\",\r\n    \"typeProperties\": {\r\n      \"computeProperties\": {\r\n        \"location\": \"East US\",\r\n        \"nodeSize\": \"Standard_A4_v2\",\r\n        \"numberOfNodes\": 1,\r\n        \"maxParallelExecutionsPerNode\": 1\r\n      },\r\n      \"ssisProperties\": {\r\n        \"catalogInfo\": {\r\n          \"catalogServerEndpoint\": \"yanzhangnightlywesteurope.database.windows.net\",\r\n          \"catalogAdminUserName\": \"yanzhang\",\r\n          \"catalogAdminPassword\": {\r\n            \"type\": \"SecureString\",\r\n            \"value\": \"**********\"\r\n          },\r\n          \"catalogPricingTier\": \"Basic\"\r\n        },\r\n        \"licenseType\": \"LicenseIncluded\",\r\n        \"edition\": \"Enterprise\"\r\n      }\r\n    },\r\n    \"description\": \"SSIS-Azure integration runtime\",\r\n    \"state\": \"Initial\"\r\n  },\r\n  \"etag\": \"11011a3f-0000-0000-0000-5b4c2aba0000\"\r\n}",
+				"ResponseHeaders": {
+					"Content-Length": [
+						"827"
+					],
+					"Content-Type": [
+						"application/json; charset=utf-8"
+					],
+					"Expires": [
+						"-1"
+					],
+					"Pragma": [
+						"no-cache"
+					],
+					"Strict-Transport-Security": [
+						"max-age=31536000; includeSubDomains"
+					],
+					"X-Content-Type-Options": [
+						"nosniff"
+					],
+					"x-ms-ratelimit-remaining-subscription-writes": [
+						"1198"
+					],
+					"x-ms-request-id": [
+						"6011496e-ad0f-4613-913f-fa95977c7335"
+					],
+					"x-ms-correlation-request-id": [
+						"6011496e-ad0f-4613-913f-fa95977c7335"
+					],
+					"x-ms-routing-request-id": [
+						"AUSTRALIAEAST:20180716T051850Z:6011496e-ad0f-4613-913f-fa95977c7335"
+					],
+					"Cache-Control": [
+						"no-cache"
+					],
+					"Date": [
+						"Mon, 16 Jul 2018 05:18:50 GMT"
+					],
+					"Server": [
+						"Microsoft-IIS/8.5"
+					],
+					"X-Powered-By": [
+						"ASP.NET"
+					]
+				},
+				"StatusCode": 200
+			},
     {
       "RequestUri": "/subscriptions/b371d9e7-d3c2-4b1a-83ec-84e1f50c2222/resourceGroups/ps3659/providers/Microsoft.DataFactory/factories/ps5317/integrationRuntimes/ssis-azure-ir/start?api-version=2018-06-01",
       "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYjM3MWQ5ZTctZDNjMi00YjFhLTgzZWMtODRlMWY1MGMyMjIyL3Jlc291cmNlR3JvdXBzL3BzMzY1OS9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczUzMTcvaW50ZWdyYXRpb25SdW50aW1lcy9zc2lzLWF6dXJlLWlyL3N0YXJ0P2FwaS12ZXJzaW9uPTIwMTgtMDYtMDE=",

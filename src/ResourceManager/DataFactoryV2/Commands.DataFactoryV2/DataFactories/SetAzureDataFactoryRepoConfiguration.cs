@@ -8,7 +8,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Set, Constants.ConfigureRepository, DefaultParameterSetName = ParameterSetNames.ByFactoryNameByVSTS,
+    [Cmdlet(VerbsCommon.Set, Constants.ConfigureRepository, DefaultParameterSetName = ParameterSetNames.ByFactoryNameByGitHub,
         SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
     public class SetAzureDataFactoryRepoConfiguration : DataFactoryBaseCmdlet
     {
@@ -75,11 +75,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         [Parameter(Mandatory = false, HelpMessage = Constants.HelpRepositoryLastCommitId)]
         [ValidateNotNullOrEmpty]
         public string RepositoryLastCommitId { get; set; }
-
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubConfig)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByResourceIdByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubConfig)]
-        [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObjectByGitHub, Mandatory = true, HelpMessage = Constants.HelpGithubConfig)]
-        public SwitchParameter GitHubConfig { get; set; }
 
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryNameByGitHub, Mandatory = false, HelpMessage = Constants.HelpGithubHostName)]
         [Parameter(ParameterSetName = ParameterSetNames.ByResourceIdByGitHub, Mandatory = false, HelpMessage = Constants.HelpGithubHostName)]
@@ -160,7 +155,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 FactoryResourceId = ResourceId,
                 LocationId = Location,
                 Force = Force.IsPresent,
-                ConfirmAction = ConfirmAction,
                 Repo = repo
             };
             WriteObject(DataFactoryClient.ConfigurePSDDataFactory(parameters));
