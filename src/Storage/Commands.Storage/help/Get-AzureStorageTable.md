@@ -15,12 +15,14 @@ Lists the storage tables.
 
 ### TableName (Default)
 ```
-Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TablePrefix
 ```
-Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,7 +58,7 @@ Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -67,13 +69,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the table name.
 If the table name is empty, the cmdlet lists all the tables.
 Otherwise, it lists all tables that match the specified name or the regular name pattern.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: TableName
 Aliases: N, Table
 
@@ -89,7 +106,7 @@ Specifies a prefix used in the name of the table or tables you want to get.
 You can use this to find all tables that start with the same string, such as table.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: TablePrefix
 Aliases:
 
