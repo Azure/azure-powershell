@@ -17,14 +17,14 @@ Generates an SAS token for an Azure storage container.
 ```
 New-AzureStorageContainerSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzureStorageContainerSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,7 +60,7 @@ Specifies an Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -71,6 +71,21 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpiryTime
 Specifies the time at which the shared access signature becomes invalid.
 
@@ -78,7 +93,7 @@ If the user sets the start time but not the expiry time, the expiry time is set 
 If neither the start time nor the expiry time is specified, the expiry time is set to the current time plus one hour.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +108,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet return the full blob URI and the shared access signature token.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +124,7 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +139,7 @@ Accept wildcard characters: False
 Specifies an Azure storage container name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: N, Container
 
@@ -141,7 +156,7 @@ Specifies permissions for a storage container.
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SasPermission
 Aliases:
 
@@ -156,7 +171,7 @@ Accept wildcard characters: False
 Specifies an Azure Stored Access Policy.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SasPolicy
 Aliases:
 
@@ -176,7 +191,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
+Type: SharedAccessProtocol
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -192,7 +207,7 @@ Accept wildcard characters: False
 Specifies the time at which the shared access signature becomes valid.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

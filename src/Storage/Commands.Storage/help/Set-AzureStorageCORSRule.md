@@ -16,7 +16,7 @@ Sets the CORS rules for a type of Storage service.
 ```
 Set-AzureStorageCORSRule [-ServiceType] <StorageServiceType> -CorsRules <PSCorsRule[]> [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +91,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -123,11 +123,26 @@ Specifies an array of CORS rules.
 You can retrieve the existing rules using the Get-AzureStorageCORSRule cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[]
+Type: PSCorsRule[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -139,7 +154,7 @@ Indicates that this cmdlet returns a Boolean that reflects the success of the op
 By default, this cmdlet does not return a value.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +169,7 @@ Accept wildcard characters: False
 Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -175,7 +190,7 @@ The acceptable values for this parameter are:
 - File
 
 ```yaml
-Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
+Type: StorageServiceType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Blob, Table, Queue, File

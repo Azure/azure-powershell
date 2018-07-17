@@ -17,28 +17,32 @@ Downloads the contents of a file.
 ```
 Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzureStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
  [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### File
 ```
 Get-AzureStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +75,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +94,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +113,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +132,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases:
 
@@ -136,6 +140,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -150,7 +169,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +187,7 @@ To obtain a directory, use the New-AzureStorageDirectory cmdlet.
 You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Type: CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -185,7 +204,7 @@ This cmdlet gets the file that this parameter specifies.
 To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFile
+Type: CloudFile
 Parameter Sets: File
 Aliases:
 
@@ -204,7 +223,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -223,7 +242,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -240,7 +259,7 @@ This cmdlet gets the contents the file that this parameter specifies.
 If the file does not exist, this cmdlet returns an error.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ShareName, Share, Directory
 Aliases:
 
@@ -259,7 +278,7 @@ If you specify a path of an existing file and you do not specify *Force*, the cm
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -278,7 +297,7 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -294,7 +313,7 @@ Specifies the name of the file share.
 This cmdlet downloads the contents of the file in the share this parameter specifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ShareName
 Aliases:
 
@@ -309,7 +328,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -325,7 +344,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

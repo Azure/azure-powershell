@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+* Support get Storage Context from DefaulfProfile
 
 ## Version 4.3.2
 * Support Upload Blob or File with write only Sas token
