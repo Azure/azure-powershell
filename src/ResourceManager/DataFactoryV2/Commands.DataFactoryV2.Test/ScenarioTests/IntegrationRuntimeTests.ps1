@@ -85,6 +85,11 @@ function Test-SelfHosted-IntegrationRuntime
 .SYNOPSIS
 Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
+
+Before RECORD this test, make sure setting the following environment variables:
+CatalogServerEndpoint: The catalog server endpoint for catalog database
+CatalogAdminUsername: The admin user name on this server
+CatalogAdminPassword: The password of the admin user.
 #>
 function Test-SsisAzure-IntegrationRuntime
 {
@@ -106,14 +111,25 @@ function Test-SsisAzure-IntegrationRuntime
         $description = "SSIS-Azure integration runtime"
 
         # Replace the following three variables to real values in record mode
-        $catalogServerEndpoint = 'fakeserver'
-        $catalogAdminUsername = 'fakeuser'
-        $catalogAdminPassword = 'fakepassord'
+        $catalogServerEndpoint = $Env:CatalogServerEndpoint
+        $catalogAdminUsername = $Env:CatalogAdminUsername
+        $catalogAdminPassword = $Env:CatalogAdminPassword
+
+        if ($catalogServerEndpoint -eq $null){
+            $catalogServerEndpoint = 'fakeserver'
+        }
+
+        if ($catalogAdminUsername -eq $null){
+            $catalogAdminUsername = 'fakeuser'
+        }
+
+        if ($catalogAdminPassword -eq $null){
+            $catalogAdminPassword = 'fakepassord'
+        }
 
         $secpasswd = ConvertTo-SecureString $catalogAdminPassword -AsPlainText -Force
         $mycreds = New-Object System.Management.Automation.PSCredential($catalogAdminUsername, $secpasswd)
-        $sasuri = "https://ssisazurefileshare.blob.core.windows.net/privatepreview?st=2018-02-04T05%3A08%3A00Z&se=2020-02-05T05%3A08%3A00Z&sp=rwl&sv=2017-04-17&sr=c&sig=*******"
-   
+
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -124,11 +140,10 @@ function Test-SsisAzure-IntegrationRuntime
             -NodeCount 1 `
             -CatalogServerEndpoint $catalogServerEndpoint `
             -CatalogAdminCredential $mycreds `
-            -CatalogPricingTier 'S1' `
+            -CatalogPricingTier 'Basic' `
             -MaxParallelExecutionsPerNode 1 `
             -LicenseType LicenseIncluded `
             -Edition Enterprise `
-            -SetupScriptContainerSasUri $sasuri `
             -Force
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `

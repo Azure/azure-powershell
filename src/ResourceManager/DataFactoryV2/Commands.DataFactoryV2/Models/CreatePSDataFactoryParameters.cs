@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using System.Collections;
+using Microsoft.Azure.Management.DataFactory.Models;
+
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -21,5 +23,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public string Location { get; set; }
 
         public Hashtable Tags { get; set; }
+
+        public FactoryRepoConfiguration repo { get; set; }
     }
 }

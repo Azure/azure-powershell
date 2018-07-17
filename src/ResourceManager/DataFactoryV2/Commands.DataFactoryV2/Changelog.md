@@ -1,4 +1,4 @@
-<!--
+﻿<!--
     Please leave this section at the top of the change log.
 
     Changes for the current release should go under the section titled "Current Release", and should adhere to the following format:
@@ -19,6 +19,17 @@
 -->
 
 ## Current Release
+Azure Data Factory new capabilities now fall under General Availability SLA. ADF has made cloud data integration easier than ever before. Build, schedule and manage data integration at scale wherever your data lives, in cloud or on-premises, with enterprise-grade security. Accelerate your data integration projects with over 70 data source connectors available. Transform raw data into finished, shaped data that is ready for consumption by BI tools or custom applications. Easily lift your SQL Server Integration Services (SSIS) packages to Azure and let ADF manage your resources for you so you can increase productivity and lower TCO. Meet your security and compliance needs while taking advantage of extensive capabilities and paying only for what you use. The ADF GA SDK changes includes the following:
+* Updated the ADF .Net SDK version to 1.1.0 containing following changes:
+    - The API 'removeNode' on IR has been removed and replaced with DELETE API on IR node.
+    - 'GET activity runs' using pipeline run id has been replaced with POST query activity runs. It takes RunFilterParameters object in the body with more options to query and order the result.
+    - 'GET trigger runs' using pipeline run id has been replaced with POST query trigger runs and doesn't require trigger names anymore. It takes RunFilterParameters object in the body similar to query activity runs.
+    - 'CancelPipelineRun' has been moved to PipelineRuns operations and renamed to 'Cancel'.
+    - 'ConfigureFactoryRepo' now accepts github configuration too.
+    - The error response format has been changed. It is now compliant with other Azure ARM services. Before the API-s were returning ErrorResponse object with code, message, target and details. Now, it returns CloudError object with another "error" object nested inside that contains code, message, target and details.
+    - Added If-Match header support on put calls and If-None-Match header support for get calls for ADF resources and sub resources.
+    - The response of PATCH on IR has been fixed to return IR resource.
+ * Added new cmdlet Set-AzureRmDatafactoryV2RepoConfiguration
 * Updated help files to include full parameter types.
 
 ## Version 0.5.6

@@ -1,8 +1,8 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourcegroups/ps8880?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlZ3JvdXBzL3BzODg4MD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourcegroups/ps5087?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlZ3JvdXBzL3BzNTA4Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestBody": "{\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
@@ -13,7 +13,7 @@
           "29"
         ],
         "x-ms-client-request-id": [
-          "8929dcf0-a9c8-4a3c-84f4-94bf7984a9ef"
+          "240e5946-215f-48c1-a0bb-813720bb52c1"
         ],
         "accept-language": [
           "en-US"
@@ -25,7 +25,7 @@
           "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/4.1.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps8880\",\r\n  \"name\": \"ps8880\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps5087\",\r\n  \"name\": \"ps5087\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
           "165"
@@ -40,16 +40,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1171"
+          "1178"
         ],
         "x-ms-request-id": [
-          "25291287-f496-4255-9242-3bbe942e74c7"
+          "5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "x-ms-correlation-request-id": [
-          "25291287-f496-4255-9242-3bbe942e74c7"
+          "5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180713T201217Z:25291287-f496-4255-9242-3bbe942e74c7"
+          "NORTHEUROPE:20180713T201046Z:5af596f0-ce89-4816-b522-214c446009ac"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -61,25 +61,25 @@
           "no-cache"
         ],
         "Date": [
-          "Fri, 13 Jul 2018 20:12:17 GMT"
+          "Fri, 13 Jul 2018 20:10:46 GMT"
         ]
       },
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps8880/providers/Microsoft.DataFactory/factories/ps8253?api-version=2018-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3BzODg4MC9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczgyNTM/YXBpLXZlcnNpb249MjAxOC0wNi0wMQ==",
+      "RequestUri": "/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps5087/providers/Microsoft.DataFactory/factories/ps876?api-version=2018-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvYzM5ZGNlMTgtY2VhZC00MDY1LThmYjEtM2FmNzY4M2E1MDM4L3Jlc291cmNlR3JvdXBzL3BzNTA4Ny9wcm92aWRlcnMvTWljcm9zb2Z0LkRhdGFGYWN0b3J5L2ZhY3Rvcmllcy9wczg3Nj9hcGktdmVyc2lvbj0yMDE4LTA2LTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"location\": \"West US\"\r\n}",
+      "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"repoConfiguration\": {\r\n      \"type\": \"FactoryGithubConfiguration\",\r\n      \"accountName\": \"testAccount\",\r\n      \"repositoryName\": \"testRepo\",\r\n      \"collaborationBranch\": \"testBranch\",\r\n      \"rootFolder\": \"testRoot\",\r\n      \"lastCommitId\": \"testId\"\r\n    }\r\n  },\r\n  \"location\": \"West US\"\r\n}",
       "RequestHeaders": {
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "82"
+          "370"
         ],
         "x-ms-client-request-id": [
-          "00827d2c-ae29-4685-821e-635cc18ce163"
+          "3fa7cdca-17c6-4eec-9a83-dee6f294ab56"
         ],
         "accept-language": [
           "en-US"
@@ -91,10 +91,10 @@
           "Microsoft.Azure.Management.DataFactory.DataFactoryManagementClient/1.0.0.0"
         ]
       },
-      "ResponseBody": "{\r\n  \"name\": \"ps8253\",\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\",\r\n    \"principalId\": \"2d43b81f-becc-4fc1-8be4-44556a8e8b25\",\r\n    \"tenantId\": \"f686d426-8d16-42db-81b7-ab578e110ccd\"\r\n  },\r\n  \"id\": \"/subscriptions/c39dce18-cead-4065-8fb1-3af7683a5038/resourceGroups/ps8880/providers/Microsoft.DataFactory/factories/ps8253\",\r\n  \"type\": \"Microsoft.DataFactory/factories\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"createTime\": \"2018-07-13T20:12:26.4160041Z\",\r\n    \"version\": \"2018-06-01\"\r\n  },\r\n  \"eTag\": \"\\\"00008e05-0000-0000-0000-5b4907aa0000\\\"\",\r\n  \"location\": \"West US\",\r\n  \"tags\": {}\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidPropertyValue\",\r\n    \"message\": \"Invalid value for property 'repoConfiguration'\",\r\n    \"target\": null,\r\n    \"details\": null\r\n  }\r\n}",
       "ResponseHeaders": {
         "Content-Length": [
-          "523"
+          "129"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -112,22 +112,22 @@
           "nosniff"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1163"
+          "1164"
         ],
         "x-ms-request-id": [
-          "3da55a33-ab31-42c2-a4b5-232b6c1d3600"
+          "8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "x-ms-correlation-request-id": [
-          "3da55a33-ab31-42c2-a4b5-232b6c1d3600"
+          "8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "x-ms-routing-request-id": [
-          "NORTHEUROPE:20180713T201226Z:3da55a33-ab31-42c2-a4b5-232b6c1d3600"
+          "NORTHEUROPE:20180713T201052Z:8c9793e7-415c-43ea-8085-b44b35b6e4a0"
         ],
         "Cache-Control": [
           "no-cache"
         ],
         "Date": [
-          "Fri, 13 Jul 2018 20:12:25 GMT"
+          "Fri, 13 Jul 2018 20:10:52 GMT"
         ],
         "Server": [
           "Microsoft-IIS/8.5"
@@ -136,13 +136,13 @@
           "ASP.NET"
         ]
       },
-      "StatusCode": 200
+      "StatusCode": 400
     }
   ],
   "Names": {
-    "Test-GetFactoryByNameParameterSet": [
-      "ps8253",
-      "ps8880"
+    "Test-SetFactoryGithub": [
+      "ps876",
+      "ps5087"
     ]
   },
   "Variables": {

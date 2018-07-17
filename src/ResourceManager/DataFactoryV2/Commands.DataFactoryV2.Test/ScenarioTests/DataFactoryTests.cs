@@ -76,5 +76,55 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         {
             RunPowerShellTest(_logger, "Test-UpdateDataFactory");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2Github()
+        {
+            RunPowerShellTest(_logger, "Test-SetFactoryGithub");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2VSTS()
+        {
+            RunPowerShellTest(_logger, "Test-SetFactoryVSTS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetFactoryV2VSTSNoTenant()
+        {
+            RunPowerShellTest(_logger, "Test-SetFactoryVSTSNoTenant");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoVSTS()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoVSTS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoGithub()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoGithub");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoParameterSetsVSTS()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoParameterSetsVSTS");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetConfigRepoParameterSetsGithub()
+        {
+            RunPowerShellTest(_logger, "Test-SetConfigRepoParameterSetsGithub");
+        }
     }
 }

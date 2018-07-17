@@ -123,26 +123,32 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             }
             return dataFactories;
         }
+        public PSDataFactory ConfigurePSDDataFactory(ConfigurePSDataFactoryParameters parameters)
+        {
+            return new PSDataFactory(this.DataFactoryManagementClient.Factories.ConfigureFactoryRepo(parameters.LocationId,
+                                     new FactoryRepoUpdate(parameters.FactoryResourceId, parameters.Repo)),parameters.ResourceGroupName);
+        }
 
         public PSDataFactory CreatePSDataFactory(CreatePSDataFactoryParameters parameters)
         {
             PSDataFactory dataFactory = null;
+          
             Action createDataFactory = () =>
             {
                 dataFactory =
-                    new PSDataFactory(
-                        this.DataFactoryManagementClient.Factories.CreateOrUpdate(
-                            parameters.ResourceGroupName,
-                            parameters.DataFactoryName,
-                            new Factory
-                            {
-                                Location = parameters.Location,
-                                Tags = parameters.Tags?.ToDictionary(),
-                                Identity = new FactoryIdentity()
-                            }),
-                        parameters.ResourceGroupName);
+                new PSDataFactory(
+                    this.DataFactoryManagementClient.Factories.CreateOrUpdate(
+                        parameters.ResourceGroupName,
+                        parameters.DataFactoryName,
+                        new Factory
+                        {
+                            Location = parameters.Location,
+                            Tags = parameters.Tags?.ToDictionary(),
+                            Identity = new FactoryIdentity(),
+                            RepoConfiguration = parameters.repo
+                        }),
+                    parameters.ResourceGroupName);
             };
-
             parameters.ConfirmAction(
                 parameters.Force,    // prompt only if the data factory exists
                 string.Format(
@@ -185,7 +191,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
                 return dataFactory != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

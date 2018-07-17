@@ -21,6 +21,8 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 using Microsoft.Azure.Management.DataFactory.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Rest.Azure;
+
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
@@ -135,6 +137,12 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public System.Security.SecureString AuthKey { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = Constants.HelpSharedIntegrationRuntimeResourceId)]
+        [ValidateNotNull]
+        public string SharedIntegrationRuntimeResourceId { get; set; }
+
+        [Parameter(
             Mandatory = false, HelpMessage = Constants.HelpDontAskConfirmation)]
         public SwitchParameter Force { get; set; }
 
@@ -143,6 +151,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
+
+            if (AuthKey != null && !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+            {
+                throw new PSArgumentException(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        Resources.InvalidIntegrationRuntimeSharingParameters),
+                    "SharedIntegrationRuntimeResourceId");
+            }
 
             IntegrationRuntimeResource resource = null;
             var isUpdate = false;
@@ -164,8 +181,18 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             base.Name),
                         "Type");
                 }
+
+                if (AuthKey != null)
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.UpdateAuthKeyNotAllowed,
+                            base.Name),
+                        "AuthKey");
+                }
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
                 {
@@ -181,6 +208,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     resource = new IntegrationRuntimeResource();
                     if (Type.Equals(Constants.IntegrationRuntimeTypeManaged, StringComparison.OrdinalIgnoreCase))
                     {
+                        if (AuthKey != null || !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+                        {
+                            throw new PSArgumentException(
+                                string.Format(
+                                    CultureInfo.InvariantCulture,
+                                    Resources.InvalidIntegrationRuntimeSharing),
+                                "AuthKey");
+                        }
+
                         resource.Properties = new ManagedIntegrationRuntime();
                     }
                     else
@@ -189,7 +225,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         if (AuthKey != null)
                         {
                             var authKey = ConvertToUnsecureString(AuthKey);
-                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKey(new SecureString(authKey));
+                            selfHosted.LinkedInfo = new LinkedIntegrationRuntimeKeyAuthorization(new SecureString(authKey));
                         }
 
                         resource.Properties = selfHosted;
@@ -198,6 +234,23 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 else
                 {
                     throw;
+                }
+            }
+
+            if (!string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
+            {
+                var selfHostedIr = resource.Properties as SelfHostedIntegrationRuntime;
+                if (selfHostedIr != null)
+                {
+                    selfHostedIr.LinkedInfo = new LinkedIntegrationRuntimeRbacAuthorization(SharedIntegrationRuntimeResourceId);
+                }
+                else
+                {
+                    throw new PSArgumentException(
+                        string.Format(
+                            CultureInfo.InvariantCulture,
+                            Resources.InvalidIntegrationRuntimeSharing),
+                        "SharedIntegrationRuntimeResourceId");
                 }
             }
 

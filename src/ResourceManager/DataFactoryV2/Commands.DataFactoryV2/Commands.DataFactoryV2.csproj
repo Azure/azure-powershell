@@ -50,7 +50,7 @@
   <ItemGroup>
     <Reference Include="Microsoft.Azure.Management.DataFactory">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.0.8.0-preview\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.DataFactory.1.0.0\lib\net452\Microsoft.Azure.Management.DataFactory.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.DataTransfer.Gateway.Encryption, Version=3.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -59,6 +59,7 @@
     <Reference Include="System.Globalization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataFactories\SetAzureDataFactoryRepoConfiguration.cs" />
     <Compile Include="DataFactories\UpdateAzureDataFactoryCommand.cs" />
     <Compile Include="DataFactoryContextBaseGetCmdlet.cs" />
     <Compile Include="DataFactoryContextBaseSetCmdlet.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="IntegrationRuntimes\SyncAzureDataFactoryIntegrationRuntimeNodeCredential.cs" />
     <Compile Include="LinkedServices\NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand.cs" />
     <Compile Include="Models\AdfSubResource.cs" />
+    <Compile Include="Models\ConfigurePSDataFactoryParameters.cs" />
     <Compile Include="Models\PSLinkedIntegrationRuntime.cs" />
     <Compile Include="Models\PSLinkedIntegrationRuntimeStatus.cs" />
     <Compile Include="Models\UpdatePSDataFactoryParameters.cs" />
@@ -164,10 +166,14 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Compile Include="Models\DataFactoryClient.Pipelines.cs" />
+    <None Include="AzureRM.DataFactoryV2.Netcore.psd1" />
     <None Include="AzureRM.DataFactoryV2.psd1">
       <Link>AzureRM.DataFactoryV2.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="AzureRM.DataFactoryV2.psd1" />
+    <None Include="Changelog.md" />
+    <None Include="help\*.md" />
     <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>

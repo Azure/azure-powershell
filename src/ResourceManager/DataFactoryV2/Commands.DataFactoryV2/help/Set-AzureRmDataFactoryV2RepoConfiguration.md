@@ -1,57 +1,77 @@
 ---
 external help file: Microsoft.Azure.Commands.DataFactoryV2.dll-Help.xml
 Module Name: AzureRM.DataFactoryV2
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-azurermdatafactoryv2
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.datafactories/set-AzureRmDataFactoryV2RepoConfiguration
 schema: 2.0.0
 ---
 
-# Set-AzureRmDataFactoryV2
+# Set-AzureRmDataFactoryV2RepoConfiguration
 
 ## SYNOPSIS
-Creates a data factory.
+Sets the repository configuration for a data factory.
 
 ## SYNTAX
 
-### ByFactoryName (Default)
+### ByFactoryNameByVSTS (Default)
 ```
-Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Tag] <Hashtable>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-```
-
-### ByVSTS
-```
-Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFactoryName <String>
+ -Location <String> [-Force] -RepositoryAccountName <String> -RepositoryName <String>
  -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
  -VSTSProjectName <String> [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
-### ByGithub
+### ByFactoryNameByGitHub
 ```
-Set-AzureRmDataFactoryV2 [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
- [[-Tag] <Hashtable>] [-Force] -RepositoryAccountName <String> -RepositoryName <String>
+Set-AzureRmDataFactoryV2RepoConfiguration -ResourceGroupName <String> -DataFactoryName <String>
+ -Location <String> [-Force] -RepositoryAccountName <String> -RepositoryName <String>
  -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>]
  [-GitHubHostName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### ByResourceIdByVSTS
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String> [-Force]
+ -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
+ -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] -VSTSProjectName <String>
+ [-VSTSTenantId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByResourceIdByGitHub
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -Location <String> -ResourceId <String> [-Force]
+ -RepositoryAccountName <String> -RepositoryName <String> -RepositoryCollaborationBranch <String>
+ -RepositoryRootFolder <String> [-RepositoryLastCommitId <String>] [-GitHubHostName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObjectByVSTS
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] -RepositoryAccountName <String>
+ -RepositoryName <String> -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String>
+ [-RepositoryLastCommitId <String>] -VSTSProjectName <String> [-VSTSTenantId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByFactoryObjectByGitHub
+```
+Set-AzureRmDataFactoryV2RepoConfiguration -InputObject <PSDataFactory> [-Force] -RepositoryAccountName <String>
+ -RepositoryName <String> -RepositoryCollaborationBranch <String> -RepositoryRootFolder <String>
+ [-RepositoryLastCommitId <String>] [-GitHubHostName <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Set-AzureRmDataFactoryV2** cmdlet creates a data factory with the specified resource group name and location.
-
-Perform these operations in the following order:
-
-        -- Create a data factory.
-        -- Create linked services.
-        -- Create datasets.
-        -- Create a pipeline.
+The **Set-AzureRmDataFactoryV2RepoConfiguration** cmdlet sets the repository configuration for a data factory with the specified parameters. This cmdlet requires for the user to have a permission to perform 'Microsoft.DataFactory/locations/configureFactoryRepo' operation.
 
 ## EXAMPLES
 
-### Example 1: Create a data factory
+### Example 1: Set a GitHub repository on a factory
 ```
-PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"
+PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -ResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
+        -Location "EastUS" -RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
+        -RepositoryLastCommitId "123456abcd"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
@@ -60,15 +80,17 @@ PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Locat
     Tags              : {}
     Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
     ProvisioningState : Succeeded
+    RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryRepoConfiguration
 ```
 
-This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location.
+This command sets the repository of the WikiADF factory using specified properties pointing to github.com.
 
-### Example 2: Create a data factory with VSTS repo configuration
+### Example 2: Set a VSTS repository on a factory
 ```
-PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Location "WestUS"  -RepositoryAccountName "MyRepoAccount" 
-		-RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
-		-RepositoryLastCommitId "123456abcd" -VSTSProjectName "MyProject"
+PS C:\> Set-AzureRmDataFactoryV2RepoConfiguration -ResourceId "/subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf"
+        -Location "WestUS"  -RepositoryAccountName "MyRepoAccount" 
+        -RepositoryName "MyRepo" -RepositoryCollaborationBranch "MyBranch" -RepositoryRootFolder "MyRootFolder" 
+        -RepositoryLastCommitId "123456abcd" -VSTSProjectName "MyProject"
 
     DataFactoryName   : WikiADF
     DataFactoryId     : /subscriptions/3e8e61b5-9a7d-4952-bfae-545ab997b9ea/resourceGroups/adf/providers/Microsoft.DataFactory/factories/wikiadf
@@ -77,12 +99,27 @@ PS C:\> Set-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "WikiADF" -Locat
     Tags              : {}
     Identity          : Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity
     ProvisioningState : Succeeded
-	RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryRepoConfiguration
+    RepoConfiguration : Microsoft.Azure.Management.DataFactory.Models.FactoryRepoConfiguration
 ```
 
-This command creates a data factory named WikiADF in the resource group named ADF in the WestUS location and sets its repo configuration.
+This command sets the repository of the WikiADF factory using specified properties pointing to VSTS.
 
 ## PARAMETERS
+
+### -DataFactoryName
+The data factory name.
+
+```yaml
+Type: String
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -119,7 +156,7 @@ GitHub repo host name.
 
 ```yaml
 Type: String
-Parameter Sets: ByGithub
+Parameter Sets: ByFactoryNameByGitHub, ByResourceIdByGitHub, ByFactoryObjectByGitHub
 Aliases: 
 
 Required: False
@@ -129,31 +166,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The data factory is created in this region.
+### -InputObject
+The data factory object.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: PSDataFactory
+Parameter Sets: ByFactoryObjectByVSTS, ByFactoryObjectByGitHub
 Aliases: 
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Name
-The data factory name.
+### -Location
+The geographic region of the data factory.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
-Aliases: DataFactoryName
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub, ByResourceIdByVSTS, ByResourceIdByGitHub
+Aliases: 
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -164,7 +201,7 @@ The account name associated with the repository.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS, ByGithub
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -179,7 +216,7 @@ The collaboration branch on the repository.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS, ByGithub
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -190,11 +227,11 @@ Accept wildcard characters: False
 ```
 
 ### -RepositoryLastCommitId
-The id of the last commit.
+The ID of the last commit.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS, ByGithub
+Parameter Sets: (All)
 Aliases: 
 
 Required: False
@@ -209,7 +246,7 @@ The name of the repository.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS, ByGithub
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -224,7 +261,7 @@ The root folder of the repository.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS, ByGithub
+Parameter Sets: (All)
 Aliases: 
 
 Required: True
@@ -239,26 +276,26 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByFactoryNameByVSTS, ByFactoryNameByGitHub
 Aliases: 
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Tag
-The tags of the data factory.
+### -ResourceId
+The geographic region of the data factory.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ByResourceIdByVSTS, ByResourceIdByGitHub
 Aliases: 
 
-Required: False
-Position: 3
+Required: True
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -269,7 +306,7 @@ VSTS project name.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS
+Parameter Sets: ByFactoryNameByVSTS, ByResourceIdByVSTS, ByFactoryObjectByVSTS
 Aliases: 
 
 Required: True
@@ -280,11 +317,11 @@ Accept wildcard characters: False
 ```
 
 ### -VSTSTenantId
-VSTS tenant id.
+VSTS tenant ID.
 
 ```yaml
 Type: String
-Parameter Sets: ByVSTS
+Parameter Sets: ByFactoryNameByVSTS, ByResourceIdByVSTS, ByFactoryObjectByVSTS
 Aliases: 
 
 Required: False
@@ -343,4 +380,4 @@ Keywords: azure, azurerm, arm, resource, management, manager, data, factories
 
 [Get-AzureRmDataFactoryV2]()
 
-[Remove-AzureRmDataFactoryV2]()
+[Set-AzureRmDataFactoryV2]()
