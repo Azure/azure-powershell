@@ -585,19 +585,21 @@ function Get-Location
     param([string]$providerNamespace, [string]$resourceType, [string]$preferredLocation)
     $provider = Get-AzureRmResourceProvider -ProviderNamespace $providerNamespace
 	$resourceTypes = $null
-	$nameFound = $provider.ResourceTypes[0]| Get-Member | where-Object { $_.Name -eq "Name" }
-	#foreach ($resource in $provider.ResourceTypes)
-    #{
-    #    $data = $resource | Get-Member
-    #    $members += "`n Resource : " + $data + "`n"
-    #} 
-	#throw "Reources : " + $members
-	if ( $nameFound -eq $null )
+	if ( ( $provider.ResourceTypes -ne $null ) -and ( $provider.ResourceTypes.Count -gt 0 ) )
 	{
-	    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceType -eq $resourceType }
-	} else 
-	{
-        $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType }
+	    $nameFound = $provider.ResourceTypes[0]| Get-Member | Where-Object { $_.Name -eq "Name" }
+		$resourceTypeNameFound = $provider.ResourceTypes[0]| Get-Member | Where-Object { $_.Name -eq "ResourceTypeName" }
+	    if ( $nameFound -ne $null )
+	    {
+		    $resourceTypes = $provider.ResourceTypes | Where-Object { $_.Name -eq $resourceType }
+	        
+	    } elseif ( $resourceTypeNameFound -ne $null )
+	    {
+            $resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceTypeName -eq $resourceType }
+	    } else
+		{
+			$resourceTypes = $provider.ResourceTypes | Where-Object { $_.ResourceType -eq $resourceType }
+		}
 	}
     $location = $resourceTypes.Locations | Where-Object { $_ -eq $preferredLocation }
     if ($location -eq $null)
