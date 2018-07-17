@@ -8,7 +8,7 @@ Locale: en-US
 
 # Azs.Subscriptions.Admin Module
 ## Description
-{{Manually Enter Description Here}}
+-Preview release of the AzureStack Subscription administrator module.  This module provides functionality for administrators to manage plans, offers and subscriptions
 
 ## Azs.Subscriptions.Admin Cmdlets
 ### [Add-AzsPlanToOffer](Add-AzsPlanToOffer.md)
@@ -51,7 +51,7 @@ Get the list of subscription resource provider quotas at a location.
 Get the list of user subscriptions as administrator.
 
 ### [Move-AzsSubscription](Move-AzsSubscription.md)
-
+Moves tenant subscriptions between delegated provider offers.
 
 ### [New-AddonPlanDefinitionObject](New-AddonPlanDefinitionObject.md)
 Contains the name of the desired plan to be linked or unlinked from an offer.
@@ -124,7 +124,7 @@ Updates the specified plan
 Updates the specified user subscription
 
 ### [Test-AzsMoveSubscription](Test-AzsMoveSubscription.md)
-
+Tests that tenant subscriptions can be moved between delegated provider offers.
 
 ### [Test-AzsNameAvailability](Test-AzsNameAvailability.md)
 Returns the avaialbility of the specified subscriptions resource type and name
