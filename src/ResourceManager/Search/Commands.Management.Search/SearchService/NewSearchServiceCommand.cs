@@ -12,6 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Search.Models;
 using System.Management.Automation;
@@ -19,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
 
-    [Cmdlet(VerbsCommon.New, SearchServiceNounStr), OutputType(typeof(Models.PSSearchService))]
+    [Cmdlet(VerbsCommon.New, SearchServiceNounStr, SupportsShouldProcess = true), OutputType(typeof(PSSearchService))]
     public class NewSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -41,7 +43,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             Position = 2,
             Mandatory = true,
             HelpMessage = SkuHelpMessage)]
-        public SkuName Sku { get; set; }
+        public PSSkuName Sku { get; set; }
 
         [Parameter(
             Position = 3,
@@ -64,19 +66,43 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Mandatory = false,
             HelpMessage = HostingModeHelpMessage)]
-        public HostingMode? HostingMode { get; set; }
+        public PSHostingMode? HostingMode { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
+        public SwitchParameter Force { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var searchService = new Azure.Management.Search.Models.SearchService(name: Name,
-                                                                                location: Location,
-                                                                                sku: new Sku(Sku),
-                                                                                replicaCount: ReplicaCount,
-                                                                                partitionCount: PartitionCount,
-                                                                                hostingMode: HostingMode);
+            Azure.Management.Search.Models.SearchService searchService = null;
 
-            var response = SearchClient.Services.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, searchService).Result;
-            WriteSearchService(response.Body);
+            if (HostingMode == null)
+            {
+                searchService = new Azure.Management.Search.Models.SearchService(name: Name,
+                                                                                    location: Location,
+                                                                                    sku: new Sku((SkuName)Sku),
+                                                                                    replicaCount: ReplicaCount,
+                                                                                    partitionCount: PartitionCount);
+            }
+            else
+            {
+                searchService = new Azure.Management.Search.Models.SearchService(name: Name,
+                                                                                    location: Location,
+                                                                                    sku: new Sku((SkuName)Sku),
+                                                                                    replicaCount: ReplicaCount,
+                                                                                    partitionCount: PartitionCount,
+                                                                                    hostingMode: (HostingMode)HostingMode);
+            }
+
+            ConfirmAction(Force.IsPresent,
+                string.Format(Resources.CreateSearchServiceWarning, Name),
+                string.Format(Resources.CreateSearchService, Name),
+                Name,
+                () =>
+                {
+                    var response = SearchClient.Services.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, searchService).Result;
+                    WriteSearchService(response.Body);
+                }
+             );
         }
     }
 }

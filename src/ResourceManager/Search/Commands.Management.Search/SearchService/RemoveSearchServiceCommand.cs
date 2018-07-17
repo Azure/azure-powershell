@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Remove, SearchServiceNounStr, SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName)]
+    [Cmdlet(VerbsCommon.Remove, SearchServiceNounStr, SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(bool))]
     public class RemoveSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             }
 
             ConfirmAction(Force.IsPresent,
-                string.Format(Resources.RemovingSearchService, Name),
+                string.Format(Resources.RemoveSearchServiceWarning, Name),
                 string.Format(Resources.RemoveSearchService, Name),
                 Name,
                 () =>

@@ -13,8 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.Azure.Management.Search.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.Search.Models
@@ -29,13 +27,13 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
 
         public string Location { get; private set; }
 
-        public SkuName? Sku { get; private set; }
+        public PSSkuName? Sku { get; private set; }
 
         public int? ReplicaCount { get; private set; }
 
         public int? PartitionCount { get; private set; }
 
-        public HostingMode? HostingMode { get; private set; }
+        public PSHostingMode? HostingMode { get; private set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
@@ -45,10 +43,20 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             Name = searchService.Name;
             Id = searchService.Id;
             Location = searchService.Location;
-            Sku = searchService.Sku.Name;
+
+            if(searchService.Sku != null && searchService.Sku.Name != null)
+            {
+                Sku = (PSSkuName)searchService.Sku.Name;
+            }
+
             ReplicaCount = searchService.ReplicaCount;
             PartitionCount = searchService.PartitionCount;
-            HostingMode = searchService.HostingMode;
+
+            if(searchService.HostingMode != null)
+            {
+                HostingMode = (PSHostingMode)searchService.HostingMode;
+            }
+
             Tags = searchService.Tags;
         }
 

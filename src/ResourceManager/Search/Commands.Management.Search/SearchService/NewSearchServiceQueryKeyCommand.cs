@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Management.Search.Models;
+using Microsoft.Azure.Commands.Management.Search.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
@@ -20,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.New, SearchServiceQueryKeyNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchQueryKey))]
+    [Cmdlet(VerbsCommon.New, SearchServiceQueryKeyNounStr, DefaultParameterSetName = ResourceNameParameterSetName, SupportsShouldProcess = true), OutputType(typeof(PSSearchQueryKey))]
     public class NewSearchServiceQueryKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -64,6 +65,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
+        public SwitchParameter Force { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
@@ -78,8 +82,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 ServiceName = id.ResourceName;
             }
 
-            var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
-            WriteQueryKey(res.Body);
+            ConfirmAction(Force.IsPresent,
+               string.Format(Resources.CreateQueryKeyWarning, Name),
+               string.Format(Resources.CreateQueryKey, Name),
+               Name,
+               () =>
+               {
+                   var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
+                   WriteQueryKey(res.Body);
+               }
+             );
         }
     }
 }
