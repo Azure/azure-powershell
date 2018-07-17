@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             Position = 0,
             Mandatory = true,
             ParameterSetName = ResourceGroupParameterSetName,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = ResourceGroupHelpMessage)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
