@@ -16,20 +16,22 @@ Lists directories and files for a path.
 ### ShareName (Default)
 ```
 Get-AzureStorageFile [-ShareName] <String> [[-Path] <String>] [-Context <IStorageContext>]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzureStorageFile [-Share] <CloudFileShare> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzureStorageFile [-Directory] <CloudFileDirectory> [[-Path] <String>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,7 +67,7 @@ If the previous call fails within the specified interval, this cmdlet retries th
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +86,7 @@ This parameter can help mitigate network connection problems in low bandwidth en
 The default value is 10.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +102,7 @@ Specifies an Azure Storage context.
 To obtain a Storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: ShareName
 Aliases:
 
@@ -111,6 +113,21 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet gets the folder that this parameter specifies.
@@ -118,7 +135,7 @@ To obtain a directory, use the New-AzureStorageDirectory cmdlet.
 You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Type: CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -136,7 +153,7 @@ If you omit the *Path* parameter, **Get-AzureStorageFile** lists the directories
 If you include the *Path* parameter, **Get-AzureStorageFile** returns an instance of a directory or file in the specified path.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +169,7 @@ Specifies the service-side timeout interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the Storage service returns an error.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +188,7 @@ This object contains the Storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Type: CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -187,7 +204,7 @@ Specifies the name of the file share.
 This cmdlet gets a file or directory from the file share that this parameter specifies.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ShareName
 Aliases:
 

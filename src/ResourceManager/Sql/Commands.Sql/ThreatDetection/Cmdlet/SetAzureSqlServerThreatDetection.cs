@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
         [ValidateNotNullOrEmpty]
-        public string StorageAccountName { get; set; }
+		public string StorageAccountName { get; set; }
 
         /// <summary>
         /// Gets or sets the number of retention days for the audit logs table.
