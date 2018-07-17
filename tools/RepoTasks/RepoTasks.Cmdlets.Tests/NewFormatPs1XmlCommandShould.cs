@@ -141,7 +141,7 @@ namespace RepoTasks.Cmdlets.Tests
                             // entrytype (1), prop-name or script-block (2), target (3), label (4), table-column-width (5), position (6), group-by-this-param (7)
                             new List<Tuple<EntryType, string, View, string, uint?, uint?, bool>>
                             {
-                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "S_.Foo", View.List, "PsDummyOutput1 Id", 0, null, false),
+                                Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.ScriptBlock, "$_.Foo", View.List, "PsDummyOutput1 Id", 0, null, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "RequestId", View.Both, "RequestId", null, 1, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "Name", View.Both, null, 16, null, false),
                                 Tuple.Create<EntryType, string, View, string, uint?, uint?, bool>(EntryType.PropertyName, "Type", View.Both, "PsDummyOutput1 Type", null, 3, false),
@@ -341,7 +341,7 @@ namespace RepoTasks.Cmdlets.Tests
             var expectedTableScriptBlockValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.ScriptBlock)
                 .Where(tuple => (tuple.Item3 & View.Table) != View.None)
-                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
+                .Where(tuple => !tuple.Item7)
                 .Select(tuple => tuple.Item2)
                 .ToList();
 
@@ -380,8 +380,7 @@ namespace RepoTasks.Cmdlets.Tests
             var expectedListPropNameValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.PropertyName)
                 .Where(tuple => (tuple.Item3 & View.List) != View.None)
-                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
-                //.Select(tuple => tuple.Item2)
+                .Where(tuple => !tuple.Item7)
                 .Select(tuple => new ListItem
                     {
                         Label = tuple.Item4,
@@ -396,7 +395,7 @@ namespace RepoTasks.Cmdlets.Tests
             var expectedListScriptBlocksValues = expectedPropsOrdered
                 .Where(tuple => tuple.Item1 == EntryType.ScriptBlock)
                 .Where(tuple => (tuple.Item3 & View.List) != View.None)
-                .Where(tuple => !tuple.Item7) // Item7 = group-by-this-param
+                .Where(tuple => !tuple.Item7)
                 .Select(tuple => new ListItem
                     {
                         Label = tuple.Item4,
