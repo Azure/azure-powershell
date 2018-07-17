@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Storage.Models;
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
 {
@@ -59,12 +60,16 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     //Wrapper of NetworkRuleSet  
     public class PSNetworkRuleSet
     {
+        [Ps1Xml(Label = "IpRules", Target = ViewControl.List, ScriptBlock = "if (($_.ipRules -ne $null) -and ($_.ipRules.Count -ne 0)) {\"[\" + $_.ipRules[0].IPAddressOrRange + \",...]\"} else {$null}", Position = 2)]
         public PSIpRule[] IpRules { get; set; }
 
+        [Ps1Xml(Label = "VirtualNetworkRules", Target = ViewControl.List, ScriptBlock = "if ($_.virtualNetworkRules[0] -ne $null) {\"[\" + $_.virtualNetworkRules[0].VirtualNetworkResourceId + \",...]\"} else {$null}", Position = 3)]
         public PSVirtualNetworkRule[] VirtualNetworkRules { get; set; }
 
+        [Ps1Xml(Label = "Bypass", Target = ViewControl.List, Position = 0)]
         public PSNetWorkRuleBypassEnum? Bypass { get; set; }
 
+        [Ps1Xml(Label = "DefaultAction", Target = ViewControl.List, Position = 1)]
         public PSNetWorkRuleDefaultActionEnum DefaultAction { get; set; }
 
 
