@@ -26,6 +26,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -122,6 +124,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="MSSharedLibKey.snk" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -174,10 +177,6 @@
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Commands.ScenarioTests.ResourceManager.Common.csproj">
       <Project>{3436a126-edc9-4060-8952-9a1be34cdd95}</Project>
       <Name>Commands.ScenarioTests.ResourceManager.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Profile\Commands.Profile\Commands.Profile.csproj">
-      <Project>{142d7b0b-388a-4ceb-a228-7f6d423c5c2e}</Project>
-      <Name>Commands.Profile</Name>
     </ProjectReference>
     <ProjectReference Include="..\Commands.Management.Search\Commands.Management.Search.csproj">
       <Project>{f5758273-cd1f-446f-9e9d-3340ecb7dda0}</Project>
