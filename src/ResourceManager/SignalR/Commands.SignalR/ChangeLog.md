@@ -18,7 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.1.2
 * `New-AzureRmSignalR` uses a new version of `Strategy` library (4.0).
 
-## 0.1.1
+## Version 0.1.1
 * `New-AzureRmSignalR` null reference bug fix.

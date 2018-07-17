@@ -76,9 +76,9 @@ Specifies the Backup management type.
 Currently, only AzureVM is supported.
 
 ```yaml
-Type: BackupManagementType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,9 +110,9 @@ For more information about **DateTime** objects, type `Get-Help Get-Date`.
 Use UTC format for dates.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -125,9 +125,9 @@ Accept wildcard characters: False
 Specifies the name of the Backup job to get.
 
 ```yaml
-Type: JobBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 6
@@ -142,9 +142,9 @@ The ID is the InstanceId property of an **AzureRmRecoveryServicesBackupJob** obj
 To obtain an **AzureRmRecoveryServicesBackupJob** object, use Get-AzureRmRecoveryServicesBackupJob.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -166,9 +166,9 @@ The acceptable values for this parameter are:
 - Unregister
 
 ```yaml
-Type: JobOperation
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobOperation]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Backup, Restore, ConfigureBackup, DisableBackup, DeleteBackupData
 
 Required: False
@@ -190,9 +190,9 @@ The acceptable values for this parameter are:
 - CompletedWithWarnings
 
 ```yaml
-Type: JobStatus
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.JobStatus]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: InProgress, Cancelling, Cancelled, Completed, CompletedWithWarnings, Failed
 
 Required: False
@@ -209,9 +209,9 @@ If you specify this parameter, you must also specify the *From* parameter.
 Use UTC format for dates.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -224,9 +224,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

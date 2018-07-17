@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 4631D36F-926A-4279-AA4D-5F694C18081E
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragetable
 schema: 2.0.0
@@ -14,12 +15,14 @@ Lists the storage tables.
 
 ### TableName (Default)
 ```
-Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### TablePrefix
 ```
-Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageTable -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,12 +60,27 @@ To create it, you can use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -80,7 +98,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Prefix
@@ -90,7 +108,7 @@ You can use this to find all tables that start with the same string, such as tab
 ```yaml
 Type: String
 Parameter Sets: TablePrefix
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

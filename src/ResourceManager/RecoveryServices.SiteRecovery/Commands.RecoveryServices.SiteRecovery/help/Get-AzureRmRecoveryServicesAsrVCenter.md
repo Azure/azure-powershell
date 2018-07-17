@@ -66,7 +66,7 @@ Get azure site recovery vCenter list by fabric name.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ASR fabric object representing the Configuration Server.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: ByFabricObject, ByName
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Name of the vCenter server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the resourceId of vCenter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
