@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Move dependencies on Keyvault and Storage to the common dependencies.
+* Update example for New-AzureRmDisk
 * Add example for `New-AzureRmVM`
 * Updated help files to include full parameter types.
 

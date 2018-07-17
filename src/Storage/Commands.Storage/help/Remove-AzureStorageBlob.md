@@ -17,21 +17,24 @@ Removes the specified storage blob.
 ```
 Remove-AzureStorageBlob [-Blob] <String> [-Container] <String> [-DeleteSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobPipeline
 ```
 Remove-AzureStorageBlob -CloudBlob <CloudBlob> [-DeleteSnapshot] [-Force] [-PassThru]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ContainerPipeline
 ```
 Remove-AzureStorageBlob -CloudBlobContainer <CloudBlobContainer> [-Blob] <String> [-DeleteSnapshot] [-Force]
  [-PassThru] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +69,7 @@ This command uses the asterisk (*) wildcard character and the pipeline to retrie
 Specifies the name of the blob you want to remove.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NamePipeline, ContainerPipeline
 Aliases:
 
@@ -83,7 +86,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +102,7 @@ Specifies a cloud blob.
 To obtain a **CloudBlob** object, use the Get-AzureStorageBlob cmdlet.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlob
+Type: CloudBlob
 Parameter Sets: BlobPipeline
 Aliases: ICloudBlob
 
@@ -115,7 +118,7 @@ Specifies a **CloudBlobContainer** object from the Azure Storage Client library.
 You can use the Get-AzureStorageContainer cmdlet to get it.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.Blob.CloudBlobContainer
+Type: CloudBlobContainer
 Parameter Sets: ContainerPipeline
 Aliases:
 
@@ -134,7 +137,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +152,7 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: NamePipeline
 Aliases:
 
@@ -165,7 +168,7 @@ Specifies the Azure storage context.
 You can use the New-AzureStorageContext cmdlet to create it.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -176,13 +179,28 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DeleteSnapshot
 Specifies that all snapshots be deleted, but not the base blob.
 If this parameter is not specified, the base blob and its snapshots are deleted together.
 The user is prompted to confirm the delete operation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +215,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet removes the blob and its snapshot without confirmation.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +231,7 @@ Indicates that this cmdlet returns a **Boolean** that reflects the success of th
 By default, this cmdlet does not return a value.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +247,7 @@ Specifies the Azure profile for the cmdlet to read.
 If not specified, the cmdlet reads from the default profile.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +262,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -260,7 +278,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

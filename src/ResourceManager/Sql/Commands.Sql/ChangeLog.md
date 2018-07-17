@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
 * Fixed example in Remove-AzureRmSqlServerFirewallRule
 * Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
 * Updated help files to include full parameter types.
