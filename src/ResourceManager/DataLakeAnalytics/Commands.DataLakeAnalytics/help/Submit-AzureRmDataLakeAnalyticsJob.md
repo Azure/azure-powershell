@@ -96,12 +96,27 @@ DECLARE @StartDateTime DateTime = new DateTime(2017, 12, 6, 0, 0, 0, 0);
 Name of Data Lake Analytics account under which the job will be submitted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -AnalyticsUnits
+The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: DegreeOfParallelism
+
+Required: False
+Position: 6
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -116,9 +131,9 @@ Valid values:
 - SingleBox (Full compilation performed locally)
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Semantic, Full, SingleBox
 
 Required: False
@@ -132,9 +147,9 @@ Accept wildcard characters: False
 Indicates that the submission should only build the job and not execute if set to true.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -147,7 +162,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -158,28 +173,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AnalyticsUnits
-The analytics units to use for this job. Typically, more analytics units dedicated to a script results in faster script execution time.
-
-```yaml
-Type: Int32
-Parameter Sets: (All)
-Aliases: DegreeOfParallelism
-
-Required: False
-Position: 6
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
 The friendly name of the job to submit.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -192,9 +192,9 @@ Accept wildcard characters: False
 An ID that indicates the submission of this job is a part of a set of recurring jobs and also associated with a job pipeline.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -207,9 +207,9 @@ Accept wildcard characters: False
 An optional friendly name for the pipeline associated with this job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,9 +222,9 @@ Accept wildcard characters: False
 An optional uri that links to the originating service associated with this pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -237,9 +237,9 @@ Accept wildcard characters: False
 The priority of the job. If not specified, the priority is 1000. A lower number indicates a higher job priority.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 7
@@ -252,9 +252,9 @@ Accept wildcard characters: False
 An ID that indicates the submission of this job is a part of a set of recurring jobs with the same recurrence ID.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -267,9 +267,9 @@ Accept wildcard characters: False
 An optional friendly name for the recurrence correlation between jobs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -282,9 +282,9 @@ Accept wildcard characters: False
 An ID that identifies this specific run iteration of the pipeline.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubmitUSqlJobWithScriptPathAndPipeline, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -297,9 +297,9 @@ Accept wildcard characters: False
 Optionally set the version of the runtime to use for the job. If left unset, the default runtime is used.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 3
@@ -312,9 +312,9 @@ Accept wildcard characters: False
 Script to execute (written inline).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubmitUSqlJob, SubmitUSqlJobWithRecurrence, SubmitUSqlJobWithPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -327,9 +327,9 @@ Accept wildcard characters: False
 The script parameters for this job, as a dictionary of parameter names (string) to values (any combination of byte, sbyte, int, uint (or uint32), long, ulong (or uint64), float, double, decimal, short (or int16), ushort (or uint16), char, string, DateTime, bool, Guid, or byte[]).
 
 ```yaml
-Type: IDictionary
+Type: System.Collections.IDictionary
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -342,9 +342,9 @@ Accept wildcard characters: False
 Path to the script file to submit.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SubmitUSqlJobWithScriptPath, SubmitUSqlJobWithScriptPathAndRecurrence, SubmitUSqlJobWithScriptPathAndPipeline
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 856B76FC-88ED-4A29-9DC6-C482398D702E
@@ -60,7 +60,7 @@ The final command restores the recovery point in $RecoveryPoint for the account 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,9 +76,9 @@ Specifies the recovery point to which to restore the virtual machine.
 To obtain an **AzureRmBackupRecoveryPoint**, use the Get-AzureRmBackupRecoveryPoint cmdlet.
 
 ```yaml
-Type: AzureRMBackupRecoveryPoint
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -92,9 +92,9 @@ Specifies the name of the target storage account in your subscription.
 As a part of the restore process, this cmdlet stores the disks and the configuration information in this storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1

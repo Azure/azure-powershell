@@ -40,8 +40,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -49,9 +51,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "Offer" -Tags @('Offers', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateOffer {
                 param(
@@ -70,8 +72,8 @@ InModuleScope Azs.Subscriptions.Admin {
                 # Offer
                 $Offer.DisplayName   | Should Not Be $null
                 $Offer.OfferName     | Should Not Be $null
-				$Offer.Description   | Should Not Be $null
-				$Offer.State         | Should Not Be $null
+                $Offer.Description   | Should Not Be $null
+                $Offer.State         | Should Not Be $null
             }
 
             function AssertOffersSame {
@@ -84,7 +86,8 @@ InModuleScope Azs.Subscriptions.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -93,11 +96,11 @@ InModuleScope Azs.Subscriptions.Admin {
                     $Found.Name             | Should Be $Expected.Name
                     $Found.Type             | Should Be $Expected.Type
 
-					# Offer
-					$Found.DisplayName   | Should Be $Expected.DisplayName
-					$Found.OfferName     | Should Be $Expected.OfferName
-					$Found.Description   | Should Be $Expected.Description
-					$Found.State         | Should Be $Expected.State
+                    # Offer
+                    $Found.DisplayName   | Should Be $Expected.DisplayName
+                    $Found.OfferName     | Should Be $Expected.OfferName
+                    $Found.Description   | Should Be $Expected.Description
+                    $Found.State         | Should Be $Expected.State
                 }
             }
 
@@ -113,67 +116,64 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
-        It "TestListOffers" {
+        it "TestListOffers" -Skip:$('TestListOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListOffers'
 
             $allOffers = Get-AzsManagedOffer
-            $resourceGroups = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
+            $global:ResourceGroupNames = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
 
-            foreach($offer in $allOffers) {
+            foreach ($offer in $allOffers) {
                 $rgn = GetResourceGroupName -ID $offer.Id
-                $resourceGroups.Add($rgn)
+                $global:ResourceGroupNames.Add($rgn)
             }
 
-            foreach($rgn in $resourceGroups) {
+            foreach ($rgn in $global:ResourceGroupNames) {
                 Get-AzsManagedOffer -ResourceGroupName $rgn
             }
         }
 
-		It "TestGetOffer" {
-			$global:TestName = 'TestGetOffer'
+        it "TestGetOffer" -Skip:$('TestGetOffer' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetOffer'
 
-			$offer = (Get-AzsManagedOffer)[0]
-			$offer | Should Not Be $null
-			$rgn = GetResourceGroupName -ID $offer.Id
-			$offer2 = Get-AzsManagedOffer -ResourceGroupName $rgn -Name $offer.Name
-			AssertOffersSame $offer $offer2
-		}
+            $offer = (Get-AzsManagedOffer)[0]
+            $offer | Should Not Be $null
+            $rgn = GetResourceGroupName -ID $offer.Id
+            $offer2 = Get-AzsManagedOffer -ResourceGroupName $rgn -Name $offer.Name
+            AssertOffersSame $offer $offer2
+        }
 
-		It "TestGetAllOffers" {
-			$global:TestName = 'TestGetAllOffers'
+        it "TestGetAllOffers" -Skip:$('TestGetAllOffers' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllOffers'
 
             $allOffers = Get-AzsManagedOffer
-			foreach($offer in $allOffers) {
-				$rgn = GetResourceGroupName -ID $offer.Id
-				$offer2 = Get-AzsManagedOffer -ResourceGroupName $rgn -Name $offer.Name
-				AssertOffersSame $offer $offer2
-			}
-		}
-		
-		It "TestSetOffer" {
-			$global:TestName = "TestSetOffer"
+            foreach ($offer in $allOffers) {
+                $rgn = GetResourceGroupName -ID $offer.Id
+                $offer2 = Get-AzsManagedOffer -ResourceGroupName $rgn -Name $offer.Name
+                AssertOffersSame $offer $offer2
+            }
+        }
 
-			$allOffers = Get-AzsManagedOffer
-			$offer = $allOffers[0]
-			$rgn = GetResourceGroupName -Id $offer.Id
+        it "TestSetOffer" -Skip:$('TestSetOffer' -in $global:SkippedTests) {
+            $global:TestName = "TestSetOffer"
 
-			$offer.DisplayName += "-test"
+            $allOffers = Get-AzsManagedOffer
+            $offer = $allOffers[0]
+            $rgn = GetResourceGroupName -Id $offer.Id
 
-			$offer | Set-AzsOffer
-			$updated = Get-AzsManagedOffer -Name $offer.Name -ResourceGroupName $rgn
-			$updated.DisplayName | Should Be $offer.DisplayName
-		}
-		
-		It "TestCreateUpdateThenDeleteOffer" {
-			$global:TestName = 'TestCreateUpdateThenDeleteOffer'
+            $offer.DisplayName += "-test"
 
-			$rg = "testrg"
-			$name = "testOffer1"
-			$plan = (Get-AzsPlan)[0]
+            $offer | Set-AzsOffer
+            $updated = Get-AzsManagedOffer -Name $offer.Name -ResourceGroupName $rgn
+            $updated.DisplayName | Should Be $offer.DisplayName
+        }
 
-			$offer = New-AzsOffer -Name $name -DisplayName "Test Offer" -ResourceGroupName $rg -BasePlanIds { $plan.Id } -Location local
-			$saved = Get-AzsManagedOffer -Name $name -ResourceGroupName $rg
-			AssertOffersSame $offer $saved
-		}
+        it "TestCreateUpdateThenDeleteOffer" -Skip:$('TestCreateUpdateThenDeleteOffer' -in $global:SkippedTests) {
+            $global:TestName = 'TestCreateUpdateThenDeleteOffer'
+            $plan = (Get-AzsPlan)[0]
+
+            $offer = New-AzsOffer -Name $global:OfferName -DisplayName "Test Offer" -ResourceGroupName $global:OfferResourceGroupName -BasePlanIds { $plan.Id } -Location $global:Location
+            $saved = Get-AzsManagedOffer -Name $global:OfferName -ResourceGroupName $global:OfferResourceGroupName
+            AssertOffersSame $offer $saved
+        }
     }
 }

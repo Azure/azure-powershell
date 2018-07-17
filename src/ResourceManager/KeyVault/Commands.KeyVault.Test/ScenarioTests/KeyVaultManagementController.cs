@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
             var mockName = sf.GetMethod().Name;
 
             logger.Information(string.Format("Test method entered: {0}.{1}", callingClassType, mockName));
-            _helper.TracingInterceptor = logger;
             RunPsTestWorkflow(
+                logger,
                 () => scripts,
                 // no custom cleanup 
                 null,
@@ -74,12 +74,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Test
 
 
         public void RunPsTestWorkflow(
+            XunitTracingInterceptor logger,
             Func<string[]> scriptBuilder,
             Action cleanup,
             string callingClassType,
             string mockName,
             Action initialize = null)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);

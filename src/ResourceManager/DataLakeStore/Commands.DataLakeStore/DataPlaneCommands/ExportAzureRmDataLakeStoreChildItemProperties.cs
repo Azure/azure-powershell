@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         public override void ExecuteCmdlet()
         {
             DataLakeStoreFileSystemClient.GetFileProperties(Account, Path.TransformedPath, GetAcl, OutputPath,
-                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth);
+                GetDiskUsage, !SaveToAdl, Concurrency, IncludeFile, HideConsistentAcl, MaximumDepth, this, CmdletCancellationToken);
             if (PassThru)
             {
                 WriteObject(true);

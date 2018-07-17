@@ -39,8 +39,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -48,9 +50,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "Subscription" -Tags @('Subscriptions', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateSubscription {
                 param(
@@ -63,17 +65,17 @@ InModuleScope Azs.Subscriptions.Admin {
                 # Resource
                 $Subscription.Id             | Should Not Be $null
                 $Subscription.DisplayName    | Should Not Be $null
-				$Subscription.OfferId        | Should Not Be $null
+                $Subscription.OfferId        | Should Not Be $null
                 $Subscription.Owner          | Should Not Be $null
-				$Subscription.State          | Should Not Be $null
-				$Subscription.SubscriptionId | Should Not Be $null
-				$Subscription.TenantId       | Should Not Be $null
+                $Subscription.State          | Should Not Be $null
+                $Subscription.SubscriptionId | Should Not Be $null
+                $Subscription.TenantId       | Should Not Be $null
 
             }
 
         }
 
-        It "TestListSubscriptions" {
+        it "TestListSubscriptions" -Skip:$('TestListSubscriptions' -in $global:SkippedTests) {
             $global:TestName = 'TestListSubscriptions'
 
             $Subscriptions = Get-AzsUserSubscription
@@ -83,33 +85,35 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
-		It "TestSetSubscription" {
-			$global:TestName = "TestSetSubscription"
-			
-			$Subscriptions = Get-AzsUserSubscription
-			foreach ($sub in $subscriptions) {
-				$sub.DisplayName += "-test"
-				$sub.Owner = "user@microsoft.com"
+        it "TestSetSubscription" -Skip:$('TestSetSubscription' -in $global:SkippedTests) {
+            $global:TestName = "TestSetSubscription"
 
-				$sub | Set-AzsUserSubscription
+            $Subscriptions = Get-AzsUserSubscription
+            foreach ($sub in $subscriptions) {
+                $sub.DisplayName += "-test"
+                $sub.Owner = $global:Owner
 
-				$updated = Get-AzsUserSubscription -SubscriptionId $sub.SubscriptionId
+                $sub | Set-AzsUserSubscription
 
-				$updated.DisplayName | Should Be $sub.DisplayName
-				$updated.Owner       | Should Be "user@microsoft.com"
+                $updated = Get-AzsUserSubscription -SubscriptionId $sub.SubscriptionId
+
+                $updated.DisplayName | Should Be $sub.DisplayName
+                $updated.Owner       | Should Be $global:Owner
 
 				break;
 			}
 		}
-		It "CheckNameAvailability" {
-			$global:TestName = 'CheckNameAvailability'
 
-			Test-AzsNameAvailability -Name "Test Sub" -ResourceType "Microsoft.Subscriptions.Admin/plans"
-		}
+        it "CheckNameAvailability" -Skip:$('CheckNameAvailability' -in $global:SkippedTests) {
+            $global:TestName = 'CheckNameAvailability'
+
+            Test-AzsNameAvailability -Name $global:TestAvailability -ResourceType $global:ResourceType
+        }
+
         It "TestMoveSubscription" {
             $global:TestName = 'MoveSubscription'
             $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | Select -ExpandProperty Id
             Move-AzsSubscription -DestinationDelegatedProviderOffer $Null -ResourceId $resourceIds
-		}
+		} 
     }
 }
