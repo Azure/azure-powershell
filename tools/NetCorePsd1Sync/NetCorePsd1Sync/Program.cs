@@ -63,10 +63,6 @@ namespace NetCorePsd1Sync
         private static void UpdateModuleVersions(string rmPath, Version newVersion)
         {
             var modulePaths = GetModulePaths(rmPath, true);
-            foreach (var path in modulePaths)
-            {
-                Console.WriteLine(path);
-            }
             var desktopFilePaths = GetDesktopFilePaths(modulePaths);
             var netCoreFilePaths = desktopFilePaths.Select(ConvertDesktopToNetCorePath).Where(File.Exists).ToList();
             netCoreFilePaths.Add(Path.Combine(rmPath, @"..\Storage\Commands.Storage\Azure.Storage.Netcore.psd1"));
