@@ -25,7 +25,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = ResourceGroupHelpMessage)]
         [ValidateNotNullOrEmpty]
         [ResourceGroupCompleter()]
@@ -34,7 +33,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -42,33 +40,29 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 2,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = SkuHelpMessage)]
         public SkuName Sku { get; set; }
 
         [Parameter(
             Position = 3,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = LocationHelpMessage)]
+        [LocationCompleter("Microsoft.Search/operations")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = PartitionCountHelpMessage)]
         public int? PartitionCount { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = ReplicaCountHelpMessage)]
         public int? ReplicaCount { get; set; }
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = HostingModeHelpMessage)]
         public HostingMode? HostingMode { get; set; }
 

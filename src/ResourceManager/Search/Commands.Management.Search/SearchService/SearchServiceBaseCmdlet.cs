@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.Management.Search
         protected const string KeyKindHelpMessage = "Search Service admin key kind (Primary/Secondary).";
         protected const string QueryKeyNameHelpMessage = "Search Service query key name.";
         protected const string QueryKeyValueHelpMessage = "Search Service query key value.";
+        protected const string PassThruHelpMessage = "This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.";
 
         protected const string ParentObjectParameterSetName = "ParentObjectParameterSet";
         protected const string ParentResourceIdParameterSetName = "ParentResourceIdParameterSet";
@@ -96,7 +97,7 @@ namespace Microsoft.Azure.Commands.Management.Search
 
         protected void WriteAdminKey(AdminKeyResult adminKeyResult)
         {
-            if(adminKeyResult != null)
+            if (adminKeyResult != null)
             {
                 WriteObject(PSSearchAdminKey.Create(adminKeyResult));
             }
@@ -104,7 +105,7 @@ namespace Microsoft.Azure.Commands.Management.Search
 
         protected void WriteQueryKey(QueryKey queryKey)
         {
-            if(queryKey != null)
+            if (queryKey != null)
             {
                 WriteObject(PSSearchQueryKey.Create(queryKey));
             }

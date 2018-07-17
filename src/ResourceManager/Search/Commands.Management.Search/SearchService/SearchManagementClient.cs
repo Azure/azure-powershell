@@ -29,9 +29,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             : this(AzureSession.Instance.ClientFactory.CreateArmClient<SearchManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         { }
 
-        public SearchManagementClientWrapper(ISearchManagementClient resourceManagementClient)
+        public SearchManagementClientWrapper(ISearchManagementClient searchManagementClient)
         {
-            SearchManagementClient = resourceManagementClient;
+            SearchManagementClient = searchManagementClient;
         }
     }
 }

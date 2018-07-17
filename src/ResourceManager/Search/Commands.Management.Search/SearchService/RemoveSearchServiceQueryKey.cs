@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Remove, SearchServiceQueryKeyNounStr, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, SearchServiceQueryKeyNounStr, DefaultParameterSetName = ResourceNameParameterSetName, SupportsShouldProcess = true)]
     public class RemoveSearchServiceQueryKey : SearchServiceBaseCmdlet
     {
         [Parameter(
@@ -45,7 +45,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 0,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceGroupHelpMessage)]
         [ResourceGroupCompleter()]
@@ -55,7 +54,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [Parameter(
             Position = 1,
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceNameParameterSetName,
             HelpMessage = ResourceNameHelpMessage)]
         [ValidateNotNullOrEmpty]
@@ -63,13 +61,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
         [Parameter(
            Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
            HelpMessage = QueryKeyValueHelpMessage)]
         [ValidateNotNullOrEmpty]
         public string KeyValue { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
         public SwitchParameter Force { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = PassThruHelpMessage)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -92,6 +92,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 () =>
                 {
                     SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Wait();
+
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
                 }
              );
         }

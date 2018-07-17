@@ -161,6 +161,9 @@
   "src/ResourceManager/Scheduler/": [
     ".\\src\\ResourceManager\\Scheduler\\Commands.Scheduler.Test\\bin\\Debug\\Microsoft.Azure.Commands.Scheduler.Test.dll"
   ],
+  "src/ResourceManager/Search/": [
+    ".\\src\\ResourceManager\\Search\\Commands.Search.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.Search.Test.dll"
+  ],
   "src/ResourceManager/ServiceBus/": [
     ".\\src\\ResourceManager\\ServiceBus\\Commands.ServiceBus.Test\\bin\\Debug\\Microsoft.Azure.Commands.ServiceBus.Test.dll"
   ],
