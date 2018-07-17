@@ -79,7 +79,6 @@ namespace NetCorePsd1Sync
         public static Hashtable GetHashtable(PowerShell powershell, string path)
         {
             var script = $"Get-Content '{path}' | Out-String | Invoke-Expression";
-            Console.WriteLine("Path: " + path + "\nScript: " + script);
             powershell.AddScript(script);
             if (!(powershell.Invoke().First().BaseObject is Hashtable hashtable))
             {
