@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementuser
 schema: 2.0.0
@@ -83,7 +83,7 @@ This command gets all users within the specified group.
 Specifies an instance of **PsApiManagementContext**.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,7 +115,7 @@ If this parameter is specified, this cmdlet finds a user by email.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -132,7 +132,7 @@ If this parameter is specified, this cmdlet finds a user by first name.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -149,7 +149,7 @@ If specified, this cmdlet finds all users within the specified group.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -166,7 +166,7 @@ If specified, this cmdlet finds users by last name.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUser
 Aliases:
 
@@ -183,10 +183,10 @@ If specified, this cmdlet finds users in this state.
 This parameter is optional.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
+Type: PsApiManagementUserState
 Parameter Sets: GetByUser
 Aliases:
-Accepted values: Active, Blocked, Deleted, Pending
+Accepted values: Active, Blocked
 
 Required: False
 Position: Named
@@ -201,7 +201,7 @@ If specified, this cmdlet finds the user by this identifier.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUserId
 Aliases:
 

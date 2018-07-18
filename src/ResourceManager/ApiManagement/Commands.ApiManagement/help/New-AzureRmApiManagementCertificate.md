@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 5CBEDFF8-C441-44CC-B011-5F5AAFA2E5C6
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcertificate
 schema: 2.0.0
@@ -45,7 +45,7 @@ Specifies the ID of the certificate to create.
 If you do not specify this parameter, an ID is generated for you.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Specifies an array of bytes of the certificate file in .pfx format.
 This parameter is required if you do not specify the *PfxFilePath* parameter.
 
 ```yaml
-Type: System.Byte[]
+Type: Byte[]
 Parameter Sets: Raw
 Aliases:
 
@@ -107,7 +107,7 @@ Specifies the path to the certificate file in .pfx format to create and upload.
 This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: LoadFromFile
 Aliases:
 
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 Specifies the password for the certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

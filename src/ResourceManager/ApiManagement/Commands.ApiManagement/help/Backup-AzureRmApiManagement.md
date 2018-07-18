@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 5846BBB7-DA8E-41B5-A894-BA2B61C2212C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/backup-azurermapimanagement
 schema: 2.0.0
@@ -41,7 +41,7 @@ This command backs up an API Management service to a Storage blob.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 Specifies the name of the API Management deployment that this cmdlet backs up.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet returns the backed up **PsApiManagement** object, if the operation succeeds.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 Specifies the name of the of resource group under which the API Management deployment exists.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 Specifies a storage connection context.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ This cmdlet generates a default value based on the following pattern:
 {Name}-{yyyy-MM-dd-HH-mm}.apimbackup
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -136,7 +136,7 @@ Specifies the name of the container of the blob for the backup.
 If the container does not exist, this cmdlet creates it.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackendcredential
 schema: 2.0.0
 ---
@@ -40,7 +40,7 @@ Authorization Header used for the Backend.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +56,7 @@ Authorization Scheme used for the Backend.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Client Certificate Thumbprints.
 This parameter is optional.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -103,7 +103,7 @@ Header Parameter Values accepted by Backend.
 This parameter is optional.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ Query Parameter Values accepted by Backend.
 This parameter is optional.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Hashtable
 Parameter Sets: (All)
 Aliases:
 

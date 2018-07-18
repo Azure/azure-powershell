@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 9D4A68A8-0A39-4C9A-8EA6-391A5E7A0E25
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/add-azurermapimanagementregion
 schema: 2.0.0
@@ -46,7 +46,7 @@ This command gets a **PsApiManagement** object, adds two premium SKU units for t
 Specifies the **PsApiManagement** instance that this cmdlet adds additional deployment regions to.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Type: PsApiManagement
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies the SKU capacity of the deployment region.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -114,10 +114,10 @@ Valid values are:
 - Premium
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku]
+Type: PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium, Basic
+Accepted values: Developer, Standard, Premium
 
 Required: False
 Position: Named
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 Specifies a virtual network configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 

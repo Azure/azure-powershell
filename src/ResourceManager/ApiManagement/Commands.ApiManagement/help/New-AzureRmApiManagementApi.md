@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 664CF009-FC52-4F1B-933B-3DEBD05AC8C5
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementapi
 schema: 2.0.0
@@ -41,7 +41,7 @@ Specifies the ID of the API to create.
 If you do not specify this parameter, this cmdlet generates an ID for you.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -57,7 +57,7 @@ Specifies the OAuth operations scope.
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -74,7 +74,7 @@ The default value is $Null.
 You must specify this parameter if *AuthorizationScope* is specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Specifies a description for the web API.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Specifies the name of the web API.
 This is the public name of the API as it appears on the developer and admin portals.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ This URL is used by API consumers to send requests to the web service, and must 
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Specifies an array of product IDs to which to add the new API.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -185,7 +185,7 @@ These are the web protocols over which the API is made available.
 The default value is $Null.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSchema[]
+Type: PsApiManagementSchema[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Http, Https
@@ -203,7 +203,7 @@ This URL is used only by Azure API Management, and is not made public.
 The URL must be one to 2000 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +219,7 @@ Specifies the subscription key header name.
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +235,7 @@ Specifies the subscription key query string parameter name.
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

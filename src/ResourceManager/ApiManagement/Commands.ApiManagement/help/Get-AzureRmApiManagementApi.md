@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementapi
 schema: 2.0.0
@@ -72,7 +72,7 @@ This command gets the API with the specified name.
 Specifies the ID of the API to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByApiId
 Aliases:
 
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 Revision Identifier of the particular Api revision. This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByApiId
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -132,7 +132,7 @@ Accept wildcard characters: False
 Specifies the name of the API to get.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByName
 Aliases:
 
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 Specifies the ID of the product for which to get the API.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByProductId
 Aliases:
 

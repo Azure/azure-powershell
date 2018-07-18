@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementcustomhostnameconfiguration
 schema: 2.0.0
 ---
@@ -66,7 +66,7 @@ This command creates and initializes an instance of **PsApiManagementCustomHostN
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +83,7 @@ This parameter is optional.
 Default Value is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Custom Hostname
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Existing Certificate Configuration.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation
+Type: PsApiManagementCertificateInformation
 Parameter Sets: NoChangeCertificate
 Aliases:
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 Hostname Type
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
+Type: PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Proxy, Portal, Management, Scm
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 KeyVaultId to the secret storing the Custom SSL Certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SslCertificateFromKeyVault
 Aliases:
 
@@ -161,7 +161,7 @@ This parameter is optional.
 Default Value is false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 Password for the .pfx certificate file.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: SslCertificateFromFile
 Aliases:
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Path to a .pfx certificate file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SslCertificateFromFile
 Aliases:
 

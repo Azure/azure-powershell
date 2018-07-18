@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 17D7EBD2-FE3F-4D24-A1AA-8C45B9B1FEF5
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/remove-azurermapimanagementregion
 schema: 2.0.0
@@ -46,7 +46,7 @@ The final command then removes the region named East US from that instance then 
 Specifies the **PsApiManagement** instance that this cmdlet removes the additional deployment region from.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Type: PsApiManagement
 Parameter Sets: (All)
 Aliases:
 
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ### -DefaultProfile
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -79,7 +79,7 @@ To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

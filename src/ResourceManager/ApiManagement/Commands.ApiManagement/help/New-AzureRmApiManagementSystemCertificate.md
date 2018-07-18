@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementsystemcertificate
 schema: 2.0.0
 ---
@@ -38,7 +38,7 @@ This command creates and initializes an instance of **PsApiManagementSystemCerti
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 Password for the .pfx certificate file.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Path to a .pfx certificate file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,10 +83,9 @@ Accept wildcard characters: False
 Certificate StoreName
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: CertificateAuthority, Root
 
 Required: True
 Position: Named

@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 5B7B285A-6418-44D7-BD78-E14AFFAA7765
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/update-azurermapimanagementregion
 schema: 2.0.0
@@ -32,7 +32,7 @@ To update a deployment of an API Management use the modified **PsApiManagementIn
 Specifies the **PsApiManagement** instance to update an existing deployment region in.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Type: PsApiManagement
 Parameter Sets: (All)
 Aliases:
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 Specifies the new SKU capacity value for the deployment region.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -62,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,10 +102,10 @@ Valid values are:
 - Premium
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
+Type: PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium, Basic
+Accepted values: Developer, Standard, Premium
 
 Required: True
 Position: Named
@@ -119,7 +119,7 @@ Specifies a virtual network configuration for the deployment region.
 Passing $null will remove virtual network configuration for the region.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Type: PsApiManagementVirtualNetwork
 Parameter Sets: (All)
 Aliases:
 

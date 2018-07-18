@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 98367100-4FFD-46F6-8974-603B32533626
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/import-azurermapimanagementhostnamecertificate
 schema: 2.0.0
@@ -38,7 +38,7 @@ This command imports a certificate for a proxy custom hostname.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,10 +58,10 @@ Valid values are:
 - Portal
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
+Type: PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Proxy, Portal, Management, Scm
+Accepted values: Proxy, Portal
 
 Required: True
 Position: Named
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Specifies the name of the API Management deployment that this cmdlet imports.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies the password for the .pfx certificate file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 Specifies the path to a .pfx certificate file.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Specifies the name of the of resource group under which the API Management deployment exists.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

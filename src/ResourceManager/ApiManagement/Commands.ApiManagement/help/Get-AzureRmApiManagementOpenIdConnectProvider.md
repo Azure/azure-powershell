@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 15B6EAE2-56ED-4A01-B8EA-52B9FCDC1F66
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementopenidconnectprovider
 schema: 2.0.0
@@ -66,7 +66,7 @@ This command gets the provider named Contoso OpenID Connect Provider.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,7 +97,7 @@ Specifies a friendly name of a provider.
 If you specify a name, this cmdlet gets that provider.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByName
 Aliases:
 
@@ -113,7 +113,7 @@ Specifies an ID of the provider that this cmdlet removes.
 If you specify an ID, this cmdlet gets that provider.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByOpenIdConnectProviderId
 Aliases:
 
