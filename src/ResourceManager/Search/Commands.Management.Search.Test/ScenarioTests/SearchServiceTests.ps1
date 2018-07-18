@@ -18,10 +18,10 @@ Test New-AzureRmSearchService
 #>
 function Test-NewAzureRmSearchService
 {
-	    # Arrange
-	$rgname = "TestAzureSearchPsGroup"
-	$loc = "West US"
-	$svcName = "pstestazuresearch"
+	# Arrange
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -57,9 +57,9 @@ Test Get-AzureRmSearchService
 function Test-GetAzureRmSearchService
 {
     # Arrange
-	$rgname = "TestAzureSearchPsGroup"
-	$loc = "West US"
-	$svcName = "pstestazuresearch"
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
+	$svcName = $rgname + "-service"
 	$sku = "Standard"
 
 	try
@@ -89,7 +89,7 @@ function Test-GetAzureRmSearchService
 		Assert-AreEqual $newSearchService.Sku $retrievedSearchService2.Sku
 
 		# Create anther one in the same ResourceGroup.
-		$svcName2 = "pstestazuresearch2"
+		$svcName2 = $rgname + "-service2"
 		$newSearchService2 = New-AzureRmSearchService -ResourceGroupName $rgname -Name $svcName2 -Sku $sku -Location $loc -Force
 
 		# By ResourceGroup only = list
@@ -111,9 +111,8 @@ Test Remove-AzureRmSearchService
 function Test-RemoveAzureRmSearchService
 {
     # Arrange
-	$svcName = "pstestazuresearch"
-	$rgname = "TestAzureSearchPsGroup"
-	$loc = "West US"
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
 	$sku = "Standard"
 
 	try
@@ -122,7 +121,7 @@ function Test-RemoveAzureRmSearchService
 		
 		# 1
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch1" -Sku $sku -Location $loc -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc -Force
 
 		# Can Get
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -137,7 +136,7 @@ function Test-RemoveAzureRmSearchService
 		
 		# 2
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch2" -Sku $sku -Location $loc -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc -Force
 		
 		# Can Get
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -152,7 +151,7 @@ function Test-RemoveAzureRmSearchService
 
 		# 3
 		# Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch3" -Sku $sku -Location $loc -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc -Force
 		
 		# Can Get
 		$retrievedSvc = Get-AzureRmSearchService -ResourceId $newSearchService.Id
@@ -179,8 +178,8 @@ Test Set-AzureRmSearchService
 function Test-SetAzureRmSearchService
 {
     # Arrange
-	$rgname = "TestAzureSearchPsGroup"
-	$loc = "West US"
+	$rgname = getAssetName
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -191,7 +190,7 @@ function Test-SetAzureRmSearchService
 		New-AzureRmResourceGroup -Name $rgname -Location $loc
 		
 		# 1. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch01" -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service1") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
 
 		# Set by InputObject
 		$newSearchService | Set-AzureRmSearchService -PartitionCount 2 -ReplicaCount 2 -Force
@@ -202,7 +201,7 @@ function Test-SetAzureRmSearchService
 		Assert-AreEqual 2 $retrievedSvc.ReplicaCount
 
 		# 2. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch02" -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service2") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
 		
 		# Set by ResourceId
 		Set-AzureRmSearchService -ResourceId $newSearchService.Id -PartitionCount 3 -ReplicaCount 3 -Force
@@ -213,7 +212,7 @@ function Test-SetAzureRmSearchService
 		Assert-AreEqual 3 $retrievedSvc.ReplicaCount
 
 		# 3. Act - Create
-		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name "pstestazuresearch03" -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
+		$newSearchService = New-AzureRmSearchService -ResourceGroupName $rgname -Name $($rgname + "-service3") -Sku $sku -Location $loc -PartitionCount $partitionCount -ReplicaCount $replicaCount -HostingMode $hostingMode -Force
 
 		# Set by ResourceGroup + Name
 		Set-AzureRmSearchService -ResourceGroupName $rgname -Name $newSearchService.Name -PartitionCount 2 -ReplicaCount 2 -Force
@@ -237,9 +236,9 @@ Test ManageAzureRmSearchServiceAdminKey
 function Test-ManageAzureRmSearchServiceAdminKey
 {
     # Arrange
-	$rgname = "TestAzureSearchPsGroup"
-	$svcName = "pstestazuresearch01"
-	$loc = "West US"
+	$rgname = getAssetName
+	$svcName = $rgname + "-service"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1
@@ -306,9 +305,9 @@ Test ManageAzureRmSearchServiceQueryKey
 function Test-ManageAzureRmSearchServiceQueryKey
 {
     # Arrange
-	$rgname = "TestAzureSearchPsGroup"
-	$svcName = "pstestazuresearch01"
-	$loc = "West US"
+	$rgname = getAssetName
+	$svcName = $rgname + "-service"
+	$loc = Get-Location -providerNamespace "Microsoft.Search" -resourceType "searchServices" -preferredLocation "West US"
 	$sku = "Standard"
 	$partitionCount = 1
 	$replicaCount = 1

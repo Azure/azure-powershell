@@ -14,8 +14,10 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Management.Automation;
+using System.Net;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
@@ -73,7 +75,15 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             }
             catch (Exception e)
             {
-                // the method throws an exception when there the service does not exist.
+                if(e is AggregateException && 
+                    e.InnerException is CloudException 
+                    && ((CloudException)e.InnerException).Response?.StatusCode == HttpStatusCode.NotFound)
+                {
+                    // the method throws an exception when the service does not exist.
+                    return;
+                }
+
+                throw;
             }
         }
     }
