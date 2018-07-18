@@ -224,6 +224,15 @@ function Api-ImportExportSwaggerTest {
 
         Assert-AreEqual $swaggerApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
+
+        $newName = "apimPetstore"
+        $newDescription = "Swagger api via Apim"
+        $api = Set-AzureRmApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
+        Assert-AreEqual $swaggerApiId2 $api.ApiId
+        Assert-AreEqual $path2 $api.Path
+        Assert-AreEqual $newName $api.Name
+        Assert-AreEqual $newDescription $api.Description
+        Assert-AreEqual 'Http' $api.ApiType
     }
     finally {
         # remove created api
@@ -277,6 +286,15 @@ function Api-ImportExportWsdlTest {
 
         Assert-AreEqual $wsdlApiId2 $api.ApiId
         Assert-AreEqual $path2 $api.Path
+
+        $newName = "apimSoap"
+        $newDescription = "Soap api via Apim"
+        $api = Set-AzureRmApiManagementApi -InputObject $api -Name $newName -Description $newDescription -ServiceUrl $api.ServiceUrl -Protocols $api.Protocols -PassThru
+        Assert-AreEqual $wsdlApiId2 $api.ApiId
+        Assert-AreEqual $path2 $api.Path
+        Assert-AreEqual $newName $api.Name
+        Assert-AreEqual $newDescription $api.Description
+        Assert-AreEqual 'Soap' $api.ApiType
 
         # commented as powershell test framework on running test in playback mode, throws 403, as the exported link of file
         # gets expired
@@ -2332,9 +2350,8 @@ function ApiRevision-CrudTest {
         Assert-AreEqual $swaggerApiId1 $apiRelease.ApiId
 
         # update the api release notes
-        $updateReleaseNote = getAssetName
-        $apiRelease.Notes = $updateReleaseNote
-        $updateApiRelease = Update-AzureRmApiManagementApiRelease -InputObject $apiRelease -PassThru
+        $updateReleaseNote = getAssetName        
+        $updateApiRelease = Update-AzureRmApiManagementApiRelease -InputObject $apiRelease -Note $updateReleaseNote -PassThru
         Assert-NotNull $updateApiRelease
         Assert-AreEqual $apiReleaseId $updateApiRelease.ReleaseId
         Assert-AreEqual $swaggerApiId1 $updateApiRelease.ApiId
