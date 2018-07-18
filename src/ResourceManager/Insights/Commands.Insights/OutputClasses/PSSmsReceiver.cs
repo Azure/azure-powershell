@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the receiver's status.
         /// </summary>
-        public ReceiverStatus? Status { get; set; }
+        public Management.Monitor.Management.Models.ReceiverStatus? Status { get; set; }
 
         /// <summary>Initializes a new instance of the PSSmsReceiver class</summary>
         public PSSmsReceiver()
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
             this.Name = receiver.Name;
             this.CountryCode = receiver.CountryCode;
             this.PhoneNumber = receiver.PhoneNumber;
-            this.Status = receiver.Status;
+            this.Status = TransitionalClasses.TransitionHelpers.ConvertNamespace(receiver.Status);
         }
     }
 }
