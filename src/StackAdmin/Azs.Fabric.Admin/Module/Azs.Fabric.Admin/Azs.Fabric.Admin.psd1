@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     RootModule        = 'Azs.Fabric.Admin.psm1'
 
     # Version number of this module.
-    ModuleVersion     = '0.1.1'
+    ModuleVersion     = '0.1.2'
 
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -29,7 +29,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Author            = 'Microsoft'
 
     # Company or vendor of this module
-    CompanyName       = 'Unknown'
+    CompanyName       = 'Microsoft'
 
     # Copyright statement for this module
     Copyright         = '(c) 2018 Microsoft. All rights reserved.'
@@ -87,7 +87,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
-    'Stop-AzsScaleUnitNode'
+    'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
