@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Create an autoscale profile
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleProfile"), OutputType(typeof(AutoscaleProfile))]
+    [Cmdlet(VerbsCommon.New, "AzureRmAutoscaleProfile"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleProfile))]
     public class NewAzureRmAutoscaleProfileCommand : MonitorCmdletBase
     {
         private const string AddAutoscaleProfileNoScheduleParamGroup = "CreateWithoutScheduledTimes";
@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Gets or sets the recurrence frequency
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The recurrence frequency for the setting")]
-        public RecurrenceFrequency RecurrenceFrequency { get; set; }
+        public Management.Monitor.Management.Models.RecurrenceFrequency RecurrenceFrequency { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleDays
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAutoscaleProfileFixDateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [ValidateNotNullOrEmpty]
-        public ScaleRule[] Rule { get; set; }
+        public Management.Monitor.Management.Models.ScaleRule[] Rule { get; set; }
 
         #endregion
 
@@ -150,12 +150,12 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Create an autoscale profile based on the properties of the object
         /// </summary>
         /// <returns>An autoscale profile based on the properties of the object</returns>
-        public AutoscaleProfile CreateSettingProfile()
+        public Management.Monitor.Management.Models.AutoscaleProfile CreateSettingProfile()
         {
-            return new AutoscaleProfile
+            return new Management.Monitor.Management.Models.AutoscaleProfile
             {
                 Name = this.Name ?? string.Empty,
-                Capacity = new ScaleCapacity()
+                Capacity = new Management.Monitor.Management.Models.ScaleCapacity()
                 {
                     DefaultProperty = this.DefaultCapacity,
                     Minimum = this.MinimumCapacity,
@@ -165,8 +165,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 // NOTE: "always" is specify by a null value in the FixedDate value with null ScheduledDays(Minutes, Seconds)
                 // Premise: Fixed date schedule and recurrence are mutually exclusive, but they can both be missing so that the rule is always enabled.
                 // Assuming dates are validated by the server
+                var rule = Rule == null ? null : this.Rule.ToList();
                 FixedDate = this.ScheduleDay == null && (this.StartTimeWindow != default(DateTime) || this.EndTimeWindow != default(DateTime))
-                        ? new TimeWindow()
+                        ? new Management.Monitor.Management.Models.TimeWindow()
                         {
                             Start = this.StartTimeWindow,
                             End = this.EndTimeWindow,
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                         }
                         : null,
                 Recurrence = this.ScheduleDay != null ? this.CreateAutoscaleRecurrence() : null,
-                Rules = Rule == null ? null : this.Rule.ToList(),
+                Rules = this.rule.Select(e => new Management.Monitor.Management.Models.ScaleRule(e)).ToList()
             };
         }
 
@@ -182,19 +183,19 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// Create a Recurrence based on the properties of this object
         /// </summary>
         /// <returns>A Recurrence created based on the properties of this object</returns>
-        public Recurrence CreateAutoscaleRecurrence()
+        public Management.Monitor.Management.Models.Recurrence CreateAutoscaleRecurrence()
         {
-            return new Recurrence()
+            return new Management.Monitor.Management.Models.Recurrence
             {
                 Frequency = this.RecurrenceFrequency,
                 Schedule = this.CreateRecurrentSchedule()
             };
         }
 
-        private RecurrentSchedule CreateRecurrentSchedule()
+        private Management.Monitor.Management.Models.RecurrentSchedule CreateRecurrentSchedule()
         {
             // Assuming validation is done by the server
-            return new RecurrentSchedule()
+            return new Management.Monitor.Management.Models.RecurrentSchedule()
             {
                 Days = ScheduleDay == null ? null : this.ScheduleDay.ToList(),
 

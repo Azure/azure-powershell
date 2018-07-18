@@ -13,16 +13,15 @@
 // ----------------------------------------------------------------------------------
 
 using System.Net;
-using System.Threading.Tasks;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.Insights.Properties;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Insights.TransitionalClasses;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [ValidateNotNullOrEmpty]
-        public AutoscaleProfile[] AutoscaleProfile { get; set; }
+        public Management.Monitor.Management.Models.AutoscaleProfile[] AutoscaleProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the TargetResourceId parameter
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
-        public AutoscaleNotification[] Notification { get; set; }
+        public Management.Monitor.Management.Models.AutoscaleNotification[] Notification { get; set; }
 
         #endregion
 
@@ -119,7 +118,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 {
                     RequestId = result.RequestId,
                     StatusCode = result.Response != null ? result.Response.StatusCode : HttpStatusCode.OK,
-                    SettingSpec = result.Body
+                    SettingSpec = TransitionHelpers.ConvertNamespace(result.Body)
                 };
 
                 WriteObject(response);
@@ -154,14 +153,16 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 this.Notification = this.Notification ?? (this.InputObject.Notifications != null ? this.InputObject.Notifications.ToArray() : null);
             }
 
+            var autoscaleProfile == null ? null : this.AutoscaleProfile.ToList();
+            var notification = Notification == null ? null : this.Notification.ToList();
             return new AutoscaleSettingResource(
-                profiles: AutoscaleProfile == null ? null : this.AutoscaleProfile.ToList(),
+                profiles: this.autoscaleProfile?.Select(TransitionHelpers.ConvertNamespace).ToList(),
                 location: this.Location,
                 name: this.Name)
             {
                 Enabled = enableSetting,
                 TargetResourceUri = this.TargetResourceId,
-                Notifications = Notification == null ? null : this.Notification.ToList(),
+                Notifications = this.notification?.Select(TransitionHelpers.ConvertNamespace).ToList(),
                 Tags = this.InputObject != null ? new Dictionary<string, string>(this.InputObject.Tags) : new Dictionary<string, string>()
             };
         }

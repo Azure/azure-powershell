@@ -13,7 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Commands.Insights.TransitionalClasses;
+using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,7 +60,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric namespace for rule")]
         public string MetricNamespace { get; set; }
 
-        private RuleCondition CreateRuleCondition()
+        private LocationThresholdRuleCondition CreateRuleCondition()
         {
             WriteVerboseWithTimestamp(string.Format("CreateRuleCondition: Creating location threshold rule condition (webtest rule)"));
             var dataSource = new RuleMetricDataSource
@@ -68,7 +69,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
                 ResourceUri = this.TargetResourceUri
             };
 
-            return new LocationThresholdRuleCondition()
+            return new LocationThresholdRuleCondition
             {
                 DataSource = dataSource,
                 FailedLocationCount = this.FailedLocationCount,
@@ -78,14 +79,15 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
 
         protected override AlertRuleResource CreateSdkCallParameters()
         {
-            RuleCondition condition = this.CreateRuleCondition();
+            LocationThresholdRuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(string.Format("CreateSdkCallParameters: Creating rule object"));
-            return new AlertRuleResource()
+            var action = Action == null ? null : this.Action.ToList()
+            return new AlertRuleResource
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
-                Actions = Action == null ? null : this.Action.ToList(),
+                Actions = this.action?.Select(TransitionHelpers.ToMirrorNamespace).ToList(),
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

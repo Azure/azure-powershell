@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
 using System.Collections;
 using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create an Activity Log Alert Action Group
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmActionGroup"), OutputType(typeof(ActivityLogAlertActionGroup))]
+    [Cmdlet(VerbsCommon.New, "AzureRmActionGroup"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertActionGroup))]
     public class NewAzureRmActionGroupCommand : AzureRMCmdlet
     {
         #region Cmdlet parameters
@@ -50,9 +50,11 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         public override void ExecuteCmdlet()
         {
             WriteObject(
-                new ActivityLogAlertActionGroup(
-                    actionGroupId: this.ActionGroupId,
-                    webhookProperties: WebhookProperty == null ? null : this.WebhookProperty.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
+                new Management.Monitor.Management.Models.ActivityLogAlertActionGroup
+                {
+                    ActionGroupId = this.ActionGroupId,
+                    WebhookProperties = WebhookProperty == null ? null : this.WebhookProperty.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
+                });
         }
     }
 }
