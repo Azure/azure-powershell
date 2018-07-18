@@ -52,7 +52,7 @@ For more information, see the documentation for the New-AzureRmExpressRouteCircu
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -67,7 +67,7 @@ Accept wildcard characters: False
 Specifies a unique name for the new ExpressRoute circuit authorization.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 494291A1-D854-4E97-B5EE-27BB5653D97C
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestorageserviceloggingproperty
 schema: 2.0.0
@@ -14,7 +15,7 @@ Gets logging properties for Azure Storage services.
 
 ```
 Get-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,12 +39,27 @@ To obtain a storage context, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -62,7 +78,7 @@ The value of File is not currently supported.
 ```yaml
 Type: StorageServiceType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Blob, Table, Queue, File
 
 Required: True

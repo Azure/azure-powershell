@@ -36,120 +36,123 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "ScaleUnits" -Tags @('ScaleUnit', 'Azs.Fabric.Admin') {
+    Describe "ScaleUnits" -Tags @('ScaleUnit', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateScaleUnit {
-				param(
-					[Parameter(Mandatory=$true)]
-					$ScaleUnit
-				)
+            function ValidateScaleUnit {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $ScaleUnit
+                )
 
-				$ScaleUnit          | Should Not Be $null
+                $ScaleUnit          | Should Not Be $null
 
-				# Resource
-				$ScaleUnit.Id       | Should Not Be $null
-				$ScaleUnit.Location | Should Not Be $null
-				$ScaleUnit.Name     | Should Not Be $null
-				$ScaleUnit.Type     | Should Not Be $null
+                # Resource
+                $ScaleUnit.Id       | Should Not Be $null
+                $ScaleUnit.Location | Should Not Be $null
+                $ScaleUnit.Name     | Should Not Be $null
+                $ScaleUnit.Type     | Should Not Be $null
 
-				# Scale Unit
-				$ScaleUnit.LogicalFaultDomain  | Should Not Be $null
-				$ScaleUnit.ScaleUnitType       | Should Not Be $null
-				$ScaleUnit.State               | Should Not Be $null
-				$ScaleUnit.TotalCapacity       | Should Not Be $null
-			}
+                # Scale Unit
+                $ScaleUnit.LogicalFaultDomain  | Should Not Be $null
+                $ScaleUnit.ScaleUnitType       | Should Not Be $null
+                $ScaleUnit.State               | Should Not Be $null
+                $ScaleUnit.TotalCapacity       | Should Not Be $null
+            }
 
-			function AssertScaleUnitsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertScaleUnitsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Scale Unit
-					$Found.LogicalFaultDomain  | Should Be $Expected.LogicalFaultDomain
-					$Found.Model               | Should Be $Expected.Model
-
-
-					if($Expected.Nodes -eq $null) {
-						$Found.Nodes        | Should be $null
-					} else {
-						$Found.Nodes        | Should not be $null
-						$Found.Nodes.Count  | Should be $Expected.Nodes.Count
-					}
-
-					$Found.ScaleUnitType  | Should Be $Expected.ScaleUnitType
-					$Found.State          | Should Be $Expected.State
-
-					if($Expected.TotalCapacity -eq $null) {
-						$Found.TotalCapacity           | Should be $null
-					} else {
-						$Found.TotalCapacity           | Should not be $null
-						$Found.TotalCapacity.Cores     | Should be $Expected.TotalCapacity.Cores
-						$Found.TotalCapacity.MemoryGB  | Should be $Expected.TotalCapacity.MemoryGB
-					}
-				}
-			}
-		}
+                    # Scale Unit
+                    $Found.LogicalFaultDomain  | Should Be $Expected.LogicalFaultDomain
+                    $Found.Model               | Should Be $Expected.Model
 
 
-		It "TestListScaleUnits" {
-			$global:TestName = 'TestListScaleUnits'
-			$ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $ResourceGroup -Location $Location
-			$ScaleUnits | Should Not Be $null
-			foreach($ScaleUnit in $ScaleUnits) {
-				ValidateScaleUnit -ScaleUnit $ScaleUnit
-			}
-	    }
+                    if ($Expected.Nodes -eq $null) {
+                        $Found.Nodes        | Should be $null
+                    }
+                    else {
+                        $Found.Nodes        | Should not be $null
+                        $Found.Nodes.Count  | Should be $Expected.Nodes.Count
+                    }
+
+                    $Found.ScaleUnitType  | Should Be $Expected.ScaleUnitType
+                    $Found.State          | Should Be $Expected.State
+
+                    if ($Expected.TotalCapacity -eq $null) {
+                        $Found.TotalCapacity           | Should be $null
+                    }
+                    else {
+                        $Found.TotalCapacity           | Should not be $null
+                        $Found.TotalCapacity.Cores     | Should be $Expected.TotalCapacity.Cores
+                        $Found.TotalCapacity.MemoryGB  | Should be $Expected.TotalCapacity.MemoryGB
+                    }
+                }
+            }
+        }
 
 
-		It "TestGetScaleUnit" {
+        it "TestListScaleUnits" -Skip:$('TestListScaleUnits' -in $global:SkippedTests) {
+            $global:TestName = 'TestListScaleUnits'
+            $ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $ScaleUnits | Should Not Be $null
+            foreach ($ScaleUnit in $ScaleUnits) {
+                ValidateScaleUnit -ScaleUnit $ScaleUnit
+            }
+        }
+
+
+        it "TestGetScaleUnit" -Skip:$('TestGetScaleUnit' -in $global:SkippedTests) {
             $global:TestName = 'TestGetScaleUnit'
 
-			$ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($ScaleUnit in $ScaleUnits) {
-				$retrieved = Get-AzsScaleUnit -ResourceGroupName $ResourceGroup -Location $Location -Name $ScaleUnit.Name
-				AssertScaleUnitsAreSame -Expected $ScaleUnit -Found $retrieved
-				break
-			}
-		}
+            $ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($ScaleUnit in $ScaleUnits) {
+                $retrieved = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $ScaleUnit.Name
+                AssertScaleUnitsAreSame -Expected $ScaleUnit -Found $retrieved
+                break
+            }
+        }
 
-		It "TestGetAllScaleUnits" {
-			$global:TestName = 'TestGetAllScaleUnits'
+        it "TestGetAllScaleUnits" -Skip:$('TestGetAllScaleUnits' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllScaleUnits'
 
-			$ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($ScaleUnit in $ScaleUnits) {
-				$retrieved = Get-AzsScaleUnit -ResourceGroupName $ResourceGroup -Location $Location -Name $ScaleUnit.Name
-				AssertScaleUnitsAreSame -Expected $ScaleUnit -Found $retrieved
-			}
-		}
+            $ScaleUnits = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($ScaleUnit in $ScaleUnits) {
+                $retrieved = Get-AzsScaleUnit -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $ScaleUnit.Name
+                AssertScaleUnitsAreSame -Expected $ScaleUnit -Found $retrieved
+            }
+        }
     }
 }

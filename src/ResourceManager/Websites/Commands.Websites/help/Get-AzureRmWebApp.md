@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.Websites.dll-Help.xml
-Module Name: AzureRM.WebSites
+Module Name: AzureRM.Websites
 ms.assetid: A87ED954-9C09-4329-A005-ABFF36C45E6E
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.websites/get-azurermwebapp
 schema: 2.0.0
@@ -48,9 +48,9 @@ This command gets the Web App named ContosoSite that belongs to the resource gro
 App Service Plan object
 
 ```yaml
-Type: AppServicePlan
+Type: Microsoft.Azure.Management.WebSites.Models.AppServicePlan
 Parameter Sets: S2
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 Location
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S3
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 WebApp Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: S1
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0

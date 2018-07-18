@@ -36,7 +36,9 @@ Creates a firewall config object with two rules while also enabling access from 
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
-Type: IAzureContextContainer
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,9 +53,9 @@ Accept wildcard characters: False
 A flag to indicate if the firewall is allowing access from Power BI
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -68,7 +70,7 @@ A list of firewall rules
 ```yaml
 Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

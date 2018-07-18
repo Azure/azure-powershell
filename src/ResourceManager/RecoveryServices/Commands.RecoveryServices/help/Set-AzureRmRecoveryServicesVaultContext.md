@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.RecoveryServices.ARM.dll-Help.xml
 Module Name: AzureRM.RecoveryServices
 ms.assetid: 368DD95E-EA25-4FC4-8171-CB7348FE480C
@@ -32,27 +32,11 @@ Sets vault context.
 
 ## PARAMETERS
 
-### -Vault
-Specifies the name of the vault.
-The vault must be an **AzureRmRecoveryServicesVault** object.
-
-```yaml
-Type: ARSVault
-Parameter Sets: (All)
-Aliases: 
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -60,6 +44,22 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Vault
+Specifies the name of the vault.
+The vault must be an **AzureRmRecoveryServicesVault** object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -76,4 +76,3 @@ Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
 ## NOTES
 
 ## RELATED LINKS
-

@@ -189,65 +189,69 @@ function Create-DataMaskingTestEnvironment ($testSuffix)
     New-AzureRmSqlServer -ResourceGroupName  $params.rgname -ServerName $params.serverName -ServerVersion "12.0" -Location "West Central US" -SqlAdministratorCredentials $credentials
 	New-AzureRmSqlServerFirewallRule -ResourceGroupName  $params.rgname -ServerName $params.serverName -StartIpAddress 0.0.0.0 -EndIpAddress 255.255.255.255 -FirewallRuleName "ddmRule"
 	New-AzureRmSqlDatabase -ResourceGroupName $params.rgname -ServerName $params.serverName -DatabaseName $params.databaseName
-	$fullServerName = $params.serverName + ".database.windows.net"
-
-	$uid = $params.userName
-	$login = $params.loginName
-	$pwd = $params.pwd
-
-	# create new login and user
-	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=master;Integrated Security=False;"
-
-	$connection = New-Object System.Data.SqlClient.SqlConnection
-	$connection.ConnectionString = $connectionString
-	try
+	
+	if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record")
 	{
-		$connection.Open()
+		$fullServerName = $params.serverName + ".database.windows.net"
 
-		$query = "CREATE LOGIN $uid WITH PASSWORD = '$pwd';"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
-	}
-	catch
-	{
-		# We catch the exceptions not to fail the tests in playback mode
-	}
-	finally
-	{
-		$connection.Close()
-	}
+		$uid = $params.userName
+		$login = $params.loginName
+		$pwd = $params.pwd
 
-	# create new user and create table in the database
-	$databaseName=$params.databaseName
-	$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=$databaseName;Integrated Security=False;"
+		# create new login and user
+		$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=master;Integrated Security=False;"
 
-	$connection = New-Object System.Data.SqlClient.SqlConnection
-	$connection.ConnectionString = $connectionString
-	try
-	{
-		$connection.Open()
+		$connection = New-Object System.Data.SqlClient.SqlConnection
+		$connection.ConnectionString = $connectionString
+		try
+		{
+			$connection.Open()
 
-		$table1 = $params.table1
-		$column1 = $params.column1
-		$columnInt = $params.columnInt
+			$query = "CREATE LOGIN $uid WITH PASSWORD = '$pwd';"
+			$command = $connection.CreateCommand()
+			$command.CommandText = $query
+			$command.ExecuteReader()
+		}
+		catch
+		{
+			# We catch the exceptions not to fail the tests in playback mode
+		}
+		finally
+		{
+			$connection.Close()
+		}
 
-		$table2 = $params.table2
-		$column2 = $params.column2
-		$columnFloat = $params.columnFloat
+		# create new user and create table in the database
+		$databaseName=$params.databaseName
+		$connectionString = "Server=$fullServerName;uid=$login;pwd=$pwd;Database=$databaseName;Integrated Security=False;"
 
-		$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
-		$command = $connection.CreateCommand()
-		$command.CommandText = $query
-		$command.ExecuteReader()
-	}
-	catch
-	{
-		# We catch the exceptions not to fail the tests in playback mode
-	}
-	finally
-	{
-		$connection.Close()
+		$connection = New-Object System.Data.SqlClient.SqlConnection
+		$connection.ConnectionString = $connectionString
+		try
+		{
+			$connection.Open()
+
+			$table1 = $params.table1
+			$column1 = $params.column1
+			$columnInt = $params.columnInt
+
+			$table2 = $params.table2
+			$column2 = $params.column2
+			$columnFloat = $params.columnFloat
+
+			$query = "CREATE TABLE $table1 ($column1 NVARCHAR(20)NOT NULL, $columnInt INT);CREATE TABLE $table2 ($column2 NVARCHAR(20)NOT NULL, $columnFloat DECIMAL(6,3));CREATE USER $uid FOR LOGIN $uid;"
+			$command = $connection.CreateCommand()
+			$command.CommandText = $query
+			$command.ExecuteReader()
+		}
+		catch
+		{
+			# We catch the exceptions not to fail the tests in playback mode
+		}
+		finally
+		{
+			$connection.Close()
+		}
 	}
 }
 

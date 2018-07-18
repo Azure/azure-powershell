@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 1BECAC91-BB43-46EB-B2C9-C965C6FBC831
@@ -58,7 +58,7 @@ The virtual machine belongs to the availability set stored in $AvailabilitySet.
 Specify the system assigned identity for the virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AssignIdentityParameterSet
 Aliases:
 
@@ -75,7 +75,7 @@ To obtain an availability set object, use the Get-AzureRmAvailabilitySet cmdlet.
 The availability set object contains an ID property.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -106,7 +106,7 @@ Specifies the list of user identities associated with the virtual machine scale 
 The user identity references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/identities/{identityName}'
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases:
 
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 The identity of the virtual machine, if configured.
 
 ```yaml
-Type: ResourceIdentityType
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType]
 Parameter Sets: ExplicitIdentityParameterSet
 Aliases:
 Accepted values: SystemAssigned, UserAssigned, SystemAssignedUserAssigned, None
@@ -137,7 +137,7 @@ Accept wildcard characters: False
 The license type, which is for bringing your own license scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 The tags attached to the resource.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -167,7 +167,7 @@ Accept wildcard characters: False
 Specifies a name for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName, Name
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 Specifies the size for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 Specifies the zone list for the virtual machine.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

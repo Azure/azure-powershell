@@ -54,7 +54,7 @@ The *FrontendIpConfiguration*, *Procotol*, *FrontendPort*, and *BackendPort* par
 Specifies the backend port for traffic that is matched by this rule configuration.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet enables a floating IP address for a rule configuration.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 Specifies a list of front-end IP addresses to associate with a load balancer rule configuration.
 
 ```yaml
-Type: PSFrontendIPConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 Parameter Sets: SetByResource
 Aliases:
 
@@ -114,7 +114,7 @@ Accept wildcard characters: False
 Specifies the ID for a front-end IP address configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 Specifies the front-end port that is matched by a load balancer rule configuration.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 Specifies the length of time, in minutes, for which the state of conversations is maintained in a load balancer.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Specifies the name of the rule configuration that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -178,7 +178,7 @@ The acceptable values for this parameter are:
 - Udp
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Tcp, Udp

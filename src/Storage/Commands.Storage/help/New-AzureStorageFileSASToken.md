@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: BB139312-A536-4B61-A005-6CAF02BE1637
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragefilesastoken
 schema: 2.0.0
@@ -16,26 +17,30 @@ Generates a shared access signature token for a Storage file.
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### NameSasPolicy
 ```
 New-AzureStorageFileSASToken [-ShareName] <String> [-Path] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### FileSasPermission
 ```
 New-AzureStorageFileSASToken -File <CloudFile> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [<CommonParameters>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### FileSasPolicy
 ```
 New-AzureStorageFileSASToken -File <CloudFile> -Policy <String> [-Protocol <SharedAccessProtocol>]
- [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri] [<CommonParameters>]
+ [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,12 +81,27 @@ To obtain a context, use the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -91,7 +111,7 @@ Specifies the time at which the shared access signature becomes invalid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,7 +127,7 @@ You can create a cloud file or obtain one by using the Get-AzureStorageFile cmdl
 ```yaml
 Type: CloudFile
 Parameter Sets: FileSasPermission, FileSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -122,7 +142,7 @@ Indicates that this cmdlet return the full blob URI and the shared access signat
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,7 +158,7 @@ The range is inclusive.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,7 +173,7 @@ Specifies the path of the file relative to a Storage share.
 ```yaml
 Type: String
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -170,7 +190,7 @@ It is important to note that this is a string, like `rwd` (for Read, Write and D
 ```yaml
 Type: String
 Parameter Sets: NameSasPermission, FileSasPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -185,7 +205,7 @@ Specifies the stored access policy for a file.
 ```yaml
 Type: String
 Parameter Sets: NameSasPolicy, FileSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -205,7 +225,7 @@ The default value is HttpsOrHttp.
 ```yaml
 Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -221,7 +241,7 @@ Specifies the name of the Storage share.
 ```yaml
 Type: String
 Parameter Sets: NameSasPermission, NameSasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -236,7 +256,7 @@ Specifies the time at which the shared access signature becomes valid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

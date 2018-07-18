@@ -65,7 +65,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The description for policy set definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 The display name for policy set definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ e.g.
 /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The name of the management group of the policy set definition to update.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
@@ -157,7 +157,7 @@ Accept wildcard characters: False
 The metadata of the updated policy set definition. This can either be a path to a file name containing the metadata, or the metadata as a string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 The policy set definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 The parameters declaration of the updated policy set definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as a string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +202,7 @@ Accept wildcard characters: False
 The policy set definition. This can either be a path to a file name containing the policy definitions, or the policy set definition as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -217,7 +217,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -232,7 +232,7 @@ Accept wildcard characters: False
 The subscription ID of the policy set definition to update.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -262,7 +262,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
