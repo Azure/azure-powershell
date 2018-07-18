@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Alerts
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("webtest alert rule"),
                 Condition = condition,
-                Actions = this.Action,
+                Actions = Action == null ? null : this.Action.ToList(),
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

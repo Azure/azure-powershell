@@ -15,6 +15,7 @@
 using Microsoft.Azure.Management.Monitor.Management.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
@@ -97,21 +98,21 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule days for the recurrence")]
         [ValidateNotNull]
-        public List<string> ScheduleDay { get; set; }
+        public string[] ScheduleDay { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleHours
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule hours for the recurrence")]
         [ValidateNotNull]
-        public List<int?> ScheduleHour { get; set; }
+        public int?[] ScheduleHour { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleMinutes
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule minutes for the recurrence")]
         [ValidateNotNull]
-        public List<int?> ScheduleMinute { get; set; }
+        public int?[] ScheduleMinute { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleTimeZone
@@ -126,7 +127,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAutoscaleProfileFixDateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [ValidateNotNullOrEmpty]
-        public List<ScaleRule> Rule { get; set; }
+        public ScaleRule[] Rule { get; set; }
 
         #endregion
 
@@ -173,7 +174,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                         }
                         : null,
                 Recurrence = this.ScheduleDay != null ? this.CreateAutoscaleRecurrence() : null,
-                Rules = this.Rule,
+                Rules = Rule == null ? null : this.Rule.ToList(),
             };
         }
 
@@ -195,10 +196,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             // Assuming validation is done by the server
             return new RecurrentSchedule()
             {
-                Days = this.ScheduleDay,
+                Days = ScheduleDay == null ? null : this.ScheduleDay.ToList(),
 
-                Hours = this.ScheduleHour,
-                Minutes = this.ScheduleMinute,
+                Hours = ScheduleHour == null ? null : this.ScheduleHour.ToList(),
+                Minutes = ScheduleMinute == null ? null : this.ScheduleMinute.ToList(),
                 TimeZone = this.ScheduleTimeZone,
             };
         }

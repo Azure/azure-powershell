@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
         [ValidateCount(1, 350)]
-        public List<string> GeoMapping { get; set; }
+        public string[] GeoMapping { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     Priority = this.Priority,
                     Location = this.EndpointLocation,
                     MinChildEndpoints = this.MinChildEndpoints,
-                    GeoMapping = this.GeoMapping,
+                    GeoMapping = this.GeoMapping == null ? null : this.GeoMapping.ToList(),
                 });
 
             this.WriteVerbose(ProjectResources.Success);

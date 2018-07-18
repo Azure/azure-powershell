@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific invoice to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
-        public List<string> Name { get; set; }
+        public string[] Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         [ValidateNotNull]

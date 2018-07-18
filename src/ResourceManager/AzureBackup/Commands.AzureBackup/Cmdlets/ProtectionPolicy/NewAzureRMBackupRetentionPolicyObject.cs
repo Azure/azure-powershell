@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.AzureBackup.Models;
 using Microsoft.Azure.Management.BackupServices.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
@@ -62,7 +63,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         [Parameter(ParameterSetName = YearlyRetentionInDailyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.DaysOfMonth)]
         [ValidateSet("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18",
             "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "Last", IgnoreCase = true)]
-        public List<string> DaysOfMonth { get; set; }
+        public string[] DaysOfMonth { get; set; }
 
         [Parameter(ParameterSetName = MonthlyRetentionInWeeklyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WeekNumber)]
         [Parameter(ParameterSetName = YearlyRetentionInWeeklyFormatParamSet, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WeekNumber)]
@@ -99,8 +100,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
                 if (MonthlyRetentionInDailyFormat != false)
                 {
-                    AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupMonthlyRetentionPolicy(RetentionType.Monthly.ToString(), Retention, RetentionFormat.Daily, DaysOfMonth,
-                        null, null);
+                    AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupMonthlyRetentionPolicy(RetentionType.Monthly.ToString(), Retention, RetentionFormat.Daily,
+                        DaysOfMonth == null ? null : DaysOfMonth.ToList(), null, null);
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(new List<AzureRMBackupRetentionPolicy> { retentionPolicy });
                     WriteObject(retentionPolicy);
                 }
@@ -109,8 +110,8 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     List<DayOfWeek> daysofWeekList = ConvertDaysOfWeek(DaysOfWeek);
                     List<WeekNumber> weekNumbers = ConvertWeekNumbers(WeekNumber);
-                    AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupMonthlyRetentionPolicy(RetentionType.Monthly.ToString(), Retention, RetentionFormat.Weekly, DaysOfMonth,
-                        weekNumbers, daysofWeekList);
+                    AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupMonthlyRetentionPolicy(RetentionType.Monthly.ToString(), Retention, RetentionFormat.Weekly,
+                        DaysOfMonth == null ? null : DaysOfMonth.ToList(), weekNumbers, daysofWeekList);
 
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(new List<AzureRMBackupRetentionPolicy> { retentionPolicy });
 
@@ -121,7 +122,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                 {
                     List<Month> monthsOfYear = ConvertMonthsOfYear(MonthsOfYear);
                     AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupYearlyRetentionPolicy(RetentionType.Yearly.ToString(), Retention, monthsOfYear, RetentionFormat.Daily,
-                        DaysOfMonth, null, null);
+                        DaysOfMonth == null ? null : DaysOfMonth.ToList(), null, null);
 
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(new List<AzureRMBackupRetentionPolicy> { retentionPolicy });
 
@@ -134,7 +135,7 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
                     List<WeekNumber> weekNumbers = ConvertWeekNumbers(WeekNumber);
                     List<Month> monthsOfYear = ConvertMonthsOfYear(MonthsOfYear);
                     AzureRMBackupRetentionPolicy retentionPolicy = new AzureBackupYearlyRetentionPolicy(RetentionType.Yearly.ToString(), Retention, monthsOfYear,
-                        RetentionFormat.Weekly, DaysOfMonth, weekNumbers, daysofWeekList);
+                        RetentionFormat.Weekly, DaysOfMonth == null ? null : DaysOfMonth.ToList(), weekNumbers, daysofWeekList);
 
                     ProtectionPolicyHelpers.ValidateRetentionPolicy(new List<AzureRMBackupRetentionPolicy> { retentionPolicy });
 

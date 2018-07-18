@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = false,
                HelpMessage = "The disabled rule groups.")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayFirewallDisabledRuleGroup> DisabledRuleGroups { get; set; }
+        public PSApplicationGatewayFirewallDisabledRuleGroup[] DisabledRuleGroups { get; set; }
 
         public override void ExecuteCmdlet()
         {

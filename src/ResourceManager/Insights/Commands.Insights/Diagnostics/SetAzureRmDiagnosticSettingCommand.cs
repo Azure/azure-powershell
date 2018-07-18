@@ -76,14 +76,14 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
         [ValidateNotNullOrEmpty]
-        public List<string> Categories { get; set; }
+        public string[] Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
         [ValidateNotNullOrEmpty]
-        public List<string> Timegrains { get; set; }
+        public string[] Timegrains { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether retention should be enabled

@@ -92,15 +92,15 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             Cmdlet.DefaultCapacity = "1";
             Cmdlet.MaximumCapacity = "10";
             Cmdlet.MinimumCapacity = "1";
-            Cmdlet.Rule = autoscaleRules;
+            Cmdlet.Rule = autoscaleRules.ToArray();
         }
 
         internal void InitializeForRecurrentSchedule()
         {
             Cmdlet.RecurrenceFrequency = RecurrenceFrequency.Minute;
-            Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" };
-            Cmdlet.ScheduleHour = new List<int?> { 5, 10, 15 };
-            Cmdlet.ScheduleMinute = new List<int?> { 15, 30, 45 };
+            Cmdlet.ScheduleDay = new List<string> { "1", "2", "3" }.ToArray();
+            Cmdlet.ScheduleHour = new List<int?> { 5, 10, 15 }.ToArray();
+            Cmdlet.ScheduleMinute = new List<int?> { 15, 30, 45 }.ToArray();
             Cmdlet.ScheduleTimeZone = "GMT";
         }
 

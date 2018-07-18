@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipeline = true,
             ParameterSetName = NicObjectParamSetName)]
         [ValidateNotNullOrEmpty]
-        public List<INetworkInterfaceReference> NetworkInterface { get; set; }
+        public INetworkInterfaceReference[] NetworkInterface { get; set; }
 
         [Parameter(
             Mandatory = false,

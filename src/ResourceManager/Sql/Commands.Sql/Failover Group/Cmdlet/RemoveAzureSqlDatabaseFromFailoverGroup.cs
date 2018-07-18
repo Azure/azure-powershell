@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "One or more Azure SQL Databases on the Failover Group's primary server to be removed from the Failover Group.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel> Database { get; set; }
+        public AzureSqlDatabaseModel[] Database { get; set; }
 
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
 
-            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
+            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database == null ? null : Database.ToList()));
 
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {

@@ -26,6 +26,7 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.Automation
@@ -75,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
-        public List<string> Location { get; set; }
+        public string[] Location { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
             var vAvailableProvidersListParameters = new AvailableProvidersListParameters
             {
-                AzureLocations = this.Location,
+                AzureLocations = Location == null ? null : this.Location.ToList(),
                 Country = this.Country,
                 State = this.State,
                 City = this.City,

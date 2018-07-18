@@ -25,6 +25,7 @@ using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -82,7 +83,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The IpConfigurations for Virtual network gateway.")]
         [ValidateNotNullOrEmpty]
-        public List<PSVirtualNetworkGatewayIpConfiguration> IpConfigurations { get; set; }
+        public PSVirtualNetworkGatewayIpConfiguration[] IpConfigurations { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -147,7 +148,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S VpnClient AddressPool")]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -158,25 +159,25 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnClientProtocol.IkeV2,
             MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientProtocol { get; set; }
+        public string[] VpnClientProtocol { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of VpnClientRootCertificates to be added.")]
-        public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
+        public PSVpnClientRootCertificate[] VpnClientRootCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of VpnClientCertificates to be revoked.")]
-        public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
+        public PSVpnClientRevokedCertificate[] VpnClientRevokedCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
-        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
+        public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -281,19 +282,19 @@ namespace Microsoft.Azure.Commands.Network
                 throw new ArgumentException("Virtual Network Gateway VpnType should be " + MNM.VpnType.RouteBased + " when Active-Active feature flag is set to True.");
             }
 
-            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count != 2)
+            if (this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Length != 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have 2 Gateway IpConfigurations specified when Active-Active feature flag is True.");
             }
 
-            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Count == 2)
+            if (!this.EnableActiveActiveFeature.IsPresent && this.IpConfigurations.Length == 2)
             {
                 throw new ArgumentException("Virtual Network Gateway should have Active-Active feature flag set to True as there are 2 Gateway IpConfigurations specified. OR there should be only one Gateway IpConfiguration specified.");
             }
 
             if (this.IpConfigurations != null)
             {
-                vnetGateway.IpConfigurations = this.IpConfigurations;
+                vnetGateway.IpConfigurations = this.IpConfigurations.ToList();
             }
 
             if (!string.IsNullOrEmpty(GatewaySku)
@@ -326,7 +327,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.VpnClientRootCertificates != null ||
                 this.VpnClientRevokedCertificates != null ||
                 this.RadiusServerAddress != null ||
-                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0))
+                (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0))
             {
                 vnetGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
 
@@ -339,27 +340,27 @@ namespace Microsoft.Azure.Commands.Network
                     }
 
                     vnetGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
-                    vnetGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+                    vnetGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = VpnClientAddressPool == null ? null : this.VpnClientAddressPool.ToList();
                 }
 
                 if (this.VpnClientProtocol != null)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
+                    vnetGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol.ToList();
                 }
 
                 if (this.VpnClientRootCertificates != null)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates;
+                    vnetGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates.ToList();
                 }
 
                 if (this.VpnClientRevokedCertificates != null)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                    vnetGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates.ToList();
                 }
 
-                if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
+                if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0)
                 {
-                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
+                    vnetGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy.ToList();
                 }
 
                 if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of client root certificate paths")]
-        public List<string> ClientRootCertificateFileList { get; set; }
+        public string[] ClientRootCertificateFileList { get; set; }
 
         public override void Execute()
         {

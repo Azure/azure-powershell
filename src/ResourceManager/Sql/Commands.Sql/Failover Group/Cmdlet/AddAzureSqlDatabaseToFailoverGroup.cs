@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             ValueFromPipeline = true,
             HelpMessage = "One or more Azure SQL Databases on the Failover Group's primary server to be added to the Failover Group.")]
         [ValidateNotNullOrEmpty]
-        public List<AzureSqlDatabaseModel> Database { get; set; }
+        public AzureSqlDatabaseModel[] Database { get; set; }
 
         /// <summary>
         /// Overriding to add warning message
@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
             string location = ModelAdapter.GetServerLocation(ResourceGroupName, ServerName);
             List<AzureSqlFailoverGroupModel> newEntity = new List<AzureSqlFailoverGroupModel>();
             List<string> dbs = new List<string>();
-            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database));
+            dbs.AddRange(ConvertDatabaseModelToDatabaseHelper(Database == null ? null : Database.ToList()));
 
             newEntity.Add(new AzureSqlFailoverGroupModel()
             {

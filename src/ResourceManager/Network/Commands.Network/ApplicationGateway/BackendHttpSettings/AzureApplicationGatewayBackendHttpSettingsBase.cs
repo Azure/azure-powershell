@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Application gateway Authentication Certificates")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayAuthenticationCertificate> AuthenticationCertificates { get; set; }
+        public PSApplicationGatewayAuthenticationCertificate[] AuthenticationCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.Network
                 backendHttpSettings.Probe = new PSResourceId();
                 backendHttpSettings.Probe.Id = this.ProbeId;
             }
-            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Count > 0)
+            if (this.AuthenticationCertificates != null && this.AuthenticationCertificates.Length > 0)
             {
                 backendHttpSettings.AuthenticationCertificates = new List<PSResourceId>();
                 foreach (var authcert in this.AuthenticationCertificates)

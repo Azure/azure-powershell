@@ -51,19 +51,19 @@ namespace Microsoft.Azure.Commands.Dns
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
-        public List<string> RegistrationVirtualNetworkId { get; set; }
+        public string[] RegistrationVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual network ids able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsIdsParameterSetName)]
         [ValidateNotNull]
-        public List<string> ResolutionVirtualNetworkId { get; set; }
+        public string[] ResolutionVirtualNetworkId { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks that will register virtual machine hostnames records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<IResourceReference> RegistrationVirtualNetwork { get; set; }
+        public IResourceReference[] RegistrationVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of virtual networks able to resolve records in this DNS zone, only available for private zones.", ParameterSetName = FieldsObjectsParameterSetName)]
         [ValidateNotNull]
-        public List<IResourceReference> ResolutionVirtualNetwork { get; set; }
+        public IResourceReference[] ResolutionVirtualNetwork { get; set; }
 
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The zone object to set.", ParameterSetName = ObjectParameterSetName)]
         [ValidateNotNullOrEmpty]
@@ -96,12 +96,12 @@ namespace Microsoft.Azure.Commands.Dns
                     // Change mutable fields if value is passed
                     if (this.RegistrationVirtualNetworkId != null)
                     {
-                        zoneToUpdate.RegistrationVirtualNetworkIds = this.RegistrationVirtualNetworkId;
+                        zoneToUpdate.RegistrationVirtualNetworkIds = RegistrationVirtualNetworkId == null ? null : this.RegistrationVirtualNetworkId.ToList();
                     }
 
                     if (this.ResolutionVirtualNetworkId != null)
                     {
-                        zoneToUpdate.ResolutionVirtualNetworkIds = this.ResolutionVirtualNetworkId;
+                        zoneToUpdate.ResolutionVirtualNetworkIds = ResolutionVirtualNetworkId == null ? null : this.ResolutionVirtualNetworkId.ToList();
                     }
                 }
                 else

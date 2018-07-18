@@ -16,8 +16,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
     using Microsoft.Azure.Commands.ApiManagement.Models;
     using ResourceManager.Common.ArgumentCompleters;
-    using System;
-    using System.Collections.Generic;
+    using System.Collections;
+    using System.Linq;
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.New, "AzureRmApiManagement"), OutputType(typeof(PsApiManagement))]
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
             HelpMessage = "Tags dictionary.")]
-        public Dictionary<string, string> Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     Location,
                     Organization,
                     AdminEmail,
-                    Tag,
+                    Tag == null ? null : Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value),
                     Sku ?? PsApiManagementSku.Developer,
                     Capacity ?? 1,
                     VpnType,

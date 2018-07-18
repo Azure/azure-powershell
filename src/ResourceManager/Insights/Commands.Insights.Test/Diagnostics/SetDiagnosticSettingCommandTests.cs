@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSomeCategories()
         {
-            cmdlet.Categories = new List<string> { "TestCategory1"};
+            cmdlet.Categories = new List<string> { "TestCategory1"}.ToArray();
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();
@@ -172,7 +172,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Diagnostics
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SetSomeTimeGrains()
         {
-            cmdlet.Timegrains = new List<string> { "PT1H" };
+            cmdlet.Timegrains = new List<string> { "PT1H" }.ToArray();
             cmdlet.Enabled = false;
             cmdlet.MyInvocation.BoundParameters[SetAzureRmDiagnosticSettingCommand.EnabledParamName] = false;
             cmdlet.ExecuteCmdlet();

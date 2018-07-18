@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-        public List<string> Zone { get; set; }
+        public string[] Zone { get; set; }
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] NatBackendPort { get; set; }
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
 
-                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Count == 0;
+                var noZones = _cmdlet.Zone == null || _cmdlet.Zone.Length == 0;
 
                 var publicIpAddress = resourceGroup.CreatePublicIPAddressConfig(
                     name: _cmdlet.PublicIpAddressName,
@@ -254,7 +254,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         ? _cmdlet.UpgradePolicyMode
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
-                    zones: _cmdlet.Zone,
+                    zones: _cmdlet.Zone == null ? null : _cmdlet.Zone.ToList(),
                     identity: _cmdlet.GetVmssIdentityFromArgs(),
                     singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent);
             }

@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Monitor.Management;
 using Microsoft.Azure.Management.Monitor.Management.Models;
+using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -64,7 +66,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list scopes")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list scopes")]
         [ValidateNotNullOrEmpty]
-        public List<string> Scope { get; set; }
+        public string[] Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the conditions of the activity log alert
@@ -73,7 +75,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of leaf conditions of the activity log alert")]
         [ValidateNotNullOrEmpty]
-        public List<ActivityLogAlertLeafCondition> Condition { get; set; }
+        public ActivityLogAlertLeafCondition[] Condition { get; set; }
 
         /// <summary>
         /// Gets or sets the actions of the activity log alert
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The list actions of the activity log alert")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list actions of the activity log alert")]
         [ValidateNotNullOrEmpty]
-        public List<ActivityLogAlertActionGroup> Action { get; set; }
+        public ActivityLogAlertActionGroup[] Action { get; set; }
 
         /// <summary>
         /// Gets or sets the DisableAlert flag.
@@ -108,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         [Parameter(ParameterSetName = SetActivityLogAlertFromPipeParamGroup, Mandatory = false, HelpMessage = "The tags of the activity log alert resource")]
         [Parameter(ParameterSetName = SetActivityLogAlertFromResourceIdParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the activity log alert resource")]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the InputObject parameter of the cmdlet
@@ -210,17 +212,17 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
             // NOTE: Location remains unchanged, the value of the Location parameter is ignored
             if (this.MyInvocation.BoundParameters.ContainsKey("Scope") || this.Scope != null)
             {
-                requestBody.Scopes = this.Scope;
+                requestBody.Scopes = Scope == null ? null : this.Scope.ToList();
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Condition") || this.Condition != null)
             {
-                requestBody.Condition = new ActivityLogAlertAllOfCondition(this.Condition);
+                requestBody.Condition = new ActivityLogAlertAllOfCondition(Condition == null ? null : this.Condition.ToList());
             }
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Action") || this.Action != null)
             {
-                requestBody.Actions = new ActivityLogAlertActionList(this.Action);
+                requestBody.Actions = new ActivityLogAlertActionList(Action == null ? null : this.Action.ToList());
             }
 
             if (this.DisableAlert.IsPresent)
@@ -235,7 +237,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 
             if (this.MyInvocation.BoundParameters.ContainsKey("Tag") || this.Tag != null)
             {
-                requestBody.Tags = this.Tag;
+                requestBody.Tags = Tag == null ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
             }
 
             return requestBody;
@@ -246,14 +248,14 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
             ActivityLogAlertResource newAlert = new ActivityLogAlertResource(
                 name: name,
                 location: location,
-                scopes: this.Scope,
-                condition: new ActivityLogAlertAllOfCondition(this.Condition),
-                actions: new ActivityLogAlertActionList(this.Action));
+                scopes: Scope == null ? null : this.Scope.ToList(),
+                condition: new ActivityLogAlertAllOfCondition(Condition == null ? null : this.Condition.ToList()),
+                actions: new ActivityLogAlertActionList(Action == null ? null : this.Action.ToList()));
 
             // EnableAlert defaults to true
             newAlert.Enabled = !this.DisableAlert.IsPresent;
             newAlert.Description = this.Description;
-            newAlert.Tags = this.Tag;
+            newAlert.Tags = Tag == null ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value);
 
             return newAlert;
         }

@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.Network
     using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
     using Microsoft.Azure.Management.Network;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
 
     [Cmdlet(VerbsCommon.New, "AzureRmRouteFilter", SupportsShouldProcess = true),OutputType(typeof(PSRouteFilter))]
     public class NewAzureRouteFilterCommand : RouteFilterBaseCmdlet
@@ -58,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of Routes")]
-        public List<PSRouteFilterRule> Rule { get; set; }
+        public PSRouteFilterRule[] Rule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -98,7 +99,7 @@ namespace Microsoft.Azure.Commands.Network
             psRouteFilter.Name = this.Name;
             psRouteFilter.ResourceGroupName = this.ResourceGroupName;
             psRouteFilter.Location = this.Location;
-            psRouteFilter.Rules = this.Rule;
+            psRouteFilter.Rules = Rule == null ? null : this.Rule.ToList();
 
             // Map to the sdk object
             var routeFilterModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteFilter>(psRouteFilter);

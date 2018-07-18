@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
@@ -122,7 +123,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
 
             // Test empty actions
             cmdlet.DisableRule = false;
-            cmdlet.Action = new List<RuleAction>();
+            cmdlet.Action = new List<RuleAction>().ToArray();
 
             cmdlet.ExecuteCmdlet();
 
@@ -144,7 +145,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 CustomEmails = eMails
             };
 
-            cmdlet.Action.Add(ruleAction);
+            var action = cmdlet.Action.ToList();
+            action.Add(ruleAction);
+            cmdlet.Action = action.ToArray();
 
             cmdlet.ExecuteCmdlet();
 
@@ -166,7 +169,9 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
                 Properties = properties
             };
 
-            cmdlet.Action.Add(ruleAction);
+            action = cmdlet.Action.ToList();
+            action.Add(ruleAction);
+            cmdlet.Action = action.ToArray();
 
             cmdlet.ExecuteCmdlet();
 

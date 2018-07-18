@@ -33,11 +33,11 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Firewall rules")]
-        public List<PsAzureAnalysisServicesFirewallRule> FirewallRule { get; set; }
+        public PsAzureAnalysisServicesFirewallRule[] FirewallRule { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig((EnablePowerBIService) ? true : false, FirewallRule);
+            PsAzureAnalysisServicesFirewallConfig config = new PsAzureAnalysisServicesFirewallConfig((EnablePowerBIService) ? true : false, FirewallRule == null ? null : FirewallRule.ToList());
             WriteObject(config);
         }
     }

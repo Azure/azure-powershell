@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub;
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
 
     [Cmdlet(VerbsCommon.Set, "AzureRmIotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
@@ -140,7 +141,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
             Mandatory = false,
             HelpMessage = "Add Routes")]
         [ValidateNotNullOrEmpty]
-        public List<PSRouteMetadata> Routes { get; set; }
+        public PSRouteMetadata[] Routes { get; set; }
 
         [Parameter(
             ParameterSetName = UpdateFallbackRoutePropertyParameterSet,
@@ -231,7 +232,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
                         if (this.Routes != null)
                         {
-                            iotHubDescription.Properties.Routing.Routes = IotHubUtils.ToRouteProperties(this.Routes);
+                            iotHubDescription.Properties.Routing.Routes = IotHubUtils.ToRouteProperties(this.Routes == null ? null : this.Routes.ToList());
                         }
 
                         break;

@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of receivers")]
-        public List<PSActionGroupReceiverBase> Receiver { get; set; }
+        public PSActionGroupReceiverBase[] Receiver { get; set; }
 
         /// <summary>
         /// Gets or sets the DisableGroup flag.
@@ -88,7 +88,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the action group resource")]
         [ValidateNotNullOrEmpty]
-        public IDictionary<string, string> Tag { get; set; }
+        public Hashtable Tag { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id parameter.
@@ -125,12 +125,20 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                     }
                     if (this.Tag == null)
                     {
-                        this.Tag = this.InputObject.Tags;
+                        Tag = new Hashtable();
+                        if (this.InputObject.Tags != null)
+                        {
+                            foreach (var tag in this.InputObject.Tags)
+                            {
+                                Tag.Add(tag.Key, tag.Value);
+                            }
+                        }
                     }
-                    this.Receiver = new List<PSActionGroupReceiverBase>();
-                    this.Receiver.AddRange(this.InputObject.EmailReceivers);
-                    this.Receiver.AddRange(this.InputObject.SmsReceivers);
-                    this.Receiver.AddRange(this.InputObject.WebhookReceivers);
+                    var receiver = new List<PSActionGroupReceiverBase>();
+                    receiver.AddRange(this.InputObject.EmailReceivers);
+                    receiver.AddRange(this.InputObject.SmsReceivers);
+                    receiver.AddRange(this.InputObject.WebhookReceivers);
+                    this.Receiver = receiver.ToArray();
                 }
                 else if (ParameterSetName == ByResourceId)
                 {
@@ -153,7 +161,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                                                       Location = "Global",
                                                       GroupShortName = this.ShortName,
                                                       Enabled = !this.DisableGroup.IsPresent || !this.DisableGroup,
-                                                      Tags = this.Tag,
+                                                      Tags = Tag == null ? null : this.Tag.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value),
                                                       EmailReceivers = emailReceivers,
                                                       SmsReceivers = smsReceivers,
                                                       WebhookReceivers = webhookReceivers

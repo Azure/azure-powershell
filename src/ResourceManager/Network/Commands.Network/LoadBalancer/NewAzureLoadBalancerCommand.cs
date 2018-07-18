@@ -12,13 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -68,31 +67,31 @@ namespace Microsoft.Azure.Commands.Network
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of frontend Ip config")]
         [ValidateNotNullOrEmpty]
-        public List<PSFrontendIPConfiguration> FrontendIpConfiguration { get; set; }
+        public PSFrontendIPConfiguration[] FrontendIpConfiguration { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend address pool")]
-        public List<PSBackendAddressPool> BackendAddressPool { get; set; }
+        public PSBackendAddressPool[] BackendAddressPool { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of probe")]
-        public List<PSProbe> Probe { get; set; }
+        public PSProbe[] Probe { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of inbound NAT rule")]
-        public List<PSInboundNatRule> InboundNatRule { get; set; }
+        public PSInboundNatRule[] InboundNatRule { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of load balancing rule")]
-        public List<PSLoadBalancingRule> LoadBalancingRule { get; set; }
+        public PSLoadBalancingRule[] LoadBalancingRule { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of inbound NAT pools")]
-        public List<PSInboundNatPool> InboundNatPool { get; set; }
+        public PSInboundNatPool[] InboundNatPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -147,32 +146,32 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.FrontendIpConfiguration != null)
             {
-                loadBalancer.FrontendIpConfigurations = this.FrontendIpConfiguration;
+                loadBalancer.FrontendIpConfigurations = FrontendIpConfiguration == null ? null : this.FrontendIpConfiguration.ToList();
             }
 
             if (this.BackendAddressPool != null)
             {
-                loadBalancer.BackendAddressPools = this.BackendAddressPool;
+                loadBalancer.BackendAddressPools = BackendAddressPool == null ? null : this.BackendAddressPool.ToList();
             }
 
             if (this.Probe != null)
             {
-                loadBalancer.Probes = this.Probe;
+                loadBalancer.Probes = Probe == null ? null : this.Probe.ToList();
             }
 
             if (this.InboundNatRule != null)
             {
-                loadBalancer.InboundNatRules = this.InboundNatRule;
+                loadBalancer.InboundNatRules = InboundNatRule == null ? null : this.InboundNatRule.ToList();
             }
 
             if (this.LoadBalancingRule != null)
             {
-                loadBalancer.LoadBalancingRules = this.LoadBalancingRule;
+                loadBalancer.LoadBalancingRules = LoadBalancingRule == null ? null : this.LoadBalancingRule.ToList();
             }
 
             if (this.InboundNatPool != null)
             {
-                loadBalancer.InboundNatPools = this.InboundNatPool;
+                loadBalancer.InboundNatPools = InboundNatPool == null ? null : this.InboundNatPool.ToList();
             }
 
             loadBalancer.ResourceGroupName = this.ResourceGroupName;

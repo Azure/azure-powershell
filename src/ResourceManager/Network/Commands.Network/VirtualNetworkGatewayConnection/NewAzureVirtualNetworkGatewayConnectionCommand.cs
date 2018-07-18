@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -143,7 +144,7 @@ namespace Microsoft.Azure.Commands.Network
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies.")]
-        public List<PSIpsecPolicy> IpsecPolicies { get; set; }
+        public PSIpsecPolicy[] IpsecPolicies { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -202,7 +203,7 @@ namespace Microsoft.Azure.Commands.Network
             
             if (this.IpsecPolicies != null)
             {
-                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies;
+                vnetGatewayConnection.IpsecPolicies = this.IpsecPolicies.ToList();
             }
 
             // Map to the sdk object
