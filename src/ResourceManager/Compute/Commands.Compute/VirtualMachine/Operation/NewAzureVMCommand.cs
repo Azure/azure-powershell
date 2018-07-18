@@ -297,7 +297,7 @@ namespace Microsoft.Azure.Commands.Compute
                     openPorts: _cmdlet.OpenPorts);
 
                 bool enableAcceleratedNetwork = Utils.DoesConfigSupportAcceleratedNetwork(_client,
-                    ImageAndOsType, _cmdlet.Size, Location);
+                    ImageAndOsType, _cmdlet.Size, Location, DefaultLocation);
 
                 var networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                     _cmdlet.Name, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);

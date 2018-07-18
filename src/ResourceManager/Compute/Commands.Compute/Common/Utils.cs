@@ -102,14 +102,14 @@ namespace Microsoft.Azure.Commands.Compute.Common
                    new ImageTypeForAccelNet("credativ", "debian", "-backports"), new ImageTypeForAccelNet("oracle", "oracle-linux", "^7.4"),
                    new ImageTypeForAccelNet("MicrosoftWindowsServer", "WindowsServer", "^2016"), new ImageTypeForAccelNet("MicrosoftWindowsServer", "WindowsServer", "^2012-R2") };
 
-        public static bool DoesConfigSupportAcceleratedNetwork(Client client, ImageAndOsType imageInfo, string size, string location)
+        public static bool DoesConfigSupportAcceleratedNetwork(Client client, ImageAndOsType imageInfo, string size, string location, string defaultLocation)
         {
-            if (imageInfo.Image?.Publisher == null)
+            if (imageInfo?.Image?.Publisher == null)
             {
                 return false;
             }
 
-            var sizeFound = ValidSizesForAccelNet.Select(x => x.ToLower().Equals(size.ToLower()));
+            var sizeFound = ValidSizesForAccelNet.Where(x => x.ToLower().Equals(size.ToLower()));
             if (sizeFound == null || sizeFound.Count() <= 0)
             {
                 return false;
@@ -119,8 +119,19 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             if (fourCoreSize == null | fourCoreSize.Count() == 0)
             {
+                var locationToUse = location;
+                if (String.IsNullOrWhiteSpace(locationToUse))
+                {
+                    locationToUse = defaultLocation;
+                }
                 //Check if the vm has enough cores
-                var sizeInfo = client.GetClient<ComputeManagementClient>()?.VirtualMachineSizes.List(location)?.Where(s => s.Name.ToLower().Equals(size.ToLower()));
+                var sizes = client.GetClient<ComputeManagementClient>().VirtualMachineSizes.List(locationToUse);
+                if (sizes == null)
+                {
+                    return false;
+                }
+
+                var sizeInfo = sizes.Where(s => s.Name.ToLower().Equals(size.ToLower()));
                 if (sizeInfo == null || sizeInfo.FirstOrDefault() == null || sizeInfo.FirstOrDefault().NumberOfCores < MIN_NUMBER_CORES_FOR_ACCEL_NET)
                 {
                     return false;
