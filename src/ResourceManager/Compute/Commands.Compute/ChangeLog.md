@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
 * Add example for `New-AzureRmVM`
 * Updated help files to include full parameter types.
 
