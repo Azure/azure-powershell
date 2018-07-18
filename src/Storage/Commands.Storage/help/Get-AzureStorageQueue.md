@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: C2EBCCF0-56CE-4D49-A138-74E52FC3A9AC
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/get-azurestoragequeue
 schema: 2.0.0
@@ -14,12 +15,14 @@ Lists storage queues.
 
 ### QueueName (Default)
 ```
-Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### QueuePrefix
 ```
-Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,12 +60,27 @@ You can create it by using the **New-AzureStorageContext** cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -80,7 +98,7 @@ Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
-Accept wildcard characters: True
+Accept wildcard characters: False
 ```
 
 ### -Prefix
@@ -89,7 +107,7 @@ Specifies a prefix used in the name of the queues you want to get.
 ```yaml
 Type: String
 Parameter Sets: QueuePrefix
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

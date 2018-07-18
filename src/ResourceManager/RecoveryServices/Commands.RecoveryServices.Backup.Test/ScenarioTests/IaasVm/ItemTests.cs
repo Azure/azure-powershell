@@ -27,18 +27,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
     public partial class ItemTests : RMTestBase
     {
-        public ItemTests(ITestOutputHelper output)
-        {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
-        }
-
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(TestConstants.Workload, TestConstants.AzureVM)]
         public void TestAzureVMGetItems()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetItems");
         }
 
         [Fact]
@@ -47,7 +42,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMProtection()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMProtection");
         }
 
         [Fact]
@@ -56,7 +51,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMBackup()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMBackup");
         }
 
         [Fact]
@@ -65,7 +60,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMGetRPs()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMGetRPs");
         }
 
         [Fact]
@@ -74,7 +69,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMFullRestore()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMFullRestore");
         }
 
         [Fact]
@@ -83,7 +78,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMRPMountScript()
         {
             Collection<PSObject> psObjects = TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMRPMountScript");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMRPMountScript");
 
             AzureVmRPMountScriptDetails mountScriptDetails = (AzureVmRPMountScriptDetails)psObjects.First(
                 psObject => psObject.BaseObject.GetType() == typeof(AzureVmRPMountScriptDetails)).BaseObject;
@@ -97,7 +92,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
         public void TestAzureVMSetVaultContext()
         {
             TestController.NewInstance.RunPsTest(
-                PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultContext");
+                _logger, PsBackupProviderTypes.IaasVm, "Test-AzureVMSetVaultContext");
         }
     }
 }

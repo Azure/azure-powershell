@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.LogicApp.dll-Help.xml
 Module Name: AzureRM.LogicApp
 ms.assetid: 8679240C-EA47-41C5-B8C1-A3C99547F42B
@@ -16,14 +16,14 @@ Creates a logic app in a resource group.
 ### LogicAppWithDefinitionParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-Definition <Object>] [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
+ -Definition <Object> [-IntegrationAccountId <String>] [-Parameters <Object>] [-ParameterFilePath <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LogicAppWithDefinitionFileParameterSet
 ```
 New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String> [-State <String>]
- [-DefinitionFilePath <String>] [-IntegrationAccountId <String>] [-Parameters <Object>]
+ -DefinitionFilePath <String> [-IntegrationAccountId <String>] [-Parameters <Object>]
  [-ParameterFilePath <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -163,7 +163,7 @@ The second command creates a new logic app that uses the definition and paramete
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -178,11 +178,11 @@ Accept wildcard characters: False
 Specifies the definition for your logic app as an object or a string in JavaScript Object Notataion (JSON) format.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: LogicAppWithDefinitionParameterSet
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,11 +193,11 @@ Accept wildcard characters: False
 Specifies the definition of a logic app as the path of a definition file in JSON format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LogicAppWithDefinitionFileParameterSet
-Aliases: 
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -208,9 +208,9 @@ Accept wildcard characters: False
 Specifies an integration account ID for the logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -225,9 +225,9 @@ Enter an Azure data center location, such as West US or Southeast Asia.
 You can place a logic app in any location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 Specifies the name for the logic app.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -255,9 +255,9 @@ Accept wildcard characters: False
 Specifies the path of a JSON formatted parameter file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -271,9 +271,9 @@ Specifies a parameters collection object for the Logic App.
 Specify a hash table, Dictionary\<string\>, or Dictionary\<string, WorkflowParameter\>.
 
 ```yaml
-Type: Object
+Type: System.Object
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -286,9 +286,9 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -302,9 +302,9 @@ Specifies the state of the logic app.
 The acceptable values for this parameter are: Enabled and Disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: False
@@ -318,7 +318,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -334,7 +334,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

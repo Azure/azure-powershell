@@ -76,7 +76,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         {
             SingleTransferContext transferContext = new SingleTransferContext();
             transferContext.ClientRequestId = CmdletOperationContext.ClientRequestId;
-            transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
+            if (overwrite)
+            {
+                transferContext.ShouldOverwriteCallback = TransferContext.ForceOverwrite;
+            }
+            else
+            {
+                transferContext.ShouldOverwriteCallback = ConfirmOverwrite;
+            }
 
             transferContext.ProgressHandler = new TransferProgressHandler((transferProgress) =>
                 {

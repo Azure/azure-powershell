@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 PartnerNamespace = drResource.PartnerNamespace;
                 Role = drResource.Role;
                 AlternateName = drResource.AlternateName;
+                PendingReplicationOperationsCount = drResource.PendingReplicationOperationsCount;
             }
         }
         
@@ -64,7 +65,12 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         /// capture description. Possible values include:
         /// 'Primary', 'PrimaryNotReplicating', 'Secondary'
         /// </summary>
-        public RoleDisasterRecovery? Role { get;  set; }        
-        
+        public RoleDisasterRecovery? Role { get;  set; }
+
+        /// <summary>
+        /// Gets number of entities pending to be replicated, when the count is 0 or null its safe to perform break pair or failover.
+        /// </summary>
+        public long? PendingReplicationOperationsCount { get; private set; }
+
     }
 }

@@ -30,7 +30,7 @@ Add-AzureRmVMDataDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-Caching] <C
 
 ### VmScaleSetVMParameterSetName
 ```
-Add-AzureRmVMDataDisk -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
+Add-AzureRmVMDataDisk [-VirtualMachineScaleSetVM] <PSVirtualMachineScaleSetVM> [[-Caching] <CachingTypes>]
  [[-DiskSizeInGB] <Int32>] [-Lun] <Int32> [-CreateOption] <String> [-ManagedDiskId] <String>
  [[-StorageAccountType] <String>] [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -139,7 +139,7 @@ Changing this value causes the virtual machine to restart.
 This setting affects the consistency and performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: Microsoft.Azure.Management.Compute.Models.CachingTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -167,7 +167,7 @@ When you specify this option, you must specify the *SourceImageUri* parameter al
 The *VhdUri* parameter is used as the location identifying where the data disk VHD will be stored when it is used by the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -197,7 +197,7 @@ Accept wildcard characters: False
 Specifies the size, in gigabytes, of an empty disk to attach to a virtual machine.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Specifies the logical unit number (LUN) for a data disk.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -227,7 +227,7 @@ Accept wildcard characters: False
 Specifies the ID of a managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmManagedDiskParameterSetName
 Aliases:
 
@@ -239,7 +239,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmScaleSetVMParameterSetName
 Aliases:
 
@@ -254,7 +254,7 @@ Accept wildcard characters: False
 Specifies the name of the data disk to add.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
 Aliases:
 
@@ -269,7 +269,7 @@ Accept wildcard characters: False
 Specifies the source URI of the disk that this cmdlet attaches.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName
 Aliases: SourceImage
 
@@ -284,7 +284,7 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
 Aliases:
 
@@ -301,7 +301,7 @@ This cmdlet copies the image binary large object (blob) to this location.
 This is the location from which to start the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VmNormalDiskParameterSetName
 Aliases:
 
@@ -317,12 +317,12 @@ Specifies the local virtual machine scale set VM object to which to add a data d
 You can use the **Get-AzureRmVmssVM** cmdlet to obtain a virtual machine scale set VM object.
 
 ```yaml
-Type: PSVirtualMachineScaleSetVM
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 Parameter Sets: VmScaleSetVMParameterSetName
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
@@ -334,7 +334,7 @@ You can use the **Get-AzureRmVM** cmdlet to obtain a virtual machine object.
 You can use the **New-AzureRmVMConfig** cmdlet to create a virtual machine object.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: VmNormalDiskParameterSetName, VmManagedDiskParameterSetName
 Aliases: VMProfile
 
@@ -349,7 +349,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on a managed data disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: VmManagedDiskParameterSetName, VmScaleSetVMParameterSetName
 Aliases:
 

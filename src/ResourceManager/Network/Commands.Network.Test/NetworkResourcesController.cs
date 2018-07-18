@@ -27,13 +27,16 @@ using System.IO;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources;
 using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
-
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.Azure.Internal.Subscriptions;
 
 namespace Commands.Network.Test
 {
     public sealed class NetworkResourcesController
     {
         private readonly EnvironmentSetupHelper _helper;
+
+        public SubscriptionClient SubscriptionClient { get; private set; }
 
         public NetworkManagementClient NetworkManagementClient { get; private set; }
 
@@ -52,8 +55,9 @@ namespace Commands.Network.Test
             _helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            _helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Compute", null);
@@ -136,6 +140,7 @@ namespace Commands.Network.Test
             ComputeManagementClient = GetComputeManagementClient(context);
             StorageManagementClient = GetStorageManagementClient(context);
             RedisManagementClient = GetRedisManagementClient(context);
+            SubscriptionClient = GetSubscriptionClient(context);
             OperationalInsightsManagementClient = GetOperationalInsightsManagementClient(context);
 
             _helper.SetupManagementClients(
@@ -144,12 +149,18 @@ namespace Commands.Network.Test
                 ComputeManagementClient,
                 StorageManagementClient,
                 RedisManagementClient,
+                SubscriptionClient,
                 OperationalInsightsManagementClient);
         }
 
         private static NetworkManagementClient GetNetworkManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<NetworkManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
+        }
+
+        private static SubscriptionClient GetSubscriptionClient(RestTestFramework.MockContext context)
+        {
+            return context.GetServiceClient<SubscriptionClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private static StorageManagementClient GetStorageManagementClient(RestTestFramework.MockContext context)

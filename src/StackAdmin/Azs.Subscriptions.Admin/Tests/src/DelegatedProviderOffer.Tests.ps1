@@ -37,8 +37,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -46,9 +48,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "DelegatedProviderOffer" -Tags @('DelegatedProviderOffers', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateDelegatedProviderOffer {
                 param(
@@ -60,24 +62,23 @@ InModuleScope Azs.Subscriptions.Admin {
 
                 # Resource
                 $offer.Id         | Should Not Be $null
-				$offer.Location   | Should Not Be $null
-				$offer.Name       | Should Not Be $null
-				$offer.Type       | Should Not Be $null
+                $offer.Location   | Should Not Be $null
+                $offer.Name       | Should Not Be $null
+                $offer.Type       | Should Not Be $null
             }
         }
 
-        It "TestListDelegatedProviderOffers" {
+        it "TestListDelegatedProviderOffers" -Skip:$('TestListDelegatedProviderOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListDelegatedProviderOffers'
 
             $providers = Get-AzsDelegatedProvider
 
-            foreach($provider in $providers) {
-				$offers = Get-AzsDelegatedProviderManagedOffer -DelegatedProvider $provider.DelegatedProviderSubscriptionId
-				foreach($offer in $offers)
-				{
-	                ValidateDelegatedProviderOffer $offer
-				}
-	        }
+            foreach ($provider in $providers) {
+                $offers = Get-AzsDelegatedProviderManagedOffer -DelegatedProvider $provider.DelegatedProviderSubscriptionId
+                foreach ($offer in $offers) {
+                    ValidateDelegatedProviderOffer $offer
+                }
+            }
         }
     }
 }

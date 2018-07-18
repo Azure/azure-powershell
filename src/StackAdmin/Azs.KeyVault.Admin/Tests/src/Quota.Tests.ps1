@@ -37,28 +37,27 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
-
-$global:TestName = ""
 
 InModuleScope Azs.KeyVault.Admin {
 
     Describe "KeyVaultQuotas" -Tags @('KeyVaultQuotas', 'Azs.KeyVault.Admin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
         }
 
 
-        It "TestListQuotas" {
+        it "TestListQuotas" -Skip:$('TestListQuotas' -in $global:SkippedTests) {
             $global:TestName = 'TestListQuotas'
 
-
-            $quotas = Get-AzsKeyVaultQuota -Location "local"
+            $quotas = Get-AzsKeyVaultQuota -Location $global:Location
             $quotas  | Should Not Be $null
         }
     }
