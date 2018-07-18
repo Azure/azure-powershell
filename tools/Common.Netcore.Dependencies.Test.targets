@@ -5,9 +5,9 @@
     <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.0.1.1" IncludeAssets="All" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.7.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.12" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.13" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.3.3" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework" Version="1.9.0" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
     <PackageReference Include="xunit" Version="2.3.1" />

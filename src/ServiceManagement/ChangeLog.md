@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to latest version of ClientRuntime
 
 ## Version 5.3.0
 * Add -ExtendedProperty parameter to New-AzureService and Set-AzureService
@@ -89,7 +90,7 @@
 ## Version 4.2.0
 For ExpressRoute:
 * Updated New-AzureBgpPeering cmdlet to add following new options :
-    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type	
+    - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to create a BGP Peering of the corresponding address family type
 * Updated Set-AzureBgpPeering cmdlet to add following new options :
     - PeerAddressType : Values of "IPv4" or "IPv6" can be specified to update BGP Peering of the corresponding address family type
 * Updated Remove-AzureBgpPeering cmdlet to add following new options :

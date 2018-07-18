@@ -20,6 +20,7 @@
 ## Current Release
 * Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
 * Updated help files to include full parameter types.
+* Updated to latest version of ClientRuntime
 
 ## Version 5.3.3
 * Updated help for `Get-AzureRmContextAutosaveSetting`
@@ -75,7 +76,7 @@
 * 'Remove-AzureRmAccount' has been renamed as 'Disconnect-AzureRmAccount'; an alias has been added for the old cmdlet name, and other aliases ('Logout-AzAccount' and 'Logout-AzureRmAccount') have been redirected to the new cmdlet name.
 * Corrected Resource Strings to use Connect-AzureRmAccount instead of Login-AzureRmAccount
 * Add-AzureRmEnvironment and Set-AzureRmEnvironment
-  - Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.  
+  - Added -AzureOperationalInsightsEndpoint and -AzureOperationalInsightsEndpointResourceId as parameters for use with OperationalInsights data plane RP.
 
 ## Version 4.2.0
 * Added ResourceGroup Completer to -ResourceGroup parameters allowing tab completion through resource groups in current subscription
@@ -110,22 +111,22 @@
     - Use this feature by adding LocationCompleter(string[] validResourceTypes) onto the Location parameter
 
 ## Version 3.4.0
-* Start-Job Support for AzureRm cmdlets. 
-    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet). 
+* Start-Job Support for AzureRm cmdlets.
+    * All AzureRmCmdlets add -AzureRmContext parameter, which can accept a context (output of a Context cmdlet).
       - Common pattern for jobs with context persistence DISABLED: ```Start-Job {param ($context) New-AzureRmVM -AzureRmContext $context [... other parameters]} -ArgumentList (Get-AzureRmContext)```
       - Common pattern for jobs with context persistence ENABLED:```Start-Job {New-AzureRmVM [... other parameters]}```
-    * Persist login information across sessions, new cmdlets: 
-      - Enable-AzureRmContextAutosave - Enable login persistence across sessions. 
-      - Disable-AzureRmContextAutosave - Disable login persistence across sessions. 
-    * Manage context information, new cmdets 
-      - Select-AzureRmContext - Select the active named context. 
-      - Rename-AzureRmContext - Rename an exsiting context for easy reference. 
-      - Remove-AzureRmContext - Remove an existing context. 
-      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account. 
-    * Manage context information, cmdlet changes: 
-      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials 
+    * Persist login information across sessions, new cmdlets:
+      - Enable-AzureRmContextAutosave - Enable login persistence across sessions.
+      - Disable-AzureRmContextAutosave - Disable login persistence across sessions.
+    * Manage context information, new cmdets
+      - Select-AzureRmContext - Select the active named context.
+      - Rename-AzureRmContext - Rename an exsiting context for easy reference.
+      - Remove-AzureRmContext - Remove an existing context.
+      - Remove-AzureRmAccount - Remove all credentials, subscriptions, and tenants associated with an account.
+    * Manage context information, cmdlet changes:
+      - Added Scope = (Process | CurrentUser) to all cmdlets that change credentials
       - Get-AzureRmContext - Added ListAvailable parameter to list all saved contexts
-      
+
 ## Version 3.3.1
 
 ## Version 3.3.0
@@ -163,7 +164,7 @@
 * *Obsolete*: Select-AzureRmProfile is renamed to Import-AzureRmContext, there is an alias to the old cmdlet name, the alias will be removed in the next release.
 * The PSAzureContext and PSAzureProfile output types of profile cmdlets will be changed in the next release.
 * The Save-AzureRmContext cmdlet will have no OutputType in the next release.
-* Fix bug in cmdlet common code to use FIPS-compliant algorithm for data hashes: https://github.com/Azure/azure-powershell/issues/3651 
+* Fix bug in cmdlet common code to use FIPS-compliant algorithm for data hashes: https://github.com/Azure/azure-powershell/issues/3651
 
 ## Version 2.7.0
 

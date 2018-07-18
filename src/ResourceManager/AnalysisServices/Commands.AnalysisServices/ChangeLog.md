@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+* Updated to latest version of ClientRuntime
 
 ## Version 0.6.10
 * Add required property ResourceGroupName to AS.
@@ -27,7 +28,7 @@
 * Fixed formatting of OutputType in help files
 
 ## Version 0.6.8
-* Enable Gateway assocaite/disassociate operations on AS. 
+* Enable Gateway assocaite/disassociate operations on AS.
 
 ## Version 0.6.7
 * Set minimum dependency of module to PowerShell 5.0
@@ -57,14 +58,14 @@
 * Fixed Synchronize-AzureAsInstance command to work with new AsAzure REST API for sync
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-    
+
 ## Version 0.4.7
 
 ## Version 0.4.6
-* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances 
+* Added a new dataplane commandlet to allow synchronization of databases from read-write instance to read-only instances
     - Included help file for the commandlet
     - Added in-memory tests and a scenario test (only live)
-* Fixed bugs in Add-AzureAsAccount commandlet 
+* Fixed bugs in Add-AzureAsAccount commandlet
 
 ## Version 0.4.4
 
