@@ -14,7 +14,7 @@ Gets the logged categories and time grains.
 ## SYNTAX
 
 ```
-Get-AzureRmDiagnosticSetting [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmDiagnosticSetting [-ResourceId] <String> [-Name: <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -56,6 +56,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Name
+The name of the diagnostic setting. If not given the call default to "service" as it was in the previous API.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the ID of the resource.
 
@@ -87,6 +102,5 @@ This cmdlet does not accept any input.
 
 ## RELATED LINKS
 
-[Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
-
-
+[Set-AzureRmDiagnosticSetting](./Set-AzureRmDiagnosticSetting.md)
+[Remove-AzureRmDiagnosticSetting](./Remove-AzureRmDiagnosticSetting.md)

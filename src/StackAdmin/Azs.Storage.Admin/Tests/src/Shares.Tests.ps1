@@ -38,139 +38,139 @@
     Date:   February 27, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "Shares" -Tags @('Shares', 'Azs.Storage.Admin') {
+    Describe "Shares" -Tags @('Shares', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function AssertAreEqual {
-				param(
-					[Parameter(Mandatory=$true)]
-					$expected,
-					[Parameter(Mandatory=$true)]
-					$found
-				)
-				# Resource
-				if($expected -eq $null){
-					$found												    | Should Be $null
-				}
-				else{
-				    $found												    | Should Not Be $null
-					# Validate Share properties
-					$expected.FreeCapacity	| Should Be $found.FreeCapacity
-					$expected.HealthStatus	| Should Be $found.HealthStatus
-					$expected.Id			| Should Be $found.Id
-					$expected.Location		| Should Be $found.Location
-					$expected.Name			| Should Be $found.Name
-					$expected.ShareName		| Should Be $found.ShareName
-					$expected.TotalCapacity | Should Be $found.TotalCapacity
-					$expected.Type			| Should Be $found.Type
-					$expected.UncPath		| Should Be $found.UncPath
-					$expected.UsedCapacity	| Should Be $found.UsedCapacity
-				}
-			}
+            function AssertAreEqual {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $expected,
+                    [Parameter(Mandatory = $true)]
+                    $found
+                )
+                # Resource
+                if ($expected -eq $null) {
+                    $found												    | Should Be $null
+                }
+                else {
+                    $found												    | Should Not Be $null
+                    # Validate Share properties
+                    $expected.FreeCapacity	| Should Be $found.FreeCapacity
+                    $expected.HealthStatus	| Should Be $found.HealthStatus
+                    $expected.Id			| Should Be $found.Id
+                    $expected.Location		| Should Be $found.Location
+                    $expected.Name			| Should Be $found.Name
+                    $expected.ShareName		| Should Be $found.ShareName
+                    $expected.TotalCapacity | Should Be $found.TotalCapacity
+                    $expected.Type			| Should Be $found.Type
+                    $expected.UncPath		| Should Be $found.UncPath
+                    $expected.UsedCapacity	| Should Be $found.UsedCapacity
+                }
+            }
 
-			function ValidateShare {
-				param(
-					[Parameter(Mandatory=$true)]
-					$share
-				)
-				# Resource
-				$share								| Should Not Be $null
+            function ValidateShare {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $share
+                )
+                # Resource
+                $share								| Should Not Be $null
 
-				# Validate Share properties
-				$share.FreeCapacity					| Should Not Be $null
-				$share.HealthStatus					| Should Not Be $null
-				$share.Id							| Should Not Be $null
-				$share.Location						| Should Not Be $null
-				$share.Name							| Should Not Be $null
-				$share.ShareName					| Should Not Be $null
-				$share.TotalCapacity				| Should Not Be $null
-				$share.Type							| Should Not Be $null
-				$share.UncPath						| Should Not Be $null
-				$share.UsedCapacity					| Should Not Be $null
-			}
-		}
+                # Validate Share properties
+                $share.FreeCapacity					| Should Not Be $null
+                $share.HealthStatus					| Should Not Be $null
+                $share.Id							| Should Not Be $null
+                $share.Location						| Should Not Be $null
+                $share.Name							| Should Not Be $null
+                $share.ShareName					| Should Not Be $null
+                $share.TotalCapacity				| Should Not Be $null
+                $share.Type							| Should Not Be $null
+                $share.UncPath						| Should Not Be $null
+                $share.UsedCapacity					| Should Not Be $null
+            }
+        }
 
-		It "TestGetShare" {
-			$global:TestName = 'TestGetShare'
+        it "TestGetShare" -Skip:$('TestGetShare' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetShare'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
-					$result  | Should Not Be $null
-					ValidateShare -share $result
-					AssertAreEqual -expected $share -found $result
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $result  | Should Not Be $null
+                    ValidateShare -share $result
+                    AssertAreEqual -expected $share -found $result
+                }
+            }
+        }
 
-		It "TestGetAllShares" {
-			$global:TestName = 'TestGetAllShares'
+        it "TestGetAllShares" -Skip:$('TestGetAllShares' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllShares'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
-					$result  | Should Not Be $null
-					ValidateShare -share $result
-					AssertAreEqual -expected $share -found $result
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $result = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $result  | Should Not Be $null
+                    ValidateShare -share $result
+                    AssertAreEqual -expected $share -found $result
+                }
+            }
+        }
 
-		It "TestListShares" {
-			$global:TestName = 'TestListShares'
+        it "TestListShares" -Skip:$('TestListShares' -in $global:SkippedTests) {
+            $global:TestName = 'TestListShares'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					ValidateShare -share $share
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    ValidateShare -share $share
+                }
+            }
+        }
 
-		It "TestListAllShareMetricDefinitions" {
-			$global:TestName = 'TestListAllShareMetricDefinitions'
+        it "TestListAllShareMetricDefinitions" -Skip:$('TestListAllShareMetricDefinitions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllShareMetricDefinitions'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$metricDefinitions = Get-AzsStorageShareMetricDefinition -ResourceGroupName $global:ResourceGroup -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
-					$metricDefinitions  | Should Not Be $null
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $metricDefinitions = Get-AzsStorageShareMetricDefinition -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $metricDefinitions  | Should Not Be $null
+                }
+            }
+        }
 
-		It "TestListAllShareMetrics" {
-			$global:TestName = 'TestListAllShareMetrics'
+        it "TestListAllShareMetrics" -Skip:$('TestListAllShareMetrics' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllShareMetrics'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($share in $shares) {
-					$metrics = Get-AzsStorageShareMetric -ResourceGroupName $global:ResourceGroup -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
-					$metrics  | Should Not Be $null
-				}
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $shares = Get-AzsStorageShare -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($share in $shares) {
+                    $metrics = Get-AzsStorageShareMetric -ResourceGroupName $global:ResourceGroupName -ShareName (Select-Name $share.Name) -FarmName (Select-Name $farm.Name)
+                    $metrics  | Should Not Be $null
+                }
+            }
+        }
+    }
 }

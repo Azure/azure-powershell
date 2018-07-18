@@ -19,6 +19,8 @@
 -->
 ## Current Release
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
 * Add example for `New-AzureRmVM`
 * Updated help files to include full parameter types.
 

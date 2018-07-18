@@ -12,32 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the RuleGetResponse
     /// </summary>
-    public class PSAlertRule : AlertRuleResource
+    public class PSAlertRule : Management.Monitor.Management.Models.AlertRuleResource
     {
         /// <summary>
         /// Initializes a new instance of the PSAlertRule class.
         /// </summary>
         /// <param name="ruleSpec"></param>
         public PSAlertRule(AlertRuleResource ruleSpec)
-            : base(
-                  location: ruleSpec.Location,
-                  alertRuleResourceName: ruleSpec.AlertRuleResourceName,
-                  isEnabled: ruleSpec.IsEnabled,
-                  condition: ruleSpec.Condition,
-                  id: ruleSpec.Id,
-                  name: ruleSpec.Name,
-                  type: ruleSpec.Type,
-                  tags: ruleSpec.Tags,
-                  description: ruleSpec.Description,
-                  actions: ruleSpec.Actions,
-                  lastUpdatedTime: ruleSpec.LastUpdatedTime)
+            : base(alertRuleResource: ruleSpec)
         {
         }
     }

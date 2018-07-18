@@ -12,8 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
-
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
@@ -24,6 +22,6 @@ namespace Microsoft.Azure.Commands.Insights.OutputClasses
         /// <summary>
         /// Gets or sets the SettingSpec, an AutoscaleSettingResource
         /// </summary>
-        public AutoscaleSettingResource SettingSpec { get; set; }
+        public Management.Monitor.Management.Models.AutoscaleSettingResource SettingSpec { get; set; }
     }
 }
