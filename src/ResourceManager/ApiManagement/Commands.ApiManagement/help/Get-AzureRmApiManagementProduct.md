@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: B64E9C13-97A6-4E8B-92DB-EFAF8A48C5B8
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproduct
 schema: 2.0.0
@@ -58,7 +58,7 @@ This command get an API Management product by ID.
 Specifies an instance of a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 Specifies the identifier of the product to search for.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -104,7 +104,7 @@ Specifies the title of the product to look for.
 If specified, the cmdlet attempts to get the product by title.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByTitle
 Aliases:
 

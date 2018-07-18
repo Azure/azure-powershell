@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackendproxy
 schema: 2.0.0
 ---
@@ -41,7 +41,7 @@ Creates a Backend Proxy Object and sets up Backend
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 Credentials used to connect to Backend Proxy. This parameter is optional.
 
 ```yaml
-Type: System.Management.Automation.PSCredential
+Type: PSCredential
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +72,7 @@ Url of the Proxy server to be used when forwarding calls to Backend.
 This parameter is required.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

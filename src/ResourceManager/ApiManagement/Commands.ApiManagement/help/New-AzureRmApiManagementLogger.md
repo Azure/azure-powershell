@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 17D53F56-6E3B-491E-8776-5EBE109FBE3C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementlogger
 schema: 2.0.0
@@ -50,7 +50,7 @@ Specifies an Azure Event Hubs connection string that starts with the following:
 The Key with Send Rights in the connection string must be configured.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: EventHubLoggerSet
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 Specifies a description.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Instrumentation Key of the application Insights. This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ApplicationInsightsLoggerSet
 Aliases:
 
@@ -127,7 +127,7 @@ The default value is $True.
 When records are buffered, they are sent to Event Hubs every 15 seconds, or whenever the buffer receives 256 KB of messages.
 
 ```yaml
-Type: System.Nullable`1[System.Boolean]
+Type: Boolean
 Parameter Sets: EventHubLoggerSet
 Aliases:
 
@@ -143,7 +143,7 @@ Specifies an ID for the logger.
 If you do not specify an ID, this cmdlet generates one.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 Specifies the entity name of an event hub from Azure classic portal.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: EventHubLoggerSet
 Aliases:
 

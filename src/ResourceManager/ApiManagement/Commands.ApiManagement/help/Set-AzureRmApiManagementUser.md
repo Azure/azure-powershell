@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 562DE7FA-F2A7-49E9-9273-3C4E2BF8D4B5
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementuser
 schema: 2.0.0
@@ -40,7 +40,7 @@ Specifies a **PsApiManagementContext** object.
 This parameter is required.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Specifies the email address of the user.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,7 +87,7 @@ Specifies the first name of the user.
 This parameter must be 1 to 100 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Specifies the last name of the user.
 This parameter is must be 1 to 100 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ This parameter is optional.
 The default value of this parameter is $null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Specifies the user password.
 This parameter is optional.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -168,10 +168,10 @@ This parameter is optional.
 The default value is Active.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState
+Type: PsApiManagementUserState
 Parameter Sets: (All)
 Aliases:
-Accepted values: Active, Blocked, Deleted, Pending
+Accepted values: Active, Blocked
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Specifies the user ID.
 This parameter is required.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

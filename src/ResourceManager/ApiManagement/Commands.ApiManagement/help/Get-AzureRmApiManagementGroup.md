@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementgroup
 schema: 2.0.0
@@ -80,7 +80,7 @@ This command gets all user groups with the user ID named 0123456789.
 Specifies an instance of PsApiManagementContext.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Specifies the group ID.
 If specified, the cmdlet attempts to find the group by the identifier.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByGroupId
 Aliases:
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 Specifies the name of the management group.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ If specified will return all groups the product assigned to.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -159,7 +159,7 @@ Specifies the identifier of existing product.
 If specified the cmdlet will return all groups the product assigned to.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: GetByUserId
 Aliases:
 

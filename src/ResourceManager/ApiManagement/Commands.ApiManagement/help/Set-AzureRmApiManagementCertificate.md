@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 12FC21EB-0B4E-4275-88FB-7FF42730A6A0
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementcertificate
 schema: 2.0.0
@@ -46,7 +46,7 @@ This command modifies the specified API Management certificate.
 Specifies the ID of the certificate to modify.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +107,7 @@ Specifies an array of bytes of the certificate file in .pfx format.
 This parameter is required if you do not specify the *PfxFilePath* parameter.
 
 ```yaml
-Type: System.Byte[]
+Type: Byte[]
 Parameter Sets: Raw
 Aliases:
 
@@ -123,7 +123,7 @@ Specifies the path to the certificate file in .pfx format to create and upload.
 This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: LoadFromFile
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 Specifies the password for the certificate.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

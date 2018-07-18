@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 3C467F64-7525-4420-9AFE-DCB98EF6D203
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementuser
 schema: 2.0.0
@@ -39,7 +39,7 @@ This command registers a new user named Patti Fuller.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Specifies the email address of the user.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Specifies the first name of the user.
 This parameter must be 1 to 100 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Specifies the last name of the user.
 This parameter must be 1 to 100 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ This parameter is optional.
 The default value is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ Specifies the user password.
 This parameter is required.
 
 ```yaml
-Type: System.Security.SecureString
+Type: SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -151,10 +151,10 @@ This parameter is optional.
 The default value of this parameter is $Null.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
+Type: PsApiManagementUserState
 Parameter Sets: (All)
 Aliases:
-Accepted values: Active, Blocked, Deleted, Pending
+Accepted values: Active, Blocked
 
 Required: False
 Position: Named
@@ -169,7 +169,7 @@ This parameter is optional.
 If this parameter is not specified, this cmdlet generates a user ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

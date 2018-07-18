@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 52115C49-0229-4F2C-B7B0-02FC52C1D32D
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementsubscription
 schema: 2.0.0
@@ -39,7 +39,7 @@ This command sets the primary and secondary keys for a subscription and activate
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Specifies a subscription expiration date.
 The default value of this parameter is $Null.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Specifies a subscription name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ This parameter is generated automatically if not specified.
 This parameter must be 1 to 300 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +134,7 @@ This parameter is generated automatically if not specified.
 This parameter must be 1 to 300 characters long.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -150,7 +150,7 @@ Specifies the subscription state.
 The default value of this parameter is $Null.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscriptionState]
+Type: PsApiManagementSubscriptionState
 Parameter Sets: (All)
 Aliases:
 Accepted values: Suspended, Active, Expired, Submitted, Rejected, Cancelled
@@ -167,7 +167,7 @@ Specifies the subscription state comment.
 The default value of this parameter is $Null.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -182,7 +182,7 @@ Accept wildcard characters: False
 Specifies the subscription ID.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 

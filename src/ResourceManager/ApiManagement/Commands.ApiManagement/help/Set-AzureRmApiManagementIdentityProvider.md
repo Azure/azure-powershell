@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementidentityprovider
 schema: 2.0.0
 ---
@@ -38,7 +38,7 @@ The cmdlet updates the Client Secret of the Facebook Identity Provider;
 List of allowed Azure Active Directory Tenants.
 
 ```yaml
-Type: System.String[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -54,7 +54,7 @@ Client Id of the Application in the external Identity Provider.
 It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +70,7 @@ Client secret of the Application in external Identity Provider, used to authenti
 For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +86,7 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,7 +117,7 @@ Indicates that this cmdlet returns the  **PsApiManagementIdentityProvider** that
 
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -133,10 +133,10 @@ Identifier of an existing Identity Provider.
 This parameter is required.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
+Type: PsApiManagementIdentityProviderType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad
 
 Required: True
 Position: Named
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

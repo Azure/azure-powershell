@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 56604912-53A0-496D-9BDC-472BCE45A6A2
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment
 schema: 2.0.0
@@ -89,7 +89,7 @@ Specifies the **PsApiManagement** instance to get deployment configuration from.
 Use this parameter if the instance already has all the required changes.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Type: PsApiManagement
 Parameter Sets: UpdateFromPsApiManagementInstance
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the SKU capacity of the master Azure API Management deployment region.
 
 ```yaml
-Type: System.Int32
+Type: Int32
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,7 +137,7 @@ To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -152,7 +152,7 @@ Accept wildcard characters: False
 Specifies the name of API Management that this cmdlet updates.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -168,7 +168,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +183,7 @@ Accept wildcard characters: False
 Specifies the name of resource group under which API Management exists.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -204,10 +204,10 @@ The acceptable values for this parameter are:
 - Premium
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
+Type: PsApiManagementSku
 Parameter Sets: UpdateSpecificService
 Aliases:
-Accepted values: Developer, Standard, Premium, Basic
+Accepted values: Developer, Standard, Premium
 
 Required: True
 Position: Named
@@ -220,7 +220,7 @@ Accept wildcard characters: False
 Specifies the Virtual Network configuration of the master Azure API Management deployment region.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Type: PsApiManagementVirtualNetwork
 Parameter Sets: UpdateSpecificService
 Aliases:
 
@@ -244,7 +244,7 @@ The API Management deployment has an external facing virtual address.
 The API Management deployment has an intranet facing virtual address.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
+Type: PsApiManagementVpnType
 Parameter Sets: UpdateSpecificService
 Aliases:
 Accepted values: None, External, Internal

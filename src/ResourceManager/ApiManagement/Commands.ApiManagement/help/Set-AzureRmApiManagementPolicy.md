@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRM.ApiManagement
+Module Name: AzureRm.ApiManagement
 ms.assetid: 6CD1C2B8-0416-4FF3-81B0-0C9E59AE6CF9
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementpolicy
 schema: 2.0.0
@@ -85,7 +85,7 @@ Specifies the identifier of the existing API.
 If you specify this parameter, the cmdlet sets the API-scope policy.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetApiLevel, SetOperationLevel
 Aliases:
 
@@ -100,7 +100,7 @@ Accept wildcard characters: False
 Identifier of API Revision. This parameter is optional. If not specified, the policy will be updated in the currently active api revision.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetApiLevel, SetOperationLevel
 Aliases:
 
@@ -115,7 +115,7 @@ Accept wildcard characters: False
 Specifies the instance of **PsApiManagementContext**.
 
 ```yaml
-Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Type: PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +130,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -149,10 +149,9 @@ The default value is `application/vnd.ms-azure-apim.policy+xml`.
 This parameter is optional.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
-Accepted values: application/vnd.ms-azure-apim.policy.raw+xml, application/vnd.ms-azure-apim.policy+xml
 
 Required: False
 Position: Named
@@ -167,7 +166,7 @@ If specified with ApiId will set operation-scope policy.
 This parameters is required.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetOperationLevel
 Aliases:
 
@@ -182,7 +181,7 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -198,7 +197,7 @@ Specifies the policy document as a string.
 This parameter is required if the -*PolicyFilePath* is not specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +213,7 @@ Specifies the policy document file path.
 This parameter is required if the *Policy* parameter is not specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -229,7 +228,7 @@ Accept wildcard characters: False
 The Url where the Policy document is hosted. This parameter is required if -Policy or -PolicyFilePath is not specified.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +244,7 @@ Specifies the identifier of the existing product.
 If this parameter is specified, the cmdlet sets the product-scope policy.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: SetProductLevel
 Aliases:
 
