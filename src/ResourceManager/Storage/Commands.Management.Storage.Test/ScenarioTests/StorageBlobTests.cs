@@ -23,30 +23,33 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
 {
     public class StorageBlobTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public StorageBlobTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainer()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageBlobContainer");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainerLegalHold()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageBlobContainerLegalHold");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerLegalHold");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageBlobContainerImmutabilityPolicy()
         {
-            TestController.NewInstance.RunPsTest("Test-StorageBlobContainerImmutabilityPolicy");
+            TestController.NewInstance.RunPsTest(_logger, "Test-StorageBlobContainerImmutabilityPolicy");
         }
     }
 }
