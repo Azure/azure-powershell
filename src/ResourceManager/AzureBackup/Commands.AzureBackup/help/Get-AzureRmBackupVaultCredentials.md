@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 9882F1A5-6FFB-4DAF-8ED5-B14596BC939D
@@ -32,7 +32,7 @@ You must register a server before Backup can send backup data to the vault.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -47,9 +47,9 @@ Accept wildcard characters: False
 Specifies the destination path where this cmdlet stores the vault credentials file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -63,9 +63,9 @@ Specifies the Backup vault for which this cmdlet gets a vault credential file.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

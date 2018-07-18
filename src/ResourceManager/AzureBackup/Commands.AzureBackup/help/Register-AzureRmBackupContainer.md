@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 394500DB-D2BB-4793-8D9F-2CAF4D892A55
@@ -51,7 +51,7 @@ That virtual machine belongs to the service named ContosoService27.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,9 +66,9 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine that this cmdlet registers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: V2VM
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,9 +102,9 @@ To obtain information about a virtual machine, use the Get-AzureRMVM cmdlet.
 The service name is the **DeploymentName** property of the virtual machine object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: V1VM
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -118,9 +118,9 @@ Specifies the Backup vault to which this cmdlet registers virtual machine.
 To obtain an **AzureRmBackupVault** object, use the Get-AzureRmBackupVault cmdlet.
 
 ```yaml
-Type: AzureRMBackupVault
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

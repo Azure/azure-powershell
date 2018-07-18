@@ -53,7 +53,7 @@ Since the command does not specify the *InstanceView* switch parameter, the cmdl
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets only the instance view of the virtual machine scale set.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: FriendMethod
 Aliases:
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet lists the os upgrade history of the virtual machine scale set.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: OSUpgradeHistoryMethodParameter
 Aliases:
 
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 Specifies the name of the Resource Group of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Species the name of the VMSS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 

@@ -63,7 +63,7 @@ The second command sets the expiration time of the file /myfile.txt 240 seconds 
 Specifies the Data Lake Store account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ The absolute expiration time for the specified file.
 If no value or set to MaxValue, the file will never expire.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.DateTimeOffset
 Parameter Sets: SetAbsoluteNeverExpireExpiry
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 Specifies the Data Lake Store path of the file item for which to set or remove expiry.
 
 ```yaml
-Type: DataLakeStorePathInstance
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
 Parameter Sets: (All)
 Aliases:
 
@@ -122,8 +122,9 @@ Accept wildcard characters: False
 
 ### -RelativeFileExpiryOption
 Relative expiry options. RelativeToNow or RelativeToCreationDate are current options
+
 ```yaml
-Type: PathRelativeExpiryOptions
+Type: Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathRelativeExpiryOptions
 Parameter Sets: SetRelativeExpiry
 Aliases:
 Accepted values: RelativeToNow, RelativeToCreationDate
@@ -137,8 +138,9 @@ Accept wildcard characters: False
 
 ### -RelativeTime
 The relative time in milliseconds with respect to now or creation time
+
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: SetRelativeExpiry
 Aliases:
 
@@ -153,7 +155,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +171,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

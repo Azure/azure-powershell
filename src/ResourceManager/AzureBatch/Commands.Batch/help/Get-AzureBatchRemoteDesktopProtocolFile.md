@@ -79,7 +79,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Specifies a compute node, as a **PSComputeNode** object, to which the .rdp file 
 To obtain a compute node object, use the Get-AzureBatchComputeNode cmdlet.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject_Path, InputObject_Stream
 Aliases:
 
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 Specifies the ID of the compute node to which the .rdp file points.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, Id_Stream
 Aliases:
 
@@ -125,7 +125,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Specifies the file path where this cmdlet saves the .rdp file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, InputObject_Path
 Aliases:
 
@@ -156,7 +156,7 @@ Specifies the stream into which this cmdlet directs the RDP data.
 This cmdlet does not close or rewind this stream.
 
 ```yaml
-Type: Stream
+Type: System.IO.Stream
 Parameter Sets: Id_Stream, InputObject_Stream
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute node from which this cmdlet gets an .rdp file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id_Path, Id_Stream
 Aliases:
 

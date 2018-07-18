@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Dns.dll-Help.xml
 Module Name: AzureRM.Dns
 ms.assetid: 40179CF3-7896-4C45-BC18-4CB653B245B6
@@ -72,7 +72,7 @@ This time, the zone is specified using a zone object.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -88,9 +88,9 @@ Specifies the name of the **RecordSet** to get.
 If you do not specify the *Name* parameter, all record sets of the specified type are returned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -100,9 +100,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -130,10 +130,10 @@ If you do not specify the *RecordType* parameter, you must also omit the *Name* 
 This cmdlet then returns all record sets in the zone (of all names and types).
 
 ```yaml
-Type: RecordType
+Type: System.Nullable`1[Microsoft.Azure.Management.Dns.Models.RecordType]
 Parameter Sets: (All)
-Aliases: 
-Accepted values: A, AAAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
+Aliases:
+Accepted values: A, AAAA, CAA, CNAME, MX, NS, PTR, SOA, SRV, TXT
 
 Required: False
 Position: Named
@@ -149,9 +149,9 @@ The zone name must also be specified, using the *ZoneName* parameter.
 Alternatively, you can specify the zone and resource group by passing in a **DnsZone** object using the *Zone* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -165,9 +165,9 @@ Specifies the DNS zone that contains the record set that this cmdlet gets.
 Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
-Type: DnsZone
+Type: Microsoft.Azure.Commands.Dns.DnsZone
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -183,9 +183,9 @@ The resource group containing the zone must also be specified, using the *Resour
 Alternatively, you can specify the zone and resource group by passing in a DNS Zone object using the *Zone* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

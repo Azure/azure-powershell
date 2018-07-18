@@ -1,23 +1,27 @@
 ﻿
-$global:Location = "local"
-$global:TenantVMName = "502828aa-de3a-4ba9-a66c-5ae6d49589d7"
+# Test Variables
+$global:SkippedTests = @(
+    "TestDownloadAzsAzureBridgeProductPipeline",
+    "TestRemoveAzsAzureBridgeDownloadedProduct",
+    "TestRemoveAzsAzureBridgeDownloadedProductPipeline"
+)
+
 $global:Provider = "Microsoft.AzureBridge.Admin"
 
+$global:ActivationName = "default"
+$global:ResourceGroupName = "azurestack-activation"
+$global:ProductName1 = "Canonical.UbuntuServer1710-ARM.1.0.6"
+$global:ProductName2 = "microsoft.docker-arm.1.1.0"
+
+# Run using mocked client
 if(-not $RunRaw) {
 	$scriptBlock = {
 		Get-MockClient -ClassName 'AzureBridgeAdminClient' -TestName $global:TestName -Verbose
 	}
-	Mock New-ServiceClient $scriptBlock -ModuleName "Azs.AzureBridge.Admin"
+	Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
 
-function Repeat{
-	param(
-		[int]$Times,
-		[ScriptBLock]$Script
-	)
-
-	while($Times -gt 0) {
-		Invoke-Command -ScriptBlock $Script
-		$Times = $Times - 1
-	}
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }
+

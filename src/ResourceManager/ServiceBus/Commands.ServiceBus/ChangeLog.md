@@ -19,6 +19,17 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.6.7
+* Added top and skip parameter to list cmdlets
+* Added Standard to Premium NameSpace migration cmdlets :
+	- Start-AzureRmServiceBusMigration
+	- Get-AzureRmServiceBusMigration
+	- Complete-AzureRmServiceBusMigration
+	- Stop-AzureRmServiceBusMigration
+	- Remove-AzureRmServiceBusMigration
+* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress 
 
 ## Version 0.6.6
 * Added optional Parameter -KeyValue to New-AzureRmServiceBusKey cmdlet, which enables user to provide KeyValue.
@@ -44,10 +55,10 @@
 * Added functionality fix for Remove-AzureRmServiceBusRule and Get-AzureRmServiceBusKey
 
 ## Version 0.6.0
-* Added below new commandlets for Geo Disaster Recovery operations. 
-	-Creating a new Alias(Disaster Recovery configuration): 
+* Added below new commandlets for Geo Disaster Recovery operations.
+	-Creating a new Alias(Disaster Recovery configuration):
 		- New-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PartnerNamespace] <String> [-WhatIf] [-Confirm]
-	-Retrieve Alias(Disaster Recovery configuration) : 
+	-Retrieve Alias(Disaster Recovery configuration) :
 		- Get-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [[-Name] <String>]
 	-Disabling the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 		- Set-AzureRmServiceBusDRConfigurationsBreakPairing [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
@@ -55,7 +66,7 @@
 		- Set-AzureRmServiceBusDRConfigurationsFailOver [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
 	-Deleting an Alias(Disaster Recovery configuration)
 		- Remove-AzureRmServiceBusDRConfigurations [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-WhatIf] [-Confirm]
-* Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations. 
+* Updated Test-AzureRmServiceBusName commandlets to support Geo Disaster Recovery - Alias name check availability operations.
 	-Check the Availability of Namespace name or Alias(Disaster Recovery configuration) name:
 		- Test-AzureRmServiceBusName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 
@@ -67,7 +78,7 @@
 * NOTE: This is a breaking change release. Please see the migration guide (https://aka.ms/azps-migration-guide) for a full list of breaking changes introduced.
 * Add support for online help
     - Run Get-Help with the -Online parameter to open the online help in your default Internet browser
-	
+
 ## Version 0.4.7
 
 ## Version 0.4.6
@@ -75,7 +86,7 @@
 ## Version 0.4.4
 
 ## Version 0.4.3
-* Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed. 
+* Added below new commandlets for AuthorizationRules for NameSpace, Queue and Topic. according to parameter set the authorization rule orperations are perfomed.
  - New-AzureRmServiceBusAuthorizationRule
    - Adds a new AuthorizationRule to the existing ServiceBus NameSpace/Queue/Topic.
  - Get-AzureRmServiceBusAuthorizationRule
@@ -85,9 +96,9 @@
  - New-AzureRmServiceBusKey
    - Generates a new Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.
  - Get-AzureRmServiceBusKey
-   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.   
+   - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace/Queue/Topic.
  - Remove-AzureRmServiceBusNamespaceAuthorizationRule
-   - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.   
+   - Deletes the existing AuthorizationRule of ServiceBus NameSpace/Queue/Topic.
 * Added Resource Group property to NamespceAttributes
 
 ## Version 0.4.2
@@ -100,8 +111,8 @@
 
 ## Version 0.3.0
 
-* Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue. 
-  - Properties affected are LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount and MessageCount 
+* Bug Fix: ServiceBus Queue object property values were set to null, the object is used as input parameter in Set-AzureRmServiceBusQueue cmdlet to update Queue.
+  - Properties affected are LockDuration, EntityAvailabilityStatus, DuplicateDetectionHistoryTimeWindow, MaxDeliveryCount and MessageCount
 
 ## Version 0.2.0
 
@@ -114,7 +125,7 @@
     - User will be able to update the SkuCapacity(Messaging units in case of a premium namespace) of the SeriveBus NameSpace
 
 * Future Breaking Change Notification: We've added a warning about removing property 'ResourceGroupName' from the returned NamespceAttributes from cmdlets New-AzureRmServiceBusNamespace, Get-AzureRmServiceBusNamespace and Set-AzureRmServiceBusNamespace
-    -The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property  
+    -The call remains the same, but the returned values NameSpace object will not have the ResourceGroupName property
 
 ## Version 0.0.1
 
@@ -145,7 +156,7 @@
 
  - Get-AzureRmServiceBusNamespaceKey
    - Gets Primary/Secondary Key for AuthorizationRule of existing ServiceBus NameSpace.
-   
+
  - Remove-AzureRmServiceBusNamespaceAuthorizationRule
    - Deletes the existing AuthorizationRule of ServiceBus NameSpace.
 
@@ -165,8 +176,8 @@
    - Adds a new AuthorizationRule to the existing Queue of ServiceBus NameSpace.
 
  - Get-AzureRmServiceBusQueueAuthorizationRule
-   - Gets the AuthorizationRule / List of AuthorizationRules of the Queue 
-   
+   - Gets the AuthorizationRule / List of AuthorizationRules of the Queue
+
  - Set-AzureRmServiceBusQueueAuthorizationRule
    - Updates the AuthorizationRule of the Queue.
 
@@ -196,7 +207,7 @@
 
  - Get-AzureRmServiceBusTopicAuthorizationRule
    - Gets the AuthorizationRule / List of AuthorizationRules of the Topic.
-   
+
  - Set-AzureRmServiceBusTopicAuthorizationRule
    - Updates the AuthorizationRule of the Topic.
 
@@ -208,7 +219,7 @@
 
  - Remove-AzureRmServiceBusTopicAuthorizationRule
    - Deletes the existing AuthorizationRule of ServiceBus Topic.
-   
+
  - New-AzureRmServiceBusSubscription
    - Adds a new Subscription to the existing ServiceBus Topic.
 
