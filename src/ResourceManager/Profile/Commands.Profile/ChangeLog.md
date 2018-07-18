@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+* Added ps1xml types to Common.Storage
 
 ## Version 5.3.3
 * Updated help for `Get-AzureRmContextAutosaveSetting`
