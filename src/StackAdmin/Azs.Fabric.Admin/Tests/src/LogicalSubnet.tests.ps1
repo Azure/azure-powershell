@@ -36,124 +36,127 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "LogicalSubnets" -Tags @('LogicalSubnet', 'Azs.Fabric.Admin') {
+    Describe "LogicalSubnets" -Tags @('LogicalSubnet', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateLogicalSubnet {
-				param(
-					[Parameter(Mandatory=$true)]
-					$LogicalSubnet
-				)
+            function ValidateLogicalSubnet {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $LogicalSubnet
+                )
 
-				$LogicalSubnet          | Should Not Be $null
+                $LogicalSubnet          | Should Not Be $null
 
-				# Resource
-				$LogicalSubnet.Id       | Should Not Be $null
-				$LogicalSubnet.Location | Should Not Be $null
-				$LogicalSubnet.Name     | Should Not Be $null
-				$LogicalSubnet.Type     | Should Not Be $null
+                # Resource
+                $LogicalSubnet.Id       | Should Not Be $null
+                $LogicalSubnet.Location | Should Not Be $null
+                $LogicalSubnet.Name     | Should Not Be $null
+                $LogicalSubnet.Type     | Should Not Be $null
 
-				# Logical Network
-				<#
+                # Logical Network
+                <#
 				$LogicalSubnet.Metadata  | Should Not Be $null
 				#>
-				$LogicalSubnet.IpPools   | Should Not Be $null
-				$LogicalSubnet.IsPublic  | Should Not Be $null
-			}
+                $LogicalSubnet.IpPools   | Should Not Be $null
+                $LogicalSubnet.IsPublic  | Should Not Be $null
+            }
 
-			function AssertLogicalSubnetsAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertLogicalSubnetsAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Logical Network
-					if($Expected -eq $null) {
-						$Found.IpPools | Should be $null
-					} else {
-						$Found.IpPools.Count   | Should Be $Expected.IpPools.Count
-					}
-					$Found.IsPublic  | Should Be $Expected.IsPublic
+                    # Logical Network
+                    if ($Expected -eq $null) {
+                        $Found.IpPools | Should be $null
+                    }
+                    else {
+                        $Found.IpPools.Count   | Should Be $Expected.IpPools.Count
+                    }
+                    $Found.IsPublic  | Should Be $Expected.IsPublic
 
-					if($Expected.Metadata -eq $null) {
-						$Found.Metadata        | Should Be $null
-					} else {
-						$Found.Metadata        | Should Not Be $null
-						$Found.Metadata.Count  | Should Be $Expected.Metadata.Count
-					}
-				}
-			}
-		}
-
-
-		It "TestListLogicalSubnets" {
-			$global:TestName = 'TestListLogicalSubnets'
-
-			$logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($logicalNetwork in $logicalNetworks) {
-				$logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $ResourceGroup -Location $Location -LogicalNetwork $logicalNetwork.Name
-				foreach($logicalSubnet in $logicalSubnets) {
-					ValidateLogicalSubnet $logicalSubnet
-				}
-				break
-			}
-	    }
+                    if ($Expected.Metadata -eq $null) {
+                        $Found.Metadata        | Should Be $null
+                    }
+                    else {
+                        $Found.Metadata        | Should Not Be $null
+                        $Found.Metadata.Count  | Should Be $Expected.Metadata.Count
+                    }
+                }
+            }
+        }
 
 
-		It "TestGetLogicalSubnet" {
+        it "TestListLogicalSubnets" -Skip:$('TestListLogicalSubnets' -in $global:SkippedTests) {
+            $global:TestName = 'TestListLogicalSubnets'
+
+            $logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($logicalNetwork in $logicalNetworks) {
+                $logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $global:ResourceGroupName -Location $Location -LogicalNetwork $logicalNetwork.Name
+                foreach ($logicalSubnet in $logicalSubnets) {
+                    ValidateLogicalSubnet $logicalSubnet
+                }
+                break
+            }
+        }
+
+
+        it "TestGetLogicalSubnet" -Skip:$('TestGetLogicalSubnet' -in $global:SkippedTests) {
             $global:TestName = 'TestGetLogicalSubnet'
 
-			$logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($logicalNetwork in $logicalNetworks) {
-				$logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $ResourceGroup -Location $Location -LogicalNetwork $logicalNetwork.Name
-				foreach($logicalSubnet in $logicalSubnets) {
-					$retrieved = Get-AzsLogicalSubnet -ResourceGroupName $ResourceGroup -Location $Location -LogicalNetwork $logicalNetwork.Name -Name $logicalSubnet.Name
-					AssertLogicalSubnetsAreSame -Expected $logicalSubnet -Found $retrieved
-					break
-				}
-				break
-			}
-		}
+            $logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($logicalNetwork in $logicalNetworks) {
+                $logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $global:ResourceGroupName -Location $Location -LogicalNetwork $logicalNetwork.Name
+                foreach ($logicalSubnet in $logicalSubnets) {
+                    $retrieved = Get-AzsLogicalSubnet -ResourceGroupName $global:ResourceGroupName -Location $Location -LogicalNetwork $logicalNetwork.Name -Name $logicalSubnet.Name
+                    AssertLogicalSubnetsAreSame -Expected $logicalSubnet -Found $retrieved
+                    break
+                }
+                break
+            }
+        }
 
-		It "TestGetAllLogicalSubnets" {
-			$global:TestName = 'TestGetAllLogicalSubnets'
+        it "TestGetAllLogicalSubnets" -Skip:$('TestGetAllLogicalSubnets' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllLogicalSubnets'
 
-			$logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($logicalNetwork in $logicalNetworks) {
-				$logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $ResourceGroup -Location $Location -LogicalNetwork $logicalNetwork.Name
-				foreach($logicalSubnet in $logicalSubnets) {
-					$retrieved = Get-AzsLogicalSubnet -ResourceGroupName $ResourceGroup -Location $Location -LogicalNetwork $logicalNetwork.Name -Name $logicalSubnet.Name
-					AssertLogicalSubnetsAreSame -Expected $logicalSubnet -Found $retrieved
-				}
-			}
-		}
+            $logicalNetworks = Get-AzsLogicalNetwork -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($logicalNetwork in $logicalNetworks) {
+                $logicalSubnets = Get-AzsLogicalSubnet -ResourceGroupName $global:ResourceGroupName -Location $Location -LogicalNetwork $logicalNetwork.Name
+                foreach ($logicalSubnet in $logicalSubnets) {
+                    $retrieved = Get-AzsLogicalSubnet -ResourceGroupName $global:ResourceGroupName -Location $Location -LogicalNetwork $logicalNetwork.Name -Name $logicalSubnet.Name
+                    AssertLogicalSubnetsAreSame -Expected $logicalSubnet -Found $retrieved
+                }
+            }
+        }
     }
 }

@@ -20,16 +20,19 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     using Xunit.Abstractions;
     public class ProviderFeatureTests
     {
+        public XunitTracingInterceptor _logger;
+
         public ProviderFeatureTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureProviderFeature()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-AzureProviderFeature");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-AzureProviderFeature");
         }
     }
 }

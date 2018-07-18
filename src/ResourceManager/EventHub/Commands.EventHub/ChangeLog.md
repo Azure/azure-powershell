@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
+
+## Version 0.6.6
+* Added a readonly property 'PendingReplicationOperationsCount' to PSEventHubDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
 
 ## Version 0.6.5
 * Fixed formatting of OutputType in help files

@@ -173,7 +173,7 @@ Indicates that this cmdlet creates an Azure Storage context for anonymous logon.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: AnonymousAccount, AnonymousAccountEnvironment
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -188,7 +188,7 @@ Specifies a connection string for the Azure Storage context.
 ```yaml
 Type: String
 Parameter Sets: ConnectionString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -203,7 +203,7 @@ Specifies the endpoint for the Azure Storage context.
 ```yaml
 Type: String
 Parameter Sets: OAuthAccount, AccountNameAndKey, AnonymousAccount, SasToken
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -247,7 +247,7 @@ Indicates that this cmdlet creates a context by using the local development stor
 ```yaml
 Type: SwitchParameter
 Parameter Sets: LocalDevelopment
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -262,7 +262,7 @@ Transfer Protocol (https/http).
 ```yaml
 Type: String
 Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, OAuthAccountEnvironment
-Aliases: 
+Aliases:
 Accepted values: Http, Https
 
 Required: False
@@ -278,7 +278,7 @@ Specifies a Shared Access Signature (SAS) token for the context.
 ```yaml
 Type: String
 Parameter Sets: SasToken, SasTokenWithAzureEnvironment
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -294,7 +294,7 @@ This cmdlet creates a context for the key that this parameter specifies.
 ```yaml
 Type: String
 Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -310,7 +310,7 @@ This cmdlet creates a context for the account that this parameter specifies.
 ```yaml
 Type: String
 Parameter Sets: OAuthAccount, AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment, OAuthAccountEnvironment
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

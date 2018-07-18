@@ -48,7 +48,7 @@ This command gets the account named ContosoADL.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 Specifies the name of the account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
 Aliases:
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the Data Lake Store account to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup
 Aliases:
 
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySpecificAccount
 Aliases:
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 5E854358-CA9D-4336-BA6A-BF7B1FADAB50
@@ -57,7 +57,7 @@ The second command creates a second rule for the Requests metric, and then store
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,9 +72,9 @@ Accept wildcard characters: False
 Specifies the name of the metric.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +87,9 @@ Accept wildcard characters: False
 Specifies the metric resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -108,9 +108,9 @@ The acceptable values for this parameter are:
 - Sum
 
 ```yaml
-Type: MetricStatisticType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Average, Min, Max, Sum
 
 Required: True
@@ -132,9 +132,9 @@ The acceptable values for this parameter are:
 - LessThanOrEqual
 
 ```yaml
-Type: ComparisonOperationType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Equals, NotEquals, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual
 
 Required: True
@@ -148,9 +148,9 @@ Accept wildcard characters: False
 Specifies the Autoscale action cooldown time.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -168,9 +168,9 @@ The acceptable values for this parameter are:
 - Decrease
 
 ```yaml
-Type: ScaleDirection
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Increase, Decrease
 
 Required: True
@@ -190,9 +190,9 @@ The acceptable values for this parameter are:
 - ExactCount
 
 ```yaml
-Type: ScaleType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.ScaleType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: ChangeCount, PercentChangeCount, ExactCount
 
 Required: False
@@ -206,9 +206,9 @@ Accept wildcard characters: False
 Specifies the action value.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -221,9 +221,9 @@ Accept wildcard characters: False
 Specifies the threshold of the metric value.
 
 ```yaml
-Type: Double
+Type: System.Double
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -243,9 +243,9 @@ The acceptable values for this parameter are:
 - Total, Count
 
 ```yaml
-Type: TimeAggregationType
+Type: Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Average, Minimum, Maximum, Total, Count
 
 Required: False
@@ -259,9 +259,9 @@ Accept wildcard characters: False
 Specifies the time grain.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -274,9 +274,9 @@ Accept wildcard characters: False
 Specifies the time window.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

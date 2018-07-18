@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
 {
     public class ReservationTests : RMTestBase
     {
-        public ReservationTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ReservationTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
             TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
@@ -34,42 +37,42 @@ namespace Microsoft.Azure.Commands.Consumption.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationSummariesMonthlyWithOrderId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationSummariesMonthlyWithOrderId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationSummariesMonthlyWithOrderId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationSummariesMonthlyWithOrderIdAndId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationSummariesMonthlyWithOrderIdAndId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationSummariesMonthlyWithOrderIdAndId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationSummariesDailyWithOrderId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationSummariesDailyWithOrderId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationSummariesDailyWithOrderId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationSummariesDailyWithOrderIdAndId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationSummariesDailyWithOrderIdAndId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationSummariesDailyWithOrderIdAndId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationDetailsWithOrderId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationDetailsWithOrderId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationDetailsWithOrderId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListReservationDetailsWithOrderIdAndId()
         {
-            TestController.NewInstance.RunPowerShellTest("Test-ListReservationDetailsWithOrderIdAndId");
+            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListReservationDetailsWithOrderIdAndId");
         }
     }
 }
