@@ -278,8 +278,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
-            // If the user did not specify a load balancer name, As in we are using a
-            // just
+            // If the user did not specify a load balancer name, mark the LB setting to ignore
+            // preexisting check. The most common scenario is users will let the cmdlet create and name the LB for them with the default
+            // config. We do not want to block that scenario in case the cmdlet failed mid operation and tthe user kicks it off again.
             if (!loadBalancerNamePassedIn)
             {
                 LoadBalancerStrategy.IgnorePreExistingConfigCheck = true;
