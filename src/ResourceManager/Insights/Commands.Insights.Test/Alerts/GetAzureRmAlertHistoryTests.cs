@@ -26,8 +26,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
 
 namespace Microsoft.Azure.Commands.Insights.Test.Alerts
@@ -35,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
     public class GetAzureRmAlertHistoryTests
     {
         private readonly GetAzureRmAlertHistoryCommand cmdlet;
-        private readonly Mock<MonitorClient> MonitorClientMock;
+        private readonly Mock<MonitorManagementClient> MonitorClientMock;
         private readonly Mock<IActivityLogsOperations> insightsEventOperationsMock;
         private Mock<ICommandRuntime> commandRuntimeMock;
         private AzureOperationResponse<IPage<EventData>> response;
@@ -49,12 +47,12 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
             ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
             TestExecutionHelpers.SetUpSessionAndProfile();
             insightsEventOperationsMock = new Mock<IActivityLogsOperations>();
-            MonitorClientMock = new Mock<MonitorClient>();
+            MonitorClientMock = new Mock<MonitorManagementClient>();
             commandRuntimeMock = new Mock<ICommandRuntime>();
             cmdlet = new GetAzureRmAlertHistoryCommand()
             {
                 CommandRuntime = commandRuntimeMock.Object,
-                MonitorClient = MonitorClientMock.Object
+                MonitorManagementClient = MonitorClientMock.Object
             };
 
             response = Test.Utilities.InitializeResponse();
