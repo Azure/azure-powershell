@@ -15,7 +15,8 @@ Creates a stored access policy for an Azure storage queue.
 
 ```
 New-AzureStorageQueueStoredAccessPolicy [-Queue] <String> [-Policy] <String> [-Permission <String>]
- [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>] [<CommonParameters>]
+ [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -48,11 +49,26 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpiryTime
 Specifies the time at which the stored access policy becomes invalid.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +85,7 @@ Specifies permissions in the stored access policy to access the storage queue.
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +100,7 @@ Accept wildcard characters: False
 Specifies a name for the stored access policy.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +115,7 @@ Accept wildcard characters: False
 Specifies the Azure storage queue name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: N, Name
 
@@ -114,7 +130,7 @@ Accept wildcard characters: False
 Specifies the time at which the stored access policy becomes valid.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

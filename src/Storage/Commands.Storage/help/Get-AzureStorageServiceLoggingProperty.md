@@ -15,7 +15,7 @@ Gets logging properties for Azure Storage services.
 
 ```
 Get-AzureStorageServiceLoggingProperty [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -45,6 +45,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -61,7 +76,7 @@ The acceptable values for this parameter are:
 The value of File is not currently supported.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
+Type: StorageServiceType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Blob, Table, Queue, File

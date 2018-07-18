@@ -16,7 +16,7 @@ Modifies metrics properties for the Azure Storage service.
 ```
 Set-AzureStorageServiceMetricsProperty [-ServiceType] <StorageServiceType> [-MetricsType] <ServiceMetricsType>
  [-Version <Double>] [-RetentionDays <Int32>] [-MetricsLevel <MetricsLevel>] [-PassThru]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -48,6 +48,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -60,7 +75,7 @@ The acceptable values for this parameter are:
 - ServiceAndApi
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.Shared.Protocol.MetricsLevel]
+Type: MetricsLevel
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, ServiceAndApi
@@ -78,7 +93,7 @@ This cmldet sets the Azure Storage service metrics type to the value that this p
 The acceptable values for this parameter are: Hour and Minute.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Commands.Storage.Common.ServiceMetricsType
+Type: ServiceMetricsType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Hour, Minute
@@ -95,7 +110,7 @@ Indicates that this cmdlets returns the updated metrics properties.
 If you do not specify this parameter, this cmdlet does not return a value.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +125,7 @@ Accept wildcard characters: False
 Specifies the number of days that the Azure Storage service retains metrics information.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
+Type: Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +149,7 @@ The acceptable values for this parameter are:
 The value of File is not currently supported.
 
 ```yaml
-Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
+Type: StorageServiceType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Blob, Table, Queue, File
@@ -151,7 +166,7 @@ Specifies the version of the Azure Storage metrics.
 The default value is 1.0.
 
 ```yaml
-Type: System.Nullable`1[System.Double]
+Type: Double
 Parameter Sets: (All)
 Aliases:
 

@@ -20,8 +20,22 @@ $PathStringsToIgnore = @(
     "NotificationHubs",
     "Stack"
 )
+Write-Host "Files changed: $FilesChanged"
+$FilesChangedList = @()
+while ($true)
+{
+    $Idx = $FilesChanged.IndexOf(";")
+    if ($Idx -lt 0)
+    {
+        $FilesChangedList += $FilesChanged
+        break
+    }
 
-$FilesChangedList = $FilesChanged -split ';'
+    $TempFile = $FilesChanged.Substring(0, $Idx)
+    Write-Host "Adding '$TempFile' to 'FilesChangedList'"
+    $FilesChangedList += $TempFile
+    $FilesChanged = $FilesChanged.Substring($Idx + 1)
+}
 
 if ([string]::IsNullOrEmpty($FilesChanged) -or ($FilesChangedList.Count -eq 300))
 {
@@ -48,7 +62,22 @@ foreach ($ChangeLog in $ChangeLogs)
     else
     {
         # Handle ResourceManager to construct a string like "src/ResourceManager/{{service}}"
-        $SplitPath = $ChangeLog -split '/'
+        $SplitPath = @()
+        while ($true)
+        {
+            $Idx = $ChangeLog.IndexOf("/")
+            if ($Idx -lt 0)
+            {
+                $SplitPath += $ChangeLog
+                break
+            }
+
+            $TempPath = $ChangeLog.Substring(0, $Idx)
+            Write-Host "Adding '$TempPath' to 'SplitPath'"
+            $SplitPath += $TempPath
+            $ChangeLog = $ChangeLog.Substring($Idx + 1)
+        }
+
         $BasePath = $SplitPath[0],$SplitPath[1],$SplitPath[2] -join "/"
         Write-Host "Change log '$ChangeLog' processed to base path '$BasePath'"
         $UpdatedServicePaths.Add($BasePath) | Out-Null
