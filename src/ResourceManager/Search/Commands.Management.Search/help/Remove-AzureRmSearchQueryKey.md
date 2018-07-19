@@ -1,68 +1,60 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/remove-azurermsearchquerykey
 schema: 2.0.0
 ---
 
 # Remove-AzureRmSearchQueryKey
 
 ## SYNOPSIS
-Remove the query key from the Azure Search Service.
+Remove the query key from the Azure Search service.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
+```
+Remove-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyValue <String> [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ParentObjectParameterSet
 ```
-Remove-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -KeyValue <String> [-Force]
+Remove-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -KeyValue <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-Remove-AzureRmSearchQueryKey [-ParentResourceId] <String> -KeyValue <String> [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceNameParameterSet
-```
-Remove-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -KeyValue <String> [-Force]
+Remove-AzureRmSearchQueryKey [-ParentResourceId] <String> -KeyValue <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSearchQueryKey** cmdlet removes the query key from the Azure Search Service.
+The **Remove-AzureRmSearchQueryKey** cmdlet removes the query key from the Azure Search service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyValue 65FBCF561228C5F0E01F8F2114C80459
+PS C:\> Get-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+
+Name         Key                             
+----         ---                             
+             D260F448EA192EBC19D59F7E5670E8BB
+NewQueryKey1 B4C13E3F6FA76100D3488673CFDCD438
+
+PS C:\> Remove-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -KeyValue B4C13E3F6FA76100D3488673CFDCD438
 
 Confirm
-Are you sure you want to remove query key '65FBCF561228C5F0E01F8F2114C80459'?
+Are you sure you want to remove query key 'B4C13E3F6FA76100D3488673CFDCD438'?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
 PS C:\>
 ```
 
-The example removes the query key from the Azure Search Service.
+The example removes the query key from the Azure Search service.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,7 +97,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -139,6 +131,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group name.
 
@@ -150,7 +155,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,7 +170,22 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -186,15 +206,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet.
+### System.String
+
+### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 

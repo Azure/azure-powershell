@@ -1,21 +1,21 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/new-azurermsearchservice
 schema: 2.0.0
 ---
 
 # New-AzureRmSearchService
 
 ## SYNOPSIS
-Create an Azure Search service.
+Creates an Azure Search service.
 
 ## SYNTAX
 
 ```
-New-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <SkuName> [-Location] <String>
- [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <HostingMode>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Sku] <PSSkuName> [-Location] <String>
+ [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-HostingMode <PSHostingMode>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ The **New-AzureRmSearchService** cmdlet creates an Azure Search service with spe
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default
+PS C:\> New-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -Sku "Standard" -Location "West US" -PartitionCount 1 -ReplicaCount 1 -HostingMode Default -Force
 
 
 ResourceGroupName : TestAzureSearchPsGroup
@@ -36,7 +36,7 @@ Sku               : Standard
 ReplicaCount      : 1
 PartitionCount    : 1
 HostingMode       : Default
-Tags              : 
+Tags              :
 ```
 
 The command creates an Azure Search service.
@@ -58,11 +58,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Force
+Do not ask for confirmation.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HostingMode
 Search Service hosting mode.
 
 ```yaml
-Type: HostingMode
+Type: PSHostingMode
 Parameter Sets: (All)
 Aliases:
 Accepted values: Default, HighDensity
@@ -70,7 +83,7 @@ Accepted values: Default, HighDensity
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -85,7 +98,7 @@ Aliases:
 Required: True
 Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -100,7 +113,7 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -115,7 +128,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,7 +143,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -145,7 +158,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -153,7 +166,7 @@ Accept wildcard characters: False
 Search Service Sku.
 
 ```yaml
-Type: SkuName
+Type: PSSkuName
 Parameter Sets: (All)
 Aliases:
 Accepted values: Free, Basic, Standard, Standard2, Standard3
@@ -161,13 +174,42 @@ Accepted values: Free, Basic, Standard, Standard2, Standard3
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -176,7 +218,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-
 
 ## NOTES
 
