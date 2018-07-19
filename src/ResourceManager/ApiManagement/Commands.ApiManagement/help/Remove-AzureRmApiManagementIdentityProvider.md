@@ -88,7 +88,7 @@ This parameter is required.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Facebook, Google, Microsoft, Twitter, Aad
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
 
 Required: True
 Position: Named
