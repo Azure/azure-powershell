@@ -54,15 +54,15 @@ Set-AzureRmKeyVaultAccessPolicy [-VaultName] <String> [[-ResourceGroupName] <Str
 
 ### InputObjectByObjectId
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ObjectId <String> [-ApplicationId <Guid>]
- [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
- [-PermissionsToStorage <String[]>] [-BypassObjectIdValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVaultIdentityItem> -ObjectId <String>
+ [-ApplicationId <Guid>] [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>]
+ [-PermissionsToCertificates <String[]>] [-PermissionsToStorage <String[]>] [-BypassObjectIdValidation]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectByServicePrincipalName
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ServicePrincipalName <String>
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVaultIdentityItem> -ServicePrincipalName <String>
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -70,7 +70,7 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -ServicePrincipalNam
 
 ### InputObjectByUserPrincipalName
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -UserPrincipalName <String>
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVaultIdentityItem> -UserPrincipalName <String>
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -78,7 +78,7 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -UserPrincipalName <
 
 ### InputObjectByEmailAddress
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -EmailAddress <String>
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVaultIdentityItem> -EmailAddress <String>
  [-PermissionsToKeys <String[]>] [-PermissionsToSecrets <String[]>] [-PermissionsToCertificates <String[]>]
  [-PermissionsToStorage <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -86,7 +86,7 @@ Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> -EmailAddress <Strin
 
 ### InputObjectForVault
 ```
-Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVault> [-EnabledForDeployment]
+Set-AzureRmKeyVaultAccessPolicy [-InputObject] <PSKeyVaultIdentityItem> [-EnabledForDeployment]
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -151,21 +151,95 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : create, import, delete, list
+                                   Permissions to Secrets                     : set, delete
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
+
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : create, import, delete, list
+                                   Permissions to Secrets                     : set, delete, get
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
+
 PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : True
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             : True
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        :
+                                   Permissions to Secrets                     : set, delete, get
+                                   Permissions to Certificates                :
+                                   Permissions to (Key Vault Managed) Storage :
+
+Tags                             :
 ```
 
-The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault.
+The first command grants permissions for a user in your Azure Active Directory, PattiFuller@contoso.com, to perform operations on keys and secrets with a key vault named Contoso03Vault. The *PassThru* parameter results in the updated object being returned by the cmdlet.
 
-The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command. The *PassThru* parameter results in the updated object being returned by the cmdlet.
+The second command modifies the permissions that were granted to PattiFuller@contoso.com in the first command, to now allow getting secrets in addition to setting and deleting them. The permissions to key operations remain unchanged after this command.
 
-The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. The *PassThru* parameter results in the updated object being returned by the cmdlet.
+The final command further modifies the existing permissions for PattiFuller@contoso.com to remove all permissions to key operations. The permissions to secret operations remain unchanged after this command. 
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
 This command grants permissions for an application for a key vault named Contoso03Vault. 
@@ -175,8 +249,8 @@ The *ServicePrincipalName* parameter specifies the application. The application 
 This example specifies the service principal name http://payroll.contoso.com, and the command grants the application permissions to read and write secrets.
 
 ### Example 3: Grant permissions for an application using its object ID
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
 ```
 
 This command grants the application permissions to read and write secrets.
@@ -184,28 +258,23 @@ This command grants the application permissions to read and write secrets.
 This example specifies the application using the object ID of the service principal of the application.
 
 ### Example 4: Grant permissions for a user principal name
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
 ```
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
 ### Example 5: Enable secrets to be retrieved from a key vault vault by the Microsoft.Compute resource provider
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
 
 This command grants the permissions for secrets to be retrieved from the Contoso03Vault key vault by the Microsoft.Compute resource provider.
 
 ### Example 6: Grant permissions to a security group
-```
-PS C:\>Get-AzureRmADGroup
-PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys All -PermissionsToSecrets All
-DisplayName                    Type                           ObjectId
------------                    ----                           --------
-group1                                                        96a0daa6-9841-4a9c-bdeb-e7062276c688
-group2                                                        b8a401eb-63ad-4a30-b0e1-a7461969fe54
-group3                                                        da07a6be-2c1e-4e42-934d-ceb57cf652b4
+```powershell
+PS C:\> Get-AzureRmADGroup
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzureRmADGroup -SearchString 'group2')[0].Id -PermissionsToKeys get, set -PermissionsToSecrets get, set
 ```
 
 The first command uses the Get-AzureRmADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named **group1**, **group2**, and **group3**. Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
@@ -216,8 +285,8 @@ There may be multiple groups in the returned list that are named 'group2'.
 This example picks the first one, indicated by index \[0\] in the returned list.
 
 ### Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)
-```
-PS C:\>Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
+```powershell
+PS C:\> Set-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
 ```
 
 This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key.
@@ -230,7 +299,7 @@ When you run this command, specify your own key vault name but you must specify 
 For future use.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -247,7 +316,7 @@ Enables you to specify an object ID without validating that the object exists in
 Use this parameter only if you want to grant access to your key vault to an object ID that refers to a delegated security group from another Azure tenant.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -262,7 +331,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -279,7 +348,7 @@ Specifies the user email address of the user to whom to grant permissions.
 This email address must exist in the directory associated with the current subscription and be unique.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByEmailAddress, InputObjectByEmailAddress, ResourceIdByEmailAddress
 Aliases:
 
@@ -294,7 +363,7 @@ Accept wildcard characters: False
 Enables the Microsoft.Compute resource provider to retrieve secrets from this key vault when this key vault is referenced in resource creation, for example when creating a virtual machine.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -309,7 +378,7 @@ Accept wildcard characters: False
 Enables the Azure disk encryption service to get secrets and unwrap keys from this key vault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -324,7 +393,7 @@ Accept wildcard characters: False
 Enables Azure Resource Manager to get secrets from this key vault when this key vault is referenced in a template deployment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -339,7 +408,7 @@ Accept wildcard characters: False
 Key Vault Object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, InputObjectForVault
 Aliases:
 
@@ -354,7 +423,7 @@ Accept wildcard characters: False
 Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -371,7 +440,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -401,7 +470,7 @@ The acceptable values for this parameter:
 - Manageissuers
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
 Accepted values: get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
@@ -436,7 +505,7 @@ The acceptable values for this parameter:
 - Purge
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
 Accepted values: decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
@@ -463,7 +532,7 @@ The acceptable values for this parameter:
 - Purge
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
 Accepted values: get, list, set, delete, backup, restore, recover, purge
@@ -479,7 +548,7 @@ Accept wildcard characters: False
 Specifies managed storage account and SaS-definition operation permissions to grant to a user or service principal.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
 Accepted values: get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
@@ -495,7 +564,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, ForVault
 Aliases:
 
@@ -510,7 +579,7 @@ Accept wildcard characters: False
 Key Vault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress, ResourceIdForVault
 Aliases:
 
@@ -527,7 +596,7 @@ Specifies the service principal name of the application to which to grant permis
 Specify the application ID, also known as client ID, registered for the application in AzureActive Directory. The application with the service principal name that this parameter specifies must be registered in the Azure directory that contains your current subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName, ResourceIdByServicePrincipalName
 Aliases: SPN
 
@@ -544,7 +613,7 @@ Specifies the user principal name of the user to whom to grant permissions.
 This user principal name must exist in the directory associated with the current subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName, ResourceIdByUserPrincipalName
 Aliases: UPN
 
@@ -561,7 +630,7 @@ Specifies the name of a key vault.
 This cmdlet modifies the access policy for the key vault that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, ForVault
 Aliases:
 
@@ -576,7 +645,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -591,7 +660,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -607,7 +676,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String, Guid, String[], Switch
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
 
 ## OUTPUTS
 

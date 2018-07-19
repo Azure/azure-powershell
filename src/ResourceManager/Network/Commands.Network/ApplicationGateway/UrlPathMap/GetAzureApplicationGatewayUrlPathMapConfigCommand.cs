@@ -20,7 +20,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet(VerbsCommon.Get, "AzureRmApplicationGatewayUrlPathMapConfig"),
-        OutputType(typeof(PSApplicationGatewayUrlPathMap), typeof(IEnumerable<PSApplicationGatewayUrlPathMap>))]
+        OutputType(typeof(PSApplicationGatewayUrlPathMap))]
     public class GetAzureApplicationGatewayUrlPathMapConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(

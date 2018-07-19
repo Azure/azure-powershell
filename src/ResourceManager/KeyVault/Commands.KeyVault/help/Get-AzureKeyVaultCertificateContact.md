@@ -37,8 +37,13 @@ The **Get-AzureKeyVaultCertificateContact** cmdlet gets contacts that are regist
 ## EXAMPLES
 
 ### Example 1: Get all certificate contacts
-```
-PS C:\>$Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+```powershell
+PS C:\> $Contacts = Get-AzureKeyVaultCertificateContact -VaultName "Contoso"
+
+Email                   VaultName
+-----                   ---------
+username@microsoft.com  Contoso
+username1@microsoft.com Contoso
 ```
 
 This command gets all of the contacts for the certificate objects in the Contoso key vault, and then stores them in the $Contacts variable.
@@ -49,7 +54,7 @@ This command gets all of the contacts for the certificate objects in the Contoso
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -64,7 +69,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -79,7 +84,7 @@ Accept wildcard characters: False
 KeyVault Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -94,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: VaultName
 Aliases:
 
@@ -110,12 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact>
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 

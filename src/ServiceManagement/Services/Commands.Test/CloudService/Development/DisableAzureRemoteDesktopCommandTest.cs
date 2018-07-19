@@ -85,6 +85,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.CloudService.Development
         /// Disable remote desktop for a simple web role.
         /// </summary>
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DisableRemoteDesktopForWebRole()
         {
             using (FileSystemHelper files = new FileSystemHelper(this))

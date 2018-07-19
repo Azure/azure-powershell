@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Tags
 ms.assetid: 726E01DD-D73C-4D4B-8FC0-52767927367C
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/get-azurermtag
 schema: 2.0.0
@@ -107,7 +107,7 @@ Using the *Detailed* parameter is the equivalent of using the *Name* parameter f
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,9 +122,9 @@ Accept wildcard characters: False
 Indicates that this operation adds information about tag values to the output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -139,9 +139,9 @@ By default, **Get-AzureRmTag** gets basic information about all predefined tags 
 When you specify the *Name* parameter, the *Detailed* parameter has no effect.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 0
@@ -159,7 +159,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Tags.Model.PSTag, Microsoft.Azure.Commands.Tags
+### Microsoft.Azure.Commands.Tags.Model.PSTag
 
 ## NOTES
 

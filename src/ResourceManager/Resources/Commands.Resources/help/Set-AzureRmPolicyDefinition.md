@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: E1AC7139-786C-4DD6-A898-242723E0D159
@@ -13,15 +13,7 @@ Modifies a policy definition.
 
 ## SYNTAX
 
-### SetByPolicyDefinitionName (Default)
-```
-Set-AzureRmPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
- [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
- [-InformationVariable <String>] [<CommonParameters>]
-```
-
-### GetByPolicyDefintionName
+### NameParameterSet (Default)
 ```
 Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
@@ -29,7 +21,23 @@ Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description
  [-InformationVariable <String>] [<CommonParameters>]
 ```
 
-### GetByPolicyDefinitionId
+### ManagementGroupNameParameterSet
+```
+Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] -ManagementGroupName <String> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Set-AzureRmPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Set-AzureRmPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <String>] [-Policy <String>]
  [-Metadata <String>] [-Parameter <String>] [-ApiVersion <String>] [-Pre]
@@ -44,8 +52,8 @@ The **Set-AzureRmPolicyDefinition** cmdlet modifies a policy definition.
 
 ### Example 1: Update the description of a policy definition
 ```
-PS C:\>$PolicyDefinition = Get-AzureRmPolicyDefinition -Name "VMPolicyDefinition"
-PS C:\> Set-AzureRmPolicyDefinition -Id $Policy.ResourceId -Description "Updated policy to not allow virtual machine creation"
+PS C:\> $PolicyDefinition = Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition'
+PS C:\> Set-AzureRmPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
 ```
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzureRmPolicyDefinition cmdlet.
@@ -60,7 +68,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -75,7 +83,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,7 +98,7 @@ Accept wildcard characters: False
 Specifies a new description for the policy definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +113,7 @@ Accept wildcard characters: False
 Specifies a new display name for the policy definition.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,8 +128,8 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID for the policy definition that this cmdlet modifies.
 
 ```yaml
-Type: String
-Parameter Sets: GetByPolicyDefinitionId
+Type: System.String
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -144,7 +152,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -159,7 +167,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -170,11 +178,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupName
+The name of the management group of the policy definition to update.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The metadata for policy definition. This can either be a path to a file name containing the metadata, or the metadata as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -189,8 +212,8 @@ Accept wildcard characters: False
 Specifies the name of the policy definition that this cmdlet modifies.
 
 ```yaml
-Type: String
-Parameter Sets: GetByPolicyDefintionName
+Type: System.String
+Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -204,7 +227,7 @@ Accept wildcard characters: False
 The parameters declaration for policy definition. This can either be a path to a file name or uri containing the parameters declaration, or the parameters declaration as string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -220,7 +243,7 @@ Specifies new policy rule for the policy definition.
 You can specify the path of a .json file or a string that contains the policy in JavaScript Object Notation (JSON) format.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +258,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -243,6 +266,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription ID of the policy definition to update.
+
+```yaml
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

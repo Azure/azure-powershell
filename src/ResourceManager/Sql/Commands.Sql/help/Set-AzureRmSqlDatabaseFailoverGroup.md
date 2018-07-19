@@ -50,7 +50,7 @@ Sets a Failover Group's failover policy to 'Manual' by piping in the Failover Gr
 Whether outages on the secondary server should trigger automatic failover of the read-only endpoint. This feature is not yet supported.
 
 ```yaml
-Type: AllowReadOnlyFailoverToPrimary
+Type: Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AllowReadOnlyFailoverToPrimary
 Parameter Sets: (All)
 Aliases:
 Accepted values: Enabled, Disabled
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The name of the Azure SQL Database Failover Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The failover policy of the Azure SQL Database Failover Group.
 
 ```yaml
-Type: FailoverPolicy
+Type: Microsoft.Azure.Commands.Sql.FailoverGroup.Model.FailoverPolicy
 Parameter Sets: (All)
 Aliases:
 Accepted values: Automatic, Manual
@@ -112,7 +112,7 @@ Accept wildcard characters: False
 Interval before automatic failover is initiated if an outage occurs on the primary server. This indicates that Azure SQL Database will not initiate automatic failover before the grace period expires. Please note that failover operation with AllowDataLoss option might cause data loss due to the nature of asynchronous synchronization.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +142,7 @@ Accept wildcard characters: False
 The name of the primary Azure SQL Database Server of the Failover Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

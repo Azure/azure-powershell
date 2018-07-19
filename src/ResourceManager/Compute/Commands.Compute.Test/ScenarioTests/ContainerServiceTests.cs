@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,25 +20,26 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public partial class ContainerServiceTests
     {
+        XunitTracingInterceptor _logger;
+
         public ContainerServiceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestContainerService()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ContainerService");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ContainerService");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        [Trait("Re-record", "ClientRuntime changes")]
         public void TestContainerServiceUpdate()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ContainerServiceUpdate");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ContainerServiceUpdate");
         }
     }
 }

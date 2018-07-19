@@ -23,70 +23,81 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ApplicationSecurityGroupTests : RMTestBase
     {
-        public ApplicationSecurityGroupTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ApplicationSecurityGroupTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupCRUD"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCRUD"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupCollections()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupCollections"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupCollections"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewSecurityRule -useIds $True"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewSecurityRule -useIds $True"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule -useIds $True"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedSecurityRule -useIds $True"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInSetSecurityRule()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInSetSecurityRule -useIds $True"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInSetSecurityRule"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInSetSecurityRule -useIds $True"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterface()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterface"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInNewNetworkInterfaceIpConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig -useIds $True"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInNewNetworkInterfaceIpConfig -useIds $True"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestApplicationSecurityGroupInAddedNetworkInterfaceIpConfig()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationSecurityGroupInAddedNetworkInterfaceIpConfig -useIds $True"));
         }
     }
 }

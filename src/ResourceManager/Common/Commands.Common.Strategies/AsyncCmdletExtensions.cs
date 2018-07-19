@@ -191,6 +191,9 @@ namespace Microsoft.Azure.Commands.Common.Strategies
             public void WriteVerbose(string message)
                 => Scheduler.BeginInvoke(() => Cmdlet.WriteVerbose(message));
 
+            public void WriteWarning(string message)
+                => Scheduler.BeginInvoke(() => Cmdlet.WriteWarning(message));
+
             public Task<bool> ShouldProcessAsync(string target, string action)
                 => Scheduler.Invoke(() => Cmdlet.ShouldProcess(target, action));
 
@@ -199,8 +202,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies
 
             public void ReportTaskProgress(ITaskProgress taskProgress)
                 => Scheduler.BeginInvoke(() => TaskProgressList.Add(taskProgress));
-
-
         }
     }
 }

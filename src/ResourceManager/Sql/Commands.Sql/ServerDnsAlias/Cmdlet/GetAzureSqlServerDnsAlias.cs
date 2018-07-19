@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// Defines the Get-AzureRmSqlServerDnsAlias cmdlet
 	/// </summary>
 	[Cmdlet(VerbsCommon.Get, "AzureRmSqlServerDnsAlias", SupportsShouldProcess = true)]
-	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
+	[OutputType(typeof(AzureSqlServerDnsAliasModel))]
 	public class GetAzureSqlServerDNSAlias : AzureSqlServerDnsAliasCmdletBase
 	{
 		/// <summary>

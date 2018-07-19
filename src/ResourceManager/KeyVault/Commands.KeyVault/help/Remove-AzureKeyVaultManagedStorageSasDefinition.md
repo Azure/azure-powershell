@@ -31,15 +31,33 @@ Removes a Key Vault managed Azure Storage SAS definitions. This also removes the
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault managed Azure Storage SAS definition.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef'
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : mysasdef
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
 
 ### Example 2: Remove a Key Vault managed Azure Storage SAS definition without user confirmation.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Name 'mysasdef' -PassThru -Force
+
+Id          : https://myvault.vault.azure.net:443/storage/mystorageaccount/sas/mysasdef
+Vault Name  : myvault
+AccountName : mystorageaccount
+Name        : mysasdef
+Enabled     : True
+Created     : 5/24/2018 9:11:08 PM
+Updated     : 5/24/2018 9:11:08 PM
+Tags        :
 ```
 
 Removes a Key Vault managed Storage SAS definition 'mysasdef' associated with the account 'mystorageaccount' in vault 'myvault'.
@@ -51,7 +69,7 @@ Storage account name.
 Cmdlet constructs the FQDN of a managed storage account name from vault name, currently selected environment and storage account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases: StorageAccountName
 
@@ -66,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -81,7 +99,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +114,7 @@ Accept wildcard characters: False
 ManagedStorageSasDefinition object.
 
 ```yaml
-Type: PSKeyVaultManagedStorageSasDefinitionIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -112,7 +130,7 @@ Storage sas definition name.
 Cmdlet constructs the FQDN of a storage sas definition from vault name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases: SasDefinitionName
 
@@ -128,7 +146,7 @@ Cmdlet does not return an object by default.
 If this switch is specified, cmdlet returns the managed storage account that was deleted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +162,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases:
 
@@ -159,7 +177,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -175,7 +193,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -191,11 +209,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinitionIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
 
 ## NOTES
 

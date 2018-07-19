@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 585371E3-D4CE-452E-B0B0-92B3ABD127E7
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestorageblobsastoken
 schema: 2.0.0
@@ -16,28 +17,30 @@ Generates a SAS token for an Azure storage blob.
 ```
 New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
 ```
 New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
 ```
 New-AzureStorageBlobSASToken -CloudBlob <CloudBlob> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
 ```
 New-AzureStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
- [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [<CommonParameters>]
+ [-ExpiryTime <DateTime>] [-FullUri] [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +72,7 @@ Specifies the storage blob name.
 ```yaml
 Type: String
 Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -100,7 +103,7 @@ Specifies the storage container name.
 ```yaml
 Type: String
 Parameter Sets: BlobNameWithPermission, BlobNameWithPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -115,12 +118,27 @@ Specifies the storage context.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -130,7 +148,7 @@ Specifies when the shared access signature expires.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,7 +163,7 @@ Indicates that this cmdlet return the full blob URI and the shared access signat
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -161,7 +179,7 @@ The range is inclusive.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -171,12 +189,14 @@ Accept wildcard characters: False
 ```
 
 ### -Permission
-Specifies the permissions for a storage blob.
+Specifies the permissions for a storage blob. 
+
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete). 
 
 ```yaml
 Type: String
 Parameter Sets: BlobNameWithPermission, BlobPipelineWithPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -191,7 +211,7 @@ Specifies an Azure Stored Access Policy.
 ```yaml
 Type: String
 Parameter Sets: BlobPipelineWithPolicy, BlobNameWithPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -211,7 +231,7 @@ The default value is HttpsOrHttp.
 ```yaml
 Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -227,7 +247,7 @@ Specifies the time at which the shared access signature becomes valid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

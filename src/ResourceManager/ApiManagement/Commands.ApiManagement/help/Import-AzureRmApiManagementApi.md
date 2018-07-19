@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 48C143BE-3BF6-43E3-99B0-1A1D12A0A3F3
@@ -15,7 +15,7 @@ Imports an API from a file or a URL.
 
 ### ImportFromLocalFile (Default)
 ```
-Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
+Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationPath <String> [-Path <String>]
  [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -23,7 +23,7 @@ Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String
 
 ### ImportFromUrl
 ```
-Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>]
+Import-AzureRmApiManagementApi -Context <PsApiManagementContext> [-ApiId <String>] [-ApiRevision <String>]
  -SpecificationFormat <PsApiManagementApiFormat> -SpecificationUrl <String> [-Path <String>]
  [-WsdlServiceName <String>] [-WsdlEndpointName <String>] [-ApiType <PsApiManagementApiType>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
@@ -35,7 +35,7 @@ The **Import-AzureRmApiManagementApi** cmdlet imports an Azure API Management AP
 ## EXAMPLES
 
 ### Example 1 Import an API from a WADL file
-```
+```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationPath "C:\contoso\specifications\echoapi.wadl" -Path "apis"
 ```
@@ -43,7 +43,7 @@ PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFor
 This command imports an API from the specified WADL file.
 
 ### Example 2 Import an API from a Swagger file
-```
+```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Swagger" -SpecificationPath "C:\contoso\specifications\echoapi.swagger" -Path "apis"
 ```
@@ -51,7 +51,7 @@ PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFor
 This command imports an API from the specified Swagger file.
 
 ### Example 3: Import an API from a WADL link
-```
+```powershell
 PS C:\>$ApiMgmtContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>Import-AzureRmApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "Wadl" -SpecificationUrl "http://contoso.com/specifications/wadl/echoapi" -Path "apis"
 ```
@@ -65,9 +65,24 @@ Specifies an ID for the API to import.
 If you do not specify this parameter, an ID is generated for you.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Identifier of API Revision. This parameter is optional. If not specified, the import will be done onto the currently active revision or a new api.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -80,9 +95,9 @@ Accept wildcard characters: False
 This parameter is optional with a default value of Http. The Soap option is only applicable when importing WSDL and will create a SOAP Passthrough API.
 
 ```yaml
-Type: PsApiManagementApiType
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Http, Soap
 
 Required: False
@@ -96,9 +111,9 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -109,9 +124,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -129,9 +144,9 @@ Must be 1 to 400 characters long.
 The default value is $Null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -145,9 +160,9 @@ Specifies the specification format.
 psdx_paramvalues Wadl, Wsdl, and Swagger.
 
 ```yaml
-Type: PsApiManagementApiFormat
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Wadl, Swagger, Wsdl
 
 Required: True
@@ -161,9 +176,9 @@ Accept wildcard characters: False
 Specifies the specification file path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromLocalFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -176,9 +191,9 @@ Accept wildcard characters: False
 Specifies the specification URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ImportFromUrl
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -191,9 +206,9 @@ Accept wildcard characters: False
 Local name of WSDL Endpoint (port) to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl. Default value is $null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -206,9 +221,9 @@ Accept wildcard characters: False
 Local name of WSDL Service to be imported. Must be 1 to 400 characters long. This parameter is optional and only required for importing Wsdl . Default value is $null.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

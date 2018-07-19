@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmIotHubConnectionString")]
-    [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule), typeof(List<PSSharedAccessSignatureAuthorizationRule>))]
+    [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
     public class GetAzureRmIotHubConnectionString : IotHubBaseCmdlet
     {
         [Parameter(

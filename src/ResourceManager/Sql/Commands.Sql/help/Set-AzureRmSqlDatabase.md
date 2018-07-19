@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: 2E4F5C27-C50F-4133-B193-BC477BCD6778
@@ -13,11 +13,20 @@ Sets properties for a database, or moves an existing database into an elastic po
 
 ## SYNTAX
 
-### Update
+### Update (Default)
 ```
-Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <DatabaseEdition>]
+Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
  [-RequestedServiceObjectiveName <String>] [-ElasticPoolName <String>] [-ReadScale <DatabaseReadScale>]
- [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+Set-AzureRmSqlDatabase [-DatabaseName] <String> [-MaxSizeBytes <Int64>] [-Edition <String>]
+ [-ReadScale <DatabaseReadScale>] [-Tags <Hashtable>] [-ZoneRedundant] [-AsJob] [-VCore <Int32>]
+ [-ComputeGeneration <String>] [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,16 +102,16 @@ Location                      : Central US
 DatabaseId                    : a1e6bd1a-735a-4d48-8b98-afead5ef1218
 Edition                       : Standard
 CollationName                 : SQL_Latin1_General_CP1_CI_AS
-CatalogCollation              : 
+CatalogCollation              :
 MaxSizeBytes                  : 1099511627776
 Status                        : Online
 CreationDate                  : 8/24/2017 9:00:37 AM
 CurrentServiceObjectiveId     : 789681b8-ca10-4eb0-bdf2-e0b050601b40
 CurrentServiceObjectiveName   : S3
 RequestedServiceObjectiveId   : 789681b8-ca10-4eb0-bdf2-e0b050601b40
-RequestedServiceObjectiveName : 
-ElasticPoolName               : 
-EarliestRestoreDate           : 
+RequestedServiceObjectiveName :
+ElasticPoolName               :
+EarliestRestoreDate           :
 Tags                          :
 ```
 
@@ -112,10 +121,26 @@ This command updates a database named Database01 to set its max size to 1 TB.
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ComputeGeneration
+The compute generation to assign.
+
+```yaml
+Type: System.String
+Parameter Sets: VcoreBasedDatabase
+Aliases: Family
 
 Required: False
 Position: Named
@@ -128,7 +153,7 @@ Accept wildcard characters: False
 Specifies the name of the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -143,7 +168,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,16 +184,19 @@ Specifies the edition for the database.
 The acceptable values for this parameter are:
 
 - None
-- Premium
 - Basic
 - Standard
+- Premium
 - DataWarehouse
+- Free
+- Stretch
+- GeneralPurpose
+- BusinessCritical
 
 ```yaml
-Type: DatabaseEdition
-Parameter Sets: Update
+Type: System.String
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
-Accepted values: None, Premium, Basic, Standard, DataWarehouse, Stretch, Free, PremiumRS
 
 Required: False
 Position: Named
@@ -181,8 +209,23 @@ Accept wildcard characters: False
 Specifies name of the elastic pool in which to move the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Update
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+
+```yaml
+Type: System.String
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 
 Required: False
@@ -196,8 +239,8 @@ Accept wildcard characters: False
 The maximum size of the Azure SQL Database in bytes.
 
 ```yaml
-Type: Int64
-Parameter Sets: Update
+Type: System.Int64
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 
 Required: False
@@ -211,7 +254,7 @@ Accept wildcard characters: False
 The new name to rename the database to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Rename
 Aliases:
 
@@ -226,8 +269,8 @@ Accept wildcard characters: False
 The read scale option to assign to the Azure SQL Database.(Enabled/Disabled)
 
 ```yaml
-Type: DatabaseReadScale
-Parameter Sets: Update
+Type: Microsoft.Azure.Commands.Sql.Database.Model.DatabaseReadScale
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 Accepted values: Disabled, Enabled
 
@@ -244,7 +287,7 @@ service objectives, see [Azure SQL Database Service Tiers and Performance Levels
 in the Microsoft Developer Network Library.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Update
 Aliases:
 
@@ -259,7 +302,7 @@ Accept wildcard characters: False
 Specifies the name of resource group to which the server is assigned.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -274,7 +317,7 @@ Accept wildcard characters: False
 Specifies the name of the server that hosts the database.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -291,9 +334,24 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
-Parameter Sets: Update
+Type: System.Collections.Hashtable
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases: Tag
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VCore
+The Vcore number for the Azure Sql database
+
+```yaml
+Type: System.Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
 
 Required: False
 Position: Named
@@ -306,8 +364,8 @@ Accept wildcard characters: False
 The zone redundancy to associate with the Azure Sql Database
 
 ```yaml
-Type: SwitchParameter
-Parameter Sets: Update
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: Update, VcoreBasedDatabase
 Aliases:
 
 Required: False
@@ -321,7 +379,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -337,7 +395,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

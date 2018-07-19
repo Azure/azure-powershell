@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 6778E018-B6CC-468A-823E-3DA047EA6B52
@@ -52,7 +52,7 @@ The final command gets recovery points for the item in $BackupItem.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,9 +68,9 @@ Specifies the item for which this cmdlet gets recovery points.
 To obtain an **AzureRmBackupItem**, use the Get-AzureRmBackupItem cmdlet.
 
 ```yaml
-Type: AzureRMBackupItem
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -83,9 +83,9 @@ Accept wildcard characters: False
 Specifies the ID of a recovery point that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1
@@ -99,11 +99,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
 
 ## OUTPUTS
 
-### AzureRmBackupRecoveryPoint
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupRecoveryPoint
 
 ## NOTES
 

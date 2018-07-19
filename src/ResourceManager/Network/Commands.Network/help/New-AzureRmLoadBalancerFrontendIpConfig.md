@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: D639E4F5-5AAD-4F13-9B48-70E90D2DFFCA
@@ -62,7 +62,7 @@ The second command creates a front-end IP configuration named FrontendIpConfig01
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -77,9 +77,9 @@ Accept wildcard characters: False
 Specifies the front-end IP configuration that this cmdlet creates.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,9 +93,9 @@ Specifies the private IP address of the load balancer.
 Specify this parameter only if you also specify the *Subnet* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceSubnet, SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -108,9 +108,9 @@ Accept wildcard characters: False
 Specifies the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: SetByResourcePublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 Specifies the ID of the **PublicIpAddress** object to associate with a front-end IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdPublicIpAddress
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Specifies the **Subnet** object in which to create a front-end IP configuration.
 
 ```yaml
-Type: PSSubnet
+Type: Microsoft.Azure.Commands.Network.Models.PSSubnet
 Parameter Sets: SetByResourceSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 Specifies the ID of the subnet in which to create a front-end IP configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdSubnet
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -170,7 +170,7 @@ A list of availability zones denoting the IP allocated for the resource needs to
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

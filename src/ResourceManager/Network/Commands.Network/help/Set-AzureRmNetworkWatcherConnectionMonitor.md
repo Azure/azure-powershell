@@ -99,7 +99,7 @@ In this example we update existing connection monitor by changing destinationAdd
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,17 +110,17 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -ConfigureOnly
+Configure connection monitor, but do not start it
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: cf
+Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -129,7 +129,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The Ip address of the connection monitor destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Destination port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ Accept wildcard characters: False
 The ID of the connection monitor destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -189,7 +189,7 @@ Accept wildcard characters: False
 Connection monitor object.
 
 ```yaml
-Type: PSConnectionMonitorResult
+Type: Microsoft.Azure.Commands.Network.Models.PSConnectionMonitorResult
 Parameter Sets: SetByInputObject
 Aliases:
 
@@ -204,7 +204,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -219,7 +219,7 @@ Accept wildcard characters: False
 Monitoring interval in seconds.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 The connection monitor name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases: ConnectionMonitorName
 
@@ -249,7 +249,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -264,7 +264,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -279,7 +279,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -294,7 +294,7 @@ Accept wildcard characters: False
 Resource ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -309,7 +309,7 @@ Accept wildcard characters: False
 Source port.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -324,14 +324,14 @@ Accept wildcard characters: False
 The ID of the connection monitor source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -339,7 +339,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -350,12 +350,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -366,24 +381,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ConfigureOnly
-Configure connection monitor, but do not start it
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -429,8 +428,26 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 [Remove-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzureRmNetworkWatcherConnectionMonitor]()
 
 [Stop-AzureRmNetworkWatcherConnectionMonitor]()
 
 [New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherProtocolConfiguration]()
+
+[Test-AzureRmNetworkWatcherIPFlow]()
+
+[Test-AzureRmNetworkWatcherConnectivity]()
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+
+[Start-AzureRmNetworkWatcherConnectionMonitor]()
+
+[Set-AzureRmNetworkWatcherConfigFlowLog]()
+
+[Get-AzureRMNetworkWatcherReachabilityReport]()
+
+[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+
+[Get-AzureRmNetworkWatcherFlowLogStatus]()

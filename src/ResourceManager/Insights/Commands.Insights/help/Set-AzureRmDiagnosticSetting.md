@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
@@ -14,12 +14,15 @@ Sets the logs and metrics settings for the resource.
 ## SYNTAX
 
 ```
-Set-AzureRmDiagnosticSetting -ResourceId <String> [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
- [-Categories <System.Collections.Generic.List`1[System.String]>]
+Set-AzureRmDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
+ [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
+ [-Categories <System.Collections.Generic.List`1[System.String]>] [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
+
+Set-AzureRmDiagnosticSetting -InputObject <PSServiceDiagnosticSettings> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,29 +48,63 @@ PS C:\>Set-AzureRmDiagnosticSetting -ResourceId "Resource01" -Enabled $False
 
 This command disables all available metrics and logs for the resource Resource01.
 
-### Example 3: Enable multiple categories
+### Example 3: Enable/disable multiple metrics categories
+```
+PS C:\>Set-AzureRmDiagnosticSetting -ResourceId "Resource01" -Enabled $False -MetricCategory MetricCategory1,MetricCategory2
+StorageAccountId   : <storageAccountId>
+StorageAccountName : <storageAccountName>
+Metrics
+   Enabled   : False
+   Category  : MetricCategory1
+   Timegrain : PT1M
+   Enabled   : False
+   Category  : MetricCategory2
+   Timegrain : PT1H
+   Enabled   : True
+   Category  : MetricCategory3
+   Timegrain : PT1H
+Logs
+   Enabled  : True
+   Category : Category1
+   Enabled  : True
+   Category : Category2
+   Enabled  : True
+   Category : Category3
+   Enabled  : False
+   Category : Category4
+```
+
+This command enables the metrics cateories called Category1 and Category2.
+All the other categories remain the same.
+
+### Example 4: Enable/disable multiple log categories
 ```
 PS C:\>Set-AzureRmDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Categories Category1,Category2
 StorageAccountId   : <storageAccountId>
 StorageAccountName : <storageAccountName>
 Metrics
-Enabled   : True
-Timegrain : PT1M
-Enabled   : True
-Timegrain : PT1H
+   Enabled   : False
+   Category  : MetricCategory1
+   Timegrain : PT1M
+   Enabled   : False
+   Category  : MetricCategory2
+   Timegrain : PT1H
+   Enabled   : True
+   Category  : MetricCategory3
+   Timegrain : PT1H
 Logs
-Enabled  : True
-Category : Category1
-Enabled  : True
-Category : Category2
-Enabled  : True
-Category : Category3
-Enabled  : False
-Category : Category4
+   Enabled  : True
+   Category : Category1
+   Enabled  : True
+   Category : Category2
+   Enabled  : True
+   Category : Category3
+   Enabled  : False
+   Category : Category4
 ```
 
 This command enables Category1 and Category2.
-All timegrains and other categories remain the same.
+All the other metrics and logs categories remain the same.
 
 ### Example 4: Enable a time grain and multiple categories
 ```
@@ -77,6 +114,13 @@ PS C:\>Set-AzureRmDiagnosticSetting -ResourceId "Resource01" -Enabled $True -Cat
 This command enables only Category1, Category2, and time grain PT1M.
 All other time grains and categories are unchanged.
 
+### Example 5: Using pipeline
+```
+PS C:\>Get-AzureRmDiagnosticSetting -ResourceId "Resource01" | Set-AzureRmDiagnosticSetting
+```
+
+This command uses the PowerShell pipeline to set (not change made) a diagnostic setting.
+
 ## PARAMETERS
 
 ### -Categories
@@ -85,8 +129,8 @@ If you do not specify a category, this command operates on all categories.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Aliases: Category
 
 Required: False
 Position: Named
@@ -99,7 +143,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,7 +160,7 @@ Specify $True to enable diagnostics, or $False to disable diagnostics.
 
 ```yaml
 Type: Boolean
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -127,11 +171,56 @@ Accept wildcard characters: False
 ```
 
 ### -EventHubAuthorizationRuleId
-The event hub rule i
+The event hub authorization rule id
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EventHubName
+The event hub name
+
+```yaml
+Type: String
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The input object (possible from the pipeline.) The name and resourceId will be extracted from this object.
+
+```yaml
+Type: PSServiceDiagnosticSettings
+Parameter Sets: SetAzureRmDiagnosticSettingNewParamGroup
+Aliases: 
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the diagnostic setting. The default value is **service**.
+
+```yaml
+Type: String
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -146,7 +235,7 @@ Specifies the ID of the resource.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: True
@@ -161,7 +250,7 @@ Indicates whether retention of diagnostic information is enabled.
 
 ```yaml
 Type: Boolean
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -176,7 +265,7 @@ Specifies the retention policy, in days.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -187,9 +276,11 @@ Accept wildcard characters: False
 ```
 
 ### -ServiceBusRuleId
+The Service Bus Rule id.
+
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -204,7 +295,7 @@ Specifies the ID of the Storage account in which to save the data.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
@@ -220,8 +311,8 @@ If you do not specify a time grain, this command operates on all available time 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: (All)
-Aliases: 
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Aliases: Timegrain
 
 Required: False
 Position: Named
@@ -235,13 +326,43 @@ The Id of the workspace
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
 Aliases: 
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -262,5 +383,4 @@ This cmdlet does not accept any input.
 ## RELATED LINKS
 
 [Get-AzureRmDiagnosticSetting](./Get-AzureRmDiagnosticSetting.md)
-
-
+[Remove-AzureRmDiagnosticSetting](./Remove-AzureRmDiagnosticSetting.md)

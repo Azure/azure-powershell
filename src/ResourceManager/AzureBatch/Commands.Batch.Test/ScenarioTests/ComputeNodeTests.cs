@@ -12,9 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
@@ -22,20 +23,23 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
     {
         private const string poolId = ScenarioTestHelpers.SharedPool;
         private const string iaasPoolId = ScenarioTestHelpers.SharedIaasPool;
+        public XunitTracingInterceptor _logger;
 
         public ComputeNodeTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveComputeNodes()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string removeNodePoolId = "removenodepool";
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-RemoveComputeNodes '{0}'", removeNodePoolId) }; },
                 () =>
                 {
@@ -47,12 +51,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeletePool(controller, context, removeNodePoolId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootAndReimageComputeNode()
         {
             BatchController controller = BatchController.NewInstance;
@@ -60,6 +64,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
             string computeNodeId2 = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-RebootAndReimageComputeNode '{0}' '{1}' '{2}'", poolId, computeNodeId, computeNodeId2) }; },
                 () =>
                 {
@@ -70,18 +75,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId2);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
             BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string computeNodeId = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-DisableAndEnableComputeNodeScheduling '{0}' '{1}'", poolId, computeNodeId) }; },
                 () =>
                 {
@@ -90,12 +96,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     ScenarioTestHelpers.WaitForIdleComputeNode(controller, context, poolId, computeNodeId);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
             BatchController controller = BatchController.NewInstance;
@@ -103,6 +109,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string computeNodeId = null;
 
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-GetRemoteLoginSettings '{0}' '{1}'", iaasPoolId, computeNodeId) }; },
                 () =>
                 {
@@ -110,8 +117,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     computeNodeId = ScenarioTestHelpers.GetComputeNodeId(controller, context, iaasPoolId);
                 },
                 null,
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

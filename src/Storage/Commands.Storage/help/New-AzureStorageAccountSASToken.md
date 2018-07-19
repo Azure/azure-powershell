@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: BCCBB05B-A5D7-4796-BE55-6BE5E18E07FC
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestorageaccountsastoken
 schema: 2.0.0
@@ -16,7 +17,7 @@ Creates an account-level SAS token.
 New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,12 +50,27 @@ You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext**
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -64,7 +80,7 @@ Specifies the time at which the shared access signature becomes invalid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -80,7 +96,7 @@ The range is inclusive.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -92,12 +108,14 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for Storage account.
 Permissions are valid only if they match the specified resource type.
+
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -118,7 +136,7 @@ The default value is HttpsOrHttp.
 ```yaml
 Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -140,7 +158,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: SharedAccessAccountResourceTypes
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Service, Container, Object
 
 Required: True
@@ -163,7 +181,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: SharedAccessAccountServices
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: None, Blob, File, Queue, Table
 
 Required: True
@@ -180,7 +198,7 @@ To get a **DateTime** object, use the Get-Date cmdlet.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

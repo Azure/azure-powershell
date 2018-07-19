@@ -43,8 +43,41 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 ## EXAMPLES
 
 ### Example 1: Restore a backed-up certificate
-```
-PS C:\>Restore-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```powershell
+PS C:\> Restore-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+
+Certificate   : [Subject]
+                  CN=contoso.com
+
+                [Issuer]
+                  CN=contoso.com
+
+                [Serial Number]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                [Not Before]
+                  5/25/2018 3:47:41 AM
+
+                [Not After]
+                  11/25/2018 2:57:41 AM
+
+                [Thumbprint]
+                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+KeyId         : https://mykeyvault.vault.azure.net:443/keys/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
+SecretId      : https://mykeyvault.vault.azure.net:443/secrets/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
+Thumbprint    : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RecoveryLevel : Purgeable
+Enabled       : True
+Expires       : 11/25/2018 10:57:41 AM
+NotBefore     : 5/25/2018 10:47:41 AM
+Created       : 5/25/2018 10:57:41 AM
+Updated       : 5/25/2018 10:57:41 AM
+Tags          : 
+VaultName     : MyKeyVault
+Name          : cert1
+Version       : bd406f6d6b3a41a1a1c633494d8c3c3a
+Id            : https://mykeyvault.vault.azure.net:443/certificates/cert1/bd406f6d6b3a41a1a1c633494d8c3c3a
 ```
 
 This command restores a certificate, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
@@ -55,7 +88,7 @@ This command restores a certificate, including all of its versions, from the bac
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +104,7 @@ Input file.
 The input file containing the backed-up blob
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +119,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -101,7 +134,7 @@ Accept wildcard characters: False
 KeyVault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -117,7 +150,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -132,7 +165,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -148,7 +181,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -165,7 +198,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
 
 ## OUTPUTS
 

@@ -118,31 +118,62 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Remove permissions for a user
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com'
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PassThru
+
+Vault Name                       : Contoso03Vault
+Resource Group Name              : myrg
+Location                         : westus
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/contoso03vault
+Vault URI                        : https://contoso03vault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        :
+                                   Permissions to Secrets                     :
+                                   Permissions to Certificates                : get, create
+                                   Permissions to (Key Vault Managed) Storage :
+
+
+Network Rule Set                 :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   :
+                                   Virtual Network Rules                      :
+
+Tags                             :
 ```
 
-This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.
+This command removes all the permissions that a user PattiFuller@contoso.com has on the key vault named Contoso03Vault.  If -PassThru is specified, the KeyVault object is returned.
 
 ### Example 2: Remove permissions for an application
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com'
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com'
 ```
 
 This command removes all the permissions that an application has on the key vault named Contoso03Vault.
 This example identifies the application by using the service principal name registered in Azure Active Directory, http://payroll.contoso.com.
 
 ### Example 3: Remove permissions for an application by using its object ID
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectID 34595082-9346-41b6-8d6b-295a2808b8db
 ```
 
 This command removes all the permissions that an application has on the key vault named Contoso03Vault.
 This example identifies the application by the object ID of the service principal.
 
 ### Example 4: Remove permissions for the Microsoft.Compute resource provider
-```
-PS C:\>Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
+```powershell
+PS C:\> Remove-AzureRmKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
 
 This command removes permission for the Microsoft.Compute resource provider to get secrets from the Contoso03Vault.
@@ -153,7 +184,7 @@ This command removes permission for the Microsoft.Compute resource provider to g
 Specifies the ID of application whose permissions should be removed
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -168,7 +199,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -183,7 +214,7 @@ Accept wildcard characters: False
 Specifies the user email address of the user whose access you want to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByEmail, InputObjectByEmail, ResourceIdByEmail
 Aliases:
 
@@ -198,7 +229,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by the Microsoft.Compute resource provider when referenced in resource creation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -213,7 +244,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by Azure Disk Encryption.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -228,7 +259,7 @@ Accept wildcard characters: False
 If specified, disables the retrieval of secrets from this key vault by Azure Resource Manager when referenced in templates.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ForVault, InputObjectForVault, ResourceIdForVault
 Aliases:
 
@@ -243,7 +274,7 @@ Accept wildcard characters: False
 Key Vault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmail, InputObjectForVault
 Aliases:
 
@@ -258,7 +289,7 @@ Accept wildcard characters: False
 Specifies the object ID of the user or service principal in Azure Active Directory for which to remove permissions.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByObjectId, InputObjectByObjectId, ResourceIdByObjectId
 Aliases:
 
@@ -274,7 +305,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -290,7 +321,7 @@ Specifies the name of the resource group associated with the key vault whose acc
 If not specified, this cmdlet searches for the key vault in the current subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
 Aliases:
 
@@ -305,7 +336,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmail, ResourceIdForVault
 Aliases:
 
@@ -321,7 +352,7 @@ Specifies the service principal name of the application whose permissions you wa
 Specify the application ID, also known as client ID, registered for the application in Azure Active Directory.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByServicePrincipalName, InputObjectByServicePrincipalName, ResourceIdByServicePrincipalName
 Aliases: SPN
 
@@ -336,7 +367,7 @@ Accept wildcard characters: False
 Specifies the user principal name of the user whose access you want to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, InputObjectByUserPrincipalName, ResourceIdByUserPrincipalName
 Aliases: UPN
 
@@ -352,7 +383,7 @@ Specifies the name of the key vault.
 This cmdlet removes permissions for the key vault that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmail, ForVault
 Aliases:
 
@@ -367,7 +398,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -383,7 +414,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -399,8 +430,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 

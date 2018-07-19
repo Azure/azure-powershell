@@ -23,37 +23,52 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class ApplicationGatewayTests : RMTestBase
     {
-        public ApplicationGatewayTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public ApplicationGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
         public void TestAvailableSslOptions()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableSslOptions"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableSslOptions"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
         public void TestAvailableWafRuleSets()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-AvailableWafRuleSets"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-AvailableWafRuleSets"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
         public void TestApplicationGatewayCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
         public void TestApplicationGatewayCRUD2()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD2 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.nvadev)]
+        public void TestApplicationGatewayCRUD3()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-ApplicationGatewayCRUD3 -baseDir '{0}'", AppDomain.CurrentDomain.BaseDirectory));
         }
     }
 }

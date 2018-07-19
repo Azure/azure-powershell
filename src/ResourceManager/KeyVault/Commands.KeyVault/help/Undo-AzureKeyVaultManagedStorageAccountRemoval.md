@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.KeyVault.dll-Help.xml
 Module Name: AzureRM.KeyVault
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultmanagedstorageaccountremoval 
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/undo-azurekeyvaultmanagedstorageaccountremoval
 schema: 2.0.0
 ---
 
@@ -34,6 +34,19 @@ The **Undo-AzureKeyVaultManagedStorageAccountRemoval** command recovers a previo
 ```powershell
 PS C:\> Get-AzureKeyVaultManagedStorageAccount -VaultName myVault -Name myAccount -InRemovedState
 PS C:\> Undo-AzureKeyVaultManagedStorageAccountRemoval -VaultName myVault -Name myAccount
+
+Id                  : https://myvault.vault.azure.net:443/storage/myaccount
+Vault Name          : myVault
+AccountName         : myAccount
+Account Resource Id : /subscriptions/8bc48661-1801-4b7a-8ca1-6a3cadfb4870/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/myaccount
+Active Key Name     : key2
+Auto Regenerate Key : False
+Regeneration Period : 90.00:00:00
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
 ```
 
 This sequence of commands determines whether the specified storage account exists in the vault in a deleted state; the subsequent command recovers the deleted storage account, bringing it back into an active state.
@@ -44,7 +57,7 @@ This sequence of commands determines whether the specified storage account exist
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -59,7 +72,7 @@ Accept wildcard characters: False
 Deleted Managed Storage Account object
 
 ```yaml
-Type: PSDeletedKeyVaultManagedStorageAccountIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccountIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -75,7 +88,7 @@ Name of the KeyVault managed storage account.
 Cmdlet constructs the FQDN of the target from vault name, currently selected environment and the name of the managed storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: StorageAccountName
 
@@ -91,7 +104,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -106,7 +119,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -122,7 +135,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -138,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccounts.PSDeletedKeyVaultManagedStorageAccountIdentityItem
+### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultManagedStorageAccountIdentityItem
 
 ## OUTPUTS
 

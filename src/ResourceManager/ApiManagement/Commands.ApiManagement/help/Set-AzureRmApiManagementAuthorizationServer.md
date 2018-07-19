@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 93005775-3AB9-43C5-B353-45B82124ADB7
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementauthorizationserver
 schema: 2.0.0
@@ -44,9 +45,9 @@ Specifies an array of methods to send an access token.
 psdx_paramvalues AuthorizationHeader and Query.
 
 ```yaml
-Type: PsApiManagementAccessTokenSendingMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAccessTokenSendingMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationHeader, Query
 
 Required: True
@@ -60,9 +61,9 @@ Accept wildcard characters: False
 Specifies the authorization endpoint to authenticate resource owners and obtain authorization grants.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -77,10 +78,10 @@ psdx_paramvalues GET and POST.
 The default value is GET.
 
 ```yaml
-Type: PsApiManagementAuthorizationRequestMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Get, Post
+Aliases:
+Accepted values: Get, Post, Head, Options, Trace, Put, Patch, Delete
 
 Required: False
 Position: Named
@@ -94,9 +95,9 @@ Specifies an array of client authentication methods.
 psdx_paramvalues Basic and Body.
 
 ```yaml
-Type: PsApiManagementClientAuthenticationMethod[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementClientAuthenticationMethod[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Basic, Body
 
 Required: True
@@ -110,9 +111,9 @@ Accept wildcard characters: False
 Specifies the client ID of the developer console that is the client application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,9 +126,9 @@ Accept wildcard characters: False
 Specifies the client registration endpoint to register clients with the authorization server and obtain client credentials.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,9 +141,9 @@ Accept wildcard characters: False
 Specifies the client secret of the developer console that is the client application.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -155,9 +156,9 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -168,9 +169,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -185,9 +186,9 @@ Accept wildcard characters: False
 Specifies the default scope for the authorization server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -200,9 +201,9 @@ Accept wildcard characters: False
 Specifies a description for an authorization server.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -221,9 +222,9 @@ psdx_paramvalues
 - ResourceOwnerPassword
 
 ```yaml
-Type: PsApiManagementGrantType[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGrantType[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AuthorizationCode, Implicit, ResourceOwnerPassword, ClientCredentials
 
 Required: True
@@ -237,9 +238,9 @@ Accept wildcard characters: False
 Specifies the name of the authorization server to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -252,9 +253,9 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -268,9 +269,9 @@ Specifies the resource owner password.
 You must specify this parameter if ResourceOwnerPassword is specified by the *GrantTypes* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -284,9 +285,9 @@ Specifies the resource owner user name.
 You must specify this parameter if ResourceOwnerPassword is specified by the *GrantTypes* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -299,9 +300,9 @@ Accept wildcard characters: False
 Specifies the ID of the authorization server to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -314,9 +315,9 @@ Accept wildcard characters: False
 Indicates whether to support the *State* parameter.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -329,9 +330,9 @@ Accept wildcard characters: False
 Specifies additional body parameters using application/x-www-form-urlencoded format.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -344,9 +345,9 @@ Accept wildcard characters: False
 Specifies the token endpoint for clients to obtain access tokens in exchange for presenting authorization grants or refresh tokens.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 638B2BF6-23F8-4038-B20B-1CFABFDBF5D3
@@ -83,9 +83,9 @@ This command gets all users within the specified group.
 Specifies an instance of **PsApiManagementContext**.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,7 +98,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -115,9 +115,9 @@ If this parameter is specified, this cmdlet finds a user by email.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,9 +132,9 @@ If this parameter is specified, this cmdlet finds a user by first name.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -149,9 +149,9 @@ If specified, this cmdlet finds all users within the specified group.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,9 +166,9 @@ If specified, this cmdlet finds users by last name.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUser
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -183,10 +183,10 @@ If specified, this cmdlet finds users in this state.
 This parameter is optional.
 
 ```yaml
-Type: PsApiManagementUserState
+Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
 Parameter Sets: GetByUser
-Aliases: 
-Accepted values: Active, Blocked
+Aliases:
+Accepted values: Active, Blocked, Deleted, Pending
 
 Required: False
 Position: Named
@@ -201,9 +201,9 @@ If specified, this cmdlet finds the user by this identifier.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -224,9 +224,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser
 The details of User in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUser>
-The list of User in the API Management  service.
 
 ## NOTES
 

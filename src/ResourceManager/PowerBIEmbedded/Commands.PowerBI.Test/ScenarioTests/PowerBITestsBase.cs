@@ -29,9 +29,10 @@ using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
 {
@@ -67,16 +68,18 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(params string[] scripts)
+        public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             RunPsTestWorkflow(
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -115,12 +118,11 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
                 var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
-                helper.SetupModules(AzureModule.AzureResourceManager, 
-                    "ScenarioTests\\Common.ps1", 
+                helper.SetupModules(AzureModule.AzureResourceManager,
+                    "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
-                    helper.RMProfileModule, 
-                    helper.RMResourceModule, 
-                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"), 
+                    helper.RMProfileModule,
+                    helper.GetRMModulePath(@"AzureRM.PowerBIEmbedded.psd1"),
                     "AzureRM.Resources.ps1");
                 try
                 {
@@ -186,7 +188,7 @@ namespace Microsoft.Azure.Commands.PowerBI.Test.ScenarioTests
         {
             return context.GetServiceClient<PowerBIDedicatedManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
-        
+
         private GalleryClient GetGalleryClient()
         {
             return LegacyTest.TestBase.GetServiceClient<GalleryClient>(this.csmTestFactory);

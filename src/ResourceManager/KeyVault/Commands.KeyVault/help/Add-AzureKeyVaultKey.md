@@ -89,26 +89,64 @@ backup of it that you can restore.
 ## EXAMPLES
 
 ### Example 1: Create a key
-```
-PS C:\>Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Destination 'Software'
+```powershell
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
+
+Vault Name     : contoso
+Name           : ITSoftware
+Version        : 67da57e9cadf48a2ad8d366b115843ab
+Id             : https://contoso.vault.azure.net:443/keys/ITSoftware/67da57e9cadf48a2ad8d366b115843ab
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 5/21/2018 11:10:58 PM
+Updated        : 5/21/2018 11:10:58 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command creates a software-protected key named ITSoftware in the key vault named Contoso.
 
 ### Example 2: Create an HSM-protected key
-```
-PS C:\>Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsm' -Destination 'HSM'
+```powershell
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
+
+Vault Name     : contoso
+Name           : ITHsm
+Version        : 67da57e9cadf48a2ad8d366b115843ab
+Id             : https://contoso.vault.azure.net:443/keys/ITSoftware/67da57e9cadf48a2ad8d366b115843ab
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 5/21/2018 11:10:58 PM
+Updated        : 5/21/2018 11:10:58 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command creates an HSM-protected key in the key vault named Contoso.
 
 ### Example 3: Create a key with non-default values
-```
-PS C:\>$KeyOperations = 'decrypt', 'verify'
+```powershell
+PS C:\> $KeyOperations = 'decrypt', 'verify'
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
-PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+
+Vault Name     : contoso
+Name           : ITHsmNonDefault
+Version        : 929bfc14db84439b823ffd1bedadaf5f
+Id             : https://contoso.vault.azure.net:443/keys/ITHsmNonDefault/929bfc14db84439b823ffd1bedadaf5f
+Enabled        : False
+Expires        : 5/21/2020 11:12:43 PM
+Not Before     : 5/21/2018 11:12:50 PM
+Created        : 5/21/2018 11:13:17 PM
+Updated        : 5/21/2018 11:13:17 PM
+Purge Disabled : False
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
 ```
 
 The first command stores the values decrypt and verify in the $KeyOperations variable.
@@ -127,8 +165,20 @@ severity and IT. The new key is disabled. You can enable it by using the **Set-A
 cmdlet.
 
 ### Example 4: Import an HSM-protected key
-```
-PS C:\>Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
+```powershell
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
+
+Vault Name     : contoso
+Name           : ITByok
+Version        : 67da57e9cadf48a2ad8d366b115843ab
+Id             : https://contoso.vault.azure.net:443/keys/ITByok/67da57e9cadf48a2ad8d366b115843ab
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 5/21/2018 11:10:58 PM
+Updated        : 5/21/2018 11:10:58 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This command imports the key named ITByok from the location that the *KeyFilePath* parameter
@@ -139,9 +189,21 @@ For more information, see
 [How to Generate and Transfer HSM-Protected Keys for Azure Key Vault](http://go.microsoft.com/fwlink/?LinkId=522252).
 
 ### Example 5: Import a software-protected key
-```
-PS C:\>$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
+```powershell
+PS C:\> $Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
+
+Vault Name     : contoso
+Name           : ITPfx
+Version        : 67da57e9cadf48a2ad8d366b115843ab
+Id             : https://contoso.vault.azure.net:443/keys/ITPfx/67da57e9cadf48a2ad8d366b115843ab
+Enabled        : True
+Expires        :
+Not Before     :
+Created        : 5/21/2018 11:10:58 PM
+Updated        : 5/21/2018 11:10:58 PM
+Purge Disabled : False
+Tags           :
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
@@ -152,11 +214,25 @@ The second command creates a software password in the Contoso key vault. The com
 location for the key and the password stored in $Password.
 
 ### Example 6: Import a key and assign attributes
-```
-PS C:\>$Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
+```powershell
+PS C:\> $Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'high'; 'Accounting' = null }
-PS C:\> Add-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
+PS C:\> $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
+PS C:\> Add-AzureKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
+
+Vault Name     : contoso
+Name           : ITPfxToHSM
+Version        : 929bfc14db84439b823ffd1bedadaf5f
+Id             : https://contoso.vault.azure.net:443/keys/ITPfxToHSM/929bfc14db84439b823ffd1bedadaf5f
+Enabled        : True
+Expires        : 5/21/2020 11:12:43 PM
+Not Before     : 
+Created        : 5/21/2018 11:13:17 PM
+Updated        : 5/21/2018 11:13:17 PM
+Purge Disabled : False
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
 ```
 
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
@@ -177,7 +253,7 @@ stored in $tags.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -207,7 +283,7 @@ software-protected key.
 extension, it imports the key as a software-protected key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
 Aliases:
 Accepted values: HSM, Software
@@ -220,7 +296,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
 Aliases:
 Accepted values: HSM, Software
@@ -237,7 +313,7 @@ Indicates that the key you are adding is set to an initial state of disabled. An
 the key will fail. Use this parameter if you are preloading keys that you intend to enable later.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +331,7 @@ parameter uses Coordinated Universal Time (UTC). To obtain a **DateTime** object
 parameter, the key does not expire.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,7 +346,7 @@ Accept wildcard characters: False
 Vault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: InputObjectCreate, InputObjectImport
 Aliases:
 
@@ -288,7 +364,7 @@ Specifies a password for the imported file as a **SecureString** object. To obta
 name extension.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
 Aliases:
 
@@ -312,7 +388,7 @@ override this default, set the *Destination* parameter to HSM so that the key is
 When you specify this parameter, the *Destination* parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveImport, InputObjectImport, ResourceIdImport
 Aliases:
 
@@ -338,7 +414,7 @@ the [JSON Web Key (JWK) specification](http://go.microsoft.com/fwlink/?LinkID=61
 - Verify
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -356,7 +432,7 @@ vault, and your current environment. The name must be a string of 1 through 63 c
 that contains only 0-9, a-z, A-Z, and - (the dash symbol).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: KeyName
 
@@ -373,7 +449,7 @@ uses UTC. To obtain a **DateTime** object, use the **Get-Date** cmdlet. If you d
 parameter, the key can be used immediately.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -388,7 +464,7 @@ Accept wildcard characters: False
 Vault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdCreate, ResourceIdImport
 Aliases:
 
@@ -403,7 +479,7 @@ Accept wildcard characters: False
 RSA key size, in bits. If not specified, the service will provide a safe default.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: InteractiveCreate, InputObjectCreate, ResourceIdCreate
 Aliases:
 
@@ -420,7 +496,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -436,7 +512,7 @@ Specifies the name of the key vault to which this cmdlet adds the key. This cmdl
 FQDN of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InteractiveCreate, InteractiveImport
 Aliases:
 
@@ -451,7 +527,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -467,7 +543,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -483,8 +559,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 

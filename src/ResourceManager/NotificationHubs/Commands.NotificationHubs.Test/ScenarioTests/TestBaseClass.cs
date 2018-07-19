@@ -12,13 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.Internal.Resources;
+
 namespace Commands.NotificationHubs.Test
 {
     using Microsoft.Azure.Commands.Common.Authentication;
     using Microsoft.Azure.Gallery;
     using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.NotificationHubs;
-    using Microsoft.Azure.Management.Resources;
     using LegacyTest = Microsoft.Azure.Test;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -29,6 +30,7 @@ namespace Commands.NotificationHubs.Test
     using System;
     using System.Linq;
     using System.IO;
+    using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
     public abstract class TestBaseClass : RMTestBase
     {
@@ -42,7 +44,7 @@ namespace Commands.NotificationHubs.Test
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var gallaryClient = GetGalleryClient();
             var authorizationManagementClient = GetAuthorizationManagementClient();
             var nhManagementClient = GetNotificationHubsManagementClient(context);
@@ -51,10 +53,12 @@ namespace Commands.NotificationHubs.Test
                                             authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
@@ -79,7 +83,6 @@ namespace Commands.NotificationHubs.Test
                 //modules.Add("Microsoft.Azure.Commands.NotificationHubs.dll");
                 modules.Add("ScenarioTests\\" + this.GetType().Name + ".ps1");
                 modules.Add(helper.RMProfileModule);
-                modules.Add(helper.RMResourceModule);
                 modules.Add(helper.GetRMModulePath(@"AzureRM.NotificationHubs.psd1"));
                 modules.Add("AzureRM.Resources.ps1");
 
@@ -98,9 +101,9 @@ namespace Commands.NotificationHubs.Test
             return context.GetServiceClient<NotificationHubsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        private ResourceManagementClient GetResourceManagementClient()
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         private GalleryClient GetGalleryClient()

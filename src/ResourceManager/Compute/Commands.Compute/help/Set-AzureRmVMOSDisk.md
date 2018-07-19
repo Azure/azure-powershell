@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: 8F7AF1B8-D769-452C-92CF-4486C3EB894D
@@ -25,8 +25,8 @@ Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <Stri
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
  [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Windows]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
- [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
@@ -43,8 +43,8 @@ Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <Stri
 ```
 Set-AzureRmVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>]
  [[-Caching] <CachingTypes>] [[-SourceImageUri] <String>] [[-CreateOption] <String>] [-Linux]
- [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
- [-WriteAccelerator] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>] [-WriteAccelerator]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
@@ -132,7 +132,7 @@ Changing the caching value causes the virtual machine to restart.
 This setting affects the performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.CachingTypes]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -152,8 +152,8 @@ Valid values are:
 Specify this option to create a virtual machine from a specialized disk.
 When you specify this option, do not specify the *SourceImageUri* parameter.
 Instead, use the Set-AzureRmVMSourceImage cmdlet.
-You must also use the use the *Windows* or *Linux* parameters to tell the azure2 platform the type of the operating system on the VHD.
-The *VhdUri* parameter is enough to tell the azure2 platform the location of the disk to attach. 
+You must also use the use the *Windows* or *Linux* parameters to tell the azure platform the type of the operating system on the VHD.
+The *VhdUri* parameter is enough to tell the azure platform the location of the disk to attach. 
 - FromImage.
 Specify this option to create a virtual machine from a platform image or a generalized user image.
 In the case of a generalized user image, you also need to specify the *SourceImageUri* parameter and either the *Windows* or *Linux* parameters to tell the Azure platform the location and type of the operating system disk VHD instead of using the **Set-AzureRmVMSourceImage** cmdlet.
@@ -161,7 +161,7 @@ In the case of a platform image, the *VhdUri* parameter is sufficient.
 - Empty.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -191,7 +191,7 @@ Accept wildcard characters: False
 Specifies the location of the disk encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
 Aliases:
 
@@ -206,7 +206,7 @@ Accept wildcard characters: False
 Specifies the resource ID of the Key Vault containing the disk encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
 Aliases:
 
@@ -221,7 +221,7 @@ Accept wildcard characters: False
 Specifies the size, in GB, of the operating system disk.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -236,7 +236,7 @@ Accept wildcard characters: False
 Specifies the location of the key encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
 Aliases:
 
@@ -251,7 +251,7 @@ Accept wildcard characters: False
 Specifies the resource ID of the Key Vault containing the key encryption key.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: WindowsDiskEncryptionParameterSet, LinuxDiskEncryptionParameterSet
 Aliases:
 
@@ -267,7 +267,7 @@ Indicates that the operating system on the user image is Linux.
 Specify this parameter for user image based virtual machine deployment.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: LinuxParamSet, LinuxDiskEncryptionParameterSet
 Aliases:
 
@@ -282,7 +282,7 @@ Accept wildcard characters: False
 Specifies the ID of a managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 Specifies the name of the operating system disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: OSDiskName, DiskName
 
@@ -312,7 +312,7 @@ Accept wildcard characters: False
 Specifies the URI of the VHD for user image scenarios.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SourceImage
 
@@ -327,7 +327,7 @@ Accept wildcard characters: False
 Specifies the storage account type of managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -347,7 +347,7 @@ This is the location from which the image binary large object (BLOB) is copied t
 For a disk based virtual machine boot scenario, this parameter specifies the VHD file that the virtual machine uses directly for starting up.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: OSDiskVhdUri, DiskVhdUri
 
@@ -363,7 +363,7 @@ Specifies the local virtual machine object on which to set operating system disk
 To obtain a virtual machine object, use the Get-AzureRmVM cmdlet.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 
@@ -378,7 +378,7 @@ Accept wildcard characters: False
 Indicates that the operating system on the user image is Windows.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WindowsParamSet, WindowsDiskEncryptionParameterSet
 Aliases:
 
@@ -393,7 +393,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 

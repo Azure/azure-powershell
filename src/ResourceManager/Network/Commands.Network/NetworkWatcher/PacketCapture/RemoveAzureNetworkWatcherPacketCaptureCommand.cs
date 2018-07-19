@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Network;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -50,6 +51,14 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Location of the network watcher.",
+            ParameterSetName = "SetByLocation")]
+        [LocationCompleter("Microsoft.Network/networkWatchers")]
+        [ValidateNotNull]
+        public string Location { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The packet capture name.")]
         [ValidateNotNullOrEmpty]
@@ -69,7 +78,20 @@ namespace Microsoft.Azure.Commands.Network
                 this.PacketCaptureName,
                 () =>
                 {
-                    if (ParameterSetName.Contains("SetByResource"))
+                    if (string.Equals(this.ParameterSetName, "SetByLocation", StringComparison.OrdinalIgnoreCase))
+                    {
+                        var networkWatcher = this.GetNetworkWatcherByLocation(this.Location);
+
+                        if (networkWatcher == null)
+                        {
+                            throw new ArgumentException("There is no network watcher in location {0}", this.Location);
+                        }
+
+                        this.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkWatcher.Id);
+                        this.NetworkWatcherName = networkWatcher.Name;
+                        this.PacketCaptures.Delete(this.ResourceGroupName, this.NetworkWatcherName, this.PacketCaptureName);
+                    }
+                    else if (string.Equals(this.ParameterSetName, "SetByResource", StringComparison.OrdinalIgnoreCase))
                     {
                         this.PacketCaptures.Delete(this.NetworkWatcher.ResourceGroupName, this.NetworkWatcher.Name, this.PacketCaptureName);
                     }

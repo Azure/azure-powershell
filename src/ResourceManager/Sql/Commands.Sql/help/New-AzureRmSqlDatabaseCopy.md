@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Sql.dll-Help.xml
 Module Name: AzureRM.Sql
 ms.assetid: CED38886-2DC9-450E-91FF-8209602C76CD
@@ -13,10 +13,20 @@ Creates a copy of a SQL Database that uses the snapshot at the current time.
 
 ## SYNTAX
 
+### DtuBasedDatabase (Default)
 ```
 New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-ServiceObjectiveName <String>]
  [-ElasticPoolName <String>] [-Tags <Hashtable>] [-CopyResourceGroupName <String>] [-CopyServerName <String>]
- -CopyDatabaseName <String> [-AsJob] [-ServerName] <String> [-ResourceGroupName] <String>
+ -CopyDatabaseName <String> [-AsJob] [-LicenseType <String>] [-ServerName] <String>
+ [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### VcoreBasedDatabase
+```
+New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyResourceGroupName <String>]
+ [-CopyServerName <String>] -CopyDatabaseName <String> [-AsJob] -ComputeGeneration <String> -VCore <Int32>
+ [-LicenseType <String>] [-ServerName] <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -31,17 +41,13 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background
+
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -52,11 +58,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ComputeGeneration
+The compute generation to assign to the new copy.
+
+```yaml
+Type: System.String
+Parameter Sets: VcoreBasedDatabase
+Aliases: Family
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CopyDatabaseName
 Specifies the name of the SQL Database copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +92,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Resource Group in which to assign the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +107,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Server which hosts the copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +122,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +137,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -131,7 +152,22 @@ Accept wildcard characters: False
 Specifies the name of the elastic pool in which to assign the copy.
 
 ```yaml
-Type: String
+Type: System.String
+Parameter Sets: DtuBasedDatabase
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LicenseType
+The license type for the Azure Sql database.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -146,7 +182,7 @@ Accept wildcard characters: False
 Specifies the name of the Resource Group that contains the database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +197,7 @@ Accept wildcard characters: False
 Specifies the name of the  SQL Server that contains the database to copy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -176,8 +212,8 @@ Accept wildcard characters: False
 Specifies the name of the service objective to assign to the copy.
 
 ```yaml
-Type: String
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: DtuBasedDatabase
 Aliases:
 
 Required: False
@@ -193,7 +229,7 @@ Specifies the Key-value pairs in the form of a hash table to associate with the 
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tag
 
@@ -204,11 +240,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VCore
+The Vcore numbers of the Azure Sql Database copy.
+
+```yaml
+Type: System.Int32
+Parameter Sets: VcoreBasedDatabase
+Aliases: Capacity
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -224,7 +275,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

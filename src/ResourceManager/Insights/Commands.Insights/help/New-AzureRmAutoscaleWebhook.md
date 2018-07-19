@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 674A11E4-36B9-4075-9F4E-952BD9FF07A7
@@ -14,7 +14,8 @@ Creates an Autoscale webhook.
 ## SYNTAX
 
 ```
-New-AzureRmAutoscaleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmAutoscaleWebhook [-ServiceUri] <String> [[-Property] <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,18 +23,13 @@ The **New-AzureRmAutoscaleWebhook** cmdlet creates an Autoscale webhook.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -48,7 +44,7 @@ Accept wildcard characters: False
 Specifies the list of properties in the format @(property1 = 'value1',....).
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -63,9 +59,9 @@ Accept wildcard characters: False
 Specifies the service URI.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0

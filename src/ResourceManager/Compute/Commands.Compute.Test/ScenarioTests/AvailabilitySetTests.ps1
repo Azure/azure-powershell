@@ -31,7 +31,7 @@ function Test-AvailabilitySet
         $nonDefaultUD = 2;
         $nonDefaultFD = 3;
 
-        $job = New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -AsJob;
+        $job = New-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Location $loc -PlatformUpdateDomainCount $nonDefaultUD -PlatformFaultDomainCount $nonDefaultFD -Sku 'Classic' -Tag @{"a"="b"} -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
 
@@ -46,6 +46,7 @@ function Test-AvailabilitySet
         Assert-AreEqual $nonDefaultFD $aset.PlatformFaultDomainCount;
         Assert-False {$aset.Managed};
         Assert-AreEqual 'Classic' $aset.Sku;
+		Assert-AreEqual "b" $aset.Tags["a"];
 
         $job = $aset | Update-AzureRmAvailabilitySet -Managed -AsJob;
         $result = $job | Wait-Job;
@@ -70,6 +71,12 @@ function Test-AvailabilitySet
         $job = Remove-AzureRmAvailabilitySet -ResourceGroupName $rgname -Name $asetName -Force -AsJob;
         $result = $job | Wait-Job;
         Assert-AreEqual "Completed" $result.State;
+        $st = $job | Receive-Job;
+        $id = New-Object System.Guid;
+        Assert-True { [System.Guid]::TryParse($st.RequestId, [REF] $id) };
+        Assert-AreEqual "OK" $st.StatusCode;
+        Assert-AreEqual "OK" $st.ReasonPhrase;
+        Assert-True { $st.IsSuccessStatusCode };
         
         $asets = Get-AzureRmAvailabilitySet -ResourceGroupName $rgname;
         Assert-AreEqual $asets $null;

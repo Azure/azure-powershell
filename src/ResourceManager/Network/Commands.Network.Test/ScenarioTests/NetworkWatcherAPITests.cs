@@ -21,86 +21,100 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class NetworkWatcherAPITests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public NetworkWatcherAPITests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public NetworkWatcherAPITests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetTopology()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-GetTopology");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetTopology");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetSecurityGroupView()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-GetSecurityGroupView");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetSecurityGroupView");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestGetNextHop()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-GetNextHop");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-GetNextHop");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestVerifyIPFlow()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VerifyIPFlow");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VerifyIPFlow");
         }
 
         [Fact(Skip = "There was a bug in API. After fix is deployed, we need to rerecord test.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestPacketCapture()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-PacketCapture");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-PacketCapture");
         }
 
         [Fact(Skip = "Rerecord tests")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestTroubleshoot()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-Troubleshoot");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-Troubleshoot");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestFlowLog()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-FlowLog");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-FlowLog");
         }
 
-        [Fact(Skip = "Test is failing due to design changes. Service team is going to re-record and submit it.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectivityCheck()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectivityCheck");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectivityCheck");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestReachabilityReport()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ReachabilityReport");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ReachabilityReport");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestProvidersList()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ProvidersList");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ProvidersList");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.netanalyticsdev)]
         public void TestConnectionMonitor()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-ConnectionMonitor");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ConnectionMonitor");
         }
     }
 }

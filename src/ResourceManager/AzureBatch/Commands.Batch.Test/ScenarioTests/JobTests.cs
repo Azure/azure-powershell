@@ -13,30 +13,33 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Batch.Models;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System;
+using System.Reflection;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class JobTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public JobTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestJobCRUD()
         {
-            BatchController.NewInstance.RunPsTest("Test-JobCRUD");
+            BatchController.NewInstance.RunPsTest(_logger, "Test-JobCRUD");
         }
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableEnableTerminateJob()
         {
             BatchController controller = BatchController.NewInstance;
@@ -44,6 +47,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger, 
                 () => { return new string[] { string.Format("Test-DisableEnableTerminateJob '{0}'", jobId) }; },
                 () =>
                 {
@@ -54,12 +58,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void IfJobSetsAutoFailure_ItCompletesWhenAnyTaskFails()
         {
             BatchController controller = BatchController.NewInstance;
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId = "taskId-1";
             PSCloudJob completedJob = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("IfJobSetsAutoFailure-ItCompletesWhenAnyTaskFails '{0}' '{1}'", jobId, taskId) }; },
                 null,
                 () =>
@@ -77,8 +82,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                     AssertJobIsCompleteDueToTaskFailure(completedJob);
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         private void AssertJobIsCompleteDueToTaskFailure(PSCloudJob job)
