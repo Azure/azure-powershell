@@ -21,15 +21,12 @@ Set-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <Str
 
 ## DESCRIPTION
 The **Set-AzureRmNotificationHubsNamespace** cmdlet sets the property values of an existing notification hub namespace.
-
 Namespaces are logical containers that help you organize and manage your notification hubs.
 You must have at least one notification hub namespace.
 Additionally, all notification hubs must have an assigned namespace.
-
 This cmdlet is primarily used to enable and disable a namespace.
 When a namespace is disabled, users cannot connect to any of the notification hubs in the namespace, nor can administrators use those hubs to send push notifications.
 To re-enable a disabled namespace, use this cmdlet to set the **State** property of the namespace to Active.
-
 You can also use this cmdlet to tag a namespace as critical.
 This prevents the namespace from being deleted.
 To remove a critical namespace you must first remove the Critical tag.
@@ -102,9 +99,7 @@ Accept wildcard characters: False
 ### -Location
 Specifies the display name of the datacenter that hosts the namespace.
 Although you can set this parameter to any valid Azure location, for optimal performance you should use a datacenter located near the majority of your users.
-
 To get an up-to-date list of Azure locations run the following command:
-
 `Get-AzureLocation | Select-Object DisplayName`
 
 ```yaml
@@ -121,7 +116,6 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace that this cmdlet modifies.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
@@ -138,7 +132,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the namespace is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
@@ -189,15 +182,11 @@ Accept wildcard characters: False
 Specifies name-value pairs that can be used to categorize and organize Azure items.
 Tags function similar to keywords, and operate across a deployment.
 For example, if you search for all items with the tag Department:IT the search will return all the Azure items that have that tag, regardless of such things as item type, location, or resource group.
-
 An individual tag consists of two parts: the *Name* and (optionally) the *Value*.
 For example, in Department:IT, the tag name is Department and the tag value is IT.
 To add a tag, use hash table syntax similar to this, which creates the tag CalendarYear:2016:
-
 -Tags @{Name="CalendarYear";Value="2016"}
-
 To add multiple tags in the same command, separate the individual tags by using commas:
-
 -Tag @{Name="CalendarYear";Value="2016"}, @{Name="FiscalYear";Value="2017"}
 
 ```yaml
@@ -247,8 +236,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Namespace (ByPropertyName), ResourceGroup (ByPropertyName), SkuTier (ByPropertyName)
+
+### Microsoft.Azure.Commands.NotificationHubs.Models.NamespaceState
+Parameters: State (ByPropertyName)
+
+### System.Boolean
+Parameters: Critical (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

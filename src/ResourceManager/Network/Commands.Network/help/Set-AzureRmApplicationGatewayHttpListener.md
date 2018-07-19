@@ -42,7 +42,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayHttpListener -ApplicationGateway $
 ```
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
 The second command sets the HTTP listener for the gateway to use the front-end configuration stored in $FIP01 with the HTTP protocol on port 80.
 
 ## PARAMETERS
@@ -170,7 +169,6 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the protocol that the HTTP listener uses.
 The acceptable values for this parameter are:
-
 - Http
 - Https
 
@@ -239,7 +237,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

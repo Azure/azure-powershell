@@ -309,7 +309,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Management.Automation.SwitchParameter
+Parameters: DiskEncryptionKeyVaultId (ByPropertyName), DiskEncryptionKeyVaultUrl (ByPropertyName), ExtensionName (ByPropertyName), KeyEncryptionAlgorithm (ByPropertyName), KeyEncryptionKeyUrl (ByPropertyName), KeyEncryptionKeyVaultId (ByPropertyName), Passphrase (ByPropertyName), ResourceGroupName (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMScaleSetName (ByPropertyName), VolumeType (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), ForceUpdate (ByPropertyName)
 
 ## OUTPUTS
 

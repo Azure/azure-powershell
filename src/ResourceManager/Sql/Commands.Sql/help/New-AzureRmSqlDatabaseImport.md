@@ -82,16 +82,13 @@ Accept wildcard characters: False
 ### -AuthenticationType
 Specifies the type of authentication used to access the server.
 This parameter defaults to SQL if no authentication type is set.
-
 The acceptable values for this parameter are:
-
 - SQL.
 SQL authentication.
 Set the *AdministratorLogin* and *AdministratorLoginPassword* parameters to the SQL administrator username and password. 
 - ADPassword.
 Azure Active Directory authentication.
 Set *AdministratorLogin* and *AdministratorLoginPassword* to the Azure Active Directory administrator username and password.
-
 This parameter is only available on SQL Database V12 servers.
 
 ```yaml
@@ -154,9 +151,7 @@ Accept wildcard characters: False
 
 ### -Edition
 Specifies the edition of the new database to import to.
-
 The acceptable values for this parameter are:
-
 - Premium
 - Basic
 - Standard
@@ -238,9 +233,7 @@ Accept wildcard characters: False
 
 ### -StorageKeyType
 Specifies the type of access key for the storage account.
-
 The acceptable values for this parameter are:
-
 - StorageAccessKey.
 Uses the storage account key. 
 - SharedAccessKey.
@@ -310,12 +303,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseImportExportBaseModel
+### System.Object
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql

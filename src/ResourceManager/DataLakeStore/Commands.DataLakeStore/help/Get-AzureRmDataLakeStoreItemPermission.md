@@ -82,13 +82,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.String
-The string representation of the ownership octal
 
 ## NOTES
 * Alias: Get-AdlStoreItemPermission

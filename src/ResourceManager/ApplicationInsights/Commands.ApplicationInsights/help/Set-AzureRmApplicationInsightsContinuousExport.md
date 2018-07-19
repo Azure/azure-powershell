@@ -265,9 +265,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.ApplicationInsights.Models.PSApplicationInsightsComponent
+Parameters: ApplicationInsightsComponent (ByValue)
+
 ### System.String
-System.String[]
-System.Boolean
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

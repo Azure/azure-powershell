@@ -34,9 +34,7 @@ The **Set-AzureRmSqlServerAuditing** cmdlet changes the auditing settings of an 
 To use the cmdlet, use the *ResourceGroupName* and *ServerName* parameters to identify the server.
 Specify the *StorageAccountName* parameter to specify the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys.
 Use the *State* parameter to enable/disable the policy.
-
 You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
-
 After the cmdlet runs successfully, auditing of the Azure SQL databases that are defined in the specified Azure SQL server is enabled.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current blob auditing policy in addition to the server identifiers.
 Server identifiers include, but are not limited to, **ResourceGroupName** and **ServerName**.
@@ -62,7 +60,6 @@ PS C:\>Set-AzureRmSqlServerAuditing -State Enabled -ResourceGroupName "ResourceG
 
 ### -AuditActionGroup
 The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
-
 "BATCH_COMPLETED_GROUP",
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
 "FAILED_DATABASE_AUTHENTICATION_GROUP"
@@ -268,12 +265,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), State (ByPropertyName), StorageAccountName (ByPropertyName), StorageKeyType (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+Parameters: AuditActionGroup (ByPropertyName)
+
+### System.Guid
+Parameters: StorageAccountSubscriptionId (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.ServerBlobAuditingSettingsModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel
 
 ## NOTES
 

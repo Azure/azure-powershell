@@ -31,7 +31,6 @@ PS C:\> New-AzureRmAutomationConnection -Name "Connection12" -ConnectionTypeName
 ```
 
 The first command assigns a hash table of field values to the $FieldValue variable.
-
 The second command creates an Azure connection named Connection12 in the Automation account named AutomationAccount01.
 The command uses the connection field values in $FieldValues.
 
@@ -149,8 +148,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), ConnectionTypeName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.IDictionary
+Parameters: ConnectionFieldValues (ByPropertyName)
 
 ## OUTPUTS
 

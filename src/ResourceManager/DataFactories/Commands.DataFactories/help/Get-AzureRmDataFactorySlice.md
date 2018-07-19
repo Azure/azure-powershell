@@ -29,9 +29,7 @@ Get-AzureRmDataFactorySlice [[-EndDateTime] <DateTime>] [-DataFactory] <PSDataFa
 ## DESCRIPTION
 The **Get-AzureRmDataFactorySlice** cmdlet gets data slices for a dataset in Azure Data Factory.
 Specify a start time and an end time to define a range of data slices to view.
-
 The status of a data slice is one of the following values: 
-
 - PendingExecution.
 Data processing has not started. 
 - InProgress.
@@ -53,7 +51,6 @@ Data slice is waiting for validation before it is processed.
 Data Factory retries the validation of the slice. 
 - Failed Validation.
 Validation of the slice failed.
-
 For each of the slices, you can see more information about the run that produces the slice by using the Get-AzureRmDataFactoryRun cmdlet.
 
 ## EXAMPLES
@@ -101,13 +98,11 @@ Status            : PendingExecution
 This command gets all the data slices for the dataset named WikiAggregatedData in the data factory named WikiADF.
 The command gets slices produced after the time that the StartDateTime parameter specifies.
 The following example code sets the availability for this dataset every hour in the JavaScript Object Notation (JSON) file.
-
                         availability: 
                         {
                         period: "Hour",
                         periodMultiplier: 1
                         }
-
                     Some of the results are Ready and others are PendingExecution.
 Ready slices have already run.
 The pending slices are waiting to run at the end of each hour in the interval that the Set-AzureRmDataFactoryPipelineActivePeriod cmdlet specifies.
@@ -181,14 +176,11 @@ Accept wildcard characters: False
 Specifies the end of a time period as a **DateTime** object.
 This cmdlet gets slices produced before the time that this parameter specifies.
 For more information about **DateTime** objects, type `Get-Help Get-Date`.
-
 *EndDateTime* must be specified in the ISO8601 format as in the following examples: 
-
 2015-01-01Z 
 2015-01-01T00:00:00Z 
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
@@ -240,12 +232,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), DatasetName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataSlice
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataSlice
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

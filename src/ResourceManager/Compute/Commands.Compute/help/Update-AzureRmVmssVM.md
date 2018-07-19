@@ -221,8 +221,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineDataDisk[]
-Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
+Parameters: InstanceId (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), VMScaleSetName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineDataDisk[]
+Parameters: DataDisk (ByValue)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
+Parameters: VirtualMachineScaleSetVM (ByValue)
 
 ## OUTPUTS
 

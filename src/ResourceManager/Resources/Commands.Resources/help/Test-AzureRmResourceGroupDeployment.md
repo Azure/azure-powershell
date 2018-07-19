@@ -108,7 +108,6 @@ Accept wildcard characters: False
 ### -Mode
 Specifies the deployment mode.
 The acceptable values for this parameter are:
-
 - Incremental
 - Complete
 
@@ -235,11 +234,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError
+### Microsoft.Azure.Commands.ResourceManager.Models.PSResourceManagerError
 
 ## NOTES
 

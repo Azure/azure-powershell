@@ -23,7 +23,6 @@ Get-AzureRmSqlDatabaseDataMaskingRule [-SchemaName <String>] [-TableName <String
 The **Get-AzureRmSqlDatabaseDataMaskingRule** cmdlet gets either a specific data masking rule or all of the data masking rules for an Azure SQL database.
 To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database, and the *RuleId* parameter to specify which rule this cmdlet returns.
 If you do not provide *RuleId*, all the data masking rules for that Azure SQL database are returned.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -218,11 +217,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), SchemaName (ByPropertyName), ServerName (ByPropertyName), TableName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel
+### Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel
 
 ## NOTES
 

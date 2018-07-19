@@ -23,9 +23,7 @@ New-AzureRmIntegrationAccountSchema -ResourceGroupName <String> -Name <String> -
 The **New-AzureRmIntegrationAccountSchema** cmdlet creates an integration account schema.
 This cmdlet returns an object that represents the integration account schema.
 Specify the integration account name, resource group name, schema name, and schema definition.
-
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -227,8 +225,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), SchemaName (ByPropertyName)
 
 ## OUTPUTS
 

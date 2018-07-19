@@ -32,11 +32,9 @@ New-AzureRmLogicApp -ResourceGroupName <String> -Name <String> -Location <String
 The **New-AzureRmLogicApp** cmdlet creates a logic app by using the Logic Apps feature.
 A logic app is a collection of actions or triggers defined in Logic App definition.
 This cmdlet returns a **Workflow** object.
-
 You can create a logic app by specifying a name, location, Logic App definition, resource group, and plan.
 A Logic App definition and parameters are formatted in JavaScript Object Notation (JSON).
 You can use a logic app as a template for definition and parameters.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -154,7 +152,6 @@ Version                      : 08587489107859952120
 
 The first command gets the logic app named LogicApp03 by using the Get-AzureRmLogicApp cmdlet.
 The command stores the logic app in the $Workflow variable.
-
 The second command creates a new logic app that uses the definition and parameters of the logic app stored in $Workflow.
 
 ## PARAMETERS
@@ -350,11 +347,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: Location (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Logic.Models.Workflow
+### System.Object
 
 ## NOTES
 

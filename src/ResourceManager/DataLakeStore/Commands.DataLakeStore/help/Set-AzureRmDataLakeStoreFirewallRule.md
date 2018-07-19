@@ -156,13 +156,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), EndIpAddress (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), StartIpAddress (ByPropertyName)
 
 ## OUTPUTS
 
-### DataLakeStoreFirewallRule
-The details of the updated firewall rule.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreFirewallRule
 
 ## NOTES
 

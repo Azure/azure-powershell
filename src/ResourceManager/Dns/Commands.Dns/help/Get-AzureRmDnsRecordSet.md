@@ -27,10 +27,8 @@ Get-AzureRmDnsRecordSet [-Name <String>] -Zone <DnsZone> [-RecordType <RecordTyp
 
 ## DESCRIPTION
 The **Get-AzureRmDnsRecordSet** cmdlet gets the Domain Name System (DNS) record set with the specified name and type, in the specified zone.
-
 If you do not specify the *Name* or *RecordType* parameters, this cmdlet returns all record sets of the specified type in the zone.
 If you specify the *RecordType* parameter but not the *Name* parameter, this cmdlet returns all record sets of the specified record type.
-
 You can use the pipeline operator to pass a **DnsZone** object to this cmdlet, or you can pass a **DnsZone** object as the *Zone* parameter, or alternatively you can specify the zone and resource group by name.
 
 ## EXAMPLES
@@ -113,9 +111,7 @@ Accept wildcard characters: False
 
 ### -RecordType
 Specifies the type of DNS record that this cmdlet gets.
-
 Valid values are: 
-
 - A
 - AAAA
 - CNAME
@@ -125,7 +121,6 @@ Valid values are:
 - SOA
 - SRV
 - TXT
-
 If you do not specify the *RecordType* parameter, you must also omit the *Name* parameter. 
 This cmdlet then returns all record sets in the zone (of all names and types).
 
@@ -145,7 +140,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the resource group that contains the DNS zone.
 The zone name must also be specified, using the *ZoneName* parameter.
-
 Alternatively, you can specify the zone and resource group by passing in a **DnsZone** object using the *Zone* parameter.
 
 ```yaml
@@ -179,7 +173,6 @@ Accept wildcard characters: False
 ### -ZoneName
 Specifies the name of the DNS zone that contains the record set to get.
 The resource group containing the zone must also be specified, using the *ResourceGroupName* parameter.
-
 Alternatively, you can specify the zone and resource group by passing in a DNS Zone object using the *Zone* parameter.
 
 ```yaml
@@ -199,15 +192,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ZoneName (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Dns.DnsZone
-You can pipe a **DnsZone** object to this cmdlet.
-The **DnsZone** object represents the zone in which to look for the **RecordSet** object.
+Parameters: Zone (ByValue)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Dns.Models.RecordType, Microsoft.Azure.Management.Dns, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-This cmdlet returns one or more objects that represents the record sets that are found.
-There will be at most one **RecordSet** returned if the *Name* and *RecordType* parameters are specified, otherwise multiple **RecordSet** objects are returned as an array.
 
 ## NOTES
 

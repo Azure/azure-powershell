@@ -140,7 +140,6 @@ Accept wildcard characters: False
 ### -Authentication
 Specifies the type of authentication used.
 Valid values are:
-
 - Certificate
 -  Kerberos
 
@@ -344,7 +343,6 @@ Accept wildcard characters: False
 ### -ReplicationFrequencyInSeconds
 Specifies the replication frequency interval in seconds.
 Valid values are:
-
 - 30
 - 300
 - 900
@@ -365,7 +363,6 @@ Accept wildcard characters: False
 ### -ReplicationMethod
 Specifies the replication method.
 Valid values are:
-
 - Online
 - Offline
 
@@ -513,7 +510,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

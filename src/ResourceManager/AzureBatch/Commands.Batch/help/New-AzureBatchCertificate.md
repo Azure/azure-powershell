@@ -44,7 +44,6 @@ PS C:\> New-AzureBatchCertificate -RawData $RawData -Password "Password1234" -Ba
 ```
 
 The first command reads the data from the file named MyCert.pfx into the $RawData variable.
-
 The second command adds a certificate to the specified Batch account using the raw data stored in $RawData.
 
 ## PARAMETERS
@@ -132,13 +131,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.Byte[]
+Parameters: RawData (ByPropertyName, ByValue)
 
-### Byte[]
-Parameter 'RawData' accepts value of type 'Byte[]' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

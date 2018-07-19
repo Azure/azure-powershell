@@ -52,7 +52,6 @@ PS C:\> Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway -Asn 13
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
-
 The second command sets the goal state for the virtual network gateway stored in variable $Gateway.
 The command also sets the ASN to 1337.
 
@@ -64,9 +63,7 @@ PS C:\> $gateway = Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gate
 ```
 
 The first command gets a virtual network gateway named Gateway01 that belongs to resource group ResourceGroup001 and stores it to the variable named $Gateway
-
 The second command creates the Vpn ipsec policy object as per specified ipsec parameters.
-
 The third command sets the goal state for the virtual network gateway stored in variable $Gateway.
 The command also sets the custom vpn ipsec policy specified in the $vpnclientipsecpolicy object on Virtual network gateway.
 
@@ -166,7 +163,6 @@ Accept wildcard characters: False
 ### -GatewaySku
 Specifies the stock keeping unit (SKU) of the virtual network gateway.
 The acceptable values for this parameter are:
-
 - Basic
 - Standard
 - HighPerformance
@@ -368,8 +364,31 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualNetworkGateway
-Parameter 'VirtualNetworkGateway' accepts value of type 'PSVirtualNetworkGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: VirtualNetworkGateway (ByValue)
+
+### System.String
+Parameters: GatewaySku (ByPropertyName), RadiusServerAddress (ByPropertyName)
+
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Parameters: GatewayDefaultSite (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.UInt32
+Parameters: Asn (ByPropertyName)
+
+### System.Int32
+Parameters: PeerWeight (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: RadiusServerSecret (ByPropertyName)
 
 ## OUTPUTS
 

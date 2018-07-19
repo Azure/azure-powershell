@@ -24,7 +24,6 @@ New-AzureRmKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <
 The **New-AzureRmKeyVault** cmdlet creates a key vault in the specified resource group. This cmdlet
 also grants permissions to the currently logged on user to add, remove, or list keys and secrets in
 the key vault.
-
 Note: If you see the error **The subscription is not registered to use namespace
 'Microsoft.KeyVault'** when you try to create your new key vault, run
 **Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"** and then rerun your
@@ -187,7 +186,6 @@ Accept wildcard characters: False
 
 ### -EnableSoftDelete
 Specifies that the soft-delete functionality is enabled for this key vault. When soft-delete is enabled, for a grace period, you can recover this key vault and its contents after it is deleted.
-
 For more information about this functionality, see [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete). For how-to instructions, see [How to use Key Vault soft-delete with PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell).
 
 ```yaml
@@ -265,7 +263,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -316,8 +313,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: EnabledForDeployment (ByPropertyName), EnabledForDiskEncryption (ByPropertyName), EnabledForTemplateDeployment (ByPropertyName)
+
+### Microsoft.Azure.Management.KeyVault.Models.SkuName
+Parameters: Sku (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

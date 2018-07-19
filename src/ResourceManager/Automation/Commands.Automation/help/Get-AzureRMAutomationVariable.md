@@ -39,7 +39,6 @@ PS C:\> $Value = $Variable.value
 
 The first command gets an Automation variable named Variable06 in the account named Contoso17.
 The command stores that object in the $Variable variable.
-
 The second command uses standard dot notation to refer to the **value** property of $Variable.
 The command stores the value in the $value variable.
 
@@ -110,8 +109,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

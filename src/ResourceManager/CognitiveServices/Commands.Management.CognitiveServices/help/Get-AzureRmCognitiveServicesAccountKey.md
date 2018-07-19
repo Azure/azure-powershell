@@ -20,10 +20,8 @@ Get-AzureRmCognitiveServicesAccountKey [-ResourceGroupName] <String> [-Name] <St
 
 ## DESCRIPTION
 The **Get-AzureRmCognitiveServicesAccountKey** cmdlet gets the API keys for a provisioned Cognitive Services account.
-
 A Cognitive Services account has two API keys: Key1 and Key2.
 The keys enable interaction with the Cognitive Services account endpoint.
-
 Use New-AzureRmCognitiveServicesAccountKey to regenerate a key.
 
 ## EXAMPLES
@@ -90,8 +88,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

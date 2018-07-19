@@ -29,9 +29,7 @@ Backup-AzureKeyVaultManagedStorageAccount [-InputObject] <PSKeyVaultManagedStora
 The **Backup-AzureKeyVaultManagedStorageAccount** cmdlet backs up a specified managed storage account in a key vault by downloading it and storing it in a file.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up storage account to any key vault in the subscription that it was backed up from, as long as the vault is in the same Azure geography.
-
 Typical reasons to use this cmdlet are: 
-
 - You want to retain an offline copy of the storage account in case you accidentally delete the original from the vault.
  
 - You created a managed storage account using Key Vault and now want to clone the object into a different Azure region, so that you can use it from all instances of your distributed application.
@@ -201,11 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### System.String
-The cmdlet returns the path of the output file containing the backup of the managed storage account.
 
 ## NOTES
 

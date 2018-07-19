@@ -147,9 +147,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### System.Guid
+Parameters: ObjectId (ByPropertyName)
 
-This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to get the credentials for the provided service principal.
+### System.String
+Parameters: DisplayName (ByPropertyName), ServicePrincipalName (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
 
 ## OUTPUTS
 

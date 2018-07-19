@@ -22,10 +22,8 @@ Get-AzureRmOperationalInsightsSearchResults [-ResourceGroupName] <String> [-Work
 
 ## DESCRIPTION
 The **Get-AzureRmOperationalInsightsSearchResults** cmdlet returns the search results based on the specified parameters.
-
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
-
 You can retrieve the results of the search from the Value property of the returned object.
 
 ## EXAMPLES
@@ -231,13 +229,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Id (ByPropertyName), PostHighlight (ByPropertyName), PreHighlight (ByPropertyName), Query (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
+
+### System.Int64
+Parameters: Top (ByPropertyName)
+
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### PSSearchGetSearchResultsResponse
-The **PSSearchGetSearchResultsResponse** object includes a Value property that includes the records returned from the search in JSON format and a metadata object that includes information about the results of the search.
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSearchResultsResponse
 
 ## NOTES
 

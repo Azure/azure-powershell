@@ -90,7 +90,6 @@ Accept wildcard characters: False
 ### -State
 Specifies the state of the geo backup policy.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled
 
@@ -143,10 +142,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

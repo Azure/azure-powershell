@@ -142,11 +142,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Int32
-System.String
+Parameters: NumberOfNodesToRemove (ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

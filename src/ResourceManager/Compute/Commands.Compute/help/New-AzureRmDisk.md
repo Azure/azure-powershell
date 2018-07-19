@@ -152,7 +152,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Management.Compute.Models.Disk
+Parameters: DiskName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
+Parameters: Disk (ByValue)
 
 ## OUTPUTS
 

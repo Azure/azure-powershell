@@ -59,7 +59,6 @@ Accept wildcard characters: False
 Specifies the status of a job.
 This cmdlet gets history that matches the status that you specify.
 The acceptable values for this parameter are:
-
 - Completed 
 - Failed 
 - Postponed
@@ -112,8 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobCollectionName (ByPropertyName), JobExecutionStatus (ByPropertyName), JobName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

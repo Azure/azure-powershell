@@ -170,13 +170,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
-You can pipe input to this cmdlet by property name, but not by value.
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolActivityModel
 
 ## NOTES
 

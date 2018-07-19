@@ -24,11 +24,9 @@ New-AzureRmRecoveryServicesBackupProtectionPolicy [-Name] <String> [-WorkloadTyp
 The **New-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet creates a Backup protection policy in a vault.
 A protection policy is associated with at least one retention policy.
 The retention policy defines how long a recovery point is kept with Azure Backup.
-
 You can use the Get-AzureRmRecoveryServicesBackupRetentionPolicyObject cmdlet to get the default retention policy.
 And you can use the Get-AzureRmRecoveryServicesBackupSchedulePolicyObject cmdlet to get the default schedule policy.
 The **SchedulePolicy** and **RetentionPolicy** objects are used as inputs to the **New-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -45,17 +43,11 @@ PS C:\> New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -Wor
 ```
 
 The first command gets a base **SchedulePolicyObject**, and then stores it in the $SchPol variable.
-
 The second command removes all scheduled run times from the schedule policy in $SchPol.
-
 The third command uses the Get-Date cmdlet to get the current date and time.
-
 The fourth command adds the current date and time in $Dt as the scheduled run time to the schedule policy.
-
 The fifth command gets a base **RetentionPolicy** object, and then stores it in the $RetPol variable.
-
 The sixth command sets the retention duration policy to 365 days.
-
 The final command creates a **BackupProtectionPolicy** object based on the schedule and retention policies created by the previous commands.
 
 ## PARAMETERS
@@ -63,7 +55,6 @@ The final command creates a **BackupProtectionPolicy** object based on the sched
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
@@ -160,7 +151,6 @@ Accept wildcard characters: False
 ### -WorkloadType
 Specifies the workload type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
@@ -212,8 +202,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+Parameters: WorkloadType (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType, Microsoft.Azure.Commands.RecoveryServices.Backup.Models, Version=4.3.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
+Parameters: RetentionPolicy (ByPropertyName)
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
+Parameters: SchedulePolicy (ByPropertyName)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

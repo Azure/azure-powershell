@@ -32,7 +32,6 @@ Remove-AzureRmVpnClientIpsecParameter -ResourceId <String> [-DefaultProfile <IAz
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-
 The **Remove-AzureRmVpnClientIpsecParameter** cmdlet removes the vpn custom ipsec parameters set on your Virtual Network Gateway, which in turn sets default vpn ipsec policy on VPN gateway based on VirtualNetworkGateway Name and Resource Group Name passed.
 
 ## EXAMPLES
@@ -43,7 +42,6 @@ PS C:\> $delete = Remove-AzureRmVpnClientIpsecParameter -VirtualNetworkGatewayNa
 ```
 
 Deletes the vpn custom ipsec parameters set on your Virtual Network Gateway with the name "myGateway" within the resource group "myRG". This command returns bool object showing if removal was successful or failed.
-
 Note: This will result in setting default vpn ipsec policy on your Virtual Network Gateway.
 
 ## PARAMETERS
@@ -159,12 +157,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: InputObject (ByValue)
+
 ### System.String
-Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

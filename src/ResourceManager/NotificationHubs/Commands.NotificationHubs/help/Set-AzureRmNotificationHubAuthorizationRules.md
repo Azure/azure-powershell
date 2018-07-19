@@ -29,25 +29,19 @@ Set-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespa
 
 ## DESCRIPTION
 The **Set-AzureRmNotificationHubAuthorizationRules** cmdlet modifies a Shared Access Signature (SAS) authorization rule assigned to a notification hub.
-
 Authorization rules manage access to your notification hubs by the creation of links, as URIs, based on different permission levels.
 Permission levels can be one of the following: 
-
 - Listen
 - Send
 - Manage
-
 Clients are directed to one of these URIs based on the appropriate permission level.
 For example, a client given the Listen permission will be directed to the URI for that permission.
-
 This cmdlet provides two ways to modify an authorization rule assigned to a notification hub.
 For one, you can create an instance of the **SharedAccessAuthorizationRuleAttributes** object and then configure that object with the property values you want the rule to possess.
 You can configure the object through the .NET Framework.
 You can then copy those property values to your rule by using *SASRule* parameter.
-
 Alternatively, you can create a JSON (JavaScript Object Notation) file containing the relevant configuration values and then apply those values through the *InputFile* parameter.
 A JSON file is a text file that uses syntax similar to this:
-
 {      "Name": "ContosoAuthorizationRule",  
     "PrimaryKey": "WE4qH0398AyXjlekt56gg1gMR3NHoMs29KkUnnpUk01Y=",  
     "Rights": \[  
@@ -55,7 +49,6 @@ A JSON file is a text file that uses syntax similar to this:
         "Send"  
     \]  
 }
-
 When used in conjunction with the New-AzureRmNotificationHubAuthorizationRules cmdlet, the preceding JSON sample modifies an authorization rule named ContosoAuthorizationRule in order to give users Listen and Send rights to the hub.
 
 ## EXAMPLES
@@ -215,8 +208,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

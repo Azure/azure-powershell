@@ -31,7 +31,6 @@ Set-AzureRmMediaService -ResourceGroupName "ResourceGroup123" -AccountName "Medi
 ```
 
 The first command creates a series of tags and stores those tags in the variable named $Tags.
-
 This second command updates the media service named MediaService001 that belongs to the resource group named ResourceGroup123 with the tags stored in $Tags variable.
 The command also uses an array of storage configuration objects stored in $StorageAccounts variable.
 
@@ -148,8 +147,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
+Parameters: StorageAccounts (ByPropertyName)
 
 ## OUTPUTS
 

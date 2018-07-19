@@ -124,17 +124,13 @@ Get-AzureRmRoleAssignment [-RoleDefinitionName <String>] -Scope <String> [-Inclu
 
 ## DESCRIPTION
 Use the Get-AzureRMRoleAssignment command to list all role assignments that are effective on a scope.
-
 Without any parameters, this command returns all the role assignments made under the subscription.
 This list can  be filtered using filtering parameters for principal, role and scope.
-
 The subject of the assignment must be specified.
 To specify a user, use SignInName or Azure AD ObjectId parameters.
 To specify a security group, use Azure AD ObjectId parameter.
 And to specify an Azure AD application, use ServicePrincipalName or ObjectId parameters.
-
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
-
 The scope at which access is being granted may be specified.
 It defaults to the selected subscription. 
 The scope of the assignment can be specified using one of the following parameter combinations
@@ -147,10 +143,8 @@ ResourceGroupName - Name of any resource group under the subscription.
 This will filter assignments effective at the specified resource group
         c.
 ResourceName, ResourceType, ResourceGroupName and (optionally) ParentResource - Identifies a particular resource under the subscription and will filter assignments effective at that resource scope.
-
 To determine what access a particular user has in the subscription, use the ExpandPrincipalGroups switch.
 This will list all roles assigned to the user, and to the groups that the user is member of.
-
 Use the IncludeClassicAdministrators switch to also display the subscription admins and co-admins.
 
 ## EXAMPLES
@@ -428,8 +422,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: ObjectId (ByPropertyName), RoleDefinitionId (ByPropertyName)
+
+### System.String
+Parameters: ParentResource (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceName (ByPropertyName), ResourceType (ByPropertyName), RoleDefinitionName (ByPropertyName), Scope (ByPropertyName), ServicePrincipalName (ByPropertyName), SignInName (ByPropertyName)
 
 ## OUTPUTS
 

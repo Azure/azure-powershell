@@ -36,9 +36,7 @@ PS C:\> New-AzureBatchJob -Id "ContosoJob35" -PoolInformation $PoolInformation -
 
 The first command creates a **PSPoolInformation** object by using the New-Object cmdlet.
 The command stores that object in the $PoolInformation variable.
-
 The second command assigns the ID Pool22 to the **PoolId** property of the object in $PoolInformation.
-
 The final command creates a job that has the ID ContosoJob35.
 Tasks added to the job run on the pool that has the ID Pool22.
 Use the Get-AzureRmBatchAccountKeys cmdlet to assign a context to the $Context variable.
@@ -288,10 +286,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: Id (ByPropertyName)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

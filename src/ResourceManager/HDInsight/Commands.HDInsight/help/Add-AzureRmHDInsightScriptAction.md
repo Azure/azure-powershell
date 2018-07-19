@@ -20,9 +20,7 @@ Add-AzureRmHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <C
 
 ## DESCRIPTION
 The **Add-AzureRmHDInsightScriptAction** cmdlet adds script actions to the HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
-
 Script actions provide functionality that is used to install additional software or to change the configuration of applications that run on a Hadoop cluster by using Windows PowerShell or Bash scripts (for Windows or Linux clusters, respectively).
-
 A script action runs on the cluster nodes when HDInsight clusters are deployed, and they run after nodes in the cluster complete HDInsight configuration.
 The script action runs under system administrator account privileges and provides full access rights to the cluster nodes.
 You can provide each cluster with a list of script actions to run in a specified sequence.
@@ -131,7 +129,6 @@ Accept wildcard characters: False
 ### -NodeType
 Specifies the node type on which to run the script action.
 The acceptable values for this parameter are:
-
 - HeadNode
 - WorkerNode
 - ZookeeperNode
@@ -184,8 +181,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightConfig
-Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+Parameters: Config (ByValue)
 
 ## OUTPUTS
 

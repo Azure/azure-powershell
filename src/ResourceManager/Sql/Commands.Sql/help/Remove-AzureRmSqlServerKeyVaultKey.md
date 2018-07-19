@@ -20,10 +20,8 @@ Remove-AzureRmSqlServerKeyVaultKey [-KeyId] <String> [-AsJob] [-ServerName] <Str
 
 ## DESCRIPTION
 The Remove-AzureRmSqlServerKeyVaultKey cmdlet removes the Key Vault key from the specified SQL server.
-
 Note that the SQL server's permissions to the key's vault are not changed.
 To change permissions, use Set-AzureRmKeyVaultAccessPolicy.
-
 Note that this cmdlet makes no changes to Key Vault.
 To remove a key from Key Vault, use Remove-AzureKeyVaultKey.
 
@@ -35,7 +33,6 @@ PS C:\> Remove-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.n
 ```
 
 This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' from the specified server.
-
 ResourceGroupName : ContosoResourceGroup
 ServerName        : ContosoServer
 ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
@@ -158,6 +155,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

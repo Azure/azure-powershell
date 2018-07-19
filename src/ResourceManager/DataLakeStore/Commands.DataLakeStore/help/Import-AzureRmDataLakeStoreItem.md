@@ -244,13 +244,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), DiagnosticLogPath (ByPropertyName), Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Destination (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName), ForceBinary (ByPropertyName), Recurse (ByPropertyName), Resume (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel
+Parameters: DiagnosticLogLevel (ByPropertyName)
 
 ## OUTPUTS
 
-### string
-The full path in the Data Lake Store account to the uploaded file or folder.
+### System.String
 
 ## NOTES
 

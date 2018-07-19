@@ -111,14 +111,11 @@ Accept wildcard characters: False
 Specifies the end of a time period as a **DateTime** object.
 This time is the end of a data slice.
 For more information about **DateTime** objects, type `Get-Help Get-Date`.
-
 *EndDateTime* must be specified in the ISO8601 format as in the following examples: 
-
 2015-01-01Z 
 2015-01-01T00:00:00Z 
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
@@ -168,7 +165,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies a status to assign to the data slice.
 The acceptable values for this parameter are:
-
 - Waiting.
 Data slice is waiting for validation against validation policies before being processed. 
 - Ready.
@@ -196,7 +192,6 @@ Accept wildcard characters: False
 ### -UpdateType
 Specifies the type of update to the slice.
 The acceptable values for this parameter are:
-
 - Individual.
 Sets the status of each slice for the dataset in the specified time range. 
 - UpstreamInPipeline.
@@ -220,8 +215,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), DatasetName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -85,7 +85,6 @@ Submit-AzureRmDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" 
 ```
 
 U-SQL script parameters are prepended above the main script contents, e.g.:
-
 DECLARE @Department string = "Sales";
 DECLARE @NumRecords int = 1000;
 DECLARE @StartDateTime DateTime = new DateTime(2017, 12, 6, 0, 0, 0, 0);
@@ -125,7 +124,6 @@ Accept wildcard characters: False
 ### -CompileMode
 The type of compilation to be done on this job. 
 Valid values: 
-
 - Semantic (Only performs semantic checks and necessary sanity checks)
 - Full (Full compilation)
 - SingleBox (Full compilation performed locally)
@@ -358,13 +356,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'Script' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName), CompileMode (ByPropertyName), Name (ByPropertyName), PipelineName (ByPropertyName), PipelineUri (ByPropertyName), RecurrenceName (ByPropertyName), Runtime (ByPropertyName), Script (ByPropertyName, ByValue), ScriptPath (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: CompileOnly (ByPropertyName)
+
+### System.Int32
+Parameters: AnalyticsUnits (ByPropertyName), Priority (ByPropertyName)
+
+### System.Collections.IDictionary
+Parameters: ScriptParameter (ByPropertyName)
+
+### System.Guid
+Parameters: PipelineId (ByPropertyName), RecurrenceId (ByPropertyName)
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### JobInformation
-The initial job details for the submitted job.
+### Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation
 
 ## NOTES
 

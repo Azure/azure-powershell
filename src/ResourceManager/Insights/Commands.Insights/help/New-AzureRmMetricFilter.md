@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
@@ -14,8 +14,8 @@ Creates a metric dimension filter that can be used to query metrics.
 ## SYNTAX
 
 ```
-New-AzureRmMetricFilter -Dimension <String> -Operator <String> -Value <String[]> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+New-AzureRmMetricFilter [-Dimension] <String> [-Operator] <String> [-Value] <String[]>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,11 +32,26 @@ This command creates metric dimension filter of the format "City eq 'Seattle' or
 
 ## PARAMETERS
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Dimension
 The name of the metric dimension. 
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -51,7 +66,7 @@ Accept wildcard characters: False
 Specifies the operator used to select the metric dimension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +81,7 @@ Accept wildcard characters: False
 Specifies the array of metric dimension values.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,12 +97,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Dimension (ByPropertyName), Operator (ByPropertyName)
+
+### System.String[]
+Parameters: Value (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.OperationResponse
+### System.String
 
 ## NOTES
 

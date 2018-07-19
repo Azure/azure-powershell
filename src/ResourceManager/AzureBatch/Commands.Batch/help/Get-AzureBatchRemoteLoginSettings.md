@@ -43,7 +43,6 @@ IPAddress       Port
 
 The first command gets a batch account context that contains access keys for your subscription by using **Get-AzureRmBatchAccountKeys**.
 The command stores the context in the $Context variable to use in the next command.
-
 The second command gets each compute node in the pool that has the ID ContosoPool by using **Get-AzureBatchComputeNode**.
 The command passes each computer node to the current cmdlet by using the pipeline operator.
 The command gets the remote logon settings for each compute node.
@@ -58,7 +57,6 @@ IPAddress       Port
 ```
 
 The first command gets a batch account context that contains access keys for your subscription, and then stores it in the $Context variable.
-
 The second command gets the remote logon settings for the compute node that has the specified ID in the pool that has the ID ContosoPool.
 
 ## PARAMETERS
@@ -146,11 +144,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
-
 ### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+Parameters: ComputeNode (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

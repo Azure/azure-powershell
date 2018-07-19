@@ -38,7 +38,6 @@ PS C:\> Set-AzureRmVMBootDiagnostics -VM $VM -Enable -ResourceGroupName "Resourc
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
 The command stores it in the $VM variable.
-
 The second command enables boot diagnostics for the virtual machine in $VM.
 Diagnostics data is stored in the specified account.
 
@@ -140,8 +139,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), StorageAccountName (ByPropertyName)
 
 ## OUTPUTS
 

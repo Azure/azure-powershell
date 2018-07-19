@@ -43,7 +43,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayRequestRoutingRule -ApplicationGat
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-
 The second command modifies the request routing rule for the application gateway to use back-end HTTP settings specified in the $Setting variable, an HTTP listener specified in the $Listener variable, and a back-end address pool specified in the $Pool variable.
 
 ## PARAMETERS
@@ -260,7 +259,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

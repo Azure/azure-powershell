@@ -23,9 +23,7 @@ Set-AzureRmSqlDatabaseThreatDetectionPolicy [-PassThru] [-NotificationRecipients
 ## DESCRIPTION
 The **Set-AzureRmSqlDatabaseThreatDetectionPolicy** cmdlet sets a threat detection policy on an Azure SQL database.
 In order to enable threat detection on a database an auditing policy must be enabled on that database.
-
 To use this cmdlet, specify the *ResourceGroupName*, *ServerName* and *DatabaseName* parameters to identify the database.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -87,7 +85,6 @@ Accept wildcard characters: False
 ### -ExcludedDetectionType
 Specifies an array of detection types to exclude from the policy.
 The acceptable values for this parameter are:
-
 - Sql_Injection 
 - Sql_Injection_Vulnerability 
 - Access_Anomaly 
@@ -233,13 +230,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You cannot pipe input to this cmdlet.
+### System.String
+Parameters: DatabaseName (ByPropertyName), NotificationRecipientsEmails (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), StorageAccountName (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]
+Parameters: ExcludedDetectionType (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseThreatDetectionPolicyModel
-This cmdlet returns a **Model.DatabaseThreatDetectionPolicyModel** object.
 
 ## NOTES
 

@@ -200,7 +200,6 @@ Accept wildcard characters: False
 Specifies to order the response by one of the activity window list parameters.
 This is a list of comma separated properties.
 For example: WindowStart, PercentComplete.
-
 By default, the order is ascending order (ASC).
 Specify DESC if you want to order the list in descending order.
 
@@ -330,14 +329,12 @@ Accept wildcard characters: False
 ### -WindowState
 Specifies the state of the activity window.
 The acceptable values for this parameter are:
-
 - None
 - Waiting
 - InProgress
 - Ready
 - Failed
 - Skipped
-
 This cmdlet gets activity windows that are in the state that this parameter specifies.
 
 ```yaml
@@ -355,11 +352,9 @@ Accept wildcard characters: False
 ### -WindowSubstate
 Specifies the substate of the activity window.
 The acceptable values for this parameter are:
-
 - Canceled
 - timedOut
 - Validating
-
 This cmdlet gets activity windows that are in the substate that this parameter specifies.
 
 ```yaml
@@ -379,12 +374,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: ActivityName (ByPropertyName), DataFactoryName (ByPropertyName), DatasetName (ByPropertyName), Filter (ByPropertyName), OrderBy (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName), WindowState (ByPropertyName), WindowSubstate (ByPropertyName)
+
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSActivityWindow
+### Microsoft.Azure.Commands.DataFactories.Models.PSActivityWindow
 
 ## NOTES
 

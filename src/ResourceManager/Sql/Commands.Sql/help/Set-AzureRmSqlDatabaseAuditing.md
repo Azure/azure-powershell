@@ -35,9 +35,7 @@ The **Set-AzureRmSqlDatabaseAuditing** cmdlet changes the auditing settings of a
 To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 Specify the *StorageAccountName* parameter to specify the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys.
 Use the *State* parameter to enable/disable the policy.
-
 You can also define retention for the audit logs by setting the value of the *RetentionInDays* parameter to define the period for the audit logs.
-
 After the cmdlet runs successfully, auditing of the database is enabled.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current blob auditing policy in addition to the database identifiers.
 Database identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, and **DatabaseName**.
@@ -72,16 +70,12 @@ EXECUTE
 RECEIVE
 REFERENCES
 The general form for defining an action to be audited is:
-
 [action] ON [object] BY [principal]
-
 Note that [object] in the above format can refer to an object like a table, view, or stored procedure, or an entire database or schema. For the latter cases, the forms DATABASE::[dbname] and SCHEMA::[schemaname] are used, respectively.
-
 For example:
 SELECT on dbo.myTable by public
 SELECT on DATABASE::myDatabase by public
 SELECT on SCHEMA::mySchema by public
-
 For more information, see https://docs.microsoft.com/en-us/sql/relational-databases/security/auditing/sql-server-audit-action-groups-and-actions#database-level-audit-actions.
 
 ```yaml
@@ -98,7 +92,6 @@ Accept wildcard characters: False
 
 ### -AuditActionGroup
 The recommended set of action groups to use is the following combination - this will audit all the queries and stored procedures executed against the database, as well as successful and failed logins:
-
 "BATCH_COMPLETED_GROUP",
 "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
 "FAILED_DATABASE_AUTHENTICATION_GROUP"
@@ -319,12 +312,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), State (ByPropertyName), StorageAccountName (ByPropertyName), StorageKeyType (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+Parameters: AuditActionGroup (ByPropertyName)
+
+### System.String[]
+Parameters: AuditAction (ByPropertyName)
+
+### System.Guid
+Parameters: StorageAccountSubscriptionId (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseBlobAuditingSettingsModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.DatabaseBlobAuditingSettingsModel
 
 ## NOTES
 

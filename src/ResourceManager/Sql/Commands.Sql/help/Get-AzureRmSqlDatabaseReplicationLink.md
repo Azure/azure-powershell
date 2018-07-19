@@ -160,12 +160,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: DatabaseName (ByPropertyName), PartnerResourceGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
-This cmdlet returns a **ReplicationLink** object.
 
 ## NOTES
 

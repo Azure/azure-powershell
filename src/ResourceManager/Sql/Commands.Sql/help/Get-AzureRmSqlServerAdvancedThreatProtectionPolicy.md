@@ -51,7 +51,7 @@ IsEnabled		             : True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 The server object to use with Advanced Threat Protection policy operation
 
 ```yaml
-Type: AzureSqlServerModel
+Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,6 +95,26 @@ Accept wildcard characters: False
 ### -ServerName
 SQL Database server name.
 Type: String
+Parameter Sets: (All)
+Aliases:
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -111,7 +131,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -102,7 +102,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type AAAA and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 3: Create a RecordSet of type CNAME
@@ -115,7 +114,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType CNAME -Reso
 This example creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type CNAME and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 4: Create a RecordSet of type MX
@@ -128,7 +126,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "www" -RecordType AAAA -Resou
 This command creates a **RecordSet** named www in the zone myzone.com.
 The record set is of type MX and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 5: Create a RecordSet of type NS
@@ -141,7 +138,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "ns1" -RecordType NS -Resourc
 This command creates a **RecordSet** named ns1 in the zone myzone.com.
 The record set is of type NS and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 6: Create a RecordSet of type PTR
@@ -154,7 +150,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "4" -RecordType PTR -Resource
 This command creates a **RecordSet** named 4 in the zone 3.2.1.in-addr.arpa.
 The record set is of type PTR and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 7: Create a RecordSet of type SRV
@@ -167,9 +162,7 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "_sip._tcp" -RecordType SRV -
 This command creates a **RecordSet** named _sip._tcp in the zone myzone.com.
 The record set is of type SRV and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record, pointing to the IP address 2001.2.3.4.
-
 The service (sip) and the protocol (tcp) are specified as part of the record set name, not as part of the record data.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ### Example 8: Create a RecordSet of type TXT
@@ -182,7 +175,6 @@ PS C:\> $RecordSet = New-AzureRmDnsRecordSet -Name "text" -RecordType TXT -Resou
 This command creates a **RecordSet** named text in the zone myzone.com.
 The record set is of type TXT and has a TTL of 1 hour (3600 seconds).
 It contains a single DNS record.
-
 To create a **RecordSet** using only one line of pn_PowerShell_short, or to create a record set with multiple records, see Example 1.
 
 ## PARAMETERS
@@ -432,7 +424,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None.
+### System.String
+Parameters: CaaTag (ByPropertyName), CaaValue (ByPropertyName), Cname (ByPropertyName), Exchange (ByPropertyName), Ipv4Address (ByPropertyName), Ipv6Address (ByPropertyName), Nsdname (ByPropertyName), Ptrdname (ByPropertyName), Target (ByPropertyName), Value (ByPropertyName)
+
+### System.UInt16
+Parameters: Port (ByPropertyName), Preference (ByPropertyName), Priority (ByPropertyName), Weight (ByPropertyName)
+
+### System.Byte
+Parameters: CaaFlags (ByPropertyName)
 
 ## OUTPUTS
 

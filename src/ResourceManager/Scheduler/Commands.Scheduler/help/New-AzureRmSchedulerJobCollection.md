@@ -44,7 +44,6 @@ Accept wildcard characters: False
 ### -Frequency
 Specifies the maximum frequency that you can specify on any job in the job collection.
 The acceptable values for this parameter are:
-
 - Minute 
 - Hour 
 - Day 
@@ -128,7 +127,6 @@ Accept wildcard characters: False
 ### -Plan
 Specifies the job collection plan.
 The acceptable values for this parameter are:
-
 - Free 
 - Standard 
 - P10Premium 
@@ -198,8 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobCollectionName (ByPropertyName), Location (ByPropertyName), Plan (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

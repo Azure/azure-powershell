@@ -182,7 +182,6 @@ Accept wildcard characters: False
 ### -Edition
 Specifies the edition for the database.
 The acceptable values for this parameter are:
-
 - None
 - Basic
 - Standard
@@ -330,7 +329,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -411,12 +409,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### System.Object
 
 ## NOTES
 

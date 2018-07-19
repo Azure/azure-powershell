@@ -19,7 +19,6 @@ Get-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupName]
 
 ## DESCRIPTION
 Gets a specific Azure SQL Database Failover Group or lists the Failover Groups on a server.
-
 Either server in the Failover Group may be used to execute the command. The returned values will reflect the state of the specified server with respect to the Failover Group.
 
 ## EXAMPLES
@@ -106,6 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

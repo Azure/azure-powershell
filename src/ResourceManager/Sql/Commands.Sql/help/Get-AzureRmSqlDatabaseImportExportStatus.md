@@ -20,7 +20,6 @@ Get-AzureRmSqlDatabaseImportExportStatus [-OperationStatusLink] <String>
 
 ## DESCRIPTION
 The **Get-AzureRmSqlDatabaseImportExportStatus** cmdlet gets details of a bacpac file import from a storage account to an Azure SQL Database or an export of an Azure SQL Database as a bacpac file to a storage account.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -106,8 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: OperationStatusLink (ByPropertyName)
 
 ## OUTPUTS
 

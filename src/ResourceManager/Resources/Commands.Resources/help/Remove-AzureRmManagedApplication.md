@@ -37,7 +37,6 @@ PS C:\>Remove-AzureRmManagedApplication -Id $Application.ResourceId -Force
 
 The first command gets a managed application named myApp by using the Get-AzureRmManagedApplication cmdlet.
 The command stores it in the $Application variable.
-
 The second command removes the managed application identified by the **ResourceId** property of $Application.
 
 ## PARAMETERS
@@ -187,6 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Id (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

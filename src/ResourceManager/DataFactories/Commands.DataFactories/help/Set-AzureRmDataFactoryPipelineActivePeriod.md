@@ -31,7 +31,6 @@ Set-AzureRmDataFactoryPipelineActivePeriod [-PipelineName] <String> [-DataFactor
 ## DESCRIPTION
 The **Set-AzureRmDataFactoryPipelineActivePeriod** cmdlet configures the active period for the data slices that are processed by a pipeline in Azure Data Factory.
 If you use the Set-AzureRmDataFactorySliceStatus cmdlet to modify the status of slices for a dataset, make sure that the start time and end time for a slice are in the active period of the pipeline.
-
 After you create a pipeline, you can specify the period in which data processing occurs.
 Specifying the active period for a pipeline defines the time duration in which the data slices are processed based on the **Availability** properties that were defined for each Data Factory dataset.
 
@@ -119,14 +118,11 @@ Accept wildcard characters: False
 Specifies the end of a time period as a **DateTime** object.
 Data processing occurs or data slices are processed within this period.
 For more information about **DateTime** objects, type `Get-Help Get-Date`.
-
 *EndDateTime* must be specified in the ISO8601 format as in the following examples: 
-
 2015-01-01Z 
 2015-01-01T00:00:00Z 
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
@@ -191,7 +187,6 @@ Accept wildcard characters: False
 ### -StartDateTime
 Specifies the start of a time period as a **DateTime** object.
 Data processing occurs or data slices are processed within this period.
-
 *StartDateTime* must be specified in the ISO8601 format.
 
 ```yaml
@@ -242,8 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DataFactoryName (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
 
 ## OUTPUTS
 

@@ -211,10 +211,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### System.String
+Parameters: AppServicePlan (ByPropertyName), BlobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName), StorageAccountUrl (ByPropertyName)
+
+### Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]
+Parameters: Databases (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: IgnoreConflictingHostNames (ByPropertyName), Overwrite (ByPropertyName)
+
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

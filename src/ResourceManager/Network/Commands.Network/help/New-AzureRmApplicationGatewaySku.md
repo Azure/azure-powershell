@@ -38,7 +38,7 @@ Specifies the number of instances of an application gateway.
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -64,9 +64,7 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the SKU.
-
 The acceptable values for this parameter are:
-
 - Standard_Small
 - Standard_Medium
 - Standard_Large
@@ -76,7 +74,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
 
 Required: True
@@ -89,14 +87,13 @@ Accept wildcard characters: False
 ### -Tier
 Specifies the tier of the SKU.
 The acceptable values for this parameter are:
-
 - Standard
 - WAF
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard, WAF, Standard_v2, WAF_v2
 
 Required: True
@@ -111,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

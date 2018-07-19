@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewayIPConfiguration -ApplicationGateway $App
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.
-
 The second command removes the IP configuration named Subnet02 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
@@ -85,7 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

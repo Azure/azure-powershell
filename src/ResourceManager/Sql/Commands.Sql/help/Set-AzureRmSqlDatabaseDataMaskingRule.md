@@ -26,11 +26,9 @@ The **Set-AzureRmSqlDatabaseDataMaskingRule** cmdlet sets a data masking rule fo
 To use the cmdlet, provide the *ResourceGroupName*, *ServerName*, *DatabaseName*, and *RuleId* parameters to identify the rule.
 You can provide any of the parameters of *SchemaName*, *TableName*, and *ColumnName* to retarget the rule.
 Specify the *MaskingFunction* parameter to modify how the data is masked.
-
 If you specify a value of Number or Text for *MaskingFunction*, you can specify the *NumberFrom* and *NumberTo* parameters for number masking or the *PrefixSize*, *ReplacementString*, and *SuffixSize* parameters for text masking.
 If the command succeeds, and if you specify the *PassThru* parameter, the cmdlet returns an object that describes the data masking rule properties and the rule identifiers.
 Rule identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, **DatabaseName**, and **RuleId**.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -95,7 +93,6 @@ Accept wildcard characters: False
 ### -MaskingFunction
 Specifies the masking function that the rule uses.
 The acceptable values for this parameter are:
-
 - Default
 - NoMasking
 - Text
@@ -103,7 +100,6 @@ The acceptable values for this parameter are:
 - SocialSecurityNumber
 - CreditCardNumber
 - Email
-
 The default value is Default.
 
 ```yaml
@@ -316,12 +312,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-None
+### System.String
+Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), MaskingFunction (ByPropertyName), ReplacementString (ByPropertyName), ResourceGroupName (ByPropertyName), SchemaName (ByPropertyName), ServerName (ByPropertyName), TableName (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Double, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel
+### System.Object
 
 ## NOTES
 

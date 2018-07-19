@@ -36,13 +36,10 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 ```
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
-
 The next three commands assign paths of operating system disk and two data disks to the $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2 variables.
 This approach is only for readability of the following commands.
-
 The next three commands each adds an operating system disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
-
 The final command creates an image named ImageName01 in resource group ResourceGroup01.
 
 ## PARAMETERS
@@ -218,15 +215,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Image
-System.Int32
-System.String
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+Parameters: Image (ByPropertyName, ByValue)
+
+### System.Int32
+Parameters: DiskSizeGB (ByPropertyName), Lun (ByPropertyName)
+
+### System.String
+Parameters: BlobUri (ByPropertyName), ManagedDiskId (ByPropertyName), SnapshotId (ByPropertyName), StorageAccountType (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Image
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
 
 ## NOTES
 

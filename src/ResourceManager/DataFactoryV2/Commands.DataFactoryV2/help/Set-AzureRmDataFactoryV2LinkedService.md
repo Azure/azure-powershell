@@ -29,9 +29,7 @@ Set-AzureRmDataFactoryV2LinkedService [-DefinitionFile] <String> [-ResourceId] <
 The Set-AzureRmDataFactoryV2LinkedService cmdlet links a data store or a cloud service to Azure Data Factory.
 If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service.
 If you specify the Force parameter, the cmdlet replaces the existing linked service without confirmation.
-
 Perform these operations in the following order:
-
         -- Create a data factory.
         -- Create linked services.
         -- Create datasets.
@@ -200,6 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

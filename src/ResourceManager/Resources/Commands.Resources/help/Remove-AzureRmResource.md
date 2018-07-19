@@ -100,7 +100,6 @@ Accept wildcard characters: False
 ### -ExtensionResourceName
 Specifies the name of an extension resource of the resource that this cmdlet removes.
 For instance, to specify a database, use the following format: 
-
 server name`/`database name
 
 ```yaml
@@ -119,7 +118,6 @@ Accept wildcard characters: False
 Specifies the resource type for an extension resource.
 Specifies the extension resource type for the resource.
 For instance: 
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -198,7 +196,6 @@ Accept wildcard characters: False
 ### -ResourceId
 Specifies the fully qualified resource ID of the resource that this cmdlet removes.
 The ID includes the subscription, as in the following example: 
-
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
 ```yaml
@@ -216,7 +213,6 @@ Accept wildcard characters: False
 ### -ResourceName
 Specifies the name of the resource that this cmdlet removes.
 For instance, to specify a database, use the following format: 
-
 `ContosoServer/ContosoDatabase`
 
 ```yaml
@@ -234,7 +230,6 @@ Accept wildcard characters: False
 ### -ResourceType
 Specifies the type of the resource that this cmdlet removes.
 For instance, for a database, the resource type is as follows: 
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -301,11 +296,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Boolean
+### None or Boolean
 
 ## NOTES
 

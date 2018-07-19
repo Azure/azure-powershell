@@ -86,7 +86,6 @@ PS C:\> Get-AzureBatchNodeFileContent -JobId "Job03" -TaskId "Task11" -Path "Std
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.
-
 The second command gets the node file that is named StdOut.txt from the task that has the ID Task11 for the job that has the ID Job03.
 The command directs file contents to the stream in $Stream.
 
@@ -115,7 +114,6 @@ PS C:\> Get-AzureBatchNodeFileContent -PoolId "Pool01" -ComputeNodeId "ComputeNo
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.
-
 The second command gets the node file that is named StdOut.txt from the compute node that has the ID ComputeNode01 in the pool that has the ID Pool01.
 The command directs file contents to the stream in $Stream.
 
@@ -309,15 +307,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: ComputeNodeId (ByPropertyName), JobId (ByPropertyName), PoolId (ByPropertyName), TaskId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSNodeFile
-Parameter 'InputObject' accepts value of type 'PSNodeFile' from the pipeline
+Parameters: InputObject (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 

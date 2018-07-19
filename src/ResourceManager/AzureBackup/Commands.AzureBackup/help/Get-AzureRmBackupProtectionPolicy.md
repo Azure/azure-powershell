@@ -38,7 +38,6 @@ contoso02                 AzureVM            Daily              26-Aug-15 3:00:0
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets all the Backup protection policies for the vault in $Vault.
 
 ### Example 2: Get a specific policy from a vault
@@ -52,7 +51,6 @@ DefaultPolicy             AzureVM            Daily              26-Aug-15 12:30:
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets the Backup protection policy named DefaultPolicy for the vault in $Vault.
 
 ## PARAMETERS
@@ -108,11 +106,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupProtectionPolicy
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy
 
 ## NOTES
 

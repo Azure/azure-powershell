@@ -156,12 +156,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Boolean
+### System.Object
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

@@ -210,6 +210,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: EndIP (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), RuleName (ByPropertyName), StartIP (ByPropertyName)
+
+### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

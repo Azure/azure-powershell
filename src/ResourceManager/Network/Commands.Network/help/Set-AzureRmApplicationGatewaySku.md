@@ -30,7 +30,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewaySku -ApplicationGateway $AppGw -Na
 ```
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01, and stores it in the $AppGw variable.
-
 The second command updates the SKU of the application gateway.
 
 ## PARAMETERS
@@ -41,7 +40,7 @@ Specifies the application gateway object with which this cmdlet associates the S
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -56,7 +55,7 @@ Specifies the instance count of the application gateway.
 ```yaml
 Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -83,7 +82,6 @@ Accept wildcard characters: False
 ### -Name
 Specifies the name of the application gateway.
 The acceptable values for this parameter are:
-
 - Standard_Small
 - Standard_Medium
 - Standard_Large
@@ -93,7 +91,7 @@ The acceptable values for this parameter are:
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard_Small, Standard_Medium, Standard_Large, WAF_Medium, WAF_Large, Standard_v2, WAF_v2
 
 Required: True
@@ -106,14 +104,13 @@ Accept wildcard characters: False
 ### -Tier
 Specifies the tier of the application gateway.
 The acceptable values for this parameter are:
-
 - Standard
 - WAF
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Standard, WAF, Standard_v2, WAF_v2
 
 Required: True
@@ -128,7 +125,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

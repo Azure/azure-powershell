@@ -140,7 +140,6 @@ Accept wildcard characters: False
 ### -RollupStatus
 Specifies the rollup status of DSC node configurations that this cmdlet gets.
 Valid values are: 
-
 - Bad 
 - Good
 
@@ -162,8 +161,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), ConfigurationName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

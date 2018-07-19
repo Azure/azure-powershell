@@ -23,9 +23,7 @@ New-AzureRmStreamAnalyticsTransformation [-JobName] <String> [[-Name] <String>] 
 The **New-AzureRmStreamAnalyticsTransformation** cmdlet creates a transformation within a Stream Analytics job or updates the existing transformation.
 The name of the transformation can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
-
 If you specify a transformation that already exists and do not specify the Force parameter, the cmdlet will ask whether or not to replace the existing transformation.
-
 If you specify the *Force* parameter and specify an existing transformation name, the transformation will be replaced without confirmation.
 
 ## EXAMPLES
@@ -173,8 +171,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

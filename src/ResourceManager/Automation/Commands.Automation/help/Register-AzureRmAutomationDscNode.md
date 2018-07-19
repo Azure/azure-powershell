@@ -38,7 +38,6 @@ This command registers the Azure virtual machine named VirtualMachine01 as a DSC
 ### -ActionAfterReboot
 Specifies the action that the virtual machine takes after it restarts.
 Valid values are: 
-
 - ContinueConfiguration 
 - StopConfiguration
 
@@ -134,7 +133,6 @@ Accept wildcard characters: False
 ### -ConfigurationMode
 Specifies the DSC configuration mode.
 Valid values are: 
-
 - ApplyAndMonitor 
 - ApplyAndAutocorrect 
 - ApplyOnly
@@ -248,10 +246,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ActionAfterReboot (ByPropertyName), AutomationAccountName (ByPropertyName), AzureVMLocation (ByPropertyName), AzureVMName (ByPropertyName), AzureVMResourceGroup (ByPropertyName), ConfigurationMode (ByPropertyName), NodeConfigurationName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Int32
+Parameters: ConfigurationModeFrequencyMins (ByPropertyName), RefreshFrequencyMins (ByPropertyName)
+
+### System.Boolean
+Parameters: AllowModuleOverwrite (ByPropertyName), RebootNodeIfNeeded (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

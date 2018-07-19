@@ -13,18 +13,18 @@ Gets the metric values of a resource.
 
 ## SYNTAX
 
-### GetWithDefaultParameters
-
+### GetWithDefaultParameters (Default)
 ```
-Get-AzureRmMetric [-ResourceId] <String> [[-MetricName] <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
+ [[-MetricName] <String[]>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetWithFullParameters
-
 ```
-Get-AzureRmMetric [-ResourceId] <String> [-MetricName] <String[]> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int>] [-OrderBy <String>] 
- [-MetricNamespace <String>] [-ResultType <ResultType>] [-MetricFilter <MetricFilter>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
+ [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
+ [-ResultType <ResultType>] [-MetricFilter <String>] [-MetricName] <String[]> [-DetailedOutput]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -248,6 +248,21 @@ The default is the current time.
 
 ```yaml
 Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricFilter
+Specifies the metric dimension filter to query metrics for.
+
+```yaml
+Type: System.String
 Parameter Sets: GetWithFullParameters
 Aliases:
 
@@ -285,6 +300,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -MetricNamespace
+Specifies the metric namespace to query metrics for.
+
+```yaml
+Type: System.String
+Parameter Sets: GetWithFullParameters
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OrderBy
+Specifies the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+
+```yaml
+Type: System.String
+Parameter Sets: GetWithFullParameters
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Specifies the resource ID of the metric.
 
@@ -300,14 +345,30 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -ResultType
+Specifies the result type to be returned (metadata or data).
+
+```yaml
+Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.ResultType]
+Parameter Sets: GetWithFullParameters
+Aliases:
+Accepted values: Data, Metadata
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -StartTime
 Specifies the start time of the query in local time.
 The default is the current local time minus one hour.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -320,9 +381,9 @@ Accept wildcard characters: False
 Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
 
 ```yaml
-Type: TimeSpan
+Type: System.TimeSpan
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -335,67 +396,7 @@ Accept wildcard characters: False
 Specifies the maximum number of records to retrieve (default:10), to be specified with $filter.
 
 ```yaml
-Type: Integer
-Parameter Sets: GetWithFullParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -OrderBy
-Specifies the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
-
-```yaml
-Type: String
-Parameter Sets: GetWithFullParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MetricNamespace
-Specifies the metric namespace to query metrics for.
-
-```yaml
-Type: String
-Parameter Sets: GetWithFullParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResultType
-Specifies the result type to be returned (metadata or data).
-
-```yaml
-Type: ResultType
-Parameter Sets: GetWithFullParameters
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -MetricFilter
-Specifies the metric dimension filter to query metrics for.
-
-```yaml
-Type: String
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: GetWithFullParameters
 Aliases:
 
@@ -411,8 +412,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: MetricFilter (ByPropertyName), MetricNamespace (ByPropertyName), OrderBy (ByPropertyName), ResourceId (ByPropertyName)
+
+### System.TimeSpan
+Parameters: TimeGrain (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.DateTime
+Parameters: EndTime (ByPropertyName), StartTime (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.ResultType, Microsoft.Azure.Management.Monitor, Version=0.19.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.String[]
+Parameters: MetricName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DetailedOutput (ByPropertyName)
 
 ## OUTPUTS
 

@@ -175,8 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSCustomDomain
-Parameter 'CdnCustomDomain' accepts value of type 'PSCustomDomain' from the pipeline
+### Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
+Parameters: CdnCustomDomain (ByValue)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

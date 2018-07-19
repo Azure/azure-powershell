@@ -162,7 +162,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHub
+Parameters: InputObject (ByValue)
+
 ### System.String
+Parameters: ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

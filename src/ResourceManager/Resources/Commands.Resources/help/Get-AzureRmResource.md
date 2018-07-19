@@ -238,7 +238,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 The resource group the resource(s) that is retireved belongs in. This parameter supports wildcards at the beginning and/or end of the string.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: ByTagNameValueParameterSet, ByTagObjectParameterSet
@@ -253,7 +252,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Specifies the fully qualified resource ID, as in the following example
-
 `/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Compute/virtualMachines`
 
 ```yaml
@@ -336,11 +334,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-This cmdlet does not accept any input.
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
+### Microsoft.Azure.Commands.ResourceManagement.Models.PSResource
 
 ## NOTES
 
