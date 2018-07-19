@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -89,13 +90,13 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public List<PSPeering> Peering { get; set; }
+        public PSPeering[] Peering { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
-        public List<PSExpressRouteCircuitAuthorization> Authorization { get; set; }
+        public PSExpressRouteCircuitAuthorization[] Authorization { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -162,8 +163,8 @@ namespace Microsoft.Azure.Commands.Network
                 circuit.ServiceProviderProperties.BandwidthInMbps = this.BandwidthInMbps;
             }
 
-            circuit.Peerings = this.Peering;
-            circuit.Authorizations = this.Authorization;
+            circuit.Peerings = Peering == null ? null : this.Peering.ToList();
+            circuit.Authorizations = Authorization == null ? null : this.Authorization.ToList();
             circuit.AllowClassicOperations = this.AllowClassicOperations;
 
             // Map to the sdk object

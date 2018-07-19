@@ -64,6 +64,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Service Endpoint Value")]
-        public List<string> ServiceEndpoint { get; set; }
+        public string[] ServiceEndpoint { get; set; }
     }
 }

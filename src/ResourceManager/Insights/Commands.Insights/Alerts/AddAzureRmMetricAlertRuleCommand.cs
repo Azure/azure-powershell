@@ -93,11 +93,12 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
             RuleCondition condition = this.CreateRuleCondition();
 
             WriteVerboseWithTimestamp(String.Format("CreateSdkCallParameters: Creating rule object"));
+            var action = Action == null ? null : this.Action.ToList();
             return new AlertRuleResource()
             {
                 Description = this.Description ?? Utilities.GetDefaultDescription("metric alert rule"),
                 Condition = condition,
-                Actions = this.Action?.Select(TransitionHelpers.ToMirrorNamespace).ToList(),
+                Actions = this.action?.Select(TransitionHelpers.ToMirrorNamespace).ToList(),
                 Location = this.Location,
                 IsEnabled = !this.DisableRule,
                 AlertRuleResourceName = this.Name,

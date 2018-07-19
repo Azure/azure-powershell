@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Network.Models;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.FirewallMode = this.FirewallMode;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetType = this.RuleSetType;
                 this.ApplicationGateway.WebApplicationFirewallConfiguration.RuleSetVersion = this.RuleSetVersion;
-                this.ApplicationGateway.WebApplicationFirewallConfiguration.DisabledRuleGroups = this.DisabledRuleGroups;
+                this.ApplicationGateway.WebApplicationFirewallConfiguration.DisabledRuleGroups = DisabledRuleGroups == null ? null : this.DisabledRuleGroups.ToList();
 
                 WriteObject(this.ApplicationGateway);
             }

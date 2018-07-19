@@ -15,7 +15,8 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
-using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
@@ -39,7 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The webhook properties of the action group")]
         [ValidateNotNullOrEmpty]
-        public Dictionary<string, string> WebhookProperty { get; set; }
+        public Hashtable WebhookProperty { get; set; }
 
         #endregion
 
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
                 new Management.Monitor.Management.Models.ActivityLogAlertActionGroup
                 {
                     ActionGroupId = this.ActionGroupId,
-                    WebhookProperties = this.WebhookProperty
+                    WebhookProperties = WebhookProperty == null ? null : this.WebhookProperty.Cast<DictionaryEntry>().ToDictionary(kvp => (string)kvp.Key, kvp => (string)kvp.Value)));
                 });
         }
     }

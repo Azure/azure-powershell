@@ -16,6 +16,7 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Threading;
 
@@ -63,14 +64,14 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         /// </summary>
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The locations that will be enabled for logging")]
         [ValidateNotNullOrEmpty]
-        public List<string> Location { get; set; }
+        public string[] Location { get; set; }
 
         /// <summary>
         /// Gets or sets the categories parameter of the cmdlet
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The categories that will be enabled for logging.  By default all categories will be enabled")]
         [ValidateNotNullOrEmpty]
-        public List<string> Category { get; set; }
+        public string[] Category { get; set; }
 
         #endregion
 
@@ -83,15 +84,15 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
                 var putParameters = new LogProfileResource()
                 {
                     Location = string.Empty,
-                    Locations = this.Location
+                    Locations = this.Location == null ? null : this.Location.ToList()
                 };
 
                 if (this.Category == null)
                 {
-                    this.Category = new List<string>(ValidCategories);
+                    this.Category = new List<string>(ValidCategories).ToArray();
                 }
 
-                putParameters.Categories = this.Category;
+                putParameters.Categories = Category == null ? null : this.Category;
                 putParameters.RetentionPolicy = new RetentionPolicy
                 {
                     Days = this.RetentionInDays.HasValue ? this.RetentionInDays.Value : 0,

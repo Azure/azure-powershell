@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -30,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
                Mandatory = true,
                HelpMessage = "List of path rules")]
         [ValidateNotNullOrEmpty]
-        public List<PSApplicationGatewayPathRule> PathRules { get; set; }
+        public PSApplicationGatewayPathRule[] PathRules { get; set; }
 
         [Parameter(
                 ParameterSetName = "SetByResourceId",
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
             var urlPathMap = new PSApplicationGatewayUrlPathMap();
 
             urlPathMap.Name = this.Name;
-            urlPathMap.PathRules = this.PathRules;
+            urlPathMap.PathRules = PathRules == null ? null : this.PathRules.ToList();
 
             if (!string.IsNullOrEmpty(this.DefaultBackendAddressPoolId))
             {

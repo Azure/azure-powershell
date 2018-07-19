@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Collection of routes contained within a route table.",
             ValueFromPipelineByPropertyName = true)]
-        public List<PSRoute> Route { get; set; }
+        public PSRoute[] Route { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 DisableBgpRoutePropagation = this.DisableBgpRoutePropagation,
                 Location = this.Location,
-                Routes = this.Route,
+                Routes = Route == null ? null : this.Route.ToList(),
             };
 
             var vRouteTableModel = NetworkResourceManagerProfile.Mapper.Map<MNM.RouteTable>(vRouteTable);

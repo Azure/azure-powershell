@@ -80,13 +80,13 @@ namespace Microsoft.Azure.Commands.Network.Automation
         [Parameter(
             Mandatory = false,
             HelpMessage = "List of Internet service providers.")]
-        public List<string> Provider { get; set; }
+        public string[] Provider { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Optional Azure regions to scope the query to.")]
         [LocationCompleter("Microsoft.Network/networkWatchers")]
-        public List<string> Location { get; set; }
+        public string[] Location { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -152,8 +152,8 @@ namespace Microsoft.Azure.Commands.Network.Automation
 
             var vAzureReachabilityReportParameters = new AzureReachabilityReportParameters
             {
-                Providers = this.Provider,
-                AzureLocations = this.Location,
+                Providers = Provider == null ? null : this.Provider.ToList(),
+                AzureLocations = Location == null ? null : this.Location.ToList(),
                 StartTime = this.StartTime,
                 EndTime = this.EndTime,
                 ProviderLocation = NetworkResourceManagerProfile.Mapper.Map < MNM.AzureReachabilityReportLocation >(vProviderLocation),

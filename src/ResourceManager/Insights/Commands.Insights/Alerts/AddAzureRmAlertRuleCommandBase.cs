@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         /// </summary>
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of rule actions")]
         [ValidateNotNullOrEmpty]
-        public List<Management.Monitor.Management.Models.RuleAction> Action { get; set; }
+        public Management.Monitor.Management.Models.RuleAction[] Action { get; set; }
 
         #endregion
 

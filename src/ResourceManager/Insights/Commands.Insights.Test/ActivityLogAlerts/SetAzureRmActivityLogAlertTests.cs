@@ -24,6 +24,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 using Microsoft.Azure.Commands.Insights.ActivityLogAlert;
+using System.Collections;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 {
@@ -82,19 +83,19 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
             cmdlet.Name = "ActivityLogAlertName";
             cmdlet.ResourceGroupName = Utilities.ResourceGroup;
             cmdlet.Location = Location;
-            cmdlet.Scope = new List<string> { "scope1" };
+            cmdlet.Scope = new List<string> { "scope1" }.ToArray();
             cmdlet.Action = new List<Management.Monitor.Management.Models.ActivityLogAlertActionGroup>
             {
                 ActivityLogAlertsUtilities.CreateActionGroup(
                     id: "ActGrpId", 
                     webhooks: new Dictionary<string, string> { { "key1", "value1" } })
-            };
+            }.ToArray();
             cmdlet.Condition = new List<Management.Monitor.Management.Models.ActivityLogAlertLeafCondition>
             {
                 ActivityLogAlertsUtilities.CreateLeafCondition(
                     field: "field",
                     equals: "equals")
-            };
+            }.ToArray();
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -122,7 +123,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActivityLogAlerts
 
             cmdlet.DisableAlert = SwitchParameter.Present;
             cmdlet.Description = "description";
-            cmdlet.Tag = new Dictionary<string, string>();
+            cmdlet.Tag = new Hashtable();
+            cmdlet.Tag.Add("a", "b");
             cmdlet.ExecuteCmdlet();
 
             Assert.False(this.createOrUpdatePrms.Enabled);

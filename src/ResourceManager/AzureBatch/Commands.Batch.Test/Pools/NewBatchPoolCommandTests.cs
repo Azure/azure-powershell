@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.Pools
             cmdlet.BatchContext = context;
 
             cmdlet.Id = "testPool";
-            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar"};
+            cmdlet.ApplicationLicenses = new List<string>() { "foo", "bar"}.ToArray();
             cmdlet.CertificateReferences = new PSCertificateReference[]
             {
                 new PSCertificateReference()

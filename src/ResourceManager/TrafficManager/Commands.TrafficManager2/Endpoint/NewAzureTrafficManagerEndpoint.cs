@@ -24,6 +24,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
     using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Resources;
     using ResourceManager.Common.ArgumentCompleters;
+    using System.Linq;
 
     [Cmdlet(VerbsCommon.New, "AzureRmTrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
         [Parameter(Mandatory = false, HelpMessage = "The list of regions mapped to this endpoint when using the ‘Geographic’ traffic routing method. Please consult Traffic Manager documentation for a full list of accepted values.")]
         [ValidateCount(1, 350)]
-        public List<string> GeoMapping { get; set; }
+        public string[] GeoMapping { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -107,7 +108,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                         this.Priority,
                         this.EndpointLocation,
                         this.MinChildEndpoints,
-                        this.GeoMapping);
+                        this.GeoMapping == null ? null : this.GeoMapping.ToList());
 
                     this.WriteVerbose(ProjectResources.Success);
                     this.WriteObject(trafficManagerEndpoint);

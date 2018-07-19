@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
 
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
             // Adding a profile
-            cmdlet.AutoscaleProfile = autoscaleProfile;
+            cmdlet.AutoscaleProfile = autoscaleProfile.ToArray();
             cmdlet.ExecuteCmdlet();
 
             // Add-AutoscaleSetting -Location <String> -Name <String> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] -TargetResourceId <String> [-Profile <AzureSMProfile>] [<CommonParameters>]
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
                 Webhooks = null
             };
 
-            cmdlet.Notification = new List<Management.Monitor.Management.Models.AutoscaleNotification> { notification };
+            cmdlet.Notification = new List<Management.Monitor.Management.Models.AutoscaleNotification> { notification }.ToArray();
             cmdlet.ExecuteCmdlet();
         }
 

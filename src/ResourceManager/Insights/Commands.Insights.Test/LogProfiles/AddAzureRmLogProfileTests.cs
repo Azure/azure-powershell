@@ -77,18 +77,18 @@ namespace Microsoft.Azure.Commands.Insights.Test.LogProfiles
         {
             // With mandatory arguments only
             cmdlet.Name = Utilities.Name;
-            cmdlet.Location = new List<string>() { "East US" };
+            cmdlet.Location = new List<string>() { "East US" }.ToArray();
             cmdlet.ExecuteCmdlet();
             
             Assert.Equal(Utilities.Name, this.logProfileName);
             
             // With all arguments
             cmdlet.Name = Utilities.Name;
-            cmdlet.Location = new List<string>() {"East US"};
+            cmdlet.Location = new List<string>() {"East US"}.ToArray();
             cmdlet.RetentionInDays = 10;
             cmdlet.ServiceBusRuleId = "miBusId";
             cmdlet.StorageAccountId = "miCuentaId";
-            cmdlet.Category = new List<string>() {"cat1"};
+            cmdlet.Category = new List<string>() {"cat1"}.ToArray();
 
             cmdlet.ExecuteCmdlet();
 

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific billing period to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
-        public List<string> Name { get; set; }
+        public string[] Name { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of records to return.", ParameterSetName = Constants.ParameterSetNames.ListParameterSet)]
         [ValidateNotNull]

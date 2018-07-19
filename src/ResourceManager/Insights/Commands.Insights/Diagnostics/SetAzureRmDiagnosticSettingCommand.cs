@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The log categories")]
         [ValidateNotNullOrEmpty]
         [Alias("Category")]
-        public List<string> Categories { get; set; }
+        public string[] Categories { get; set; }
 
         /// <summary>
         /// Gets or sets the metrics category parameter of the cmdlet
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The timegrains")]
         [ValidateNotNullOrEmpty]
         [Alias("Timegrain")]
-        public List<string> Timegrains { get; set; }
+        public string[] Timegrains { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether retention should be enabled

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.Network
                    rule.Name = this.Name;
                    rule.Access = this.Access;
                    rule.RouteFilterRuleType = this.RouteFilterRuleType;
-                   rule.Communities = this.CommunityList;
+                   rule.Communities = CommunityList == null ? null : this.CommunityList.ToList();
 
                    WriteObject(this.RouteFilter);
                });

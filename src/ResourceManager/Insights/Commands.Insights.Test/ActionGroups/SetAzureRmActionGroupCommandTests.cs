@@ -28,6 +28,7 @@ using Microsoft.Azure.Commands.Insights.ActionGroups;
 namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 {
     using Microsoft.Azure.Commands.Insights.OutputClasses;
+    using System.Collections;
 
     public class AddAzureRmActionGroupTests
     {
@@ -101,7 +102,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
                 new PSWebhookReceiver(ActionGroupsUtilities.CreateWebhookReceiver(
                     name: "webhook",
                     serviceUri: "http://test.com")),
-            };
+            }.ToArray();
             cmdlet.ExecuteCmdlet();
 
             Assert.Equal(Utilities.ResourceGroup, this.resourceGroup);
@@ -128,7 +129,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
             Assert.Null(this.createOrUpdatePrms.Tags);
 
             cmdlet.DisableGroup = true;
-            cmdlet.Tag = new Dictionary<string, string>();
+            cmdlet.Tag = new Hashtable();
             cmdlet.ExecuteCmdlet();
 
             Assert.False(this.createOrUpdatePrms.Enabled);

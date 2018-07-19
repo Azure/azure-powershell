@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
@@ -57,19 +58,19 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address prefixes of the virtual network")]
         [ValidateNotNullOrEmpty]
-        public List<string> AddressPrefix { get; set; }
+        public string[] AddressPrefix { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Dns Servers")]
-        public List<string> DnsServer { get; set; }
+        public string[] DnsServer { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of subnets")]
-        public List<PSSubnet> Subnet { get; set; }
+        public PSSubnet[] Subnet { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -127,15 +128,15 @@ namespace Microsoft.Azure.Commands.Network
             vnet.ResourceGroupName = this.ResourceGroupName;
             vnet.Location = this.Location;
             vnet.AddressSpace = new PSAddressSpace();
-            vnet.AddressSpace.AddressPrefixes = this.AddressPrefix;
+            vnet.AddressSpace.AddressPrefixes = AddressPrefix == null ? null : this.AddressPrefix.ToList();
 
             if (this.DnsServer != null)
             {
                 vnet.DhcpOptions = new PSDhcpOptions();
-                vnet.DhcpOptions.DnsServers = this.DnsServer;
+                vnet.DhcpOptions.DnsServers = DnsServer == null ? null : this.DnsServer.ToList();
             }
 
-            vnet.Subnets = this.Subnet;
+            vnet.Subnets = Subnet == null ? null : this.Subnet.ToList();
             vnet.EnableDdosProtection = this.EnableDdosProtection;
             vnet.EnableVmProtection = this.EnableVmProtection;
 

@@ -98,21 +98,21 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule days for the recurrence")]
         [ValidateNotNull]
-        public List<string> ScheduleDay { get; set; }
+        public string[] ScheduleDay { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleHours
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule hours for the recurrence")]
         [ValidateNotNull]
-        public List<int?> ScheduleHour { get; set; }
+        public int?[] ScheduleHour { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleMinutes
         /// </summary>
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The schedule minutes for the recurrence")]
         [ValidateNotNull]
-        public List<int?> ScheduleMinute { get; set; }
+        public int?[] ScheduleMinute { get; set; }
 
         /// <summary>
         /// Gets or sets the ScheduleTimeZone
@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAutoscaleProfileFixDateParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [Parameter(ParameterSetName = AddAutoscaleProfileRecurrenceParamGroup, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The rules for the setting")]
         [ValidateNotNullOrEmpty]
-        public List<Management.Monitor.Management.Models.ScaleRule> Rule { get; set; }
+        public Management.Monitor.Management.Models.ScaleRule[] Rule { get; set; }
 
         #endregion
 
@@ -165,6 +165,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 // NOTE: "always" is specify by a null value in the FixedDate value with null ScheduledDays(Minutes, Seconds)
                 // Premise: Fixed date schedule and recurrence are mutually exclusive, but they can both be missing so that the rule is always enabled.
                 // Assuming dates are validated by the server
+                var rule = Rule == null ? null : this.Rule.ToList();
                 FixedDate = this.ScheduleDay == null && (this.StartTimeWindow != default(DateTime) || this.EndTimeWindow != default(DateTime))
                         ? new Management.Monitor.Management.Models.TimeWindow()
                         {
@@ -174,7 +175,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                         }
                         : null,
                 Recurrence = this.ScheduleDay != null ? this.CreateAutoscaleRecurrence() : null,
-                Rules = this.Rule.Select(e => new Management.Monitor.Management.Models.ScaleRule(e)).ToList()
+                Rules = this.rule.Select(e => new Management.Monitor.Management.Models.ScaleRule(e)).ToList()
             };
         }
 
@@ -196,10 +197,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
             // Assuming validation is done by the server
             return new Management.Monitor.Management.Models.RecurrentSchedule()
             {
-                Days = this.ScheduleDay,
+                Days = ScheduleDay == null ? null : this.ScheduleDay.ToList(),
 
-                Hours = this.ScheduleHour,
-                Minutes = this.ScheduleMinute,
+                Hours = ScheduleHour == null ? null : this.ScheduleHour.ToList(),
+                Minutes = ScheduleMinute == null ? null : this.ScheduleMinute.ToList(),
                 TimeZone = this.ScheduleTimeZone,
             };
         }

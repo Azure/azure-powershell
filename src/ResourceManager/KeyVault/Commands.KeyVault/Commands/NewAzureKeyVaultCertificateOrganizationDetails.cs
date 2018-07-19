@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault.Commands
@@ -42,7 +43,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                    ValueFromPipeline = true,
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the details of the administrators for the organization.")]
-        public List<PSKeyVaultCertificateAdministratorDetails> AdministratorDetails { get; set; }
+        public PSKeyVaultCertificateAdministratorDetails[] AdministratorDetails { get; set; }
 
         #endregion
 
@@ -53,7 +54,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                 var organizationDetails = new PSKeyVaultCertificateOrganizationDetails
                 {
                     Id = Id,
-                    AdministratorDetails = AdministratorDetails,
+                    AdministratorDetails = AdministratorDetails == null ? null : AdministratorDetails.ToList(),
                 };
 
                 this.WriteObject(organizationDetails);

@@ -23,6 +23,7 @@ using System.Security;
 using Microsoft.Azure.Commands.Network.VirtualNetworkGateway;
 using Microsoft.WindowsAzure.Commands.Common;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The address space to allocate VPN client IP addresses from. This should not overlap with virtual network or on-premise ranges.")]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -87,25 +88,25 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnClientProtocol.IkeV2,
             MNM.VpnClientProtocol.OpenVPN)]
         [ValidateNotNullOrEmpty]
-        public List<string> VpnClientProtocol { get; set; }
+        public string[] VpnClientProtocol { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of VPN client root certificates to use for VPN client authentication. Connecting VPN clients must present certificates generated from one of these root certificates.")]
-        public List<PSVpnClientRootCertificate> VpnClientRootCertificates { get; set; }
+        public PSVpnClientRootCertificate[] VpnClientRootCertificates { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "A list of revoked VPN client certificates. A VPN client presenting a certificate that matches one of these will be told to go away.")]
-        public List<PSVpnClientRevokedCertificate> VpnClientRevokedCertificates { get; set; }
+        public PSVpnClientRevokedCertificate[] VpnClientRevokedCertificates { get; set; }
 
         [Parameter(
              Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "A list of IPSec policies for P2S VPN client tunneling protocols.")]
-        public List<PSIpsecPolicy> VpnClientIpsecPolicy { get; set; }
+        public PSIpsecPolicy[] VpnClientIpsecPolicy { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -207,7 +208,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.VpnClientRevokedCertificates != null ||
                  this.RadiusServerAddress != null ||
                  this.RadiusServerSecret != null ||
-                 (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)) &&
+                 (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0)) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -216,27 +217,27 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientAddressPool != null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool = new PSAddressSpace();
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool;
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientAddressPool.AddressPrefixes = this.VpnClientAddressPool.ToList();
             }
 
             if (this.VpnClientProtocol != null)
             {
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol;
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientProtocols = this.VpnClientProtocol.ToList();
             }
 
             if (this.VpnClientRootCertificates != null)
             {
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates;
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRootCertificates = this.VpnClientRootCertificates.ToList();
             }
 
             if (this.VpnClientRevokedCertificates != null)
             {
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates;
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientRevokedCertificates = this.VpnClientRevokedCertificates.ToList();
             }
 
-            if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Count != 0)
+            if (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0)
             {
-                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy;
+                this.VirtualNetworkGateway.VpnClientConfiguration.VpnClientIpsecPolicies = this.VpnClientIpsecPolicy.ToList();
             }
 
             if ((this.RadiusServerAddress != null && this.RadiusServerSecret == null) ||

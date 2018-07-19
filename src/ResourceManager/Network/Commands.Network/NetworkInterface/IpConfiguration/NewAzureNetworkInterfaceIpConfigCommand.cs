@@ -46,38 +46,42 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.LoadBalancerBackendAddressPool != null)
                 {
-                    this.LoadBalancerBackendAddressPoolId = new List<string>();
+                    var loadBalancerBackendAddressPoolId = new List<string>();
                     foreach (var bepool in this.LoadBalancerBackendAddressPool)
                     {
-                        this.LoadBalancerBackendAddressPoolId.Add(bepool.Id);
+                        loadBalancerBackendAddressPoolId.Add(bepool.Id);
                     }
+                    this.LoadBalancerBackendAddressPoolId = loadBalancerBackendAddressPoolId.ToArray();
                 }
 
                 if (this.LoadBalancerInboundNatRule != null)
                 {
-                    this.LoadBalancerInboundNatRuleId = new List<string>();
+                    var loadBalancerInboundNatRuleId = new List<string>();
                     foreach (var natRule in this.LoadBalancerInboundNatRule)
                     {
-                        this.LoadBalancerInboundNatRuleId.Add(natRule.Id);
+                        loadBalancerInboundNatRuleId.Add(natRule.Id);
                     }
+                    LoadBalancerInboundNatRuleId = loadBalancerInboundNatRuleId.ToArray();
                 }
 
                 if (this.ApplicationGatewayBackendAddressPool != null)
                 {
-                    this.ApplicationGatewayBackendAddressPoolId = new List<string>();
+                    var applicationGatewayBackendAddressPoolId = new List<string>();
                     foreach (var appgwBepool in this.ApplicationGatewayBackendAddressPool)
                     {
-                        this.ApplicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
+                        applicationGatewayBackendAddressPoolId.Add(appgwBepool.Id);
                     }
+                    ApplicationGatewayBackendAddressPoolId = applicationGatewayBackendAddressPoolId.ToArray();
                 }
 
                 if (this.ApplicationSecurityGroup != null)
                 {
-                    this.ApplicationSecurityGroupId = new List<string>();
+                    var applicationSecurityGroupId = new List<string>();
                     foreach (var asg in this.ApplicationSecurityGroup)
                     {
-                        this.ApplicationSecurityGroupId.Add(asg.Id);
+                        applicationSecurityGroupId.Add(asg.Id);
                     }
+                    ApplicationSecurityGroupId = applicationSecurityGroupId.ToArray();
                 }
             }
 

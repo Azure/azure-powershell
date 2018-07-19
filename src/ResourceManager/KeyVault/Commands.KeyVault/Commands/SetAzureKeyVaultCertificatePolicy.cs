@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -147,7 +148,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the subject name of the certificate.")]
         [Alias("DnsNames")]
-        public List<string> DnsName { get; set; }
+        public string[] DnsName { get; set; }
 
         /// <summary>
         /// Key Usage
@@ -158,7 +159,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the key usages in the certificate.")]
-        public List<X509KeyUsageFlags> KeyUsage { get; set; }
+        public X509KeyUsageFlags[] KeyUsage { get; set; }
 
         /// <summary>
         /// Ekus
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ExpandedRenewNumberParameterSet,
             HelpMessage = "Specifies the enhanced key usages in the certificate.")]
-        public List<string> Ekus { get; set; }
+        public string[] Ekus { get; set; }
 
         /// <summary>
         /// ValidityInMonths
@@ -276,9 +277,9 @@ namespace Microsoft.Azure.Commands.KeyVault
 
                         policy = new PSKeyVaultCertificatePolicy
                         {
-                            DnsNames = DnsName,
+                            DnsNames = DnsName == null ? null : DnsName.ToList(),
                             KeyUsage = convertedKeyUsage,
-                            Ekus = Ekus,
+                            Ekus = Ekus == null ? null : Ekus.ToList(),
                             Enabled = !Disabled.IsPresent,
                             IssuerName = IssuerName,
                             CertificateType = CertificateType,

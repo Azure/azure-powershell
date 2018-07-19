@@ -38,22 +38,22 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
 
-            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Count > 0))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Length > 0) && (this.SourceApplicationSecurityGroup != null) && (this.SourceApplicationSecurityGroup.Length > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Count > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Count > 0))
+            if ((this.SourceAddressPrefix != null) && (this.SourceAddressPrefix.Length > 0) && (this.SourceApplicationSecurityGroupId != null) && (this.SourceApplicationSecurityGroupId.Length > 0))
             {
                 throw new ArgumentException($"{nameof(SourceAddressPrefix)} and {nameof(SourceApplicationSecurityGroupId)} cannot be used simultaneously.");
             }
 
-            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Count > 0))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Length > 0) && (this.DestinationApplicationSecurityGroup != null) && (this.DestinationApplicationSecurityGroup.Length > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroup)} cannot be used simultaneously.");
             }
 
-            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Count > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Count > 0))
+            if ((this.DestinationAddressPrefix != null) && (this.DestinationAddressPrefix.Length > 0) && (this.DestinationApplicationSecurityGroupId != null) && (this.DestinationApplicationSecurityGroupId.Length > 0))
             {
                 throw new ArgumentException($"{nameof(DestinationAddressPrefix)} and {nameof(DestinationApplicationSecurityGroupId)} cannot be used simultaneously.");
             }
@@ -68,10 +68,10 @@ namespace Microsoft.Azure.Commands.Network
 
             rule.Description = this.Description;
             rule.Protocol = this.Protocol;
-            rule.SourcePortRange = this.SourcePortRange;
-            rule.DestinationPortRange = this.DestinationPortRange;
-            rule.SourceAddressPrefix = this.SourceAddressPrefix;
-            rule.DestinationAddressPrefix = this.DestinationAddressPrefix;
+            rule.SourcePortRange = SourcePortRange == null ? null : this.SourcePortRange.ToList();
+            rule.DestinationPortRange = DestinationPortRange == null ? null : this.DestinationPortRange.ToList();
+            rule.SourceAddressPrefix = SourceAddressPrefix == null ? null : this.SourceAddressPrefix.ToList();
+            rule.DestinationAddressPrefix = DestinationAddressPrefix == null ? null : this.DestinationAddressPrefix.ToList();
             rule.Access = this.Access;
             rule.Priority = this.Priority;
             rule.Direction = this.Direction;

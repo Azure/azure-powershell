@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of profiles")]
         [ValidateNotNullOrEmpty]
-        public List<Management.Monitor.Management.Models.AutoscaleProfile> AutoscaleProfile { get; set; }
+        public Management.Monitor.Management.Models.AutoscaleProfile[] AutoscaleProfile { get; set; }
 
         /// <summary>
         /// Gets or sets the TargetResourceId parameter
@@ -97,7 +97,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         /// </summary>
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingCreateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
         [Parameter(ParameterSetName = AddAzureRmAutoscaleSettingUpdateParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The list of notifications of the setting")]
-        public List<Management.Monitor.Management.Models.AutoscaleNotification> Notification { get; set; }
+        public Management.Monitor.Management.Models.AutoscaleNotification[] Notification { get; set; }
 
         #endregion
 
@@ -144,23 +144,25 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
                 this.Name = this.InputObject.Name;
 
                 // The semantics is if AutoscaleProfiles is given it will replace the existing Profiles
-                this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToList();
+                this.AutoscaleProfile = this.AutoscaleProfile ?? property.Profiles.ToArray();
                 this.TargetResourceId = property.TargetResourceUri;
 
                 enableSetting = !this.DisableSetting.IsPresent && property.Enabled.HasValue && property.Enabled.Value;
 
                 // The semantics is if Notifications is given it will replace the existing ones
-                this.Notification = this.Notification ?? this.InputObject.Notifications?.ToList();
+                this.Notification = this.Notification ?? (this.InputObject.Notifications != null ? this.InputObject.Notifications.ToArray() : null);
             }
 
+            var autoscaleProfile == null ? null : this.AutoscaleProfile.ToList();
+            var notification = Notification == null ? null : this.Notification.ToList();
             return new AutoscaleSettingResource(
-                profiles: this.AutoscaleProfile?.Select(TransitionHelpers.ConvertNamespace).ToList(),
+                profiles: this.autoscaleProfile?.Select(TransitionHelpers.ConvertNamespace).ToList(),
                 location: this.Location,
                 name: this.Name)
             {
                 Enabled = enableSetting,
                 TargetResourceUri = this.TargetResourceId,
-                Notifications = this.Notification?.Select(TransitionHelpers.ConvertNamespace).ToList(),
+                Notifications = this.notification?.Select(TransitionHelpers.ConvertNamespace).ToList(),
                 Tags = this.InputObject != null ? new Dictionary<string, string>(this.InputObject.Tags) : new Dictionary<string, string>()
             };
         }
