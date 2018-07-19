@@ -18,7 +18,7 @@
         #endregion
 
         #region Constructors
-        public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version", ValidationType.OsVersion)
+        public OSVersionValidation(IConfiguration configuration) : base(configuration, "OS version check", ValidationType.OsVersion)
         {
             this._osversions = new Dictionary<string, string>();
             this._osversions["10.0"] = "Windows Server 2016";

@@ -105,16 +105,12 @@
     <Compile Include="Validations\ValidationResult.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="debug.ps1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <None Include="debug.ps1" />
     <None Include="AzureRM.StorageSync.psd1">
       <Link>AzureRM.StorageSync.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <EmbeddedResource Include="Config.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Config.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\..\..\tools\Common.Dependencies.targets" />

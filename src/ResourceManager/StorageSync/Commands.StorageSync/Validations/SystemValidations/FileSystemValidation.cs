@@ -12,7 +12,7 @@
         #endregion
 
         #region Constructors
-        public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File System type", ValidationType.FileSystem)
+        public FileSystemValidation(IConfiguration configuration, string path): base(configuration, "File system check", ValidationType.FileSystem)
         {
             this._driveLetter = new AfsPath(path).DriveLetter;
         }

@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
 
-        public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, "Prohibited file names", ValidationType.Filename)
+        public InvalidFilenameValidation(IConfiguration configuration) : base(configuration, "Files with prohibited names", ValidationType.Filename)
         {
             this._invalidFileNames = new HashSet<string>(configuration.InvalidFileNames(), StringComparer.OrdinalIgnoreCase);
         }
