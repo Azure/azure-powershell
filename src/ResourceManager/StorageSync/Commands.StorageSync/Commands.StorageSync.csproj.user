@@ -3,11 +3,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
-    <StartArguments>-NoExit . .\Debug.ps1 Debug</StartArguments>
+    <StartArguments>-NoExit . ..\..\..\..\..\ResourceManager\StorageSync\Commands.StorageSync\debug.ps1 Debug</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
     <StartAction>Program</StartAction>
     <StartProgram>C:\Windows\SysWOW64\WindowsPowerShell\v1.0\powershell.exe</StartProgram>
-    <StartArguments>-NoExit . .\Debug.ps1 Release</StartArguments>
+    <StartArguments>-NoExit . ..\..\..\..\..\ResourceManager\StorageSync\Commands.StorageSync\debug.ps1 Release</StartArguments>
   </PropertyGroup>
 </Project>

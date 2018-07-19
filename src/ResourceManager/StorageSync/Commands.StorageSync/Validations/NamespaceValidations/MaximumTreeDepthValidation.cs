@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
 
         #region Constructors
 
-        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Namespace depth limit", ValidationType.NodeDepth)
+        public MaximumTreeDepthValidation(IConfiguration configuration) : base(configuration, "Files/Directories in too deep folder structures (directory tree depth)", ValidationType.NodeDepth)
         {
             this._maxTreeDepth = configuration.MaximumTreeDepth();
         }

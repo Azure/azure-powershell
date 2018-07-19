@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Validations.NamespaceV
         #endregion
 
         #region Constructors
-        public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, "File name length limit", ValidationType.FilenameLength)
+        public MaximumFilenameLengthValidation(IConfiguration configuration): base(configuration, "Files/Directories over the name length limit", ValidationType.FilenameLength)
         {
             this._maxFilenameLength = configuration.MaximumFilenameLength();
         }

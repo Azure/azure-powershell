@@ -188,6 +188,9 @@
     "src/Storage/Commands.Storage/": [
       "Azure.Storage"
     ],
+    "src/ResourceManager/StorageSync/": [
+      "AzureRM.StorageSync"
+    ],
     "tools/": [
     ]
   }
