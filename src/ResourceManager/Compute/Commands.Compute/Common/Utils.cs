@@ -117,13 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Common
 
             var fourCoreSize = FourCoreSizesForAccelNet.Where(x => x.ToLower().Equals(size.ToLower()));
 
-            if (fourCoreSize == null | fourCoreSize.Count() == 0)
+            if (fourCoreSize == null || fourCoreSize.Count() == 0)
             {
-                var locationToUse = location;
-                if (String.IsNullOrWhiteSpace(locationToUse))
-                {
-                    locationToUse = defaultLocation;
-                }
+                var locationToUse = String.IsNullOrWhiteSpace(location)? defaultLocation : location;
                 //Check if the vm has enough cores
                 var sizes = client.GetClient<ComputeManagementClient>().VirtualMachineSizes.List(locationToUse);
                 if (sizes == null)
