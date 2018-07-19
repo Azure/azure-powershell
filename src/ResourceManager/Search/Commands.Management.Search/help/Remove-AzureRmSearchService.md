@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/remove-azurermsearchservice
 schema: 2.0.0
 ---
 
@@ -12,26 +12,26 @@ Remove an Azure Search service.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
+```
+Remove-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Force] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### InputObjectParameterSet
 ```
-Remove-AzureRmSearchService [-InputObject] <PSSearchService> [-Force]
+Remove-AzureRmSearchService [-InputObject] <PSSearchService> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Remove-AzureRmSearchService [-ResourceId] <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ResourceNameParameterSet
-```
-Remove-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-Force]
+Remove-AzureRmSearchService [-ResourceId] <String> [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Remove-AzureRmSearchService** cmdlet removes an Azure Search Service with specified paramters.
+The **Remove-AzureRmSearchService** cmdlet removes an Azure Search service with specified paramters.
 
 ## EXAMPLES
 
@@ -45,24 +45,9 @@ Are you sure you want to remove Search Service 'pstestazuresearch01'?
 PS C:\>
 ```
 
-The example removes an Azure Search Service.
+The example removes an Azure Search service.
 
 ## PARAMETERS
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -120,7 +105,20 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,7 +133,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -151,6 +149,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,17 +184,17 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet.
+### System.String
+
+### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

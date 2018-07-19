@@ -1,26 +1,25 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/get-azurermsearchservice
 schema: 2.0.0
 ---
 
 # Get-AzureRmSearchService
 
 ## SYNOPSIS
-Get an Azure Search service.
+Gets an Azure Search service.
 
 ## SYNTAX
 
-### ResourceGroupParameterSet
+### ResourceNameParameterSet (Default)
 ```
-Get-AzureRmSearchService [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzureRmSearchService [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceNameParameterSet
+### ResourceGroupParameterSet
 ```
-Get-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String>
+Get-AzureRmSearchService [-ResourceGroupName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -75,13 +74,13 @@ Search Service name.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceNameParameterSet
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
-Required: True
+Required: False
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -90,13 +89,13 @@ Resource Group name.
 
 ```yaml
 Type: String
-Parameter Sets: ResourceGroupParameterSet, ResourceNameParameterSet
+Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -116,19 +115,15 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet.
-
+### System.String
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-
 
 ## NOTES
 

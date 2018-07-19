@@ -1,37 +1,38 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/set-azurermsearchservice
 schema: 2.0.0
 ---
 
 # Set-AzureRmSearchService
 
 ## SYNOPSIS
-Update an Azure Search Service.
+Update an Azure Search service.
 
 ## SYNTAX
 
 ### InputObjectParameterSet
 ```
 Set-AzureRmSearchService [-InputObject] <PSSearchService> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
-Set-AzureRmSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzureRmSearchService [-ResourceId] <String> [-PartitionCount <Int32>] [-ReplicaCount <Int32>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceNameParameterSet
 ```
 Set-AzureRmSearchService [-ResourceGroupName] <String> [-Name] <String> [-PartitionCount <Int32>]
- [-ReplicaCount <Int32>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ReplicaCount <Int32>] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzureRmSearchService** cmdlet modifies an Azure Search Service.
+The **Set-AzureRmSearchService** cmdlet modifies an Azure Search service.
 
 ## EXAMPLES
 
@@ -48,7 +49,7 @@ Sku               : Standard
 ReplicaCount      : 2
 PartitionCount    : 2
 HostingMode       : Default
-Tags              : 
+Tags              :
 ```
 
 The example changes partition count and replica count of the Azure Search service to 2.
@@ -62,6 +63,19 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -160,19 +174,48 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet.
+### System.String
+
+### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
-
 
 ## NOTES
 

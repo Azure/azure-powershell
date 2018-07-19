@@ -1,33 +1,33 @@
 ---
 external help file: Microsoft.Azure.Commands.Management.Search.dll-Help.xml
 Module Name: AzureRM.Search
-online version:
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.search/new-azurermsearchquerykey
 schema: 2.0.0
 ---
 
 # New-AzureRmSearchQueryKey
 
 ## SYNOPSIS
-Create a new query key for the Azure Search Service.
+Create a new query key for the Azure Search service.
 
 ## SYNTAX
 
+### ResourceNameParameterSet (Default)
+```
+New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ### ParentObjectParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentResourceId] <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceNameParameterSet
-```
-New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzureRmSearchQueryKey [-ParentResourceId] <String> -Name <String> [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,18 +37,14 @@ The **New-AzureRmSearchQueryKey** cmdlet creates a new query key for the Azure S
 
 ### Example 1
 ```powershell
-PS C:\> New-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1"
+PS C:\> New-AzureRmSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01" -Name "NewQueryKey1" -Force
 
 Name         Key                             
 ----         ---                             
 NewQueryKey1 65FBCF561228C5F0E01F8F2114C80459
-
-
-
-PS C:\> 
 ```
 
-The example creates a new query key for the Azure Search Service.
+The example creates a new query key for the Azure Search service.
 
 ## PARAMETERS
 
@@ -59,6 +55,19 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+Do not ask for confirmation.```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -78,7 +87,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -123,7 +132,7 @@ Aliases:
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -138,23 +147,52 @@ Aliases:
 Required: True
 Position: 1
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet.
+### System.String
+
+### Microsoft.Azure.Commands.Management.Search.Models.PSSearchService
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Search.Models.PSSearchQueryKey
-
 
 ## NOTES
 
