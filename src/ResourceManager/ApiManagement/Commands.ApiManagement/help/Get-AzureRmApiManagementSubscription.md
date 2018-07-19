@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRm.ApiManagement
+Module Name: AzureRM.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementsubscription
 schema: 2.0.0
@@ -80,7 +80,7 @@ This command gets all subscriptions for the product.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Specifies a product identifier.
 If specified, this cmdlet finds all subscriptions by the product identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
 Aliases:
 
@@ -127,7 +127,7 @@ Specifies a subscription identifier.
 If specified, this cmdlet finds subscription by the identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySubscriptionId
 Aliases:
 
@@ -143,7 +143,7 @@ Specifies a user identifier.
 If specified, this cmdlet finds all subscriptions by the user identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
 Aliases:
 
