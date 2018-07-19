@@ -22,6 +22,7 @@
 * Update example for New-AzureRmDisk
 * Add example for `New-AzureRmVM`
 * Updated help files to include full parameter types.
+* Update description for Set-AzureRmVMOSDisk
 
 ## Version 5.3.0
 * Add -Tag parameter to Update/New-AzureRmAvailabilitySet
