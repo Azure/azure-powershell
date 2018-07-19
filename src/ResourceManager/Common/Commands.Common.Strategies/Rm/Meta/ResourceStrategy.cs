@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
             Func<TModel, int> createTime,
-            Func<TModel, bool> evaluatePreexistingConfiguration = null)
+            Action<TModel> evaluatePreexistingConfiguration = null)
             where TModel : class
             where TClient : ServiceClient<TClient>
         {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 Property.Create(getLocation, setLocation),
                 createTime,
-                evaluatePreexistingConfiguration ?? (_ => true));
+                evaluatePreexistingConfiguration ?? (_ => { }));
         }
 
         public static string GetResourceType(this IResourceStrategy strategy)
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
 
             public Func<TModel, int> CreateTime { get; }
 
-            public Func<TModel, bool> EvaluatePreexistingConfiguration { get; }
+            public Action<TModel> EvaluatePreexistingConfiguration { get; }
 
             public Implementation(
                 ResourceType type,
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
                 Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
                 Property<TModel, string> location,
                 Func<TModel, int> createTime,
-                Func<TModel, bool> evaluatePreexistingConfiguration)
+                Action<TModel> evaluatePreexistingConfiguration)
             {
                 Type = type;
                 GetApiVersion = getApiVersion;

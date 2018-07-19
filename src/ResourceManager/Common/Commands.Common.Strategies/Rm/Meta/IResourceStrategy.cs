@@ -40,6 +40,6 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
 
         Func<TModel, int> CreateTime { get; }
 
-        Func<TModel, bool> EvaluatePreexistingConfiguration { get; }
+        Action<TModel> EvaluatePreexistingConfiguration { get; }
     }
 }

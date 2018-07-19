@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, int> createTime,
-            Func<TModel, bool> evaluatePreexistingConfiguration = null)
+            Action<TModel> evaluatePreexistingConfiguration = null)
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Network", provider),
