@@ -75,6 +75,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
 
         //Parameter sets for ResourceID
+        protected const string MigrationConfigResourceIdParameterSet = "MigrationConfigResourceIdParameterSet";
         protected const string GeoDRConfigResourceIdParameterSet = "GeoDRConfigResourceIdParameterSet";
         protected const string NamespaceResourceIdParameterSet = "NamespaceResourceIdParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -85,6 +86,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string TopicPropertiesParameterSet = "TopicPropertiesSet";
         protected const string SubscriptionPropertiesParameterSet = "SubscriptionPropertiesSet";
         protected const string GeoDRParameterSet = "GeoDRPropertiesSet";
+        protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -106,6 +108,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string ServicebusDRConfigurationVerb = "AzureRmServiceBusGeoDRConfiguration";
         protected const string ServicebusDRConfigurationFailoverVerb = "AzureRmServiceBusGeoDRConfigurationFailOver";
         protected const string ServicebusDRConfigurationBreakPairingVerb = "AzureRmServiceBusGeoDRConfigurationBreakPair";
+
+        protected const string ServicebusMigrationConfigurationVerb = "AzureRmServiceBusMigration";
+        protected const string ServicebusRevertMigrationConfiguration = "AzureRmServiceBusRevertMigration";
+        protected const string ServicebusStartMigrationConfiguration = "AzureRmServiceBusStartMigration";
+        protected const string ServicebusCompleteMigrationConfiguration = "AzureRmServiceBusCompleteMigration";
 
         protected struct SKU
         {

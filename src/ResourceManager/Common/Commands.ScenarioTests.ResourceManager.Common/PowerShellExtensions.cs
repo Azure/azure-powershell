@@ -150,6 +150,7 @@ namespace Microsoft.WindowsAzure.Commands.ScenarioTest
             {
                 LogPowerShellStream<PSObject>(xunitLogger, output, "OUTPUT");
             }
+
             if (xunitLogger != null &&
                 powershell.Commands != null &&
                 powershell.Commands.Commands != null &&

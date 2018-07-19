@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
             Func<TOperation, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, string> getLocation,
             Action<TModel, string> setLocation,
-            Func<TModel, int> createTime)
+            Func<TModel, int> createTime,
+            Func<TModel, bool> evaluatePreexistingConfiguration = null)
             where TModel : class
             where TClient : ServiceClient<TClient>
         {
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
                 (client, p) => getAsync(toOperations(client), p),
                 (client, p) => createOrUpdateAsync(toOperations(client), p),
                 Property.Create(getLocation, setLocation),
-                createTime);
+                createTime,
+                evaluatePreexistingConfiguration ?? (_ => true));
         }
 
         public static string GetResourceType(this IResourceStrategy strategy)
@@ -64,13 +66,16 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
 
             public Func<TModel, int> CreateTime { get; }
 
+            public Func<TModel, bool> EvaluatePreexistingConfiguration { get; }
+
             public Implementation(
                 ResourceType type,
                 Func<IClient, string> getApiVersion,
                 Func<IClient, GetAsyncParams, Task<TModel>> getAsync,
                 Func<IClient, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
                 Property<TModel, string> location,
-                Func<TModel, int> createTime)
+                Func<TModel, int> createTime,
+                Func<TModel, bool> evaluatePreexistingConfiguration)
             {
                 Type = type;
                 GetApiVersion = getApiVersion;
@@ -78,6 +83,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
                 CreateOrUpdateAsync = createOrUpdateAsync;
                 Location = location;
                 CreateTime = createTime;
+                EvaluatePreexistingConfiguration = evaluatePreexistingConfiguration;
             }
         }
     }

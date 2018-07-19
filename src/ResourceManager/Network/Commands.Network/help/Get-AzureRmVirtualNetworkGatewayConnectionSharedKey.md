@@ -27,7 +27,7 @@ Get-AzureRmVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGr
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -40,7 +40,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

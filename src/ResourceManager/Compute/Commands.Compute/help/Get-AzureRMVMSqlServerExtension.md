@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Compute.dll-Help.xml
 Module Name: AzureRM.Compute
 ms.assetid: CAA3E6A9-7E1A-4D57-A269-0B2D3D9C3BEC
@@ -74,7 +74,7 @@ This command gets the settings of version 1.0 of the SQL Server extension on a v
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Specifies the name of the SQL Server the extension.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

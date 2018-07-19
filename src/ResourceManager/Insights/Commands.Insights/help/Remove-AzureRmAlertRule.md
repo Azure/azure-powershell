@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: C7EC21C7-1C7E-49B2-9B33-486532FCDAEC
@@ -14,7 +14,8 @@ Removes an alert rule.
 ## SYNTAX
 
 ```
-Remove-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Remove-AzureRmAlertRule -ResourceGroupName <String> -Name <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +42,7 @@ This command removes the alert rule named myalert-7da64548-214d-42ca-b12b-b245bb
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +57,9 @@ Accept wildcard characters: False
 Specifies the name of the alert rule to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +72,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the alert rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
 
@@ -79,6 +80,36 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

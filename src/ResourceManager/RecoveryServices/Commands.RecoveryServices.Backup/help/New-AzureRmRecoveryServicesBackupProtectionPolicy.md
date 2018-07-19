@@ -68,9 +68,9 @@ The acceptable values for this parameter are:
 - AzureSQLDatabase
 
 ```yaml
-Type: BackupManagementType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -99,9 +99,9 @@ Accept wildcard characters: False
 Specifies the name of the policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -115,9 +115,9 @@ Specifies the base **RetentionPolicy** object.
 You can use the Get-AzureRmRecoveryServicesBackupRetentionPolicyObject cmdlet to get a **RetentionPolicy** object.
 
 ```yaml
-Type: RetentionPolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.RetentionPolicyBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -131,9 +131,9 @@ Specifies the base **SchedulePolicy** object.
 You can use the Get-AzureRmRecoveryServicesBackupSchedulePolicyObject cmdlet to get a **SchedulePolicy** object.
 
 ```yaml
-Type: SchedulePolicyBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.SchedulePolicyBase
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 5
@@ -146,9 +146,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -165,9 +165,9 @@ The acceptable values for this parameter are:
 - AzureSQLDatabase
 
 ```yaml
-Type: WorkloadType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

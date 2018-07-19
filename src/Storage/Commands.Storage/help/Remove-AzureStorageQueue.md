@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 22975A89-CAFF-4F18-8DCE-B695413FBAC7
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/remove-azurestoragequeue
 schema: 2.0.0
@@ -13,8 +14,8 @@ Removes a storage queue.
 ## SYNTAX
 
 ```
-Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzureStorageQueue [-Name] <String> [-Force] [-PassThru] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,12 +46,27 @@ To obtain the storage context, the New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -60,7 +76,7 @@ Forces the command to run without asking for user confirmation.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,7 +107,7 @@ By default, this cmdlet does not return a value.
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

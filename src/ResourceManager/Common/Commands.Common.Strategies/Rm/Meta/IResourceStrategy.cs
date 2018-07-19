@@ -39,5 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.Meta
         Property<TModel, string> Location { get; }
 
         Func<TModel, int> CreateTime { get; }
+
+        Func<TModel, bool> EvaluatePreexistingConfiguration { get; }
     }
 }

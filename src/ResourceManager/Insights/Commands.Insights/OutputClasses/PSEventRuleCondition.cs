@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 using System.Text;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses

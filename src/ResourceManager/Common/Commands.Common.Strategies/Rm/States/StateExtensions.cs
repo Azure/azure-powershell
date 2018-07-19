@@ -56,6 +56,42 @@ namespace Microsoft.Azure.Commands.Common.Strategies.Rm.States
         public static bool ContainsDispatch(this IState state, IEntityConfig config)
             => config.Accept(new ContainsDispatchVisitor(), state);
 
+        //As of now this is just checking presence, we will revisit this later
+        //If sub resources need this functionality
+        public static bool IsCurrentPresentAndCompatible<TModel, TParentModel>(
+            this IState state, INestedResourceConfig<TModel, TParentModel> config)
+            where TModel : class
+            where TParentModel : class
+            => state.Get(config) != null;
+
+        public static bool IsCurrentPresentAndCompatibleDispatch(this IState state, IEntityConfig config)
+        => config.Accept(new IsCurrentPresentAndCompatibleDispatchVisitor(), state);
+
+        sealed class IsCurrentPresentAndCompatibleDispatchVisitor : IEntityConfigVisitor<IState, bool>
+        {
+            public bool Visit<TModel>(IResourceConfig<TModel> config, IState context)
+                where TModel : class
+            {
+                TModel currendEntityConfig = context.Get(config);
+
+                //If the current config for the entity exists, check if the config is compatible with what the
+                //cmdlet requires
+                if (currendEntityConfig != null)
+                {
+                    //run the config validator to see if the old config is compatible with the new
+                    config.Strategy.EvaluatePreexistingConfiguration(currendEntityConfig);
+                }
+
+                return currendEntityConfig != null;
+            }
+
+            public bool Visit<TModel, TParentModel>(
+                INestedResourceConfig<TModel, TParentModel> config, IState context)
+                where TModel : class
+                where TParentModel : class
+                => context.IsCurrentPresentAndCompatible(config);
+        }
+
         sealed class GetVisitor<TModel> : IEntityConfigVisitor<TModel, IState, TModel>
             where TModel : class
         {

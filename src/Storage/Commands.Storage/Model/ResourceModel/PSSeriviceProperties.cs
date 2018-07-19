@@ -15,6 +15,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
 {
@@ -40,26 +41,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel
         //
         // Summary:
         //     Gets or sets the logging properties.
+        [Ps1Xml(Label = "Logging.Version", Target = ViewControl.List, ScriptBlock = "$_.Logging.Version", Position = 0)]
+        [Ps1Xml(Label = "Logging.LoggingOperations", Target = ViewControl.List, ScriptBlock = "$_.Logging.LoggingOperations", Position = 1)]
+        [Ps1Xml(Label = "Logging.RetentionDays", Target = ViewControl.List, ScriptBlock = "$_.Logging.RetentionDays", Position = 2)]
         public LoggingProperties Logging { get; set; }
         //
         // Summary:
         //     Gets or sets the hour metrics properties.
+        [Ps1Xml(Label = "HourMetrics.Version", Target = ViewControl.List, ScriptBlock = "$_.HourMetrics.Version", Position = 3)]
+        [Ps1Xml(Label = "HourMetrics.MetricsLevel", Target = ViewControl.List, ScriptBlock = "$_.HourMetrics.MetricsLevel", Position = 4)]
+        [Ps1Xml(Label = "HourMetrics.RetentionDays", Target = ViewControl.List, ScriptBlock = "$_.HourMetrics.RetentionDays", Position = 5)]
         public MetricsProperties HourMetrics { get; set; }
         //
         // Summary:
         //     Gets or sets the Cross Origin Resource Sharing (CORS) properties.
+        [Ps1Xml(Label = "Cors", Target = ViewControl.List, ScriptBlock = "$_.Cors", Position = 14)]
         public PSCorsRule[] Cors { get; set; }
         //
         // Summary:
         //     Gets or sets the minute metrics properties.
+        [Ps1Xml(Label = "MinuteMetrics.Version", Target = ViewControl.List, ScriptBlock = "$_.MinuteMetrics.Version", Position = 6)]
+        [Ps1Xml(Label = "MinuteMetrics.MetricsLevel", Target = ViewControl.List, ScriptBlock = "$_.MinuteMetrics.MetricsLevel", Position = 7)]
+        [Ps1Xml(Label = "MinuteMetrics.RetentionDays", Target = ViewControl.List, ScriptBlock = "$_.MinuteMetrics.RetentionDays", Position = 8)]
         public MetricsProperties MinuteMetrics { get; set; }
         //
         // Summary:
         //     Gets or sets the default service version.
+        [Ps1Xml(Label = "DefaultServiceVersion", Target = ViewControl.List, Position = 15)]
         public string DefaultServiceVersion { get; set; }
         //
         // Summary:
         //     Gets or sets the delete retention policy.
+        [Ps1Xml(Label = "DeleteRetentionPolicy.Enabled", Target = ViewControl.List, ScriptBlock = "$_.DeleteRetentionPolicy.Enabled", Position = 9)]
+        [Ps1Xml(Label = "DeleteRetentionPolicy.RetentionDays", Target = ViewControl.List, ScriptBlock = "$_.DeleteRetentionPolicy.RetentionDays", Position = 10)]
         public PSDeleteRetentionPolicy DeleteRetentionPolicy { get; set; }
     }
 

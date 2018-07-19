@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string vmSize,
             int instanceCount,
             VirtualMachineScaleSetIdentity identity,
+            Boolean singlePlacementGroup,
             UpgradeMode? upgradeMode,
             IEnumerable<int> dataDisks,
             IList<string> zones)
@@ -68,6 +69,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         Name = engine.GetParameterValue(Parameter.Create("vmSize", vmSize)),
                     },
                     Identity = identity,
+                    SinglePlacementGroup = singlePlacementGroup,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
                         OsProfile = new VirtualMachineScaleSetOSProfile

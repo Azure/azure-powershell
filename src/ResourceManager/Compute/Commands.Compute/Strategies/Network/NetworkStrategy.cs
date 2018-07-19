@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Func<NetworkManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
-            Func<TModel, int> createTime)
+            Func<TModel, int> createTime,
+            Func<TModel, bool> compareExistingConfig = null)
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.Network", provider),
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 createOrUpdateAsync: createOrUpdateAsync,
                 getLocation: model => model.Location, 
                 setLocation: (model, location) => model.Location = location,
-                createTime: createTime);
+                createTime: createTime,
+                evaluatePreexistingConfiguration: compareExistingConfig);
 
         public static TModel GetReference<TModel, TParentModel>(
             this IEngine engine, INestedResourceConfig<TModel, TParentModel> config)

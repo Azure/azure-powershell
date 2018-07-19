@@ -13,8 +13,8 @@ Disable delete retention policy  for the Azure Storage Blob service.
 ## SYNTAX
 
 ```
-Disable-AzureStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Disable-AzureStorageDeleteRetentionPolicy [-PassThru] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,12 +37,27 @@ Azure Storage Context Object
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -52,7 +67,7 @@ Display DeleteRetentionPolicyProperties
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -106,4 +121,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

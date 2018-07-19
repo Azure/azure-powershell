@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Insights.dll-Help.xml
 Module Name: AzureRM.Insights
 ms.assetid: 7436F31F-9DCB-4365-BA6D-41BDB5D7FCB6
@@ -15,19 +15,19 @@ Creates an Autoscale setting.
 
 ### UpdateAutoscaleSetting
 ```
-Add-AzureRmAutoscaleSetting -SettingSpec <PSAutoscaleSetting> -ResourceGroupName <String> [-DisableSetting]
- [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
- [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Add-AzureRmAutoscaleSetting -InputObject <PSAutoscaleSetting> -ResourceGroupName <String> [-DisableSetting]
+ [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
+ [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateAutoscaleSetting
 ```
 Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroupName <String> [-DisableSetting]
- [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleProfile]>]
+ [-AutoscaleProfile <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile]>]
  -TargetResourceId <String>
- [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Insights.Models.AutoscaleNotification]>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Notification <System.Collections.Generic.List`1[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +77,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,11 +92,26 @@ Accept wildcard characters: False
 Disables an existing Autoscale setting.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+The complete spec of an AutoscaleSetting
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting
+Parameter Sets: UpdateAutoscaleSetting
+Aliases: SettingSpec
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -107,9 +122,9 @@ Accept wildcard characters: False
 Specifies the location of the Autoscale setting.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAutoscaleSetting
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -122,9 +137,9 @@ Accept wildcard characters: False
 Specifies the name of the Autoscale setting to create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAutoscaleSetting
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -152,25 +167,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group for the resource associated with the Autoscale setting.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceGroup
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -SettingSpec
-Specifies an **AutoscaleSetting** object.
-You can use the Get-AzureRmAutoscaleSetting cmdlet to get an **AutoscaleSetting** object or you can construct one in a Windows PowerShell script.
-
-```yaml
-Type: PSAutoscaleSetting
-Parameter Sets: Parameters for Add-AzureRmAutoscaleSetting cmdlet in the update semantics
-Aliases: InputObject
 
 Required: True
 Position: Named
@@ -183,14 +182,44 @@ Accept wildcard characters: False
 Specifies the ID of the resource to autoscale.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateAutoscaleSetting
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

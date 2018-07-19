@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.ActionGroups
 {
     using System.Collections.Generic;
 
-    using Microsoft.Azure.Management.Monitor.Management.Models;
+    using Microsoft.Azure.Management.Monitor.Models;
 
     public class ActionGroupsUtilities
     {

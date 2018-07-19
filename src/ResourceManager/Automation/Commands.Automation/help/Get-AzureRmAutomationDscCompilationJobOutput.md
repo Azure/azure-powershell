@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Automation.dll-Help.xml
 Module Name: AzureRM.Automation
 ms.assetid: D40BA2E2-50DF-4D51-A4D2-2D02AECBF20F
@@ -41,9 +41,9 @@ The second command gets the compilation job output for any stream for the first 
 Specifies the name of the Automation account that contains the DSC compilation job.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies the unique ID of the DSC compilation job for which this cmdlet gets output.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: (All)
 Aliases: JobId
 
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the DSC compilation job for which this cmdlet gets stream records.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,9 +102,9 @@ Specifies a start time.
 This cmdlet gets stream records that the DSC compilation job outputs after this time.
 
 ```yaml
-Type: DateTimeOffset
+Type: System.Nullable`1[System.DateTimeOffset]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -123,9 +123,9 @@ Valid values are:
 - Verbose
 
 ```yaml
-Type: CompilationJobStreamType
+Type: Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Warning, Error, Verbose, Any
 
 Required: False

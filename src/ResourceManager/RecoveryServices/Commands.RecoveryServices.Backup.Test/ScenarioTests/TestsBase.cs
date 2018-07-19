@@ -37,6 +37,7 @@ using NetworkMgmtNS = Microsoft.Azure.Management.Network;
 using ComputeMgmtNS = Microsoft.Azure.Management.Compute;
 using System.Collections.ObjectModel;
 using System.Management.Automation;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
 {
@@ -151,10 +152,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Test.ScenarioTests
                 TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        public Collection<PSObject> RunPsTest(PsBackupProviderTypes providerType, params string[] scripts)
+        public Collection<PSObject> RunPsTest(XunitTracingInterceptor logger, PsBackupProviderTypes providerType, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
+
+            helper.TracingInterceptor = logger;
 
             return RunPsTestWorkflow(
                 providerType,

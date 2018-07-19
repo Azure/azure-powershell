@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 32263236-C207-4FE0-AB8A-018118FC7729
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/enable-azurermtrafficmanagerendpoint
 schema: 2.0.0
@@ -56,7 +56,7 @@ That cmdlet enables that endpoint.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager endpoint that this cmdlet enables.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -87,9 +87,9 @@ Specifies the name of a Traffic Manager profile in which this cmdlet enables an 
 To obtain a profile, use the Get-AzureRmTrafficManagerProfile cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -103,9 +103,9 @@ Specifies the name of a resource group.
 This cmdlet enables a Traffic Manager endpoint in the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -119,9 +119,9 @@ Specifies the Traffic Manager endpoint that this cmdlet enables.
 To obtain a **TrafficManagerEndpoint** object, use the Get-AzureRmTrafficManagerEndpoint cmdlet.
 
 ```yaml
-Type: TrafficManagerEndpoint
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
 Parameter Sets: Object
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -139,9 +139,9 @@ Valid values are:
 - NestedEndpoints
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Fields
-Aliases: 
+Aliases:
 Accepted values: AzureEndpoints, ExternalEndpoints, NestedEndpoints
 
 Required: True
