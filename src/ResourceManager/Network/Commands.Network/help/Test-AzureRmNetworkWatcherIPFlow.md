@@ -274,7 +274,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
+Parameters: NetworkWatcher (ByValue)
+
+### System.String
+Parameters: LocalIPAddress (ByPropertyName), LocalPort (ByPropertyName), NetworkWatcherName (ByValue), RemoteIPAddress (ByPropertyName), RemotePort (ByPropertyName), ResourceGroupName (ByPropertyName), TargetVirtualMachineId (ByPropertyName)
 
 ## OUTPUTS
 

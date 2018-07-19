@@ -190,10 +190,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountClient+IntegrationAccountControlNumber
+### Microsoft.Azure.Commands.LogicApp.Utilities.IntegrationAccountControlNumber
 
 ## NOTES
 

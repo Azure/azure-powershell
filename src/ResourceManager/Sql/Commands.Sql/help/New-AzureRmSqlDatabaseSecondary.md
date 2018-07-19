@@ -49,7 +49,6 @@ $database | New-AzureRmSqlDatabaseSecondary -PartnerResourceGroupName $secondary
 ### -AllowConnections
 Specifies the read intent of the secondary Azure SQL Database.
 The acceptable values for this parameter are:
-
 - No
 - All
 
@@ -248,7 +247,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Specifies the Key-value pairs in the form of a hash table to associate with the SQL Database replication link. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -299,13 +297,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
-This cmdlet returns **ReplicationLink** objects.
+### System.Object
 
 ## NOTES
 

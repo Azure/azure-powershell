@@ -39,7 +39,6 @@ batch.node.windows amd64 Windows {2008-R2-SP1, 2012-Datacenter, 2012-R2-Datacent
 
 The first command gets a batch account context that contains access keys for your subscription by using **Get-AzureRmBatchAccountKeys**.
 The command stores the context in the $Context variable to use in the next command.
-
 The second command gets all available node agent SKUs that Batch supports.
 
 ## PARAMETERS
@@ -112,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

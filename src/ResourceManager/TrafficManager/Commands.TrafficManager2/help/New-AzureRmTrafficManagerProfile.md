@@ -25,7 +25,6 @@ New-AzureRmTrafficManagerProfile -Name <String> -ResourceGroupName <String> [-Pr
 The **New-AzureRmTrafficManagerProfile** cmdlet creates an Azure Traffic Manager profile.
 Specify the *Name* parameter and required settings.
 This cmdlet returns a local object that represents the new profile.
-
 This cmdlet does not configure Traffic Manager endpoints.
 You can update the local profile object by using the Add-AzureRmTrafficManagerEndpointConfig cmdlet.
 Then upload changes to Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
@@ -109,7 +108,6 @@ Accept wildcard characters: False
 ### -MonitorProtocol
 Specifies the protocol to use to monitor endpoint health.
 Valid values are:
-
 - HTTP
 - HTTPS
 
@@ -222,7 +220,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table set as tags on the server. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -241,7 +238,6 @@ Accept wildcard characters: False
 Specifies the traffic routing method.
 This method determines which endpoint Traffic Manager returns in response to incoming DNS queries.
 Valid values are:
-
 - Performance
 - Weighted
 - Priority
@@ -281,12 +277,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet returns a new TrafficManagerProfile object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 
 ## NOTES
 

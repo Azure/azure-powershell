@@ -127,7 +127,6 @@ Accept wildcard characters: False
 ### -DisplayOutputType
 Specifies the job output type being requested.
 The acceptable values for this parameter are:
-
 - StandardOutput
 - StandardError
 
@@ -195,7 +194,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

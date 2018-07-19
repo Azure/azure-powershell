@@ -29,7 +29,6 @@ PS C:\>$AppGw = Remove-AzureRmApplicationGatewayRedirectConfiguration -Applicati
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.
-
 The second command removes the redirect configuration named Redirect01 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
@@ -85,6 +84,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

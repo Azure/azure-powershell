@@ -37,7 +37,6 @@ State             : Connected
 ```
 
 Retrieves BGP peers for the Azure virtual network gateway named gatewayName in resource group resourceGroup.
-
 This example output shows one connected BGP peer, with an IP of 10.0.0.254.
 
 ## PARAMETERS
@@ -123,6 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Peer (ByPropertyName), ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPropertyName)
 
 ## OUTPUTS
 

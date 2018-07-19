@@ -30,7 +30,6 @@ Save-AzureRmVhd [-StorageKey] <String> [-SourceUri] <Uri> [-LocalFilePath] <File
 ## DESCRIPTION
 The **Save-AzureRmVhd** cmdlet saves .vhd images from a blob where they are stored to a file.
 You can specify the number of downloader threads that the process uses and whether to replace a file that already exists.
-
 This cmdlet downloads content as it is.
 It does not apply any Virtual Hard Disk (VHD) format conversion.
 
@@ -196,8 +195,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName)
+
+### System.Uri
+Parameters: SourceUri (ByPropertyName)
 
 ## OUTPUTS
 

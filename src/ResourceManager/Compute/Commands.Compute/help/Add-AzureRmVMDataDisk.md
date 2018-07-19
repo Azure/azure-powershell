@@ -55,10 +55,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataD
 
 The first command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next three commands assign paths of three data disks to the $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03 variables.
 This approach is only for readability of the following commands.
-
 The final three commands each adds a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 The URI of each disk is stored in $DataDiskVhdUri01, $DataDiskVhdUri02, and $DataDiskVhdUri03.
@@ -72,9 +70,7 @@ PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachin
 
 The first command gets the virtual machine named VirtualMachine07 by using the [Get-AzureRmVM](./Get-AzureRmVM.md) cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
-
 The second command adds a data disk to the virtual machine stored in $VirtualMachine.
-
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 
 ### Example 3: Add a data disk to a new virtual machine from a generalized user image
@@ -87,10 +83,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next two commands assign paths for the data image and data disks to the $DataImageUri and $DataDiskUri variables respectively.
 This approach is used to improve the readability of the following commands.
-
 The final commands adds a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk and other properties of the disk.
 
@@ -103,10 +97,8 @@ PS C:\> $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "dd1" 
 
 The first command creates a virtual machine object and stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
-
 The next commands assigns paths of the data disk to the $DataDiskUri variable.
 This approach is used to improve the readability of the following commands.
-
 The final command add a data disk to the virtual machine stored in $VirtualMachine.
 The command specifies the name and location for the disk, and other properties of the disk.
 
@@ -128,14 +120,11 @@ The final command updates the Vmss VM with added data disk.
 ### -Caching
 Specifies the caching mode of the disk.
 The acceptable values for this parameter are:
-
 - ReadOnly
 - ReadWrite
 - None
-
 The default value is ReadWrite.
 Changing this value causes the virtual machine to restart.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
@@ -154,7 +143,6 @@ Accept wildcard characters: False
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, creates an empty disk, or attaches an existing disk.
 The acceptable values for this parameter are:
-
 - Attach.
 Specify this option to create a virtual machine from a specialized disk.
 When you specify this option, do not specify the *SourceImageUri* parameter.
@@ -365,12 +353,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
+Parameters: VirtualMachineScaleSetVM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: CreateOption (ByPropertyName), ManagedDiskId (ByPropertyName), Name (ByPropertyName), SourceImageUri (ByPropertyName), StorageAccountType (ByPropertyName), VhdUri (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.CachingTypes
+Parameters: Caching (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSetVM
 
 ## NOTES
 

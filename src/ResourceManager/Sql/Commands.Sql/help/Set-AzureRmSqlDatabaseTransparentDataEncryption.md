@@ -22,7 +22,6 @@ Set-AzureRmSqlDatabaseTransparentDataEncryption [-State] <TransparentDataEncrypt
 ## DESCRIPTION
 The **Set-AzureRmSqlDatabaseTransparentDataEncryption** cmdlet modifies the Transparent Data Encryption (TDE) property of an Azure SQL database.
 For more information, see Transparent Data Encryption with Azure SQL Databasehttps://msdn.microsoft.com/library/dn948096 (https://msdn.microsoft.com/library/dn948096) in the Microsoft Developer Network Library.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -102,7 +101,6 @@ Accept wildcard characters: False
 ### -State
 Specifies the value of the TDE property.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled
 
@@ -155,12 +153,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.TransparentDataEncryptionStateType
+Parameters: State (ByPropertyName)
+
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlDatabaseTransparentDataEncryptionModel
+### System.Object
 
 ## NOTES
 

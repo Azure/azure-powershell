@@ -35,13 +35,10 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 ```
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
-
 The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2 variables.
 This approach is only for readability of the following commands.
-
 The next three commands each adds an os disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
-
 The final command creates an image named 'ImageName01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
@@ -158,13 +155,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+Parameters: ImageName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
+Parameters: Image (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Automation.Models.PSImage
-
-### System.Object
 
 ## NOTES
 

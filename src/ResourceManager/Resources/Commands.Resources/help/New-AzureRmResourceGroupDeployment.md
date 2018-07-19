@@ -78,18 +78,15 @@ New-AzureRmResourceGroupDeployment [-Name <String>] -ResourceGroupName <String> 
 ## DESCRIPTION
 The **New-AzureRmResourceGroupDeployment** cmdlet adds a deployment to an existing resource group.
 This includes the resources that the deployment requires.
-
 An Azure resource is a user-managed Azure entity, such as a database server, database, website, virtual machine, or Storage account.
 An Azure resource group is a collection of Azure resources that are deployed as a unit, such as the website, database server, and databases that are required for a financial website.
 A resource group deployment uses a template to add resources to a resource group and publishes them so that they are available in Azure.
 To add resources to a resource group without using a template, use the New-AzureRmResource cmdlet.
-
 To add a resource group deployment, specify the name of an existing resource group and a resource group template.
 A resource group template is a JSON string that represents a resource group for a complex cloud-based service, such as a web portal.
 The template includes parameter placeholders for required resources and configurable property values, such as names and sizes.
 You can find many templates in the Azure template gallery or you can create your own templates.
 You can use the **Get-AzureRmResourceGroupGalleryTemplate** cmdlet to find a template in the gallery.
-
 To use a custom template to create a resource group, specify the *TemplateFile* parameter or *TemplateUri* parameter.
 Each template has parameters for configurable properties.
 To specify values for the template parameters, specify the *TemplateParameterFile* parameter or the *TemplateParameterObject* parameter.
@@ -159,7 +156,6 @@ Accept wildcard characters: False
 ### -DeploymentDebugLogLevel
 Specifies a debug log level.
 The acceptable values for this parameter are:
-
 - RequestContent
 - ResponseContent
 - All
@@ -194,10 +190,8 @@ Accept wildcard characters: False
 
 ### -Mode
 Specifies the deployment mode. The acceptable values for this parameter are:
-
 - Complete
 - Incremental
-
 In complete mode, Resource Manager deletes resources that exist in the resource group but are not
 specified in the template. In incremental mode, Resource Manager leaves unchanged resources that
 exist in the resource group but are not specified in the template.
@@ -279,7 +273,6 @@ Accept wildcard characters: False
 Specifies the full path of a JSON file that contains the names and values of the template parameters.
 If a template has parameters, you must specify the parameter values with the *TemplateParameterFile* parameter or the *TemplateParameterObject* parameter.
 Template parameters are dynamically added to the command when you specify a template.
-
 To use the dynamic parameters, type a minus sign (-) to indicate a parameter name and then use the Tab key to cycle through the available parameters.
 
 ```yaml

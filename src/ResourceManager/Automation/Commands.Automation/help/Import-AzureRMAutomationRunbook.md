@@ -35,7 +35,6 @@ PS C:\> Import-AzureRmAutomationRunbook -Path .\GraphicalRunbook06.graphrunbook 
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
-
 The second command imports a graphical runbook called GraphicalRunbook06 into the Automation account named AutomationAccount01.
 The command also assigns the tags stored in $Tags.
 
@@ -193,7 +192,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -211,14 +209,12 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of runbook that this cmdlet creates.
 Valid values are:
-
 - PowerShell
 - GraphicalPowerShell
 - PowerShellWorkflow
 - GraphicalPowerShellWorkflow
 - Graph
 - Python2
-
 The value Graph is obsolete.
 It is equivalent to GraphicalPowerShellWorkflow.
 
@@ -271,8 +267,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.IDictionary
+Parameters: Tags (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

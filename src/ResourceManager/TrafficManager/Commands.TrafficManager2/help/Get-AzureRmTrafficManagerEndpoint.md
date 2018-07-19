@@ -27,7 +27,6 @@ Get-AzureRmTrafficManagerEndpoint -TrafficManagerEndpoint <TrafficManagerEndpoin
 
 ## DESCRIPTION
 The **Get-AzureRmTrafficManagerEndpoint** cmdlet gets an endpoint for an Azure Traffic Manager profile.
-
 You can modify this object locally, and then apply changes to the profile by using the Set-AzureRmTrafficManagerEndpoint cmdlet.
 Specify the endpoint by using the *Name* and *Type* parameters.
 You can specify the Traffic Manager profile either by using the *ProfileName* and *ResourceGroupName* parameter, or by specifying a **TrafficManagerProfile** object.
@@ -123,7 +122,6 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Traffic Manager profile.
 Valid values are: 
-
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
@@ -147,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerEndpoint
-Parameter 'TrafficManagerEndpoint' accepts value of type 'TrafficManagerEndpoint' from the pipeline
+Parameters: TrafficManagerEndpoint (ByValue)
 
 ## OUTPUTS
 

@@ -96,9 +96,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: FirewallRuleName (ByPropertyName), RangeEnd (ByPropertyName), RangeStart (ByPropertyName)
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AnalysisServices.Models.AzureAnalysisServicesFirewallRule
+### Microsoft.Azure.Commands.AnalysisServices.Models.PsAzureAnalysisServicesFirewallRule
 
 ## NOTES
 

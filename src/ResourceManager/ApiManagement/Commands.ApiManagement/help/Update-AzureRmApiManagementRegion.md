@@ -75,7 +75,6 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the deployment region to update.
-
 Specifies the location of the new deployment region amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
@@ -94,9 +93,7 @@ Accept wildcard characters: False
 
 ### -Sku
 Specifies the new tier value for the deployment region.
-
 Valid values are:
-
 - Developer
 - Standard
 - Premium
@@ -135,8 +132,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+Parameters: Location (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
+Parameters: Sku (ByPropertyName)
+
+### System.Int32
+Parameters: Capacity (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Parameters: VirtualNetwork (ByPropertyName)
 
 ## OUTPUTS
 

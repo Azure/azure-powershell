@@ -21,18 +21,14 @@ Remove-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <Stri
 
 ## DESCRIPTION
 The **Remove-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet removes a Shared Access Signature (SAS) authorization rule from a notification hub namespace.
-
 Authorization rules manage access to a namespace.
 This is done by through the creation of links, as URIs, based on different permission levels.
 Permission levels can be of the following: 
-
 - Listen
 - Send
 - Manage
-
 Clients are directed to one of these URIs based on the appropriate permission level.
 For instance, a client given the Listen permission is directed to the URI for that permission.
-
 Removing an authorization rule also removes the corresponding user permission.
 
 ## EXAMPLES
@@ -159,8 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AuthorizationRule (ByPropertyName), Namespace (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

@@ -132,19 +132,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), Blob (ByPropertyName), DataLakeStore (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSStorageAccountInfo
-The specified Azure Storage account details.
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeStoreAccountInfo
-The specified Data Lake Store account details
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.AdlDataSource
-The list of both Azure Storage accounts and Data Lake Store accounts in the specified Data Lake Analytics account.
 
 ## NOTES
 

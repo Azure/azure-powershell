@@ -35,12 +35,9 @@ Remove-AzureRmDnsRecordSet -RecordSet <DnsRecordSet> [-Overwrite] [-PassThru]
 ## DESCRIPTION
 The **Remove-AzureRmDnsRecordSet** cmdlet deletes the specified record set from the specified zone.
 You cannot delete SOA or name server (NS) records that are automatically created at the zone apex.
-
 You can pass a **RecordSet** object to this cmdlet by using the pipeline operator or as a parameter.
 To identify a record set by name and type without using a **RecordSet** object, you must pass the zone as a **DnsZone** object to this cmdlet by using the pipeline operator or as a parameter, or alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
-
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-
 When specifying the record set using a **RecordSet** object, the record set is not deleted if it has been changed in Azure DNS since the local **RecordSet** object was retrieved.
 This provides protection for concurrent changes.
 You can suppress this by using the *Overwrite* parameter, which deletes the record set regardless of concurrent changes.
@@ -68,7 +65,6 @@ PS C:\> Remove-AzureRmDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceG
 ```
 
 The first command gets the specified record set.
-
 The second command deletes the record set, even if it has changed in the meantime.
 Confirmation prompts are suppressed.
 
@@ -92,7 +88,6 @@ Accept wildcard characters: False
 ### -Name
 Specifies the name of the **RecordSet** to remove.
 When specifying the record set by name, the DNS zone must be specified using either the *Zone* parameter or the *ZoneName* and *ResourceGroupName* parameters.
-
 Alternatively, the record set can be specified using a **RecordSet** object, passed using the *RecordSet* parameter.
 
 ```yaml
@@ -141,7 +136,6 @@ Accept wildcard characters: False
 
 ### -RecordSet
 Specifies the **RecordSet** object to remove.
-
 Alternatively, the record set can be specified using the *Name* and *Zone* parameters, or using the *Name*, *ZoneName*, and *ResourceGroupName* parameters.
 
 ```yaml
@@ -158,9 +152,7 @@ Accept wildcard characters: False
 
 ### -RecordType
 Specifies the type of DNS record.
-
 Valid values are:
-
 - A
 - AAAA
 - CNAME
@@ -169,7 +161,6 @@ Valid values are:
 - PTR
 - SRV
 - TXT
-
 SOA records are deleted automatically when the zone is deleted.
 You cannot manually delete SOA records.
 
@@ -189,7 +180,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the resource group that contains the DNS zone that contains the **RecordSet** to delete.
 This parameter is applicable only when the record set and DNS zone are specified using the *Name* and *ZoneName* parameters.
-
 Alternatively, you can specify the record set using either the *RecordSet* parameter, or the *Name* and *Zone* parameters.
 
 ```yaml
@@ -207,7 +197,6 @@ Accept wildcard characters: False
 ### -Zone
 Specifies the DNS zone that contains the **RecordSet** to delete.
 This parameter is applicable only when specifying the record set using the *Name* parameter.
-
 Alternatively, you can specify the record set using either the *RecordSet* parameter, or the *Name*, *ZoneName*, and *ResourceGroupName* parameters.
 
 ```yaml
@@ -225,7 +214,6 @@ Accept wildcard characters: False
 ### -ZoneName
 Specifies the name of the zone that contains the **RecordSet** to delete.
 You must also specify the *Name* and *ResourceGroupName* parameters.
-
 Alternatively, the record set can be specified using either the *RecordSet* parameter, or the *Name* and *Zone* parameters.
 
 ```yaml
@@ -276,18 +264,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Management.Dns.Models.RecordType
+Parameters: RecordType (ByPropertyName)
+
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ZoneName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Dns.DnsZone
+Parameters: Zone (ByValue)
+
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-You can pipe a **RecordSet** object to this cmdlet.
+Parameters: RecordSet (ByValue)
 
 ## OUTPUTS
 
-### None
-This cmdlet does not generate any output.
+### System.Boolean
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
 By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower.
-
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation.
 

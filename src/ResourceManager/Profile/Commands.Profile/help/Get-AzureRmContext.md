@@ -24,7 +24,6 @@ Get-AzureRmContext [-ListAvailable] [-DefaultProfile <IAzureContextContainer>] [
 
 ## DESCRIPTION
 The Get-AzureRmContext cmdlet gets the current metadata used to authenticate Azure Resource Manager requests.
-
 This cmdlet gets the Active Directory account, Active Directory tenant, Azure subscription, and the targeted Azure environment.
 Azure Resource Manager cmdlets use these settings by default when making Azure Resource Manager requests.
 
@@ -107,7 +106,7 @@ The name of the context
 Type: System.String
 Parameter Sets: GetSingleContext
 Aliases:
-Accepted values: Default
+Accepted values: Azure SDK Infrastructure, [maclayto@microsoft.com, 33f39d49-6173-49bf-9789-db5548ee6d73], AzureSDKADGraph2,  - 8bc48661-1801-4b7a-8ca1-6a3cadfb4870, [maddieclayton1@gmail.com], Node CLI Test, Azure SDK Powershell Test - Manual - 9e223dbe-3399-4e19-88eb-0975f02ac87f, Scottph Internal Consumption, AzureSDKADGraph2 - 0b1f6471-1bf0-4dda-aec3-cb9272f09590, Azure SDK Powershell Test - c9cbd920-c00c-427c-852b-8aaf38badaeb, [maclayto@microsoft.com, 92ad8d84-3287-4990-b83d-5e983832f7ce], Azure SDK Powershell Test - Manual, Network Traffic Analytics Subscription 3 - af15e575-f948-49ac-bce0-252d028e9379, Pay-As-You-Go, Azure SDK Powershell Test
 
 Required: False
 Position: 0
@@ -122,12 +121,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
-This cmdlet returns the account, tenant, and subscription used by Azure Resource Manager cmdlets.
 
 ## NOTES
 

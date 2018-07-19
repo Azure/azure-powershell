@@ -77,9 +77,7 @@ D:\> Remove-AzureRmDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name
 ```
 
 DDoS protection plans cannot be deleted if they are associated with a virtual network. So the first step is to disassociate both objects. Here, we get the most updated version of the virtual network associated with the plan, and we set the property **DdosProtectionPlan** to an empty value and the flag **EnableDdosProtection** (this flag cannot be true without a plan).
-
 Then, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**. At this point, the plan is no longer associated with the virtual network.
-
 If this is the last one associated with the plan, we can remove the DDoS protection plan by using the command Remove-AzureRmDdosProtectionPlan.
 
 ## PARAMETERS
@@ -182,6 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

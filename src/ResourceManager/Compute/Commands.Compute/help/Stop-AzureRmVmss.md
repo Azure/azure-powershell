@@ -127,7 +127,6 @@ Accept wildcard characters: False
 ### -StayProvisioned
 If specified, the virtual machine will enter stopped state. If not specified, the virtual machine will enter stopped-deallocated state. The user is still charged for VMs in stopped state but not for VMs in stopped-deallocated state.
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: FriendMethod
@@ -190,8 +189,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), VMScaleSetName (ByPropertyName)
+
+### System.String[]
+Parameters: InstanceId (ByPropertyName)
 
 ## OUTPUTS
 

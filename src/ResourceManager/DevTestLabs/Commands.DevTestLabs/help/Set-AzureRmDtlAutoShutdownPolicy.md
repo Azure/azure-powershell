@@ -161,13 +161,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: LabName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DevTestLabs.Models.PSSchedule
-This cmdlet returns the schedule which specifies when the virtual machines in the lab must shut down.
 
 ## NOTES
 

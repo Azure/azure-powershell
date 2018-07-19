@@ -40,7 +40,6 @@ PS C:\> Get-AzureBatchSubtask -JobId "Job-01" -TaskID "myTask" -BatchContext $Co
 These commands return all the subtasks for the task with the ID myTask.
 To do this, the first command in the example creates an object reference to the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command then uses that object reference and the **Get-AzureBatchSubtask** cmdlet to return all the subtasks for myTask, a task that runs as part of job Job-01.
 
 ## PARAMETERS
@@ -144,16 +143,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: JobId (ByPropertyName), TaskId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
-Parameter 'Task' accepts value of type 'PSCloudTask' from the pipeline
+Parameters: Task (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Batch.Models.PSSubtaskInformation
-This cmdlet returns instances of the **PSSubtaskInformation** object.
 
 ## NOTES
 

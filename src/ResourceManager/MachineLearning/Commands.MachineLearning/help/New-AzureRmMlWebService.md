@@ -202,15 +202,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### WebService
-Parameter 'NewWebServiceDefinition' accepts value of type 'WebService' from the pipeline
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
+Parameters: NewWebServiceDefinition (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
-A summary description of the Azure Machine Learning web service.
-Similar to the description returned by calling the Get-AzureRmMlWebService cmdlet on an existing web service.
-This description does not contain sensitive properties such as storage account's credentials and the service's access keys.
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml

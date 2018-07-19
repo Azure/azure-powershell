@@ -40,7 +40,6 @@ PS C:\> Set-AzureRmVMDataDisk -VM $VM -Name "DataDisk01" -Caching ReadWrite | Up
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzureRmVM**.
 The command stores it in the $VM variable.
-
 The second command modifies the caching mode for the data disk named DataDisk01 on the virtual machine in $VM.
 The command passes the result to the Update-AzureRmVM cmdlet, which implements your changes.
 A change to the cashing mode causes the virtual machine to restart.
@@ -50,13 +49,10 @@ A change to the cashing mode causes the virtual machine to restart.
 ### -Caching
 Specifies the caching mode of the disk.
 The acceptable values for this parameter are:
-
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 Changing this value causes the virtual machine to restart.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
@@ -183,8 +179,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), StorageAccountType (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

@@ -69,7 +69,6 @@ Accept wildcard characters: False
 ### -Kind
 Specifies the kind of data sources to get.
 The acceptable values for this parameter are:
-
 - AzureActivityLog 
 - CustomLog 
 - LinuxPerformanceObject 
@@ -216,8 +215,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ## OUTPUTS
 

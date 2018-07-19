@@ -88,7 +88,6 @@ Accept wildcard characters: False
 ### -Encoding
 Specifies the encoding for the item to create.
 The acceptable values for this parameter are:
-
 - Unknown
 - String
 - Unicode
@@ -240,16 +239,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.Int32
+Parameters: Head (ByPropertyName), Tail (ByPropertyName)
+
+### System.Int64
+Parameters: Length (ByPropertyName), Offset (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.FileSystemCmdletProviderEncoding
+Parameters: Encoding (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
 ### System.Byte
-The byte stream representation of the file contents retrieved.
 
 ### System.String
-The string representation (in the specified encoding) of the file contents retrieved.
 
 ## NOTES
 

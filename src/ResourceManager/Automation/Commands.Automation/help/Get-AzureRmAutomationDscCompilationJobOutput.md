@@ -32,7 +32,6 @@ PS C:\> $Jobs[0] | Get-AzureRmAutomationDscCompilationJobOutput -Stream "Any"
 
 The first command gets the compilation jobs in the Automation account named Contoso17 by using the Get-AzureRmAutomationDscCompilationJob cmdlet.
 The command stores those objects in the $Jobs variable.
-
 The second command gets the compilation job output for any stream for the first member of the $Jobs array.
 
 ## PARAMETERS
@@ -116,7 +115,6 @@ Accept wildcard characters: False
 ### -Stream
 Specifies the type of stream for the output that this cmdlet gets.
 Valid values are: 
-
 - Any 
 - Warning 
 - Error 
@@ -140,8 +138,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: Id (ByPropertyName)
+
+### Microsoft.Azure.Commands.Automation.Common.CompilationJobStreamType
+Parameters: Stream (ByPropertyName)
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

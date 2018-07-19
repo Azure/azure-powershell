@@ -21,7 +21,6 @@ Remove-AzureRmAutoscaleSetting -ResourceGroupName <String> -Name <String>
 ## DESCRIPTION
 The **Remove-AzureRmAutoscaleSetting** cmdlet removes an Autoscale setting.
 You must specify the name of the setting and the name of the resource group to which it is assigned.
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -108,8 +107,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

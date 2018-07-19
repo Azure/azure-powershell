@@ -29,13 +29,10 @@ Get-AzureRmResourceGroupDeployment -Id <String> [-ApiVersion <String>] [-Pre]
 The **Get-AzureRmResourceGroupDeployment** cmdlet gets the deployments in an Azure resource group.
 Specify the *Name* or *Id* parameter to filter the results.
 By default, **Get-AzureRmResourceGroupDeployment** gets all deployments for a specified resource group.
-
 An Azure resource is a user-managed Azure entity, such as a database server, database, or web site.
 An Azure resource group is a collection of Azure resources that are deployed as a unit.
-
 A deployment is the operation that makes the resources in the resource group available for use.
 For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
-
 You can use this cmdlet for tracking.
 For debugging, use this cmdlet with the Get-AzureRmLog cmdlet.
 
@@ -173,8 +170,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ResourceManagement.Models.PSResourceGroupDeployment
-The cmdlet returns resource group deployments.
+### Microsoft.Azure.Commands.ResourceManagement.Models. PSResourceGroupDeployment
 
 ## NOTES
 

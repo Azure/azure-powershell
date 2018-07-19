@@ -38,13 +38,10 @@ Set-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-DefaultProfile <IAzureContextC
 ## DESCRIPTION
 The **Set-AzureRmDnsZone** cmdlet updates the specified DNS zone in the Azure DNS service.
 This cmdlet does not update the record sets in the zone.
-
 You can pass a **DnsZone** object as a parameter or by using the pipeline operator, or
 alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
-
 You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell variable to control
 whether the cmdlet prompts you for confirmation.
-
 When passing a DNS zone as an object (using the Zone object or via the pipeline), it is not updated
 if it has been changed in Azure DNS since the local DnsZone object was retrieved. This provides
 protection for concurrent changes. You can suppress this behavior with the *Overwrite* parameter,
@@ -61,9 +58,7 @@ PS C:\> Set-AzureRmDnsZone -Zone $Zone
 
 The first command gets the zone named myzone.com from the specified resource group, and then stores
 it in the $Zone variable.
-
 The second command updates the tags for $Zone.
-
 The final command commits the change.
 
 ### Example 2: Update tags for a zone
@@ -205,7 +200,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the zone to update.
 You must also specify the ZoneName parameter.
-
 Alternatively, you can specify the zone using a DnsZone object with the *Zone* parameter or the pipeline.
 
 ```yaml
@@ -222,7 +216,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -239,7 +232,6 @@ Accept wildcard characters: False
 
 ### -Zone
 Specifies the DNS zone to update.
-
 Alternatively, you can specify the zone using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
@@ -289,18 +281,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Internal.Network.Common.IResourceReference, Microsoft.Azure.Commands.Common.Network, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+
 ### Microsoft.Azure.Commands.Dns.DnsZone
-You can pipe a DnsZone object to this cmdlet.
+Parameters: Zone (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-This cmdlet returns a DnsZone object that represents the updated DNS zone with a new Etag.
 
 ## NOTES
 You can use the *Confirm* parameter to control whether this cmdlet prompts you for confirmation.
 By default, the cmdlet prompts you for confirmation if the $ConfirmPreference Windows PowerShell variable has a value of Medium or lower.
-
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation.
 

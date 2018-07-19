@@ -34,13 +34,10 @@ PS C:\> Set-AzureRmVirtualNetworkGatewayDefaultSite -GatewayDefaultSite $LocalGa
 ```
 
 This example assigns a default site to a virtual network gateway named ContosoVirtualGateway.
-
 The first command creates an object reference to a local gateway named ContosoLocalGateway.
 This object reference that is stored in the variable named $LocalGateway represents the gateway to be configured as the default site
-
 .
 The second command then creates an object reference to the virtual network gateway and stores the result in the variable named $VirtualGateway.
-
 The third command uses the **Set-AzureRmVirtualNetworkGatewayDefaultSite** cmdlet to assign the default site to ContosoVirtualGateway.
 
 ## PARAMETERS
@@ -79,7 +76,6 @@ Accept wildcard characters: False
 ### -VirtualNetworkGateway
 Specifies an object reference to the virtual network gateway where the default site will be assigned.
 You can create an object reference to a virtual network gateway by using the **Get-AzureRmVirtualNetworkGateway** and specifying the name of the gateway.
-
 The variable $VirtualGateway can then be used as the parameter value for the *VirtualNetworkGateway* parameter:
 
 ```yaml
@@ -99,13 +95,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: VirtualNetworkGateway (ByValue)
+
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Parameters: GatewayDefaultSite (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
 

@@ -60,7 +60,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
-
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
@@ -110,8 +109,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPropertyName), VpnClientRevokedCertificateName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -69,7 +69,6 @@ Accept wildcard characters: False
 ### -ExcludedDetectionType
 Specifies an array of detection types to exclude from the policy.
 The acceptable values for this parameter are:
-
 - Sql_Injection
 - Sql_Injection_Vulnerability
 - Access_Anomaly
@@ -215,13 +214,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You cannot pipe input to this cmdlet.
+### System.String
+Parameters: NotificationRecipientsEmails (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), StorageAccountName (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType[]
+Parameters: ExcludedDetectionType (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerThreatDetectionPolicyModel
-This cmdlet returns a **ServerThreatDetectionPolicyModel** object.
 
 ## NOTES
 

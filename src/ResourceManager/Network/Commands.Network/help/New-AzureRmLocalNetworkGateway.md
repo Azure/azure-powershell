@@ -22,7 +22,6 @@ New-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> -Locat
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-
 The **New-AzureRmLocalNetworkGateway** cmdlet creates the object representing your on-prem gateway
 based on the Name, Resource Group Name, Location, and IP Address of the gateway, as well as the
 Address Prefix of the On-Premises network which will be connecting to Azure.
@@ -193,7 +192,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -244,8 +242,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: BgpPeeringAddress (ByPropertyName), GatewayIpAddress (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.UInt32
+Parameters: Asn (ByPropertyName)
+
+### System.Int32
+Parameters: PeerWeight (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

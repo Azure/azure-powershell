@@ -430,9 +430,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
-System.Boolean
-System.Int32
+Parameters: NetworkWatcher (ByValue)
+
+### System.String
+Parameters: Location (ByPropertyName), NetworkWatcherName (ByValue), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName), TargetResourceId (ByPropertyName), WorkspaceGUID (ByPropertyName), WorkspaceLocation (ByPropertyName), WorkspaceResourceId (ByPropertyName)
+
+### System.Boolean
+Parameters: EnableFlowLog (ByPropertyName), EnableRetention (ByPropertyName)
+
+### System.Int32
+Parameters: RetentionInDays (ByPropertyName)
+
+### Microsoft.Azure.Management.Internal.Network.Common.IOperationalInsightWorkspace
+Parameters: Workspace (ByPropertyName)
 
 ## OUTPUTS
 

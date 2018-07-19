@@ -118,10 +118,8 @@ The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "S
 ### -AccessTier
 Specifies the access tier of the Storage account that this cmdlet modifies.
 The acceptable values for this parameter are: Hot and Cool.
-
 If you change the access tier, it may result in additional charges. For more information, see
 [Azure Blob Storage: Hot and cool storage tiers](http://go.microsoft.com/fwlink/?LinkId=786482).
-
 If the Storage account has Kind as StorageV2 or BlobStorage, you can specify the *AccessTier* parameter. 
 If the Storage account has Kind as Storage, do not specify the *AccessTier* parameter.
 
@@ -337,13 +335,11 @@ Accept wildcard characters: False
 ### -SkuName
 Specifies the SKU name of the Storage account.
 The acceptable values for this parameter are:
-
 - Standard_LRS - Locally-redundant storage.
 - Standard_ZRS - Zone-redundant storage.
 - Standard_GRS - Geo-redundant storage.
 - Standard_RAGRS - Read access geo-redundant storage.
 - Premium_LRS - Premium locally-redundant storage.
-
 You cannot change Standard_ZRS and Premium_LRS types to other account types.
 You cannot change other account types to Standard_ZRS or Premium_LRS.
 
@@ -377,7 +373,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table set as tags on the server. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -458,8 +453,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Boolean
+Parameters: EnableHttpsTrafficOnly (ByPropertyName)
 
 ## OUTPUTS
 

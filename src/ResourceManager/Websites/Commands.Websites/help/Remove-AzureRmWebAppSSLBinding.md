@@ -56,10 +56,8 @@ PS C:\> Remove-AzureRmWebAppSSLBinding -WebApp $WebApp -Name "www.contoso.com"
 ```
 
 This example uses an object reference to the Web App website to remove the SSL binding for a Web App.
-
 The first command uses the Get-AzureRmWebApp cmdlet to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
-
 The second command uses the object reference and the **Remove-AzureRmWebAppSSLBinding** cmdlet to remove the SSL binding.
 
 ## PARAMETERS
@@ -83,7 +81,6 @@ Accept wildcard characters: False
 Specifies the action to take place if the SSL binding being removed is the only binding used by the certificate.
 If *DeleteCertificate* is set to $False, the certificate will not be deleted when the binding is deleted.
 If *DeleteCertificate* is set to $True or is not included in the command, the certificate will be deleted along with the SSL binding.
-
 The certificate will only be deleted if the SSL binding being removed is the only binding used by the certificate.
 If the certificate has more than one binding, the certificate will not be removed regardless of the value of the *DeleteCertificate* parameter.
 
@@ -131,7 +128,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the certificate is assigned to.
-
 You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
@@ -165,7 +161,6 @@ Accept wildcard characters: False
 ### -WebApp
 Specifies a Web App.
 To get a Web App, use the Get-AzureRmWebApp cmdlet.
-
 You cannot use the *WebApp* parameter in the same command as the *ResourceGroupName* parameter and/or the *WebAppName*.
 
 ```yaml
@@ -182,7 +177,6 @@ Accept wildcard characters: False
 
 ### -WebAppName
 Specifies the name of the Web App.
-
 You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
@@ -234,10 +228,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

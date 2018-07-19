@@ -23,10 +23,8 @@ Set-AzureRmSchedulerStorageQueueJob -ResourceGroupName <String> -JobCollectionNa
 
 ## DESCRIPTION
 The **Set-AzureRmSchedulerStorageQueueJob** cmdlet modifies a storage queue job in Azure Scheduler.
-
 This cmdlet supports dynamic parameters based on the *ErrorActionType* parameter.
 Dynamic parameters become available based on other parameter values.
-
 To discover the names of dynamic parameters after you specify the other parameters, type a hyphen (-), and then press the Tab key repeatedly to cycle through the available parameters.
 If you omit a required parameter, the cmdlet prompts you for the value.
 
@@ -68,7 +66,6 @@ Accept wildcard characters: False
 ### -ErrorActionType
 Specifies an error action setting for the job.
 The acceptable values for this parameter are:
-
 - Http 
 - Https 
 - StorageQueue 
@@ -107,7 +104,6 @@ Accept wildcard characters: False
 ### -Frequency
 Specifies a frequency for the job.
 The acceptable values for this parameter are:
-
 - Minute 
 - Hour 
 - Day 
@@ -175,7 +171,6 @@ Accept wildcard characters: False
 ### -JobState
 Specifies the state of the job.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled
 
@@ -318,8 +313,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ErrorActionType (ByPropertyName), JobCollectionName (ByPropertyName), JobName (ByPropertyName), JobState (ByPropertyName), ResourceGroupName (ByPropertyName), StorageQueueAccount (ByPropertyName), StorageQueueName (ByPropertyName), StorageSASToken (ByPropertyName)
 
 ## OUTPUTS
 

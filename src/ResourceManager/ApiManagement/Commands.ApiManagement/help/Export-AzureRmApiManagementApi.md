@@ -200,13 +200,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### System.String
+Parameters: ApiId (ByPropertyName), ApiRevision (ByPropertyName), SaveAs (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApiFormat
+Parameters: SpecificationFormat (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName), PassThru (ByPropertyName)
 
 ## OUTPUTS
 
-### String
-This cmdlet returns the exported API content as a string.
+### System.String
 
 ## NOTES
 

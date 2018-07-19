@@ -86,7 +86,6 @@ Accept wildcard characters: False
 ### -FirewallMode
 Specifies the web application firewall mode.
 The acceptable values for this parameter are:
-
 - Detection
 - Prevention
 
@@ -106,7 +105,6 @@ Accept wildcard characters: False
 ### -RuleSetType
 The type of the web application firewall rule set. 
 The acceptable values for this parameter are: 
-
 - OWASP
 
 ```yaml
@@ -125,7 +123,6 @@ Accept wildcard characters: False
 ### -RuleSetVersion
 The version of the rule set type.
 The acceptable values for this parameter are: 
-
 - 3.0
 - 2.2.9
 
@@ -178,7 +175,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

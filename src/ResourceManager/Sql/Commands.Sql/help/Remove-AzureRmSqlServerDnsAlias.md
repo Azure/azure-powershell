@@ -200,8 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
+Parameters: InputObject (ByValue)
+
 ### System.String
-Microsoft.Azure.Commands.Sql.ServerDnsAlias.Model.AzureSqlServerDnsAliasModel
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

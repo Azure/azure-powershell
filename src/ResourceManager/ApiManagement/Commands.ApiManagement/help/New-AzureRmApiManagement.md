@@ -157,7 +157,6 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location to create the Api Management service.
-
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
@@ -222,11 +221,9 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the tier of the API Management service.
 Valid values are: 
-
 - Developer 
 - Standard 
 - Premium 
-
 The default is Developer.
 
 ```yaml
@@ -311,8 +308,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AdminEmail (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), Organization (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Parameters: VirtualNetwork (ByPropertyName)
+
+### System.Collections.Generic.Dictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion[]
+Parameters: AdditionalRegions (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCustomHostNameConfiguration[]
+Parameters: CustomHostnameConfiguration (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSystemCertificate[]
+Parameters: SystemCertificateConfiguration (ByPropertyName)
 
 ## OUTPUTS
 

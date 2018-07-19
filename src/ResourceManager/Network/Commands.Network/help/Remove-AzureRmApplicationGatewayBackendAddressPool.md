@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewayBackendAddressPool -ApplicationGateway $
 ```
 
 The first command gets the application gateway named ApplicationGateway01 belonging to the resource group named ResourceGroup01 and saves it in the $AppGw variable.
-
 The second command removes the back-end address pool named BackEndPool02 from the application gateway.
 
 ## PARAMETERS
@@ -116,7 +115,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

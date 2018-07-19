@@ -31,7 +31,6 @@ PS C:\> Add-AzureRmVmssWinRMListener -VirtualMachineScaleSet $VMSS -Protocol Htt
 ```
 
 This example adds a WinRM listener to the VMSS.
-
 The first command uses the **New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 The second command adds an HTTP protocol WinRM listener with the certificate at the specified URL to the VMSS.
 
@@ -70,7 +69,6 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the protocol of the WinRM listener.
 The acceptable values for this parameter are:
-
 - Http
 - Https
 
@@ -138,12 +136,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ProtocolTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.String
+Parameters: CertificateUrl (ByPropertyName)
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

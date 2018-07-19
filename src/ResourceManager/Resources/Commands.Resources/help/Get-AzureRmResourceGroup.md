@@ -29,7 +29,6 @@ Get-AzureRmResourceGroup [-Location <String>] [-Id <String>] [-ApiVersion <Strin
 The **Get-AzureRmResourceGroup** cmdlet gets Azure resource groups in the current subscription.
 You can get all resource groups, or specify a resource group by name or by other properties.
 By default, this cmdlet gets all resource groups in the current subscription.
-
 For more information about Azure resources and Azure resource groups, see the New-AzureRmResourceGroup cmdlet.
 
 ## EXAMPLES
@@ -181,13 +180,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-You can pipe input to the cmdlet by property name, but not by value.
+### None
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ResourceManagement.PSResourceGroup
-This cmdlet returns resource groups.
 
 ## NOTES
 

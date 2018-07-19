@@ -20,7 +20,6 @@ Remove-AzureRmSqlServer [-ServerName] <String> [-Force] [-ResourceGroupName] <St
 
 ## DESCRIPTION
 The **Remove-AzureRmSqlServer** cmdlet removes an Azure SQL Database server.
-
 The delete operation is asynchronous and may take some time, so verify the operation is finished before performing any additional operations that depend on the server being completely deleted.
 For instance, you need to create a new server that uses the same name.
 
@@ -131,11 +130,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+### System.Object
 
 ## NOTES
 

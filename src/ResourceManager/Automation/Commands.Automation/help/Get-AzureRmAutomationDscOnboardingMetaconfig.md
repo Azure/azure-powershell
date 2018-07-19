@@ -35,7 +35,6 @@ PS C:\> Set-DscLocalConfigurationManager -Path "C:\Users\PattiFuller\Desktop\Dsc
 
 The first command creates DSC meta-configuration files for two servers for the Automation account named Contoso17.
 The command saves these files on a desktop.
-
 The second command uses the **Set-DscLocalConfigurationManager** cmdlet to apply the meta-configuration to the specified computers to onboard them as DSC nodes.
 
 ## PARAMETERS
@@ -169,8 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), OutputFolder (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.String[]
+Parameters: ComputerName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -83,8 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkSecurityGroup
-Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Parameters: NetworkSecurityGroup (ByValue)
 
 ## OUTPUTS
 

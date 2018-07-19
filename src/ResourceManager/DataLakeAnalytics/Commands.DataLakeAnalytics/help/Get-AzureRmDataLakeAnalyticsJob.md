@@ -82,7 +82,6 @@ Accept wildcard characters: False
 ### -Include
 Specifies options that indicate the type of additional information to retrieve about the job.
 The acceptable values for this parameter are:
-
 - None
 - DebugInfo
 - Statistics
@@ -119,7 +118,6 @@ Accept wildcard characters: False
 ### -Name
 Specifies a name to use to filter the job list results.
 The acceptable values for this parameter are:
-
 - None
 - DebugInfo
 - Statistics
@@ -170,7 +168,6 @@ Accept wildcard characters: False
 ### -Result
 Specifies a result filter for the job results.
 The acceptable values for this parameter are:
-
 - None
 - Cancelled
 - Failed
@@ -192,7 +189,6 @@ Accept wildcard characters: False
 ### -State
 Specifies a state filter for the job results.
 The acceptable values for this parameter are:
-
 - Accepted
 - New
 - Compiling
@@ -284,16 +280,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Guid
-Parameter 'JobId' accepts value of type 'Guid' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName), Name (ByPropertyName), Submitter (ByPropertyName)
+
+### System.Guid
+Parameters: JobId (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+ExtendedJobData
+Parameters: Include (ByPropertyName)
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Management.DataLake.Analytics.Models.JobState[]
+Parameters: State (ByPropertyName)
+
+### Microsoft.Azure.Management.DataLake.Analytics.Models.JobResult[]
+Parameters: Result (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation
-The specified job information details
-
-### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSJobInformationBasic
-The list of jobs in the specified Data Lake Analytics account.
 
 ## NOTES
 

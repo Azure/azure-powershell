@@ -110,7 +110,6 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the service tier of the workspace.
 Valid values are: 
-
 - free
 - standard
 - premium
@@ -163,8 +162,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Sku (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

@@ -135,12 +135,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Disk
-System.String
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
+Parameters: Disk (ByPropertyName, ByValue)
+
+### System.String
+Parameters: KeyUrl (ByPropertyName), SourceVaultId (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Disk
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSDisk
 
 ## NOTES
 

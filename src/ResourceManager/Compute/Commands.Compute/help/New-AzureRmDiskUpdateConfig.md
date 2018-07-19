@@ -159,7 +159,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -209,8 +208,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: SkuName (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Int32
+Parameters: DiskSizeGB (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### Microsoft.Azure.Management.Compute.Models.KeyVaultAndSecretReference
+Parameters: DiskEncryptionKey (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.KeyVaultAndKeyReference
+Parameters: KeyEncryptionKey (ByPropertyName)
 
 ## OUTPUTS
 

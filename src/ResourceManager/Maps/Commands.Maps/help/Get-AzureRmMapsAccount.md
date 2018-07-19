@@ -31,7 +31,6 @@ Get-AzureRmMapsAccount [-ResourceId] <String> [-DefaultProfile <IAzureContextCon
 
 ## DESCRIPTION
 The Get-AzureRmMapsAccount cmdlet gets a provisioned Azure Maps account, either by resource group and name, or by resource id.
-
 Additionally, it can return a list of all accounts in the ResourceGroup, or all Azure Maps accounts for the current subscription.
 
 ## EXAMPLES
@@ -163,6 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

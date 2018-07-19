@@ -44,7 +44,6 @@ PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "W
 The first two commands use standard Windows PowerShell syntax to create hash tables, and then stores those hash tables in the $Settings and $ProtectedSettings variables.
 For more information, type `Get-Help about_Hash_Tables`.
 The second command includes two values previously created and stored in variables.
-
 The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $Settings and $ProtectedSettings.
 The command specifies other required information that includes the publisher and the extension type.
 
@@ -56,7 +55,6 @@ PS C:\> Set-AzureRmVMExtension -ResourceGroupName "ResourceGroup11" -Location "W
 ```
 
 The first two commands create strings that contain settings, and then stores them in the $SettingsString and $ProtectedSettingsString variables.
-
 The final command modifies an extension of the virtual machine named VirtualMachine22 in ResourceGroup11 according to the contents of $SettingsString and $ProtectedSettingsString.
 The command specifies other required information that includes the publisher and the extension type.
 
@@ -126,7 +124,6 @@ Accept wildcard characters: False
 ### -ForceRerun
 Indicates that this cmdlet forces a rerun of the same extension configuration on the virtual machine without uninstalling and reinstalling the extension.
 The value can be any string different from the current value.
-
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
@@ -314,7 +311,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -334,8 +330,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ExtensionType (ByPropertyName), ForceRerun (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ProtectedSettingString (ByPropertyName), Publisher (ByPropertyName), ResourceGroupName (ByPropertyName), SettingString (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: ProtectedSettings (ByPropertyName), Settings (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 

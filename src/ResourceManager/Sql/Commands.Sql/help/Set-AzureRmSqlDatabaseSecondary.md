@@ -194,13 +194,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You can pipe instances of the **Database** object for the secondary database to fail over and make the primary database to this cmdlet.
+### System.String
+Parameters: DatabaseName (ByPropertyName), PartnerResourceGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet returns a **ReplicationLink**.
+### System.Object
 
 ## NOTES
 

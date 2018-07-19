@@ -54,7 +54,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +90,7 @@ To create it, you can use the New-AzureStorageContext cmdlet.
 The cmdlet will fail when you use a storage context created from SAS Token because the cmdlet will query for container permissions which require Storage account key permission.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 Specifies a continuation token for the blob list.
 
 ```yaml
-Type: BlobContinuationToken
+Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Specifies the maximum number of objects that this cmdlet returns.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +152,7 @@ If container name is empty, the cmdlet lists all the containers.
 Otherwise, it lists all containers that match the specified name or the regular name pattern.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerName
 Aliases: N, Container
 
@@ -168,7 +168,7 @@ Specifies a prefix used in the name of the container or containers you want to g
 You can use this to find all containers that start with the same string, such as "my" or "test".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ContainerPrefix
 Aliases:
 
@@ -184,7 +184,7 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,10 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
 ### System.String
+Parameters: Name (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

@@ -20,7 +20,6 @@ Get-AzureRmCognitiveServicesAccountSkus [-ResourceGroupName] <String> [-Name] <S
 
 ## DESCRIPTION
 The **Get-AzureRmCognitiveServicesAccountSkus** cmdlet gets the available SKUs for a Cognitive Services account.
-
 The SKU is the tier plan for an account.
 It defines the price, call limit, and rate for the account.
 The F0 SKU is a free tier.
@@ -91,8 +90,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

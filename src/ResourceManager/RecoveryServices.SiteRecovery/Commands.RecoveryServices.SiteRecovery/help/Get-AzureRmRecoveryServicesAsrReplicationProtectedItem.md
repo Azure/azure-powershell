@@ -131,7 +131,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer
+Parameters: ProtectionContainer (ByValue)
+
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectableItem
+Parameters: ProtectableItem (ByValue)
 
 ## OUTPUTS
 
