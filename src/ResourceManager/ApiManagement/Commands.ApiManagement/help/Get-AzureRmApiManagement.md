@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.dll-Help.xml
-Module Name: AzureRm.ApiManagement
+Module Name: AzureRM.ApiManagement
 ms.assetid: DBA7AD5F-CC13-417A-B753-F998942530BB
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagement
 schema: 2.0.0
@@ -55,7 +55,7 @@ This command gets all API Management service by name.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 Specifies the name of API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResource
 Aliases:
 
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group under in which this cmdlet gets the API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByResourceGroup, GetByResource
 Aliases:
 

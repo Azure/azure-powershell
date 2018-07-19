@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
-Module Name: AzureRm.ApiManagement
+Module Name: AzureRM.ApiManagement
 ms.assetid: 894297BF-2771-4871-9E4C-8684364DAC4B
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/get-azurermapimanagementproperty
 schema: 2.0.0
@@ -50,7 +50,7 @@ PS C:\>Get-AzureRmApiManagementProperty -Context $apimContext -Name "sql-connect
 
 ### -Context
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
 Aliases:
 
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 
 ### -PropertyId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByPropertyId
 Aliases:
 
@@ -108,7 +108,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByTag
 Aliases:
 

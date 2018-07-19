@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated help files to include full parameter types.
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6370
     - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
 * Fixed issue https://github.com/Azure/azure-powershell/issues/6515
