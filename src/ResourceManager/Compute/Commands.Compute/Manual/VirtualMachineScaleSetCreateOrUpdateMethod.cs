@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,6 +125,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         public int[] DataDiskSizeInGb { get; set; }
 
+        [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false, HelpMessage ="Use this to create the Scale set in a single placement group, default is multiple groups")]
+        public SwitchParameter SinglePlacementGroup;
+
         const int FirstPortRangeStart = 50000;
 
         sealed class Parameters : IParameters<VirtualMachineScaleSet>
@@ -168,7 +172,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     name: _cmdlet.PublicIpAddressName,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
-                    sku: noZones 
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? PublicIPAddressStrategy.Sku.Basic
                         : PublicIPAddressStrategy.Sku.Standard,
                     zones: null);
@@ -182,7 +187,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var loadBalancer = resourceGroup.CreateLoadBalancerConfig(
                     name: _cmdlet.LoadBalancerName,
-                    sku: noZones
+                    //sku.Basic is not compatible with multiple placement groups
+                    sku: (noZones && _cmdlet.SinglePlacementGroup.IsPresent)
                         ? LoadBalancerStrategy.Sku.Basic
                         : LoadBalancerStrategy.Sku.Standard);
 
@@ -250,12 +256,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         : (UpgradeMode?)null,
                     dataDisks: _cmdlet.DataDiskSizeInGb,
                     zones: _cmdlet.Zone,
-                    identity: _cmdlet.GetVmssIdentityFromArgs());
+                    identity: _cmdlet.GetVmssIdentityFromArgs(),
+                    singlePlacementGroup : _cmdlet.SinglePlacementGroup.IsPresent);
             }
         }
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
+            bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
+
             ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
@@ -269,7 +278,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
+            // If the user did not specify a load balancer name, mark the LB setting to ignore
+            // preexisting check. The most common scenario is users will let the cmdlet create and name the LB for them with the default
+            // config. We do not want to block that scenario in case the cmdlet failed mid operation and tthe user kicks it off again.
+            if (!loadBalancerNamePassedIn)
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = true;
+            }
+            else
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
+            }
+
             var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+
 
             if (result != null)
             {

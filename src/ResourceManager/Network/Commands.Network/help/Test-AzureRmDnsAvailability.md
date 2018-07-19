@@ -23,7 +23,7 @@ Checks whether a domain name in the cloudapp.azure.com zone is available for use
 
 ## EXAMPLES
 
-### --- Example 1: Check if contoso.cloudapp.azure.com is available for use. ---
+### Example 1: Check if contoso.cloudapp.azure.com is available for use.
 ```
 Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 ```
@@ -34,7 +34,7 @@ Test-AzureRmDnsAvailability -DomainNameLabel contoso -Location westus
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -47,7 +47,7 @@ Accept wildcard characters: False
 
 ### -DomainNameLabel
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: DomainQualifiedName
 
@@ -60,9 +60,9 @@ Accept wildcard characters: False
 
 ### -Location
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,4 +86,3 @@ This cmdlet does not accept any input.
 ## NOTES
 
 ## RELATED LINKS
-

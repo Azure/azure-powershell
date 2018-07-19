@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Tags.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.Tags
 ms.assetid: 23DB0AD2-7EB7-4373-BB8D-BB6CB651DD54
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.tags/new-azurermtag
 schema: 2.0.0
@@ -151,7 +151,7 @@ The commands in this example create and use a predefined tag.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -170,9 +170,9 @@ To add a value to an existing tag, enter the name of the existing tag.
 If an existing predefined tag has the specified name, **New-AzureRmTag** adds the specified value, if any, to the tag with that name instead of creating a new tag.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -187,9 +187,9 @@ Predefined tags can have multiple values, but you can enter only one value in ea
 This parameter is optional, because tags can have names without values.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 1

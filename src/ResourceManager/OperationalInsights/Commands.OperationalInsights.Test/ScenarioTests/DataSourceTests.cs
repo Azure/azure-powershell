@@ -22,37 +22,40 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
     public class DataSourceTests : OperationalInsightsScenarioTestBase
     {
-        public DataSourceTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public DataSourceTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateUpdateDelete()
         {
-            RunPowerShellTest("Test-DataSourceCreateUpdateDelete");
+            RunPowerShellTest(_logger, "Test-DataSourceCreateUpdateDelete");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataSourceCreateFailsWithoutWorkspace()
         {
-            RunPowerShellTest("Test-DataSourceCreateFailsWithoutWorkspace");
+            RunPowerShellTest(_logger, "Test-DataSourceCreateFailsWithoutWorkspace");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateAllKindsOfDataSource()
         {
-            RunPowerShellTest("Test-CreateAllKindsOfDataSource");
+            RunPowerShellTest(_logger, "Test-CreateAllKindsOfDataSource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestToggleSingletonDataSourceState()
         {
-            RunPowerShellTest("Test-ToggleSingletonDataSourceState");
+            RunPowerShellTest(_logger, "Test-ToggleSingletonDataSourceState");
         }
     }
 }

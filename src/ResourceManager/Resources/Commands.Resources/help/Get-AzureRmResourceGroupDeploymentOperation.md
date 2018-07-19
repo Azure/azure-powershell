@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: 9F29DFCB-A02B-45A5-99B9-C054BF4FCA6C
@@ -44,7 +44,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 The deployment name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -98,7 +98,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -113,7 +113,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -128,7 +128,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -143,7 +143,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -158,7 +158,7 @@ Accept wildcard characters: False
 The subscription to use.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: (All)
 Aliases:
 
@@ -174,7 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Guid
+### System.Guid
 Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
 
 ## OUTPUTS

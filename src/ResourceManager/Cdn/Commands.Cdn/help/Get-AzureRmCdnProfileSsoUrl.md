@@ -31,18 +31,13 @@ This URL lets users conntect to a supplementary portal and use additional featur
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnProfile
 Specifies the CDN profile.
 
 ```yaml
-Type: PSProfile
+Type: Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -57,7 +52,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +67,7 @@ Accept wildcard characters: False
 Specifies the name of the CDN profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -87,7 +82,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group name to which the profile belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -103,12 +98,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSProfile
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
 Parameter 'CdnProfile' accepts value of type 'PSProfile' from the pipeline
 
 ## OUTPUTS
 
-###  
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSSsoUri
 This cmdlet returns a URL.
 
 ## NOTES

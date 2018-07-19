@@ -34,14 +34,50 @@ Remove-AzureRmKeyVaultNetworkRule [-ResourceId] <String> [-IpAddressRange <Strin
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+Removes a network rule from a key vault.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\>$myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
-PS C:\> PS C:\> Remove-AzureRmKeyVaultNetworkRule -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId
+PS C:\> $myNetworkResId = (Get-AzureRmVirtualNetwork -Name myVNetName -ResourceGroupName myRG).Subnets[0].Id
+PS C:\> Remove-AzureRmKeyVaultNetworkRule -VaultName myVault -IpAddressRange "10.0.0.1/26" -VirtualNetworkResourceId $myNetworkResId -PassThru
+
+Vault Name                       : myVault
+Resource Group Name              : myrg
+Location                         : West US
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers
+                                   /Microsoft.KeyVault/vaults/myvault
+Vault URI                        : https://myvault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Standard
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : get, create, delete, list, update,
+                                   import, backup, restore, recover
+                                   Permissions to Secrets                     : get, list, set, delete, backup,
+                                   restore, recover
+                                   Permissions to Certificates                : get, delete, list, create, import,
+                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
+                                   setissuers, recover, backup, restore
+                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
+                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+
+
+Network Rule Set                 :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   : 
+                                   Virtual Network Rules                      :
+
+Tags                             :
 ```
 
 This command removes a network rule from the specified vault, provided a rule is found matching the specified IP address and the virtual network resource identifier.
@@ -206,7 +242,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
 
 ## OUTPUTS
 

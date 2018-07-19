@@ -23,60 +23,68 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
 {
     public class WebAppTests : RMTestBase
     {
-        private XunitTracingInterceptor xunitLogger;
+        public XunitTracingInterceptor _logger;
 
         public WebAppTests(ITestOutputHelper output)
         {
-            xunitLogger = new XunitTracingInterceptor(output);
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateNewAppOnAse()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CreateNewWebAppOnAse");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppOnAse");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateNewWebAppSimple()
+        {
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CreateNewWebAppSimple");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebApp");
         }
 
         [Fact(Skip = "Needs investigation. Fails running playback")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetWebAppMetrics()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-GetWebAppMetrics");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-GetWebAppMetrics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestWebAppPublishingProfile()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-WebAppPublishingProfile");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-WebAppPublishingProfile");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebApp");
         }
 
         [Fact(Skip = "Test is being skipped until issue with cloning is resolved. See GitHub issue #3770 for more information.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppAndDeploymentSlots()
         {
-            WebsitesController.NewInstance.RunPsTest(xunitLogger, "Test-CloneNewWebAppAndDeploymentSlots");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebAppAndDeploymentSlots");
         }
 
         // This test is failing with an HTTP 500 due to a bug in the clone service.
@@ -84,28 +92,28 @@ namespace Microsoft.Azure.Commands.Websites.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCloneNewWebAppWithNewTrafficManager()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-CloneNewWebAppWithTrafficManager");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-CloneNewWebAppWithTrafficManager");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStartStopRestartWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-StartStopRestartWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-StartStopRestartWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-SetWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-SetWebApp");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveWebApp()
         {
-            WebsitesController.NewInstance.RunPsTest("Test-RemoveWebApp");
+            WebsitesController.NewInstance.RunPsTest(_logger, "Test-RemoveWebApp");
         }
     }
 }

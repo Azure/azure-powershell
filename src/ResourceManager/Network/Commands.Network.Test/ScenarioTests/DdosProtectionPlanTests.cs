@@ -23,30 +23,36 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class DdosProtectionPlanTests : RMTestBase
     {
-        public DdosProtectionPlanTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public DdosProtectionPlanTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCrud()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUD"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUD"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCrudWithVirtualNetwork()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCRUDWithVirtualNetwork"));
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestDdosProtectionPlanCollections()
         {
-            NetworkResourcesController.NewInstance.RunPsTest(string.Format("Test-DdosProtectionPlanCollections"));
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-DdosProtectionPlanCollections"));
         }
     }
 }

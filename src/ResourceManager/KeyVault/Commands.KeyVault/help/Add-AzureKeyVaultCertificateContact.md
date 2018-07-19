@@ -39,11 +39,15 @@ These events are determined by the certificate policy.
 ## EXAMPLES
 
 ### Example 1: Add a key vault certificate contact
-```
-PS C:\>Add-AzureKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+```powershell
+PS C:\> Add-AzureKeyVaultCertificateContact -VaultName "ContosoKV01" -EmailAddress "patti.fuller@contoso.com" -PassThru
+
+Email                    VaultName
+-----                    ---------
+patti.fuller@contoso.com ContosoKV01
 ```
 
-This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the **KeyVaultCertificateContact** object.
+This command adds Patti Fuller as a certificate contact for the ContosoKV01 key vault and returns the list of contacts for the "ContosoKV01" vault.
 
 ## PARAMETERS
 
@@ -51,7 +55,7 @@ This command adds Patti Fuller as a certificate contact for the ContosoKV01 key 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -66,7 +70,7 @@ Accept wildcard characters: False
 Specifies the email address of the contact.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +85,7 @@ Accept wildcard characters: False
 KeyVault object.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByObject
 Aliases:
 
@@ -97,7 +101,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -112,7 +116,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -127,7 +131,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Interactive
 Aliases:
 
@@ -142,7 +146,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +162,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -174,12 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 
-### List<Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact>
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateContact
 
 ## NOTES
 

@@ -30,18 +30,13 @@ The **Test-AzureRmCdnCustomDomain** cmdlet checks whether a custom domain can be
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnEndpoint
 Specifies the endpoint to which you want to add the custom domain.
 
 ```yaml
-Type: PSEndpoint
+Type: Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -56,7 +51,7 @@ Accept wildcard characters: False
 Specifies the host name of the custom domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -71,7 +66,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -86,7 +81,7 @@ Accept wildcard characters: False
 Specifies the name of the endpoint to which you want to add the custom domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -101,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name of the profile.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -116,7 +111,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 

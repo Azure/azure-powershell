@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: CBDF4BCB-7EB3-4D64-B19C-1314D4AB84E4
@@ -43,7 +43,7 @@ This command gets the virtual network named MyVirtualNetwork in the resource gro
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 Specifies the name of the virtual network that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -98,9 +98,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that virtual network belongs to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

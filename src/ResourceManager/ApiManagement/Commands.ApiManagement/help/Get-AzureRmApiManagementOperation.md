@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: D5EB9AFA-B56C-45E2-838B-4555ED1EF8F8
@@ -15,14 +15,14 @@ Gets a list or a specified API Operation.
 
 ### GetAllApiOperations (Default)
 ```
-Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String>
+Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
-Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> -OperationId <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+ -OperationId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,11 +52,26 @@ This command gets an API management operation by operation ID named Operation000
 Specifies the identifier of the API Operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Identifier of API Revision. This parameter is optional. If not specified, the operation will be retrieved from the currently active api revision.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -67,9 +82,9 @@ Accept wildcard characters: False
 Specifies the instance of the **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -80,9 +95,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -97,9 +112,9 @@ Accept wildcard characters: False
 Specifies the operation identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetById
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -120,9 +135,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation
 The details of the API Operation in Api Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementOperation>
-The list of API Operation in Api Management service.
 
 ## NOTES
 

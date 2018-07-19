@@ -82,9 +82,9 @@ This property cannot be used if a gateway has already been configured.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -112,9 +112,9 @@ Accept wildcard characters: False
 Specifies the virtual network peering.
 
 ```yaml
-Type: PSVirtualNetworkPeering
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkPeering
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

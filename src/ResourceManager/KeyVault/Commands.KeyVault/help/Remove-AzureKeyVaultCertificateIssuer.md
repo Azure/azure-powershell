@@ -31,8 +31,15 @@ The **Remove-AzureKeyVaultCertificateIssuer** cmdlet deletes a certificate issue
 ## EXAMPLES
 
 ### Example 1: Remove a certificate issuer
-```
-PS C:\>Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificateIssuer -VaultName "ContosoKV01" -Name "TestIssuer01" -Force
+
+AccountId           :
+ApiKey              :
+OrganizationDetails :
+Name                : TestIssuer01
+IssuerProvider      : test
+VaultName           : ContosoKV01
 ```
 
 This command removes the certificate issuer named TestIssuer01 from the ContosoKV01 key vault.
@@ -43,7 +50,7 @@ This command removes the certificate issuer named TestIssuer01 from the ContosoK
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,7 +65,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +80,7 @@ Accept wildcard characters: False
 Certificate Issuer Object
 
 ```yaml
-Type: PSKeyVaultCertificateIssuerIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -88,7 +95,7 @@ Accept wildcard characters: False
 Specifies the name of the issuer to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: IssuerName
 
@@ -104,7 +111,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +126,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -134,7 +141,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -151,7 +158,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -167,8 +174,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIssuerIdentityItem
 
 ## OUTPUTS
 

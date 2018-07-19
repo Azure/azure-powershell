@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 2605B232-10CA-4426-9917-7C9719C15166
@@ -28,11 +28,6 @@ The new the server continues in the backup chain.
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -Container
@@ -40,9 +35,9 @@ Specifies the container that this cmdlet reregisters.
 To obtain an **AzureRmBackupContainer**, use the Get-AzureRmBackupContainer cmdlet.
 
 ```yaml
-Type: AzureRMBackupContainer
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -55,7 +50,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 

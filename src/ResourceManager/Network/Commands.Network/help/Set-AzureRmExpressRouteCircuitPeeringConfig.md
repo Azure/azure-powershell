@@ -16,8 +16,8 @@ Saves a modified ExpressRoute peering configuration.
 ### SetByResource (Default)
 ```
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
  [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
@@ -27,8 +27,8 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ### MicrosoftPeeringConfigRoutFilterId
 ```
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>] -RouteFilterId <String>
  [-PeerAddressType <String>] [-LegacyMode <Boolean>] [-DefaultProfile <IAzureContextContainer>]
@@ -38,8 +38,8 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit 
 ### MicrosoftPeeringConfigRoutFilter
 ```
 Set-AzureRmExpressRouteCircuitPeeringConfig -Name <String> -ExpressRouteCircuit <PSExpressRouteCircuit>
- -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String> -SecondaryPeerAddressPrefix <String>
- -VlanId <Int32> [-SharedKey <String>]
+ -PeeringType <String> -PeerASN <UInt32> -PrimaryPeerAddressPrefix <String>
+ -SecondaryPeerAddressPrefix <String> -VlanId <Int32> [-SharedKey <String>]
  [-MicrosoftConfigAdvertisedPublicPrefixes <System.Collections.Generic.List`1[System.String]>]
  [-MicrosoftConfigCustomerAsn <Int32>] [-MicrosoftConfigRoutingRegistryName <String>]
  -RouteFilter <PSRouteFilter> [-PeerAddressType <String>] [-LegacyMode <Boolean>]
@@ -74,7 +74,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $circuit
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 The ExpressRoute circuit object containing the peering configuration to be modified.
 
 ```yaml
-Type: PSExpressRouteCircuit
+Type: Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -104,9 +104,9 @@ Accept wildcard characters: False
 The legacy mode of the Peering
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -124,7 +124,7 @@ a Routing Registry Name (RIR / IRR).
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,9 +138,9 @@ If you are advertising prefixes that are not registered to the peering AS number
 the AS number to which they are registered.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -153,9 +153,9 @@ Accept wildcard characters: False
 The Routing Registry Name (RIR / IRR) to which the AS number and prefixes are registered.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -168,9 +168,9 @@ Accept wildcard characters: False
 The name of the peering configuration to be modified.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -183,9 +183,9 @@ Accept wildcard characters: False
 PeerAddressType
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IPv4, IPv6
 
 Required: False
@@ -200,9 +200,9 @@ The AS number of your ExpressRoute circuit. This must be a Public ASN when the P
 AzurePublicPeering.
 
 ```yaml
-Type: UInt32
+Type: System.UInt32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -216,9 +216,9 @@ The acceptable values for this parameter are: `AzurePrivatePeering`, `AzurePubli
 `MicrosoftPeering`
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzurePrivatePeering, AzurePublicPeering, MicrosoftPeering
 
 Required: True
@@ -234,9 +234,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -249,9 +249,9 @@ Accept wildcard characters: False
 This is an existing RouteFilter object.
 
 ```yaml
-Type: PSRouteFilter
+Type: Microsoft.Azure.Commands.Network.Models.PSRouteFilter
 Parameter Sets: MicrosoftPeeringConfigRoutFilter
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -264,9 +264,9 @@ Accept wildcard characters: False
 This is the resource Id of an existing RouteFilter object.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MicrosoftPeeringConfigRoutFilterId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -281,9 +281,9 @@ be a /30 CIDR subnet. The first odd-numbered address in this subnet should be as
 router interface. Azure will configure the next even-numbered address to the Azure router interface.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -296,9 +296,9 @@ Accept wildcard characters: False
 This is an optional MD5 hash used as a pre-shared key for the peering configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -311,9 +311,9 @@ Accept wildcard characters: False
 This is the Id number of the VLAN assigned for this peering.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

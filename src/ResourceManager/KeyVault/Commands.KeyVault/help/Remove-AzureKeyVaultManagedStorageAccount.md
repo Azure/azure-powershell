@@ -31,21 +31,41 @@ Disassociates an Azure Storage Account from Key Vault. This does not remove an A
 ## EXAMPLES
 
 ### Example 1: Remove a Key Vault managed Azure Storage Account and all associated SAS definitions.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount'
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -PassThru
+
+Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
+Vault Name          : myvault
+AccountName         : mystorageaccount
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/mystorageaccount
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
 ```
 
 Disassociates Azure Storage Account 'mystorageaccount' from Key Vault 'myvault' and stops Key Vault from managing its keys. The account 'mystorageaccount' will not be removed. All Key Vault managed Storage SAS definitions associated with this account will be removed.
 
 ### Example 2: Remove a Key Vault managed Azure Storage Account and all associated SAS definitions without user confirmation.
-```
-PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -Force -Confirm:$False
+```powershell
+PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -PassThru -Force
+
+Id                  : https://myvault.vault.azure.net:443/storage/mystorageaccount
+Vault Name          : myvault
+AccountName         : mystorageaccount
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/mystorageaccount
+Enabled             : True
+Created             : 4/25/2018 1:50:32 AM
+Updated             : 4/25/2018 1:50:32 AM
+Tags                :
 ```
 
 Disassociates Azure Storage Account 'mystorageaccount' from Key Vault 'myvault' and stops Key Vault from managing its keys. The account 'mystorageaccount' will not be removed. All Key Vault managed Storage SAS definitions associated with this account will be removed.
 
 ### Example 3: Permanently delete (purge) a Key Vault managed Azure Storage Account and all associated SAS definitions from a soft-delete-enabled vault.
-```
+```powershell
 PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' 
 PS C:\> Get-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -InRemovedState
 PS C:\> Remove-AzureKeyVaultManagedStorageAccount -VaultName 'myvault' -AccountName 'mystorageaccount' -InRemovedState
@@ -62,7 +82,7 @@ The third cmdlet permanently removes the storage account - recovery will no long
 Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed storage account name from vault name, currently selected environment and manged storage account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases: StorageAccountName, Name
 
@@ -77,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -92,7 +112,7 @@ Accept wildcard characters: False
 Do not ask for confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +127,7 @@ Accept wildcard characters: False
 ManagedStorageAccount object.
 
 ```yaml
-Type: PSKeyVaultManagedStorageAccountIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -122,7 +142,7 @@ Accept wildcard characters: False
 Permanently remove the previously deleted managed storage account.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +158,7 @@ Cmdlet does not return an object by default.
 If this switch is specified, cmdlet returns the managed storage account that was deleted.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +174,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDefinitionName
 Aliases:
 
@@ -169,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -201,11 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageAccount
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccount
 
 ## NOTES
 

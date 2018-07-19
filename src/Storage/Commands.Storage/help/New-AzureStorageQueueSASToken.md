@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.WindowsAzure.Commands.Storage.dll-Help.xml
+Module Name: Azure.Storage
 ms.assetid: 42C669B6-B621-454C-B897-262E1C8E76E3
 online version: https://docs.microsoft.com/en-us/powershell/module/azure.storage/new-azurestoragequeuesastoken
 schema: 2.0.0
@@ -16,14 +17,14 @@ Generates a shared access signature token for an Azure storage queue.
 ```
 New-AzureStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
 New-AzureStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
- [-Context <IStorageContext>] [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,12 +48,27 @@ You can create it by New-AzureStorageContext cmdlet.
 ```yaml
 Type: IStorageContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -62,7 +78,7 @@ Specifies when the shared access signature is no longer valid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -77,7 +93,7 @@ Indicates that this cmdlet return the full blob URI and the shared access signat
 ```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -93,7 +109,7 @@ The range is inclusive.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -120,10 +136,12 @@ Accept wildcard characters: False
 ### -Permission
 Specifies permissions for a storage queue.
 
+It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
+
 ```yaml
 Type: String
 Parameter Sets: SasPermission
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -138,7 +156,7 @@ Specifies an Azure stored access policy.
 ```yaml
 Type: String
 Parameter Sets: SasPolicy
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -158,7 +176,7 @@ The default value is HttpsOrHttp.
 ```yaml
 Type: SharedAccessProtocol
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
 
 Required: False
@@ -174,7 +192,7 @@ Specifies when the shared access signature becomes valid.
 ```yaml
 Type: DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -203,4 +221,3 @@ Parameter 'Name' accepts value of type 'String' from the pipeline
 ## NOTES
 
 ## RELATED LINKS
-

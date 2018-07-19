@@ -31,8 +31,9 @@ The **Stop-AzureKeyVaultCertificateOperation** cmdlet cancels a certificate oper
 ## EXAMPLES
 
 ### Example 1: Cancel a certificate operation
-```
-PS C:\>Stop-AzureKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
+```powershell
+PS C:\> Stop-AzureKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
+
 Status                    : inProgress
 CancellationRequested     : True
 CertificateSigningRequest : MIICpjCCAY4CAQAwFjEUMBIGA1UEAxMLY29udG9zby5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCVr6EVwsd48qDVORsF4V4w4N1aQCUirFW7b+kwoTvSOL4SfMiWcPmno0uxmQQoh
@@ -53,7 +54,7 @@ This command cancels the TestCert02 certificate operation.
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +84,7 @@ Accept wildcard characters: False
 Operation object
 
 ```yaml
-Type: PSKeyVaultCertificateOperation
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOperation
 Parameter Sets: InputObject
 Aliases:
 
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 Specifies the name of a certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: CertificateName
 
@@ -113,7 +114,7 @@ Accept wildcard characters: False
 Specifies the name of a key vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -128,7 +129,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -145,7 +146,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -161,8 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateOperation
 
 ## OUTPUTS
 

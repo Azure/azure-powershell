@@ -45,9 +45,9 @@ This example creates a virtual network called TestResourceGroup with two subnets
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,9 +75,9 @@ Accept wildcard characters: False
 Specifies a **VirtualNetwork** object that represents the goal state.
 
 ```yaml
-Type: PSVirtualNetwork
+Type: Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

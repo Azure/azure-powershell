@@ -36,15 +36,15 @@ Storage Account.
 ## EXAMPLES
 
 ### Example 1 : Set an account-type SAS definition, and obtain a current SAS token based on it
-```
-PS C:\> $sa=Get-AzureRmStorageAccount -Name mysa -ResourceGroupName myrg
-PS C:\> $kv=Get-AzureRmKeyVault -VaultName mykv
+```powershell
+PS C:\> $sa = Get-AzureRmStorageAccount -Name mysa -ResourceGroupName myrg
+PS C:\> $kv = Get-AzureRmKeyVault -VaultName mykv
 PS C:\> Add-AzureKeyVaultManagedStorageAccount -VaultName $kv.VaultName -AccountName $sa.StorageAccountName -AccountResourceId $sa.Id -ActiveKeyName key1 -RegenerationPeriod 180
-PS C:\> $sctx=New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
-PS C:\> $start=[System.DateTime]::Now.AddDays(-1)
-PS C:\> $end=[System.DateTime]::Now.AddMonths(1)
-PS C:\> $at=New-AzureStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
-PS C:\> $sas=Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
+PS C:\> $sctx = New-AzureStorageContext -StorageAccountName $sa.StorageAccountName -Protocol Https -StorageAccountKey Key1
+PS C:\> $start = [System.DateTime]::Now.AddDays(-1)
+PS C:\> $end = [System.DateTime]::Now.AddMonths(1)
+PS C:\> $at = New-AzureStorageAccountSasToken -Service blob,file,Table,Queue -ResourceType Service,Container,Object -Permission "racwdlup" -Protocol HttpsOnly -StartTime $start -ExpiryTime $end -Context $sctx
+PS C:\> $sas = Set-AzureKeyVaultManagedStorageSasDefinition -AccountName $sa.StorageAccountName -VaultName $kv.VaultName -Name accountsas -TemplateUri $at -SasType 'account' -ValidityPeriod ([System.Timespan]::FromDays(30))
 PS C:\> Get-AzureKeyVaultSecret -VaultName $kv.VaultName -Name $sas.Sid.Substring($sas.Sid.LastIndexOf('/')+1)
 ```
 
@@ -64,7 +64,7 @@ Key Vault managed storage account name. Cmdlet constructs the FQDN of a managed 
 name from vault name, currently selected environment and manged storage account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: StorageAccountName
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Disables the use of sas definition for generation of sas token.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +109,7 @@ Accept wildcard characters: False
 ManagedStorageAccount object.
 
 ```yaml
-Type: PSKeyVaultManagedStorageAccountIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -125,7 +125,7 @@ Storage sas definition name. Cmdlet constructs the FQDN of a storage sas definit
 name, currently selected environment, storage account name and sas definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SasDefinitionName
 
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Storage SAS type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -157,7 +157,7 @@ Key-value pairs in the form of a hash table. For example:
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -172,7 +172,7 @@ Accept wildcard characters: False
 Storage SAS definition template uri.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +187,7 @@ Accept wildcard characters: False
 Validity period that will get used to set the expiry time of sas token from the time it gets generated
 
 ```yaml
-Type: TimeSpan
+Type: System.Nullable`1[System.TimeSpan]
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -218,7 +218,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -234,7 +234,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -250,12 +250,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageAccountIdentityItem
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.KeyVault.Models.ManagedStorageSasDefinition
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultManagedStorageSasDefinition
 
 ## NOTES
 

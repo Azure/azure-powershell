@@ -31,18 +31,13 @@ The **Remove-AzureRmCdnCustomDomain** cmdlet removes the custom domain from an A
 
 ## EXAMPLES
 
-### 1:
-```
-
-```
-
 ## PARAMETERS
 
 ### -CdnCustomDomain
 Specifies the custom domain that this cmdlet removes.
 
 ```yaml
-Type: PSCustomDomain
+Type: Microsoft.Azure.Commands.Cdn.Models.CustomDomain.PSCustomDomain
 Parameter Sets: ByObjectParameterSet
 Aliases:
 
@@ -57,7 +52,7 @@ Accept wildcard characters: False
 Specifies the resource name of the custom domain that this cmdlet removes.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -72,7 +67,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +82,7 @@ Accept wildcard characters: False
 Specifies the name of the endpoint from which this cmdlet removes a custom domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -103,7 +98,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +113,7 @@ Accept wildcard characters: False
 Specifies the name of the profile from which this cmdlet removes a custom domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -133,7 +128,7 @@ Accept wildcard characters: False
 Specifies the name of the resource group from which this cmdlet removes a custom domain.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFieldsParameterSet
 Aliases:
 
@@ -148,7 +143,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -164,7 +159,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -12,27 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Test;
+using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
     public class TaskTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TaskTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTaskCRUD()
         {
             BatchController controller = BatchController.NewInstance;
             string jobId = "taskCrudJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-TaskCRUD '{0}'", jobId) }; },
                 () =>
                 {
@@ -43,18 +48,19 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTaskCollection()
         {
             BatchController controller = BatchController.NewInstance;
             string jobId = "createTaskCollectionJob";
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-CreateTaskCollection '{0}'", jobId) }; },
                 () =>
                 {
@@ -65,12 +71,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateTask()
         {
             BatchController controller = BatchController.NewInstance;
@@ -79,6 +85,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             string taskId1 = "testTask1";
             string taskId2 = "testTask2";
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}'", jobId, taskId1, taskId2) }; },
                 () =>
                 {
@@ -92,12 +99,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Flaky)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllSubtasks()
         {
             BatchController controller = BatchController.NewInstance;
@@ -106,6 +113,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
             int numInstances = 3;
             BatchAccountContext context = null;
             controller.RunPsTestWorkflow(
+                _logger,
                 () => { return new string[] { string.Format("Test-ListAllSubtasks '{0}' '{1}' '{2}'", jobId, taskId, numInstances) }; },
                 () =>
                 {
@@ -119,8 +127,8 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     ScenarioTestHelpers.DeleteJob(controller, context, jobId);
                 },
-                TestUtilities.GetCallingClass(),
-                TestUtilities.GetCurrentMethodName());
+                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
+                MethodBase.GetCurrentMethod().Name);
         }
     }
 }

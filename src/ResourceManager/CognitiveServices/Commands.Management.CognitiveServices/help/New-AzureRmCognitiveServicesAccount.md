@@ -27,7 +27,22 @@ specified type and SKU.
 
 ### 1:
 ```
-New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'MyAccountName' -Type TextTranslation -SkuName F0 -Location 'usgovvirginia'
+PS C:\> New-AzureRmCognitiveServicesAccount -ResourceGroupName cognitive-services-resource-group -name myluis -Type LUIS -SkuName S0 -Locatio
+n 'WestUS'
+
+
+ResourceGroupName : cognitive-services-resource-group
+AccountName       : myluis
+Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cognitive-services-resource-group/providers/Microsoft.Cog
+                    nitiveServices/accounts/myluis
+Endpoint          : https://westus.api.cognitive.microsoft.com/luis/v2.0
+Location          : WestUS
+Sku               : Microsoft.Azure.Management.CognitiveServices.Models.Sku
+AccountType       : LUIS
+ResourceType      : Microsoft.CognitiveServices/accounts
+Etag              : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+ProvisioningState : Succeeded
+Tags              :
 ```
 
 ## PARAMETERS
@@ -36,7 +51,7 @@ New-AzureRmCognitiveServicesAccount -ResourceGroupName 'resourcegroup1' -name 'M
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,7 +66,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +81,7 @@ Accept wildcard characters: False
 Specifies the location in which to create the account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +96,7 @@ Accept wildcard characters: False
 Specifies the name for the account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CognitiveServicesAccountName, AccountName
 
@@ -97,7 +112,7 @@ Specifies the name of the resource group to which to assign the account.
 The resource group must already exist.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -122,7 +137,7 @@ The acceptable values for this parameter are:
 For more information, see [Cognitive Service APIs](https://www.microsoft.com/cognitive-services/en-us/apis).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -137,7 +152,7 @@ Accept wildcard characters: False
 Specifies a tag as a name/value pair.
 
 ```yaml
-Type: Hashtable[]
+Type: System.Collections.Hashtable[]
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -172,7 +187,7 @@ Specifies the type of account to create. Current acceptable values for this para
 - WebLM
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: CognitiveServicesAccountType, AccountType, Kind
 
@@ -187,7 +202,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -203,7 +218,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

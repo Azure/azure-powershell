@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: EEB52CCA-F5D6-4ACB-A6C9-D07C510A5878
@@ -80,9 +80,9 @@ This command gets all user groups with the user ID named 0123456789.
 Specifies an instance of PsApiManagementContext.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,9 +111,9 @@ Specifies the group ID.
 If specified, the cmdlet attempts to find the group by the identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByGroupId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -126,9 +126,9 @@ Accept wildcard characters: False
 Specifies the name of the management group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,9 +143,9 @@ If specified will return all groups the product assigned to.
 This parameter is optional.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -159,9 +159,9 @@ Specifies the identifier of existing product.
 If specified the cmdlet will return all groups the product assigned to.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -182,9 +182,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup
 The details of the Group configured in API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroup>
-The list of Groups configured in API Management service.
 
 ## NOTES
 

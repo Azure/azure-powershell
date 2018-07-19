@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,31 +20,34 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 {
     public class LogAnalyticTests
     {
+        XunitTracingInterceptor _logger;
+
         public LogAnalyticTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportLogAnalyticThrottledRequestsNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticThrottledRequestsNegative");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalyticThrottledRequestsNegative");
         }
 
 		[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportLogAnalyticRequestRateByIntervalNegative()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalyticRequestRateByIntervalNegative");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalyticRequestRateByIntervalNegative");
         }
 
-        [Fact(Skip = "Need service team to re-record test after changes to the ClientRuntime.")]
+        [Fact(Skip = "BUG: LogAnalytics does not work.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestExportLogAnalytics()
         {
-            ComputeTestController.NewInstance.RunPsTest("Test-ExportLogAnalytics");
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-ExportLogAnalytics");
         }
     }
 }

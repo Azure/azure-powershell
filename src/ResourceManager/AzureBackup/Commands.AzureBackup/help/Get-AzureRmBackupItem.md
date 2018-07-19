@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.AzureBackup.dll-Help.xml
 Module Name: AzureRM.Backup
 ms.assetid: 8A638FB1-F530-4E28-BAAE-5382671092C4
@@ -74,9 +74,9 @@ Specifies a container object for which this cmdlet gets backup items.
 To obtain an **AzureRmBackupContainer**, use the Get-AzureRmBackupContainer cmdlet.
 
 ```yaml
-Type: AzureRMBackupContainer
+Type: Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +109,9 @@ The acceptable values for this parameter are:
 - NotProtected
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Protected, Protecting, NotProtected
 
 Required: False
@@ -127,9 +127,9 @@ The acceptable values for this parameter are: IRPending, Protected, ProtectionEr
 If the *ProtectionStatus* parameter has the value Protected, you can use the *Status* parameter value to filter items.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IRPending, ProtectionStopped, ProtectionError, Protected
 
 Required: False
@@ -144,9 +144,9 @@ Specifies the type of item that this cmdlet gets.
 Currently, the only supported value is AzureVM.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM
 
 Required: False
@@ -161,11 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupContainer
 
 ## OUTPUTS
 
-### AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
 
 ## NOTES
 

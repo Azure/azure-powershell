@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 12FC21EB-0B4E-4275-88FB-7FF42730A6A0
@@ -46,9 +46,9 @@ This command modifies the specified API Management certificate.
 Specifies the ID of the certificate to modify.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -61,9 +61,9 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -91,9 +91,9 @@ Accept wildcard characters: False
 passthru
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -107,9 +107,9 @@ Specifies an array of bytes of the certificate file in .pfx format.
 This parameter is required if you do not specify the *PfxFilePath* parameter.
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: Raw
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,9 +123,9 @@ Specifies the path to the certificate file in .pfx format to create and upload.
 This parameter is required if you do not specify the *PfxBytes* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: LoadFromFile
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Specifies the password for the certificate.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

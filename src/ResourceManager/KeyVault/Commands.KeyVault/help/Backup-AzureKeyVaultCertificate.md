@@ -41,23 +41,29 @@ and specify a key vault in the second region.
 ## EXAMPLES
 
 ### Example 1: Back up a certificate with an automatically generated file name
-```
-PS C:\>Backup-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
+```powershell
+PS C:\Users\username\> Backup-AzureKeyVaultCertificate -VaultName 'mykeyvault' -Name 'mycert'
+
+C:\Users\username\mykeyvault-mycert-1527029447.01191
 ```
 
 This command retrieves the certificate named MyCert from the key vault named MyKeyVault and saves a backup of that certificate to a file that is automatically named for you, and displays the file name.
 
 ### Example 2: Back up a certificate to a specified file name
-```
-PS C:\>Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+```powershell
+PS C:\> Backup-AzureKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyCert' -OutputFile 'C:\Backup.blob'
+
+C:\Backup.blob
 ```
 
 This command retrieves the certificate named MyCert from the key vault named MyKeyVault and saves a backup of that certificate to a file named Backup.blob.
 
 ### Example 3: Back up a previously retrieved certificate to a specified file name, overwriting the destination file without prompting.
-```
-PS C:\>$cert = Get-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
-PS C:\>Backup-AzureKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+```powershell
+PS C:\> $cert = Get-AzureKeyVaultCertificate -VaultName 'MyKeyVault' -Name 'MyCert'
+PS C:\> Backup-AzureKeyVaultCertificate -Certificate $cert -OutputFile 'C:\Backup.blob' -Force
+
+C:\Backup.blob
 ```
 
 This command creates a backup of the certificate named $cert.Name in the vault named $cert.VaultName to a file named Backup.blob, silently overwriting the file if it exists already.
@@ -68,7 +74,7 @@ This command creates a backup of the certificate named $cert.Name in the vault n
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -83,7 +89,7 @@ Accept wildcard characters: False
 Overwrite the given file if it exists
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +104,7 @@ Accept wildcard characters: False
 Secret to be backed up, pipelined in from the output of a retrieval call.
 
 ```yaml
-Type: PSKeyVaultCertificateIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByCertificate
 Aliases: Certificate
 
@@ -114,7 +120,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateName
 Aliases: SecretName
 
@@ -131,7 +137,7 @@ The output file to store the backup of the certificate.
 If not specified, a default filename will be generated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +153,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByCertificateName
 Aliases:
 
@@ -162,7 +168,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -178,7 +184,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -199,6 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.String
+The cmdlet returns the path of the output file containing the backup of the certificate.
 
 ## NOTES
 

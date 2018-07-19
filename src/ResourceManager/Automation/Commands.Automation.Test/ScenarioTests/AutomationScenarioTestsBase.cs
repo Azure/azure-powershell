@@ -12,52 +12,48 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Diagnostics;
+using System.IO;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.Automation;
-using Microsoft.Azure.Test;
+using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.Automation.Test
 {
     public abstract class AutomationScenarioTestsBase : RMTestBase
     {
-        private EnvironmentSetupHelper helper;
+        private readonly EnvironmentSetupHelper _helper;
 
         protected AutomationScenarioTestsBase()
         {
-            helper = new EnvironmentSetupHelper();
+            _helper = new EnvironmentSetupHelper();
         }
 
-        protected void SetupManagementClients()
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
-            var automationManagementClient = GetAutomationManagementClient();
+            var sf = new StackTrace().GetFrame(1);
+            var callingClassType = sf.GetMethod().ReflectedType?.ToString();
+            var mockName = sf.GetMethod().Name;
 
-            helper.SetupManagementClients(automationManagementClient);
-        }
+            _helper.TracingInterceptor = logger;
 
-        protected void RunPowerShellTest(params string[] scripts)
-        {
-            using (UndoContext context = UndoContext.Current)
+            HttpMockServer.RecordsDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "SessionRecords");
+            using (MockContext.Start(callingClassType, mockName))
             {
-                context.Start(TestUtilities.GetCallingClass(2), TestUtilities.GetCurrentMethodName(2));
+                _helper.SetupManagementClients();
+                _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-                SetupManagementClients();
-
-                helper.SetupEnvironment(AzureModule.AzureResourceManager);
-
-                helper.SetupModules(AzureModule.AzureResourceManager,
+                _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
-                    helper.RMProfileModule,
-                    helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
+                    _helper.RMProfileModule,
+                    _helper.GetRMModulePath(@"AzureRM.Automation.psd1"));
 
-                helper.RunPowerShellTest(scripts);
+                _helper.RunPowerShellTest(scripts);
             }
-        }
-
-        protected AutomationManagementClient GetAutomationManagementClient()
-        {
-            return TestBase.GetServiceClient<AutomationManagementClient>(new CSMTestEnvironmentFactory());
         }
     }
 }

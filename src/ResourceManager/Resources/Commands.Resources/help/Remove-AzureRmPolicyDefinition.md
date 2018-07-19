@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: DEC01722-EB1A-45CE-BD30-9DB861718573
@@ -13,14 +13,28 @@ Removes a policy definition.
 
 ## SYNTAX
 
-### RemoveByPolicyDefinitionName (Default)
+### NameParameterSet (Default)
 ```
 Remove-AzureRmPolicyDefinition -Name <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
  [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByPolicyDefinitionId
+### ManagementGroupNameParameterSet
+```
+Remove-AzureRmPolicyDefinition -Name <String> [-Force] -ManagementGroupName <String> [-ApiVersion <String>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SubscriptionIdParameterSet
+```
+Remove-AzureRmPolicyDefinition -Name <String> [-Force] -SubscriptionId <Guid> [-ApiVersion <String>] [-Pre]
+ [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
+ [-InformationVariable <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### IdParameterSet
 ```
 Remove-AzureRmPolicyDefinition -Id <String> [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-InformationAction <ActionPreference>]
@@ -34,14 +48,14 @@ The **Remove-AzureRmPolicyDefinition** cmdlet removes a policy definition.
 
 ### Example 1: Remove the policy definition by name
 ```
-PS C:\>Remove-AzureRmPolicyDefinition -Name "VMPolicyDefinition"
+PS C:\> Remove-AzureRmPolicyDefinition -Name 'VMPolicyDefinition'
 ```
 
 This command removes the specified policy definition.
 
 ### Example 2: Remove policy definition by resource ID
 ```
-PS C:\>$PolicyDefinition = Get-AzureRmPolicyDefinition -Name "VMPolicyDefinition" 
+PS C:\> $PolicyDefinition = Get-AzureRmPolicyDefinition -Name 'VMPolicyDefinition' 
 PS C:\> Remove-AzureRmPolicyDefinition -Id $PolicyDefinition.ResourceId -Force
 ```
 
@@ -57,7 +71,7 @@ Specifies the version of the resource provider API to use.
 If you do not specify a version, this cmdlet uses the latest available version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -72,7 +86,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -87,7 +101,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -102,8 +116,8 @@ Accept wildcard characters: False
 Specifies the fully qualified resource ID for the policy definition that this cmdlet removes.
 
 ```yaml
-Type: String
-Parameter Sets: RemoveByPolicyDefinitionId
+Type: System.String
+Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
 Required: True
@@ -126,7 +140,7 @@ The acceptable values for this parameter are:
 - Suspend
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: infa
 
@@ -141,7 +155,7 @@ Accept wildcard characters: False
 Specifies an information variable.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: iv
 
@@ -152,12 +166,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ManagementGroupName
+The name of the management group of the policy definition to delete.
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupNameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies the name of the policy definition that this cmdlet removes.
 
 ```yaml
-Type: String
-Parameter Sets: RemoveByPolicyDefinitionName
+Type: System.String
+Parameter Sets: NameParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
 Required: True
@@ -171,7 +212,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet considers pre-release API versions when it automatically determines which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -182,11 +223,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -SubscriptionId
+The subscription ID of the policy definition to delete.
+
+```yaml
+Type: System.Nullable`1[System.Guid]
+Parameter Sets: SubscriptionIdParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -202,7 +258,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

@@ -33,9 +33,10 @@ using System.Net;
 using LegacyTest = Microsoft.Azure.Test;
 using TestEnvironmentFactory = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestEnvironmentFactory;
 using TestUtilities = Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities;
-using NewResourceManagementClient = Microsoft.Azure.Management.ResourceManager.ResourceManagementClient;
+using NewResourceManagementClient = Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.IO;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
 {
@@ -44,7 +45,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
         internal string resourceGroupName { get; set; }
         internal string azureBlobStoreName { get; set; }
         internal string azureBlobStoreAccessKey { get; set; }
-        internal const string resourceGroupLocation = "East US 2";
+        internal const string resourceGroupLocation = "eastus2";
 
         private LegacyTest.CSMTestEnvironmentFactory csmTestFactory;
         private EnvironmentSetupHelper helper;
@@ -83,15 +84,16 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
             helper = new EnvironmentSetupHelper();
         }
 
-        public void RunPsTest(bool createWasbAccount, params string[] scripts)
+        public void RunPsTest(bool createWasbAccount, XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             var callingClassType = TestUtilities.GetCallingClass(2);
             var mockName = TestUtilities.GetCurrentMethodName(2);
             RunPsTestWorkflow(createWasbAccount,
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -130,7 +132,7 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager, "ScenarioTests\\Common.ps1", "ScenarioTests\\" + callingClassName + ".ps1",
-                helper.RMProfileModule, helper.RMResourceModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
+                helper.RMProfileModule, helper.GetRMModulePath(@"AzureRM.DataLakeAnalytics.psd1"), helper.GetRMModulePath(@"AzureRM.DataLakeStore.psd1"), "AzureRM.Resources.ps1");
 
                 if (createWasbAccount)
                 {

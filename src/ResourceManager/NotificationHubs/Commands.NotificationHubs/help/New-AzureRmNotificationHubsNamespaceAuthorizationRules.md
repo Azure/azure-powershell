@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.NotificationHubs.dll-Help.xml
 Module Name: AzureRM.NotificationHubs
 ms.assetid: 3F59F7E8-CD32-40CB-9DE0-3FB044439DD0
@@ -69,7 +69,7 @@ However, you do not need to specify any information about the rule itself: rule 
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 Specifies the path to a JSON file containing configuration information for the new authorization rule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: InputFileParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -103,9 +103,9 @@ The new rules must be assigned to an existing namespace.
 The **New-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet cannot create a new namespace.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -123,9 +123,9 @@ You must use an existing resource group.
 This cmdlet cannot create a new resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -138,9 +138,9 @@ Accept wildcard characters: False
 Specifies the **SharedAccessAuthorizationRuleAttributes** object containing configuration information for the new rules.
 
 ```yaml
-Type: SharedAccessAuthorizationRuleAttributes
+Type: Microsoft.Azure.Commands.NotificationHubs.Models.SharedAccessAuthorizationRuleAttributes
 Parameter Sets: SASRuleParameterSet
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -168,7 +168,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

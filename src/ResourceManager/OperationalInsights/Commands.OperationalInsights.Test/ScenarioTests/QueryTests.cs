@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -20,37 +21,47 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
 {
     public class QueryTests : OperationalInsightsScenarioTestBase
     {
+        public XunitTracingInterceptor _logger;
+
+        public QueryTests(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQuery()
         {
-            RunDataPowerShellTest("Test-SimpleQuery");
+            RunDataPowerShellTest(_logger, "Test-SimpleQuery");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleQueryWithTimespan()
         {
-            RunDataPowerShellTest("Test-SimpleQueryWithTimespan");
+            RunDataPowerShellTest(_logger, "Test-SimpleQueryWithTimespan");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithSyntaxError()
         {
-            RunDataPowerShellTest("Test-ExceptionWithSyntaxError");
+            RunDataPowerShellTest(_logger, "Test-ExceptionWithSyntaxError");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExceptionWithShortWait()
         {
-            RunDataPowerShellTest("Test-ExceptionWithShortWait");
+            RunDataPowerShellTest(_logger, "Test-ExceptionWithShortWait");
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAsJob()
         {
-            RunDataPowerShellTest("Test-AsJob");
+            RunDataPowerShellTest(_logger, "Test-AsJob");
         }
     }
 }

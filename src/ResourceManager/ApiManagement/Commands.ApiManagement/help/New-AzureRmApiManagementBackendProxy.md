@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackendproxy
 schema: 2.0.0
 ---
@@ -22,21 +23,25 @@ Creates a new Backend Proxy Object which can be piped when creating a new Backen
 ## EXAMPLES
 
 ### Create a Backend Proxy In-Memory Object
-```
+```powershell
 PS C:\>$secpassword = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
 PS C:\>$proxyCreds = New-Object System.Management.Automation.PSCredential ("foo", $secpassword)
 PS C:\>$credential = New-AzureRmApiManagementBackendProxy -Url "http://12.168.1.1:8080" -ProxyCredential $proxyCreds
+
+PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
+
+PS C:\>$backend = New-AzureRmApiManagementBackend -Context  $apimContext -BackendId 123 -Url 'https://contoso.com/awesomeapi' -Protocol http -Title "first backend" -SkipCertificateChainValidation $true -Proxy $credential -Description "backend with proxy server"
 ```
 
-Creates a Backend Proxy Object
+Creates a Backend Proxy Object and sets up Backend
 
 ## PARAMETERS
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -51,9 +56,9 @@ Accept wildcard characters: False
 Credentials used to connect to Backend Proxy. This parameter is optional.
 
 ```yaml
-Type: PSCredential
+Type: System.Management.Automation.PSCredential
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -67,9 +72,9 @@ Url of the Proxy server to be used when forwarding calls to Backend.
 This parameter is required.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

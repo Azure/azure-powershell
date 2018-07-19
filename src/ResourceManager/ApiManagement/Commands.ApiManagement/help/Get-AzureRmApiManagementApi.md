@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: B80389B9-E143-4E24-A222-E95F691DA2E9
@@ -21,7 +21,7 @@ Get-AzureRmApiManagementApi -Context <PsApiManagementContext> [-DefaultProfile <
 
 ### GetByApiId
 ```
-Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String>
+Get-AzureRmApiManagementApi -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -72,11 +72,26 @@ This command gets the API with the specified name.
 Specifies the ID of the API to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByApiId
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Revision Identifier of the particular Api revision. This parameter is optional.
+
+```yaml
+Type: System.String
+Parameter Sets: GetByApiId
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -87,9 +102,9 @@ Accept wildcard characters: False
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -100,9 +115,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,9 +132,9 @@ Accept wildcard characters: False
 Specifies the name of the API to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByName
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,9 +147,9 @@ Accept wildcard characters: False
 Specifies the ID of the product for which to get the API.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -155,9 +170,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi
 The details of the Api in a given ApiManagement service
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementApi>
-The list of Apis in a given ApiManagement service
 
 ## NOTES
 

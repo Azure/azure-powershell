@@ -46,7 +46,7 @@ The **Add-AzureRmStorageAccountNetworkRule** cmdlet adds IpRules or VirtualNetwo
 
 ### Example 1: Add several IpRules with IPAddressOrRange
 ```
-PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPAddressOrRange "10.0.0.0/24","28.2.0.0/16"
+PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "10.0.0.0/24","28.2.0.0/16"
 ```
 
 This command add several IpRules with IPAddressOrRange.
@@ -54,22 +54,22 @@ This command add several IpRules with IPAddressOrRange.
 ### Example 2: Add a VirtualNetworkRule with VirtualNetworkResourceID
 ```
 PS C:\>$subnet = Get-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" -Name "myvirtualnetwork" | Get-AzureRmVirtualNetworkSubnetConfig
-PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkResourceId $subnet[0].Id
+PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -VirtualNetworkResourceId $subnet[0].Id
 ```
 
 This command add a VirtualNetworkRule with VirtualNetworkResourceID.
 
 ### Example 3: Add VirtualNetworkRules with VirtualNetworkRule Objects from another account
 ```
-PS C:\> $networkrule = Get-AzureRMStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount1"
-PS C:\> Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount2" -VirtualNetworkRule $networkrule.VirtualNetworkRules
+PS C:\> $networkrule = Get-AzureRMStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount1"
+PS C:\> Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount2" -VirtualNetworkRule $networkrule.VirtualNetworkRules
 ```
 
 This command add VirtualNetworkRules with VirtualNetworkRule Objects from another account.
 
 ### Example 4: Add several IpRule with IpRule objects, input with JSON
 ```
-PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPRule (@{IPAddressOrRange="10.0.0.0/24";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"})
+PS C:\>Add-AzureRMStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPRule (@{IPAddressOrRange="10.0.0.0/24";Action="allow"},@{IPAddressOrRange="28.2.0.0/16";Action="allow"})
 ```
 
 This command add several IpRule with IpRule objects, input with JSON.
@@ -80,9 +80,9 @@ This command add several IpRule with IpRule objects, input with JSON.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 The Array of IpAddressOrRange, add IpRules with the input IpAddressOrRange and default Action Allow to NetworkRule Property.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: IpRuleString
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -125,9 +125,9 @@ Accept wildcard characters: False
 The Array of IpRule objects to add to the NetworkRule Property.
 
 ```yaml
-Type: PSIpRule[]
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
 Parameter Sets: IpRuleObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -140,7 +140,7 @@ Accept wildcard characters: False
 Specifies the name of the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: StorageAccountName, AccountName
 
@@ -155,9 +155,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group contains the Storage account.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 The Array of VirtualNetworkResourceId, will add VirtualNetworkRule with input VirtualNetworkResourceId and default Action Allow to NetworkRule Property.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: NetWorkRuleString
 Aliases: SubnetId, VirtualNetworkId
 
@@ -185,9 +185,9 @@ Accept wildcard characters: False
 The Array of VirtualNetworkRule objects to add to the NetworkRule Property.
 
 ```yaml
-Type: PSVirtualNetworkRule[]
+Type: Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
 Parameter Sets: NetworkRuleObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -200,7 +200,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -216,7 +216,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -244,4 +244,3 @@ Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
 ## NOTES
 
 ## RELATED LINKS
-

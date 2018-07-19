@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 4F487FCA-930D-4D56-8D28-7693312E1A01
@@ -65,7 +65,7 @@ This command gets the route table named RouteTable01 in the resource group named
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,9 +78,9 @@ Accept wildcard characters: False
 
 ### -ExpandResource
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 Specifies the name of the route table that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
 Aliases: ResourceName
 
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
 Aliases: ResourceName
 
@@ -120,9 +120,9 @@ Accept wildcard characters: False
 Specifies the name of the resource group that contains the route tables that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Expand
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -132,9 +132,9 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NoExpand
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named

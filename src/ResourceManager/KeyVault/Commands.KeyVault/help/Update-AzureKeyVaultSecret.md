@@ -32,12 +32,26 @@ The **Update-AzureKeyVaultSecret** cmdlet updates editable attributes of a secre
 ## EXAMPLES
 
 ### Example 1: Modify the attributes of a secret
-```
+```powershell
 PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
 PS C:\> $Nbf = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = null}
+PS C:\> $Tags = @{ 'Severity' = 'medium'; 'HR' = 'true'}
 PS C:\> $ContentType= 'xml'
 PS C:\> Update-AzureKeyVaultSecret -VaultName 'ContosoVault' -Name 'HR' -Expires $Expires -NotBefore $Nbf -ContentType $ContentType -Enable $True -Tag $Tags -PassThru
+
+Vault Name   : ContosoVault
+Name         : HR
+Version      : d476edfcd3544017a03bc49c1f3abec0
+Id           : https://ContosoVault.vault.azure.net:443/secrets/HR/d476edfcd3544017a03bc49c1f3abec0
+Enabled      : True
+Expires      : 5/25/2020 8:01:58 PM
+Not Before   : 5/25/2018 8:02:02 PM
+Created      : 4/11/2018 11:45:06 PM
+Updated      : 5/25/2018 8:02:45 PM
+Content Type : xml
+Tags         : Name      Value
+               Severity  medium
+               HR        true
 ```
 
 The first four commands define attributes for the expiry date, the NotBefore date, tags, and
@@ -91,7 +105,7 @@ If not specified, the existing value of the secret's content type remains unchan
 Remove the existing content type value by specifying an empty string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,7 +120,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -123,7 +137,7 @@ Disable a secret if value is false.
 If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +153,7 @@ The expiration time of a secret in UTC time.
 If not specified, the existing value of the secret's expiration time remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +168,7 @@ Accept wildcard characters: False
 Secret object
 
 ```yaml
-Type: PSKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -170,7 +184,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -186,7 +200,7 @@ The UTC time before which secret can't be used.
 If not specified, the existing value of the secret's NotBefore attribute remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -202,7 +216,7 @@ Cmdlet does not return object by default.
 If this switch is specified, return Secret object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -219,7 +233,7 @@ If not specified, the existing tags of the secret remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -235,7 +249,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -251,7 +265,7 @@ Secret version.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SecretVersion
 
@@ -266,7 +280,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -282,7 +296,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

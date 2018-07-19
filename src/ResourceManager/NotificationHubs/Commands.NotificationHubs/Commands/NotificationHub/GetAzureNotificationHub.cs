@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHub"), OutputType(typeof(List<NotificationHubAttributes>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmNotificationHub"), OutputType(typeof(NotificationHubAttributes))]
     public class GetAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

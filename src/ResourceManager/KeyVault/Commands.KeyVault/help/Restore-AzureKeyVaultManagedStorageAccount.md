@@ -42,8 +42,21 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 ## EXAMPLES
 
 ### Example 1: Restore a backed-up managed storage account
-```
-PS C:\>Restore-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```powershell
+PS C:\> Restore-AzureKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+
+Id                  : https://mykeyvault.vault.azure.net:443/storage/mystorageaccount
+Vault Name          : MyKeyVault
+AccountName         : mystorageaccount
+Account Resource Id : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.St
+                      orage/storageAccounts/mystorageaccount
+Active Key Name     : key1
+Auto Regenerate Key : True
+Regeneration Period : 90.00:00:00
+Enabled             : True
+Created             : 5/21/2018 11:55:58 PM
+Updated             : 5/21/2018 11:55:58 PM
+Tags                :
 ```
 
 This command restores a managed storage account, including all of its versions, from the backup file named Backup.blob into the key vault named MyKeyVault.
@@ -54,7 +67,7 @@ This command restores a managed storage account, including all of its versions, 
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -70,7 +83,7 @@ Input file.
 The input file containing the backed-up blob
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +98,7 @@ Accept wildcard characters: False
 KeyVault object
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: ByInputObject
 Aliases:
 
@@ -100,7 +113,7 @@ Accept wildcard characters: False
 KeyVault Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByResourceId
 Aliases:
 
@@ -116,7 +129,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -131,7 +144,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -147,7 +160,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -164,7 +177,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
-System.String
 
 ## OUTPUTS
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.MarketplaceOrdering.dll-Help.xml
 Module Name: AzureRM.MarketplaceOrdering
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.marketplaceordering/get-azurermmarketplaceterms
@@ -41,7 +41,7 @@ RetrieveDatetime  : <RetrieveDatetime>
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -56,9 +56,9 @@ Accept wildcard characters: False
 Plan identifier string of image being deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 Offer identifier string of image being deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -86,9 +86,9 @@ Accept wildcard characters: False
 Publisher identifier string of image being deployed.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -107,9 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
-Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
 
 ## NOTES
 
 ## RELATED LINKS
-

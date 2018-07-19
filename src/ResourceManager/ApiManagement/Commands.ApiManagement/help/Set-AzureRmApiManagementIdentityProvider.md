@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementidentityprovider
 schema: 2.0.0
 ---
@@ -24,7 +25,7 @@ Updates the Configuration of an existing Identity Provider.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\> Set-AzureRmApiManagementIdentityProvider -Context $apimContext -Type Facebook -ClientSecret "updatedSecret" -PassThru
 ```
@@ -37,9 +38,9 @@ The cmdlet updates the Client Secret of the Facebook Identity Provider;
 List of allowed Azure Active Directory Tenants.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -53,9 +54,9 @@ Client Id of the Application in the external Identity Provider.
 It is App ID for Facebook login, Client ID for Google login, App ID for Microsoft.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -69,9 +70,9 @@ Client secret of the Application in external Identity Provider, used to authenti
 For example, it is App Secret for Facebook login, API Key for Google login, Public Key for Microsoft.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -85,9 +86,9 @@ Instance of PsApiManagementContext.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -98,9 +99,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +117,9 @@ Indicates that this cmdlet returns the  **PsApiManagementIdentityProvider** that
 
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -132,10 +133,10 @@ Identifier of an existing Identity Provider.
 This parameter is required.
 
 ```yaml
-Type: PsApiManagementIdentityProviderType
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
 Parameter Sets: (All)
-Aliases: 
-Accepted values: Facebook, Google, Microsoft, Twitter, Aad
+Aliases:
+Accepted values: Facebook, Google, Microsoft, Twitter, Aad, AadB2C
 
 Required: True
 Position: Named
@@ -148,7 +149,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -163,7 +164,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

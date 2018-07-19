@@ -43,9 +43,9 @@ PS C:\> $slb | Add-AzureRmLoadBalancerInboundNatPoolConfig -Name "myInboundNatPo
 
 ### -BackendPort
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -71,9 +71,9 @@ Accept wildcard characters: False
 
 ### -FrontendIpConfiguration
 ```yaml
-Type: PSFrontendIPConfiguration
+Type: Microsoft.Azure.Commands.Network.Models.PSFrontendIPConfiguration
 Parameter Sets: SetByResource
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -84,9 +84,9 @@ Accept wildcard characters: False
 
 ### -FrontendIpConfigurationId
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -97,9 +97,9 @@ Accept wildcard characters: False
 
 ### -FrontendPortRangeEnd
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -110,9 +110,9 @@ Accept wildcard characters: False
 
 ### -FrontendPortRangeStart
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -123,9 +123,9 @@ Accept wildcard characters: False
 
 ### -LoadBalancer
 ```yaml
-Type: PSLoadBalancer
+Type: Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -136,9 +136,9 @@ Accept wildcard characters: False
 
 ### -Name
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -149,9 +149,9 @@ Accept wildcard characters: False
 
 ### -Protocol
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Tcp, Udp
 
 Required: True
@@ -176,4 +176,3 @@ Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipelin
 ## NOTES
 
 ## RELATED LINKS
-

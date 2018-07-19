@@ -20,8 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet(VerbsCommon.Get, Constants.ApiManagementProduct, DefaultParameterSetName = GetAllProducts)]
-    [OutputType(typeof(IList<PsApiManagementProduct>), ParameterSetName = new[] { GetAllProducts, GetByTitle })]
-    [OutputType(typeof(PsApiManagementProduct), ParameterSetName = new[] { GetById })]
+    [OutputType(typeof(PsApiManagementProduct))]
     public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "GetAllProducts";

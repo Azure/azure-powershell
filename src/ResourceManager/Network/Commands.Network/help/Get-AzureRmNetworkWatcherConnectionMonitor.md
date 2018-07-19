@@ -81,7 +81,7 @@ In this example we get connection monitor by name in the specified location.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 The connection monitor name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName, SetByResource, SetByLocation
 Aliases: ConnectionMonitorName
 
@@ -126,7 +126,7 @@ Accept wildcard characters: False
 The network watcher resource.
 
 ```yaml
-Type: PSNetworkWatcher
+Type: Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
 Parameter Sets: SetByResource
 Aliases:
 
@@ -141,7 +141,7 @@ Accept wildcard characters: False
 The name of network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -156,7 +156,7 @@ Accept wildcard characters: False
 The name of the network watcher resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByName
 Aliases:
 
@@ -171,7 +171,7 @@ Accept wildcard characters: False
 Resource ID of the connection monitor.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceId
 Aliases:
 
@@ -183,13 +183,12 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
-System.String
+### System.String
 
 ## OUTPUTS
 
@@ -224,14 +223,32 @@ Keywords: azure, azurerm, arm, resource, connectivity, management, manager, netw
 
 [Stop-AzureRmNetworkWatcherPacketCapture]()
 
-[New-AzureRmNetworkWatcherConnectionMonitor]()
+[Get-AzureRmNetworkWatcherConnectionMonitor]()
 
 [Get-AzureRmNetworkWatcherConnectionMonitorReport]()
 
-[Set-AzureRmNetworkWatcherConnectionMonitor]()
+[Remove-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Start-AzureRmNetworkWatcherConnectionMonitor]()
+[Set-AzureRmNetworkWatcherConnectionMonitor]()
 
 [Stop-AzureRmNetworkWatcherConnectionMonitor]()
 
-[Remove-AzureRmNetworkWatcherConnectionMonitor]()
+[New-AzureRmNetworkWatcherConnectionMonitor]()
+
+[New-AzureRmNetworkWatcherProtocolConfiguration]()
+
+[Test-AzureRmNetworkWatcherIPFlow]()
+
+[Test-AzureRmNetworkWatcherConnectivity]()
+
+[Start-AzureRmNetworkWatcherResourceTroubleshooting]()
+
+[Start-AzureRmNetworkWatcherConnectionMonitor]()
+
+[Set-AzureRmNetworkWatcherConfigFlowLog]()
+
+[Get-AzureRMNetworkWatcherReachabilityReport]()
+
+[Get-AzureRmNetworkWatcherReachabilityProvidersList]()
+
+[Get-AzureRmNetworkWatcherFlowLogStatus]()

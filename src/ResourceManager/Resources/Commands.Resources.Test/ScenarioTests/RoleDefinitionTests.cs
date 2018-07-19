@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
@@ -23,86 +22,144 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
     public class RoleDefinitionTests : RMTestBase
     {
+        public XunitTracingInterceptor _logger;
+
         public RoleDefinitionTests(ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionCreateTests()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionCreateTests");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RoleDefinitionCreateTests");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RoleDefinitionDataActionsCreateTests()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RoleDefinitionDataActionsCreateTests");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RoleDefinitionDataActionsCreateTests");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdNegativeScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RdNegativeScenarios");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RdNegativeScenarios");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RdPositiveScenarios()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDPositiveScenarios");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDPositiveScenarios");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDUpdate()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDUpdate");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDUpdate");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDCreateFromFile()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDCreateFromFile");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDCreateFromFile");
         }
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact]
+#endif
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void RDFilter()
 		{
-			ResourcesController.NewInstance.RunPsTest("Test-RDFilter");
+			ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDFilter");
 		}
 
-		[Fact(Skip = "Unskip after service side change")]
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
+        [Fact(Skip = "Unskip after service side change")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDRemoveScenario()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDRemove");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDRemove");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Unknown issue for .NET Core: Investigation needed")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetCustomRoles()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDGetCustomRoles");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDGetCustomRoles");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Storage version difference: Needs rerecorded for .NET Core")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact(Skip = "Successfully re-recorded, but still failing in playback")]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDDataActionsNegativeTestCases()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDDataActionsNegativeTestCases");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDDataActionsNegativeTestCases");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "DisableTestParallelization disabled on .NET Core: Test uses RoleDefinitionNames")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RDGetScenario()
         {
-            ResourcesController.NewInstance.RunPsTest("Test-RDGet");
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-RDGet");
         }
 
         [Fact]
@@ -110,10 +167,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         public void RdValidateInputParameters()
         {
             var instance = ResourcesController.NewInstance;
-            instance.RunPsTest("Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
-            instance.RunPsTest("Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
-            instance.RunPsTest("Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");
-            instance.RunPsTest("Test-RdValidateInputParameters2 Set-AzureRmRoleDefinition");
+            instance.RunPsTest(_logger, "Test-RdValidateInputParameters Get-AzureRmRoleDefinition");
+            instance.RunPsTest(_logger, "Test-RdValidateInputParameters Remove-AzureRmRoleDefinition");
+            instance.RunPsTest(_logger, "Test-RdValidateInputParameters2 New-AzureRmRoleDefinition");
+            instance.RunPsTest(_logger, "Test-RdValidateInputParameters2 Set-AzureRmRoleDefinition");
         }
     }
 }

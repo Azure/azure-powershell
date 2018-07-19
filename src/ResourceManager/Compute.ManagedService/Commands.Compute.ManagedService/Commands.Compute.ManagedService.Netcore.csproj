@@ -16,6 +16,8 @@
     <OutputPath>..\..\..\Package\Debug\ResourceManager\AzureResourceManager\AzureRM.Compute.ManagedService.Netcore\</OutputPath>
     <DelaySign>false</DelaySign>
     <DefineConstants>TRACE;DEBUG;NETSTANDARD</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -25,10 +27,12 @@
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
     <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AzureRM.Compute.ManagedService.Netcore.psd1" Link="AzureRM.Compute.ManagedService.Netcore.psd1">
+    <None Include="AzureRM.Compute.ManagedService.Netcore.psd1" Link="AzureRM.Compute.ManagedService.Netcore.psd1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
@@ -19,30 +20,48 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
 {
     public class TableTests : DataFactoriesScenarioTestsBase
     {
+        public XunitTracingInterceptor _logger;
+
         public TableTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor.AddToContext(new Azure.ServiceManagemenet.Common.Models.XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTable()
         {
-            RunPowerShellTest("Test-Table");
+            RunPowerShellTest(_logger, "Test-Table");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTableWithDataFactoryParameter()
         {
-            RunPowerShellTest("Test-TableWithDataFactoryParameter");
+            RunPowerShellTest(_logger, "Test-TableWithDataFactoryParameter");
         }
 
+#if NETSTANDARD
+        [Fact(Skip = "Management library needs NetCore republish")]
+        [Trait(Category.RunType, Category.DesktopOnly)]
+#else
         [Fact]
+#endif
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTablePiping()
         {
-            RunPowerShellTest("Test-TablePiping");
+            RunPowerShellTest(_logger, "Test-TablePiping");
         }
     }
 }

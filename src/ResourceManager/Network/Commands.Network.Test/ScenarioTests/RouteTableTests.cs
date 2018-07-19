@@ -21,51 +21,61 @@ namespace Commands.Network.Test.ScenarioTests
 {
     public class RouteTableTests : Microsoft.WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
     {
-        public RouteTableTests(ITestOutputHelper output)
+        public XunitTracingInterceptor _logger;
+
+        public RouteTableTests(Xunit.Abstractions.ITestOutputHelper output)
         {
-            XunitTracingInterceptor.AddToContext(new XunitTracingInterceptor(output));
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
         }
+
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestEmptyRouteTable()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-EmptyRouteTable");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-EmptyRouteTable");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableSubnetRef()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableSubnetRef");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableSubnetRef");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteTableRouteCRUD()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableRouteCRUD");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableRouteCRUD");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteHopTypeTest()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteHopTypeTest");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteHopTypeTest");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.sdnnrp)]
         public void TestRouteWithDisableBgpRoutePropagation()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-RouteTableWithDisableBgpRoutePropagation");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-RouteTableWithDisableBgpRoutePropagation");
         }
     }
 }

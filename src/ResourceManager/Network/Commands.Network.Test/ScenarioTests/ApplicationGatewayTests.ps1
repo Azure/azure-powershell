@@ -56,7 +56,7 @@ function Test-ApplicationGatewayCRUD
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -123,7 +123,7 @@ function Test-ApplicationGatewayCRUD
 		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
 		$fp02 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort02Name  -Port 8080
 
-		$authCertFilePath = $basedir + "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
+		$authCertFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$authcert01 = New-AzureRmApplicationGatewayAuthenticationCertificate -Name $authCertName -CertificateFile $authCertFilePath
 		
 		# Create match with undefined statuscode list
@@ -330,7 +330,7 @@ function Test-ApplicationGatewayCRUD2
 {
 	param 
 	( 
-		$basedir = ".\" 
+		$basedir = "./" 
 	) 
 
 	# Setup	
@@ -388,7 +388,7 @@ function Test-ApplicationGatewayCRUD2
 
 		# frontend part
 		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert01Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert1.pfx"
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
 		$sslCert01 = New-AzureRmApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
@@ -451,7 +451,7 @@ function Test-ApplicationGatewayCRUD2
 		Assert-NotNull $getgw.SslCertificates[0].Password
 
 		$pw02 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
-		$sslCert02Path = $basedir + "\ScenarioTests\Data\ApplicationGatewaySslCert2.pfx"
+		$sslCert02Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert2.pfx"
 		$getgw = Add-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $getgw -Name $sslCert02Name -CertificateFile $sslCert02Path -Password $pw02
 
 		# Modify existing application gateway with new configuration
@@ -475,6 +475,100 @@ function Test-ApplicationGatewayCRUD2
 
 		Assert-AreEqual "Stopped" $getgw.OperationalState
  
+		# Delete Application Gateway
+		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Application gateway v2 tests
+#>
+function Test-ApplicationGatewayCRUD3
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = "westus2"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rule01Name = Get-ResourceName
+
+	$probeHttpName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzureRmResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzureRmvirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzureRmApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzureRmApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		$probeHttp = New-AzureRmApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Http -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8
+		$poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress
+
+		#rule
+		$rule01 = New-AzureRmApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
+
+		# sku
+		$sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
+
+		# security part
+		$sslPolicy = New-AzureRmApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+
+		# Create Application Gateway
+		$appgw = New-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy
+
+		# Operational State
+		Assert-AreEqual "Running" $appgw.OperationalState
+
+		# Get for zones
+		Assert-AreEqual $appgw.Zones.Count 2
+
+		# Get for SslPolicy
+		$sslPolicy01 = Get-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $appgw
+		Assert-AreEqual $sslPolicy.MinProtocolVersion $sslPolicy01.MinProtocolVersion
+
+		# Stop Application Gateway
+		$getgw = Stop-AzureRmApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual "Stopped" $getgw.OperationalState
+
 		# Delete Application Gateway
 		Remove-AzureRmApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
 	}

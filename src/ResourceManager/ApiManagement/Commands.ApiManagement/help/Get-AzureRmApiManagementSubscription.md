@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
 Module Name: AzureRM.ApiManagement
 ms.assetid: 227EF8A2-E04A-4F6B-B66E-E77F1276A7E4
@@ -80,9 +80,9 @@ This command gets all subscriptions for the product.
 Specifies a **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -93,9 +93,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,9 +111,9 @@ Specifies a product identifier.
 If specified, this cmdlet finds all subscriptions by the product identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByProductId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -127,9 +127,9 @@ Specifies a subscription identifier.
 If specified, this cmdlet finds subscription by the identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetBySubscriptionId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -143,9 +143,9 @@ Specifies a user identifier.
 If specified, this cmdlet finds all subscriptions by the user identifier.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByUserId
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -166,9 +166,6 @@ This cmdlet does not accept any input.
 
 ### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription
 The detail of the subscription in the API Management service.
-
-### IList<Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementSubscription>
-The list of subscription in API Management service.
 
 ## NOTES
 

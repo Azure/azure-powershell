@@ -107,7 +107,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\AzureRM.HDInsight.psd1">
+    <None Include="AzureRM.HDInsight.psd1">
       <Link>AzureRM.HDInsight.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

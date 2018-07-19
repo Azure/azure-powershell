@@ -58,15 +58,19 @@ Note that although specifying the resource group is optional for this cmdlet, yo
 ## EXAMPLES
 
 ### Example 1: Remove a key vault
-```
-PS C:\>Remove-AzureRmKeyVault -VaultName "Contoso03Vault"
+```powershell
+PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -PassThru
+
+True
 ```
 
 This command removes the key vault named Contoso03Vault from your current subscription.
 
 ### Example 2: Remove a key vault from a specified resource group
-```
-PS C:\>Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14"
+```powershell
+PS C:\> Remove-AzureRmKeyVault -VaultName "Contoso03Vault" -ResourceGroupName "Group14" -PassThru
+
+True
 ```
 
 This command removes the key vault named Contoso03Vault from the named resource group.
@@ -78,7 +82,7 @@ If you do not specify the resource group name, the cmdlet searches for the named
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,7 +113,7 @@ Indicates that the cmdlet does not prompt you for confirmation.
 By default, this cmdlet prompts you to confirm that you want to delete the key vault.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +128,7 @@ Accept wildcard characters: False
 Key Vault object to be deleted.
 
 ```yaml
-Type: PSKeyVault
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 Parameter Sets: InputObjectByAvailableVault, InputObjectByDeletedVault
 Aliases:
 
@@ -139,7 +143,7 @@ Accept wildcard characters: False
 Remove the previously deleted vault permanently.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: ByDeletedVault, InputObjectByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -154,7 +158,7 @@ Accept wildcard characters: False
 The location of the deleted vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault, ResourceIdByAvailableVault
 Aliases:
 
@@ -166,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByDeletedVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -181,7 +185,7 @@ Accept wildcard characters: False
 This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +200,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault
 Aliases:
 
@@ -211,7 +215,7 @@ Accept wildcard characters: False
 KeyVault Resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdByAvailableVault, ResourceIdByDeletedVault
 Aliases:
 
@@ -226,7 +230,7 @@ Accept wildcard characters: False
 Specifies the name of the key vault to remove.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByAvailableVault, ByDeletedVault
 Aliases:
 
@@ -241,7 +245,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -258,7 +262,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -274,8 +278,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
 
 ## OUTPUTS
 

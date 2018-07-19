@@ -1,5 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.dll-Help.xml
+Module Name: AzureRM.ApiManagement
 ms.assetid: 0BC53178-8463-4EF5-8268-FBEC4753AD97
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementoperation
 schema: 2.0.0
@@ -13,8 +14,8 @@ Creates an API management operation.
 ## SYNTAX
 
 ```
-New-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-OperationId <String>]
- -Name <String> -Method <String> -UrlTemplate <String> [-Description <String>]
+New-AzureRmApiManagementOperation -Context <PsApiManagementContext> -ApiId <String> [-ApiRevision <String>]
+ [-OperationId <String>] -Name <String> -Method <String> -UrlTemplate <String> [-Description <String>]
  [-TemplateParameters <PsApiManagementParameter[]>] [-Request <PsApiManagementRequest>]
  [-Responses <PsApiManagementResponse[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -25,7 +26,7 @@ The **New-AzureRmApiManagementOperation** cmdlet create an API operation.
 ## EXAMPLES
 
 ### Example 1: Create an API management operation
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>New-AzureRmApiManagementOperation -Context $apimContext -ApiId $APIId -OperationId "Operation001" -Name "Operation" -Method "GET" -UrlTemplate "/resource" -Description "Use this operation to get resource"
 ```
@@ -33,7 +34,7 @@ PS C:\>New-AzureRmApiManagementOperation -Context $apimContext -ApiId $APIId -Op
 This command creates an API management operation.
 
 ### Example 2: Create an API management operation with request and response details
-```
+```powershell
 PS C:\>$apimContext = New-AzureRmApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
 PS C:\>$RID = New-Object -TypeName Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter
 $RID.Name = "RID"
@@ -71,11 +72,26 @@ This example creates an API management operation with request and response detai
 Specifies the identifier of the API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ApiRevision
+Identifier of API Revision. This parameter is optional. If not specified, the operation will be attached to the currently active api revision.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -86,9 +102,9 @@ Accept wildcard characters: False
 Specifies the instance of the **PsApiManagementContext** object.
 
 ```yaml
-Type: PsApiManagementContext
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -99,9 +115,9 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
- 
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -116,9 +132,9 @@ Accept wildcard characters: False
 Specifies the description of new API operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -131,9 +147,9 @@ Accept wildcard characters: False
 Specifies the HTTP method of the new API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -146,9 +162,9 @@ Accept wildcard characters: False
 Specifies the display name of new API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -161,9 +177,9 @@ Accept wildcard characters: False
 Specifies the identifier of the API management operation.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -176,9 +192,9 @@ Accept wildcard characters: False
 Specifies the details of the API management operation.
 
 ```yaml
-Type: PsApiManagementRequest
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementRequest
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -191,9 +207,9 @@ Accept wildcard characters: False
 Specifies an array of possible API management operation responses.
 
 ```yaml
-Type: PsApiManagementResponse[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementResponse[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -207,9 +223,9 @@ Specifies an array of parameters defined in parameter *UrlTemplate*.
 If you do not specify this parameter, a default value will be generated based on the *UrlTemplate*.
 
 ```yaml
-Type: PsApiManagementParameter[]
+Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementParameter[]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -222,9 +238,9 @@ Accept wildcard characters: False
 Specifies the URL template.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named

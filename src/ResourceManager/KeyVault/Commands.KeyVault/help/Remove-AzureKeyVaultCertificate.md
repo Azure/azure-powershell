@@ -31,24 +31,52 @@ The **Remove-AzureKeyVaultCertificate** cmdlet removes a certificate from a key 
 ## EXAMPLES
 
 ### Example 1: Remove a certificate
-```
-PS C:\>Remove-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
-Name        : selfSigned01
-Certificate : 
-Thumbprint  : 
-Tags        : 
-Enabled     : True
-Created     : 2/8/2016 11:29:33 PM
-Updated     : 2/8/2016 11:29:33 PM
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
+
+Certificate        : [Subject]
+                       CN=contoso.com
+
+                     [Issuer]
+                       CN=contoso.com
+
+                     [Serial Number]
+                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                     [Not Before]
+                       4/11/2018 4:28:39 PM
+
+                     [Not After]
+                       10/11/2018 4:38:39 PM
+
+                     [Thumbprint]
+                       XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+KeyId              : https://contosokv01.vault.azure.net:443/keys/selfsigned01/968c3920884a435abf8faea11f565456
+SecretId           : https://contosokv01.vault.azure.net:443/secrets/selfsigned01/968c3920884a435abf8faea11f565456
+Thumbprint         : XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+RecoveryLevel      : Purgeable
+ScheduledPurgeDate :
+DeletedDate        :
+Enabled            : True
+Expires            : 10/11/2018 11:38:39 PM
+NotBefore          : 4/11/2018 11:28:39 PM
+Created            : 4/11/2018 11:38:39 PM
+Updated            : 4/11/2018 11:38:39 PM
+Tags               :
+VaultName          : ContosoKV01
+Name               : SelfSigned01
+Version            : 968c3920884a435abf8faea11f565456
+Id                 : https://contosokv01.vault.azure.net:443/certificates/selfsigned01/968c3920884a435abf8faea11f565456
 ```
 
 This command removes the certificate named SelfSigned01 from the key vault named ContosoKV01.
 This command specifies the *Force* parameter.
 Therefore, the cmdlet does not prompt you for confirmation.
 
-### Example 3: Purge the deleted certificate from the key vault permanently
-```
-PS C:\>Remove-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+### Example 2: Purge the deleted certificate from the key vault permanently
+```powershell
+PS C:\> Remove-AzureKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
 ```
 
 This command permanently removes the certificate named 'MyCert' from the key vault named 'Contoso'.
@@ -60,7 +88,7 @@ Executing this cmdlet requires the 'purge' permission, which must have been prev
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -75,7 +103,7 @@ Accept wildcard characters: False
 Forces the command to run without asking for user confirmation.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,7 +118,7 @@ Accept wildcard characters: False
 Certificate Object.
 
 ```yaml
-Type: PSKeyVaultCertificateIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 Parameter Sets: ByObject
 Aliases:
 
@@ -105,7 +133,7 @@ Accept wildcard characters: False
 If present, removes the previously deleted certificate permanently
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -121,7 +149,7 @@ Specifies the name of the certificate that this cmdlet removes from a key vault.
 This cmdlet constructs the fully qualified domain name (FQDN) of a certificate based on the name that this parameter specifies, the name of the key vault, and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultNameAndName
 Aliases:
 
@@ -137,7 +165,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +181,7 @@ Specifies the name of the key vault from which this cmdlet removes a certificate
 This cmdlet constructs the FQDN of a key vault based on the name that this parameter specifies and your current environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultNameAndName
 Aliases:
 
@@ -168,7 +196,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -185,7 +213,7 @@ The cmdlet is not run.Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -201,8 +229,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
 
 ## OUTPUTS
 

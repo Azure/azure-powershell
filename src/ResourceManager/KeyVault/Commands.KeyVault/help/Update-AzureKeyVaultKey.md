@@ -32,10 +32,24 @@ The **Update-AzureKeyVaultKey** cmdlet updates the editable attributes of a key 
 ## EXAMPLES
 
 ### Example 1: Modify a key to enable it, and set the expiration date and tags
-```
-PS C:\>$Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = null}
+```powershell
+PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
+PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = 'true'}
 PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Expires $Expires -Enable $True -Tag $Tags -PassThru
+
+Vault Name     : Contoso
+Name           : ITSoftware
+Version        : 394f9379a47a4e2086585468de6c7ae5
+Id             : https://Contoso.vault.azure.net:443/keys/ITSoftware/394f9379a47a4e2086585468de6c7ae5
+Enabled        : True
+Expires        : 5/25/2020 7:58:07 PM
+Not Before     :
+Created        : 4/6/2018 11:31:36 PM
+Updated        : 5/25/2018 7:59:02 PM
+Purge Disabled : False
+Tags           : Name        Value
+                 Severity    high
+                 Accounting  true
 ```
 
 The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
@@ -48,8 +62,20 @@ The final command modifies a key named ITSoftware. The command enables the key, 
 time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
 ### Example 2: Modify a key to delete all tags
-```
-PS C:\>Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '7EEA45C6EE50490B9C3176F80AC1A0DG' -Tag @{}
+```powershell
+PS C:\> Update-AzureKeyVaultKey -VaultName 'Contoso' -Name 'ITSoftware' -Version '394f9379a47a4e2086585468de6c7ae5' -Tag @{}
+
+Vault Name     : Contoso
+Name           : ITSoftware
+Version        : 394f9379a47a4e2086585468de6c7ae5
+Id             : https://Contoso.vault.azure.net:443/keys/ITSoftware/394f9379a47a4e2086585468de6c7ae5
+Enabled        : True
+Expires        : 5/25/2020 7:58:07 PM
+Not Before     :
+Created        : 4/6/2018 11:31:36 PM
+Updated        : 5/25/2018 8:00:08 PM
+Purge Disabled : False
+Tags           :
 ```
 
 This commands deletes all tags for a specific version of a key named ITSoftware.
@@ -60,7 +86,7 @@ This commands deletes all tags for a specific version of a key named ITSoftware.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -76,7 +102,7 @@ Value of true enables the key and a value of false disabless the key.
 If not specified, the existing enabled/disabled state remains unchanged.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +118,7 @@ The expiration time of a key in UTC time.
 If not specified, the existing expiration time of the key remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +133,7 @@ Accept wildcard characters: False
 Key object
 
 ```yaml
-Type: PSKeyVaultKeyIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -123,7 +149,7 @@ The operations that can be performed with the key.
 If not specified, the existing key operations of the key remain unchanged.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +165,7 @@ Key name.
 Cmdlet constructs the FQDN of a key from vault name, currently selected environment and key name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: KeyName
 
@@ -155,7 +181,7 @@ The UTC time before which key can't be used.
 If not specified, the existing NotBefore attribute of the key remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +197,7 @@ Cmdlet does not return an object by default.
 If this switch is specified, returns the updated key bundle object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +213,7 @@ A hashtable represents key tags.
 If not specified, the existings tags of the key remain unchanged.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -203,7 +229,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -219,7 +245,7 @@ Key version.
 Cmdlet constructs the FQDN of a key from vault name, currently selected environment, key name and key version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: KeyVersion
 
@@ -234,7 +260,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -250,7 +276,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

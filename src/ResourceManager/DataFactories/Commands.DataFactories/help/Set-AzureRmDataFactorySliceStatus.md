@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.DataFactories.dll-Help.xml
 Module Name: AzureRM.DataFactories
 ms.assetid: 1D07222C-17D1-421C-8C9B-37043CBCF517
@@ -50,9 +50,9 @@ Specifies a **PSDataFactory** object.
 This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: PSDataFactory
+Type: Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -66,9 +66,9 @@ Specifies the name of a data factory.
 This cmdlet modifies the status of slices that belong to the data factory that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -81,9 +81,9 @@ Accept wildcard characters: False
 Specifies the name of the dataset for which this cmdlet modifies slices.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -122,9 +122,9 @@ For more information about **DateTime** objects, type `Get-Help Get-Date`.
 The default time zone designator is UTC.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -138,9 +138,9 @@ Specifies the name of an Azure resource group.
 This cmdlet modifies the status of slices that belong to the group that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByFactoryName
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -154,9 +154,9 @@ Specifies the start of a time period as a **DateTime** object.
 This time is the beginning of a data slice.
 
 ```yaml
-Type: DateTime
+Type: System.DateTime
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -181,9 +181,9 @@ Data processing failed.
 Skipped processing the data slice.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Failed, InProgress, Ready, Skipped, Waiting
 
 Required: True
@@ -203,9 +203,9 @@ Sets the status of each slice for the dataset in the specified time range.
 Sets the status of each slice for the dataset and all the dependent datasets, which are used as input datasets for activities in the pipeline.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Individual, UpstreamInPipeline
 
 Required: False

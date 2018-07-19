@@ -19,13 +19,14 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactory;
-using Microsoft.Azure.Management.Resources;
+using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Subscriptions;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using LegacyTest = Microsoft.Azure.Test;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
@@ -40,7 +41,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         protected void SetupManagementClients(MockContext context)
         {
-            var resourceManagementClient = GetResourceManagementClient();
+            var resourceManagementClient = GetResourceManagementClient(context);
             var dataPipelineManagementClient = GetDataPipelineManagementClient(context);
             var subscriptionsClient = GetSubscriptionClient();
             var galleryClient = GetGalleryClient();
@@ -53,8 +54,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 authorizationManagementClient);
         }
 
-        protected void RunPowerShellTest(params string[] scripts)
+        protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
         {
+            helper.TracingInterceptor = logger;
             Dictionary<string, string> d = new Dictionary<string, string>();
             d.Add("Microsoft.Resources", null);
             d.Add("Microsoft.Features", null);
@@ -73,7 +75,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
                     helper.RMProfileModule,
-                    helper.RMResourceModule,
                     helper.GetRMModulePath("AzureRM.DataFactoryV2.psd1"),
                     "AzureRM.Resources.ps1");
 
@@ -86,9 +87,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             return context.GetServiceClient<DataFactoryManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected ResourceManagementClient GetResourceManagementClient()
+        protected ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(new LegacyTest.CSMTestEnvironmentFactory());
+            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected SubscriptionClient GetSubscriptionClient()
