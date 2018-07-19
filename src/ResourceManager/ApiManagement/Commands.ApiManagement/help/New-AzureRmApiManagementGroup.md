@@ -131,6 +131,7 @@ Group Type. Custom Group is User defined Group. System Group includes Administra
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementGroupType]
 Parameter Sets: (All)
 Aliases:
+Accepted values: Custom, System, External
 
 Required: False
 Position: Named

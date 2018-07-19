@@ -81,7 +81,7 @@ The default value is GET.
 Type: Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementAuthorizationRequestMethod[]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Get, Post
+Accepted values: Get, Post, Head, Options, Trace, Put, Patch, Delete
 
 Required: False
 Position: Named

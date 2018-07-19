@@ -61,7 +61,7 @@ Valid values are:
 Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
 Parameter Sets: (All)
 Aliases:
-Accepted values: Proxy, Portal
+Accepted values: Proxy, Portal, Management, Scm
 
 Required: True
 Position: Named

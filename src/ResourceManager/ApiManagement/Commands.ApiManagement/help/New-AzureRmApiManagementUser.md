@@ -154,7 +154,7 @@ The default value of this parameter is $Null.
 Type: System.Nullable`1[Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementUserState]
 Parameter Sets: (All)
 Aliases:
-Accepted values: Active, Blocked
+Accepted values: Active, Blocked, Deleted, Pending
 
 Required: False
 Position: Named

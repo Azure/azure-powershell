@@ -105,7 +105,7 @@ Valid values are:
 Type: Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
 Parameter Sets: (All)
 Aliases:
-Accepted values: Developer, Standard, Premium
+Accepted values: Developer, Standard, Premium, Basic
 
 Required: True
 Position: Named

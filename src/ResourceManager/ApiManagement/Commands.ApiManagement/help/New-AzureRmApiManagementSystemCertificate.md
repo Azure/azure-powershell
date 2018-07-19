@@ -86,6 +86,7 @@ Certificate StoreName
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: CertificateAuthority, Root
 
 Required: True
 Position: Named
