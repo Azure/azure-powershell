@@ -64,7 +64,9 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Do not ask for confirmation.```yaml
+Do not ask for confirmation.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:

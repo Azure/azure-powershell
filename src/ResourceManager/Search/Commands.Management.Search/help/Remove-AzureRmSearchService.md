@@ -110,7 +110,9 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.```yaml
+This Cmdlet does not return an object by default. If this switch is specified, it returns true if successful.
+
+```yaml
 Type: SwitchParameter
 Parameter Sets: (All)
 Aliases:
