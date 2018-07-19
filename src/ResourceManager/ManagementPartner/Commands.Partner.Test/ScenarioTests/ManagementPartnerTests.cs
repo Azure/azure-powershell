@@ -31,35 +31,35 @@ namespace Microsoft.Azure.Commands.ManagementPartner.Test.ScenarioTests
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact]
+        [Fact(Skip = "ManagementPartner tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6678")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartner()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetPartner");
         }
 
-        [Fact]
+        [Fact(Skip = "ManagementPartner tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6678")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetPartnerNoParnterId()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-GetPartnerNoPartnerId");
         }
 
-        [Fact]
+        [Fact(Skip = "ManagementPartner tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6678")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewParnter()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-NewPartner");
         }
 
-        [Fact]
+        [Fact(Skip = "ManagementPartner tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6678")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateParnter()
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-UpdatePartner");
         }
 
-        [Fact]
+        [Fact(Skip = "ManagementPartner tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6678")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveParnter()
         {

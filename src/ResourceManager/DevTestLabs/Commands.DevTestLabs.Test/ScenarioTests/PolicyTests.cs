@@ -26,35 +26,35 @@ namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
             _fixture = fixture;
         }
 
-        [Fact]
+        [Fact(Skip = "DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlVMsPerLabPolicy()
         {
             _fixture.RunTest("Test-AzureRmDtlVMsPerLabPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlVMsPerUserPolicy()
         {
             _fixture.RunTest("Test-AzureRmDtlVMsPerUserPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAllowedVMSizesPolicy()
         {
             _fixture.RunTest("Test-AzureRmDtlAllowedVMSizesPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAutoShutdownPolicy()
         {
             _fixture.RunTest("Test-AzureRmDtlAutoShutdownPolicy");
         }
 
-        [Fact]
+        [Fact(Skip = "DevTestLab tests need to be re-enabled, as outlined in issue https://github.com/Azure/azure-powershell/issues/6677")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestAzureRmDtlAutoStartPolicy()
         {

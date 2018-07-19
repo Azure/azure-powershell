@@ -24,7 +24,6 @@ using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Gallery;
 using Microsoft.Azure.Management.Authorization;
-using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Subscriptions;
@@ -33,6 +32,7 @@ using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Management.Internal.Resources;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
 {
@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
         }
 
         protected abstract T ConstructServiceClient(MockContext context);
-        
+
         public void RunPsTest(XunitTracingInterceptor logger, params string[] scripts)
         {
             var callingClassType = TestUtilities.GetCallingClass(2);
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                 () => scripts,
                 // no custom initializer
                 null,
-                // no custom cleanup 
+                // no custom cleanup
                 null,
                 callingClassType,
                 mockName);
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
         {
             this.serviceClient = this.ConstructServiceClient(context);
 
-            this.resourceManagementClient = LegacyTest.TestBase.GetServiceClient<ResourceManagementClient>(this.csmTestFactory);
+            this.resourceManagementClient = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             this.storageManagementClient = LegacyTest.TestBase.GetServiceClient<StorageManagementClient>(this.csmTestFactory);
             var subscriptionClient = LegacyTest.TestBase.GetServiceClient<SubscriptionClient>(this.csmTestFactory);
             var authManagementClient = LegacyTest.TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
@@ -152,10 +152,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             HttpClientHelperFactory.Instance = new TestHttpClientHelperFactory(credentials);
 
             helper.SetupManagementClients(
-                this.resourceManagementClient, 
-                subscriptionClient, 
-                this.serviceClient, 
-                authManagementClient, 
+                this.resourceManagementClient,
+                subscriptionClient,
+                this.serviceClient,
+                authManagementClient,
                 gallleryClient,
                 this.storageManagementClient);
         }
@@ -185,13 +185,13 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
             /// <param name="credentials">The credentials.</param>
             /// <param name="headerValues">The headers.</param>
             public override HttpClientHelper CreateHttpClientHelper(
-                                                SubscriptionCloudCredentials credentials, 
-                                                IEnumerable<ProductInfoHeaderValue> headerValues, 
+                                                SubscriptionCloudCredentials credentials,
+                                                IEnumerable<ProductInfoHeaderValue> headerValues,
                                                 Dictionary<string, string> cmdletHeaderValues)
             {
                 return new HttpClientHelperImpl(
-                                credentials: this.credential, 
-                                headerValues: headerValues, 
+                                credentials: this.credential,
+                                headerValues: headerValues,
                                 cmdletHeaderValues: cmdletHeaderValues);
             }
 
@@ -206,12 +206,12 @@ namespace Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests
                 /// <param name="credentials">The credentials.</param>
                 /// <param name="headerValues">The headers.</param>
                 public HttpClientHelperImpl(
-                            SubscriptionCloudCredentials credentials, 
-                            IEnumerable<ProductInfoHeaderValue> headerValues, 
+                            SubscriptionCloudCredentials credentials,
+                            IEnumerable<ProductInfoHeaderValue> headerValues,
                             Dictionary<string, string> cmdletHeaderValues)
                     : base(
-                        credentials: credentials, 
-                        headerValues: headerValues, 
+                        credentials: credentials,
+                        headerValues: headerValues,
                         cmdletHeaderValues: cmdletHeaderValues)
                 {
                 }
