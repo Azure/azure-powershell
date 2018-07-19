@@ -31,6 +31,7 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.pgtm)]
         public void TestExpressRouteCrossConnectionApis()
         {
             NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-ExpressRouteCrossConnectionApis");
