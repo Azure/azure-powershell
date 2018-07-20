@@ -215,6 +215,7 @@ Parameters: Force (ByPropertyName), PassThru (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+This cmdlet returns the exported API content as a string.
 
 ## NOTES
 

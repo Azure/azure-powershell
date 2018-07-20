@@ -200,6 +200,7 @@ Parameters: InputObject (ByValue)
 ## OUTPUTS
 
 ### System.String
+The cmdlet returns the path of the output file containing the backup of the secret.
 
 ## NOTES
 

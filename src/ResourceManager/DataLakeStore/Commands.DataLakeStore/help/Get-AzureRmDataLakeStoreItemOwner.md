@@ -111,6 +111,7 @@ Parameters: Type (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The owner of the specified item.
 
 ## NOTES
 
