@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Internal.Resources;
 namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 {
     using Microsoft.Azure.Gallery;
-    using Microsoft.Azure.Management.Authorization;
     using Microsoft.Azure.Management.TrafficManager;
     using Microsoft.Azure.Subscriptions;
     using Microsoft.Azure.Test;
@@ -45,8 +44,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
 
         public GalleryClient GalleryClient { get; private set; }
 
-        public AuthorizationManagementClient AuthorizationManagementClient { get; private set; }
-
         public TrafficManagerManagementClient TrafficManagerManagementClient { get; private set; }
 
         public static TestController NewInstance
@@ -67,14 +64,12 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
             this.ResourceManagementClient = this.GetResourceManagementClient(context);
             this.SubscriptionClient = this.GetSubscriptionClient();
             this.GalleryClient = this.GetGalleryClient();
-            this.AuthorizationManagementClient = this.GetAuthorizationManagementClient();
             this.TrafficManagerManagementClient = this.GetFeatureClient(context);
 
             this.helper.SetupManagementClients(
                 this.ResourceManagementClient,
                 this.SubscriptionClient,
                 this.GalleryClient,
-                this.AuthorizationManagementClient,
                 this.TrafficManagerManagementClient);
         }
 
@@ -160,11 +155,6 @@ namespace Microsoft.Azure.Commands.TrafficManager.Test.ScenarioTests
         protected ResourceManagementClient GetResourceManagementClient(RestTestFramework.MockContext context)
         {
             return context.GetServiceClient<ResourceManagementClient>(RestTestFramework.TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        private AuthorizationManagementClient GetAuthorizationManagementClient()
-        {
-            return TestBase.GetServiceClient<AuthorizationManagementClient>(this.csmTestFactory);
         }
 
         private SubscriptionClient GetSubscriptionClient()

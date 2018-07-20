@@ -47,8 +47,49 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
 
         public ITrafficManagerManagementClient TrafficManagerManagementClient { get; set; }
 
-        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, int? monitorInterval, int? monitorTimeout, int? monitorToleratedNumberOfFailures, Hashtable tag)
+        public TrafficManagerProfile CreateTrafficManagerProfile(string resourceGroupName, string profileName, string profileStatus, string trafficRoutingMethod, string relativeDnsName, uint ttl, string monitorProtocol, uint monitorPort, string monitorPath, int? monitorInterval, int? monitorTimeout, int? monitorToleratedNumberOfFailures, IList<string> customHeaders, IList<string> expectedStatusCodeRanges, Hashtable tag)
         {
+            IList<MonitorConfigCustomHeadersItem> customHeaderList = null;
+            if (customHeaders != null)
+            {
+                var customHeaderSeparator = ':';
+                customHeaderList = new List<MonitorConfigCustomHeadersItem>();
+                foreach (var customHeader in customHeaders)
+                {
+                    if (customHeader == null || !customHeader.Contains(customHeaderSeparator))
+                    {
+                        throw new ArgumentException("customHeaders", "Invalid custom header is provided: " + customHeader);
+                    }
+
+                    var customHeaderParts = customHeader.Split(customHeaderSeparator);
+                    customHeaderList.Add(new MonitorConfigCustomHeadersItem(customHeaderParts[0], customHeaderParts[1]));
+                }
+            }
+
+            IList<MonitorConfigExpectedStatusCodeRangesItem> expectedStatusCodeRangeList = null;
+            if (expectedStatusCodeRanges != null)
+            {
+                var expectedStatusCodeRangeSeparator = '-';
+                expectedStatusCodeRangeList = new List<MonitorConfigExpectedStatusCodeRangesItem>();
+                foreach (var expectedStatusCodeRange in expectedStatusCodeRanges)
+                {
+                    if (expectedStatusCodeRange == null || !expectedStatusCodeRange.Contains(expectedStatusCodeRangeSeparator))
+                    {
+                        throw new ArgumentException("expectedStatusCodeRanges", "Invalid expected status code range is provided: " + expectedStatusCodeRange);
+                    }
+
+                    var expectedStatusCodeRangeParts = expectedStatusCodeRange.Split(expectedStatusCodeRangeSeparator);
+                    int min;
+                    int max;
+                    if (!int.TryParse(expectedStatusCodeRangeParts[0], out min) || !int.TryParse(expectedStatusCodeRangeParts[1], out max))
+                    {
+                        throw new ArgumentException("expectedStatusCodeRanges", "Invalid expected status code range is provided: " + expectedStatusCodeRange);
+                    }
+
+                    expectedStatusCodeRangeList.Add(new MonitorConfigExpectedStatusCodeRangesItem(min, max));
+                }
+            }
+
             Profile response = this.TrafficManagerManagementClient.Profiles.CreateOrUpdate(
                 resourceGroupName,
                 profileName,
@@ -69,6 +110,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                         IntervalInSeconds = monitorInterval,
                         TimeoutInSeconds = monitorTimeout,
                         ToleratedNumberOfFailures = monitorToleratedNumberOfFailures,
+                        CustomHeaders = customHeaderList,
+                        ExpectedStatusCodeRanges = expectedStatusCodeRangeList
                     },
                     Tags = TagsConversionHelper.CreateTagDictionary(tag, validate: true),
                 });
@@ -76,8 +119,25 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
             return TrafficManagerClient.GetPowershellTrafficManagerProfile(resourceGroupName, profileName, response);
         }
 
-        public TrafficManagerEndpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation, uint? minChildEndpoints, IList<string> geoMapping)
+        public TrafficManagerEndpoint CreateTrafficManagerEndpoint(string resourceGroupName, string profileName, string endpointType, string endpointName, string targetResourceId, string target, string endpointStatus, uint? weight, uint? priority, string endpointLocation, uint? minChildEndpoints, IList<string> geoMapping, IList<string> customHeaders)
         {
+            List<EndpointPropertiesCustomHeadersItem> customHeaderList = null;
+            if (customHeaders != null)
+            {
+                var customHeaderSeparator = ':';
+                customHeaderList = new List<EndpointPropertiesCustomHeadersItem>();
+                foreach (var customHeader in customHeaders)
+                {
+                    if (customHeader == null || !customHeader.Contains(customHeaderSeparator))
+                    {
+                        throw new ArgumentException("customHeaders", "Invalid custom header is provided: " + customHeader);
+                    }
+
+                    var customHeaderParts = customHeader.Split(customHeaderSeparator);
+                    customHeaderList.Add(new EndpointPropertiesCustomHeadersItem(customHeaderParts[0], customHeaderParts[1]));
+                }
+            }
+
             Endpoint response = this.TrafficManagerManagementClient.Endpoints.CreateOrUpdate(
                 resourceGroupName,
                 profileName,
@@ -93,6 +153,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                     Target = target,
                     TargetResourceId = targetResourceId,
                     Weight = weight,
+                    CustomHeaders = customHeaderList
                 });
 
             return TrafficManagerClient.GetPowershellTrafficManagerEndpoint(response.Id, resourceGroupName, profileName, endpointType, endpointName, response);
@@ -122,8 +183,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
         {
             IEnumerable<Profile> response =
                 resourceGroupName == null ?
-                this.TrafficManagerManagementClient.Profiles.ListAll() :
-                this.TrafficManagerManagementClient.Profiles.ListAllInResourceGroup(resourceGroupName);
+                this.TrafficManagerManagementClient.Profiles.ListBySubscription() :
+                this.TrafficManagerManagementClient.Profiles.ListByResourceGroup(resourceGroupName);
 
             return response.Select(profile => TrafficManagerClient.GetPowershellTrafficManagerProfile(
                 resourceGroupName ?? TrafficManagerClient.ExtractResourceGroupFromId(profile.Id),
@@ -263,6 +324,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 MonitorIntervalInSeconds = (int?)sdkProfile.MonitorConfig.IntervalInSeconds,
                 MonitorTimeoutInSeconds = (int?)sdkProfile.MonitorConfig.TimeoutInSeconds,
                 MonitorToleratedNumberOfFailures = (int?)sdkProfile.MonitorConfig.ToleratedNumberOfFailures,
+                CustomHeaders = sdkProfile.MonitorConfig.CustomHeaders?.ToList(),
+                ExpectedStatusCodeRanges = sdkProfile.MonitorConfig.ExpectedStatusCodeRanges?.ToList()
             };
 
             if (sdkProfile.Endpoints != null)
@@ -309,6 +372,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Utilities
                 Target = sdkEndpoint.Target,
                 TargetResourceId = sdkEndpoint.TargetResourceId,
                 Weight = (uint?)sdkEndpoint.Weight,
+                CustomHeaders = sdkEndpoint.CustomHeaders?.ToList()
             };
         }
     }

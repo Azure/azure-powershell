@@ -51,6 +51,8 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
 
         public List<string> GeoMapping { get; set; }
 
+        public List<EndpointPropertiesCustomHeadersItem> CustomHeaders { get; set; }
+
         public Endpoint ToSDKEndpoint()
         {
             return new Endpoint
@@ -66,6 +68,7 @@ namespace Microsoft.Azure.Commands.TrafficManager.Models
                 Target = this.Target,
                 TargetResourceId = this.TargetResourceId,                   
                 Weight = this.Weight,
+                CustomHeaders = this.CustomHeaders
             };
         }
 

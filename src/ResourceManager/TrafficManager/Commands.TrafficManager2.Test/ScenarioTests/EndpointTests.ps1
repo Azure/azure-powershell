@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,7 +78,7 @@ function Test-EndpointCrud
 	{
 	$profile = TestSetup-CreateProfile $profileName $resourceGroup.ResourceGroupName
 
-	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe"
+	$endpoint = New-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints" -Target "www.contoso.com" -EndpointStatus "Enabled" -EndpointLocation "North Europe" -CustomHeader "header-name-1:header-value-1","header-name-2:header-value-2"
 
 	Assert-NotNull $endpoint
 	Assert-AreEqual $endpointName $endpoint.Name 
@@ -87,7 +87,10 @@ function Test-EndpointCrud
 	Assert-AreEqual "ExternalEndpoints" $endpoint.Type
 	Assert-AreEqual "www.contoso.com" $endpoint.Target
 	Assert-AreEqual "Enabled" $endpoint.EndpointStatus
-	<# Assert-AreEqual "North Europe" $endpoint.EndpointLocation #>
+	Assert-AreEqual "header-name-1" $endpoint.CustomHeader[0].Name
+	Assert-AreEqual "header-value-1" $endpoint.CustomHeader[0].Value
+	Assert-AreEqual "header-name-2" $endpoint.CustomHeader[1].Name
+	Assert-AreEqual "header-value-2" $endpoint.CustomHeader[1].Value
 
     $endpoint = Get-AzureRmTrafficManagerEndpoint -Name $endpointName -ProfileName $profileName -ResourceGroupName $resourceGroup.ResourceGroupName  -Type "ExternalEndpoints"
 

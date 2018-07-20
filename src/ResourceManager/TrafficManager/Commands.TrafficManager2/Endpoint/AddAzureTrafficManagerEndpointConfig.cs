@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,9 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
+    using Microsoft.Azure.Management.TrafficManager.Models;
     using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -73,6 +75,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
         [ValidateCount(1, 350)]
         public List<string> GeoMapping { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "List of custom header name and value pairs for probe requests.")]
+        [ValidateCount(1, 8)]
+        public List<string> CustomHeader { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.TrafficManagerProfile.Endpoints == null)
@@ -83,6 +89,23 @@ namespace Microsoft.Azure.Commands.TrafficManager
             if (this.TrafficManagerProfile.Endpoints.Any(endpoint => string.Equals(this.EndpointName, endpoint.Name)))
             {
                 throw new PSArgumentException(string.Format(ProjectResources.Error_AddExistingEndpoint, this.EndpointName));
+            }
+
+            List<EndpointPropertiesCustomHeadersItem> customHeaderList = null;
+            if (this.CustomHeader != null)
+            {
+                var customHeaderSeparator = ':';
+                customHeaderList = new List<EndpointPropertiesCustomHeadersItem>();
+                foreach (var customHeader in this.CustomHeader)
+                {
+                    if (customHeader == null || !customHeader.Contains(customHeaderSeparator))
+                    {
+                        throw new ArgumentException("customHeaders", "Invalid custom header is provided: " + customHeader);
+                    }
+
+                    var customHeaderParts = customHeader.Split(customHeaderSeparator);
+                    customHeaderList.Add(new EndpointPropertiesCustomHeadersItem(customHeaderParts[0], customHeaderParts[1]));
+                }
             }
 
             this.TrafficManagerProfile.Endpoints.Add(
@@ -98,6 +121,7 @@ namespace Microsoft.Azure.Commands.TrafficManager
                     Location = this.EndpointLocation,
                     MinChildEndpoints = this.MinChildEndpoints,
                     GeoMapping = this.GeoMapping,
+                    CustomHeaders = customHeaderList
                 });
 
             this.WriteVerbose(ProjectResources.Success);
