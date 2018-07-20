@@ -37,11 +37,11 @@ The **Get-AzureRmSearchAdminKeyPair** cmdlet gets the admin key pair of the Azur
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchAdminKeyPair -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
+PS C:\> Get-AzureRmSearchAdminKeyPair -ResourceGroupName felixwa-01 -ServiceName felixwa-basic-search
 
-Primary                          Secondary
--------                          ---------
-44EE0AA1CD9FCE46E05D899222D96417 CEF791D5BAC2E6C0B232C56702F21E87
+Primary                          Secondary                       
+-------                          ---------                       
+3B06A25BDADFF72EC132736BAA2547A1 E643B75A52E04DF13EB690807C451C55
 ```
 
 The example gets admin key pair of the Azure Search service.
