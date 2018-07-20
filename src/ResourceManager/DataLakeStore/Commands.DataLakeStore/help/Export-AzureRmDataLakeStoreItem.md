@@ -248,6 +248,7 @@ Parameters: DiagnosticLogLevel (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The path where the file or folder was downloaded to.
 
 ## NOTES
 

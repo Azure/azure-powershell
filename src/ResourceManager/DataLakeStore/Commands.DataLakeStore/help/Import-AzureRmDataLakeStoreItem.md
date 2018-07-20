@@ -262,6 +262,7 @@ Parameters: DiagnosticLogLevel (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The full path in the Data Lake Store account to the uploaded file or folder.
 
 ## NOTES
 

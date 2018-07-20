@@ -218,6 +218,7 @@ Parameters: Concurrency (ByPropertyName)
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
+If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES
 

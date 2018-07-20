@@ -94,24 +94,6 @@ Accept wildcard characters: False
 
 ### -ServerName
 SQL Database server name.
-Type: String
-Parameter Sets: (All)
-Aliases:
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
 
 ```yaml
 Type: System.String

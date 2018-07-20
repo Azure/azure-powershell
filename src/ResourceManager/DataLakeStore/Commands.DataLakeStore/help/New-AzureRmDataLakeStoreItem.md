@@ -206,6 +206,7 @@ Parameters: Folder (ByPropertyName), Force (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The full path to the created file or folder.
 
 ## NOTES
 

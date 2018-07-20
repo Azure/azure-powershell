@@ -91,6 +91,7 @@ Parameters: Path (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The string representation of the ownership octal
 
 ## NOTES
 * Alias: Get-AdlStoreItemPermission

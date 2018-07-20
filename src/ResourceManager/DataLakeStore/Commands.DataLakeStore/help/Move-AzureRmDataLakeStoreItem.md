@@ -156,6 +156,7 @@ Parameters: Force (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The full path to the moved file or folder.
 
 ## NOTES
 

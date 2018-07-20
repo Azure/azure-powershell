@@ -159,6 +159,7 @@ Parameters: Force (ByPropertyName)
 ## OUTPUTS
 
 ### System.String
+The full path to the resulting file from the joined files.
 
 ## NOTES
 
