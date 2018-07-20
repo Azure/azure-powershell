@@ -15,8 +15,12 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Graph.RBAC.Version1_6;
+using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Subscriptions;
@@ -25,9 +29,6 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
-using Microsoft.Azure.Management.Authorization.Version2015_07_01;
-using Microsoft.Azure.Graph.RBAC.Version1_6;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
@@ -38,6 +39,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         private const string SubscriptionIdKey = "SubscriptionId";
 
         private EnvironmentSetupHelper helper;
+        public string UserDomain { get; private set; }
 
         protected DataFactoriesScenarioTestsBase()
         {
@@ -122,14 +124,20 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 tenantId = environment.Tenant;
+                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
 
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
+                HttpMockServer.Variables[DomainKey] = UserDomain;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
                 if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
                 {
                     tenantId = HttpMockServer.Variables[TenantIdKey];
+                }
+                if (HttpMockServer.Variables.ContainsKey(DomainKey))
+                {
+                    UserDomain = HttpMockServer.Variables[DomainKey];
                 }
                 if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
                 {

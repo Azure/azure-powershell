@@ -107,11 +107,11 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Link
-Remove the linked integration runtimes created in the shared integration runtime.
+### -LinkedDataFactoryName
+The linked data factory name.
 
 ```yaml
-Type: SwitchParameter
+Type: String
 Parameter Sets: (All)
 Aliases: 
 
