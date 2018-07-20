@@ -36,5 +36,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
             List<Tuple<string, long>> subDirectories = ListFiles.GetFiles(ListFiles.EnsureUncPrefixPresent(this.FullName));
             return subDirectories.Select(tuple => new AfsFileInfo(Combine(this.FullName, tuple.Item1), tuple.Item2));
         }
+
+        public bool Exists()
+        {
+            return System.IO.Directory.Exists(this.FullName);
+        }
     }
 }
