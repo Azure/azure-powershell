@@ -33,7 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />
-    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.2-preview" />
+    <PackageReference Include="Microsoft.Azure.Management.ApiManagement" Version="4.0.3-preview" />
   </ItemGroup>
 
   <ItemGroup>
