@@ -52,19 +52,22 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        void EnableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
+        private static void EnableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
             var store = session.DataStore;
-            string contextPath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
-            string tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+            var contextPath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
+            var tokenPath = Path.Combine(session.TokenCacheDirectory, session.TokenCacheFile);
+
             if (!IsValidPath(contextPath))
             {
-                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid context path", contextPath));
+                throw new PSInvalidOperationException(
+                    $"'{contextPath}' is not a valid path. You cannot enable context autosave without a valid context path");
             }
 
             if (!IsValidPath(tokenPath))
             {
-                throw new PSInvalidOperationException(string.Format("'{0}' is not a valid path. You cannot enable context autosave without a valid token cache path", tokenPath));
+                throw new PSInvalidOperationException(
+                    $"'{tokenPath}' is not a valid path. You cannot enable context autosave without a valid token cache path");
             }
 
             result = new ContextAutosaveSettings
@@ -102,19 +105,17 @@ namespace Microsoft.Azure.Commands.Profile.Context
                     }
                 }
 
-                if (writeAutoSaveFile)
-                {
-                    try
-                    {
-                        FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
-                        string autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
-                        session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
-                    }
-                    catch
-                    {
-                        // do not fail for file system errors in writing the autosave setting
-                    }
+                if (!writeAutoSaveFile) return;
 
+                try
+                {
+                    FileUtilities.EnsureDirectoryExists(session.ProfileDirectory);
+                    var autoSavePath = Path.Combine(session.ProfileDirectory, ContextAutosaveSettings.AutoSaveSettingsFile);
+                    session.DataStore.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
+                }
+                catch
+                {
+                    // do not fail for file system errors in writing the autosave setting
                 }
             }
             catch
@@ -123,18 +124,19 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        bool IsValidPath(string path)
+        private static bool IsValidPath(string filepath)
         {
             FileInfo valid = null;
             try
             {
-                valid = new FileInfo(path);
+                valid = new FileInfo(filepath);
             }
             catch
             {
                 // swallow any exception
             }
-            return valid != null;
+
+            return valid != null && Directory.Exists(valid.DirectoryName);
         }
     }
 }
