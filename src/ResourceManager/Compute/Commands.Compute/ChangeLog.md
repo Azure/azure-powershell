@@ -18,7 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for `New-AzureRmVM`
 * Updated help files to include full parameter types.
+* Update description for Set-AzureRmVMOSDisk
 
 ## Version 5.3.0
 * Add -Tag parameter to Update/New-AzureRmAvailabilitySet
@@ -26,6 +31,7 @@
 * Add examples for `Remove-AzureRmVmssExtension`
 * Update help for `Set-AzureRmVMAccessExtension`
 * Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+* Fixed Disable-AzureRmVmDiskEncryption to work for VMs encrypted without AAD parameters
 
 ## Version 5.2.0
 * IP Tag feature for VMSS

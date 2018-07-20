@@ -21,9 +21,10 @@ Remove-AzureRmLoadBalancerInboundNatPoolConfig [-Name <String>] -LoadBalancer <P
 
 ## EXAMPLES
 
-### 1:
+### 1: Remove
 ```
-PS C:\>
+PS C:\> $slb = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> Remove-AzureRmLoadBalancerInboundNatPoolConfig -Name myinboundnatpool -LoadBalancer $slb
 ```
 
 ## PARAMETERS

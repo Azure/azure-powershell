@@ -382,8 +382,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData
-
+### List<Microsoft.Azure.Commands.Insights.OutputClasses.PSEventData>
+ 
 ## NOTES
 
 ## RELATED LINKS

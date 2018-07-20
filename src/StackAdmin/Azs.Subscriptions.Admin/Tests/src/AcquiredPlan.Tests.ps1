@@ -40,8 +40,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -49,9 +51,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "AcquiredPlan" -Tags @('AcquiredPlan', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidatePlanAcquisition {
                 param(
@@ -67,8 +69,8 @@ InModuleScope Azs.Subscriptions.Admin {
                 # PlanAcquisition
                 $PlanAcquisition.AcquisitionId              | Should Not Be $null
                 $PlanAcquisition.AcquisitionTime            | Should Not Be $null
-				$PlanAcquisition.PlanId                     | Should Not Be $null
-				$PlanAcquisition.ProvisioningState          | Should Not Be $null
+                $PlanAcquisition.PlanId                     | Should Not Be $null
+                $PlanAcquisition.ProvisioningState          | Should Not Be $null
             }
 
             function AssertPlanAcquisitionsSame {
@@ -81,59 +83,54 @@ InModuleScope Azs.Subscriptions.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                            | Should Not Be $null
 
                     # Resource
                     $Found.Id                         | Should Be $Expected.Id
 
-					# DelegatedProvider
-					$Found.AcquisitionId              | Should Be $Found.AcquisitionId
-					$Found.AcquisitionTime            | Should Be $Found.AcquisitionTime
-					$Found.ExternalReferenceId        | Should Be $Found.ExternalReferenceId
-					$Found.PlanId                     | Should Be $Found.PlanId
-					$Found.ProvisioningState          | Should Be $Found.ProvisioningState
+                    # DelegatedProvider
+                    $Found.AcquisitionId              | Should Be $Found.AcquisitionId
+                    $Found.AcquisitionTime            | Should Be $Found.AcquisitionTime
+                    $Found.ExternalReferenceId        | Should Be $Found.ExternalReferenceId
+                    $Found.PlanId                     | Should Be $Found.PlanId
+                    $Found.ProvisioningState          | Should Be $Found.ProvisioningState
                 }
             }
         }
 
-        It "TestListAcquiredPlans" {
+        it "TestListAcquiredPlans" -Skip:$('TestListAcquiredPlans' -in $global:SkippedTests) {
             $global:TestName = 'TestListAcquiredPlans'
 
-            $plans = Get-AzsSubscriptionPlan -TargetSubscriptionId "8158498d-27b1-4ccf-9aa1-de0f925731e6"
+            $plans = Get-AzsSubscriptionPlan -TargetSubscriptionId $global:TargetSubscriptionId
 
-            foreach($plan in $plans) {
+            foreach ($plan in $plans) {
                 ValidatePlanAcquisition $plan
-	        }
+            }
         }
 
-		It "TestGetAcquiredPlan" {
+        it "TestGetAcquiredPlan" -Skip:$('TestGetAcquiredPlan' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAcquiredPlan'
 
-            $subscriptionId = "ca831431-dac2-4466-a538-59fa3f882f68"
-            $plans = Get-AzsSubscriptionPlan -TargetSubscriptionId $subscriptionId
+            $plans = Get-AzsSubscriptionPlan -TargetSubscriptionId $global:subscriptionId
 
-            foreach($plan in $plans) {
-				$plan2 = Get-AzsSubscriptionPlan -TargetSubscriptionId $subscriptionId -AcquisitionId $plan.AcquisitionId
+            foreach ($plan in $plans) {
+                $plan2 = Get-AzsSubscriptionPlan -TargetSubscriptionId $global:subscriptionId -AcquisitionId $plan.AcquisitionId
                 AssertPlanAcquisitionsSame $plan $plan2
-	        }
-		}
+            }
+        }
 
-		It "TestCreateThenDeleteAcquiredPlan" {
-			$global:TestName = "TestCreateThenDeleteAcquiredPlan"
+        it "TestCreateThenDeleteAcquiredPlan" -Skip:$('TestCreateThenDeleteAcquiredPlan' -in $global:SkippedTests) {
+            $global:TestName = "TestCreateThenDeleteAcquiredPlan"
 
-			$subs = Get-AzsUserSubscription
-			$plans = Get-AzsPlan
+            $plans = Get-AzsPlan
+            $new = New-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -PlanId $plans[0].Id -TargetSubscriptionId $global:TargetSubscriptionId
+            ValidatePlanAcquisition $new
 
-			$acquisitionId = "718c7f7c-4868-479a-98ce-5caaa8f158c8"
-			$subscriptionId = "8158498d-27b1-4ccf-9aa1-de0f925731e6"
+            Remove-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -TargetSubscriptionId $global:TargetSubscriptionId -Force
 
-			$new = New-AzsSubscriptionPlan -AcquisitionId $acquisitionId -PlanId $plans[0].Id -TargetSubscriptionId $subscriptionId
-			ValidatePlanAcquisition $new
-
-			Remove-AzsSubscriptionPlan -AcquisitionId $acquisitionId -TargetSubscriptionId $subscriptionId -Force
-
-			{ Get-AzsSubscriptionPlan -AcquisitionId $acquisitionId -TargetSubscriptionId $subscriptionId } | Should Throw
-		}
+            { Get-AzsSubscriptionPlan -AcquisitionId $global:acquisitionId -TargetSubscriptionId $global:TargetSubscriptionId } | Should Throw
+        }
     }
 }

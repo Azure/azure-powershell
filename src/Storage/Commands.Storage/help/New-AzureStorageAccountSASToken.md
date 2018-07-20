@@ -17,7 +17,7 @@ Creates an account-level SAS token.
 New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +48,7 @@ Specifies the Azure storage context.
 You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Type: IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -59,11 +59,26 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ExpiryTime
 Specifies the time at which the shared access signature becomes invalid.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +94,7 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +113,7 @@ It is important to note that this is a string, like `rwd` (for Read, Write and D
 For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -119,7 +134,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
+Type: SharedAccessProtocol
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -141,7 +156,7 @@ The acceptable values for this parameter are:
 - Object
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.SharedAccessAccountResourceTypes
+Type: SharedAccessAccountResourceTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, Container, Object
@@ -164,7 +179,7 @@ The acceptable values for this parameter are:
 - Table
 
 ```yaml
-Type: Microsoft.WindowsAzure.Storage.SharedAccessAccountServices
+Type: SharedAccessAccountServices
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Blob, File, Queue, Table
@@ -181,7 +196,7 @@ Specifies the time, as a **DateTime** object, at which the SAS becomes valid.
 To get a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
-Type: System.Nullable`1[System.DateTime]
+Type: DateTime
 Parameter Sets: (All)
 Aliases:
 

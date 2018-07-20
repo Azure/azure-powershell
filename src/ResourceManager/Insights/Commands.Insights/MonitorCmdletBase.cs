@@ -83,6 +83,8 @@ namespace Microsoft.Azure.Commands.Insights
         {
             try
             {
+                WriteWarningWithTimestamp("*** The namespace for all the model classes will change from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models in future releases.");
+                WriteWarningWithTimestamp("*** The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.");
                 this.ProcessRecordInternal();
             }
             catch (AggregateException ex)
@@ -120,7 +122,7 @@ namespace Microsoft.Azure.Commands.Insights
                         else
                         {
                             // New model to report errors (from Swagger Spec)
-                            var errorResponse2 = exTemp as Microsoft.Azure.Management.Monitor.Management.Models.ErrorResponseException;
+                            var errorResponse2 = exTemp as Microsoft.Azure.Management.Monitor.Models.ErrorResponseException;
                             if (errorResponse2 != null)
                             {
                                 message = errorResponse2.Body.Message;

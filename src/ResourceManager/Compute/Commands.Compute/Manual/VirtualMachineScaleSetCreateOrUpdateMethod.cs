@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Strategies.Network;
 using Microsoft.Azure.Commands.Compute.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -262,6 +263,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         async Task SimpleParameterSetExecuteCmdlet(IAsyncCmdlet asyncCmdlet)
         {
+            bool loadBalancerNamePassedIn = !String.IsNullOrWhiteSpace(LoadBalancerName);
+
             ResourceGroupName = ResourceGroupName ?? VMScaleSetName;
             VirtualNetworkName = VirtualNetworkName ?? VMScaleSetName;
             SubnetName = SubnetName ?? VMScaleSetName;
@@ -275,7 +278,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             var parameters = new Parameters(this, client);
 
+            // If the user did not specify a load balancer name, mark the LB setting to ignore
+            // preexisting check. The most common scenario is users will let the cmdlet create and name the LB for them with the default
+            // config. We do not want to block that scenario in case the cmdlet failed mid operation and tthe user kicks it off again.
+            if (!loadBalancerNamePassedIn)
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = true;
+            }
+            else
+            {
+                LoadBalancerStrategy.IgnorePreExistingConfigCheck = false;
+            }
+
             var result = await client.RunAsync(client.SubscriptionId, parameters, asyncCmdlet);
+
 
             if (result != null)
             {
