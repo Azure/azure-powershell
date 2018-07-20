@@ -667,7 +667,8 @@
     <MSBuild  Projects="build.proj"
               Targets="InvokeXUnit"
               Properties="XUnitTests=%(XUnitTests.Identity);TestOutputDirectory=$(TestOutputDirectory)"
-      ContinueOnError="false" />
+              Condition="'@(XunitTests->Count())' != '0'"
+              ContinueOnError="false" />
 
     <CallTarget Targets="TestFailureCheck" />
   </Target>
