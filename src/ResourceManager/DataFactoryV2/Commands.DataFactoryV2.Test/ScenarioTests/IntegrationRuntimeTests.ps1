@@ -143,7 +143,7 @@ function Test-SsisAzure-IntegrationRuntime
         $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
         Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
 
-        Start-Sleep -Seconds 15
+        Wait-Seconds 15
         Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname -DataFactoryName $dfname -Name $irname -Force
     }
     finally
@@ -264,7 +264,7 @@ function Test-Shared-IntegrationRuntime
             -Location $dflocation `
             -Force
 
-        Start-Sleep -s 10
+        Wait-Seconds 10
         
         $irname = "selfhosted-test-integrationruntime"
         $description = "description"
@@ -280,7 +280,7 @@ function Test-Shared-IntegrationRuntime
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
             -Scope $actual.Id
 
-        Start-Sleep -s 20
+        Wait-Seconds 20
 
         $linkedIrName = 'LinkedIntegrationRuntime'
         $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime `
