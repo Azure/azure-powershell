@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestSelfHosedIntegrationRuntime()
+        public void TestSelfHostedIntegrationRuntime()
         {
             RunPowerShellTest(_logger, "Test-SelfHosted-IntegrationRuntime");
         }
@@ -55,6 +55,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         public void TestSsisAzureIntegrationRuntime()
         {
             RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSharedIntegrationRuntime()
+        {
+            RunPowerShellTest(_logger, "Test-Shared-IntegrationRuntime");
         }
     }
 }

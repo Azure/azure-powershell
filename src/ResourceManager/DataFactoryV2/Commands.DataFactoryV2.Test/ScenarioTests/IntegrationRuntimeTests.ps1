@@ -61,18 +61,6 @@ function Test-SelfHosted-IntegrationRuntime
             -Force
         Assert-AreEqual $result.Description $description
 
-        $linkedIrName = 'LinkedIntegrationRuntime'
-        $authKeys = Get-AzureRmDataFactoryV2IntegrationRuntimeKey -InputObject $actual
-        $authKey = ConvertTo-SecureString $authKeys.AuthKey1 -AsPlainText -Force
-        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
-            -DataFactoryName $dfname `
-            -Name $linkedIrName `
-            -Type 'SelfHosted' `
-            -AuthKey $authKey `
-            -Force
-        Assert-AreEqual $actualShared.Name $linkedIrName
-
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
         Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
     }
     finally
@@ -209,7 +197,6 @@ function Test-Azure-IntegrationRuntime
     }
 }
 
-
 <#
 .SYNOPSIS
 Creates a self-hosted integration runtime and then does piping operations.
@@ -243,6 +230,87 @@ function Test-IntegrationRuntime-Piping
         $result | New-AzureRmDataFactoryV2IntegrationRuntimeKey -KeyName AuthKey1 -Force
         $result | Get-AzureRmDataFactoryV2IntegrationRuntimeMetric
         $result | Remove-AzureRmDataFactoryV2IntegrationRuntime -Force
+    }
+    finally
+    {
+        CleanUp $rgname $dfname
+    }
+}
+
+<#
+.SYNOPSIS
+Creates a self-hosted integration runtime and shares it with another data factory and does operations.
+Deletes the created integration runtime at the end.
+#>
+function Test-Shared-IntegrationRuntime
+{
+    $dfname = Get-DataFactoryName
+    $linkeddfname = $dfname + '-linked'
+    $rgname = Get-ResourceGroupName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $dflocation = Get-ProviderLocation DataFactoryManagement
+        
+    New-AzureRmResourceGroup -Name $rgname -Location $rglocation -Force
+
+    try
+    {
+        Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $dfname `
+            -Location $dflocation `
+            -Force
+     
+        $linkeddf = Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
+            -Name $linkeddfname `
+            -Location $dflocation `
+            -Force
+
+        Start-Sleep -s 10
+        
+        $irname = "selfhosted-test-integrationruntime"
+        $description = "description"
+   
+        $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+            -DataFactoryName $dfname `
+            -Name $irname `
+            -Type 'SelfHosted' `
+            -Force
+
+        New-AzureRMRoleAssignment `
+            -ObjectId $linkeddf.Identity.PrincipalId `
+            -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+            -Scope $actual.Id
+
+        Start-Sleep -s 20
+
+        $linkedIrName = 'LinkedIntegrationRuntime'
+        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime `
+            -ResourceGroupName $rgname `
+            -DataFactoryName $linkeddfname `
+            -Name $linkedIrName `
+            -SharedIntegrationRuntimeResourceId $actual.Id `
+            -Type SelfHosted `
+            -Description 'This is a linked integration runtime' `
+            -Force
+
+        $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
+            -DataFactoryName $linkeddfname `
+            -Name $linkedIrName
+        Assert-NotNull $metric
+
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Status
+        Assert-NotNull $status
+
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -LinkedDataFactoryName $linkeddfname -Force
+
+        Remove-AzureRmRoleAssignment `
+            -ObjectId $linkeddf.Identity.PrincipalId `
+            -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
+            -Scope $actual.Id
+
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
+
+        Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $linkeddfname -Force
     }
     finally
     {

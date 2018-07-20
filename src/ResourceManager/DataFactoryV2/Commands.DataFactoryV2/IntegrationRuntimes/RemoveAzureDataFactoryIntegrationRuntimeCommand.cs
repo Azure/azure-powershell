@@ -28,11 +28,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     public class RemoveAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(Mandatory = false,
-            HelpMessage = Constants.HelpIntegrationRuntimeLinks)]
-        public SwitchParameter Link { get; set; }
-
-        [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpLinkedFactoryName)]
+        [ValidateNotNullOrEmpty]
         public string LinkedDataFactoryName { get; set; }
 
         [Parameter(Mandatory = false,
@@ -44,24 +41,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         {
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
-
-            if (Link.IsPresent && string.IsNullOrWhiteSpace(LinkedDataFactoryName))
-            {
-                throw new PSArgumentException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.InvalidLinkedDataFactoryName),
-                    "LinkedDataFactoryName");
-            }
-
-            if (!Link.IsPresent && !string.IsNullOrWhiteSpace(LinkedDataFactoryName))
-            {
-                throw new PSArgumentException(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        Resources.LinksSwitchMissing),
-                    "Links");
-            }
 
             Action removeLinks = () => { ExecuteRemoveLinks(LinkedDataFactoryName); };
 
@@ -78,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                     Name,
                     DataFactoryName),
                 Name,
-                Link.IsPresent ? removeLinks : ExecuteDelete);
+                string.IsNullOrWhiteSpace(LinkedDataFactoryName) ? ExecuteDelete : removeLinks);
         }
 
         private void ExecuteDelete()
