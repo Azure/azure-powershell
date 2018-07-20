@@ -100,6 +100,8 @@ namespace Microsoft.Azure.Commands.Foo
 
 All top-level resources should have a `New-*` cmdlet that allows users to create a resource with given properties. Properties that are required by the API should be mandatory parameters, and in the case where different combinations of properties are needed depending on a provided value (_e.g._, Windows and Linux VMs have different properties), multiple parameter sets should be used. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the resource actually being created.
 
+_Note_: for long-running operations (~15s or longer), it is advised to add the [`-AsJob`](.\azure-powershell-design-guidelines#asjob-parameter) to your cmdlet.
+
 #### Parameter sets
 
 To enable the above scenario, only one parameter set is needed:
@@ -181,7 +183,7 @@ namespace Microsoft.Azure.Commands.Foo
 
 ### `Remove-*` cmdlet
 
-All top-level resources should have a `Remove-*` cmdlet that allows users to delete a specific resource. The user can delete a resource by providing all identity properties, the resource id, or the object representation of the resource. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the resource actually being deleted. This cmdlet should also implement the `-PassThru` parameter, which allows the user to receive output when no output would normally be provided.
+All top-level resources should have a `Remove-*` cmdlet that allows users to delete a specific resource. The user can delete a resource by providing all identity properties, the resource id, or the object representation of the resource. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the resource actually being deleted. This cmdlet should also implement the [`-PassThru`](.\azure-powershell-design-guidelines.md#returning-no-output) parameter, which allows the user to receive output when no output would normally be provided.
 
 #### Parameter sets
 
@@ -577,6 +579,8 @@ namespace Microsoft.Azure.Commands.Foo
 
 All child resources should have a `New-*` cmdlet that allows users to create a child resource with given properties. Properties that are required by the API should be mandatory parameters, and in the case where different combinations of properties are needed depending on a provided value (_e.g._, Windows and Linux VMs have different properties), multiple parameter sets should be used. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the resource actually being created.
 
+_Note_: for long-running operations (~15s or longer), it is advised to add the [`-AsJob`](.\azure-powershell-design-guidelines#asjob-parameter) to your cmdlet.
+
 #### Parameter sets
 
 To enable the above scenario, the cmdlet will need two parameter sets:
@@ -676,7 +680,7 @@ namespace Microsoft.Azure.Commands.Foo
 
 ### `Remove-*` cmdlet
 
-All child resources should have a `Remove-*` cmdlet that allows users to delete a specific child resource. The user can delete a child resource by providing all identity properties, the resource id of the child resource, or the object representation of the child resource. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the child resource actually being deleted. This cmdlet should also implement the `-PassThru` parameter, which allows the user to receive the output when no output would normally be provided.
+All child resources should have a `Remove-*` cmdlet that allows users to delete a specific child resource. The user can delete a child resource by providing all identity properties, the resource id of the child resource, or the object representation of the child resource. This cmdlet should implement `SupportsShouldProcess` to allow users to provide the `-WhatIf` parameter and see what the result of executing the cmdlet is without the child resource actually being deleted. This cmdlet should also implement the [`-PassThru`](.\azure-powershell-design-guidelines.md#returning-no-output) parameter, which allows the user to receive the output when no output would normally be provided.
 
 #### Parameter sets
 
