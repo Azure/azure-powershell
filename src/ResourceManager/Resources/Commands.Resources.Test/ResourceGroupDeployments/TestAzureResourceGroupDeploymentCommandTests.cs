@@ -56,11 +56,11 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ValidatesPSResourceGroupDeploymentWithUserTemplate()
         {
-            PSValidateResourceGroupDeploymentParameters expectedParameters = new PSValidateResourceGroupDeploymentParameters()
+            PSDeploymentCmdletParameters expectedParameters = new PSDeploymentCmdletParameters()
             {
                 TemplateFile = templateFile
             };
-            PSValidateResourceGroupDeploymentParameters actualParameters = new PSValidateResourceGroupDeploymentParameters();
+            PSDeploymentCmdletParameters actualParameters = new PSDeploymentCmdletParameters();
             List<PSResourceManagerError> expected = new List<PSResourceManagerError>()
             {
                 new PSResourceManagerError()
@@ -79,10 +79,10 @@ namespace Microsoft.Azure.Commands.Resources.Test.Resources
                     Message = "bad input 3",
                 }
             };
-            resourcesClientMock.Setup(f => f.ValidatePSResourceGroupDeployment(
-                It.IsAny<PSValidateResourceGroupDeploymentParameters>(), DeploymentMode.Incremental))
+            resourcesClientMock.Setup(f => f.ValidateDeployment(
+                It.IsAny<PSDeploymentCmdletParameters>(), DeploymentMode.Incremental))
                 .Returns(expected)
-                .Callback((PSValidateResourceGroupDeploymentParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
+                .Callback((PSDeploymentCmdletParameters p, DeploymentMode m) => { actualParameters = p; m = DeploymentMode.Incremental; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.TemplateFile = expectedParameters.TemplateFile;

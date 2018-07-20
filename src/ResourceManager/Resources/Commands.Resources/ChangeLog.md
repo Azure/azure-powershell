@@ -18,6 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
 * Updated help files to include full parameter types.
 
 ## Version 6.2.1

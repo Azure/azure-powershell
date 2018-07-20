@@ -226,6 +226,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+
 ### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroupInfo
 
 ## NOTES

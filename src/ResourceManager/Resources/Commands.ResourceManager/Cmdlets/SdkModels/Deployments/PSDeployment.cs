@@ -12,26 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
+using Microsoft.Azure.Management.ResourceManager.Models;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class FilterResourceGroupDeploymentOptions
+    public class PSDeployment: PSDeploymentObject
     {
-        public string DeploymentName { get; set; }
-
-        public string ResourceGroupName { get; set; }
-
-        public List<string> ProvisioningStates { get; set; }
-
-        public List<string> ExcludedProvisioningStates { get; set; }
-
-        public FilterResourceGroupDeploymentOptions()
-        {
-            DeploymentName = null;
-            ResourceGroupName = null;
-            ProvisioningStates = new List<string>();
-            ExcludedProvisioningStates = new List<string>();
-        }
+        public string Location { get; set; }
     }
 }
