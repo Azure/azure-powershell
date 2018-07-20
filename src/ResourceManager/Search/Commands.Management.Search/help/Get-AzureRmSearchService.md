@@ -30,19 +30,17 @@ The **Get-AzureRmSearchService** cmdlet gets the specified Azure Search service.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzureRmSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch"
+PS C:\> Get-AzureRmSearchService -ResourceGroupName felixwa-01
 
 
-ResourceGroupName : TestAzureSearchPsGroup
-Name              : pstestazuresearch
-Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/TestAzureSearchPsGroup/providers
-                    /Microsoft.Search/searchServices/pstestazuresearch
+ResourceGroupName : felixwa-01
+Name              : felixwa-basic-search
 Location          : West US
-Sku               : Standard
+Sku               : Basic
 ReplicaCount      : 1
 PartitionCount    : 1
 HostingMode       : Default
-Tags              :
+Id                : /subscriptions/f9b96b36-1f5e-4021-8959-51527e26e6d3/resourceGroups/felixwa-01/providers/Microsoft.Search/searchServices/felixwa-basic-search
 ```
 
 Get an Azure Search service with specified parameters.

@@ -13,18 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Search.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
 namespace Microsoft.Azure.Commands.Management.Search.Models
 {
     public class PSSearchAdminKey
     {
+        [Ps1Xml(Label = "Primary", Target = ViewControl.Table)]
         public string Primary { get; private set; }
+
+        [Ps1Xml(Label = "Secondary", Target = ViewControl.Table)]
         public string Secondary { get; private set; }
 
         public PSSearchAdminKey(AdminKeyResult adminKeyResult)
         {
             Primary = adminKeyResult.PrimaryKey;
-            Secondary = adminKeyResult.SecondaryKey;            
+            Secondary = adminKeyResult.SecondaryKey;
         }
 
         public static PSSearchAdminKey Create(AdminKeyResult adminKeyResult)

@@ -13,27 +13,36 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.Search.Models
 {
     public class PSSearchService
     {
+        [Ps1Xml(Label = "Resource Group Name", Target = ViewControl.List, Position = 0)]
         public string ResourceGroupName { get; private set; }
 
+        [Ps1Xml(Label = "Service Name", Target = ViewControl.List, Position = 1)]
         public string Name { get; private set; }
 
-        public string Id { get; private set; }
-
+        [Ps1Xml(Label = "Location", Target = ViewControl.List, Position = 2)]
         public string Location { get; private set; }
 
+        [Ps1Xml(Label = "Sku", Target = ViewControl.List, Position = 3)]
         public PSSkuName? Sku { get; private set; }
 
+        [Ps1Xml(Label = "Replica Count", Target = ViewControl.List, Position = 4)]
         public int? ReplicaCount { get; private set; }
 
+        [Ps1Xml(Label = "Partition Count", Target = ViewControl.List, Position = 5)]
         public int? PartitionCount { get; private set; }
 
+        [Ps1Xml(Label = "Hosting Mode", Target = ViewControl.List, Position = 6)]
         public PSHostingMode? HostingMode { get; private set; }
+
+        [Ps1Xml(Label = "Resource Id", Target = ViewControl.List, Position = 7)]
+        public string Id { get; private set; }
 
         public IDictionary<string, string> Tags { get; set; }
 
@@ -44,7 +53,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             Id = searchService.Id;
             Location = searchService.Location;
 
-            if(searchService.Sku != null && searchService.Sku.Name != null)
+            if (searchService.Sku != null && searchService.Sku.Name != null)
             {
                 Sku = (PSSkuName)searchService.Sku.Name;
             }
@@ -52,7 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Models
             ReplicaCount = searchService.ReplicaCount;
             PartitionCount = searchService.PartitionCount;
 
-            if(searchService.HostingMode != null)
+            if (searchService.HostingMode != null)
             {
                 HostingMode = (PSHostingMode)searchService.HostingMode;
             }
