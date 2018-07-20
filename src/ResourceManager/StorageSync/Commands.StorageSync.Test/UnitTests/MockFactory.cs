@@ -159,6 +159,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.UnitTests
             plop.SetupGet(obj => obj.FullName).Returns(fullname);
             plop.Setup(obj => obj.EnumerateDirectories()).Returns(hierarchyDirs);
             plop.Setup(obj => obj.EnumerateFiles()).Returns(hierarchyFiles);
+            plop.Setup(obj => obj.Exists()).Returns(true);
 
             return plop.Object;
         }

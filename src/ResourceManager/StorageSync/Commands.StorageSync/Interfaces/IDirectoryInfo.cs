@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation.Interfaces
 
     public interface IDirectoryInfo : INamedObjectInfo
     {
+        bool Exists();
         IEnumerable<IFileInfo> EnumerateFiles();
         IEnumerable<IDirectoryInfo> EnumerateDirectories();
     }   

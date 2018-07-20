@@ -76,6 +76,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Evaluation
         /// <param name="cancelationCallback">function to consult with for cancelation</param>
         private void EnumeratePostOrderNonRecursive(IDirectoryInfo root, Func<bool> cancelationCallback = null)
         {
+            // handle the case than this is actually network share.
+            if (!root.Exists())
+            {
+                throw new System.IO.DirectoryNotFoundException($"Cannot access directory: {root.FullName}. Ensure directory exists.");
+            }
+
             this._namespaceInfo = new NamespaceInfo
             {
                 Path = root.FullName,
