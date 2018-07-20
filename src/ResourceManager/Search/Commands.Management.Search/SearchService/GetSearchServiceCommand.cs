@@ -21,7 +21,7 @@ using System.Net;
 
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
-    [Cmdlet(VerbsCommon.Get, SearchServiceNounStr, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(Models.PSSearchService))]
+    [Cmdlet(VerbsCommon.Get, SearchServiceNounStr, DefaultParameterSetName = ResourceGroupParameterSetName), OutputType(typeof(Models.PSSearchService))]
     public class GetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
