@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.DataLake.Analytics.dll'
@@ -81,9 +81,9 @@ CmdletsToExport = 'Get-AzureRmDataLakeAnalyticsDataSource',
     'New-AzureRmDataLakeAnalyticsCatalogSecret', 
     'Test-AzureRmDataLakeAnalyticsCatalogItem', 
     'Get-AzureRmDataLakeAnalyticsCatalogItem', 
-    'Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry',
-    'Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry',
-    'Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry',
+    'Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
+    'Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
+    'Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry', 
     'Set-AzureRmDataLakeAnalyticsDataSource', 
     'Wait-AzureRmDataLakeAnalyticsJob', 
     'Test-AzureRmDataLakeAnalyticsAccount', 
@@ -115,16 +115,17 @@ AliasesToExport = 'Get-AdlAnalyticsDataSource', 'New-AdlCatalogCredential',
     'Remove-AdlCatalogCredential', 'Remove-AdlCatalogSecret', 
     'Set-AdlCatalogCredential', 'Set-AdlCatalogSecret', 
     'New-AdlCatalogSecret', 'Test-AdlCatalogItem', 'Get-AdlCatalogItem', 
-    'Get-AdlCatalogItemAclEntry', 'Set-AdlCatalogItemAclEntry', 'Remove-AdlCatalogItemAclEntry',
-    'Set-AdlAnalyticsDataSource', 'Wait-AdlJob', 
-    'Test-AdlAnalyticsAccount', 'Remove-AdlAnalyticsDataSource', 
-    'Add-AdlAnalyticsDataSource', 'Stop-AdlJob', 'Get-AdlJob', 
-    'Get-AdlAnalyticsAccount', 'Submit-AdlJob', 
-    'New-AdlAnalyticsAccount', 'Remove-AdlAnalyticsAccount', 
-    'Set-AdlAnalyticsAccount', 'Add-AdlAnalyticsFirewallRule', 
-    'Get-AdlAnalyticsFirewallRule', 'Set-AdlAnalyticsFirewallRule', 
-    'Remove-AdlAnalyticsFirewallRule', 'New-AdlAnalyticsComputePolicy', 
-    'Get-AdlAnalyticsComputePolicy', 'Update-AdlAnalyticsComputePolicy', 
+    'Get-AdlCatalogItemAclEntry', 'Set-AdlCatalogItemAclEntry', 
+    'Remove-AdlCatalogItemAclEntry', 'Set-AdlAnalyticsDataSource', 
+    'Wait-AdlJob', 'Test-AdlAnalyticsAccount', 
+    'Remove-AdlAnalyticsDataSource', 'Add-AdlAnalyticsDataSource', 
+    'Stop-AdlJob', 'Get-AdlJob', 'Get-AdlAnalyticsAccount', 
+    'Submit-AdlJob', 'New-AdlAnalyticsAccount', 
+    'Remove-AdlAnalyticsAccount', 'Set-AdlAnalyticsAccount', 
+    'Add-AdlAnalyticsFirewallRule', 'Get-AdlAnalyticsFirewallRule', 
+    'Set-AdlAnalyticsFirewallRule', 'Remove-AdlAnalyticsFirewallRule', 
+    'New-AdlAnalyticsComputePolicy', 'Get-AdlAnalyticsComputePolicy', 
+    'Update-AdlAnalyticsComputePolicy', 
     'Remove-AdlAnalyticsComputePolicy', 'Get-AdlJobPipeline', 
     'Get-AdlJobRecurrence'
 

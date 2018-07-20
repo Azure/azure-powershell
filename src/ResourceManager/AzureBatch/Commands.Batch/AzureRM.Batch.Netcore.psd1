@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,13 +51,13 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Batch.dll', 
     '.\Microsoft.Azure.Management.Batch.dll', 
     '.\Microsoft.Extensions.Primitives.dll', 
-    '.\System.Runtime.CompilerServices.Unsafe.dll',
+    '.\System.Runtime.CompilerServices.Unsafe.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -110,8 +110,8 @@ CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount',
     'New-AzureBatchComputeNodeUser', 'Remove-AzureBatchComputeNodeUser', 
     'Enable-AzureBatchTask', 'Set-AzureBatchTask', 'Stop-AzureBatchTask', 
     'Get-AzureBatchComputeNode', 'Get-AzureBatchJobSchedule', 
-    'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule',
-    'Get-AzureBatchTaskCounts', 'Get-AzureBatchPoolNodeCounts',
+    'New-AzureBatchJobSchedule', 'Remove-AzureBatchJobSchedule', 
+    'Get-AzureBatchTaskCounts', 'Get-AzureBatchPoolNodeCounts', 
     'Start-AzureBatchComputeNodeServiceLogUpload'
 
 # Variables to export from this module
