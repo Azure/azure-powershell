@@ -17,9 +17,11 @@ using System.Collections;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
 {
-    public class PSCreateResourceGroupParameters : PSCreateResourceGroupDeploymentParameters
+    public class PSCreateResourceGroupParameters
     {
         public string Location { get; set; }
+
+        public string ResourceGroupName { get; set; }
 
         public bool Force { get; set; }
 

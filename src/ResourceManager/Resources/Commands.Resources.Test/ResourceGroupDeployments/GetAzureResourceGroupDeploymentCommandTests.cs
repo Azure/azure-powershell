@@ -63,15 +63,15 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 ResourceGroupName = resourceGroupName,
                 Mode = DeploymentMode.Incremental
             };
-            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
                 ResourceGroupName = resourceGroupName
             };
-            FilterResourceGroupDeploymentOptions actual = new FilterResourceGroupDeploymentOptions();
+            FilterDeploymentOptions actual = new FilterDeploymentOptions();
             result.Add(expected);
-            resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterResourceGroupDeploymentOptions>()))
+            resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterDeploymentOptions>()))
                 .Returns(result)
-                .Callback((FilterResourceGroupDeploymentOptions o) => { actual = o; });
+                .Callback((FilterDeploymentOptions o) => { actual = o; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
 
@@ -88,12 +88,12 @@ namespace Microsoft.Azure.Commands.Resources.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSepcificResourcesGroupDeployment()
         {
-            FilterResourceGroupDeploymentOptions options = new FilterResourceGroupDeploymentOptions()
+            FilterDeploymentOptions options = new FilterDeploymentOptions()
             {
                 DeploymentName = deploymentName,
                 ResourceGroupName = resourceGroupName
             };
-            FilterResourceGroupDeploymentOptions actual = new FilterResourceGroupDeploymentOptions();
+            FilterDeploymentOptions actual = new FilterDeploymentOptions();
             List<PSResourceGroupDeployment> result = new List<PSResourceGroupDeployment>();
             PSResourceGroupDeployment expected = new PSResourceGroupDeployment()
             {
@@ -103,9 +103,9 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 Mode = DeploymentMode.Incremental
             };
             result.Add(expected);
-            resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterResourceGroupDeploymentOptions>()))
+            resourcesClientMock.Setup(f => f.FilterResourceGroupDeployments(It.IsAny<FilterDeploymentOptions>()))
                 .Returns(result)
-                .Callback((FilterResourceGroupDeploymentOptions o) => { actual = o; });
+                .Callback((FilterDeploymentOptions o) => { actual = o; });
 
             cmdlet.ResourceGroupName = resourceGroupName;
             cmdlet.Name = deploymentName;

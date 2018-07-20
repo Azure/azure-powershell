@@ -125,7 +125,11 @@ CmdletsToExport = 'Get-AzureRmProviderOperation', 'Remove-AzureRmRoleAssignment'
                'Get-AzureRmManagementGroup', 'New-AzureRmManagementGroup', 
                'Update-AzureRmManagementGroup', 'Remove-AzureRmManagementGroup', 
                'New-AzureRmManagementGroupSubscription', 
-               'Remove-AzureRmManagementGroupSubscription'
+               'Remove-AzureRmManagementGroupSubscription',
+			   'New-AzureRmDeployment', 'Get-AzureRmDeployment', 'Test-AzureRmDeployment',
+               'Remove-AzureRmDeployment', 'Stop-AzureRmDeployment',
+			   'Save-AzureRmDeploymentTemplate',
+			   'Get-AzureRmDeploymentOperation'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -165,7 +169,15 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Update Roleassignment and roledefinition cmdlets:
+        ReleaseNotes = '* Support template deployment at subscription scope. Add new Cmdlets:
+    - New-AzureRmDeployment
+    - Get-AzureRmDeployment
+    - Test-AzureRmDeployment
+    - Remove-AzureRmDeployment
+    - Stop-AzureRmDeployment
+    - Save-AzureRmDeploymentTemplate
+    - Get-AzureRmDeploymentOperation
+* Update Roleassignment and roledefinition cmdlets:
     - Remove extra roledefinition calls done as part of paging.
 * Fix Get-AzureRmRoleAssignment cmdlet
     - Fix -ExpandPrincipalGroups command parameter functionality
