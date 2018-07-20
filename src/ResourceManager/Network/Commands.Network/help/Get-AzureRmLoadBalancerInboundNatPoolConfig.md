@@ -21,9 +21,10 @@ Get-AzureRmLoadBalancerInboundNatPoolConfig [-Name <String>] -LoadBalancer <PSLo
 
 ## EXAMPLES
 
-### 1:
+### 1: Get
 ```
-PS C:\>
+PS C:\> $slb = Get-AzureRmLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+PS C:\> $slb | Get-AzureRmLoadBalancerInboundNatPoolConfig -Name myInboundNatPool
 ```
 
 ## PARAMETERS

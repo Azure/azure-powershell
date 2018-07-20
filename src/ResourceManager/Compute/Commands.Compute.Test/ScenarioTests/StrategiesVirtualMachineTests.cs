@@ -44,6 +44,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmWithAccelNet()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmWithAccelNet");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewVmWin10()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-NewVmWin10");
