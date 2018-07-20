@@ -36,93 +36,93 @@
     Date:   February 20, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "BlobServices" -Tags @('BlobService', 'Azs.Storage.Admin') {
+    Describe "BlobServices" -Tags @('BlobService', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateBlobService {
-				param(
-					[Parameter(Mandatory=$true)]
-					$BlobService
-				)
-				# Resource
-				$BlobService					| Should Not Be $null
+            function ValidateBlobService {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $BlobService
+                )
+                # Resource
+                $BlobService					| Should Not Be $null
 
-				# Validate BlobService properties
-				$BlobService.BlobSvcContainerGcInterval										| Should Not Be $null
-				$BlobService.BlobSvcShallowGcInterval										| Should Not Be $null
-				$BlobService.BlobSvcStreamMapMinContainerOccupancyPercent					| Should Not Be $null
-				$BlobService.FrontEndCallbackThreadsCount									| Should Not Be $null
-				$BlobService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds	| Should Not Be $null
-				$BlobService.FrontEndCpuBasedKeepAliveThrottlingEnabled						| Should Not Be $null
-				$BlobService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold			| Should Not Be $null
-				$BlobService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle	| Should Not Be $null
-				$BlobService.FrontEndHttpListenPort											| Should Not Be $null
-				$BlobService.FrontEndHttpsListenPort										| Should Not Be $null
-				$BlobService.FrontEndMaxMillisecondsBetweenMemorySamples					| Should Not Be $null
-				$BlobService.FrontEndMemoryThrottleThresholdSettings						| Should Not Be $null
-				$BlobService.FrontEndMemoryThrottlingEnabled								| Should Not Be $null
-				$BlobService.FrontEndMinThreadPoolThreads									| Should Not Be $null
-				$BlobService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold			| Should Not Be $null
-				$BlobService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds		| Should Not Be $null
-				$BlobService.FrontEndThreadPoolBasedKeepAlivePercentage						| Should Not Be $null
-				$BlobService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold			| Should Not Be $null
-				$BlobService.FrontEndUseSlaTimeInAvailability								| Should Not Be $null
-				$BlobService.Location														| Should Not Be $null
-				$BlobService.Version														| Should Not Be $null
-				$BlobService.Id																| Should Not Be $null
-				$BlobService.Name															| Should Not Be $null
-				$BlobService.Type															| Should Not Be $null
-			}
-		}
+                # Validate BlobService properties
+                $BlobService.BlobSvcContainerGcInterval										| Should Not Be $null
+                $BlobService.BlobSvcShallowGcInterval										| Should Not Be $null
+                $BlobService.BlobSvcStreamMapMinContainerOccupancyPercent					| Should Not Be $null
+                $BlobService.FrontEndCallbackThreadsCount									| Should Not Be $null
+                $BlobService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds	| Should Not Be $null
+                $BlobService.FrontEndCpuBasedKeepAliveThrottlingEnabled						| Should Not Be $null
+                $BlobService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold			| Should Not Be $null
+                $BlobService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle	| Should Not Be $null
+                $BlobService.FrontEndHttpListenPort											| Should Not Be $null
+                $BlobService.FrontEndHttpsListenPort										| Should Not Be $null
+                $BlobService.FrontEndMaxMillisecondsBetweenMemorySamples					| Should Not Be $null
+                $BlobService.FrontEndMemoryThrottleThresholdSettings						| Should Not Be $null
+                $BlobService.FrontEndMemoryThrottlingEnabled								| Should Not Be $null
+                $BlobService.FrontEndMinThreadPoolThreads									| Should Not Be $null
+                $BlobService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold			| Should Not Be $null
+                $BlobService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds		| Should Not Be $null
+                $BlobService.FrontEndThreadPoolBasedKeepAlivePercentage						| Should Not Be $null
+                $BlobService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold			| Should Not Be $null
+                $BlobService.FrontEndUseSlaTimeInAvailability								| Should Not Be $null
+                $BlobService.Location														| Should Not Be $null
+                $BlobService.Version														| Should Not Be $null
+                $BlobService.Id																| Should Not Be $null
+                $BlobService.Name															| Should Not Be $null
+                $BlobService.Type															| Should Not Be $null
+            }
+        }
 
-		It "TestGetBlobService" {
-			$global:TestName = 'TestGetBlobService'
+        it "TestGetBlobService" -Skip:$('TestGetBlobService' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetBlobService'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				$blobService  | Should Not Be $null
-				ValidateBlobService -BlobService $blobService
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService  | Should Not Be $null
+                ValidateBlobService -BlobService $blobService
+            }
+        }
 
-		It "TestListBlobServiceMetricDefinitions" {
-			$global:TestName = 'TestListBlobServiceMetricDefinitions'
+        it "TestListBlobServiceMetricDefinitions" -Skip:$('TestListBlobServiceMetricDefinitions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListBlobServiceMetricDefinitions'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				$blobService  | Should Not Be $null
-				ValidateBlobService -BlobService $blobService
-				Get-AzsBlobServiceMetricDefinition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService  | Should Not Be $null
+                ValidateBlobService -BlobService $blobService
+                Get-AzsBlobServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+            }
+        }
 
-		It "TestListBlobServiceMetrics" {
-			$global:TestName = 'TestListBlobServiceMetrics'
+        it "TestListBlobServiceMetrics" -Skip:$('TestListBlobServiceMetrics' -in $global:SkippedTests) {
+            $global:TestName = 'TestListBlobServiceMetrics'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				$blobService  | Should Not Be $null
-				ValidateBlobService -BlobService $blobService
-				Get-AzsBlobServiceMetric -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $blobService = Get-AzsBlobService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                $blobService  | Should Not Be $null
+                ValidateBlobService -BlobService $blobService
+                Get-AzsBlobServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+            }
+        }
+    }
 }

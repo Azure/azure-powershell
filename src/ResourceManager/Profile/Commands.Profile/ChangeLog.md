@@ -19,7 +19,9 @@
 -->
 ## Current Release
 * Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+* Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
 * Updated help files to include full parameter types.
+* Added ps1xml types to Common.Storage
 
 ## Version 5.3.3
 * Updated help for `Get-AzureRmContextAutosaveSetting`

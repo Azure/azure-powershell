@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Insights.ActionGroups

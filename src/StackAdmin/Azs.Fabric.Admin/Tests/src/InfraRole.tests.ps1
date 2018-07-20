@@ -36,103 +36,103 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "InfrastructureRoles" -Tags @('InfrastructureRole', 'Azs.Fabric.Admin') {
+    Describe "InfrastructureRoles" -Tags @('InfrastructureRole', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateInfrastructureRole {
-				param(
-					[Parameter(Mandatory=$true)]
-					$InfrastructureRole
-				)
+            function ValidateInfrastructureRole {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $InfrastructureRole
+                )
 
-				$InfrastructureRole          | Should Not Be $null
+                $InfrastructureRole          | Should Not Be $null
 
-				# Resource
-				$InfrastructureRole.Id       | Should Not Be $null
-				$InfrastructureRole.Location | Should Not Be $null
-				$InfrastructureRole.Name     | Should Not Be $null
-				$InfrastructureRole.Type     | Should Not Be $null
+                # Resource
+                $InfrastructureRole.Id       | Should Not Be $null
+                $InfrastructureRole.Location | Should Not Be $null
+                $InfrastructureRole.Name     | Should Not Be $null
+                $InfrastructureRole.Type     | Should Not Be $null
 
-				# Infra Role
-				$InfrastructureRole.Instances | Should Not be $null
-				$InfrastructureRole.Instances.Count | Should Not be 0
+                # Infra Role
+                $InfrastructureRole.Instances | Should Not be $null
+                $InfrastructureRole.Instances.Count | Should Not be 0
 
-			}
+            }
 
-			function AssertInfrastructureRolesAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertInfrastructureRolesAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                } else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# Infra Role
-					$Found.Instances.Count| Should Be $Expected.Instances.Count
+                    # Infra Role
+                    $Found.Instances.Count| Should Be $Expected.Instances.Count
 
-				}
-			}
-		}
+                }
+            }
+        }
 
-		It "TestListInfraRoles" {
-			$global:TestName = 'TestListInfraRoles'
-			$InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $ResourceGroup -Location $Location
-			$InfrastructureRoles | Should Not Be $null
-			foreach($InfrastructureRole in $InfrastructureRoles) {
-				ValidateInfrastructureRole -InfrastructureRole $InfrastructureRole
-			}
-	    }
+        It "TestListInfraRoles" -Skip:$('TestListInfraRoles' -in $global:SkippedTests) {
+            $global:TestName = 'TestListInfraRoles'
+            $InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $InfrastructureRoles | Should Not Be $null
+            foreach ($InfrastructureRole in $InfrastructureRoles) {
+                ValidateInfrastructureRole -InfrastructureRole $InfrastructureRole
+            }
+        }
 
-		It "TestGetInfraRole" {
+        It "TestGetInfraRole" -Skip:$('TestGetInfraRole' -in $global:SkippedTests) {
             $global:TestName = 'TestGetInfraRole'
 
-			$InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($InfrastructureRole in $InfrastructureRoles) {
-				$retrieved = Get-AzsInfrastructureRole -ResourceGroupName $ResourceGroup -Location $Location -Name $InfrastructureRole.Name
-				AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
-				break
-			}
-		}
+            $InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($InfrastructureRole in $InfrastructureRoles) {
+                $retrieved = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $InfrastructureRole.Name
+                AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
+                break
+            }
+        }
 
-		It "TestGetAllInfraRoles" {
-			$global:TestName = 'TestGetAllInfraRoles'
+        It "TestGetAllInfraRoles" -Skip:$('TestGetAllInfraRoles' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllInfraRoles'
 
-			$InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($InfrastructureRole in $InfrastructureRoles) {
-				$name = $InfrastructureRole.Name
-				$check = -not ($name -like "*User*" -or $name -like "*Administrator*")
-				if($check) {
-					$retrieved = Get-AzsInfrastructureRole -ResourceGroupName $ResourceGroup -Location $Location -Name $InfrastructureRole.Name
-					AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
-				}
-			}
-		}
+            $InfrastructureRoles = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($InfrastructureRole in $InfrastructureRoles) {
+                $name = $InfrastructureRole.Name
+                $check = -not ($name -like "*User*" -or $name -like "*Administrator*")
+                if ($check) {
+                    $retrieved = Get-AzsInfrastructureRole -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $InfrastructureRole.Name
+                    AssertInfrastructureRolesAreSame -Expected $InfrastructureRole -Found $retrieved
+                }
+            }
+        }
 
     }
 }
