@@ -118,16 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateQueryKey" xml:space="preserve">
-    <value>Create query key '{0}'.</value>
-  </data>
-  <data name="CreateQueryKeyWarning" xml:space="preserve">
-    <value>Are you sure you want to create query key '{0}'?</value>
+    <value>Create query key.</value>
   </data>
   <data name="CreateSearchService" xml:space="preserve">
-    <value>Create Search Service '{0}'.</value>
-  </data>
-  <data name="CreateSearchServiceWarning" xml:space="preserve">
-    <value>Are you sure you want to create Search Service '{0}'?</value>
+    <value>Create Search Service.</value>
   </data>
   <data name="RegenerateAdminKey" xml:space="preserve">
     <value>Regenerate {0} key for Search Service '{1}'.</value>
@@ -148,9 +142,6 @@
     <value>Are you sure you want to remove Search Service '{0}'?</value>
   </data>
   <data name="UpdateSearchService" xml:space="preserve">
-    <value>Update Search Service '{0}'.</value>
-  </data>
-  <data name="UpdateSearchServiceWarning" xml:space="preserve">
-    <value>Are you sure you want to update Search Service '{0}'?</value>
+    <value>Update Search Service.</value>
   </data>
 </root>

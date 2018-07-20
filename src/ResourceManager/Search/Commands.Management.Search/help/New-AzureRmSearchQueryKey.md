@@ -14,19 +14,19 @@ Create a new query key for the Azure Search service.
 
 ### ResourceNameParameterSet (Default)
 ```
-New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String> [-Force]
+New-AzureRmSearchQueryKey [-ResourceGroupName] <String> [-ServiceName] <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentObjectParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -Name <String> [-Force]
+New-AzureRmSearchQueryKey [-ParentObject] <PSSearchService> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentResourceIdParameterSet
 ```
-New-AzureRmSearchQueryKey [-ParentResourceId] <String> -Name <String> [-Force]
+New-AzureRmSearchQueryKey [-ParentResourceId] <String> -Name <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,21 +55,6 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Force
-Do not ask for confirmation.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
