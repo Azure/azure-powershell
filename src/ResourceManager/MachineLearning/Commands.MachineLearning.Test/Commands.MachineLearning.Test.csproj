@@ -154,8 +154,12 @@
     <None Include="ScenarioTests\WebServiceTests.ps1">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestListCommitmentPlans.json" />
-    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestUpdateCommitmentPlan.json" />
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestListCommitmentPlans.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.CommitmentPlanTests\TestUpdateCommitmentPlan.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SessionRecords\Microsoft.Azure.Commands.MachineLearning.Test.ScenarioTests.WebServiceTests\TestCreateGetRemoveWebService.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -96,7 +96,7 @@ function Test-UpdateMLCommitmentPlan
 
             # Update the commitment plan
             LogOutput "Updating commitment plan $planId"
-            Update-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName -SkuName "S2" -SkuTier "Standard" -SkuCapacity 2 -Tags @{"tag1" = "value1"} -Force
+            Update-AzureRmMlCommitmentPlan -ResourceGroupName $resourceGroupName -Name $commitmentPlanName -SkuName "S2" -SkuTier "Standard" -SkuCapacity 2 -Tag @{"tag1" = "value1"} -Force
             
             # Delete the commitment plan
             LogOutput "Removing commitment plan $commitmentPlanName from resource group $resourceGroupName"
