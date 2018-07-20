@@ -168,7 +168,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="AzureRM.Resources.psd1">
-      <Link>AzureRM.Resources.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="help\*.md" />
