@@ -68,9 +68,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
             HelpMessage = HostingModeHelpMessage)]
         public PSHostingMode? HostingMode { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             Azure.Management.Search.Models.SearchService searchService = null;
@@ -93,16 +90,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                                                                                     hostingMode: (HostingMode)HostingMode);
             }
 
-            ConfirmAction(Force.IsPresent,
-                string.Format(Resources.CreateSearchServiceWarning, Name),
-                string.Format(Resources.CreateSearchService, Name),
-                Name,
-                () =>
-                {
-                    var response = SearchClient.Services.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, searchService).Result;
-                    WriteSearchService(response.Body);
-                }
-             );
+            if (ShouldProcess(Name, Resources.CreateSearchService))
+            {
+                var response = SearchClient.Services.CreateOrUpdateWithHttpMessagesAsync(ResourceGroupName, Name, searchService).Result;
+                WriteSearchService(response.Body);
+            }
         }
     }
 }

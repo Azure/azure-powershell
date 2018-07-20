@@ -65,9 +65,6 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [Parameter(Mandatory = false, HelpMessage = ForceHelpMessage)]
-        public SwitchParameter Force { get; set; }
-
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName.Equals(ParentObjectParameterSetName, StringComparison.InvariantCulture))
@@ -82,16 +79,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 ServiceName = id.ResourceName;
             }
 
-            ConfirmAction(Force.IsPresent,
-               string.Format(Resources.CreateQueryKeyWarning, Name),
-               string.Format(Resources.CreateQueryKey, Name),
-               Name,
-               () =>
-               {
-                   var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
-                   WriteQueryKey(res.Body);
-               }
-             );
+            if (ShouldProcess(Name, Resources.CreateQueryKey))
+            {
+                var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
+                WriteQueryKey(res.Body);
+            }
         }
     }
 }

@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create query key &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Create query key..
         /// </summary>
         internal static string CreateQueryKey {
             get {
@@ -70,29 +70,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create query key &apos;{0}&apos;?.
-        /// </summary>
-        internal static string CreateQueryKeyWarning {
-            get {
-                return ResourceManager.GetString("CreateQueryKeyWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Create Search Service &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Create Search Service..
         /// </summary>
         internal static string CreateSearchService {
             get {
                 return ResourceManager.GetString("CreateSearchService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create Search Service &apos;{0}&apos;?.
-        /// </summary>
-        internal static string CreateSearchServiceWarning {
-            get {
-                return ResourceManager.GetString("CreateSearchServiceWarning", resourceCulture);
             }
         }
         
@@ -151,20 +133,11 @@ namespace Microsoft.Azure.Commands.Management.Search.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Update Search Service &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Update Search Service..
         /// </summary>
         internal static string UpdateSearchService {
             get {
                 return ResourceManager.GetString("UpdateSearchService", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update Search Service &apos;{0}&apos;?.
-        /// </summary>
-        internal static string UpdateSearchServiceWarning {
-            get {
-                return ResourceManager.GetString("UpdateSearchServiceWarning", resourceCulture);
             }
         }
     }

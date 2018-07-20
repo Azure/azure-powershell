@@ -12,12 +12,7 @@ Gets an Azure Search service.
 
 ## SYNTAX
 
-### ResourceNameParameterSet (Default)
-```
-Get-AzureRmSearchService [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ResourceGroupParameterSet
+### ResourceGroupParameterSet (Default)
 ```
 Get-AzureRmSearchService [-ResourceGroupName] <String> [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
