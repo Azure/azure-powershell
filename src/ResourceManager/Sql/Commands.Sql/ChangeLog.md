@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Adding Server Advanced Threat Protection support with the following cmdlets: 
+* Adding Server Advanced Threat Protection support with the following cmdlets:
 	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
 * Adding Vulnerability Assessment support with the following cmdlets:
 	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
