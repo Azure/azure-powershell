@@ -29,7 +29,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.ApiManagement.Test.ScenarioTests
 {
-    using ApiManagementClient = Management.ApiManagement.ApiManagementClient;
+    using ApiManagementClient = Azure.Management.ApiManagement.ApiManagementClient;
 
     public class ApiManagementTests : RMTestBase
     {

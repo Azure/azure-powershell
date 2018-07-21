@@ -157,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="AzureRM.Insights.psd1">
-      <Link>AzureRM.Insights.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <Content Include="Microsoft.Azure.Commands.Insights.format.ps1xml">
