@@ -16,6 +16,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     internal static class Constants
     {
+        public const string DataFactoryQualifiedType = "Microsoft.DataFactory/factories";
+
         public const string DataFactory = "AzureRmDataFactoryV2";
 
         public const string LinkedService = "AzureRmDataFactoryV2LinkedService";
@@ -122,9 +124,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public const string HelpIntegrationRuntimeAuthKey = "The authentication key of the self-hosted integration runtime.";
 
+        public const string HelpSharedIntegrationRuntimeResourceId = "The resource id of the shared self-hosted integration runtime.";
+
         public const string HelpIntegrationRuntimeJobsLimit = "The number of concurrent jobs permitted to run on the integration runtime node. Values between 1 and maxConcurrentJobs are allowed.";
 
         public const string HelpIntegrationRuntimeNodeIpAddress = "The IP Address of integration runtime node.";
+
+        public const string HelpIntegrationRuntimeLinks = "Remove the linked integration runtimes created in the shared integration runtime.";
+
+        public const string HelpLinkedFactoryName = "The linked data factory name.";
 
         public const string HelpPipelineRunId = "The Run ID of the pipeline.";
 
@@ -185,5 +193,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         public const string IntegrationRuntimeLicenseIncluded = "LicenseIncluded";
 
         public const string IntegrationRuntimeBasePrice = "BasePrice";
+
+        public const string DeprecatingParameter = "Parameter is being deprecated without being replaced";
+
+        public const string HelpFactoryLocation = "The geographic region of the data factory.";
+
     }
 }
