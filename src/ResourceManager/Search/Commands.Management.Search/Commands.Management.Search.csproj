@@ -39,7 +39,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="AzureRM.Search.psd1">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <Link>AzureRM.Search.psd1</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Microsoft.Azure.Commands.Management.Search.generated.format.ps1xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
