@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         protected virtual void ByResourceId()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 var parsedResourceId = new ResourceIdentifier(ResourceId);
                 ResourceGroupName = parsedResourceId.ResourceGroupName;
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         protected virtual void ByIntegrationRuntimeObject()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByIntegrationRuntimeObject, StringComparison.OrdinalIgnoreCase))
+            if (InputObject != null)
             {
                 ResourceGroupName = InputObject.ResourceGroupName;
                 DataFactoryName = InputObject.DataFactoryName;
