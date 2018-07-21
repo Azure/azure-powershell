@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 PSLinkedService linkedService = GetLinkedService(resourceGroupName, dataFactoryName, linkedServiceName);
                 return linkedService != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)

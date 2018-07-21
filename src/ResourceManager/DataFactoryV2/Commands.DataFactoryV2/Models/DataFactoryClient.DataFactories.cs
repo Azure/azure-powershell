@@ -130,17 +130,17 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             Action createDataFactory = () =>
             {
                 dataFactory =
-                    new PSDataFactory(
-                        this.DataFactoryManagementClient.Factories.CreateOrUpdate(
-                            parameters.ResourceGroupName,
-                            parameters.DataFactoryName,
-                            new Factory
-                            {
-                                Location = parameters.Location,
-                                Tags = parameters.Tags?.ToDictionary(),
-                                Identity = new FactoryIdentity()
-                            }),
-                        parameters.ResourceGroupName);
+                new PSDataFactory(
+                    this.DataFactoryManagementClient.Factories.CreateOrUpdate(
+                        parameters.ResourceGroupName,
+                        parameters.DataFactoryName,
+                        new Factory
+                        {
+                            Location = parameters.Location,
+                            Tags = parameters.Tags?.ToDictionary(),
+                            Identity = new FactoryIdentity()
+                        }),
+                    parameters.ResourceGroupName);
             };
 
             parameters.ConfirmAction(
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactory = GetDataFactory(resourceGroupName, dataFactoryName);
                 return dataFactory != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 //Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
