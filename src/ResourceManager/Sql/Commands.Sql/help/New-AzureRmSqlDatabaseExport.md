@@ -23,7 +23,6 @@ New-AzureRmSqlDatabaseExport [-DatabaseName] <String> [-ServerName] <String> -St
 ## DESCRIPTION
 The **New-AzureRmSqlDatabaseExport** cmdlet exports an Azure SQL Database as a .bacpac file to a storage account.
 The get export database status request may be sent to retrieve status information for this request.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -83,16 +82,13 @@ Accept wildcard characters: False
 ### -AuthenticationType
 Specifies the type of authentication used to access the server.
 The default value is SQL if no authentication type is set.
-
 The acceptable values for this parameter are:
-
 - Sql.
 SQL authentication.
 Set the *AdministratorLogin* and *AdministratorLoginPassword* to the SQL administrator username and password. 
 - ADPassword.
 Azure Active Directory authentication.
 Set *AdministratorLogin* and *AdministratorLoginPassword* to the Azure AD administrator username and password.
-
 This parameter is only available on SQL Database V12 servers.
 
 ```yaml
@@ -185,9 +181,7 @@ Accept wildcard characters: False
 
 ### -StorageKeyType
 Specifies the type of access key for the storage account.
-
 The acceptable values for this parameter are:
-
 - StorageAccessKey.
 This value uses a storage account key. 
 - SharedAccessKey.
@@ -257,12 +251,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseImportExportBaseModel
+### System.Object
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql

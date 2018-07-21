@@ -44,7 +44,6 @@ Disconnect-AzureRmAccount [-AzureContext] <PSAzureContext> [-Scope <ContextModif
 
 ## DESCRIPTION
 The Disconnect-AzureRmAccount cmdlet disconnects a connected Azure account and removes all credentials and contexts (subscription and tenant information) associated with that account.
-
 After executing this cmdlet, you will need to login again using Connect-AzureRmAccount.
 
 ## EXAMPLES
@@ -230,8 +229,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureRmAccount
+Parameters: InputObject (ByValue)
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Parameters: AzureContext (ByValue)
 
 ## OUTPUTS
 

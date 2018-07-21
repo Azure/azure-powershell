@@ -213,10 +213,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
-Microsoft.Azure.Management.WebSites.Models.Site
-System.String
-Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
-System.DateTime
+Parameters: Force (ByPropertyName), RecoverConfiguration (ByPropertyName)
+
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
+
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
+
+### Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

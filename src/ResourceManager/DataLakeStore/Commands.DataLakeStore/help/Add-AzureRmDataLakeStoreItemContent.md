@@ -66,7 +66,6 @@ Accept wildcard characters: False
 ### -Encoding
 Specifies the encoding for the item to create.
 The acceptable values for this parameter are:
-
 - Unknown
 - String
 - Unicode
@@ -127,13 +126,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Object
-Parameter 'Value' accepts value of type 'Object' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.Object
+Parameters: Value (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.FileSystemCmdletProviderEncoding
+Parameters: Encoding (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-Returns true on success.
+### System.Boolean
 
 ## NOTES
 

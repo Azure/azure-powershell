@@ -223,13 +223,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
-The list of ACL entries for the specified catalog or catalog item(s).
 
 ## NOTES
 

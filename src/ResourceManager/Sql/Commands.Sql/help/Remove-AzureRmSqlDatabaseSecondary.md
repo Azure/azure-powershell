@@ -154,13 +154,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-You can pipe instances of the **Database** object for the primary or secondary database to this cmdlet.
+### System.String
+Parameters: DatabaseName (ByPropertyName), PartnerResourceGroupName (ByPropertyName), PartnerServerName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### System.Object
 
 ## NOTES
 

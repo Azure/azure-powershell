@@ -52,7 +52,6 @@ Remove-AzureRmKeyVault [-ResourceId] <String> [-Location] <String> [-InRemovedSt
 ## DESCRIPTION
 The **Remove-AzureRmKeyVault** cmdlet deletes the specified key vault.
 It also deletes all keys and secrets contained in that instance.
-
 Note that although specifying the resource group is optional for this cmdlet, you should so for better performance.
 
 ## EXAMPLES
@@ -279,6 +278,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

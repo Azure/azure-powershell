@@ -29,7 +29,6 @@ Get-AzureRmDataFactoryGateway [-DataFactory] <PSDataFactory> [[-Name] <String>]
 The **Get-AzureRmDataFactoryGateway** cmdlet gets information about logical gateways in Azure Data Factory.
 If you specify the name of a gateway, this cmdlet gets information about that gateway.
 If you do not specify a name, this cmdlet gets information about all gateways for a data factory.
-
 If you want to add an on-premises Microsoft SQL Server as a linked service to a data factory, you must install a gateway on your on-premises computer.
 
 ## EXAMPLES
@@ -160,12 +159,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryGateway
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactoryGateway
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

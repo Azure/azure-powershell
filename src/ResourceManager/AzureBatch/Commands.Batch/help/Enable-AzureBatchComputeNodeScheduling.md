@@ -40,7 +40,6 @@ PS C:\> Enable-AzureBatchComputeNodeScheduling  -PoolId "myPool" -Id "tvm-178359
 These commands enable task scheduling on the compute node tvm-1783593343_34-20151117t222514z.
 To do this, the first command in the example creates an object reference containing the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command then uses this object reference and the **Enable-AzureBatchComputeNodeScheduling** cmdlet to connect to the pool myPool and enable task scheduling on tvm-1783593343_34-20151117t222514z.
 
 ### Example 2: Enable task scheduling on compute nodes in a pool
@@ -52,7 +51,6 @@ PS C:\> Get-AzureBatchComputeNode -PoolId "Pool06"  -BatchContext $Context | Ena
 These commands enable task scheduling on all the compute nodes found in the pool Pool06.
 To perform this task, the first command in the example creates an object reference containing the account keys for the batch account contosobatchaccount.
 This object reference is stored in a variable named $context.
-
 The second command in the example then uses this object reference and **Get-AzureBatchComputeNode** to return a collection of all the compute nodes found in Pool06.
 That collection is then piped to the **Enable-AzureBatchComputeNodeScheduling** cmdlet, which enables task scheduling on each compute node in the collection.
 
@@ -140,13 +138,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

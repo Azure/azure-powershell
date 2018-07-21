@@ -27,11 +27,9 @@ Remove-AzureRmRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [-Pa
 
 ## DESCRIPTION
 The **Remove-AzureRmRecoveryServicesBackupProtectionPolicy** cmdlet deletes backup policies for a vault.
-
 Before you can delete a Backup protection policy, the policy must not have any associated Backup items.
 Before you delete the policy, make sure that each associated item is associated with some other policy.
 To associate another policy with a Backup item, use the Enable-AzureRmRecoveryServicesBackupProtection cmdlet.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -43,7 +41,6 @@ PS C:\> Remove-AzureRmRecoveryServicesBackupProtectionPolicy -Policy $Pol
 ```
 
 The first command gets the Backup protection policy named NewPolicy, and then stores it in the $Pol variable.
-
 The second command removes the policy object in $Pol.
 
 ## PARAMETERS
@@ -175,10 +172,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PolicyBase
-Parameter 'Policy' accepts value of type 'PolicyBase' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Parameters: Policy (ByValue)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

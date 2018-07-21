@@ -254,7 +254,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+Parameters: ManagedApplicationDefinitionId (ByPropertyName), ManagedResourceGroupName (ByPropertyName), Name (ByPropertyName), Parameter (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

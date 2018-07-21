@@ -20,7 +20,6 @@ Get-AzureRmBackupVaultCredentials [-TargetLocation] <String> [-Vault] <AzureRMBa
 
 ## DESCRIPTION
 The **Get-AzureRmBackupVaultCredentials** cmdlet downloads the vault credentials file for an Azure Backup vault.
-
 Backup uses a vault credential file to connect a server to the Azure Backup vault and register it.
 You must register a server before Backup can send backup data to the vault.
 
@@ -80,10 +79,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### String
+### System.String
 This cmdlet returns the name of the vault credential file.
 
 ## NOTES

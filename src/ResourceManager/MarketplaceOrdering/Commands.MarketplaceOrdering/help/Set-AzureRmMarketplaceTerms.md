@@ -211,12 +211,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
-Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
-Microsoft.Azure.Commands.MarketplaceOrdering.Models.PSAgreementTerms
 
 ## NOTES
 

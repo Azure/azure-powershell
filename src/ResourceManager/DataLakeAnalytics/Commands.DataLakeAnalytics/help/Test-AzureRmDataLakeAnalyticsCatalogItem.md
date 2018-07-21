@@ -65,7 +65,6 @@ Accept wildcard characters: False
 ### -ItemType
 Specifies the catalog item type of the item to check.
 The acceptable values for this parameter are:
-
 - Database
 - Schema
 - Assembly
@@ -113,13 +112,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+CatalogItemType
+Parameters: ItemType (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-True or false indicating if the specified catalog item exists or not.
+### System.Boolean
 
 ## NOTES
 

@@ -68,7 +68,6 @@ Accept wildcard characters: False
 ### -DisabledSslProtocols
 Specifies which protocols are disabled.
 The acceptable values for this parameter are:
-
 - TLSv1_0 
 - TLSv1_1 
 - TLSv1_2
@@ -169,7 +168,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

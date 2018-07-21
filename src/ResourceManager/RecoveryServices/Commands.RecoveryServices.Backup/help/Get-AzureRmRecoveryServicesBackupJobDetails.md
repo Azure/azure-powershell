@@ -27,7 +27,6 @@ Get-AzureRmRecoveryServicesBackupJobDetails [-JobId] <String> [-VaultId <String>
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupJobDetails** cmdlet gets Azure Backup job details for a specified job.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -40,9 +39,7 @@ PS C:\> $JobDetails.ErrorDetails
 ```
 
 The first command gets an array of failed jobs in the vault, and then stores them in the $Jobs array.
-
 The second command gets the job details for the failed jobs in $Jobs, and then stores them in the $JobDetails variable.
-
 The final command displays error details for the failed jobs.
 
 ## PARAMETERS
@@ -114,8 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

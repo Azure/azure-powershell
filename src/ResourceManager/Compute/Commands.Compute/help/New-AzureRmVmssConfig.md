@@ -59,7 +59,6 @@ New-AzureRmVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [[-Tag
 ## DESCRIPTION
 The **New-AzureRmVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
 object. Other cmdlets are needed to configure the VMSS object. These cmdlets are:
-
 - Set-AzureRmVmssOsProfile
 - Set-AzureRmVmssStorageProfile
 - Add-AzureRmVmssNetworkInterfaceConfiguration
@@ -216,7 +215,6 @@ Specifies the type of identity used for the virtual machine scale set.
 The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
 The type 'None' will remove any identities from the virtual machine scale set.
 The acceptable values for this parameter are:
-
 - SystemAssigned
 - UserAssigned
 - SystemAssignedUserAssigned
@@ -464,7 +462,6 @@ Accept wildcard characters: False
 
 ### -SkuTier
 Specifies the tier of VMSS. The acceptable values for this parameter are:
-
 - Standard
 - Basic
 
@@ -498,7 +495,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -515,9 +511,7 @@ Accept wildcard characters: False
 
 ### -UpgradePolicyMode
 Specified the mode of an upgrade to virtual machines in the scale set.
-
 The acceptable values for this parameter are:
-
 - Automatic
 - Manual
 
@@ -599,8 +593,41 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: HealthProbeId (ByPropertyName), LicenseType (ByPropertyName), Location (ByPropertyName), PlanName (ByPropertyName), PlanProduct (ByPropertyName), PlanPromotionCode (ByPropertyName), PlanPublisher (ByPropertyName), Priority (ByPropertyName), SkuName (ByPropertyName), SkuTier (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Int32
+Parameters: PlatformFaultDomainCount (ByPropertyName), SkuCapacity (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.UpgradeMode, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetOSProfile
+Parameters: OsProfile (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetStorageProfile
+Parameters: StorageProfile (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetNetworkConfiguration[]
+Parameters: NetworkInterfaceConfiguration (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetExtension[]
+Parameters: Extension (ByPropertyName)
+
+### System.String[]
+Parameters: IdentityId (ByPropertyName), Zone (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.RollingUpgradePolicy
+Parameters: RollingUpgradePolicy (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.BootDiagnostics
+Parameters: BootDiagnostic (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ResourceIdentityType, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 

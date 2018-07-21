@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.Commands.ServiceBus.dll-Help.xml
 Module Name: AzureRM.ServiceBus
-online version:https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusmigration
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.servicebus/get-azurermservicebusmigration
 schema: 2.0.0
 ---
 
@@ -46,7 +46,6 @@ ProvisioningState : Succeeded
 PendingReplicationOperationsCount : 40
 TargetNamespace   : /subscriptions/d7670b40-0217-4af9-985c-972f6702782e/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/TestingNamespacePremiumMirgation
 PostMigrationName : TestingNamespaceStandardMirgationPostMigration
-
 ```
 
 Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgation'
@@ -57,7 +56,7 @@ Gets the Migration Configuration properties of 'TestingNamespaceStandardMirgatio
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -72,7 +71,7 @@ Accept wildcard characters: False
 Namespace Object
 
 ```yaml
-Type: PSNamespaceAttributes
+Type: Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
 Parameter Sets: NamespaceInputObjectSet
 Aliases:
 
@@ -87,7 +86,7 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MigrationConfigurationPropertiesSet
 Aliases:
 
@@ -102,7 +101,7 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: MigrationConfigurationPropertiesSet
 Aliases:
 
@@ -117,7 +116,7 @@ Accept wildcard characters: False
 Namespace Resource Id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -129,19 +128,19 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
-System.String
+Parameters: InputObject (ByValue)
 
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusMigrationConfigurationAttributes
-
 
 ## NOTES
 

@@ -111,10 +111,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: IntelligencePackName (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceName (ByPropertyName)
+
+### System.Boolean
+Parameters: Enabled (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

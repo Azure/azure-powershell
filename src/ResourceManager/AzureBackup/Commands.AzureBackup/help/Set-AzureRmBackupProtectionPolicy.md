@@ -38,11 +38,9 @@ Set-AzureRmBackupProtectionPolicy [[-NewName] <String>] [-Weekly] [[-BackupTime]
 ## DESCRIPTION
 The **Set-AzureRmBackupProtectionPolicy** cmdlet modifies an existing protection policy in Azure Backup.
 You can modify the following protection policy components: 
-
 - Name
 - Backup schedule
 - Retention policies
-
 Any change might affect the backup and retention of the items associated with the policy.
 
 ## EXAMPLES
@@ -85,7 +83,6 @@ Accept wildcard characters: False
 Specifies an array of days of the week.
 This policy runs backups on the days specified by this parameter.
 The acceptable values for this parameter are:
-
 - Monday 
 - Tuesday 
 - Wednesday 
@@ -190,11 +187,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupProtectionPolicy
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy
+Parameters: ProtectionPolicy (ByValue)
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

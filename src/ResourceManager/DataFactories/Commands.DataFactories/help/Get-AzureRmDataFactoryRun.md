@@ -33,9 +33,7 @@ A run is a unit of processing for a slice.
 There could be one or more runs for a slice in case of retries or in case you rerun your slice due to failures.
 A slice is identified by its start time.
 To obtain the start time of a slice, use the Get-AzureRmDataFactorySlice cmdlet.
-
 For example, to get a run for the following slice, use the start time 2015-04-02T20:00:00.
-
 ResourceGroupName  : ADF
 DataFactoryName : SPDataFactory0924
 DatasetName : MarketingCampaignEffectivenessBlobDataset
@@ -156,14 +154,11 @@ Accept wildcard characters: False
 ### -StartDateTime
 Specifies the start of a time period as a **DateTime** object.
 This cmdlet gets runs for the data slices that match this time period.
-
 *StartDateTime* must be specified in the ISO8601 format, as in the following examples: 
-
 2015-01-01Z
 2015-01-01T00:00:00Z
 2015-01-01T00:00:00.000Z (UTC) 
 2015-01-01T00:00:00-08:00 (Pacific Standard Time)
-
 The default time zone designator is UTC.
 
 ```yaml
@@ -183,12 +178,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), DatasetName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataSliceRun
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataSliceRun
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

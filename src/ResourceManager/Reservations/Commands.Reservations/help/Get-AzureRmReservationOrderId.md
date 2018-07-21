@@ -77,7 +77,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Reservations.Models.PSAppliedReservationOrderId
+### Microsoft.Azure.Management.Reservations.Models.AppliedReservations
 
 ## NOTES
 

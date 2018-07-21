@@ -230,9 +230,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.Guid
+Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
-This cmdlet does not accept any input.
+### System.String
+Parameters: DisplayName (ByPropertyName), DisplayNameStartWith (ByPropertyName), IdentifierUri (ByPropertyName)
 
 ## OUTPUTS
 

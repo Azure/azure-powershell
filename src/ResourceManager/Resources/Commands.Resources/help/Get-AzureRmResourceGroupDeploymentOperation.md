@@ -23,7 +23,6 @@ Get-AzureRmResourceGroupDeploymentOperation -DeploymentName <String> [-Subscript
 The **Get-AzureRmResourceGroupDeploymentOperation** cmdlet lists all the operations that were part of a deployment to help you identify and give more information about the exact operations that failed for a particular deployment.
 It can also show the response and the request content for each deployment operation.
 This is the same information provided in the deployment details on the portal.
-
 To get the request and the response content, enable the setting when submitting a deployment through **New-AzureRmResourceGroupDeployment**.
 It can potentially log and expose secrets like passwords used in the resource property or **listKeys** operations that are then returned when you retrieve the deployment operations.
 For more on this setting and how to enable it, see New-AzureRmResourceGroupDeployment and Debugging ARM template deployments
@@ -87,9 +86,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -174,12 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-Parameter 'SubscriptionId' accepts value of type 'Guid' from the pipeline
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

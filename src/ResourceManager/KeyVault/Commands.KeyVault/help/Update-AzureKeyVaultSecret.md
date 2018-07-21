@@ -56,7 +56,6 @@ Tags         : Name      Value
 
 The first four commands define attributes for the expiry date, the NotBefore date, tags, and
 context type, and store the attributes in variables.
-
 The final command modifies the attributes for the secret named HR in the key vault named
 ContosoVault, using the stored variables.
 
@@ -76,9 +75,7 @@ PS C:\> Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '
 ```
 
 The first command stores the string value Contoso in the $Vault variable.
-
 The second command stores the string value IT in the $Prefix variable.
-
 The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key
 vault, and then passes those secrets to the **Where-Object** cmdlet. The **Where-Object** cmdlet
 filters the secrets for names that begin with the characters IT. The command pipes the secrets that
@@ -313,6 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

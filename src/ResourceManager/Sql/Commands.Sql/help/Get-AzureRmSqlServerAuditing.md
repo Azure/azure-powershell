@@ -121,12 +121,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.ServerBlobAuditingSettingsModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.ServerBlobAuditingSettingsModel
 
 ## NOTES
 

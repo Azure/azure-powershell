@@ -30,7 +30,6 @@ PS C:\> Get-AzureRmLoadBalancerRuleConfig -Name "MyLBrulename" -LoadBalancer $sl
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.
-
 The second command gets the associated rule configuration named MyLBrulename from the load balancer in $slb.
 
 ## PARAMETERS
@@ -86,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

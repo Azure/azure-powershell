@@ -35,7 +35,6 @@ Id AdministratorDetails
 ```
 
 The first command creates a certificate administrator details object, and then stores it in the $AdminDetails variable.
-
 The second command creates a certificate organization details object, and then stores it in the $OrgDetails variable.
 
 ## PARAMETERS
@@ -121,8 +120,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Id (ByPropertyName)
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateAdministratorDetails, Microsoft.Azure.Commands.KeyVault, Version=5.0.4.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

@@ -113,12 +113,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### System.String
+Parameters: ApiId (ByPropertyName), ProductId (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 
-### Boolean
+### System.Boolean
 
 ## NOTES
 

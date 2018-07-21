@@ -22,9 +22,7 @@ New-AzureRmStreamAnalyticsJob [[-Name] <String>] [-File] <String> [-Force] [-Res
 The **New-AzureRmStreamAnalyticsJob** cmdlet creates a new Stream Analytics job in Azure or updates the definition of an existing specified job.
 The name of the job can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
-
 If you specify a job name that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing job.
-
 If you specify the *Force* parameter and specify an existing job name, the job definition will be replaced without confirmation.
 
 ## EXAMPLES
@@ -157,8 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -373,7 +373,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: ManagementGroupName (ByPropertyName), PolicyAssignmentName (ByPropertyName), PolicyDefinitionName (ByPropertyName), PolicySetDefinitionName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), SubscriptionId (ByPropertyName)
 
 ## OUTPUTS
 

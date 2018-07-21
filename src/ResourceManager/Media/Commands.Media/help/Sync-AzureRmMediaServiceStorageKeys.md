@@ -31,7 +31,6 @@ PS C:\> Sync-AzureRmMediaServiceStorageKeys -ResourceGroupName "ResourceGroup001
 ```
 
 The first command uses the Get-AzureRmStorageAccount cmdlet to get the storage account named Storage135 that belongs to ResourceGroup001 and stores the result in the variable named $StorageAccount.
-
 The second command synchronizes the storage account keys for the media service named MediaService001 using the **Id** property contained in the $StorageAccount variable.
 
 ## PARAMETERS
@@ -132,8 +131,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName)
 
 ## OUTPUTS
 

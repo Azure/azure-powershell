@@ -328,8 +328,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Site
-Parameter 'SourceWebApp' accepts value of type 'Site' from the pipeline
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: SourceWebApp (ByValue)
 
 ## OUTPUTS
 

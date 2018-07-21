@@ -46,7 +46,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +81,7 @@ Specifies the Azure storage context.
 You can create it by using the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies a container name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Container
 
@@ -127,7 +127,7 @@ Returns an object representing the item with which you are working.
 By default, this cmdlet does not generate any output.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -144,7 +144,6 @@ By default, the container and any blobs in it can be accessed only by the owner 
 To grant anonymous users read permissions to a container and its blobs, you can set the container permissions to enable public access.
 Anonymous users can read blobs in a publicly available container without authenticating the request.
 The acceptable values for this parameter are:
-
 --Container.
 Provides full read access to a container and its blobs.
 Clients can enumerate blobs in the container through anonymous request, but cannot enumerate containers in the storage account. 
@@ -155,7 +154,7 @@ Clients cannot enumerate blobs in the container by using anonymous request.
 Restricts access to only the storage account owner.
 
 ```yaml
-Type: BlobContainerPublicAccessType
+Type: Microsoft.WindowsAzure.Storage.Blob.BlobContainerPublicAccessType
 Parameter Sets: (All)
 Aliases: PublicAccess
 Accepted values: Off, Container, Blob, Unknown
@@ -173,7 +172,7 @@ If the specified interval elapses before the service processes the request, the 
 Server side time out for each request.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -189,13 +188,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
+Parameters: Name (ByPropertyName, ByValue)
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
-### String
-
-Parameter 'Name' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

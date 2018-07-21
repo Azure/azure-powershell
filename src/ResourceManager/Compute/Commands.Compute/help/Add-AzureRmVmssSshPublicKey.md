@@ -30,7 +30,6 @@ PS C:\> Add-AzureRmVmssSshPublicKey -VirtualMachineScaleSet $VMSS -KeyData "MIID
 ```
 
 This example adds an SSH public key to the VMSS.
-
 The first command uses the **New-AzureRmVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 The second command adds an SSH key with the specified key data and stores the key at the specified path on the virtual machine.
 
@@ -133,13 +132,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.String
+Parameters: KeyData (ByPropertyName), Path (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

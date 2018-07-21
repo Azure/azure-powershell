@@ -73,7 +73,6 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the region that this cmdlet removes.
-
 Specifies the location of the new deployment region amongst the supported region for Api Management service.
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
@@ -95,8 +94,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+Parameters: Location (ByPropertyName)
 
 ## OUTPUTS
 

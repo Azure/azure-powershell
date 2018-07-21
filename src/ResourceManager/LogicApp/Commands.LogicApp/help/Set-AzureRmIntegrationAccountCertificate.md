@@ -24,7 +24,6 @@ Set-AzureRmIntegrationAccountCertificate -ResourceGroupName <String> -Name <Stri
 The **Set-AzureRmIntegrationAccountCertificate** cmdlet modifies an integration account certificate.
 This cmdlet returns an object that represents the integration account certificate.
 Specifying the integration account name, resource group name, and certificate name.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -239,8 +238,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: CertificateName (ByPropertyName), KeyName (ByPropertyName), KeyVaultId (ByPropertyName), KeyVersion (ByPropertyName), Name (ByPropertyName), PublicCertificateFilePath (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

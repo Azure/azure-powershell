@@ -56,7 +56,6 @@ authorization information is returned in command 2 and is piped to the **Where-O
 **Where-Object** then picks out only those authorizations where the *AuthorizationUseStatus*
 property is set to Available. To list only those authorizations that are not available, use this
 syntax for the Where clause:
-
 `{$_.AuthorizationUseStatus -ne "Available"}`
 
 ## PARAMETERS
@@ -93,7 +92,6 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the ExpressRoute circuit authorization that this cmdlet gets.
-
 -Name "ContosoCircuitAuthorization"
 
 ```yaml
@@ -114,8 +112,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
-**Get-AzureRmExpressRouteCircuitAuthorization** accepts pipelined instances of the
-**Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit** object.
+Parameters: ExpressRouteCircuit (ByValue)
 
 ## OUTPUTS
 

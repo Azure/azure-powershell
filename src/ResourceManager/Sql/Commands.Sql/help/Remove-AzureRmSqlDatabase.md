@@ -21,7 +21,6 @@ Remove-AzureRmSqlDatabase [-DatabaseName] <String> [-Force] [-ServerName] <Strin
 
 ## DESCRIPTION
 The **Remove-AzureRmSqlDatabase** cmdlet removes an Azure SQL database.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -146,11 +145,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### System.Object
 
 ## NOTES
 

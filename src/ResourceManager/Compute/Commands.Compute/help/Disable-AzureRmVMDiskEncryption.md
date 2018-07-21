@@ -188,7 +188,6 @@ Accept wildcard characters: False
 ### -VolumeType
 Specifies the type of virtual machine volumes to perform the encryption operation.
 For Windows virtual machines, valid values are: 
-
 - All
 - OS
 - Data.
@@ -225,7 +224,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -245,12 +243,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ExtensionPublisherName (ByPropertyName), ExtensionType (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName), VolumeType (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 
-### This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
 
 ## NOTES
 

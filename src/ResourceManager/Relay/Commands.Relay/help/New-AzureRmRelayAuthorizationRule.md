@@ -230,23 +230,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String
+### System.String
+Parameters: HybridConnection (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), WcfRelay (ByPropertyName)
 
-### -Namespace
- System.String
-
-### -WcfRelay
- System.String
-
-### -HybridConnection
- System.String
-
-### -Name
- System.String
-
-### -Rights
- System.String []
+### System.String[]
+Parameters: Rights (ByPropertyName)
 
 ## OUTPUTS
 

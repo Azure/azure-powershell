@@ -19,8 +19,8 @@
 -->
 
 ## Current Release
+* Updated help files to include full parameter types and correct input/output types.
 * Updated the ADF .Net SDK version to 1.1.0.
-* Updated help files to include full parameter types.
 
 ## Version 0.5.6
 * Fixed formatting of OutputType in help files

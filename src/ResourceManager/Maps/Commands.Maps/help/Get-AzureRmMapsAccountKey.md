@@ -33,10 +33,8 @@ Get-AzureRmMapsAccountKey [-ResourceId] <String> [-DefaultProfile <IAzureContext
 
 ## DESCRIPTION
 The Get-AzureRmMapsAccountKey cmdlet gets the API keys for a provisioned Azure Maps account.
-
 An Azure Maps account has two API keys: Primary and Secondary.
 The keys enable interaction with the Azure Maps account endpoint.
-
 Use New-AzureRmMapsAccountKey (New-AzureRmMapsAccountKey.md)to regenerate a key.
 
 ## EXAMPLES
@@ -146,7 +144,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

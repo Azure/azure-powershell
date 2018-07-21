@@ -88,11 +88,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
 
 ## NOTES
 * When you register the first server or virtual machine for a vault, the storage type is locked. Subsequently, you cannot change the storage type.

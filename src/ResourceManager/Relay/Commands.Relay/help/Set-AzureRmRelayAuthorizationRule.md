@@ -326,26 +326,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
- System.String
+### System.String
+Parameters: HybridConnection (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), WcfRelay (ByPropertyName)
 
-### -Namespace
- System.String
+### Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
 
-### -WcfRelay
- System.String
-
-### -HybridConnection
- System.String
-
-### -Name
- System.String
-
-### -InputObject
- Microsoft.Azure.Commands.Relay.Models.AuthorizationRuleAttributes
-
-### -Rights
- System.String []
+### System.String[]
 
 ## OUTPUTS
 

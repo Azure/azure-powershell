@@ -30,10 +30,8 @@ Add-AzureRmApplicationGatewayFrontendIPConfig -ApplicationGateway <PSApplication
 ## DESCRIPTION
 The **Add-AzureRmApplicationGatewayFrontendIPConfig** cmdlet adds a front-end IP configuration to an application gateway.
 An application gateway supports two types of front-end IP configurations: 
-
 - Public IP addresses
 - Private IP addresses using internal load-balancing (ILB)
-
 An application gateway can have at most one public IP and one private IP.
 Add the public IP address and private IP address as separate front-end IPs.
 
@@ -210,7 +208,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

@@ -120,8 +120,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Management.Monitor.Management.Models.WebhookNotification[]
+Parameters: Webhook (ByPropertyName)
+
+### System.String[]
+Parameters: CustomEmail (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: SendEmailToSubscriptionAdministrator (ByPropertyName), SendEmailToSubscriptionCoAdministrator (ByPropertyName)
 
 ## OUTPUTS
 

@@ -296,9 +296,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
+Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to update the provided application.
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: DisplayName (ByPropertyName), HomePage (ByPropertyName)
+
+### System.String[]
+Parameters: IdentifierUri (ByPropertyName), ReplyUrl (ByPropertyName)
+
+### System.Boolean
+Parameters: AvailableToOtherTenants (ByPropertyName)
 
 ## OUTPUTS
 

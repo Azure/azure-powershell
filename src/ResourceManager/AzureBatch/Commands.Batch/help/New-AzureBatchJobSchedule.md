@@ -36,11 +36,9 @@ PS C:\> New-AzureBatchJobSchedule -Id "JobSchedule17" -Schedule $Schedule -JobSp
 ```
 
 This example creates a job schedule.
-
 The first five commands create and modify **PSSchedule**, **PSJobSpecification**, and **PSPoolInformation** objects.
 The commands use the New-Object cmdlet and standard Azure PowerShell syntax.
 The commands store these objects in the $Schedule and $JobSpecification variables.
-
 The final command creates a job schedule that has the ID JobSchedule17.
 This schedule creates jobs with a recurrence interval of one day.
 The jobs run on the pool that has the ID ContosoPool06, as specified in the fifth command.
@@ -161,10 +159,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: Id (ByPropertyName)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

@@ -14,9 +14,9 @@ Sets the goal state for a route.
 ## SYNTAX
 
 ```
-Set-AzureRmRouteConfig -RouteTable <PSRouteTable> [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>]
+ [-NextHopType <String>] [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,7 +131,6 @@ Accept wildcard characters: False
 ### -NextHopType
 Specifies how this route forwards packets.
 The acceptable values for this parameter are:
-
 - Internet.
 The default Internet gateway provided by Azure. 
 - None.
@@ -206,8 +205,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRouteTable
-Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+Parameters: RouteTable (ByPropertyName, ByValue)
+
+### System.String
+Parameters: AddressPrefix (ByPropertyName), NextHopIpAddress (ByPropertyName), NextHopType (ByPropertyName)
 
 ## OUTPUTS
 

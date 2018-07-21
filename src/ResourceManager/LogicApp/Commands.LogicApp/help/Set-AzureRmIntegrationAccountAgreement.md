@@ -26,9 +26,7 @@ Set-AzureRmIntegrationAccountAgreement -ResourceGroupName <String> -Name <String
 The **Set-AzureRmIntegrationAccountAgreement** cmdlet modifies an integration account agreement.
 This cmdlet returns an object that represents the integration account agreement.
 Specify the integration account name, resource group name, and agreement name.
-
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -108,7 +106,6 @@ Accept wildcard characters: False
 ### -AgreementType
 Specifies the integration account agreement type.
 The acceptable values for this parameter are:
-
 - X12 
 - AS2
 - Edifact
@@ -327,8 +324,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AgreementName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

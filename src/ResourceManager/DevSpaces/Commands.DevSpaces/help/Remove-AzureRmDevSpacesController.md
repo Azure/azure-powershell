@@ -186,7 +186,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DevSpaces.Models.PSController
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

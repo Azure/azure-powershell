@@ -80,7 +80,6 @@ Accept wildcard characters: False
 ### -KeyType
 Specifies the type of key that this cmdlet regenerates.
 Valid values are: 
-
 - Primary
 - Secondary
 
@@ -117,12 +116,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 
 ## NOTES
 

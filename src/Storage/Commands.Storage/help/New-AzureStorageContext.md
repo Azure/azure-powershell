@@ -110,9 +110,7 @@ PS C:\> ($Context01, $Context02) | Get-AzureStorageContainer
 ```
 
 The first command creates a context by using the local development storage account, and then stores that context in the $Context01 variable.
-
 The second command creates a context for the account named ContosoGeneral that uses the specified key, and then stores that context in the $Context02 variable.
-
 The final command gets the containers for the contexts stored in $Context01 and $Context02 by using **Get-AzureStorageContainer**.
 
 ### Example 7: Create a context with an endpoint
@@ -140,9 +138,7 @@ PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
 
 The first command generates an SAS token by using the **New-AzureStorageContainerSASToken** cmdlet for the container named ContosoMain, and then stores that token in the $SasToken variable.
 That token is for read, add, update, and delete permissions.
-
 The second command creates a context for the account named ContosoGeneral that uses the SAS token stored in $SasToken, and then stores that context in the $Context variable.
-
 The final command lists all the blobs associated with the container named ContosoMain by using the context stored in $Context.
 
 ## PARAMETERS
@@ -151,7 +147,7 @@ The final command lists all the blobs associated with the container named Contos
 Indicates that this cmdlet creates an Azure Storage context for anonymous logon.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: AnonymousAccount, AnonymousAccountEnvironment
 Aliases:
 
@@ -166,7 +162,7 @@ Accept wildcard characters: False
 Specifies a connection string for the Azure Storage context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ConnectionString
 Aliases:
 
@@ -181,7 +177,7 @@ Accept wildcard characters: False
 Specifies the endpoint for the Azure Storage context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameAndKey, AnonymousAccount, SasToken
 Aliases:
 
@@ -198,7 +194,7 @@ The acceptable values for this parameter are: AzureCloud and AzureChinaCloud.
 For more information, type `Get-Help Get-AzureEnvironment`.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameAndKeyEnvironment, AnonymousAccountEnvironment
 Aliases: Name, EnvironmentName
 
@@ -210,7 +206,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasTokenWithAzureEnvironment
 Aliases: Name, EnvironmentName
 
@@ -225,7 +221,7 @@ Accept wildcard characters: False
 Indicates that this cmdlet creates a context by using the local development storage account.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: LocalDevelopment
 Aliases:
 
@@ -240,7 +236,7 @@ Accept wildcard characters: False
 Transfer Protocol (https/http).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken
 Aliases:
 Accepted values: Http, Https
@@ -256,7 +252,7 @@ Accept wildcard characters: False
 Specifies a Shared Access Signature (SAS) token for the context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SasToken, SasTokenWithAzureEnvironment
 Aliases:
 
@@ -272,7 +268,7 @@ Specifies an Azure Storage account key.
 This cmdlet creates a context for the key that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment
 Aliases:
 
@@ -288,7 +284,7 @@ Specifies an Azure Storage account name.
 This cmdlet creates a context for the account that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameAndKey, AccountNameAndKeyEnvironment, AnonymousAccount, AnonymousAccountEnvironment, SasToken, SasTokenWithAzureEnvironment
 Aliases:
 
@@ -304,12 +300,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Environment (ByPropertyName)
 
 ## OUTPUTS
 
-### AzureStorageContext
+### Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 
 ## NOTES
 

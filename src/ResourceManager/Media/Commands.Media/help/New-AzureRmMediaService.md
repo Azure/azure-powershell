@@ -243,8 +243,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), Location (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName)
+
+### Microsoft.Azure.Commands.Media.Models.PSStorageAccount[]
+Parameters: StorageAccounts (ByPropertyName)
 
 ## OUTPUTS
 

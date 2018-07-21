@@ -33,7 +33,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGat
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.
-
 The second command updates the back-end address pool of the application gateway in $AppGw by using FQDNs.
 
 ### Example 2: Setting a back-end address pool by using backend server IP addresses
@@ -43,7 +42,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayBackendAddressPool -ApplicationGat
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01, and stores it in the $AppGw variable.
-
 The second command updates the back-end address pool of the application gateway in $AppGw by using IP addresses.
 
 ## PARAMETERS
@@ -158,7 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

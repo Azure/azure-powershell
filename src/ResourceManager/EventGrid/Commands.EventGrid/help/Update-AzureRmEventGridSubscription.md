@@ -313,8 +313,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-System.String[]
+Parameters: EventSubscriptionName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), TopicName (ByPropertyName)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

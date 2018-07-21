@@ -111,7 +111,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetwork
+Parameters: Network (ByValue)
+
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
+Parameters: PrimaryFabric (ByValue)
 
 ## OUTPUTS
 

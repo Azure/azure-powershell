@@ -108,7 +108,6 @@ Accept wildcard characters: False
 ### -SkuName
 Specifies the SKU for the account.
 The acceptable values for this parameter are:
-
 - F0 (free tier)
 - S0
 - S1
@@ -179,8 +178,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
+
+### System.Collections.Hashtable[]
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

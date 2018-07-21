@@ -314,8 +314,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
 ### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: BackupName (ByPropertyName), DatabaseState (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

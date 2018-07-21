@@ -288,7 +288,6 @@ Accept wildcard characters: False
 ### -Permissions
 Specifies the permissions for the ACE.
 The acceptable values for this parameter are:
-
 - None
 - Read
 - ReadWrite
@@ -372,13 +371,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
+
+### System.Guid
+Parameters: ObjectId (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType
+Parameters: Permissions (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
-The resulting list of ACL entries.
 
 ## NOTES
 

@@ -184,8 +184,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
+Parameters: InputObject (ByValue)
+
 ### System.String
-Microsoft.Azure.Commands.ContainerInstance.Models.PSContainerGroup
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

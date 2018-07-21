@@ -21,14 +21,11 @@ Get-AzureRmBackupContainer [-Name <String>] -Type <AzureBackupContainerType>
 
 ## DESCRIPTION
 The **Get-AzureRmBackupContainer** cmdlet gets Azure Backup containers.
-
 An **AzureBackupContainer** encapsulates data sources, protected items, and recovery points.
 An **AzureBackupContainer** can be one of the following: 
-
 - A Windows Server computer
 - A System Center Data Protection Manager (SCDPM) server 
 - An Azure infrastructure as a service (IaaS) virtual machine
-
 Before Backup can back up a data source or item, you must register the container that holds it with the Azure Backup service.
 The container must be authenticated to send backup data to the Backup vault.
 For Windows Server computers and SCDPM servers, the registration is held with the fully qualified domain name of the server.
@@ -47,7 +44,6 @@ SERVER02.CONTOSO.COM          Windows            Registered
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets all containers of type Windows from the vault in $Vault.
 
 ### Example 2: Get a specific container
@@ -122,7 +118,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies the current status of the containers that this cmdlet gets.
 The acceptable values for this parameter are:
-
 - NotRegistered 
 - Registered 
 - Registering
@@ -177,11 +172,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
 
 ## NOTES
 * None

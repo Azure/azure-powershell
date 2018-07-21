@@ -30,7 +30,6 @@ PS C:\> Remove-AzureRmApplicationGatewaySslCertificate -ApplicationGateway $AppG
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
-
 The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
 
 ## PARAMETERS
@@ -85,7 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

@@ -159,10 +159,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

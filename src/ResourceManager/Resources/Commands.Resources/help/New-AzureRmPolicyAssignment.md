@@ -85,19 +85,15 @@ PS C:\> New-AzureRmPolicyAssignment -Name 'RestrictLocationPolicyAssignment' -Po
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzureRMResourceGroup cmdlet.
 The command stores that object in the $ResourceGroup variable.
-
 The second command gets the built-in policy definition for allowed locations by using the Get-AzureRmPolicyDefinition cmdlet.
 The command stores that object in the $Policy variable.
-
 The third and fourth commands create an object containing all Azure regions with "east" in the name.
 The commands store that object in the $AllowedLocations variable.
-
 The final command assigns the policy in $Policy at the level of a resource group using the policy parameter object in $AllowedLocations.
 The **ResourceId** property of $ResourceGroup identifies the resource group.
 
 ### Example 3: Policy assignment at resource group level with policy parameter file
 Create a file called _AllowedLocations.json_ in the local working directory with the following content.
-
 
 ```
 {
@@ -186,9 +182,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -394,7 +388,6 @@ Accept wildcard characters: False
 ### -Scope
 Specifies the scope at which to assign the policy.
 For instance, to assign a policy to a resource group, specify the following:
-
 `/subscriptions/`subscription ID`/resourcegroups/`resource group name
 
 ```yaml
@@ -429,12 +422,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

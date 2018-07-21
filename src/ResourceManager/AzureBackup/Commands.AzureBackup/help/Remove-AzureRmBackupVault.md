@@ -20,7 +20,6 @@ Remove-AzureRmBackupVault [-Force] [-Vault] <AzureRMBackupVault> [-DefaultProfil
 
 ## DESCRIPTION
 The **Remove-AzureRmBackupVault** cmdlet deletes an Azure Backup vault.
-
 Before you can delete a Backup vault, it must be empty.
 Use the **Remove-AzureRmBackupContainer** cmdlet to remove infrastructure as a service (IaaS) virtual machine backup data from the vault.
 Use the **Delete-RegisteredServer** cmdlet to remove other registered servers and backup data.
@@ -118,11 +117,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRMBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 * None

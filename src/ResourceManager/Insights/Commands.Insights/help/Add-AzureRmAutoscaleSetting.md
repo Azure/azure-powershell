@@ -32,7 +32,6 @@ Add-AzureRmAutoscaleSetting -Location <String> -Name <String> -ResourceGroupName
 
 ## DESCRIPTION
 The **Add-AzureRmAutoscaleSetting** cmdlet creates an Autoscale setting.
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -51,9 +50,7 @@ PS C:\> Add-AzureRmAutoscaleSetting -Location "East US" -Name "MySetting" -Resou
 ```
 
 The first two commands use New-AzureRmAutoscaleRule to create two Autoscale rules, $Rule1 and $Rule2.
-
 The third and fourth commands use New-AzureRmAutoscaleProfile to create Autoscale profiles, $Profile1 and $Profile2, using $Rule1 and $Rule2.
-
 The final command creates an Autoscale setting using the profiles in $Profile1 and $Profile2.
 
 ## PARAMETERS
@@ -228,8 +225,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSAutoscaleSetting
+Parameters: InputObject (ByPropertyName)
+
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TargetResourceId (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableSetting (ByPropertyName)
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleProfile, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.AutoscaleNotification, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

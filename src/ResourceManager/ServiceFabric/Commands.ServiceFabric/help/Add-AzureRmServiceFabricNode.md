@@ -141,11 +141,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Int32
+Parameters: NumberOfNodesToAdd (ByValue)
+
 ### System.String
+Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

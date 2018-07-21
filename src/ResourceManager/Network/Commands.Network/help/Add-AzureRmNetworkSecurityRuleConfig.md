@@ -122,11 +122,9 @@ Accept wildcard characters: False
 ### -DestinationAddressPrefix
 Specifies a destination address prefix.
 The acceptable values for this parameter are:
-
 - A Classless Interdomain Routing (CIDR) address
 - A destination IP address range
 - A wildcard character (*) to match any IP address
-
 You can use tags such as VirtualNetwork, AzureLoadBalancer, and Internet.
 
 ```yaml
@@ -174,7 +172,6 @@ Accept wildcard characters: False
 ### -DestinationPortRange
 Specifies a destination port or range.
 The acceptable values for this parameter are:
-
 - An integer
 - A range of integers between 0 and 65535
 - A wildcard character (*) to match any port
@@ -242,7 +239,6 @@ Accept wildcard characters: False
 ### -Priority
 Specifies the priority of a rule configuration.
 The acceptable values for this parameter are: An integer between 100 and 4096.
-
 The priority number must be unique for each rule in the collection.
 The lower the priority number, the higher the priority of the rule.
 
@@ -261,7 +257,6 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the network protocol that a rule configuration applies to.
 The acceptable values for this parameter are:
-
 - Tcp
 - Udp
 - Wildcard character (*) to match both
@@ -282,11 +277,9 @@ Accept wildcard characters: False
 ### -SourceAddressPrefix
 Specifies a source address prefix.
 The acceptable values for this parameter are:
-
 - A CIDR
 - A source IP range
 - A wildcard character (*) to match any IP address.
-
 You can also use tags such as VirtualNetwork, AzureLoadBalancer and Internet.
 
 ```yaml
@@ -352,8 +345,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkSecurityGroup
-Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Parameters: NetworkSecurityGroup (ByValue)
 
 ## OUTPUTS
 

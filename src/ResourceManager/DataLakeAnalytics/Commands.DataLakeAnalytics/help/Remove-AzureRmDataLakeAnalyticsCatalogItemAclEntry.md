@@ -218,13 +218,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
+
+### System.Guid
+Parameters: ObjectId (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon successful completion.
+### System.Boolean
 
 ## NOTES
 
