@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using System;
@@ -22,32 +24,33 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkStrategy
     {
-        public static ResourceStrategy<TModel> Create<TModel, TOperations>(
+        public static IResourceStrategy<TModel> Create<TModel, TOperations>(
             string provider,
             Func<NetworkManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
             Func<TOperations, CreateOrUpdateAsyncParams<TModel>, Task<TModel>> createOrUpdateAsync,
             Func<TModel, int> createTime,
-            Func<TModel, bool> compareExistingConfig = null)
+            Action<TModel> evaluatePreexistingConfiguration = null)
             where TModel : Resource
             => ResourceStrategy.Create(
-                new ResourceType("Microsoft.Network", provider),
-                getOperations,
-                getAsync,
-                createOrUpdateAsync,
-                model => model.Location, 
-                (model, location) => model.Location = location,
-                createTime,
-                true,
-                compareExistingConfig);
+                type: new ResourceType("Microsoft.Network", provider),
+                getApiVersion: _ => "2017-10-01",
+                getOperations: getOperations,
+                getAsync: getAsync,
+                createOrUpdateAsync: createOrUpdateAsync,
+                getLocation: model => model.Location, 
+                setLocation: (model, location) => model.Location = location,
+                createTime: createTime,
+                evaluatePreexistingConfiguration: evaluatePreexistingConfiguration);
 
         public static TModel GetReference<TModel, TParentModel>(
-            this IEngine engine, NestedResourceConfig<TModel, TParentModel> config)
+            this IEngine engine, INestedResourceConfig<TModel, TParentModel> config)
             where TModel : SubResource, new()
             where TParentModel : Resource
             => new TModel { Id = engine.GetId(config) };
 
-        public static TModel GetReference<TModel>(this IEngine engine, ResourceConfig<TModel> config)
+        public static TModel GetReference<TModel>(
+            this IEngine engine, IResourceConfig<TModel> config)
             where TModel : Resource, new()
             => new TModel { Id = engine.GetId(config) };
 

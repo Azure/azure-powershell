@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies;
 using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;

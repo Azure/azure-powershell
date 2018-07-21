@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.SignalR;
 using Microsoft.Azure.Management.SignalR.Models;
 
@@ -20,9 +21,10 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
 {
     static class SignalRStrategy
     {
-        public static ResourceStrategy<SignalRResource> Strategy { get; }
+        public static IResourceStrategy<SignalRResource> Strategy { get; }
             = ResourceStrategy.Create(
                 type: new ResourceType("Microsoft.SignalRService", "SignalR"),
+                getApiVersion: client => client.ApiVersion,
                 getOperations: (SignalRManagementClient client) => client.SignalR,
                 getAsync: (o, p) => o.GetAsync(p.ResourceGroupName, p.Name, p.CancellationToken),
                 createOrUpdateAsync: (o, p) => o.CreateOrUpdateAsync(
@@ -36,7 +38,6 @@ namespace Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp
                     p.CancellationToken),
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
-                createTime: c => 180,
-                compulsoryLocation: true);
+                createTime: c => 180);
     }
 }

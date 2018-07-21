@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkInterfaceStrategy
     {
-        public static ResourceStrategy<NetworkInterface> Strategy { get; }
+        public static IResourceStrategy<NetworkInterface> Strategy { get; }
             = NetworkStrategy.Create(
                 provider: "networkInterfaces",
                 getOperations: client => client.NetworkInterfaces,
@@ -31,12 +32,12 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 5);
 
-        public static ResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<NetworkInterface> CreateNetworkInterfaceConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
-            NestedResourceConfig<Subnet, VirtualNetwork> subnet,
-            ResourceConfig<PublicIPAddress> publicIPAddress,
-            ResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
+            INestedResourceConfig<Subnet, VirtualNetwork> subnet,
+            IResourceConfig<PublicIPAddress> publicIPAddress,
+            IResourceConfig<NetworkSecurityGroup> networkSecurityGroup = null,
             bool enableAcceleratedNetworking = false)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,

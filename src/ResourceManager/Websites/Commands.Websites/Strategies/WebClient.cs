@@ -11,7 +11,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Rest;
@@ -30,8 +30,7 @@ namespace Microsoft.Azure.Commands.WebApps.Strategies
         public IAzureContext Context { get; }
 
         public T GetClient<T>() where T : ServiceClient<T>
-        {
-            return AzureSession.Instance.ClientFactory.CreateArmClient<T>(Context, AzureEnvironment.Endpoint.ResourceManager);
-        }
+            => AzureSession.Instance.ClientFactory.CreateArmClient<T>(
+                Context, AzureEnvironment.Endpoint.ResourceManager);
     }
 }

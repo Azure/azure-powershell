@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -23,7 +24,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
 {
     static class AvailabilitySetStrategy
     {
-        public static ResourceStrategy<AvailabilitySet> Strategy { get; }
+        public static IResourceStrategy<AvailabilitySet> Strategy { get; }
             = ComputeStrategy.Create(
                 provider: "availabilitySets",
                 getOperations: client => client.AvailabilitySets,
@@ -33,8 +34,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: c => 1);
 
-        public static ResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name)
+        public static IResourceConfig<AvailabilitySet> CreateAvailabilitySetConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup, string name)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,

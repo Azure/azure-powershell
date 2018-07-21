@@ -5,20 +5,27 @@ using Microsoft.Rest;
 using Xunit;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System.Threading;
+using Microsoft.Azure.Commands.Common.Strategies.Cmdlets;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Progress;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
 
 namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
 {
     public class AsyncCmdletExtensionsTest
     {
-        class Client : IClient
+        class Client : ServiceClient<Client>, IClient
         {
+            public string SubscriptionId => "subscription";
+
             public T GetClient<T>() where T : ServiceClient<T>
                 => null;
         }
 
         class RG { }
 
-        class Parameters : IParameters<RG>
+        class Parameters : INewCmdletParameters<RG, RG>
         {
             public string DefaultLocation => "eastus";
 
@@ -34,19 +41,28 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
                 }
             }
 
-            public async Task<ResourceConfig<RG>> CreateConfigAsync()
+            public string OutputTemplateFile
+                => null;
+
+            public async Task<IResourceConfig<RG>> CreateConfigAsync(
+                IResourceConfig<RG> resourceGroupConfig)
                 => new ResourceConfig<RG>(
-                    new ResourceStrategy<RG>(
+                    ResourceStrategy.Create<RG, Client, Client>(
                         null,
+                        null,
+                        c => c, 
                         async (c, p) => new RG(),
                         null,
                         null,
                         null,
-                        false),
+                        null),
                     null,
                     null,
                     null,
                     null);
+
+            public IResourceConfig<RG> CreateResourceGroup()
+                => null;
         }
 
         class AsyncCmdlet : IAsyncCmdlet
@@ -104,7 +120,7 @@ namespace Microsoft.Azure.Commands.Common.Strategies.UnitTest
             var parameters = new Parameters();
             var asyncCmdlet = new AsyncCmdlet();
 
-            await client.RunAsync("subscriptionId", parameters, asyncCmdlet);
+            await client.RunAsync(parameters, asyncCmdlet);
         }
     }
 }

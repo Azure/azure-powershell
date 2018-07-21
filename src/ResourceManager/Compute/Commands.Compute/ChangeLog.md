@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* `New-AzureRmVm` and `New-AzureRmVmss` are updated to use the latest `Strategies` library.
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk

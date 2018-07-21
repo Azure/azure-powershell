@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.Strategies.Progress;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 

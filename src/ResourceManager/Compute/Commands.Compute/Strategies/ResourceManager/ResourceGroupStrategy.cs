@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Internal.Resources.Models;
 
@@ -20,19 +22,19 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ResourceManager
 {
     static class ResourceGroupStrategy
     {
-        public static ResourceStrategy<ResourceGroup> Strategy { get; }
+        public static IResourceStrategy<ResourceGroup> Strategy { get; }
             = ResourceStrategy.Create(
                 type: ResourceType.ResourceGroup,
+                getApiVersion: (ResourceManagementClient client) => client.ApiVersion,
                 getOperations: (ResourceManagementClient client) => client.ResourceGroups,
                 getAsync: (o, p) => o.GetAsync(p.Name, p.CancellationToken),
-                createOrUpdateAsync: (o, p) 
+                createOrUpdateAsync: (o, p)
                     => o.CreateOrUpdateAsync(p.Name, p.Model, p.CancellationToken),
                 getLocation: model => model.Location,
                 setLocation: (model, location) => model.Location = location,
-                createTime: _ => 3,
-                compulsoryLocation: false);
+                createTime: _ => 3);
 
-        public static ResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
+        public static IResourceConfig<ResourceGroup> CreateResourceGroupConfig(string name)
             => Strategy.CreateResourceConfig(null, name);
     }
 }

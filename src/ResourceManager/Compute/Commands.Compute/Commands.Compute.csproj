@@ -270,12 +270,14 @@
     <Compile Include="Strategies\Client.cs" />
     <Compile Include="Strategies\ComputeRp\AvailabilitySetStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ComputeStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\Credential.cs" />
     <Compile Include="Strategies\ComputeRp\DataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageAndOsType.cs" />
     <Compile Include="Strategies\ComputeRp\ImageDataDiskStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ImageEx.cs" />
     <Compile Include="Strategies\ComputeRp\Images.cs" />
     <Compile Include="Strategies\ComputeRp\ApiEntityReferenceStrategy.cs" />
+    <Compile Include="Strategies\ComputeRp\ImageVersion.cs" />
     <Compile Include="Strategies\ComputeRp\LinuxConfigurationStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\ManagedDiskParametersStrategy.cs" />
     <Compile Include="Strategies\ComputeRp\NetworkInterfaceReferenceStrategy.cs" />
@@ -296,6 +298,7 @@
     <Compile Include="Strategies\Network\SubnetStrategy.cs" />
     <Compile Include="Strategies\Network\VirtualNetworkStrategy.cs" />
     <Compile Include="Strategies\ResourceManager\ResourceGroupStrategy.cs" />
+    <Compile Include="Strategies\UniqueId.cs" />
     <Compile Include="Usage\GetAzureVMUsageCommand.cs" />
     <Compile Include="Usage\VirtualMachineUsageBaseCmdlet.cs" />
     <Compile Include="VirtualMachineSizes\GetAzureVMSizeCommand.cs" />
@@ -379,6 +382,9 @@
       <Link>AzureRM.Compute.psd1</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="AzureRM.Compute.Netcore.psd1" />
+    <None Include="AzureRM.Compute.psd1" />
+    <None Include="ChangeLog.md" />
     <None Include="Generated\Microsoft.Azure.Commands.Compute.Automation.format.generated.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>

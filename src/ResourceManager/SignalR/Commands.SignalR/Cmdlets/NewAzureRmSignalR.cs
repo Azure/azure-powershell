@@ -22,6 +22,9 @@ using System.Management.Automation;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.SignalR.Strategies.ResourceManager;
 using Microsoft.Azure.Commands.SignalR.Strategies.SignalRRp;
+using Microsoft.Azure.Management.Internal.Resources.Models;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Cmdlets;
 
 namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         public override void ExecuteCmdlet()
             => this.StartAndWait(SimpleExecuteCmdlet);
 
-        sealed class Parameters : IParameters<SignalRResource>
+        sealed class Parameters : INewCmdletParameters<SignalRResource, ResourceGroup>
         {
             public string Location
             {
@@ -101,16 +104,16 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
                 _cmdlet = cmdlet;
             }
 
-            public Task<ResourceConfig<SignalRResource>> CreateConfigAsync()
+            public IResourceConfig<ResourceGroup> CreateResourceGroup()
+                => ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
+
+            public Task<IResourceConfig<SignalRResource>> CreateConfigAsync(IResourceConfig<ResourceGroup> resourceGroupConfig)
             {
                 _cmdlet.ResolveResourceGroupName(required: false);
                 _cmdlet.ResourceGroupName = _cmdlet.ResourceGroupName ?? _cmdlet.Name;
 
-                var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(
-                    _cmdlet.ResourceGroupName);
-
                 var result = SignalRStrategy.Strategy.CreateResourceConfig(
-                    resourceGroup: resourceGroup,
+                    resourceGroup: resourceGroupConfig,
                     name: _cmdlet.Name,
                     createModel: engine => new SignalRResource(
                         tags: _cmdlet.Tag,
@@ -127,8 +130,7 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 
             var parameters = new Parameters(this);
 
-            var result = await client.RunAsync(
-                client.SubscriptionId, parameters, asyncCmdlet);
+            var result = await client.RunAsync(parameters, asyncCmdlet);
 
             if (result != null)
             {

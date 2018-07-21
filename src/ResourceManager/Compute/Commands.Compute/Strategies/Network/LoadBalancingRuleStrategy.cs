@@ -12,14 +12,15 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class LoadBalancingRuleStrategy
     {
-        public static NestedResourceStrategy<LoadBalancingRule, LoadBalancer> Strategy { get; }
+        public static INestedResourceStrategy<LoadBalancingRule, LoadBalancer> Strategy { get; }
             = NestedResourceStrategy.Create<LoadBalancingRule, LoadBalancer>(
                 provider: "loadBalancingRules",
                 getList: parentModel => parentModel.LoadBalancingRules,
@@ -27,11 +28,11 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 getName: model => model.Name,
                 setName: (model, name) => model.Name = name);
 
-        public static NestedResourceConfig<LoadBalancingRule, LoadBalancer> CreateLoadBalancingRule(
-            this ResourceConfig<LoadBalancer> loadBalancer,
+        public static INestedResourceConfig<LoadBalancingRule, LoadBalancer> CreateLoadBalancingRule(
+            this IResourceConfig<LoadBalancer> loadBalancer,
             string name,
-            NestedResourceConfig<FrontendIPConfiguration, LoadBalancer> fronendIpConfiguration,
-            NestedResourceConfig<BackendAddressPool, LoadBalancer> backendAddressPool,
+            INestedResourceConfig<FrontendIPConfiguration, LoadBalancer> fronendIpConfiguration,
+            INestedResourceConfig<BackendAddressPool, LoadBalancer> backendAddressPool,
             int frontendPort,
             int backendPort)
             => loadBalancer.CreateNested(

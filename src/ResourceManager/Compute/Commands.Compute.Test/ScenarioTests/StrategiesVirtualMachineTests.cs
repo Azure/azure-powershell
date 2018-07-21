@@ -13,6 +13,8 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Compute.Strategies;
+using Microsoft.Azure.Test;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using System;
@@ -103,8 +105,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             var callingClassType = sf.GetMethod().ReflectedType?.ToString();
             var mockName = sf.GetMethod().Name;
 
-            var create = typeof(UniqueId).GetField("_Create", BindingFlags.Static | BindingFlags.NonPublic);
-            var oldCreate = create.GetValue(null);
+            var oldCreate = UniqueId._Create;
 
             ComputeTestController controller = ComputeTestController.NewInstance;
             controller.SetLogger(_logger);
@@ -112,9 +113,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             controller.RunPsTestWorkflow(
                 () => new[] { psTest },
                 // initializer
-                _ => create.SetValue(null, getUniqueId),
+                _ => UniqueId._Create = getUniqueId,
                 // cleanup 
-                () => create.SetValue(null, oldCreate),
+                () => UniqueId._Create = oldCreate,
                 callingClassType,
                 mockName);
         }

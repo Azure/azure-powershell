@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
@@ -21,7 +22,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     static class NetworkInterfaceReferenceStrategy
     {
         public static NetworkInterfaceReference GetReference(
-            this IEngine engine, ResourceConfig<NetworkInterface> networkInterface)
+            this IEngine engine, IResourceConfig<NetworkInterface> networkInterface)
             => new NetworkInterfaceReference { Id = engine.GetId(networkInterface) };
     }
 }

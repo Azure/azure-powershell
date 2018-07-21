@@ -12,14 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class SubnetStrategy
     {
-        public static NestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
+        public static INestedResourceStrategy<Subnet, VirtualNetwork> Strategy { get; }
             = NestedResourceStrategy.Create<Subnet, VirtualNetwork>(
                 provider: "subnets",
                 getList: parentModel => parentModel.Subnets,
@@ -27,11 +29,16 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                 getName: model => model.Name,
                 setName: (model, name) => model.Name = name);
 
-        public static NestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
-            this ResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
+        public static INestedResourceConfig<Subnet, VirtualNetwork> CreateSubnet(
+            this IResourceConfig<VirtualNetwork> virtualNetwork, string name, string addressPrefix)
             => virtualNetwork.CreateNested(
                 strategy: Strategy,
                 name: name,
-                createModel: _ => new Subnet { Name = name, AddressPrefix = addressPrefix });
+                createModel: engine => new Subnet
+                {
+                    Name = name,
+                    AddressPrefix = engine.GetParameterValue(Parameter.Create(
+                        "subnetAddressPrefix", addressPrefix))
+                });
     }
 }

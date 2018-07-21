@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Models;
@@ -27,7 +28,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 
         public static bool IgnorePreExistingConfigCheck { get; set; }
 
-        public static ResourceStrategy<LoadBalancer> Strategy { get; }
+        public static IResourceStrategy<LoadBalancer> Strategy { get; }
             = NetworkStrategy.Create(
                 "loadBalancers",
                 client => client.LoadBalancers,
@@ -44,22 +45,23 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
             Standard,
         }
 
-        static bool EvaluatePreExistingConfig(LoadBalancer configToCompare)
+        static void EvaluatePreExistingConfig(LoadBalancer configToCompare)
         {
             if (IgnorePreExistingConfigCheck)
             {
-                return true;
+                return;
             }
 
             // TODO: Figure out the differences in the two configs n see if we can work with the existing resource.
             // If we can use the resource return true, otherwise return false
 
             //Throw in case the config for the existing LB is not cvompatible with the one expected by the cmdlet
-            throw new System.ArgumentException("Existing loadbalancer config is not compatible with what is required by the cmdlet. Kindly rerun the cmdlet after deleting the existing LB with name : " + configToCompare.Name + " and ID : " + configToCompare.Id);
+            throw new System.ArgumentException(
+                "Existing loadbalancer config is not compatible with what is required by the cmdlet. Kindly rerun the cmdlet after deleting the existing LB with name : " + configToCompare.Name + " and ID : " + configToCompare.Id);
         }
 
-        public static ResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup,
+        public static IResourceConfig<LoadBalancer> CreateLoadBalancerConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup,
             string name,
             Sku sku)
             => Strategy.CreateResourceConfig(

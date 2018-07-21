@@ -195,6 +195,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScenarioTests\StrategiesVirtualMachineTests.cs" />
+    <Compile Include="UnitTests\ImageVersionTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Commands.Common.Authentication.Abstractions.csproj">

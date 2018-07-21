@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.Common.Strategies
 {
-    public struct Void
+    struct Void
     {
     }
 }

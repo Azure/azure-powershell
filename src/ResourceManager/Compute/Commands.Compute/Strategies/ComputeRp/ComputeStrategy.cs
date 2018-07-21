@@ -12,7 +12,8 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.Common.Strategies;
+using Microsoft.Azure.Commands.Common.Strategies.Rm;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
 using Microsoft.Azure.Management.Compute;
 using Microsoft.Azure.Management.Compute.Models;
 using System;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
     {
         public const string Namespace = "Microsoft.Compute";
 
-        public static ResourceStrategy<TModel> Create<TModel, TOperations>(
+        public static IResourceStrategy<TModel> Create<TModel, TOperations>(
             string provider,
             Func<ComputeManagementClient, TOperations> getOperations,
             Func<TOperations, GetAsyncParams, Task<TModel>> getAsync,
@@ -33,13 +34,13 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             where TModel : Resource
             => ResourceStrategy.Create(
                 type: new ResourceType(Namespace, provider),
+                getApiVersion: _ => "2017-12-01",
                 getOperations: getOperations,
                 getAsync: getAsync,
                 createOrUpdateAsync: createOrUpdateAsync,
                 getLocation: config => config.Location,
                 setLocation: (config, location) => config.Location = location,
-                createTime: createTime,
-                compulsoryLocation: true);
+                createTime: createTime);
 
         public static string GetConnectionString(
             this ImageAndOsType imageAndOsType, string fqdn, string user, string port = null)

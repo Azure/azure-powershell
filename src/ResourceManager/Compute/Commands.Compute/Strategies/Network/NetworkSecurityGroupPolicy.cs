@@ -16,17 +16,15 @@ using Microsoft.Azure.Management.Internal.Resources.Models;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01.Models;
 using Microsoft.Azure.Management.Internal.Network.Version2017_10_01;
-using System;
-using Microsoft.Azure.Commands.Common.Strategies;
-using Microsoft.Azure.Management.Compute.Models;
-using Microsoft.Azure.Commands.Compute.Strategies.ComputeRp;
 using System.Collections.Generic;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Meta;
+using Microsoft.Azure.Commands.Common.Strategies.Rm.Config;
 
 namespace Microsoft.Azure.Commands.Compute.Strategies.Network
 {
     static class NetworkSecurityGroupStrategy
     {
-        public static ResourceStrategy<NetworkSecurityGroup> Strategy { get; }
+        public static IResourceStrategy<NetworkSecurityGroup> Strategy { get; }
             = NetworkStrategy.Create(
                 provider: "networkSecurityGroups",
                 getOperations: client => client.NetworkSecurityGroups,
@@ -36,8 +34,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.Network
                     p.ResourceGroupName, p.Name, p.Model, p.CancellationToken),
                 createTime: _ => 15);
 
-        public static ResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
-            this ResourceConfig<ResourceGroup> resourceGroup, string name, IList<int> openPorts)
+        public static IResourceConfig<NetworkSecurityGroup> CreateNetworkSecurityGroupConfig(
+            this IResourceConfig<ResourceGroup> resourceGroup, string name, IList<int> openPorts)
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
