@@ -179,12 +179,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: PoolId (ByPropertyName)
+
+### Microsoft.Azure.Commands.Batch.Models.PSCloudPool
+Parameters: Pool (ByValue)
+
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Batch.Models.PSTaskCounts
+### Microsoft.Azure.Commands.Batch.Models.PSPoolNodeCounts
 
 ## NOTES
 

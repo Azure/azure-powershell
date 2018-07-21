@@ -29,14 +29,11 @@ Set-AzureRmDataFactoryV2Pipeline [-DefinitionFile] <String> [-ResourceId] <Strin
 The Set-AzureRmDataFactoryV2Pipeline cmdlet creates a pipeline in Azure Data Factory.
 If you specify a name for a pipeline that already exists, the cmdlet prompts you for confirmation before it replaces the pipeline.
 If you specify the Force parameter, the cmdlet replaces the existing pipeline without confirmation.
-
 Perform these operations in the following order:
-
         -- Create a data factory.
         -- Create linked services.
         -- Create datasets.
         -- Create a pipeline.
-
 If a pipeline with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing pipeline with the new pipeline.
 If you confirm to overwrite the existing pipeline, the pipeline definition is also replaced.
 
@@ -202,6 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

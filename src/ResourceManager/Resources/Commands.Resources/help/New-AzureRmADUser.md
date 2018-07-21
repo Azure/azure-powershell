@@ -181,9 +181,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: DisplayName (ByPropertyName), ImmutableId (ByPropertyName), MailNickname (ByPropertyName), UserPrincipalName (ByPropertyName)
 
-This cmdlet does not accept any input.
+### System.Security.SecureString
+Parameters: Password (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: ForceChangePasswordNextLogin (ByPropertyName)
 
 ## OUTPUTS
 

@@ -205,7 +205,6 @@ Accept wildcard characters: False
 ### -LoadDistribution
 Specifies a load distribution.
 The acceptable values for this parameter are:
-
 - Default
 - SourceIP
 - SourceIPProtocol
@@ -291,7 +290,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

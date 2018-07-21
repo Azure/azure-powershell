@@ -47,7 +47,6 @@ PS C:\>Set-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Name 
 ```
 
 The first command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.
-
 The second command modifies the containers from which the Storage Insight named MyStorageInsight reads.
 
 ## PARAMETERS
@@ -177,8 +176,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountKey (ByPropertyName), WorkspaceName (ByPropertyName)
+
+### System.String[]
+Parameters: Containers (ByPropertyName), Tables (ByPropertyName)
 
 ## OUTPUTS
 

@@ -112,13 +112,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Guid
-Parameter 'JobId' accepts value of type 'Guid' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### System.Guid
+Parameters: JobId (ByPropertyName, ByValue)
+
+### System.Int32
+Parameters: TimeoutInSeconds (ByPropertyName), WaitIntervalInSeconds (ByPropertyName)
 
 ## OUTPUTS
 
-### JobInformation
-The final job details for the completed job.
+### Microsoft.Azure.Management.DataLake.Analytics.Models.JobInformation
 
 ## NOTES
 

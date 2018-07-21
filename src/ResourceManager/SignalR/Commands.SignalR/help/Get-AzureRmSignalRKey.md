@@ -136,7 +136,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameters: ResourceId (ByValue)
+
+### Microsoft.Azure.Commands.SignalR.Models.PSSignalRResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

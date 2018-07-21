@@ -34,9 +34,7 @@ New-AzureRmSqlDatabaseCopy [-DatabaseName] <String> [-Tags <Hashtable>] [-CopyRe
 The **New-AzureRmSqlDatabaseCopy** cmdlet creates a copy of an Azure SQL Database that uses the
 snapshot of the data at the current time. Use this cmdlet instead of the Start-AzureSqlDatabaseCopy
 cmdlet to create a one-time database copy. This cmdlet returns the **Database** object of the copy.
-
 Note: Use the New-AzureRmSqlDatabaseSecondary cmdlet to configure geo-replication for a database.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -225,7 +223,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Specifies the Key-value pairs in the form of a hash table to associate with the Azure SQL Database copy. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -291,13 +288,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Replication.Model.AzureSqlDatabaseCopyModel
-This cmdlet returns a **Database** object that represents the copied database.
+### System.Object
 
 ## NOTES
 

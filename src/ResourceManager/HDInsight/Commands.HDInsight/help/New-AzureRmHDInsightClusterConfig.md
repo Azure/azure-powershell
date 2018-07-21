@@ -134,10 +134,8 @@ Accept wildcard characters: False
 ### -ClusterTier
 Specifies the HDInsight cluster tier.
 The acceptable values for this parameter are:
-
 - Standard
 - Premium
-
 The default value is Standard.
 The Premium tier can only be used with Linux clusters, and it enables the use of some new features.
 
@@ -157,7 +155,6 @@ Accept wildcard characters: False
 ### -ClusterType
 Specifies the type of cluster to create.
 The acceptable values for this parameter are:
-
 - Hadoop
 - HBase
 - Storm
@@ -354,7 +351,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

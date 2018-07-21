@@ -48,7 +48,6 @@ Microsoft.Azure.Management.Insights.Models.MetricTrigger    Microsoft.Azure.Mana
 ```
 
 The first command creates a rule for the Requests metric, and then stores it in the $Rule1 variable.
-
 The second command creates a second rule for the Requests metric, and then stores it in the $Rule2 variable.
 
 ## PARAMETERS
@@ -101,7 +100,6 @@ Accept wildcard characters: False
 ### -MetricStatistic
 Specifies the metric statistic.
 The acceptable values for this parameter are:
-
 - Average
 - Min
 - Max
@@ -123,7 +121,6 @@ Accept wildcard characters: False
 ### -Operator
 Specifies the operator.
 The acceptable values for this parameter are:
-
 - Equals
 - NotEquals
 - GreaterThan
@@ -162,7 +159,6 @@ Accept wildcard characters: False
 ### -ScaleActionDirection
 Specifies the scale action direction.
 The acceptable values for this parameter are:
-
 - None
 - Increase
 - Decrease
@@ -183,7 +179,6 @@ Accept wildcard characters: False
 ### -ScaleActionScaleType
 Specifies the scale type.
 The acceptable values for this parameter are:
-
 - ChangeSize
 - ChangeCount
 - PercentChangeCount
@@ -235,7 +230,6 @@ Accept wildcard characters: False
 ### -TimeAggregationOperator
 Specifies the time aggregation operator.
 The acceptable values for this parameter are:
-
 - Average
 - Minimum
 - Maximum
@@ -290,8 +284,29 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: MetricName (ByPropertyName), MetricResourceId (ByPropertyName), ScaleActionValue (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ComparisonOperationType
+Parameters: Operator (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.MetricStatisticType
+Parameters: MetricStatistic (ByPropertyName)
+
+### System.Double
+Parameters: Threshold (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.TimeAggregationType
+Parameters: TimeAggregationOperator (ByPropertyName)
+
+### System.TimeSpan
+Parameters: ScaleActionCooldown (ByPropertyName), TimeGrain (ByPropertyName), TimeWindow (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ScaleDirection
+Parameters: ScaleActionDirection (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.ScaleType
+Parameters: ScaleActionScaleType (ByPropertyName)
 
 ## OUTPUTS
 

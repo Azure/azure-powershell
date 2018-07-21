@@ -134,7 +134,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRNetworkMapping
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

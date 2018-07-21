@@ -88,10 +88,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.SwitchParameter
+Parameters: ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
+### Microsoft.Azure.Commands.Profile.Models.PSResourceGroup
 
 ## NOTES
 

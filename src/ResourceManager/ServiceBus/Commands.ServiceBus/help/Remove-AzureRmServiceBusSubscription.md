@@ -142,17 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
-
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -SubscriptionName
- System.String
+### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
 ## OUTPUTS
 

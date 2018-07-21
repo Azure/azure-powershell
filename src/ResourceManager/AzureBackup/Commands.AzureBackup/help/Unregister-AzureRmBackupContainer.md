@@ -37,10 +37,8 @@ This operation will delete all data in the backup vault that is associated with 
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the Get-AzureRmBackupContainer cmdlet.
 The command stores that object in the $Container variable.
-
 The final command unregisters the specified Windows Server from the Azure Backup vault.
 
 ### Example 2: Unregister a Windows Server without confirmation
@@ -137,12 +135,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
+Parameters: Container (ByValue)
 
 ## OUTPUTS
 
-### AzureBackupJob
-This cmdlet returns $Null if the container type is Windows Server.
+### System.Object
 
 ## NOTES
 * None

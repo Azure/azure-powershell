@@ -96,8 +96,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String[]
+Parameters: CustomEmail (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: SendToServiceOwner (ByPropertyName)
 
 ## OUTPUTS
 

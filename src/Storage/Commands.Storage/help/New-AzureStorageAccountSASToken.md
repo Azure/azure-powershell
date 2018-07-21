@@ -22,7 +22,6 @@ New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
 
 ## DESCRIPTION
 The **New-AzureStorageSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
-
 You can use the SAS token to delegate permissions for multiple services, or to delegate permissions for services not available with an object-level SAS token.
 
 ## EXAMPLES
@@ -48,7 +47,7 @@ Specifies the Azure storage context.
 You can use the New-AzureStorageContext cmdlet to get an **AzureStorageContext** object.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +62,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +77,7 @@ Accept wildcard characters: False
 Specifies the time at which the shared access signature becomes invalid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +93,7 @@ Specifies the IP address or range of IP addresses from which to accept requests,
 The range is inclusive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,12 +107,11 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for Storage account.
 Permissions are valid only if they match the specified resource type.
-
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,14 +125,12 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the protocol permitted for a request made with the account SAS.
 The acceptable values for this parameter are:
-
 - HttpsOnly
 - HttpsOrHttp
-
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: SharedAccessProtocol
+Type: System.Nullable`1[Microsoft.WindowsAzure.Storage.SharedAccessProtocol]
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
@@ -149,14 +145,13 @@ Accept wildcard characters: False
 ### -ResourceType
 Specifies the resource types that are available with the SAS token.
 The acceptable values for this parameter are:
-
 - None
 - Service
 - Container
 - Object
 
 ```yaml
-Type: SharedAccessAccountResourceTypes
+Type: Microsoft.WindowsAzure.Storage.SharedAccessAccountResourceTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Service, Container, Object
@@ -171,7 +166,6 @@ Accept wildcard characters: False
 ### -Service
 Specifies the service.
 The acceptable values for this parameter are:
-
 - None
 - Blob
 - File
@@ -179,7 +173,7 @@ The acceptable values for this parameter are:
 - Table
 
 ```yaml
-Type: SharedAccessAccountServices
+Type: Microsoft.WindowsAzure.Storage.SharedAccessAccountServices
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Blob, File, Queue, Table
@@ -196,7 +190,7 @@ Specifies the time, as a **DateTime** object, at which the SAS becomes valid.
 To get a **DateTime** object, use the Get-Date cmdlet.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -212,9 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

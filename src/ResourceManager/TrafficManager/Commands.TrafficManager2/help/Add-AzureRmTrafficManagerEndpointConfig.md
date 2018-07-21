@@ -24,7 +24,6 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName <String> -TrafficManagerPr
 ## DESCRIPTION
 The **Add-AzureRmTrafficManagerEndpointConfig** cmdlet adds an endpoint to a local Azure Traffic Manager profile object.
 You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets.
-
 This cmdlet operates on the local profile object.
 Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
 To create an endpoint and commit the change in a single operation, use the New-AzureRmTrafficManagerEndpoint cmdlet.
@@ -40,11 +39,9 @@ PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerP
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzureRmTrafficManagerProfile** cmdlet.
 The command stores the local profile in the $TrafficManagerProfile variable.
-
 The second command adds an endpoint named contoso to the profile stored in $TrafficManagerProfile.
 The command includes configuration data for the endpoint.
 This command changes only the local object.
-
 The final command updates the Traffic Manager profile in Azure to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
@@ -68,7 +65,6 @@ Accept wildcard characters: False
 Specifies the location of the endpoint to use in the Performance traffic-routing method.
 This parameter is only applicable to endpoints of the ExternalEndpoints or the NestedEndpoints type.
 You must specify this parameter when the Performance traffic-routing method is used.
-
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
 
@@ -102,10 +98,8 @@ Accept wildcard characters: False
 ### -EndpointStatus
 Specifies the status of the endpoint.
 Valid values are: 
-
 - Enabled 
 - Disabled 
-
 If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic-routing method.
 
 ```yaml
@@ -157,7 +151,6 @@ Specifies the priority that Traffic Manager assigns to the endpoint.
 This parameter is used only if the Traffic Manager profile is configured with the for Priority traffic-routing method.
 Valid values are integers from 1 through 1000.
 Lower values represent higher priority.
-
 If you specify a priority, you must specify priorities on all endpoints in the profile, and no two endpoints can share the same priority value.
 If you do not specify priorities, Traffic Manager assigns default priority values to the endpoints, starting with one (1), in the order the profile lists the endpoints.
 
@@ -228,7 +221,6 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Azure Traffic Manager profile.
 Valid values are: 
-
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
@@ -269,13 +261,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet accepts a **TrafficManagerProfile** object to this cmdlet.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+Parameters: TrafficManagerProfile (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet returns a modified **TrafficManagerProfile** object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 
 ## NOTES
 

@@ -40,11 +40,8 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayIPConfiguration -ApplicationGatewa
 ```
 
 The first command gets the virtual network named VNet01 that belongs to the resource group named ResourceGroup01 and stores it in the $VNet variable.
-
 The second command gets the subnet configuration named Subnet01 using $VNet and stores it in the $Subnet variable.
-
 The third command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
 The forth command sets the IP configuration of the application gateway stored in $AppGw to the subnet configuration stored in $Subnet.
 
 ## PARAMETERS
@@ -131,7 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

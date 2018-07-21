@@ -116,7 +116,6 @@ Accept wildcard characters: False
 
 ### -ExtensionResourceName
 Specifies the name of an extension resource for the resource. For instance, to specify a database, use the following format:
-
 server name`/`database name
 
 ```yaml
@@ -134,7 +133,6 @@ Accept wildcard characters: False
 ### -ExtensionResourceType
 Specifies the resource type for an extension resource.
 For instance, if the extension resource is a database, specify the following type:
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -197,7 +195,6 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location of the resource.
 Specify data center location, such as Central US or Southeast Asia.
-
 You can place a resource in any location that supports resources of that type. Resource groups can
 contain resources from different locations. To determine which locations support each resource
 type, use the Get-AzureLocation cmdlet.
@@ -293,7 +290,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 Specifies the fully qualified resource ID, including the subscription, as in the following example:
-
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
 ```yaml
@@ -310,7 +306,6 @@ Accept wildcard characters: False
 
 ### -ResourceName
 Specifies the name of the resource. For instance, to specify a database, use the following format:
-
 `ContosoServer/ContosoDatabase`
 
 ```yaml
@@ -328,7 +323,6 @@ Accept wildcard characters: False
 ### -ResourceType
 Specifies the type of the resource.
 For instance, for a database, the resource type is as follows:
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -360,7 +354,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -427,11 +420,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### System.Management.Automation.PSObject
+### Microsoft.Azure.Commands.ResourceManagement.Models.PSResource
 
 ## NOTES
 

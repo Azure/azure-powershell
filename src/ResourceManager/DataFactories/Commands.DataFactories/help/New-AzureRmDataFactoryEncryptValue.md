@@ -43,7 +43,6 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -GatewayName "WikiGateway" -DataFacto
 The first command uses the ConvertTo-SecureString cmdlet to convert the specified connection string to a **SecureString** object, and then stores that object in the $Value variable.
 For more information, type `Get-Help ConvertTo-SecureString`.
 Allowed values: SQL Server or Oracle connection string.
-
 The second command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 2: Encrypt a non-ODBC connection string that uses Windows authentication.
@@ -54,10 +53,8 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayNa
 ```
 
 The first command uses **ConvertTo-SecureString** to convert the specified connection string to a secure string object, and then stores that object in the $Value variable.
-
 The second command uses the Get-Credential cmdlet to collect the windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
 For more information, type `Get-Help Get-Credential`.
-
 The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 3: Encrypt server name and credentials for File system linked service
@@ -68,9 +65,7 @@ PS C:\> New-AzureRmDataFactoryEncryptValue -DataFactoryName "WikiADF" -GatewayNa
 ```
 
 The first command uses **ConvertTo-SecureString** to convert the specified string to a secure string, and then stores that object in the $Value variable.
-
 The second command uses **Get-Credential** to collect the windows authentication (user name and password), and then stores that **PSCredential** object in the $Credential variable.
-
 The third command creates an encrypted value for the object stored in $Value and $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 4: Encrypt credentials for HDFS linked service
@@ -84,7 +79,6 @@ New-AzureRmDataFactoryEncryptValue -DataFactoryName "MyDataFactory" -ResourceGro
 The **ConvertTo-SecureString** command converts the specified string to a secure string.
 The **New-Object** command creates a PSCredential object using the secure username and password strings.
 Instead, you could use the **Get-Credential** command to collect windows authentication (user name and password), and then store the returned **PSCredential** object in the $credential variable as shown in previous examples.
-
 The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value for the object stored in $Credential for the specified data factory, gateway, resource group, and linked service type.
 
 ### Example 5: Encrypt credentials for ODBC linked service
@@ -94,7 +88,6 @@ New-AzureRmDataFactoryEncryptValue -ResourceGroupName $RGName -DataFactoryName $
 ```
 
 The **ConvertTo-SecureString** command converts the specified string to a secure string.
-
 The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value for the object stored in $Value for the specified data factory, gateway, resource group, and linked service type.
 
 ## PARAMETERS
@@ -102,7 +95,6 @@ The **New-AzureRmDataFactoryEncryptValue** command creates an encrypted value fo
 ### -AuthenticationType
 Specifies the type of authentication to be used to connect to the data source.
 The acceptable values for this parameter are:
-
 - Windows
 - Basic
 - Anonymous.
@@ -265,7 +257,6 @@ Accept wildcard characters: False
 Specifies the linked service type.
 This cmdlet encrypts data for the linked service type that this parameter specifies.
 The acceptable values for this parameter are:
-
 - OnPremisesSqlLinkedService 
 - OnPremisesFileSystemLinkedService 
 - OnPremisesOracleLinkedService 
@@ -312,8 +303,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

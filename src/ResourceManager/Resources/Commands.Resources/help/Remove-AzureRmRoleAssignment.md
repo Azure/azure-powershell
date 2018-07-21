@@ -91,13 +91,10 @@ Remove-AzureRmRoleAssignment [-PassThru] [-InputObject] <PSRoleAssignment>
 
 ## DESCRIPTION
 Use the Remove-AzureRmRoleAssignment commandlet to revoke access to any principal at given scope and given role.
-
 The object of the assignment i.e.
 the principal MUST be specified.
 The principal can be a user (use SignInName or ObjectId parameters to identify a user), security group (use ObjectId parameter to identify a group) or service principal (use ServicePrincipalName or ObjectId parameters to identify a ServicePrincipal.
-
 The role that the principal is assigned to MUST be specified using the RoleDefinitionName parameter.
-
 The scope of the assignment MAY be specified and if not specified, defaults to the subscription scope i.e.
 it will try to delete an assignment to the specified principal and role at the subscription scope.
 The scope of the assignment can be specified using one of the following parameters.
@@ -378,8 +375,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: ObjectId (ByPropertyName), RoleDefinitionId (ByPropertyName)
+
+### System.String
+Parameters: ParentResource (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceName (ByPropertyName), ResourceType (ByPropertyName), RoleDefinitionName (ByPropertyName), Scope (ByPropertyName), ServicePrincipalName (ByPropertyName), SignInName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleAssignment
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

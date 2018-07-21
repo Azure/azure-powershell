@@ -21,19 +21,14 @@ Set-AzureRmSqlServerActiveDirectoryAdministrator [-DisplayName] <String> [[-Obje
 
 ## DESCRIPTION
 The **Set-AzureRmSqlServerActiveDirectoryAdministrator** cmdlet provisions an Azure Active Directory (Azure AD) administrator for AzureSQL Server in the current subscription.
-
 You can provision only one administrator at a time.
-
 The following members of Azure AD can be provisioned as a SQL Server administrator:
-
 - Native members of Azure AD 
 - Federated members of Azure AD 
 - Imported members from other Azure ADs who are native or federated members 
 - Azure AD groups created as security groups
-
 Microsoft accounts, such as those in the Outlook.com, Hotmail.com, or Live.com domains, are not supported as administrators.
 Other guest accounts, such as those in the Gmail.com or Yahoo.com domains, are not supported as administrators.
-
 We recommend that you provision a dedicated Azure AD group as an administrator.
 
 ## EXAMPLES
@@ -185,12 +180,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DisplayName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### System.Guid
+Parameters: ObjectId (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Model.AzureSqlServerActiveDirectoryAdministratorModel
+### System.Object
 
 ## NOTES
 

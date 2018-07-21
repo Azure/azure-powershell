@@ -257,8 +257,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Description (ByPropertyName), Location (ByPropertyName), MetricName (ByPropertyName), MetricNamespace (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TargetResourceUri (ByPropertyName)
+
+### System.TimeSpan
+Parameters: WindowSize (ByPropertyName)
+
+### System.Int32
+Parameters: FailedLocationCount (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableRule (ByPropertyName)
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.RuleAction, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

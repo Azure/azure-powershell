@@ -14,13 +14,12 @@ Gets the logged categories and time grains.
 ## SYNTAX
 
 ```
-Get-AzureRmDiagnosticSetting [-ResourceId] <String> [-Name: <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzureRmDiagnosticSetting [-ResourceId] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Get-AzureRmDiagnosticSetting** cmdlet gets the categories and time grains that are logged for a resource.
-
 A time grain is the aggregation interval of a metric.
 
 ## EXAMPLES
@@ -60,9 +59,9 @@ Accept wildcard characters: False
 The name of the diagnostic setting. If not given the call default to "service" as it was in the previous API.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -91,8 +90,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

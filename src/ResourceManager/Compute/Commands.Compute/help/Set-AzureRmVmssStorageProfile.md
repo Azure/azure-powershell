@@ -182,13 +182,10 @@ Accept wildcard characters: False
 ### -OsDiskCaching
 Specifies the caching mode of the operating system disk. 
 The acceptable values for this parameter are:
-
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 If you change the caching value, the cmdlet will restart the virtual machine.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
@@ -206,9 +203,7 @@ Accept wildcard characters: False
 
 ### -OsDiskCreateOption
 Specifies how this cmdlet creates the VMSS virtual machines.
-
 The acceptable values for this parameter are:
-
 - Attach : This value is used when you are using a specialized disk to create the VMSS virtual machine. 
 - FromImage : This value is used when you are using an image to create the VMSS virtual machine.
 If you are using a platform image, you will also use the *imageReference* parameter.
@@ -338,8 +333,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Image (ByPropertyName), ImageReferenceId (ByPropertyName), ImageReferenceOffer (ByPropertyName), ImageReferencePublisher (ByPropertyName), ImageReferenceSku (ByPropertyName), ImageReferenceVersion (ByPropertyName), ManagedDisk (ByPropertyName), OsDiskCreateOption (ByPropertyName), OsDiskName (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.String[]
+Parameters: VhdContainer (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetDataDisk[]
+Parameters: DataDisk (ByPropertyName)
 
 ## OUTPUTS
 

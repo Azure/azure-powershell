@@ -28,7 +28,6 @@ PS C:\> New-AzureRmDataMigrationDatabaseInfo -SourceDatabaseName 'AdventureWorks
 ```
 
 The preceding example creates a new DatabaseInfo object for the source database **AdventureWorks2016**.
-
 This script assumes that you are already logged into your Azure account. You can confirm your login status by using the Get-AzureSubscription cmdlet.
 
 ## PARAMETERS

@@ -236,7 +236,6 @@ Accept wildcard characters: False
 Indicates that this cmdlet gets all versions of a key.
 The current version of a key is the first one on the list.
 If you specify this parameter you must also specify the *Name* and *VaultName* parameters.
-
 If you do not specify the *IncludeVersions* parameter, this cmdlet gets the current version of the key with the specified *Name*.
 
 ```yaml
@@ -361,12 +360,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
+
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKey
+
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKeyIdentityItem
+
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVaultKey
 
 ## NOTES

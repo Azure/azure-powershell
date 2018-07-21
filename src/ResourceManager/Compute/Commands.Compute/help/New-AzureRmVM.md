@@ -47,7 +47,6 @@ The **New-AzureRmVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input.
 Use the New-AzureRmVMConfig cmdlet to create a virtual machine object.
 Other cmdlets can be used to configure the virtual machine, such as Set-AzureRmVMOperatingSystem, Set-AzureRmVMSourceImage, Add-AzureRmVMNetworkInterface, and Set-AzureRmVMOSDisk.
-
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
 
 ## EXAMPLES
@@ -128,9 +127,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM 
 ```
 
 This example takes an existing sys-prepped, generalized custom operating system image and attaches a data disk to it, provisions a new network, deploys the VHD, and runs it.
-
 This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
-
 This script assumes that you are already logged into your Azure account.
 You can confirm your login status by using the **Get-AzureSubscription** cmdlet.
 
@@ -165,7 +162,6 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $LocationName -VM 
 ```
 
 This example provisions a new network and deploys a Windows VM from the Marketplace without creating a public IP address or Network Security Group.
-
 This script can be used for automatic provisioning because it uses the local virtual machine admin credentials inline instead of calling **Get-Credential** which requires user interaction.
 
 ## PARAMETERS
@@ -340,10 +336,8 @@ Accept wildcard characters: False
 Specifies a license type, which indicates that the image or disk for the virtual machine was licensed on-premises.
 This value is used only for images that contain the Windows Server operating system.
 The acceptable values for this parameter are:
-
 - Windows_Client
 - Windows_Server
-
 This value cannot be updated.
 If you specify this parameter for an update, the value must match the initial value for the virtual machine.
 
@@ -656,7 +650,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -676,12 +669,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### System.String
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String[]
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Compute.Models.PSAzureOperationResponse
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 
 ## NOTES
 

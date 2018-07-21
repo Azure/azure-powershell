@@ -34,7 +34,6 @@ Enable-AzureRmRecoveryServicesBackupProtection [-Policy] <PolicyBase> [-Item] <I
 
 ## DESCRIPTION
 The **Enable-AzureRmRecoveryServicesBackupProtection** cmdlet sets Azure Backup protection policy on an item.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -49,7 +48,6 @@ co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-A
 ```
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
-
 The second cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM using the policy in $Pol.
 
 ## PARAMETERS
@@ -198,8 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ItemBase
-Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ServiceName (ByPropertyName), VaultId (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 

@@ -31,7 +31,6 @@ Set-AzureRmSqlElasticPool [-ElasticPoolName] <String> [-Edition <String>] [-Stor
 
 ## DESCRIPTION
 The **Set-AzureRmSqlElasticPool** cmdlet sets properties for an elastic pool in Azure SQL Database. This cmdlet can modify the eDTUs per pool (*Dtu*), storage max size per pool (*StorageMB*), maximum eDTUs per database (*DatabaseDtuMax*), and minimum eDTUs per database (*DatqabaseDtuMin*).
-
 Several parameters (*-Dtu, -DatabaseDtuMin, and -DatabaseDtuMax*) require the value being set is from the list of valid values for that parameter. For example, -DatabaseDtuMax for a Standard 100 eDTU pool can only be set to 10, 20, 50, or 100.  For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
 
 ## EXAMPLES
@@ -112,16 +111,12 @@ Accept wildcard characters: False
 
 ### -DatabaseDtuMax
 Specifies the maximum number of DTUs that any single database in the pool can consume.
-
 For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
-
 The default
 values for different editions are as follows:
-
 - Basic.  5 DTUs
 - Standard. 100 DTUs
 - Premium. 125 DTUs
-
 
 ```yaml
 Type: System.Int32
@@ -137,9 +132,7 @@ Accept wildcard characters: False
 
 ### -DatabaseDtuMin
 Specifies the minimum number of DTUs that the elastic pool guarantees to all the databases in the pool.
-
 For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
-
 The default value is zero (0).
 
 ```yaml
@@ -201,12 +194,9 @@ Accept wildcard characters: False
 
 ### -Dtu
 Specifies the total number of shared DTUs for the elastic pool.
-
 For details about which values are valid, see the table for your specific size pool in [elastic pools](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool).
-
 The default values for different
 editions are as follows:
-
 - Basic. 100 DTUs
 - Standard. 100 DTUs
 - Premium. 125 DTUs
@@ -226,7 +216,6 @@ Accept wildcard characters: False
 ### -Edition
 Specifies the edition of the Azure SQL Database for the elastic pool. You cannot change the
 edition. The acceptable values for this parameter are:
-
 - None
 - Basic
 - Standard
@@ -328,7 +317,6 @@ Accept wildcard characters: False
 ### -Tags
 Specifies a dictionary of Key-value pairs that this cmdlet associates with the elastic pool in the
 form of a hash table. For example:
-
 `@{key0="value0";"key 1"=$null;key2="value2"}`
 
 ```yaml
@@ -409,12 +397,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
+### System.Object
 
 ## NOTES
 

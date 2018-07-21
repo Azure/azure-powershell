@@ -156,14 +156,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), SyncGroupName (ByPropertyName), SyncMemberName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaModel
-### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaTableModel
-### Microsoft.Azure.Commands.Sql.DataSync.Model.AzureSqlSyncFullSchemaColumnModel
 
 ## NOTES
 

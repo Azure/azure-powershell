@@ -23,9 +23,7 @@ New-AzureRmStreamAnalyticsOutput [-JobName] <String> [[-Name] <String>] [-File] 
 The **New-AzureRmStreamAnalyticsOutput** cmdlet creates an output within a Stream Analytics job or updates an existing output.
 The name of the output can be specified in the .JSON file or on the command line.
 If both are specified, the name on command line must match the name in the file.
-
 If you specify an output that already exists and do not specify the *Force* parameter, the cmdlet will ask whether or not to replace the existing output.
-
 If you specify the *Force* parameter and specify an existing output name, the output will be replaced without confirmation.
 
 ## EXAMPLES
@@ -173,8 +171,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

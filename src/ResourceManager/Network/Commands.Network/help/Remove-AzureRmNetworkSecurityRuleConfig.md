@@ -31,9 +31,7 @@ PS C:\> Remove-AzureRmNetworkSecurityRuleConfig -Name "rdp-rule" -NetworkSecurit
 ```
 
 The first command creates a network security rule configuration named rdp-rule, and then stores it in the $rule1 variable.
-
 The second command creates a network security group using the rule in $rule1, and then stores the network security group in the $nsg variable.
-
 The third command removes the network security rule configuration named rdp-rule from the network security group in $nsg.
 
 ## PARAMETERS
@@ -89,8 +87,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSNetworkSecurityGroup
-Parameter 'NetworkSecurityGroup' accepts value of type 'PSNetworkSecurityGroup' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSNetworkSecurityGroup
+Parameters: NetworkSecurityGroup (ByValue)
 
 ## OUTPUTS
 

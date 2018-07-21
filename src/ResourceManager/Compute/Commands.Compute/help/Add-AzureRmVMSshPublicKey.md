@@ -31,7 +31,6 @@ PS C:\> $VirtualMachine = Add-AzureRmVMSshPublicKey -VM $VirtualMachine -KeyData
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
-
 The second command adds the public key to the location on VirtualMachine07 that the Path parameter specifies.
 
 ## PARAMETERS
@@ -105,8 +104,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: KeyData (ByPropertyName), Path (ByPropertyName)
 
 ## OUTPUTS
 

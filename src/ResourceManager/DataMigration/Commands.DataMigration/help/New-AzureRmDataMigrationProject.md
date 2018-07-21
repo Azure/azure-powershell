@@ -265,6 +265,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSProject

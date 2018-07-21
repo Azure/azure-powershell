@@ -534,12 +534,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ActiveDirectoryEndpoint (ByPropertyName), ActiveDirectoryServiceEndpointResourceId (ByPropertyName), AdTenant (ByPropertyName), ARMEndpoint (ByPropertyName), AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix (ByPropertyName), AzureDataLakeStoreFileSystemEndpointSuffix (ByPropertyName), AzureKeyVaultDnsSuffix (ByPropertyName), AzureKeyVaultServiceEndpointResourceId (ByPropertyName), AzureOperationalInsightsEndpoint (ByPropertyName), AzureOperationalInsightsEndpointResourceId (ByPropertyName), BatchEndpointResourceId (ByPropertyName), DataLakeAudience (ByPropertyName), GalleryEndpoint (ByPropertyName), GraphAudience (ByPropertyName), GraphEndpoint (ByPropertyName), ManagementPortalUrl (ByPropertyName), Name (ByPropertyName), PublishSettingsFileUrl (ByPropertyName), ResourceManagerEndpoint (ByPropertyName), ServiceEndpoint (ByPropertyName), SqlDatabaseDnsSuffix (ByPropertyName), TrafficManagerDnsSuffix (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: EnableAdfsAuthentication (ByPropertyName)
 
 ## OUTPUTS
 
-### PSAzureEnvironment
+### Microsoft.Azure.Commands.Profile.Models.PSAzureEnvironment
 
 ## NOTES
 

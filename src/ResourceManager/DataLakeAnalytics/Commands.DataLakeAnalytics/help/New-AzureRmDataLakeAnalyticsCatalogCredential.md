@@ -209,12 +209,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), CredentialName (ByPropertyName), DatabaseHost (ByPropertyName), DatabaseName (ByPropertyName)
+
+### System.Management.Automation.PSCredential
+Parameters: Credential (ByPropertyName)
+
+### System.Uri
+Parameters: Uri (ByPropertyName)
+
+### System.Int32
+Parameters: Port (ByPropertyName)
 
 ## OUTPUTS
 
-### None
+### Microsoft.Azure.Management.DataLake.Analytics.Models.USqlCredential
 
 ## NOTES
 

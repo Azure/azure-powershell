@@ -127,7 +127,6 @@ Accept wildcard characters: False
 Specifies the state for a ASR job.
 This cmdlet gets all jobs that match the specified state.
 The acceptable values for this parameter are:
-
 - NotStarted
 - InProgress
 - Succeeded
@@ -170,6 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 

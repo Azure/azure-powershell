@@ -170,12 +170,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSContainerRegistry
-Parameter 'Registry' accepts value of type 'PSContainerRegistry' from the pipeline
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### None
+### System.Boolean
 
 ## NOTES
 

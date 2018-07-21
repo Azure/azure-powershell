@@ -14,8 +14,9 @@ Creates a route for a route table.
 ## SYNTAX
 
 ```
-New-AzureRmRouteConfig [-AddressPrefix <String>] [-NextHopType <String>] [-NextHopIpAddress <String>]
- [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzureRmRouteConfig [-Name <String>] [-AddressPrefix <String>] [-NextHopType <String>]
+ [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,6 @@ NextHopIpAddress  :
 
 The first command creates a route named Route07, and then stores it in the $Route variable.
 This route forwards packets to the local virtual network.
-
 The second command displays the properties of the route.
 
 ## PARAMETERS
@@ -108,7 +108,6 @@ Accept wildcard characters: False
 ### -NextHopType
 Specifies how this route forwards packets.
 The acceptable values for this parameter are:
-
 - Internet.
 The default Internet gateway provided by Azure. 
 - None.
@@ -168,8 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AddressPrefix (ByPropertyName), NextHopIpAddress (ByPropertyName), NextHopType (ByPropertyName)
 
 ## OUTPUTS
 

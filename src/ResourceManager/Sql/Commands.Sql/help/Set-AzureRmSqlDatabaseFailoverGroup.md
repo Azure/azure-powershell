@@ -21,11 +21,8 @@ Set-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupName] 
 
 ## DESCRIPTION
 This command modifies the configuration of an Azure SQL Database Failover Group.
-
 The Failover Group's primary server should be used to execute the command.
-
 To control the set of databases in the group, use 'Add-AzureRmSqlDatabaseToFailoverGroup' and 'Remove-AzureRmSqlDatabaseFromFailoverGroup' instead.
-
 During preview of the Failover Groups feature, only values greater than or equal to 1 hour are supported for the '-GracePeriodWithDataLossHours' parameter.
 
 ## EXAMPLES
@@ -159,6 +156,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

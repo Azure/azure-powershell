@@ -152,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-You can pipe input to this cmdlet by name, but not by value.
+Parameters: Name (ByPropertyName), PrimaryServerName (ByPropertyName), SecondaryServerName (ByPropertyName)
 
 ## OUTPUTS
 

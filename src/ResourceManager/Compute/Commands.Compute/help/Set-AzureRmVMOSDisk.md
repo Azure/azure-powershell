@@ -122,13 +122,10 @@ This example sets the disk encryption settings on a virtual machine operating sy
 ### -Caching
 Specifies the caching mode of the operating system disk.
 Valid values are: 
-
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 Changing the caching value causes the virtual machine to restart.
-
 This setting affects the performance of the disk.
 
 ```yaml
@@ -147,7 +144,6 @@ Accept wildcard characters: False
 ### -CreateOption
 Specifies whether this cmdlet creates a disk in the virtual machine from a platform or user image, or attaches an existing disk.
 Valid values are: 
-
 - Attach.
 Specify this option to create a virtual machine from a specialized disk.
 When you specify this option, do not specify the *SourceImageUri* parameter.
@@ -340,10 +336,8 @@ Accept wildcard characters: False
 
 ### -VhdUri
 Specifies the Uniform Resource Identifier (URI) of a virtual hard disk (VHD).
-
 For an image based virtual machine, this parameter specifies the VHD file to create when a platform image or user image is specified.
 This is the location from which the image binary large object (BLOB) is copied to start the virtual machine.
-
 For a disk based virtual machine boot scenario, this parameter specifies the VHD file that the virtual machine uses directly for starting up.
 
 ```yaml
@@ -409,8 +403,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByValue)
 
 ## OUTPUTS
 

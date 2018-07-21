@@ -21,12 +21,9 @@ Get-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String> [[-No
 ## DESCRIPTION
 The **Get-AzureRmNotificationHub** cmdlet gets information about the notification hubs in a specified namespace and assigned to a specified resource group.
 For example, you can get information for all the notification hubs in the namespace ContosoNamespace and assigned to the ContosoNotificationsGroup resource group.
-
 Alternatively, you can use the *NotificationHub* parameter to limit the returned data to information about a specific notification hub.
-
 Notification hubs are used to send push notifications to multiple clients regardless of the platform, such as iOS, Android, Windows Phone 8, and Windows Store, used by those clients.
 These hubs are roughly equivalent to individual apps and each of your apps will typically have its own notification hub.
-
 This cmdlet only gets information about the hub itself.
 Other cmdlets, such as Get-AzureRmNotificationHubAuthorizationRules, Get-AzureRmNotificationHubListKeys, and Get-AzureRmNotificationHubPNSCredentials, are needed to get information about a hub's authorization rules, connection strings, and platform notification service credentials.
 
@@ -58,7 +55,6 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace to which the notification hub is assigned.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
@@ -75,7 +71,6 @@ Accept wildcard characters: False
 
 ### -NotificationHub
 Specifies the name of the notification hub that this cmdlet gets.
-
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 
 ```yaml
@@ -92,7 +87,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the notification hub is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
@@ -112,8 +106,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

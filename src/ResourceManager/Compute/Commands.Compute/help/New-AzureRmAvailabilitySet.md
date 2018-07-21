@@ -141,7 +141,6 @@ Accept wildcard characters: False
 ### -Sku
 The Name of Sku.
 The acceptable values for this parameter are:
-
 - Aligned: For managed disks
 - Classic: For unmanaged disks
 
@@ -161,7 +160,7 @@ Accept wildcard characters: False
 Key-value pairs in the form of a hash table.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -177,8 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Sku (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

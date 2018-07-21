@@ -21,7 +21,6 @@ Backup-AzureRmRecoveryServicesBackupItem -Item <ItemBase> [-ExpiryDateTimeUTC <D
 ## DESCRIPTION
 The **Backup-AzureRmRecoveryServicesBackupItem** cmdlet starts a backup for a protected Azure Backup item that is not tied to the backup schedule.
 You can do an initial backup immediately after you enable protection or start a backup after a scheduled backup fails.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -37,9 +36,7 @@ pstestv2vm1      Backup               InProgress           4/23/2016 5:00:30 PM 
 ```
 
 The first command gets the Backup container of type AzureVM named pstestv2vm1, and then stores it in the $NamedContainer variable.
-
 The second command gets the Backup item corresponding to the container in $NamedContainer, and then stores it in the $Item variable.
-
 The last command triggers the backup job for the Backup item in $Item.
 
 ## PARAMETERS
@@ -139,11 +136,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### DateTime
-Parameter 'ExpiryDateTimeUTC' accepts value of type 'DateTime' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemBase
+Parameters: Item (ByValue)
 
-### ItemBase
-Parameter 'Item' accepts value of type 'ItemBase' from the pipeline
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

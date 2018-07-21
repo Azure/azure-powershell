@@ -29,7 +29,6 @@ PS C:\> Remove-AzureRmApplicationGatewayBackendHttpSettings -ApplicationGateway 
 ```
 
 The first command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
 The second command removes the back-end HTTP setting named BackEndSetting02 from the application gateway stored in $AppGw.
 
 ## PARAMETERS
@@ -84,7 +83,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

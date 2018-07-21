@@ -30,7 +30,6 @@ D:\> $vnet = New-AzureRmvirtualNetwork -Name VnetName -ResourceGroupName Resourc
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
-
 Then, we create a new virtual network with **New-AzureRmvirtualNetwork** and we specify the ID of the newly created plan in the parameter **DdosProtectionPlanId**. In this case, since we are associating the virtual network with a plan, we can also specify the parameter **EnableDdoSProtection**.
 
 ### Example 2: Create and associate a DDoS protection plan with an existing virtual network
@@ -82,9 +81,7 @@ EnableVmProtection     : false
 ```
 
 First, we create a new DDoS Protection plan with the **New-AzureRmDdosProtectionPlan** command.
-
 Second, we get the most updated version of the virtual network we want to associate with the plan. We update the property **DdosProtectionPlan** with a **PSResourceId** object containing a reference to the ID of the newly created plan. In this case, if we associate the virtual network with a DDoS protection plan, we can also set the flag **EnableDdosProtection** to true.
-
 Finally, we persist the new state by piping the local variable into **Set-AzureRmVirtualNetwork**.
 
 ## PARAMETERS
@@ -216,7 +213,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

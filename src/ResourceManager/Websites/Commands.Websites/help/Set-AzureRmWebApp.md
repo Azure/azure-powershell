@@ -398,13 +398,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Int32
-Parameter 'NumberOfWorkers' accepts value of type 'Int32' from the pipeline
+### System.Int32
+Parameters: NumberOfWorkers (ByValue)
 
-### Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+### System.String
+Parameters: Name (ByPropertyName)
+
+### Microsoft.Azure.Management.WebSites.Models.Site
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

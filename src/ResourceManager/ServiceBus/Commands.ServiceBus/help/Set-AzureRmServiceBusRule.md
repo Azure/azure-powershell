@@ -176,7 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
+Parameters: Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
+
+### Microsoft.Azure.Commands.ServiceBus.Models.PSRulesAttributes
+Parameters: InputObject (ByPropertyName)
 
 ## OUTPUTS
 

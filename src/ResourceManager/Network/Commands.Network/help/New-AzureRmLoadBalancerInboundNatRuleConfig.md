@@ -41,9 +41,7 @@ PS C:\> New-AzureRmLoadBalancerInboundNatRuleConfig -Name "MyInboundNatRule" -Fr
 ```
 
 The first command creates a public IP address named MyPublicIP in the resource group named MyResourceGroup, and then stores it in the $publicip variable.
-
 The second command creates a front-end IP configuration named FrontendIpConfig01 using the public IP address in $publicip, and then stores it in the $frontend variable.
-
 The third command creates an inbound NAT rule configuration named MyInboundNatRule using the front-end object in $frontend.
 The TCP protocol is specified and the front-end port is 3389, the same as the backend port in this case.
 The *FrontendIpConfiguration*, *Procotol*, *FrontendPort*, and *BackendPort* parameters are all required to create an inbound NAT rule configuration.
@@ -173,7 +171,6 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies a protocol.
 The acceptable values for this parameter are:
-
 - Tcp
 - Udp
 
@@ -196,7 +193,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -114,6 +114,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ExtensionName (ByPropertyName), InstanceId (ByPropertyName), ResourceGroupName (ByPropertyName), VMScaleSetName (ByPropertyName)
 
 ## OUTPUTS
 

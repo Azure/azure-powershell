@@ -20,7 +20,6 @@ Set-AzureRmSqlServerDnsAlias -Name <String> -TargetServerName <String> [-Resourc
 
 ## DESCRIPTION
 This command is updating the server to which alias is pointing. 
-
 This command needs to be issued while logged into subscription where new server to which alias is going to point is located.
 
 ## EXAMPLES
@@ -191,6 +190,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

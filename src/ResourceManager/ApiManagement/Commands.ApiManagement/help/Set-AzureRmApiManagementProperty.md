@@ -32,7 +32,6 @@ PS C:\> Set-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Prop
 ```
 
 The first command assigns two values to the $Tags variable.
-
 The second command modifies the property that has the ID Property11.
 The command assigns the strings in $Tags as tags on the property.
 
@@ -176,8 +175,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### System.String
+Parameters: Name (ByPropertyName), PropertyId (ByPropertyName), Value (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String[]
+Parameters: Tag (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 

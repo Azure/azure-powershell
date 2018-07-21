@@ -96,7 +96,6 @@ Accept wildcard characters: False
 ### -RebootType
 Specifies which node or nodes to restart.
 The acceptable values for this parameter are:
-
 - PrimaryNode 
 - SecondaryNode 
 - AllNodes
@@ -180,12 +179,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+Parameters: Name (ByPropertyName), RebootType (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### None
+### System.Boolean
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website

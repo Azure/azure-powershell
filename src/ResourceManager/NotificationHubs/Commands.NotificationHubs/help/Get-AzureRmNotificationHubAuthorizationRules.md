@@ -22,12 +22,10 @@ Get-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespa
 ## DESCRIPTION
 The **Get-AzureRmNotificationHubAuthorizationRules** cmdlet gets information about the Shared Access Signature (SAS) authorization rules associated with a notification hub.
 The cmdlet returns information about all the rules associated with a hub or, by including the *AuthorizationRule* parameter, gets information about a specific rule.
-
 Authorization rules manage access to your notification hubs.
 An authorization rule will create links, as a URI, based on different permission levels.
 Clients are directed to one of these URIs based on the appropriate permission level.
 For instance, a client with the Listen permission will be directed to the URI for that permission.
-
 The **Get-AzureRmNotificationHubAuthorizationRules** cmdlet only gets information about the authorization rules associated with a notification hub.
 To get information about the hub itself, use Get-AzureRmNotificationHub.
 
@@ -135,8 +133,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AuthorizationRule (ByPropertyName), Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

@@ -257,7 +257,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -277,8 +276,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'ConfigurationPath' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: ConfigurationDataPath (ByPropertyName), ConfigurationPath (ByPropertyName, ByValue), ContainerName (ByPropertyName), OutputArchivePath (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountName (ByPropertyName), StorageEndpointSuffix (ByPropertyName)
+
+### System.String[]
+Parameters: AdditionalPath (ByPropertyName)
 
 ## OUTPUTS
 

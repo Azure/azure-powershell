@@ -28,8 +28,6 @@ PS C:\> Get-AzureRmVMRunCommandDocument -Location 'westus' -CommandId 'RunPowerS
 ```
 
 Gets a specific run command document for 'RunPowerShellScript' in 'westus'.
-
-
 Get-AzureRmVMRunCommandDocument -Location $loc
 
 ### Example 2
@@ -92,6 +90,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: CommandId (ByPropertyName), Location (ByPropertyName)
 
 ## OUTPUTS
 

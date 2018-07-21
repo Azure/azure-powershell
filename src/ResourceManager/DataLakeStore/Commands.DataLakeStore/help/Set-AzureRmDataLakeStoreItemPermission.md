@@ -129,13 +129,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.Int32
+Parameters: Permission (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-Returns true upon successfully updating the permission.
+### System.Boolean
 
 ## NOTES
 * Alias: Set-AdlStoreItemPermission

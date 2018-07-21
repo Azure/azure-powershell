@@ -74,7 +74,6 @@ Accept wildcard characters: False
 ### -AceType
 Specifies the type of ACE to modify.
 The acceptable values for this parameter are:
-
 - User 
 - Group 
 - Mask 
@@ -201,7 +200,6 @@ Accept wildcard characters: False
 ### -Permissions
 Specifies the permissions for the ACE.
 The acceptable values for this parameter are:
-
 - None
 - Execute
 - Write
@@ -289,12 +287,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### DataLakeStoreItemAce[]
-Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+Parameters: Acl (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
+Parameters: AceType (ByPropertyName)
+
+### System.Guid
+Parameters: Id (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+Permission
+Parameters: Permissions (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Default (ByPropertyName), PassThru (ByPropertyName), Recurse (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName)
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItemAce>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
 If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES
