@@ -161,7 +161,7 @@ Accept wildcard characters: False
 Key-value pairs in the form of a hash table.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

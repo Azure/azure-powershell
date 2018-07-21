@@ -115,7 +115,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
             vIpConfigurations.Name = this.MyInvocation.BoundParameters.ContainsKey("Name") ? this.Name : null;
             vIpConfigurations.Primary = this.Primary.IsPresent;
-            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? this.PrivateIPAddressVersion : null;
+            vIpConfigurations.PrivateIPAddressVersion = this.MyInvocation.BoundParameters.ContainsKey("PrivateIPAddressVersion") ? (IPVersion?) this.PrivateIPAddressVersion : null;
             vIpConfigurations.Id = this.MyInvocation.BoundParameters.ContainsKey("Id") ? this.Id : null;
 
             // SubnetId
