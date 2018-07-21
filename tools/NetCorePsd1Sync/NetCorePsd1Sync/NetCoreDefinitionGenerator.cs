@@ -40,11 +40,11 @@ namespace NetCorePsd1Sync
         // https://stackoverflow.com/a/25245678/294804
         public static IEnumerable<string> GetModulePaths(string rmPath, bool ignoreExisting = false) => 
             Directory.EnumerateDirectories(rmPath).Where(d =>
-                Directory.EnumerateFiles(d, Psd1Filter, SearchOption.TopDirectoryOnly).Any() &&
-                (ignoreExisting || !Directory.EnumerateFiles(d, NetCoreFilter, SearchOption.TopDirectoryOnly).Any()));
+                Directory.EnumerateFiles(d, Psd1Filter, SearchOption.AllDirectories).Any() &&
+                (ignoreExisting || !Directory.EnumerateFiles(d, NetCoreFilter, SearchOption.AllDirectories).Any()));
 
         public static IEnumerable<string> GetDesktopFilePaths(IEnumerable<string> modulePaths) =>
-            modulePaths.Select(m => Directory.EnumerateFiles(m, Psd1Filter, SearchOption.TopDirectoryOnly).First(f => !f.Contains(NetCorePsd1Extension)));
+            modulePaths.Select(m => Directory.EnumerateFiles(m, Psd1Filter, SearchOption.AllDirectories).First(f => !f.Contains(NetCorePsd1Extension)));
 
         public static string ConvertDesktopToNetCorePath(string desktopPath) =>
             Path.Combine(Path.GetDirectoryName(desktopPath), Path.GetFileNameWithoutExtension(desktopPath) + NetCorePsd1Extension);
