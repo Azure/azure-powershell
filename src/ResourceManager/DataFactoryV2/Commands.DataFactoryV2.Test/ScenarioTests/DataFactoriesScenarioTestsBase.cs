@@ -15,31 +15,28 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Gallery;
+using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Management.Authorization;
 using Microsoft.Azure.Management.DataFactory;
 using Microsoft.Azure.Management.Internal.Resources;
-using Microsoft.Azure.Subscriptions;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
 using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
+using Microsoft.Rest.Azure.Authentication;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-using Microsoft.Azure.ServiceManagemenet.Common.Models;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2.Test
 {
     public abstract class DataFactoriesScenarioTestsBase : RMTestBase
     {
         private const string TenantIdKey = "TenantId";
-        private const string DomainKey = "Domain";
-        private const string SubscriptionIdKey = "SubscriptionId";
 
         private EnvironmentSetupHelper helper;
-        public string UserDomain { get; private set; }
 
         protected DataFactoriesScenarioTestsBase()
         {
@@ -59,6 +56,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 subscriptionsClient,
                 graphClient,
                 authorizationManagementClient);
+
+            AuthorizationClient.RoleAssignmentNames.Enqueue(new Guid("6558f9a7-689c-41d3-93bd-3281fbe3d26f"));
         }
 
         protected void RunPowerShellTest(XunitTracingInterceptor logger, params string[] scripts)
@@ -79,6 +78,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
                 SetupManagementClients(context);
 
                 helper.SetupEnvironment(AzureModule.AzureResourceManager);
+                UpdateDefaultContextForPlayback();
+
                 helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + this.GetType().Name + ".ps1",
@@ -106,11 +107,6 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             return context.GetServiceClient<Internal.Subscriptions.SubscriptionClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
-        protected GalleryClient GetGalleryClient(MockContext context)
-        {
-            return context.GetServiceClient<GalleryClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
         protected AuthorizationManagementClient GetAuthorizationManagementClient(MockContext context)
         {
             return context.GetServiceClient<AuthorizationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
@@ -119,42 +115,50 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
         private GraphRbacManagementClient GetGraphClient(MockContext context)
         {
             var environment = TestEnvironmentFactory.GetTestEnvironment();
-            string tenantId = null;
+            string tenantId = environment.Tenant;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = environment.Tenant;
-                UserDomain = String.IsNullOrEmpty(environment.UserName) ? String.Empty : environment.UserName.Split(new[] { "@" }, StringSplitOptions.RemoveEmptyEntries).Last();
-
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
-                HttpMockServer.Variables[DomainKey] = UserDomain;
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                if (HttpMockServer.Variables.ContainsKey(TenantIdKey))
+
+                string password;
+                string spnClientId;
+                string spnSecret;
+                var connStr = environment.ConnectionString;
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.PasswordKey, out password);
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalKey, out spnClientId);
+                connStr.KeyValuePairs.TryGetValue(ConnectionStringKeys.ServicePrincipalSecretKey, out spnSecret);
+
+                var graphAadServiceSettings = new ActiveDirectoryServiceSettings()
                 {
-                    tenantId = HttpMockServer.Variables[TenantIdKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(DomainKey))
-                {
-                    UserDomain = HttpMockServer.Variables[DomainKey];
-                }
-                if (HttpMockServer.Variables.ContainsKey(SubscriptionIdKey))
-                {
-                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = HttpMockServer.Variables[SubscriptionIdKey];
-                }
+                    AuthenticationEndpoint = new Uri(environment.Endpoints.AADAuthUri + environment.Tenant),
+                    TokenAudience = environment.Endpoints.GraphTokenAudienceUri
+                };
+
+                var accessToken = ApplicationTokenProvider
+                    .LoginSilentAsync(environment.Tenant, spnClientId, spnSecret, graphAadServiceSettings)
+                    .ConfigureAwait(false)
+                    .GetAwaiter()
+                    .GetResult();
+                environment.TokenInfo[TokenAudience.Graph] = accessToken as TokenCredentials;
             }
 
             var client = context.GetGraphServiceClient<GraphRbacManagementClient>(environment);
             client.TenantID = tenantId;
-            if (AzureRmProfileProvider.Instance != null &&
-                AzureRmProfileProvider.Instance.Profile != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext != null &&
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant != null)
-            {
-                AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = client.TenantID;
-            }
+
             return client;
+        }
+
+        private void UpdateDefaultContextForPlayback()
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback
+                && HttpMockServer.Variables.ContainsKey(TenantIdKey))
+            {
+                if (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Tenant != null)
+                {
+                    AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = HttpMockServer.Variables[TenantIdKey];
+                }
+            }
         }
     }
 }

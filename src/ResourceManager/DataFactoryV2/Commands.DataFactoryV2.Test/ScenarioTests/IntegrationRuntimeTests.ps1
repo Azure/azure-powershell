@@ -32,14 +32,13 @@ function Test-SelfHosted-IntegrationRuntime
             -Location $dflocation `
             -Force
      
-        $irname = "selfhosted-test-integrationruntime"
-        $description = "description"
-   
+        $irname = "selfhosted-test-integrationruntime"   
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
             -Type 'SelfHosted' `
             -Force
+        Assert-AreEqual $actual.Name $irname
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
@@ -49,11 +48,15 @@ function Test-SelfHosted-IntegrationRuntime
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id
         Assert-AreEqual $actual.Name $expected.Name
 
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+        Assert-NotNull $status
+
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname
         Assert-NotNull $metric
 
+        $description = "description"
         $result = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -254,6 +257,12 @@ function Test-Shared-IntegrationRuntime
 
     try
     {
+        $test_mode = $Env:AZURE_TEST_MODE
+        $sleep_sec = 20
+        if ($test_mode -eq $null -or $test_mode -eq 'Playback'){
+            $sleep_sec = 0
+        }
+
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
             -Name $dfname `
             -Location $dflocation `
@@ -264,12 +273,12 @@ function Test-Shared-IntegrationRuntime
             -Location $dflocation `
             -Force
 
-        Wait-Seconds 10
+        Wait-Seconds $sleep_sec
         
         $irname = "selfhosted-test-integrationruntime"
         $description = "description"
    
-        $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+        $shared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
             -Type 'SelfHosted' `
@@ -278,18 +287,18 @@ function Test-Shared-IntegrationRuntime
         New-AzureRMRoleAssignment `
             -ObjectId $linkeddf.Identity.PrincipalId `
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
-            -Scope $actual.Id
+            -Scope $shared.Id
 
-        Wait-Seconds 20
+        Wait-Seconds $sleep_sec
 
         $linkedIrName = 'LinkedIntegrationRuntime'
-        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime `
+        $linked = Set-AzureRmDataFactoryV2IntegrationRuntime `
             -ResourceGroupName $rgname `
             -DataFactoryName $linkeddfname `
             -Name $linkedIrName `
-            -SharedIntegrationRuntimeResourceId $actual.Id `
             -Type SelfHosted `
             -Description 'This is a linked integration runtime' `
+            -SharedIntegrationRuntimeResourceId $shared.Id `
             -Force
 
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
@@ -297,18 +306,18 @@ function Test-Shared-IntegrationRuntime
             -Name $linkedIrName
         Assert-NotNull $metric
 
-        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Status
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Status
         Assert-NotNull $status
 
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -LinkedDataFactoryName $linkeddfname -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -LinkedDataFactoryName $linkeddfname -Force
 
         Remove-AzureRmRoleAssignment `
             -ObjectId $linkeddf.Identity.PrincipalId `
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
-            -Scope $actual.Id
+            -Scope $shared.Id
 
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -Force
 
         Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $linkeddfname -Force
     }
