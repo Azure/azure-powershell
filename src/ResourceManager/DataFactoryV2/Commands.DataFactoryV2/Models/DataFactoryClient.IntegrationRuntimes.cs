@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 integrationRuntimeName);
         }
 
-        public virtual async Task<PSSelfHostedIntegrationRuntimeStatus> UpdateIntegrationRuntimeAsync(
+        public virtual async Task<PSIntegrationRuntime> UpdateIntegrationRuntimeAsync(
             string resourceGroupName,
             string dataFactoryName,
             string integrationRuntimeName,
@@ -358,14 +358,26 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 dataFactoryName,
                 integrationRuntimeName,
                 request);
-            var selfHostedStatus = response.Properties as SelfHostedIntegrationRuntimeStatus;
 
-            return new PSSelfHostedIntegrationRuntimeStatus(
-                resource,
-                selfHostedStatus,
+            return new PSSelfHostedIntegrationRuntime(
+                response,
+                resourceGroupName,
+                dataFactoryName);
+        }
+
+        public virtual async Task<HttpStatusCode> RemoveIntegrationRuntimeLinksAsync(
+            string resourceGroupName,
+            string dataFactoryName,
+            string integrationRuntimeName,
+            string linkedDataFactoryName)
+        {
+            var response = await this.DataFactoryManagementClient.IntegrationRuntimes.RemoveLinksWithHttpMessagesAsync(
                 resourceGroupName,
                 dataFactoryName,
-                DataFactoryManagementClient.DeserializationSettings);
+                integrationRuntimeName,
+                new LinkedIntegrationRuntimeRequest(linkedDataFactoryName));
+
+            return response.Response.StatusCode;
         }
 
         internal async Task<bool> CheckIntegrationRuntimeExistsAsync(
@@ -382,7 +394,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
                 return integrationRuntime != null;
             }
-            catch (ErrorResponseException e)
+            catch (CloudException e)
             {
                 // Get throws Exception message with NotFound Status
                 if (e.Response.StatusCode == HttpStatusCode.NotFound)
@@ -432,7 +444,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             resourceGroupName,
                             dataFactoryName,
                             DataFactoryManagementClient.DeserializationSettings,
-                            selfHosted.LinkedInfo is LinkedIntegrationRuntimeKey 
+                            selfHosted.LinkedInfo is LinkedIntegrationRuntimeKeyAuthorization
                                 ? Constants.LinkedIntegrationRuntimeKeyAuth
                                 : Constants.LinkedIntegrationRuntimeRbacAuth,
                             status.Name,
@@ -489,7 +501,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                             resourceGroupName,
                             dataFactoryName)
                     {
-                        AuthorizationType = selfHosted.LinkedInfo is LinkedIntegrationRuntimeKey
+                        AuthorizationType = selfHosted.LinkedInfo is LinkedIntegrationRuntimeKeyAuthorization
                             ? Constants.LinkedIntegrationRuntimeKeyAuth
                             : Constants.LinkedIntegrationRuntimeRbacAuth
                     };

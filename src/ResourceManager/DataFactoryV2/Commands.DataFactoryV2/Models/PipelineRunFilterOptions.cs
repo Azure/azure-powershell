@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         public DateTime LastUpdatedBefore { get; set; }
         
-        public IList<PipelineRunQueryFilter> Filters { get; set; }
+        public IList<RunQueryFilter> Filters { get; set; }
         
-        public IList<PipelineRunQueryOrderBy> OrderBy { get; set; }
+        public IList<RunQueryOrderBy> OrderBy { get; set; }
     }
 }
