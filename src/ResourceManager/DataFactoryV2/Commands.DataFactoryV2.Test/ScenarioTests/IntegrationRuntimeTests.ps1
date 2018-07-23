@@ -264,12 +264,6 @@ function Test-Shared-IntegrationRuntime
 
     try
     {
-        $test_mode = $Env:AZURE_TEST_MODE
-        $sleep_sec = 20
-        if ($test_mode -eq $null -or $test_mode -eq 'Playback'){
-            $sleep_sec = 0
-        }
-
         Set-AzureRmDataFactoryV2 -ResourceGroupName $rgname `
             -Name $dfname `
             -Location $dflocation `
@@ -280,7 +274,7 @@ function Test-Shared-IntegrationRuntime
             -Location $dflocation `
             -Force
 
-        Wait-Seconds $sleep_sec
+        Wait-Seconds 10
         
         $irname = "selfhosted-test-integrationruntime"
         $description = "description"
@@ -296,7 +290,7 @@ function Test-Shared-IntegrationRuntime
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
             -Scope $shared.Id
 
-        Wait-Seconds $sleep_sec
+        Wait-Seconds 20
 
         $linkedIrName = 'LinkedIntegrationRuntime'
         $linked = Set-AzureRmDataFactoryV2IntegrationRuntime `
