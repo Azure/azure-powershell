@@ -47,7 +47,7 @@ Removes the Event Hub \`MyEventHubName\`.
 PS C:\> Remove-AzureRmEventHub -InputObject $inputobject
 ```
 
-Removes the Event Hub provided thorugh $inputobject for -InputObject parameter.
+Removes the Event Hub provided through $inputobject for -InputObject parameter.
 
 ### Example 3 - ResourceId
 ```
@@ -58,7 +58,7 @@ OR
 PS C:\> Remove-AzureRmEventHub -ResourceId "ARM Id of the EventHub to be removed"
 ```
 
-Removes the Event Hub provided thorugh ARM Id in $resourceid/string for -ResourceId parameter.
+Removes the Event Hub provided through ARM Id in $resourceid/string for -ResourceId parameter.
 
 ## PARAMETERS
 
