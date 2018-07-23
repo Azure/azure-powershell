@@ -12,9 +12,23 @@ Deletes the specified Event Hubs consumer group.
 
 ## SYNTAX
 
+### ConsumergroupPropertiesSet (Default)
 ```
 Remove-AzureRmEventHubConsumerGroup [-ResourceGroupName] <String> [-Namespace] <String> [-EventHub] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ConsumergroupInputObjectSet
+```
+Remove-AzureRmEventHubConsumerGroup [-InputObject] <PSConsumerGroupAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ConsumergroupResourceIdParameterSet
+```
+Remove-AzureRmEventHubConsumerGroup [-ResourceId] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +43,46 @@ PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupNa
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
+### Example 2 - InputObject
+```
+PS C:\> Remove-AzureRmEventHubConsumerGroup -InputObject $inputobject
+```
+
+Deletes the consumer group  provided thorugh $inputobject for -InputObject parameter.
+
+### Example 3 - ResourceId
+```
+PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId $resourceid
+```
+OR
+```
+PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId "ARM id of the consumer group to be deleted/removed"
+```
+
+Deletes the consumer group provided thorugh ARM Id in $resourceid/string for -ResourceId parameter
+
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -50,8 +97,8 @@ Accept wildcard characters: False
 EventHub Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ConsumergroupPropertiesSet
 Aliases: EventHubName
 
 Required: True
@@ -61,12 +108,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+ConsumerGroup Object
+
+```yaml
+Type: PSConsumerGroupAttributes
+Parameter Sets: ConsumergroupInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 ConsumerGroup Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ConsumergroupPropertiesSet
 Aliases: ConsumerGroupName
 
 Required: True
@@ -80,8 +142,8 @@ Accept wildcard characters: False
 Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ConsumergroupPropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -91,12 +153,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: ConsumergroupPropertiesSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+ConsumerGroup Resource Id
+
+```yaml
+Type: String
+Parameter Sets: ConsumergroupResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -110,7 +202,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +218,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -138,11 +230,14 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
 ### System.String
+Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+
 
 ## OUTPUTS
 
