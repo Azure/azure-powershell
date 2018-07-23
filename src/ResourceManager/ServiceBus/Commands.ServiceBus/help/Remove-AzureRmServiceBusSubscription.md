@@ -12,9 +12,23 @@ Removes the subscription to a topic from the specified Service Bus namespace.
 
 ## SYNTAX
 
+### SubscriptionPropertiesSet (Default)
 ```
 Remove-AzureRmServiceBusSubscription [-ResourceGroupName] <String> [-Namespace] <String> [-Topic] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### SubscriptionInputObjectSet
+```
+Remove-AzureRmServiceBusSubscription [-InputObject] <PSSubscriptionAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### SubscriptionResourceIdSet
+```
+Remove-AzureRmServiceBusSubscription [-ResourceId] <String> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,13 +43,46 @@ PS C:\> Remove-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-W
 
 Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
+### Example 2 - InputObject
+```
+PS C:\> Remove-AzureRmServiceBusSubscription -InputObject $inputobject
+```
+
+Removes the subscription provided thorugh $inputobject for -InputObject parameter
+
+### Example 3 - ResourceId
+```
+PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId $resourceid
+```
+OR
+```
+PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId "ARM id of the subscription to be deleted/removed"
+```
+
+Removes the subscription provided thorugh ARM Id in $resourceid/string for -ResourceId parameter 
+
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -46,12 +93,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Subscription Name.
+### -InputObject
+Service Bus Subscription Object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: PSSubscriptionAttributes
+Parameter Sets: SubscriptionInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Subscription Name
+
+```yaml
+Type: String
+Parameter Sets: SubscriptionPropertiesSet
 Aliases: SubscriptionName
 
 Required: True
@@ -62,11 +124,11 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: SubscriptionPropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -76,12 +138,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: SubscriptionPropertiesSet
 Aliases: ResourceGroup
 
 Required: True
@@ -91,12 +168,27 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Topic
-Topic Name.
+### -ResourceId
+Service Bus Subscription Resource Id
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: SubscriptionResourceIdSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Topic
+Topic Name
+
+```yaml
+Type: String
+Parameter Sets: SubscriptionPropertiesSet
 Aliases: TopicName
 
 Required: True
@@ -110,13 +202,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -126,37 +218,31 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -SubscriptionName
- System.String
 
 ## OUTPUTS
 
 ### System.Boolean
+
 
 ## NOTES
 

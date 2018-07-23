@@ -112,7 +112,7 @@ function ServiceBusRuleTests
 	
 	# Delete the created/Updated Subscription
 	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
-	Assert-True {$ResultDeleteTopic} "Topic not deleted"
+	Assert-True {$ResultDeleteTopic} "Subscription not deleted"
 		 
 	# Cleanup
 	# Delete all Created Topic
