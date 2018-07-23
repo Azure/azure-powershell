@@ -213,11 +213,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'RemoteVirtualNetworkId' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetwork
+Parameters: VirtualNetwork (ByValue)
 
-### PSVirtualNetwork
-Parameter 'VirtualNetwork' accepts value of type 'PSVirtualNetwork' from the pipeline
+### System.String
+Parameters: RemoteVirtualNetworkId (ByValue)
 
 ## OUTPUTS
 

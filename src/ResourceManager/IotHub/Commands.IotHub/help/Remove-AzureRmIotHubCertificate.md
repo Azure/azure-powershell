@@ -201,11 +201,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSCertificateDescription
+Parameters: InputObject (ByValue)
+
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Boolean
+### System.Object
 
 ## NOTES
 

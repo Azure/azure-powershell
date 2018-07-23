@@ -20,7 +20,6 @@ Remove-AzureRmNotificationHubsNamespace [-ResourceGroup] <String> [-Namespace] <
 
 ## DESCRIPTION
 The **Remove-AzureRmNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
-
 Namespaces are logical containers that help you organize and manage your notification hubs.
 The **Remove-AzureRmNotificationHubsNamespace** cmdlet removes a notification hub namespace from your deployment.
 When you run this cmdlet, the specified namespace will be deleted along with all the notification hubs associated with that namespace.
@@ -134,10 +133,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

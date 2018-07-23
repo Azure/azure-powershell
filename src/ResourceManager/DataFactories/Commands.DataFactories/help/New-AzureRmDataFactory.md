@@ -21,9 +21,7 @@ New-AzureRmDataFactory [-Name] <String> [-Location] <String> [[-Tag] <Hashtable>
 
 ## DESCRIPTION
 The **New-AzureRmDataFactory** cmdlet creates a data factory with the specified resource group name and location.
-
 Perform these operations in the following order: 
-
 - Create a data factory. 
 - Create linked services. 
 - Create datasets. 
@@ -173,12 +171,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataFactory
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

@@ -145,11 +145,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+
 ### Microsoft.Azure.Commands.EventGrid.Models.PSTopicListInstance
 
 ## NOTES

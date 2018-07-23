@@ -266,8 +266,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AdvisorName (ByPropertyName), DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: ExpandRecommendedActions (ByPropertyName)
 
 ## OUTPUTS
 

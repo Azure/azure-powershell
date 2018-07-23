@@ -23,7 +23,6 @@ Export-AzureRmResourceGroup -ResourceGroupName <String> [-Path <String>] [-Inclu
 ## DESCRIPTION
 The **Export-AzureRmResourceGroup** cmdlet captures the specified resource group as a template and saves it to a JSON file.This can be useful in scenarios where you have already created some resources in your resource group, and then want to leverage the benefits of using template backed deployments.
 This cmdlet gives you an easy start by generating the template for your existing resources in the resource group.
-
 There might be some cases where this cmdlet fails to generate some parts of the template.
 Warning messages will inform you of the resources that failed.
 The template will still be generated for the parts that were successful.
@@ -117,9 +116,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -235,12 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

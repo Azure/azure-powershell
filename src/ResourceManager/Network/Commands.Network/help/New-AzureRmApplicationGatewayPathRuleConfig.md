@@ -34,7 +34,6 @@ New-AzureRmApplicationGatewayPathRuleConfig -Name <String>
 ## DESCRIPTION
 The **New-AzureRmApplicationGatewayPathRuleConfig** cmdlet creates an application gateway path rule.
 Rules created by this cmdlet can be added to a collection of URL path map configuration settings and then assigned to a gateway.
-
 Path map configuration settings are used in application gateway load balancing.
 
 ## EXAMPLES
@@ -51,11 +50,8 @@ PS C:\> Add-AzureRmApplicationGatewayUrlPathMapConfig -ApplicationGateway $Gatew
 These commands create a new application gateway path rule and then use the **Add-AzureRmApplicationGatewayUrlPathMapConfig** cmdlet to assign that rule to an application gateway.
 To do this, the first command creates an object reference to the gateway ContosoApplicationGateway.
 This object reference is stored in a variable named $Gateway.
-
 The next two commands create a backend address pool and a backend HTTP settings object; these objects (stored in the variables $AddressPool and $HttpSettings) are needed in order to create a path rule object.
-
 The fourth command creates the path rule object and is stored in a variable named $PathRuleConfig.
-
 The fifth command uses **Add-AzureRmApplicationGatewayUrlPathMapConfig** to add the configuration settings and the new path rule contained within those settings to ContosoApplicationGateway.
 
 ## PARAMETERS
@@ -63,14 +59,10 @@ The fifth command uses **Add-AzureRmApplicationGatewayUrlPathMapConfig** to add 
 ### -BackendAddressPool
 Specifies an object reference to a collection of backend address pool settings to be added to the gateway path rules configuration settings.
 You can create this object reference by using the New-AzureRmApplicationGatewayBackendAddressPool cmdlet and syntax similar to this:
-
 `$AddressPool = New-AzureRmApplicationGatewayBackendAddressPool -Name "ContosoAddressPool" -BackendIPAddresses "192.168.1.1", "192.168.1.2"`
-
 The preceding command adds two IP addresses (192.16.1.1 and 192.168.1.2) to the address pool.
 Note that the IP address are enclosed in quote marks and separated by using commas.
-
 The resulting variable, $AddressPool, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter.
-
 The backend address pool represents the IP addresses on the backend servers.
 These IP addresses should either belong to the virtual network subnet or should be public IP addresses.
 If you use this parameter you cannot use the *DefaultBackendAddressPoolId* parameter in the same command.
@@ -92,9 +84,7 @@ Specifies the ID of an existing backend address pool that can be added to the ga
 Address pool IDs can be returned by using the Get-AzureRmApplicationGatewayBackendAddressPool cmdlet.
 After you have the ID you can then use the *DefaultBackendAddressPoolId* parameter instead of the *DefaultBackendAddressPool* parameter.
 For instance:
-
 -DefaultBackendAddressPoolId "/subscriptions/39c54063-01d3-4abf-8f4c-234777bc1f10/resourceGroups/appgw-rg/providers/Microsoft.Network/applicationGateways/appgwtest/backendAddressPools/ContosoAddressPool"
-
 The backend address pool represents the IP addresses on the backend servers.
 These IP addresses should either belong to the virtual network subnet or should be public IP addresses.
 
@@ -113,13 +103,9 @@ Accept wildcard characters: False
 ### -BackendHttpSettings
 Specifies an object reference to a collection of backend HTTP settings to be added to the gateway path rule configuration settings.
 You can create this object reference by using the New-AzureRmApplicationGatewayBackendHttpSettings cmdlet and syntax similar to this:
-
 $HttpSettings = New-AzureRmApplicationGatewayBackendHttpSettings -Name "ContosoHttpSetings" -Port 80 -Protocol "Http" -CookieBasedAffinity "Disabled"
-
 The resulting variable, $HttpSettings, can then be used as the parameter value for the *DefaultBackendAddressPool* parameter:
-
 -DefaultBackendHttpSettings $HttpSettings
-
 The backend HTTP settings configure properties such as port, protocol, and cookie-based affinity for a backend pool.
 If you use this parameter you cannot use the *DefaultBackendHttpSettingsId* parameter in the same command.
 
@@ -140,9 +126,7 @@ Specifies the ID of an existing backend HTTP settings collection that can be add
 HTTP setting IDs can be returned by using the Get-AzureRmApplicationGatewayBackendHttpSettings cmdlet.
 After you have the ID you can then use the *DefaultBackendHttpSettingsId* parameter instead of the *DefaultBackendHttpSettings* parameter.
 For instance:
-
 -DefaultBackendSettings Id "/subscriptions/39c54063-01d3-4abf-8f4c-234777bc1f10/resourceGroups/appgw-rg/providers/Microsoft.Network/applicationGateways/appgwtest/backendHttpSettingsCollection/ContosoHttpSettings"
-
 The backend HTTP settings configure properties such as port, protocol, and cookie-based affinity for a backend pool.
 If you use this parameter you cannot use the *DefaultBackendHttpSettings* parameter in the same command.
 
@@ -238,13 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-**New-AzureRmApplicationGatewayPathRuleConfig** does not accept pipelined input.
+### None
 
 ## OUTPUTS
 
-###  
-**New-AzureRmApplicationGatewayPathRuleConfig** creates new instances of the **Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule** object.
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayPathRule
 
 ## NOTES
 

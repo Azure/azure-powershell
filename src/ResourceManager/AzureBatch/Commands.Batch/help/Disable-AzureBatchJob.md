@@ -71,7 +71,6 @@ Accept wildcard characters: False
 ### -DisableJobOption
 Specifies what to do with active tasks associated with the job that this cmdlet disables.
 Valid values are: 
-
 - Requeue 
 - Terminate 
 - Wait
@@ -109,13 +108,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: Id (ByPropertyName, ByValue)
 
-### String
-Parameter 'Id' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

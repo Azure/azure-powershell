@@ -137,7 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Resources.Models.ManagementGroups.PSManagementGroup
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -92,7 +92,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Billing.Models.PSEnrollmentAccount
+### Microsoft.Azure.Commands.Billing.Models.PSBillingPeriod
 
 ## NOTES
 
