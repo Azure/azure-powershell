@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         {
             if (consumerGroupResourceResource != null)
             {
+                Id = consumerGroupResourceResource.Id;
                 Name = consumerGroupResourceResource.Name;
                 CreatedAt = consumerGroupResourceResource.CreatedAt;
                 UpdatedAt = consumerGroupResourceResource.UpdatedAt;
@@ -37,14 +38,14 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         }
 
         /// <summary>
-        /// The path of the event hub.
+        /// The ARM resource ID of consumergroup.
         /// </summary>
-        public string Name { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// The path of the event hub.
+        /// The name of Consumer Group
         /// </summary>
-        public string Location { get; set; }
+        public string Name { get; set; }
 
         /// <summary>
         /// Exact time the Event was created.
