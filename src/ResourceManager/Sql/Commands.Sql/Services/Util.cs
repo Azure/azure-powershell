@@ -104,7 +104,7 @@ namespace Microsoft.Azure.Commands.Sql.Services
             }
 
             var emailRegex =
-                new Regex(string.Format("{0}{1}",
+                new Regex(string.Format("(?i){0}{1}",
                     @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))",
                     @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$"));
             return !emailAddresses.Any(e => !emailRegex.IsMatch(e));
