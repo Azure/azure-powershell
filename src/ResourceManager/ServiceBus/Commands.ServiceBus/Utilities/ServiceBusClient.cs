@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
-        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags)
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, Dictionary<string, string> tags, int? skuCapacity = null)
         {
             SBNamespace parameter = new SBNamespace();
             parameter.Location = location;
@@ -88,8 +88,12 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if (skuName != null)
             {
                 parameter.Sku = new SBSku();                
-                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);              
+                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
 
+                if (parameter.Sku.Name == SkuName.Premium && skuCapacity != null)
+                {
+                    parameter.Sku.Capacity = skuCapacity;
+                }
             }
 
             SBNamespace response = Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, parameter);

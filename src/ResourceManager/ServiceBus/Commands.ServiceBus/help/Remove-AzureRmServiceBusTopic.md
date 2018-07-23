@@ -12,8 +12,21 @@ Removes the topic from the specified Service Bus namespace.
 
 ## SYNTAX
 
+### TopicPropertiesSet (Default)
 ```
-Remove-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+Remove-AzureRmServiceBusTopic [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TopicInputObjectSet
+```
+Remove-AzureRmServiceBusTopic [-InputObject] <PSTopicAttributes> [-PassThru] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TopicResourceIdSet
+```
+Remove-AzureRmServiceBusTopic [-ResourceId] <String> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,13 +42,46 @@ PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -
 
 Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
+### Example 2 - InputObject
+```
+PS C:\> Remove-AzureRmServiceBusTopic -InputObject $inputobject
+```
+
+Removes the topic provided thorugh $inputobject for -InputObject parameter.
+
+### Example 3 - ResourceId
+```
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceId $resourceid
+```
+OR 
+```
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceId "ARM id of the Topic to be deleted"
+```
+
+Removes the topic provided thorugh ARM Id in $resourceid/string for -ResourceId parameter.
+
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
+### -AsJob
+Run cmdlet in the background
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -46,12 +92,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Topic Name.
+### -InputObject
+Service Bus Topic Object
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: PSTopicAttributes
+Parameter Sets: TopicInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Topic Name
+
+```yaml
+Type: String
+Parameter Sets: TopicPropertiesSet
 Aliases: TopicName
 
 Required: True
@@ -62,11 +123,11 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Namespace Name.
+Namespace Name
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: TopicPropertiesSet
 Aliases: NamespaceName
 
 Required: True
@@ -76,13 +137,43 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+{{Fill PassThru Description}}
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: String
+Parameter Sets: TopicPropertiesSet
 Aliases: ResourceGroup
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Service Bus Topic Resource Id
+
+```yaml
+Type: String
+Parameter Sets: TopicResourceIdSet
+Aliases:
 
 Required: True
 Position: 0
@@ -95,13 +186,13 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -111,30 +202,26 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
+Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
 
 ## OUTPUTS
 
