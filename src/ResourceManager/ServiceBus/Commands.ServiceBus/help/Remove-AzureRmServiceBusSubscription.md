@@ -48,7 +48,7 @@ Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_
 PS C:\> Remove-AzureRmServiceBusSubscription -InputObject $inputobject
 ```
 
-Removes the subscription provided thorugh $inputobject for -InputObject parameter
+Removes the subscription provided through $inputobject for -InputObject parameter
 
 ### Example 3 - ResourceId
 ```
@@ -59,7 +59,7 @@ OR
 PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId "ARM id of the subscription to be deleted/removed"
 ```
 
-Removes the subscription provided thorugh ARM Id in $resourceid/string for -ResourceId parameter 
+Removes the subscription provided through ARM Id in $resourceid/string for -ResourceId parameter 
 
 ## PARAMETERS
 

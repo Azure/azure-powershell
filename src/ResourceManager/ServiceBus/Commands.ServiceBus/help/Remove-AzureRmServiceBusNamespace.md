@@ -47,7 +47,7 @@ Removes the Service Bus namespace `SB-Example1` from the specified resource grou
 PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputobject
 ```
 
-Removes the Service Bus namespace provided thorugh the $inputobject.
+Removes the Service Bus namespace provided through the $inputobject.
 
 ### Example 3 - ResourceId
 ```
@@ -58,7 +58,7 @@ OR
 PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId "ARM id of the namespace to de removed"
 ```
 
-Removes the Service Bus namespace provided thorugh ARM id in $resourceid/string for -ResourceId parameter
+Removes the Service Bus namespace provided through ARM id in $resourceid/string for -ResourceId parameter
 
 ## PARAMETERS
 
