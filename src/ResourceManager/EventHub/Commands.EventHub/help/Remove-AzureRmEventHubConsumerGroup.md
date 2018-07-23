@@ -48,7 +48,7 @@ Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventH
 PS C:\> Remove-AzureRmEventHubConsumerGroup -InputObject $inputobject
 ```
 
-Deletes the consumer group  provided thorugh $inputobject for -InputObject parameter.
+Deletes the consumer group  provided through $inputobject for -InputObject parameter.
 
 ### Example 3 - ResourceId
 ```
@@ -59,7 +59,7 @@ OR
 PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId "ARM id of the consumer group to be deleted/removed"
 ```
 
-Deletes the consumer group provided thorugh ARM Id in $resourceid/string for -ResourceId parameter
+Deletes the consumer group provided through ARM Id in $resourceid/string for -ResourceId parameter
 
 ## PARAMETERS
 

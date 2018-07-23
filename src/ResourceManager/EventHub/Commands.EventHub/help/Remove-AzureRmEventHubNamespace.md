@@ -58,7 +58,7 @@ OR
 PS C:\> Remove-AzureRmEventHubNamespace -ResourceId "ARM id of the Event Hub namespace to be deleted/removed"
 ```
 
-Removes the Event Hubs namespace provided thorugh ARM Id in $resourceid/string for -ResourceId parameter.
+Removes the Event Hubs namespace provided through ARM Id in $resourceid/string for -ResourceId parameter.
 
 ## PARAMETERS
 
