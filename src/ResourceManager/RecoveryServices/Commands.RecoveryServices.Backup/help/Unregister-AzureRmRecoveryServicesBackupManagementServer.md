@@ -22,9 +22,7 @@ Unregister-AzureRmRecoveryServicesBackupManagementServer [-AzureRmBackupManageme
 ## DESCRIPTION
 The **Unregister-AzureRmRecoveryServicesBackupManagementServer** cmdlet unregisters a System Center Data Protection Manager (SCDPM) server or an Azure Backup server from the vault.
 This cmdlet removes references to the servers that are unregistered from the vault.
-
 Before you can unregister a container, you must delete any protected data associated with that container.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -36,7 +34,6 @@ PS C:\> Unregister-AzureRmRecoveryServicesBackupManagementServer -AzureRmBackupM
 ```
 
 The first command gets the Backup management server named dpmserver01.contoso.com, and then stores it in the $BMS variable.
-
 The second command unregisters the SCDPM server from the vault.
 
 ## PARAMETERS
@@ -137,10 +134,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

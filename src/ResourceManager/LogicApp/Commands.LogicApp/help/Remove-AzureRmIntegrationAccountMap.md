@@ -21,7 +21,6 @@ Remove-AzureRmIntegrationAccountMap -ResourceGroupName <String> -Name <String> -
 ## DESCRIPTION
 The **Remove-AzureRmIntegrationAccountMap** cmdlet removes an integration account map from a resource group.
 Specify the integration account name, resource group name, and map name.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -149,10 +148,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

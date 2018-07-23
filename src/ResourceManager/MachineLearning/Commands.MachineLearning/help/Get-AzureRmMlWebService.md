@@ -106,11 +106,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServices
+### Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebService
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, machine, machine learning, azureml

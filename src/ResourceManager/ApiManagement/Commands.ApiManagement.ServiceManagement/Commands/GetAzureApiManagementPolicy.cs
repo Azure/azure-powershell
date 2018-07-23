@@ -162,7 +162,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
                     return;
                 }
 
-                File.WriteAllText(SaveAs, policyContent, Encoding.UTF8);
+                File.WriteAllText(SaveAs, policyContent);
             }
             else
             {

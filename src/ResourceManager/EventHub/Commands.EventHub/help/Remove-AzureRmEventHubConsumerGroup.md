@@ -154,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{Fill PassThru Description}}
+Specifying this will return true if the command was successful.
 
 ```yaml
 Type: SwitchParameter
@@ -236,8 +236,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+Parameters: EventHub (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
+### Microsoft.Azure.Commands.EventHub.Models.PSConsumerGroupAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

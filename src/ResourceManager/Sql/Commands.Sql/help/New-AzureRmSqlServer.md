@@ -132,7 +132,6 @@ Accept wildcard characters: False
 
 ### -ServerVersion
 Specifies the version of the new server. The acceptable values for this parameter are: 2.0 and 12.0.
-
 Specify 2.0 to create a version 11 server, or 12.0 to create a version 12 server.
 
 ```yaml
@@ -166,7 +165,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -217,12 +215,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
+### System.Object
 
 ## NOTES
 

@@ -351,7 +351,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -371,8 +370,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ArchiveBlobName (ByPropertyName), ArchiveContainerName (ByPropertyName), ArchiveResourceGroupName (ByPropertyName), ArchiveStorageAccountName (ByPropertyName), ArchiveStorageEndpointSuffix (ByPropertyName), ConfigurationData (ByPropertyName), ConfigurationName (ByPropertyName), DataCollection (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Version (ByPropertyName), VMName (ByPropertyName), WmfVersion (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: ConfigurationArgument (ByPropertyName)
 
 ## OUTPUTS
 

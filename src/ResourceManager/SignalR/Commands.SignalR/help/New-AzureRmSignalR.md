@@ -20,9 +20,7 @@ New-AzureRmSignalR [-ResourceGroupName <String>] [-Name] <String> [-Location <St
 
 ## DESCRIPTION
 Create a SignalR service.
-
 The following values will be used for the parameters if not specified:
-
 * `ResourceGroupName`: the default resource group set by `Set-AzureRmDefault -ResourceGroupName`.
 * `Location`: the location of the resource group
 * `Sku`: Basic_DS2

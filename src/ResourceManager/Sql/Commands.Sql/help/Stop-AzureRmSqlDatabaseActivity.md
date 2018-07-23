@@ -172,12 +172,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseActivityModel
+### System.Object
 
 ## NOTES
 

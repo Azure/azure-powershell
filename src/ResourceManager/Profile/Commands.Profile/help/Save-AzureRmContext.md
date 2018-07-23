@@ -136,7 +136,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
+### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile
+Parameters: Profile (ByValue)
 
 ## OUTPUTS
 

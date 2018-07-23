@@ -53,7 +53,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the virtual network gateway is assigned to.
-
 Resource groups categorize items to help simplify inventory management and general Azure administration.
 
 ```yaml
@@ -70,11 +69,8 @@ Accept wildcard characters: False
 
 ### -Thumbprint
 Specifies the unique identifier of the certificate being removed.
-
 You can return thumbprint information for your certificates by using a Windows PowerShell command similar to this:
-
 `Get-ChildItem -Path "Cert:\LocalMachine\Root"`
-
 The preceding command returns information for all the Local Computer certificates found in the Root certificate store.
 
 ```yaml
@@ -124,10 +120,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPropertyName), VpnClientRevokedCertificateName (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

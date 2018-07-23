@@ -33,6 +33,43 @@ function Test-SimpleNewVm
 
         Assert-AreEqual $vmname $x.Name;
 		Assert-Null $x.Identity
+
+		$nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+		Assert-NotNull $nic
+		Assert-False { $nic.EnableAcceleratedNetworking }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm with Accelerated Net enabled
+#>
+function Test-SimpleNewVmWithAccelNet
+{
+    # Setup
+    $vmname = Get-ResourceName
+
+    try
+    {
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmname-$vmname".tolower();
+
+        # Common
+		$x = New-AzureRmVM -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -Size "Standard_D12_v2"
+
+        Assert-AreEqual $vmname $x.Name;
+		Assert-Null $x.Identity
+
+		$nic = Get-AzureRmNetworkInterface -ResourceGroupName $vmname  -Name $vmname
+		Assert-NotNull $nic
+		Assert-True { $nic.EnableAcceleratedNetworking }
     }
     finally
     {

@@ -20,14 +20,11 @@ Get-AzureRmNotificationHubListKeys [-ResourceGroup] <String> [-Namespace] <Strin
 
 ## DESCRIPTION
 The **Get-AzureRmNotificationHubListKeys** cmdlet returns the primary and secondary connection strings of a notification hub Shared Access Signature (SAS) authorization rule.
-
 Authorization rules manage user rights to the hub.
 Each rule includes a primary and a secondary connection string.
 These connection strings (URIs) perform the following:
-
 - Point users to a resource.
 - Include a token containing query parameters.
-
 One of these parameters, the signature, is used to authenticate the user and provide the specified level of access.
 
 ## EXAMPLES
@@ -75,7 +72,6 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace to which the notification hub is assigned.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
@@ -127,8 +123,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AuthorizationRule (ByPropertyName), Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

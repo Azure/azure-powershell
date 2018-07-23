@@ -128,12 +128,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Endpoint.PSEndpoint
-Parameter 'CdnEndpoint' accepts value of type 'PSEndpoint' from the pipeline
+Parameters: CdnEndpoint (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Origin.PSOrigin
-This cmdlet returns an origin server object.
 
 ## NOTES
 

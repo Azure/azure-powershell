@@ -331,8 +331,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSExpressRouteCircuit
-Parameter 'ExpressRouteCircuit' accepts value of type 'PSExpressRouteCircuit' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit
+Parameters: ExpressRouteCircuit (ByValue)
+
+### System.String
+Parameters: PeerAddressType (ByPropertyName), RouteFilterId (ByPropertyName)
+
+### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+Parameters: RouteFilter (ByPropertyName)
+
+### System.Boolean
+Parameters: LegacyMode (ByPropertyName)
 
 ## OUTPUTS
 

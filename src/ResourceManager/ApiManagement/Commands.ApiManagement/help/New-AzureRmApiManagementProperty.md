@@ -31,7 +31,6 @@ PS C:\> New-AzureRmApiManagementProperty -Context $apimContext -PropertyId "Prop
 ```
 
 The first command assigns two values to the $Tags variable.
-
 The second command creates a property and assigns the strings in $Tags as tags on the property.
 
 ### Example 2: Create a property that has a secret value
@@ -161,8 +160,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### System.String
+Parameters: Name (ByPropertyName), PropertyId (ByPropertyName), Value (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Secret (ByPropertyName)
+
+### System.String[]
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

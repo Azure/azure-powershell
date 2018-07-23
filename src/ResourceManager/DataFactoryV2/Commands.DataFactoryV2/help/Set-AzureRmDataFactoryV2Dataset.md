@@ -29,14 +29,11 @@ Set-AzureRmDataFactoryV2Dataset [-DefinitionFile] <String> [-ResourceId] <String
 The Set-AzureRmDataFactoryV2Dataset cmdlet creates a dataset in Azure Data Factory.
 If you specify a name for a dataset that already exists, this cmdlet prompts you for confirmation before it replaces the dataset.
 If you specify the Force parameter, the cmdlet replaces the existing dataset without confirmation.
-
 Perform these operations in the following order:
-
         -- Create a data factory.
         -- Create linked services.
         -- Create datasets.
         -- Create a pipeline.
-
 If a dataset with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing dataset with the new dataset.
 If you confirm to overwrite the existing dataset, the dataset definition is also replaced.
 
@@ -201,6 +198,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
