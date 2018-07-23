@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+* Updated help files to include full parameter types and correct input/output types.
 
 ## Version 5.0.4
 * Update error message for Set-AzureRmKeyVaultAccessPolicy

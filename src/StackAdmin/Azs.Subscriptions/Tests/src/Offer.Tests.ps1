@@ -36,87 +36,90 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
 InModuleScope Azs.Subscriptions {
 
-	Describe "Offers" -Tags @('Subscription', 'Offer') {
+    Describe "Offers" -Tags @('Subscription', 'Offer') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateOffer {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Offer
-				)
+            function ValidateOffer {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Offer
+                )
 
-				$Offer              | Should Not Be $null
+                $Offer              | Should Not Be $null
 
-				# Resource
-				$Offer.Id           | Should Not Be $null
-				$Offer.Name         | Should Not Be $null
-				$Offer.DisplayName  | Should Not Be $null
-			}
+                # Resource
+                $Offer.Id           | Should Not Be $null
+                $Offer.Name         | Should Not Be $null
+                $Offer.DisplayName  | Should Not Be $null
+            }
 
-			function AssertOffersAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertOffersAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Name             | Should Be $Expected.Name
-					$Found.DisplayName      | Should Be $Expected.DisplayName
-				}
-			}
-		}
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.DisplayName      | Should Be $Expected.DisplayName
+                }
+            }
+        }
 
-		It "TestListRootOffers" {
-			$global:TestName = 'TestListRootOffers'
+        it "TestListRootOffers" -Skip:$('TestListRootOffers' -in $global:SkippedTests) {
+            $global:TestName = 'TestListRootOffers'
 
-			$offers = Get-AzsOffer
-			$offers | Should Not Be $null
-			foreach($offer in $offers) {
-				ValidateOffer -Offer $offer
-			}
-	    }
+            $offers = Get-AzsOffer
+            $offers | Should Not Be $null
+            foreach ($offer in $offers) {
+                ValidateOffer -Offer $offer
+            }
+        }
 
-		It "TestListDelegatedProviderOffers" {
+        it "TestListDelegatedProviderOffers" -Skip:$('TestListDelegatedProviderOffers' -in $global:SkippedTests) {
             $global:TestName = 'TestListDelegatedProviderOffers'
 
-			$offers = Get-AzsDelegatedProviderOffer -DelegatedProviderId 'default'
-			$offers | Should Not Be $null
-			foreach($offer in $offers) {
-				ValidateOffer -Offer $offer
-			}
-		}
+            $offers = Get-AzsDelegatedProviderOffer -DelegatedProviderId 'default'
+            $offers | Should Not Be $null
+            foreach ($offer in $offers) {
+                ValidateOffer -Offer $offer
+            }
+        }
 
-		It "TestGetDelegatedProviderOffers" {
-			$global:TestName = 'TestGetDelegatedProviderOffers'
+        it "TestGetDelegatedProviderOffers" -Skip:$('TestGetDelegatedProviderOffers' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetDelegatedProviderOffers'
 
-			$offers = Get-AzsDelegatedProviderOffer -DelegatedProviderId 'default'
-			$offers | Should Not Be $null
-			foreach($offer in $offers) {
-				$retrieved = Get-AzsDelegatedProviderOffer -OfferName $offer.Name -DelegatedProviderId 'default'
-				AssertOffersAreSame -Expected $offer -Found $retrieved
-				break
-			}
-		}
+            $offers = Get-AzsDelegatedProviderOffer -DelegatedProviderId 'default'
+            $offers | Should Not Be $null
+            foreach ($offer in $offers) {
+                $retrieved = Get-AzsDelegatedProviderOffer -OfferName $offer.Name -DelegatedProviderId 'default'
+                AssertOffersAreSame -Expected $offer -Found $retrieved
+                break
+            }
+        }
     }
 }

@@ -28,7 +28,6 @@ Get-AzureRmTrafficManagerProfile [-ResourceGroupName] <String> [-Name] <String>
 ## DESCRIPTION
 The **Get-AzureRmTrafficManagerProfile** cmdlet gets an Azure Traffic Manager profile, and returns an object that represents that profile.
 Specify a profile by its name and resource group name.
-
 You can modify this object locally, and then apply changes to the profile by using the Set-AzureRmTrafficManagerProfile cmdlet.
 
 ## EXAMPLES
@@ -46,7 +45,7 @@ This command gets the profile named ContosoProfile in ResourceGroup11.
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -61,7 +60,7 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager profile that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases:
 
@@ -76,7 +75,7 @@ Accept wildcard characters: False
 Specifies the name of a resource group that contains the Traffic Manager profile that this cmdlet gets.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceGroupParameterSet
 Aliases:
 
@@ -88,7 +87,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AccountNameParameterSet
 Aliases:
 
@@ -104,14 +103,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet returns a **TrafficManagerProfile** object.
-You can modify this object, and then apply changes to Traffic Manager by using **Set-AzureRmTrafficManagerProfile**.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 
 ## NOTES
 

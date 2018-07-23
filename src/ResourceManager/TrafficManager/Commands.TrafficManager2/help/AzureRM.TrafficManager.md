@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.TrafficManager
 Module Guid: D48CF693-4125-4D2D-8790-1514F44CE325
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager

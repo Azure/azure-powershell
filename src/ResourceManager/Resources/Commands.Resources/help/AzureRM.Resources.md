@@ -1,4 +1,4 @@
-﻿---
+---
 Module Name: AzureRM.Resources
 Module Guid: ab3ca893-26fe-44b0-bd3c-8933df144d7b
 Download Help Link: https://docs.microsoft.com/en-us/powershell/module/azurerm.resources
@@ -46,6 +46,9 @@ Gets managed applications
 
 ### [Get-AzureRmManagedApplicationDefinition](Get-AzureRmManagedApplicationDefinition.md)
 Gets managed application definitions
+
+### [Get-AzureRmManagementGroup](Get-AzureRmManagementGroup.md)
+Gets Management Group(s)
 
 ### [Get-AzureRmPolicyAssignment](Get-AzureRmPolicyAssignment.md)
 Gets policy assignments.
@@ -118,6 +121,12 @@ Creates an Azure managed application.
 ### [New-AzureRmManagedApplicationDefinition](New-AzureRmManagedApplicationDefinition.md)
 Creates a managed application definition.
 
+### [New-AzureRmManagementGroup](New-AzureRmManagementGroup.md)
+Creates a Management Group
+
+### [New-AzureRmManagementGroupSubscription](New-AzureRmManagementGroupSubscription.md)
+Adds a Subscription to a Management Group.
+
 ### [New-AzureRmPolicyAssignment](New-AzureRmPolicyAssignment.md)
 Creates a policy assignment.
 
@@ -182,6 +191,12 @@ Removes a managed application
 ### [Remove-AzureRmManagedApplicationDefinition](Remove-AzureRmManagedApplicationDefinition.md)
 Removes a managed application definition
 
+### [Remove-AzureRmManagementGroup](Remove-AzureRmManagementGroup.md)
+Removes a Management Group
+
+### [Remove-AzureRmManagementGroupSubscription](Remove-AzureRmManagementGroupSubscription.md)
+Removes a Subscription from a Management Group.
+
 ### [Remove-AzureRmPolicyAssignment](Remove-AzureRmPolicyAssignment.md)
 Removes a policy assignment.
 
@@ -219,24 +234,6 @@ Updates managed application
 
 ### [Set-AzureRmManagedApplicationDefinition](Set-AzureRmManagedApplicationDefinition.md)
 Updates managed application definition
-
-### [Get-AzureRmManagementGroup](Get-AzureRmManagementGroup.md)
-Gets Management Group(s)
-
-### [New-AzureRmManagementGroup](New-AzureRmManagementGroup.md)
-Creates a Management Group
-
-### [New-AzureRmManagementGroupSubscription](New-AzureRmManagementGroupSubscription.md)
-Adds a Subscription to a Management Group.
-
-### [Remove-AzureRmManagementGroup](Remove-AzureRmManagementGroup.md)
-Removes a Management Group
-
-### [Remove-AzureRmManagementGroupSubscription](Remove-AzureRmManagementGroupSubscription.md)
-Removes a Subscription from a Management Group.
-
-### [Update-AzureRmManagementGroup](Update-AzureRmManagementGroup.md)
-Updates a Management Group
 
 ### [Set-AzureRmPolicyAssignment](Set-AzureRmPolicyAssignment.md)
 Modifies a policy assignment.
@@ -280,4 +277,7 @@ Updates an existing azure active directory service principal.
 
 ### [Update-AzureRmADUser](Update-AzureRmADUser.md)
 Updates an existing active directory user.
+
+### [Update-AzureRmManagementGroup](Update-AzureRmManagementGroup.md)
+Updates a Management Group
 

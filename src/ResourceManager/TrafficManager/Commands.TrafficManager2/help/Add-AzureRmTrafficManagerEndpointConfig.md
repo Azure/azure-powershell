@@ -1,6 +1,6 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.TrafficManager.dll-Help.xml
-Module Name: AzureRM
+Module Name: AzureRM.TrafficManager
 ms.assetid: 25E3F297-1D91-4102-B4D3-1E7195A5D33D
 online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.trafficmanager/add-azurermtrafficmanagerendpointconfig
 schema: 2.0.0
@@ -24,7 +24,6 @@ Add-AzureRmTrafficManagerEndpointConfig -EndpointName <String> -TrafficManagerPr
 ## DESCRIPTION
 The **Add-AzureRmTrafficManagerEndpointConfig** cmdlet adds an endpoint to a local Azure Traffic Manager profile object.
 You can get a profile by using the New-AzureRmTrafficManagerProfile or Get-AzureRmTrafficManagerProfile cmdlets.
-
 This cmdlet operates on the local profile object.
 Commit your changes to the profile for Traffic Manager by using the Set-AzureRmTrafficManagerProfile cmdlet.
 To create an endpoint and commit the change in a single operation, use the New-AzureRmTrafficManagerEndpoint cmdlet.
@@ -40,11 +39,9 @@ PS C:\> Set-AzureRmTrafficManagerProfile -TrafficManagerProfile $TrafficManagerP
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzureRmTrafficManagerProfile** cmdlet.
 The command stores the local profile in the $TrafficManagerProfile variable.
-
 The second command adds an endpoint named contoso to the profile stored in $TrafficManagerProfile.
 The command includes configuration data for the endpoint.
 This command changes only the local object.
-
 The final command updates the Traffic Manager profile in Azure to match the local value in $TrafficManagerProfile.
 
 ## PARAMETERS
@@ -53,7 +50,7 @@ The final command updates the Traffic Manager profile in Azure to match the loca
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,14 +65,13 @@ Accept wildcard characters: False
 Specifies the location of the endpoint to use in the Performance traffic-routing method.
 This parameter is only applicable to endpoints of the ExternalEndpoints or the NestedEndpoints type.
 You must specify this parameter when the Performance traffic-routing method is used.
-
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -88,9 +84,9 @@ Accept wildcard characters: False
 Specifies the name of the Traffic Manager endpoint that this cmdlet adds.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -102,16 +98,14 @@ Accept wildcard characters: False
 ### -EndpointStatus
 Specifies the status of the endpoint.
 Valid values are: 
-
 - Enabled 
 - Disabled 
-
 If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic-routing method.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Enabled, Disabled
 
 Required: True
@@ -123,10 +117,11 @@ Accept wildcard characters: False
 
 ### -GeoMapping
 The list of regions mapped to this endpoint when using the 'Geographic' traffic routing method. Please consult Traffic Manager documentation for a [full list of accepted values](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-geographic-regions).
+
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -140,9 +135,9 @@ The minimum number of endpoints that must be available in the child profile in o
 Only applicable to endpoint of type 'NestedEndpoints'.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -156,14 +151,13 @@ Specifies the priority that Traffic Manager assigns to the endpoint.
 This parameter is used only if the Traffic Manager profile is configured with the for Priority traffic-routing method.
 Valid values are integers from 1 through 1000.
 Lower values represent higher priority.
-
 If you specify a priority, you must specify priorities on all endpoints in the profile, and no two endpoints can share the same priority value.
 If you do not specify priorities, Traffic Manager assigns default priority values to the endpoints, starting with one (1), in the order the profile lists the endpoints.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -179,9 +173,9 @@ Specify this parameter only for the ExternalEndpoints endpoint type.
 For other endpoint types, specify the *TargetResourceId* parameter instead.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -196,9 +190,9 @@ Specify this parameter only for the AzureEndpoints and NestedEndpoints endpoint 
 For the ExternalEndpoints endpoint type, specify the *Target* parameter instead.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -213,9 +207,9 @@ This cmdlet modifies this local object.
 To obtain a **TrafficManagerProfile** object, use the Get-AzureRmTrafficManagerProfile cmdlet.
 
 ```yaml
-Type: TrafficManagerProfile
+Type: Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: Named
@@ -227,15 +221,14 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Azure Traffic Manager profile.
 Valid values are: 
-
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureEndpoints, ExternalEndpoints, NestedEndpoints
 
 Required: True
@@ -252,9 +245,9 @@ The default value is one (1).
 This parameter is used only if the Traffic Manager profile is configured with the Weighted traffic-routing method.
 
 ```yaml
-Type: UInt32
+Type: System.Nullable`1[System.UInt32]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -268,13 +261,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet accepts a **TrafficManagerProfile** object to this cmdlet.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
+Parameters: TrafficManagerProfile (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.TrafficManagerProfile
-This cmdlet returns a modified **TrafficManagerProfile** object.
+### Microsoft.Azure.Commands.TrafficManager.Models.TrafficManagerProfile
 
 ## NOTES
 
