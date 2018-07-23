@@ -77,10 +77,17 @@ function Test-SelfHosted-IntegrationRuntime
 Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
 
-Before RECORD this test, make sure setting the following environment variables:
-CatalogServerEndpoint: The catalog server endpoint for catalog database
-CatalogAdminUsername: The admin user name on this server
-CatalogAdminPassword: The password of the admin user.
+To record this test,
+1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR.
+2. If you are using a existing Azure SQL Server, make sure there is no existed database with name 'SSISDB'.
+3. Configure the Azure SQL Server with either way below:
+    a. Set following environment variables:
+        CatalogServerEndpoint: The catalog server endpoint for catalog database (SSISDB)
+        CatalogAdminUsername: The admin user name on this server
+        CatalogAdminPassword: The password of the admin user.
+    b. Set the variables directly in script.
+
+NOTE: this test will be running for 25 minutes to finish the SSIS-IR provision.
 #>
 function Test-SsisAzure-IntegrationRuntime
 {
