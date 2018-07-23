@@ -81,11 +81,8 @@ Updated     : 2/8/2016 11:21:45 PM
 ```
 
 The first command uses the New-AzureKeyVaultCertificatePolicy cmdlet to create a certificate policy, and then stores it in the $Policy variable.
-
 The second command uses **Add-AzureKeyVaultCertificate** to start the process to create a certificate.
-
 The third command uses the Get-AzureKeyVaultCertificateOperation cmdlet to poll the operation to verify that it's complete.
-
 The final command uses the Get-AzureKeyVaultCertificate cmdlet to get the certificate.
 
 ## PARAMETERS
@@ -137,7 +134,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -204,6 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificatePolicy
+Parameters: CertificatePolicy (ByValue)
 
 ## OUTPUTS
 

@@ -50,7 +50,6 @@ Accept wildcard characters: False
 ### -KeyName
 Specifies which key to regenerate.
 The acceptable values for this parameter are:
-
 - key1
 - key2
 
@@ -102,8 +101,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: KeyName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

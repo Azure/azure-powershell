@@ -39,9 +39,7 @@ PS C:\ $GatewayIpConfig = New-AzureRmApplicationGatewayIPConfiguration -Name "Ap
 ```
 
 The first command gets a virtual network named VNet01 that belongs to the resource group named ResourceGroup01.
-
 The second command gets the subnet configuration for the subnet that the virtual network in the previous command belongs to, and stores it in the $Subnet variable.
-
 The third command creates the IP configuration using $Subnet.
 
 ## PARAMETERS
@@ -113,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

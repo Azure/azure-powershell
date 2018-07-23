@@ -80,7 +80,6 @@ Restore-AzureRmSqlDatabase [-FromLongTermRetentionBackup] -ResourceId <String> -
 ## DESCRIPTION
 The **Restore-AzureRmSqlDatabase** cmdlet restores a SQL database from a geo-redundant backup, a backup of a deleted database, a long term retention backup, or a point in time in a live database.
 The restored database is created as a new database.
-
 You can create an elastic SQL database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
@@ -92,7 +91,6 @@ PS C:\> Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTi
 ```
 
 The first command gets the SQL database named Database01, and then stores it in the $Database variable.
-
 The second command restores the database in $Database from the specified point-in-time backup to the database named RestoredDatabase.
 
 ### Example 2: Restore a database from a point in time to an elastic pool
@@ -102,7 +100,6 @@ PS C:\> Restore-AzureRmSqlDatabase -FromPointInTimeBackup -PointInTime UTCDateTi
 ```
 
 The first command gets the SQL database named Database01, and then stores it in the $Database variable.
-
 The second command restores the database in $Database from the specified point-in-time backup to the SQL database named RestoredDatabase in the elastic pool named elasticpool01.
 
 ### Example 3: Restore a deleted database
@@ -130,7 +127,6 @@ PS C:\> Restore-AzureRmSqlDatabase -FromGeoBackup -ResourceGroupName "TargetReso
 ```
 
 The first command gets the geo-redundant backup for the database named Database01, and then stores it in the $GeoBackup variable.
-
 The second command restores the backup in $GeoBackup to the SQL database named RestoredDatabase.
 
 ## PARAMETERS
@@ -199,7 +195,6 @@ Accept wildcard characters: False
 ### -Edition
 Specifies the edition of the SQL database.
 The acceptable values for this parameter are:
-
 - None
 - Basic
 - Standard
@@ -329,7 +324,6 @@ Accept wildcard characters: False
 ### -PointInTime
 Specifies the point in time, as a **DateTime** object, that you want to restore your SQL database to.
 To get a **DateTime** object, use **Get-Date** cmdlet.
-
 Use this parameter together with the *FromPointInTimeBackup* parameter.
 
 ```yaml
@@ -451,12 +445,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.DateTime
+Parameters: DeletionDate (ByPropertyName)
+
+### System.String
+Parameters: ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), ServerName (ByPropertyName), ServiceObjectiveName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### System.Object
 
 ## NOTES
 

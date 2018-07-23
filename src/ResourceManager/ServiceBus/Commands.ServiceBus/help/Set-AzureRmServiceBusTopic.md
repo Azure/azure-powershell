@@ -168,17 +168,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
+### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -TopicObj
- Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

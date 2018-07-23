@@ -86,7 +86,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkInterface
-Parameter 'NetworkInterface' accepts value of type 'PSNetworkInterface' from the pipeline
+Parameters: NetworkInterface (ByValue)
 
 ## OUTPUTS
 

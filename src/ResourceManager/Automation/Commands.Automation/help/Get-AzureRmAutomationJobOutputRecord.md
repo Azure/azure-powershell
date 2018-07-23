@@ -20,7 +20,6 @@ Get-AzureRmAutomationJobOutputRecord [-JobId] <Guid> [-Id] <String> [-ResourceGr
 
 ## DESCRIPTION
 The **Get-AzureRmAutomationJobOutputRecord** cmdlet gets the full output of an Automation job output record.
-
 Although the **Get-AzureRmAutomationJobOutput** cmdlet lists one or more job output records, it returns only a summary, as a string, of the value of any output record.
 It does not return the full value of an output record's outputted value in its original type.
 In addition, the summary has a maximum length, which the full value that this cmdlet outputs may exceed.
@@ -117,8 +116,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: JobId (ByPropertyName)
+
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Id (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

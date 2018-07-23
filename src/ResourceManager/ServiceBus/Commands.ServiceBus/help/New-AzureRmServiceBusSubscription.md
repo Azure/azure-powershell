@@ -53,7 +53,6 @@ Creates	the subscription `SB-TopicSubscription-Example1` for the specified Servi
 ### -AutoDeleteOnIdle
 Specifies the [TimeSpan](https://msdn.microsoft.com/library/system.timespan.aspx) idle interval, after which the subscription is automatically deleted. The minimum duration is 5 minutes.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -319,20 +318,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroup
- System.String
- 
+### System.String
+Parameters: AutoDeleteOnIdle (ByPropertyName), DefaultMessageTimeToLive (ByPropertyName), ForwardDeadLetteredMessagesTo (ByPropertyName), ForwardTo (ByPropertyName), LockDuration (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Topic (ByPropertyName)
 
-### -NamespaceName
- System.String
- 
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -TopicName
- System.String
- 
-
-### -SubscriptionName
- System.String
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

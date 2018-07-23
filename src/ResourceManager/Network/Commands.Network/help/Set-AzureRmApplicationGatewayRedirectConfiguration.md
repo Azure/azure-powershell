@@ -45,7 +45,6 @@ PS C:\> $AppGw =  Set-AzureRmApplicationGatewayRedirectConfiguration -Applicatio
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-
 The second command modifies the redirect configuration for the application gateway to redirect type Permanent and use a target url.
 
 ## PARAMETERS
@@ -194,6 +193,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

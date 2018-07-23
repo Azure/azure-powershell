@@ -32,9 +32,7 @@ $TargetDedicated=5;$NodeDeallocationOption=requeue;totalNodes=5
 ```
 
 The first command stores a formula in the $Formula variable for use in the example.
-
 The second command evaluates the autoscale formula on the pool that has the ID ContosoPool.
-
 The final command displays the **Results** by using standard dot syntax.
 
 ## PARAMETERS
@@ -105,15 +103,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: Id (ByPropertyName, ByValue)
 
-### String
-Parameter 'Id' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### PSAutoScaleEvaluation
+### System.Object
 
 ## NOTES
 

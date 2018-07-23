@@ -71,11 +71,10 @@ This example downloads the files under sample file share
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -90,11 +89,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -109,11 +107,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -128,11 +125,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: ShareName
 Aliases:
 
@@ -147,7 +143,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -161,15 +157,13 @@ Accept wildcard characters: False
 ### -Destination
 Specifies the destination path.
 This cmdlet downloads the file contents to the location that this parameter specifies.
-
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -187,7 +181,7 @@ To obtain a directory, use the New-AzureStorageDirectory cmdlet.
 You can also use the Get-AzureStorageFile cmdlet to obtain a directory.
 
 ```yaml
-Type: CloudFileDirectory
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -204,7 +198,7 @@ This cmdlet gets the file that this parameter specifies.
 To obtain a **CloudFile** object, use the Get-AzureStorageFile cmdlet.
 
 ```yaml
-Type: CloudFile
+Type: Microsoft.WindowsAzure.Storage.File.CloudFile
 Parameter Sets: File
 Aliases:
 
@@ -219,11 +213,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -238,11 +231,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -259,7 +251,7 @@ This cmdlet gets the contents the file that this parameter specifies.
 If the file does not exist, this cmdlet returns an error.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName, Share, Directory
 Aliases:
 
@@ -274,11 +266,10 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -297,7 +288,7 @@ This object contains the storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: CloudFileShare
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -313,7 +304,7 @@ Specifies the name of the file share.
 This cmdlet downloads the contents of the file in the share this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName
 Aliases:
 
@@ -328,7 +319,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -344,7 +335,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -360,17 +351,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
-Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+Parameters: Directory (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
-Parameter 'File' accepts value of type 'CloudFile' from the pipeline
+Parameters: File (ByValue)
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
-Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

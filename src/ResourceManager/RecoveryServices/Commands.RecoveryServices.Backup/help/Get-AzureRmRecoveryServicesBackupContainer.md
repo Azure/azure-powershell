@@ -23,7 +23,6 @@ Get-AzureRmRecoveryServicesBackupContainer [-ContainerType] <ContainerType> [[-B
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupContainer** cmdlet gets a backup container.
 A Backup container encapsulates data sources that are modelled as backup items.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -48,11 +47,9 @@ The *BackupManagementType* parameter is only required for Windows containers.
 ### -BackupManagementType
 Specifies the backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM
 - MARS
 - AzureSQL
-
 This parameter is used to differentiate Windows machines that are backed up using MARS agent or other backup engines.
 
 ```yaml
@@ -71,7 +68,6 @@ Accept wildcard characters: False
 ### -ContainerType
 Specifies the backup container type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - Windows
 - AzureSQL
@@ -153,7 +149,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies the container registration status.
 The acceptable values for this parameter are:
-
 - Registered
 
 ```yaml
@@ -189,8 +184,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

@@ -130,13 +130,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
-System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.String
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: StorageUri (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

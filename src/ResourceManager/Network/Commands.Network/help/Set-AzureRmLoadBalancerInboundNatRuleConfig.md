@@ -42,9 +42,7 @@ PS C:\> $slb | Set-AzureRmLoadBalancerInboundNatRuleConfig -Name "NewNatRule" -F
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-
 The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerInboundNatRuleConfig, which adds an inbound NAT rule configuration to it.
-
 The third command passes the load balancer to **Set-AzureRmLoadBalancerInboundNatRuleConfig**, which saves and updates the inbound NAT rule configuration.
 Note that the rule configuration was set without enabling floating IP, which had been enabled by the previous command.
 
@@ -208,8 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 
