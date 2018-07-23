@@ -47,7 +47,7 @@ Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 PS C:\> Remove-AzureRmServiceBusTopic -InputObject $inputobject
 ```
 
-Removes the topic provided thorugh $inputobject for -InputObject parameter.
+Removes the topic provided through $inputobject for -InputObject parameter.
 
 ### Example 3 - ResourceId
 ```
@@ -58,7 +58,7 @@ OR
 PS C:\> Remove-AzureRmServiceBusTopic -ResourceId "ARM id of the Topic to be deleted"
 ```
 
-Removes the topic provided thorugh ARM Id in $resourceid/string for -ResourceId parameter.
+Removes the topic provided through ARM Id in $resourceid/string for -ResourceId parameter.
 
 ## PARAMETERS
 

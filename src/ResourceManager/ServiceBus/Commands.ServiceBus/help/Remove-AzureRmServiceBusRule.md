@@ -42,7 +42,7 @@ Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `S
 PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
 ```
 
-Removes the rule provided thorugh $inputobject for -InputObject parameter
+Removes the rule provided through $inputobject for -InputObject parameter
 
 ### Example 2 - ResourceId
 ```
@@ -53,7 +53,7 @@ OR
 PS C:\> Remove-AzureRmServiceBusRule -ResourceId "ARM of id rule to be removed"
 ```
 
-Removes the rule provided thorugh ARM Id in $resourceid/string for -ResourceId parameter 
+Removes the rule provided through ARM Id in $resourceid/string for -ResourceId parameter 
 
 ## PARAMETERS
 
