@@ -382,7 +382,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             this.ByResourceId();
             this.ByIntegrationRuntimeObject();
 
-            if (Type.Equals(Constants.IntegrationRuntimeTypeManaged, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(Type, Constants.IntegrationRuntimeTypeManaged, StringComparison.OrdinalIgnoreCase))
             {
                 if (AuthKey != null || !string.IsNullOrWhiteSpace(SharedIntegrationRuntimeResourceId))
                 {
