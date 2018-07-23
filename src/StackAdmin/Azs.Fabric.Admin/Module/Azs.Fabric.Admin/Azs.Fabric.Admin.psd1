@@ -87,7 +87,8 @@ Licensed under the MIT License. See License.txt in the project root for license 
     'Get-AzsStoragePool', 'Suspend-AzsInfrastructureRoleInstance',
     'Start-AzsScaleUnitNode', 'Get-AzsInfrastructureRoleInstance',
     'Repair-AzsScaleUnitNode', 'Stop-AzsInfrastructureRoleInstance',
-    'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode'
+    'Stop-AzsScaleUnitNode', 'Add-AzsScaleUnitNode',
+    'New-ScaleOutScaleUnitParametersObject', 'New-ScaleOutScaleUnitParametersListObject'
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport   = @()
