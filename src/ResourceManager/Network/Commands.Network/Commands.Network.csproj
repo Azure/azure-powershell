@@ -171,9 +171,9 @@
     <Compile Include="ApplicationGateway\UrlPathMap\NewAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\RemoveAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
     <Compile Include="ApplicationGateway\UrlPathMap\SetAzureApplicationGatewayUrlPathMapConfigCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
-    <Compile Include="ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\GetAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\NewAzureRMApplicationSecurityGroupCommand.cs" />
+    <Compile Include="Generated\ApplicationSecurityGroup\RemoveAzureRMApplicationSecurityGroupCommand.cs" />
     <Compile Include="Common\ListNextLink.cs" />
     <Compile Include="Common\NetworkBaseCmdlet.cs" />
     <Compile Include="Common\NetworkClient.cs" />
