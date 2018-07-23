@@ -230,12 +230,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), Destination (ByPropertyName), DiagnosticLogPath (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName), Recurse (ByPropertyName), Resume (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.LogLevel
+Parameters: DiagnosticLogLevel (ByPropertyName)
 
 ## OUTPUTS
 
-### string
+### System.String
 The path where the file or folder was downloaded to.
 
 ## NOTES

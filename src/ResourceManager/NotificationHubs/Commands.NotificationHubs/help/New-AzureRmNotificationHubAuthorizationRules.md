@@ -29,7 +29,6 @@ New-AzureRmNotificationHubAuthorizationRules [-ResourceGroup] <String> [-Namespa
 
 ## DESCRIPTION
 The **New-AzureRmNotificationHubAuthorizationRules** cmdlet creates a notification hub Shared Access Signature (SAS) authorization rule.
-
 Authorization rules are used to manage access to your notification hubs.
 This is done by the creation of links, as URIs, based on different permission levels.
 Clients are directed to one of these URIs based on the appropriate permission level.
@@ -96,7 +95,6 @@ Accept wildcard characters: False
 
 ### -NotificationHub
 Specifies the notification hub that the authorization rules will be assigned to.
-
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 Note that you must specify the name of an existing notification hub.
 The **New-AzureRmNotificationHubAuthorizationRules** cmdlet cannot create new notification hubs.
@@ -178,8 +176,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

@@ -21,7 +21,6 @@ Get-AzureRmBackupItem [-ProtectionStatus <String>] [-Status <String>] [-Type <St
 ## DESCRIPTION
 The **Get-AzureRmBackupItem** cmdlet gets the items in a container in Azure Backup and the protection status of the items.
 Enable items for protection by using the Enable-AzureRmBackupProtection cmdlet.
-
 A container that is registered to a Backup vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one item in the virtual machine container.
 
@@ -39,10 +38,8 @@ co03-vm                 NotProtected                                  0
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the **Get-AzureRmBackupContainer** cmdlet.
 The command stores that object in the $Container variable.
-
 The final command gets the backup item in the container in $Container.
 
 ### Example 2: View all properties for an item
@@ -103,7 +100,6 @@ Accept wildcard characters: False
 ### -ProtectionStatus
 Specifies the overall protection status of an item in the container.
 The acceptable values for this parameter are:
-
 - Protected 
 - Protecting  
 - NotProtected
@@ -161,11 +157,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupContainer
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupContainer
+Parameters: Container (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
 
 ## NOTES
 

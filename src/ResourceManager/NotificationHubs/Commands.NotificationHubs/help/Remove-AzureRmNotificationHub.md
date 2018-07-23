@@ -23,7 +23,6 @@ The **Remove-AzureRmNotificationHub** cmdlet removes an existing notification hu
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 Platforms include, but are not limited to: iOS, Android, Windows Phone 8, and Windows Store.
 Notification hubs are roughly equivalent to individual apps: each of your apps will typically have its own notification hub.
-
 You can remove an existing notification hub by using the **Remove-AzureRmNotificationHub** cmdlet.
 After a hub has been removed you can no longer use that hub to send push notifications to users.
 
@@ -71,7 +70,6 @@ Accept wildcard characters: False
 
 ### -Namespace
 Specifies the namespace to which the notification hub is assigned.
-
 Namespaces provide a way to group and categorize notification hubs.
 
 ```yaml
@@ -88,7 +86,6 @@ Accept wildcard characters: False
 
 ### -NotificationHub
 Specifies the notification hub to be removed.
-
 Notification hubs are used to send push notifications to multiple clients regardless of the platform used by those clients.
 
 ```yaml
@@ -105,7 +102,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the notification hub is assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
@@ -155,10 +151,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), NotificationHub (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

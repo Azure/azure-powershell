@@ -22,7 +22,6 @@ Unregister-AzureRmRecoveryServicesBackupContainer [-Container] <ContainerBase> [
 The **Unregister-AzureRmRecoveryServicesBackupContainer** cmdlet unregisters a Windows Server or other Backup container from the vault.
 This cmdlet removes references to a container from the vault.
 Before you can unregister a container, you must delete any protected data associated with that container.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -34,7 +33,6 @@ PS C:\> Unregister-AzureRmRecoveryServicesBackupContainer -Container $Cont
 ```
 
 The first command gets the Windows container named server01.contoso.com that is registered in the vault, and then stores it in the $Cont variable.
-
 The second command unregisters the specified Windows Server from the Azure Backup vault.
 
 ## PARAMETERS
@@ -135,10 +133,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

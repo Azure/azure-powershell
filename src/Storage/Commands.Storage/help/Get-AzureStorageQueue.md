@@ -15,12 +15,14 @@ Lists storage queues.
 
 ### QueueName (Default)
 ```
-Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue [[-Name] <String>] [-Context <IStorageContext>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### QueuePrefix
 ```
-Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [<CommonParameters>]
+Get-AzureStorageQueue -Prefix <String> [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +69,21 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Specifies a name.
 If no name is specified, the cmdlet gets a list of all the queues.
@@ -104,11 +121,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
 ### System.String
-Parameter 'Name' accepts value of type 'String' from the pipeline
+Parameters: Name (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

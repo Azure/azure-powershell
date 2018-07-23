@@ -268,6 +268,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Invalid BlobStorageSasUri parameter value. The value should be in format of https://mystorage.blob.core.windows.net/vulnerability-assessment?st=XXXXXX.&quot;.
+        /// </summary>
+        internal static string InvalidBlobStorageSasUri {
+            get {
+                return ResourceManager.GetString("InvalidBlobStorageSasUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
         /// </summary>
         internal static string InvalidDetectionTypeList {
@@ -336,6 +345,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NewDataMaskingRuleIdAlreadyExistError {
             get {
                 return ResourceManager.GetString("NewDataMaskingRuleIdAlreadyExistError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please provide valid value for StorageAccountName or BlobStorageSasUri parameter..
+        /// </summary>
+        internal static string NoStorageAccountSpecified {
+            get {
+                return ResourceManager.GetString("NoStorageAccountSpecified", resourceCulture);
             }
         }
         
@@ -691,6 +709,33 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Vulnerability assessment settings are not defined. Please run Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings first..
+        /// </summary>
+        internal static string RunSetVulnerabilityAssemenSettings {
+            get {
+                return ResourceManager.GetString("RunSetVulnerabilityAssemenSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ScanId is a required parameter for this cmdlet. Please explicitly provide it or pass the Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord output via pipe..
+        /// </summary>
+        internal static string ScanIdParameterIsRequired {
+            get {
+                return ResourceManager.GetString("ScanIdParameterIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Advanced Threat Protection is not defined. Please run Enable-AzureRmSqlServerAdvancedThreatProtection first..
+        /// </summary>
+        internal static string ServerAdvancedThreatProtectionIsNotDefined {
+            get {
+                return ResourceManager.GetString("ServerAdvancedThreatProtectionIsNotDefined", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server communication link with name: &apos;{0}&apos; already exists in server &apos;{1}&apos;..
         /// </summary>
         internal static string ServerCommunicationLinkNameExists {
@@ -948,6 +993,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string UseServerWithoutStorageAccount {
             get {
                 return ResourceManager.GetString("UseServerWithoutStorageAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vulnerability Assessment operation is not available on master database. Skipping....
+        /// </summary>
+        internal static string VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase {
+            get {
+                return ResourceManager.GetString("VulnerabilityAssessmentOperationIsNotAvailableOnMasterDatabase", resourceCulture);
             }
         }
     }

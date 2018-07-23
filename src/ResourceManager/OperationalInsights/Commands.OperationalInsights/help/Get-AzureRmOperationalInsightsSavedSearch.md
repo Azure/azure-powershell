@@ -105,12 +105,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), SavedSearchId (ByPropertyName), WorkspaceName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchListSavedSearchResponse
+
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSSearchGetSavedSearchResponse
 
 ## NOTES

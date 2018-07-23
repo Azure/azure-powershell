@@ -197,7 +197,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: ResourceGroupName (ByPropertyName), VMName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

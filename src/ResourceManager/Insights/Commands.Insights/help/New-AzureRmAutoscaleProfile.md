@@ -60,7 +60,6 @@ Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
 ```
 
 The first command creates an Autoscale rule named Requests, and then stores it in the $Rule variable.
-
 The second command creates a profile named Profile01 with a fixed date using the rule in $Rule.
 
 ### Example 2: Create a profile with a schedule
@@ -77,7 +76,6 @@ Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
 ```
 
 The first command creates an Autoscale rule named Requests, and then stores it in the $Rule variable.
-
 The second command creates a profile named SecondProfileName with a recurring schedule using the rule in $Rule.
 
 ### Example 3: Create profiles with two rules
@@ -104,9 +102,7 @@ Rules      : {Microsoft.Azure.Management.Insights.Models.ScaleRule,
 ```
 
 The first two commands create rules, and store them in the variables $Rule1 and $Rule2, respectively.
-
 The third command creates a profile named ProfileName using the rules in Rule1 and Rule2, and then stores it in the $Profile1 variable.
-
 The final command creates a profile named SecondProfileName using the rules in Rule1 and Rule2, and then stores it in the $Profile2 variable.
 
 ### Example 4: Create a profile with no schedule or fixed date
@@ -117,7 +113,6 @@ PS C:\> $Profile = New-AzureRmAutoscaleProfile -DefaultCapacity "1" -MaximumCapa
 ```
 
 The first command creates an Autoscale rule named Requests, and then stores it in the $Rule variable.
-
 The second command creates a profile without a schedule or a fixed date, and then stores it in the $Profile variable.
 
 ## PARAMETERS
@@ -215,7 +210,6 @@ Accept wildcard characters: False
 ### -RecurrenceFrequency
 Specifies the frequency of recurrence.
 The acceptable values for this parameter are:
-
 - None
 - Second
 - Minute
@@ -224,7 +218,6 @@ The acceptable values for this parameter are:
 - Week
 - Month
 - Year
-
 Not all of these values are supported.
 
 ```yaml
@@ -350,8 +343,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DefaultCapacity (ByPropertyName), MaximumCapacity (ByPropertyName), MinimumCapacity (ByPropertyName), Name (ByPropertyName), ScheduleTimeZone (ByPropertyName), TimeWindowTimeZone (ByPropertyName)
+
+### System.DateTime
+Parameters: EndTimeWindow (ByPropertyName), StartTimeWindow (ByPropertyName)
+
+### Microsoft.Azure.Management.Monitor.Management.Models.RecurrenceFrequency
+Parameters: RecurrenceFrequency (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Management.Monitor.Management.Models.ScaleRule, Microsoft.Azure.Commands.Insights, Version=5.0.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

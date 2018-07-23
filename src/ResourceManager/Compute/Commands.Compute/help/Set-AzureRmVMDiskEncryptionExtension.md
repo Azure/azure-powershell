@@ -592,7 +592,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -612,8 +611,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AadClientCertThumbprint (ByPropertyName), AadClientID (ByPropertyName), AadClientSecret (ByPropertyName), DiskEncryptionKeyVaultId (ByPropertyName), DiskEncryptionKeyVaultUrl (ByPropertyName), ExtensionPublisherName (ByPropertyName), ExtensionType (ByPropertyName), KeyEncryptionAlgorithm (ByPropertyName), KeyEncryptionKeyUrl (ByPropertyName), KeyEncryptionKeyVaultId (ByPropertyName), Name (ByPropertyName), Passphrase (ByPropertyName), ResourceGroupName (ByPropertyName), SequenceVersion (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName), VolumeType (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), SkipVmBackup (ByPropertyName)
 
 ## OUTPUTS
 

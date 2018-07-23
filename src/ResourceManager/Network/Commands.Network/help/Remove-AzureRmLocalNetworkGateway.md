@@ -20,7 +20,6 @@ Remove-AzureRmLocalNetworkGateway -Name <String> -ResourceGroupName <String> [-F
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-
 The **Remove-AzureRmLocalNetworkGateway** cmdlet deletes the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
@@ -31,7 +30,6 @@ Remove-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 ```
 
 Deletes the object of the Local Network Gateway with the name "myLocalGW" within the resource group "myRG"
-
 Note: You must first delete all connections to the Local Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.
 
 ## PARAMETERS
@@ -163,10 +161,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

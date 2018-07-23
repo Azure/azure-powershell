@@ -264,7 +264,6 @@ Accept wildcard characters: False
 ### -RecoveryAzureStorageAccountId
 Specifies the Azure storage account ID of the replication target. Used as the target storage account for replication if an alternate is not provided while enabling replication using the New-AzureRmRecoveryServicesASRReplicationProtectedItem cmdlet.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: Default, HyperVToAzure
@@ -311,7 +310,6 @@ Accept wildcard characters: False
 ### -ReplicationFrequencyInSeconds
 Specifies the replication frequency interval in seconds.
 Valid values are:
-
 - 30
 - 300
 - 900
@@ -457,10 +455,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

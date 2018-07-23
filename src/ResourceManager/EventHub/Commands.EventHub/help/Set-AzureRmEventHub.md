@@ -34,8 +34,6 @@ The Set-AzureRmEventHub cmdlet updates the properties of the specified Event Hub
 ### Example 1
 To update Eventhub with Capture description properties, please follow the below steps. 
 
-
-
 ```
 PS C:\> $CreatedEventHub = Get-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace MyNamespaceName -Name MyEventHubName
 PS C:\> $createdEventHub.CaptureDescription = New-Object -TypeName Microsoft.Azure.Commands.EventHub.Models.PSCaptureDescriptionAttributes
@@ -203,8 +201,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
-System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+Parameters: InputObject (ByPropertyName)
+
+### System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

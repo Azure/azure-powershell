@@ -166,8 +166,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
+Parameters: Type (ByPropertyName)
+
+### System.String
+Parameters: ClientId (ByPropertyName), ClientSecret (ByPropertyName)
+
+### System.String[]
+Parameters: AllowedTenants (ByPropertyName)
 
 ## OUTPUTS
 
