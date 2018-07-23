@@ -40,7 +40,6 @@ Remove-AzureRmADSpCredential -ServicePrincipalObject <PSADServicePrincipal> [-Ke
 ## DESCRIPTION
 The Remove-AzureRmADSpCredential cmdlet can be used to remove a credential key from a service principal in the case of a compromise or as part of credential key rollover expiration.
 The service principal is identified by supplying either the object ID or service principal name (SPN).
-
 The credential to be removed is identified by its key ID if an individual credential is to be removed or with an 'All' switch to delete all credentials associated with the service principal.
 
 ## EXAMPLES
@@ -228,9 +227,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+### System.Guid
+Parameters: KeyId (ByPropertyName), ObjectId (ByPropertyName)
 
-This cmdlet accepts a PSADServicePrincipal object from the pipeline. You can pipe the output of Get-AzureRmADServicePrincipal to this cmdlet to remove credentials from the provided service principal.
+### System.String
+Parameters: DisplayName (ByPropertyName), ServicePrincipalName (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADServicePrincipal
+Parameters: ServicePrincipalObject (ByValue)
 
 ## OUTPUTS
 

@@ -264,7 +264,6 @@ Accept wildcard characters: False
 Specifies the end time of the query in local time.
 The default value is the current time.
 The value must be later than *StartTime*.
-
 You can use the Get-Date cmdlet to get a **DateTime** object.
 
 ```yaml
@@ -343,7 +342,6 @@ Accept wildcard characters: False
 ### -StartTime
 Specifies the start time of the query in local time.
 The default value is *EndTime* minus seven days.
-
 You can use the Get-Date cmdlet to get a **DateTime** object.
 
 ```yaml
@@ -378,7 +376,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: Caller (ByPropertyName), CorrelationId (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), ResourceProvider (ByPropertyName), Status (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DetailedOutput (ByPropertyName)
+
+### System.Int32
+Parameters: MaxRecord (ByPropertyName)
 
 ## OUTPUTS
 

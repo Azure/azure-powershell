@@ -27,9 +27,7 @@ Stop-AzureRmBackupJob -Job <AzureRMBackupJob> [-DefaultProfile <IAzureContextCon
 ## DESCRIPTION
 The **Stop-AzureRmBackupJob** cmdlet cancels an existing Azure Backup job.
 Use this parameter to stop a job that takes too long and blocks other activities.
-
 You can cancel only the following types of jobs: 
-
 - Backup
 - Restore
 
@@ -44,11 +42,9 @@ PS C:\> Stop-AzureRmBackupJob -Vault $Vault -JobID $Job.InstanceId
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a backup job from the vault in $Vault by using the **Get-AzureRmBackupJob** cmdlet.
 The command stores the job in the $Job variable.
 In this example, there is only one backup operation in the specified vault.
-
 The final command stops the job that has the specified ID.
 
 ### Example 2: Stop all Restore operations
@@ -129,11 +125,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 

@@ -38,11 +38,9 @@ PS C:\> Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "MicrosoftWi
 ```
 
 The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
-
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
-
 The final command sets values for publisher name, offer, SKU, and version.
 The **Get-AzureRmVMImagePublisher**, **Get-AzureRmVMImageOffer**, **Get-AzureRmVMImageSku**, and **Get-AzureRmVMImage** cmdlets can discover these settings.
 
@@ -162,8 +160,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Id (ByPropertyName), Offer (ByPropertyName), PublisherName (ByPropertyName), Skus (ByPropertyName), Version (ByPropertyName)
 
 ## OUTPUTS
 

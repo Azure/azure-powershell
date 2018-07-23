@@ -197,8 +197,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: KeyName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Maps.Models.PSMapsAccount
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

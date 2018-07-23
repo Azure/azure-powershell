@@ -29,7 +29,6 @@ Get-AzureRmAutomationCredential [-Name] <String> [-ResourceGroupName] <String>
 The **Get-AzureRmAutomationCredential** cmdlet gets one or more Azure Automation credentials.
 By default, all credentials are returned.
 Specify the name of a credential to get a specific credential.
-
 For security purposes, this cmdlet does not return credential passwords.
 
 ## EXAMPLES
@@ -115,8 +114,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

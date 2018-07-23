@@ -136,10 +136,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Internal.Resources.Models.ResourceGroup
+### Microsoft.Azure.Commands.Profile.Models.PSResourceGroup
 
 ## NOTES
 

@@ -20,7 +20,6 @@ Get-AzureRmLocalNetworkGateway [-Name <String>] -ResourceGroupName <String>
 
 ## DESCRIPTION
 The Local Network Gateway is the object representing your VPN device On-Premises.
-
 The **Get-AzureRmLocalNetworkGateway** cmdlet returns the object representing your on-prem gateway based on Name and Resource Group Name.
 
 ## EXAMPLES
@@ -80,8 +79,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

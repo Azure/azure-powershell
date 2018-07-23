@@ -215,7 +215,6 @@ Accept wildcard characters: False
 ### -RunAsFileJob
 Indicates that this cmdlet creates a file in the default Azure storage account in which to store a query.
 This cmdlet submits the job that references this file as a script to run.
-
 You can use this functionality to handle special characters such as percent sign (%) that would fail on a job submission through Templeton, because Templeton interprets a query with a percent sign as a URL parameter.
 
 ```yaml
@@ -251,7 +250,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

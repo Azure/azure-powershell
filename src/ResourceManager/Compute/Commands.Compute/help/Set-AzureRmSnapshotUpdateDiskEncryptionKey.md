@@ -137,12 +137,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
-System.String
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshotUpdate
+Parameters: SnapshotUpdate (ByPropertyName, ByValue)
+
+### System.String
+Parameters: SecretUrl (ByPropertyName), SourceVaultId (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.SnapshotUpdate
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshotUpdate
 
 ## NOTES
 

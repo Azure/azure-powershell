@@ -127,6 +127,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSRouteFilter
+Parameters: RouteFilter (ByValue)
 
 ## OUTPUTS
 

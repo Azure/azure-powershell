@@ -170,11 +170,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistry
+Parameters: Registry (ByValue)
+
 ### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication=
+### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryReplication
 
 ## NOTES
 

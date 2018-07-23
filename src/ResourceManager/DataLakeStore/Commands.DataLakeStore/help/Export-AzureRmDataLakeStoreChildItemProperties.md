@@ -281,13 +281,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
-System.Management.Automation.SwitchParameter
-System.Int32
+Parameters: Account (ByPropertyName), OutputPath (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: GetAcl (ByPropertyName), GetDiskUsage (ByPropertyName), HideConsistentAcl (ByPropertyName), IncludeFile (ByPropertyName), PassThru (ByPropertyName), SaveToAdl (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName), MaximumDepth (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.DataLakeStore.DataPlaneModels.DataLakeStoreChildItemSummary
+### System.Boolean
 
 ## NOTES
 

@@ -111,8 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ConnectionString (ByPropertyName), ConnectionStringName (ByPropertyName), DatabaseType (ByPropertyName), Name (ByPropertyName)
 
 ## OUTPUTS
 

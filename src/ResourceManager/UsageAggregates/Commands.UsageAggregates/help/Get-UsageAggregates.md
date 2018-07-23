@@ -21,15 +21,10 @@ Get-UsageAggregates -ReportedStartTime <DateTime> -ReportedEndTime <DateTime>
 
 ## DESCRIPTION
 The **Get-UsageAggregates** cmdlet gets aggregated Azure subscription usage data by the following properties: 
-
 - Start and end times of when the usage was reported.
-
 - Aggregation precision, either daily or hourly.
-
 - Instance level detail for multiple instances of the same resource.
-
 For consistent results, the returned data is based on when the usage details were reported by the Azure resource.
-
 For more information, see Azure Billing REST API Referencehttps://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c (https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) in the Microsoft Developer Network library.
 
 ## EXAMPLES
@@ -46,7 +41,6 @@ This command retrieves the reported usage data for the subscription between 5/2/
 ### -AggregationGranularity
 Specifies the aggregation precision of the data.
 Valid values are: Daily and Hourly.
-
 The default value is Daily.
 
 ```yaml
@@ -98,7 +92,6 @@ Accept wildcard characters: False
 
 ### -ReportedEndTime
 Specifies the reported end time for when resource usage was recorded in the Azure billing system.
-
 Azure is a distributed system, spanning multiple datacenters around the world, so there is a delay between when the resource was actually consumed, which is the resource usage time, and when the usage event reached the billing system, which is the resource usage reported time.
 In order to get all usage events for a subscription that are reported for a time period, you query by reported time.
 Even though you query by reported time, the cmdlet aggregates the response data by the resource usage time.
@@ -133,9 +126,7 @@ Accept wildcard characters: False
 
 ### -ShowDetails
 Indicates whether this cmdlet returns instance-level details with the usage data.
-
 The default value is $True.
-
 If $False, the service aggregates the results on the server side, and therefore returns fewer aggregate groups.
 For example, if you are running three websites, by default you will get three line items for website consumption.
 However, when the value is $False, all the data for the same **subscriptionId**, **meterId**, **usageStartTime**, and **usageEndTime** is collapsed into a single line item.
@@ -158,7 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -180,8 +180,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.PowerBI.Models.PSPowerBIEmbeddedCapacity
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

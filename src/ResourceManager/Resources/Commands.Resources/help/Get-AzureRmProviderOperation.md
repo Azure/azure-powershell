@@ -22,9 +22,7 @@ Get-AzureRmProviderOperation [[-OperationSearchString] <String>] [-DefaultProfil
 The Get-AzureRmProviderOperation gets the operations exposed by Azure resource providers.
 Operations can be composed to create custom roles in Azure RBAC.
 The command takes as input an operation search string (with possible wildcard(*) character(s)) which determines the operations details to display.
-
 Use Get-AzureRmProviderOperation * to get all operations for all Azure resource providers.
-
 Use Get-AzureRmProviderOperation Microsoft.Compute/* to get all operations of Microsoft.Compute resource provider.
 
 ## EXAMPLES
@@ -82,7 +80,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameter 'OperationSearchString' accepts value of type 'String' from the pipeline
+Parameters: OperationSearchString (ByValue)
 
 ## OUTPUTS
 

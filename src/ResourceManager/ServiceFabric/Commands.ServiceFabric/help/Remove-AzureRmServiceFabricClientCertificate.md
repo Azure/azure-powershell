@@ -223,14 +223,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Hashtable
-System.String
+### System.String
+Parameters: CommonName (ByValue), IssuerThumbprint (ByValue), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Thumbprint (ByValue)
 
-System.Boolean
+### System.String[]
+Parameters: AdminClientThumbprint (ByValue), ReadonlyClientThumbprint (ByValue)
+
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSClientCertificateCommonName[]
+Parameters: ClientCertificateCommonName (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

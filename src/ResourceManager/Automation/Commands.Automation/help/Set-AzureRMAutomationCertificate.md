@@ -32,7 +32,6 @@ PS C:\> Set-AzureAutomationCertificate -AutomationAccountName "Contos17" -Name "
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.
 The command stores that object in the $Password variable.
-
 The second command modifies a certificate named ContosoCertificate.
 The command uses the password stored in $Password.
 The command specifies the account name and the path of the file that it uploads.
@@ -165,8 +164,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), Path (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: Password (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

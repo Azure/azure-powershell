@@ -371,4 +371,19 @@ Are you sure you want to continue?</value>
   <data name="IntegrationRuntimeUpgrading" xml:space="preserve">
     <value>Upgrading integration runtime '{0}'.</value>
   </data>
+  <data name="UpdateAuthKeyNotAllowed" xml:space="preserve">
+    <value>Updating the authentication key of linked integration runtime '{0}' is not allowed.</value>
+  </data>
+  <data name="InvalidIntegrationRuntimeSharing" xml:space="preserve">
+    <value>Only self-hosted integration runtime can be shared.</value>
+  </data>
+  <data name="InvalidIntegrationRuntimeSharingParameters" xml:space="preserve">
+    <value>'AuthKey' can not be used together with 'SharedIntegrationRuntimeResourceId'.</value>
+  </data>
+  <data name="InvalidLinkedDataFactoryName" xml:space="preserve">
+    <value>The linked data factory name is invlaid.</value>
+  </data>
+  <data name="LinksSwitchMissing" xml:space="preserve">
+    <value>LinkedDataFactoryName parameter is working together with '-Links' switch parameter.</value>
+  </data>
 </root>

@@ -36,14 +36,11 @@ PS C:\> New-AzureRmImage -Image $imageConfig -ImageName 'ImageName01' -ResourceG
 ```
 
 The first command creates an image object, and then stores it in the $imageConfig variable.
-
 The next three commands assign paths of os disk and two data disks to the $osDiskVhdUri,
 $dataDiskVhdUri1, and $dataDiskVhdUri2 variables. This approach is only for readability of the
 following commands.
-
 The next three commands each adds an os disk and two data disks to the image stored in $imageConfig.
 The URI of each disk is stored in $osDiskVhdUri, $dataDiskVhdUri1, and $dataDiskVhdUri2.
-
 The final command creates an image named 'ImageName01' in resource group 'ResourceGroup01'.
 
 ## PARAMETERS
@@ -125,7 +122,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -190,8 +186,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), SourceVirtualMachineId (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.ImageOSDisk
+Parameters: OsDisk (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.ImageDataDisk[]
+Parameters: DataDisk (ByPropertyName)
 
 ## OUTPUTS
 

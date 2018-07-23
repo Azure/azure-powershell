@@ -126,8 +126,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightJobDefinition
-Parameter 'JobDefinition' accepts value of type 'AzureHDInsightJobDefinition' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightJobDefinition
+Parameters: JobDefinition (ByValue)
 
 ## OUTPUTS
 

@@ -147,10 +147,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.IotHub.Models.JobResponse
+### Microsoft.Azure.Commands.Management.IotHub.Models.PSIotHubJobResponse
 
 ## NOTES
 

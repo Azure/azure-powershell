@@ -89,7 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRStorageClassification
+Parameters: StorageClassification (ByValue)
 
 ## OUTPUTS
 

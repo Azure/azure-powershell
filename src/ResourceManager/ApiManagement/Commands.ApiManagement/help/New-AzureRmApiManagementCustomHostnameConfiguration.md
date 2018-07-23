@@ -208,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation
-System.Management.Automation.SwitchParameter
+Parameters: HostNameCertificateInformation (ByPropertyName)
 
 ## OUTPUTS
 

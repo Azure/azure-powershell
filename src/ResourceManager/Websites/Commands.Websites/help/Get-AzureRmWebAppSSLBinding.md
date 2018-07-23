@@ -48,7 +48,6 @@ PS C:\> Get-AzureRmWebAppSSLBinding -WebApp $WebApp
 The commands in this example also get the SSL bindings for the Web App ContosoWebApp; in this case, however, an object reference is used instead of the Web App name and the name of the associated resource group.
 This object reference is created by the first command in the example, which uses **Get-AzureRmWebApp** to create an object reference to the Web App named ContosoWebApp.
 That object reference is stored in a variable named $WebApp.
-
 This variable, and the **Get-AzureRmWebAppSSLBinding** cmdlet, are then used by the second command to get the SSL bindings.
 
 ## PARAMETERS
@@ -85,7 +84,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that the certificate is assigned to.
-
 You cannot use the *ResourceGroupName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
@@ -134,7 +132,6 @@ Accept wildcard characters: False
 
 ### -WebAppName
 Specifies the name of the Web App that this cmdlet gets SSL bindings from.
-
 You cannot use the *WebAppName* parameter and the *WebApp* parameter in the same command.
 
 ```yaml
@@ -155,7 +152,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Management.WebSites.Models.Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 

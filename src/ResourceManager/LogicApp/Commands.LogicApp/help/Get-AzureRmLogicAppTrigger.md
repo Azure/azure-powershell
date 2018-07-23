@@ -22,7 +22,6 @@ Get-AzureRmLogicAppTrigger -ResourceGroupName <String> -Name <String> [-TriggerN
 The **Get-AzureRmLogicAppTrigger** cmdlet gets triggers from a logic app.
 This cmdlet returns a **WorkflowTrigger** object.
 Specify the workflow, resource group, and trigger.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -133,8 +132,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), TriggerName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -76,6 +76,7 @@ The name of the context
 Type: System.String
 Parameter Sets: SelectByName
 Aliases:
+Accepted values: Default
 
 Required: True
 Position: 0
@@ -136,7 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

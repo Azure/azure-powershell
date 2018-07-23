@@ -56,13 +56,9 @@ Connect-AzureRmAccount [-Environment <String>] [-TenantId <String>] [-AccountId 
 
 ## DESCRIPTION
 The Connect-AzureRmAccount cmdlet connects to Azure with an authenticated account for use with Azure Resource Manager cmdlet requests.
-
 You can use this authenticated account only with Azure Resource Manager cmdlets.
-
 To add an authenticated account for use with Service Management cmdlets, use the Add-AzureAccount or the Import-AzurePublishSettingsFile cmdlet.
-
 If no context is found for the current user, this command will populate the user's context list with a context for each of their (first 25) subscriptions. The list of contexts created for the user can be found by running "Get-AzureRmContext -ListAvailable". To skip this context population, you can run this command with the "-SkipContextPopulation" switch parameter.
-
 After executing this cmdlet, you can disconnect from an Azure account using Disconnect-AzureRmAccount.
 
 ## EXAMPLES
@@ -77,9 +73,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
 This command connects to an Azure account.
-
 To run Azure Resource Manager cmdlets with this account, you must provide Microsoft account or organizational ID credentials at the prompt.
-
 If multi-factor authentication is enabled for your credentials, you must log in using the interactive option or use service principal authentication.
 
 ### Example 2: Connect to an Azure account using organizational ID credentials
@@ -93,11 +87,8 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
-
 The second command connects to an Azure account using the credentials stored in $Credential.
-
 This account authenticates with Azure Resource Manager using organizational ID credentials.
-
 You cannot use multi-factor authentication or Microsoft account credentials to run Azure Resource Manager cmdlets with this account.
 
 ### Example 3: Connect to an Azure service principal account
@@ -111,9 +102,7 @@ Tenant: xxxx-xxxx-xxxx-xxxx
 ```
 
 The first command gets the user credentials, and then stores them in the $Credential variable.
-
 The second command connect to Azure using the service principal credentials stored in $Credential for the specified Tenant.
-
 The ServicePrincipal switch parameter indicates that the account authenticates as a service principal.
 
 ### Example 4: Use an interactive login to connect to an account for a specific tenant and subscription
@@ -231,7 +220,6 @@ Accept wildcard characters: False
 ### -Credential
 Specifies a PSCredential object.
 For more information about the PSCredential object, type Get-Help Get-Credential.
-
 The PSCredential object provides the user ID and password for organizational ID credentials, or the application ID and secret for service principal credentials.
 
 ```yaml
@@ -531,16 +519,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### String
-Parameter 'SubscriptionId' accepts value of type 'String' from the pipeline
-
-### String
-Parameter 'SubscriptionName' accepts value of type 'String' from the pipeline
+### System.String
+Parameters: Subscription (ByValue)
 
 ## OUTPUTS
 
-### PSAzureProfile
-Credentials, subscription, account, and tenant information for the logged in user.
+### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
 
 ## NOTES
 

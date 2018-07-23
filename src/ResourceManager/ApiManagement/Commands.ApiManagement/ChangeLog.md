@@ -18,7 +18,13 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated help files to include full parameter types.
+* Updated help files to include full parameter types and correct input/output types.
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6370
+    - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6515
+    - Fixed bug in File.Save to not overload with Encoding Type
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6560
+    - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
 
 ## Version 6.1.1
 * Fixed formatting of OutputType in help files

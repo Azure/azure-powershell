@@ -17,12 +17,11 @@ Creates an account-level SAS token.
 New-AzureStorageAccountSASToken -Service <SharedAccessAccountServices>
  -ResourceType <SharedAccessAccountResourceTypes> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **New-AzureStorageSASToken** cmdlet creates an account-level shared access signature (SAS) token for an Azure Storage account.
-
 You can use the SAS token to delegate permissions for multiple services, or to delegate permissions for services not available with an object-level SAS token.
 
 ## EXAMPLES
@@ -56,6 +55,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -93,7 +107,6 @@ Accept wildcard characters: False
 ### -Permission
 Specifies the permissions for Storage account.
 Permissions are valid only if they match the specified resource type.
-
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 For more information about acceptable permission values, see Constructing an Account SAS http://go.microsoft.com/fwlink/?LinkId=799514
 
@@ -112,10 +125,8 @@ Accept wildcard characters: False
 ### -Protocol
 Specifies the protocol permitted for a request made with the account SAS.
 The acceptable values for this parameter are:
-
 - HttpsOnly
 - HttpsOrHttp
-
 The default value is HttpsOrHttp.
 
 ```yaml
@@ -134,7 +145,6 @@ Accept wildcard characters: False
 ### -ResourceType
 Specifies the resource types that are available with the SAS token.
 The acceptable values for this parameter are:
-
 - None
 - Service
 - Container
@@ -156,7 +166,6 @@ Accept wildcard characters: False
 ### -Service
 Specifies the service.
 The acceptable values for this parameter are:
-
 - None
 - Blob
 - File
@@ -197,9 +206,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

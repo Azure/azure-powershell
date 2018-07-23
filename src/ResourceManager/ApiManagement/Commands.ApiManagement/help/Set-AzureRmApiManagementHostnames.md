@@ -166,8 +166,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameConfiguration
+Parameters: PortalHostnameConfiguration (ByPropertyName), ProxyHostnameConfiguration (ByPropertyName)
 
 ## OUTPUTS
 

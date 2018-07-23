@@ -39,7 +39,6 @@ Get-AzureRmKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
 The **Get-AzureRmKeyVault** cmdlet gets information about the key vaults in a subscription. You can
 view all key vaults instances in a subscription, or filter your results by a resource group or a
 particular key vault.
-
 Note that although specifying the resource group is optional for this cmdlet when you get a single
 key vault, you should do so for better performance.
 
@@ -230,7 +229,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -277,13 +275,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), ResourceGroupName (ByPropertyName), VaultName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultIdentityItem
+
 ### Microsoft.Azure.Commands.KeyVault.Models.PSDeletedKeyVault
 
 ## NOTES

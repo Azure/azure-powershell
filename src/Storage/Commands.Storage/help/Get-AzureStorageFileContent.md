@@ -17,28 +17,32 @@ Downloads the contents of a file.
 ```
 Get-AzureStorageFileContent [-ShareName] <String> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>]
- [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ClientTimeoutPerRequest <Int32>] [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Share
 ```
 Get-AzureStorageFileContent [-Share] <CloudFileShare> [-Path] <String> [[-Destination] <String>] [-CheckMd5]
  [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Get-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Path] <String> [[-Destination] <String>]
  [-CheckMd5] [-PassThru] [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### File
 ```
 Get-AzureStorageFileContent [-File] <CloudFile> [[-Destination] <String>] [-CheckMd5] [-PassThru] [-Force]
- [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +71,6 @@ This example downloads the files under sample file share
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -86,7 +89,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -105,7 +107,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -124,7 +125,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -139,14 +139,27 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Destination
 Specifies the destination path.
 This cmdlet downloads the file contents to the location that this parameter specifies.
-
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -200,7 +213,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -219,7 +231,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -255,7 +266,6 @@ Accept wildcard characters: False
 If you specify the path of a file that does not exist, this cmdlet creates that file, and saves the contents in the new file.
 If you specify a path of a file that already exists and you specify the *Force* parameter, the cmdlet overwrites the file.
 If you specify a path of an existing file and you do not specify *Force*, the cmdlet prompts you before it continues.
-
 If you specify the path of a folder, this cmdlet attempts to create a file that has the name of the Azure storage file.
 
 ```yaml
@@ -341,17 +351,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
-Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+Parameters: Directory (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFile
-Parameter 'File' accepts value of type 'CloudFile' from the pipeline
+Parameters: File (ByValue)
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
-Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

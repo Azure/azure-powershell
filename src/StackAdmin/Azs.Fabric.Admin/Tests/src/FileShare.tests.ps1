@@ -36,100 +36,101 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Fabric.Admin {
 
-	Describe "InfrastructureShares" -Tags @('FileShare', 'Azs.Fabric.Admin') {
+    Describe "InfrastructureShares" -Tags @('FileShare', 'Azs.Fabric.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateFileShare {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Share
-				)
+            function ValidateFileShare {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Share
+                )
 
-				$FileShare          | Should Not Be $null
+                $FileShare          | Should Not Be $null
 
-				# Resource
-				$FileShare.Id       | Should Not Be $null
-				$FileShare.Location | Should Not Be $null
-				$FileShare.Name     | Should Not Be $null
-				$FileShare.Type     | Should Not Be $null
+                # Resource
+                $FileShare.Id       | Should Not Be $null
+                $FileShare.Location | Should Not Be $null
+                $FileShare.Name     | Should Not Be $null
+                $FileShare.Type     | Should Not Be $null
 
-				# FileShare
-				$FileShare.AssociatedVolume  | Should not be $null
-				$FileShare.UncPath           | Should not be $null
+                # FileShare
+                $FileShare.AssociatedVolume  | Should not be $null
+                $FileShare.UncPath           | Should not be $null
 
-			}
+            }
 
-			function AssertFileSharesAreSame {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Expected,
+            function AssertFileSharesAreSame {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Expected,
 
-					[Parameter(Mandatory=$true)]
-					$Found
-				)
-				if($Expected -eq $null) {
-					$Found | Should Be $null
-				} else {
-					$Found                  | Should Not Be $null
+                    [Parameter(Mandatory = $true)]
+                    $Found
+                )
+                if ($Expected -eq $null) {
+                    $Found | Should Be $null
+                }
+                else {
+                    $Found                  | Should Not Be $null
 
-					# Resource
-					$Found.Id               | Should Be $Expected.Id
-					$Found.Location         | Should Be $Expected.Location
-					$Found.Name             | Should Be $Expected.Name
-					$Found.Type             | Should Be $Expected.Type
+                    # Resource
+                    $Found.Id               | Should Be $Expected.Id
+                    $Found.Location         | Should Be $Expected.Location
+                    $Found.Name             | Should Be $Expected.Name
+                    $Found.Type             | Should Be $Expected.Type
 
-					# FileShare
-					$Found.AssociatedVolume    | Should Be $Expected.AssociatedVolume
-					$Found.UncPath             | Should Be $Expected.UncPath
+                    # FileShare
+                    $Found.AssociatedVolume    | Should Be $Expected.AssociatedVolume
+                    $Found.UncPath             | Should Be $Expected.UncPath
 
-				}
-			}
-		}
+                }
+            }
+        }
 
-		It "TestListFileShares" {
-			$global:TestName = 'TestListFileShares'
-			$fileShares = Get-AzsInfrastructureShare -ResourceGroupName $ResourceGroup -Location $Location
-			$fileShares | Should not be $null
-			foreach($fileShare in $fileShares) {
-				ValidateFileShare -Share $fileShare
-			}
-	    }
+        It "TestListFileShares" -Skip:$('TestListFileShares' -in $global:SkippedTests) {
+            $global:TestName = 'TestListFileShares'
+            $fileShares = Get-AzsInfrastructureShare -ResourceGroupName $global:ResourceGroupName -Location $Location
+            $fileShares | Should not be $null
+            foreach ($fileShare in $fileShares) {
+                ValidateFileShare -Share $fileShare
+            }
+        }
 
-		It "TestGetFileShare" {
+        It "TestGetFileShare" -Skip:$('TestGetFileShare' -in $global:SkippedTests) {
             $global:TestName = 'TestGetFileShare'
 
-			$fileShares = Get-AzsInfrastructureShare -ResourceGroupName $ResourceGroup -Location $Location
-			if($fileShares -and $fileShares.Count -gt 0) {
-				$fileShare = $fileShares[0]
-				$retrieved = Get-AzsInfrastructureShare -ResourceGroupName $ResourceGroup -Location $Location -Name $fileShare.Name
+            $fileShares = Get-AzsInfrastructureShare -ResourceGroupName $global:ResourceGroupName -Location $Location
+            if ($fileShares -and $fileShares.Count -gt 0) {
+                $fileShare = $fileShares[0]
+                $retrieved = Get-AzsInfrastructureShare -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $fileShare.Name
 
-				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
-			}
-		}
+                AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
+            }
+        }
 
-		It "TestGetAllFileShares" {
-			$global:TestName = 'TestGetAllFileShares'
+        It "TestGetAllFileShares" -Skip:$('TestGetAllFileShares' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllFileShares'
 
-			$fileShares = Get-AzsInfrastructureShare -ResourceGroupName $ResourceGroup -Location $Location
-			foreach($fileShare in $fileShares) {
-				$retrieved = Get-AzsInfrastructureShare -ResourceGroupName $ResourceGroup -Location $Location -Name $fileShare.Name
-				AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
-			}
-		}
+            $fileShares = Get-AzsInfrastructureShare -ResourceGroupName $global:ResourceGroupName -Location $Location
+            foreach ($fileShare in $fileShares) {
+                $retrieved = Get-AzsInfrastructureShare -ResourceGroupName $global:ResourceGroupName -Location $Location -Name $fileShare.Name
+                AssertFileSharesAreSame -Expected $fileShare -Found $retrieved
+            }
+        }
     }
 }

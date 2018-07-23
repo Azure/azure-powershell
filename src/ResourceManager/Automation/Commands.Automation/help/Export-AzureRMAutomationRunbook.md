@@ -128,7 +128,6 @@ Accept wildcard characters: False
 ### -Slot
 Specifies whether this cmdlet exports the draft or published content of the runbook.
 Valid values are: 
-
 - Published 
 - Draft
 
@@ -181,8 +180,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), OutputFolder (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

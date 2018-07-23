@@ -22,18 +22,14 @@ Get-AzureRmNotificationHubsNamespaceAuthorizationRules [-ResourceGroup] <String>
 The **Get-AzureRmNotificationHubsNamespaceAuthorizationRules** cmdlet returns information about the Shared Access Signature (SAS) authorization rules associated with a notification hub namespace.
 You can return information about all the rules associated with the namespace.
 Alternatively, and by including the *AuthorizationRule* parameter, you can return information for a specific rule.
-
 Authorization rules manage access to namespaces.
 This is done through the creation of links, as URIs, based on different permission levels.
 Platform levels can be one of the following: 
-
 - Listen
 - Send
 - Manage
-
 Clients are directed to one of these URIs based on the appropriate permission level.
 For instance, a client given the Listen permission will be directed to the URI for that permission.
-
 This cmdlet only gets the authorization rules associated with a namespace.
 To get information about the namespace itself, use Get-AzureRmNotificationHubsNamespace.
 
@@ -105,7 +101,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroup
 Specifies the resource group to which the authorization rules are assigned.
-
 Resource groups organize items such as namespaces, notification hubs, and authorization rules in ways that help simply inventory management and Azure administration.
 
 ```yaml
@@ -125,8 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AuthorizationRule (ByPropertyName), Namespace (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

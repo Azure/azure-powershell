@@ -58,7 +58,6 @@ PS C:\> Get-AzureRmDataFactoryLinkedService -DataFactory $DataFactory | Format-T
 ```
 
 The first command uses the Get-AzureRmDataFactory cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable.
-
 The second command gets information about the linked service for the data factory stored in $DataFactory, and then passes that information to the Format-Table cmdlet by using the pipeline operator.
 **Format-Table** formats the output as a dataset with the specified properties as dataset columns.
 
@@ -147,12 +146,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService
+### Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

@@ -186,10 +186,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Category (ByPropertyName), DisplayName (ByPropertyName), ETag (ByPropertyName), Query (ByPropertyName), ResourceGroupName (ByPropertyName), SavedSearchId (ByPropertyName), WorkspaceName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Int64
+Parameters: Version (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

@@ -31,7 +31,6 @@ PS C:\> Remove-AzureRmContainerServiceAgentPoolProfile -ContainerService $Contai
 
 The first command gets a container service named CSResourceGroup17 by using the Get-AzureRmContainerService cmdlet.
 The command stores the service in the $Container variable.
-
 The second command removes the profile named AgentPool01 from the container service in $Container.
 
 ## PARAMETERS
@@ -116,8 +115,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ContainerService
-Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+Parameters: ContainerService (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName)
 
 ## OUTPUTS
 

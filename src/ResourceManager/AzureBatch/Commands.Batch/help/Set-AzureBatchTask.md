@@ -34,9 +34,7 @@ PS C:\> Set-AzureBatchTask -Task $Task -BatchContext $Context
 ```
 
 The first command gets a task by using **Get-AzureBatchTask**, and then stores it in the $Task variable.
-
 The next two commands modify the constraints of the task in $Task.
-
 The final command updates the Batch service to match the local object in $Task.
 
 ## PARAMETERS
@@ -92,13 +90,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSCloudTask
+Parameters: Task (ByValue)
 
-### PSCloudTask
-Parameter 'Task' accepts value of type 'PSCloudTask' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

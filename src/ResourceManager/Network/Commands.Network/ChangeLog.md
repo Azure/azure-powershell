@@ -19,7 +19,8 @@
 --->
 
 ## Current Release
-* Updated help files to include full parameter types.
+* Updated help files to include full parameter types and correct input/output types.
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 
 ## Version 6.4.0
 * Updated below cmdlets for Application Gateway

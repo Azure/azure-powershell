@@ -55,7 +55,6 @@ Tags         :
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
-
 The second command modifies value of the secret named ITSecret in the key vault named Contoso. The
 secret value becomes the value stored in $Secret.
 
@@ -86,10 +85,8 @@ Tags         : Name      Value
 The first command converts a string into a secure string by using the **ConvertTo-SecureString**
 cmdlet, and then stores that string in the $Secret variable. For more information, type `Get-Help
 ConvertTo-SecureString`.
-
 The next commands define custom attributes for the expiry date, tags, and context type, and store
 the attributes in variables.
-
 The final command modifies values of the secret named ITSecret in the key vault named Contoso, by
 using the values specified previously as variables.
 
@@ -225,7 +222,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -293,6 +289,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

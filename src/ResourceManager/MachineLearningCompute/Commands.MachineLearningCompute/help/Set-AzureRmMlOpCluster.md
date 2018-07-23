@@ -43,14 +43,12 @@ are currently updatable, as shown in the parameter sets.
 ### Example 1
 Update a cluster using individual parameters.
 
-
 ```
 PS C:\> Set-AzureRmMlOpCluster -ResourceGroupName my-rg -ClusterName my-cluster -AgentCount 5
 ```
 
 ### Example 2
 Update a cluster using an input object.
-
 
 ```
 PS C:\> $cluster = Get-AzureRmMlOpCluster -ResourceGroupName my-rg -ClusterName my-cluster
@@ -308,7 +306,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.MachineLearningCompute.Models.PSOperationalizationCluster
+Parameters: InputObject (ByValue)
+
 ### System.String
+Parameters: ResourceId (ByPropertyName), SslCertificate (ByPropertyName), SslCName (ByPropertyName), SslKey (ByPropertyName), SslStatus (ByPropertyName)
+
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS

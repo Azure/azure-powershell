@@ -136,7 +136,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Parameter 'Scope' accepts value of type 'String' from the pipeline
+Parameters: Name (ByPropertyName), Scope (ByValue)
+
+### System.Guid
+Parameters: Id (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Custom (ByPropertyName)
 
 ## OUTPUTS
 

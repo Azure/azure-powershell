@@ -41,7 +41,6 @@ Invoke-AzureRmResourceAction [-Parameters <Hashtable>] -Action <String> -Resourc
 
 ## DESCRIPTION
 The **Invoke-AzureRmResourceAction** cmdlet invokes an action on a specified Azure resource.
-
 To get a list of supported actions, use the Azure Resource Explorer tool.
 
 ## EXAMPLES
@@ -97,7 +96,6 @@ Accept wildcard characters: False
 ### -ExtensionResourceName
 Specifies the name of an extension resource for the resource on which this cmdlet invokes an action.
 For instance, to specify a database, use the following format: 
-
 server name`/`database name
 
 ```yaml
@@ -115,7 +113,6 @@ Accept wildcard characters: False
 ### -ExtensionResourceType
 Specifies the type of the extension resource.
 For instance: 
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -147,9 +144,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -248,7 +243,6 @@ Accept wildcard characters: False
 ### -ResourceId
 Specifies the fully qualified resource ID of the resource on which this cmdlet invokes an action.
 The ID includes the subscription, as in the following example: 
-
 `/subscriptions/`subscription ID`/providers/Microsoft.Sql/servers/ContosoServer/databases/ContosoDatabase`
 
 ```yaml
@@ -266,7 +260,6 @@ Accept wildcard characters: False
 ### -ResourceName
 Specifies the name of the resource of the resource on which this cmdlet invokes an action.
 For instance, to specify a database, use the following format: 
-
 `ContosoServer/ContosoDatabase`
 
 ```yaml
@@ -284,7 +277,6 @@ Accept wildcard characters: False
 ### -ResourceType
 Specifies the type of the resource.
 For instance, for a database, the resource type is as follows: 
-
 `Microsoft.Sql/Servers/Databases`
 
 ```yaml
@@ -350,12 +342,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

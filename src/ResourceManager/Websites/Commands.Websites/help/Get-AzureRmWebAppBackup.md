@@ -133,8 +133,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: BackupId (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
+
 ### Microsoft.Azure.Management.WebSites.Models.Site
-Parameter 'WebApp' accepts value of type 'Site' from the pipeline
+Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 

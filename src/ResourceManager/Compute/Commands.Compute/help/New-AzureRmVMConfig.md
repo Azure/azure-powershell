@@ -47,7 +47,6 @@ PS C:\> $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine07" -VMSize
 ```
 
 The first command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
-
 The second command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
@@ -213,8 +212,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AvailabilitySetId (ByPropertyName), VMName (ByPropertyName), VMSize (ByPropertyName)
+
+### System.String[]
+Parameters: IdentityId (ByPropertyName), Zone (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tags (ByPropertyName)
 
 ## OUTPUTS
 

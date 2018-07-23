@@ -20,7 +20,6 @@ Set-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String> [-Pl
 
 ## DESCRIPTION
 The **Set-AzureRmAutomationAccount** cmdlet modifies an Azure Automation account.
-
 For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
 
 ## EXAMPLES
@@ -32,7 +31,6 @@ PS C:\> Set-AzureRmAutomationAccount -Name "AutomationAccount01" -ResourceGroupN
 ```
 
 The first command assigns two key/value pairs to the $Tags variable.
-
 The second command sets tags in $Tags for the Automation account named AutomationAccount01.
 
 ### Example 2: Change the plan for an Automation account
@@ -77,7 +75,6 @@ Accept wildcard characters: False
 ### -Plan
 Specifies the plan for the Automation account.
 Valid values are:
-
 - Basic
 - Free
 
@@ -111,7 +108,6 @@ Accept wildcard characters: False
 
 ### -Tags
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -131,8 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), Plan (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.IDictionary
+Parameters: Tags (ByPropertyName)
 
 ## OUTPUTS
 

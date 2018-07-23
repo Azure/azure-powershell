@@ -265,13 +265,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-### System.Management.Automation.SwitchParameter
+Parameters: EventSubscriptionName (ByPropertyName), Location (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), TopicName (ByPropertyName), TopicTypeName (ByPropertyName)
+
+### Microsoft.Azure.Commands.EventGrid.Models.PSTopic
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscription
-### Microsoft.Azure.Commands.EventGrid.Models.PSEventSubscriptionListInstance
 
 ## NOTES
 

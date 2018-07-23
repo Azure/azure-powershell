@@ -67,7 +67,6 @@ Accept wildcard characters: False
 ### -KeyName
 Specifies the name of the key to regenerate.
 The acceptable values for this parameter are:
-
 - Key1
 - Key2
 
@@ -150,8 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Management.CognitiveServices.Models.KeyName
+Parameters: KeyName (ByPropertyName)
 
 ## OUTPUTS
 

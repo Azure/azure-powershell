@@ -37,11 +37,9 @@ PS C:\> $Container | Add-AzureRmContainerServiceAgentPoolProfile -Name "AgentPoo
 ```
 
 This command creates a container, and then stores it in the $Container variable.
-
 The command specifies various settings for the container service configuration. The command passes
 the configuration object to the Add-AzureRmContainerServiceAgentPoolProfile cmdlet by using the
 pipeline operator. That cmdlet adds an agent pool profile.
-
 Specify the object in $Container for the *ContainerService* parameter of **New-AzureRmContainerService**.
 
 ## PARAMETERS
@@ -216,7 +214,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -311,8 +308,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AdminUsername (ByPropertyName), CustomProfileOrchestrator (ByPropertyName), Location (ByPropertyName), MasterDnsPrefix (ByPropertyName), ServicePrincipalProfileClientId (ByPropertyName), ServicePrincipalProfileSecret (ByPropertyName), WindowsProfileAdminPassword (ByPropertyName), WindowsProfileAdminUsername (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.ContainerServiceOrchestratorTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Int32
+Parameters: MasterCount (ByPropertyName)
+
+### Microsoft.Azure.Management.Compute.Models.ContainerServiceAgentPoolProfile[]
+Parameters: AgentPoolProfile (ByPropertyName)
+
+### System.String[]
+Parameters: SshPublicKey (ByPropertyName)
+
+### System.Boolean
+Parameters: VmDiagnosticsEnabled (ByPropertyName)
 
 ## OUTPUTS
 

@@ -28,7 +28,7 @@ For more information: https://msdn.microsoft.com/en-us/library/azure/ad/graph/ap
 ### Example 1 - Create a new AD user
 ```
 PS C:\> $SecureStringPassword = ConvertTo-SecureString -String "password" -AsPlainText -Force
-PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword
+PS C:\> New-AzureRmADUser -DisplayName "MyDisplayName" -UserPrincipalName "myemail@domain.com" -Password $SecureStringPassword -MailNickname "MyMailNickName"
 ```
 
 Creates a new AD user with the name "MyDisplayName" and user principal name "myemail@domain.com" in a tenant.
@@ -181,9 +181,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: DisplayName (ByPropertyName), ImmutableId (ByPropertyName), MailNickname (ByPropertyName), UserPrincipalName (ByPropertyName)
 
-This cmdlet does not accept any input.
+### System.Security.SecureString
+Parameters: Password (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: ForceChangePasswordNextLogin (ByPropertyName)
 
 ## OUTPUTS
 

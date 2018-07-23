@@ -80,7 +80,6 @@ Accept wildcard characters: False
 ### -PathType
 Specifies the type of item to test.
 The acceptable values for this parameter are:
-
 - Any 
 - File 
 - Folder
@@ -103,13 +102,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathType
+Parameters: PathType (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-True or false indicating the existence of the specified file or folder.
+### System.Boolean
 
 ## NOTES
 

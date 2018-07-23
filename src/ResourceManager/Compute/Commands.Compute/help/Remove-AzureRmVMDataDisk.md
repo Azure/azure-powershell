@@ -32,9 +32,7 @@ PS C:\> Update-AzureRmVM -ResourceGroupName "ResourceGroup11" -VM $VirtualMachin
 
 The first command gets the virtual machine named VirtualMachine07 by using the **Get-AzureRmVM** cmdlet.
 The command stores the virtual machine in the $VirtualMachine variable.
-
 The second command removes the data disk named Disk3 from the virtual machine stored in $VirtualMachine.
-
 The final command updates the state of the virtual machine stored in $VirtualMachine in ResourceGroup11.
 
 ## PARAMETERS
@@ -120,8 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

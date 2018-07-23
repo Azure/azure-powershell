@@ -22,7 +22,6 @@ Use-AzureRmSqlServerAuditingPolicy [-PassThru] [-ServerName] <String> [-Database
 The **Use-AzureRmSqlServerAuditingPolicy** cmdlet specifies that a database uses the auditing policy of its host server.
 Specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 If no auditing policy is defined for the database server, this cmdlet fails.
-
 If the host uses server level auditing, threat detection is removed.
 
 ## EXAMPLES
@@ -117,12 +116,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

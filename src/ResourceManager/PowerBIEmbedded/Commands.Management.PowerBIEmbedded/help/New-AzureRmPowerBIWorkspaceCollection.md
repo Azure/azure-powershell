@@ -128,8 +128,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), ResourceGroupName (ByPropertyName), WorkspaceCollectionName (ByPropertyName)
 
 ## OUTPUTS
 
