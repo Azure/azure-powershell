@@ -32,14 +32,13 @@ function Test-SelfHosted-IntegrationRuntime
             -Location $dflocation `
             -Force
      
-        $irname = "selfhosted-test-integrationruntime"
-        $description = "description"
-   
+        $irname = "selfhosted-test-integrationruntime"   
         $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
             -Type 'SelfHosted' `
             -Force
+        Assert-AreEqual $actual.Name $irname
 
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
@@ -49,11 +48,15 @@ function Test-SelfHosted-IntegrationRuntime
         $expected = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id
         Assert-AreEqual $actual.Name $expected.Name
 
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Status
+        Assert-NotNull $status
+
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname
         Assert-NotNull $metric
 
+        $description = "description"
         $result = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
@@ -74,10 +77,17 @@ function Test-SelfHosted-IntegrationRuntime
 Creates a SSIS-Azure integration runtime and then does operations.
 Deletes the created integration runtime at the end.
 
-Before RECORD this test, make sure setting the following environment variables:
-CatalogServerEndpoint: The catalog server endpoint for catalog database
-CatalogAdminUsername: The admin user name on this server
-CatalogAdminPassword: The password of the admin user.
+To record this test,
+1. Prepare a Azure SQL Server, which will be used to create SSISDB during provisionning the SSIS-IR.
+2. If you are using a existing Azure SQL Server, make sure there is no existed database with name 'SSISDB'.
+3. Configure the Azure SQL Server with either way below:
+    a. Set following environment variables:
+        CatalogServerEndpoint: The catalog server endpoint for catalog database (SSISDB)
+        CatalogAdminUsername: The admin user name on this server
+        CatalogAdminPassword: The password of the admin user.
+    b. Set the variables directly in script.
+
+NOTE: this test will be running for 25 minutes to finish the SSIS-IR provision.
 #>
 function Test-SsisAzure-IntegrationRuntime
 {
@@ -269,7 +279,7 @@ function Test-Shared-IntegrationRuntime
         $irname = "selfhosted-test-integrationruntime"
         $description = "description"
    
-        $actual = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
+        $shared = Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $rgname `
             -DataFactoryName $dfname `
             -Name $irname `
             -Type 'SelfHosted' `
@@ -278,18 +288,18 @@ function Test-Shared-IntegrationRuntime
         New-AzureRMRoleAssignment `
             -ObjectId $linkeddf.Identity.PrincipalId `
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
-            -Scope $actual.Id
+            -Scope $shared.Id
 
         Wait-Seconds 20
 
         $linkedIrName = 'LinkedIntegrationRuntime'
-        $actualShared = Set-AzureRmDataFactoryV2IntegrationRuntime `
+        $linked = Set-AzureRmDataFactoryV2IntegrationRuntime `
             -ResourceGroupName $rgname `
             -DataFactoryName $linkeddfname `
             -Name $linkedIrName `
-            -SharedIntegrationRuntimeResourceId $actual.Id `
             -Type SelfHosted `
             -Description 'This is a linked integration runtime' `
+            -SharedIntegrationRuntimeResourceId $shared.Id `
             -Force
 
         $metric = Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -ResourceGroupName $rgname `
@@ -297,18 +307,18 @@ function Test-Shared-IntegrationRuntime
             -Name $linkedIrName
         Assert-NotNull $metric
 
-        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Status
+        $status = Get-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Status
         Assert-NotNull $status
 
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -LinkedDataFactoryName $linkeddfname -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -LinkedDataFactoryName $linkeddfname -Force
 
         Remove-AzureRmRoleAssignment `
             -ObjectId $linkeddf.Identity.PrincipalId `
             -RoleDefinitionId 'b24988ac-6180-42a0-ab88-20f7382dd24c' `
-            -Scope $actual.Id
+            -Scope $shared.Id
 
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actualShared.Id -Force
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $actual.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $linked.Id -Force
+        Remove-AzureRmDataFactoryV2IntegrationRuntime -ResourceId $shared.Id -Force
 
         Remove-AzureRmDataFactoryV2 -ResourceGroupName $rgname -Name $linkeddfname -Force
     }

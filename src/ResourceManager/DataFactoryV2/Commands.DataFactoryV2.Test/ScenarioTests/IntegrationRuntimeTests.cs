@@ -23,13 +23,13 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
     {
         public XunitTracingInterceptor _logger;
 
-        public IntegrationRuntimeTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationRuntimeTests(ITestOutputHelper output)
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
         }
 
-        [Fact(Skip = "Need to record using real username and pwd against prod")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSelfHostedIntegrationRuntime()
         {
@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2.Test
             RunPowerShellTest(_logger, "Test-SsisAzure-IntegrationRuntime");
         }
 
-        [Fact(Skip ="Need to record using real username and pwd against prod")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSharedIntegrationRuntime()
         {
