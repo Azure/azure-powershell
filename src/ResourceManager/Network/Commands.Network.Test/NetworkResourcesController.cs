@@ -93,12 +93,33 @@ namespace Commands.Network.Test
 
                 _helper.SetupEnvironment(AzureModule.AzureResourceManager);
 
-               var callingClassName = callingClassType
+                var callingClassName = callingClassType
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
+
+                string psScriptPath = null;
+
+                var innerDirs = Directory.GetDirectories("ScenarioTests").ToList();
+                innerDirs.Insert(0, "ScenarioTests");
+
+                foreach (var dir in innerDirs)
+                {
+                    var testPath = dir + "\\" + callingClassName + ".ps1";
+                    if (File.Exists(testPath))
+                    {
+                        psScriptPath = testPath;
+                        break;
+                    }
+                }
+
+                if (psScriptPath == null)
+                {
+                    throw new FileNotFoundException(string.Format("Couldn't find ps1 file for test class '{0}'", callingClassName));
+                }
+
                 _helper.SetupModules(AzureModule.AzureResourceManager,
                     "ScenarioTests\\Common.ps1",
-                    "ScenarioTests\\" + callingClassName + ".ps1",
+                    psScriptPath,
                     _helper.RMProfileModule,
                     _helper.RMResourceModule,
                     _helper.GetRMModulePath("AzureRM.Insights.psd1"),
