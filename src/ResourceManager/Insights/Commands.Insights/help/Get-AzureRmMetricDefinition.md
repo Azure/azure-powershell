@@ -14,8 +14,8 @@ Gets metric definitions.
 ## SYNTAX
 
 ```
-Get-AzureRmMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmMetricDefinition [-ResourceId] <String> [-MetricName <String[]>] [-MetricNamespace <String>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,7 +156,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -165,6 +165,21 @@ Specifies an array of names of metrics.
 
 ```yaml
 Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MetricNamespace
+Specifies the metric namespace to query metric definitions for.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -195,8 +210,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: MetricNamespace (ByPropertyName), ResourceId (ByPropertyName)
+
+### System.String[]
+Parameters: MetricName (ByPropertyName)
 
 ## OUTPUTS
 
@@ -207,5 +225,6 @@ This cmdlet does not accept any input.
 ## RELATED LINKS
 
 [Get-AzureRmMetric](./Get-AzureRmMetric.md)
+[New-AzureRmMetricFilter](./New-AzureRmMetricFilter.md)
 
 

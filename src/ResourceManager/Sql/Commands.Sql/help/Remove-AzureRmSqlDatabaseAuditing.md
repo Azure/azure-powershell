@@ -25,9 +25,7 @@ To use this cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName
 After you run this cmdlet, auditing of the database is not performed.
 If the command succeeds and you have used the *PassThru* parameter, the cmdlet returns an object that describes the current auditing policy, in addition to the database identifiers.
 Database identifiers include, but are not limited to, the **ResourceGroupName**, **ServerName** and **DatabaseName**.
-
 If you remove auditing of an Azure SQL database, threat detection is also removed.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -152,11 +150,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

@@ -205,8 +205,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

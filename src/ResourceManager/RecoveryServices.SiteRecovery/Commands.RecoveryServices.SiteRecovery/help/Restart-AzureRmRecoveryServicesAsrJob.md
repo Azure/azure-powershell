@@ -56,7 +56,6 @@ Accept wildcard characters: False
 ### -InputObject
 The input object to the cmdlet: The ASR job object corresponding to the ASR job to be restarted
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 Parameter Sets: ByObject
@@ -120,6 +119,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

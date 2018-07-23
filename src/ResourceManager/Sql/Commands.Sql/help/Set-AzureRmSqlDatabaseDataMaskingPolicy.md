@@ -23,11 +23,9 @@ Set-AzureRmSqlDatabaseDataMaskingPolicy [-PassThru] [-PrivilegedLogins <String>]
 The **Set-AzureRmSqlDatabaseDataMaskingPolicy** cmdlet sets the data masking policy for an Azure SQL database.
 To use this cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 You can set the *DataMaskingState* parameter to specify whether data masking operations are enabled or disabled.
-
 You can also set the *PrivilegedLogins* parameter to specify which users are allowed to see the unmasked data.
 If the cmdlet succeeds and the *PassThru* parameter is used, it returns an object describing the current data masking policy in addition to the database identifiers.
 Database identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, and **DatabaseName**.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -59,10 +57,8 @@ Accept wildcard characters: False
 ### -DataMaskingState
 Specifies whether data masking operation is enabled or disabled.
 The acceptable values for this parameter are:
-
 - Enabled
 - Disabled
-
 The default value is Enabled.
 
 ```yaml
@@ -111,7 +107,6 @@ Accept wildcard characters: False
 
 ### -PrivilegedLogins
 Specifies which SQL users are excluded from masking.
-
 This parameter is deprecated and will be removed from future releases.
 
 ```yaml
@@ -208,12 +203,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), DataMaskingState (ByPropertyName), PrivilegedLogins (ByPropertyName), PrivilegedUsers (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingPolicyModel
+### Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingPolicyModel
 
 ## NOTES
 

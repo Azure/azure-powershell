@@ -141,13 +141,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), Name (ByPropertyName), ProviderEndpoint (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### DataLakeStoreTrustedIdProvider
-The added Trusted Identity Provider.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreTrustedIdProvider
 
 ## NOTES
 

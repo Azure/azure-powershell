@@ -220,8 +220,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

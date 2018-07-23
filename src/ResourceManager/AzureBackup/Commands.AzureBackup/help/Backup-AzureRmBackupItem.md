@@ -21,7 +21,6 @@ Backup-AzureRmBackupItem [-Item] <AzureRMBackupItem> [-DefaultProfile <IAzureCon
 ## DESCRIPTION
 The **Backup-AzureRmBackupItem** cmdlet starts a backup for a protected Azure Backup item that is not tied to the backup schedule.
 You can do an initial backup immediately after you enable protection or start a backup after a scheduled backup fails.
-
 If an existing backup job is running, this cmdlet fails.
 
 ## EXAMPLES
@@ -38,10 +37,8 @@ co03-vm         Backup          InProgress      26-Aug-15 12:24:01 PM  01-Jan-01
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the Get-AzureRmBackupContainer cmdlet.
 The command stores that object in the $Container variable.
-
 The last command gets the backup items in $Container by using the Get-AzureRmBackupItem cmdlet.
 The command passes the items to the current cmdlet by using the pipeline operator.
 The current cmdlet starts backing up the virtual machine in the container.
@@ -83,11 +80,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRMBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

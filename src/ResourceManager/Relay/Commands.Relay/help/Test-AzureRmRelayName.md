@@ -87,12 +87,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -Namespace
- System.String
+### System.String
+Parameters: Namespace (ByPropertyName)
 
 ## OUTPUTS
 
-### [Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes, Microsoft.Azure.Commands.Relay, Version=0.1.0.0, Culture=neutral, PublicKeyToken=null]
+### Microsoft.Azure.Commands.Relay.Models.CheckNameAvailabilityResultAttributes
 
 ## NOTES
 

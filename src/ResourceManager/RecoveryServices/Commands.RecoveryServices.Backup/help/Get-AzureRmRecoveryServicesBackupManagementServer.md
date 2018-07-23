@@ -20,10 +20,8 @@ Get-AzureRmRecoveryServicesBackupManagementServer [[-Name] <String>] [-VaultId <
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupManagementServer** cmdlet gets a list of Backup management servers that are registered in a vault.
-
 There are two types of Backup management servers: System Center Data Protection Manager (SCDPM) and Azure Backup management servers.
 Backup management servers are installed separately to manage Backup orchestration.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -87,8 +85,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

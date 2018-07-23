@@ -219,8 +219,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADGroup
-
-This cmdlet accepts a PSADGroup object from the pipeline. You can pipe the output of Get-AzureRmADGroup to this cmdlet to get members of the provided group.
+Parameters: GroupObject (ByValue)
 
 ## OUTPUTS
 

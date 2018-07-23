@@ -260,8 +260,10 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), Subscription (ByPropertyName), Topic (ByPropertyName)
 
+### Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

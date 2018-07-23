@@ -22,10 +22,8 @@ New-AzureRmStreamAnalyticsFunction [-JobName] <String> [[-Name] <String>] [-File
 ## DESCRIPTION
 The **New-AzureRmStreamAnalyticsFunction** cmdlet creates a function in an Azure Stream Analytics job or replaces an existing function.
 Define the function in a JavaScript Object Notation (JSON) file.
-
 You can specify the name of the function by using the *Name* parameter or in the .json file.
 If you specify the name in both ways, the names must match.
-
 To replace an existing function, specify the name of the existing function.
 
 ## EXAMPLES
@@ -180,8 +178,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

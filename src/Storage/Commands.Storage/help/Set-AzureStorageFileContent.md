@@ -17,21 +17,24 @@ Uploads the contents of a file.
 ```
 Set-AzureStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <String>] [-PassThru] [-Force]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Share
 ```
 Set-AzureStorageFileContent [-Share] <CloudFileShare> [-Source] <String> [[-Path] <String>] [-PassThru]
- [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Directory
 ```
 Set-AzureStorageFileContent [-Directory] <CloudFileDirectory> [-Source] <String> [[-Path] <String>] [-PassThru]
- [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>] [-ConcurrentTaskCount <Int32>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,11 +60,8 @@ PS C:\> Get-ChildItem -Recurse | Where-Object { $_.GetType().Name -eq "FileInfo"
 ```
 
 This example uses several common Windows PowerShell cmdlets and the current cmdlet to upload all files from the current folder to the root folder of container ContosoShare06.
-
 The first command gets the name of the current folder and stores it in the $CurrentFolder variable.
-
 The second command uses the **Get-AzureStorageShare** cmdlet to get the file share named ContosoShare06, and then stores it in the $Container variable.
-
 The final command gets the contents of the current folder and passes each one to the Where-Object cmdlet by using the pipeline operator.
 That cmdlet filters out objects that are not files, and then passes the files to the ForEach-Object cmdlet.
 That cmdlet runs a script block for each file that creates the appropriate path for it and then uses the current cmdlet to upload the file.
@@ -122,6 +122,21 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Directory
 Specifies a folder as a **CloudFileDirectory** object.
 This cmdlet uploads the file to the folder that this parameter specifies.
@@ -174,13 +189,10 @@ Accept wildcard characters: False
 Specifies the path of a file or folder.
 This cmdlet uploads contents to the file that this parameter specifies, or to a file in the folder that this parameter specifies.
 If you specify a folder, this cmdlet creates a file that has the same name as the source file.
-
 If you specify a path of a file that does not exist, this cmdlet creates that file and saves the contents to that file.
 If you specify a file that already exists, and you specify the _Force_ parameter, this cmdlet overwrites the contents of the file.
 If you specify a file that already exists and you do not specify _Force_, this cmdlet makes no change, and returns an error.
-
 If you specify a path of a folder that does not exist, this cmdlet makes no change, and returns an error.
-
 
 ```yaml
 Type: System.String
@@ -296,19 +308,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
+Parameters: Directory (ByValue)
 
-### CloudFileDirectory
+### System.String
+Parameters: Source (ByPropertyName)
 
-Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
-
-### CloudFileShare
-
-Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

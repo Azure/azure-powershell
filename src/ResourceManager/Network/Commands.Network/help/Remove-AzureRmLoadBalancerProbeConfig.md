@@ -30,7 +30,6 @@ PS C:> Remove-AzureRmLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $load
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $loadbalancer variable.
-
 The second command deletes the configuration named MyProbe from the load balancer in $loadbalancer.
 
 ## PARAMETERS
@@ -85,8 +84,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 

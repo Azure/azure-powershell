@@ -20,6 +20,7 @@ using Microsoft.WindowsAzure.Commands.Storage.Adapters;
 using Microsoft.WindowsAzure.Storage;
 using System;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using StorageModels = Microsoft.Azure.Management.Storage.Models;
 
 namespace Microsoft.Azure.Commands.Management.Storage.Models
@@ -52,19 +53,28 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
         }
 
+        [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
         public string ResourceGroupName { get; set; }
 
+        [Ps1Xml(Label = "StorageAccountName", Target = ViewControl.Table, Position = 0)]
         public string StorageAccountName { get; set; }
 
         public string Id { get; set; }
 
+        [Ps1Xml(Label = "Location", Target = ViewControl.Table, Position = 2)]
         public string Location { get; set; }
 
+        [Ps1Xml(Label = "SkuName", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name", Position = 3)]
         public Sku Sku { get; set; }
+
+        [Ps1Xml(Label = "Kind", Target = ViewControl.Table, Position = 4)]
         public Kind? Kind { get; set; }
         public Encryption Encryption { get; set; }
+
+        [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, Position = 5)]
         public AccessTier? AccessTier { get; set; }
 
+        [Ps1Xml(Label = "CreationTime", Target = ViewControl.Table, Position = 6)]
         public DateTime? CreationTime { get; set; }
 
         public CustomDomain CustomDomain { get; set; }
@@ -77,6 +87,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public string PrimaryLocation { get; set; }
 
+        [Ps1Xml(Label = "ProvisioningState", Target = ViewControl.Table, Position = 7)]
         public ProvisioningState? ProvisioningState { get; set; }
 
         public Endpoints SecondaryEndpoints { get; set; }
@@ -89,6 +100,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         public IDictionary<string, string> Tags { get; set; }
 
+        [Ps1Xml(Label = "EnableHttpsTrafficOnly", Target = ViewControl.Table, Position = 8)]
         public bool? EnableHttpsTrafficOnly { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }

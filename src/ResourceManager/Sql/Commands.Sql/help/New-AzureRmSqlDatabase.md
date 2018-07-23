@@ -33,7 +33,6 @@ New-AzureRmSqlDatabase -DatabaseName <String> [-CollationName <String>] [-Catalo
 
 ## DESCRIPTION
 The **New-AzureRmSqlDatabase** cmdlet creates an Azure SQL database.
-
 You can also create an elastic database by setting the *ElasticPoolName* parameter to an existing elastic pool.
 
 ## EXAMPLES
@@ -208,7 +207,6 @@ Accept wildcard characters: False
 
 ### -Edition
 Specifies the edition to assign to the database. The acceptable values for this parameter are:
-
 - None
 - Basic
 - Standard
@@ -368,7 +366,6 @@ Accept wildcard characters: False
 ### -Tags
 Specifies a dictionary of Key-value pairs in the form of a hash table that this cmdlet associates
 with the new database. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -449,12 +446,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+### System.Object
 
 ## NOTES
 

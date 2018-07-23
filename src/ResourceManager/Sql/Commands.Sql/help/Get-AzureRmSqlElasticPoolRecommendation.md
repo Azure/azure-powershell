@@ -21,7 +21,6 @@ Get-AzureRmSqlElasticPoolRecommendation [-ServerName] <String> [-ResourceGroupNa
 ## DESCRIPTION
 The **Get-AzureRmSqlElasticPoolRecommendation** cmdlet gets elastic pool recommendations for a server.
 These recommendations include the following values:
-
 - DatabaseCollection. Collection of database names that belong to the pool. 
 - DatabaseDtuMin. Data Transmission Unit (DTU) guarantee for databases in the elastic pool. 
  -- DatabaseDtuMax. DTU cap for databases in the elastic pool. 
@@ -123,8 +122,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

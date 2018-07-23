@@ -20,7 +20,6 @@ Remove-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> [
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-
 The **Get-AzureRmVirtualNetworkGateway** cmdlet returns the object of your gateway in Azure based on Name and Resource Group Name.
 
 ## EXAMPLES
@@ -31,7 +30,6 @@ Remove-AzureRmVirtualNetworkGateway -Name myGateway -ResourceGroupName myRG
 ```
 
 Deletes the object of the Virtual Network Gateway with the name "myGateway" within the resource group "myRG"
-
 Note: You must first delete all connections to the Virtual Network Gateway using the **Remove-AzureRmVirtualNetworkGatewayConnection** cmdlet.
 
 ## PARAMETERS
@@ -163,10 +161,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

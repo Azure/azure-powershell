@@ -22,7 +22,6 @@ Get-AzureRmLogicAppRunHistory -ResourceGroupName <String> -Name <String> [-RunNa
 The **Get-AzureRmLogicAppRunHistory** cmdlet gets the run history of a logic app.
 This cmdlet returns a collection of **WorkflowRun** objects.
 Specify the logic app and resource group.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -143,8 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), RunName (ByPropertyName)
 
 ## OUTPUTS
 

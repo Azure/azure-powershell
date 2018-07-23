@@ -31,7 +31,6 @@ PS C:\> Enable-AzureBatchAutoScale -Id "MyPool" -AutoScaleFormula $Formula -Batc
 ```
 
 The first command defines a formula, and then saves it to the $Formula variable.
-
 The second command enables automatic scaling on the pool named MyPool using the formula in $Formula.
 
 ## PARAMETERS
@@ -118,13 +117,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: Id (ByPropertyName, ByValue)
 
-### String
-Parameter 'Id' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

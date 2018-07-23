@@ -17,8 +17,8 @@ using Microsoft.Azure.Commands.Insights.Autoscale;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.Management.Monitor.Management;
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor;
+using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
         public void AddAutoscaleSettingCommandParametersProcessing()
         {
             var spec = this.CreateCompleteSpec(location: "East US", name: "SettingName", profiles: null);
-            var autoscaleRules = new List<ScaleRule> { this.CreateAutoscaleRule("IncommingReq") };
-            var autoscaleProfile = new List<AutoscaleProfile> { this.CreateAutoscaleProfile(autoscaleRules: autoscaleRules, fixedDate: true) };
+            var autoscaleRules = new List<Management.Monitor.Management.Models.ScaleRule> { this.CreateAutoscaleRule("IncommingReq") };
+            var autoscaleProfile = new List<Management.Monitor.Management.Models.AutoscaleProfile> { this.CreateAutoscaleProfile(autoscaleRules: autoscaleRules, fixedDate: true) };
 
             // Testing with a complete spec as parameter (Update semantics)
             // Add-AutoscaleSetting -SettingSpec <AutoscaleSettingResource> -ResourceGroup <String> [-DisableSetting [<SwitchParameter>]] [-AutoscaleProfiles <List[AutoscaleProfile]>] [-Profile <AzureSMProfile>] [<CommonParameters>]
@@ -121,40 +121,40 @@ namespace Microsoft.Azure.Commands.Insights.Test.Autoscale
             cmdlet.TargetResourceId = Utilities.ResourceUri;
             cmdlet.ExecuteCmdlet();
 
-            var eMailNotification = new EmailNotification
+            var eMailNotification = new Management.Monitor.Management.Models.EmailNotification
             {
                 CustomEmails = null,
             };
 
-            var notification = new AutoscaleNotification
+            var notification = new Management.Monitor.Management.Models.AutoscaleNotification
             {
                 Email = eMailNotification,
                 Webhooks = null
             };
 
-            cmdlet.Notification = new List<AutoscaleNotification> { notification };
+            cmdlet.Notification = new List<Management.Monitor.Management.Models.AutoscaleNotification> { notification };
             cmdlet.ExecuteCmdlet();
         }
 
-        private ScaleRule CreateAutoscaleRule(string metricName = null)
+        private Management.Monitor.Management.Models.ScaleRule CreateAutoscaleRule(string metricName = null)
         {
             var autocaseRuleCmd = new NewAzureRmAutoscaleRuleCommand
             {
                 MetricName = metricName ?? "Requests",
                 MetricResourceId = "/subscriptions/a93fb07c-6c93-40be-bf3b-4f0deba10f4b/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/misitiooeltuyo",
-                Operator = ComparisonOperationType.GreaterThan,
-                MetricStatistic = MetricStatisticType.Average,
+                Operator = Management.Monitor.Management.Models.ComparisonOperationType.GreaterThan,
+                MetricStatistic = Management.Monitor.Management.Models.MetricStatisticType.Average,
                 Threshold = 10,
                 TimeGrain = TimeSpan.FromMinutes(1),
                 ScaleActionCooldown = TimeSpan.FromMinutes(5),
-                ScaleActionDirection = ScaleDirection.Increase,
+                ScaleActionDirection = Management.Monitor.Management.Models.ScaleDirection.Increase,
                 ScaleActionValue = "1"
             };
 
             return autocaseRuleCmd.CreateSettingRule();
         }
 
-        private AutoscaleProfile CreateAutoscaleProfile(List<ScaleRule> autoscaleRules = null, bool fixedDate = true)
+        private Management.Monitor.Management.Models.AutoscaleProfile CreateAutoscaleProfile(List<Management.Monitor.Management.Models.ScaleRule> autoscaleRules = null, bool fixedDate = true)
         {
             var autoscaleProfileCmd = new NewAzureRmAutoscaleProfileTests();
 

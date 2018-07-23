@@ -226,7 +226,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+Parameters: AlternateName (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), PartnerNamespace (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.EventHub.Models.PSNamespaceAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

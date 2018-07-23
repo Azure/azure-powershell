@@ -144,13 +144,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Guid
-Parameter 'JobId' accepts value of type 'Guid' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### System.Guid
+Parameters: JobId (ByPropertyName, ByValue)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon completion of the operation.
+### System.Boolean
 
 ## NOTES
 
