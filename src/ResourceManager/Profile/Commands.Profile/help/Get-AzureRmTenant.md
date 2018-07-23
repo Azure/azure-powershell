@@ -83,13 +83,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: TenantId (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureTenant
-This cmdlet returns the tenant ID and associated domain information for tenants authorized for the current account.
 
 ## NOTES
 

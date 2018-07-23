@@ -41,9 +41,7 @@ PS C:\> Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $
 ```
 
 This example assigns a VPN client address pool to a virtual network gateway named ContosoVirtualGateway.
-
 The first command creates an object reference to the gateway and the object is stored in a variable named $Gateway.
-
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway.
 
 ### Example 2: Configure external radius based authentication on existing gateway
@@ -54,9 +52,7 @@ PS C:\> Set-AzureRmVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $
 ```
 
 This example assigns a VPN client address pool to a virtual network gateway named ContosoVirtualGateway.
-
 The first command creates an object reference to the gateway and the object is stored in a variable named $Gateway.
-
 The second command in the example then uses the **Set-AzureRmVirtualNetworkGatewayVpnClientConfig** cmdlet to assign the address pool 10.0.0.0/16 to ContosoVirtualGateway. It also configures the external radius server "TestRadiusServer" to be used for authentication for vpn clients.
 
 ## PARAMETERS
@@ -172,13 +168,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: VirtualNetworkGateway (ByValue)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: RadiusServerAddress (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: RadiusServerSecret (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway** object.
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
 
 ## NOTES
 

@@ -20,10 +20,8 @@ New-AzureRmResourceGroup -Name <String> -Location <String> [-Tag <Hashtable>] [-
 
 ## DESCRIPTION
 The **New-AzureRmResourceGroup** cmdlet creates an Azure resource group.
-
 You can create a resource group by using just a name and location, and then use the
 New-AzureRmResource cmdlet to create resources to add to the resource group.
-
 To add a deployment to an existing resource group, use the New-AzureRmResourceGroupDeployment
 cmdlet. To add a resource to an existing resource group, use the **New-AzureRmResource** cmdlet. An
 Azure resource is a user-managed Azure entity, such as a database server, database, or website. An
@@ -110,7 +108,6 @@ Accept wildcard characters: False
 Specifies the location of the resource group. Specify an Azure data center location, such as West
 US or Southeast Asia. You can place a resource group in any location. The resource group does not
 have to be in the same location your Azure subscription or in the same location as its resources.
-
 To determine which location supports each resource type, use the Get-AzureRmResourceProvider cmdlet
 with the *ProviderNamespace* parameter.
 
@@ -160,16 +157,12 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
-
 To add or change a tag, you must replace the collection of tags for the resource group.
-
 After you assign tags to resources and groups, you can use the *Tag* parameter of
 Get-AzureRmResource and Get-AzureRmResourceGroup to search for resources and groups by tag name or
 by name and value. You can use tags to categorize your resources, such as by department or cost
 center, or to track notes or comments about the resources.
-
 To get your predefined tags, use the Get-AzureRMTag cmdlet.
 
 ```yaml

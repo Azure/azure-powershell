@@ -21,7 +21,6 @@ Remove-AzureRmSqlDatabaseRestorePoint -RestorePointCreationDate <DateTime> [-Pas
 
 ## DESCRIPTION
 The **Remove-AzureRmSqlDatabaseRestorePoint** cmdlet removes given restore point from Azure SQL Database.
-
 This cmdlet is currently supported by the SQL Server Datawarehouse service on Azure SQL Database.
 
 ## EXAMPLES
@@ -162,7 +161,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.DateTime
+Parameters: RestorePointCreationDate (ByPropertyName)
+
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
 ## OUTPUTS
+
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlDatabaseRestorePointModel
 
 ## NOTES
 

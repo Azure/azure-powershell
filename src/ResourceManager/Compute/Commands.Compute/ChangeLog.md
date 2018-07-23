@@ -1,3 +1,4 @@
+
 <!--
     Please leave this section at the top of the change log.
 
@@ -22,8 +23,9 @@
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk
 * Add example for `New-AzureRmVM`
-* Updated help files to include full parameter types.
+* Updated help files to include full parameter types and correct input/output types.
 * Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
 
 ## Version 5.3.0
 * Add -Tag parameter to Update/New-AzureRmAvailabilitySet

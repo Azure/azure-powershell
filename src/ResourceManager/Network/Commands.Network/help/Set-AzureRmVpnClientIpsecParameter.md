@@ -177,13 +177,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-###  
-This cmdlet accepts pipelined instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
+Parameters: VpnClientIPsecParameter (ByValue)
+
+### Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet modifies existing instances of the **Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters** object.
+### Microsoft.Azure.Commands.Network.Models.PSVpnClientIPsecParameters
 
 ## NOTES
 

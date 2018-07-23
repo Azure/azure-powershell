@@ -43,7 +43,6 @@ co03-vm         Register        Completed       25-Aug-15 3:23:53 PM   25-Aug-15
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets all the jobs for the vault in $Vault.
 
 ### Example 2: Get completed jobs
@@ -84,18 +83,13 @@ Done!
 ```
 
 This script polls the first job that is currently in progress until the job has completed.
-
 The first line of the script gets all the jobs in $Vault that are in progress, and then stores those jobs in the $Jobs array variable.
-
 The second line stores the first job from the $Jobs array in the $Job variable.
-
 The third line starts a **while** loop that checks the current status of the job until the job is completed.
 For information about the **while** keyword, type `Get-Help about_While`.
-
 The **while** loop writes a message to the console, sleeps for ten seconds, and then updates the $Job variable.
 The script updates the $Job variable by using existing value of $Job and the current cmdlet to get the current status of the job.
 For information about the Windows PowerShell cmdlets, type `Get-Help Write-Host` and `Get-Help Start-Sleep`.
-
 The final line of the script tells you that the script has finished.
 
 ## PARAMETERS
@@ -168,7 +162,6 @@ Accept wildcard characters: False
 ### -Operation
 Specifies an operation of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
-
 - Backup 
 - ConfigureBackup 
 - DeleteBackupData 
@@ -193,14 +186,12 @@ Accept wildcard characters: False
 ### -Status
 Specifies a status of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
-
 - InProgress
 - Failed
 - Cancelled
 - Cancelling
 - Completed
 - CompletedWithWarnings 
-
 You can specify this parameter to find all in progress jobs or all failed jobs.
 
 ```yaml
@@ -271,12 +262,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupVault
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupJob
-This cmdlet returns one or more Backup jobs.
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 * None

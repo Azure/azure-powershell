@@ -26,7 +26,7 @@
     - Stop-AzureRmDeployment
     - Save-AzureRmDeploymentTemplate
     - Get-AzureRmDeploymentOperation
-* Updated help files to include full parameter types.
+* Updated help files to include full parameter types and correct input/output types.
 
 ## Version 6.2.1
 * Update Roleassignment and roledefinition cmdlets:
