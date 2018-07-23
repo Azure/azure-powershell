@@ -170,6 +170,9 @@
   "src/ResourceManager/Storage/Commands.Management.Storage.Test/": [
     ".\\src\\ResourceManager\\Storage\\Commands.Management.Storage.Test\\bin\\Debug\\Microsoft.Azure.Commands.Management.Storage.Test.dll"
   ],
+  "src/ResourceManager/StorageSync": [
+    ".\\src\\ResourceManager\\StorageSync\\Commands.StorageSync.Test\\bin\\Debug\\Microsoft.Azure.Commands.StorageSync.Test.dll"  
+  ],
   "src/ResourceManager/StreamAnalytics/": [
     ".\\src\\ResourceManager\\StreamAnalytics\\Commands.StreamAnalytics.Test\\bin\\Debug\\Microsoft.Azure.Commands.StreamAnalytics.Test.dll"
   ],
