@@ -111,6 +111,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Test.ScenarioTests
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
                 helper.SetupModules(AzureModule.AzureResourceManager,
+                    helper.RMProfileModule,
                     helper.GetRMModulePath("AzureRm.StorageSync.psd1"),
                     "ScenarioTests\\Common.ps1",
                     "ScenarioTests\\" + callingClassName + ".ps1",
