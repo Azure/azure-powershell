@@ -20,6 +20,8 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types and correct input/output types.
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
 
 ## Version 0.6.7
 * Added top and skip parameter to list cmdlets
