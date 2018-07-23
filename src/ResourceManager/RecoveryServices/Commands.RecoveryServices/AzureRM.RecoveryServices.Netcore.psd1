@@ -54,8 +54,7 @@ PowerShellVersion = '5.1'
 RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll', 
-    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
     '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll', 
     '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll', 
