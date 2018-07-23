@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.Commands.HDInsight.dll-Help.xml
 Module Name: AzureRM.HDInsight
 ms.assetid: 8F0634BD-D817-4365-B6D1-924DC36AE4C9
@@ -20,9 +20,7 @@ Add-AzureRmHDInsightScriptAction [-Config] <AzureHDInsightConfig> [-NodeType] <C
 
 ## DESCRIPTION
 The **Add-AzureRmHDInsightScriptAction** cmdlet adds script actions to the HDInsight configuration object created by the New-AzureRmHDInsightClusterConfig cmdlet.
-
 Script actions provide functionality that is used to install additional software or to change the configuration of applications that run on a Hadoop cluster by using Windows PowerShell or Bash scripts (for Windows or Linux clusters, respectively).
-
 A script action runs on the cluster nodes when HDInsight clusters are deployed, and they run after nodes in the cluster complete HDInsight configuration.
 The script action runs under system administrator account privileges and provides full access rights to the cluster nodes.
 You can provide each cluster with a list of script actions to run in a specified sequence.
@@ -87,9 +85,9 @@ Specifies the HDInsight cluster configuration object that this cmdlet modifies.
 This object is created by the **New-AzureRmHDInsightClusterConfig** cmdlet.
 
 ```yaml
-Type: AzureHDInsightConfig
+Type: Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -102,7 +100,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -117,9 +115,9 @@ Accept wildcard characters: False
 Specifies the name of the script action.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 3
@@ -131,15 +129,14 @@ Accept wildcard characters: False
 ### -NodeType
 Specifies the node type on which to run the script action.
 The acceptable values for this parameter are:
-
 - HeadNode
 - WorkerNode
 - ZookeeperNode
 
 ```yaml
-Type: ClusterNodeType
+Type: Microsoft.Azure.Management.HDInsight.Models.ClusterNodeType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: HeadNode, WorkerNode, ZookeeperNode, EdgeNode
 
 Required: True
@@ -153,9 +150,9 @@ Accept wildcard characters: False
 Specifies the parameters for the script action.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 4
@@ -168,9 +165,9 @@ Accept wildcard characters: False
 Specifies the public URI for the script action (a PowerShell or Bash script).
 
 ```yaml
-Type: Uri
+Type: System.Uri
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 2
@@ -184,8 +181,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureHDInsightConfig
-Parameter 'Config' accepts value of type 'AzureHDInsightConfig' from the pipeline
+### Microsoft.Azure.Commands.HDInsight.Models.AzureHDInsightConfig
+Parameters: Config (ByValue)
 
 ## OUTPUTS
 

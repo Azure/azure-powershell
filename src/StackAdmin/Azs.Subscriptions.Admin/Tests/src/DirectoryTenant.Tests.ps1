@@ -39,8 +39,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -48,9 +50,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "DirectoryTenant" -Tags @('DirectoryTenants', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateDirectoryTenant {
                 param(
@@ -80,7 +82,8 @@ InModuleScope Azs.Subscriptions.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                | Should Not Be $null
 
                     # Resource
@@ -89,39 +92,39 @@ InModuleScope Azs.Subscriptions.Admin {
                     $Found.Name           | Should Be $Expected.Name
                     $Found.Type           | Should Be $Expected.Type
 
-					# DirectoryTenant
-					$Found.TenantId       | Should Be $Expected.TenantId
+                    # DirectoryTenant
+                    $Found.TenantId       | Should Be $Expected.TenantId
                 }
             }
         }
 
-        It "TestListDirectoryTenants" {
+        it "TestListDirectoryTenants" -Skip:$('TestListDirectoryTenants' -in $global:SkippedTests) {
             $global:TestName = 'TestListDirectoryTenants'
 
             $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
 
-            foreach($DirectoryTenant in $allDirectoryTenants) {
-				ValidateDirectoryTenant $DirectoryTenant
+            foreach ($DirectoryTenant in $allDirectoryTenants) {
+                ValidateDirectoryTenant $DirectoryTenant
             }
         }
 
-		It "TestGetAllDirectoryTenants" {
+        it "TestGetAllDirectoryTenants" -Skip:$('TestGetAllDirectoryTenants' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllDirectoryTenants'
 
             $allDirectoryTenants = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
 
-            foreach($DirectoryTenant in $allDirectoryTenants) {
-				$tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName System.redmond
-				AssertDirectoryTenantsSame $DirectoryTenant $tenant2
+            foreach ($DirectoryTenant in $allDirectoryTenants) {
+                $tenant2 = Get-AzsDirectoryTenant -Name $DirectoryTenant.Name -ResourceGroupName System.redmond
+                AssertDirectoryTenantsSame $DirectoryTenant $tenant2
             }
-		}
+        }
 
-		It "TestGetDirectoryTenant" {
-			$global:TestName = 'TestGetDirectoryTenant'
+        it "TestGetDirectoryTenant" -Skip:$('TestGetDirectoryTenant' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetDirectoryTenant'
 
-			$tenant = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
-			$tenant2 = Get-AzsDirectoryTenant -ResourceGroupName System.redmond -Name $tenant.Name
-			AssertDirectoryTenantsSame $tenant $tenant2
-		}
-	}
+            $tenant = Get-AzsDirectoryTenant -ResourceGroupName System.redmond
+            $tenant2 = Get-AzsDirectoryTenant -ResourceGroupName System.redmond -Name $tenant.Name
+            AssertDirectoryTenantsSame $tenant $tenant2
+        }
+    }
 }

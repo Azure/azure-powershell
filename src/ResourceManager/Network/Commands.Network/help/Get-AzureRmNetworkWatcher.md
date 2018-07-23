@@ -54,7 +54,7 @@ Gets the Network Watcher named NetworkWatcher_westcentralus in the resource grou
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -69,7 +69,7 @@ Accept wildcard characters: False
 Location of the network watcher.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByLocation
 Aliases:
 
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 The network watcher name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases: ResourceName
 
@@ -99,7 +99,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List
 Aliases:
 

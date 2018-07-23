@@ -14,32 +14,52 @@ Updates an integration runtime.
 
 ### ByIntegrationRuntimeName (Default)
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-Name] <String> [-ResourceGroupName] <String>
- [-DataFactoryName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-Name] <String> [-Type <String>] [-Description <String>] [-Location <String>] [-NodeSize <String>]
+ [-NodeCount <Int32>] [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>]
+ [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>]
+ [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
+ [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
  [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
  [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-ResourceId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeResourceId
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceId] <String> [-Type <String>] [-Description <String>]
+ -SharedIntegrationRuntimeResourceId <String> [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeName
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-ResourceGroupName] <String> [-DataFactoryName] <String>
+ [-Name] <String> [-Type <String>] [-Description <String>] -SharedIntegrationRuntimeResourceId <String>
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByIntegrationRuntimeObject
 ```
-Set-AzureRmDataFactoryV2IntegrationRuntime [-Type <String>] [-Description <String>] [-Location <String>]
- [-NodeSize <String>] [-NodeCount <Int32>] [-CatalogServerEndpoint <String>]
- [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>] [-VNetId <String>] [-Subnet <String>]
- [-SetupScriptContainerSasUri <String>] [-Edition <String>] [-MaxParallelExecutionsPerNode <Int32>]
- [-LicenseType <String>] [-AuthKey <SecureString>] [-Force] [-InputObject] <PSIntegrationRuntime>
+Set-AzureRmDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
+ [-Description <String>] [-Location <String>] [-NodeSize <String>] [-NodeCount <Int32>]
+ [-CatalogServerEndpoint <String>] [-CatalogAdminCredential <PSCredential>] [-CatalogPricingTier <String>]
+ [-VNetId <String>] [-Subnet <String>] [-SetupScriptContainerSasUri <String>] [-Edition <String>]
+ [-MaxParallelExecutionsPerNode <Int32>] [-LicenseType <String>] [-AuthKey <SecureString>] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ByLinkedIntegrationRuntimeObject
+```
+Set-AzureRmDataFactoryV2IntegrationRuntime [-InputObject] <PSIntegrationRuntime> [-Type <String>]
+ [-Description <String>] -SharedIntegrationRuntimeResourceId <String> [-Force]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -69,7 +89,7 @@ The authentication key of the self-hosted integration runtime.
 
 ```yaml
 Type: SecureString
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -84,7 +104,7 @@ The catalog database administrator credential of the integration runtime.
 
 ```yaml
 Type: PSCredential
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -99,7 +119,7 @@ The catalog database pricing tier of the integration runtime.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -114,7 +134,7 @@ The catalog database server endpoint of the integration runtime.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -129,7 +149,7 @@ The data factory name.
 
 ```yaml
 Type: String
-Parameter Sets: ByIntegrationRuntimeName
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
 Aliases: 
 
 Required: True
@@ -174,7 +194,7 @@ The edition for SSIS integration runtime which could be Standard or Enterprise, 
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 Accepted values: Standard, Enterprise
 
@@ -205,7 +225,7 @@ The integration runtime object.
 
 ```yaml
 Type: PSIntegrationRuntime
-Parameter Sets: ByIntegrationRuntimeObject
+Parameter Sets: ByIntegrationRuntimeObject, ByLinkedIntegrationRuntimeObject
 Aliases: 
 
 Required: True
@@ -220,7 +240,7 @@ The license type that you want to select for the SSIS IR. There are two types: L
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 Accepted values: LicenseIncluded, BasePrice
 
@@ -236,7 +256,7 @@ The integration runtime location.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -251,7 +271,7 @@ Maximum parallel execution count per node for a managed dedicated integration ru
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -266,7 +286,7 @@ The integration runtime name.
 
 ```yaml
 Type: String
-Parameter Sets: ByIntegrationRuntimeName
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
 Aliases: IntegrationRuntimeName
 
 Required: True
@@ -281,7 +301,7 @@ Target nodes count of the integration runtime.
 
 ```yaml
 Type: Int32
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -296,7 +316,7 @@ The integration runtime node size.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -311,7 +331,7 @@ The resource group name.
 
 ```yaml
 Type: String
-Parameter Sets: ByIntegrationRuntimeName
+Parameter Sets: ByIntegrationRuntimeName, ByLinkedIntegrationRuntimeName
 Aliases: 
 
 Required: True
@@ -326,7 +346,7 @@ The Azure resource ID.
 
 ```yaml
 Type: String
-Parameter Sets: ByResourceId
+Parameter Sets: ByResourceId, ByLinkedIntegrationRuntimeResourceId
 Aliases: Id
 
 Required: True
@@ -341,10 +361,25 @@ The SAS URI of the Azure blob container that contains the custom setup script.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SharedIntegrationRuntimeResourceId
+The resource id of the shared self-hosted integration runtime.
+
+```yaml
+Type: String
+Parameter Sets: ByLinkedIntegrationRuntimeResourceId, ByLinkedIntegrationRuntimeName, ByLinkedIntegrationRuntimeObject
+Aliases: 
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -356,7 +391,7 @@ The name of the subnet in the VNet.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: SubnetName
 
 Required: False
@@ -387,7 +422,7 @@ The ID of the VNet that the integration runtime joins.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: ByIntegrationRuntimeName, ByResourceId, ByIntegrationRuntimeObject
 Aliases: 
 
 Required: False
@@ -433,7 +468,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
