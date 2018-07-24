@@ -21,7 +21,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Constants.StreamAnalyticsFunction, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]

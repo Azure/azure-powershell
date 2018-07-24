@@ -133,7 +133,7 @@ Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ServerUpgrade.Model.AzureSqlServerUpgradeModel
 
 ## NOTES
 

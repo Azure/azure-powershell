@@ -220,7 +220,7 @@ Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName 
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

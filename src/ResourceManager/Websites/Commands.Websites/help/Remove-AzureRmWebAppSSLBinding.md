@@ -233,7 +233,7 @@ Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

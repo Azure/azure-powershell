@@ -208,7 +208,7 @@ Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

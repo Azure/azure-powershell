@@ -135,7 +135,7 @@ Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 
 ## NOTES
 

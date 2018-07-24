@@ -154,7 +154,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), TriggerNa
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

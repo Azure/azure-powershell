@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsLifecycle.Stop, Constants.FileCopyCmdletName, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
     {
         [Parameter(

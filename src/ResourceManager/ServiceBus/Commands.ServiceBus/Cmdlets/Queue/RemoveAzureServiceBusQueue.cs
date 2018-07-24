@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <summary>
     /// 'Remove-AzureRmServiceBusQueue' Cmdlet removes the specified Queue
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ServicebusQueueVerb, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, ServicebusQueueVerb, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]

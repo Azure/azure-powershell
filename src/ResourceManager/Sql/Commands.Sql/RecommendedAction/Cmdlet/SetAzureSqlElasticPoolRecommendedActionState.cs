@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// Defines the Set-AzureRmSqlElasticPoolRecommendedActionState cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlElasticPoolRecommendedActionState",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolRecommendedActionModel))]
     public class SetAzureSqlElasticPoolRecommendedActionState : AzureSqlElasticPoolRecommendedActionCmdletBase
     {
         /// <summary>

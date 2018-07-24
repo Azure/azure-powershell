@@ -117,7 +117,7 @@ Parameters: AccessKey (ByPropertyName), Account (ByPropertyName), Blob (ByProper
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
