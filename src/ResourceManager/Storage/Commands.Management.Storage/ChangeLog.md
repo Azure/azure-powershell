@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Updated help files to include full parameter types.
+* Move hardcoded string into Resource strings.
 
 ## Version 5.0.4-preview
 * Support create Storage account with Hierarchical Namespace enabled 
