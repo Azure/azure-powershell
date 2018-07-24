@@ -142,7 +142,7 @@ Parameters: JobCollectionName (ByPropertyName), JobName (ByPropertyName), Resour
 
 ## OUTPUTS
 
-### System.Object
+### System.String
 
 ## NOTES
 

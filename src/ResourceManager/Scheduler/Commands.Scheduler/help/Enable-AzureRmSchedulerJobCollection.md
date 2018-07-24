@@ -127,7 +127,7 @@ Parameters: JobCollectionName (ByPropertyName), ResourceGroupName (ByPropertyNam
 
 ## OUTPUTS
 
-### System.Object
+### System.String
 
 ## NOTES
 

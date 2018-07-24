@@ -138,7 +138,7 @@ Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyNam
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AzureSqlFailoverGroupModel
 
 ## NOTES
 

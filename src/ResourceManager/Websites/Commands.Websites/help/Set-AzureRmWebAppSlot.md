@@ -414,7 +414,7 @@ Parameters: WebApp (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

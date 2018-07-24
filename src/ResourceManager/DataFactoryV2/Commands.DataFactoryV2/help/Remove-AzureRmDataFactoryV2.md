@@ -183,7 +183,7 @@ Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories

@@ -199,7 +199,7 @@ Parameters: DatabaseName (ByPropertyName), PartnerResourceGroupName (ByPropertyN
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Replication.Model.AzureReplicationLinkModel
 
 ## NOTES
 

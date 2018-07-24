@@ -91,7 +91,7 @@ Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

@@ -125,7 +125,7 @@ Parameters: ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPro
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

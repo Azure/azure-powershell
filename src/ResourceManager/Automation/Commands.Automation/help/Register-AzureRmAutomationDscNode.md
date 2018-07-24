@@ -257,7 +257,7 @@ Parameters: AllowModuleOverwrite (ByPropertyName), RebootNodeIfNeeded (ByPropert
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
