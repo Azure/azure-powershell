@@ -61,9 +61,7 @@ Accept wildcard characters: False
 
 ### -AutoExecuteStatus
 Specifies a new value to which this cmdlet updates the auto execute status.
-
 The acceptable values for this parameter are:
-
 - Enabled
 - Disabled
 - Default
@@ -177,12 +175,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AdvisorName (ByPropertyName), ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.Advisor.Cmdlet.AdvisorAutoExecuteStatus
+Parameters: AutoExecuteStatus (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Advisor.Model.AzureSqlElasticPoolAdvisorModel
+### System.Object
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, elastic pool, mssql, advisor

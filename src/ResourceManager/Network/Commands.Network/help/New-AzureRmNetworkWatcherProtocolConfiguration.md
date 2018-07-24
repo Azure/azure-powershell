@@ -142,9 +142,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-System.Collections.IDictionary
-System.Int32[]
+### None
 
 ## OUTPUTS
 

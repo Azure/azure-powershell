@@ -38,7 +38,6 @@ Get-AzureRmADAppCredential -ApplicationObject <PSADApplication> [-DefaultProfile
 
 ## DESCRIPTION
 The Get-AzureRmADAppCredential cmdlet can be used to retrieve a list of credentials associated with an application.
-
 This command will retrieve all of the credential properties (but not the credential value) associated with the application.
 
 ## EXAMPLES
@@ -141,9 +140,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
+Parameters: ApplicationId (ByPropertyName), ObjectId (ByPropertyName)
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to get the credentials for the provided application.
+### System.String
+Parameters: DisplayName (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
 
 ## OUTPUTS
 

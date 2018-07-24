@@ -31,10 +31,8 @@ Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementT
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
-
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -46,7 +44,6 @@ PS C:\> $BackupItem = Get-AzureRmRecoveryServicesBackupItem -Container $Containe
 ```
 
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
-
 The second command gets the Backup item named V2VM in $Container, and then stores it in the $BackupItem variable.
 
 ## PARAMETERS
@@ -54,7 +51,6 @@ The second command gets the Backup item named V2VM in $Container, and then store
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - MARS 
 - SCDPM 
@@ -123,7 +119,6 @@ Accept wildcard characters: False
 ### -ProtectionState
 Specifies the state of protection.
 The acceptable values for this parameter are:
-
 - IRPending.
 Initial synchronization has not started and there is no recovery point yet. 
 - Protected.
@@ -149,7 +144,6 @@ Accept wildcard characters: False
 ### -ProtectionStatus
 Specifies the overall protection status of an item in the container.
 The acceptable values for this parameter are:
-
 - Healthy
 - Unhealthy
 
@@ -184,7 +178,6 @@ Accept wildcard characters: False
 ### -WorkloadType
 Specifies the workload type. 
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
@@ -206,8 +199,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Parameters: Container (ByPropertyName)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

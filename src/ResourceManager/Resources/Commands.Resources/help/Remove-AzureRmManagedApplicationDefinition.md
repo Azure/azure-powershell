@@ -38,7 +38,6 @@ PS C:\>Remove-AzureRmManagedApplicationDefinition -Id $ApplicationDefinition.Res
 
 The first command gets a managed application definition named myAppDef by using the Get-AzureRmManagedApplicationDefinition cmdlet.
 The command stores it in the $ApplicationDefinition variable.
-
 The second command removes the managed application definition identified by the **ResourceId** property of $ApplicationDefinition.
 
 ## PARAMETERS
@@ -188,6 +187,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Id (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

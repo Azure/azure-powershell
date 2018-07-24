@@ -31,13 +31,10 @@ PS C:\> Get-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "
 
 This command gets the container service named CSResourceGroup17 by using the Get-AzureRmContainerService cmdlet.
 The command passes that object to the Remove-AzureRmContainerServiceAgentPoolProfile cmdlet by using the pipeline operator.
-
 **Remove-AzureRmContainerServiceAgentPoolProfile** removes the profile named AgentPool01.
 The command passes the result to the Add-AzureRmContainerServiceAgentPoolProfile cmdlet.
-
 **Add-AzureRmContainerServiceAgentPoolProfile** adds a profile that has the name AgentPool01, and has the specified properties.
 The command passes the result to the current cmdlet.
-
 The current cmdlet updates the container service to reflect the changes that were made in this command.
 
 ## PARAMETERS
@@ -134,7 +131,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -154,8 +150,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ContainerService
-Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+Parameters: ContainerService (ByValue)
 
 ## OUTPUTS
 

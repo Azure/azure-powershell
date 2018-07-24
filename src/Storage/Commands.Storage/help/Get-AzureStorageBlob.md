@@ -82,12 +82,10 @@ PS C:\> Echo "Total $Total blobs in container $ContainerName"
 
 This example uses the *MaxCount* and *ContinuationToken* parameters to list Azure Storage blobs in multiple batches.
 The first four commands assign values to variables to use in the example.
-
 The fifth command specifies a **Do-While** statement that uses the **Get-AzureStorageBlob** cmdlet to get blobs.
 The statement includes the continuation token stored in the $Token variable.
 $Token changes value as the loop runs.
 For more information, type `Get-Help About_Do`.
-
 The final command uses the **Echo** command to display the total.
 
 ## PARAMETERS
@@ -98,7 +96,7 @@ If no blob name is specified, the cmdlet lists all the blobs in the specified co
 If a value is specified for this parameter, the cmdlet lists all blobs with names that match this parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BlobName
 Aliases:
 
@@ -115,7 +113,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -134,7 +132,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +147,7 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Name
 
@@ -165,7 +163,7 @@ Specifies the Azure storage account from which you want to get a list of blobs.
 You can use the New-AzureStorageContext cmdlet to create a storage context.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -181,7 +179,7 @@ Specifies a continuation token for the blob list.
 Use this parameter and the *MaxCount* parameter to list blobs in multiple batches.
 
 ```yaml
-Type: BlobContinuationToken
+Type: Microsoft.WindowsAzure.Storage.Blob.BlobContinuationToken
 Parameter Sets: (All)
 Aliases:
 
@@ -196,7 +194,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -211,7 +209,7 @@ Accept wildcard characters: False
 Include Deleted Blob, by default get blob won't include deleted blob.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -226,7 +224,7 @@ Accept wildcard characters: False
 Specifies the maximum number of objects that this cmdlet returns.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -244,7 +242,7 @@ This means that if the container has only blobs named "My", "MyBlob1", and "MyBl
 However, if you specify "-Prefix My", the cmdlet returns "My", "MyBlob1", and "MyBlob2".
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BlobPrefix
 Aliases:
 
@@ -260,7 +258,7 @@ Specifies the service side time-out interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -276,8 +274,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: Container (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

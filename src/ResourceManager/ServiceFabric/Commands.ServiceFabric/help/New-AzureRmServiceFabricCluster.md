@@ -47,9 +47,7 @@ New-AzureRmServiceFabricCluster [-ResourceGroupName] <String> -TemplateFile <Str
 
 ## DESCRIPTION
 The **New-AzureRmServiceFabricCluster** command uses certificates that you provide or system generated self-signed certificates to set up a new service fabric cluster. The template used can be a default template or a custom template that you provide. You have the option of specifying a folder to export the self-signed certificates or fetching them later from the key vault.
-
 If you are specifying a custom template and parameter file, you don't need to provide the certificate information in the parameter file, the system will populate these parameters.
-
 The four options are detailed below. Scroll down for explanations of each of the parameters.
 
 ## EXAMPLES
@@ -464,9 +462,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Security.SecureString
-System.Int32
-Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
+Parameters: CertificateFile (ByValue), CertificateOutputFolder (ByValue), CertificateSubjectName (ByValue), KeyVaultName (ByValue), KeyVaultResouceGroupName (ByValue), Location (ByValue), Name (ByValue), ParameterFile (ByValue), ResourceGroupName (ByPropertyName), SecondaryCertificateFile (ByValue), SecretIdentifier (ByValue), TemplateFile (ByValue), VmSku (ByPropertyName), VmUserName (ByValue)
+
+### System.Security.SecureString
+Parameters: CertificatePassword (ByValue), SecondaryCertificatePassword (ByValue), VmPassword (ByPropertyName)
+
+### System.Int32
+Parameters: ClusterSize (ByValue)
+
+### Microsoft.Azure.Commands.ServiceFabric.Models.OperatingSystem
+Parameters: OS (ByPropertyName)
 
 ## OUTPUTS
 

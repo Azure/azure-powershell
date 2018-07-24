@@ -22,7 +22,6 @@ New-AzureRmAutomationWebhook [-Name] <String> [-RunbookName] <String> [-IsEnable
 
 ## DESCRIPTION
 The **New-AzureRmAutomationWebhook** cmdlet creates a webhook for an Azure Automation runbook.
-
 Be sure to save the webhook URL that this cmdlet returns, because it cannot be retrieved again.
 
 ## EXAMPLES
@@ -47,7 +46,6 @@ PS C:\> $Webhook = New-AzureRmAutomationWebhook -Name "Webhook11" -Parameters $P
 ```
 
 The first command creates a dictionary of parameters, and stores them in the $Params variable.
-
 The second command creates a webhook named Webhook11 for the runbook named ContosoRunbook in the Automation account named AutomationAccount01.
 The command assigns the parameters in $Params to the webhook.
 
@@ -243,8 +241,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), RunbookName (ByPropertyName)
+
+### System.Boolean
+Parameters: IsEnabled (ByPropertyName)
+
+### System.DateTimeOffset
+Parameters: ExpiryTime (ByPropertyName)
 
 ## OUTPUTS
 

@@ -45,9 +45,7 @@ PS C:\> $Credsfilename = Get-AzureRmRecoveryServicesVaultSettingsFile -Backup -V
 ```
 
 The first command gets the vault named TestVault, and then stores it in the $Vault01 variable.
-
 The second command sets the $CredsPath variable to C:\Downloads.
-
 The last command gets the vault credentials file for $Vault01 using the credentials in $CredsPath for Azure Backup.
 
 ### Example 2:
@@ -180,7 +178,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.ARSVault
-Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 

@@ -29,7 +29,6 @@ PS C:\>Set-AzureRmRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGroup
 ```
 
 This command enables diagnostics for an Azure Redis cache.
-
 This command will enable diagnostics or update the storage account for all Azure Redis Caches in the same region for the subscription.
 
 ## PARAMETERS
@@ -129,11 +128,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountId (ByPropertyName)
 
 ## OUTPUTS
 
-### Void
+### System.Void
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website

@@ -33,9 +33,7 @@ PS C:\> Set-AzureBatchJob -Job $Job -BatchContext $Context
 ```
 
 The first command gets a pool by using **Get-AzureBatchJob**, and then stores it in the $Job variable.
-
 The second command modifies the priority specification on the $Job object.
-
 The final command updates the Batch service to match the local object in $Job.
 
 ## PARAMETERS
@@ -91,13 +89,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: Job (ByValue)
 
-### PSCloudJob
-Parameter 'Job' accepts value of type 'PSCloudJob' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

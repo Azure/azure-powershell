@@ -22,7 +22,6 @@ Get-AzureRmSqlDatabaseUpgradeHint [-ServerName] <String> [-DatabaseName <String>
 ## DESCRIPTION
 The **Get-AzureRmSqlDatabaseUpgradeHint** cmdlet gets pricing tier hints for upgrading an Azure SQL Database.
 Databases that are still in Web and Business pricing tiers get the hint to upgrade to the new Basic, Standard, or Premium pricing tiers.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -162,8 +161,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### System.Boolean
+Parameters: ExcludeElasticPoolCandidates (ByPropertyName)
 
 ## OUTPUTS
 
