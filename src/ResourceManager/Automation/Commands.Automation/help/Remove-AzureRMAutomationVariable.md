@@ -136,7 +136,7 @@ Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), Resou
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.Variable
+### System.Void
 
 ## NOTES
 

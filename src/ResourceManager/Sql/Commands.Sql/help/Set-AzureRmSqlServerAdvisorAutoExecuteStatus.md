@@ -166,7 +166,7 @@ Parameters: AutoExecuteStatus (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Advisor.Model.AzureSqlServerAdvisorModel
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, server, mssql, advisor

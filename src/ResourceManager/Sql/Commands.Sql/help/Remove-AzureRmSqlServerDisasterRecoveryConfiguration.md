@@ -142,7 +142,7 @@ Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), Vir
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Model.AzureSqlServerDisasterRecoveryConfigurationModel
 
 ## NOTES
 

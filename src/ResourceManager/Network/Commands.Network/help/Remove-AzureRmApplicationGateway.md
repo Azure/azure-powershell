@@ -152,7 +152,7 @@ Parameters: Force (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

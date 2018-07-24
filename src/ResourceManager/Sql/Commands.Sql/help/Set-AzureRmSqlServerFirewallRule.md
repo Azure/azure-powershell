@@ -170,7 +170,7 @@ Parameters: FirewallRuleName (ByPropertyName), ResourceGroupName (ByPropertyName
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.FirewallRule.Model.AzureSqlServerFirewallRuleModel
 
 ## NOTES
 

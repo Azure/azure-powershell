@@ -196,7 +196,7 @@ Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerNa
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlServerTransparentDataEncryptionProtectorModel
 
 ## NOTES
 
