@@ -71,6 +71,10 @@ namespace Microsoft.Azure.Commands.Network
                 }
             }
 
+            if (this.ServiceEndpointPolicies != null)
+            {
+                subnet.ServiceEndpointPolicies = this.ServiceEndpointPolicies;
+            }
 
             WriteObject(subnet);
         }
