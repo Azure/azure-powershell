@@ -1,4 +1,97 @@
-﻿## 6.5.0 - July 2018
+﻿## 6.6.0 - July 27
+#### General
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Profile
+* Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
+* Added ps1xml types to Common.Storage
+
+#### Azure.Storage
+* Support get Storage Context from DefaulfProfile
+* Add Ps1XmlAttribute to cmdlets output types properties.
+
+#### AzureRM.ApiManagement
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6370
+    - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6515
+    - Fixed bug in File.Save to not overload with Encoding Type
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6560
+    - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
+
+#### AzureRM.Compute
+* Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for 'New-AzureRmVM'
+* Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 1.1.0.
+
+#### AzureRM.DataLakeStore
+* Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
+
+#### AzureRM.Insights
+* Fixed formatting of OutputType in help files
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+    - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.
+    - The SDK includes support for multi-named diagnostic settings.
+    - The SDK also supports the most recent Metrics API: multi-dimension metrics.
+* **Set-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
+    - The argument ServiceBusRuleId has been added an alias 'EventHubName' which will replace it in the future.
+    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
+    - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
+    - One more argument has been added: MetricCategory to operate the same way the current Categories operates, but on Metrics Categories
+    - This cmdlet now supports pipelining and the InputObject argument.  When the InputObject is used, no other parameter is accepted.
+* **Remove-AzureRmDiagnosticSetting**
+    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible. For this a new parameter was added (Name) that defaults to 'service'. If the cmdlet is called using 'service' as name the cmdlet will only disable metrics and logs instead of removing the diagnostic setting.
+* **Get-AzureRmDiagnosticSetting**
+    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
+    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
+* **Get-AzureRmMetric**
+    - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to '10', to be specified with .
+    - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
+    - Added new optional parameter 'ResultType'. It is the result type to be returned (metadata or data).
+    - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
+* **Get-AzureRmMetricDefinition**
+    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metric definitions for.
+* **New-AzureRmMetricFilter**
+    - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
+
+#### AzureRM.KeyVault
+* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
+
+#### AzureRM.Resources
+* Fix piping scenario with 'Set-AzureRmResource'
+
+#### AzureRM.Sql
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
+* Fixed example in Remove-AzureRmSqlServerFirewallRule
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
+
+#### AzureRM.Storage
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Tags
+* Remove incorrect statement from Tag cmdlet help
+    - https://github.com/Azure/azure-powershell/issues/3878
+
+## 6.5.0 - July 2018
 #### AzureRM.Profile
 * Updated help for 'Get-AzureRmContextAutosaveSetting'
 
