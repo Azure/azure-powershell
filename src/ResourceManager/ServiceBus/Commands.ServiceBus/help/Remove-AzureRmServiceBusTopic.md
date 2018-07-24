@@ -42,23 +42,27 @@ PS C:\> Remove-AzureRmServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -
 
 Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable:
 ```
+PS C:\> $inputobject = Get-AzureRmServiceBusTopic <parmas>
 PS C:\> Remove-AzureRmServiceBusTopic -InputObject $inputobject
 ```
 
-Removes the topic provided through $inputobject for -InputObject parameter.
-
-### Example 3 - ResourceId
+### Example 2.2 - InputObject - Using Piping:
 ```
-PS C:\> Remove-AzureRmServiceBusTopic -ResourceId $resourceid
-```
-OR 
-```
-PS C:\> Remove-AzureRmServiceBusTopic -ResourceId "ARM id of the Topic to be deleted"
+PS C:\> Get-AzureRmServiceBusTopic <parmas> | Remove-AzureRmServiceBusTopic
 ```
 
-Removes the topic provided through ARM Id in $resourceid/string for -ResourceId parameter.
+### Example 3.1 - ResourceId Using Variable:
+```
+PS C:\> $resourceid = Get-AzureRmServiceBusTopic <params>
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceId $resourceid.Id
+```
+
+### Example 3.2 - ResourceId Using String value
+```
+PS C:\> Remove-AzureRmServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
+```
 
 ## PARAMETERS
 
@@ -227,7 +231,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

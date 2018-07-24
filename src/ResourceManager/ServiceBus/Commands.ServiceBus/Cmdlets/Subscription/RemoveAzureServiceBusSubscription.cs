@@ -84,12 +84,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 
             // delete a Subscription 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveSubscription, Name, Topic, Namespace)))
-            {
-                Client.DeleteSubscription(ResourceGroupName, Namespace, Topic, Name);
-                if (PassThru)
-                {
-                    WriteObject(true);
-                }
+            {   
+                    WriteObject(Client.DeleteSubscription(ResourceGroupName, Namespace, Topic, Name));
             }
         }
     }

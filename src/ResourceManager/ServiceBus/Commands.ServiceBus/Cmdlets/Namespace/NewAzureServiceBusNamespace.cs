@@ -62,7 +62,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// The Service Bus Premium namespace throughput units.
         /// </summary>        
-        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 4, HelpMessage = "The Service Bus premium namespace throughput units, allowed values 1 or 2 or 4")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The Service Bus premium namespace throughput units, allowed values 1 or 2 or 4")]
+        [PSArgumentCompleter("1", "2", "4")]
         public int? SkuCapacity { get; set; }
 
         /// <summary>

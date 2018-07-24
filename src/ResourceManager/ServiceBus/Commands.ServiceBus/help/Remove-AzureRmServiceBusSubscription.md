@@ -43,20 +43,26 @@ PS C:\> Remove-AzureRmServiceBusSubscription -ResourceGroup Default-ServiceBus-W
 
 Removes the subscription `SB-TopicSubscription-Example1` to the topic `SB-Topic_exampl1` in the specified Service Bus namespace `SB-Example1`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable:
 ```
+PS C:\> $inputobject = Get-AzureRmServiceBusSubscription <params>
 PS C:\> Remove-AzureRmServiceBusSubscription -InputObject $inputobject
 ```
 
-Removes the subscription provided through $inputobject for -InputObject parameter
+### Example 2.2 - InputObject - Using Piping:
+```
+PS C:\>Get-AzureRmServiceBusSubscription <params> |Remove-AzureRmServiceBusSubscription
+```
 
-### Example 3 - ResourceId
+### Example 3.1 - ResourceId - Using Variable:
 ```
-PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId $resourceid
+PS C:\> $resourceid = Get-AzureRmServiceBusSubscription <params>
+PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId $resourceid.Id
 ```
-OR
+
+### Example 3.2 - ResourceId - Using string value:
 ```
-PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId "ARM id of the subscription to be deleted/removed"
+PS C:\> Remove-AzureRmServiceBusSubscription -ResourceId "/subscriptions/Subscriptionid/resourceGroups/ResourceGroup/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName"
 ```
 
 Removes the subscription provided through ARM Id in $resourceid/string for -ResourceId parameter 
