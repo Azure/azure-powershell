@@ -140,7 +140,7 @@ Parameters: Container (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 * None

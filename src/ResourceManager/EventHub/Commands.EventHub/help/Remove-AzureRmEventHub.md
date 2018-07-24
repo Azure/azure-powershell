@@ -227,7 +227,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

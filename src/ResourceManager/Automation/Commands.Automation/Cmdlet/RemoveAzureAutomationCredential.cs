@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Removes a Credential for automation.
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmAutomationCredential", SupportsShouldProcess = true, 
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByName), OutputType(typeof(void))]
     public class RemoveAzureAutomationCredential : AzureAutomationBaseCmdlet
     {
         /// <summary>

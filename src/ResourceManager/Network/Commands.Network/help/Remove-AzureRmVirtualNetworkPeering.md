@@ -180,7 +180,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), VirtualNe
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

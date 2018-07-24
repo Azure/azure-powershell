@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Credential for automation.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Resume, "AzureRmAutomationJob")]
+    [Cmdlet(VerbsLifecycle.Resume, "AzureRmAutomationJob"), OutputType(typeof(void))]
     public class ResumeAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 

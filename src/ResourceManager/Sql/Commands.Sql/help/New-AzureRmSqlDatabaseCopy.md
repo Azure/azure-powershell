@@ -293,7 +293,7 @@ Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), S
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Replication.Model.AzureSqlDatabaseCopyModel
 
 ## NOTES
 

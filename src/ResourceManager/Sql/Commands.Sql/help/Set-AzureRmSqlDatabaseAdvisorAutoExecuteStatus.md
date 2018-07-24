@@ -183,7 +183,7 @@ Parameters: AutoExecuteStatus (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Advisor.Model.AzureSqlDatabaseAdvisorModel
 
 ## NOTES
 

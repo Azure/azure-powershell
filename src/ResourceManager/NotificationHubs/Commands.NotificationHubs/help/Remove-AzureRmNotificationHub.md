@@ -156,7 +156,7 @@ Parameters: Namespace (ByPropertyName), NotificationHub (ByPropertyName), Resour
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

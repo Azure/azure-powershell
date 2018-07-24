@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// Defines the Set-AzureRmSqlDatabaseAdvisorAutoExecuteStatus cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseAdvisorAutoExecuteStatus",
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
     public class SetAzureSqlDatabaseAdvisorAutoExecuteStatus : AzureSqlDatabaseAdvisorCmdletBase
     {
         /// <summary>

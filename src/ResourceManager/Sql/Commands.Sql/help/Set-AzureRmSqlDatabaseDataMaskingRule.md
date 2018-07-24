@@ -321,7 +321,7 @@ Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), MaskingF
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.DataMasking.Model.DatabaseDataMaskingRuleModel
 
 ## NOTES
 

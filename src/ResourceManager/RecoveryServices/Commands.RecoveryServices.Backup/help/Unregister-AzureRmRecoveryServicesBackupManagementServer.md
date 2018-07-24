@@ -139,7 +139,7 @@ Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupEngineBase
 
 ## NOTES
 
