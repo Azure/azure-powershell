@@ -153,7 +153,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), RunName (
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

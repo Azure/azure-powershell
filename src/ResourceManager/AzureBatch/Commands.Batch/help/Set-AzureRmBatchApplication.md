@@ -151,7 +151,7 @@ Parameters: AccountName (ByPropertyName), ApplicationId (ByPropertyName), Defaul
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

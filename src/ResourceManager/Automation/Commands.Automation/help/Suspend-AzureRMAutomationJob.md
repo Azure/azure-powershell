@@ -107,7 +107,7 @@ Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropert
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

@@ -89,6 +89,9 @@ Creates an Autoscale rule.
 ### [New-AzureRmAutoscaleWebhook](New-AzureRmAutoscaleWebhook.md)
 Creates an Autoscale webhook.
 
+### [New-AzureRmMetricFilter](New-AzureRmMetricFilter.md)
+Creates a metric dimension filter that can be used to query metrics.
+
 ### [Remove-AzureRmActionGroup](Remove-AzureRmActionGroup.md)
 Removes an action group.
 
@@ -100,6 +103,9 @@ Removes an alert rule.
 
 ### [Remove-AzureRmAutoscaleSetting](Remove-AzureRmAutoscaleSetting.md)
 Removes an Autoscale setting.
+
+### [Remove-AzureRmDiagnosticSetting](Remove-AzureRmDiagnosticSetting.md)
+Remove a diagnostic setting for the a resource.
 
 ### [Remove-AzureRmLogProfile](Remove-AzureRmLogProfile.md)
 Removes a log profile.

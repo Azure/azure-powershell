@@ -209,7 +209,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceI
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

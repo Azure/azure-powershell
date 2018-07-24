@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         VerbsLifecycle.Invoke,
         Constants.IntegrationRuntimeUpgrade,
         DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(void))]
     public class InvokeAzureDataFactoryIntegrationRuntimeUpgradeCommand : IntegrationRuntimeCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]

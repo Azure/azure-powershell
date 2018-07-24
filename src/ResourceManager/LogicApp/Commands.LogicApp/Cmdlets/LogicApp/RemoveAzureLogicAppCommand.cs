@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Creates a new LogicApp workflow 
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmLogicApp", SupportsShouldProcess = true), 
-        OutputType(typeof(object))]
+        OutputType(typeof(void))]
     public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 

@@ -133,7 +133,7 @@ Parameters: ResourceGroupName (ByPropertyName), SavedSearchId (ByPropertyName), 
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
