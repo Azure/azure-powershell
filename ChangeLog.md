@@ -1,4 +1,4 @@
-﻿## 6.6.0 - July 27
+﻿## 6.6.0 - July 2018
 #### General
 * Updated all help files to include full parameter types and correct input/output types.
 

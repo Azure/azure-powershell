@@ -160,7 +160,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '6.6.0 - July 27
+        ReleaseNotes = '6.6.0 - July 2018
 General
 * Updated all help files to include full parameter types and correct input/output types.
 
