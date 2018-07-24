@@ -25,7 +25,6 @@
 	- https://github.com/Azure/azure-powershell/issues/3780
 	- https://github.com/Azure/azure-powershell/issues/4340
 
-
 ## Version 0.6.7
 * Added top and skip parameter to list cmdlets
 * Added Standard to Premium NameSpace migration cmdlets :

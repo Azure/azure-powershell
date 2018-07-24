@@ -27,7 +27,6 @@ This cmdlet returns an object that represents the new or modified tag with its v
 The Azure Tags module that **New-AzureRmTag** is part of can help you manage predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
-If the subscription includes any predefined tags, you cannot apply undefined tags or values to any resource or resource group in the subscription.
 To apply a predefined tag to a resource or resource group, use the *Tag* parameter of the New-AzureRmTag cmdlet.
 To search for resource groups with a specified tag name or name and value, use the *Tag* parameter of the Get-AzureRMResourceGroup cmdlet.
 Every tag has a name.

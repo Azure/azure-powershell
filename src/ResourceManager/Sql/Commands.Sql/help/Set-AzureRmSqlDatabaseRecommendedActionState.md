@@ -221,7 +221,7 @@ Parameters: State (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.RecommendedAction.Model.AzureSqlDatabaseRecommendedActionModel
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, database, mssql, advisor, recommendedaction

@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         VerbsCommon.Remove,
         Constants.ShareCmdletName,
         DefaultParameterSetName = Constants.ShareNameParameterSetName,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(

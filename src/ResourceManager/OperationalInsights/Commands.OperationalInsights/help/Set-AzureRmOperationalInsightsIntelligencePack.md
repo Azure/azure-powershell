@@ -119,7 +119,7 @@ Parameters: Enabled (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack
 
 ## NOTES
 
