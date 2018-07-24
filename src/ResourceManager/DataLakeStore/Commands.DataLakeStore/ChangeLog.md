@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 6.1.1
 * Updated all help files to include full parameter types and correct input/output types.
 * Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
 
