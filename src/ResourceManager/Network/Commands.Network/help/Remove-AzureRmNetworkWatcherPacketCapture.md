@@ -211,7 +211,7 @@ Parameters: NetworkWatcherName (ByValue), PacketCaptureName (ByPropertyName), Re
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher, packet, capture, traffic, remove

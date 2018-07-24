@@ -228,7 +228,7 @@ Parameters: SourceWebApp (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Management.WebSites.Models.Site
 
 ## NOTES
 

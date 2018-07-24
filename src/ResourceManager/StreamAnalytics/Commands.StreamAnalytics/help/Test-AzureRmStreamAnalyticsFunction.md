@@ -103,7 +103,7 @@ Parameters: JobName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.Commands.ResourceManager.Cmdlets.dll-Help.xml
 Module Name: AzureRM.Resources
 ms.assetid: A00160B9-831F-4A20-8D9D-9E89BC4F5C91
@@ -17,6 +17,14 @@ Modifies a resource.
 ```
 Set-AzureRmResource [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>] [-Sku <Hashtable>]
  [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] -ResourceId <String> [-ODataQuery <String>] [-Force]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ByInputObject
+```
+Set-AzureRmResource -InputObject <PSResource> [-Kind <String>] [-Properties <PSObject>] [-Plan <Hashtable>]
+ [-Sku <Hashtable>] [-Tag <Hashtable>] [-UsePatchSemantics] [-AsJob] [-ODataQuery <String>] [-Force]
  [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -47,7 +55,7 @@ Specify a resource to modify by name and type or by ID.
 
 ### Example 1: Modify a resource
 ```
-PS C:\>$Resource = Get-AzureRmResource -ResourceType "microsoft.web/sites" -ResourceGroupName "ResourceGroup11" -ResourceName "ContosoSite"
+PS C:\> $Resource = Get-AzureRmResource -ResourceType Microsoft.Web/sites -ResourceGroupName ResourceGroup11 -ResourceName ContosoSite
 PS C:\> $Resource.Properties.Enabled = "False"
 PS C:\> $Resource | Set-AzureRmResource -Force
 ```
@@ -55,6 +63,40 @@ PS C:\> $Resource | Set-AzureRmResource -Force
 The first command gets the resource named ContosoSite by using the Get-AzureRmResource cmdlet, and then stores it in the $Resource variable.
 The second command modifies a property of $Resource.
 The final command updates the resource to match $Resource.
+
+### Example 2: Modify all resources in a given resource group
+```
+PS C:\> $Resource = Get-AzureRmResource -ResourceGroupName testrg
+PS C:\> $Resource | ForEach-Object { $_.Tags.Add("testkey", "testval") }
+PS C:\> $Resource | Set-AzureRmResource -Force
+
+Name              : kv-test
+ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Microsoft.KeyVault/vaults/kv-test
+ResourceName      : kv-test
+ResourceType      : Microsoft.KeyVault/vaults
+ResourceGroupName : testrg
+Location          : westus
+SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Tags              : {testrgkey, key}
+Properties        : @{}
+
+Name              : testresource
+ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testrg/providers/Providers.Test/statefulResources/testresource
+ResourceName      : testresource
+ResourceType      : Providers.Test/statefulResources
+ResourceGroupName : testrg
+Location          : West US 2
+SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Tags              : {testrgkey, anothertesttag}
+Properties        : @{key=value}
+Sku               : @{name=A0}
+```
+
+The first command gets the resources in the testrg resource group, and then stores them in the $Resource variable.
+
+The second command iterates over each of these resources in the resource group and adds a new tag to them.
+
+The final command updates each of these resources.
 
 ## PARAMETERS
 
@@ -150,6 +192,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The object representation of the resource to update.
+
+```yaml
+Type: Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResource
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

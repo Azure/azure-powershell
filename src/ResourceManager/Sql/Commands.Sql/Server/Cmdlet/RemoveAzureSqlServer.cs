@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// <summary>
     /// Defines the Get-AzureRmSqlDatabaseServer cmdlet
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmSqlServer", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>

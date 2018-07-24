@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcher", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkWatcher", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(

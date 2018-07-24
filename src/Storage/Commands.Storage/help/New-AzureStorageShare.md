@@ -144,7 +144,7 @@ Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
 
 ## NOTES
 

@@ -128,7 +128,7 @@ Parameters: ProtectionPolicy (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

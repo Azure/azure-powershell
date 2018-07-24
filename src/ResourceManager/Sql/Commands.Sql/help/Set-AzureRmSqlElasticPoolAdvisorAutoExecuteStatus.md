@@ -183,7 +183,7 @@ Parameters: AutoExecuteStatus (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Advisor.Model.AzureSqlElasticPoolAdvisorModel
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, sql, elastic pool, mssql, advisor

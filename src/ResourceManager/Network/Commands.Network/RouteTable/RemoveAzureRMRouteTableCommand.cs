@@ -35,7 +35,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmRouteTable", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureRmRouteTable : NetworkBaseCmdlet
     {
         [Parameter(

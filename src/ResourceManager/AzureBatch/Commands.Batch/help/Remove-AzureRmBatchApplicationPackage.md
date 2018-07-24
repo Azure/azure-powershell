@@ -119,7 +119,7 @@ Parameters: AccountName (ByPropertyName), ApplicationId (ByPropertyName), Applic
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
