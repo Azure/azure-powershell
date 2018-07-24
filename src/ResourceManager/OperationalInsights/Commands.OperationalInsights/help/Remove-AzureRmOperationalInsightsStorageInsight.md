@@ -183,7 +183,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Workspace
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

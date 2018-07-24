@@ -128,7 +128,7 @@ Parameters: ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), Ser
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Backup.Model.AzureSqlServerBackupLongTermRetentionVaultModel
 
 ## NOTES
 

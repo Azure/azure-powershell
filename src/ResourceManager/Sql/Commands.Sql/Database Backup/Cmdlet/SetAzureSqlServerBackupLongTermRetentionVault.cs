@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlServerBackupLongTermRetentionVault",
         SupportsShouldProcess = true,
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
     public class SetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>

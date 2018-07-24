@@ -111,7 +111,7 @@ Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Batch.Models.PSAutoScaleRun
 
 ## NOTES
 

@@ -402,7 +402,7 @@ Parameters: ElasticPoolName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.ElasticPool.Model.AzureSqlElasticPoolModel
 
 ## NOTES
 

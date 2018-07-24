@@ -22,7 +22,7 @@ using System.Net;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet(VerbsCommon.Remove, Constants.DataSource, SupportsShouldProcess = true,
-        DefaultParameterSetName = ByWorkspaceName)]
+        DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(void))]
     public class RemoveAzureOperationalInsightsDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,

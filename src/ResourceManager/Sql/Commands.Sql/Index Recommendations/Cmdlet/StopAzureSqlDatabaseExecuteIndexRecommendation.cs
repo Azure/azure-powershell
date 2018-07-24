@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// Defines the Stop-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
     [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlDatabaseExecuteIndexRecommendation",
-        ConfirmImpact = ConfirmImpact.Low)]
+        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
     public class StopAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
     {
         /// <summary>

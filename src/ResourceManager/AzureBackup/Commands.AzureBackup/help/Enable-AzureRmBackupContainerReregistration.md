@@ -70,7 +70,7 @@ Parameters: Container (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
