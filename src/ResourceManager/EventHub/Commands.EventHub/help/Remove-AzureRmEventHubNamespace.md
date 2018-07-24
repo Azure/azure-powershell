@@ -42,23 +42,32 @@ PS C:\> Remove-AzureRmEventHubNamespace -ResourceGroupName MyResourceGroupName -
 
 Removes the Event Hubs namespace \`MyNamespaceName\` in resource group \`MyResourceGroupName\`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable: 
 ```
+PS C:\> $inputObject = Get-AzureRmEventHubNamespace <params> 
 PS C:\> Remove-AzureRmEventHubNamespace -InputObject $inputObject
 ```
 
-Removes the Event Hubs namespace provided by $inputObject.
-
-### Example 3 - ResourceId
+### Example 2.1 - InputObject - Using Piping:
 ```
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceId $resourceid
-```
-OR
-```
-PS C:\> Remove-AzureRmEventHubNamespace -ResourceId "ARM id of the Event Hub namespace to be deleted/removed"
+PS C:\> Get-AzureRmEventHubNamespace <params> | Remove-AzureRmEventHubNamespace
 ```
 
-Removes the Event Hubs namespace provided through ARM Id in $resourceid/string for -ResourceId parameter.
+### Example 3.1 - ResourceId - Using Variable
+```
+PS C:\> $resourceid = Get-AzureRmEventHubNamespace <params>
+PS C:\> Remove-AzureRmEventHubNamespace -ResourceId $resourceid.Id
+```
+
+### Example 3.2 - ResourceId - Using Piping:
+```
+PS C:\> Get-AzureRmResource -ResourceType Microsoft.EventHub/Namespaces | Remove-AzureRmEventHubNamespace
+```
+
+### Example 3.3 - ResourceId - Using String:
+```
+PS C:\> Remove-AzureRmEventHubNamespace -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName"
+```
 
 ## PARAMETERS
 
