@@ -73,7 +73,6 @@ Accept wildcard characters: False
 ### -AceType
 Specifies the type of ACE to remove.
 The acceptable values for this parameter are:
-
 - User
 - Group
 - Mask
@@ -263,13 +262,30 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### DataLakeStoreItemAce[]
-Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+Parameters: Acl (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+AceType
+Parameters: AceType (ByPropertyName)
+
+### System.Guid
+Parameters: Id (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Default (ByPropertyName), PassThru (ByPropertyName), Recurse (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns true upon successful completion.
+### System.Boolean
 
 ## NOTES
 

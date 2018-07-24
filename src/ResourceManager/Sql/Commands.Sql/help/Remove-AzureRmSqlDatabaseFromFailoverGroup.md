@@ -21,9 +21,7 @@ Remove-AzureRmSqlDatabaseFromFailoverGroup [-ServerName] <String> [-FailoverGrou
 
 ## DESCRIPTION
 Removes one or more databases from the specified Azure SQL Database Failover Group. The databases and replication relationships are left intact, but they will no longer be accessible through the Failover Group endpoints.
-
 To obtain database objects with which to populate the '-Database' parameter, use (for example) the Get-AzureRmSqlDatabase cmdlet.
-
 The Failover Group's primary server must be used to execute the command.
 
 ## EXAMPLES
@@ -180,7 +178,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
+Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel, Microsoft.Azure.Commands.Sql, Version=4.10.0.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

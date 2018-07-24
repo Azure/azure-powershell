@@ -58,7 +58,6 @@ PS C:\> Set-AzureRmPolicyDefinition -Id $PolicyDefinition.ResourceId -Descriptio
 
 The first command gets a policy definition named VMPolicyDefinition by using the Get-AzureRmPolicyDefinition cmdlet.
 The command stores that object in the $PolicyDefinition variable.
-
 The second command updates the description of the policy definition identified by the **ResourceId** property of $PolicyDefinition.
 
 ## PARAMETERS
@@ -141,9 +140,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -289,12 +286,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

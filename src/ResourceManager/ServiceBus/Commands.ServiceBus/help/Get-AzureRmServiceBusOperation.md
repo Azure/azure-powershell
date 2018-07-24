@@ -52,11 +52,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### None
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.OperationAttributes
+### Microsoft.Azure.Commands.ServiceBus.Models.PSOperationAttributes
 
 ## NOTES
 

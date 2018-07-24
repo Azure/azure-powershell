@@ -326,6 +326,75 @@ function Test-SetAResource
 }
 
 <#
+Tests setting a resource using piping.
+#>
+function Test-SetAResourceUsingPiping
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
+    $apiversion = "2014-04-01"
+    $resourceType = "Providers.Test/statefulResources"
+
+    try
+    {
+        # Test
+        New-AzureRmResourceGroup -Name $rgname -Location $rglocation
+        New-AzureRmResource -Name $rname -Location $rglocation -Tags @{testtag = "testval"} -ResourceGroupName $rgname -ResourceType $resourceType -PropertyObject @{"key" = "value"} -SkuObject @{ Name = "A0" } -ApiVersion $apiversion -Force
+        $resource = Get-AzureRmResource -Name $rname -ResourceGroupName $rgname -ResourceType $resourceType
+
+        # Verify original value
+        Assert-AreEqual $resource.Name $rname
+        Assert-AreEqual $resource.ResourceGroupName $rgname
+        Assert-AreEqual $resource.ResourceType $resourceType
+        Assert-AreEqual $resource.Sku.Name "A0"
+        Assert-AreEqual $resource.Tags["testtag"] "testval"
+        Assert-AreEqual $resource.Properties.key "value"
+
+        # Set resource
+        # Verify all properties are the same when resource object hasn't been modified and is piped
+        $setResource = $resource | Set-AzureRmResource -Force
+        Assert-NotNull $setResource
+        Assert-AreEqual $setResource.Name $rname
+        Assert-AreEqual $setResource.ResourceGroupName $rgname
+        Assert-AreEqual $setResource.ResourceType $resourceType
+        Assert-AreEqual $setResource.Sku.Name "A0"
+        Assert-AreEqual $setResource.Tags["testtag"] "testval"
+        Assert-AreEqual $setResource.Properties.key "value"
+
+        # Verify all properties are updated when resource object has been modified and is piped
+        $resource.Tags.Add("testtag1", "testval1")
+        $resource.Sku.Name = "A1"
+        $setResource = $resource | Set-AzureRmResource -Force
+        Assert-NotNull $setResource
+        Assert-AreEqual $setResource.Name $rname
+        Assert-AreEqual $setResource.ResourceGroupName $rgname
+        Assert-AreEqual $setResource.ResourceType $resourceType
+        Assert-AreEqual $setResource.Sku.Name "A1"
+        Assert-AreEqual $setResource.Tags["testtag"] "testval"
+        Assert-AreEqual $setResource.Tags["testtag1"] "testval1"
+        Assert-AreEqual $setResource.Properties.key "value"
+
+        $modifiedResource = Get-AzureRmResource -ResourceGroupName $rgname -ResourceName $rname -ResourceType $resourceType
+
+        # Assert
+        Assert-NotNull $modifiedResource
+        Assert-AreEqual $modifiedResource.Name $rname
+        Assert-AreEqual $modifiedResource.ResourceGroupName $rgname
+        Assert-AreEqual $modifiedResource.ResourceType $resourceType
+        Assert-AreEqual $modifiedResource.Sku.Name "A1"
+        Assert-AreEqual $modifiedResource.Tags["testtag"] "testval"
+        Assert-AreEqual $modifiedResource.Tags["testtag1"] "testval1"
+        Assert-AreEqual $modifiedResource.Properties.key "value"
+    }
+    finally
+    {
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
 .SYNOPSIS
 Tests setting a resource using patch.
 #>

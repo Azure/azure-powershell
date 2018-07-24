@@ -219,17 +219,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.Management.Automation.ErrorRecord[]
+Parameters: Error (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureErrorRecord
-Information about a powershell error that does not involve an excpetion.
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureExceptionRecord
-Information about an error including detailed information on the exception that raised the error.
 
 ### Microsoft.Azure.Commands.Profile.Errors.AzureRestExceptionRecord
-Information about errors in cleint/server communications.  This will often contain important information about the error from the server.
 
 ## NOTES
 

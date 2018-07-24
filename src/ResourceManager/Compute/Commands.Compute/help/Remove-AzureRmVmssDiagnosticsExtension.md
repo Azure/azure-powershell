@@ -94,7 +94,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -114,13 +113,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
 
 ## NOTES
 

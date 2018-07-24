@@ -128,10 +128,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Thumbprint (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

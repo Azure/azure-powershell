@@ -81,10 +81,8 @@ PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
 Specify a time that is at least five minutes in the future.
-
 The second command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $EndDate variable.
 The command specifies a future time.
-
 The final command creates a daily schedule named Schedule02 to begin at the time stored in $StartDate and expire at the time stored in $EndDate.
 
 ### Example 3: Create a weekly recurring schedule
@@ -95,9 +93,7 @@ PS C:\> New-AzureRmAutomationSchedule -AutomationAccountName "Contoso17" -Name "
 ```
 
 The first command creates a date object by using the **Get-Date** cmdlet, and then stores the object in the $StartDate variable.
-
 The second command creates an array of week days that contains Monday, Tuesday, Wednesday, Thursday and Friday.
-
 The final command creates a daily schedule named Schedule03 that will run Monday to Friday each week at 13:00. The schedule will never expire.
 
 ## PARAMETERS
@@ -152,7 +148,6 @@ Accept wildcard characters: False
 ### -DayOfWeekOccurrence
 Specifies the occurrence of the week within the month that the schedule runs.
 psdx_paramvalues
-
 - 1
 - 2
 - 3
@@ -383,8 +378,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Description (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), TimeZone (ByPropertyName)
+
+### System.DateTimeOffset
+Parameters: StartTime (ByPropertyName)
 
 ## OUTPUTS
 

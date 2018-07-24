@@ -21,13 +21,10 @@ Get-AzureRmTag [[-Name] <String>] [-Detailed] [-DefaultProfile <IAzureContextCon
 The **Get-AzureRmTag** cmdlet gets predefined Azure tags in your subscription.
 This cmdlet returns basic information about the tags or detailed information about tags and their values.
 All output objects include a Count property that represents the number of resources and resource groups to which the tags and values have been applied.
-
 The Azure Tags module that **Get-AzureRMTag** is a part of can help you manage predefined Azure tags.
 An Azure tag is a name-value pair that you can use to categorize your Azure resources and resource groups, such as by department or cost center, or to track notes or comments about the resources and groups.
-
 You can define and apply tags in a single step, but predefined tags let you establish standard, consistent, predictable names and values for the tags in your subscription.
 If the subscription includes any predefined tags, you cannot apply undefined tags or values to any resource or resource group in the subscription.
-
 To create a predefined tag, use the New-AzureRmTag cmdlet.
 To apply a predefined tag to a resource group, use the *Tag* parameter of the New-AzureRmTag cmdlet.
 To search resource groups for a specific tag name or name and value, use the *Tag* parameter of the Get-AzureRMResourceGroup cmdlet.
@@ -155,11 +152,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: Name (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Detailed (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Tags.Model.PSTag
+### Microsoft.Azure.Commands.ResourceManager.Common.Tags.PSTag
 
 ## NOTES
 

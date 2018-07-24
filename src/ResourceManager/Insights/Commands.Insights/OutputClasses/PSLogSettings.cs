@@ -14,23 +14,22 @@
 
 using System.Text;
 using Microsoft.Azure.Management.Monitor.Models;
-using Microsoft.Azure.Management.Monitor.Management.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
     /// Wrapps around the LogSettings
     /// </summary>
-    public class PSLogSettings : LogSettings
+    public class PSLogSettings : Microsoft.Azure.Management.Monitor.Management.Models.LogSettings
     {
         /// <summary>
         /// Initializes a new instance of the PSLogSettings class.
         /// </summary>
-        public PSLogSettings(LogSettings logSettings)
+        public PSLogSettings(LogSettings logSettings) : base(logSettings)
         {
             this.Enabled = logSettings.Enabled;
             this.Category = logSettings.Category;
-            this.RetentionPolicy = logSettings.RetentionPolicy;
+            this.RetentionPolicy = new Management.Monitor.Management.Models.RetentionPolicy(logSettings.RetentionPolicy);
         }
 
         /// <summary>

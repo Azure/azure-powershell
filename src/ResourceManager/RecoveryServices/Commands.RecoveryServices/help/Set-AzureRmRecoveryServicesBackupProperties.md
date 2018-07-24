@@ -31,7 +31,6 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProperties -Vault $Vault01 -BackupStora
 ```
 
 The first command gets the vault named TestVault, and then stores it in the $Vault01 variable.
-
 The second command sets the backup storage redundancy for $Vault01 to GeoRedundant.
 
 ## PARAMETERS
@@ -118,10 +117,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ARSVault
-Parameter 'Vault' accepts value of type 'ARSVault' from the pipeline
+### Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

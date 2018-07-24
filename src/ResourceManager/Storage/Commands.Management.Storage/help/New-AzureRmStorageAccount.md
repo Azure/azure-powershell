@@ -71,7 +71,6 @@ This command creates a Storage account with Hierarchical Namespace enabled.
 ### -AccessTier
 Specifies the access tier of the Storage account that this cmdlet creates.
 The acceptable values for this parameter are: Hot and Cool.
-
 If you specify a value of BlobStorage for the *Kind* parameter, you must specify a value for the
 *AccessTier* parameter. If you specify a value of Storage for this *Kind* parameter, do not specify
 the *AccessTier* parameter.
@@ -183,11 +182,9 @@ Accept wildcard characters: False
 ### -Kind
 Specifies the kind of Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
-
 - Storage. General purpose Storage account that supports storage of Blobs, Tables, Queues, Files and Disks.
 - StorageV2. General Purpose Version 2 (GPv2) Storage account that supports Blobs, Tables, Queues, Files, and Disks, with advanced features like data tiering.
 - BlobStorage. Blob Storage account which supports storage of Blobs only.
-
 The default value is Storage.
 
 ```yaml
@@ -266,7 +263,6 @@ Accept wildcard characters: False
 ### -SkuName
 Specifies the SKU name of the Storage account that this cmdlet creates.
 The acceptable values for this parameter are:
-
 - Standard_LRS. Locally-redundant storage.
 - Standard_ZRS. Zone-redundant storage.
 - Standard_GRS. Geo-redundant storage.
@@ -288,7 +284,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table set as tags on the server. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -323,8 +318,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName)
+
+### System.Boolean
+Parameters: EnableHttpsTrafficOnly (ByPropertyName)
 
 ## OUTPUTS
 

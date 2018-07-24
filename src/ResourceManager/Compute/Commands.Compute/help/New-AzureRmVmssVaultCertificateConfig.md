@@ -51,10 +51,7 @@ Accept wildcard characters: False
 
 ### -CertificateUrl
 Specifies the URI of a certificate stored in the Key Vault.
-
 It is the base64 encoding of the following JSON Object which is encoded in UTF-8:
-
-
 {
   "data":"\<Base64-encoded-certificate\>",
   "dataType":"pfx",
@@ -123,13 +120,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: CertificateStore (ByPropertyName), CertificateUrl (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Management.Compute.Models.VaultCertificate
 
 ## NOTES
 

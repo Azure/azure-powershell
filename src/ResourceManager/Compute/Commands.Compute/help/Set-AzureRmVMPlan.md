@@ -20,7 +20,6 @@ Set-AzureRmVMPlan [-VM] <PSVirtualMachine> [-Name] <String> [[-Product] <String>
 
 ## DESCRIPTION
 The **Set-AzureRmVMPlan** cmdlet sets the Azure Marketplace plan information for a virtual machine.
-
 Before being able to deploy a Marketplace image through the command-line, programmatic access must be enabled or the virtual machine must be deployed by using the Azure portal.
 
 ## EXAMPLES
@@ -128,8 +127,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), Product (ByPropertyName), PromotionCode (ByPropertyName), Publisher (ByPropertyName)
 
 ## OUTPUTS
 

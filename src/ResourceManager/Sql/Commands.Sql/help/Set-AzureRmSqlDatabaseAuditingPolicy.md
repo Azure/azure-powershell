@@ -25,15 +25,12 @@ Set-AzureRmSqlDatabaseAuditingPolicy [-AuditType <AuditType>] [-PassThru]
 The **Set-AzureRmSqlDatabaseAuditingPolicy** cmdlet changes the auditing policy of an Azure SQL database.
 To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database.
 Specify the *StorageAccountName* parameter to specify the storage account for the audit logs and the *StorageKeyType* parameter to define the storage keys.
-
 You can also define retention for the audit logs table by setting the value of the *RetentionInDays* and *TableIdentifier* parameters to define the period and the seed for the audit log table names.
 Specify the *EventType* parameter to define which event types to audit.
-
 After the cmdlet runs successfully, auditing of the database is enabled.
 For Table Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, auditing stops using that policy. For Blob Auditing, if the database used the policy of its server for auditing before you ran this cmdlet, both auditing policies will exist side-by-side.
 If the cmdlet succeeds and you use the *PassThru* parameter, it returns an object describing the current auditing policy in addition to the database identifiers.
 Database identifiers include, but are not limited to, **ResourceGroupName**, **ServerName**, and **DatabaseName**.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -148,7 +145,6 @@ Accept wildcard characters: False
 ### -EventType
 Specifies the event types to audit.
 This parameter is only applicable to Table auditing.
-
 You can specify several event types.
 You can specify All to audit all of the event types or None to specify that no events will be audited.
 If you specify All or None at the same time, the cmdlet does not run.
@@ -252,10 +248,8 @@ Accept wildcard characters: False
 ### -StorageKeyType
 Specifies which of the storage access keys to use.
 The acceptable values for this parameter are:
-
 - Primary
 - Secondary
-
 The default value is Primary.
 
 ```yaml
@@ -323,12 +317,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType
+Parameters: AuditType (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+Parameters: AuditActionGroup (ByPropertyName)
+
+### System.String[]
+Parameters: AuditAction (ByPropertyName), EventType (ByPropertyName)
+
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), StorageAccountName (ByPropertyName), StorageKeyType (ByPropertyName), TableIdentifier (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

@@ -203,23 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
+### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), UserMetadata (ByPropertyName)
 
-### -NamespaceName
-System.String
-
-### -WcfRelayName
-System.String
-
-### -InputObject
-Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
-
-### -WcfRelayType
-System.String
-
-### -UserMetadata
-System.String
+### Microsoft.Azure.Commands.Relay.Models.WcfRelayAttributes
+Parameters: InputObject (ByPropertyName)
 
 ## OUTPUTS
 

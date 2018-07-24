@@ -192,13 +192,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), ProtectedSettingFilePath (ByPropertyName), SettingFilePath (ByPropertyName), TypeHandlerVersion (ByPropertyName)
+
+### System.Boolean
+Parameters: AutoUpgradeMinorVersion (ByPropertyName)
 
 ## OUTPUTS
 
-###  
-This cmdlet does not generate any output.
+### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
 
 ## NOTES
 
