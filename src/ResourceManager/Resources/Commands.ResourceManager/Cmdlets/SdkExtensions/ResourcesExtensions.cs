@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
 
                 resourcesTable.AppendFormat(rowFormat, tag.Key, tag.Value);
             }
-            
+
             return resourcesTable.ToString();
         }
 
@@ -247,6 +247,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
                 ProviderName = feature.Name.Substring(0, feature.Name.IndexOf('/')),
                 RegistrationState = feature.Properties.State,
             };
+        }
+
+        public static Hashtable ToHashtable(this object obj)
+        {
+            return new Hashtable(obj.GetType()
+                                    .GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public)
+                                    .ToDictionary(p => p.Name, p => p.GetValue(obj, null)));
+
         }
     }
 }
