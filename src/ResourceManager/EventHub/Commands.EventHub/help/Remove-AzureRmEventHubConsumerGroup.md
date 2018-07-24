@@ -43,23 +43,27 @@ PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceGroupName MyResourceGroupNa
 
 Deletes the consumer group \`MyConsumerGroupName\` from the Event Hub \`MyEventHubName\`, scoped to the \`MyNamespaceName\` namespace.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable
 ```
+PS C:\> $inputobject = Get-AzureRmEventHubConsumerGroup <params>
 PS C:\> Remove-AzureRmEventHubConsumerGroup -InputObject $inputobject
 ```
 
-Deletes the consumer group  provided through $inputobject for -InputObject parameter.
-
-### Example 3 - ResourceId
+### Example 2.2 - InputObject - Using Piping
 ```
-PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId $resourceid
-```
-OR
-```
-PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId "ARM id of the consumer group to be deleted/removed"
+PS C:\> Get-AzureRmEventHubConsumerGroup <params> | Remove-AzureRmEventHubConsumerGroup
 ```
 
-Deletes the consumer group provided through ARM Id in $resourceid/string for -ResourceId parameter
+### Example 3.1 - ResourceId Using Vairable
+```
+PS C:\> $resourceid = Get-AzureRmEventHubConsumerGroup <params>
+PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId $resourceid.Id
+```
+
+### Example 3.2 - ResourceId Using string
+```
+PS C:\> Remove-AzureRmEventHubConsumerGroup -ResourceId "/subscriptions/xxx-xxxx-xxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName/consumergroups/ConsumerGroupName"
+```
 
 ## PARAMETERS
 
