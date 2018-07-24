@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                     return;
                 }
 
-                throw;
+                throw e;
             }
         }
     }
