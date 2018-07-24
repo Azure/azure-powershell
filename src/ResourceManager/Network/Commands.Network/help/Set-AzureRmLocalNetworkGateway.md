@@ -24,6 +24,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway <PSLocalNetworkGateway>
 The **Set-AzureRmLocalNetworkGateway** cmdlet modifies a local network gateway.
 
 ## EXAMPLES
+### Example 1:
 ```
 $lgw = Get-AzureRmLocalNetworkGateway -Name myLocalGW -ResourceGroupName myRG
 Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $lgw
