@@ -42,23 +42,29 @@ PS C:\> Remove-AzureRmServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -
 
 Removes the Service Bus queue `SB-Queue_exampl1` from the namespace `SB-Example1`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using variable: 
 ```
+PS C:\> $inputobject = Get-AzureRmServiceBusQueue <params>
 PS C:\> Remove-AzureRmServiceBusQueue -InputObject $inputobject 
 ```
-
 Removes the Service Bus queue provided in the $inputobject for -InputObject parameter
 
-### Example 3 - ResourceId
+### Example 2.1 - InputObject - Using Piping: 
 ```
-PS C:\> Remove-AzureRmServiceBusQueue -ResourceId $resourceid
-```
-OR
-```
-PS C:\> Remove-AzureRmServiceBusQueue -ResourceId "queue ARM Id"
+PS C:\>  Get-AzureRmServiceBusQueue <params> | Remove-AzureRmServiceBusQueue
 ```
 
+### Example 3.1 - ResourceId - Using variable:
+```
+PS c:\> $resourceid = Get-AzureRmServiceBusQueue <params>
+PS C:\> Remove-AzureRmServiceBusQueue -ResourceId $resourceid.Id
+```
 Removes the Service Bus queue provided in the ARM id in $resourceid/string for -ResourceId parameter
+
+### Example 3.2 - ResourceId - passign as string:
+```
+PS C:\> Remove-AzureRmServiceBusQueue -ResourceId "/subscriptions/xxxx-xxxxx-xxxxx-xxxxxx-xxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/queues/QueueName"
+```
 
 ## PARAMETERS
 
@@ -227,7 +233,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

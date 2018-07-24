@@ -37,20 +37,28 @@ PS C:\> Remove-AzureRmServiceBusRule -ResourceGroup Default-ServiceBus-WestUS -N
 
 Removes the rule `SBRule` of subscription `SBSubscription` of specified topic `SBTopic`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable: 
 ```
+PS C:\> $inputobject = Get-AzureRmServiceBusRule <params>
 PS C:\> Remove-AzureRmServiceBusRule -InputObject $inputobject
 ```
 
 Removes the rule provided through $inputobject for -InputObject parameter
 
-### Example 2 - ResourceId
+### Example 2.2 - InputObject - Using Piping: 
 ```
-PS C:\> Remove-AzureRmServiceBusRule -ResourceId $resourceid
+PS C:\> Get-AzureRmServiceBusRule <params> | Remove-AzureRmServiceBusRule
 ```
-OR
+
+### Example 3.1 - ResourceId - Using Variable
 ```
-PS C:\> Remove-AzureRmServiceBusRule -ResourceId "ARM of id rule to be removed"
+PS C:\> $resourceid = Get-AzureRmServiceBusRule <params>
+PS C:\> Remove-AzureRmServiceBusRule -ResourceId $resourceid.Id
+```
+
+### Example 3.1 - ResourceId - Using string value
+```
+PS C:\> Remove-AzureRmServiceBusRule -ResourceId "/subscriptions/xxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName/subscriptions/SubscriptionName/rules/RuleName"
 ```
 
 Removes the rule provided through ARM Id in $resourceid/string for -ResourceId parameter 

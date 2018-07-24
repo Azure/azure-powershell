@@ -42,23 +42,27 @@ PS C:\> Remove-AzureRmServiceBusNamespace -ResourceGroup Default-ServiceBus-West
 
 Removes the Service Bus namespace `SB-Example1` from the specified resource group `Default-ServiceBus-WestUS`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using variable: 
 ```
+PS C:\> $inputobject = Get-AzureRmServiceBusNamespace <params>
 PS C:\> Remove-AzureRmServiceBusNamespace -InputObject $inputobject
 ```
-
 Removes the Service Bus namespace provided through the $inputobject.
+
+### Example 2.2 - InputObject - Using Piping:
+```
+PS C:\> Get-AzureRmServiceBusNamespace <params> | Remove-AzureRmServiceBusNamespace
+```
+Removes the Service Bus namespace using Piping.
+
 
 ### Example 3 - ResourceId
 ```
+PS c:\> $ResourceId = (Get-AzureRmResource -ResourceType Microsoft.ServiceBus/namespaces).ResourceId
 PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId $resourceid
 ```
-OR
-```
-PS C:\> Remove-AzureRmServiceBusNamespace -ResourceId "ARM id of the namespace to de removed"
-```
 
-Removes the Service Bus namespace provided through ARM id in $resourceid/string for -ResourceId parameter
+Removes the Service Bus namespace provided through ARM id in $resourceid for -ResourceId parameter or through piping.
 
 ## PARAMETERS
 
@@ -212,7 +216,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

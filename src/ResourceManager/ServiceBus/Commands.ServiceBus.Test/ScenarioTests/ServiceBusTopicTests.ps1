@@ -52,18 +52,11 @@ function ServiceBusTopicTests
 	# Get all Topics
 	$ResulListTopic = Get-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName
 	Assert-True {$ResulListTopic.Count -gt 0} "no Topics were found in ListTopic"
-
-	## Delete the created Topic
-	#$ResultDeleteTopic = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListTopic[0].Name
-	#Assert-True {$ResultDeleteTopic} "Topic not deleted"
-
+		
 	# Cleanup
 	# Delete all Created Topic
 	Write-Debug " Delete the Topic"
-	#for ($i = 0; $i -lt $ResulListTopic.Count; $i++)
-	#{
-	#	$delete1 = Remove-AzureRmServiceBusTopic -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -TopicName $ResulListTopic[$i].Name		
-	#}
+	
 	Remove-AzureRmServiceBusTopic -ResourceId $resltSetTopic.Id
 
     Write-Debug " Delete namespaces"
