@@ -147,7 +147,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Updated all help files to include full parameter types and correct input/output types.
-* Updated the ADF .Net SDK version to 1.1.0.'
+* Updated the ADF .Net SDK version to 1.1.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.'
 
         # Prerelease string of this module
         # Prerelease = ''

@@ -19,6 +19,8 @@
     - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
 
 #### AzureRM.Compute
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk
@@ -28,6 +30,9 @@
 
 #### AzureRM.DataFactoryV2
 * Updated the ADF .Net SDK version to 1.1.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
 
 #### AzureRM.DataLakeStore
 * Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
