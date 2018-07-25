@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Search.dll'
@@ -118,7 +118,7 @@ PrivateData = @{
         Prerelease = 'preview'
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Set minimum dependency of module to PowerShell 5.0'
+        ReleaseNotes = '* Introduce the first version of Azure Search Service cmdlets'
 
     } # End of PSData hashtable
 

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Search;
 using Microsoft.Azure.Management.Search.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Management.Search
@@ -120,6 +121,18 @@ namespace Microsoft.Azure.Commands.Management.Search
             }
 
             WriteObject(output, true);
+        }
+
+        protected void CatchThrowInnerException(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (AggregateException ae)
+            {
+                throw ae.InnerException;
+            }
         }
     }
 }

@@ -73,17 +73,16 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 var svc = SearchClient.Services.GetWithHttpMessagesAsync(ResourceGroupName, Name).Result;
                 WriteSearchService(svc.Body);
             }
-            catch (Exception e)
+            catch (AggregateException ae)
             {
-                if(e is AggregateException && 
-                    e.InnerException is CloudException 
-                    && ((CloudException)e.InnerException).Response?.StatusCode == HttpStatusCode.NotFound)
+                if (ae.InnerException is CloudException
+                    && ((CloudException)ae.InnerException).Response?.StatusCode == HttpStatusCode.NotFound)
                 {
                     // the method throws an exception when the service does not exist.
                     return;
                 }
 
-                throw e;
+                throw ae.InnerException;
             }
         }
     }
