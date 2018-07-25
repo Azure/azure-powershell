@@ -222,7 +222,6 @@ Specifies the type of identity used for the virtual machine scale set.
 The type 'SystemAssignedUserAssigned' includes both an implicitly created identity and a set of user assigned identities.
 The type 'None' will remove any identities from the virtual machine scale set.
 The acceptable values for this parameter are:
-
 - SystemAssigned
 - UserAssigned
 - SystemAssignedUserAssigned
@@ -354,7 +353,6 @@ Accept wildcard characters: False
 ### -ManagedDiskStorageAccountType
 Specifies the storage account type for managed disk.
 The acceptable values for this parameter are:
-
 - StandardLRS
 - PremiumLRS
 
@@ -425,14 +423,11 @@ Accept wildcard characters: False
 ### -OsDiskCaching
 Specifies the caching mode of the operating system disk. 
 The acceptable values for this parameter are:
-
 - None
 - ReadOnly
 - ReadWrite
-
 The default value is ReadWrite.
 If you change the caching value, the cmdlet will restart the virtual machine.
-
 This setting affects the consistency and performance of the disk.
 
 ```yaml
@@ -633,7 +628,6 @@ Accept wildcard characters: False
 ### -SkuTier
 Specifies the tier of VMSS.
 The acceptable values for this parameter are:
-
 - Standard
 - Basic
 
@@ -651,7 +645,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -684,7 +677,6 @@ Accept wildcard characters: False
 ### -UpgradePolicyMode
 Specified the mode of an upgrade to virtual machines in the scale set.
 The acceptable values for this parameter are:
-
 - Automatic
 - Manual
 - Rolling
@@ -766,7 +758,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -786,8 +777,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### VirtualMachineScaleSet
-Parameter 'VirtualMachineScaleSet' accepts value of type 'VirtualMachineScaleSet' from the pipeline
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), VMScaleSetName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByValue)
 
 ## OUTPUTS
 

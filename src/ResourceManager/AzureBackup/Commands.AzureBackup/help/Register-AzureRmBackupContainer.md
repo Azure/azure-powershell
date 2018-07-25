@@ -41,7 +41,6 @@ PS C:\> Register-AzureRmBackupContainer -Vault $Vault -Name "Contoso03Vm" -Servi
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores the vault in the $Vault variable.
-
 The second command registers the virtual machine named Contoso03Vm with the vault in $Vault.
 That virtual machine belongs to the service named ContosoService27.
 
@@ -94,10 +93,8 @@ Accept wildcard characters: False
 
 ### -ServiceName
 Specifies the service name of the virtual machine that this cmdlet registers.
-
 Typically, a cloud service name has a suffix .cloudapp.net.
 Do not include the suffix when you specify this parameter.
-
 To obtain information about a virtual machine, use the Get-AzureRMVM cmdlet.
 The service name is the **DeploymentName** property of the virtual machine object.
 
@@ -134,11 +131,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupVault
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ServiceName (ByPropertyName)
+
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

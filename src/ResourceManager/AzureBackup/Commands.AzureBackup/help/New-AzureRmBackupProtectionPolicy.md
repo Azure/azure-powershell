@@ -36,7 +36,6 @@ New-AzureRmBackupProtectionPolicy [-Name] <String> [-Type] <String> [-Weekly] [-
 
 ## DESCRIPTION
 The **New-AzureRmBackupProtectionPolicy** cmdlet creates an Azure Backup policy as an Azure PowerShell object.
-
 A backup policy defines when and how often Backup backs up an item.
 The Enable-AzureRmBackupProtection cmdlet uses a backup policy.
 
@@ -55,12 +54,9 @@ DailyBkp                  AzureVM            Daily              26-Aug-15 3:00:0
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command creates a retention policy for 30 days of daily retention, and then stores it in the $Daily variable.
-
 The third command creates a retention policy that keeps the backup on the tenth and the twentieth of each month for twelve months.
 The command stores the retention policy in the $Monthly variable.
-
 The final command creates a backup policy for the vault in $Vault that has a daily backup time of 3:00 PM.
 The command assigns the retention policies stored in $Daily and $Monthly.
 The command stores the result in the $ProtectionPolicy variable.
@@ -103,7 +99,6 @@ Accept wildcard characters: False
 Specifies an array of days of the week.
 This policy runs backups on the days specified by this parameter.
 The acceptable values for this parameter are:
-
 - Monday 
 - Tuesday 
 - Wednesday 
@@ -111,7 +106,6 @@ The acceptable values for this parameter are:
 - Friday 
 - Saturday 
 - Sunday
-
 If you specify the *Weekly* parameter, specify this parameter.
 
 ```yaml
@@ -240,11 +234,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: Type (ByPropertyName)
+
+### System.DateTime
+Parameters: BackupTime (ByPropertyName)
+
+### System.String[]
+Parameters: DaysOfWeek (ByPropertyName)
+
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRetentionPolicy[]
+Parameters: RetentionPolicy (ByPropertyName)
+
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupProtectionPolicy
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupProtectionPolicy
 
 ## NOTES
 * None

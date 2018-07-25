@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// Cmdlet to add Azure Sql Databases into a Failover Group
     /// </summary>
     [Cmdlet(VerbsCommon.Add, "AzureRmSqlDatabaseToFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

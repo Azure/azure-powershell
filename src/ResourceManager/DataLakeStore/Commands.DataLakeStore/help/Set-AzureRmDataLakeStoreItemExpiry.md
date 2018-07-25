@@ -54,7 +54,6 @@ PS C:\> Set-AdlStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -Relative
 ```
 
 The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.
-
 The second command sets the expiration time of the file /myfile.txt 240 seconds relative to creation time at server.
 
 ## PARAMETERS
@@ -187,13 +186,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### System.DateTimeOffset
+Parameters: Expiration (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreEnums+PathRelativeExpiryOptions
+Parameters: RelativeFileExpiryOption (ByPropertyName)
+
+### System.Int64
+Parameters: RelativeTime (ByPropertyName)
 
 ## OUTPUTS
 
-### DataLakeStoreItem
-The updated file with a new expiration time.
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItem
 
 ## NOTES
 Alias: Set-AdlStoreItemExpiry

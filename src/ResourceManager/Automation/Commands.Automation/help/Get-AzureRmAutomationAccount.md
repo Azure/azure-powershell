@@ -27,7 +27,6 @@ Get-AzureRmAutomationAccount [-ResourceGroupName] <String> [-Name] <String>
 
 ## DESCRIPTION
 The **Get-AzureRmAutomationAccount** cmdlet gets Azure Automation accounts in a resource group.
-
 For more information about Automation accounts, see the New-AzureRmAutomationAccount cmdlet.
 
 ## EXAMPLES
@@ -110,8 +109,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

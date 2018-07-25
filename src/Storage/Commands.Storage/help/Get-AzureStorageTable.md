@@ -58,7 +58,7 @@ Specifies the storage context.
 To create it, you can use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -90,7 +90,7 @@ If the table name is empty, the cmdlet lists all the tables.
 Otherwise, it lists all tables that match the specified name or the regular name pattern.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TableName
 Aliases: N, Table
 
@@ -106,7 +106,7 @@ Specifies a prefix used in the name of the table or tables you want to get.
 You can use this to find all tables that start with the same string, such as table.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: TablePrefix
 Aliases:
 
@@ -122,11 +122,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
 ### System.String
-Parameter 'Name' accepts value of type 'String' from the pipeline
+Parameters: Name (ByPropertyName, ByValue)
+
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

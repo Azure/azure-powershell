@@ -22,7 +22,6 @@ Get-AzureRmLogicAppUpgradedDefinition -ResourceGroupName <String> -Name <String>
 The **Get-AzureRmLogicAppUpgradedDefinition** cmdlet gets the upgraded definition for the schema version and logic app from a resource group.
 This cmdlet returns an object that represents the definition of the upgraded logic app.
 Specify the resource group name, logic app name, and target schema version.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -179,7 +178,6 @@ $UpgradedDefinition.ToString()
 
 The first command gets the definition for the logic app upgraded to the specified target schema version.
 The command stores the definition in the $UpgradedDefinition variable.
-
 The second command displays the contents of $UpgradedDefinition as a string.
 
 ## PARAMETERS
@@ -249,8 +247,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

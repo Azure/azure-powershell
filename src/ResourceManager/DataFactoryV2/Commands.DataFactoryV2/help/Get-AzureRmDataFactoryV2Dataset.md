@@ -81,7 +81,6 @@ This command gets information about the dataset named DAWikipediaClickEvents in 
 Specifies a PSDataFactory object.
 This cmdlet gets datasets that belong to the data factory that this parameter specifies.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
 Parameter Sets: ByFactoryObject
@@ -177,7 +176,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+Parameters: DataFactory (ByValue)
 
 ## OUTPUTS
 

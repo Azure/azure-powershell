@@ -214,23 +214,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### -ResourceGroupName
-System.String
+### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName), UserMetadata (ByPropertyName)
 
-### -NamespaceName
-System.String
+### Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
+Parameters: InputObject (ByPropertyName)
 
-### -HybridConnectionsName
-System.String
-
-### -InputObject
-Microsoft.Azure.Commands.Relay.Models.HybridConnectionAttibutes
-
-### -RequiresClientAuthorization
-System.Boolean
-
-### -UserMetadata
-System.String
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

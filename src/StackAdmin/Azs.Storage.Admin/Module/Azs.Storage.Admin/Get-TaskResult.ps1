@@ -7,7 +7,7 @@ Microsoft.PowerShell.Core\Set-StrictMode -Version Latest
 
 <#
 .DESCRIPTION
-   Get zero or more result items from a task. Optionally, skip N items or take only the top N items. If paged, assigns $PageResult.Result
+   Get zero or more result items from a task. Optionally, skip N items or take only the top N items. If paged, assigns $PageResult.Page
    the page item result, and the returned result items are the items within the page.
 
 .PARAMETER  TaskResult

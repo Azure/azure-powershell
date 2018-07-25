@@ -159,13 +159,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance[]
+Parameters: Paths (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: Force (ByPropertyName), PassThru (ByPropertyName), Recurse (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
-If PassThru is specified, returns the result of the operation.
+### System.Boolean
 
 ## NOTES
 

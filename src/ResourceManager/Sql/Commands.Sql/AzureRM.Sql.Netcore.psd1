@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Sql.dll', 
@@ -189,8 +189,8 @@ CmdletsToExport = 'Get-AzureRmSqlDatabaseTransparentDataEncryption',
     'Remove-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlServerDnsAlias', 
     'Set-AzureRmSqlServerDnsAlias', 'New-AzureRmSqlDatabaseRestorePoint', 
     'Remove-AzureRmSqlDatabaseRestorePoint', 
-    'Stop-AzureRmSqlElasticPoolActivity',
-    'Add-AzureRmSqlServerTransparentDataEncryptionCertificate',
+    'Stop-AzureRmSqlElasticPoolActivity', 
+    'Add-AzureRmSqlServerTransparentDataEncryptionCertificate', 
     'Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate',
 	'Enable-AzureRmSqlServerAdvancedThreatProtection', 'Disable-AzureRmSqlServerAdvancedThreatProtection', 
   	'Get-AzureRmSqlServerAdvancedThreatProtectionPolicy',

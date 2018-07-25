@@ -41,7 +41,6 @@ PS C:\> Remove-AzurRmUserAssignedIdentity -ResourceGroupName PSRG -Name ID1
 ```
 
 This example cmdlet deletes the identity **ID1** under resource group **PSRG**.
-
 True
 
 ## PARAMETERS
@@ -187,7 +186,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.ManagedServiceIdentity.Models.PsUserAssignedIdentity
+Parameters: InputObject (ByValue)
+
 ### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

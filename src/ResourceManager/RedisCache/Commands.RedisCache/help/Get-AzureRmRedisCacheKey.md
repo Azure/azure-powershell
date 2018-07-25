@@ -84,13 +84,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Management.Redis.Models.RedisAccessKeys
-This cmdlet returns primary and secondary access keys for a Redis Cache.
 
 ## NOTES
 

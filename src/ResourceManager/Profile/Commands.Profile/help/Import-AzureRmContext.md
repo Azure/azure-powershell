@@ -156,13 +156,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRMProfile
-Contains the set of credentials, accounts, and subscriptions that are used to communicate with Azure.
+### Microsoft.Azure.Commands.Common.Authentication.Models.AzureRmProfile
+Parameters: AzureContext (ByPropertyName)
+
+### System.String
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Profile.Models.PSAzureProfile
-Contains the set of credentials, accounts, and subscriptions that can be used to communicate with Azure.
 
 ## NOTES
 

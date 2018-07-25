@@ -33,10 +33,8 @@ PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-Az
 
 The first command creates a configuration object by using the **New-AzureVMSqlServerAutoPatchingConfig** cmdlet.
 The command stores the configuration in the $AutoPatchingConfig variable.
-
 The second command gets the virtual machine named VirtualMachine11 on the service named Service02 by using the Get-AzureRmVM cmdlet.
 The command passes that object to the current cmdlet by using the pipeline operator.
-
 The current cmdlet sets the automatic patching settings in $AutoPatchingConfig for the virtual machine.
 The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 
@@ -48,9 +46,7 @@ PS C:\> Get-AzureRmVM -ServiceName "Service02" -Name "VirtualMachine11" | Set-Az
 
 The first command creates a configuration object by using the **New-AzureVMSqlServerAutoBackupConfig** cmdlet.
 The command stores the configuration in the $AutoBackupConfig variable.
-
 The second command gets the virtual machine named VirtualMachine11 on the service named Service02, and then passes it to the current cmdlet.
-
 The current cmdlet sets the automatic backup settings in $AutoBackupConfig for the virtual machine.
 The command passes the virtual machine to the Update-AzureRmVM cmdlet.
 
@@ -212,8 +208,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Version (ByPropertyName), VMName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.AutoPatchingSettings
+Parameters: AutoPatchingSettings (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.AutoBackupSettings
+Parameters: AutoBackupSettings (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.KeyVaultCredentialSettings
+Parameters: KeyVaultCredentialSettings (ByPropertyName)
 
 ## OUTPUTS
 

@@ -103,8 +103,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### System.Guid
+Parameters: ReservationId (ByPropertyName), ReservationOrderId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Parameters: Reservation (ByValue)
 
 ## OUTPUTS
 

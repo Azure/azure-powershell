@@ -33,7 +33,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewaySslPolicy -ApplicationGateway $get
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
-
 This second command modifies the ssl policy to a policy type Predefined and policy name AppGwSslPolicy20170401.
 
 ## PARAMETERS
@@ -86,7 +85,6 @@ Accept wildcard characters: False
 ### -DisabledSslProtocols
 Specifies which protocols are disabled.
 The acceptable values for this parameter are:
-
 - TLSv1_0 
 - TLSv1_1 
 - TLSv1_2
@@ -187,7 +185,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

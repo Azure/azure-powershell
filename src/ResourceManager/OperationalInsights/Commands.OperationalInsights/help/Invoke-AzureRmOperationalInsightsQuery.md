@@ -28,10 +28,8 @@ Invoke-AzureRmOperationalInsightsQuery -Workspace <PSWorkspace> -Query <String> 
 
 ## DESCRIPTION
 The **Invoke-AzureRmOperationalInsightsQuery** cmdlet returns the search results based on the specified parameters.
-
 You can access the status of the search in the Metadata property of the returned object.
 If the status is Pending, then the search has not completed, and the results will be from the archive.
-
 You can retrieve the results of the search from the Value property of the returned object.
 
 ## EXAMPLES
@@ -220,12 +218,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
-If piped in, the workspace ID will be extracted from the PSWorkspace. Otherwise you can use the workspaceId parameter to specify the workspace ID manually.
+Parameters: Workspace (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.OperationalInsights.Models.PSQueryResponse
-The ***PSQueryResponse*** contains the Results, Render & Statistics of the query.
 
 ## NOTES
 

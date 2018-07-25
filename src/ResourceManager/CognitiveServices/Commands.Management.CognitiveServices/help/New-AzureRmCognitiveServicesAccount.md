@@ -126,14 +126,12 @@ Accept wildcard characters: False
 ### -SkuName
 Specifies the SKU for the account.
 The acceptable values for this parameter are:
-
 - F0 (free tier)
 - S0
 - S1
 - S2
 - S3
 - S4
-
 For more information, see [Cognitive Service APIs](https://www.microsoft.com/cognitive-services/en-us/apis).
 
 ```yaml
@@ -165,7 +163,6 @@ Accept wildcard characters: False
 
 ### -Type
 Specifies the type of account to create. Current acceptable values for this parameter are:
-
 - Bing.Autosuggest.v7
 - Bing.CustomSearch
 - Bing.Search.v7
@@ -234,8 +231,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), SkuName (ByPropertyName), Type (ByPropertyName)
 
 ## OUTPUTS
 

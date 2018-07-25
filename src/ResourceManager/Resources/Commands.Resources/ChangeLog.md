@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated help files to include full parameter types.
+* Updated help files to include full parameter types and correct input/output types.
+* Fix piping scenario with `Set-AzureRmResource`
 
 ## Version 6.2.1
 * Update Roleassignment and roledefinition cmdlets:
