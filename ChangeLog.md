@@ -1,6 +1,7 @@
 ﻿## 6.5.0 - July 2018
 #### AzureRM.Profile
 * Updated help for 'Get-AzureRmContextAutosaveSetting'
+* Added example for Set-AzureRmLocalNetworkGateway
 
 #### Azure.Storage
 * Support Upload Blob or File with write only Sas token
