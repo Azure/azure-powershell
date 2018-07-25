@@ -294,9 +294,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: CertValue (ByPropertyName), DisplayName (ByPropertyName), HomePage (ByPropertyName)
 
-This cmdlet does not accept any input.
+### System.String[]
+Parameters: IdentifierUris (ByPropertyName), ReplyUrls (ByPropertyName)
+
+### System.Boolean
+Parameters: AvailableToOtherTenants (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
+Parameters: PasswordCredentials (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
+Parameters: KeyCredentials (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: Password (ByPropertyName)
+
+### System.DateTime
+Parameters: EndDate (ByPropertyName), StartDate (ByPropertyName)
 
 ## OUTPUTS
 

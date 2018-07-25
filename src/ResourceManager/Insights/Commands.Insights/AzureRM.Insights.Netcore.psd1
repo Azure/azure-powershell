@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,7 +51,7 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Monitor.dll'
@@ -76,6 +76,7 @@ CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric',
     'Remove-AzureRmLogProfile', 'Get-AzureRmLogProfile', 
     'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
     'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
+    'Remove-AzureRmDiagnosticSetting',
     'New-AzureRmAutoscaleNotification', 'New-AzureRmAutoscaleProfile', 
     'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
     'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
@@ -89,7 +90,7 @@ CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric',
     'Enable-AzureRmActivityLogAlert', 'Disable-AzureRmActivityLogAlert', 
     'Remove-AzureRmActivityLogAlert', 'New-AzureRmActionGroupReceiver', 
     'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 
-    'Remove-AzureRmActionGroup'
+    'Remove-AzureRmActionGroup', 'New-AzureRmMetricFilter'
 
 # Variables to export from this module
 # VariablesToExport = @()

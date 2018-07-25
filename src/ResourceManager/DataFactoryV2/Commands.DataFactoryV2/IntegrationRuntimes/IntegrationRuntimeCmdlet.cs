@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         protected override void ByResourceId()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByResourceId, StringComparison.OrdinalIgnoreCase))
+            if (!string.IsNullOrWhiteSpace(ResourceId))
             {
                 base.ByResourceId();
 
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 
         protected override void ByIntegrationRuntimeObject()
         {
-            if (ParameterSetName.Equals(ParameterSetNames.ByIntegrationRuntimeObject, StringComparison.OrdinalIgnoreCase))
+            if (InputObject != null)
             {
                 base.ByIntegrationRuntimeObject();
                 Name = InputObject.Name;

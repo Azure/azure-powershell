@@ -22,7 +22,6 @@ Remove-AzureRmSqlDatabaseDataMaskingRule [-PassThru] [-Force] -SchemaName <Strin
 ## DESCRIPTION
 The **Remove-AzureRmSqlDatabaseDataMaskingRule** cmdlet removes a specific data masking rule from an Azure SQL database.
 You can remove a data masking rule by using the *ResourceGroupName*, *ServerName*, *DatabaseName*, and *RuleId* parameters to identify the rule that this cmdlet removes.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -209,11 +208,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel
+### System.String
+Parameters: ColumnName (ByPropertyName), DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), SchemaName (ByPropertyName), ServerName (ByPropertyName), TableName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.DatabaseDataMaskingRuleModel
+### System.Object
 
 ## NOTES
 

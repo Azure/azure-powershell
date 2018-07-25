@@ -65,7 +65,6 @@ Accept wildcard characters: False
 ### -KeyType
 Specifies the type of the agent registration key.
 Valid values are: 
-
 - Primary 
 - Secondary
 
@@ -103,8 +102,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), KeyType (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

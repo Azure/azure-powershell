@@ -21,7 +21,6 @@ Restore-AzureRmBackupItem [-StorageAccountName] <String> [-RecoveryPoint] <Azure
 ## DESCRIPTION
 The **Restore-AzureRmBackupItem** cmdlet restores the data and configuration for an Azure Backup item to a specified recovery point.
 This cmdlet starts the restore from the Backup vault to your account.
-
 The restore operation does not restore the full virtual machine.
 It restores the disk data and configuration information.
 After the restore operation finished, you must create the virtual machine and start it.
@@ -42,16 +41,12 @@ co03-vm         Restore         InProgress      26-Aug-15 1:14:01 PM   01-Jan-01
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the **Get-AzureRmBackupContainer** cmdlet.
 The command stores that object in the $Container variable.
-
 The third command gets the backup item in the container in $Container by using the **Get-AzureRmBackupItem** cmdlet.
 The command stores that object in the $BackupItem variable.
-
 The fourth command gets recovery point for the item in $BackupItem.
 The command stores that object in the $RecoveryPoint variable.
-
 The final command restores the recovery point in $RecoveryPoint for the account named DestinationAccount.
 
 ## PARAMETERS
@@ -108,11 +103,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### AzureRmBackupRecoveryPoint
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint
+Parameters: RecoveryPoint (ByValue)
 
 ## OUTPUTS
 
-### AzureRmBackupJob
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
 
 ## NOTES
 

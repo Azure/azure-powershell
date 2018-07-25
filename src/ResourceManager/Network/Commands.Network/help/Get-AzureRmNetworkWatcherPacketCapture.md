@@ -51,7 +51,6 @@ Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCa
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 We then call Get-AzureRmNetworkWatcherPacketCapture to retrieve the status of the capture session. 
-
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
 ## PARAMETERS
@@ -167,7 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Parameters: NetworkWatcher (ByValue)
+
 ### System.String
+Parameters: NetworkWatcherName (ByValue), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

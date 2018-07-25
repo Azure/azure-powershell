@@ -231,13 +231,19 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
-Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule[]
+Parameters: IPRule (ByValue)
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule[]
+Parameters: VirtualNetworkRule (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Management.Storage.Models.PSVirtualNetworkRule
-Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
+
+### Microsoft.Azure.Commands.Management.Storage.Models.PSIpRule
 
 ## NOTES
 
