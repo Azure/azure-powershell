@@ -221,8 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Parameters: Container (ByPropertyName)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 
