@@ -42,23 +42,27 @@ PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace
 
 Removes the Event Hub \`MyEventHubName\`.
 
-### Example 2 - InputObject
+### Example 2.1 - InputObject - Using Variable:
 ```
+PS C:\> $inputobject = Get-AzureRmEventHub <params>
 PS C:\> Remove-AzureRmEventHub -InputObject $inputobject
 ```
 
-Removes the Event Hub provided through $inputobject for -InputObject parameter.
-
-### Example 3 - ResourceId
+### Example 2.2 - InputObject Using Piping:
 ```
-PS C:\> Remove-AzureRmEventHub -ResourceId $resourceid
-```
-OR
-```
-PS C:\> Remove-AzureRmEventHub -ResourceId "ARM Id of the EventHub to be removed"
+PS C:\> Get-AzureRmEventHub <params> | Remove-AzureRmEventHub
 ```
 
-Removes the Event Hub provided through ARM Id in $resourceid/string for -ResourceId parameter.
+### Example 3.1 - ResourceId - Using Variable:
+```
+PS C:\> $resourceid = Get-AzureRmEventHub <params>
+PS C:\> Remove-AzureRmEventHub -ResourceId $resourceid.Id
+```
+
+### Example 3.1 - ResourceId - Using string:
+```
+PS C:\> Remove-AzureRmEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
+```
 
 ## PARAMETERS
 
