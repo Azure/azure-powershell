@@ -144,11 +144,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryWebhook
-System.String
+Parameters: Webhook (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.ContainerRegistry.Models.EventInfo
+### Microsoft.Azure.Commands.ContainerRegistry.PSContainerRegistryEventInfo
 
 ## NOTES
 

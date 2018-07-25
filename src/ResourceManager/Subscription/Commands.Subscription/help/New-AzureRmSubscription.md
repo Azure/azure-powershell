@@ -196,7 +196,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
+### Microsoft.Azure.Commands.Subscription.Models.PSAzureSubscription
 
 ## NOTES
 

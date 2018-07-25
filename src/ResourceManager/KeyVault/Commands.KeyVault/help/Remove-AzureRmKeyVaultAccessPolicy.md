@@ -112,7 +112,6 @@ Remove-AzureRmKeyVaultAccessPolicy [-ResourceId] <String> [-EnabledForDeployment
 ## DESCRIPTION
 The **Remove-AzureRmKeyVaultAccessPolicy** cmdlet removes all permissions for a user or application or for all users and applications from a key vault.
 Even if you remove all permissions, the owner of the Azure subscription that contains the key vault can add permissions to the key vault.
-
 Note that although specifying the resource group is optional for this cmdlet, you should do so for better performance.
 
 ## EXAMPLES
@@ -431,6 +430,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

@@ -44,9 +44,7 @@ You can specify this configuration item for other cmdlets, such as the Set-Azure
 
 ### -DayOfWeek
 Specifies the day of the week when updates should be installed.
-
 The acceptable values for this parameter are:
-
 - Sunday
 - Monday
 - Tuesday
@@ -141,12 +139,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### AutoPatchingSettings
-This cmdlet returns object contains settings for automated patching.
+### Microsoft.Azure.Commands.Compute.AutoPatchingSettings
 
 ## NOTES
 

@@ -60,7 +60,6 @@ PS C:\> Get-AzureRmDataFactoryV2LinkedService -ResourceGroupName "ADF" -DataFact
 This command gets information about all linked services in the data factory named WikiADF, and then passes the linked services to the Format-List cmdlet by using the pipeline operator.
 That Windows PowerShell cmdlet formats the results.
 For more information, type Get-Help Format-List.
-
 You can use either one of the following ways:
 
 ### Example 2: Get information about a specific linked service
@@ -81,7 +80,6 @@ PS C:\>$DataFactory = Get-AzureRmDataFactoryV2 -ResourceGroupName "ADF" -Name "C
 ```
 
 The first command uses the Get-AzureRmDataFactoryV2 cmdlet to get the data factory named ContosoFactory, and then stores it in the $DataFactory variable.
-
 The second command gets information about the linked service for the data factory stored in $DataFactory, and then passes that information to the Format-Table cmdlet by using the pipeline operator.
 The Format-Table cmdlet formats the output as a dataset with the specified properties as dataset columns.
 
@@ -186,7 +184,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataFactory
+Parameters: DataFactory (ByValue)
 
 ## OUTPUTS
 

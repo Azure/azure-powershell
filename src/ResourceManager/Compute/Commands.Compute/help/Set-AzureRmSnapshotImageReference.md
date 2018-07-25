@@ -131,13 +131,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Snapshot
-System.String
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
+Parameters: Snapshot (ByPropertyName, ByValue)
+
+### System.String
+Parameters: Id (ByPropertyName)
+
+### System.Int32
+Parameters: Lun (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.Snapshot
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSSnapshot
 
 ## NOTES
 

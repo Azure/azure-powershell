@@ -23,9 +23,7 @@ New-AzureRmIntegrationAccountMap -ResourceGroupName <String> -Name <String> -Map
 The **New-AzureRmIntegrationAccountMap** cmdlet creates an integration account map.
 This cmdlet returns an object that represents the integration account map.
 Specifying the integration account name, resource group name, map name, and map definition.
-
 Template parameter file values that you specify at the command line take precedence over template parameter values in a template parameter object.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -229,8 +227,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: MapName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

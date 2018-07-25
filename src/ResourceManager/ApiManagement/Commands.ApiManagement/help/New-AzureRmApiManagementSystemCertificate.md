@@ -100,7 +100,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementCertificateInformation
+### System.String
+Parameters: PfxPath (ByPropertyName), StoreName (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: PfxPassword (ByPropertyName)
 
 ## OUTPUTS
 

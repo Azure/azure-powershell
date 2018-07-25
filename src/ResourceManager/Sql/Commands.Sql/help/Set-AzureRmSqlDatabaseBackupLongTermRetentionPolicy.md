@@ -403,8 +403,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), MonthlyRetention (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName), ServerName (ByPropertyName), WeeklyRetention (ByPropertyName), YearlyRetention (ByPropertyName)
+
+### System.Int32
+Parameters: WeekOfYear (ByPropertyName)
 
 ## OUTPUTS
 

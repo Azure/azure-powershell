@@ -70,10 +70,8 @@ Add-AzureRmDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag <S
 ## DESCRIPTION
 The **Add-AzureRmDnsRecordConfig** cmdlet adds a Domain Name System (DNS) record to a **RecordSet** object.
 The **RecordSet** object is an offline object, and changes to it do not change the DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet to persist the change to the Microsoft Azure DNS service.
-
 SOA records are created when a DNS zone is created, and are removed when the DNS zone is deleted.
 You cannot add or remove SOA records, but you can edit them.
-
 You can pass the **RecordSet** object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
@@ -447,14 +445,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-You can pipe a **RecordSet** object to this cmdlet.
-This is an offline representation of the **RecordSet**, and changes to it do not change DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet.
+Parameters: RecordSet (ByValue)
+
+### System.String
+Parameters: CaaTag (ByPropertyName), CaaValue (ByPropertyName), Cname (ByPropertyName), Exchange (ByPropertyName), Ipv4Address (ByPropertyName), Ipv6Address (ByPropertyName), Nsdname (ByPropertyName), Ptrdname (ByPropertyName), Target (ByPropertyName), Value (ByPropertyName)
+
+### System.UInt16
+Parameters: Port (ByPropertyName), Preference (ByPropertyName), Priority (ByPropertyName), Weight (ByPropertyName)
+
+### System.Byte
+Parameters: CaaFlags (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-This cmdlet returns the modified **RecordSet** object.
-In addition, the object passed in is modified directly.
 
 ## NOTES
 

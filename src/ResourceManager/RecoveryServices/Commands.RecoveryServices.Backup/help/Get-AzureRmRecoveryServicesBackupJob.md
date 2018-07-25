@@ -21,7 +21,6 @@ Get-AzureRmRecoveryServicesBackupJob [[-Status] <JobStatus>] [[-Operation] <JobO
 
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupJob** cmdlet gets Azure Backup jobs for a specific vault.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -36,7 +35,6 @@ V2VM             Backup               InProgress           4/23/2016 5:00:30 PM 
 ```
 
 The first command gets status of an in-progress job as an array, and then stores it in the $Joblist variable.
-
 The second command displays the first item in the $Joblist array.
 
 ### Example 2: Get all failed jobs in the last 7 days
@@ -156,7 +154,6 @@ Accept wildcard characters: False
 ### -Operation
 Specifies an operation of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
-
 - Backup
 - ConfigureBackup
 - DeleteBackupData
@@ -181,7 +178,6 @@ Accept wildcard characters: False
 ### -Status
 Specifies a status of the jobs that this cmdlet gets.
 The acceptable values for this parameter are:
-
 - InProgress
 - Failed
 - Cancelled
@@ -240,8 +236,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

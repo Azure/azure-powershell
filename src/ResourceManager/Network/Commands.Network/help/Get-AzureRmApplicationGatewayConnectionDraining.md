@@ -71,6 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayBackendHttpSettings
+Parameters: BackendHttpSettings (ByValue)
 
 ## OUTPUTS
 
