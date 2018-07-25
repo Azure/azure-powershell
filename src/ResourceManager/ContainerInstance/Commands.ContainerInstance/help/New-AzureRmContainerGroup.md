@@ -533,7 +533,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Collections.Hashtable
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 

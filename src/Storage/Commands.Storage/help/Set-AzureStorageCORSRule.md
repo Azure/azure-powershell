@@ -45,7 +45,6 @@ PS C:\> Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 
 The first command assigns an array of rules to the $CorsRules variable.
 This command uses standard extends over several lines in this code block.
-
 The second command assigns the rules in $CorsRules to the Blob service type.
 
 ### Example 2: Change properties of a CORS rule for blob service
@@ -58,9 +57,7 @@ PS C:\> Set-AzureStorageCORSRule -ServiceType Blob -CorsRules $CorsRules
 
 The first command gets the current CORS rules for the Blob type by using the **Get-AzureStorageCORSRule** cmdlet.
 The command stores the rules in the $CorsRules array variable.
-
 The second and third commands modify the first rule in $CorsRules.
-
 The final command assigns the rules in $CorsRules to the Blob service type.
 The revised rules overwrite the current CORS rules.
 
@@ -72,7 +69,7 @@ If the previous call fails in the specified interval, this cmdlet retries the re
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -91,7 +88,7 @@ This parameter can help reduce network connection problems in low bandwidth envi
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +104,7 @@ Specifies an Azure Storage context.
 To obtain a context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +120,7 @@ Specifies an array of CORS rules.
 You can retrieve the existing rules using the Get-AzureStorageCORSRule cmdlet.
 
 ```yaml
-Type: PSCorsRule[]
+Type: Microsoft.WindowsAzure.Commands.Storage.Model.ResourceModel.PSCorsRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +135,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -154,7 +151,7 @@ Indicates that this cmdlet returns a Boolean that reflects the success of the op
 By default, this cmdlet does not return a value.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +166,7 @@ Accept wildcard characters: False
 Specifies the length of the time-out period for the server part of a request.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -183,14 +180,13 @@ Accept wildcard characters: False
 ### -ServiceType
 Specifies the Azure Storage service type for which this cmdlet assigns rules.
 The acceptable values for this parameter are:
-
 - Blob 
 - Table 
 - Queue 
 - File
 
 ```yaml
-Type: StorageServiceType
+Type: Microsoft.WindowsAzure.Commands.Storage.Common.StorageServiceType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Blob, Table, Queue, File
@@ -207,9 +203,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
-
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

@@ -133,7 +133,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Boolean
-True if the context was successfully cleared, false otherwise.
 
 ## NOTES
 

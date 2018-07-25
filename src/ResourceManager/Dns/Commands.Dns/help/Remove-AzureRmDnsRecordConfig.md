@@ -70,11 +70,9 @@ Remove-AzureRmDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag
 ## DESCRIPTION
 The **Remove-AzureRmDnsRecordConfig** cmdlet removes a Domain Name System (DNS) record from a record set.
 The **RecordSet** object is an offline object, and changes to it do not change the DNS responses until after you run the Set-AzureRmDnsRecordSet cmdlet to persist the change to the Microsoft Azure DNS service.
-
 To remove a record, all the fields for that record type must match exactly.
 You cannot add or remove SOA records.
 SOA records are automatically created when a DNS zone is created and automatically deleted when the DNS zone is deleted.
-
 You can pass the **RecordSet** object to this cmdlet as a parameter or by using the pipeline operator.
 
 ## EXAMPLES
@@ -462,13 +460,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-You can pipe a **DnsRecordSet** object to this cmdlet.
-This is an offline representation of the record set and updates to it do not change DNS responses until after you run Set-AzureRmDnsRecordSet.
+Parameters: RecordSet (ByValue)
+
+### System.String
+Parameters: CaaTag (ByPropertyName), CaaValue (ByPropertyName), Cname (ByPropertyName), Exchange (ByPropertyName), Ipv4Address (ByPropertyName), Ipv6Address (ByPropertyName), Nsdname (ByPropertyName), Ptrdname (ByPropertyName), Target (ByPropertyName), Value (ByPropertyName)
+
+### System.UInt16
+Parameters: Port (ByPropertyName), Preference (ByPropertyName), Priority (ByPropertyName), Weight (ByPropertyName)
+
+### System.Byte
+Parameters: CaaFlags (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsRecordSet
-This cmdlet returns the modified **RecordSet** object.
 
 ## NOTES
 

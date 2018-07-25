@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpAddress", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmPublicIpAddress", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]

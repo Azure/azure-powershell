@@ -55,9 +55,7 @@ Tags           : Name        Value
 The first command creates a **DateTime** object by using the **Get-Date** cmdlet. That object
 specifies a time two years in the future. The command stores that date in the $Expires variable.
 For more information, type `Get-Help Get-Date`.
-
 The second command creates a variable to store tag values of high severity and Accounting.
-
 The final command modifies a key named ITSoftware. The command enables the key, sets its expiration
 time to the time stored in $Expires, and sets the tags that are stored in $Tags.
 
@@ -293,6 +291,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

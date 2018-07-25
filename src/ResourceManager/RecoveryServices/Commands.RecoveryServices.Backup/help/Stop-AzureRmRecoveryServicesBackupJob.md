@@ -28,9 +28,7 @@ Stop-AzureRmRecoveryServicesBackupJob [-JobId] <String> [-VaultId <String>]
 ## DESCRIPTION
 The **Stop-AzureRmRecoveryServicesBackupJob** cmdlet cancels an existing Azure Backup job.
 Use this cmdlet to stop a job that takes too long and blocks other activities.
-
 You can cancel only Backup and Restore job types.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -42,7 +40,6 @@ PS C:\> Stop-AzureRmRecoveryServicesBackupJob -JobID $Job.InstanceId
 ```
 
 The first command gets a backup job, and then stores the job in the $Job variable.
-
 The last command stops the job by specifying the Instance ID of the backup job in $Job.
 
 ## PARAMETERS
@@ -145,8 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

@@ -166,8 +166,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), ApplicationId (ByPropertyName), ApplicationVersion (ByPropertyName), FilePath (ByPropertyName), Format (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: ActivateOnly (ByPropertyName)
 
 ## OUTPUTS
 

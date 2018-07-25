@@ -23,7 +23,6 @@ Set-AzureRmSqlServerAuditingPolicy [-AuditType <AuditType>] [-AuditActionGroup <
 ## DESCRIPTION
 The **Set-AzureRmSqlServerAuditingPolicy** cmdlet changes the auditing policy of an Azure SQL Database server.
 Specify the *ResourceGroupName* and *ServerName* parameters to identify the server, the *StorageAccountName* parameter to specify the storage account for the audit logs, and the *StorageKeyType* parameter to define the storage keys to use.
-
 You can also define retention for the audit logs table by setting the value of the *RetentionInDays* and *TableIdentifier* parameters to define the period and the seed for the audit log table names.
 Specify the *EventType* parameter to define which event types to audit.
 After you run this cmdlet, auditing of the databases that use the policy of this server is enabled.
@@ -113,7 +112,6 @@ Accept wildcard characters: False
 ### -EventType
 Specifies the event types to audit.
 This parameter is only applicable to Table auditing.
-
 You can specify several event types.
 You can specify All to audit all of the event types or None to specify that no events will be audited.
 If you specify All or None at the same time, the command fails.
@@ -216,10 +214,8 @@ Accept wildcard characters: False
 ### -StorageKeyType
 Specifies which of the storage access keys to use.
 The acceptable values for this parameter are:
-
 - Primary
 - Secondary
-
 The default value is Primary.
 
 ```yaml
@@ -287,12 +283,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditType
+Parameters: AuditType (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditActionGroups[]
+Parameters: AuditActionGroup (ByPropertyName)
+
+### System.String[]
+Parameters: EventType (ByPropertyName)
+
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName), StorageAccountName (ByPropertyName), StorageKeyType (ByPropertyName), TableIdentifier (ByPropertyName)
+
+### System.Nullable`1[[System.UInt32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.Security.Model.ServerAuditingPolicyModel
+### Microsoft.Azure.Commands.Sql.Auditing.Model.AuditingPolicyModel
 
 ## NOTES
 

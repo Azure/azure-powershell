@@ -222,11 +222,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSHttpListener
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHttpListener
 
 ## NOTES
 

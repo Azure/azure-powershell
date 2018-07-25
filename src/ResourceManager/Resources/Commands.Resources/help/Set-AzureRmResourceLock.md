@@ -131,9 +131,7 @@ Accept wildcard characters: False
 
 ### -InformationAction
 Specifies how this cmdlet responds to an information event.
-
 The acceptable values for this parameter are:
-
 - Continue
 - Ignore
 - Inquire
@@ -262,7 +260,6 @@ Accept wildcard characters: False
 ### -ResourceName
 Specifies the name of the resource for which the lock applies.
 For instance, to specify a database, use the following format: 
-
 Server`/`Database
 
 ```yaml
@@ -295,11 +292,8 @@ Accept wildcard characters: False
 ### -Scope
 Specifies the scope to which the lock applies.
 For instance, to specify a database, use the following format: 
-
 `/subscriptions/`subscription ID`/resourceGroups/`resource group name`/providers/Microsoft.Sql/servers/`server name`/databases/`database name
-
 To specify a resource group, use the following format: 
-
 `/subscriptions/`subscription ID`/resourceGroups/`resource group name
 
 ```yaml
@@ -365,12 +359,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
-
 ## OUTPUTS
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 

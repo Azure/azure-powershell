@@ -270,12 +270,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSAzureContext
-Parameter 'Context' accepts value of type 'PSAzureContext' from the pipeline
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
+Parameters: Context (ByValue)
+
+### Microsoft.Azure.Commands.Profile.Models.PSAzureTenant
+Parameters: TenantObject (ByValue)
+
+### Microsoft.Azure.Commands.Profile.Models.PSAzureSubscription
+Parameters: SubscriptionObject (ByValue)
 
 ## OUTPUTS
 
-### PSAzureContext
+### Microsoft.Azure.Commands.Profile.Models.PSAzureContext
 
 ## NOTES
 
