@@ -19,7 +19,7 @@ using Microsoft.Azure.Management.Compute.Models;
 
 namespace Microsoft.Azure.Commands.Compute.Automation.Models
 {
-    public partial class PSRunCommandResult : PSInstanceViewStatusList
+    public partial class PSRunCommandResult : RunCommandResult
     {
         public string Name { get; set; }
         public DateTime? StartTime { get; set; }
@@ -27,6 +27,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Status { get; set; }
         public ApiError Error { get; set; }
         public Object Output { get; set; }
+
+        public int Capacity { get; set; }
+        public int Count { get; set; }
+        public InstanceViewStatus Item { get; set; }
 
         public PSRunCommandResult()
         {
