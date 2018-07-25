@@ -48,6 +48,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public string Name { get; set; }
 
         /// <summary>
+        /// The path of the event hub.
+        /// </summary>
+        public string Location { get; set; }
+
+        /// <summary>
         /// Exact time the Event was created.
         /// </summary>
         public DateTime? CreatedAt { get; set; }
