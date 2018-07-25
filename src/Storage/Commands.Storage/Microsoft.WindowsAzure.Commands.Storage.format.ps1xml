@@ -413,15 +413,6 @@
                 <ScriptBlock>$_.DeleteRetentionPolicy.RetentionDays</ScriptBlock>
               </ListItem>
               <ListItem>
-                <Label>DefaultServiceVersion</Label>
-                <PropertyName>DefaultServiceVersion</PropertyName>
-              </ListItem>
-            </ListItems>
-          </ListEntry>
-        </ListEntries>
-      </ListControl>
-    </View>  
-    <View>
                 <Label>StaticWebsite.Enabled</Label>
                 <ScriptBlock>$_.StaticWebsite.Enabled</ScriptBlock>
               </ListItem>
@@ -434,6 +425,19 @@
                 <ScriptBlock>$_.StaticWebsite.ErrorDocument404Path</ScriptBlock>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.Cors</ScriptBlock>
+                <Label>Cors</Label>
+              </ListItem>
+              <ListItem>
+                <Label>DefaultServiceVersion</Label>
+                <PropertyName>DefaultServiceVersion</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>  
+    <View>
       <Name>Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties</Name>
       <ViewSelectedBy>
         <TypeName>Microsoft.WindowsAzure.Storage.Shared.Protocol.LoggingProperties</TypeName>
