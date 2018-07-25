@@ -318,7 +318,7 @@
     <Compile Include="Models\PSResourceNavigationLink.cs" />
     <Compile Include="Models\PSApplicationGatewayRedirectConfiguration.cs" />
     <Compile Include="Models\PSRetentionPolicyParameters.cs" />
-    <Compile Include="Models\PSRoute.cs" />
+    <Compile Include="Generated\Models\PSRoute.cs" />
     <Compile Include="Models\PSRouteTable.cs" />
     <Compile Include="Models\PSSecurityGroupNetworkInterface.cs" />
     <Compile Include="Models\PSNetworkWatcher.cs" />
@@ -339,8 +339,7 @@
     <Compile Include="Models\PSTroubleshootingRecommendedActions.cs" />
     <Compile Include="Models\PSTroubleshootingResult.cs" />
     <Compile Include="Models\PSUsage.cs" />
-    <Compile Include="Models\PSUsageCustom.cs" />
-    <Compile Include="Models\PSUsageName.cs" />
+    <Compile Include="Generated\Models\PSUsageName.cs" />
     <Compile Include="Models\PSViewNsgRules.cs" />
     <Compile Include="Models\PSServiceProviderProperties.cs" />
     <Compile Include="Models\PSPeering.cs" />
@@ -413,7 +412,7 @@
     <Compile Include="NetworkWatcher\GetAzureNetworkWatcherReachabilityProvidersListCommand.cs" />
     <Compile Include="NetworkWatcher\GetAzureRMNetworkWatcherReachabilityReportCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
-    <Compile Include="Models\PSApplicationSecurityGroup.cs" />
+    <Compile Include="Generated\Models\PSApplicationSecurityGroup.cs" />
     <Compile Include="Generated\RouteTable\GetAzureRMRouteTableCommand.cs" />
     <Compile Include="Generated\RouteTable\NewAzureRMRouteTableCommand.cs" />
     <Compile Include="Generated\RouteTable\RemoveAzureRMRouteTableCommand.cs" />
