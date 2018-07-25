@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk
