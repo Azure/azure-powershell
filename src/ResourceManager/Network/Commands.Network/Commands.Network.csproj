@@ -208,6 +208,7 @@
     <Compile Include="ExpressRouteCrossConnection\ExpressRouteCrossConnectionBaseCmdlet.cs" />
     <Compile Include="ExpressRouteCrossConnection\GetAzureRMExpressRouteCrossConnectionCommand.cs" />
     <Compile Include="ExpressRouteCrossConnection\SetAzureRMExpressRouteCrossConnectionCommand.cs" />
+    <Compile Include="Generated\Usage\GetAzureRMUsageListCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AddAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\AzureLoadBalancerInboundNatPoolConfigBase.cs" />
     <Compile Include="LoadBalancer\InboundNatPool\GetAzureLoadBalancerInboundNatPoolConfigCommand.cs" />
@@ -422,7 +423,6 @@
     <Compile Include="Generated\RouteTable\Route\RemoveAzureRmRouteConfigCommand.cs" />
     <Compile Include="Generated\RouteTable\Route\SetAzureRmRouteConfigCommand.cs" />
     <Compile Include="Generated\RouteTable\SetAzureRMRouteTableCommand.cs" />
-    <Compile Include="Generated\Usage\GetAzureNetworkUsageCommand.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\GetAzureRmVirtualNetworkGatewaySupportedVpnDevice.cs" />
     <Compile Include="VirtualNetworkGatewayConnection\NewAzureRmIpsecPolicyCommand.cs" />

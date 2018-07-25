@@ -24,15 +24,31 @@
 // Please contact wanrpdev@microsoft.com if you need to make changes to this file.
 // </auto-generated>
 
-using Microsoft.Azure.Management.Network.Models;
-using Newtonsoft.Json;
+using System;
+using Microsoft.Azure.ServiceManagemenet.Common.Models;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
+using Xunit;
+using Xunit.Abstractions;
 
-
-namespace Microsoft.Azure.Commands.Network.Models
+namespace Commands.Network.Test.ScenarioTests
 {
-    public partial class PSUsageName
+    public class UsageTestsGenerated : RMTestBase
     {
-        public string Value { get; set; }
-        public string LocalizedValue { get; set; }
+        public XunitTracingInterceptor _logger;
+
+        public UsageTestsGenerated(Xunit.Abstractions.ITestOutputHelper output)
+        {
+            _logger = new XunitTracingInterceptor(output);
+            XunitTracingInterceptor.AddToContext(_logger);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, Category.wanrpdev)]
+        public void TestUsageCRUDMinimalParameters()
+        {
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, string.Format("Test-UsageCRUDMinimalParameters"));
+        }
     }
 }
