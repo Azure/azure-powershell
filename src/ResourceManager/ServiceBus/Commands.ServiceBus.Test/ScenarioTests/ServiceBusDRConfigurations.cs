@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         {
             _logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(_logger);
-            ServiceBusClient.ServiceBusDRWaitTime = 0;
         }
 
         [Fact]

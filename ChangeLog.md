@@ -1,4 +1,76 @@
-﻿## 6.4.0 - July 2018
+﻿## 6.5.0 - July 2018
+#### AzureRM.Profile
+* Updated help for 'Get-AzureRmContextAutosaveSetting'
+
+#### Azure.Storage
+* Support Upload Blob or File with write only Sas token
+- Set-AzureStorageBlobContent
+- Set-AzureStorageFileContent
+
+#### AzureRM.AnalysisServices
+* Add required property ResourceGroupName to AS.
+
+#### AzureRM.Automation
+* Update help and add example for 'New-AzureRMAutomationSchedule'
+
+#### AzureRM.Compute
+* Add -Tag parameter to Update/New-AzureRmAvailabilitySet
+* Add example for 'Add-AzureRmVmssExtension'
+* Add examples for 'Remove-AzureRmVmssExtension'
+* Update help for 'Set-AzureRmVMAccessExtension'
+* Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter 'SinglePlacementGroup' that enables the user to create the VMSS in a single placement group.
+
+#### AzureRM.EventHub
+* Added a readonly property 'PendingReplicationOperationsCount' to PSEventHubDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
+#### AzureRM.KeyVault
+* Update error message for Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.LogicApp
+* Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
+
+#### AzureRM.Network
+* Enable peering across Virtual Networks in multiple Tenants for Set/Add-AzureRmVirtualNetworkPeering
+* Updated below cmdlets for Application Gateway
+    - New-AzureRmApplicationGateway : Added EnableFIPS flag and Zones support
+    - New-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+    - Set-AzureRmApplicationGatewaySku : Added new skus Standard_v2 and WAF_v2
+* Regenerated RouteTable cmdlets with the latest generator version
+
+#### AzureRM.Relay
+* Updated markdown files, fix for the parameter name issue in example
+
+#### AzureRM.Resources
+* Update Roleassignment and roledefinition cmdlets:
+    - Remove extra roledefinition calls done as part of paging.
+* Fix Get-AzureRmRoleAssignment cmdlet
+    - Fix -ExpandPrincipalGroups command parameter functionality
+* Fix issue with 'Get-AzureRmResource' where '-ResourceType' parameter was case sensitive
+
+#### AzureRM.ServiceBus
+* Added top and skip parameter to list cmdlets
+* Added Standard to Premium NameSpace migration cmdlets :
+	- Start-AzureRmServiceBusMigration
+	- Get-AzureRmServiceBusMigration
+	- Complete-AzureRmServiceBusMigration
+	- Stop-AzureRmServiceBusMigration
+	- Remove-AzureRmServiceBusMigration
+* Added a readonly property 'PendingReplicationOperationsCount' to PSServiceBusDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
+
+#### AzureRM.ServiceFabric
+* Update example for 'New-AzureRmServiceFabricCluster'
+
+#### AzureRM.Sql
+* Adding new Cmdlets for Management.Sql to allow customers to add TDE Certificate to Sql Server instance or a Managed Instance
+	- Add-AzureRmSqlServerTransparentDataEncryptionCertificate
+	- Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate
+
+#### AzureRM.Websites
+* `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
+* `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated
+* `Set-AzureRmWebApp -PhpVersion` supports off as a valid php version
+
+## 6.4.0 - July 2018
 #### General
 * Fixed formatting of OutputType in help files for most modules
 

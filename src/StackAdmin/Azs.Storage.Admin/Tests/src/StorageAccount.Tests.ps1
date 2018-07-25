@@ -35,116 +35,116 @@
     Date:   February 28, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "StorageAccounts" -Tags @('StorageAccounts', 'Azs.Storage.Admin') {
+    Describe "StorageAccounts" -Tags @('StorageAccounts', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateStorageAccount {
-				param(
-					[Parameter(Mandatory=$true)]
-					$storageAccount
-				)
-				# Resource
-				$storageAccount								| Should Not Be $null
+            function ValidateStorageAccount {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $storageAccount
+                )
+                # Resource
+                $storageAccount								| Should Not Be $null
 
-				# Validate Storage account properties
-				$storageAccount.AccountStatus				| Should Not Be $null
-				$storageAccount.AccountType					| Should Not Be $null
-				$storageAccount.AcquisitionOperationCount	| Should Not Be $null
-				$storageAccount.CreationTime				| Should Not Be $null
-				$storageAccount.CurrentOperation			| Should Not Be $null
-				$storageAccount.Id							| Should Not Be $null
-				$storageAccount.Location					| Should Not Be $null
-				$storageAccount.Name						| Should Not Be $null
-				$storageAccount.PrimaryEndpoints			| Should Not Be $null
-				$storageAccount.PrimaryLocation				| Should Not Be $null
-				$storageAccount.ProvisioningState			| Should Not Be $null
-				$storageAccount.StatusOfPrimary				| Should Not Be $null
-				$storageAccount.TenantResourceGroupName		| Should Not Be $null
-				$storageAccount.TenantStorageAccountName	| Should Not Be $null
-				$storageAccount.TenantSubscriptionId		| Should Not Be $null
-				$storageAccount.TenantViewId				| Should Not Be $null
-				$storageAccount.Type						| Should Not Be $null
-			}
+                # Validate Storage account properties
+                $storageAccount.AccountStatus				| Should Not Be $null
+                $storageAccount.AccountType					| Should Not Be $null
+                $storageAccount.AcquisitionOperationCount	| Should Not Be $null
+                $storageAccount.CreationTime				| Should Not Be $null
+                $storageAccount.CurrentOperation			| Should Not Be $null
+                $storageAccount.Id							| Should Not Be $null
+                $storageAccount.Location					| Should Not Be $null
+                $storageAccount.Name						| Should Not Be $null
+                $storageAccount.PrimaryEndpoints			| Should Not Be $null
+                $storageAccount.PrimaryLocation				| Should Not Be $null
+                $storageAccount.ProvisioningState			| Should Not Be $null
+                $storageAccount.StatusOfPrimary				| Should Not Be $null
+                $storageAccount.TenantResourceGroupName		| Should Not Be $null
+                $storageAccount.TenantStorageAccountName	| Should Not Be $null
+                $storageAccount.TenantSubscriptionId		| Should Not Be $null
+                $storageAccount.TenantViewId				| Should Not Be $null
+                $storageAccount.Type						| Should Not Be $null
+            }
 
-			function AssertAreEqual {
-				param(
-					[Parameter(Mandatory=$true)]
-					$expected,
-					[Parameter(Mandatory=$true)]
-					$found
-				)
-				# Resource
-				if($expected -eq $null){
-					$found												    | Should Be $null
-				}
-				else{
-					$found												    | Should Not Be $null
-					# Validate Storage account properties
-					$expected.AccountId | Should Be $found.AccountId
-					$expected.AccountStatus | Should Be $found.AccountStatus
-					$expected.AccountType | Should Be $found.AccountType
-					$expected.AcquisitionOperationCount | Should Be $found.AcquisitionOperationCount
-					$expected.AlternateName | Should Be $found.AlternateName
-					$expected.CurrentOperation | Should Be $found.CurrentOperation
-					$expected.CustomDomain | Should Be $found.CustomDomain
-				}
-			}
-		}
+            function AssertAreEqual {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $expected,
+                    [Parameter(Mandatory = $true)]
+                    $found
+                )
+                # Resource
+                if ($expected -eq $null) {
+                    $found												    | Should Be $null
+                }
+                else {
+                    $found												    | Should Not Be $null
+                    # Validate Storage account properties
+                    $expected.AccountId | Should Be $found.AccountId
+                    $expected.AccountStatus | Should Be $found.AccountStatus
+                    $expected.AccountType | Should Be $found.AccountType
+                    $expected.AcquisitionOperationCount | Should Be $found.AcquisitionOperationCount
+                    $expected.AlternateName | Should Be $found.AlternateName
+                    $expected.CurrentOperation | Should Be $found.CurrentOperation
+                    $expected.CustomDomain | Should Be $found.CustomDomain
+                }
+            }
+        }
 
-		It "TestListAllStorageAccounts" {
-			$global:TestName = 'TestListAllStorageAccounts'
+        it "TestListAllStorageAccounts" -Skip:$('TestListAllStorageAccounts' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllStorageAccounts'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) -Summary:$false
-				foreach($storageAccount in $storageAccounts) {
-					ValidateStorageAccount -storageAccount $storageAccount
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                foreach ($storageAccount in $storageAccounts) {
+                    ValidateStorageAccount -storageAccount $storageAccount
+                }
+            }
+        }
 
-		It "TestGetStorageAccount" {
-			$global:TestName = 'TestGetStorageAccount'
+        it "TestGetStorageAccount" -Skip:$('TestGetStorageAccount' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetStorageAccount'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) -Summary:$false
-				foreach($storageAccount in $storageAccounts) {
-				    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
-					ValidateStorageAccount -storageAccount $result
-					AssertAreEqual -expected $storageAccount -found $result
-					return
-				}
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                foreach ($storageAccount in $storageAccounts) {
+                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
+                    ValidateStorageAccount -storageAccount $result
+                    AssertAreEqual -expected $storageAccount -found $result
+                    return
+                }
+            }
+        }
 
-		It "TestGetAllStorageAccounts" {
-			$global:TestName = 'TestGetAllStorageAccounts'
+        it "TestGetAllStorageAccounts" -Skip:$('TestGetAllStorageAccounts' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetAllStorageAccounts'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) -Summary:$false
-				foreach($storageAccount in $storageAccounts) {
-				    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
-					ValidateStorageAccount -storageAccount $result
-					AssertAreEqual -expected $storageAccount -found $result
-				}
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $storageAccounts = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Summary:$false
+                foreach ($storageAccount in $storageAccounts) {
+                    $result = Get-AzsStorageAccount -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name) -Name (Select-Name $storageAccount.Name)
+                    ValidateStorageAccount -storageAccount $result
+                    AssertAreEqual -expected $storageAccount -found $result
+                }
+            }
+        }
+    }
 }

@@ -103,6 +103,13 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSetAResourceUsingPiping()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetAResourceUsingPiping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceWithPatchTest()
         {
             TestManager.RunTestScript("Test-SetAResourceWithPatch");

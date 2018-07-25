@@ -34,55 +34,55 @@
     Date:   February 24, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "Acquisition" -Tags @('Acquisition', 'Azs.Storage.Admin') {
+    Describe "Acquisition" -Tags @('Acquisition', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateAcquisition {
-				param(
-					[Parameter(Mandatory=$true)]
-					$Acquisition
-				)
-				# Resource
-				$Acquisition             | Should Not Be $null
+            function ValidateAcquisition {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $Acquisition
+                )
+                # Resource
+                $Acquisition             | Should Not Be $null
 
-				# Validate acquisition properties
-				$Acquisition.Id					| Should Not Be $null
-				$Acquisition.Name				| Should Not Be $null
-				$Acquisition.Type				| Should Not Be $null
-				$Acquisition.FilePath			| Should Not Be $null
-				$Acquisition.Maximumblobsize    | Should Not Be $null
-				$Acquisition.Status				| Should Not Be $null
-				$Acquisition.Storageaccount     | Should Not Be $null
-				$Acquisition.Container			| Should Not Be $null
-				$Acquisition.Blob				| Should Not Be $null
-			}
-		}
+                # Validate acquisition properties
+                $Acquisition.Id					| Should Not Be $null
+                $Acquisition.Name				| Should Not Be $null
+                $Acquisition.Type				| Should Not Be $null
+                $Acquisition.FilePath			| Should Not Be $null
+                $Acquisition.Maximumblobsize    | Should Not Be $null
+                $Acquisition.Status				| Should Not Be $null
+                $Acquisition.Storageaccount     | Should Not Be $null
+                $Acquisition.Container			| Should Not Be $null
+                $Acquisition.Blob				| Should Not Be $null
+            }
+        }
 
-		It "TestListAcquisition" {
-			$global:TestName = 'TestListAllAcquisitions'
+        it "TestListAllAcquisitions" -Skip:$('TestListAllAcquisitions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllAcquisitions'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$acquisitions = Get-AzsStorageAcquisition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				foreach($acquisition in $acquisitions) {
-					ValidateAcquisition -Acquisition $acquisition
-				}
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $acquisitions = Get-AzsStorageAcquisition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                foreach ($acquisition in $acquisitions) {
+                    ValidateAcquisition -Acquisition $acquisition
+                }
+            }
+        }
+    }
 }

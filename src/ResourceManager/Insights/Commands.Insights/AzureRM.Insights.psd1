@@ -51,7 +51,7 @@ CLRVersion = '4.0'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.2'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; ModuleVersion = '5.3.3'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Management.Monitor.dll'
@@ -75,7 +75,8 @@ FunctionsToExport = @()
 CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric', 
                'Remove-AzureRmLogProfile', 'Get-AzureRmLogProfile', 
                'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
-               'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
+               'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting',
+               'Remove-AzureRmDiagnosticSetting',
                'New-AzureRmAutoscaleNotification', 'New-AzureRmAutoscaleProfile', 
                'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
                'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
@@ -89,7 +90,7 @@ CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric',
                'Enable-AzureRmActivityLogAlert', 'Disable-AzureRmActivityLogAlert', 
                'Remove-AzureRmActivityLogAlert', 'New-AzureRmActionGroupReceiver', 
                'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 
-               'Remove-AzureRmActionGroup'
+               'Remove-AzureRmActionGroup', 'New-AzureRmMetricFilter'
 
 # Variables to export from this module
 # VariablesToExport = @()

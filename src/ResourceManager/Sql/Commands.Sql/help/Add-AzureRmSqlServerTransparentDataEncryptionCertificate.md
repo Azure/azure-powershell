@@ -21,14 +21,14 @@ Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] [-ResourceG
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] -SqlServer <AzureSqlServerModel>
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] [-SqlServer] <AzureSqlServerModel>
  [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
 ```
-Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] -SqlServerResourceId <String>
+Add-AzureRmSqlServerTransparentDataEncryptionCertificate [-PassThru] [-SqlServerResourceId] <String>
  [-PrivateBlob] <SecureString> [-Password] <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -78,7 +78,7 @@ Add TDE certificate to all sql servers in a resource group
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 On Successful execution, returns certificate object that was added.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 The Password for Transparent Data Encryption Certificate
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 The Private blob for Transparent Data Encryption Certificate
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 The Server Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateDefaultParameterSet
 Aliases:
 
@@ -168,12 +168,12 @@ Accept wildcard characters: False
 The sql server input object
 
 ```yaml
-Type: AzureSqlServerModel
+Type: Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateInputObjectParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -183,12 +183,12 @@ Accept wildcard characters: False
 The sql server resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: AddAzureRmSqlServerTransparentDataEncryptionCertificateResourceIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
+Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -198,7 +198,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -214,7 +214,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -231,11 +231,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.Server.Model.AzureSqlServerModel
-System.String
+Parameters: SqlServer (ByValue)
+
+### System.String
+Parameters: SqlServerResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

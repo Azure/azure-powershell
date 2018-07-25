@@ -51,6 +51,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdvancedThreatProtection\Cmdlet\DisableAzureSqlServerAdvancedThreatProtection.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\EnableAzureSqlServerAdvancedThreatProtection.cs" />
     <Compile Include="Advisor\Cmdlet\AdvisorAutoExecuteStatus.cs" />
     <Compile Include="Auditing\AuditingHelpMessages.cs" />
     <Compile Include="Auditing\Cmdlet\AuditingSettings\GetAzureSqlDatabaseAuditing.cs" />
@@ -203,6 +205,10 @@
     <Compile Include="ServerDnsAlias\Cmdlet\NewAzureSqlServerDnsAlias.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasAdapter.cs" />
     <Compile Include="ServerDnsAlias\Services\AzureSqlServerDnsAliasCommunicator.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\GetAzureSqlServerAdvancedThreatProtectionPolicy.cs" />
+    <Compile Include="AdvancedThreatProtection\Cmdlet\SqlServerAdvancedThreatProtectionCmdletBase.cs" />
+    <Compile Include="AdvancedThreatProtection\Model\ServerAdvancedThreatProtectionPolicyModel.cs" />
+    <Compile Include="AdvancedThreatProtection\Services\SqlAdvancedThreatProtectionAdapter.cs" />
     <Compile Include="ThreatDetection\Cmdlet\GetAzureSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\RemoveSqlServerThreatDetection.cs" />
     <Compile Include="ThreatDetection\Cmdlet\SetAzureSqlServerThreatDetection.cs" />
@@ -224,6 +230,30 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentAtpCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\SqlDatabaseVulnerabilityAssessmentOperationCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\GetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\ClearSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SetAzureSqlDatabaseVulnerabilityAssessmentRuleBaseline.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentRuleBaseline\SqlDatabaseVulnerabilityAssessmentRuleBaselineCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\StartAzureSqlDatabaseVulnerabilityAssessmentScan.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\ConvertAzureSqlDatabaseVulnerabilityAssessmentScan.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\GetAzureSqlDatabaseVulnerabilityAssessmentScanRecord.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentScan\SqlDatabaseVulnerabilityAssessmentScanCmdletBase.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\GetAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\ClearSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Cmdlet\VulnerabilityAssessmentSettings\UpdateAzureSqlDatabaseVulnerabilityAssessmentSettings.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineRowModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanExportModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanErrorModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentScanRecordModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentRuleBaselineModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Model\DatabaseVulnerabilityAssessmentSettingsModel.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\BaseSqlVulnerabilityAssessmentAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentScanAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentRuleBaselineAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\SqlVulnerabilityAssessmentAdapter.cs" />
+    <Compile Include="VulnerabilityAssessment\Services\VulnerabilityAssessmentEndpointsCommunicator.cs" />
     <Content Include="Microsoft.Azure.Commands.Sql.format.ps1xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -469,6 +499,18 @@
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Storage">
       <HintPath>..\..\..\packages\Microsoft.Azure.Management.Storage.2.4.0-preview\lib\net40\Microsoft.Azure.Management.Storage.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Edm, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Edm.5.8.2\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.OData.5.8.2\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Data.Services.Client.5.8.2\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsAzure.Storage">
+      <HintPath>..\..\..\packages\WindowsAzure.Storage.8.7.0\lib\net45\Microsoft.WindowsAzure.Storage.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

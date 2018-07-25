@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.SavedSearch, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Constants.SavedSearch, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,

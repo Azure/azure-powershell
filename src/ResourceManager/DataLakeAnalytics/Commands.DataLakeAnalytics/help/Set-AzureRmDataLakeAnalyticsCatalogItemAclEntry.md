@@ -15,70 +15,68 @@ Modifies an entry in the ACL of a catalog or catalog item in Data Lake Analytics
 ### SetCatalogAclEntryForUser (Default)
 ```
 Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid>
- [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetCatalogItemAclEntryForUser
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid>
- [-ItemType] <String> [-Path] <CatalogPathInstance> [-Permissions] <PermissionType>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-User] -ObjectId <Guid> -ItemType <String>
+ -Path <CatalogPathInstance> -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogAclEntryForGroup
 ```
 Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid>
- [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetCatalogItemAclEntryForGroup
 ```
 Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Group] -ObjectId <Guid>
- [-ItemType] <String> [-Path] <CatalogPathInstance> [-Permissions] <PermissionType>
+ -ItemType <String> -Path <CatalogPathInstance> -Permissions <PermissionType>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogAclEntryForOther
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Other] [-Permissions] <PermissionType>
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Other] -Permissions <PermissionType>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogItemAclEntryForOther
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Other] [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-Other] -ItemType <String>
+ -Path <CatalogPathInstance> -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogAclEntryForUserOwner
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner]
- [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] -Permissions <PermissionType>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogItemAclEntryForUserOwner
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] -ItemType <String>
+ -Path <CatalogPathInstance> -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogAclEntryForGroupOwner
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner]
- [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] -Permissions <PermissionType>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetCatalogItemAclEntryForGroupOwner
 ```
-Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-Permissions] <PermissionType> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] -ItemType <String>
+ -Path <CatalogPathInstance> -Permissions <PermissionType> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,7 +166,7 @@ This command sets the owner permission for the database to Read.
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -183,7 +181,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -198,7 +196,7 @@ Accept wildcard characters: False
 Set ACL entry of catalog for group.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetCatalogAclEntryForGroup, SetCatalogItemAclEntryForGroup
 Aliases:
 
@@ -213,7 +211,7 @@ Accept wildcard characters: False
 Set ACL entry of catalog for group owner.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetCatalogAclEntryForGroupOwner, SetCatalogItemAclEntryForGroupOwner
 Aliases:
 
@@ -230,13 +228,12 @@ Specifies the type of the catalog or catalog item(s). The acceptable values for 
 - Database
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetCatalogItemAclEntryForUser, SetCatalogItemAclEntryForGroup, SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner
 Aliases:
-Accepted values: Catalog, Database
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -246,7 +243,7 @@ Accept wildcard characters: False
 The identity of the user to set.
 
 ```yaml
-Type: Guid
+Type: System.Guid
 Parameter Sets: SetCatalogAclEntryForUser, SetCatalogItemAclEntryForUser, SetCatalogAclEntryForGroup, SetCatalogItemAclEntryForGroup
 Aliases: Id, UserId
 
@@ -261,7 +258,7 @@ Accept wildcard characters: False
 Set ACL entry of catalog for other.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetCatalogAclEntryForOther, SetCatalogItemAclEntryForOther
 Aliases:
 
@@ -277,12 +274,12 @@ Specifies the Data Lake Analytics path of an catalog or catalog item.
 The parts of the path should be separated by a period (.).
 
 ```yaml
-Type: CatalogPathInstance
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
 Parameter Sets: SetCatalogItemAclEntryForUser, SetCatalogItemAclEntryForGroup, SetCatalogItemAclEntryForOther, SetCatalogItemAclEntryForUserOwner, SetCatalogItemAclEntryForGroupOwner
 Aliases:
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -291,19 +288,18 @@ Accept wildcard characters: False
 ### -Permissions
 Specifies the permissions for the ACE.
 The acceptable values for this parameter are:
-
 - None
 - Read
 - ReadWrite
 
 ```yaml
-Type: PermissionType
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, Read, ReadWrite
 
 Required: True
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -313,7 +309,7 @@ Accept wildcard characters: False
 Set ACL entry of catalog for user.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetCatalogAclEntryForUser, SetCatalogItemAclEntryForUser
 Aliases:
 
@@ -328,7 +324,7 @@ Accept wildcard characters: False
 Set ACL entry of catalog for user owner.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: SetCatalogAclEntryForUserOwner, SetCatalogItemAclEntryForUserOwner
 Aliases:
 
@@ -343,7 +339,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -359,7 +355,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -375,13 +371,21 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
+
+### System.Guid
+Parameters: ObjectId (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.DataLakeAnalyticsEnums+PermissionType
+Parameters: Permissions (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
-The resulting list of ACL entries.
 
 ## NOTES
 

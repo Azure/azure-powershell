@@ -34,7 +34,6 @@ New-AzureRmRecoveryServicesAsrRecoveryPlan -Path <String> [-DefaultProfile <IAzu
 
 ## DESCRIPTION
 The **New-AzureRmRecoveryServicesAsrRecoveryPlan** cmdlet creates an Azure Site Recovery recovery plan in the Recovery Services vault.
-
 A recovery plan gathers virtual machines belonging to an application into a unit to allow them to be recovered together.
 
 ## EXAMPLES
@@ -52,7 +51,7 @@ Starts the recovery plan creation operation with the specified parameters and re
 Switch parameter to specify that the recovery location for recovery plan is Azure.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: EnterpriseToAzure
 Aliases:
 
@@ -63,25 +62,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
+
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +81,7 @@ Accept wildcard characters: False
 Specifies the failover deployment model (Classic or Resource Manager) of the replication protected items that will be part of this recovery plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnterpriseToAzure
 Aliases:
 Accepted values: Classic, ResourceManager
@@ -112,7 +97,7 @@ Accept wildcard characters: False
 Name of the recovery plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
 Aliases:
 
@@ -127,7 +112,7 @@ Accept wildcard characters: False
 Specifies the path to the recovery plan definition json file. A recovery plan definition json can be used to create the recovery plan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByRPFile
 Aliases:
 
@@ -142,7 +127,7 @@ Accept wildcard characters: False
 Specifies the ASR fabric object for the primary ASR fabric of the replication protected items that will be part of this recovery plan.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
 Aliases:
 
@@ -157,7 +142,7 @@ Accept wildcard characters: False
 Specifies the ASR fabric object for the recovery ASR fabric of the replication protected items that will be part of this recovery plan.
 
 ```yaml
-Type: ASRFabric
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRFabric
 Parameter Sets: EnterpriseToEnterprise
 Aliases:
 
@@ -172,7 +157,7 @@ Accept wildcard characters: False
 The list of replication protected items to add to the first group of the recovery plan.
 
 ```yaml
-Type: ASRReplicationProtectedItem[]
+Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
 Parameter Sets: EnterpriseToEnterprise, EnterpriseToAzure
 Aliases:
 
@@ -183,11 +168,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -WhatIf
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -204,10 +204,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem[]
+Parameters: ReplicationProtectedItem (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 
