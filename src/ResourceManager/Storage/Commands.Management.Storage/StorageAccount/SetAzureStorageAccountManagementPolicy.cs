@@ -18,6 +18,7 @@ using Microsoft.Azure.Management.Storage;
 using Microsoft.Azure.Management.Storage.Models;
 using System.Management.Automation;
 using Newtonsoft.Json.Linq;
+using Microsoft.Azure.Commands.Management.Storage.Properties;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
