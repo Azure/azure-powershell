@@ -475,7 +475,7 @@ function Test-FindAResource-ByTag
     $rgname = Get-ResourceGroupName
     $rname = "testname"
     $rname2 = "test2name"
-	$rname3 = "test3name"
+    $rname3 = "test3name"
     $rglocation = Get-Location "Microsoft.Resources" "resourceGroups" "West US"
     $apiversion = "2014-04-01"
     $resourceType = "Providers.Test/statefulResources"
@@ -486,40 +486,40 @@ function Test-FindAResource-ByTag
         New-AzureRmResourceGroup -Name $rgname -Location $rglocation
         $actual1 = New-AzureRmResource -Name $rname -Location $rglocation -Tags @{ScenarioTestTag = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
         $actual2 = New-AzureRmResource -Name $rname2 -Location $rglocation -Tags @{ScenarioTestTag = $null} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
-		$actual3 = New-AzureRmResource -Name $rname3 -Location $rglocation -Tags @{ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
+        $actual3 = New-AzureRmResource -Name $rname3 -Location $rglocation -Tags @{ScenarioTestTag = "RandomTestVal"; RandomTestVal = "ScenarioTestVal"} -ResourceGroupName $rgname -ResourceType $resourceType -ApiVersion $apiversion -Force
 
-		# Test both Name and Value
-		$expected = Get-AzureRmResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
+        # Test both Name and Value
+        $expected = Get-AzureRmResource -Tag @{ScenarioTestTag = "ScenarioTestVal"}
         Assert-NotNull $expected
-		Assert-AreEqual $expected.Count 1
+        Assert-AreEqual $expected.Count 1
         Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
 
-		$expected = Get-AzureRmResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
+        $expected = Get-AzureRmResource -TagName "ScenarioTestTag" -TagValue "ScenarioTestVal"
         Assert-NotNull $expected
-		Assert-AreEqual $expected.Count 1
+        Assert-AreEqual $expected.Count 1
         Assert-AreEqual $actual1.ResourceId $expected[0].ResourceId
 
-		# Test just Name
+        # Test just Name
         $expected = Get-AzureRmResource -Tag @{ScenarioTestTag = $null}
         Assert-NotNull $expected
-		Assert-AreEqual $expected.Count 3
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
+        Assert-AreEqual $expected.Count 3
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
 
         $expected = Get-AzureRmResource -TagName "ScenarioTestTag"
         Assert-NotNull $expected
-		Assert-AreEqual $expected.Count 3
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
+        Assert-AreEqual $expected.Count 3
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual2.ResourceId } }
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
 
-		# Test just Value
-		$expected = Get-AzureRmResource -TagValue "ScenarioTestVal"
-		Assert-NotNull $expected
-		Assert-AreEqual $expected.Count 2
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
-		Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
+        # Test just Value
+        $expected = Get-AzureRmResource -TagValue "ScenarioTestVal"
+        Assert-NotNull $expected
+        Assert-AreEqual $expected.Count 2
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual1.ResourceId } }
+        Assert-NotNull { $expected | where { $_.ResourceId -eq $actual3.ResourceId } }
     }
     finally
     {
