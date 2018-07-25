@@ -97,11 +97,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
                 Name,
                 () =>
                 {
-                    Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
+                   var result = Client.DeleteRule(ResourceGroupName, Namespace, Topic, Subscription, Name);
 
                     if (PassThru)
                     {
-                        WriteObject(true);
+                        WriteObject(result);
                     }
                 });
         }
