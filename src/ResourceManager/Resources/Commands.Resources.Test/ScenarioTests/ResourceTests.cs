@@ -18,7 +18,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceTests : TestManagerBuilder// : RMTestBase
+    public class ResourceTests : TestManagerBuilder
     {
         public ResourceTests(ITestOutputHelper output) : base(output)
         {
@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAResourceUsingPiping()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-SetAResourceUsingPiping");
+            TestManager.RunTestScript("Test-SetAResourceUsingPiping");
         }
 
         [Fact]

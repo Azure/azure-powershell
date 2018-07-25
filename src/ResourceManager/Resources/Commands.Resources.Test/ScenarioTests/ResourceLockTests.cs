@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceLockTests : TestManagerBuilder// : RMTestBase
+    public class ResourceLockTests : TestManagerBuilder
     {
         public ResourceLockTests(ITestOutputHelper output) : base(output)
         {
