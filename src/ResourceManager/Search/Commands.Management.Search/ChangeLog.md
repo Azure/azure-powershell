@@ -18,5 +18,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.1.0
 * Introduce the first version of Azure Search Service cmdlets
 
