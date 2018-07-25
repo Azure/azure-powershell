@@ -67,10 +67,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
             // delete a namespace             
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveNamespace, Name, ResourceGroupName)))
             {
-                Client.BeginDeleteNamespace(ResourceGroupName, Name);
+                var result = Client.BeginDeleteNamespace(ResourceGroupName, Name);
                 if (PassThru)
                 {
-                    WriteObject(true);
+                    WriteObject(result);
                 }
             }
         }

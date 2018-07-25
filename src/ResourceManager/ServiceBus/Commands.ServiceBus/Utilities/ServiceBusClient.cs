@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSNamespaceAttributes(response);
         }
 
-        public void BeginDeleteNamespace(string resourceGroupName, string namespaceName)
+        public bool BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {
             Client.Namespaces.Delete(resourceGroupName, namespaceName);
-
+            return true;
         }        
 
         private static void RetryAfter(PSNamespaceLongRunningOperation longrunningResponse, int longRunningOperationInitialTimeout)

@@ -73,7 +73,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
             // delete a Queue 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveQueue, Name, Namespace)))
             {
-                WriteObject(Client.DeleteQueue(ResourceGroupName, Namespace, Name));
+                var result = Client.DeleteQueue(ResourceGroupName, Namespace, Name);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(result);
+                }
             }
         }
     }

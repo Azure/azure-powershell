@@ -76,7 +76,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
             
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveTopic, Name, Namespace)))
             {
-                WriteObject(Client.DeleteTopic(ResourceGroupName, Namespace, Name));
+                var result = Client.DeleteTopic(ResourceGroupName, Namespace, Name);
+                if (PassThru.IsPresent)
+                {
+                    WriteObject(result);
+                }                
             }
 
         }
