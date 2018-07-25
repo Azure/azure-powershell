@@ -84,7 +84,7 @@ RequiredModules = @(@{ModuleName = 'AzureRM.Profile'; RequiredVersion = '5.3.4';
                @{ModuleName = 'AzureRM.MachineLearningCompute'; RequiredVersion = '0.4.5'; }, 
                @{ModuleName = 'AzureRM.MarketplaceOrdering'; RequiredVersion = '0.2.4'; }, 
                @{ModuleName = 'AzureRM.Media'; RequiredVersion = '0.10.1'; }, 
-               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.5.0'; }, 
+               @{ModuleName = 'AzureRM.Network'; RequiredVersion = '6.4.1'; }, 
                @{ModuleName = 'AzureRM.NotificationHubs'; RequiredVersion = '5.0.2'; }, 
                @{ModuleName = 'AzureRM.OperationalInsights'; RequiredVersion = '5.0.3'; }, 
                @{ModuleName = 'AzureRM.PolicyInsights'; RequiredVersion = '1.0.3'; }, 
