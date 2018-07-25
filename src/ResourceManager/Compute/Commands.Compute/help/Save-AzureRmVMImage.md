@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Path
-Specifies the path of the VHD.
+The file path in which the template of the captured image is stored.
 
 ```yaml
 Type: String
