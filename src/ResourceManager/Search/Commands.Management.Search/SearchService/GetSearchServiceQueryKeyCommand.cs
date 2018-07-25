@@ -72,8 +72,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 ServiceName = id.ResourceName;
             }
 
-            var res = SearchClient.QueryKeys.ListBySearchServiceWithHttpMessagesAsync(ResourceGroupName, ServiceName).Result;
-            WriteQueryKeyList(res.Body);
+            CatchThrowInnerException(() =>
+            {
+                var res = SearchClient.QueryKeys.ListBySearchServiceWithHttpMessagesAsync(ResourceGroupName, ServiceName).Result;
+                WriteQueryKeyList(res.Body);
+            });
         }
     }
 }
