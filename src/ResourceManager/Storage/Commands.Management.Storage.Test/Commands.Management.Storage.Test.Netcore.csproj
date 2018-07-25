@@ -33,7 +33,7 @@
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication.Abstractions\Common.Authentication.Abstractions.Netcore.csproj" />
     <ProjectReference Include="..\..\..\Common\Commands.Common.Authentication\Common.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
-    <ProjectReference Include="..\..\Common\Commands.TestFw\Commands.TestFw.Netcore.csproj" />
+    <ProjectReference Include="..\..\Common\Commands.TestFx\Commands.TestFx.Netcore.csproj" />
   </ItemGroup>
 
   <ItemGroup>

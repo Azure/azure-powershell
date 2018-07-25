@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using  Microsoft.Azure.Commands.TestFw;
+using  Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         public SubscriptionCmdletTests(ITestOutputHelper output)
         {
             _testManager = TestManager.CreateInstance()
-                .WithXunitTracingInterceptor(output)
+                .WithTestOutputHelper(output)
                 .Build();
         }
 

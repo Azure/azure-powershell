@@ -21,7 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
-using Microsoft.Azure.Commands.TestFw;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.Rest;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
         protected TestManagerBuilder(ITestOutputHelper output)
         {
-            TestManager = TestFw.TestManager.CreateInstance()
-                .WithXunitTracingInterceptor(output)
+            TestManager = TestFx.TestManager.CreateInstance()
+                .WithTestOutputHelper(output)
                 .WithExtraRmModules(helper => new[]
                 {
                     helper.RMInsightsModule,
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                     @"Common.ps1",
                 })
                 .WithNewPsScriptFilename($"{GetType().Name}.ps1")
-                .WithNewMockServerMatcher(
+                .WithBuildMatcher(
                     (ignoreResourcesClient, resourceProviders, userAgentsToIgnore) => 
                         new ResourcesRecordMatcher(ignoreResourcesClient, resourceProviders, userAgentsToIgnore))
                 .WithExtraUserAgentsToIgnore(new Dictionary<string, string>
@@ -56,11 +56,14 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
                 })
                 .Build();
 
-            var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
             var credentials = HttpMockServer.Mode == HttpRecorderMode.Record
-                ? new SubscriptionCloudCredentialsAdapter(
-                    testEnvironment.TokenInfo[TokenAudience.Management],
-                    testEnvironment.SubscriptionId)
+                ? new Func<SubscriptionCloudCredentialsAdapter>(() =>
+                    {
+                        var testEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                        return new SubscriptionCloudCredentialsAdapter(
+                            testEnvironment.TokenInfo[TokenAudience.Management],
+                            testEnvironment.SubscriptionId);
+                    }) ()
                 : new SubscriptionCloudCredentialsAdapter(
                     new TokenCredentials("foo"),
                     Guid.Empty.ToString());
@@ -71,7 +74,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 
     #region TestHttpClientHelperFactory
 
-    class TestHttpClientHelperFactory : HttpClientHelperFactory
+    internal class TestHttpClientHelperFactory : HttpClientHelperFactory
     {
         /// <summary>
         /// The subscription cloud credentials.
@@ -124,7 +127,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
     }
 
     //https://gist.github.com/markcowl/4d907da7ce40f2e424e8d0625887b82e
-    class SubscriptionCloudCredentialsAdapter : SubscriptionCloudCredentials
+    internal class SubscriptionCloudCredentialsAdapter : SubscriptionCloudCredentials
     {
         private readonly ServiceClientCredentials _wrappedCreds;
 

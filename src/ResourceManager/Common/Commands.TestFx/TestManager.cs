@@ -28,7 +28,7 @@ using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
-namespace  Microsoft.Azure.Commands.TestFw
+namespace  Microsoft.Azure.Commands.TestFx
 {
     public delegate IRecordMatcher BuildMatcherDelegate (bool ignoreResourcesClient, Dictionary<string, string> resourceProviders, Dictionary<string, string> userAgentsToIgnore);
 
@@ -144,7 +144,7 @@ namespace  Microsoft.Azure.Commands.TestFw
         /// </summary>
         /// <param name="buildMatcher">delegate</param>
         /// <returns>self</returns>
-        public IBuildable WithNewMockServerMatcher(BuildMatcherDelegate buildMatcher)
+        public IBuildable WithBuildMatcher(BuildMatcherDelegate buildMatcher)
         {
             BuildMatcher = buildMatcher;
             return this;
@@ -164,7 +164,7 @@ namespace  Microsoft.Azure.Commands.TestFw
             return this;
         }
 
-        public IBuildable WithXunitTracingInterceptor(ITestOutputHelper output)
+        public IBuildable WithTestOutputHelper(ITestOutputHelper output)
         {
             Logger = new XunitTracingInterceptor(output);
             XunitTracingInterceptor.AddToContext(Logger);
@@ -297,7 +297,7 @@ namespace  Microsoft.Azure.Commands.TestFw
 
     public interface IPreBuildable
     {
-        IBuildable WithXunitTracingInterceptor(ITestOutputHelper output);   
+        IBuildable WithTestOutputHelper(ITestOutputHelper output);
     }
 
     public interface IBuildable
@@ -309,7 +309,7 @@ namespace  Microsoft.Azure.Commands.TestFw
         IBuildable WithExtraRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
         IBuildable WithNewRmModules(Func<EnvironmentSetupHelper, string[]> buildModuleList);
         IBuildable WithExtraUserAgentsToIgnore(Dictionary<string, string> userAgentsToIgnore);
-        IBuildable WithNewMockServerMatcher(BuildMatcherDelegate buildMatcher);
+        IBuildable WithBuildMatcher(BuildMatcherDelegate buildMatcher);
     }
 
     public interface ITestRunnable

@@ -4,8 +4,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.Commands.TestFw</AssemblyName>
-    <RootNamespace>Microsoft.Azure.Commands.TestFw</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.TestFx</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 

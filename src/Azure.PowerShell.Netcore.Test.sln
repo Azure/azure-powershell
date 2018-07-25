@@ -59,7 +59,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.DeviceProvisioning
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.PolicyInsights.Test.Netcore", "ResourceManager\PolicyInsights\Commands.PolicyInsights.Test\Commands.PolicyInsights.Test.Netcore.csproj", "{AFA65D3A-FB7E-4DAB-9867-1CA4CBA41BFB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TestFw.Netcore", "ResourceManager\Common\Commands.TestFw\Commands.TestFw.Netcore.csproj", "{BFACE421-52D9-4D41-BDE9-444A8A721330}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Commands.TestFx.Netcore", "ResourceManager\Common\Commands.TestFx\Commands.TestFx.Netcore.csproj", "{BFACE421-52D9-4D41-BDE9-444A8A721330}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

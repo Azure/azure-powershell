@@ -7,8 +7,8 @@
     <ProjectGuid>{8C625DE3-0067-454A-AF2C-EFD672EEB31A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Microsoft.Azure.Commands.TestFw</RootNamespace>
-    <AssemblyName>Microsoft.Azure.Commands.TestFw</AssemblyName>
+    <RootNamespace>Microsoft.Azure.Commands.TestFx</RootNamespace>
+    <AssemblyName>Microsoft.Azure.Commands.TestFx</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
