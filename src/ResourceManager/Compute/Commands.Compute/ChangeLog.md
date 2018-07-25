@@ -20,7 +20,9 @@
 -->
 ## Current Release
 
-## Version 5.3.1
+## Version 5.4.0
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk
