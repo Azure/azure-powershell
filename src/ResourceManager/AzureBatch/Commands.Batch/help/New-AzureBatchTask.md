@@ -85,10 +85,8 @@ PS C:\> Get-AzureBatchJob -Id "Job-000001" -BatchContext $Context | New-AzureBat
 
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
-
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
-
 The final command gets the Batch job that has the ID Job-000001 by using **Get-AzureBatchJob**.
 Then the command passes that job to the current cmdlet by using the pipeline operator.
 The command adds a collection of tasks under that job.
@@ -104,10 +102,8 @@ PS C:\> New-AzureBatchTask -JobId "Job-000001" -Tasks @($Task01, $Task02) -Batch
 
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
-
 The next two commands create **PSCloudTask** objects by using the New-Object cmdlet.
 The commands store the tasks in the $Task01 and $Task02 variables.
-
 The final command adds the tasks stored in $Task01 and $Task02 under the job that has the ID Job-000001.
 
 ### Example 5: Add a task with output files
@@ -165,7 +161,6 @@ Accept wildcard characters: False
 
 ### -AuthenticationTokenSettings
 The settings for an authentication token that the task can use to perform Batch service operations.
-
 If this is set, the Batch service provides the task with an authentication token which can be used to 
 authenticate Batch service operations without requiring an account access key. The token is provided via the 
 AZ_BATCH_AUTHENTICATION_TOKEN environment variable. The operations that the task can carry out using the token 
@@ -232,7 +227,6 @@ Accept wildcard characters: False
 
 ### -ContainerSettings
 The settings for the container under which the task runs.
-
 If the pool that will run this task has containerConfiguration set, this must be set as well. If the pool that will run this task
 doesn't have containerConfiguration set, this must not be set. When this is specified, all directories recursively below the 
 AZ_BATCH_NODE_ROOT_DIR (the root of Azure Batch directories on the node) are mapped into the container, all task environment variables 
@@ -389,7 +383,6 @@ Accept wildcard characters: False
 
 ### -OutputFile
 Gets or sets a list of files that the Batch service will upload from the compute node after running the command line.
-
 For multi-instance tasks, the files will only be uploaded from the compute node on which the primary task is executed.
 
 ```yaml
@@ -457,13 +450,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSCloudJob
+Parameters: Job (ByValue)
 
-### PSCloudJob
-Parameter 'Job' accepts value of type 'PSCloudJob' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

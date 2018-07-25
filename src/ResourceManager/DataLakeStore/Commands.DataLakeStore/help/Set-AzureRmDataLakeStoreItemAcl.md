@@ -31,7 +31,6 @@ PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/MyFile
 ```
 
 The first command gets the ACL for the root directory of the ContosoADL account, and then stores it in the $ACL variable.
-
 The second command sets the ACL for the file Test.txt to the one in $ACL.
 
 ### Example 2: Set the ACL for folder recursively
@@ -41,7 +40,6 @@ PS C:\> Set-AzureRmDataLakeStoreItemAcl -AccountName "ContosoADL" -Path "/Folder
 ```
 
 The first command gets the ACL for the directory Folder1 of the ContosoADL account, and then stores it in the $ACL variable.
-
 The second command sets the ACL recursively to Folder2 and its sub directories and files to the one in $ACL.
 
 ## PARAMETERS
@@ -202,12 +200,24 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### DataLakeStoreItemAce[]
-Parameter 'Acl' accepts value of type 'DataLakeStoreItemAce[]' from the pipeline
+### System.String
+Parameters: Account (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStorePathInstance
+Parameters: Path (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce[]
+Parameters: Acl (ByPropertyName, ByValue)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName), Recurse (ByPropertyName)
+
+### System.Int32
+Parameters: Concurrency (ByPropertyName)
 
 ## OUTPUTS
 
-### IEnumerable<DataLakeStoreItemAce>
+### Microsoft.Azure.Commands.DataLakeStore.Models.DataLakeStoreItemAce
 If PassThru is specified, will return the resulting list of ACL entries.
 
 ## NOTES

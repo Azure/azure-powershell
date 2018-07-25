@@ -308,19 +308,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Nullable\`1\[\[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\] System.Nullable\`1\[\[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089\]\]
+Parameters: AutoDeleteOnIdle (ByPropertyName), DefaultMessageTimeToLive (ByPropertyName), DuplicateDetectionHistoryTimeWindow (ByPropertyName), Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
-### -ResourceGroup
- System.String
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
-### -NamespaceName
- System.String
-
-### -TopicName
- System.String
-
-### -EnablePartitioning
- System.Boolean?
+### System.Nullable`1[[System.Int64, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

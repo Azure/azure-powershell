@@ -29,7 +29,6 @@ PS C:\> Get-AzureRmSqlServerKeyVaultKey -ServerName 'ContosoServer' -ResourceGro
 ```
 
 This command gets all the Key Vault keys on a SQL server.
-
 ResourceGroupName : ContosoResourceGroup
 ServerName        : ContosoServer
 ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
@@ -37,7 +36,6 @@ Type              : AzureKeyVault
 Uri               : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
 Thumbprint        : 1122334455667788990011223344556677889900
 CreationDate      : 1/1/2017 12:00:00 AM
-
 ResourceGroupName : ContosoResourceGroup
 ServerName        : ContosoServer
 ServerKeyName     : contoso_contosokey2_01234567890123456789012345678901
@@ -153,6 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

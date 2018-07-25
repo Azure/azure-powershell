@@ -44,11 +44,8 @@ ErrorCode ErrorMessage                            Recommendations
 
 The first command gets the vault named Vault03 by using the **Get-AzureRmBackupVault** cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets failed jobs from the vault in $Vault, and then stores them in the $Jobs array variable.
-
 The third job gets details for the first job in the $Jobs variable, and then stores those details in the $JobDetails variable.
-
 The final command displays the **ErrorDetails** property of $JobDetails by using standard dot syntax.
 
 ### Example 2: Display the recommended action for a failed job
@@ -130,11 +127,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJob
+Parameters: Job (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupJobDetails
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupJobDetails
 
 ## NOTES
 

@@ -65,11 +65,9 @@ Accept wildcard characters: False
 ### -OutputStartMode
 Specifies the start mode for the job.
 Valid values are: 
-
 - JobStartTime - This value indicates that the starting point of the output event stream should start when the job is started.
 - CustomTime - This value indicates that the starting point of the output event stream should start at a custom time that is specified in the *OutputStartTime* parameter. 
  -- LastOutputEventTime - This value indicates that the starting point of the output event stream should start from the last event output time.
-
 If the property is absent, the default is JobStartTime.
 
 ```yaml
@@ -121,8 +119,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), OutputStartMode (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

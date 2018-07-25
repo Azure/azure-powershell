@@ -20,7 +20,6 @@ Switch-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [[-FailoverGroupNa
 
 ## DESCRIPTION
 This command swaps the roles of the servers in a Failover Group and switches all secondary databases to the primary role. All new TDS sessions are automatically re-routed to the secondary server after the DNS client cache is refreshed. When the original primary server is back online, all formerly primary databases in it will switch to the secondary role.
-
 The Failover Group's secondary server must be used to execute this command.
 
 ## EXAMPLES
@@ -168,6 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

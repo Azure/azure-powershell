@@ -67,7 +67,6 @@ Accept wildcard characters: False
 ### -PassThru
 Indicates that this cmdlet returns a value of $True if the operation succeeds or $False otherwise.
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
@@ -132,12 +131,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementIdentityProviderType
+Parameters: Type (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: PassThru (ByPropertyName)
 
 ## OUTPUTS
 
-### bool
+### System.Boolean
 
 ## NOTES
 

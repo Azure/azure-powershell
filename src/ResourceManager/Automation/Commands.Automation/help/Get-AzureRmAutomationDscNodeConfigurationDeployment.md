@@ -172,8 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: JobId (ByPropertyName)
+
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

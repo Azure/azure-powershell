@@ -143,14 +143,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel
-System.Management.Automation.SwitchParameter
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
-System.String
+### Microsoft.Azure.Commands.ServiceFabric.Models.ReliabilityLevel
+Parameters: ReliabilityLevel (ByValue)
+
+### System.Management.Automation.SwitchParameter
+Parameters: AutoAddNode (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceFabric.Models.PsCluster
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

@@ -156,6 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### None
+
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataMigration.Models.PSDataMigrationService

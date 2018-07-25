@@ -44,9 +44,7 @@ PS C:\>New-AzureRmOperationalInsightsStorageInsight -ResourceGroupName "ContosoR
 ```
 
 The first command uses the Get-AzureRmStorageAccount cmdlet to get the storage account named ContosoStorage, and then stores it in the $Storage variable.
-
 The second command passes the storage account in $Storage to the Get-AzureRmStorageAccountKey cmdlet by using the pipeline operator to get the specified storage account key, and then stores it in the $StorageKey variable.
-
 The final command creates a storage insight named MyStorageInsight in the workspace named MyWorkspace.
 This storage insight consumes data from the WADWindowsEventLogsTable table in the specified storage account resource.
 
@@ -62,11 +60,8 @@ PS C:\>New-AzureRmOperationalInsightsStorageInsight -Workspace $Workspace -Name 
 ```
 
 The first command uses the Get-AzureRmOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.
-
 The second command uses the Get-AzureRmStorageAccount cmdlet to get the specified storage account, and then stores it in the $Storage variable.
-
 The third command passes the storage account in $Storage to the Get-AzureRmStorageAccountKey cmdlet by using the pipeline operator to get the specified key, and then stores it in the $StorageKey variable.
-
 The final command creates a storage insight named MyStorageInsight in the workspace defined in $Workspace.
 The Storage Insight consumes data from the WADWindowsEventLogsTable table in the specified storage account resource.
 
@@ -259,8 +254,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSWorkspace
-Parameter 'Workspace' accepts value of type 'PSWorkspace' from the pipeline
+### Microsoft.Azure.Commands.OperationalInsights.Models.PSWorkspace
+Parameters: Workspace (ByValue)
+
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), StorageAccountKey (ByPropertyName), StorageAccountResourceId (ByPropertyName), WorkspaceName (ByPropertyName)
+
+### System.String[]
+Parameters: Containers (ByPropertyName), Tables (ByPropertyName)
 
 ## OUTPUTS
 

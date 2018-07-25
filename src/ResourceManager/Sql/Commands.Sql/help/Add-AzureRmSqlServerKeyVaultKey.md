@@ -29,7 +29,6 @@ PS C:\> Add-AzureRmSqlServerKeyVaultKey -KeyId 'https://contoso.vault.azure.net/
 ```
 
 This command adds the Key Vault key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' to the SQL server named 'ContosoServer' in the resource group 'ContosoResourceGroup'.
-
 ResourceGroupName : ContosoResourceGroup
 ServerName        : ContosoServer
 ServerKeyName     : contoso_contosokey_01234567890123456789012345678901
@@ -152,6 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

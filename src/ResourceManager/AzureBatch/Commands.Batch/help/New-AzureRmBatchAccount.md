@@ -43,7 +43,6 @@ This command creates a Batch account named pfuller using the ResourceGroup03 res
 
 ### -AccountName
 Specifies the name of the Batch account that this cmdlet creates.
-
 Batch account names must be between 3 and 24 characters long and contain only numbers and lowercase letters.
 
 ```yaml
@@ -167,7 +166,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -187,12 +185,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccountName (ByPropertyName), AutoStorageAccountId (ByPropertyName), KeyVaultId (ByPropertyName), KeyVaultUrl (ByPropertyName), Location (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Batch.Models.PoolAllocationMode, Microsoft.Azure.Management.Batch, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
 
 ## OUTPUTS
 
-### BatchAccountContext
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
 
 ## NOTES
 

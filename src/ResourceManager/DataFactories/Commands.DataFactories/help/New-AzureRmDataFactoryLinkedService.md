@@ -30,9 +30,7 @@ New-AzureRmDataFactoryLinkedService [-DataFactory] <PSDataFactory> [[-Name] <Str
 The **New-AzureRmDataFactoryLinkedService** cmdlet links a data store or a cloud service to Azure Data Factory.
 If you specify a name for a linked service that already exists, this cmdlet prompts you for confirmation before it replaces the linked service.
 If you specify the *Force* parameter, the cmdlet replaces the existing linked service without confirmation.
-
 Perform these operations in the following order: 
-
 - Create a data factory. 
 - Create linked services. 
 - Create datasets. 
@@ -201,12 +199,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSLinkedService
+### Microsoft.Azure.Commands.DataFactories.Models.PSLinkedService
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

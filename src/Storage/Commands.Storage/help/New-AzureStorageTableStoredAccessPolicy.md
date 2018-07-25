@@ -38,7 +38,7 @@ Specifies an Azure storage context.
 To obtain a storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 Specifies the time at which the stored access policy becomes invalid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -81,11 +81,10 @@ Accept wildcard characters: False
 
 ### -Permission
 Specifies permissions in the stored access policy to access the storage table.
-
 It is important to note that this is a string, like `rwd` (for Read, Write and Delete).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -100,7 +99,7 @@ Accept wildcard characters: False
 Specifies a name for the stored access policy.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -115,7 +114,7 @@ Accept wildcard characters: False
 Specifies the time at which the stored access policy becomes valid.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -130,7 +129,7 @@ Accept wildcard characters: False
 Specifies the Azure storage table name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: N, Name
 
@@ -146,13 +145,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### IStorageContext
+### System.String
+Parameters: Table (ByPropertyName, ByValue)
 
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
-
-### String
-
-Parameter 'Table' accepts value of type 'String' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

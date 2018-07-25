@@ -68,7 +68,6 @@ PS C:\> Get-AzureBatchRemoteDesktopProtocolFile "Pool06" -ComputeNodeId "Compute
 ```
 
 The first command creates a stream by using the New-Object cmdlet, and then stores it in the $Stream variable.
-
 The second command gets an .rdp file from the compute node that has the ID ComputeNode03 in the pool that has the ID Pool06.
 The command directs file contents to the stream in $Stream.
 
@@ -187,15 +186,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### System.String
+Parameters: ComputeNodeId (ByPropertyName), PoolId (ByPropertyName)
 
 ### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+Parameters: ComputeNode (ByValue)
+
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 
