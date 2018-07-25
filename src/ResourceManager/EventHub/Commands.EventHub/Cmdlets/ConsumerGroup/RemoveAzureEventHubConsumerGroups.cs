@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
                 Name = identifier.ResourceName;
             }
 
-
             // delete a ConsumerGroup 
             if (ShouldProcess(target: Name, action: string.Format(Resources.RemoveConsumerGroup, Name, EventHub)))
             {
