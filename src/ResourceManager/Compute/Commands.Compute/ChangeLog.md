@@ -25,6 +25,7 @@
 * Add examples for `Remove-AzureRmVmssExtension`
 * Update help for `Set-AzureRmVMAccessExtension`
 * Update SimpleParameterSet for New-AzureRmVmss to set SinglePlacementGroup to false by default and add switch parameter `SinglePlacementGroup` that enables the user to create the VMSS in a single placement group.
+* Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.2.0
 * IP Tag feature for VMSS
