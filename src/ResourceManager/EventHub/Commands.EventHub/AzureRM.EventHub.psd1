@@ -124,7 +124,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated all help files to include full parameter types and correct input/output types.'
+        ReleaseNotes = '* Updated piping for InputObject and ResourceId in remove cmdlets
+* Updated all help files to include full parameter types and correct input/output types.'
 
         # Prerelease string of this module
         # Prerelease = ''

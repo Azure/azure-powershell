@@ -135,7 +135,11 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Updated all help files to include full parameter types and correct input/output types.'
+        ReleaseNotes = '* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
+* Updated all help files to include full parameter types and correct input/output types.'
 
         # Prerelease string of this module
         # Prerelease = ''
