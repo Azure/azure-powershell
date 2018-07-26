@@ -91,7 +91,10 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 KeyValue,
                 () =>
                 {
-                    SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Wait();
+                    CatchThrowInnerException(() =>
+                    {
+                       SearchClient.QueryKeys.DeleteWithHttpMessagesAsync(ResourceGroupName, ServiceName, KeyValue).Wait();
+                    });
 
                     if (PassThru)
                     {
