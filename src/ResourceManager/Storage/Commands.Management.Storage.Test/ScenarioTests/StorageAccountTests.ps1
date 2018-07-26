@@ -879,3 +879,55 @@ function Test-GetAzureStorageLocationUsage
         Assert-AreNotEqual 0 $usage.Limit;
         Assert-AreNotEqual 0 $usage.CurrentValue;      
 }
+
+<#
+.SYNOPSIS
+Test Invoke-AzureRmStorageAccountFailover and Get-AzureRmStorageAccountLastSyncTime
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-FailoverAzureStorageAccount
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_RAGRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+		
+        New-AzureRmStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind;
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        $stotype = 'StandardRAGRS';
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+		$seconcaryLocation = $sto.SecondaryLocation
+
+		# check Last Sync Time
+		$getLSTResult = Get-AzureRmStorageAccountLastSyncTime -ResourceGroupName $rgname -Name $stoname
+        Assert-NotNull  $getLSTResult.LastSyncTime
+        Assert-NotNull  $getLSTResult.Status
+
+		#Invoke Failover
+		$job = Invoke-AzureRmStorageAccountFailover -ResourceGroupName $rgname -Name $stoname -Force -AsJob
+		$job | Wait-Job
+
+        $sto = Get-AzureRmStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $seconcaryLocation $sto.PrimaryLocation;
+        Assert-AreEqual 'StandardLRS' $sto.Sku.Name;
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
