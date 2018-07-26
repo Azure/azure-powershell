@@ -19,6 +19,7 @@
     - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
 
 #### AzureRM.Compute
+* Fix issue with creating a vm using DiskFileParameterSet in New-AzureRmVm failing because of PremiumLRS storage account type renaming.
 * Fix Invoke-AzureRmVMRunCommand cmdlet
 * Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
@@ -37,34 +38,12 @@
 #### AzureRM.DataLakeStore
 * Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
 
+#### AzureRM.EventHub
+* Updated piping for InputObject and ResourceId in remove cmdlets
+
 #### AzureRM.Insights
 * Fixed formatting of OutputType in help files
 * Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
-    - The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models. This breaking change is just announced in this release. It is temporarily hidden from the customers.
-    - The SDK includes support for multi-named diagnostic settings.
-    - The SDK also supports the most recent Metrics API: multi-dimension metrics.
-* **Set-AzureRmDiagnosticSetting**
-    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
-    - The argument ServiceBusRuleId has been added an alias 'EventHubName' which will replace it in the future.
-    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
-    - The arguments Categories and Timegrains now have aliases Category and Timegrain respectively.
-    - One more argument has been added: MetricCategory to operate the same way the current Categories operates, but on Metrics Categories
-    - This cmdlet now supports pipelining and the InputObject argument.  When the InputObject is used, no other parameter is accepted.
-* **Remove-AzureRmDiagnosticSetting**
-    - This cmdlet allows the deletion of Diagnostic Setting, since now multi-named settings are possible. For this a new parameter was added (Name) that defaults to 'service'. If the cmdlet is called using 'service' as name the cmdlet will only disable metrics and logs instead of removing the diagnostic setting.
-* **Get-AzureRmDiagnosticSetting**
-    - Added new optional Name argument. It defaults to 'service' for backward compatibility.
-    - The response also includes a new field: EventHubName, but keeps the previous one 'ServiceBusRuleId.'
-* **Get-AzureRmMetric**
-    - Added new optional parameter 'Top'. It is the maximum number of records to retrieve and defaults to '10', to be specified with .
-    - Added new optional parameter 'OrderBy'. It is the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
-    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metrics for.
-    - Added new optional parameter 'ResultType'. It is the result type to be returned (metadata or data).
-    - Added new optional parameter 'MetricFilter'. It is the metric dimension filter to query metrics for.
-* **Get-AzureRmMetricDefinition**
-    - Added new optional parameter 'MetricNamespace'. It is the metric namespace to query metric definitions for.
-* **New-AzureRmMetricFilter**
-    - This cmdlet is used to create a new metric dimension filter, which can then be used to query metrics.
 
 #### AzureRM.KeyVault
 * Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
@@ -73,7 +52,15 @@
 * Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 
 #### AzureRM.Resources
+* Fix issue when providing both tag name and value for 'Get-AzureRmResource'
+    - https://github.com/Azure/azure-powershell/issues/6765
 * Fix piping scenario with 'Set-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
 
 #### AzureRM.Sql
 * Adding Server Advanced Threat Protection support with the following cmdlets:

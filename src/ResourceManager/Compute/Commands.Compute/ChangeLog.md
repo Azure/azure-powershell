@@ -21,6 +21,7 @@
 ## Current Release
 
 ## Version 5.4.0
+* Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.
 * Fix Invoke-AzureRmVMRunCommand cmdlet
 * Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.

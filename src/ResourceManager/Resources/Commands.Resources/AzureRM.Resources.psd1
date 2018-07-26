@@ -166,6 +166,8 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Updated help files to include full parameter types and correct input/output types.
+* Fix issue when providing both tag name and value for ''Get-AzureRmResource''
+    - https://github.com/Azure/azure-powershell/issues/6765
 * Fix piping scenario with ''Set-AzureRmResource'''
 
         # Prerelease string of this module

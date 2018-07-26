@@ -216,7 +216,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix Invoke-AzureRmVMRunCommand cmdlet
+        ReleaseNotes = '* Fix issue with creating a vm using ''DiskFileParameterSet'' in ''New-AzureRmVm'' failing because of ''PremiumLRS'' storage account type renaming.
+        * Fix Invoke-AzureRmVMRunCommand cmdlet
 * Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of ''New-AzureRmVm'' to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
