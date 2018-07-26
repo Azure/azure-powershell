@@ -46,15 +46,12 @@ New-AzureRmVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Loc
 
 ## DESCRIPTION
 The Virtual Network Gateway is the object representing your gateway in Azure.
-
 The **New-AzureRmVirtualNetworkGateway** cmdlet creates the object of your gateway in Azure based
 on the Name, Resource Group Name, Location, and IP configuration, as well as the Gateway Type and
 if VPN, the VPN Type. You can also name the Gateway SKU.
-
 If this Gateway is being used for Point-to-Site connections, you will also need to include the VPN
 Client Address Pool from which to assign addresses to connecting clients and the VPN Client Root
 Certificate used to authenticate VPN clients connecting to the Gateway.
-
 You can also choose to include other features like BGP and Active-Active.
 
 ## EXAMPLES
@@ -74,7 +71,6 @@ New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Lo
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway in Azure.
-
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK
 West" with the previously created IP configurations saved in the variable "ngwIPConfig," the
 gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic."
@@ -95,7 +91,6 @@ New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Lo
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway in Azure.
-
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "Basic." It also adds an external radius server with address "TestRadiusServer"
 
 ### 1: Create a Virtual Network Gateway with P2S settings
@@ -115,7 +110,6 @@ New-AzureRmVirtualNetworkGateway -Name myNGW -ResourceGroupName vnet-gateway -Lo
 
 The above will create a resource group, request a Public IP Address, create a Virtual Network and
 subnet and create a Virtual Network Gateway with P2S settings e.g. VpnProtocol,VpnClientAddressPool,VpnClientRootCertificates,VpnClientIpsecPolicy etc. in Azure.
-
 The gateway will be called "myNGW" within the resource group "vnet-gateway" in the location "UK West" with the previously created IP configurations saved in the variable "ngwIPConfig," the gateway type of "VPN," the vpn type "RouteBased," and the sku "VpnGw1." Vpn settings will be set on Gateway such as VpnProtocol set as Ikev2, VpnClientAddressPool as "201.169.0.0/16", VpnClientRootCertificate set as passed one: clientRootCertName and custom vpn ipsec policy passed in object:$vpnclientipsecpolicy  
 
 ## PARAMETERS
@@ -354,7 +348,6 @@ Accept wildcard characters: False
 
 ### -Tag
 Key-value pairs in the form of a hash table. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -493,8 +486,36 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: GatewaySku (ByPropertyName), GatewayType (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), RadiusServerAddress (ByPropertyName), ResourceGroupName (ByPropertyName), VpnType (ByPropertyName)
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGatewayIpConfiguration, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Boolean
+Parameters: EnableBgp (ByPropertyName)
+
+### Microsoft.Azure.Commands.Network.Models.PSLocalNetworkGateway
+Parameters: GatewayDefaultSite (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRootCertificate, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSVpnClientRevokedCertificate, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.PSIpsecPolicy, Microsoft.Azure.Commands.Network, Version=6.4.0.0, Culture=neutral, PublicKeyToken=null]]
+
+### System.UInt32
+Parameters: Asn (ByPropertyName)
+
+### System.Int32
+Parameters: PeerWeight (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Tag (ByPropertyName)
+
+### System.Security.SecureString
+Parameters: RadiusServerSecret (ByPropertyName)
 
 ## OUTPUTS
 

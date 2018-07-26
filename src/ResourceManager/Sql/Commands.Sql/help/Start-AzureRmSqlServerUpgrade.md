@@ -51,11 +51,8 @@ PS C:\> Start-AzureRmSqlServerUpgrade -ResourceGroupName "ResourceGroup01" -Serv
 The first command creates a time five minutes in the future by using the Get-Date cmdlet.
 The command stores the date in the variable $ScheduleTime.
 For more information, type `Get-Help Get-Date`.
-
 The second command creates a **RecommendedDatabaseProperties** object, and then stores that object in the variable $DatabaseMap.
-
 The next three commands assign values to properties of the object stored in $DatabaseMap.
-
 The final command upgrades the existing server named Server01 to version 12.0.
 The earliest time to upgrade is five minutes after you run the command, as specified by the $ScheduleTime variable.
 After the upgrade, the database contosodb will be running the Standard edition and have the Service Level Objective S0.
@@ -175,12 +172,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ServerUpgrade.Model.AzureSqlServerUpgradeModel
+### System.Object
 
 ## NOTES
 

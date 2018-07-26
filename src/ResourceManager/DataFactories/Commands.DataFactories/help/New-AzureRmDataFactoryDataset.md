@@ -30,14 +30,11 @@ New-AzureRmDataFactoryDataset [-DataFactory] <PSDataFactory> [[-Name] <String>] 
 The **New-AzureRmDataFactoryDataset** cmdlet creates a dataset in Azure Data Factory.
 If you specify a name for a dataset that already exists, this cmdlet prompts you for confirmation before it replaces the dataset.
 If you specify the *Force* parameter, the cmdlet replaces the existing dataset without confirmation.
-
 Perform these operations in the following order: 
-
 - Create a data factory. 
 - Create linked services. 
 - Create datasets. 
 - Create a pipeline.
-
 If a dataset with the same name already exists in the data factory, this cmdlet prompts you to confirm whether to overwrite the existing dataset with the new dataset.
 If you confirm to overwrite the existing dataset, the dataset definition is also replaced.
 
@@ -70,7 +67,6 @@ WaitOnExternal : Microsoft.DataFactories.WaitOnExternal
 ```
 
 The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
 The second command uses standard dot notation to display details about the Availability property of the dataset.
 
 ### Example 3: View location for a new dataset
@@ -85,7 +81,6 @@ PartitionBy       : {}
 ```
 
 The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
 The second command displays details about the Location property of the dataset.
 
 ### Example 4: View validation rules for a new dataset
@@ -103,7 +98,6 @@ MinimumSizeMB : 1
 ```
 
 The first command creates a dataset named DA_WikipediaClickEvents, as in a previous example, and then assigns that dataset to the $Dataset variable.
-
 The second command gets details about the validation rules for the dataset, and then passes them to the Format-List cmdlet by using the pipeline operator.
 That Windows PowerShell cmdlet formats the results.
 For more information, type `Get-Help Format-List`.
@@ -254,12 +248,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Microsoft.WindowsAzure.Commands.Utilities.PSDataset
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataset
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, data, factories

@@ -134,12 +134,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AccessKey (ByPropertyName), Account (ByPropertyName), Blob (ByPropertyName), DataLakeStore (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### None
+### System.Object
 
 ## NOTES
 

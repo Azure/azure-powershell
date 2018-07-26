@@ -37,13 +37,10 @@ RecoveryPointId    RecoveryPointType  RecoveryPointTime      ContainerName
 
 The first command gets the vault named Vault03 by using the Get-AzureRmBackupVault cmdlet.
 The command stores that object in the $Vault variable.
-
 The second command gets a container that has the specified name in the vault in $Vault by using the **Get-AzureRmBackupContainer** cmdlet.
 The command stores that object in the $Container variable.
-
 The third command gets the backup item in the container in $Container by using the **Get-AzureRmBackupItem** cmdlet.
 The command stores that object in the $BackupItem variable.
-
 The final command gets recovery points for the item in $BackupItem.
 
 ## PARAMETERS
@@ -99,11 +96,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupItem
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupItem
+Parameters: Item (ByValue)
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.AzureBackup.Models.AzureRmBackupRecoveryPoint
+### Microsoft.Azure.Commands.AzureBackup.Models.AzureRMBackupRecoveryPoint
 
 ## NOTES
 

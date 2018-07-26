@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
     using Microsoft.WindowsAzure.Storage.Blob;
     using System;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     /// <summary>
     /// Azure storage blob object
@@ -24,22 +25,28 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     {
         /// <summary>
         /// CloudBlob object
-        /// </summary>
+        /// </summary>    
+        [Ps1Xml(Label = "Container Uri", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.ICloudBlob.Container.Uri")]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
+        [Ps1Xml(Label = "AccessTier", Target = ViewControl.Table, ScriptBlock = "$_.ICloudBlob.Properties.StandardBlobTier", Position = 5, TableColumnWidth = 10)]
         public CloudBlob ICloudBlob { get; private set; }
 
         /// <summary>
         /// Azure storage blob type
         /// </summary>
+        [Ps1Xml(Label = "BlobType", Target = ViewControl.Table, Position = 1, TableColumnWidth = 9)]
         public BlobType BlobType { get; private set; }
 
         /// <summary>
         /// Blob length
         /// </summary>
+        [Ps1Xml(Label = "Length", Target = ViewControl.Table, Position = 2, TableColumnWidth = 15)]
         public long Length { get; private set; }
 
         /// <summary>
         /// Blob IsDeleted
         /// </summary>
+        [Ps1Xml(Label = "IsDeleted", Target = ViewControl.Table, Position = 7, TableColumnWidth = 10)]
         public bool IsDeleted { get; private set; }
 
         /// <summary>
@@ -50,16 +57,19 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Blob content type
         /// </summary>
+        [Ps1Xml(Label = "ContentType", Target = ViewControl.Table, Position = 3, TableColumnWidth = 30)]
         public string ContentType { get; private set; }
 
         /// <summary>
         /// Blob last modified time
         /// </summary>
+        [Ps1Xml(Label = "LastModified", Target = ViewControl.Table, ScriptBlock = "$_.LastModified.UtcDateTime.ToString(\"u\")", Position = 4, TableColumnWidth = 20)]
         public DateTimeOffset? LastModified { get; private set; }
 
         /// <summary>
         /// Blob snapshot time
         /// </summary>
+        [Ps1Xml(Label = "SnapshotTime", Target = ViewControl.Table, ScriptBlock = "$_.SnapshotTime.UtcDateTime.ToString(\"u\")", Position = 6, TableColumnWidth = 20)]
         public DateTimeOffset? SnapshotTime { get; private set; }
 
         /// <summary>

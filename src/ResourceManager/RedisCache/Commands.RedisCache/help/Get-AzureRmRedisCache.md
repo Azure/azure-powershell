@@ -182,7 +182,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the Redis Cache to get.
-
 If you specify only the *ResourceGroupName* parameter, this operation gets every Redis Cache in the specified resource group.
 
 ```yaml
@@ -202,13 +201,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by name, but not by value.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributes
-Returns an array of **RedisCacheAttributes** objects.
 
 ## NOTES
 

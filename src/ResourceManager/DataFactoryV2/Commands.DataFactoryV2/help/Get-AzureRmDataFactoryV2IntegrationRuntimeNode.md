@@ -224,11 +224,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), IntegrationRuntimeName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSManagedIntegrationRuntimeNode
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSSelfHostedIntegrationRuntimeNode
 
 ## NOTES

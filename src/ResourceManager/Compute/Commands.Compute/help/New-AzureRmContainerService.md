@@ -34,10 +34,8 @@ PS C:\> New-AzureRmContainerService -ResourceGroupName "ResourceGroup17" -Name "
 
 The first command creates a resource group named ResourceGroup17 at the specified location.
 For more information, see the New-AzureRmResourceGroup cmdlet.
-
 The second command creates a container, and then stores it in the $Container variable.
 For more information, see the New-AzureRmContainerServiceConfig cmdlet.
-
 The final command creates a container service for the container stored in $Container.
 The service is named csResourceGroup17.
 
@@ -136,7 +134,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -156,8 +153,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### ContainerService
-Parameter 'ContainerService' accepts value of type 'ContainerService' from the pipeline
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSContainerService
+Parameters: ContainerService (ByValue)
 
 ## OUTPUTS
 

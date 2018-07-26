@@ -190,12 +190,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
-Microsoft.Azure.Commands.DataFactoryV2.Models.PSTrigger
 
 ## NOTES
 

@@ -32,7 +32,6 @@ PS C:\> Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -Applic
 ```
 
 The first command gets the application gateway named ApplicationGateway01 and then stores it in the $AppGw variable.
-
 The second command enables the firewall configuration for the application gateway stored in $AppGw and sets the firewall mode to "Detection", RuleSetType to "OWASP" and the RuleSetVersion to "3.0".
 
 ## PARAMETERS
@@ -101,7 +100,6 @@ Accept wildcard characters: False
 ### -FirewallMode
 Specifies the web application firewall mode.
 The acceptable values for this parameter are:
-
 - Detection
 - Prevention
 
@@ -121,7 +119,6 @@ Accept wildcard characters: False
 ### -RuleSetType
 The type of the web application firewall rule set. 
 The acceptable values for this parameter are: 
-
 - OWASP
 
 ```yaml
@@ -140,7 +137,6 @@ Accept wildcard characters: False
 ### -RuleSetVersion
 The version of the rule set type.
 The acceptable values for this parameter are: 
-
 - 3.0
 - 2.2.9
 
@@ -192,8 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

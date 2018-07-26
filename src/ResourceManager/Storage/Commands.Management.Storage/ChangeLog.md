@@ -20,6 +20,12 @@
 ## Current Release
 * Updated help files to include full parameter types.
 * Move hardcoded string into Resource strings.
+* Updated help files to include full parameter types and correct input/output types.
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
 
 ## Version 5.0.4-preview
 * Support create Storage account with Hierarchical Namespace enabled 

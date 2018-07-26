@@ -138,7 +138,6 @@ Accept wildcard characters: False
 ### -ForceRerun
 Indicates that this cmdlet forces a rerun of the same extension configuration on the virtual machine without uninstalling and reinstalling the extension.
 The value can be any string different from the current value.
-
 If forceUpdateTag is not changed, updates to public or protected settings are still applied by the handler.
 
 ```yaml
@@ -323,7 +322,6 @@ Accept wildcard characters: False
 
 ### -WhatIf
 Shows what would happen if the cmdlet runs.
-
 The cmdlet is not run.
 
 ```yaml
@@ -343,8 +341,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Argument (ByPropertyName), ContainerName (ByPropertyName), ForceRerun (ByPropertyName), Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Run (ByPropertyName), StorageAccountKey (ByPropertyName), StorageAccountName (ByPropertyName), StorageEndpointSuffix (ByPropertyName), TypeHandlerVersion (ByPropertyName), VMName (ByPropertyName)
+
+### System.String[]
+Parameters: FileName (ByPropertyName), FileUri (ByPropertyName)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisableAutoUpgradeMinorVersion (ByPropertyName), SecureExecution (ByPropertyName)
 
 ## OUTPUTS
 

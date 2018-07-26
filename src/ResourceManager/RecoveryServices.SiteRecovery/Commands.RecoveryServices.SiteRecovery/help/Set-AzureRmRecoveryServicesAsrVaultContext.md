@@ -98,6 +98,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.ARSVault
+Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
