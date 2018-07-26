@@ -97,10 +97,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRPolicy
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRJob
 
 ## NOTES
 

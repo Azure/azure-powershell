@@ -114,9 +114,7 @@ New-AzureRmADServicePrincipal -ApplicationObject <PSADApplication> -KeyCredentia
 
 ## DESCRIPTION
 Creates a new azure active directory service principal. The default parameter set uses default values for parameters if the user does not provide one for them. For more information on the default values used, please see the description for the given parameters below.
-
 This cmdlet has the ability to assign a role to the service principal with the `Role` and `Scope` parameters; if neither of these parameters are provided, no role will be assigned to the service principal. The default values for the `Role` and `Scope` parameters are "Contributor" and the current subscription, respectively (_note_: the defaults are only used when the user provides a value for one of the two parameters, but not the other).
-
 The cmdlet also implicitly creates an application and sets its properties (if the ApplicationId is not provided). In order to update the application specific parameters please use Set-AzureRmADApplication cmdlet.
 
 ## EXAMPLES
@@ -568,9 +566,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+### System.Guid
 
-This cmdlet accepts a PSADApplication object from the pipeline. You can pipe the output of Get-AzureRmADApplication to this cmdlet to create a service principal for the provided application.
+### System.String
+Parameters: CertValue (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADApplication
+Parameters: ApplicationObject (ByValue)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADPasswordCredential[]
+Parameters: PasswordCredential (ByPropertyName)
+
+### Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory.PSADKeyCredential[]
+Parameters: KeyCredential (ByPropertyName)
+
+### System.Security.SecureString
+
+### System.DateTime
 
 ## OUTPUTS
 

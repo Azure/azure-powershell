@@ -50,7 +50,6 @@ PS C:\> Remove-AzureRmPolicySetDefinition -Id $PolicySetDefinition.ResourceId -F
 
 The first command gets a policy set definition by using the Get-AzureRmPolicySetDefinition cmdlet.
 The command stores it in the $PolicySetDefinition variable.
-
 The second command removes the policy set definition identified by the **ResourceId** property of $PolicySetDefinition.
 
 ## PARAMETERS
@@ -227,6 +226,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Id (ByPropertyName), ManagementGroupName (ByPropertyName), Name (ByPropertyName)
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

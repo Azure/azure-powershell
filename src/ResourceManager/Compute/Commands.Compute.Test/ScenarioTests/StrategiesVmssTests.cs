@@ -42,6 +42,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestSimpleNewVmssLbErrorScenario()
+        {
+            ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssLbErrorScenario");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSimpleNewVmssWithSystemAssignedIdentity()
         {
             ComputeTestController.NewInstance.RunPsTest(_logger, "Test-SimpleNewVmssWithSystemAssignedIdentity");

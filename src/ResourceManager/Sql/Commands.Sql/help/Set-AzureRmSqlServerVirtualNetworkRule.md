@@ -20,8 +20,6 @@ Set-AzureRmSqlServerVirtualNetworkRule -VirtualNetworkRuleName <String> -Virtual
 
 ## DESCRIPTION
 This command modifies the configuration of an Azure SQL Server Virtual Network Rule.
-
-
 To control the set of virtual network rules in the server, use 'Add-AzureRmSqlServerVirtualNetworkRule' and 'Remove-AzureRmSqlServerVirtualNetworkRule' instead.
 
 ## EXAMPLES
@@ -177,6 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -30,7 +30,6 @@ PS C:\> $FirewallConfig = Get-AzureRmApplicationGatewayWebApplicationFirewallCon
 ```
 
 The first command gets the application gateway named ApplicationGateway01, and then stores it in the $AppGW variable.
-
 The second command gets the firewall configuration of the application gateway in $AppGW, and then stores it in $FirewallConfig.
 
 ## PARAMETERS
@@ -72,7 +71,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

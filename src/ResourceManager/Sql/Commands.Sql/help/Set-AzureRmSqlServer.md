@@ -155,7 +155,6 @@ Accept wildcard characters: False
 ### -Tags
 Specifies a dictionary of tags that this cmdlet associates with the server. Key-value pairs in the
 form of a hash table set as tags on the server. For example:
-
 @{key0="value0";key1=$null;key2="value2"}
 
 ```yaml
@@ -206,8 +205,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

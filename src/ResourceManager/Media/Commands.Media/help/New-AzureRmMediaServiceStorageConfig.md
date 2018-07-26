@@ -33,7 +33,6 @@ PS C:\> New-AzureRmMediaServiceStorageConfig -StorageAccountId $StorageAccount.I
 
 The first command creates a storage account object by using **the New-AzureRmStorageAccount** cmdlet.
 The command names this storage account Storage1 and the type is named Standard_GRS and stores the result in the variable named $StorageAccount.
-
 The second command creates a storage configuration object as the primary storage account associated with the media service using the storage account ID information stored in the $StorageAccount variable.
 
 ## PARAMETERS
@@ -119,8 +118,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: StorageAccountId (ByPropertyName)
 
 ## OUTPUTS
 

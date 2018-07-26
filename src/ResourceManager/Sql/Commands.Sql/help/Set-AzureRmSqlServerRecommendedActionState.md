@@ -139,9 +139,7 @@ Accept wildcard characters: False
 
 ### -State
 Specifies the new value to which this cmdlet updates the recommended action state.
-
 The acceptable values for this parameter are:
-
 - Active
 - Pending
 - PendingRevert
@@ -198,8 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AdvisorName (ByPropertyName), RecommendedActionName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet.RecommendedActionState
+Parameters: State (ByPropertyName)
 
 ## OUTPUTS
 

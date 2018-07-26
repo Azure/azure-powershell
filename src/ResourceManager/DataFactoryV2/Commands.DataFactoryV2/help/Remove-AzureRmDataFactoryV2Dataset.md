@@ -192,11 +192,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSDataset
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories

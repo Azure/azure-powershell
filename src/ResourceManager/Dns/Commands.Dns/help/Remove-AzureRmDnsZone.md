@@ -28,11 +28,8 @@ Remove-AzureRmDnsZone -Zone <DnsZone> [-Overwrite] [-PassThru] [-DefaultProfile 
 ## DESCRIPTION
 The **Remove-AzureRmDnsZone** cmdlet permanently deletes a Domain Name System (DNS) zone from a specified resource group.
 All record sets contained in the zone are also deleted.
-
 You can pass a **DnsZone** object using the *Name* parameter or by using the pipeline operator, or alternatively you can specify the *ZoneName* and *ResourceGroupName* parameters.
-
 You can use the Confirm parameter and $ConfirmPreference Windows PowerShell variable to control whether the cmdlet prompts you for confirmation.
-
 When specifying the zone using a **DnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **DnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
 This provides protection for concurrent zone changes.
 This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
@@ -66,7 +63,6 @@ Accept wildcard characters: False
 ### -Name
 Specifies the name of the DNS zone that this cmdlet removes.
 You must also specify the *ResourceGroupName* parameter.
-
 Alternatively, you can specify the DNS zone using the *Zone* parameter.
 
 ```yaml
@@ -84,7 +80,6 @@ Accept wildcard characters: False
 ### -Overwrite
 When specifying the zone using a **DnsZone** object (passed via the pipeline or *Zone* parameter), the zone is not deleted if it has been changed in Azure DNS since the local **DnsZone** object was retrieved (only operations directly on the DNS zone resource count as changes, operations on record sets within the zone do not).
 This provides protection for concurrent zone changes.
-
 This can be suppressed using the *Overwrite* parameter, which deletes the zone regardless of concurrent changes.
 
 ```yaml
@@ -117,7 +112,6 @@ Accept wildcard characters: False
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the zone to remove.
 You must also specify the *ZoneName* parameter.
-
 Alternatively, you can specify the DNS zone using a **DnsZone** object, passed via either the pipeline or the *Zone* parameter.
 
 ```yaml
@@ -135,7 +129,6 @@ Accept wildcard characters: False
 ### -Zone
 Specifies the DNS zone to delete.
 The **DnsZone** object passed can also be passed via the pipeline.
-
 Alternatively, you can specify the DNS zone to delete by using the *ZoneName* and *ResourceGroupName* parameters.
 
 ```yaml
@@ -186,17 +179,18 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
 ### Microsoft.Azure.Commands.Dns.DnsZone
-You can pipe a **DnsZone** object to this cmdlet.
+Parameters: Zone (ByValue)
 
 ## OUTPUTS
 
-### None
-This cmdlet does not generate any output.
+### System.Boolean
 
 ## NOTES
 Due to the potentially high impact of deleting a DNS zone, by default, this cmdlet prompts for confirmation if the $ConfirmPreference Windows PowerShell variable has any value other than None.
-
 If you specify *Confirm* or *Confirm:$True*, this cmdlet prompts you for confirmation before it runs.
 If you specify *Confirm:$False*, the cmdlet does not prompt you for confirmation. 
 

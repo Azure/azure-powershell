@@ -87,7 +87,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Resources.PSManagementPartner
+### Microsoft.Azure.Commands.ManagementPartner.PSManagementPartner
 
 ## NOTES
 

@@ -76,13 +76,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: LabName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DevTestLabs.Models.PSPolicy
-This cmdlet returns the policy that specifies the list of virtual machine sizes allowed in the lab.
 
 ## NOTES
 

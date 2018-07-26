@@ -207,17 +207,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
-System.String
-System.Int32
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.DiskCreateOptionTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
-System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.StorageAccountTypes, Microsoft.Azure.Management.Compute, Version=14.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
+Parameters: VirtualMachineScaleSet (ByPropertyName, ByValue)
+
+### System.String
+Parameters: CreateOption (ByPropertyName), Name (ByPropertyName), StorageAccountType (ByPropertyName)
+
+### System.Int32
+Parameters: DiskSizeGB (ByPropertyName), Lun (ByPropertyName)
+
+### System.Nullable`1[[Microsoft.Azure.Management.Compute.Models.CachingTypes, Microsoft.Azure.Management.Compute, Version=20.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
 
 ## OUTPUTS
 
-### Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSet
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 
 ## NOTES
 

@@ -52,7 +52,6 @@ Weight       : 32768
 ```
 
 For the Azure virtual network gateway named gatewayname in resource group resourceGroup, retrieves routes the Azure gateway knows. 
-
 The Azure virtual network gateway in this case has two static routes (10.1.0.0/16 and 10.0.0.254/32), as well as one route learned over BGP (10.0.0.0/16).
 
 ## PARAMETERS
@@ -123,6 +122,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceGroupName (ByPropertyName), VirtualNetworkGatewayName (ByPropertyName)
 
 ## OUTPUTS
 

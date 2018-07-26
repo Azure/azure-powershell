@@ -29,7 +29,6 @@ PS C:\>Remove-AzureRmRedisCacheDiagnostics -ResourceGroupName "ContosoResourceGr
 ```
 
 This command disables diagnostics on specified Azure Redis Cache.
-
 This disables diagnostics for all Azure Redis Caches in the same region for the subscription.
 
 ## PARAMETERS
@@ -115,11 +114,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### Void
+### System.Void
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website
