@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Get deployments.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmDeployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(List<PSDeployment>))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDeployment", DefaultParameterSetName = GetAzureDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSDeployment))]
     public class GetAzureDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
