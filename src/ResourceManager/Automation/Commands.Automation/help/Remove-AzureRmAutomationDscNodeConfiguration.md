@@ -159,7 +159,7 @@ Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), Resou
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

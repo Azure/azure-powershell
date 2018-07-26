@@ -451,7 +451,7 @@ Parameters: ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## NOTES
 

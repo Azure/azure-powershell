@@ -15,6 +15,7 @@
 
 
 using Microsoft.Azure.Commands.WebApps.Utilities;
+using Microsoft.Azure.Management.WebSites.Models;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
@@ -22,7 +23,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp")]
+    [Cmdlet(VerbsLifecycle.Start, "AzureRmWebApp"), OutputType(typeof(Site))]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()

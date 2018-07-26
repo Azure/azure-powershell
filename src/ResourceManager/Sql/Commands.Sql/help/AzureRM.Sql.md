@@ -20,6 +20,9 @@ Adds a Transparent Data Encryption Certificate for the given managed instance
 ### [Add-AzureRmSqlServerKeyVaultKey](Add-AzureRmSqlServerKeyVaultKey.md)
 Adds a Key Vault key to a SQL server.
 
+### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
+Adds a Transparent Data Encryption Certificate for the given SQL Server instance
+
 ### [Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline](Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline.md)
 Clears the vulnerability assessment rule baseline.
 
@@ -33,10 +36,7 @@ Converts a vulnerability assessment scan results to Excel format.
 Disables Advanced Threat Protection on a server.
 
 ### [Enable-AzureRmSqlServerAdvancedThreatProtection](Enable-AzureRmSqlServerAdvancedThreatProtection.md)
-
 Enables Advanced Threat Protection on a server.
-### [Add-AzureRmSqlServerTransparentDataEncryptionCertificate](Add-AzureRmSqlServerTransparentDataEncryptionCertificate.md)
-Adds a Transparent Data Encryption Certificate for the given SQL Server instance
 
 ### [Get-AzureRmSqlCapability](Get-AzureRmSqlCapability.md)
 Gets SQL Database capabilities for the current subscription.

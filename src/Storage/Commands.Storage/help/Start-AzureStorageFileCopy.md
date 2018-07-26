@@ -464,7 +464,7 @@ Parameters: Context (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

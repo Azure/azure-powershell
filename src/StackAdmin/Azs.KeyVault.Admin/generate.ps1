@@ -15,8 +15,8 @@ $client = "$namespace.$($name)AdminClient"
     -ModuleDirectory $module `
     -AzureStack `
     -PSSwaggerLocation $psswagger `
-    -GithubAccount deathly809 `
-    -GithubBranch azs.$rpname.admin `
+    -GithubAccount Azure `
+    -GithubBranch master `
     -PredefinedAssemblies $assembly `
     -Name $name `
     -ClientTypeName $client

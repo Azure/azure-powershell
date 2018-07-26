@@ -179,7 +179,7 @@ Parameters: DatabaseName (ByPropertyName), ElasticPoolName (ByPropertyName), Res
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseActivityModel
 
 ## NOTES
 
