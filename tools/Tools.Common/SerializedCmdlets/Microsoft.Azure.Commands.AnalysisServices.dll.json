@@ -550,6 +550,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
@@ -832,6 +833,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
@@ -1114,6 +1116,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
@@ -1354,6 +1357,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
@@ -1636,6 +1640,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
@@ -3543,6 +3548,7 @@
               "Location": "System.String",
               "ServerFullName": "System.String",
               "BackupBlobContainerUri": "System.String",
+              "ResourceGroupName": "System.String",
               "DefaultConnectionMode": "System.String"
             },
             "ElementType": null,
