@@ -12,16 +12,19 @@ This topic displays help topics for the Azure Storage Management Cmdlets.
 
 ## AzureRM.Storage Cmdlets
 ### [Add-AzureRmStorageAccountNetworkRule](Add-AzureRmStorageAccountNetworkRule.md)
- Adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage Account
+Adds IpRules or VirtualNetworkRules to the NetworkRule property of a Storage account
 
 ### [Add-AzureRmStorageContainerLegalHold](Add-AzureRmStorageContainerLegalHold.md)
-Adds tags for legal hold of  a Storage blob container
+Adds legal hold tags to a Storage blob container
 
 ### [Get-AzureRmStorageAccount](Get-AzureRmStorageAccount.md)
 Gets a Storage account.
 
 ### [Get-AzureRmStorageAccountKey](Get-AzureRmStorageAccountKey.md)
 Gets the access keys for an Azure Storage account.
+
+### [Get-AzureRmStorageAccountLastSyncTime](Get-AzureRmStorageAccountLastSyncTime.md)
+Retrieves last sync time of a RA-GRS and GRS Storage accounts.
 
 ### [Get-AzureRmStorageAccountManagementPolicy](Get-AzureRmStorageAccountManagementPolicy.md)
 Gets the management policy of an Azure Storage account.
@@ -30,7 +33,7 @@ Gets the management policy of an Azure Storage account.
 Checks the availability of a Storage account name.
 
 ### [Get-AzureRmStorageAccountNetworkRuleSet](Get-AzureRmStorageAccountNetworkRuleSet.md)
-Gets the NetWorkRule property of a Storage Account
+Gets the NetWorkRule property of a Storage account
 
 ### [Get-AzureRmStorageContainer](Get-AzureRmStorageContainer.md)
 Gets or lists Storage blob containers
@@ -40,6 +43,9 @@ Gets ImmutabilityPolicy of a Storage blob containers
 
 ### [Get-AzureRmStorageUsage](Get-AzureRmStorageUsage.md)
 Gets the Storage resource usage of the current subscription.
+
+### [Invoke-AzureRmStorageAccountFailover](Invoke-AzureRmStorageAccountFailover.md)
+Invokes failover of a Storage account.
 
 ### [Lock-AzureRmStorageContainerImmutabilityPolicy](Lock-AzureRmStorageContainerImmutabilityPolicy.md)
 Locks ImmutabilityPolicy of a Storage blob containers
@@ -60,7 +66,7 @@ Removes a Storage account from Azure.
 Removes the management policy of an Azure Storage account.
 
 ### [Remove-AzureRmStorageAccountNetworkRule](Remove-AzureRmStorageAccountNetworkRule.md)
-Removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage Account
+Removes IpRules or VirtualNetworkRules from the NetWorkRule property of a Storage account
 
 ### [Remove-AzureRmStorageContainer](Remove-AzureRmStorageContainer.md)
 Removes a Storage blob container
@@ -69,7 +75,7 @@ Removes a Storage blob container
 Removes ImmutabilityPolicy of a Storage blob containers
 
 ### [Remove-AzureRmStorageContainerLegalHold](Remove-AzureRmStorageContainerLegalHold.md)
-Removes tags for legal hold of  a Storage blob container
+Removes legal hold tags from a Storage blob container
 
 ### [Set-AzureRmCurrentStorageAccount](Set-AzureRmCurrentStorageAccount.md)
 Modifies the current Storage account of the specified subscription.
@@ -84,7 +90,7 @@ Creates or modifies the management policy of an Azure Storage account.
 Creates or updates ImmutabilityPolicy of a Storage blob containers
 
 ### [Update-AzureRmStorageAccountNetworkRuleSet](Update-AzureRmStorageAccountNetworkRuleSet.md)
-Updates the NetworkRule property of a Storage Account
+Updates the NetworkRule property of a Storage account
 
 ### [Update-AzureRmStorageContainer](Update-AzureRmStorageContainer.md)
 Modifies a Storage blob container

@@ -149,5 +149,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestController.NewInstance.RunPsTest(_logger, "Test-NewAzureStorageAccountBlockBlobStorage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestFailoverAzureStorageAccount()
+        {
+            TestController.NewInstance.RunPsTest(_logger, "Test-FailoverAzureStorageAccount");
+        }
     }
 }
