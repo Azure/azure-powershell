@@ -110,10 +110,16 @@ InModuleScope Azs.Subscriptions.Admin {
             Test-AzsNameAvailability -Name $global:TestAvailability -ResourceType $global:ResourceType
         }
 
-        It "TestMoveSubscription" {
+        it "TestMoveSubscription" {
             $global:TestName = 'MoveSubscription'
             $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | Select -ExpandProperty Id
             Move-AzsSubscription -DestinationDelegatedProviderOffer $Null -ResourceId $resourceIds
+		}
+
+        it "TestTestMoveSubscription" {
+            $global:TestName = 'TestMoveSubscription'
+            $resourceIds = Get-AzsUserSubscription -Filter "offerName eq 'o1'" | Select -ExpandProperty Id
+            Test-AzsMoveSubscription -DestinationDelegatedProviderOffer $Null -ResourceId $resourceIds
 		} 
     }
 }
