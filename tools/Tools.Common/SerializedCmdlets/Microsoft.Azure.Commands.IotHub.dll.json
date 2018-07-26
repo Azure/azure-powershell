@@ -6307,7 +6307,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -6482,7 +6498,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ResourceSet",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "InputObject",
