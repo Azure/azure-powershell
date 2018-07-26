@@ -81,8 +81,11 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
             if (ShouldProcess(Name, Resources.CreateQueryKey))
             {
-                var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
-                WriteQueryKey(res.Body);
+                CatchThrowInnerException(() =>
+                {
+                    var res = SearchClient.QueryKeys.CreateWithHttpMessagesAsync(ResourceGroupName, ServiceName, Name).Result;
+                    WriteQueryKey(res.Body);
+                });
             }
         }
     }
