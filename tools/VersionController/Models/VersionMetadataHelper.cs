@@ -326,7 +326,7 @@ namespace VersionController.Models
             }
             else
             {
-                throw new NullReferenceException("No nested modules found for " + moduleName);
+                return Version.PATCH;
             }
 
             return versionBump;
