@@ -121,20 +121,35 @@
             # IconUri = ''
 
             # ReleaseNotes of this module
-            ReleaseNotes = '## 2018.05 - Version 1.3.0
-            * Azurestack 1.3.0 version brings in many breaking changes from the existing version of 1.2.11. Please refer https://aka.ms/azspowershellmigration for the details
-            * AzureRM.AzureStackAdmin module is replaced with Azs.Subscriptions.Admin and Azs.Subscriptions module
-            * AzureRM.AzureStackStorage module is replaced with Azs.Storage.Admin module
-            * The following new modules are added to the AzureStack rollup module
-                * Azs.AzureBridge.Admin
-                * Azs.Backup.Admin
-                * Azs.Commerce.Admin
-                * Azs.Fabric.Admin
-                * Azs.Gallery.Admin
-                * Azs.InfrastructureInsights.Admin
-                * Azs.Keyvault.Admin
-                * Azs.Network.Admin
-                * Azs.Update.Admin'
+            ReleaseNotes = '## 2018.07 - Version 1.4.0
+            * Azurestack 1.4.0 version has no breaking changes from the previous release 1.3.0
+			* Azs.AzureBridge.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Backup.Admin
+			- Added new parameters BackupFrequencyInHours, IsBackupSchedulerEnabled, BackupRetentionPeriodInDays in cmdlet Set-AzsBackupShare
+			- Added a cmdlet New-EncyptionKeyBase64 to facilitate creating encryption key
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Commerce.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Fabric.Admin
+			- Bug fix for returning only a single page in paginated results
+			- Added a cmdlet Add-AzsScaleUnitNode to enable admin to add new scale unit nodes to the azurestack stamp
+			- Added cmdlets New-ScaleOutScaleUnitParametersListObject and New-ScaleOutScaleUnitParametersObject to facilitate the creation scale unit parameter objects
+			* Azs.Gallery.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.InfrastructureInsights.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Network.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Update.Admin
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Subscriptions
+			- Bug fix for returning only a single page in paginated results
+			* Azs.Subscriptions.Admin
+			- Added a cmdlet Move-AzsSubscription to move subscriptions between delegated provider offers
+			- Added a cmdlet Test-AzsMoveSubscription to validate that user subscriptions can be moved between delegated provider offers
+			- Bug fix for returning only a single page in paginated results'
+
 
             # External dependent modules of this module
             # ExternalModuleDependencies = ''
