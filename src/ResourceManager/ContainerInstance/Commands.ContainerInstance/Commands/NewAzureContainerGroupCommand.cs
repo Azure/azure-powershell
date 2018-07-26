@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+#if !NETSTANDARD
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -222,3 +223,5 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         }
     }
 }
+
+#endif

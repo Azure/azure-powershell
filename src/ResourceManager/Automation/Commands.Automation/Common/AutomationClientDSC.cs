@@ -843,6 +843,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
             templateParameters.Add("allowModuleOverwrite", moduleOverwriteFlag);
             templateParameters.Add("timestamp", DateTimeOffset.UtcNow.ToString("o"));
 
+#if !NETSTANDARD
             // invoke the New-AzureRmResourceGroupDeployment cmdlet
             using (Pipeline pipe = Runspace.DefaultRunspace.CreateNestedPipeline())
             {
@@ -858,11 +859,12 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 Collection<PSObject> results = pipe.Invoke();
             }
+#endif
         }
 
-        #endregion
+#endregion
 
-        #region compilationjob
+#region compilationjob
 
         public Model.CompilationJob GetCompilationJob(string resourceGroupName, string automationAccountName, Guid Id)
         {
@@ -1070,9 +1072,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
         }
 
-        #endregion
+#endregion
 
-        #region node configuration
+#region node configuration
         public Model.NodeConfiguration TryGetNodeConfiguration(string resourceGroupName, string automationAccountName, string nodeConfigurationName, string rollupStatus)
         {
             using (var request = new RequestSettings(this.automationManagementClient))
@@ -1487,9 +1489,9 @@ namespace Microsoft.Azure.Commands.Automation.Common
             this.StopJob(resourceGroupName, automationAccountName, jobId);
         }
 
-        #endregion
+#endregion
 
-        #region dsc reports
+#region dsc reports
         public Model.DscNodeReport GetDscNodeReportByReportId(string resourceGroupName, string automationAccountName, Guid nodeId, Guid reportId)
         {
             Requires.Argument("ResourceGroupName", resourceGroupName).NotNull();
@@ -1633,10 +1635,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 return response.NodeReports.Select(report => new Commands.Automation.Model.DscNodeReport(resourceGroupName, automationAccountName, nodeId.ToString("D"), report));
             }
         }
-        #endregion 
+#endregion
 
 
-        #region privatemethods
+#region privatemethods
         
         /// <summary>
         /// Enumerate the list of NodeConfigurations for given configuration - without any rollup status
@@ -1819,6 +1821,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             return paramsForRunbook;
         }
 
-        #endregion
+#endregion
     }
 }
