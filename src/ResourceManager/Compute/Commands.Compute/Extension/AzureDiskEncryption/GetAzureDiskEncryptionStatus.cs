@@ -392,11 +392,16 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
         private EncryptionStatus AreDataVolumesEncrypted(VirtualMachine vmParameters)
         {
+            if (vmParameters == null || vmParameters.Resources == null)
+            {
+                return EncryptionStatus.Unknown;
+            }
+
             // return true if any (non-OS) data volume attached to the VM reports an encrypted state
             VirtualMachineInstanceView iv = this.ComputeClient.ComputeManagementClient.VirtualMachines.InstanceView(this.ResourceGroupName, this.VMName);
             foreach (DiskInstanceView div in iv.Disks)
             {
-                if (!((div.Name.Equals("osDisk") || div.Name.Contains("_OsDisk_"))) &&
+                if ((!div.Name.Equals(vmParameters.StorageProfile.OsDisk.Name)) &&
                     GetLastEncryptionStatus(div).Equals("EncryptionState/encrypted"))
                 {
                     return EncryptionStatus.Encrypted;
@@ -404,11 +409,6 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             }
 
             // no encrypted status found in disk instance data, check vm model 
-            if (vmParameters == null || vmParameters.Resources == null)
-            {
-                return EncryptionStatus.Unknown;
-            }
-
             OSType osType = this.GetOSType(vmParameters);
             foreach (VirtualMachineExtension vmExtension in vmParameters.Resources)
             {
@@ -440,7 +440,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return EncryptionStatus.NotEncrypted;
         }
 
-        private AzureDiskEncryptionStatusContext GetStatusFromInstanceView()
+        private AzureDiskEncryptionStatusContext GetStatusFromInstanceView(StorageProfile storageProfile)
         {
             AzureDiskEncryptionStatusContext result = null;
 
@@ -453,8 +453,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 
                 foreach (DiskInstanceView div in iv.Disks)
                 {
-                    if (result.OsVolumeEncrypted==EncryptionStatus.Unknown && 
-                        (div.Name.Equals("osDisk") || div.Name.Contains("_OsDisk_")))
+                    if (div.Name.Equals(storageProfile.OsDisk.Name))
                     {
                         // check os volume status
                         string status = GetLastEncryptionStatus(div);
@@ -471,7 +470,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                         }
                         result.OsVolumeEncryptionSettings = (div.EncryptionSettings != null) ? div.EncryptionSettings[0] : null;
                     }
-                    else if (result.DataVolumesEncrypted == EncryptionStatus.Unknown)
+                    else if (result.DataVolumesEncrypted != EncryptionStatus.Encrypted)
                     {
                         // check data volume status
                         string status = GetLastEncryptionStatus(div);
@@ -513,7 +512,7 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
                 }
 
                 // retrieve encryption state using per-disk instance status and report if successful
-                AzureDiskEncryptionStatusContext encryptionStatus = GetStatusFromInstanceView();
+                AzureDiskEncryptionStatusContext encryptionStatus = GetStatusFromInstanceView(vmParameters.StorageProfile);
                 if (encryptionStatus != null && (encryptionStatus.OsVolumeEncrypted!=EncryptionStatus.Unknown || encryptionStatus.DataVolumesEncrypted!=EncryptionStatus.Unknown))
                 {
                     encryptionStatus.ProgressMessage = progressMessage;
