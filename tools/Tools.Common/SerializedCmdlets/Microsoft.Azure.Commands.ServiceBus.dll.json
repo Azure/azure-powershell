@@ -7053,8 +7053,24 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "DefaultParameterSetName": "TopicPropertiesSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -7117,6 +7133,140 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+            "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+              "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+              "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+              "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+              "EnableExpress": "System.Nullable`1[System.Boolean]",
+              "SupportOrdering": "System.Nullable`1[System.Boolean]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "AccessedAt": "System.Nullable`1[System.DateTime]",
+              "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "SubscriptionCount": "System.Nullable`1[System.Int32]",
+              "SizeInBytes": "System.Nullable`1[System.Int64]",
+              "DuplicateDetectionHistoryTimeWindow": "System.String",
+              "AutoDeleteOnIdle": "System.String",
+              "Type": "System.String",
+              "Id": "System.String",
+              "DefaultMessageTimeToLive": "System.String",
+              "Name": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "topicResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -7151,7 +7301,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "TopicPropertiesSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -7230,6 +7380,437 @@
               "Position": 2,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "TopicInputObjectSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+                  "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+                    "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+                    "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+                    "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+                    "EnableExpress": "System.Nullable`1[System.Boolean]",
+                    "SupportOrdering": "System.Nullable`1[System.Boolean]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "AccessedAt": "System.Nullable`1[System.DateTime]",
+                    "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+                    "SubscriptionCount": "System.Nullable`1[System.Int32]",
+                    "SizeInBytes": "System.Nullable`1[System.Int64]",
+                    "DuplicateDetectionHistoryTimeWindow": "System.String",
+                    "AutoDeleteOnIdle": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String",
+                    "DefaultMessageTimeToLive": "System.String",
+                    "Name": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "topicResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "TopicResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {
@@ -7769,21 +8350,22 @@
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
-              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
-              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
               "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
               "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
-              "ForwardTo": "System.String",
-              "LockDuration": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "ForwardDeadLetteredMessagesTo": "System.String",
-              "Name": "System.String"
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8166,21 +8748,22 @@
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
-              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
-              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
               "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
               "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
-              "ForwardTo": "System.String",
-              "LockDuration": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "ForwardDeadLetteredMessagesTo": "System.String",
-              "Name": "System.String"
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -8961,7 +9544,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "SubscriptionPropertiesSet",
       "OutputTypes": [
         {
           "Type": {
@@ -9061,6 +9644,139 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+            "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+              "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+              "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
+              "AccessedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+              "MessageCount": "System.Nullable`1[System.Int64]",
+              "DefaultMessageTimeToLive": "System.String",
+              "AutoDeleteOnIdle": "System.String",
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "Id": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "subscriptionResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -9095,7 +9811,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "SubscriptionPropertiesSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -9203,6 +9919,436 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "SubscriptionInputObjectSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+                  "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSSubscriptionAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+                    "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+                    "RequiresSession": "System.Nullable`1[System.Boolean]",
+                    "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+                    "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
+                    "AccessedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+                    "MessageCount": "System.Nullable`1[System.Int64]",
+                    "DefaultMessageTimeToLive": "System.String",
+                    "AutoDeleteOnIdle": "System.String",
+                    "ForwardDeadLetteredMessagesTo": "System.String",
+                    "LockDuration": "System.String",
+                    "Name": "System.String",
+                    "ForwardTo": "System.String",
+                    "Id": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "subscriptionResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "SubscriptionResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -9262,21 +10408,22 @@
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
-              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
-              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
               "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
               "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
-              "ForwardTo": "System.String",
-              "LockDuration": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "ForwardDeadLetteredMessagesTo": "System.String",
-              "Name": "System.String"
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9403,21 +10550,22 @@
             "Properties": {
               "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
               "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
-              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
-              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
               "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
               "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
-              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
               "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
-              "ForwardTo": "System.String",
-              "LockDuration": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "ForwardDeadLetteredMessagesTo": "System.String",
-              "Name": "System.String"
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -9599,21 +10747,22 @@
                   "Properties": {
                     "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
                     "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
-                    "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
-                    "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
                     "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
                     "RequiresSession": "System.Nullable`1[System.Boolean]",
+                    "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+                    "DeadLetteringOnFilterEvaluationExceptions": "System.Nullable`1[System.Boolean]",
                     "AccessedAt": "System.Nullable`1[System.DateTime]",
-                    "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
                     "MessageCount": "System.Nullable`1[System.Int64]",
-                    "ForwardTo": "System.String",
-                    "LockDuration": "System.String",
                     "DefaultMessageTimeToLive": "System.String",
                     "AutoDeleteOnIdle": "System.String",
                     "ForwardDeadLetteredMessagesTo": "System.String",
-                    "Name": "System.String"
+                    "LockDuration": "System.String",
+                    "Name": "System.String",
+                    "ForwardTo": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -10577,7 +11726,7 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
+      "DefaultParameterSetName": "RulePropertiesSet",
       "OutputTypes": [
         {
           "Type": {
@@ -10695,7 +11844,105 @@
           "ValidateNotNullOrEmpty": true
         },
         {
-          "Name": "Force",
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+            "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+              "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+              "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+              "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+              "EnableExpress": "System.Nullable`1[System.Boolean]",
+              "SupportOrdering": "System.Nullable`1[System.Boolean]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "AccessedAt": "System.Nullable`1[System.DateTime]",
+              "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "SubscriptionCount": "System.Nullable`1[System.Int32]",
+              "SizeInBytes": "System.Nullable`1[System.Int64]",
+              "DuplicateDetectionHistoryTimeWindow": "System.String",
+              "AutoDeleteOnIdle": "System.String",
+              "Type": "System.String",
+              "Id": "System.String",
+              "DefaultMessageTimeToLive": "System.String",
+              "Name": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "topicResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -10713,7 +11960,25 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "PassThru",
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "Force",
           "AliasList": [],
           "Type": {
             "Namespace": "System.Management.Automation",
@@ -10765,7 +12030,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "RulePropertiesSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -10897,6 +12162,54 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Force",
                 "AliasList": [],
                 "Type": {
@@ -10921,7 +12234,323 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "RuleResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+                  "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSTopicAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+                    "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+                    "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+                    "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+                    "EnableExpress": "System.Nullable`1[System.Boolean]",
+                    "SupportOrdering": "System.Nullable`1[System.Boolean]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "AccessedAt": "System.Nullable`1[System.DateTime]",
+                    "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+                    "SubscriptionCount": "System.Nullable`1[System.Int32]",
+                    "SizeInBytes": "System.Nullable`1[System.Int64]",
+                    "DuplicateDetectionHistoryTimeWindow": "System.String",
+                    "AutoDeleteOnIdle": "System.String",
+                    "Type": "System.String",
+                    "Id": "System.String",
+                    "DefaultMessageTimeToLive": "System.String",
+                    "Name": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "topicResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Force",
                 "AliasList": [],
                 "Type": {
                   "Namespace": "System.Management.Automation",
@@ -11538,17 +13167,18 @@
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
               "SizeInBytes": "System.Nullable`1[System.Int64]",
-              "ForwardDeadLetteredMessagesTo": "System.String",
               "DuplicateDetectionHistoryTimeWindow": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "LockDuration": "System.String",
+              "Name": "System.String",
               "ForwardTo": "System.String",
-              "Name": "System.String"
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -11894,17 +13524,18 @@
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
               "SizeInBytes": "System.Nullable`1[System.Int64]",
-              "ForwardDeadLetteredMessagesTo": "System.String",
               "DuplicateDetectionHistoryTimeWindow": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "LockDuration": "System.String",
+              "Name": "System.String",
               "ForwardTo": "System.String",
-              "Name": "System.String"
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -12923,8 +14554,24 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "DefaultParameterSetName": "QueuePropertiesSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -12987,6 +14634,144 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+            "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+              "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+              "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+              "RequiresSession": "System.Nullable`1[System.Boolean]",
+              "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+              "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+              "EnableExpress": "System.Nullable`1[System.Boolean]",
+              "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "AccessedAt": "System.Nullable`1[System.DateTime]",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+              "MessageCount": "System.Nullable`1[System.Int64]",
+              "SizeInBytes": "System.Nullable`1[System.Int64]",
+              "DuplicateDetectionHistoryTimeWindow": "System.String",
+              "DefaultMessageTimeToLive": "System.String",
+              "AutoDeleteOnIdle": "System.String",
+              "LockDuration": "System.String",
+              "Name": "System.String",
+              "ForwardTo": "System.String",
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "Id": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "quResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -13021,7 +14806,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "QueuePropertiesSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -13103,6 +14888,441 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "QueueInputObjectSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+                  "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSQueueAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "CountDetails": "Microsoft.Azure.Management.ServiceBus.Models.MessageCountDetails",
+                    "Status": "System.Nullable`1[Microsoft.Azure.Management.ServiceBus.Models.EntityStatus]",
+                    "EnableBatchedOperations": "System.Nullable`1[System.Boolean]",
+                    "RequiresSession": "System.Nullable`1[System.Boolean]",
+                    "RequiresDuplicateDetection": "System.Nullable`1[System.Boolean]",
+                    "DeadLetteringOnMessageExpiration": "System.Nullable`1[System.Boolean]",
+                    "EnableExpress": "System.Nullable`1[System.Boolean]",
+                    "EnablePartitioning": "System.Nullable`1[System.Boolean]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "AccessedAt": "System.Nullable`1[System.DateTime]",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
+                    "MessageCount": "System.Nullable`1[System.Int64]",
+                    "SizeInBytes": "System.Nullable`1[System.Int64]",
+                    "DuplicateDetectionHistoryTimeWindow": "System.String",
+                    "DefaultMessageTimeToLive": "System.String",
+                    "AutoDeleteOnIdle": "System.String",
+                    "LockDuration": "System.String",
+                    "Name": "System.String",
+                    "ForwardTo": "System.String",
+                    "ForwardDeadLetteredMessagesTo": "System.String",
+                    "Id": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "quResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "QueueResourceIdSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "DefaultProfile",
                 "AliasList": [
                   "AzureRmContext",
@@ -13171,17 +15391,18 @@
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
               "SizeInBytes": "System.Nullable`1[System.Int64]",
-              "ForwardDeadLetteredMessagesTo": "System.String",
               "DuplicateDetectionHistoryTimeWindow": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "LockDuration": "System.String",
+              "Name": "System.String",
               "ForwardTo": "System.String",
-              "Name": "System.String"
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13317,17 +15538,18 @@
               "UpdatedAt": "System.Nullable`1[System.DateTime]",
               "AccessedAt": "System.Nullable`1[System.DateTime]",
               "CreatedAt": "System.Nullable`1[System.DateTime]",
-              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+              "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
               "MessageCount": "System.Nullable`1[System.Int64]",
               "SizeInBytes": "System.Nullable`1[System.Int64]",
-              "ForwardDeadLetteredMessagesTo": "System.String",
               "DuplicateDetectionHistoryTimeWindow": "System.String",
               "DefaultMessageTimeToLive": "System.String",
               "AutoDeleteOnIdle": "System.String",
               "LockDuration": "System.String",
+              "Name": "System.String",
               "ForwardTo": "System.String",
-              "Name": "System.String"
+              "ForwardDeadLetteredMessagesTo": "System.String",
+              "Id": "System.String"
             },
             "ElementType": null,
             "GenericTypeArguments": [],
@@ -13518,17 +15740,18 @@
                     "UpdatedAt": "System.Nullable`1[System.DateTime]",
                     "AccessedAt": "System.Nullable`1[System.DateTime]",
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
-                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
                     "MaxSizeInMegabytes": "System.Nullable`1[System.Int32]",
+                    "MaxDeliveryCount": "System.Nullable`1[System.Int32]",
                     "MessageCount": "System.Nullable`1[System.Int64]",
                     "SizeInBytes": "System.Nullable`1[System.Int64]",
-                    "ForwardDeadLetteredMessagesTo": "System.String",
                     "DuplicateDetectionHistoryTimeWindow": "System.String",
                     "DefaultMessageTimeToLive": "System.String",
                     "AutoDeleteOnIdle": "System.String",
                     "LockDuration": "System.String",
+                    "Name": "System.String",
                     "ForwardTo": "System.String",
-                    "Name": "System.String"
+                    "ForwardDeadLetteredMessagesTo": "System.String",
+                    "Id": "System.String"
                   },
                   "ElementType": null,
                   "GenericTypeArguments": [],
@@ -21158,6 +23381,26 @@
           "ValidateNotNullOrEmpty": false
         },
         {
+          "Name": "SkuCapacity",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Nullable`1[System.Int32]",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [
+              "System.Int32"
+            ],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "Tag",
           "AliasList": [],
           "Type": {
@@ -21318,6 +23561,32 @@
             },
             {
               "ParameterMetadata": {
+                "Name": "SkuCapacity",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Int32]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [
+                    "System.Int32"
+                  ],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
                 "Name": "Tag",
                 "AliasList": [],
                 "Type": {
@@ -21391,8 +23660,24 @@
       "SupportsShouldProcess": true,
       "ConfirmImpact": 2,
       "SupportsPaging": false,
-      "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "DefaultParameterSetName": "NamespacePropertiesSet",
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Boolean",
+            "AssemblyQualifiedName": "System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -21435,6 +23720,130 @@
           "ValidateNotNullOrEmpty": true
         },
         {
+          "Name": "InputObject",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+            "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
+              "CreatedAt": "System.Nullable`1[System.DateTime]",
+              "UpdatedAt": "System.Nullable`1[System.DateTime]",
+              "ResourceGroup": "System.String",
+              "Name": "System.String",
+              "Id": "System.String",
+              "Location": "System.String",
+              "ProvisioningState": "System.String",
+              "ServiceBusEndpoint": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "evResource",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "ResourceId",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": true
+        },
+        {
+          "Name": "PassThru",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "AsJob",
+          "AliasList": [],
+          "Type": {
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ValidateSet": [],
+          "ValidateRangeMin": null,
+          "ValidateRangeMax": null,
+          "ValidateNotNullOrEmpty": false
+        },
+        {
           "Name": "DefaultProfile",
           "AliasList": [
             "AzureRmContext",
@@ -21469,7 +23878,7 @@
       ],
       "ParameterSets": [
         {
-          "Name": "__AllParameterSets",
+          "Name": "NamespacePropertiesSet",
           "Parameters": [
             {
               "ParameterMetadata": {
@@ -21522,6 +23931,427 @@
               "Position": 1,
               "ValueFromPipeline": false,
               "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "NamespaceInputObjectSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "InputObject",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.ServiceBus.Models",
+                  "Name": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.ServiceBus.Models.PSNamespaceAttributes, Microsoft.Azure.Commands.ServiceBus, Version=0.6.8.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "Sku": "Microsoft.Azure.Management.ServiceBus.Models.SBSku",
+                    "CreatedAt": "System.Nullable`1[System.DateTime]",
+                    "UpdatedAt": "System.Nullable`1[System.DateTime]",
+                    "ResourceGroup": "System.String",
+                    "Name": "System.String",
+                    "Id": "System.String",
+                    "Location": "System.String",
+                    "ProvisioningState": "System.String",
+                    "ServiceBusEndpoint": "System.String"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "ToString",
+                      "Parameters": [],
+                      "ReturnType": "System.String"
+                    },
+                    {
+                      "Name": "Equals",
+                      "Parameters": [
+                        {
+                          "Name": "obj",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ],
+                      "ReturnType": "System.Boolean"
+                    },
+                    {
+                      "Name": "GetHashCode",
+                      "Parameters": [],
+                      "ReturnType": "System.Int32"
+                    },
+                    {
+                      "Name": "GetType",
+                      "Parameters": [],
+                      "ReturnType": "System.Type"
+                    }
+                  ],
+                  "Constructors": [
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": []
+                    },
+                    {
+                      "Name": "",
+                      "ReturnType": null,
+                      "Parameters": [
+                        {
+                          "Name": "evResource",
+                          "Type": "System.Reflection.RuntimeParameterInfo"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": true,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "NamespaceResourceIdParameterSet",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "ResourceId",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": true
+              },
+              "Mandatory": true,
+              "Position": 0,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": true
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "DefaultProfile",
+                "AliasList": [
+                  "AzureRmContext",
+                  "AzureCredential"
+                ],
+                "Type": {
+                  "Namespace": "Microsoft.Azure.Commands.Common.Authentication.Abstractions",
+                  "Name": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer, Microsoft.Azure.Commands.Common.Authentication.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                  "Properties": {
+                    "DefaultContext": "Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext",
+                    "Accounts": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureAccount]",
+                    "Environments": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureEnvironment]",
+                    "Subscriptions": "System.Collections.Generic.IEnumerable`1[Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureSubscription]"
+                  },
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [
+                    {
+                      "Name": "Clear",
+                      "Parameters": [],
+                      "ReturnType": "System.Void"
+                    }
+                  ],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            }
+          ]
+        },
+        {
+          "Name": "__AllParameterSets",
+          "Parameters": [
+            {
+              "ParameterMetadata": {
+                "Name": "PassThru",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "AsJob",
+                "AliasList": [],
+                "Type": {
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "Properties": {},
+                  "ElementType": null,
+                  "GenericTypeArguments": [],
+                  "Methods": [],
+                  "Constructors": []
+                },
+                "ValidateSet": [],
+                "ValidateRangeMin": null,
+                "ValidateRangeMax": null,
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
             },
             {
               "ParameterMetadata": {

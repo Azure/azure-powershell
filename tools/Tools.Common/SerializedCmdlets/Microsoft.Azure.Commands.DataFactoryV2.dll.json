@@ -28859,7 +28859,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.FactoryIdentity, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "PrincipalId": "System.Nullable`1[System.Guid]",
         "TenantId": "System.Nullable`1[System.Guid]",
@@ -29154,7 +29154,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29166,7 +29166,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeNodeMonitoringData, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "SentBytes": "System.Nullable`1[System.Double]",
@@ -29295,7 +29295,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29307,7 +29307,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Parameters": "System.Collections.Generic.IList`1[System.String]",
         "Time": "System.Nullable`1[System.DateTime]",
@@ -29410,7 +29410,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29422,7 +29422,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedIntegrationRuntime, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "CreateTime": "System.Nullable`1[System.DateTime]",
         "Name": "System.String",
@@ -29496,7 +29496,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29508,7 +29508,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.SelfHostedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Capabilities": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "IsActiveDispatcher": "System.Nullable`1[System.Boolean]",
@@ -29669,7 +29669,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeOperationResult": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeOperationResult",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeOperationResult, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeOperationResult, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Parameters": "System.Collections.Generic.IList`1[System.String]",
         "StartTime": "System.Nullable`1[System.DateTime]",
@@ -29748,7 +29748,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29760,7 +29760,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeNode, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Errors": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ManagedIntegrationRuntimeError]",
         "Status": "System.String",
@@ -29824,7 +29824,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.LinkedService": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.LinkedService",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedService, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedService, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "ConnectVia": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeReference",
         "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]",
@@ -29903,7 +29903,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeReference": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeReference, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.IntegrationRuntimeReference, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "ReferenceName": "System.String",
@@ -29968,7 +29968,7 @@
     "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IDictionary`2[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089],[Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -29981,7 +29981,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "DefaultValue": "System.Object",
         "Type": "System.String"
@@ -30057,7 +30057,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.Trigger": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.Trigger",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Trigger, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Trigger, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "Description": "System.String",
@@ -30121,7 +30121,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.Activity]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.Activity]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.Activity, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.Activity, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -30133,11 +30133,11 @@
     "Microsoft.Azure.Management.DataFactory.Models.Activity": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.Activity",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Activity, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Activity, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
-        "UserProperties": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
         "DependsOn": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ActivityDependency]",
+        "UserProperties": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.UserProperty]",
         "Name": "System.String",
         "Description": "System.String"
       },
@@ -30212,7 +30212,7 @@
     "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ActivityDependency]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.ActivityDependency]",
-      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ActivityDependency, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.ActivityDependency, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [
@@ -30224,7 +30224,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.ActivityDependency": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.ActivityDependency",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ActivityDependency, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.ActivityDependency, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "AdditionalProperties": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "DependencyConditions": "System.Collections.Generic.IList`1[System.String]",
@@ -30290,10 +30290,86 @@
         }
       ]
     },
+    "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.UserProperty]": {
+      "Namespace": "System.Collections.Generic",
+      "Name": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.DataFactory.Models.UserProperty]",
+      "AssemblyQualifiedName": "System.Collections.Generic.IList`1[[Microsoft.Azure.Management.DataFactory.Models.UserProperty, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+      "Properties": {},
+      "ElementType": null,
+      "GenericTypeArguments": [
+        "Microsoft.Azure.Management.DataFactory.Models.UserProperty"
+      ],
+      "Methods": [],
+      "Constructors": []
+    },
+    "Microsoft.Azure.Management.DataFactory.Models.UserProperty": {
+      "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
+      "Name": "Microsoft.Azure.Management.DataFactory.Models.UserProperty",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.UserProperty, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "Properties": {
+        "Value": "System.Object",
+        "Name": "System.String"
+      },
+      "ElementType": null,
+      "GenericTypeArguments": [],
+      "Methods": [
+        {
+          "Name": "Validate",
+          "Parameters": [],
+          "ReturnType": "System.Void"
+        },
+        {
+          "Name": "ToString",
+          "Parameters": [],
+          "ReturnType": "System.String"
+        },
+        {
+          "Name": "Equals",
+          "Parameters": [
+            {
+              "Name": "obj",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ],
+          "ReturnType": "System.Boolean"
+        },
+        {
+          "Name": "GetHashCode",
+          "Parameters": [],
+          "ReturnType": "System.Int32"
+        },
+        {
+          "Name": "GetType",
+          "Parameters": [],
+          "ReturnType": "System.Type"
+        }
+      ],
+      "Constructors": [
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": []
+        },
+        {
+          "Name": "",
+          "ReturnType": null,
+          "Parameters": [
+            {
+              "Name": "name",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            },
+            {
+              "Name": "value",
+              "Type": "System.Reflection.RuntimeParameterInfo"
+            }
+          ]
+        }
+      ]
+    },
     "Microsoft.Azure.Management.DataFactory.Models.Dataset": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.Dataset",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Dataset, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.Dataset, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "LinkedServiceName": "Microsoft.Azure.Management.DataFactory.Models.LinkedServiceReference",
         "Parameters": "System.Collections.Generic.IDictionary`2[System.String,Microsoft.Azure.Management.DataFactory.Models.ParameterSpecification]",
@@ -30377,7 +30453,7 @@
     "Microsoft.Azure.Management.DataFactory.Models.LinkedServiceReference": {
       "Namespace": "Microsoft.Azure.Management.DataFactory.Models",
       "Name": "Microsoft.Azure.Management.DataFactory.Models.LinkedServiceReference",
-      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedServiceReference, Microsoft.Azure.Management.DataFactory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Management.DataFactory.Models.LinkedServiceReference, Microsoft.Azure.Management.DataFactory, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Parameters": "System.Collections.Generic.IDictionary`2[System.String,System.Object]",
         "ReferenceName": "System.String",
