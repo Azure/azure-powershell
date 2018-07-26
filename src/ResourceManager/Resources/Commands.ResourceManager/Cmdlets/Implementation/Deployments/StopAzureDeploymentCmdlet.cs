@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string DeploymentNameParameterSet = "StopByDeploymentName";
 
         /// <summary>
-        /// The input object parameter set.
+        /// The deployment object parameter set.
         /// </summary>
-        internal const string InputObjectParameterSet = "StopByInputObject";
+        internal const string DeploymentObjectParameterSet = "StopByDeploymentObject";
 
         [Alias("DeploymentName")]
         [Parameter(Position = 0, ParameterSetName = StopAzureDeploymentCmdlet.DeploymentNameParameterSet,
@@ -53,15 +53,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(ParameterSetName = StopAzureDeploymentCmdlet.InputObjectParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = StopAzureDeploymentCmdlet.DeploymentObjectParameterSet, Mandatory = true,
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
-        public PSDeployment InputObject { get; set; }
+        public PSDeployment DeploymentObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
             var deploymentName = !string.IsNullOrEmpty(this.Name)
                 ? this.Name
-                : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
+                : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.DeploymentObject.DeploymentName;
 
             ConfirmAction(
                 ProjectResources.CancelDeploymentMessage,

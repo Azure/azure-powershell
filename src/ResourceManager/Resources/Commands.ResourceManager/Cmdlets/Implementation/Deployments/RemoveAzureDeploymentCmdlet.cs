@@ -37,9 +37,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string DeploymentNameParameterSet = "RemoveByDeploymentName";
 
         /// <summary>
-        /// The input object parameter set.
+        /// The deployment object parameter set.
         /// </summary>
-        internal const string InputObjectParameterSet = "RemoveByInputObject";
+        internal const string DeploymentObjectParameterSet = "RemoveByDeploymentObject";
 
         [Alias("DeploymentName")]
         [Parameter(Position = 0, ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentNameParameterSet, Mandatory = true,
@@ -53,9 +53,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string Id { get; set; }
 
-        [Parameter(ParameterSetName = RemoveAzureDeploymentCmdlet.InputObjectParameterSet, Mandatory = true, 
+        [Parameter(ParameterSetName = RemoveAzureDeploymentCmdlet.DeploymentObjectParameterSet, Mandatory = true, 
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
-        public PSDeployment InputObject { get; set; }
+        public PSDeployment DeploymentObject { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 {
                     var deploymentName = !string.IsNullOrEmpty(this.Name)
                         ? this.Name
-                        : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.InputObject.DeploymentName;
+                        : !string.IsNullOrEmpty(this.Id) ? ResourceIdUtility.GetResourceName(this.Id) : this.DeploymentObject.DeploymentName;
 
                     ResourceManagerSdkClient.DeleteDeploymentAtSubscriptionScope(deploymentName);
                     WriteObject(true);

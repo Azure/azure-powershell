@@ -12,16 +12,17 @@ Saves a deployment template to a file.
 
 ## SYNTAX
 
-### SaveByDeploymentName
+### SaveByDeploymentName (Default)
 ```
 Save-AzureRmDeploymentTemplate -DeploymentName <String> [-Path <String>] [-Force] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### SaveByInputObject
+### SaveByDeploymentObject
 ```
-Save-AzureRmDeploymentTemplate -InputObject <PSDeployment> [-Path <String>] [-Force] [-ApiVersion <String>]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Save-AzureRmDeploymentTemplate -DeploymentObject <PSDeployment> [-Path <String>] [-Force]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,6 +92,19 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DeploymentObject
+The deployment object.```yaml
+Type: PSDeployment
+Parameter Sets: SaveByDeploymentObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation.
 
@@ -103,21 +117,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-The deployment object.
-
-```yaml
-Type: PSDeployment
-Parameter Sets: SaveByInputObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

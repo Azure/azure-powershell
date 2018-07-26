@@ -32,9 +32,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         internal const string DeploymentNameParameterSet = "SaveByDeploymentName";
 
         /// <summary>
-        /// The input object parameter set.
+        /// The deployment object parameter set.
         /// </summary>
-        internal const string InputObjectParameterSet = "SaveByInputObject";
+        internal const string DeploymentObjectParameterSet = "SaveByDeploymentObject";
 
         /// <summary>
         /// Gets or sets the deployment name parameter.
@@ -45,9 +45,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [ValidateNotNullOrEmpty]
         public string DeploymentName { get; set; }
 
-        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.InputObjectParameterSet, Mandatory = true,
+        [Parameter(ParameterSetName = SaveAzureDeploymentTemplateCmdlet.DeploymentObjectParameterSet, Mandatory = true,
             ValueFromPipeline = true, HelpMessage = "The deployment object.")]
-        public PSDeployment InputObject { get; set; }
+        public PSDeployment DeploymentObject { get; set; }
 
         /// <summary>
         /// Gets or sets the file path.
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         {
             base.OnProcessRecord();
 
-            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.InputObject.DeploymentName;
+            var deploymentName = !string.IsNullOrEmpty(this.DeploymentName) ? this.DeploymentName : this.DeploymentObject.DeploymentName;
 
             if (ShouldProcess(deploymentName, VerbsData.Save))
             {
