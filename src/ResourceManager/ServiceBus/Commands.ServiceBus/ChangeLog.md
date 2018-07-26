@@ -19,7 +19,11 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated all help files to include full parameter types and correct input/output types.
+* Updated help files to include full parameter types and correct input/output types.
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
 
 ## Version 0.6.7
 * Added top and skip parameter to list cmdlets
