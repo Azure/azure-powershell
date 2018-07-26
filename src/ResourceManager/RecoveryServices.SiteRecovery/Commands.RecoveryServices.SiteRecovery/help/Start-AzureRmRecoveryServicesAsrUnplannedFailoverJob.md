@@ -99,7 +99,6 @@ Accept wildcard characters: False
 ### -Direction
 Specifies the failover direction.
 The acceptable values for this parameter are:
-
 - PrimaryToRecovery
 - RecoveryToPrimary
 
@@ -241,7 +240,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRRecoveryPlan
-Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: RecoveryPlan (ByValue)
+
+### Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRReplicationProtectedItem
+Parameters: ReplicationProtectedItem (ByValue)
 
 ## OUTPUTS
 

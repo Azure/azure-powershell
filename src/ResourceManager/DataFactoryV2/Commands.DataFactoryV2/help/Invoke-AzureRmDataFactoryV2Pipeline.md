@@ -194,8 +194,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSPipeline
-System.String
-System.Collections.Hashtable
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), ParameterFile (ByPropertyName), PipelineName (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Parameter (ByPropertyName)
 
 ## OUTPUTS
 

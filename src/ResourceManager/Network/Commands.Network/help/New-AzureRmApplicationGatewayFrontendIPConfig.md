@@ -28,10 +28,8 @@ New-AzureRmApplicationGatewayFrontendIPConfig -Name <String> [-PrivateIPAddress 
 ## DESCRIPTION
 The **New-AzureRmApplicationGatewayFrontendIPConfig** cmdlet creates a front-end IP configuraton for an Azure application gateway.
 An application gateway supports two types of front-end IP configuration: 
-
 - Public IP addresses 
  -- Private IP addresses using internal load balancing (ILB).
-
 An application gateway can have at most one public IP address and one private IP address.
 The public IP address and private IP address should be added separately as front-end IP addresses.
 
@@ -188,7 +186,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### None
 
 ## OUTPUTS
 

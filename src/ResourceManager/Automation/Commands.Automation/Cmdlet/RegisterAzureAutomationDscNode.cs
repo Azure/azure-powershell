@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Registers the dsc node.
     /// </summary>
-    [Cmdlet(VerbsLifecycle.Register, "AzureRmAutomationDscNode")]
+    [Cmdlet(VerbsLifecycle.Register, "AzureRmAutomationDscNode"), OutputType(typeof(void))]
     // [OutputType(typeof(DscNode))]
     public class RegisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {

@@ -12,22 +12,58 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
     /// <summary>
-    /// Wrapps around the PSMetricNoDetails and exposes all the localized strings as invariant/localized properties
+    /// Wraps around the PSMetricNoDetails and exposes all the localized strings as invariant/localized properties
     /// </summary>
-    public class PSMetric : Metric
+    public class PSMetric
     {
+        /// <summary>
+        /// Resource id
+        /// </summary>
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Metric name (This should be the public facing display name)
+        /// </summary>
+        public LocalizableString Name { get; set; }
+
+        /// <summary>
+        /// Resource type
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// Metric Unit
+        /// </summary>
+        public Unit Unit { get; set; }
+
+        /// <summary>
+        /// Metric data
+        /// </summary>
+        public IList<MetricValue> Data { get; set; }
+
+        /// <summary>
+        /// Gets or sets the time series returned when a data query is performed.
+        /// </summary>
+        public IList<TimeSeriesElement> Timeseries { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the PSMetric class.
         /// </summary>
         /// <param name="metric">The input Metric object</param>
         public PSMetric(Metric metric)
-            : base(name: new PSLocalizableString(metric.Name), unit: metric.Unit, data: new PSMetricValuesCollection(metric.Data), id: metric.Id, type: metric.Type)
         {
+            this.Name = metric.Name;
+            this.Unit = metric.Unit;
+            this.Id = metric.Id;
+            this.Type = metric.Type;
+            this.Data = ((metric.Timeseries != null && metric.Timeseries.Count > 0)? new PSMetricValuesCollection(metric.Timeseries[0].Data) : null);
+            this.Timeseries = metric.Timeseries;
         }
     }
 }

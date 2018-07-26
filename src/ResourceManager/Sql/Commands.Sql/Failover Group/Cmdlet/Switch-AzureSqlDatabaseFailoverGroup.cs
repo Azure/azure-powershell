@@ -22,7 +22,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     [Cmdlet(VerbsCommon.Switch, "AzureRmSqlDatabaseFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true)]
+        ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SwitchAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

@@ -188,11 +188,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.Commands.Network.Models.PSNetworkWatcher
+Parameters: NetworkWatcher (ByValue)
+
 ### System.String
+Parameters: Name (ByValue), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, network, networking, network watcher

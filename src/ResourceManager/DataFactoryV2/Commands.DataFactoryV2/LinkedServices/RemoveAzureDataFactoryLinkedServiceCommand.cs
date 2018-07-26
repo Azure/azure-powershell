@@ -21,7 +21,8 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
-    [Cmdlet(VerbsCommon.Remove, Constants.LinkedService, DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, Constants.LinkedService, 
+        DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryLinkedServiceCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,

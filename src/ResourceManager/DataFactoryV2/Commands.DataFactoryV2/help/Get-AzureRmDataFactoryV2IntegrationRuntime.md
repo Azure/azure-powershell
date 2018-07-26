@@ -224,13 +224,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: DataFactoryName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSIntegrationRuntime
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSManagedIntegrationRuntime
+
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSSelfHostedIntegrationRuntime
+
+### Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedIntegrationRuntime
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories, copy, activities, integration runtime

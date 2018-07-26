@@ -22,7 +22,6 @@ Get-AzureRmLogicAppRunAction -ResourceGroupName <String> -Name <String> -RunName
 The **Get-AzureRmLogicAppRunAction** cmdlet gets an action from a logic app run.
 This cmdlet returns a **WorkflowRunAction** objects.
 Specify the logic app, resource group, and run.
-
 This module supports dynamic parameters.
 To use a dynamic parameter, type it in the command.
 To discover the names of dynamic parameters, type a hyphen (-) after the cmdlet name, and then press the Tab key repeatedly to cycle through the available parameters.
@@ -148,8 +147,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), RunName (ByPropertyName)
 
 ## OUTPUTS
 

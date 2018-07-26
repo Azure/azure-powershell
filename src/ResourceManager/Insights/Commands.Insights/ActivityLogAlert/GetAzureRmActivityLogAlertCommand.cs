@@ -14,7 +14,7 @@
 
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Management.Monitor.Management;
+using Microsoft.Azure.Management.Monitor;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;

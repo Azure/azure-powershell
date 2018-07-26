@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.12.0'
+ModuleVersion = '0.13.1'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core'
@@ -51,10 +51,16 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.12.0'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.RecoveryServices.dll', 
+RequiredAssemblies = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Models.dll', 
+    '.\Microsoft.Azure.Management.RecoveryServices.Backup.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Logger.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.Providers.dll', 
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.ServiceClientAdapter.dll',
+    '.\Microsoft.Azure.Management.RecoveryServices.dll', 
     '.\Security.Cryptography.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -64,10 +70,11 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.RecoveryServices.dll',
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-# FormatsToProcess = @()
+FormatsToProcess = '.\Microsoft.Azure.Commands.RecoveryServices.Backup.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.RecoveryServices.ARM.dll',
+    '.\Microsoft.Azure.Commands.RecoveryServices.Backup.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -79,7 +86,29 @@ CmdletsToExport = 'Get-AzureRmRecoveryServicesBackupProperty',
     'New-AzureRmRecoveryServicesVault', 
     'Remove-AzureRmRecoveryServicesVault', 
     'Set-AzureRmRecoveryServicesBackupProperties', 
-    'Set-AzureRmRecoveryServicesVaultContext'
+    'Set-AzureRmRecoveryServicesVaultContext',
+    'Backup-AzureRmRecoveryServicesBackupItem', 
+    'Get-AzureRmRecoveryServicesBackupManagementServer', 
+    'Get-AzureRmRecoveryServicesBackupContainer', 
+    'Unregister-AzureRmRecoveryServicesBackupContainer', 
+    'Disable-AzureRmRecoveryServicesBackupProtection', 
+    'Enable-AzureRmRecoveryServicesBackupProtection', 
+    'Get-AzureRmRecoveryServicesBackupItem', 
+    'Get-AzureRmRecoveryServicesBackupJob', 
+    'Get-AzureRmRecoveryServicesBackupJobDetails', 
+    'Stop-AzureRmRecoveryServicesBackupJob', 
+    'Wait-AzureRmRecoveryServicesBackupJob', 
+    'Get-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Get-AzureRmRecoveryServicesBackupRetentionPolicyObject', 
+    'Get-AzureRmRecoveryServicesBackupSchedulePolicyObject', 
+    'New-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Remove-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Set-AzureRmRecoveryServicesBackupProtectionPolicy', 
+    'Get-AzureRmRecoveryServicesBackupRecoveryPoint', 
+    'Restore-AzureRmRecoveryServicesBackupItem', 
+    'Unregister-AzureRmRecoveryServicesBackupManagementServer', 
+    'Get-AzureRmRecoveryServicesBackupRPMountScript', 
+    'Disable-AzureRmRecoveryServicesBackupRPMountScript'
 
 # Variables to export from this module
 # VariablesToExport = @()

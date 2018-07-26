@@ -37,7 +37,6 @@ Get-AzureStorageFile [-Directory] <CloudFileDirectory> [[-Path] <String>] [-Serv
 ## DESCRIPTION
 The **Get-AzureStorageFile** cmdlet lists directories and files for the share or directory that you specify.
 Specify the *Path* parameter to get an instance of a directory or file in the specified path.
-
 This cmdlet returns **AzureStorageFile** and **AzureStorageDirectory** objects.
 You can use the **IsDirectory** property to distinguish between folders and files.
 
@@ -67,7 +66,7 @@ If the previous call fails within the specified interval, this cmdlet retries th
 If this cmdlet does not receive a successful response before the interval elapses, this cmdlet returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +85,7 @@ This parameter can help mitigate network connection problems in low bandwidth en
 The default value is 10.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +101,7 @@ Specifies an Azure Storage context.
 To obtain a Storage context, use the New-AzureStorageContext cmdlet.
 
 ```yaml
-Type: IStorageContext
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
 Parameter Sets: ShareName
 Aliases:
 
@@ -117,7 +116,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -135,7 +134,7 @@ To obtain a directory, use the New-AzureStorageDirectory cmdlet.
 You can also use the **Get-AzureStorageFile** cmdlet to obtain a directory.
 
 ```yaml
-Type: CloudFileDirectory
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
 Parameter Sets: Directory
 Aliases:
 
@@ -148,12 +147,11 @@ Accept wildcard characters: False
 
 ### -Path
 Specifies the path of a folder.
-
 If you omit the *Path* parameter, **Get-AzureStorageFile** lists the directories and files in the specified file share or directory.
 If you include the *Path* parameter, **Get-AzureStorageFile** returns an instance of a directory or file in the specified path.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +167,7 @@ Specifies the service-side timeout interval, in seconds, for a request.
 If the specified interval elapses before the service processes the request, the Storage service returns an error.
 
 ```yaml
-Type: Int32
+Type: System.Nullable`1[System.Int32]
 Parameter Sets: (All)
 Aliases:
 
@@ -188,7 +186,7 @@ This object contains the Storage context.
 If you specify this parameter, do not specify the *Context* parameter.
 
 ```yaml
-Type: CloudFileShare
+Type: Microsoft.WindowsAzure.Storage.File.CloudFileShare
 Parameter Sets: Share
 Aliases:
 
@@ -204,7 +202,7 @@ Specifies the name of the file share.
 This cmdlet gets a file or directory from the file share that this parameter specifies.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ShareName
 Aliases:
 
@@ -220,14 +218,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
-Parameter 'Context' accepts value of type 'IStorageContext' from the pipeline
+### Microsoft.WindowsAzure.Storage.File.CloudFileShare
+Parameters: Share (ByValue)
 
 ### Microsoft.WindowsAzure.Storage.File.CloudFileDirectory
-Parameter 'Directory' accepts value of type 'CloudFileDirectory' from the pipeline
+Parameters: Directory (ByValue)
 
-### Microsoft.WindowsAzure.Storage.File.CloudFileShare
-Parameter 'Share' accepts value of type 'CloudFileShare' from the pipeline
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: Context (ByPropertyName, ByValue)
 
 ## OUTPUTS
 

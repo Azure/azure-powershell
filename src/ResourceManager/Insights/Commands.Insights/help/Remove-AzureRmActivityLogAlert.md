@@ -34,7 +34,6 @@ Remove-AzureRmActivityLogAlert -ResourceId <String> [-DefaultProfile <IAzureCont
 ## DESCRIPTION
 The **Remove-AzureRmActivityLogAlert** cmdlet removes an activity log alert.
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually patching the resource.
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -178,8 +177,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

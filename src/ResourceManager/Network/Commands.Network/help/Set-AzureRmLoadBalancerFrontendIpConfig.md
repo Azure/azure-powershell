@@ -55,11 +55,8 @@ PS C:\> $slb | Set-AzureRmLoadBalancerFrontendIpConfig -Name "NewFrontend" -Subn
 ```
 
 The first command gets the virtual subnet named Subnet, and then stores it in the $Subnet variable.
-
 The second command gets the associated load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-
 The third command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerFrontendIpConfig, which creates a front-end IP configuration named NewFrontend for $slb.
-
 The fourth command passes the load balancer in $slb to **Set-AzureRmLoadBalancerFrontendIpConfig**, which saves and updates the front-end IP configuration.
 
 ## PARAMETERS
@@ -206,8 +203,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
