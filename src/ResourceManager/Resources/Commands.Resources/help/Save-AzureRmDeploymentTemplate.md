@@ -36,6 +36,13 @@ PS C:\> Save-AzureRmDeploymentTemplate -DeploymentName "TestDeployment"
 
 This command gets the deployment template from TestDeployment and saves it as a JSON file in the current directory.
 
+### Example 2: Get a deployment and save its template
+```
+PS C:\>Get-AzureRmDeployment -Name "RolesDeployment" | Save-AzureRmDeploymentTemplate
+```
+
+This command gets the deployment "RolesDeployment" at the current subscription scope and saves its template.
+
 ## PARAMETERS
 
 ### -ApiVersion

@@ -221,7 +221,7 @@ System.Collections.Hashtable
 
 ## OUTPUTS
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError, Microsoft.Azure.Commands.ResourceManager.Cmdlets, Version=6.0.0.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.PSResourceManagerError
 
 ## NOTES
 

@@ -49,14 +49,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        public NewAzureDeploymentCmdlet()
-        {
-            
-        }
-
         public override void ExecuteCmdlet()
         {
-            PSDeploymentCmdletParameters parameters = new PSDeploymentCmdletParameters()
+            var parameters = new PSDeploymentCmdletParameters()
             {
                 Location = Location,
                 DeploymentName = Name,
