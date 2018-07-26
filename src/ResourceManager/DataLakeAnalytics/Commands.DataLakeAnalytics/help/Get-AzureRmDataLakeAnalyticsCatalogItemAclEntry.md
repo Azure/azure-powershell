@@ -32,20 +32,20 @@ Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner
 
 ### GetCatalogItemAclEntry
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> -ItemType <String>
+ -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogItemAclEntryForUserOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-UserOwner] -ItemType <String>
+ -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### GetCatalogItemAclEntryForGroupOwner
 ```
-Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] [-ItemType] <String>
- [-Path] <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry [-Account] <String> [-GroupOwner] -ItemType <String>
+ -Path <CatalogPathInstance> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,7 +129,7 @@ This command gets the ACL entry of the group owner for the database of the speci
 Specifies the Data Lake Analytics account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: AccountName
 
@@ -144,7 +144,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -159,7 +159,7 @@ Accept wildcard characters: False
 Get ACL entry of catalog for group owner
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetCatalogAclEntryForGroupOwner, GetCatalogItemAclEntryForGroupOwner
 Aliases:
 
@@ -176,13 +176,12 @@ Specifies the type of the catalog or catalog item(s). The acceptable values for 
 - Database
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetCatalogItemAclEntry, GetCatalogItemAclEntryForUserOwner, GetCatalogItemAclEntryForGroupOwner
 Aliases:
-Accepted values: Catalog, Database
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -193,12 +192,12 @@ Specifies the Data Lake Analytics path of an catalog or catalog item.
 The parts of the path should be separated by a period (.).
 
 ```yaml
-Type: CatalogPathInstance
+Type: Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
 Parameter Sets: GetCatalogItemAclEntry, GetCatalogItemAclEntryForUserOwner, GetCatalogItemAclEntryForGroupOwner
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -208,7 +207,7 @@ Accept wildcard characters: False
 Get ACL entry of catalog for user owner.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: GetCatalogAclEntryForUserOwner, GetCatalogItemAclEntryForUserOwner
 Aliases:
 
@@ -224,13 +223,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Account (ByPropertyName), ItemType (ByPropertyName)
+
+### Microsoft.Azure.Commands.DataLakeAnalytics.Models.CatalogPathInstance
+Parameters: Path (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.DataLakeAnalytics.Models.PSDataLakeAnalyticsAcl
-The list of ACL entries for the specified catalog or catalog item(s).
 
 ## NOTES
 

@@ -75,12 +75,24 @@ namespace Microsoft.Azure.Commands.Sql.Common
         }
 
         /// <summary>
+        /// Lazy creation of a single instance of a storage client
+        /// </summary>
+        public static Microsoft.Azure.Management.Storage.StorageManagementClient GetStorageV2Client(IAzureContext context)
+        {
+#if NETSTANDARD
+            return AzureSession.Instance.ClientFactory.CreateArmClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+#else
+            return AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager);
+#endif
+        }
+
+        /// <summary>
         /// Provides the storage keys for the storage account within the given resource group
         /// </summary>
         /// <returns>A dictionary with two entries, one for each possible key type with the appropriate key</returns>
         public async Task<Dictionary<StorageKeyKind, string>> GetStorageKeysAsync(string resourceGroupName, string storageAccountName)
         {
-            Management.Storage.StorageManagementClient client = GetCurrentStorageV2Client(Context);
+            Management.Storage.StorageManagementClient client = GetCurrentStorageV2Client();
 
             string url = Context.Environment.GetEndpointAsUri(AzureEnvironment.Endpoint.ResourceManager).ToString();
             if (!url.EndsWith("/"))
@@ -124,7 +136,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
 
         private Dictionary<StorageKeyKind, string> GetV2Keys(string resourceGroupName, string storageAccountName)
         {
-            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client(Context);
+            Microsoft.Azure.Management.Storage.StorageManagementClient storageClient = GetCurrentStorageV2Client();
             var r = storageClient.StorageAccounts.ListKeys(resourceGroupName, storageAccountName);
 #if NETSTANDARD
             string k1 = r.Keys[0].Value;
@@ -208,16 +220,13 @@ namespace Microsoft.Azure.Commands.Sql.Common
         /// <summary>
         /// Lazy creation of a single instance of a storage client
         /// </summary>
-        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client(IAzureContext context)
+        private Microsoft.Azure.Management.Storage.StorageManagementClient GetCurrentStorageV2Client()
         {
             if (StorageV2Client == null)
             {
-#if NETSTANDARD
-                StorageV2Client = AzureSession.Instance.ClientFactory.CreateArmClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-#else
-                StorageV2Client = AzureSession.Instance.ClientFactory.CreateClient<Microsoft.Azure.Management.Storage.StorageManagementClient>(Context, AzureEnvironment.Endpoint.ResourceManager);
-#endif
+                StorageV2Client = GetStorageV2Client(Context);
             }
+
             return StorageV2Client;
         }
 

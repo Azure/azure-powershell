@@ -1,33 +1,28 @@
 ﻿
-$global:Location = "local"
-$global:TenantVMName = "502828aa-de3a-4ba9-a66c-5ae6d49589d7"
-$global:Provider = "Microsoft.Storage.Admin"
-$global:ResourceGroup = "System.local"
+$global:SkippedTests = @(
+    'TestForAllFarmsStartGarbageCollection'
+)
 
-if(-not $RunRaw) {
-	$scriptBlock = {
-		Get-MockClient -ClassName 'StorageAdminClient' -TestName $global:TestName -Verbose
-	}
-	Mock New-ServiceClient $scriptBlock -ModuleName "Azs.Storage.Admin"
+$global:Location = "local"
+$global:Provider = "Microsoft.Storage.Admin"
+$global:ResourceGroupName = "System.local"
+
+if (-not $global:RunRaw) {
+    $scriptBlock = {
+        Get-MockClient -ClassName 'StorageAdminClient' -TestName $global:TestName -Verbose
+    }
+    Mock New-ServiceClient $scriptBlock -ModuleName $global:ModuleName
 }
 
 # Extracts the name needed for parameters
 function Select-Name {
-	param($Name)
-	if($name.contains("/")) {
-		$Name = $Name.Substring($Name.LastIndexOf("/")+ 1)
-	}
-	$Name
+    param($Name)
+    if ($name.contains("/")) {
+        $Name = $Name.Substring($Name.LastIndexOf("/") + 1)
+    }
+    $Name
 }
 
-function Repeat{
-	param(
-		[int]$Times,
-		[ScriptBLock]$Script
-	)
-
-	while($Times -gt 0) {
-		Invoke-Command -ScriptBlock $Script
-		$Times = $Times - 1
-	}
+if (Test-Path "$PSScriptRoot\Override.ps1") {
+    . $PSScriptRoot\Override.ps1
 }
