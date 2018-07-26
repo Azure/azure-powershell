@@ -35,11 +35,8 @@ PS C:\> New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -Wor
 ```
 
 The first command gets the retention policy object, and then stores it in the $RetPol variable.
-
 The second command gets the schedule policy object, and then stores it in the $SchPol variable.
-
 The third command changes the frequency for the schedule policy to weekly.
-
 The last command creates a backup protection policy with the updated schedule.
 
 ### Example 2: Set the backup time
@@ -52,14 +49,10 @@ PS C:\> New-AzureRmRecoveryServicesBackupProtectionPolicy -Name "NewPolicy" -Wor
 ```
 
 The first command gets the schedule policy object, and then stores it in the $SchPol variable.
-
 The second command removes all scheduled run times from $SchPol.
-
 The third command gets the current date and time, and then stores it in the $DT variable.
-
 The fourth command replaces the scheduled run times with the current time.
 You can only backup AzureVM once per day, so to reset the backup time you must replace the original schedule.
-
 The last command creates a backup protection policy using the new schedule.
 
 ## PARAMETERS
@@ -67,14 +60,13 @@ The last command creates a backup protection policy using the new schedule.
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: BackupManagementType
+Type: System.Nullable`1[Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType]
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: False
@@ -88,7 +80,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -102,14 +94,13 @@ Accept wildcard characters: False
 ### -WorkloadType
 Specifies the workload type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: WorkloadType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
@@ -125,7 +116,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

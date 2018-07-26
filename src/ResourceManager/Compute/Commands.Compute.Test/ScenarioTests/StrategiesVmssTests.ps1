@@ -23,13 +23,14 @@ function Test-SimpleNewVmss
 
     try
     {
+	    $lbName = $vmssname + "LoadBalancer"
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
 		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
 
         # Common
-        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel -LoadBalancerName $lbName
 
         Assert-AreEqual $vmssname $x.Name;
         Assert-AreEqual $vmssname $x.ResourceGroupName;
@@ -42,6 +43,59 @@ function Test-SimpleNewVmss
         Assert-NotNull $x.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet
 		Assert-False { $x.SinglePlacementGroup }
 		Assert-Null $x.Identity  
+
+		$lb = Get-AzureRmLoadBalancer -Name $lbName -ResourceGroupName $vmssname 
+		Assert-NotNull $lb
+		Assert-AreEqual $lbName $lb.Name
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $vmssname
+    }
+}
+
+<#
+.SYNOPSIS
+Test Simple Paremeter Set for New Vm failure when custom load balancer exists
+#>
+function Test-SimpleNewVmssLbErrorScenario
+{
+    # Setup
+    $vmssname = Get-ResourceName
+
+    try
+    {
+	    $lbName = $vmssname
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+		[string]$domainNameLabel = "$vmssname$vmssname".tolower();
+
+        $x = New-AzureRmVmss -Name $vmssname -Credential $cred -DomainNameLabel $domainNameLabel
+
+        Assert-AreEqual $vmssname $x.Name;
+		$lb = Get-AzureRmLoadBalancer -Name $vmssname -ResourceGroupName $vmssname 
+        Remove-AzureRmVmss -Name $vmssname -ResourceGroupName $vmssname -Force
+
+		$exceptionFound = $false
+	    $errorMessageMatched = $false
+
+		try
+		{
+		    $newVmssName = $vmssname + "New"
+		    $x = New-AzureRmVmss -Name $newVmssName -Credential $cred -DomainNameLabel $domainNameLabel -ResourceGroupName $vmssname -LoadBalancerName $lbName
+		}
+		catch
+		{
+		    $errorMessage = $_.Exception.Message
+			$exceptionFound = ( $errorMessage -clike "Existing loadbalancer config is not compatible with what is required by the cmdlet*" )
+			$rId = $lb.ResourceId
+		    $errorMessageMatched = ( $errorMessage -like "*$rId*" )
+		}
+
+		Assert-True { $exceptionFound }
+		Assert-True { $errorMessageMatched }
     }
     finally
     {

@@ -1,1 +1,2 @@
 "AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Microsoft.Azure.Commands.ResourceManager.Automation.dll","Microsoft.Azure.Commands.Automation.Cmdlet.RemoveAzureAutomationVariable","Remove-AzureRmAutomationVariable","0","1020","The cmdlet 'Remove-AzureRmAutomationVariable' no longer has output type 'Microsoft.Azure.Commands.Automation.Model.Variable'.","Make cmdlet 'Remove-AzureRmAutomationVariable' return type 'Microsoft.Azure.Commands.Automation.Model.Variable'."

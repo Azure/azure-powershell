@@ -48,7 +48,7 @@ Delete a DevSpaces controller named devSpaceControllerName.
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -78,7 +78,7 @@ Accept wildcard characters: False
 A PSController object, normally passed through the pipeline.
 
 ```yaml
-Type: PSController
+Type: Microsoft.Azure.Commands.DevSpaces.Models.PSController
 Parameter Sets: InputObjectParameterSet
 Aliases:
 
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 DevSpaces controller name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DevSpacesControllerNameParameterSet
 Aliases:
 
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 Returns true if delete is successful
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +123,7 @@ Accept wildcard characters: False
 Resource group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DevSpacesControllerNameParameterSet
 Aliases:
 
@@ -138,7 +138,7 @@ Accept wildcard characters: False
 The DevSpaces resource id
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameterSet
 Aliases:
 
@@ -153,7 +153,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +169,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -186,7 +186,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceId (ByPropertyName)
+
 ### Microsoft.Azure.Commands.DevSpaces.Models.PSController
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

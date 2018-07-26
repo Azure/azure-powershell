@@ -29,12 +29,17 @@ Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementT
  [<CommonParameters>]
 ```
 
+### GetItemsForPolicy
+```
+Get-AzureRmRecoveryServicesBackupItem -Policy <PolicyBase> [[-Name] <String>]
+ [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
-
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
 For Azure virtual machines, there can be only one backup item in the virtual machine container.
-
 Set the vault context by using the Set-AzureRmRecoveryServicesVaultContext cmdlet before you use the current cmdlet.
 
 ## EXAMPLES
@@ -46,7 +51,6 @@ PS C:\> $BackupItem = Get-AzureRmRecoveryServicesBackupItem -Container $Containe
 ```
 
 The first command gets the container of type AzureVM, and then stores it in the $Container variable.
-
 The second command gets the Backup item named V2VM in $Container, and then stores it in the $BackupItem variable.
 
 ## PARAMETERS
@@ -54,7 +58,6 @@ The second command gets the Backup item named V2VM in $Container, and then store
 ### -BackupManagementType
 Specifies the Backup management type.
 The acceptable values for this parameter are:
-
 - AzureVM 
 - MARS 
 - SCDPM 
@@ -62,9 +65,9 @@ The acceptable values for this parameter are:
  AzureSQL
 
 ```yaml
-Type: BackupManagementType
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.BackupManagementType
 Parameter Sets: GetItemsForVault
-Aliases: 
+Aliases:
 Accepted values: AzureVM, MARS, SCDPM, AzureBackupServer, AzureSQL
 
 Required: True
@@ -79,9 +82,9 @@ Specifies a container object from which this cmdlet gets backup items.
 To obtain an **AzureRmRecoveryServicesBackupContainer**, use the Get-AzureRmRecoveryServicesBackupContainer cmdlet.
 
 ```yaml
-Type: ContainerBase
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
 Parameter Sets: GetItemsForContainer
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -94,7 +97,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -109,9 +112,9 @@ Accept wildcard characters: False
 Specifies the name of the container.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: 2
@@ -120,10 +123,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Policy
+Protection policy object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Parameter Sets: GetItemsForPolicy
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectionState
 Specifies the state of protection.
 The acceptable values for this parameter are:
-
 - IRPending.
 Initial synchronization has not started and there is no recovery point yet. 
 - Protected.
@@ -134,9 +151,9 @@ There is a protection error.
 Protection is disabled.
 
 ```yaml
-Type: ItemProtectionState
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionState
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: IRPending, ProtectionError, Protected, ProtectionStopped
 
 Required: False
@@ -149,14 +166,13 @@ Accept wildcard characters: False
 ### -ProtectionStatus
 Specifies the overall protection status of an item in the container.
 The acceptable values for this parameter are:
-
 - Healthy
 - Unhealthy
 
 ```yaml
-Type: ItemProtectionStatus
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ItemProtectionStatus
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: Healthy, Unhealthy
 
 Required: False
@@ -170,9 +186,9 @@ Accept wildcard characters: False
 ARM ID of the Recovery Services Vault.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: False
 Position: Named
@@ -184,14 +200,13 @@ Accept wildcard characters: False
 ### -WorkloadType
 Specifies the workload type. 
 The acceptable values for this parameter are:
-
 - AzureVM 
 - AzureSQLDatabase
 
 ```yaml
-Type: WorkloadType
-Parameter Sets: (All)
-Aliases: 
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
+Parameter Sets: GetItemsForContainer, GetItemsForVault
+Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
 Required: True
@@ -206,8 +221,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.ContainerBase
+Parameters: Container (ByPropertyName)
+
+### System.String
+Parameters: VaultId (ByValue)
 
 ## OUTPUTS
 

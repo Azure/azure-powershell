@@ -29,6 +29,15 @@
 
 ## Release 0.0.0 - May 2018
 
+**General**
+- The namespace of the Model classes changed from Microsoft.Azure.Management.Monitor.Management.Models to Microsoft.Azure.Management.Monitor.Models.
+- The namespace for output classes will be uniform for all classes in future releases to make it independent of modifications in the model classes.
+
+**Set-AzureRmDiagnosticSetting**
+- The plural names for the arguments Categories and Timegrains will be removed and the singular versions will be used instead.
+
+## Release 0.0.0 - May 2018
+
 **Get-AzureRmAlertHistory**
 **Get-AzureRmAlertRule**
 **Get-AzureRmAutoscaleHistory**

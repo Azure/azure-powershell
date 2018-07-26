@@ -36,11 +36,13 @@
     Date:   August 24, 2017
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -48,9 +50,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
 	Describe "RegionHealths" -Tags @('RegionHealth', 'InfrastructureInsightsAdmin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+		BeforeEach  {
 
 			function ValidateMetrics{
 				param(
@@ -132,10 +134,10 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 		}
 
 
-		It "TestListRegionHealths" {
+		it "TestListRegionHealths" -Skip:$('TestListRegionHealths' -in $global:SkippedTests) {
 			$global:TestName = 'TestListRegionHealths'
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			$RegionHealths | Should Not Be $null
 			foreach($RegionHealth in $RegionHealths) {
 				ValidateRegionHealth -Region $RegionHealth
@@ -143,37 +145,37 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 	    }
 
 
-		It "TestGetRegionHealth" {
+		it "TestGetRegionHealth" -Skip:$('TestGetRegionHealth' -in $global:SkippedTests) {
             $global:TestName = 'TestGetRegionHealth'
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			foreach($RegionHealth in $RegionHealths) {
 				$regionName = Extract-Name -Name $RegionHealth.Name
 
-				$retrieved = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName -Location $regionName
+				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
 				AssertRegionHealthsAreSame -Expected $RegionHealth -Found $retrieved
 				return
 			}
 		}
 
-		It "TestGetAllRegionHealths" {
+		it "TestGetAllRegionHealths" -Skip:$('TestGetAllRegionHealths' -in $global:SkippedTests) {
 			$global:TestName = 'TestGetAllRegionHealths'
 
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			foreach($RegionHealth in $RegionHealths) {
 				$regionName = Extract-Name -Name $RegionHealth.Name
 
-				$retrieved = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName -Location $regionName
+				$retrieved = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName -Location $regionName
 				AssertRegionHealthsAreSame -Expected $RegionHealth -Found $retrieved
 			}
 		}
 
-		It "TestRegionHealthsPipeline" {
+		it "TestGetAllRegionHealths" -Skip:$('TestGetAllRegionHealths' -in $global:SkippedTests) {
 			$global:TestName = 'TestGetAllRegionHealths'
 
 
-			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+			$RegionHealths = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
 			foreach($RegionHealth in $RegionHealths) {
 
 				$retrieved = $RegionHealth | Get-AzsRegionHealth

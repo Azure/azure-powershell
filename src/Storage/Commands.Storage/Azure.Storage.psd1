@@ -66,7 +66,7 @@ RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll',
 TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml'
+FormatsToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',  '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.WindowsAzure.Commands.Storage.dll')

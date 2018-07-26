@@ -51,7 +51,7 @@ Specifies the **BatchAccountContext** instance that this cmdlet uses to interact
 If you use the Get-AzureRmBatchAccount cmdlet to get your BatchAccountContext, then Azure Active Directory authentication will be used when interacting with the Batch service. To use shared key authentication instead, use the Get-AzureRmBatchAccountKeys cmdlet to get a BatchAccountContext object with its access keys populated. When using shared key authentication, the primary access key is used by default. To change the key to use, set the BatchAccountContext.KeyInUse property.
 
 ```yaml
-Type: BatchAccountContext
+Type: Microsoft.Azure.Commands.Batch.BatchAccountContext
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 Specifies the **PSComputeNode** object that represents the compute node to reboot.
 
 ```yaml
-Type: PSComputeNode
+Type: Microsoft.Azure.Commands.Batch.Models.PSComputeNode
 Parameter Sets: InputObject
 Aliases:
 
@@ -81,7 +81,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -96,7 +96,7 @@ Accept wildcard characters: False
 Specifies the ID of the compute node to reboot.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
 Aliases:
 
@@ -111,7 +111,7 @@ Accept wildcard characters: False
 Specifies the ID of the pool that contains the compute node.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Id
 Aliases:
 
@@ -127,7 +127,7 @@ Specifies when to reboot the node and what to do with currently running tasks.
 The default is Requeue.
 
 ```yaml
-Type: ComputeNodeRebootOption
+Type: System.Nullable`1[Microsoft.Azure.Batch.Common.ComputeNodeRebootOption]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Requeue, Terminate, TaskCompletion, RetainedData
@@ -144,13 +144,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+### Microsoft.Azure.Commands.Batch.Models.PSComputeNode
+Parameters: ComputeNode (ByValue)
 
-### PSComputeNode
-Parameter 'ComputeNode' accepts value of type 'PSComputeNode' from the pipeline
+### Microsoft.Azure.Commands.Batch.BatchAccountContext
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
+
+### System.Void
 
 ## NOTES
 

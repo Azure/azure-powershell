@@ -42,7 +42,7 @@ Gets all the eventhub consumergroups for the operationsMonitoringEvents eventhub
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -58,9 +58,9 @@ Name of the Event Hub endpoint.
 Possible values events, operationsMonitoringEvents
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 Accepted values: events, operationsMonitoringEvents
 
 Required: True
@@ -74,9 +74,9 @@ Accept wildcard characters: False
 Name of the IotHub
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 1
@@ -89,9 +89,9 @@ Accept wildcard characters: False
 Resource Group Name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
-Aliases: 
+Aliases:
 
 Required: True
 Position: 0
@@ -106,6 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: EventHubEndpointName (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
@@ -114,4 +115,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

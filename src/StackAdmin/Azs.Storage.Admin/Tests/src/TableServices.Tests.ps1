@@ -36,82 +36,82 @@
     Date:   February 27, 2018
 #>
 param(
-	[bool]$RunRaw = $false,
+    [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
 $global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
-$global:TestName = ""
-
 InModuleScope Azs.Storage.Admin {
 
-	Describe "TableServices" -Tags @('TableServices', 'Azs.Storage.Admin') {
+    Describe "TableServices" -Tags @('TableServices', 'Azs.Storage.Admin') {
 
-		BeforeEach  {
+        . $PSScriptRoot\Common.ps1
 
-			. $PSScriptRoot\Common.ps1
+        BeforeEach {
 
-			function ValidateTableService {
-				param(
-					[Parameter(Mandatory=$true)]
-					$tableService
-				)
-				# Resource
-				$tableService								| Should Not Be $null
+            function ValidateTableService {
+                param(
+                    [Parameter(Mandatory = $true)]
+                    $tableService
+                )
+                # Resource
+                $tableService								| Should Not Be $null
 
-				# Validate TableService properties
-				$tableService.FrontEndCallbackThreadsCount					| Should Not Be $null
-				$tableService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds					| Should Not Be $null
-				$tableService.Id							| Should Not Be $null
-				$tableService.Location						| Should Not Be $null
-				$tableService.Name							| Should Not Be $null
-				$tableService.FrontEndCpuBasedKeepAliveThrottlingEnabled					| Should Not Be $null
-				$tableService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold				| Should Not Be $null
-				$tableService.Type							| Should Not Be $null
-				$tableService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle						| Should Not Be $null
-				$tableService.FrontEndHttpListenPort					| Should Not Be $null
-				$tableService.FrontEndHttpsListenPort					| Should Not Be $null
-				$tableService.FrontEndMaxMillisecondsBetweenMemorySamples					| Should Not Be $null
-				$tableService.FrontEndMemoryThrottleThresholdSettings					| Should Not Be $null
-				$tableService.FrontEndMemoryThrottlingEnabled							| Should Not Be $null
-				$tableService.FrontEndMinThreadPoolThreads						| Should Not Be $null
-				$tableService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold							| Should Not Be $null
-				$tableService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds					| Should Not Be $null
-				$tableService.FrontEndThreadPoolBasedKeepAlivePercentage				| Should Not Be $null
-				$tableService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold							| Should Not Be $null
-				$tableService.FrontEndUseSlaTimeInAvailability						| Should Not Be $null
-			}
-		}
+                # Validate TableService properties
+                $tableService.FrontEndCallbackThreadsCount					| Should Not Be $null
+                $tableService.FrontEndCpuBasedKeepAliveThrottlingCpuMonitorIntervalInSeconds					| Should Not Be $null
+                $tableService.Id							| Should Not Be $null
+                $tableService.Location						| Should Not Be $null
+                $tableService.Name							| Should Not Be $null
+                $tableService.FrontEndCpuBasedKeepAliveThrottlingEnabled					| Should Not Be $null
+                $tableService.FrontEndCpuBasedKeepAliveThrottlingPercentCpuThreshold				| Should Not Be $null
+                $tableService.Type							| Should Not Be $null
+                $tableService.FrontEndCpuBasedKeepAliveThrottlingPercentRequestsToThrottle						| Should Not Be $null
+                $tableService.FrontEndHttpListenPort					| Should Not Be $null
+                $tableService.FrontEndHttpsListenPort					| Should Not Be $null
+                $tableService.FrontEndMaxMillisecondsBetweenMemorySamples					| Should Not Be $null
+                $tableService.FrontEndMemoryThrottleThresholdSettings					| Should Not Be $null
+                $tableService.FrontEndMemoryThrottlingEnabled							| Should Not Be $null
+                $tableService.FrontEndMinThreadPoolThreads						| Should Not Be $null
+                $tableService.FrontEndThreadPoolBasedKeepAliveIOCompletionThreshold							| Should Not Be $null
+                $tableService.FrontEndThreadPoolBasedKeepAliveMonitorIntervalInSeconds					| Should Not Be $null
+                $tableService.FrontEndThreadPoolBasedKeepAlivePercentage				| Should Not Be $null
+                $tableService.FrontEndThreadPoolBasedKeepAliveWorkerThreadThreshold							| Should Not Be $null
+                $tableService.FrontEndUseSlaTimeInAvailability						| Should Not Be $null
+            }
+        }
 
-		It "TestGetTableService" {
-			$global:TestName = 'TestGetTableService'
+        it "TestGetTableService" -Skip:$('TestGetTableService' -in $global:SkippedTests) {
+            $global:TestName = 'TestGetTableService'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$tableService = Get-AzsTableService -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-				ValidatetableService -tableService $tableService
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $tableService = Get-AzsTableService -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+                ValidatetableService -tableService $tableService
+            }
+        }
 
-		It "TestListAlltableServiceMetricDefinitions" {
-			$global:TestName = 'TestListAlltableServiceMetricDefinitions'
+        it "TestListAlltableServiceMetricDefinitions" -Skip:$('TestListAlltableServiceMetricDefinitions' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAlltableServiceMetricDefinitions'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$result = Get-AzsTableServiceMetricDefinition -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-			}
-		}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $result = Get-AzsTableServiceMetricDefinition -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+            }
+        }
 
-		It "TestListAllTableServiceMetrics" {
-			$global:TestName = 'TestListAllTableServiceMetrics'
+        it "TestListAllTableServiceMetrics" -Skip:$('TestListAllTableServiceMetrics' -in $global:SkippedTests) {
+            $global:TestName = 'TestListAllTableServiceMetrics'
 
-			$farms =  Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroup
-			foreach($farm in $farms) {
-				$result = Get-AzsTableServiceMetric -ResourceGroupName $global:ResourceGroup -FarmName (Select-Name $farm.Name)
-			}
-		}
-	}
+            $farms = Get-AzsStorageFarm -ResourceGroupName $global:ResourceGroupName
+            foreach ($farm in $farms) {
+                $result = Get-AzsTableServiceMetric -ResourceGroupName $global:ResourceGroupName -FarmName (Select-Name $farm.Name)
+            }
+        }
+    }
 }
