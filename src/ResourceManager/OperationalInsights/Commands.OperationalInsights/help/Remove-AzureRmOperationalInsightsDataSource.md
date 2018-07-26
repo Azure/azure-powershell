@@ -166,7 +166,7 @@ Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), Workspace
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, operational, insights

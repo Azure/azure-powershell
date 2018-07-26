@@ -33,7 +33,6 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Management.Logic" Version="3.0.0" />
-    <PackageReference Include="Microsoft.Azure.Management.WebSites" Version="1.7.1-preview" />
   </ItemGroup>
 
   <ItemGroup>

@@ -73,7 +73,7 @@ Parameters: Vault (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

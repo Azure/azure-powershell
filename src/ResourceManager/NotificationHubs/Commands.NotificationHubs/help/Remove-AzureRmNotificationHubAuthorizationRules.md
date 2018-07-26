@@ -175,7 +175,7 @@ Parameters: AuthorizationRule (ByPropertyName), Namespace (ByPropertyName), Noti
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

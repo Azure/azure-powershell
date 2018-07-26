@@ -206,7 +206,7 @@ Parameters: Version (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Net.HttpStatusCode
 
 ## NOTES
 

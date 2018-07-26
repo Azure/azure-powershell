@@ -132,7 +132,7 @@ Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

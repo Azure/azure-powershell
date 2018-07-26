@@ -126,7 +126,7 @@ Parameters: Name (ByPropertyName), OutputStartMode (ByPropertyName), ResourceGro
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

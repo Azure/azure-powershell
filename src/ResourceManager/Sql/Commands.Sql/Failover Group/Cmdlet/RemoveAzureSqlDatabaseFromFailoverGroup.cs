@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, "AzureRmSqlDatabaseFromFailoverGroup",
         ConfirmImpact = ConfirmImpact.Medium,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

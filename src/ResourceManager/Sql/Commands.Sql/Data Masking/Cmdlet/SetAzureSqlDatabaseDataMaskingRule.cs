@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// <summary>
     /// Sets properties for a data masking rule.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseDataMaskingRule", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingRuleModel))]
     public class SetAzureSqlDatabaseDataMaskingRule : BuildAzureSqlDatabaseDataMaskingRule
     {
         /// <summary>

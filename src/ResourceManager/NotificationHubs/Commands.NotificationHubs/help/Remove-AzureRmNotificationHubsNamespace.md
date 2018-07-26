@@ -138,7 +138,7 @@ Parameters: Namespace (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

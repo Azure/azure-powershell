@@ -118,7 +118,7 @@ Parameters: ResourceGroupName (ByPropertyName), WorkspaceCollectionName (ByPrope
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

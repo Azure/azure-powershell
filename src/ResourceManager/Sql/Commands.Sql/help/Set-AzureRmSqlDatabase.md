@@ -414,7 +414,7 @@ Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), S
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.Database.Model.AzureSqlDatabaseModel
 
 ## NOTES
 

@@ -147,7 +147,7 @@ Parameters: EventHub (ByPropertyName), Name (ByPropertyName), Namespace (ByPrope
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 

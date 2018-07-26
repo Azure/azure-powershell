@@ -226,7 +226,7 @@ Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 
