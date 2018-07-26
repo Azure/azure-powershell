@@ -230,7 +230,7 @@ namespace StaticAnalysis.SignatureVerifier
                                         problemId: SignatureProblemId.CmdletWithNoOutputType,
                                         description:
                                             string.Format(
-
+                                                "Cmdlet '{0}' has no defined output type.", cmdlet.Name),
                                         remediation: "Add an OutputType attribute that declares the type of the object(s) returned " +
                                                      "by this cmdlet. If this cmdlet returns no output, please set the output " +
                                                      "type to 'bool' and make sure to implement the 'PassThru' parameter.");
