@@ -11612,7 +11612,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Net",
+            "Name": "System.Net.HttpStatusCode",
+            "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -12043,7 +12059,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Net",
+            "Name": "System.Net.HttpStatusCode",
+            "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -12516,7 +12548,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System.Net",
+            "Name": "System.Net.HttpStatusCode",
+            "AssemblyQualifiedName": "System.Net.HttpStatusCode, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -12989,7 +13037,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -14075,7 +14139,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByWorkspaceName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Workspace",
@@ -17462,7 +17542,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByWorkspaceName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Workspace",
@@ -18059,7 +18155,72 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Commands.OperationalInsights.Models",
+            "Name": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.OperationalInsights.Models.PSIntelligencePack, Microsoft.Azure.Commands.OperationalInsights, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
+            "Properties": {
+              "Enabled": "System.Boolean",
+              "Name": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -20207,7 +20368,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",

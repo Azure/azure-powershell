@@ -17452,7 +17452,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "AzureVMName",
@@ -18582,7 +18598,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByCertificateName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -18890,7 +18922,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -19240,7 +19288,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -19590,7 +19654,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -19898,7 +19978,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -20203,7 +20299,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -20553,7 +20665,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByRunbookName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -20931,7 +21059,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByName",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -21308,73 +21452,14 @@
       "OutputTypes": [
         {
           "Type": {
-            "Namespace": "Microsoft.Azure.Commands.Automation.Model",
-            "Name": "Microsoft.Azure.Commands.Automation.Model.Variable",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.Automation.Model.Variable, Microsoft.Azure.Commands.ResourceManager.Automation, Version=5.0.3.0, Culture=neutral, PublicKeyToken=null",
-            "Properties": {
-              "Encrypted": "System.Boolean",
-              "CreationTime": "System.DateTimeOffset",
-              "LastModifiedTime": "System.DateTimeOffset",
-              "Value": "System.Object",
-              "ResourceGroupName": "System.String",
-              "AutomationAccountName": "System.String",
-              "Name": "System.String",
-              "Description": "System.String"
-            },
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [],
-            "Methods": [
-              {
-                "Name": "ToString",
-                "Parameters": [],
-                "ReturnType": "System.String"
-              },
-              {
-                "Name": "Equals",
-                "Parameters": [
-                  {
-                    "Name": "obj",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ],
-                "ReturnType": "System.Boolean"
-              },
-              {
-                "Name": "GetHashCode",
-                "Parameters": [],
-                "ReturnType": "System.Int32"
-              },
-              {
-                "Name": "GetType",
-                "Parameters": [],
-                "ReturnType": "System.Type"
-              }
-            ],
-            "Constructors": [
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": [
-                  {
-                    "Name": "variable",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "automationAccoutName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  },
-                  {
-                    "Name": "resourceGroupName",
-                    "Type": "System.Reflection.RuntimeParameterInfo"
-                  }
-                ]
-              },
-              {
-                "Name": "",
-                "ReturnType": null,
-                "Parameters": []
-              }
-            ]
+            "Methods": [],
+            "Constructors": []
           },
           "ParameterSets": [
             "__AllParameterSets"
@@ -21597,7 +21682,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -21860,7 +21961,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -22077,7 +22194,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Id",
@@ -31513,7 +31646,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Id",
@@ -35067,7 +35216,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Id",
@@ -37652,7 +37817,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "ByJobScheduleId",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "JobScheduleId",
