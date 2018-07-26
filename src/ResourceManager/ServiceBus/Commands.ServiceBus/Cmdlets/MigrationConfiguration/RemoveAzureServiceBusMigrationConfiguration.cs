@@ -52,14 +52,14 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         {
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                ResourceIdentifier Identifier = GetResourceDetailsFromId(InputObject.Id);
+                LocalResourceIdentifier Identifier = new LocalResourceIdentifier(InputObject.Id);
 
                 ResourceGroupName = Identifier.ResourceGroupName;
                 Name = Identifier.ResourceName;                
             }
             else if (ParameterSetName == NamespaceResourceIdParameterSet)
             {
-                ResourceIdentifier Identifier = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier Identifier = new LocalResourceIdentifier(ResourceId);
 
                 ResourceGroupName = Identifier.ResourceGroupName;
                 Name = Identifier.ResourceName;
