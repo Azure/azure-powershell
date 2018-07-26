@@ -393,9 +393,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Models
             if (context != null)
             {
 
-                if (context.Subscription != null)
+                if (context.Subscription != null && context.Account != null)
                 {
-                    name = string.Format("{0} - {1}", context.Subscription.Name, context.Subscription.Id);
+                    name = string.Format("{0} ({1}) - {2}", context.Subscription.Name, context.Subscription.Id, context.Account.Id);
                     result = true;
                 }
                 else
