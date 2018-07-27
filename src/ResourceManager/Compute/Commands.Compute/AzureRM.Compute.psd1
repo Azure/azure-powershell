@@ -59,10 +59,8 @@ RequiredAssemblies = '.\AutoMapper.dll', '.\Microsoft.Azure.Management.Compute.d
                '.\Microsoft.Azure.Management.Storage.dll', 
                '.\Microsoft.Data.Edm.dll', '.\Microsoft.Data.OData.dll', 
                '.\Microsoft.Data.Services.Client.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Sync.dll', 
-               '.\Microsoft.WindowsAzure.Commands.Tools.Vhd.dll', 
                '.\Microsoft.WindowsAzure.Storage.dll', '.\System.Spatial.dll', 
-               '.\Microsoft.Azure.Commands.Common.Strategies.4.dll'
+               '.\Microsoft.Azure.PowerShell.Strategies.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
