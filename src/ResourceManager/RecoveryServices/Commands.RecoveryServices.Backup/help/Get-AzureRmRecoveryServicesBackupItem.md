@@ -29,6 +29,13 @@ Get-AzureRmRecoveryServicesBackupItem [-BackupManagementType] <BackupManagementT
  [<CommonParameters>]
 ```
 
+### GetItemsForPolicy
+```
+Get-AzureRmRecoveryServicesBackupItem -Policy <PolicyBase> [[-Name] <String>]
+ [[-ProtectionStatus] <ItemProtectionStatus>] [[-ProtectionState] <ItemProtectionState>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 The **Get-AzureRmRecoveryServicesBackupItem** cmdlet gets the items in a container or a value in Azure Backup and the protection status of the items.
 A container that is registered to an Azure Recovery Services vault can have one or more items that can be protected.
@@ -116,6 +123,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Policy
+Protection policy object.
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PolicyBase
+Parameter Sets: GetItemsForPolicy
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtectionState
 Specifies the state of protection.
 The acceptable values for this parameter are:
@@ -183,7 +205,7 @@ The acceptable values for this parameter are:
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.WorkloadType
-Parameter Sets: (All)
+Parameter Sets: GetItemsForContainer, GetItemsForVault
 Aliases:
 Accepted values: AzureVM, AzureSQLDatabase
 
