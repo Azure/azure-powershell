@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmApplicationGatewayRedirectConfiguration", DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
     {
         [Parameter(

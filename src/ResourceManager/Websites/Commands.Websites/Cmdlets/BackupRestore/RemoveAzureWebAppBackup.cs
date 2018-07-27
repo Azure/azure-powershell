@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Deletes an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, "AzureRmWebAppBackup"), OutputType(typeof(BackupItem))]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmWebAppBackup", DefaultParameterSetName = ParameterSet1Name), OutputType(typeof(BackupItem))]
     public class RemoveAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The id of the backup.", ValueFromPipelineByPropertyName = true)]

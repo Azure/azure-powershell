@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(VerbsCommon.Get,
-        ProfileNouns.VirtualMachineImage)]
+        ProfileNouns.VirtualMachineImage, DefaultParameterSetName = ListVMImageParamSetName)]
     [OutputType(typeof(PSVirtualMachineImage),
         ParameterSetName = new[] { ListVMImageParamSetName })]
     [OutputType(typeof(PSVirtualMachineImageDetail),

@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true)]
+    [Cmdlet(VerbsData.Update, ProfileNouns.AvailabilitySet, SupportsShouldProcess = true, DefaultParameterSetName = SkuParameterSetName)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {

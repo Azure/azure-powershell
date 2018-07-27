@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true), 
+    [Cmdlet(VerbsLifecycle.Disable, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = "Fields"), 
         OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {

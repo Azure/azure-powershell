@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Dns
     /// <summary>
     /// Creates a new record set.
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.New, "AzureRmDnsRecordSet", SupportsShouldProcess = true, DefaultParameterSetName = "Fields"),
         OutputType(typeof(DnsRecordSet))]
     public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// <summary>
     /// this commandlet will let you get Azure Web App slot metrics
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotMetrics")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSlotMetrics", DefaultParameterSetName = ParameterSet1Name)]
     [OutputType(typeof(ResourceMetric))]
     public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {

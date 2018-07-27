@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, CmdletSuffix + "Key")]
+    [Cmdlet(VerbsCommon.Get, CmdletSuffix + "Key", DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(PSOperationalizationClusterCredentials))]
     public class GetAzureRmMlOpClusterKey : MachineLearningComputeCmdletBase
     {

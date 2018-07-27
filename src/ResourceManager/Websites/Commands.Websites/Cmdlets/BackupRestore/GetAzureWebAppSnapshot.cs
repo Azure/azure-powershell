@@ -21,7 +21,7 @@ using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSnapshot"), OutputType(typeof(AzureWebAppSnapshot))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppSnapshot", DefaultParameterSetName = ParameterSet1Name), OutputType(typeof(AzureWebAppSnapshot))]
     public class GetAzureWebAppSnapshot : WebAppOptionalSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()

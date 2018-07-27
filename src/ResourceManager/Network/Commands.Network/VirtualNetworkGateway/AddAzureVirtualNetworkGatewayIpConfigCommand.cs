@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmVirtualNetworkGatewayIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
+    [Cmdlet(VerbsCommon.Add, "AzureRmVirtualNetworkGatewayIpConfig", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class AddAzureVirtualNetworkGatewayIpConfigCommand : AzureVirtualNetworkGatewayIpConfigBase
     {
         [Parameter(

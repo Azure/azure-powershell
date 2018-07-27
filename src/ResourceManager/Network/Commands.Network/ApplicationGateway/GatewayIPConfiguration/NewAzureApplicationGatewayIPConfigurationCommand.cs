@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayIPConfiguration", DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
     public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         public override void ExecuteCmdlet()

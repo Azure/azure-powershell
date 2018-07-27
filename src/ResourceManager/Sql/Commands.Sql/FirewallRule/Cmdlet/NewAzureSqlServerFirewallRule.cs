@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     /// Defines the Get-AzureRmSqlServerFirewallRule cmdlet
     /// </summary>
     [Cmdlet(VerbsCommon.New, "AzureRmSqlServerFirewallRule", SupportsShouldProcess = true, 
-        ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
+        ConfirmImpact = ConfirmImpact.Low, DefaultParameterSetName = UserSpecifiedRuleSet), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
     public class NewAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
     {
         #region Private 

@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.ContainerSas), OutputType(typeof(String))]
+    [Cmdlet(VerbsCommon.New, StorageNouns.ContainerSas, DefaultParameterSetName = SasPermissionParameterSet), OutputType(typeof(String))]
     public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>

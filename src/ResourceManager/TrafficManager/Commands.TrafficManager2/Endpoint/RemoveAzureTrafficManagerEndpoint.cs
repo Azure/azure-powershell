@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true),
+    [Cmdlet(VerbsCommon.Remove, "AzureRmTrafficManagerEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = "Fields"),
         OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {

@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// <summary>
     /// Gets the status of an Azure Web App backup
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmWebAppBackup", DefaultParameterSetName = ParameterSet1Name), OutputType(typeof(AzureWebAppBackup))]
     public class GetAzureWebAppBackupCmdlet : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The id of the backup.", ValueFromPipelineByPropertyName = true)]

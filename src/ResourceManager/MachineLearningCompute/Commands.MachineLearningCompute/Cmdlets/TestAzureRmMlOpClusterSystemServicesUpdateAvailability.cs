@@ -22,7 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
-    [Cmdlet(VerbsDiagnostic.Test, CmdletSuffix + "SystemServicesUpdateAvailability")]
+    [Cmdlet(VerbsDiagnostic.Test, CmdletSuffix + "SystemServicesUpdateAvailability", DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(PSCheckSystemServicesUpdatesAvailableResponse))]
     public class TestAzureRmOpClusterSystemServicesUpdateAvailability: MachineLearningComputeCmdletBase
     {

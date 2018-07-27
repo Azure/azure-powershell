@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewayUrlPathMapConfig", DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
     {
         [Parameter(

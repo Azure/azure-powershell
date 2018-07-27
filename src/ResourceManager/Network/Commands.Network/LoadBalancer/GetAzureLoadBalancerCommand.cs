@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmLoadBalancer"), OutputType(typeof(PSLoadBalancer))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmLoadBalancer", DefaultParameterSetName = "NoExpand"), OutputType(typeof(PSLoadBalancer))]
     public class GetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]

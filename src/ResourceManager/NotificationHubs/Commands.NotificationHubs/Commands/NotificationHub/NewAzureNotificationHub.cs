@@ -19,7 +19,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet(VerbsCommon.New, "AzureRmNotificationHub", SupportsShouldProcess = true, DefaultParameterSetName = InputFileParameterSetName), OutputType(typeof(NotificationHubAttributes))]
     public class NewAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

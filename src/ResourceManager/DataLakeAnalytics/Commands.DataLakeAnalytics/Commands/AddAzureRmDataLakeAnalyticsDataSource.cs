@@ -20,7 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsDataSource")]
+    [Cmdlet(VerbsCommon.Add, "AzureRmDataLakeAnalyticsDataSource", DefaultParameterSetName = DataLakeParameterSetName)]
     [Alias("Add-AdlAnalyticsDataSource")]
     public class AddAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {

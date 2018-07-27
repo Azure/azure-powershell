@@ -20,7 +20,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
-    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareQuota), OutputType(typeof(FileShareProperties))]
+    [Cmdlet(VerbsCommon.Set, StorageNouns.ShareQuota, DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(FileShareProperties))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]

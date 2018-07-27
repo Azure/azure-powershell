@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet(
         VerbsCommon.Add,
-        Constants.CommandNames.AzureHDInsightConfigValues),
+        Constants.CommandNames.AzureHDInsightConfigValues,
+        DefaultParameterSetName = "Spark1"),
     OutputType(
         typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightConfigValuesCommand : HDInsightCmdletBase

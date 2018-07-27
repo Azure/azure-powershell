@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssDataDisk", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", "AzureRmVmssDataDisk", SupportsShouldProcess = true, DefaultParameterSetName = "NameParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class RemoveAzureRmVmssDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
