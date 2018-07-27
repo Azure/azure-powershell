@@ -26,6 +26,7 @@
 * Updated all help files to include full parameter types and correct input/output types.
 * Update description for Set-AzureRmVMOSDisk
 * Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+* Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.3.0
 * Add -Tag parameter to Update/New-AzureRmAvailabilitySet
