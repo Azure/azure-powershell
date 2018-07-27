@@ -134,7 +134,7 @@
 			* Azs.Fabric.Admin
 			- Bug fix for returning only a single page in paginated results
 			- Added a cmdlet Add-AzsScaleUnitNode to enable admin to add new scale unit nodes to the azurestack stamp
-			- Added cmdlets New-ScaleOutScaleUnitParametersListObject and New-ScaleOutScaleUnitParametersObject to facilitate the creation scale unit parameter objects
+			- Added cmdlet and New-AzsScaleUnitNodeObject to facilitate the creation scale unit parameter objects
 			* Azs.Gallery.Admin
 			- Bug fix for returning only a single page in paginated results
 			* Azs.InfrastructureInsights.Admin
