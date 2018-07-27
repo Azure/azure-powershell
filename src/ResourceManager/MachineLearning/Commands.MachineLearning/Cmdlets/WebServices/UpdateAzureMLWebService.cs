@@ -27,7 +27,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [Cmdlet(
         VerbsData.Update, 
         WebServicesCmdletBase.CommandletSuffix, 
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = UpdateFromArgumentsParameterSet)]
     [OutputType(typeof(WebService))]
     public class UpdateAzureMLWebService : WebServicesCmdletBase
     {

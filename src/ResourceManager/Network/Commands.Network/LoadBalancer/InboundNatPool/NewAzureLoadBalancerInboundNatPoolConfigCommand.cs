@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSInboundNatPool))]
+    [Cmdlet(VerbsCommon.New, "AzureRmLoadBalancerInboundNatPoolConfig", DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSInboundNatPool))]
     public class NewAzureLoadBalancerInboundNatPoolConfigCommand : AzureLoadBalancerInboundNatPoolConfigBase
     {
         [Parameter(

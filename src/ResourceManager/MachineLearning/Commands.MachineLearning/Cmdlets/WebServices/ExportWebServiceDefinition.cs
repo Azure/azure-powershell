@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [Cmdlet(
         VerbsData.Export, 
         WebServicesCmdletBase.CommandletSuffix, 
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = ExportToFileParamSet)]
     [OutputType(typeof(string))]
     public class ExportWebServiceDefinition : WebServicesCmdletBase
     {

@@ -21,7 +21,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeAnalyticsDataSource",
-        SupportsShouldProcess = true), OutputType(typeof(bool))]
+        SupportsShouldProcess = true, DefaultParameterSetName = DataLakeParameterSetName), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsDataSource")]
     public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {

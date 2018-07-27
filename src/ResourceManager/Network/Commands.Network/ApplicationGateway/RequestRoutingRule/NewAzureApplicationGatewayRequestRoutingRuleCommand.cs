@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
+    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayRequestRoutingRule", DefaultParameterSetName = "SetByResourceId"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class NewAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
     {
         public override void ExecuteCmdlet()

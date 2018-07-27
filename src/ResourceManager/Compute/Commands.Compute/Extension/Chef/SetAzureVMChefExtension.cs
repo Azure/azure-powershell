@@ -26,7 +26,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
     [Cmdlet(
-        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
+        VerbsCommon.Set, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true, DefaultParameterSetName = WindowsParameterSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMChefExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {

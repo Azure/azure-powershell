@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Removes the certificate operation for the selected certificate
     /// </summary>
     [Cmdlet(VerbsCommon.Remove, CmdletNoun.AzureKeyVaultCertificateOperation,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class RemoveAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {

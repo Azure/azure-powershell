@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
     [Cmdlet(
         VerbsCommon.Get,
-        ProfileNouns.VirtualMachineChefExtension),
+        ProfileNouns.VirtualMachineChefExtension,
+        DefaultParameterSetName = WindowsParameterSetName),
     OutputType(
         typeof(PSVirtualMachineExtension))]
     public class GetAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet

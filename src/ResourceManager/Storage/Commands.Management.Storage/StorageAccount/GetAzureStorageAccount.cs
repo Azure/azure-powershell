@@ -19,7 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Management.Storage
 {
-    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr), OutputType(typeof(PSStorageAccount))]
+    [Cmdlet(VerbsCommon.Get, StorageAccountNounStr, DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSStorageAccount))]
     public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";

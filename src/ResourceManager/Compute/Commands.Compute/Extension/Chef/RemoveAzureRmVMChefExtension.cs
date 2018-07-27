@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
     [Cmdlet(
-        VerbsCommon.Remove, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true)]
+        VerbsCommon.Remove, ProfileNouns.VirtualMachineChefExtension, SupportsShouldProcess = true, DefaultParameterSetName = WindowsParameterSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet
     {

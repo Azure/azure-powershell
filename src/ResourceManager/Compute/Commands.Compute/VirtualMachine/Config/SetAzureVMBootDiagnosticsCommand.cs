@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.BootDiagnostics),
+        ProfileNouns.BootDiagnostics,
+        DefaultParameterSetName = EnableParameterSet),
     OutputType(
         typeof(PSVirtualMachine))]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet

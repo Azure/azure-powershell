@@ -28,7 +28,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmDdosProtectionPlan", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSDdosProtectionPlan))]
     public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";

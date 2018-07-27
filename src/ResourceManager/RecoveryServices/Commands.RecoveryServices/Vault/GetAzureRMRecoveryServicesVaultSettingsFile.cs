@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// <summary>
     /// Retrieves Azure Recovery Services Vault Settings File.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesVaultSettingsFile")]
+    [Cmdlet(VerbsCommon.Get, "AzureRmRecoveryServicesVaultSettingsFile", DefaultParameterSetName = ARSParameterSets.ByDefault)]
     [OutputType(typeof(VaultSettingsFilePath))]
     public class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
     {

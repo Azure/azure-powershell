@@ -20,7 +20,7 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 
 namespace Microsoft.Azure.Commands.TrafficManager
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
+    [Cmdlet(VerbsCommon.Get, "AzureRmTrafficManagerProfile", DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(TrafficManagerProfile))]
     public class GetAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";

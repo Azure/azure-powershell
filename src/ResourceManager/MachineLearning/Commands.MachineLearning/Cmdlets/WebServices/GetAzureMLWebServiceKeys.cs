@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix + "Keys")]
+    [Cmdlet(VerbsCommon.Get, WebServicesCmdletBase.CommandletSuffix + "Keys", DefaultParameterSetName = GetKeysByGroupAndName)]
     [OutputType(typeof(WebServiceKeys))]
     public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {

@@ -29,7 +29,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet("Remove", "AzureRmVmssNetworkInterfaceConfiguration", SupportsShouldProcess = true)]
+    [Cmdlet("Remove", "AzureRmVmssNetworkInterfaceConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = "NameParameterSet")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class RemoveAzureRmVmssNetworkInterfaceConfigurationCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

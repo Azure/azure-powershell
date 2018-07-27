@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'Set-AzureRmEventHub' Cmdlet updates the specified EventHub
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, EventHubVerb, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
+    [Cmdlet(VerbsCommon.Set, EventHubVerb, SupportsShouldProcess = true, DefaultParameterSetName = EventhubPropertiesParameterSet), OutputType(typeof(PSEventHubAttributes))]
     public class SetAzureEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]

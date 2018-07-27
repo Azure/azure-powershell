@@ -19,7 +19,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchTaskCounts),
+    [Cmdlet(VerbsCommon.Get, Constants.AzureBatchTaskCounts, DefaultParameterSetName = Constants.IdParameterSet),
      OutputType(typeof(PSTaskCounts))]
     public class GetBatchTaskCountsCommand : BatchObjectModelCmdletBase
     {

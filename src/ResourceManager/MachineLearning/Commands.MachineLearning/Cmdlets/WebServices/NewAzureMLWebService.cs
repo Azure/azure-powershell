@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [Cmdlet(
         VerbsCommon.New, 
         WebServicesCmdletBase.CommandletSuffix,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = CreateFromFileParameterSet)]
     [OutputType(typeof(WebService))]
     public class NewAzureMLWebService : WebServicesCmdletBase
     {

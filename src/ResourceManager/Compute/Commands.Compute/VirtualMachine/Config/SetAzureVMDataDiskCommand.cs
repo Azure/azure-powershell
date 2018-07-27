@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet(
         VerbsCommon.Set,
-        ProfileNouns.DataDisk),
+        ProfileNouns.DataDisk,
+        DefaultParameterSetName = NameParameterSet),
     OutputType(
         typeof(PSVirtualMachine))]
     public class SetAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet

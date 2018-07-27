@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmPrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
+    [Cmdlet(VerbsDiagnostic.Test, "AzureRmPrivateIPAddressAvailability", DefaultParameterSetName = "TestByResourceId"), OutputType(typeof(PSIPAddressAvailabilityResult))]
     public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
     {
         [Parameter(

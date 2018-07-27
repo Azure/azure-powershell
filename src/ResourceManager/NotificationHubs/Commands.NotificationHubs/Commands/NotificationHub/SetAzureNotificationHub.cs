@@ -21,7 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHub", SupportsShouldProcess = true), OutputType(typeof(NotificationHubAttributes))]
+    [Cmdlet(VerbsCommon.Set, "AzureRmNotificationHub", SupportsShouldProcess = true, DefaultParameterSetName = InputFileParameterSetName), OutputType(typeof(NotificationHubAttributes))]
     public class SetAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,

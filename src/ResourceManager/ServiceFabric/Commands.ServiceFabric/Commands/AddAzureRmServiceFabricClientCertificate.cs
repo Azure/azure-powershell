@@ -20,7 +20,7 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
-    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClientCertificate, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
+    [Cmdlet(VerbsCommon.Add, CmdletNoun.AzureRmServiceFabricClientCertificate, SupportsShouldProcess = true, DefaultParameterSetName = SingleUpdateWithCommonNameSet), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
     {
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SingleUpdateWithThumbprintSet,

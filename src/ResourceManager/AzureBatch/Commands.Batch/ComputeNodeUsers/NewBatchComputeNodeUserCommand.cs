@@ -22,7 +22,7 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureBatchComputeNodeUser), OutputType(typeof(void))]
+    [Cmdlet(VerbsCommon.New, Constants.AzureBatchComputeNodeUser, DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
     public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,

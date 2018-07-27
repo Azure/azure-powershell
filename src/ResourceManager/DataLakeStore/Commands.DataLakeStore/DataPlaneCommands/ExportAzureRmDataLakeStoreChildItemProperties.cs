@@ -3,7 +3,7 @@ using Microsoft.Azure.Commands.DataLakeStore.Models;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet(VerbsData.Export, "AzureRmDataLakeStoreChildItemProperties", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(bool))]
     [Alias("Export-AdlStoreChildItemProperties")]
     public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {

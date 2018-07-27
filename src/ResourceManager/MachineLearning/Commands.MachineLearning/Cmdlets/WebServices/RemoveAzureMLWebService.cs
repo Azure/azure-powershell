@@ -25,7 +25,8 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [Cmdlet(
         VerbsCommon.Remove, 
         WebServicesCmdletBase.CommandletSuffix,
-        SupportsShouldProcess = true)]
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = RemoveByNameGroupParameterSet)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
     {
