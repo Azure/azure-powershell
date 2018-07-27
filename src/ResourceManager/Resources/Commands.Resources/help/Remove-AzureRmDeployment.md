@@ -24,9 +24,9 @@ Remove-AzureRmDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultPro
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### RemoveByDeploymentObject
+### RemoveByInputObject
 ```
-Remove-AzureRmDeployment -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
+Remove-AzureRmDeployment -InputObject <PSDeployment> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -82,19 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentObject
-The deployment object.```yaml
-Type: PSDeployment
-Parameter Sets: RemoveByDeploymentObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Id
 The fully qualified resource Id of the deployment.
 example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}
@@ -108,6 +95,19 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The deployment object.```yaml
+Type: PSDeployment
+Parameter Sets: RemoveByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

@@ -35,6 +35,13 @@ PS C:\>Get-AzureRmDeploymentOperation -DeploymentName test
 
 Gets deployment operation with name "test" at the current subscription scope.
 
+### Get a deployment and get its deployment operations
+```
+PS C:\>Get-AzureRmDeployment -Name "test" | Get-AzureRmDeploymentOperation
+```
+
+This command gets the deployment "test" at the current subscription scope and get its deployment operations.
+
 ## PARAMETERS
 
 ### -ApiVersion
