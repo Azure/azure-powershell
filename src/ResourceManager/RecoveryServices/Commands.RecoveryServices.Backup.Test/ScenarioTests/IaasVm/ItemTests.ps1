@@ -235,6 +235,7 @@ function Test-AzureVMFullRestore
 {
 	$location = Get-ResourceGroupLocation
 	$resourceGroupName = Create-ResourceGroup $location
+	$targetResourceGroupName = Create-ResourceGroup $location
 
 	try
 	{
@@ -261,6 +262,17 @@ function Test-AzureVMFullRestore
 			-RecoveryPoint $rp `
 			-StorageAccountName $saName `
 			-StorageAccountResourceGroupName $resourceGroupName | `
+				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
+
+		Assert-True { $restoreJob.Status -eq "Completed" }
+
+		$restoreJob = Restore-AzureRmRecoveryServicesBackupItem `
+			-VaultId $vault.ID `
+			-VaultLocation $vault.Location `
+			-RecoveryPoint $rp `
+			-StorageAccountName $saName `
+			-StorageAccountResourceGroupName $resourceGroupName
+			-TargetResourceGroupName $targetResourceGroupName | `
 				Wait-AzureRmRecoveryServicesBackupJob -VaultId $vault.ID
 
 		Assert-True { $restoreJob.Status -eq "Completed" }

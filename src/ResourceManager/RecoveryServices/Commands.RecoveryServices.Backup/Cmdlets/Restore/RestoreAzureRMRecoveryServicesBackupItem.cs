@@ -67,6 +67,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public string StorageAccountResourceGroupName { get; set; }
 
         /// <summary>
+        /// Target resource group name
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.TargetResourceGroupName)]
+        [ValidateNotNullOrEmpty]
+        public string TargetResourceGroupName { get; set; }
+
+        /// <summary>
         /// Use this switch if the disks from the recovery point are to be restored to their original storage accounts
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.OsaOption)]
@@ -95,6 +102,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { RestoreBackupItemParams.StorageAccountId, storageAccountResource.Id },
                         { RestoreBackupItemParams.StorageAccountLocation, storageAccountResource.Location },
                         { RestoreBackupItemParams.StorageAccountType, storageAccountResource.Type },
+                        { RestoreBackupItemParams.TargetResourceGroupName, TargetResourceGroupName },
                         { RestoreBackupItemParams.OsaOption, UseOriginalStorageAccount.IsPresent }
                     }, ServiceClientAdapter);
 
