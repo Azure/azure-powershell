@@ -9,7 +9,7 @@ schema: 2.0.0
 # Get-AzureRmVirtualNetworkGatewayConnectionSharedKey
 
 ## SYNOPSIS
-
+Displays the shared key used for the connection.
 ## SYNTAX
 
 ```
@@ -18,8 +18,13 @@ Get-AzureRmVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGr
 ```
 
 ## DESCRIPTION
-
+Displays the shared key used for the connection.
 ## EXAMPLES
+### Example 1
+```
+Get-AzureRmVirtualNetworkGatewayConnectionSharedKey -Name 1 -ResourceGroupName P2SVPNGateway
+xxxxxx
+```
 
 ## PARAMETERS
 

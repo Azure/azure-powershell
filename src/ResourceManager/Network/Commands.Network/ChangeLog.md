@@ -22,6 +22,7 @@
 * Updated all help files to include full parameter types and correct input/output types.
 * Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
 * Added example for Set-AzureRmLocalNetworkGateway
+* Added examples and descriptions for Add-AzureRmVirtualNetworkGatewayIpConfig, Get-AzureRmVirtualNetworkGatewayConnectionSharedKey and New-AzureRmVirtualNetworkGatewayConnection
 
 ## Version 6.4.0
 * Updated below cmdlets for Application Gateway
