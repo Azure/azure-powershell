@@ -24,9 +24,9 @@ Stop-AzureRmDeployment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultProfi
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### StopByDeploymentObject
+### StopByInputObject
 ```
-Stop-AzureRmDeployment -DeploymentObject <PSDeployment> [-ApiVersion <String>] [-Pre]
+Stop-AzureRmDeployment -InputObject <PSDeployment> [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -87,19 +87,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DeploymentObject
-The deployment object.```yaml
-Type: PSDeployment
-Parameter Sets: StopByDeploymentObject
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Id
 The fully qualified resource Id of the deployment.
 example: /subscriptions/{subId}/providers/Microsoft.Resources/deployments/{deploymentName}
@@ -113,6 +100,19 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+The deployment object.```yaml
+Type: PSDeployment
+Parameter Sets: StopByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
