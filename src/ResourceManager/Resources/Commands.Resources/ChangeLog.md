@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix issue where error is thrown when passing a context to `Set-AzureRmResource`
+    - https://github.com/Azure/azure-powershell/issues/5705
 * Updated help files to include full parameter types and correct input/output types.
 * Fix piping scenario with `Set-AzureRmResource`
 * Fix example in New-AzureRmResourceGroupDeployment
