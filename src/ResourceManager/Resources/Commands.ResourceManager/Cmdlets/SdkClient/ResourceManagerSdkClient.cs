@@ -817,6 +817,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         }
 
         /// <summary>
+        /// Gets the deployment operations at subscription scope.
+        /// </summary>
+        /// <param name="deploymentName">The deployment name</param>
+        /// <param name="operationId">The operation Id</param>
+        /// <returns>The deployment operations</returns>
+        public virtual List<PSDeploymentOperation> GetDeploymentOperations(string deploymentName, string operationId = null)
+        {
+            List<PSDeploymentOperation> deploymentOperations = new List<PSDeploymentOperation>();
+
+            if (!string.IsNullOrEmpty(operationId))
+            {
+                deploymentOperations.Add(ResourceManagementClient.DeploymentOperations.GetAtSubscriptionScope(deploymentName, operationId).ToPSDeploymentOperation());
+            }
+            else
+            {
+                var result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScope(deploymentName);
+
+                deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+
+                while (!string.IsNullOrEmpty(result.NextPageLink))
+                {
+                    result = ResourceManagementClient.DeploymentOperations.ListAtSubscriptionScopeNext(result.NextPageLink);
+                    deploymentOperations.AddRange(result.Select(d => d.ToPSDeploymentOperation()));
+                }
+            }
+
+            return deploymentOperations;
+        }
+
+        /// <summary>
         /// Creates new deployment
         /// </summary>
         /// <param name="parameters">The create deployment parameters</param>
