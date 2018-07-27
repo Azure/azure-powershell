@@ -193,6 +193,7 @@
     <Compile Include="SdkModels\Deployments\PSDeployment.cs" />
     <Compile Include="SdkModels\Deployments\PSDeploymentCmdletParameters.cs" />
     <Compile Include="SdkModels\Deployments\PSDeploymentObject.cs" />
+    <Compile Include="SdkModels\Deployments\PSDeploymentOperation.cs" />
     <Compile Include="SdkModels\Deployments\PSResourceGroupDeployment.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFile.cs" />
     <Compile Include="SdkModels\Deployments\TemplateFileParameterV1.cs" />

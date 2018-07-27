@@ -93,7 +93,9 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentObject
-The deployment object.```yaml
+The deployment object.
+
+```yaml
 Type: PSDeployment
 Parameter Sets: SaveByDeploymentObject
 Aliases:

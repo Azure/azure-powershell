@@ -13,7 +13,7 @@ Get deployment operation
 ## SYNTAX
 
 ```
-Get-AzureRmDeploymentOperation -DeploymentName <String> [-SubscriptionId <Guid>] [-ApiVersion <String>] [-Pre]
+Get-AzureRmDeploymentOperation -DeploymentName <String> [-OperationId <String>] [-ApiVersion <String>] [-Pre]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -81,9 +81,22 @@ The deployment name.
 ```yaml
 Type: String
 Parameter Sets: (All)
-Aliases: Name
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OperationId
+The deployment operation Id.```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -102,21 +115,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-The subscription to use.
-
-```yaml
-Type: Guid
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

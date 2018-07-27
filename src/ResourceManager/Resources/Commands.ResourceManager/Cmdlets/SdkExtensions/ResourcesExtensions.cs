@@ -65,6 +65,24 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkExtensions
             return deployment;
         }
 
+        public static PSDeploymentOperation ToPSDeploymentOperation(this DeploymentOperation result)
+        {
+            if (result != null)
+            {
+                return new PSDeploymentOperation()
+                {
+                    Id = result.Id,
+                    OperationId = result.OperationId,
+                    ProvisioningState = result.Properties.ProvisioningState,
+                    StatusCode = result.Properties.StatusCode,
+                    StatusMessage = result.Properties.StatusMessage,
+                    TargetResource = result.Properties.TargetResource?.Id
+                };
+            }
+
+            return null;
+        }
+
 
         public static PSResourceManagerError ToPSResourceManagerError(this ResourceManagementErrorWithDetails error)
         {
