@@ -97,14 +97,15 @@ namespace Commands.Network.Test
                                         .Split(new[] { "." }, StringSplitOptions.RemoveEmptyEntries)
                                         .Last();
 
+                string scenarioTestsDir = Path.Combine(Directory.GetCurrentDirectory(), "ScenarioTests");
                 string psScriptPath = null;
 
-                var innerDirs = Directory.GetDirectories("ScenarioTests").ToList();
-                innerDirs.Insert(0, "ScenarioTests");
+                var testDirs = Directory.GetDirectories(scenarioTestsDir).ToList();
+                testDirs.Insert(0, scenarioTestsDir);
 
-                foreach (var dir in innerDirs)
+                foreach (var dir in testDirs)
                 {
-                    var testPath = dir + "\\" + callingClassName + ".ps1";
+                    var testPath = Path.Combine(dir, callingClassName + ".ps1");
                     if (File.Exists(testPath))
                     {
                         psScriptPath = testPath;
