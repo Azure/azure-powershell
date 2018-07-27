@@ -38,8 +38,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -47,9 +49,9 @@ InModuleScope Azs.Subscriptions.Admin {
 
     Describe "Plan" -Tags @('Plans', 'SubscriptionsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidatePlan {
                 param(
@@ -81,7 +83,8 @@ InModuleScope Azs.Subscriptions.Admin {
                 )
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -90,10 +93,10 @@ InModuleScope Azs.Subscriptions.Admin {
                     $Found.Name             | Should Be $Expected.Name
                     $Found.Type             | Should Be $Expected.Type
 
-					# Plan
-					$Plan.DisplayName       | Should Be $Expected.DisplayName
-					$Plan.PlanName          | Should Be $Expected.PlanName
-					$Plan.QuotaIds          | Should Be $Expected.QuotaIds
+                    # Plan
+                    $Plan.DisplayName       | Should Be $Expected.DisplayName
+                    $Plan.PlanName          | Should Be $Expected.PlanName
+                    $Plan.QuotaIds          | Should Be $Expected.QuotaIds
                 }
             }
 
@@ -109,50 +112,52 @@ InModuleScope Azs.Subscriptions.Admin {
             }
         }
 
-        It "TestListPlans" {
+        it "TestListPlans" -Skip:$('TestListPlans' -in $global:SkippedTests) {
             $global:TestName = 'TestListPlans'
 
             $allPlans = Get-AzsPlan
-            $resourceGroups = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
+            $global:ResourceGroupNames = New-Object  -TypeName System.Collections.Generic.HashSet[System.String]
 
-            foreach($plan in $allPlans) {
+            foreach ($plan in $allPlans) {
                 $rgn = GetResourceGroupName -ID $plan.Id
-                $resourceGroups.Add($rgn)
+                $global:ResourceGroupNames.Add($rgn)
             }
 
-            foreach($rgn in $resourceGroups) {
+            foreach ($rgn in $global:ResourceGroupNames) {
                 Get-AzsPlan -ResourceGroupName $rgn
             }
         }
 
-		It "TestSetPlan" {
-			$global:TestName = "TestSetPlan"
+        it "TestSetPlan" -Skip:$('TestSetPlan' -in $global:SkippedTests) {
+            $global:TestName = "TestSetPlan"
 
-			$allPlans = Get-AzsPlan
-			$plan = $allPlans[0]
-			$rgn = GetResourceGroupName -Id $plan.Id
+            $allPlans = Get-AzsPlan
+            $plan = $allPlans[0]
+            $rgn = GetResourceGroupName -Id $plan.Id
 
-			$plan.DisplayName += "-test"
+            $plan.DisplayName += "-test"
 
-			$plan | Set-AzsPlan
-			$updated = Get-AzsPlan -Name $plan.Name -ResourceGroupName $rgn
-			$updated.DisplayName | Should Be $plan.DisplayName
-		}
-		
-        It "TestCreateUpdateThenDeletePlan" {
+            $plan | Set-AzsPlan
+            $updated = Get-AzsPlan -Name $plan.Name -ResourceGroupName $rgn
+            $updated.DisplayName | Should Be $plan.DisplayName
+        }
+
+        it "TestCreateUpdateThenDeletePlan" -Skip:$('TestCreateUpdateThenDeletePlan' -in $global:SkippedTests) {
             $global:TestName = 'TestCreateUpdateThenDeletePlan'
 
-            $location = "redmond"
-            $rg = "testrg"
-            $name = "testplans"
-            $description = "description of the plan"
+            $quota = Get-AzsSubscriptionsQuota -Location $global:Location
 
-            $quota = Get-AzsSubscriptionsQuota -Location $Location
+            $result = New-AzsPlan `
+                -Name $global:planName `
+                -ResourceGroupName $global:PlanResourceGroupName `
+                -Location $global:Location `
+                -DisplayName $global:planName `
+                -QuotaIds $quota.Id `
+                -Description $global:planDescription
 
-            $result = New-AzsPlan -Name $name -ResourceGroupName $rg -Location $location -DisplayName $name -QuotaIds $quota.Id -Description $description
             ValidatePlan -Plan $result
 
-            Remove-AzsPlan -Name $name -ResourceGroupName $rg -Force
+            Remove-AzsPlan -Name $global:planName -ResourceGroupName $global:PlanResourceGroupName -Force
         }
     }
 }

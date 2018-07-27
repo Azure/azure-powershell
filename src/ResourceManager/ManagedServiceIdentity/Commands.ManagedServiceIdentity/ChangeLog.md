@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 1.0.2
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 1.0.1
 * Updated to the latest version of the Azure ClientRuntime
 * Set minimum dependency of module to PowerShell 5.0

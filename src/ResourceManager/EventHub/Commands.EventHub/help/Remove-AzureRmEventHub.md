@@ -12,9 +12,22 @@ Removes the specified Event Hub.
 
 ## SYNTAX
 
+### EventhubDefaultSet (Default)
 ```
-Remove-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String>
+Remove-AzureRmEventHub [-ResourceGroupName] <String> [-Namespace] <String> [-Name] <String> [-PassThru]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventhubInputObjectSet
+```
+Remove-AzureRmEventHub [-InputObject] <PSEventHubAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### EventhubResourceIdParameterSet
+```
+Remove-AzureRmEventHub [-ResourceId] <String> [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,7 +42,44 @@ PS C:\> Remove-AzureRmEventHub -ResourceGroupName MyResourceGroupName -Namespace
 
 Removes the Event Hub \`MyEventHubName\`.
 
+### Example 2.1 - InputObject - Using Variable:
+```
+PS C:\> $inputobject = Get-AzureRmEventHub <params>
+PS C:\> Remove-AzureRmEventHub -InputObject $inputobject
+```
+
+### Example 2.2 - InputObject Using Piping:
+```
+PS C:\> Get-AzureRmEventHub <params> | Remove-AzureRmEventHub
+```
+
+### Example 3.1 - ResourceId - Using Variable:
+```
+PS C:\> $resourceid = Get-AzureRmEventHub <params>
+PS C:\> Remove-AzureRmEventHub -ResourceId $resourceid.Id
+```
+
+### Example 3.1 - ResourceId - Using string:
+```
+PS C:\> Remove-AzureRmEventHub -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.EventHub/namespaces/NamespaceName/eventhubs/EventHubName"
+```
+
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -46,12 +96,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Eventhub Object
+
+```yaml
+Type: PSEventHubAttributes
+Parameter Sets: EventhubInputObjectSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 EventHub Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EventhubDefaultSet
 Aliases: EventHubName
 
 Required: True
@@ -66,7 +131,7 @@ Namespace Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EventhubDefaultSet
 Aliases: NamespaceName
 
 Required: True
@@ -76,12 +141,42 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -PassThru
+Specifying this will return true if the command was successful.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: EventhubDefaultSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceId
+Eventhub Resource Id
+
+```yaml
+Type: String
+Parameter Sets: EventhubResourceIdParameterSet
 Aliases:
 
 Required: True
@@ -129,11 +224,14 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), Namespace (ByPropertyName), ResourceGroupName (ByPropertyName)
 
+### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### System.Boolean
 
 ## NOTES
 

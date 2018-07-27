@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 #else
         [Fact]
 #endif
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.Flaky)]
         public void RaPropertiesValidation() {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-RaPropertiesValidation");
         }

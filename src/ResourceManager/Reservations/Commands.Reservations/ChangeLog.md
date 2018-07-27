@@ -20,6 +20,9 @@
 -->
 ## Current Release
 
+## Version 0.1.5
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 0.1.4
 * Updated to the latest .NET SDK version 1.8.0-preview
 * Updated Cmdlet Get-AzureRmReservationCatalog

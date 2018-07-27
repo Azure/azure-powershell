@@ -56,7 +56,6 @@ Tags         : Name      Value
 
 The first four commands define attributes for the expiry date, the NotBefore date, tags, and
 context type, and store the attributes in variables.
-
 The final command modifies the attributes for the secret named HR in the key vault named
 ContosoVault, using the stored variables.
 
@@ -76,9 +75,7 @@ PS C:\> Get-AzureKeyVaultSecret $Vault | Where-Object {$_.Name -like $Prefix + '
 ```
 
 The first command stores the string value Contoso in the $Vault variable.
-
 The second command stores the string value IT in the $Prefix variable.
-
 The third command uses the Get-AzureKeyVaultSecret cmdlet to get the secrets in the specified key
 vault, and then passes those secrets to the **Where-Object** cmdlet. The **Where-Object** cmdlet
 filters the secrets for names that begin with the characters IT. The command pipes the secrets that
@@ -105,7 +102,7 @@ If not specified, the existing value of the secret's content type remains unchan
 Remove the existing content type value by specifying an empty string.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +117,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -137,7 +134,7 @@ Disable a secret if value is false.
 If not specified, the existing value of the secret's enabled/disabled state remains unchanged.
 
 ```yaml
-Type: Boolean
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +150,7 @@ The expiration time of a secret in UTC time.
 If not specified, the existing value of the secret's expiration time remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +165,7 @@ Accept wildcard characters: False
 Secret object
 
 ```yaml
-Type: PSKeyVaultSecretIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
 Parameter Sets: InputObject
 Aliases:
 
@@ -184,7 +181,7 @@ Secret name.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment and secret name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases: SecretName
 
@@ -200,7 +197,7 @@ The UTC time before which secret can't be used.
 If not specified, the existing value of the secret's NotBefore attribute remains unchanged.
 
 ```yaml
-Type: DateTime
+Type: System.Nullable`1[System.DateTime]
 Parameter Sets: (All)
 Aliases:
 
@@ -216,7 +213,7 @@ Cmdlet does not return object by default.
 If this switch is specified, return Secret object.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +230,7 @@ If not specified, the existing tags of the secret remain unchanged.
 Remove a tag by specifying an empty Hashtable.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
 
@@ -249,7 +246,7 @@ Vault name.
 Cmdlet constructs the FQDN of a vault based on the name and currently selected environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Default
 Aliases:
 
@@ -265,7 +262,7 @@ Secret version.
 Cmdlet constructs the FQDN of a secret from vault name, currently selected environment, secret name and secret version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: SecretVersion
 
@@ -280,7 +277,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -296,7 +293,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -313,6 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

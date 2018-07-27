@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.6.11
+* Updated help files to include full parameter types and correct input/output types.
+
 ## Version 0.6.10
 * Add required property ResourceGroupName to AS.
 

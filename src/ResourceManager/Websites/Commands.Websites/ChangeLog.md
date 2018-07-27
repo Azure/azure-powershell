@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.0.6
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 5.0.5
 * `Set-AzureRmWebApp -AssignIdentity` and  `Set-AzureRmWebAppSlot -AssignIdentity` when set to false will now remove the Identity property from the site object.Removing preview tag as well.
 * `Get-AzureRmWebAppMetrics`,`Get-AzureRmAppServicePlanMetrics` example updated

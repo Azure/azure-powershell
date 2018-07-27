@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.3.1
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 4.3.0
 * Fixed formatting of OutputType in help files
 * Added Get-AzureRmRecoveryServicesBackupStatus cmdlet. This cmdlet takes a VM ID and checks if the VM is protected by some vault in the subscription. If there exists such a vault, the cmdlet outputs the vault details.
