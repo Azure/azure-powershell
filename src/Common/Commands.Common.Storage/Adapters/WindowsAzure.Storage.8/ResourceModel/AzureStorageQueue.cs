@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
     using Microsoft.WindowsAzure.Storage.Queue;
     using System;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     /// <summary>
     /// Azure storage queue
@@ -25,21 +26,26 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Cloud Queue object
         /// </summary>
+        [Ps1Xml(Label = "Queue End Point", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudQueue.ServiceClient.BaseUri")]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0)]
         public CloudQueue CloudQueue { get; private set; }
 
         /// <summary>
         /// Queue uri
         /// </summary>
+        [Ps1Xml(Label = "Uri", Target = ViewControl.Table, ScriptBlock = "$_.Uri", Position = 1)]
         public Uri Uri { get; private set; }
 
         /// <summary>
         /// Approximate message count
         /// </summary>
+        [Ps1Xml(Label = "ApproximateMessageCount", Target = ViewControl.Table, ScriptBlock = "$_.ApproximateMessageCount", Position = 2)]
         public int? ApproximateMessageCount { get; private set; }
 
         /// <summary>
         /// Whether applied base64 encoding
         /// </summary>
+        [Ps1Xml(Label = "EncodeMessage", Target = ViewControl.Table, ScriptBlock = "$_.EncodeMessage", Position = 3)]
         public bool EncodeMessage { get; private set; }
 
         /// <summary>

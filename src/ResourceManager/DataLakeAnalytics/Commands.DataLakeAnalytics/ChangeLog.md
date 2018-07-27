@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 5.1.1
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 5.1.0
 * Add support for Catalog ACLs through the following commands:
     - Get-AzureRmDataLakeAnalyticsCatalogItemAclEntry

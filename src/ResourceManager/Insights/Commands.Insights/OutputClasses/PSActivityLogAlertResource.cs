@@ -12,24 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Management.Monitor.Management.Models;
+using Microsoft.Azure.Management.Monitor.Models;
 
 namespace Microsoft.Azure.Commands.Insights.OutputClasses
 {
-    public class PSActivityLogAlertResource : ActivityLogAlertResource
+    public class PSActivityLogAlertResource : Management.Monitor.Management.Models.ActivityLogAlertResource
     {
-        public PSActivityLogAlertResource(ActivityLogAlertResource activityLogAlertResource)
-            : base (
-                  location: activityLogAlertResource.Location,
-                  scopes: activityLogAlertResource.Scopes,
-                  condition: activityLogAlertResource.Condition,
-                  actions: activityLogAlertResource.Actions,
-                  id: activityLogAlertResource.Id,
-                  name: activityLogAlertResource.Name,
-                  type: activityLogAlertResource.Type,
-                  tags: activityLogAlertResource.Tags,
-                  enabled: activityLogAlertResource.Enabled,
-                  description: activityLogAlertResource.Description)
+        public PSActivityLogAlertResource(Management.Monitor.Models.ActivityLogAlertResource activityLogAlertResource)
+            : base (activityLogAlertResource: activityLogAlertResource)
         {}
     }
 }

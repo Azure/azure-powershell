@@ -19,6 +19,10 @@
 -->
 ## Current Release
 
+## Version 0.6.7
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 0.6.6
 * Added a readonly property 'PendingReplicationOperationsCount' to PSEventHubDRConfigurationAttributes class, which gives the pending replication operations count while replication is in progress
 

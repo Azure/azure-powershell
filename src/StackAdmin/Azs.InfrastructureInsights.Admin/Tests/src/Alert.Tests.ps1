@@ -40,8 +40,10 @@ param(
     [bool]$RunRaw = $false,
     [bool]$UseInstalled = $false
 )
+
 $Global:UseInstalled = $UseInstalled
-$Global:RunRaw = $RunRaw
+$global:RunRaw = $RunRaw
+$global:TestName = ""
 
 . $PSScriptRoot\CommonModules.ps1
 
@@ -49,9 +51,9 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
     Describe "Alerts" -Tags @('Alert', 'InfrastructureInsightsAdmin') {
 
-        BeforeEach {
+        . $PSScriptRoot\Common.ps1
 
-            . $PSScriptRoot\Common.ps1
+        BeforeEach {
 
             function ValidateAlert {
                 param(
@@ -95,7 +97,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
                 if ($Expected -eq $null) {
                     $Found | Should Be $null
-                } else {
+                }
+                else {
                     $Found                  | Should Not Be $null
 
                     # Resource
@@ -109,7 +112,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
                     if ($Expected.AlertProperties -eq $null) {
                         $Found.AlertProperties             | Should Be $null
-                    } else {
+                    }
+                    else {
                         $Found.AlertProperties             | Should Not Be $null
                         $Found.AlertProperties.Count       | Should Be $Expected.AlertProperties.Count
                     }
@@ -120,7 +124,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
                     if ($Expected.Description -eq $null) {
                         $Found.Description                 | Should Be $null
-                    } else {
+                    }
+                    else {
                         $Found.Description                 | Should Not Be $null
                         $Found.Description.Count           | Should Be $Expected.Description.Count
                     }
@@ -133,7 +138,8 @@ InModuleScope Azs.InfrastructureInsights.Admin {
 
                     if ($Expected.Remediation -eq $null) {
                         $Found.Remediation                 | Should Be $null
-                    } else {
+                    }
+                    else {
                         $Found.Remediation                 | Should Not Be $null
                         $Found.Remediation.Count           | Should Be $Expected.Remediation.Count
                     }
@@ -149,20 +155,20 @@ InModuleScope Azs.InfrastructureInsights.Admin {
         }
 
 
-        It "TestListAlerts" {
+        it "TestListAlerts" -Skip:$('TestListAlerts' -in $global:SkippedTests) {
             $global:TestName = 'TestListAlerts'
 
-            $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $global:Location
+            $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $global:Location
             foreach ($Alert in $Alerts) {
                 ValidateAlert -Alert $Alert
             }
         }
 
-        It "TestGetAlert" {
+        it "TestGetAlert" -Skip:$('TestGetAlert' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAlert'
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+            $Regions = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($Region in $Regions) {
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
+                $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
                     $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
@@ -171,13 +177,13 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
-        It "TestGetAllAlerts" {
+        it "TestGetAllAlerts" -Skip:$('TestGetAllAlerts' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllAlerts'
 
 
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+            $Regions = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($Region in $Regions) {
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
+                $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
                     $retrieved = Get-AzsAlert -Location $Location -Name $Alert.Name
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
@@ -185,13 +191,13 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
-        It "TestAlertsPipeline" {
+        it "TestGetAllAlerts" -Skip:$('TestGetAllAlerts' -in $global:SkippedTests) {
             $global:TestName = 'TestGetAllAlerts'
 
 
-            $Regions = Get-AzsRegionHealth -ResourceGroupName $ResourceGroupName
+            $Regions = Get-AzsRegionHealth -ResourceGroupName $global:ResourceGroupName
             foreach ($Region in $Regions) {
-                $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $Region.Name
+                $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $Region.Name
                 foreach ($Alert in $Alerts) {
                     $retrieved = $Alert | Get-AzsAlert
                     AssertAlertsAreSame -Expected $Alert -Found $retrieved
@@ -199,15 +205,13 @@ InModuleScope Azs.InfrastructureInsights.Admin {
             }
         }
 
-        It "TestCloseAlert" {
+        it "TestCloseAlert" -Skip:$('TestCloseAlert' -in $global:SkippedTests) {
             $global:TestName = 'TestCloseAlert'
 
-            $regionName = "local"
-
-            $Alerts = Get-AzsAlert -ResourceGroupName $ResourceGroupName -Location $regionName
+            $Alerts = Get-AzsAlert -ResourceGroupName $global:ResourceGroupName -Location $global:location
             $Alerts | Should Not Be $null
             foreach ($Alert in $Alerts) {
-                
+
                 $Alert | Should not be $null
                 $Alert.State | Should not be $null
 

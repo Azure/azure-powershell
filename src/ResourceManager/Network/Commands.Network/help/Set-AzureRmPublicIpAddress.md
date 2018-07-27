@@ -64,7 +64,7 @@ First command gets the public IP address resource with name $publicIPName in the
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +79,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -94,7 +94,7 @@ Accept wildcard characters: False
 Specifies a **PublicIpAddress** object that represents the goal state to which the public IP address should be set.
 
 ```yaml
-Type: PSPublicIpAddress
+Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
 Parameter Sets: (All)
 Aliases:
 
@@ -110,8 +110,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSPublicIpAddress
-Parameter 'PublicIpAddress' accepts value of type 'PSPublicIpAddress' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+Parameters: PublicIpAddress (ByValue)
 
 ## OUTPUTS
 

@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 4.1.1
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 4.1.0
 * Fixed "parameter set could not be resolved" error in New-AzureRmLogicApp
 

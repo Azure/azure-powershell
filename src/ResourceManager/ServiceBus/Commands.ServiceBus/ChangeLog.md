@@ -20,6 +20,13 @@
 -->
 ## Current Release
 
+## Version 0.6.8
+* Updated all help files to include full parameter types and correct input/output types.
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
+
 ## Version 0.6.7
 * Added top and skip parameter to list cmdlets
 * Added Standard to Premium NameSpace migration cmdlets :

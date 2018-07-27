@@ -88,7 +88,7 @@ When set, indicates the version of the resource provider API to use.
 If not specified, the API version is automatically determined as the latest available.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 Limits list of results to only built-in policy set definitions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: BuiltinFilterParameterSet
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Limits list of results to only custom policy set definitions.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CustomFilterParameterSet
 Aliases:
 
@@ -133,7 +133,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzureRmContext, AzureCredential
 
@@ -150,7 +150,7 @@ e.g.
 /subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: IdParameterSet
 Aliases: ResourceId
 
@@ -165,7 +165,7 @@ Accept wildcard characters: False
 The name of the management group of the policy set definition(s) to get.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ManagementGroupNameParameterSet
 Aliases:
 
@@ -177,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
@@ -192,7 +192,7 @@ Accept wildcard characters: False
 The policy set definition name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: NameParameterSet, ManagementGroupNameParameterSet, SubscriptionIdParameterSet
 Aliases:
 
@@ -207,7 +207,7 @@ Accept wildcard characters: False
 When set, indicates that the cmdlet should use pre-release API versions when automatically determining which version to use.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -222,7 +222,7 @@ Accept wildcard characters: False
 The subscription ID of the policy set definition(s) to get.
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: SubscriptionIdParameterSet
 Aliases:
 
@@ -234,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Guid
+Type: System.Nullable`1[System.Guid]
 Parameter Sets: BuiltinFilterParameterSet, CustomFilterParameterSet
 Aliases:
 
@@ -251,6 +251,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Id (ByPropertyName), ManagementGroupName (ByPropertyName), Name (ByPropertyName)
+
+### System.Nullable`1[[System.Guid, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

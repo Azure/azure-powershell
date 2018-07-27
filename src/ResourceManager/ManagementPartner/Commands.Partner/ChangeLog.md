@@ -19,6 +19,9 @@
 -->
 ## Current Release
 
+## Version 0.1.3
+* Updated all help files to include full parameter types and correct input/output types.
+
 ## Version 0.1.2
 * Set minimum dependency of module to PowerShell 5.0
 

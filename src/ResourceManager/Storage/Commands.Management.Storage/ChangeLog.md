@@ -19,6 +19,14 @@
 -->
 ## Current Release
 
+## Version 5.0.1
+* Updated all help files to include full parameter types and correct input/output types.
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0
 * Introduced multiple breaking changes
