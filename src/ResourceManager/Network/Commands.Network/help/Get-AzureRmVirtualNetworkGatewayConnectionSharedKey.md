@@ -10,6 +10,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Displays the shared key used for the connection.
+
 ## SYNTAX
 
 ```
@@ -19,6 +20,7 @@ Get-AzureRmVirtualNetworkGatewayConnectionSharedKey [-Name <String>] -ResourceGr
 
 ## DESCRIPTION
 Displays the shared key used for the connection.
+
 ## EXAMPLES
 ### Example 1
 ```
