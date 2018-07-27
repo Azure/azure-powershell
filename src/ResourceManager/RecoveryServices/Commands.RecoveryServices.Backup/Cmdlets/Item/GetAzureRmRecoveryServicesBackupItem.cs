@@ -31,6 +31,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
+        internal const string GetItemsForPolicyParamSet = "GetItemsForPolicy";
 
         /// <summary>
         /// When this option is specified, only those items which belong to this container will be returned.
@@ -51,6 +52,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             ParameterSetName = GetItemsForVaultParamSet)]
         [ValidateNotNullOrEmpty]
         public BackupManagementType BackupManagementType { get; set; }
+
+        /// <summary>
+        /// The command returns the list of backup Items protected by the given policy id.
+        /// </summary>
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = ParamHelpMsgs.Item.ProtectionPolicy,
+            ParameterSetName = GetItemsForPolicyParamSet)]
+        [ValidateNotNullOrEmpty]
+        public PolicyBase Policy { get; set; }
 
         /// <summary>
         /// Friendly name of the item to be returned.
@@ -76,7 +85,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+            ParameterSetName = GetItemsForVaultParamSet)]
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+            ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
 
@@ -98,6 +110,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         { ItemParams.Container, Container },
                         { ItemParams.BackupManagementType, BackupManagementType },
                         { ItemParams.AzureVMName, Name },
+                        { PolicyParams.ProtectionPolicy, Policy },
                         { ItemParams.ProtectionStatus, ProtectionStatus },
                         { ItemParams.ProtectionState, ProtectionState },
                         { ItemParams.WorkloadType, WorkloadType },
@@ -110,12 +123,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     psBackupProvider =
                         providerManager.GetProviderInstance(WorkloadType, BackupManagementType);
                 }
-                else
+                else if (this.ParameterSetName == GetItemsForContainerParamSet)
                 {
                     psBackupProvider = providerManager.GetProviderInstance(WorkloadType,
                     (Container as ManagementContext).BackupManagementType);
                 }
-
+                else
+                {
+                    psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType);
+                }
                 var itemModels = psBackupProvider.ListProtectedItems();
 
                 WriteObject(itemModels, enumerateCollection: true);

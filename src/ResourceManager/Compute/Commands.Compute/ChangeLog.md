@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.4.0
 * Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.
