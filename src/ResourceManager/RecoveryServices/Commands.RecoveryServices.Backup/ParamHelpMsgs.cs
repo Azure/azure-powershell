@@ -35,6 +35,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         internal static class Common
         {
             public const string Vault = "The Azure Backup vault object which is the parent resource.";
+            public const string VaultId = "Resource ID of the Recovery Services Vault.";
             public const string WorkloadType = "Workload type of the resource (for example: AzureVM, WindowsServer).";
             public const string BackupManagementType = "Backup Management type of the resource (for example: MAB, DPM).";
             public const string ConfirmationMessage = "Don't ask for confirmation.";
@@ -78,6 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string ForceOption = "Force disables backup protection (prevents confirmation dialog). This parameter is optional.";
             public const string ExpiryDateTimeUTC = "Date and time specified in UTC after which" +
                 " the recovery points created by this backup will no longer be available for restore";
+            public const string ProtectionPolicy = "The id of the backup policy which is used to protect the backup items";
         }
 
         internal static class RecoveryPoint

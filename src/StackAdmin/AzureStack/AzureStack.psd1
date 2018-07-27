@@ -64,7 +64,7 @@
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.1.0'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.1.0'; },
-        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.1.0'; },
+        @{ModuleName = 'Azs.Subscriptions.Admin'; RequiredVersion = '0.2.0'; },
         @{ModuleName = 'Azs.Update.Admin'; RequiredVersion = '0.1.0'; })
 
     # Assemblies that must be loaded prior to importing this module
