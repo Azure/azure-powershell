@@ -78,16 +78,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// State of protection of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.Item.Status)]
+        [Parameter(Mandatory = false, Position = 4, HelpMessage = ParamHelpMsgs.Item.Status)]
         [ValidateNotNullOrEmpty]
         public ItemProtectionState ProtectionState { get; set; }
 
         /// <summary>
         /// Workload type of the item to be returned.
         /// </summary>
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
             ParameterSetName = GetItemsForVaultParamSet)]
-        [Parameter(Mandatory = true, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
+        [Parameter(Mandatory = true, Position = 5, HelpMessage = ParamHelpMsgs.Common.WorkloadType,
             ParameterSetName = GetItemsForContainerParamSet)]
         [ValidateNotNullOrEmpty]
         public WorkloadType WorkloadType { get; set; }
