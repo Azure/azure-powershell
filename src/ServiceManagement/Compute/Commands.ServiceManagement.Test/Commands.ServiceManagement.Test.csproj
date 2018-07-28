@@ -640,7 +640,7 @@
       <Project>{65c3a86a-716d-4e7d-ab67-1db00b3bf72d}</Project>
       <Name>Commands.Common.Storage</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Storage\Commands.Storage\Commands.Storage.csproj">
+    <ProjectReference Include="..\..\Storage\Commands.Storage\Commands.Storage.csproj">
       <Project>{08cf7da7-0392-4a19-b79b-e1ff67cdb81a}</Project>
       <Name>Commands.Storage</Name>
     </ProjectReference>
