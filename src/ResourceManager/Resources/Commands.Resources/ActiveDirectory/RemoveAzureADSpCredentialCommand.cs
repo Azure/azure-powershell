@@ -54,7 +54,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ServicePrincipalName))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName);
+                    ObjectId = ActiveDirectoryClient.GetObjectIdFromSPN(ServicePrincipalName).ToString();
                 }
 
                 bool deleteAllCredentials = false;
@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                   string.Format(ProjectResources.RemovingSpCredentialWithId, KeyId, ObjectId),
                   ProjectResources.RemoveCredential,
                   ObjectId,
-                  () => ActiveDirectoryClient.RemoveSpCredentialByKeyId(ObjectId, KeyId));
+                  () => ActiveDirectoryClient.RemoveSpCredentialByKeyId(new Guid(ObjectId), KeyId));
                 }
                 else if (deleteAllCredentials)
                 {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                   string.Format(ProjectResources.RemovingAllSpCredentials, ObjectId),
                   ProjectResources.RemoveCredential,
                   ObjectId,
-                  () => ActiveDirectoryClient.RemoveAllSpCredentials(ObjectId));
+                  () => ActiveDirectoryClient.RemoveAllSpCredentials(new Guid(ObjectId)));
                 }
             });
         }

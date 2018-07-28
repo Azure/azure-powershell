@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (ObjectId != Guid.Empty)
                 {
-                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId.ToString()));
+                    WriteObject(ActiveDirectoryClient.GetApplication(ObjectId));
                 }
                 else
                 {

@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -71,7 +73,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.ListAppObjectIdFromApplicationId(new Guid(ApplicationId)).ToString();
                 }
 
                 ApplicationUpdateParameters parameters = new ApplicationUpdateParameters
@@ -85,7 +87,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
 
                 if (ShouldProcess(target: ObjectId, action: string.Format("Updating an application with object id '{0}'", ObjectId)))
                 {
-                    ActiveDirectoryClient.UpdateApplication(ObjectId, parameters);
+                    ActiveDirectoryClient.UpdateApplication(new Guid(ObjectId), parameters);
                 }
             });
         }

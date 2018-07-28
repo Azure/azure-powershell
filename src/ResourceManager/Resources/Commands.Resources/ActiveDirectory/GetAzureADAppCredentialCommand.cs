@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
+using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ActiveDirectory
@@ -37,10 +39,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (!string.IsNullOrEmpty(ApplicationId))
                 {
-                    ObjectId = ActiveDirectoryClient.GetObjectIdFromApplicationId(ApplicationId);
+                    ObjectId = ActiveDirectoryClient.ListAppObjectIdFromApplicationId(new Guid(ApplicationId)).ToString();
                 }
 
-                WriteObject(ActiveDirectoryClient.GetAppCredentials(ObjectId), enumerateCollection: true);
+                WriteObject(ActiveDirectoryClient.GetAppCredentials(new Guid(ObjectId)), enumerateCollection: true);
             });
         }
     }
