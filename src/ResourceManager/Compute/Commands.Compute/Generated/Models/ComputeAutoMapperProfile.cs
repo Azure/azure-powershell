@@ -110,10 +110,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                 cfg.CreateMap<TO.PSDiskUpdate, FROM.DiskUpdate>();
                 cfg.CreateMap<FROM.Snapshot, FROM.SnapshotUpdate>();
                 cfg.CreateMap<FROM.SnapshotUpdate, FROM.Snapshot>();
-                cfg.CreateMap<FROM.DiskSku, FROM.SnapshotSku>();
-                cfg.CreateMap<FROM.SnapshotSku, FROM.DiskSku>();
-                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>();
-                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>();
+                cfg.CreateMap<FROM.DiskSku, FROM.SnapshotSku>()
+                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
+                cfg.CreateMap<FROM.SnapshotSku, FROM.DiskSku>()
+                    .ForMember(c => c.Name, o => o.MapFrom(r => r.Name.ToString()));
+                cfg.CreateMap<FROM.SnapshotUpdate, TO.PSSnapshotUpdate>()
+                    .ForMember(c => c.Sku, o => o.MapFrom(r => r.Sku));
+                cfg.CreateMap<TO.PSSnapshotUpdate, FROM.SnapshotUpdate>()
+                    .ForMember(c => c.Sku, o => o.MapFrom(r => r.Sku));
                 cfg.CreateMap<FROM.AvailabilitySet, TO.PSAvailabilitySet>();
                 cfg.CreateMap<TO.PSAvailabilitySet, FROM.AvailabilitySet>();
                 cfg.CreateMap<FROM.VirtualMachineSize, TO.PSVirtualMachineSize>();
@@ -168,6 +172,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
                     .ForMember(c => c.Zones, o => o.Condition(r => (r.Zones != null)));
                 cfg.CreateMap<FROM.VirtualMachineInstanceView, TO.PSVirtualMachineInstanceView>();
                 cfg.CreateMap<TO.PSVirtualMachineInstanceView, FROM.VirtualMachineInstanceView>();
+                cfg.CreateMap<FROM.RunCommandResult, TO.PSRunCommandResult>();
+                cfg.CreateMap<TO.PSRunCommandResult, FROM.RunCommandResult>();
 
             });
             _mapper = config.CreateMapper();

@@ -1,4 +1,89 @@
-﻿## 6.5.0 - July 2018
+﻿## 6.6.0 - July 2018
+#### General
+* Updated all help files to include full parameter types and correct input/output types.
+
+#### AzureRM.Profile
+* Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
+* Added ps1xml types to Common.Storage
+
+#### Azure.Storage
+* Support get Storage Context from DefaulfProfile
+* Add Ps1XmlAttribute to cmdlets output types properties.
+
+#### AzureRM.ApiManagement
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6370
+    - Fixed bug in Automapper to translate PsApiManagementApi to ApiContract
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6515
+    - Fixed bug in File.Save to not overload with Encoding Type
+* Fixed issue https://github.com/Azure/azure-powershell/issues/6560
+    - Upgraded to 4.0.3 Nuget version which fixes the pattern exception on apiId
+
+#### AzureRM.Compute
+* Fix issue with creating a vm using DiskFileParameterSet in New-AzureRmVm failing because of PremiumLRS storage account type renaming.
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
+* Update SimpleParameterSet of 'New-AzureRmVm' to enable Accelerated Network on qualifying vms.
+* Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
+* Update example for New-AzureRmDisk
+* Add example for 'New-AzureRmVM'
+* Update description for Set-AzureRmVMOSDisk
+* Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
+
+#### AzureRM.DataFactoryV2
+* Updated the ADF .Net SDK version to 1.1.0.
+* Support self-hosted integration runtime sharing across data factories.
+     - Add new parameter -SharedIntegrationRuntimeResourceId to Set-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+     - Add new optional parameter -LinkedDataFactoryName to Remove-AzureRmDataFactoryV2IntegrationRuntime cmdlet.
+
+#### AzureRM.DataLakeStore
+* Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
+
+#### AzureRM.EventHub
+* Updated piping for InputObject and ResourceId in remove cmdlets
+
+#### AzureRM.Insights
+* Fixed formatting of OutputType in help files
+* Using Microsoft.Azure.Management.Monitor SDK 0.19.1-preview
+
+#### AzureRM.KeyVault
+* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+
+#### AzureRM.Network
+* Added examples for LoadBalancerInboundNatPoolConfig cmdlets.
+
+#### AzureRM.Resources
+* Fix issue when providing both tag name and value for 'Get-AzureRmResource'
+    - https://github.com/Azure/azure-powershell/issues/6765
+* Fix piping scenario with 'Set-AzureRmResource'
+
+#### AzureRM.ServiceBus
+* Updated piping for InputObject and ResourceId in remove cmdlets
+* fixed few issues
+	- https://github.com/Azure/azure-powershell/issues/3780
+	- https://github.com/Azure/azure-powershell/issues/4340
+
+#### AzureRM.Sql
+* Adding Server Advanced Threat Protection support with the following cmdlets:
+	- Enable-AzureRmSqlServerAdvancedThreatProtection; Disable-AzureRmSqlServerAdvancedThreatProtection; Get-AzureRmSqlServerAdvancedThreatProtectionPolicy
+* Adding Vulnerability Assessment support with the following cmdlets:
+	- Update-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Get-AzureRmSqlDatabaseVulnerabilityAssessmentSettings; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentSettings
+	- Set-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Get-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline; Clear-AzureRmSqlDatabaseVulnerabilityAssessmentRuleBaseline
+	- Convert-AzureRmSqlDatabaseVulnerabilityAssessmentScan; Get-AzureRmSqlDatabaseVulnerabilityAssessmentScanRecord; Start-AzureRmSqlDatabaseVulnerabilityAssessmentScan
+* Fixed example in Remove-AzureRmSqlServerFirewallRule
+* Fix datetime handling incorrectly for non-us base culture in Get-AzureSqlSyncGroupLog
+
+#### AzureRM.Storage
+* Add Ps1XmlAttribute to cmdlets output types properties
+* Show StorageAccount cmdlet output in table view
+    - Get-AzureRmStorageAccount
+    - New-AzureRmStorageAccount
+    - Set-AzureRmStorageAccount
+
+#### AzureRM.Tags
+* Remove incorrect statement from Tag cmdlet help
+    - https://github.com/Azure/azure-powershell/issues/3878
+
+## 6.5.0 - July 2018
 #### AzureRM.Profile
 * Updated help for 'Get-AzureRmContextAutosaveSetting'
 

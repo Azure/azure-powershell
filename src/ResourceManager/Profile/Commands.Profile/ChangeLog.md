@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 5.3.4
 * Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
 * Updated all help files to include full parameter types and correct input/output types.
 * Added ps1xml types to Common.Storage
