@@ -26,11 +26,7 @@
 param(
     [Parameter(Mandatory = $false, Position = 0)]
     [ValidateSet("Release", "Debug")]
-    [string] $BuildConfig,
-
-    [Parameter(Mandatory = $false, Position = 1)]
-    [ValidateSet("All", "Latest", "Stack", "NetCore","ServiceManagement","AzureStorage")]
-    [string] $Scope
+    [string] $BuildConfig
 )
 
 <#
@@ -110,113 +106,10 @@ function New-ModulePsm1 {
             $template = $template -replace "%PSVersionDeprecationMessage%", ""
         }
 
-        # Handle
-        $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule:$IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
-        $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands
-
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath
 
-    }
-}
-
-<#
-.SYNOPSIS
-    Gets a list of nested module cmdlets
-
-.PARAMETER ModuleMetadata
-    Module metadata for the current module.
-
-.PARAMETER ModulePath
-    Path to the current module.
-
-#>
-function Get-Cmdlets {
-    [CmdletBinding()]
-    param(
-        [Hashtable]$ModuleMetadata,
-        [string]$ModulePath
-    )
-    $nestedModules = $ModuleMetadata.NestedModules
-    $cmdlets = @()
-    foreach ($module in $nestedModules) {
-        $dllPath = Join-Path -Path $ModulePath -ChildPath $module
-        $Assembly = [Reflection.Assembly]::LoadFrom($dllPath)
-        $dllCmdlets = $Assembly.GetTypes() | Where-Object {$_.CustomAttributes.AttributeType.Name -contains "CmdletAttribute"}
-        $cmdlets += $dllCmdlets
-    }
-    return $cmdlets
-}
-
-<#
-.SYNOPSIS
-    Handle nested modules for resource management modules which required ResourceGroupName
-
-.PARAMETER ModuleMetadata
-    Module metadata.
-
-.PARAMETER ModulePath
-    Path to the module.
-
-.PARAMETER IsRMModule
-    Specifies if resource management module.
-
-#>
-function Find-DefaultResourceGroupCmdlets {
-    [CmdletBinding()]
-    param(
-        [Hashtable]$ModuleMetadata,
-        [string]$ModulePath,
-        [switch]$IsRMModule
-    )
-    PROCESS {
-        $contructedCommands = "@("
-        if ($IsRMModule) {
-            $AllCmdlets = Get-Cmdlets -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
-            $FilteredCommands = $AllCmdlets | Where-Object {Test-CmdletRequiredParameter -Cmdlet $_ -Parameter "ResourceGroupName"}
-            foreach ($command in $FilteredCommands) {
-                $contructedCommands += "'" + $command.GetCustomAttributes("System.Management.Automation.CmdletAttribute").VerbName + "-" + $command.GetCustomAttributes("System.Management.Automation.CmdletAttribute").NounName + ":ResourceGroupName" + "',"
-            }
-            $contructedCommands = $contructedCommands -replace ",$", ""
-        }
-        $contructedCommands += ")"
-        return $contructedCommands
-    }
-}
-
-<#
-.SYNOPSIS
-    Test to see if parameter is required.
-
-.PARAMETER Cmdlet
-    Cmdlet object.
-
-.PARAMETER Parameter
-    Name of the parameter
-
-#>
-function Test-CmdletRequiredParameter {
-    [CmdletBinding()]
-    param(
-        [Object]$Cmdlet,
-        [string]$Parameter
-    )
-
-    PROCESS {
-        $rgParameter = $Cmdlet.GetProperties() | Where-Object {$_.Name -eq $Parameter}
-        if ($rgParameter -ne $null) {
-            $parameterAttributes = $rgParameter.CustomAttributes | Where-Object {$_.AttributeType.Name -eq "ParameterAttribute"}
-            foreach ($attr in $parameterAttributes) {
-                $hasParameterSet = $attr.NamedArguments | Where-Object {$_.MemberName -eq "ParameterSetName"}
-                $MandatoryParam = $attr.NamedArguments | Where-Object {$_.MemberName -eq "Mandatory"}
-                if (($hasParameterSet -ne $null) -or (!$MandatoryParam.TypedValue.Value)) {
-                    return $false
-                }
-            }
-            return $true
-        }
-        return $false
     }
 }
 
@@ -253,32 +146,6 @@ elseif (`$module -eq `$null) `
 
 <#
 .SYNOPSIS
-    Update the list of given modules' psm1/psd1 files.
-
-.PARAMETER Modules
-    The list of modules.
-
-#>
-function Update-RMModule {
-    [CmdletBinding()]
-    param(
-        $Modules
-    )
-    $Ignore = @('AzureRM.Profile', 'Azure.Storage')
-    foreach ($module in $Modules) {
-        # filter out AzureRM.Profile which always gets published first
-        # And "Azure.Storage" which is built out as test dependencies
-        if ( -not ($module.Name -in $Ignore)) {
-            $modulePath = $module.FullName
-            Write-Host "Updating $module module from $modulePath"
-            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule
-            Write-Host "Updated $module module`n"
-        }
-    }
-}
-
-<#
-.SYNOPSIS
     Update the Azure modules.
 
 .PARAMETER Scope
@@ -292,119 +159,14 @@ function Update-Azure {
     [CmdletBinding()]
     param(
         [ValidateNotNullOrEmpty()]
-        [String]$Scope,
-
-        [ValidateNotNullOrEmpty()]
         [ValidateSet('Debug', 'Release')]
         [String]$BuildConfig
     )
 
-    if ($Scope -in $script:AzureRMScopes) {
-        Write-Host "Updating profile module"
-        New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile" -TemplatePath $script:TemplateLocation -IsRMModule
-        Write-Host "Updated profile module"
-        Write-Host " "
-    }
-
-    if ($scope -in $script:StorageScopes) {
-        $modulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage"
-        Write-Host "Updating AzureStorage module from $modulePath"
-        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
-        Write-Host " "
-    }
-
-    if ($scope -in $script:ServiceScopes) {
-        $modulePath = "$script:AzurePackages\$buildConfig\ServiceManagement\Azure"
-        Write-Host "Updating ServiceManagement(aka Azure) module from $modulePath"
-        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
-        Write-Host " "
-    }
-
-    # Update all of the modules, if specified.
-    if ($Scope -in $script:AzureRMScopes) {
-        $resourceManagerModules = Get-ChildItem -Path $script:AzureRMRoot -Directory
-        Write-Host "Updating Azure modules"
-        Update-RMModule -Modules $resourceManagerModules
-        Write-Host " "
-    }
-
-    # Update AzureRM
-    if ($Scope -in $script:AzureRMScopes) {
-        $modulePath = "$PSScriptRoot\AzureRM"
-        Write-Host "Updating AzureRM module from $modulePath"
-        New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
-        Write-Host " "
-    }
-}
-
-<#
-.SYNOPSIS
-    Update stack modules
-
-.PARAMETER BuildConfig
-    Either Debug or Release
-#>
-function Update-Stack {
-    [CmdletBinding()]
-    param(
-        [ValidateNotNullOrEmpty()]
-        [ValidateSet('Debug', 'Release')]
-        [String]$BuildConfig
-    )
-
-    Write-Host "Updating profile module for stack"
-    New-ModulePsm1 -ModulePath "$script:StackRMRoot\AzureRM.Profile" -TemplatePath $script:TemplateLocation -IsRMModule
-    Write-Host "Updated profile module"
-    Write-Host " "
-
-    $modulePath = "$script:StackPackages\$buildConfig\Storage\Azure.Storage"
-    Write-Host "Updating AzureStorage module from $modulePath"
-    New-ModulePsm1 -ModulePath $modulePath -TemplatePath $templateLocation -IsRMModule:$false
-    Write-Host " "
-
-    $StackRMModules = Get-ChildItem -Path $script:StackRMRoot -Directory
-    Write-Host "Updating stack modules"
-    Update-RMModule -Modules $StackRMModules
-    Write-Host " "
-}
-
-<#
-    Update .NET core modules.
-#>
-function Update-Netcore {
-    [CmdletBinding()]
-    param(
-        [ValidateNotNullOrEmpty()]
-        [ValidateSet('Debug', 'Release')]
-        [String]$BuildConfig
-    )
-
-    $AzureRMModules = Get-ChildItem -Path $script:AzureRMRoot -Directory
-
-    # Publish the Netcore modules and rollup module, if specified.
-    Write-Host "Updating profile module"
-    New-ModulePsm1 -ModulePath "$script:AzureRMRoot\AzureRM.Profile.Netcore" -TemplatePath $script:TemplateLocation -IsRMModule
-    Write-Host "Updated profile module"
-
-    $storageModulePath = "$script:AzurePackages\$buildConfig\Storage\Azure.Storage.Netcore"
-    Write-Host "Updating AzureStorage module from $modulePath"
-    New-ModulePsm1 -ModulePath $storageModulePath -TemplatePath $script:TemplateLocation
-
-    $env:PSModulePath += "$([IO.Path]::PathSeparator)$script:AzureRMRoot\AzureRM.Profile.Netcore";
-
-    foreach ($module in $AzureRMModules) {
-        if (($module.Name -ne "AzureRM.Profile.Netcore")) {
-            $modulePath = $module.FullName
-            Write-Host "Updating $module module from $modulePath"
-            New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation -IsRMModule
-            Write-Host "Updated $module module"
-        }
-    }
-
-    $modulePath = "$PSScriptRoot\AzureRM.Netcore"
-    Write-Host "Updating Netcore module from $modulePath"
+    $modulePath = "$script:AzurePackages\$buildConfig\ServiceManagement\Azure"
+    Write-Host "Updating ServiceManagement(aka Azure) module from $modulePath"
     New-ModulePsm1 -ModulePath $modulePath -TemplatePath $script:TemplateLocation
-    Write-Host "Updated Netcore module"
+    Write-Host " "
 }
 
 <################################################
@@ -416,37 +178,11 @@ function Update-Netcore {
 #>
 $script:TemplateLocation = "$PSScriptRoot\AzureRM.Example.psm1"
 
-# Scopes
-$script:NetCoreScopes = @('NetCore')
-$script:AzureScopes = @('All', 'Latest', 'ServiceManagement', 'AzureStorage')
-$script:StackScopes = @('All', 'Stack')
-
-# Specialty-Scopes used by cmdlets
-$script:AzureRMScopes = @('All', 'Latest')
-$script:StorageScopes = @('All', 'Latest', 'AzureStorage')
-$script:ServiceScopes = @('All', 'Latest', 'ServiceManagement')
-
 # Package locations
 $script:AzurePackages = "$PSSCriptRoot\..\src\Package"
-$script:StackPackages = "$PSSCriptRoot\..\src\Stack"
-
-# Resource Management folders
-$script:AzureRMRoot = "$script:AzurePackages\$buildConfig\ResourceManager\AzureResourceManager"
-$script:StackRMRoot = "$script:StackPackages\$buildConfig\ResourceManager\AzureResourceManager"
 
 
 # Begin
-Write-Host "Updating $Scope package (and its dependencies)"
-
-if ($Scope -in $NetCoreScopes) {
-    Update-Netcore -BuildConfig $BuildConfig
-}
-
-if ($Scope -in $AzureScopes) {
-    Update-Azure -Scope $Scope -BuildConfig $BuildConfig
-}
-
-if ($Scope -in $StackScopes) {
-    Update-Stack -BuildConfig $BuildConfig
-}
+Write-Host "Updating Azure package (and its dependencies)"
+Update-Azure -BuildConfig $BuildConfig
 
