@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 4.0.4
 * Updated help files to include full parameter types and correct input/output types.
 * Remove incorrect statement from Tag cmdlet help
     - https://github.com/Azure/azure-powershell/issues/3878

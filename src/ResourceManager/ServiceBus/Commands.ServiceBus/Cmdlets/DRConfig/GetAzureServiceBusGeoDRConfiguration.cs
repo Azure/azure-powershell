@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
         public override void ExecuteCmdlet()
         {
-            ResourceIdentifier getParamGeoDR = new ResourceIdentifier();
+            
             if (ParameterSetName == NamespaceInputObjectParameterSet)
             {
-                getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
             if (ParameterSetName == ResourceIdParameterSet)
             {
-                getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                 {
