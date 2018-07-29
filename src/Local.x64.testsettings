@@ -7,7 +7,6 @@
     <DeploymentItem filename="Package\Debug\ServiceManagement\Azure\Services\Resources" outputDirectory="Resources" />
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\TestScripts\" />
     <DeploymentItem filename="ServiceManagement\Sql\Commands.SqlDatabase.Test\Resources\" />
-    <DeploymentItem filename="ResourceManager\Resources\Commands.Resources.Test\Resources\" />
     <DeploymentItem filename="ServiceManagement\Storage\Commands.Storage.ScenarioTest\Resources\" />
     <DeploymentItem filename="ServiceManagement\Services\Commands.Test\Resources\" />
   </Deployment>

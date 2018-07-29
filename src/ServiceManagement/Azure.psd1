@@ -54,14 +54,14 @@ CLRVersion = '4.0'
 RequiredModules = @()
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.WindowsAzure.Storage.dll', 
-               '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
-               '.\Microsoft.Azure.KeyVault.Core.dll', 
-               '.\Microsoft.WindowsAzure.Management.dll',
-               '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
-               '.\Microsoft.Rest.ClientRuntime.dll', 
-               '.\Microsoft.Rest.ClientRuntime.Azure.dll',
-               '.\Newtonsoft.Json.10.dll'
+RequiredAssemblies = '.\Storage\Microsoft.WindowsAzure.Storage.dll', 
+               '.\Storage\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
+               '.\Storage\Microsoft.Azure.KeyVault.Core.dll', 
+               '.\Storage\Microsoft.WindowsAzure.Management.dll',
+               '.\Storage\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
+               '.\Storage\Microsoft.Rest.ClientRuntime.dll', 
+               '.\Storage\Microsoft.Rest.ClientRuntime.Azure.dll',
+               '.\Storage\Newtonsoft.Json.10.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -71,7 +71,7 @@ TypesToProcess =
                '.\Services\Microsoft.WindowsAzure.Commands.Websites.Types.ps1xml', 
                '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.Types.ps1xml', 
                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.Types.ps1xml',
-               '.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
+               '.\Storage\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
 FormatsToProcess = 
@@ -84,8 +84,8 @@ FormatsToProcess =
                '.\Services\Microsoft.WindowsAzure.Commands.Profile.format.ps1xml', 
                '.\Networking\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.format.ps1xml', 
                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.format.ps1xml',
-               '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
-               '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
+               '.\Storage\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml',
+               '.\Storage\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Automation\Microsoft.Azure.Commands.Automation.dll', 
@@ -98,7 +98,7 @@ NestedModules = @('.\Automation\Microsoft.Azure.Commands.Automation.dll',
                '.\Sql\Microsoft.WindowsAzure.Commands.SqlDatabase.dll', 
                '.\StorSimple\Microsoft.WindowsAzure.Commands.StorSimple.dll', 
                '.\TrafficManager\Microsoft.WindowsAzure.Commands.TrafficManager.dll',
-               '.\Microsoft.WindowsAzure.Commands.Storage.dll')
+               '.\Storage\Microsoft.WindowsAzure.Commands.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()

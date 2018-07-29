@@ -1,7 +1,6 @@
 # Azure PowerShell specific
 src/Publish/
 src/Package/
-src/Stack/
 
 obj
 TestResults
@@ -13,8 +12,6 @@ msbuild.log
 # app.config is not useful for PowerShell.
 # please do not commit any app.config files.
 app.config
-!src/ResourceManager/Profile/Commands.Profile.Test/App.config
-!src/ResourceManager/ManagedServiceIdentity/Commands.ManagedServiceIdentity.Test/App.config
 !src/ServiceManagement/Storage/Commands.Storage.Test/app.config
 
 ## Ignore Visual Studio temporary files, build results, and
@@ -215,11 +212,6 @@ FakesAssemblies/
 /tools/*.dll
 *.GhostDoc.xml
 pingme.txt
-groupMapping*.json
-/tools/index.json
-/Package/index.json
-/tools/outputtypes.json
-/Package/outputtypes.json
 
 *.msi
 *.wixpdb
@@ -230,8 +222,4 @@ Results
 Package
 .DS_Store
 .idea
-/src/ResourceManager/RecoveryServices.Backup/**/bin
 launchSettings.json
-/src/StackAdmin/AzureRM/AzureRM.psm1
-/src/StackAdmin/AzureStack/AzureStack.psm1
-/tools/AzureRM.Netcore/AzureRM.Netcore.psm1
