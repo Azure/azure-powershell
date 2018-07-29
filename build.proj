@@ -222,24 +222,12 @@
   </Target>
 
   <Target Name="FilterBuild">
-	<!-- Get all of the files changed in the given pull request -->
-  	<FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)">
-  		<Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
-  	</FilesChangedTask>
-
-  	<!-- Get the list of modules changed -->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\ModuleMappings.json">
-      <Output TaskParameter="Output" ItemName="ModulesChanged"/>
-    </FilterTask>
-    <Message Text="Filtering help generation and StaticAnalysis by the following modules:"/>
-    <Message Text="%(ModulesChanged.Identity)"/>
-    <Message Text="Total: @(ModulesChanged->Count())"/>
-    <Message Text=""/>
-
-    <!--Get the list of tests to be run based on files changed from a specified PullRequestNumber. Mapping between paths and test DLLs is used to produce the list.-->
-    <FilterTask FilesChanged="@(FilesChanged)" MapFilePath=".\TestMappings.json">
-      <Output TaskParameter="Output" ItemName="XUnitTests"/>
-    </FilterTask>
+    <ReadLinesFromFile  
+        File=".\TestMappings.txt" >  
+        <Output  
+            TaskParameter="Lines"  
+            ItemName="XUnitTests"/>  
+    </ReadLinesFromFile>
     <Message Text="Using these test assemblies:"/>
     <Message Text="%(XUnitTests.Identity)"/>
     <Message Text="Total: @(XunitTests->Count())"/>
@@ -271,7 +259,7 @@
               BuildInParallel="$(BuildInParallel)"
       ContinueOnError="false" />     
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules '@(ModulesChanged)' &quot;"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;$ProgressPreference = 'SilentlyContinue';. $(LibraryToolsFolder)\GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration) -FilteredModules 'Azure' &quot;"
           Condition="'$(SkipHelp)' == 'false'"
           ContinueOnError="false"/>
 
@@ -448,7 +436,7 @@
 
     <Message Importance="high" Text="Running dependency analysis..." />
 
-    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp) @(ModulesChanged)"
+    <Exec Command="$(MSBuildProjectDirectory)\src\Package\StaticAnalysis.exe $(MSBuildProjectDirectory)\src\Package\$(Configuration) $(MSBuildProjectDirectory)\src\Package true $(SkipHelp) Azure"
           Condition="'$(Scope)' != 'Stack'"/>
 
     <Exec Command="$(PackageDirectory)\StaticAnalysis.exe $(StackPackageFolder)\$(Configuration) $(StackPackageFolder)"

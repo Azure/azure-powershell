@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="DebugTask.cs" />
     <Compile Include="FilesChangedTask.cs" />
-    <Compile Include="FilterTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FilterOutAutoRestLibraries.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -62,7 +61,6 @@
     </Compile>
     <Compile Include="RegexReplacementTask.cs" />
     <Compile Include="StrongNameUtility.cs" />
-    <Compile Include="SetGenerator.cs" />
     <Compile Include="ValidateStrongNameSignatureTask.cs" />
     <Compile Include="VerifyAuthenticodeSignatureTask.cs" />
   </ItemGroup>
