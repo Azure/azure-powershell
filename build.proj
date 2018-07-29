@@ -491,11 +491,6 @@
     <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
  </Target>
 
-  <PropertyGroup>
-    <RunTestLive Condition="'$(RunTestLive)' == ''">false</RunTestLive>
-    <XUnitIncludedTrait Condition="!$(RunTestLive)">AcceptanceType=CheckIn</XUnitIncludedTrait>
-  </PropertyGroup>
-
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
   <Import Project="$(MSBuildThisFileDirectory)AzurePowershell.Test.targets"/>
 
@@ -508,6 +503,10 @@
     <!--<CallTarget Targets="RunPoliCheck" />-->
 
     <CallTarget Targets="InvokeXUnit" />
+    <CallTarget Targets="TestServiceManagement" />
+    <CallTarget Targets="TestHDInsight" />
+    <CallTarget Targets="TestSqlDatabase" />
+    <CallTarget Targets="TestStorage" />
   </Target>
 
   <Target Name="BinScopeCheck">
@@ -518,22 +517,6 @@
 
   <Target Name="BinScopeErrorMessage">
     <Error Text="Binscope failed, please check the files in src/Package/BinScope"/>
-  </Target>
-
-  <!-- Run Full switch with scenario tests -->
-  <Target
-    Name="FullWithScenarioTests"
-    DependsOnTargets="Clean;Build;Test;RunOneSDKCIT" />
-
-  <!-- Run live tests and record mocks -->
-  <Target
-  Name="RunLiveTests"
-  DependsOnTargets="Clean;Build;LiveTestsFilter" />
-
-
-  <Target Name="LiveTestsFilter" DependsOnTargets="Build;BeforeRunTests">
-    <Message Importance="high" Text="Running live tests..." />
-    <CallTarget Targets="LiveTests"/>
   </Target>
 
   <Target Name="RunPoliCheck">
