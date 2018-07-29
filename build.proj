@@ -381,50 +381,6 @@
           ContinueOnError="ErrorAndContinue" />
   </Target>
 
-
-
-  <Target Name="BuildInstaller" Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest'">
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(PackageDirectory) -InstallationPolicy Trusted &quot; "/>
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryRoot)\setup\generate.ps1 -repository MSIcreationrepository &quot; "/>
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot; "/>
-    <CallTarget Targets="CodeSignInstaller" Condition=" '$(CodeSign)' == 'true'" />
-  </Target>
-
-
-
-  <Target Name="CodeSignInstaller">
-    <PropertyGroup>
-      <!--public token associated with MSSharedLibKey.snk-->
-      <StrongNameToken Condition=" '$(StrongNameToken)' == '' ">31bf3856ad364e35</StrongNameToken>
-    </PropertyGroup>
-    <GetFrameworkSdkPath>
-      <Output TaskParameter="Path" PropertyName="WindowsSdkPath"/>
-    </GetFrameworkSdkPath>
-
-    <ItemGroup>
-      <InstallersToSign Include="$(LibraryRoot)\setup\*.msi" />
-    </ItemGroup>
-
-    <Message Importance="high" Text="$(LibraryRoot)\setup does not contain any installers to sign. Code sign will skip."
-             Condition="'@(InstallersToSign)' == ''" />
-
-    <CodeSigningTask
-      Description="Microsoft Azure PowerShell"
-      Keywords="Microsoft Azure PowerShell"
-      UnsignedFiles="@(InstallersToSign)"
-      DestinationPath="$(SignedOutputRootDir)"
-      SigningLogPath="$(LibraryRoot)\msi-signing.log"
-      Certificates="402"
-      ToolsPath="$(CIToolsPath)"
-      Condition="!$(DelaySign) and '@(InstallersToSign)' != ''"/>
-
-    <!--If we are testing locally then we copy the binaries and do not submit to the code sign server-->
-    <Copy SourceFiles="@(InstallersToSign)" DestinationFolder="signed" Condition="$(DelaySign)" />
-    <SetEnvVar EnvName="SignedMsiDir" EnvValue="$(SignedOutputRootDir)" />
-  </Target>
-
-
-
   <!-- Run Validation -->
   <Target Name="DependencyAnalysis"
           Condition="'$(SkipDependencyAnalysis)' == 'false'">
@@ -471,8 +427,6 @@
     <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -BuildConfig $(Configuration) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
           Condition="'$(Scope)' !='Stack'"
           ContinueOnError="false"/>
-
-    <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />
  </Target>
 
   <!-- Note: all testing related target should go to 'AzurePowershell.test.targets' file except the one used by CI run -->
@@ -482,9 +436,9 @@
   <Target Name="Test" DependsOnTargets="BeforeRunTests">
     <Message Importance="high" Text="Running check in tests..." />
 
-    <!--<CallTarget Targets="BinScopeCheck" />-->
+    <CallTarget Targets="BinScopeCheck" />
 
-    <!--<CallTarget Targets="RunPoliCheck" />-->
+    <CallTarget Targets="RunPoliCheck" />
 
     <CallTarget Targets="InvokeXUnit" />
     <CallTarget Targets="TestServiceManagement" />
