@@ -468,12 +468,8 @@
 
     <Error Condition=" '$(NuGetKey)' == '' " Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -BuildConfig $(Configuration) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
           Condition="'$(Scope)' !='Stack'"
-          ContinueOnError="false"/>
-
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope Stack -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot; &quot; -NugetExe $(NuGetCommand)"
-          Condition="'$(Scope)' =='All' or '$(Scope)' =='Stack'"
           ContinueOnError="false"/>
 
     <CallTarget Targets="BuildInstaller" Condition="'$(Scope)' =='All'" />

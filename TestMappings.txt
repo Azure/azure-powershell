@@ -1,11 +1,11 @@
 
-".\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll"
-".\\src\\ServiceManagement\\Common\\Commands.Common.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Common.Test.dll"
-".\\src\\ServiceManagement\\Services\\Commands.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Test.dll"
-".\\src\\ServiceManagement\\StorSimple\\Commands.StorSimple.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll"
-".\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ScenarioTest.dll"
-".\\src\\ServiceManagement\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Test.dll"
-".\\src\\ServiceManagement\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll"
-".\\src\\ServiceManagement\\Storage\\Commands.Storage.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Storage.Test.dll"
-".\\tools\\StaticAnalysis\\StaticAnalysis.Test\\bin\\Debug\\StaticAnalysis.Test.dll"
-".\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll"
+.\\src\\Common\\Commands.Common.Authentication.Test\\bin\\Debug\\Microsoft.Azure.Commands.Common.Authentication.Test.dll
+.\\src\\ServiceManagement\\Common\\Commands.Common.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Common.Test.dll
+.\\src\\ServiceManagement\\Services\\Commands.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Test.dll
+.\\src\\ServiceManagement\\StorSimple\\Commands.StorSimple.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.StorSimple.Test.dll
+.\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ScenarioTest.dll
+.\\src\\ServiceManagement\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Test.dll
+.\\src\\ServiceManagement\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll
+.\\src\\ServiceManagement\\Storage\\Commands.Storage.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Storage.Test.dll
+.\\tools\\StaticAnalysis\\StaticAnalysis.Test\\bin\\Debug\\StaticAnalysis.Test.dll
+.\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll
