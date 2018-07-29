@@ -353,7 +353,7 @@
         ContinueOnError="false"
         Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''"/>
 
-    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope) &quot;"
+    <Exec Command="$(PowerShellCommandPrefix) &quot;. $(LibraryToolsFolder)\UpdateModules.ps1 -BuildConfig $(Configuration) &quot;"
           Condition="'$(Scope)' != 'Netcore'"/>
 
 
