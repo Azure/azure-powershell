@@ -6,5 +6,3 @@
 .\\src\\ServiceManagement\\RecoveryServices\\Commands.RecoveryServices.Test\\bin\\Debug\\Microsoft.Azure.Commands.RecoveryServices.Test.dll
 .\\src\\ServiceManagement\\Network\\Commands.Network.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.ServiceManagement.Network.Test.dll
 .\\src\\ServiceManagement\\Storage\\Commands.Storage.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Storage.Test.dll
-.\\tools\\StaticAnalysis\\StaticAnalysis.Test\\bin\\Debug\\StaticAnalysis.Test.dll
-.\\tools\\RepoTasks\\RepoTasks.Cmdlets.Tests\\bin\\Debug\\RepoTasks.Cmdlets.Tests.dll
