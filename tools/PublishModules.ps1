@@ -17,14 +17,8 @@
 .SYNOPSIS
     Create nuget packages for each module.
 
-.PARAMETER IsNetCore
-    If built using .NET core.
-
 .PARAMETER BuildConfig
     Either Debug or Release.
-
-.PARAMETER Scope
-    Either All, Latest, Stack, NetCore, ServiceManagement, AzureStorage
 
 .PARAMETER ApiKey
     ApiKey used to publish nuget to PS repository.
@@ -38,25 +32,17 @@
 #>
 
 param(
-    [CmdletBinding()]
     [Parameter(Mandatory = $false, Position = 0)]
-    [switch]$IsNetCore,
-
-    [Parameter(Mandatory = $false, Position = 1)]
     [ValidateSet("Debug", "Release")]
     [string]$BuildConfig,
 
-    [Parameter(Mandatory = $false, Position = 2)]
-    [ValidateSet("All", "Latest", "Stack", "NetCore", "ServiceManagement", "AzureStorage")]
-    [string]$Scope,
-
-    [Parameter(Mandatory = $false, Position = 3)]
+    [Parameter(Mandatory = $false, Position = 1)]
     [string]$ApiKey,
 
-    [Parameter(Mandatory = $false, Position = 4)]
+    [Parameter(Mandatory = $false, Position = 2)]
     [string]$RepositoryLocation,
 
-    [Parameter(Mandatory = $false, Position = 5)]
+    [Parameter(Mandatory = $false, Position = 3)]
     [string]$NugetExe
 )
 
@@ -91,28 +77,18 @@ function Out-FileNoBom {
 .PARAMETER BuildConfig
 Either debug or release.
 
-.PARAMETER Profile
-Either Latest or Stack.
-
 #>
 function Get-Directories {
     [CmdletBinding()]
     param
     (
-        [String]$BuildConfig,
-        [String]$Scope
+        [String]$BuildConfig
     )
 
     PROCESS {
         $packageFolder = "$PSScriptRoot\..\src\Package"
 
-        if ($Scope -eq "Stack") {
-            $packageFolder = "$PSScriptRoot\..\src\Stack"
-        }
-
-        $resourceManagerRootFolder = "$packageFolder\$buildConfig\ResourceManager\AzureResourceManager"
-
-        Write-Output -InputObject $packageFolder, $resourceManagerRootFolder
+        Write-Output -InputObject $packageFolder
     }
 }
 
@@ -123,103 +99,14 @@ function Get-Directories {
 #################################################>
 
 <#
-.SYNOPSIS Get the list of rollup modules.  Currently AzureRM, for Stack and Azure, or AzureStack.
-
-.PARAMETER BuildConfig
-Either debug or release.
-
-.PARAMETER SCOPE
-All, AzureRM, and Stack are valid Rollup modules.
-
-.PARAMETER IsNetCore
-If built using .NET core.
-
-#>
-function Get-RollupModules {
-    [CmdletBinding()]
-    param
-    (
-        [string]$BuildConfig,
-        [string]$Scope,
-        [switch]$IsNetCore
-    )
-
-    PROCESS {
-        $targets = @()
-
-        if ($Scope -eq 'Stack') {
-            Write-Host "Publishing AzureRM"
-            $targets += "$PSScriptRoot\..\src\StackAdmin\AzureRM"
-            $targets += "$PSScriptRoot\..\src\StackAdmin\AzureStack"
-        }
-
-        if ($Scope -eq 'All' -or $Scope -eq 'Latest' -or $Scope -eq 'NetCore') {
-            if ($IsNetCore) {
-                # For .NetCore publish AzureRM.Netcore
-                $targets += "$PSScriptRoot\AzureRM.Netcore"
-            } else {
-                $targets += "$PSScriptRoot\AzureRM"
-            }
-        }
-
-        Write-Output -InputObject $targets
-    }
-}
-
-<#
-.SYNOPSIS Find and return all AzureStack admin modules.
-
-.PARAMETER BuildConfig
-Either debug or release.
-
-.PARAMETER Profile
-Either Latest or Stack.
-
-.PARAMETER Scope
-The Module or class of Modules to build.
-
-#>
-function Get-AdminModules {
-    [CmdletBinding()]
-    param
-    (
-        [string]$BuildConfig,
-        [string]$Scope
-    )
-
-    PROCESS {
-        $targets = @()
-        if ($Scope -eq "Stack") {
-            $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
-
-            $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Filter Azs.*
-            foreach ($module in $resourceManagerModules) {
-                $targets += $module.FullName
-            }
-        }
-        Write-Output -InputObject $targets
-    }
-}
-
-
-<#
 
 .SYNOPSIS Get the list of Azure modules.
 
 .PARAMETER BuildConfig
 Either release or debug.
 
-.PARAMETER Profile
-Either Latest or Stack
-
-.PARAMETER Scope
-The scope, either a specific Module or class of modules.
-
 .PARAMETER PublishLocal
 If publishing locally only.
-
-.PARAMETER IsNetCore
-If built with .NET core.
 
 #>
 function Get-ClientModules {
@@ -227,61 +114,16 @@ function Get-ClientModules {
     param
     (
         [string]$BuildConfig,
-        [string]$Scope,
-        [bool]$PublishLocal,
-        [switch]$IsNetCore
+        [bool]$PublishLocal
     )
 
     PROCESS {
         $targets = @()
 
-        $packageFolder, $resourceManagerRootFolder = Get-Directories -BuildConfig $BuildConfig -Scope $Scope
+        $packageFolder = Get-Directories -BuildConfig $BuildConfig
 
-        $NetSuffix = "";
-        if ($IsNetCore) {
-            $NetSuffix = ".Netcore"
-        }
+        $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
 
-        # Everyone but Storage
-        $AllScopes = @('Stack', 'All', 'Latest', 'NetCore')
-        if ($Scope -in $AllScopes -or $PublishLocal) {
-            $targets += "$resourceManagerRootFolder\AzureRM.Profile$NetSuffix"
-        }
-
-        $StorageScopes = @('All', 'Latest', 'Stack', 'AzureStorage', 'NetCore')
-        if ($Scope -in $StorageScopes) {
-            $targets += "$packageFolder\$buildConfig\Storage\Azure.Storage$NetSuffix"
-        }
-
-        # Handle things which don't support netcore yet.
-        if (-not $IsNetCore) {
-            $ServiceScopes = @('All', 'Latest', 'ServiceManagement')
-            if ($Scope -in $ServiceScopes) {
-                $targets += "$packageFolder\$buildConfig\ServiceManagement\Azure"
-            }
-        }
-
-        # Get the list of targets
-        if ($Scope -in $AllScopes) {
-
-            # Get all module directories
-            if ($IsNetCore) {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.* | Where-Object {$_.FullName.EndsWith(".Netcore")}
-            } else {
-                $resourceManagerModules = Get-ChildItem -Path $resourceManagerRootFolder -Directory -Exclude Azs.*, *.Netcore
-            }
-
-            # We should ignore these, they are handled separatly.
-            $excludedModules = @('AzureRM.Profile', 'Azure.Storage', 'AzureRM.Profile.Netcore', 'Azure.Storage.Netcore', 'AzureRM.Netcore')
-
-            # Add all modules for AzureRM for Azure
-            foreach ($module in $resourceManagerModules) {
-                # AzureRM.Profile already added, Azure.Storage built from test dependencies
-                if (-not ($module.Name -in $excludedModules)) {
-                    $targets += $module.FullName
-                }
-            }
-        }
         Write-Output -InputObject $targets
     }
 }
@@ -292,17 +134,8 @@ function Get-ClientModules {
 .PARAMETER BuildConfig
 The build configuration, either Release or Debug
 
-.PARAMETER Scope
-The module scope, either All, Storage, or Stack.
-
 .PARAMETER PublishToLocal
 $true if publishing locally only, $false otherwise
-
-.PARAMETER Profile
-Either Latest or Stack
-
-.PARAMETER IsNetCore
-If the modules are built using Net Core.
 
 #>
 function Get-AllModules {
@@ -311,29 +144,14 @@ function Get-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$BuildConfig,
 
-        [ValidateNotNullOrEmpty()]
-        [String]$Scope,
-
-        [switch]$PublishLocal,
-
-        [switch]$IsNetCore
+        [switch]$PublishLocal
     )
     Write-Host "Getting Azure client modules"
-    $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
-    Write-Host " "
-
-    Write-Host "Getting admin modules"
-    $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
-    Write-Host " "
-
-    Write-Host "Getting rollup modules"
-    $rollupModules = Get-RollupModules -BuildConfig $BuildConfig -Scope $Scope -IsNetCore:$isNetCore
+    $clientModules = Get-ClientModules -BuildConfig $BuildConfig -PublishLocal:$PublishLocal
     Write-Host " "
 
     return @{
         ClientModules = $clientModules;
-        AdminModules  = $adminModules;
-        RollUpModules = $rollUpModules
     }
 }
 
@@ -582,7 +400,7 @@ function Add-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$NugetExe
     )
-    $Keys = @('ClientModules', 'AdminModules', 'RollupModules')
+    $Keys = @('ClientModules')
     Write-Output "adding modules to local repo"
     foreach ($module in $Keys) {
         $modulePath = $Modules[$module]
@@ -850,18 +668,12 @@ Write-Host " "
 
 # NOTE: Can only be Azure or Azure Stack, not both.
 $packageFolder = "$PSScriptRoot\..\src\Package"
-if ($Scope -eq 'Stack') {
-    $packageFolder = "$PSScriptRoot\..\src\Stack"
-}
+
 # Set temporary repo location
 $PublishLocal = test-path $repositoryLocation
 [string]$tempRepoPath = "$packageFolder"
 if ($PublishLocal) {
-    if ($Scope -eq 'Stack') {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Stack")
-    } else {
-        $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Package")
-    }
+    $tempRepoPath = (Join-Path $repositoryLocation -ChildPath "Package")
 }
 
 $tempRepoName = ([System.Guid]::NewGuid()).ToString()
@@ -877,7 +689,7 @@ $env:PSModulePath = "$env:PSModulePath;$tempRepoPath"
 $Errors = $null
 
 try {
-    $modules = Get-AllModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$IsNetCore
+    $modules = Get-AllModules -BuildConfig $BuildConfig -PublishLocal:$PublishLocal
     Add-AllModules -ModulePaths $modules -TempRepo $tempRepoName -TempRepoPath $tempRepoPath -NugetExe $NugetExe
     Publish-AllModules -ModulePaths $modules -ApiKey $apiKey -TempRepoPath $tempRepoPath -RepoLocation $repositoryLocation -NugetExe $NugetExe -PublishLocal:$PublishLocal
 } catch {
