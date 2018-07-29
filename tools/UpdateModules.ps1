@@ -90,22 +90,6 @@ function New-ModulePsm1 {
         $template = $template -replace "%DATE%", [string](Get-Date)
         $template = $template -replace "%IMPORTED-DEPENDENCIES%", $importedModules
 
-        # Add deprecation messages
-        if ($ModulePath -like "*Profile*") {
-            $WarningMessage = "`"PowerShell version 3 and 4 will no longer be supported starting in May 2018. Please update to the latest version of PowerShell 5.1`""
-            $template = $template -replace "%PSVersionDeprecationMessage%",
-            "`$SpecialFolderPath = Join-Path -Path ([Environment]::GetFolderPath('ApplicationData')) -ChildPath 'Windows Azure Powershell' `
-            `$DeprecationFile = Join-Path -Path `$SpecialFolderPath -ChildPath 'PSDeprecationWarning.txt' `
-            if (!(Test-Path `$DeprecationFile)) { `
-                Write-Warning $WarningMessage `
-                try { `
-                $WarningMessage | Out-File -FilePath `$DeprecationFile `
-                } catch {} `
-            }"
-        } else {
-            $template = $template -replace "%PSVersionDeprecationMessage%", ""
-        }
-
         Write-Host "Writing psm1 manifest to $templateOutputPath"
         $template | Out-File -FilePath $templateOutputPath -Force
         $file = Get-Item -Path $templateOutputPath

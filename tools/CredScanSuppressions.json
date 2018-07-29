@@ -2,42 +2,6 @@
     "tool": "Credential Scanner",
         "suppressions": [
         {
-            "file": "\\src\\ResourceManager\\Compute\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Resources\\pshtest.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\commondata\\importpfx01.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\proddata\\pfxtest1024.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\KeyVault\\Commands.KeyVault.Test\\Scripts\\bvtdata\\pfxtest1024.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert1.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\Network\\Commands.Network.Test\\ScenarioTests\\Data\\ApplicationGatewaySslCert2.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
             "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\ChefExtension\\tstorgnztn-validator.pem", 
             "_justification": "Legitimate test certificate file"
         },
@@ -53,15 +17,6 @@
             "file": "\\src\\ServiceManagement\\Sql\\Commands.SqlDatabase.Test\\Resources\\PowershellTestClientCert.pfx", 
             "_justification": "Legitimate test certificate file"
         },
-        {
-            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.ApiManagement.Test\\testcertificate.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\ApiManagement\\Commands.SMAPI.Test\\Resources\\testcertificate.pfx", 
-            "_justification": "Legitimate test certificate file"
-        },
-
         {
             "file": "\\src\\Common\\Commands.Common.Authentication.Test\\Resources\\ValidProfile3.PublishSettings", 
             "_justification": "Legitimate test publishsettings file"
@@ -121,10 +76,6 @@
         {
             "file": "\\src\\ServiceManagement\\Common\\Commands.ScenarioTest\\Resources\\tipsf002.publishsettings", 
             "_justification": "Legitimate test publishsettings file"
-        },
-        {
-            "file": "\\src\\ResourceManager\\Compute\\Stack\\Commands.Compute.Test\\Templates\\tstorgnztn-validator.pem", 
-            "_justification": "Legitimate test certificate file"
         }
     ]
 }

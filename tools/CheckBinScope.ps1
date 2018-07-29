@@ -8,11 +8,7 @@ param(
     [string] $CIToolsPath
 )
 
-$RMFolders = Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ResourceManager/AzureResourceManager -Directory
 $RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/ServiceManagement/Azure -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Package/$BuildConfig/Storage -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/ResourceManager/AzureResourceManager -Directory
-$RMFolders += Get-ChildItem $PSScriptRoot/../src/Stack/$BuildConfig/Storage -Directory
 
 $RMFolders | ForEach-Object {
     $dlls = Get-ChildItem $_.FullName -Recurse | Where-Object { $_ -like "*dll" } | ForEach-Object { $_.FullName };

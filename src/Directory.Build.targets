@@ -1,6 +1,0 @@
-<!-- https://dasmulli.blog/2018/01/20/make-dotnet-test-work-on-solution-files/ -->
-<Project>
-  <Target Name="VSTestIfTestProject">
-    <CallTarget Targets="VSTest" Condition="'$(IsTestProject)' == 'true'" />
-  </Target>
-</Project>
