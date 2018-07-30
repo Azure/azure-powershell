@@ -999,8 +999,14 @@ namespace Microsoft.Azure.ServiceManagemenet.Common
             // Merge all properties
             foreach (string propertyKey in e1Keys.Union(e2Keys))
             {
-                mergeAccount.ExtendedProperties[propertyKey] = account1.ExtendedProperties[propertyKey]
-                    ?? account2.ExtendedProperties[propertyKey];
+                if (account1.ExtendedProperties.ContainsKey(propertyKey))
+                {
+                    mergeAccount.ExtendedProperties[propertyKey] = account1.ExtendedProperties[propertyKey];
+                }
+                else
+                {
+                    mergeAccount.ExtendedProperties[propertyKey] = account2.ExtendedProperties[propertyKey];
+                }
             }
 
             var tenants1 = account1.GetPropertyAsArray(AzureAccount.Property.Tenants);
