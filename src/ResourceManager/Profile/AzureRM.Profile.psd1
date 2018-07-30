@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '4.0.0'
+ModuleVersion = '5.3.4'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -55,7 +55,7 @@ CLRVersion = '4.0'
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = '.\Microsoft.Azure.Commands.Common.Authentication.Abstractions.dll',
-                    '.\Microsoft.Azure.Commands.Common.Authentication.dll', 
+                    '.\Microsoft.Azure.Commands.Common.Authentication.dll',
                     '.\Microsoft.Azure.Commands.Common.Authentication.ResourceManager.dll',
                     '.\Microsoft.Azure.Commands.Common.Authorization.dll',
                     '.\Microsoft.Azure.Commands.Common.Graph.RBAC.dll',
@@ -97,23 +97,23 @@ NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
-               'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
-               'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
-               'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
-               'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext', 
-               'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext', 
-               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError', 
-               'Select-AzureRmContext', 'Rename-AzureRmContext', 
-               'Remove-AzureRmContext', 'Clear-AzureRmContext', 
-               'Remove-AzureRmAccount', 'Get-AzureRmContextAutosaveSetting', 
+CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave',
+               'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave',
+               'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment',
+               'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment',
+               'Get-AzureRmSubscription', 'Add-AzureRmAccount', 'Get-AzureRmContext',
+               'Set-AzureRmContext', 'Import-AzureRmContext', 'Save-AzureRmContext',
+               'Get-AzureRmTenant', 'Send-Feedback', 'Resolve-AzureRmError',
+               'Select-AzureRmContext', 'Rename-AzureRmContext',
+               'Remove-AzureRmContext', 'Clear-AzureRmContext',
+               'Remove-AzureRmAccount', 'Get-AzureRmContextAutosaveSetting',
                'Set-AzureRmDefault', 'Get-AzureRmDefault', 'Clear-AzureRmDefault'
 
 # Variables to export from this module
 # VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error', 
+AliasesToExport = 'Login-AzureRmAccount', 'Select-AzureRmSubscription', 'Resolve-Error',
                'Logout-AzAccount', 'Logout-AzureRmAccount', 'Login-AzAccount'
 
 # DSC resources to export from this module
@@ -162,7 +162,7 @@ PrivateData = @{
         # ExternalModuleDependencies = ''
 
     } # End of PSData hashtable
-    
+
  } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
