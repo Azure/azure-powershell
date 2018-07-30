@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         DecryptionInProgress,
         EncryptionInProgress,
         VMRestartPending,
+        NoDiskFound,
         Unknown
     }
 
