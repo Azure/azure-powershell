@@ -56,7 +56,7 @@ function ServiceBusQueueTests
 	Assert-True {$ResulListQueue.Count -gt 0} "no queues were found in ListQueue"
 
 	# Delete the created Queue
-	$ResultDeleteQueue = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListQueue[0].Name
+	$ResultDeleteQueue = Remove-AzureRmServiceBusQueue -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $ResulListQueue[0].Name -PassThru
 	Assert-True {$ResultDeleteQueue} "Queue not deleted"
 
 	# Cleanup

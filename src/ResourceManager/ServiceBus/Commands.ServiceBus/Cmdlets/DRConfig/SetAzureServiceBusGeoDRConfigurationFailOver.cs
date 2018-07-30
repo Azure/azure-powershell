@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         {
             if (ParameterSetName == GeoDRInputObjectParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(InputObject.Id);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(InputObject.Id);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 
             if (ParameterSetName == GeoDRConfigResourceIdParameterSet)
             {
-                ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
+                LocalResourceIdentifier getParamGeoDR = new LocalResourceIdentifier(ResourceId);
 
                 if (getParamGeoDR.ResourceGroupName != null && getParamGeoDR.ParentResource != null && getParamGeoDR.ResourceName != null)
                 {

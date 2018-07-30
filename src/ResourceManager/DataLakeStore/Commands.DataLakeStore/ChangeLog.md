@@ -18,9 +18,12 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Fix debugging when DebugPreference is set from powershell command line
+* Update example for Set-AzureRmDataLakeStoreItemAcl
+
+## Version 6.1.1
 * Updated all help files to include full parameter types and correct input/output types.
 * Updated the DataPlane SDK (Microsoft.Azure.DataLake.Store) version to 1.1.9
-* Fix debugging when DebugPreference is set from powershell command line
 
 ## Version 6.1.0
 * Add cancellation support and progress tracking for Set-AzureRmDataLakeStoreItemAclEntry, Remove-AzureRmDataLakeStoreItemAclEntry, Set-AzureRmDataLakeStoreItemAcl
