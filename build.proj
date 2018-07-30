@@ -393,6 +393,7 @@
     <CallTarget Targets="TestHDInsight" />
     <CallTarget Targets="TestSqlDatabase" />
     <CallTarget Targets="TestStorage" />
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Get-ChildItem $(TestOutputDirectory) -Directory | Write-Host $_ &quot;"/>
   </Target>
 
   <Target Name="BinScopeCheck">
