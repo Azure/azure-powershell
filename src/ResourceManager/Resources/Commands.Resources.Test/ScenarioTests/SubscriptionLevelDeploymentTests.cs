@@ -35,5 +35,12 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         {
             ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDeploymentAsJob()
+        {
+            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentAsJob");
+        }
     }
 }
