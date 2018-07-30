@@ -173,7 +173,7 @@ function Update-NugetPackage
         Remove-Item -Recurse -Path $packPath -Force
         Remove-Item -Path $contentPath -Force
         $content = (Get-Content -Path $modulePath) -join "`r`n"
-        $content = $content -replace $regex2, ("<licenseUrl>https://raw.githubusercontent.com/Azure/azure-powershell/dev/LICENSE.txt</licenseUrl>`r`n    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>`r`n    <requireLicenseAcceptance>true</requireLicenseAcceptance>")
+        $content = $content -replace $regex2, ("<requireLicenseAcceptance>true</requireLicenseAcceptance>")
         $content | Out-File -FilePath $modulePath -Force
         &$NugetExe pack $modulePath -OutputDirectory $BasePath
     }
