@@ -393,7 +393,7 @@
     <CallTarget Targets="TestHDInsight" />
     <CallTarget Targets="TestSqlDatabase" />
     <CallTarget Targets="TestStorage" />
-    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Get-ChildItem $(TestOutputDirectory) -Directory | ForEach-Object { Remove-Item $_.FullName -Force } &quot;"/>
+    <Exec Command="&quot;$(PowerShellCommand)&quot; -NonInteractive -NoLogo -NoProfile -Command &quot;Get-ChildItem $(TestOutputDirectory) -Directory | ForEach-Object { Remove-Item $_.FullName -Recurse -Force } &quot;"/>
   </Target>
 
   <Target Name="BinScopeCheck">
