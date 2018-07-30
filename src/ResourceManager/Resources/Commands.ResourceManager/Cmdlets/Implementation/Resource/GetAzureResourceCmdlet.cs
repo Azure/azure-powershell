@@ -188,14 +188,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                 result = FilterResourceByWildcard(result);
             }
 
-            if (!string.IsNullOrEmpty(this.TagName))
+            if (!string.IsNullOrEmpty(this.TagName) && !string.IsNullOrEmpty(this.TagValue))
             {
-                result = result.Where(r => r.Tags != null && r.Tags.Keys != null && r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase)).Any());
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Keys != null &&
+                                           r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase))
+                                                      .Any(k => string.Equals(r.Tags[k], this.TagValue, StringComparison.OrdinalIgnoreCase)));
             }
-
-            if (!string.IsNullOrEmpty(this.TagValue))
+            else if (!string.IsNullOrEmpty(this.TagName))
             {
-                result = result.Where(r => r.Tags != null && r.Tags.Values != null && r.Tags.Values.Where(v => string.Equals(v, this.TagValue, StringComparison.OrdinalIgnoreCase)).Any());
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Keys != null &&
+                                           r.Tags.Keys.Where(k => string.Equals(k, this.TagName, StringComparison.OrdinalIgnoreCase))
+                                                      .Any());
+            }
+            else if (!string.IsNullOrEmpty(this.TagValue))
+            {
+                result = result.Where(r => r.Tags != null &&
+                                           r.Tags.Values != null &&
+                                           r.Tags.Values.Where(v => string.Equals(v, this.TagValue, StringComparison.OrdinalIgnoreCase))
+                                                        .Any());
             }
 
             WriteObject(result, true);
