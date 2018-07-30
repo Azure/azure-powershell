@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Resources.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
 using Microsoft.WindowsAzure.Commands.Common;
@@ -69,7 +70,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.IdentifierUris.Contains(IdentifierUri));
                     }
 
-                    WriteObject(ActiveDirectoryClient.GetApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
+                    WriteObject(ActiveDirectoryClient.ListApplicationWithFilters(odataQueryFilter), enumerateCollection: true);
                 }
             });
         }

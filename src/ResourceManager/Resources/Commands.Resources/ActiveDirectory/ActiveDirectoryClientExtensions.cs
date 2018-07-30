@@ -12,7 +12,6 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ResourceManager.Common.Paging;
 using Microsoft.Azure.Graph.RBAC.Version1_6;
 using Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory;
 using Microsoft.Azure.Graph.RBAC.Version1_6.Models;
@@ -297,12 +296,40 @@ namespace Microsoft.Azure.Commands.Resources.ActiveDirectory
         {
             var applicationIdString = applicationId.ToString();
             var odataQueryFilter = new Rest.Azure.OData.ODataQuery<Application>(a => a.AppId == applicationIdString);
-            var app = ADClient.GetApplicationWithFilters(odataQueryFilter).SingleOrDefault();
+            var app = ADClient.ListApplicationWithFilters(odataQueryFilter).SingleOrDefault();
             if (app == null)
             {
                 throw new InvalidOperationException(string.Format(ApplicationWithAppIdDoesntExist, applicationId));
             }
             return app.ObjectId;
+        }
+
+        public static IEnumerable<PSADApplication> ListApplicationWithFilters(this ActiveDirectoryClient ADClient, Rest.Azure.OData.ODataQuery<Application> odataQueryFilter)
+        {
+            return ADClient.GraphClient.Applications.List(odataQueryFilter.ToString()).Select(a => a.ToPSADApplication());
+        }
+
+        private static PSADApplication ToPSADApplication(this Application application)
+        {
+            if (application != null)
+            {
+                return new PSADApplication()
+                {
+                    ObjectId = Guid.Parse(application.ObjectId),
+                    DisplayName = application.DisplayName,
+                    Type = application.ObjectType,
+                    ApplicationId = Guid.Parse(application.AppId),
+                    IdentifierUris = application.IdentifierUris,
+                    HomePage = application.Homepage,
+                    ReplyUrls = application.ReplyUrls,
+                    AppPermissions = application.AppPermissions,
+                    AvailableToOtherTenants = application.AvailableToOtherTenants ?? false
+                };
+            }
+            else
+            {
+                return null;
+            }
         }
 
         private static PSADServicePrincipal ToPSADServicePrincipal(this ServicePrincipal servicePrincipal)
@@ -317,7 +344,7 @@ namespace Microsoft.Azure.Commands.Resources.ActiveDirectory
             };
         }
 
-        public static PSADUser ToPSADUser(this User user)
+        private static PSADUser ToPSADUser(this User user)
         {
             return new PSADUser()
             {
@@ -328,7 +355,7 @@ namespace Microsoft.Azure.Commands.Resources.ActiveDirectory
             };
         }
 
-        public static PSADGroup ToPSADGroup(this ADGroup group)
+        private static PSADGroup ToPSADGroup(this ADGroup group)
         {
             return new PSADGroup()
             {
@@ -339,7 +366,7 @@ namespace Microsoft.Azure.Commands.Resources.ActiveDirectory
             };
         }
 
-        public static PSADObject ToPSADObject(this AADObject obj)
+        private static PSADObject ToPSADObject(this AADObject obj)
         {
             if (obj == null) throw new ArgumentNullException();
 
