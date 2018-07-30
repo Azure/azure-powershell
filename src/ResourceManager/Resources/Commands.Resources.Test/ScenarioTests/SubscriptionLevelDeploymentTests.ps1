@@ -38,7 +38,50 @@ function Test-DeploymentEndToEnd
 		$getById = Get-AzureRmDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
-		$operations = Get-AzureRmDeploymentOperation -Name $deploymentName
+		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
+		Assert-AreEqual 4 @($operations).Count
+
+		$result = Remove-AzureRmDeployment -Name $deploymentName
+		Assert-AreEqual True $result 
+	}
+	finally
+	{
+	    Clean-ResourceGroup $rgname
+	}
+}
+
+<#
+.SYNOPSIS
+Tests deployment as job.
+#>
+function Test-DeploymentAsJob
+{
+    try
+	{
+	    # Setup
+		$rgname = Get-ResourceGroupName
+		$deploymentName = Get-ResourceName
+		$storageAccountName = Get-ResourceName
+		$location = "WestUS"
+
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$job = New-AzureRmDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
+		Assert-AreEqual Running $job[0].State
+
+		$job = $job | Wait-Job
+		Assert-AreEqual Completed $job[0].State
+
+		$deployment = $job | Receive-Job
+		Assert-AreEqual Succeeded $deployment.ProvisioningState
+    
+		$subId = (Get-AzureRmContext).Subscription.SubscriptionId
+		$deploymentId = "/subscriptions/$subId/providers/Microsoft.Resources/deployments/$deploymentName"
+		$getById = Get-AzureRmDeployment -Id $deploymentId
+		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
+
+		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
 		$result = Remove-AzureRmDeployment -Name $deploymentName
