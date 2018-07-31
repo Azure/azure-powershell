@@ -20,7 +20,6 @@ Remove-AzureRmSqlDatabaseFailoverGroup [-ServerName] <String> [-FailoverGroupNam
 
 ## DESCRIPTION
 This command removes the Failover Group with the specified name, leaving all databases and replication relationships intact. The listener endpoint will be unregistered from DNS.
-
 The Failover Group's primary server should be used to execute the command.
 
 ## EXAMPLES
@@ -146,10 +145,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: FailoverGroupName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.FailoverGroup.Model.AzureSqlFailoverGroupModel
 
 ## NOTES
 

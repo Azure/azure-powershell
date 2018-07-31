@@ -87,14 +87,11 @@ Use the New-AzureRMRoleAssignment command to grant access.
 Access is granted by assigning the appropriate RBAC role to them at the right scope.
 To grant access to the entire subscription, assign a role at the subscription scope.
 To grant access to a specific resource group within a subscription, assign a role at the resource group scope.
-
 The subject of the assignment must be specified.
 To specify a user, use SignInName or Azure AD ObjectId parameters.
 To specify a security group, use Azure AD ObjectId parameter.
 And to specify an Azure AD application, use ApplicationId or ObjectId parameters.
-
 The role that is being assigned must be specified using the RoleDefinitionName parameter.
-
 The scope at which access is being granted may be specified.
 It defaults to the selected subscription. 
 The scope of the assignment can be specified using one of the following parameter combinations
@@ -363,8 +360,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: ObjectId (ByPropertyName), RoleDefinitionId (ByPropertyName)
+
+### System.String
+Parameters: ApplicationId (ByPropertyName), ParentResource (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceName (ByPropertyName), ResourceType (ByPropertyName), RoleDefinitionName (ByPropertyName), Scope (ByPropertyName), SignInName (ByPropertyName)
 
 ## OUTPUTS
 

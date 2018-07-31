@@ -14,9 +14,9 @@ Adds a route to a route table.
 ## SYNTAX
 
 ```
-Add-AzureRmRouteConfig -RouteTable <PSRouteTable> [-AddressPrefix <String>] [-NextHopType <String>]
- [-NextHopIpAddress <String>] [-Name <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Add-AzureRmRouteConfig -RouteTable <PSRouteTable> [-Name <String>] [-AddressPrefix <String>]
+ [-NextHopType <String>] [-NextHopIpAddress <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ PS C:\> Add-AzureRmRouteConfig -Name "Route13" -AddressPrefix 10.3.0.0/16 -NextH
 
 The first command gets a route table named RouteTable01 by using the Get-AzureRmRouteTable cmdlet.
 The command stores the table in the $RouteTable variable.
-
 The second command adds a route named Route13 to the route table stored in $RouteTable.
 This route forwards packets to the local virtual network.
 
@@ -152,7 +151,6 @@ Accept wildcard characters: False
 ### -NextHopType
 Specifies how this route forwards packets.
 The acceptable values for this parameter are:
-
 - Internet.
 The default Internet gateway provided by Azure. 
 - None.
@@ -227,8 +225,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSRouteTable
-Parameter 'RouteTable' accepts value of type 'PSRouteTable' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSRouteTable
+Parameters: RouteTable (ByPropertyName, ByValue)
+
+### System.String
+Parameters: AddressPrefix (ByPropertyName), NextHopIpAddress (ByPropertyName), NextHopType (ByPropertyName)
 
 ## OUTPUTS
 

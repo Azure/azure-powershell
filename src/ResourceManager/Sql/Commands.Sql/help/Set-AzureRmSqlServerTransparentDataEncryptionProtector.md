@@ -30,7 +30,6 @@ PS C:\> Set-AzureRmSqlServerTransparentDataEncryptionProtector -Type ServiceMana
 ```
 
 This command updates a server's TDE protector type to Service Managed.
-
 ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
 ----------------- ----------                   ---- ---------------------
 ContosoResourceGroup ContosoServer ServiceManaged ServiceManaged
@@ -41,7 +40,6 @@ PS C:\> Set-AzureRmSqlServerTransparentDataEncryptionProtector -Type AzureKeyVau
 ```
 
 This command updates a server to use the Server Key Vault Key with Id 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901' as the TDE protector.
-
 ResourceGroupName ServerName                   Type ServerKeyVaultKeyName
 ----------------- ----------                   ---- ---------------------
 ContosoResourceGroup ContosoServer AzureKeyVault contoso_contosokey_01234567890123456789012345678901
@@ -191,11 +189,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.EncryptionProtectorType
-System.String
+Parameters: Type (ByPropertyName)
+
+### System.String
+Parameters: KeyId (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Model.AzureSqlServerTransparentDataEncryptionProtectorModel
 
 ## NOTES
 

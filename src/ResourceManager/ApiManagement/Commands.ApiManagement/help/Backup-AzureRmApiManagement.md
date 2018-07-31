@@ -116,7 +116,6 @@ Accept wildcard characters: False
 Specifies the name of the blob for the backup.
 If the blob does not exist, this cmdlet creates it.
 This cmdlet generates a default value based on the following pattern: 
-
 {Name}-{yyyy-MM-dd-HH-mm}.apimbackup
 
 ```yaml
@@ -152,8 +151,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.Common.Authentication.Abstractions.IStorageContext
+Parameters: StorageContext (ByPropertyName)
 
 ## OUTPUTS
 

@@ -166,6 +166,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), RuleName (ByPropertyName)
+
+### Microsoft.Azure.Commands.RedisCache.Models.PSRedisFirewallRule
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

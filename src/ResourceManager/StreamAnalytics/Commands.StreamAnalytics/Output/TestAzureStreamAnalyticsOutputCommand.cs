@@ -22,7 +22,7 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
-    [Cmdlet(VerbsDiagnostic.Test, Constants.StreamAnalyticsOutput)]
+    [Cmdlet(VerbsDiagnostic.Test, Constants.StreamAnalyticsOutput), OutputType(typeof(bool))]
     public class TestAzureStreamAnalyticsOutputCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]

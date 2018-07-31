@@ -13,23 +13,26 @@ Sets the logs and metrics settings for the resource.
 
 ## SYNTAX
 
+### OldSetDiagnosticSetting (Default)
 ```
-Set-AzureRmDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId <String>] [-ServiceBusRuleId <String>]
- [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>] [-Enabled <Boolean>]
- [-Categories <System.Collections.Generic.List`1[System.String]>] [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
+Set-AzureRmDiagnosticSetting -ResourceId <String> [-Name <String>] [-StorageAccountId <String>]
+ [-ServiceBusRuleId <String>] [-EventHubName <String>] [-EventHubAuthorizationRuleId <String>]
+ [-Enabled <Boolean>] [-Categories <System.Collections.Generic.List`1[System.String]>]
+ [-MetricCategory <System.Collections.Generic.List`1[System.String]>]
  [-Timegrains <System.Collections.Generic.List`1[System.String]>] [-RetentionEnabled <Boolean>]
- [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
-
-Set-AzureRmDiagnosticSetting -InputObject <PSServiceDiagnosticSettings> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-WorkspaceId <String>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
+```
+
+### NewSetDiagnosticSetting
+```
+Set-AzureRmDiagnosticSetting -InputObject <PSServiceDiagnosticSettings>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Set-AzureRmDiagnosticSetting** cmdlet enables or disables each time grain and log category for the particular resource.
-
 The logs and metrics are stored in the specified storage account.
-
 This cmdlet implements the ShouldProcess pattern, i.e. it might request confirmation from the user before actually creating, modifying, or removing the resource.
 
 ## EXAMPLES
@@ -129,7 +132,7 @@ If you do not specify a category, this command operates on all categories.
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Parameter Sets: OldSetDiagnosticSetting
 Aliases: Category
 
 Required: False
@@ -159,9 +162,9 @@ Indicates whether to enable diagnostics.
 Specify $True to enable diagnostics, or $False to disable diagnostics.
 
 ```yaml
-Type: Boolean
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.Boolean
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -174,9 +177,9 @@ Accept wildcard characters: False
 The event hub authorization rule id
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -189,9 +192,9 @@ Accept wildcard characters: False
 The event hub name
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -204,11 +207,26 @@ Accept wildcard characters: False
 The input object (possible from the pipeline.) The name and resourceId will be extracted from this object.
 
 ```yaml
-Type: PSServiceDiagnosticSettings
-Parameter Sets: SetAzureRmDiagnosticSettingNewParamGroup
-Aliases: 
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings
+Parameter Sets: NewSetDiagnosticSetting
+Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MetricCategory
+The list of metric categories
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -219,9 +237,9 @@ Accept wildcard characters: False
 The name of the diagnostic setting. The default value is **service**.
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -234,9 +252,9 @@ Accept wildcard characters: False
 Specifies the ID of the resource.
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: True
 Position: Named
@@ -249,9 +267,9 @@ Accept wildcard characters: False
 Indicates whether retention of diagnostic information is enabled.
 
 ```yaml
-Type: Boolean
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -264,9 +282,9 @@ Accept wildcard characters: False
 Specifies the retention policy, in days.
 
 ```yaml
-Type: Int32
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -279,9 +297,9 @@ Accept wildcard characters: False
 The Service Bus Rule id.
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -294,9 +312,9 @@ Accept wildcard characters: False
 Specifies the ID of the Storage account in which to save the data.
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -311,7 +329,7 @@ If you do not specify a time grain, this command operates on all available time 
 
 ```yaml
 Type: System.Collections.Generic.List`1[System.String]
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
+Parameter Sets: OldSetDiagnosticSetting
 Aliases: Timegrain
 
 Required: False
@@ -325,9 +343,9 @@ Accept wildcard characters: False
 The Id of the workspace
 
 ```yaml
-Type: String
-Parameter Sets: SetAzureRmDiagnosticSettingOldParamGroup
-Aliases: 
+Type: System.String
+Parameter Sets: OldSetDiagnosticSetting
+Aliases:
 
 Required: False
 Position: Named
@@ -371,8 +389,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSServiceDiagnosticSettings
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: EventHubAuthorizationRuleId (ByPropertyName), EventHubName (ByPropertyName), Name (ByPropertyName), ResourceId (ByPropertyName), ServiceBusRuleId (ByPropertyName), StorageAccountId (ByPropertyName), WorkspaceId (ByPropertyName)
+
+### System.Boolean
+Parameters: Enabled (ByPropertyName)
+
+### System.Collections.Generic.List`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

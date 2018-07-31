@@ -20,7 +20,6 @@ Get-AzureRmSqlDatabaseExpanded [-ServerName] <String> [[-DatabaseName] <String>]
 
 ## DESCRIPTION
 The **Get-AzureRmSqlDatabaseExpanded** cmdlet gets a database and its expanded property values.
-
 This cmdlet is also supported by the SQL Server Stretch Database service on Azure.
 
 ## EXAMPLES
@@ -130,8 +129,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: DatabaseName (ByPropertyName), ResourceGroupName (ByPropertyName), ServerName (ByPropertyName)
 
 ## OUTPUTS
 

@@ -30,9 +30,7 @@ The **Backup-AzureKeyVaultSecret** cmdlet backs up a specified secret in a key v
 If there are multiple versions of the secret, all versions are included in the backup.
 Because the downloaded content is encrypted, it cannot be used outside of Azure Key Vault.
 You can restore a backed-up secret to any key vault in the subscription that it was backed up from.
-
 Typical reasons to use this cmdlet are:
-
 - You want to escrow a copy of your secret, so that you have an offline copy in case you accidentally delete your secret in your key vault.
 - You added a secret to a key vault and now want to clone the secret into a different Azure region, so that you can use it from all instances of your distributed application. Use the Backup-AzureKeyVaultSecret cmdlet to retrieve the secret in encrypted format and then use the Restore-AzureKeyVaultSecret cmdlet and specify a key vault in the second region. (Note that the regions must belong to the same geography.)
 
@@ -197,10 +195,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultSecretIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 
-### String
+### System.String
 The cmdlet returns the path of the output file containing the backup of the secret.
 
 ## NOTES

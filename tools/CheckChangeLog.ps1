@@ -17,7 +17,7 @@ $PathStringsToIgnore = @(
     ".sln",
     "Nuget.config",
     ".psd1",
-    "NotificationHubs",
+    "Netcore",
     "Stack"
 )
 Write-Host "Files changed: $FilesChanged"

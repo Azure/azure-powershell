@@ -106,10 +106,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Cdn.Models.Profile.PSProfile
+Parameters: CdnProfile (ByValue)
 
 ## OUTPUTS
 
-### System.String
+### Microsoft.Azure.Commands.Cdn.Models.Profile.PSOptimizationType
 
 ## NOTES
 

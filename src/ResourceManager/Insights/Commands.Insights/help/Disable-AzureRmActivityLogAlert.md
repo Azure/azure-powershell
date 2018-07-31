@@ -43,7 +43,6 @@ PS C:\>Disable-AzureRmActivityLogAlert -Name "alert1" -ResourceGroupName "Defaul
 ```
 
 This command disables the activity log alert called alert1 in the resource group Default-ActivityLogsAlerts.
-
 This command changes the tags property of the activity log alert called alert1 and disables it.
 
 ### Example 2: Disable an activity log alert using a PSActivityLogAlertResource object as input
@@ -173,8 +172,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
+
+### Microsoft.Azure.Commands.Insights.OutputClasses.PSActivityLogAlertResource
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

@@ -23,7 +23,6 @@ New-AzureRmTrafficManagerEndpoint -Name <String> -ProfileName <String> -Resource
 
 ## DESCRIPTION
 The **New-AzureRmTrafficManagerEndpoint** cmdlet creates an endpoint in an Azure Traffic Manager profile.
-
 This cmdlet commits each new endpoint to the Traffic Manager service.
 To add multiple endpoints to a local Traffic Manager profile object and commit changes in a single operation, use the Add-AzureRmTrafficManagerEndpointConfig cmdlet.
 
@@ -66,7 +65,6 @@ Accept wildcard characters: False
 Specifies the location of the endpoint to use in the Performance traffic-routing method.
 This parameter is only applicable to endpoints of the ExternalEndpoints or NestedEndpoints type.
 You must specify this parameter when the Performance traffic-routing method is used.
-
 Specify an Azure region name.
 For a full list of Azure regions, see Azure Regionshttp://azure.microsoft.com/regions/ (http://azure.microsoft.com/regions/).
 
@@ -85,10 +83,8 @@ Accept wildcard characters: False
 ### -EndpointStatus
 Specifies the status of the endpoint.
 Valid values are: 
-
 - Enabled 
 - Disabled 
-
 If the status is Enabled, the endpoint is probed for endpoint health and is included in the traffic-routing method.
 
 ```yaml
@@ -155,7 +151,6 @@ Specifies the priority that Traffic Manager assigns to the endpoint.
 This parameter is used only if the Traffic Manager profile is configured with the for Priority traffic-routing method.
 Valid values are integers from 1 through 1000.
 Lower values represent higher priority.
-
 If you specify a priority, you must specify priorities on all endpoints in the profile, and no two endpoints can share the same priority value.
 If you do not specify priorities, Traffic Manager assigns default priority values to the endpoints, starting with one (1), in the order the profile lists the endpoints.
 
@@ -241,7 +236,6 @@ Accept wildcard characters: False
 ### -Type
 Specifies the type of endpoint that this cmdlet adds to the Traffic Manager profile.
 Valid values are: 
-
 - AzureEndpoints
 - ExternalEndpoints
 - NestedEndpoints
@@ -283,7 +277,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### None
-This cmdlet does not accept any input.
 
 ## OUTPUTS
 

@@ -134,11 +134,9 @@
     "src/ResourceManager/Profile/": [
       "AzureRM.Profile"
     ],
-    "src/ResourceManager/RecoveryServices.Backup/": [
-      "AzureRM.RecoveryServices.Backup"
-    ],
     "src/ResourceManager/RecoveryServices/": [
-      "AzureRM.RecoveryServices"
+      "AzureRM.RecoveryServices",
+      "AzureRM.RecoveryServices.Backup"
     ],
     "src/ResourceManager/RedisCache/": [
       "AzureRM.RedisCache"
@@ -154,6 +152,9 @@
     ],
     "src/ResourceManager/Scheduler/": [
       "AzureRM.Scheduler"
+    ],
+    "src/ResourceManager/Search/": [
+      "AzureRM.Search"
     ],
     "src/ResourceManager/ServiceBus/": [
       "AzureRM.ServiceBus"
@@ -190,6 +191,9 @@
     ],
     "src/Storage/Commands.Storage/": [
       "Azure.Storage"
+    ],
+    "src/ResourceManager/StorageSync/": [
+      "AzureRM.StorageSync"
     ],
     "tools/": [
     ]
