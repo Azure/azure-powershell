@@ -21,6 +21,7 @@
 * Updated all help files to include full parameter types and correct input/output types.
 * Added policy filter to Get-AzureRmRecoveryServicesBackItem cmdlet. The command returns the list of backup items protected by the given policy id.
 * Updated Microsoft.Azure.Management.RecoveryServices.Backup to version 3.0.0-preview.
+* Added TargetResourceGroupName parameter to Restore-AzureRmRecoveryServicesBackupItem. The resource group to which the managed disks are restored. Applicable to backup of VM with managed disks.
 
 ## Version 4.3.0
 * Fixed formatting of OutputType in help files
