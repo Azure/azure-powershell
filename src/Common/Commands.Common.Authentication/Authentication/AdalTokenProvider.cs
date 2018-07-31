@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     /// A token provider that uses ADAL to retrieve
     /// tokens from Azure Active Directory
     /// </summary>
-    public class AdalTokenProvider : ITokenProvider
+    public class AdalTokenProvider : IRenewableTokenProvider
     {
-        private readonly ITokenProvider userTokenProvider;
-        private readonly ITokenProvider servicePrincipalTokenProvider;
+        private readonly IRenewableTokenProvider userTokenProvider;
+        private readonly IRenewableTokenProvider servicePrincipalTokenProvider;
 #if !NETSTANDARD
         public AdalTokenProvider()
             : this(new ConsoleParentWindow())
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 
-        public IAccessToken GetAccessToken(
+        public IRenewableToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             }
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(
+        public IRenewableToken GetAccessTokenWithCertificate(
             AdalConfiguration config,
             string clientId,
             string certificate,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                 default:
                     throw new ArgumentException(string.Format(Resources.UnsupportedCredentialType, credentialType), "credentialType");
             }
-        }			
+        }
 #else
         public AdalTokenProvider()
         {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             this.servicePrincipalTokenProvider = new ServicePrincipalTokenProvider();
         }
 		
-		public IAccessToken GetAccessToken(
+		public IRenewableToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
