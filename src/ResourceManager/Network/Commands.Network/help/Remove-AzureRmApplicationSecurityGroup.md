@@ -13,7 +13,7 @@ Removes an application security group.
 ## SYNTAX
 
 ```
-Remove-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> [-Force] [-PassThru]
+Remove-AzureRmApplicationSecurityGroup -ResourceGroupName <String> -Name <String> [-Force] [-AsJob] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,6 +30,19 @@ PS C:\>Remove-AzureRmApplicationSecurityGroup -Name "MyApplicationSecurityGrouo"
 This command deletes an application security group named MyApplicationSecurityGrouo in the resource group named MyResourceGroup.
 
 ## PARAMETERS
+
+### -AsJob
+Run cmdlet in the background```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
