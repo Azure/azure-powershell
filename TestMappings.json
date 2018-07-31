@@ -199,6 +199,9 @@
     ".\\src\\ResourceManager\\LogicApp\\Commands.LogicApp.Test\\bin\\Debug\\Microsoft.Azure.Commands.LogicApp.Test.dll",
     ".\\src\\ResourceManager\\Websites\\Commands.Websites.Test\\bin\\Debug\\Microsoft.Azure.Commands.Websites.Test.dll"
   ],
+   "src/ResourceManager/ManagementPartner/": [
+    ".\\src\\ResourceManager\\ManagementPartner\\Commands.Partner.Test\\bin\\Debug\\Microsoft.Azure.Commands.ManagementPartner.Test.dll"
+  ],
   "src/ServiceManagement/": [
     ".\\src\\ServiceManagement\\Common\\Commands.Common.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Common.Test.dll",
     ".\\src\\ServiceManagement\\Services\\Commands.Test\\bin\\Debug\\Microsoft.WindowsAzure.Commands.Test.dll",

@@ -134,11 +134,9 @@
     "src/ResourceManager/Profile/": [
       "AzureRM.Profile"
     ],
-    "src/ResourceManager/RecoveryServices.Backup/": [
-      "AzureRM.RecoveryServices.Backup"
-    ],
     "src/ResourceManager/RecoveryServices/": [
-      "AzureRM.RecoveryServices"
+      "AzureRM.RecoveryServices",
+      "AzureRM.RecoveryServices.Backup"
     ],
     "src/ResourceManager/RedisCache/": [
       "AzureRM.RedisCache"

@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Remove the 5TB limitation for Azure File Share quota
+- Set-AzureStorageShareQuota
+
+## Version 4.4.0
 * Updated all help files to include full parameter types and correct input/output types.
 * Support get Storage Context from DefaulfProfile
 * Add Ps1XmlAttribute to cmdlets output types properties.

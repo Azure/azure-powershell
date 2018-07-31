@@ -20,6 +20,9 @@
 ## Current Release
 * Minor changes to the storage common code
 * Updated help files to include full parameter types.
+* Fix issues with Clear-AzureRmContext that caused issues with selecting a context #6398
+
+## Version 5.3.4
 * Updated Common.Strategy library to be able to validate that the current config for a resource is compatible with the target resource. Default is always true, individual resources and overridet the default.
 * Updated all help files to include full parameter types and correct input/output types.
 * Added ps1xml types to Common.Storage
