@@ -23,10 +23,8 @@ Set-AzureRmSchedulerHttpJob -ResourceGroupName <String> -JobCollectionName <Stri
 
 ## DESCRIPTION
 The **Set-AzureRmSchedulerHttpJob** cmdlet modifies an HTTP job in Azure Scheduler.
-
 This cmdlet supports dynamic parameters based on the *ErrorActionType* and *HttpAuthenticationType* parameters.
 Dynamic parameters become available based on other parameter values.
-
 To discover the names of dynamic parameters after you specify the other parameters, type a hyphen (-), and then press the Tab key repeatedly to cycle through the available parameters.
 If you omit a required parameter, the cmdlet prompts you for the value.
 
@@ -68,7 +66,6 @@ Accept wildcard characters: False
 ### -ErrorActionType
 Specifies an error action setting for the job.
 The acceptable values for this parameter are:
-
 - Http 
 - Https 
 - StorageQueue 
@@ -107,7 +104,6 @@ Accept wildcard characters: False
 ### -Frequency
 Specifies the maximum frequency for the job.
 The acceptable values for this parameter are:
-
 - Minute 
 - Hour 
 - Day 
@@ -145,7 +141,6 @@ Accept wildcard characters: False
 ### -HttpAuthenticationType
 Specifies the HTTP authentication type.
 The acceptable values for this parameter are:
-
 - None 
 - ClientCertificate 
 - ActiveDirectoryOAuth 
@@ -212,7 +207,6 @@ Accept wildcard characters: False
 ### -JobState
 Specifies the state of the job.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled
 
@@ -232,7 +226,6 @@ Accept wildcard characters: False
 ### -Method
 Specifies the method for the action types for this job.
 The acceptable values for this parameter are:
-
 - GET 
 - PUT 
 - POST 
@@ -347,8 +340,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: ErrorActionType (ByPropertyName), JobCollectionName (ByPropertyName), JobName (ByPropertyName), JobState (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: Headers (ByPropertyName)
 
 ## OUTPUTS
 

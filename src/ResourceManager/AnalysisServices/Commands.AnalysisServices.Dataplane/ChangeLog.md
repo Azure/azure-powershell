@@ -18,7 +18,9 @@
         - Additional information about change #1
 -->
 ## Current Release
-* Updated help files to include full parameter types.
+
+## Version 0.5.3
+* Updated help files to include full parameter types and correct input/output types.
 
 ## Version 0.5.2
 * Fixed formatting of OutputTypes in help files

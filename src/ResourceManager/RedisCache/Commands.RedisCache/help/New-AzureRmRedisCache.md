@@ -113,7 +113,6 @@ Accept wildcard characters: False
 ### -Location
 Specifies the location in which to create a Redis Cache.
 Valid values are: 
-
 - North Central US
 - South Central US
 - Central US
@@ -160,7 +159,6 @@ Accept wildcard characters: False
 ### -RedisConfiguration
 Specifies Redis configuration settings.
 The acceptable values for this parameter are:
-
 - rdb-backup-enabled.
 Specifies that Redis data persistence is enabled.
 Premium tier only.
@@ -198,7 +196,6 @@ Standard and Premium tiers.
 Configures the number of databases.
 This property can be configured only at cache creation.
 Standard and Premium tiers.
-
 For more information, see Manage Azure Redis Cache with Azure PowerShellhttp://go.microsoft.com/fwlink/?LinkId=800051 (http://go.microsoft.com/fwlink/?LinkId=800051).
 
 ```yaml
@@ -231,7 +228,6 @@ Accept wildcard characters: False
 ### -ShardCount
 Specifies the number of shards to create on a Premium cluster cache.
 The acceptable values for this parameter are:
-
 - 1
 - 2
 - 3
@@ -258,7 +254,6 @@ Accept wildcard characters: False
 ### -Size
 Specifies the size of the Redis Cache.
 Valid values are: 
-
 - P1
 - P2
 - P3
@@ -277,7 +272,6 @@ Valid values are:
 - 13GB
 - 26GB
 - 53GB
-
 The default value is 1GB or C1.
 
 ```yaml
@@ -296,11 +290,9 @@ Accept wildcard characters: False
 ### -Sku
 Specifies the SKU of the Redis Cache to create.
 Valid values are: 
-
 - Basic
 - Standard
 - Premium
-
 The default value is Standard.
 
 ```yaml
@@ -318,7 +310,6 @@ Accept wildcard characters: False
 
 ### -StaticIP
 Specifies a unique IP address in the subnet for the Redis Cache.
-
 If you do not specify a value for this parameter, this cmdlet chooses an IP address from the subnet.
 
 ```yaml
@@ -426,13 +417,22 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by name, but not by value.
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName), Size (ByPropertyName), Sku (ByPropertyName), StaticIP (ByPropertyName), SubnetId (ByPropertyName)
+
+### System.Collections.Hashtable
+Parameters: RedisConfiguration (ByPropertyName), Tag (ByPropertyName), TenantSettings (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String[]
+Parameters: Zone (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.RedisCacheAttributesWithAccessKeys
-This cmdlet returns all attributes of a Redis Cache including primary and secondary access keys.
 
 ## NOTES
 

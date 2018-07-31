@@ -127,10 +127,8 @@ Accept wildcard characters: False
 ### -Slot
 Specifies which version of the DSC configuration that this cmdlet exports.
 Valid values are: 
-
 - Draft
 - Published 
-
 The default value is Published.
 
 ```yaml
@@ -182,8 +180,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), Name (ByPropertyName), OutputFolder (ByPropertyName), ResourceGroupName (ByPropertyName), Slot (ByPropertyName)
 
 ## OUTPUTS
 

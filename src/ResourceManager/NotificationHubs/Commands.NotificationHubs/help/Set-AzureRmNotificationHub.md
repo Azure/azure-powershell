@@ -28,20 +28,16 @@ Set-AzureRmNotificationHub [-ResourceGroup] <String> [-Namespace] <String>
 
 ## DESCRIPTION
 The **Set-AzureRmNotificationHub** cmdlet modifies the property values of a notification hub.
-
 You can modify a notification hub property value in two ways.
 For one, you can create an instance of the **NotificationHubAttributes** object and then configure that object with the property values you want the new hub to possess.
 This can be done through the .NET Framework.
 You can then copy those property values to your hub by through the *NotificationHubObj* parameter.
-
 Alternatively, you can create a JSON (JavaScript Object Notation) file that contains the relevant configuration values, then apply those values by through the *InputFile* parameter.
 A JSON file is a text file that uses syntax similar to the following:
-
 {  
     "Name": "ContosoNotificationHub",  
     "Location": "West US",  
 }
-
 When used in conjunction with the **Set-AzureRmNotificationHub** cmdlet, the preceding JSON sample sets the Location value of a notification hub named ContosoNotificationHub to West US.
 
 ## EXAMPLES
@@ -184,8 +180,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Namespace (ByPropertyName), ResourceGroup (ByPropertyName)
 
 ## OUTPUTS
 

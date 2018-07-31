@@ -72,7 +72,6 @@ Accept wildcard characters: False
 
 ### -Name
 Specifies the name of the DNS zone to get.
-
 If you do not specify a value for the *Name* parameter, this cmdlet gets all DNS zones in the specified resource group.
 If you also omit the *ResourceGroupName* parameter, this cmdlet gets all DNS zones in the current Azure subscription.
 
@@ -90,7 +89,6 @@ Accept wildcard characters: False
 
 ### -ResourceGroupName
 Specifies the name of the resource group that contains the DNS zone to get.
-
 If you do not specify the *ResourceGroupName*, then you must also omit the *Name* parameter.
 In this case, this cmdlet gets all DNS zones in the current Azure subscription.
 
@@ -111,14 +109,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not allow you to pipe input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.Dns.DnsZone
-This cmdlet returns an object that represents the DNS zone.
-If the zone name is not specified, an array of zone objects is returned.
 
 ## NOTES
 

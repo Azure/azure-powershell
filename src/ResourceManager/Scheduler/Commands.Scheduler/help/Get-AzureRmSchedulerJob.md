@@ -73,7 +73,6 @@ Accept wildcard characters: False
 ### -JobState
 Specifies a job state of jobs to get.
 The acceptable values for this parameter are:
-
 - Enabled 
 - Disabled 
 - Faulted 
@@ -112,8 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: JobCollectionName (ByPropertyName), JobName (ByPropertyName), JobState (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

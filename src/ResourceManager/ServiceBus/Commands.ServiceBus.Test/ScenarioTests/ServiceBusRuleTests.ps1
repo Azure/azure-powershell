@@ -111,8 +111,8 @@ function ServiceBusRuleTests
 	Assert-AreEqual $ruleList_delete.Count 0 "Rule List: Rule count not equal to Zero delete"
 	
 	# Delete the created/Updated Subscription
-	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name
-	Assert-True {$ResultDeleteTopic} "Topic not deleted"
+	$ResultDeleteTopic = Remove-AzureRmServiceBusSubscription -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Topic $ResulListTopic[0].Name -Name $resultGetSub.Name -PassThru
+	Assert-True {$ResultDeleteTopic} "Subscription not deleted"
 		 
 	# Cleanup
 	# Delete all Created Topic
