@@ -20,11 +20,11 @@ using System;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
-    public class MockAccessTokenProvider : ITokenProvider
+    public class MockAccessTokenProvider : IRenewableTokenProvider
     {
         public AdalConfiguration AdalConfiguration { get; set; }
 
-        private readonly IAccessToken accessToken;
+        private readonly IRenewableToken accessToken;
 
         public MockAccessTokenProvider(string token)
             : this(token, "user@live.com")
@@ -39,14 +39,14 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(AdalConfiguration config, string promptBehavior, Action<string> promptAction, string userId, SecureString password,
+        public IRenewableToken GetAccessToken(AdalConfiguration config, string promptBehavior, Action<string> promptAction, string userId, SecureString password,
             string credentialType)
         {
             AdalConfiguration = config;
             return this.accessToken;
         }
 
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, string credentialType)
+        public IRenewableToken GetAccessTokenWithCertificate(AdalConfiguration config, string clientId, string certificateThumbprint, string credentialType)
         {
             AdalConfiguration = config;
             return this.accessToken;

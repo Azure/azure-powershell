@@ -177,6 +177,7 @@ namespace Common.Authentication.Test
             var token = authFactory.Authenticate(account, environment, tenant, null, null, null);
             _output.WriteLine($"Received access token for default Uri ${token.AccessToken}");
             Assert.Equal(expectedAccessToken, token.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var account2 = new AzureAccount
             {
                 Id = userId,
@@ -234,6 +235,7 @@ namespace Common.Authentication.Test
             var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
@@ -282,6 +284,7 @@ namespace Common.Authentication.Test
             var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
@@ -330,6 +333,7 @@ namespace Common.Authentication.Test
             var token2 = authFactory.Authenticate(account2, environment, tenant, null, null, null, AzureEnvironment.Endpoint.GraphEndpointResourceId);
             _output.WriteLine($"Received access token for custom Uri ${token2.AccessToken}");
             Assert.Equal(expectedToken2, token2.AccessToken);
+            Assert.Equal(3600, Math.Round(token.ExpiresOn.DateTime.Subtract(DateTime.UtcNow).TotalSeconds));
             var token3 = authFactory.Authenticate(account, environment, tenant, null, null, null, "bar");
             Assert.Throws<InvalidOperationException>(() => token3.AccessToken);
         }
