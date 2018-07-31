@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 throw new Exception(string.Format(Resources.RestoreDiskStorageTypeError, vmType));
             }
 
-            if(targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
+            if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
             {
                 Logger.Instance.WriteWarning(Resources.UnManagedBackupVmException);
             }
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 StorageAccountId = storageAccountId,
                 SourceResourceId = rp.SourceResourceId,
                 TargetResourceGroupId = targetResourceGroupName != null ?
-                    "/subscriptions/"+ BmsAdapter.Client.SubscriptionId + "/resourcegroups/"+ targetResourceGroupName :
+                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
                     null,
                 OriginalStorageAccountOption = useOsa,
             };

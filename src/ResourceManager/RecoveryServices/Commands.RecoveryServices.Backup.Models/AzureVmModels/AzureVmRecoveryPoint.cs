@@ -57,9 +57,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// that is associated with this recovery point.
         /// </summary>
         public bool IlrSessionActive { get; set; }
-        
+
         /// <summary>
-        /// Identifies for managed disks
+        /// Identifies if the virtual machine has a managed disks.
         /// </summary>
         public bool IsManagedVirtualMachine { get; set; }
 

@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Target resource group name
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.RestoreDisk.TargetResourceGroupName)]
+        [Parameter(Mandatory = false, Position = 3,
+            HelpMessage = ParamHelpMsgs.RestoreDisk.TargetResourceGroupName)]
         [ValidateNotNullOrEmpty]
         public string TargetResourceGroupName { get; set; }
 
