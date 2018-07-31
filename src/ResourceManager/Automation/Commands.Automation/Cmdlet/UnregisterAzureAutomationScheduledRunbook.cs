@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Unregisters an azure automation scheduled runbook.
     /// </summary>
     [Cmdlet(VerbsLifecycle.Unregister, "AzureRmAutomationScheduledRunbook", SupportsShouldProcess = true, 
-        DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId)]
+        DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId), OutputType(typeof(void))]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>

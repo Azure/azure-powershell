@@ -221,11 +221,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
-System.Int32
+Parameters: Name (ByPropertyName), NodeType (ByValue), ResourceGroupName (ByPropertyName), Tier (ByValue), VmSku (ByValue), VmUserName (ByValue)
+
+### System.Int32
+Parameters: Capacity (ByValue)
+
+### System.Security.SecureString
+Parameters: VmPassword (ByValue)
+
+### Microsoft.Azure.Commands.ServiceFabric.Models.DurabilityLevel
+Parameters: DurabilityLevel (ByValue)
 
 ## OUTPUTS
 
-### System.Object
+### Microsoft.Azure.Commands.ServiceFabric.Models.PSCluster
 
 ## NOTES
 

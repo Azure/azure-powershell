@@ -110,9 +110,7 @@ PS C:\> ($Context01, $Context02) | Get-AzureStorageContainer
 ```
 
 The first command creates a context by using the local development storage account, and then stores that context in the $Context01 variable.
-
 The second command creates a context for the account named ContosoGeneral that uses the specified key, and then stores that context in the $Context02 variable.
-
 The final command gets the containers for the contexts stored in $Context01 and $Context02 by using **Get-AzureStorageContainer**.
 
 ### Example 7: Create a context with an endpoint
@@ -140,9 +138,7 @@ PS C:\> $Context | Get-AzureStorageBlob -Container "ContosoMain"
 
 The first command generates an SAS token by using the **New-AzureStorageContainerSASToken** cmdlet for the container named ContosoMain, and then stores that token in the $SasToken variable.
 That token is for read, add, update, and delete permissions.
-
 The second command creates a context for the account named ContosoGeneral that uses the SAS token stored in $SasToken, and then stores that context in the $Context variable.
-
 The final command lists all the blobs associated with the container named ContosoMain by using the context stored in $Context.
 
 ## PARAMETERS
@@ -304,12 +300,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Environment (ByPropertyName)
 
 ## OUTPUTS
 
-### AzureStorageContext
+### Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 
 ## NOTES
 

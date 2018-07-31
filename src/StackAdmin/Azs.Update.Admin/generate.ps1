@@ -17,8 +17,8 @@ Write-Host $assembly
     -ModuleDirectory $module `
     -AzureStack `
     -PSSwaggerLocation $psswagger `
-    -GithubAccount deathly809 `
-    -GithubBranch azs.$rpName.admin `
+    -GithubAccount Azure `
+    -GithubBranch master `
     -PredefinedAssemblies $assembly `
     -Name $name `
     -ClientTypeName $client `

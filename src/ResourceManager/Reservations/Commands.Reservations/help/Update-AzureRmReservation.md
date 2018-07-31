@@ -188,6 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Reservations.Models.PSReservation
+Parameters: Reservation (ByValue)
 
 ## OUTPUTS
 

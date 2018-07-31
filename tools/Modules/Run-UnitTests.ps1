@@ -122,9 +122,11 @@ if ($Scope -in $StackScopes) {
     if (-not(Test-Path $SavePath)) {
         New-Item -Path $SavePath -ItemType Directory -Force | Out-Null
         Save-Module -Name AzureRM.Profile -RequiredVersion 3.4.1 -Repository PSGallery -Path $SavePath | Out-Null
+        Save-Module -Name AzureRM.Resources -RequiredVersion 4.4.1 -Repository PSGallery -Path $SavePath | Out-Null
     }
+
     $oldModulePath = $env:PSModulePath.Clone()
-    $env:PSModulePath = "$env:PSModulePath;$SavePath"
+    [Environment]::SetEnvironmentVariable("PSModulePath","$env:PSModulePath;$SavePath")
 
     # All admin modules
     $AllStackModules = @(
@@ -147,8 +149,8 @@ if ($Scope -in $StackScopes) {
     $IgnoredStackModules = @()
 
     [System.String[]]$ModulesToTest = $AllStackModules | Where-Object { !($_ -in $IgnoredStackModules) }
-    Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest -FailFast
+    Test-Stack -BuildConfig $BuildConfig -Modules $ModulesToTest
 
-    $env:PSModulePath = $oldModulePath
+    [Environment]::SetEnvironmentVariable("PSModulePath",$oldModulePath)
 }
 

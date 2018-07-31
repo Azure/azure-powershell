@@ -28,11 +28,8 @@ Save-AzureRmDataFactoryLog [-DataFactory] <PSDataFactory> [-Id] <String> [-Downl
 ## DESCRIPTION
 The **Save-AzureRmDataFactoryLog** cmdlet downloads log files associated with Azure HDInsight processing of Pig or Hive projects or for custom activities to your local hard drive.
 You first run the Get-AzureRmDataFactoryRun cmdlet to get an ID for an activity run for a data slice, and then use that ID to retrieve log files from the binary large object (BLOB) storage associated with the HDInsight cluster.
-
 If you do not specify the *DownloadLogs* parameter, the cmdlet just returns the location of log files.
-
 If you specify *DownloadLogs* without specifying an output directory (*Output* parameter), the log files are downloaded to the default Documents folder.
-
 If you specify *DownloadLogs* along with an output folder (*Output*), the log files are downloaded to the specified folder.
 
 ## EXAMPLES
@@ -176,8 +173,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.DataFactories.Models.PSDataFactory
+Parameters: DataFactory (ByPropertyName)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), Id (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

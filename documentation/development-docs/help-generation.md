@@ -65,6 +65,11 @@ $PathToHelpFolder = "../../help" # Full path to help folder containing markdown 
 Update-MarkdownHelpModule -Path $PathToHelpFolder -RefreshModulePage -AlphabeticParamsOrder
 ```
 
+Because the -UseFullTypeName parameter is not yet available in Update-MarkdownHelpModule (it will be enabled in the upcoming release of PlatyPS), you will need to run this command to modify the help files to use full type names:
+```
+Get-ChildItem -Path $PathToHelpFolder | Update-MarkdownHelp -AlphabeticParamsOrder -UseFullTypeName
+```
+
 This will update all of the markdown files with public interface changes made to corresponding cmdlets, add markdown files for any new cmdlets, remove markdown files for any deleted cmdlets, and update the module page (_e.g.,_ `AzureRM.Profile.md`) with any added or removed cmdlets.
 
 #### Updating a single markdown file
@@ -76,7 +81,7 @@ $PathToModuleManifest = "../../<module>.psd1" # Full path to the module manifest
 Import-Module -Name $PathToModuleManifest
 
 $PathToMarkdownFile = "../../<cmdlet>.md" # Full path to the markdown file to be updated
-Update-MarkdownHelp -Path $PathToMarkdownFile -AlphabeticParamsOrder
+Update-MarkdownHelp -Path $PathToMarkdownFile -AlphabeticParamsOrder -UseFullTypeName
 ```
 
 #### Generating and viewing the MAML help

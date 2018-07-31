@@ -132,7 +132,6 @@ Accept wildcard characters: False
 
 ### -Location
 Specifies the location of the master API Management deployment region.
-
 To obtain valid locations, use the cmdlet
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.ApiManagement" | where {$_.ResourceTypes[0].ResourceTypeName -eq "service"} | Select-Object Locations
 
@@ -196,9 +195,7 @@ Accept wildcard characters: False
 
 ### -Sku
 Specifies the tier of the master Azure API Management deployment region.
-
 The acceptable values for this parameter are:
-
 - Developer
 - Standard
 - Premium
@@ -234,7 +231,6 @@ Accept wildcard characters: False
 ### -VpnType
 Specifies the virtual network Type of the API Management deployment.
 The acceptable values for this parameter are:
-
 - None.
 The API Management deployment is not part of any Virtual Network.
 This is the default value. 
@@ -261,8 +257,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PsApiManagement
-Parameter 'ApiManagement' accepts value of type 'PsApiManagement' from the pipeline
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagement
+Parameters: ApiManagement (ByValue)
+
+### System.String
+Parameters: Location (ByPropertyName), Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementSku
+Parameters: Sku (ByPropertyName)
+
+### System.Int32
+Parameters: Capacity (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVirtualNetwork
+Parameters: VirtualNetwork (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementVpnType
+Parameters: VpnType (ByPropertyName)
+
+### System.Collections.Generic.IList`1[[Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementRegion, Microsoft.Azure.Commands.ApiManagement, Version=6.1.1.0, Culture=neutral, PublicKeyToken=null]]
 
 ## OUTPUTS
 

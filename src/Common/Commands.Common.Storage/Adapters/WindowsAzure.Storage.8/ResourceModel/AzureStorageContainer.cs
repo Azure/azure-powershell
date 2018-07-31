@@ -16,6 +16,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
 {
     using Microsoft.WindowsAzure.Storage.Blob;
     using System;
+    using Microsoft.WindowsAzure.Commands.Common.Attributes;
 
     /// <summary>
     /// azure storage container
@@ -25,6 +26,8 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// CloudBlobContainer object
         /// </summary>
+        [Ps1Xml(Label = "Blob End Point", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.CloudBlobContainer.ServiceClient.BaseUri")]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0, TableColumnWidth = 20)]
         public CloudBlobContainer CloudBlobContainer { get; private set; }
 
         /// <summary>
@@ -35,11 +38,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// the public access level of CloudBlobContainer
         /// </summary>
+        [Ps1Xml(Label = "PublicAccess", Target = ViewControl.Table, Position = 1, TableColumnWidth = 20)]
         public BlobContainerPublicAccessType? PublicAccess { get; private set; }
 
         /// <summary>
         /// last modified of CloudBlobContainer
         /// </summary>
+        [Ps1Xml(Label = "LastModified", Target = ViewControl.Table, Position = 2)]
         public DateTimeOffset? LastModified { get; private set; }
 
         /// <summary>

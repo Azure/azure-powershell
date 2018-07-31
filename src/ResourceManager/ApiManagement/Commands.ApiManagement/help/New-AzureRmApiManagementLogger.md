@@ -44,9 +44,7 @@ This command creates a logger named ContosoSdkEventHub by using the specified co
 
 ### -ConnectionString
 Specifies an Azure Event Hubs connection string that starts with the following: 
-
 `Endpoint=endpoint and key from Azure classic portal`
-
 The Key with Send Rights in the connection string must be configured.
 
 ```yaml
@@ -174,8 +172,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models.PsApiManagementContext
+Parameters: Context (ByPropertyName)
+
+### System.String
+Parameters: ConnectionString (ByPropertyName), Description (ByPropertyName), InstrumentationKey (ByPropertyName), LoggerId (ByPropertyName), Name (ByPropertyName)
+
+### System.Nullable`1[[System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 

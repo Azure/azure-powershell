@@ -44,9 +44,7 @@ PS C:\> $slb | Set-AzureRmLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConf
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the $slb variable.
-
 The second command uses the pipeline operator to pass the load balancer in $slb to Add-AzureRmLoadBalancerRuleConfig, which adds a rule named NewRule to it.
-
 The third command passes the load balancer to **Set-AzureRmLoadBalancerRuleConfig**, which sets the new rule configuration.
 Note that the configuration does not enable a floating IP address, which had been enabled by the previous command.
 
@@ -302,8 +300,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSLoadBalancer
-Parameter 'LoadBalancer' accepts value of type 'PSLoadBalancer' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSLoadBalancer
+Parameters: LoadBalancer (ByValue)
 
 ## OUTPUTS
 
