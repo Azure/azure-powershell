@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return tenantId;
         }
 
-        private static Tuple<IAccessToken, string> GetTokenInternal(string tenantId, IAuthenticationFactory authFactory, IAzureContext context, string resourceIdEndpoint)
+        private static Tuple<IRenewableToken, string> GetTokenInternal(string tenantId, IAuthenticationFactory authFactory, IAzureContext context, string resourceIdEndpoint)
         {
             if (string.IsNullOrWhiteSpace(tenantId))
                 throw new ArgumentException(KeyVaultProperties.Resources.NoTenantInContext);

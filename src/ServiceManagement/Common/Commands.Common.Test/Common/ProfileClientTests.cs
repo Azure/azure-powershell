@@ -1503,7 +1503,7 @@ namespace Common.Authentication.Test
         private void SetMocks(List<RDFESubscription> rdfeSubscriptions,
             List<CSMSubscription> csmSubscriptions,
             List<TenantIdDescription> tenants = null,
-            Func<IAzureAccount, IAzureEnvironment, string, IAccessToken> tokenProvider = null)
+            Func<IAzureAccount, IAzureEnvironment, string, IRenewableToken> tokenProvider = null)
         {
             ClientMocks clientMocks = new ClientMocks(new Guid(defaultSubscription));
 
