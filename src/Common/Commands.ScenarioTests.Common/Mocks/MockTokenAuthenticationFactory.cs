@@ -25,9 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
 {
     public class MockTokenAuthenticationFactory : IAuthenticationFactory
     {
-        public IAccessToken Token { get; set; }
+        public IRenewableToken Token { get; set; }
 
-        public Func<IAzureAccount, IAzureEnvironment, string, IAccessToken> TokenProvider { get; set; }
+        public Func<IAzureAccount, IAzureEnvironment, string, IRenewableToken> TokenProvider { get; set; }
 
         public MockTokenAuthenticationFactory()
         {
@@ -58,7 +58,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
             TokenProvider = ((account, environment, tenant) => Token);
         }
 
-        public IAccessToken Authenticate(
+        public IRenewableToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,
@@ -87,7 +87,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Test.Mocks
                 return TokenProvider(account, environment, tenant);
             }
         }
-        public IAccessToken Authenticate(
+        public IRenewableToken Authenticate(
             IAzureAccount account,
             IAzureEnvironment environment,
             string tenant,

@@ -20,9 +20,9 @@ using System.Security;
 
 namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
 {
-    public class MockAccessTokenProvider : ITokenProvider
+    public class MockAccessTokenProvider : IRenewableTokenProvider
     {
-        private readonly IAccessToken accessToken;
+        private readonly IRenewableToken accessToken;
 
         public MockAccessTokenProvider(string token)
             : this(token, "user@live.com")
@@ -37,7 +37,7 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
             };
         }
 
-        public IAccessToken GetAccessToken(
+        public IRenewableToken GetAccessToken(
             AdalConfiguration config,
             string promptBehavior,
             Action<string> promptAction,
@@ -49,13 +49,13 @@ namespace Microsoft.WindowsAzure.Commands.Test.Utilities.Common
         }
 
 #if !NETSTANDARD
-        IAccessToken ITokenProvider.GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint,
+        IRenewableToken IRenewableTokenProvider.GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint,
             string credentialType)
         {
             return GetAccessTokenWithCertificate(config, principalId, certificateThumbprint, credentialType);
         }
 #endif
-        public IAccessToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, string credentialType)
+        public IRenewableToken GetAccessTokenWithCertificate(AdalConfiguration config, string principalId, string certificateThumbprint, string credentialType)
         {
             return this.accessToken;
         }
