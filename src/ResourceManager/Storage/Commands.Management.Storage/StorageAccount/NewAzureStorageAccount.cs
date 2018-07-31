@@ -134,6 +134,23 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableHierarchicalNamespace
+        {
+            get
+            {
+                return enableHierarchicalNamespace.Value;
+            }
+            set
+            {
+                enableHierarchicalNamespace = value;
+            }
+        }
+        private bool? enableHierarchicalNamespace = null;
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -188,6 +205,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
             if (NetworkRuleSet != null)
             {
                 createParameters.NetworkRuleSet = PSNetworkRuleSet.ParseStorageNetworkRule(NetworkRuleSet);
+            }
+            if (enableHierarchicalNamespace != null)
+            {
+                createParameters.IsHnsEnabled = enableHierarchicalNamespace;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

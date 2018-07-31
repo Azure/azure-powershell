@@ -205,7 +205,6 @@ namespace Microsoft.WindowsAzure.Commands.SqlDatabase.Test.UnitTests.Database.Cm
                     });
 
                 Assert.AreEqual(0, powershell.Streams.Error.Count, "Unexpected Errors during run!");
-                Assert.AreEqual(0, powershell.Streams.Warning.Count, "Unexpected Warnings during run!");
             }
         }
 
