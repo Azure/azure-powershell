@@ -60,7 +60,7 @@
         @{ModuleName = 'Azs.Fabric.Admin'; RequiredVersion = '0.1.2'; },
         @{ModuleName = 'Azs.Gallery.Admin'; RequiredVersion = '0.1.1'; },
         @{ModuleName = 'Azs.InfrastructureInsights.Admin'; RequiredVersion = '0.1.1'; },
-        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.1.0'; },
+        @{ModuleName = 'Azs.KeyVault.Admin'; RequiredVersion = '0.1.1'; },
         @{ModuleName = 'Azs.Network.Admin'; RequiredVersion = '0.1.1'; },
         @{ModuleName = 'Azs.Storage.Admin'; RequiredVersion = '0.1.1'; },
         @{ModuleName = 'Azs.Subscriptions'; RequiredVersion = '0.1.1'; },
