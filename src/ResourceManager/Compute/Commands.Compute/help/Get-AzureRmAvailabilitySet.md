@@ -14,7 +14,7 @@ Gets Azure availability sets in a resource group.
 ## SYNTAX
 
 ```
-Get-AzureRmAvailabilitySet [-ResourceGroupName] <String> [[-Name] <String>]
+Get-AzureRmAvailabilitySet [[-ResourceGroupName] <String>] [[-Name] <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -78,7 +78,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
