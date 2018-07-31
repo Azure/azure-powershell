@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// Cmdlet to create a new Azure Sql Database Failover Group
     /// </summary>
     [Cmdlet(VerbsCommon.Set, "AzureRmSqlDatabaseFailoverGroup",
-        ConfirmImpact = ConfirmImpact.Medium)]
+        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>

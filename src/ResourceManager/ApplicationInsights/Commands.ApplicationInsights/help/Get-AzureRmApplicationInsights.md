@@ -98,7 +98,6 @@ Get application insights resource and include pricing plan information for resou
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
 
-
 ```yaml
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContextContainer
 Parameter Sets: (All)
@@ -189,6 +188,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### System.String
+Parameters: ResourceId (ByPropertyName)
 
 ## OUTPUTS
 

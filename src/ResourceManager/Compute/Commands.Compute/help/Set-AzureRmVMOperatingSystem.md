@@ -71,20 +71,15 @@ PS C:\> $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $$VirtualMachine -Win
 
 The first command converts a password to a secure string, and then stores it in the $SecurePassword variable.
 For more information, type `Get-Help ConvertTo-SecureString`.
-
 The second command creates a credential for the user FullerP and the password stored in $SecurePassword, and then stores the credential in the $Credential variable.
 For more information, type `Get-Help New-Object`.
-
 The third command gets the availability set named AvailablitySet03 in the resource group named ResourceGroup11, and then stores that object in the $AvailabilitySet variable.
-
 The fourth command creates a virtual machine object, and then stores it in the $VirtualMachine variable.
 The command assigns a name and size to the virtual machine.
 The virtual machine belongs to the availability set stored in $AvailabilitySet.
-
 The next four commands assign values to variables to use in the following command.
 Because you could specify these strings directly in the **Set-AzureRmVMOperatingSystem** command, this approach is used only for readability.
 However, you might use an approach such as this in scripts.
-
 The final command sets operating system properties for the virtual machine stored in $VirtualMachine.
 The command uses the credentials stored in $Credential.
 The command uses variables assigned in previous commands for some parameters.
@@ -328,8 +323,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSVirtualMachine
-Parameter 'VM' accepts value of type 'PSVirtualMachine' from the pipeline
+### Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
+Parameters: VM (ByPropertyName, ByValue)
+
+### System.Management.Automation.SwitchParameter
+Parameters: DisablePasswordAuthentication (ByPropertyName), EnableAutoUpdate (ByPropertyName), Linux (ByPropertyName), ProvisionVMAgent (ByPropertyName), Windows (ByPropertyName), WinRMHttp (ByPropertyName), WinRMHttps (ByPropertyName)
+
+### System.String
+Parameters: ComputerName (ByPropertyName), CustomData (ByPropertyName), TimeZone (ByPropertyName)
+
+### System.Management.Automation.PSCredential
+Parameters: Credential (ByPropertyName)
+
+### System.Uri
+Parameters: WinRMCertificateUrl (ByPropertyName)
 
 ## OUTPUTS
 

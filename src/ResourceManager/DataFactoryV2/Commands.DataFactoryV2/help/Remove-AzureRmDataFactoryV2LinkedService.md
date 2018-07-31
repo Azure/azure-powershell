@@ -131,7 +131,6 @@ Accept wildcard characters: False
 Specifies the name of an Azure resource group.
 This cmdlet removes a linked service from the group that this parameter specifies.
 
-
 ```yaml
 Type: System.String
 Parameter Sets: ByFactoryName
@@ -195,11 +194,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.DataFactoryV2.Models.PSLinkedService
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: DataFactoryName (ByPropertyName), ResourceGroupName (ByPropertyName), ResourceId (ByPropertyName)
 
 ## OUTPUTS
 
-### System.Object
+### System.Void
 
 ## NOTES
 Keywords: azure, azurerm, arm, resource, management, manager, data, factories

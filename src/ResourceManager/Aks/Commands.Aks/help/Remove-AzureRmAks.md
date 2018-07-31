@@ -199,7 +199,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Aks.Models.PSKubernetesCluster
-System.String
+Parameters: InputObject (ByValue)
+
+### System.String
+Parameters: Id (ByPropertyName)
 
 ## OUTPUTS
 

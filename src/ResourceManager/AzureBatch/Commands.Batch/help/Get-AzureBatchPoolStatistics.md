@@ -46,9 +46,7 @@ StartTime            : 2/10/2016 7:07:24 PM
 
 The first command creates an object reference to the account keys for the batch account named ContosoBatchAccount by using **Get-AzureRmBatchAccountKeys**.
 The command stores this object reference in the $Context variable.
-
 The second command gets the statistics of all of the pools in the specified account, and then stores them in the $PoolStatistics.
-
 The final command displays the **ResourceStatistics** property of $PoolStatistics.
 
 ## PARAMETERS
@@ -90,7 +88,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.Batch.BatchAccountContext
-Parameter 'BatchContext' accepts value of type 'BatchAccountContext' from the pipeline
+Parameters: BatchContext (ByValue)
 
 ## OUTPUTS
 

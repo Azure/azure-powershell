@@ -51,9 +51,7 @@ Accept wildcard characters: False
 
 ### -HostnameType
 Specifies the host name type that this cmdlet loads the certificate for.
-
 Valid values are: 
-
 - Proxy
 - Portal
 
@@ -151,8 +149,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.String
+Parameters: Name (ByPropertyName), ResourceGroupName (ByPropertyName)
+
+### Microsoft.Azure.Commands.ApiManagement.Models.PsApiManagementHostnameType
+Parameters: HostnameType (ByPropertyName)
 
 ## OUTPUTS
 

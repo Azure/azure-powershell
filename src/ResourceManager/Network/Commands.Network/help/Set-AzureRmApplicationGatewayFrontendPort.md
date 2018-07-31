@@ -32,7 +32,6 @@ PS C:\> $AppGw = Set-AzureRmApplicationGatewayFrontendPort -ApplicationGateway $
 
 The first command gets the application gateway named ApplicationGateway01 that belongs to the
 resource group named ResourceGroup01 and stores it in the $AppGw variable.
-
 The second command modifies the gateway in $AppGw to use port 80 for the front-end port named
 FrontEndPort01.
 
@@ -103,8 +102,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### PSApplicationGateway
-Parameter 'ApplicationGateway' accepts value of type 'PSApplicationGateway' from the pipeline
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGateway
+Parameters: ApplicationGateway (ByValue)
 
 ## OUTPUTS
 

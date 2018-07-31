@@ -25,7 +25,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDdosProtectionPlan", SupportsShouldProcess = true)]
+    [Cmdlet(VerbsCommon.Remove, "AzureRmDdosProtectionPlan", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         [Parameter(

@@ -66,7 +66,6 @@ Updated     : 8/1/2016 5:37:48 PM
 ```
 
 The first command assigns an array of key/value pairs to the $Tags variable.
-
 The second command sets the tags value of the certificate named TestCert01 to be $Tags.
 
 ## PARAMETERS
@@ -236,6 +235,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultCertificateIdentityItem
+Parameters: InputObject (ByValue)
 
 ## OUTPUTS
 

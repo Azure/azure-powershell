@@ -45,7 +45,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup14" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for all reports sent from the DSC node named Computer14 to the Automation account named Contoso17.
 The command specifies the node by using the **Id** property of the $Node object.
 
@@ -57,7 +56,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for the report identified by the specified ID sent from the DSC node named Computer14 to the Automation account named Contoso17.
 
 ### Example 3: Get the latest report for a DSC node
@@ -68,7 +66,6 @@ PS C:\> Get-AzureRmAutomationDscNodeReport -ResourceGroupName "ResourceGroup03" 
 
 The first command gets the DSC node for the computer named Computer14 in the Automation account named Contoso17.
 The command stores this object in the $Node variable.
-
 The second command gets metadata for the latest report sent from the DSC node named Computer14 to the Automation account named Contoso17.
 
 ## PARAMETERS
@@ -201,8 +198,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-This cmdlet does not accept any input.
+### System.Guid
+Parameters: Id (ByPropertyName), NodeId (ByPropertyName)
+
+### System.Nullable`1[[System.DateTimeOffset, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+
+### System.String
+Parameters: AutomationAccountName (ByPropertyName), ResourceGroupName (ByPropertyName)
 
 ## OUTPUTS
 

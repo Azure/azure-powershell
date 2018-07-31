@@ -36,7 +36,6 @@ This command creates a **PSScheduleEntry** object that represents a weekend sche
 ### -DayOfWeek
 Specifies the day of the week for the schedule entry.
 The acceptable values for this parameter are:
-
 - Everyday 
 - Weekend 
 - Monday 
@@ -110,13 +109,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-You can pipe input to this cmdlet by property name, but not by value.
+### System.String
+Parameters: DayOfWeek (ByPropertyName)
+
+### System.Int32
+Parameters: StartHourUtc (ByPropertyName)
+
+### System.Nullable`1[[System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ## OUTPUTS
 
 ### Microsoft.Azure.Commands.RedisCache.Models.PSScheduleEntry
-This cmdlet returns a schedule entry object.
 
 ## NOTES
 * Keywords: azure, azurerm, arm, resource, management, manager, redis, cache, web, webapp, website
