@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public bool? AllowClassicOperations { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
+        public bool AllowGlobalReach { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -165,6 +170,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Peerings = this.Peering;
             circuit.Authorizations = this.Authorization;
             circuit.AllowClassicOperations = this.AllowClassicOperations;
+            circuit.AllowGlobalReach = this.AllowGlobalReach;
 
             // Map to the sdk object
             var circuitModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ExpressRouteCircuit>(circuit);
