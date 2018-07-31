@@ -20,6 +20,12 @@
 -->
 ## Current Release
 * Move dependencies on Keyvault and Storage to the common dependencies.
+* Fix parameter description in Save-AzureRmVMImage
+
+## Version 5.4.0
+* Fix issue with creating a vm using `DiskFileParameterSet` in `New-AzureRmVm` failing because of `PremiumLRS` storage account type renaming.
+* Fix Invoke-AzureRmVMRunCommand cmdlet
+* Update Get-AzureRmAvailabilitySet to enable list all availability sets in a subscription.  (ResouceGroupName parameter is now optional.)
 * Update SimpleParameterSet of `New-AzureRmVm` to enable Accelerated Network on qualifying vms.
 * Update New-AzureRmVmss simple parameter set to fail creating the vmss when a user specified LB already exists.
 * Update example for New-AzureRmDisk
@@ -27,7 +33,6 @@
 * Updated all help files to include full parameter types and correct input/output types.
 * Update description for Set-AzureRmVMOSDisk
 * Update Example 1 for Set-AzureRmVMBginfoExtension to correct spelling and prefix. 
-* Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.3.0
 * Add -Tag parameter to Update/New-AzureRmAvailabilitySet

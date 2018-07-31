@@ -8440,7 +8440,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -10525,7 +10780,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -11348,7 +11619,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -12171,7 +12697,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "AppServicePlan",
@@ -14538,7 +15319,92 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.SlotConfigNamesResource",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.SlotConfigNamesResource, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "ConnectionStringNames": "System.Collections.Generic.IList`1[System.String]",
+              "AppSettingNames": "System.Collections.Generic.IList`1[System.String]",
+              "Id": "System.String",
+              "Name": "System.String",
+              "Kind": "System.String",
+              "Type": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "connectionStringNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "appSettingNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "AppSettingNames",
@@ -15679,7 +16545,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -16502,7 +17623,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -17325,7 +18701,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "SourceSlotName",
@@ -17369,7 +18761,7 @@
           "Type": {
             "Namespace": "System",
             "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
             "Properties": {},
             "ElementType": null,
             "GenericTypeArguments": [
@@ -17788,7 +19180,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -17979,7 +19371,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -18385,7 +19777,7 @@
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.Nullable`1[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction]",
-                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+                  "AssemblyQualifiedName": "System.Nullable`1[[Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null]], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                   "Properties": {},
                   "ElementType": null,
                   "GenericTypeArguments": [
@@ -18489,7 +19881,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore.AzureWebAppSnapshot, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "SnapshotTime": "System.DateTime",
               "ResourceGroupName": "System.String",
@@ -19699,7 +21091,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "AppServicePlan",
@@ -20792,7 +22200,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "RecoverConfiguration",
@@ -24453,7 +25877,92 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.HostNameSslState",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.HostNameSslState, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "HostType": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.HostType]",
+              "SslState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SslState]",
+              "ToUpdate": "System.Nullable`1[System.Boolean]",
+              "Name": "System.String",
+              "VirtualIP": "System.String",
+              "Thumbprint": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "sslState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "virtualIP",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "thumbprint",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "toUpdate",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostType",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -26183,7 +27692,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Name",
@@ -27289,7 +28814,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -28621,7 +30146,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -29600,7 +31125,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackupConfiguration, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "KeepAtLeastOneBackup": "System.Nullable`1[System.Boolean]",
@@ -30482,7 +32007,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -34690,7 +36215,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps",
             "Name": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps.AzureWebAppBackup, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
             "Properties": {
               "Databases": "Microsoft.Azure.Management.WebSites.Models.DatabaseBackupSetting[]",
               "Scheduled": "System.Nullable`1[System.Boolean]",
@@ -35664,7 +37189,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Void",
+            "AssemblyQualifiedName": "System.Void, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "Force",
@@ -39387,7 +40928,23 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.String",
+            "AssemblyQualifiedName": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
+            "Properties": {},
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [],
+            "Constructors": []
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -40168,7 +41725,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -40949,7 +42761,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "AppServicePlan",
@@ -42730,7 +44797,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -43511,7 +45833,262 @@
       "ConfirmImpact": 2,
       "SupportsPaging": false,
       "DefaultParameterSetName": "__AllParameterSets",
-      "OutputTypes": [],
+      "OutputTypes": [
+        {
+          "Type": {
+            "Namespace": "Microsoft.Azure.Management.WebSites.Models",
+            "Name": "Microsoft.Azure.Management.WebSites.Models.Site",
+            "AssemblyQualifiedName": "Microsoft.Azure.Management.WebSites.Models.Site, Microsoft.Azure.Management.Websites, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "Properties": {
+              "CloningInfo": "Microsoft.Azure.Management.WebSites.Models.CloningInfo",
+              "HostingEnvironmentProfile": "Microsoft.Azure.Management.WebSites.Models.HostingEnvironmentProfile",
+              "Identity": "Microsoft.Azure.Management.WebSites.Models.ManagedServiceIdentity",
+              "SiteConfig": "Microsoft.Azure.Management.WebSites.Models.SiteConfig",
+              "SlotSwapStatus": "Microsoft.Azure.Management.WebSites.Models.SlotSwapStatus",
+              "SnapshotInfo": "Microsoft.Azure.Management.WebSites.Models.SnapshotRecoveryRequest",
+              "Tags": "System.Collections.Generic.IDictionary`2[System.String,System.String]",
+              "HostNameSslStates": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.WebSites.Models.HostNameSslState]",
+              "HostNames": "System.Collections.Generic.IList`1[System.String]",
+              "EnabledHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "TrafficManagerHostNames": "System.Collections.Generic.IList`1[System.String]",
+              "AvailabilityState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.SiteAvailabilityState]",
+              "UsageState": "System.Nullable`1[Microsoft.Azure.Management.WebSites.Models.UsageState]",
+              "HttpsOnly": "System.Nullable`1[System.Boolean]",
+              "ClientCertEnabled": "System.Nullable`1[System.Boolean]",
+              "ClientAffinityEnabled": "System.Nullable`1[System.Boolean]",
+              "HostNamesDisabled": "System.Nullable`1[System.Boolean]",
+              "IsDefaultContainer": "System.Nullable`1[System.Boolean]",
+              "ScmSiteAlsoStopped": "System.Nullable`1[System.Boolean]",
+              "Reserved": "System.Nullable`1[System.Boolean]",
+              "Enabled": "System.Nullable`1[System.Boolean]",
+              "LastModifiedTimeUtc": "System.Nullable`1[System.DateTime]",
+              "SuspendedTill": "System.Nullable`1[System.DateTime]",
+              "ContainerSize": "System.Nullable`1[System.Int32]",
+              "DailyMemoryTimeQuota": "System.Nullable`1[System.Int32]",
+              "MaxNumberOfWorkers": "System.Nullable`1[System.Int32]",
+              "Id": "System.String",
+              "Location": "System.String",
+              "Kind": "System.String",
+              "Name": "System.String",
+              "OutboundIpAddresses": "System.String",
+              "ResourceGroup": "System.String",
+              "PossibleOutboundIpAddresses": "System.String",
+              "Type": "System.String",
+              "TargetSwapSlot": "System.String",
+              "ServerFarmId": "System.String",
+              "RepositorySiteName": "System.String",
+              "DefaultHostName": "System.String",
+              "State": "System.String"
+            },
+            "ElementType": null,
+            "GenericTypeArguments": [],
+            "Methods": [
+              {
+                "Name": "Validate",
+                "Parameters": [],
+                "ReturnType": "System.Void"
+              },
+              {
+                "Name": "ToString",
+                "Parameters": [],
+                "ReturnType": "System.String"
+              },
+              {
+                "Name": "Equals",
+                "Parameters": [
+                  {
+                    "Name": "obj",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ],
+                "ReturnType": "System.Boolean"
+              },
+              {
+                "Name": "GetHashCode",
+                "Parameters": [],
+                "ReturnType": "System.Int32"
+              },
+              {
+                "Name": "GetType",
+                "Parameters": [],
+                "ReturnType": "System.Type"
+              }
+            ],
+            "Constructors": [
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": []
+              },
+              {
+                "Name": "",
+                "ReturnType": null,
+                "Parameters": [
+                  {
+                    "Name": "location",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "id",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "name",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "kind",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "type",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "tags",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "state",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "repositorySiteName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "usageState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "enabledHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "availabilityState",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNameSslStates",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "serverFarmId",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "reserved",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "lastModifiedTimeUtc",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "siteConfig",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "trafficManagerHostNames",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "scmSiteAlsoStopped",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "targetSwapSlot",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostingEnvironmentProfile",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientAffinityEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "clientCertEnabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "hostNamesDisabled",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "outboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "possibleOutboundIpAddresses",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "containerSize",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "dailyMemoryTimeQuota",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "suspendedTill",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "maxNumberOfWorkers",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "cloningInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "snapshotInfo",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "resourceGroup",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "isDefaultContainer",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "defaultHostName",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "slotSwapStatus",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "httpsOnly",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  },
+                  {
+                    "Name": "identity",
+                    "Type": "System.Reflection.RuntimeParameterInfo"
+                  }
+                ]
+              }
+            ]
+          },
+          "ParameterSets": [
+            "__AllParameterSets"
+          ]
+        }
+      ],
       "Parameters": [
         {
           "Name": "ResourceGroupName",
@@ -48486,7 +51063,7 @@
     "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction": {
       "Namespace": "Microsoft.Azure.Commands.WebApps.Utilities",
       "Name": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.5.0, Culture=neutral, PublicKeyToken=null",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.WebApps.Utilities.SwapWithPreviewAction, Microsoft.Azure.Commands.Websites, Version=5.0.6.0, Culture=neutral, PublicKeyToken=null",
       "Properties": {},
       "ElementType": null,
       "GenericTypeArguments": [],
