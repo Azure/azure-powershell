@@ -17,7 +17,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Generate encryption key for infrastructure backups.
 
 #>
-function New-EncryptionKeyBase64
+function New-AzsEncryptionKeyBase64
 {
     $tempEncryptionKeyString = ""
     foreach($i in 1..64) { $tempEncryptionKeyString += -join ((65..90) + (97..122) | Get-Random | % {[char]$_}) }

@@ -108,7 +108,7 @@ function New-AzsNetworkQuota {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         # Add here, leave defaults above.
         if (-not $PSBoundParameters.ContainsKey('MigrationPhase')) {
@@ -145,7 +145,7 @@ function New-AzsNetworkQuota {
                 $utilityCmdParams[$_] = Get-Variable -Name $_ -ValueOnly
             }
             $Quota = New-QuotaObject @utilityCmdParams
-            
+
             $NewServiceClient_params = @{
                 FullClientTypeName = 'Microsoft.AzureStack.Management.Network.Admin.NetworkAdminClient'
             }

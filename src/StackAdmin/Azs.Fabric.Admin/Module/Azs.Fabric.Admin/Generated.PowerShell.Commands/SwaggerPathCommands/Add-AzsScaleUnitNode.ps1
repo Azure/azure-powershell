@@ -66,7 +66,7 @@ function Add-AzsScaleUnitNode
 
     Process {
 
-    $ErrorActionPreference = 'Stop'
+
 
     $NewServiceClient_params = @{
         FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'
