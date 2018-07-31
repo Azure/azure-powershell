@@ -29,9 +29,20 @@
 - Set-AzureStorageBlobContent
 - Set-AzureStorageFileContent
 
+## Version 4.4.1
+* Support Static Website configuration
+   - Enable-AzureStorageStaticWebsite
+   - Disable-AzureStorageStaticWebsite
+
 ## Version 4.3.1
 * Added additional information about -Permissions parameter in help files.
 
+## Version 4.4.0
+* Support create Storage Context with OAuth.
+   - The PR pending change：
+     - Change to signed package
+     - Use AuthenticationFactory in Powershell to replace ADAL reference.
+     
 ## Version 4.3.0
 * Set minimum dependency of module to PowerShell 5.0
 * Support $web as Storage blob container name

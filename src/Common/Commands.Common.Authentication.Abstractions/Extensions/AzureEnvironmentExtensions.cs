@@ -271,6 +271,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                     case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint:
                         environment.SetProperty(AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint, propertyValue);
                         break;
+                    case AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId:
+                        environment.SetProperty(AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId, propertyValue);
+                        break;
                 }
             }
         }
@@ -301,6 +304,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Abstractions
                 case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpoint:
                 case AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId:
                     resource = AzureEnvironment.ExtendedEndpoint.OperationalInsightsEndpointResourceId;
+                    break;
+                case AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId:
+                    resource = AzureEnvironment.ExtendedEndpoint.StorageOAuthEndpointResourceId;
                     break;
                 default:
                     resource = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId;

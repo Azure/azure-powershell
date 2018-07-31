@@ -83,7 +83,20 @@ CmdletsToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
     'Update-AzureRmStorageAccountNetworkRuleSet', 
     'Get-AzureRmStorageAccountNetworkRuleSet', 
     'Add-AzureRmStorageAccountNetworkRule', 
-    'Remove-AzureRmStorageAccountNetworkRule'
+    'Remove-AzureRmStorageAccountNetworkRule', 
+    'Set-AzureRmStorageAccountManagementPolicy', 
+    'Get-AzureRmStorageAccountManagementPolicy', 
+    'Remove-AzureRmStorageAccountManagementPolicy',
+    'Get-AzureRmStorageContainer',
+    'Update-AzureRmStorageContainer',
+    'New-AzureRmStorageContainer',
+    'Remove-AzureRmStorageContainer',
+    'Add-AzureRmStorageContainerLegalHold',
+    'Remove-AzureRmStorageContainerLegalHold',
+    'Set-AzureRmStorageContainerImmutabilityPolicy',
+    'Get-AzureRmStorageContainerImmutabilityPolicy',
+    'Remove-AzureRmStorageContainerImmutabilityPolicy',
+    'Lock-AzureRmStorageContainerImmutabilityPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()

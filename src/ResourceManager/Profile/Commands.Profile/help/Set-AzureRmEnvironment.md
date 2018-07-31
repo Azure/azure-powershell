@@ -24,8 +24,9 @@ Set-AzureRmEnvironment [-Name] <String> [[-PublishSettingsFileUrl] <String>] [[-
  [[-AzureDataLakeAnalyticsCatalogAndJobEndpointSuffix] <String>] [-EnableAdfsAuthentication]
  [[-AdTenant] <String>] [[-GraphAudience] <String>] [[-DataLakeAudience] <String>]
  [[-BatchEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpointResourceId] <String>]
- [[-AzureOperationalInsightsEndpoint] <String>] [-Scope <ContextModificationScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-AzureOperationalInsightsEndpoint] <String>] [-StorageOAuthEndpointResourceId <String>]
+ [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ARMEndpoint
@@ -34,7 +35,7 @@ Set-AzureRmEnvironment [-Name] <String> [[-StorageEndpoint] <String>] [-ARMEndpo
  [[-AzureKeyVaultDnsSuffix] <String>] [[-AzureKeyVaultServiceEndpointResourceId] <String>]
  [[-DataLakeAudience] <String>] [[-BatchEndpointResourceId] <String>]
  [[-AzureOperationalInsightsEndpointResourceId] <String>] [[-AzureOperationalInsightsEndpoint] <String>]
- [-Scope <ContextModificationScope>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-StorageOAuthEndpointResourceId <String>] [-Scope <ContextModificationScope>]
  [<CommonParameters>]
 ```
 
@@ -232,7 +233,7 @@ Accept wildcard characters: False
 Specifies the endpoint for the Operational Insights query access. 
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +248,7 @@ Accept wildcard characters: False
 Specifies the audience for access tokens that authorize requests for Operational Insights services.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -262,7 +263,7 @@ Accept wildcard characters: False
 The resource identifier of the Azure Batch service that is the recipient of the requested token
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases: BatchResourceId, BatchAudience
 
@@ -484,13 +485,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageOAuthEndpointResourceId
+The audience for tokens authenticating with Azure Storage.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -TrafficManagerDnsSuffix
 Specifies the domain-name suffix for Azure Traffic Manager services.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: Name
-Aliases:
+Aliases: 
 
 Required: False
 Position: 12

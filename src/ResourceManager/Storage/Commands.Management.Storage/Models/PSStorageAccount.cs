@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.Tags = storageAccount.Tags;
             this.EnableHttpsTrafficOnly = storageAccount.EnableHttpsTrafficOnly;
             this.NetworkRuleSet = PSNetworkRuleSet.ParsePSNetworkRule(storageAccount.NetworkRuleSet);
+            this.EnableHierarchicalNamespace = storageAccount.IsHnsEnabled; 
         }
 
         [Ps1Xml(Label = "ResourceGroupName", Target = ViewControl.Table, Position = 1)]
@@ -102,6 +103,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
 
         [Ps1Xml(Label = "EnableHttpsTrafficOnly", Target = ViewControl.Table, Position = 8)]
         public bool? EnableHttpsTrafficOnly { get; set; }
+        
+        public bool? EnableHierarchicalNamespace { get; set; }
 
         public PSNetworkRuleSet NetworkRuleSet { get; set; }
 
