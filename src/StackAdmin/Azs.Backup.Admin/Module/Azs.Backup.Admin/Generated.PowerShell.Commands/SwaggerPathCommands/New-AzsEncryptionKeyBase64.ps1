@@ -12,7 +12,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 .EXAMPLE
 
-    PS C:\>New-EncryptionKeyBase64
+    PS C:\>New-AzsEncryptionKeyBase64
 
     Generate encryption key for infrastructure backups.
 
