@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Current Release
+
+## Version 0.3.9
 * Updated help files to include full parameter types and correct input/output types.
 
 ## Version 0.3.8
