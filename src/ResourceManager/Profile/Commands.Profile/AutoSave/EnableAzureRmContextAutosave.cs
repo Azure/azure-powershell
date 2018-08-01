@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        private static void EnableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
+        private void EnableAutosave(IAzureSession session, bool writeAutoSaveFile, out ContextAutosaveSettings result)
         {
             var store = session.DataStore;
             var contextPath = Path.Combine(session.ARMProfileDirectory, session.ARMProfileFile);
@@ -124,19 +124,20 @@ namespace Microsoft.Azure.Commands.Profile.Context
             }
         }
 
-        private static bool IsValidPath(string filepath)
+        private bool IsValidPath(string filepath)
         {
             FileInfo valid = null;
             try
             {
                 valid = new FileInfo(filepath);
+                FileUtilities.EnsureDirectoryExists(filepath);
             }
             catch
             {
                 // swallow any exception
             }
 
-            return valid != null && Directory.Exists(valid.DirectoryName);
+            return valid != null;
         }
     }
 }
