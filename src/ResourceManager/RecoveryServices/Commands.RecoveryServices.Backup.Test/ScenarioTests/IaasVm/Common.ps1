@@ -51,14 +51,10 @@ function Create-ResourceGroup(
 	[string] $location,
 	[int] $nick = -1)
 {
-	if ($nick -eq -1)
+	$name = "PSTestRG" + @(Get-RandomSuffix)
+	if($nick -gt -1)
 	{
-		$name = "PSTestRG" + @(Get-RandomSuffix)
-	}
-
-	else
-	{
-		$name = "PSTestRG" + @(Get-RandomSuffix) + $nick
+		$name += $nick
 	}
 
 	$resourceGroup = Get-AzureRmResourceGroup -Name $name -ErrorAction Ignore
