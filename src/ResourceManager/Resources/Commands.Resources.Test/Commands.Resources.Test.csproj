@@ -855,6 +855,9 @@
     <None Include="sampleTemplateThrowsNestedErrors.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="SessionRecords\Microsoft.Azure.Commands.Resources.Test.ScenarioTests.SubscriptionLevelDeploymentTests\TestStopDeployment.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="subscription_level_parameters.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
