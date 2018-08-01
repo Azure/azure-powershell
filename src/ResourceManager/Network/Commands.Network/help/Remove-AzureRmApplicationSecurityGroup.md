@@ -32,7 +32,9 @@ This command deletes an application security group named MyApplicationSecurityGr
 ## PARAMETERS
 
 ### -AsJob
-Run cmdlet in the background```yaml
+Run cmdlet in the background
+
+```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:

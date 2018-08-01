@@ -75,6 +75,9 @@ function Test-RouteTableCRUDMinimalParameters
         # Remove RouteTable
         $removeRouteTable = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteTable;
+
+        # Get RouteTable should fail
+        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "${rname} not found";
     }
     finally
     {
@@ -143,6 +146,9 @@ function Test-RouteTableCRUDAllParameters
         # Remove RouteTable
         $removeRouteTable = Remove-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeRouteTable;
+
+        # Get RouteTable should fail
+        Assert-ThrowsContains { Get-AzureRmRouteTable -ResourceGroupName $rgname -Name $rname } "${rname} not found";
     }
     finally
     {
@@ -215,8 +221,11 @@ function Test-RouteCRUDMinimalParameters
         Assert-AreEqual $AddressPrefixAdd $vRoute.AddressPrefix;
 
         # Remove Route
-        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $vRouteTable.Routes[-1].Name;
+        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+
+        # Get Route should fail
+        Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd } "Sequence contains no matching element";
     }
     finally
     {
@@ -296,8 +305,11 @@ function Test-RouteCRUDAllParameters
         Assert-AreEqual $NextHopTypeAdd $vRoute.NextHopType;
 
         # Remove Route
-        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $vRouteTable.Routes[-1].Name;
+        Remove-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd;
         $vRouteTable = Set-AzureRmRouteTable -RouteTable $vRouteTable;
+
+        # Get Route should fail
+        Assert-ThrowsContains { Get-AzureRmRouteConfig -RouteTable $vRouteTable -Name $rnameAdd } "Sequence contains no matching element";
     }
     finally
     {
