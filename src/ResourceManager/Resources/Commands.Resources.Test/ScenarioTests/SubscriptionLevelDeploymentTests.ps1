@@ -92,3 +92,45 @@ function Test-DeploymentAsJob
 	    Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Tests stopping deployment.
+#>
+function Test-StopDeployment
+{
+    try
+	{
+	    # Setup
+		$rgname = Get-ResourceGroupName
+		$deploymentName = Get-ResourceName
+		$storageAccountName = Get-ResourceName
+		$location = "WestUS"
+
+		New-AzureRmResourceGroup -Name $rgname -Location $location
+
+		# Test
+		$job = New-AzureRmDeployment -Name $deploymentName -Location $location -TemplateFile subscription_level_template.json -nestedDeploymentRG $rgname -storageAccountName $storageAccountName -AsJob
+		Assert-AreEqual Running $job[0].State
+
+		#Start-Sleep -s 1
+
+		$result = Stop-AzureRmDeployment -Name $deploymentName
+		Assert-AreEqual True $result
+
+		$job = $job | Wait-Job
+		Assert-AreEqual Completed $job[0].State
+
+		$deployment = $job | Receive-Job
+		Assert-AreEqual Canceled $deployment.ProvisioningState
+
+		#Start-Sleep -s 1
+
+		$result = Remove-AzureRmDeployment -Name $deploymentName
+		Assert-AreEqual True $result 
+	}
+	finally
+	{
+	    Clean-ResourceGroup $rgname
+	}
+}
