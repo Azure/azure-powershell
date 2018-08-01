@@ -18,9 +18,14 @@
         - Additional information about change #1
 -->
 ## Current Release
+<<<<<<< HEAD
+* Updated help files to include full parameter types.
+* Updated to the latest version of the Azure ClientRuntime.
+=======
 
 ## Version 5.0.1
 * Updated help files to include full parameter types and correct input/output types.
+>>>>>>> 11e022680aff5ee182563839ce924dd7d56032dd
 
 ## Version 5.0.0
 * Set minimum dependency of module to PowerShell 5.0

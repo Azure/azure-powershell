@@ -19,6 +19,7 @@
 -->
 ## Current Release
 * Fix example in New-AzureRmResourceGroupDeployment
+* Updated to the latest version of the Azure ClientRuntime.
 
 ## Version 6.3.0
 * Updated help files to include full parameter types and correct input/output types.

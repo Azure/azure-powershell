@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Updated to the latest version of the Azure ClientRuntime.
 * Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.4.0
