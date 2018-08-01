@@ -12,18 +12,14 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-<<<<<<< HEAD
 namespace Microsoft.Azure.Commands.Network
-=======
-namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicies
->>>>>>> Powershell changes for service endpointpolicies
 {
     using Microsoft.Azure.Commands.Network.Models;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicy", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSServiceEndpointPolicy))]
-    class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
+    public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
