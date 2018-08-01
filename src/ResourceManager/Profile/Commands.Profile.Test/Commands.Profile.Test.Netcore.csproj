@@ -3,7 +3,8 @@
   <Import Project="..\..\..\..\tools\Common.Netcore.Dependencies.Test.targets" />
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1;</TargetFrameworks>
+    <IsPackable>false</IsPackable>
     <AssemblyName>Microsoft.Azure.Commands.Profile.Test</AssemblyName>
     <RootNamespace>Microsoft.Azure.Commands.Profile.Test</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -20,7 +21,7 @@
     <SignAssembly>true</SignAssembly>
     <DelaySign>true</DelaySign>
     <AssemblyOriginatorKeyFile>MSSharedLibKey.snk</AssemblyOriginatorKeyFile>
-    <DefineConstants>TRACE;RELEASE;NETSTANDARD;SIGN</DefineConstants>
+    <DefineConstants>TRACE;RELEASE;SIGN;NETSTANDARD</DefineConstants>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsAsErrors />
   </PropertyGroup>
@@ -32,6 +33,30 @@
     <ProjectReference Include="..\..\Common\Commands.Common.Authentication.ResourceManager\Common.ResourceManager.Authentication.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ResourceManager.Common\Common.ResourceManager.Netcore.csproj" />
     <ProjectReference Include="..\..\Common\Commands.ScenarioTests.ResourceManager.Common\Common.ResourceManager.ScenarioTests.Netcore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461'">
+   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+   <PackageReference Include="Microsoft.Azure.Test.HttpRecorder" Version="1.9.0"  Exclude="All" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.4.0"  Exclude="All" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.4.0"  Exclude="All" />
+   <Reference Include="System.Management.Automation">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(windir)\Microsoft.NET\assembly\GAC_MSIL\System.Management.Automation\v4.0_3.0.0.0__31bf3856ad364e35\System.Management.Automation.dll</HintPath>
+    </Reference>
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Azure.Management.ResourceManager" Version="1.6.0-preview" Exclude="All"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" Exclude="All"/>
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <Reference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication">
+        <SpecificVersion>true</SpecificVersion>
+        <HintPath>C:\Users\markcowl\.nuget\packages\microsoft.rest.clientruntime.azure.authentication\2.4.0\lib\netstandard1.4\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll</HintPath>
+      </Reference>
+      <Reference Include="Microsoft.Rest.ClientRuntime.Azure.TestFramework">
+          <SpecificVersion>true</SpecificVersion>
+        <HintPath>C:\Users\markcowl\.nuget\packages\microsoft.rest.clientruntime.azure.testframework\1.9.0\lib\netstandard2.0\Microsoft.Rest.ClientRuntime.Azure.TestFramework.dll</HintPath>
+      </Reference>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="3.19.2" Exclude="All" /> 
   </ItemGroup>
 
   <ItemGroup>
@@ -48,5 +73,4 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
 </Project>
