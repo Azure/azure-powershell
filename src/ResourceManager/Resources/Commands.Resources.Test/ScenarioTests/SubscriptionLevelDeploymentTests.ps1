@@ -38,6 +38,9 @@ function Test-DeploymentEndToEnd
 		$getById = Get-AzureRmDeployment -Id $deploymentId
 		Assert-AreEqual $getById.DeploymentName $deployment.DeploymentName
 
+		$templatePath = Save-AzureRmDeploymentTemplate -Name $deploymentName -Force
+		Assert-NotNull $templatePath.Path
+
 		$operations = Get-AzureRmDeploymentOperation -DeploymentName $deploymentName
 		Assert-AreEqual 4 @($operations).Count
 
