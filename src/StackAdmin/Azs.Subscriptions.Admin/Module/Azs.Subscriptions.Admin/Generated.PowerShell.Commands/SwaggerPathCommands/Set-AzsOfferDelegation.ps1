@@ -93,7 +93,7 @@ function Set-AzsOfferDelegation {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewOfferDelegation = $null
 
