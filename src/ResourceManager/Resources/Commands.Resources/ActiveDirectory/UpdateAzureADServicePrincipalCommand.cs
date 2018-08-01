@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet(VerbsData.Update, "AzureRmADServicePrincipal", DefaultParameterSetName = ParameterSet.SpObjectIdWithDisplayName, SupportsShouldProcess = true), OutputType(typeof(PSADServicePrincipal))]
     [Alias("Set-AzureRmADServicePrincipal")]
 
-    public class UpdateAzureADServicePrincipalCommand: ActiveDirectoryBaseCmdlet
+    public class UpdateAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SpObjectIdWithDisplayName, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]

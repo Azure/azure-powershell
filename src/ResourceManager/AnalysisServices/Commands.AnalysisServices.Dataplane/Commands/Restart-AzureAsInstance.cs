@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [Cmdlet("Restart", "AzureAnalysisServicesInstance", SupportsShouldProcess=true)]
     [Alias("Restart-AzureAsInstance")]
     [OutputType(typeof(bool))]
-    public class RestartAzureAnalysisServer: AzurePSCmdlet
+    public class RestartAzureAnalysisServer : AzurePSCmdlet
     {
         private string serverName;
 

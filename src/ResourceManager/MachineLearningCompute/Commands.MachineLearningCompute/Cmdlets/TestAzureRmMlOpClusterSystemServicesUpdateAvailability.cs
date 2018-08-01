@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet(VerbsDiagnostic.Test, CmdletSuffix + "SystemServicesUpdateAvailability")]
     [OutputType(typeof(PSCheckSystemServicesUpdatesAvailableResponse))]
-    public class TestAzureRmOpClusterSystemServicesUpdateAvailability: MachineLearningComputeCmdletBase
+    public class TestAzureRmOpClusterSystemServicesUpdateAvailability : MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet = "TestByNameAndResourceGroup";
 

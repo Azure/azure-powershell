@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Network
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Get, "AzureRmRouteFilter"), OutputType(typeof(PSRouteFilter))]
-    public class GetAzureRouteFilterCommand: RouteFilterBaseCmdlet
+    public class GetAzureRouteFilterCommand : RouteFilterBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(

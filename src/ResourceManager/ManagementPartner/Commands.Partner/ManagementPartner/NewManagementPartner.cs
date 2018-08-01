@@ -21,7 +21,7 @@ using PartnerResources = Microsoft.Azure.Commands.ManagementPartner.Properties.R
 namespace Microsoft.Azure.Commands.ManagementPartner
 {
     [Cmdlet(VerbsCommon.New, "AzureRmManagementPartner", SupportsShouldProcess = true), OutputType(typeof(PSManagementPartner))]
-    public class NewManagementPartner:AzureManagementPartnerCmdletsBase
+    public class NewManagementPartner : AzureManagementPartnerCmdletsBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The management partner id")]
         [ValidateNotNull]
