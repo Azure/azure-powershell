@@ -46,7 +46,7 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = "westcentralus";
+    $location = Get-ProviderLocation "Microsoft.Network/ApplicationSecurityGroups";
 
     try
     {
@@ -67,6 +67,9 @@ function Test-ApplicationSecurityGroupCRUDMinimalParameters
         # Remove ApplicationSecurityGroup
         $removeApplicationSecurityGroup = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
+
+        # Get ApplicationSecurityGroup should fail
+        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "${rname} not found";
     }
     finally
     {
@@ -85,7 +88,7 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
     $rgname = Get-ResourceGroupName;
     $rglocation = Get-ProviderLocation ResourceManagement;
     $rname = Get-ResourceName;
-    $location = "westcentralus";
+    $location = Get-ProviderLocation "Microsoft.Network/ApplicationSecurityGroups";
     # Resource's parameters
     $Tag = @{tag1='test'};
 
@@ -110,6 +113,9 @@ function Test-ApplicationSecurityGroupCRUDAllParameters
         # Remove ApplicationSecurityGroup
         $removeApplicationSecurityGroup = Remove-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname -PassThru -Force;
         Assert-AreEqual $true $removeApplicationSecurityGroup;
+
+        # Get ApplicationSecurityGroup should fail
+        Assert-ThrowsContains { Get-AzureRmApplicationSecurityGroup -ResourceGroupName $rgname -Name $rname } "${rname} not found";
     }
     finally
     {
