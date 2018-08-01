@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
 
             if (targetResourceGroupName != null && rp.IsManagedVirtualMachine == false)
             {
-                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmException);
+                Logger.Instance.WriteWarning(Resources.UnManagedBackupVmWarning);
             }
 
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
@@ -78,9 +78,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 Region = vaultLocation,
                 StorageAccountId = storageAccountId,
                 SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName != null ?
-                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName :
-                    null,
+                TargetResourceGroupId = targetResourceGroupName ??
+                    "/subscriptions/" + BmsAdapter.Client.SubscriptionId + "/resourceGroups/" + targetResourceGroupName,
                 OriginalStorageAccountOption = useOsa,
             };
 

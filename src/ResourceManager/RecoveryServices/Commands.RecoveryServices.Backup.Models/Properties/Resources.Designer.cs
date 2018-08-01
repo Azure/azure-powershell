@@ -1035,7 +1035,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         /// <summary>
         ///  Looks up a localized string similar to The backup VM is unmanaged and hence the disks will be restored to the storage account provided.
         /// </summary>
-        public static string UnManagedBackupVmException {
+        public static string UnManagedBackupVmWarning {
             get {
                 return ResourceManager.GetString("UnManagedBackupVmException", resourceCulture);
             }
