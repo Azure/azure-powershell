@@ -441,14 +441,19 @@ namespace Microsoft.Azure.Commands.Common
             }
         }
 
+        public bool TransactionAvailable()
+        {
+            return false;
+        }
+
         // Members for implementing command runtime for this job
-        //public PSTransactionContext CurrentPSTransaction
-        //{
-        //    get
-        //    {
-        //        return _runtime.CurrentPSTransaction;
-        //    }
-        //}
+        public PSTransactionContext CurrentPSTransaction
+        {
+           get
+            {
+                return _runtime.CurrentPSTransaction;
+            }
+        }
 
         /// <summary>
         /// The PSHost for execution
@@ -652,18 +657,6 @@ namespace Microsoft.Azure.Commands.Common
                 Error.Add(errorRecord);
             }
         }
-
-        /// <summary>
-        /// Determine if an ambient transaction is available
-        /// </summary>
-        /// <returns>True if an ambient transaction is available, otherwise false</returns>
-        //public bool TransactionAvailable()
-        //{
-        //    ThrowIfJobFailedOrCancelled();
-        //    Exception thrownException;
-        //    return InvokeShouldMethodAndWaitForResults(cmdlet => cmdlet.TransactionAvailable(),
-        //        ShouldMethodType.HasTransaction, out thrownException);
-        //}
 
         /// <summary>
         /// Write details about a command
