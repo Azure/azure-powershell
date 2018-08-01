@@ -27,19 +27,19 @@ function Add-AzsScaleUnitNode
 {
     [CmdletBinding(DefaultParameterSetName='ScaleUnits_ScaleOut')]
     param(
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $true)]
         [Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParameters[]]
         $NodeList,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $false)]
         [System.String]
         $ResourceGroupName,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $true)]
         [System.String]
         $ScaleUnit,
 
-        [Parameter(Mandatory = $true, ParameterSetName = 'ScaleUnits_ScaleOut')]
+        [Parameter(Mandatory = $true)]
         [System.String]
         $Location,
 
@@ -84,14 +84,12 @@ function Add-AzsScaleUnitNode
 
     $ParamList = New-ScaleOutScaleUnitParametersListObject -NodeList $NodeList -AwaitStorageConvergence $AwaitStorageConvergence:IsPresent
 
-
-    if ('ScaleUnits_ScaleOut' -eq $PsCmdlet.ParameterSetName) {
-        Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
-        $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $ParamList)
-    } else {
-        Write-Verbose -Message 'Failed to map parameter set to operation method.'
-        throw 'Module failed to find operation to execute.'
+    if ([System.String]::IsNullOrEmpty($ResourceGroupName)) {
+        $ResourceGroupName = "System.$Location"
     }
+
+    Write-Verbose -Message 'Performing operation ScaleOutWithHttpMessagesAsync on $FabricAdminClient.'
+    $TaskResult = $FabricAdminClient.ScaleUnits.ScaleOutWithHttpMessagesAsync($ResourceGroupName, $Location, $ScaleUnit, $ParamList)
 
     Write-Verbose -Message "Waiting for the operation to complete."
 
