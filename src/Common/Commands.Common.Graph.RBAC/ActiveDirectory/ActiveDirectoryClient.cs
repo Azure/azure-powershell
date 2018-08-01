@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public List<PSADObject> ListUserGroups(string principal)
         {
             List<PSADObject> result = new List<PSADObject>();
-            Guid objectId = GetObjectId(new ADObjectFilterOptions { UPN = principal });
+            string objectId = GetObjectId(new ADObjectFilterOptions { UPN = principal });
             PSADObject user = GetADObject(new ADObjectFilterOptions { Id = objectId.ToString() });
             var groupsIds = GraphClient.Users.GetMemberGroups(objectId.ToString(), new UserGetMemberGroupsParameters());
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = groupsIds.ToList() });
@@ -371,11 +371,10 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             GraphClient.Groups.RemoveMember(groupObjectId, memberObjectId);
         }
 
-        public Guid GetObjectId(ADObjectFilterOptions options)
+        public string GetObjectId(ADObjectFilterOptions options)
         {
-            Guid principalId;
-            if (options != null && options.Id != null
-                && Guid.TryParse(options.Id, out principalId))
+            string principalId = null;
+            if (options != null && options.Id != null)
             {
                 // do nothing, we have parsed the guid
             }

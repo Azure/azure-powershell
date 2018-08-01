@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 PSADServicePrincipal servicePrincipal = null;
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = InputObject.Id;
+                    ObjectId = Guid.Parse(InputObject.Id);
                 }
 
                 if (!this.IsParameterBound(c => c.ObjectId) && ObjectId != Guid.Empty)
@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                         throw new ArgumentException(string.Format("Could not find a service principal with the name {0}.", ServicePrincipalName));
                     }
 
-                    ObjectId = result.Select(s => s.Id).FirstOrDefault();
+                    ObjectId = Guid.Parse(result.Select(s => s.Id).FirstOrDefault());
                 }
 
 

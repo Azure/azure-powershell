@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
         public string Type { get; set; }
 
-        public Guid ApplicationId { get; set; }
+        public string ApplicationId { get; set; }
 
         public bool AvailableToOtherTenants { get; set; }
 

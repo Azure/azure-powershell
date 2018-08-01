@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.ApplicationObject))
                 {
-                    ApplicationId = ApplicationObject.ApplicationId;
+                    ApplicationId = Guid.Parse(ApplicationObject.ApplicationId);
                 }
 
                 if (this.IsParameterBound(c => c.ObjectId))

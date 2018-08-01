@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = user.DisplayName,
-                Id = new Guid(user.ObjectId)
+                Id = user.ObjectId
             };
         }
 
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId)
+                Id = group.ObjectId
             };
         }
 
@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 return new PSADUser()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     UserPrincipalName = obj.UserPrincipalName
                 };
@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 {
                     DisplayName = obj.DisplayName,
                     Type = obj.ObjectType,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     SecurityEnabled = obj.SecurityEnabled,
                     MailNickname = obj.Mail
                 };
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 return new PSADServicePrincipal()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType,
                     ServicePrincipalNames = obj.ServicePrincipalNames.ToArray()
                 };
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                 return new PSADObject()
                 {
                     DisplayName = obj.DisplayName,
-                    Id = new Guid(obj.ObjectId),
+                    Id = obj.ObjectId,
                     Type = obj.ObjectType
                 };
             }
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADObject()
             {
                 DisplayName = obj.DisplayName,
-                Id = new Guid(obj.ObjectId)
+                Id = obj.ObjectId
             };
         }
 
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADUser()
             {
                 DisplayName = user.DisplayName,
-                Id = new Guid(user.ObjectId),
+                Id = user.ObjectId,
                 UserPrincipalName = user.UserPrincipalName,
                 Type = user.ObjectType
             };
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADGroup()
             {
                 DisplayName = group.DisplayName,
-                Id = new Guid(group.ObjectId),
+                Id = group.ObjectId,
                 SecurityEnabled = group.SecurityEnabled,
                 Type = group.ObjectType,
                 MailNickname = group.Mail
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             return new PSADServicePrincipal()
             {
                 DisplayName = servicePrincipal.DisplayName,
-                Id = new Guid(servicePrincipal.ObjectId),
+                Id = servicePrincipal.ObjectId,
                 ApplicationId = Guid.Parse(servicePrincipal.AppId),
                 ServicePrincipalNames = servicePrincipal.ServicePrincipalNames.ToArray(),
                 Type = servicePrincipal.ObjectType
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
                     ObjectId = Guid.Parse(application.ObjectId),
                     DisplayName = application.DisplayName,
                     Type = application.ObjectType,
-                    ApplicationId = Guid.Parse(application.AppId),
+                    ApplicationId = application.AppId,
                     IdentifierUris = application.IdentifierUris,
                     HomePage = application.Homepage,
                     ReplyUrls = application.ReplyUrls,

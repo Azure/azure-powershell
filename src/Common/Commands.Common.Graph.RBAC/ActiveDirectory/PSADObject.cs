@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
     {
         public string DisplayName { get; set; }
 
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Type { get; set; }
     }
