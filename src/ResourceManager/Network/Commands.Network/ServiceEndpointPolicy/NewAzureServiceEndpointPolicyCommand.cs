@@ -86,8 +86,7 @@ namespace Microsoft.Azure.Commands.Network
 
             if (ServiceEndpointPolicyDefinition != null)
             {
-                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointDefinition;
-
+                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointPolicyDefinition;
             }
 
             var  serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(serviceEndpointPolicy);
