@@ -33,24 +33,54 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         /// This queue is used by the tests to assign fixed role assignment
         /// names every time the test runs.
         /// </summary>
-        public static Queue<Guid> RoleAssignmentNames { get; set; }
+        public static Queue<Guid> RoleAssignmentNames
+        {
+            get
+            {
+                lock(_roleAssignmentLock)
+                {
+                    if (_roleAssignmentNames == null)
+                    {
+                        _roleAssignmentNames = new Queue<Guid>();
+                    }
+
+                    return _roleAssignmentNames;
+                }
+            }
+        }
+
+        private static Queue<Guid> _roleAssignmentNames;
+        private static object _roleAssignmentLock = new object();
 
         /// <summary>
         /// This queue is used by the tests to assign fixed role definition
         /// names every time the test runs.
         /// </summary>
-        public static Queue<Guid> RoleDefinitionNames { get; set; }
+        public static Queue<Guid> RoleDefinitionNames
+        {
+            get
+            {
+                lock (_roleDefinitionLock)
+                {
+                    if (_roleDefinitionNames == null)
+                    {
+                        _roleDefinitionNames = new Queue<Guid>();
+                    }
+
+                    return _roleDefinitionNames;
+                }
+            }
+        }
+
+        private static Queue<Guid> _roleDefinitionNames;
+        private static object _roleDefinitionLock = new object();
 
 
         public IAuthorizationManagementClient AuthorizationManagementClient { get; set; }
 
         public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
 
-        static AuthorizationClient()
-        {
-            RoleAssignmentNames = new Queue<Guid>();
-            RoleDefinitionNames = new Queue<Guid>();
-        }
+        static AuthorizationClient() {}
 
         /// <summary>
         /// Creates AuthorizationClient using AzureContext instance.
