@@ -12,40 +12,39 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using Microsoft.Azure.Commands.Network.Models;
+using System.Management.Automation;
+
 namespace Microsoft.Azure.Commands.Network
 {
-    using Microsoft.Azure.Commands.Network.Models;
-    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-    using System.Management.Automation;
-
-    [Cmdlet(VerbsCommon.Get, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
-    public class GetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmServiceEndpointPolicyDefinition", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSServiceEndpointPolicyDefinition))]
+    public class NewAzureServiceEndpointPolicyDefinitionCommand : AzureServiceEndpointPolicyDefinitionBase
     {
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of the service endpoint policy")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.",
-           ParameterSetName = "ExpandScaleSetIp")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
+        public override string Name { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            if (!string.IsNullOrEmpty(this.Name))
+            PSServiceEndpointPolicyDefinition serviceEndpointPolicyDefinition = new PSServiceEndpointPolicyDefinition();
+            serviceEndpointPolicyDefinition.Name = this.Name;
+            serviceEndpointPolicyDefinition.Description = this.Description;
+            serviceEndpointPolicyDefinition.Service = this.Service;
+            serviceEndpointPolicyDefinition.serviceResources = new List<string>();
+
+            foreach (string resource in this.ServiceResource)
             {
-                PSServiceEndpointPolicy serviceEndpointPolicy;
-                serviceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
-                WriteObject(serviceEndpointPolicy);
+                serviceEndpointPolicyDefinition.serviceResources.Add(resource);
             }
+
+            WriteObject(serviceEndpointPolicyDefinition);
         }
+
     }
 }

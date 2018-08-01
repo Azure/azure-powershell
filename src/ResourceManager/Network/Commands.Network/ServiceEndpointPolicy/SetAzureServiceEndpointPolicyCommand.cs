@@ -12,20 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicies
+namespace Microsoft.Azure.Commands.Network
 {
     using Microsoft.Azure.Commands.Network.Models;
     using System;
     using System.Management.Automation;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmPublicIpAddress"), OutputType(typeof(PSPublicIpAddress))]
-    class SetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.Set, "AzureRmServiceEndpointPolicy"), OutputType(typeof(PSServiceEndpointPolicy))]
+    public class SetAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The PublicIpAddress")]
+            HelpMessage = "The ServiceEndpointPolicy")]
         public PSServiceEndpointPolicy ServiceEndpointPolicy { get; set; }
 
         public override void Execute()

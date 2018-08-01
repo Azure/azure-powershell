@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicies
+namespace Microsoft.Azure.Commands.Network
 {
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet(VerbsCommon.Remove, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true)]
-    class RemoveAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
+    public class RemoveAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,

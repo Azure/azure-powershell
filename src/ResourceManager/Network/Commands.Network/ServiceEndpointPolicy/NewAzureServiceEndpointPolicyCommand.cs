@@ -12,7 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicies
+namespace Microsoft.Azure.Commands.Network
 {
     using System;
     using System.Collections.Generic;
@@ -24,9 +24,8 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicie
     using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
     using MNM = Microsoft.Azure.Management.Network.Models;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpAddress", SupportsShouldProcess = true),
-    OutputType(typeof(PSServiceEndpointPolicy))]
-    class NewAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
+    [Cmdlet(VerbsCommon.New, "AzureRmServiceEndpointPolicy", SupportsShouldProcess = true), OutputType(typeof(PSServiceEndpointPolicy))]
+    public class NewAzureServiceEndpointPolicyCommand : ServiceEndpointPolicyBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicie
             Mandatory = false,
             HelpMessage = "List of service endpoint definitions")]
         [ValidateNotNullOrEmpty]
-        public List<PSServiceEndpointPolicyDefinition> ServiceEndpointDefinitions { get; set; }
+        public List<PSServiceEndpointPolicyDefinition> ServiceEndpointPolicyDefinition { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -47,6 +46,13 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicie
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public virtual string ResourceGroupName { get; set; }
+
+        [Parameter(
+         Mandatory = true,
+         ValueFromPipelineByPropertyName = true,
+         HelpMessage = "location.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -75,15 +81,17 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetwork.ServiceEndpointPolicie
         {
             PSServiceEndpointPolicy serviceEndpointPolicy = new PSServiceEndpointPolicy();
             serviceEndpointPolicy.Name = this.Name;
+            serviceEndpointPolicy.ResourceGroupName = this.ResourceGroupName;
+            serviceEndpointPolicy.Location = this.Location;
 
-            if (ServiceEndpointDefinitions != null)
+            if (ServiceEndpointPolicyDefinition != null)
             {
-                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointDefinitions;
+                serviceEndpointPolicy.ServiceEndpointPolicyDefinition = this.ServiceEndpointPolicyDefinition;
             }
 
             var  serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(serviceEndpointPolicy);
 
-            this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel);
+            this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel).GetAwaiter().GetResult();
 
             var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
 
