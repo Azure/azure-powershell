@@ -34,7 +34,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Test-AzsMoveSubscription
 {
-	[CmdletBinding(DefaultParameterSetName='Subscriptions_MoveSubscriptions')]
+	[CmdletBinding(DefaultParameterSetName='Subscriptions_ValidateMoveSubscriptions')]
 	param(    
 		[Parameter(Mandatory = $false)]
 		[System.String]
