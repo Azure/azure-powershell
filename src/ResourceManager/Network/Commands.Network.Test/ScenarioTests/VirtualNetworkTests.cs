@@ -106,7 +106,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualNetworkSubnetServiceEndpointPolicies()
         {
-            NetworkResourcesController.NewInstance.RunPsTest("Test-VirtualNetworkSubnetServiceEndpointPolicies");
+            NetworkResourcesController.NewInstance.RunPsTest(_logger, "Test-VirtualNetworkSubnetServiceEndpointPolicies");
         }
     }
 }

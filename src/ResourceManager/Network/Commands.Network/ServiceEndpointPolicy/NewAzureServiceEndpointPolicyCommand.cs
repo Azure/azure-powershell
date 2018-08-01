@@ -81,28 +81,17 @@ namespace Microsoft.Azure.Commands.Network
         {
             PSServiceEndpointPolicy serviceEndpointPolicy = new PSServiceEndpointPolicy();
             serviceEndpointPolicy.Name = this.Name;
-<<<<<<< HEAD
             serviceEndpointPolicy.ResourceGroupName = this.ResourceGroupName;
             serviceEndpointPolicy.Location = this.Location;
 
             if (ServiceEndpointPolicyDefinition != null)
             {
-                serviceEndpointPolicy.ServiceEndpointPolicyDefinition = this.ServiceEndpointPolicyDefinition;
-=======
-
-            if (ServiceEndpointDefinitions != null)
-            {
-                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointDefinitions;
->>>>>>> Powershell changes for service endpointpolicies
+                serviceEndpointPolicy.ServiceEndpointPolicyDefinitions = this.ServiceEndpointPolicyDefinition;
             }
 
             var  serviceEndpointPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ServiceEndpointPolicy>(serviceEndpointPolicy);
 
-<<<<<<< HEAD
             this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel).GetAwaiter().GetResult();
-=======
-            this.ServiceEndpointPolicyClient.CreateOrUpdateWithHttpMessagesAsync(this.ResourceGroupName, this.Name, serviceEndpointPolicyModel);
->>>>>>> Powershell changes for service endpointpolicies
 
             var getServiceEndpointPolicy = this.GetServiceEndpointPolicy(this.ResourceGroupName, this.Name);
 
