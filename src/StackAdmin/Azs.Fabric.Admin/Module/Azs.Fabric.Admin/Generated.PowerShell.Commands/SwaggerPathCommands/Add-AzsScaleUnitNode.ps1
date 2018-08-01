@@ -25,7 +25,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 #>
 function Add-AzsScaleUnitNode
 {
-    [CmdletBinding(DefaultParameterSetName='ScaleUnits_ScaleOut')]
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParameters[]]
