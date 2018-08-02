@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMSqlServerExtension",DefaultParameterSetName = GetSqlServerExtensionParamSetName),OutputType(typeof(VirtualMachineSqlServerExtensionContext))]
     public class GetAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMSqlServerExtension")]
+#endif
     {
         protected const string GetSqlServerExtensionParamSetName = "GetSqlServerExtension";
         protected const string SqlConfigurationSubStatusCode = "ComponentStatus/SQL Configuration/succeeded";
@@ -206,3 +209,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

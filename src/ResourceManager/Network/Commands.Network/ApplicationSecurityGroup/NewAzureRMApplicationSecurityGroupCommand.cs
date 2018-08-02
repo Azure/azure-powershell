@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(PSApplicationSecurityGroup))]
     public partial class NewAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationSecurityGroup")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -125,3 +128,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","IpsecPolicy"), OutputType(typeof(PSIpsecPolicy))]
     public class NewAzureRmIpsecPolicyCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmIpsecPolicy")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

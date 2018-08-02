@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Remove","ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class RemoveAzureApiManagementRegion : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementRegion")]
+#endif
     {
         [Parameter(
             ValueFromPipeline = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

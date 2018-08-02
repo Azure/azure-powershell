@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Remove-ASRStorageClassificationMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrStorageClassificationMapping :
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrStorageClassificationMapping")]
+#endif
         SiteRecoveryCmdletBase
     {
         /// <summary>
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

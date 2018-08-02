@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayBackendAddressPool))]
     public class RemoveAzureApplicationGatewayBackendAddressPoolCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayBackendAddressPool")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

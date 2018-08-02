@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Get","IotHub", DefaultParameterSetName = "ListIotHubsByResourceGroup")]
     [OutputType(typeof(PSIotHub))]
     public class GetAzureRmIotHub : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHub")]
+#endif
     {
         const string GetIotHubParameterSet = "GetIotHubByName";
         const string ListIotHubsByRGParameterSet = "ListIotHubsByResourceGroup";
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

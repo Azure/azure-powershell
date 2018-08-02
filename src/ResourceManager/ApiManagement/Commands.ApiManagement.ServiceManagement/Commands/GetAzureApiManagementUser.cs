@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Get","ApiManagementUser", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementUser))]
     public class GetAzureApiManagementUser : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementUser")]
+#endif
     {
         private const string GetAll = "GeAllUsers";
         private const string GetById = "GetByUserId";
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

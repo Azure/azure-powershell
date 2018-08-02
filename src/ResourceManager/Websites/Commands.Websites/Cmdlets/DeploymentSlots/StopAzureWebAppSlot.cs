@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Stop","WebAppSlot"), OutputType(typeof(Site))]
     public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmWebAppSlot")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

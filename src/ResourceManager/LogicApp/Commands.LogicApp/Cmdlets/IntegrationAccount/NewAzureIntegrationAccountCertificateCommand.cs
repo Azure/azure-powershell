@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("New","IntegrationAccountCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountCertificate))]
     public class NewAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmIntegrationAccountCertificate")]
+#endif
     {
 
         #region Input Parameters
@@ -148,3 +151,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

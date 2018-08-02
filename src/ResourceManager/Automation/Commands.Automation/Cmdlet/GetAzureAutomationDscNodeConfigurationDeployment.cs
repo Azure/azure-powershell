@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationDscNodeConfigurationDeployment", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfigurationDeployment))]
     public class GetAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationDscNodeConfigurationDeployment")]
+#endif
     {
         /// <summary>
         /// Gets or sets the job id.
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

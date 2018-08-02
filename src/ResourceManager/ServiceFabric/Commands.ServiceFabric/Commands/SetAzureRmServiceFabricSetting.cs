@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Set","ServiceFabricSetting", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class SetAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceFabricSetting")]
+#endif
     {            
         public override void ExecuteCmdlet()
         {
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }               
     }
 }
+

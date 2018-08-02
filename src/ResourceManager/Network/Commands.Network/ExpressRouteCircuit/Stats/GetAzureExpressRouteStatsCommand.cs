@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCircuitStats"), OutputType(typeof(PSExpressRouteCircuitStats))]
     public class GetAzureExpressRouteCircuitStatsCommand : NetworkBaseCmdlet		
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitStats")]
+#endif
     {	
         [Parameter(		
             Mandatory = true,		
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.Network
         }		
     }		
 }
+

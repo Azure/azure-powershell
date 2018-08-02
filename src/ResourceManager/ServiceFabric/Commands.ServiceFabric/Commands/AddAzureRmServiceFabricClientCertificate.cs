@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Add","ServiceFabricClientCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class AddAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmServiceFabricClientCertificate")]
+#endif
     {
         [Parameter(Mandatory = false, ValueFromPipeline = true, ParameterSetName = SingleUpdateWithThumbprintSet,
                    HelpMessage = "Client authentication type")]
@@ -90,3 +93,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }  
     }
 }
+

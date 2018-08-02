@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","VpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
     public class AddAzureVpnClientRootCertificateCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVpnClientRootCertificate")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

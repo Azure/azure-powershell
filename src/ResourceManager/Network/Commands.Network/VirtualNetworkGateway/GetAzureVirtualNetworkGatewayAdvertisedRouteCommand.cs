@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VirtualNetworkGatewayAdvertisedRoute"), OutputType(typeof(PSGatewayRoute))]
     public class GetVirtualNetworkGatewayAdvertisedRouteCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkGatewayAdvertisedRoute")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Update-ASRMobilityService")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmRecoveryServicesAsrMobilityService")]
+#endif
     {
         /// <summary>
         ///     Gets or sets te run as account ID to be used to push the update.
@@ -141,3 +144,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+

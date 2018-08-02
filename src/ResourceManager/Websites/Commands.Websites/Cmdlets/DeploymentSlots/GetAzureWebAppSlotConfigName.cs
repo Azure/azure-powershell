@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet("Get","WebAppSlotConfigName")]
     [OutputType(typeof(SlotConfigNamesResource))]
     public class GetAzureWebAppSlotConfigName : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppSlotConfigName")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -29,3 +32,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("New","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmDataLakeStoreAccount")]
+#endif
     {
         internal const string BaseParameterSetName = "UserOrSystemAssignedEncryption";
         internal const string  EncryptionDisabledParameterSetName = "DisableEncryption";
@@ -216,3 +219,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

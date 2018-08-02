@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 {
     [Cmdlet("Get","PowerBIWorkspaceCollectionAccessKeys"), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     public class GetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmPowerBIWorkspaceCollectionAccessKeys")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+

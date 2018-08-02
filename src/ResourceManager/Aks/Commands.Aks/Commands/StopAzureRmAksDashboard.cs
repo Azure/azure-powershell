@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Aks
     [Cmdlet("Stop","AksDashboard")]
     [OutputType(typeof(bool))]
     public class StopAzureRmAksDashboard : KubeCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmAksDashboard")]
+#endif
     {
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -51,3 +54,4 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+

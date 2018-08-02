@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Stop","RecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet,SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmRecoveryServicesBackupJob")]
+#endif
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -93,3 +96,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

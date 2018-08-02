@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Aks
     [Cmdlet("Import","AksCredential", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(string))]
     public class ImportAzureRmAksCredential : KubeCmdletBase
+#if NETSTANDARD
+    [Alias("Import-AzureRmAksCredential")]
+#endif
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";
@@ -247,3 +250,4 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+

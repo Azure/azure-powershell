@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Start","WebApp"), OutputType(typeof(Site))]
     public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmWebApp")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -34,3 +37,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

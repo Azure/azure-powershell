@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Set","ApiManagementGroup")]
     [OutputType(typeof(PsApiManagementGroup))]
     public class SetAzureApiManagementGroup : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementGroup")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

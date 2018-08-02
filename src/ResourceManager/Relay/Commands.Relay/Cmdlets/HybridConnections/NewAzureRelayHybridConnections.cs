@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
     /// </summary>
     [Cmdlet("New","RelayHybridConnection", SupportsShouldProcess = true), OutputType(typeof(HybridConnectionAttibutes))]
     public class NewAzureRmRelayHybridConnection : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRelayHybridConnection")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnection
         }
     }
 }
+

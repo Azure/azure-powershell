@@ -20,9 +20,12 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Set","AzureKeyVaultManagedStorageSasDefinition",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageSasDefinition", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType( typeof( PSKeyVaultManagedStorageSasDefinition ) )]
     public class SetAzureKeyVaultManagedStorageSasDefinition : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureKeyVaultManagedStorageSasDefinition")]
+#endif
     {
         #region Parameter Set Names
 
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

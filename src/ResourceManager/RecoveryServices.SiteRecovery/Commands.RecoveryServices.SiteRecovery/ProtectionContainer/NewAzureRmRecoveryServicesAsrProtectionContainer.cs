@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRProtectionContainer")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrProtectionContainer")]
+#endif
     {
         #region Parameters
         /// <summary>
@@ -89,3 +92,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

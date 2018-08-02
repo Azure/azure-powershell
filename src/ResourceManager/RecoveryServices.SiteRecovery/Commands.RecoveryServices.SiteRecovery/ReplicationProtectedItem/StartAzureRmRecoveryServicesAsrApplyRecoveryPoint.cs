@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Start-ASRApplyRecoveryPoint")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrApplyRecoveryPoint : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureRmRecoveryServicesAsrApplyRecoveryPoint")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the recovery point object corresponding to the recovery point to be applied.
@@ -194,3 +197,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion local parameters
     }
 }
+

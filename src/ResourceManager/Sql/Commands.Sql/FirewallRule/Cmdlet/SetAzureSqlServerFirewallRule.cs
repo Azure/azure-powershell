@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServerFirewallRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
     public class SetAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerFirewallRule")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql Database Server Firewall Rule
@@ -93,3 +96,4 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         }
     }
 }
+

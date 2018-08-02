@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Get","IotHubJob")]
     [OutputType(typeof(PSIotHubJobResponse))]
     public class GetAzureRmIotHubJob : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubJob")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

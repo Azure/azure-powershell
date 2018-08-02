@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("Remove","DnsRecordSet", SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RemoveAzureDnsRecordSet : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDnsRecordSet")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = "Fields", HelpMessage = "The name of the records in the record set (relative to the name of the zone and without a terminating dot).")]
         [Parameter(Mandatory = true, ParameterSetName = "Mixed")]
@@ -137,3 +140,4 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+

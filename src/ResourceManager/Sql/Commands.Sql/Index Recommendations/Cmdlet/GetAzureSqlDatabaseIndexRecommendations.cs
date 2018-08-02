@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     [Cmdlet("Get","SqlDatabaseIndexRecommendations", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(IndexRecommendation))]
     public class GetAzureSqlDatabaseIndexRecommendations : AzureSqlCmdletBase<IEnumerable<IndexRecommendation>, AzureSqlDatabaseIndexRecommendationAdapter>
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseIndexRecommendations")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -111,3 +114,4 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         }
     }
 }
+

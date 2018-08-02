@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [OutputType(typeof(PSCertificateDescription))]
     [Alias("Set-AzureRmIotHubVC")]
     public class SetAzureRmIotHubVerifiedCertificate : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmIotHubVerifiedCertificate")]
+#endif
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -163,3 +166,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

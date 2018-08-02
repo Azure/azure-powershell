@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(
         typeof(VirtualMachineCustomScriptExtensionContext))]
     public class GetAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMCustomScriptExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -100,3 +103,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Add","ImageDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class AddAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmImageDataDisk")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -128,3 +131,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

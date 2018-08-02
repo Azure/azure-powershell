@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// </summary>
     [Cmdlet("Set","ServiceBusTopic", SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class SetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceBusTopic")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         }
     }
 }
+

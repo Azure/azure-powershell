@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// </summary>
     [Cmdlet("Get","ServiceBusNamespace"), OutputType(typeof(PSNamespaceAttributes))]
     public class GetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusNamespace")]
+#endif
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+

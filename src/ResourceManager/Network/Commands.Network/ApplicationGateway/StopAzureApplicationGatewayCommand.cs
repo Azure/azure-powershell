@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Stop","ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class StopAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmApplicationGateway")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

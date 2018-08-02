@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Set","VMSqlServerExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMSqlServerExtension")]
+#endif
     {
         /// <summary>
         /// The specific version of the SqlServer extension that Set-AzureRmVMSqlServerExtension will
@@ -204,3 +207,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

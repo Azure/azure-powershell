@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Remove","IntegrationAccountCertificate", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIntegrationAccountCertificate")]
+#endif
     {
 
         #region Input Paramters
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Get-ASRAlertSetting")]
     [OutputType(typeof(ASRAlertSetting))]
     public class GetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrAlertSetting")]
+#endif
     {
         /// <summary>
         ///     ProcessRecord of the command.
@@ -42,3 +45,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

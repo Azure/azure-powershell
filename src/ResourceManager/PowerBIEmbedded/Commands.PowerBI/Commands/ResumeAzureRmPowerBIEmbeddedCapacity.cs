@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.PowerBI
 {
     [Cmdlet("Resume","PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class ResumeAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
+#if NETSTANDARD
+    [Alias("Resume-AzureRmPowerBIEmbeddedCapacity")]
+#endif
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
         protected const string ObjectParameterSet = "ByInputObject";
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+

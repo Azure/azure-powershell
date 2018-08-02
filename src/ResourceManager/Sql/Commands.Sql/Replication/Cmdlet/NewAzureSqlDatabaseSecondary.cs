@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// </summary>
     [Cmdlet("New","SqlDatabaseSecondary",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureReplicationLinkModel))]
     public class NewAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlDatabaseSecondary")]
+#endif
     {
         private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
         private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
@@ -229,3 +232,4 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
     }
 }
+

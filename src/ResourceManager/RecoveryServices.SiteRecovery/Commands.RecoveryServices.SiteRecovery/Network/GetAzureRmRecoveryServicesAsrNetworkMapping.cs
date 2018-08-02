@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRNetworkMapping")]
     [OutputType(typeof(ASRNetworkMapping))]
     public class GetAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrNetworkMapping")]
+#endif
     {
         /// <summary>
         ///     Gets or sets name of the ASR network mapping object to get.
@@ -167,3 +170,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

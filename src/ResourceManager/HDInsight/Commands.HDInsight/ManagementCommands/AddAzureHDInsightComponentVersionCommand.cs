@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Add","HDInsightComponentVersion",SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightComponentVersionCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightComponentVersion")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

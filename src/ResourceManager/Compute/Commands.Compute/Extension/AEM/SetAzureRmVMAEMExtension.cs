@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Set","VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMAEMExtension")]
+#endif
     {
         private AEMHelper _Helper = null;
 
@@ -528,3 +531,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

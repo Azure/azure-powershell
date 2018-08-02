@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// </summary>
     [Cmdlet("Get","ServiceBusKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSListKeysAttributes))]
     public class GetAzureServiceBusKey : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusKey")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -88,3 +91,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
     }
 }
+

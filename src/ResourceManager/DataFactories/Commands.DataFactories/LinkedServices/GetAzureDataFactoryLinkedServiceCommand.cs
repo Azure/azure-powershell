@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactoryLinkedService", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSLinkedService))]
     public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryLinkedService")]
+#endif
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory object.")]
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

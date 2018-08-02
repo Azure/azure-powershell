@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New","HDInsightHiveJobDefinition"),OutputType(typeof(AzureHDInsightHiveJobDefinition))]
     public class NewAzureHDInsightHiveJobDefinitionCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmHDInsightHiveJobDefinition")]
+#endif
     {
         private AzureHDInsightHiveJobDefinition job;
 
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

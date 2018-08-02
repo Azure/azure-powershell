@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public partial class RemoveAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationSecurityGroup")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

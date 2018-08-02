@@ -21,8 +21,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Set","AzureBatchComputeNodeUser"), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeUser"), OutputType(typeof(void))]
     public class SetBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureBatchComputeNodeUser")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true,
             HelpMessage = "The id of the pool containing the compute node.")]
@@ -59,3 +62,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

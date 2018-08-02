@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     [Cmdlet("New","ContainerGroup", SupportsShouldProcess = true, DefaultParameterSetName = CreateContainerGroupBaseParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class NewAzureContainerGroupCommand : ContainerInstanceCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmContainerGroup")]
+#endif
     {
         protected const string CreateContainerGroupBaseParamSet = "CreateContainerGroupBaseParamSet";
         protected const string CreateContainerGroupWithAzureFileVolumeParamSet = "CreateContainerGroupWithAzureFileMountParamSet";
@@ -222,3 +225,4 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         }
     }
 }
+

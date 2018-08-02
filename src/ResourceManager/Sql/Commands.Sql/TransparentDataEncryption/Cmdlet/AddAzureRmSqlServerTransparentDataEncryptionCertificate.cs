@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     [Cmdlet("Add","SqlServerTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlServerTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlServerTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
+#if NETSTANDARD
+    [Alias("Add-AzureRmSqlServerTransparentDataEncryptionCertificate")]
+#endif
     {
         private const string PrivateBlobHelpText =
             "The Private blob for Transparent Data Encryption Certificate. For detailed instructions on how to generate the blob go to https://aka.ms/tdecertprep";
@@ -218,3 +221,4 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         protected override bool WriteResult() { return PassThru; }
     }
 }
+

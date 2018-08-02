@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Update-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmRecoveryServicesAsrPolicy")]
+#endif
     {
         /// <summary>
         ///    Switch parameter indicating that the specfied policy is used to replicate VMware virtual machines to Azure.
@@ -814,3 +817,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion Private
     }
 }
+

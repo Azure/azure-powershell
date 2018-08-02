@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
 {
     [Cmdlet("Save","Vhd"), OutputType(typeof(VhdDownloadContext))]
     public class SaveAzureVhdCommand : ComputeClientBaseCmdlet
+#if NETSTANDARD
+    [Alias("Save-AzureRmVhd")]
+#endif
     {
         private const int DefaultNumberOfUploaderThreads = 8;
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSetName";
@@ -151,3 +154,4 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         }
     }
 }
+

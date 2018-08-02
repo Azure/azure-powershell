@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// The Get-AzureKeyVaultCertificate cmdlet gets the certificates in an Azure Key Vault or the current version of the certificate.
     /// </summary>
-    [Cmdlet("Get","AzureKeyVaultCertificate",        DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateIdentityItem), typeof(PSKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificate), typeof(PSDeletedKeyVaultCertificateIdentityItem))]
     public class GetAzureKeyVaultCertificate : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureKeyVaultCertificate")]
+#endif
     {
         #region Parameter Set Names
 
@@ -285,3 +288,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

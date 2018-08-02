@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Join","DataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Join-AdlStoreItem")]
     public class JoinAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Join-AzureRmDataLakeStoreItem")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

@@ -23,8 +23,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet("New","AnalysisServicesFirewallRule"), OutputType(typeof(PsAzureAnalysisServicesFirewallRule))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesFirewallRule"), OutputType(typeof(PsAzureAnalysisServicesFirewallRule))]
     public class NewAzureRmAnalysisServicesFirewallRule : AnalysisServicesCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmAnalysisServicesFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of firewall rule")]
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+

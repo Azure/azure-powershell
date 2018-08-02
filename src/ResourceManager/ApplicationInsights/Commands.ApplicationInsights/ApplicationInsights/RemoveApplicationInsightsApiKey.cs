@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
     [Cmdlet("Remove","ApplicationInsightsApiKey", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveApplicationComponentInsightsApiKey : ApplicationInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationInsightsApiKey")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+

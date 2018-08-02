@@ -18,8 +18,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Stop","AzureBatchCertificateDeletion"), OutputType(typeof(void))]
+    [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchCertificateDeletion"), OutputType(typeof(void))]
     public class StopBatchCertificateDeletionCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureBatchCertificateDeletion")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The algorithm used to derive the Thumbprint parameter. This must be sha1.")]
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

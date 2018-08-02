@@ -23,9 +23,12 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet("Suspend","AnalysisServicesServer",SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
+    [Cmdlet("Suspend", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Suspend-AzureAs")]
     public class SuspendAzureAnalysisServicesServer : AnalysisServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Suspend-AzureRmAnalysisServicesServer")]
+#endif
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+

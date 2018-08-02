@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Resources
     [Cmdlet("Get","ProviderOperation"), OutputType(typeof(PSResourceProviderOperation))]
     [Alias("Get-AzureRmResourceProviderAction")]
     public class GetAzureProviderOperationCommand : ResourcesBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmProviderOperation")]
+#endif
     {
         private const string WildCardCharacter = "*";
         private static readonly char Separator = '/';
@@ -172,3 +175,4 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+

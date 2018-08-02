@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// </summary>
     [Cmdlet("Get","RelayOperation"), OutputType(typeof(OperationAttributes))]
     public class GetAzureRmRelayOperation : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRelayOperation")]
+#endif
     {
         public override void ExecuteCmdlet()
             {       //Get Relay Operations List
@@ -34,3 +37,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+

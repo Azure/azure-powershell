@@ -111,6 +111,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","VmssSku", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSetSku))]
     public partial class GetAzureRmVmssSku : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmssSku")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -158,3 +161,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
     }
 }
+

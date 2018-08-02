@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [Cmdlet("Get","MlOpCluster")]
     [OutputType(typeof(PSOperationalizationCluster))]
     public class GetAzureRmMlOpCluster : MachineLearningComputeCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMlOpCluster")]
+#endif
     {
         protected const string GetByNameParameterSet = "GetByName";
 
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+

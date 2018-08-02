@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Set-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(PSCertificateResponse))]
     public class SetAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmIoTDeviceProvisioningServiceCertificate")]
+#endif
     {
         private const string ResourceParameterSet = "ResourceSet";
         private const string InputObjectParameterSet = "InputObjectSet";
@@ -168,3 +171,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

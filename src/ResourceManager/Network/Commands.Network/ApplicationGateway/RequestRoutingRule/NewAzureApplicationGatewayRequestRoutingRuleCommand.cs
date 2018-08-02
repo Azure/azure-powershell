@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayRequestRoutingRule"), OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class NewAzureApplicationGatewayRequestRoutingRuleCommand : AzureApplicationGatewayRequestRoutingRuleBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayRequestRoutingRule")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

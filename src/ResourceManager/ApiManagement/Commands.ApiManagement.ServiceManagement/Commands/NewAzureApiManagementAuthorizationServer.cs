@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("New","ApiManagementAuthorizationServer")]
     [OutputType(typeof(PsApiManagementOAuth2AuthrozationServer))]
     public class NewAzureApiManagementAuthorizationServer : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementAuthorizationServer")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -172,3 +175,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationAccount", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(AutomationAccount))]
     public class GetAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationAccount")]
+#endif
     {
         /// <summary>
         /// The automation client.
@@ -94,3 +97,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// </summary>
     [Cmdlet("Set","DiagnosticSetting", SupportsShouldProcess = true, DefaultParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmDiagnosticSetting")]
+#endif
     {
         internal const string SetAzureRmDiagnosticSettingOldParamGroup = "OldSetDiagnosticSetting";
         internal const string SetAzureRmDiagnosticSettingNewParamGroup = "NewSetDiagnosticSetting";
@@ -431,3 +434,4 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
     }
 }
+

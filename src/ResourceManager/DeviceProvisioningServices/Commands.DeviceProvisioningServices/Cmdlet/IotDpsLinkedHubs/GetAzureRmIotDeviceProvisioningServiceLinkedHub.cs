@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Get-AzureRmIoTDpsHub")]
     [OutputType(typeof(PSIotHubDefinitionDescription), typeof(PSIotHubDefinitions))]
     public class GetAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIoTDeviceProvisioningServiceLinkedHub")]
+#endif
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -127,3 +130,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

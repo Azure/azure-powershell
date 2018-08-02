@@ -29,6 +29,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
     /// </summary>
     [Cmdlet("Get","AzureStorageQueue", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageQueue))]
     public class GetAzureStorageQueueCommand : StorageQueueBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureStorageQueue")]
+#endif
     {
         /// <summary>
         /// default parameter set name
@@ -185,3 +188,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue
         }
     }
 }
+

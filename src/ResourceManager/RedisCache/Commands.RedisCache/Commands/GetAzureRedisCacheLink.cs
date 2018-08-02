@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
     [Cmdlet("Get","RedisCacheLink", DefaultParameterSetName = AllLinksForCacheSet), OutputType(typeof(PSRedisLinkedServer))]
     public class GetAzureRedisCacheLink : RedisCacheCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRedisCacheLink")]
+#endif
     {
         internal const string AllLinksForCacheSet = "AllLinksForCache";
         internal const string AllLinksForPrimaryCacheSet = "AllLinksForPrimaryCache";
@@ -144,3 +147,4 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+

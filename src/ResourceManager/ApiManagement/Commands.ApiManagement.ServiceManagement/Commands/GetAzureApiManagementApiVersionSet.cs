@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Get","ApiManagementApiVersionSet")]
     [OutputType(typeof(PsApiManagementApiVersionSet))]
     public class GetAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementApiVersionSet")]
+#endif
     {        
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

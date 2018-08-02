@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("Add","DnsRecordConfig"), OutputType(typeof(DnsRecordSet))]
     public class AddAzureDnsRecordConfig : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmDnsRecordConfig")]
+#endif
     {
         private const string ParameterSetCaa = "Caa";
 
@@ -188,3 +191,4 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+

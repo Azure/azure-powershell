@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Get","DataLakeStoreItemPermission"), OutputType(typeof(string))]
     [Alias("Get-AdlStoreItemPermission")]
     public class GetAzureDataLakeStoreItemPermission : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreItemPermission")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -41,3 +44,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

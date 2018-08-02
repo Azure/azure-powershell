@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Get","NetworkWatcher"), OutputType(typeof(PSNetworkWatcher))]
 
     public class GetAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkWatcher")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -107,3 +110,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

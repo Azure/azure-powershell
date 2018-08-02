@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
 {
     [Cmdlet("Get","VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(MNM.PSVpnProfile))]
     public class GetAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVpnClientConfiguration")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.Network.VirtualNetworkGateway
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Remove-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrServicesProvider")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the recovery services provider object corresponding to the 
@@ -88,3 +91,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

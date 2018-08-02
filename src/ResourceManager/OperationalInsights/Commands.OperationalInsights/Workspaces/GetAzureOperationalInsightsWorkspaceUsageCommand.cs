@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Get","OperationalInsightsWorkspaceUsage"), OutputType(typeof(PSUsageMetric))]
     public class GetAzureOperationalInsightsWorkspaceUsageCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsWorkspaceUsage")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -39,3 +42,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

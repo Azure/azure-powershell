@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Restart","WebAppSlot"), OutputType(typeof(Site))]
     public class RestartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Restart-AzureRmWebAppSlot")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// </summary>
     [Cmdlet("Get","AutoscaleHistory"), OutputType(typeof(PSEventData))]
     public class GetAzureRmAutoscaleHistoryCommand : LogsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutoscaleHistory")]
+#endif
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+

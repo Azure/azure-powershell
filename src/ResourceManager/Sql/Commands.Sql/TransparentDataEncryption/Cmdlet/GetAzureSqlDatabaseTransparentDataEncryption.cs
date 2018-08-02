@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     [Cmdlet("Get","SqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseTransparentDataEncryptionModel))]
     public class GetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseTransparentDataEncryption")]
+#endif
     {
         /// <summary>
         /// Gets a Transparent Data Encryption from the database.
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         }
     }
 }
+

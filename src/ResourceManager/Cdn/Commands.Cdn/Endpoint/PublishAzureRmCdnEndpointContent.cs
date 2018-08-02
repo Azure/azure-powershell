@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Publish","CdnEndpointContent", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class PublishAzureRmCdnEndpointContent : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Publish-AzureRmCdnEndpointContent")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

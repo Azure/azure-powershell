@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     [Cmdlet("Get","ContainerGroup", DefaultParameterSetName = ListContainerGroupParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class GetAzureContainerGroupCommand : ContainerInstanceCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerGroup")]
+#endif
     {
         protected const string GetContainerGroupInResourceGroupParamSet = "GetContainerGroupInResourceGroupParamSet";
         protected const string GetContainerGroupByResourceIdParamSet = "GetContainerGroupByResourceIdParamSet";
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.ContainerInstance
         }
     }
 }
+

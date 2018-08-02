@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Get","ContainerRegistryCredential", DefaultParameterSetName = NameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryCredential))]
     public class GetAzureContainerRegistryCredential : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerRegistryCredential")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

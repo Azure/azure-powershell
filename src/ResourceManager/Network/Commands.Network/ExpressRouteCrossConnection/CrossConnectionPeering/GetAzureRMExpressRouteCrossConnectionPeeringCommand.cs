@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCrossConnectionPeering"), OutputType(typeof(PSExpressRouteCrossConnectionPeering))]
     public partial class GetAzureRmExpressRouteCrossConnectionPeering : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCrossConnectionPeering")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -53,3 +56,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

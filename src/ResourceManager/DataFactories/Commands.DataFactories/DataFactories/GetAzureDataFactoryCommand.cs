@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactory"), OutputType(typeof(PSDataFactory))]
     public class GetAzureDataFactoryCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactory")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

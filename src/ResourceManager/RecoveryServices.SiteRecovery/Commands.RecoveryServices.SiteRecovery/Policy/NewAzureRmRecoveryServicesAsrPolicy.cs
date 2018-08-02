@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrPolicy")]
+#endif
     {
         /// <summary>
         ///    Switch parameter specifying that the replication policy being created will be used 
@@ -585,3 +588,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

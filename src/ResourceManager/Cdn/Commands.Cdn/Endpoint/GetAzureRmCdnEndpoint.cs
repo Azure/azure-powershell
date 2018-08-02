@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Get","CdnEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
     public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnEndpoint")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

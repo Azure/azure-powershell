@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         "New-AzureRmApiManagementCustomHostnameConfiguration cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementHostnameConfiguration")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -53,3 +56,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

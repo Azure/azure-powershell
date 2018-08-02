@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Get","WebAppPublishingProfile")]
     [OutputType(typeof(string))]
     public class GetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppPublishingProfile")]
+#endif
     {
         private const string DefaultFormat = "WebDeploy";
 
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// </summary>
     [Cmdlet("Get","ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
     public class GetServiceBusGeoDRConfiguration : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusGeoDRConfiguration")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("New","ApiManagementOperation")]
     [OutputType(typeof(PsApiManagementOperation))]
     public class NewAzureApiManagementOperation : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementOperation")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -125,3 +128,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

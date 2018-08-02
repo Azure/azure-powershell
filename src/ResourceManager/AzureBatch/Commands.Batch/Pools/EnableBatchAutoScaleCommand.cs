@@ -20,8 +20,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Enable","AzureBatchAutoScale"), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchAutoScale"), OutputType(typeof(void))]
     public class EnableBatchAutoScaleCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureBatchAutoScale")]
+#endif
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool to enable automatic scaling on.")]
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Unregister","RecoveryServicesBackupContainer",SupportsShouldProcess = true), OutputType(typeof(ContainerBase))]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
+#if NETSTANDARD
+    [Alias("Unregister-AzureRmRecoveryServicesBackupContainer")]
+#endif
         : RSBackupVaultCmdletBase
     {
         /// <summary>
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

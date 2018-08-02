@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Cmdlet("New","DataMigrationFileShare"), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
     [Alias("New-AzureRmDmsFileShare")]
     public class NewFileShare : DataMigrationCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataMigrationFileShare")]
+#endif
     {
         [Parameter(
                    Mandatory = true,
@@ -50,3 +53,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

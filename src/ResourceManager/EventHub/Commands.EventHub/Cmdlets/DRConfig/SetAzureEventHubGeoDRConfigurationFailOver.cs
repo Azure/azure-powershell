@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// </summary>
     [Cmdlet("Set","EventHubGeoDRConfigurationFailOver", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationFailOver : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventHubGeoDRConfigurationFailOver")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         }
     }
 }
+

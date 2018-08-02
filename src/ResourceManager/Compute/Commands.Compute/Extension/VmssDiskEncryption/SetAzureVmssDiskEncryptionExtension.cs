@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet("Set","VmssDiskEncryptionExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureDiskEncryptionExtensionConstants.aadClientSecretParameterSet)]
     [OutputType(typeof(PSVirtualMachineScaleSetExtension))]
     public class SetAzureVmssDiskEncryptionExtensionCommand : VirtualMachineScaleSetExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVmssDiskEncryptionExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -352,3 +355,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+

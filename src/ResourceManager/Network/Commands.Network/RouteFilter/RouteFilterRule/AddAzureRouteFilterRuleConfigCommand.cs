@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","RouteFilterRuleConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteFilter))]
     public class AddAzureRouteFilterRuleConfigCommand : AzureRouteFilterRuleConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmRouteFilterRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

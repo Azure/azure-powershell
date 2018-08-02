@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet("Send","Feedback"), OutputType(typeof(void))]
     public class SendFeedbackCommand : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Send-Feedback")]
+#endif
     {
         private const string _eventName = "feedback";
 
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+

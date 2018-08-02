@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.EventGrid
     /// </summary>
     [Cmdlet("Get","EventGridTopic",DefaultParameterSetName = ResourceGroupNameParameterSet),OutputType(typeof(PSTopic), typeof(PSTopicListInstance))]
     public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmEventGridTopic")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

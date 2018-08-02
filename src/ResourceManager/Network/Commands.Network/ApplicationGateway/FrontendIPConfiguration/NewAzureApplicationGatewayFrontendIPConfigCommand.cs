@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayFrontendIPConfig"), OutputType(typeof(PSApplicationGatewayFrontendIPConfiguration))]
     public class NewAzureApplicationGatewayFrontendIPConfigCommand : AzureApplicationGatewayFrontendIPConfigBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayFrontendIPConfig")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

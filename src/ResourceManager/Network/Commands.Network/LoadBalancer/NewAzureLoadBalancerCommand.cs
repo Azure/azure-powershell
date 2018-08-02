@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","LoadBalancer", SupportsShouldProcess = true),OutputType(typeof(PSLoadBalancer))]
     public class NewAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmLoadBalancer")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -193,3 +196,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

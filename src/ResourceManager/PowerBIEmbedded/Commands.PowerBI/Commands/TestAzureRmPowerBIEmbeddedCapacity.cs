@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.PowerBI
 {
     [Cmdlet("Test","PowerBIEmbeddedCapacity"), OutputType(typeof(bool))]
     public class TestAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
+#if NETSTANDARD
+    [Alias("Test-AzureRmPowerBIEmbeddedCapacity")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -36,3 +39,4 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+

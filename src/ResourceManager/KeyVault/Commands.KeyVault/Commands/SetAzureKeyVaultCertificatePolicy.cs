@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// Set-AzureKeyVaultCertificatePolicy sets the provided parameters on the
     /// policy for the Certificate object
     /// </summary>
-    [Cmdlet("Set","AzureKeyVaultCertificatePolicy",SupportsShouldProcess = true,DefaultParameterSetName = ExpandedRenewPercentageParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificatePolicy", SupportsShouldProcess = true,DefaultParameterSetName = ExpandedRenewPercentageParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
     public class SetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureKeyVaultCertificatePolicy")]
+#endif
     {
         #region Parameter Set Names
 
@@ -357,3 +360,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

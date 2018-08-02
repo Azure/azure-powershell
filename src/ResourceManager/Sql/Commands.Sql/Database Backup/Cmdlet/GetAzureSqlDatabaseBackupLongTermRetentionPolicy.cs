@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [Cmdlet("Get","SqlDatabaseBackupLongTermRetentionPolicy", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseBackupLongTermRetentionPolicyModel))]
     [Alias("Get-AzureRmSqlDatabaseLongTermRetentionPolicy")]
     public class GetAzureSqlDatabaseBackupLongTermRetentionPolicy : AzureSqlDatabaseBackupLongTermRetentionPolicyCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseBackupLongTermRetentionPolicy")]
+#endif
     {
         /// <summary>
         /// Gets or sets whether or not to use the Long Term Retention Vaults.
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

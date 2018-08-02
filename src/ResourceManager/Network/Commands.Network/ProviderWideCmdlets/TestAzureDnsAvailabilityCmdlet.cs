@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Test","DnsAvailability"), OutputType(typeof(bool))]
     public class TestAzureDnsAvailabilityCmdlet : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Test-AzureRmDnsAvailability")]
+#endif
     {
         [Alias("DomainQualifiedName")]
         [Parameter(
@@ -44,3 +47,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

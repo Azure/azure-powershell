@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Alias("Remove-AdlCatalogSecret")]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use Remove-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
     public class RemoveAzureDataLakeAnalyticsSecret : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataLakeAnalyticsCatalogSecret")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The account name that contains the catalog to remove the secret(s) from.")]
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

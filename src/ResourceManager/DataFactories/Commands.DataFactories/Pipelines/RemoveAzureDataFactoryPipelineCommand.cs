@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Remove","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryPipeline")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -69,3 +72,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

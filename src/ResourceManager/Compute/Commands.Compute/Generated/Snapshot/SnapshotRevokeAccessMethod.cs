@@ -99,6 +99,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Revoke","SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Revoke-AzureRmSnapshotAccess")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

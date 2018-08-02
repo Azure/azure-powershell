@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class RemoveAzureVMCommand : VirtualMachineActionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVM")]
+#endif
     {
         [Alias("ResourceName", "VMName")]
         [Parameter(
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

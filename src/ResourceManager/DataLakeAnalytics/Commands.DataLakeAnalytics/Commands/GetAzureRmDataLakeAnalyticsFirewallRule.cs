@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Get","DataLakeAnalyticsFirewallRule"), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
     [Alias("Get-AdlAnalyticsFirewallRule")]
     public class GetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeAnalyticsFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Analytics account to get the firewall rule from")]
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

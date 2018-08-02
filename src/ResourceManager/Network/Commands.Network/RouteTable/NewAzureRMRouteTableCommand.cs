@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","RouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class NewAzureRmRouteTable : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmRouteTable")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -140,3 +143,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

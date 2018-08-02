@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Get","NetworkWatcherConnectionMonitorReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorQueryResult))]
 
     public class GetAzureNetworkWatcherConnectionMonitorReportCommand : ConnectionMonitorBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkWatcherConnectionMonitorReport")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -144,3 +147,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

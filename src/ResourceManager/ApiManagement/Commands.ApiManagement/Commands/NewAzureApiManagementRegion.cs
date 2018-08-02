@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("New","ApiManagementRegion"), OutputType(typeof(PsApiManagementRegion))]
     public class NewAzureApiManagementRegion : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementRegion")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

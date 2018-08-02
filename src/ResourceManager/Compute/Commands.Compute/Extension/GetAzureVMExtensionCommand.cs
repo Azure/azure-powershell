@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Get","VMExtension")]
     [OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

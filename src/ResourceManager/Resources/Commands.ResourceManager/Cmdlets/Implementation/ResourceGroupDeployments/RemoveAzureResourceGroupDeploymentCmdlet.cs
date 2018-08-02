@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Remove","ResourceGroupDeployment", SupportsShouldProcess = true,DefaultParameterSetName = RemoveAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class RemoveAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmResourceGroupDeployment")]
+#endif
     {
         /// <summary>
         /// The deployment Id parameter set.
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

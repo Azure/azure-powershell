@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlServerAdvancedThreatProtectionPolicy"), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
     public class GetAzureSqlServerAdvancedThreatProtectionPolicy : SqlServerAdvancedThreatProtectionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerAdvancedThreatProtectionPolicy")]
+#endif
     {
         /// <summary>
         /// Provides the model element that this cmdlet operates on
@@ -43,3 +46,4 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         }
     }
 }
+

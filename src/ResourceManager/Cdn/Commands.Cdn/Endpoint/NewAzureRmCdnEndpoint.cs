@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("New","CdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
     public class NewAzureRmCdnEndpoint : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmCdnEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -157,3 +160,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

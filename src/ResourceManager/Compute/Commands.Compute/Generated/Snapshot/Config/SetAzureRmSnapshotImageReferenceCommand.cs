@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set","SnapshotImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public partial class SetAzureRmSnapshotImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmSnapshotImageReference")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

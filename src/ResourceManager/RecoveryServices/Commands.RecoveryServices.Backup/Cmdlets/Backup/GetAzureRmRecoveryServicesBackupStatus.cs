@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     [Cmdlet("Get","RecoveryServicesBackupStatus",DefaultParameterSetName = NameParamSet)]
     [OutputType(typeof(ResourceBackupStatus))]
     public class GetAzureRmRecoveryServicesBackupStatus : RecoveryServicesBackupCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupStatus")]
+#endif
     {
         const string NameParamSet = "Name";
         const string IdParamSet = "Id";
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

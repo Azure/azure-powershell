@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// </summary>
     [Cmdlet("Add","LogProfile", SupportsShouldProcess = true), OutputType(typeof(PSLogProfile))]
     public class AddAzureRmLogProfileCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmLogProfile")]
+#endif
     {
         private static readonly List<string> ValidCategories = new List<string> { "Delete", "Write", "Action" };
 
@@ -106,3 +109,4 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         }
     }
 }
+

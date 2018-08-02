@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
     [Cmdlet("Remove","VMChefExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMChefExtension")]
+#endif
     {
         private string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";
         private string ExtensionDefaultName = "ChefClient";
@@ -131,3 +134,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Chef
         }
     }
 }
+

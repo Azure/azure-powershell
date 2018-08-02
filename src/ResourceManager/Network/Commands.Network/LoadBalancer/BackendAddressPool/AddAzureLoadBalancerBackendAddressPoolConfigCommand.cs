@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerBackendAddressPoolConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerBackendAddressPoolConfigCommand : AzureLoadBalancerBackendAddressPoolConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmLoadBalancerBackendAddressPoolConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

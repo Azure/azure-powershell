@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Add","DataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
     [Alias("Add-AdlStoreTrustedIdProvider")]
     public class AddAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmDataLakeStoreTrustedIdProvider")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to add the trusted identity provider to")]
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

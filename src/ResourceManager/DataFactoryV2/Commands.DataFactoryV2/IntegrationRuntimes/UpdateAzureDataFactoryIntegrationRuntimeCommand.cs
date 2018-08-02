@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Update","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSSelfHostedIntegrationRuntimeStatus))]
     public class UpdateAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

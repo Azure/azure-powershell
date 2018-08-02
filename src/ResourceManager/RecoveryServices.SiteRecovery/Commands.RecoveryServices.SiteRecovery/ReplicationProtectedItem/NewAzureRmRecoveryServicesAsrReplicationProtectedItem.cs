@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#endif
     {
         /// <summary>
         ///    Switch parameter to specify the replicated item is a VMware virtual machine 
@@ -630,3 +633,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         private PSSiteRecoveryLongRunningOperation response;
     }
 }
+

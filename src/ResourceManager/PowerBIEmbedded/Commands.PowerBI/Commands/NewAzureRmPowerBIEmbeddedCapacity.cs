@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.PowerBI
 {
     [Cmdlet("New","PowerBIEmbeddedCapacity", SupportsShouldProcess = true), OutputType(typeof(PSPowerBIEmbeddedCapacity))]
     public class NewPowerBIEmbeddedCapacity : PowerBICmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmPowerBIEmbeddedCapacity")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true, 
@@ -110,3 +113,4 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+

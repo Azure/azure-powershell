@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ManagementPartner
 {
     [Cmdlet("Remove","ManagementPartner", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveManagementPartner : AzureManagementPartnerCmdletsBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmManagementPartner")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The management partner id")]
         [ValidateNotNull]
@@ -51,3 +54,4 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         }
     }
 }
+

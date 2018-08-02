@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Stop","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StopAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmDataFactoryV2IntegrationRuntime")]
+#endif
     {
         [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpDontAskConfirmation)]
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

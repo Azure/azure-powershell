@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
     public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseThreatDetectionPolicy")]
+#endif
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+

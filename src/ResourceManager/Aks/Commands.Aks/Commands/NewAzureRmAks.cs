@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Aks
     [Cmdlet("New","Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class NewAzureRmAks : CreateOrUpdateKubeBase
+#if NETSTANDARD
+    [Alias("New-AzureRmAks")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = "Create cluster even if it already exists")]
         public SwitchParameter Force { get; set; }
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+

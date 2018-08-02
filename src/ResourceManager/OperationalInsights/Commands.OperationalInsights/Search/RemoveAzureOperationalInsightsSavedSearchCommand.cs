@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Remove","OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmOperationalInsightsSavedSearch")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+

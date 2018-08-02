@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight
     [Alias("Get-AzureRmHDInsightOMS")]
     [OutputType(typeof(AzureHDInsightOMS))]
     public class GetAzureHDInsightOMSCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightOperationsManagementSuite")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

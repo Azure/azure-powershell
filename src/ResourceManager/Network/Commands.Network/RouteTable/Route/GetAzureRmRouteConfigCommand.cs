@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","RouteConfig"), OutputType(typeof(PSRoute))]
     public partial class GetAzureRmRouteConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRouteConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

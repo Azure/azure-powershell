@@ -117,6 +117,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Update","Snapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
     public partial class UpdateAzureRmSnapshot : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmSnapshot")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -188,3 +191,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

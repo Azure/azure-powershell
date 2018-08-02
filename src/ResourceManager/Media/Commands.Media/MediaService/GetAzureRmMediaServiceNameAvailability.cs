@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// </summary>
     [Cmdlet("Get","MediaServiceNameAvailability"), OutputType(typeof(PSCheckNameAvailabilityOutput))]
     public class GetAzureRmMediaServiceNameAvailability : AzureMediaServiceCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMediaServiceNameAvailability")]
+#endif
     {
         [Parameter(Mandatory = true,
             Position = 0,
@@ -44,3 +47,4 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Save","ResourceGroupDeploymentTemplate", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class SaveAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Save-AzureRmResourceGroupDeploymentTemplate")]
+#endif
     {
         /// <summary>
         /// Gets or sets the resource group name parameter.
@@ -118,3 +121,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

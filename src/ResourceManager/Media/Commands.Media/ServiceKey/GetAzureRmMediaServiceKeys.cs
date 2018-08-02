@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// </summary>
     [Cmdlet("Get","MediaServiceKeys"), OutputType(typeof(PSServiceKeys))]
     public class GetAzureRmMediaServiceKeys : AzureMediaServiceCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMediaServiceKeys")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         }
     }
 }
+

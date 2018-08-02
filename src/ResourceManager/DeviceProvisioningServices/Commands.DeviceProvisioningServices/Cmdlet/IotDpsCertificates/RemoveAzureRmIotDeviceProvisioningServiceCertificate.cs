@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Remove-AzureRmIoTDpsCertificate")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmIoTDeviceProvisioningServiceCertificate : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIoTDeviceProvisioningServiceCertificate")]
+#endif
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -118,3 +121,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

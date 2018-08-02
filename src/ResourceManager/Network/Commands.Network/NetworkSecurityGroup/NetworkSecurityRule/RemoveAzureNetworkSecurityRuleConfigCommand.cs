@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkSecurityRuleConfig"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class RemoveAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkSecurityRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

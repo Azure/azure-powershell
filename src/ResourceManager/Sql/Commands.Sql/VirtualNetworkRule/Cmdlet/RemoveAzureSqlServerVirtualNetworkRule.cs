@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlServerVirtualNetworkRule", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
     public class RemoveAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerVirtualNetworkRule")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the VirtualNetwork rule to remove
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         }
     }
 }
+

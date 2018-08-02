@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Remove","ContainerRegistryWebhook", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContainerRegistryWebhook")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

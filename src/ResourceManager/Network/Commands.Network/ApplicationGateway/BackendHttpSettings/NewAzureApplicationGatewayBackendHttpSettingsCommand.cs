@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class NewAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayBackendHttpSettings")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

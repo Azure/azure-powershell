@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("New","AutomationWebhook", SupportsShouldProcess = true)]
     [OutputType(typeof(Webhook))]
     public class NewAzureAutomationWebhook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationWebhook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the module name.
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

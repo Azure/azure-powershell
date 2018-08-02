@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet("Remove","VMNetworkInterface",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
     public class RemoveAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMNetworkInterface")]
+#endif
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","EffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
     public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmEffectiveRouteTable")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

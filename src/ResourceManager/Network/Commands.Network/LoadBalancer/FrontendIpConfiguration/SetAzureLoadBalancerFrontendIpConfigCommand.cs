@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","LoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerFrontendIpConfigCommand : AzureLoadBalancerFrontendIpConfigBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmLoadBalancerFrontendIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

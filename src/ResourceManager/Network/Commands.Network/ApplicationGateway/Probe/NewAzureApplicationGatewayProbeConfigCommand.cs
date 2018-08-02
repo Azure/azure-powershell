@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGatewayProbe))]
     public class NewAzureApplicationGatewayProbeConfigCommand : AzureApplicationGatewayProbeConfigBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayProbeConfig")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

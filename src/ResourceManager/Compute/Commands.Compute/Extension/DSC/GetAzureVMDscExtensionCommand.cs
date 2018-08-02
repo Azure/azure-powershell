@@ -14,6 +14,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
 {
     [Cmdlet("Get","VMDscExtension",DefaultParameterSetName = GetDscExtensionParamSetName),OutputType(typeof(VirtualMachineDscExtensionContext))]
     public class GetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMDscExtension")]
+#endif
     {
         private const string GetDscExtensionParamSetName = "GetDscExtension";
 
@@ -157,3 +160,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

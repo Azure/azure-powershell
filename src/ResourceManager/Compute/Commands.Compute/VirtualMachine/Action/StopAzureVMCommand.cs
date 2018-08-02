@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Stop","VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StopAzureVMCommand : VirtualMachineActionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmVM")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

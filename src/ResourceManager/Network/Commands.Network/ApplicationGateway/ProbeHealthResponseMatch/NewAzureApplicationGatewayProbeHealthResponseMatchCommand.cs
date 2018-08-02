@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayProbeHealthResponseMatch"), OutputType(typeof(PSApplicationGatewayProbeHealthResponseMatch))]
     public class NewAzureApplicationGatewayProbeHealthResponseMatchCommand : AzureApplicationGatewayProbeHealthResponseMatchBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayProbeHealthResponseMatch")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

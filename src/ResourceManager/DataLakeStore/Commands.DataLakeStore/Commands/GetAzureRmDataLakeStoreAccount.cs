@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Get","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Get-AdlStore")]
     public class GetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreAccount")]
+#endif
     {
         internal const string BaseParameterSetName = "GetAllInSubscription";
         internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

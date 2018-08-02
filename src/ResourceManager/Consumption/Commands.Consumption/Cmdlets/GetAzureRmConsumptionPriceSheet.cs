@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 {
     [Cmdlet("Get","ConsumptionPriceSheet"), OutputType(typeof(PSPriceSheet))]
     public class GetAzureRmConsumptionPriceSheet : AzureConsumptionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionPriceSheet")]
+#endif
     {
         private const int MaxNumberToFetch = 1000;
 
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         }
     }
 }
+

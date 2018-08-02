@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// </summary>
     [Cmdlet("Remove","MediaService", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmMediaService : AzureMediaServiceCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmMediaService")]
+#endif
     {
         private const string RemoveMediaServiceWarning = "Are you sure you want to remove MediaService {0} ?";
         private const string RemoveMediaServiceWhatIfMessage = "Remove MediaService";
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+

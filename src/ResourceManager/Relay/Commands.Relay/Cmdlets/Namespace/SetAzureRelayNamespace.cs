@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// </summary>
     [Cmdlet("Set","RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(RelayNamespaceAttributes))]
     public class SetAzureRelayNamespace : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRelayNamespace")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -74,3 +77,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","PublicIpAddress", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpAddress))]
     public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmPublicIpAddress")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -228,3 +231,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

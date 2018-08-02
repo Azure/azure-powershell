@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Remove","DataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreFirewallRule")]
     public class RemoveAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataLakeStoreFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to update the firewall rule in")]
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceFabricClusterCertificate")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true,
                    HelpMessage = "Specify the cluster thumbprint which to be removed")]
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+

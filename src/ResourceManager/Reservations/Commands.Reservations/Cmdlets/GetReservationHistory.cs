@@ -10,6 +10,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Get","ReservationHistory", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet), OutputType(typeof(PSReservationPage))]
     public class GetReservationHistory : AzureReservationsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmReservationHistory")]
+#endif
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet, 
             Mandatory = true,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+

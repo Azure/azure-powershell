@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Get","ADGroup", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADGroup))]
     public class GetAzureADGroupCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmADGroup")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "Used to find groups that begin with the provided string.")]
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

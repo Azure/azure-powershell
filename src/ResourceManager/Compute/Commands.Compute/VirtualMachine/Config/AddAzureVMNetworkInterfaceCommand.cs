@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet("Add","VMNetworkInterface",DefaultParameterSetName = NicIdParamSetName),OutputType(typeof(PSVirtualMachine))]
     public class AddAzureVMNetworkInterfaceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVMNetworkInterface")]
+#endif
     {
         protected const string NicIdParamSetName = "GetNicFromNicId";
         protected const string NicObjectParamSetName = "GetNicFromNicObject";
@@ -164,3 +167,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

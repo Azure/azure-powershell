@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRFabric")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrFabric")]
+#endif
     {
         /// <summary>
         ///    Switch parameter indicates creation of azure fabric.
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

@@ -136,6 +136,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","Vmss", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class GetAzureRmVmss : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmss")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -251,3 +254,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter OSUpgradeHistory { get; set; }
     }
 }
+

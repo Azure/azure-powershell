@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet("Remove","ADSpCredential", DefaultParameterSetName = ParameterSet.ObjectIdWithKeyId, SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AzureRmADServicePrincipalCredential")]
     public class RemoveAzureADSpCredentialCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmADSpCredential")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectIdWithKeyId, HelpMessage = "The servicePrincipal object id.")]
         [ValidateNotNullOrEmpty]
@@ -100,3 +103,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

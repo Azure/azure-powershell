@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class GetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkGateway")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -69,3 +72,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

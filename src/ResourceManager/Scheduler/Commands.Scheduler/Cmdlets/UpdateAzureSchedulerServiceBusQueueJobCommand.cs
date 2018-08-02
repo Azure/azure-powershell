@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// </summary>
     [Cmdlet("Set","SchedulerServiceBusQueueJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
     public class UpdateAzureSchedulerServiceBusQueueJobCommand : JobBaseCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("Set-AzureRmSchedulerServiceBusQueueJob")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
         [ResourceGroupCompleter]
@@ -173,3 +176,4 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+

@@ -130,6 +130,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Grant","SnapshotAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAccessUri))]
     public partial class GrantAzureRmSnapshotAccess : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Grant-AzureRmSnapshotAccess")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -184,3 +187,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

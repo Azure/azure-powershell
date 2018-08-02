@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("New","SqlDatabaseRestorePoint", SupportsShouldProcess = true),OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
     public class NewAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlDatabaseRestorePoint")]
+#endif
     {
         /// <summary>
         /// Gets or sets the restore point label.
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

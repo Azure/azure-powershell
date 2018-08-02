@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkGateway",DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default, SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetworkGateway")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -287,3 +290,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

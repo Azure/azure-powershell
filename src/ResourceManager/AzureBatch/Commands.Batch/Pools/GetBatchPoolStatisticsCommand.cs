@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get","AzureBatchPoolStatistics"), OutputType(typeof(PSPoolStatistics))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPoolStatistics"), OutputType(typeof(PSPoolStatistics))]
     public class GetBatchPoolStatisticsCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureBatchPoolStatistics")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -29,3 +32,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

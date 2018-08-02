@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("New","Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class NewAzureResourceCmdlet : ResourceManipulationCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmResource")]
+#endif
     {
         /// <summary>
         /// Gets or sets the location.
@@ -156,3 +159,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
 
     }
 }
+

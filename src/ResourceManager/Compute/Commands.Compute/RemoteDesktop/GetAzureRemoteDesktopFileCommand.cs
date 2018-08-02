@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","RemoteDesktopFile"), OutputType(typeof(void))]
     public class GetAzureRemoteDesktopFileCommand : VirtualMachineRemoteDesktopBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRemoteDesktopFile")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -247,3 +250,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

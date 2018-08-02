@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("New","ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
     public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationInsights")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -127,3 +130,4 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+

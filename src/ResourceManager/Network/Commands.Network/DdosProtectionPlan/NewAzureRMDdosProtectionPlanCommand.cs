@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","DdosProtectionPlan", SupportsShouldProcess = true), OutputType(typeof(PSDdosProtectionPlan))]
     public partial class NewAzureRmDdosProtectionPlan : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDdosProtectionPlan")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -113,3 +116,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

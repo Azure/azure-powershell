@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlDatabaseAuditing", SupportsShouldProcess = true, DefaultParameterSetName = DefaultParameterSetName), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
     public class SetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlDatabaseAuditing")]
+#endif
     {
         /// <summary>
         /// Gets or sets the state of the auditing policy
@@ -143,3 +146,4 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         private const string DefaultParameterSetName = "DefaultParameterSet";
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove","DataFactoryV2IntegrationRuntimeNode",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryV2IntegrationRuntimeNode")]
+#endif
     {
         [Parameter(Mandatory = true,
             HelpMessage = Constants.HelpIntegrationRuntimeNodeName)]
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

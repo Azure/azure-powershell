@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Invoke","ResourceAction", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
     public sealed class InvokAzureResourceActionCmdlet : ResourceManipulationCmdletBase
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmResourceAction")]
+#endif
     {
         /// <summary>
         /// Gets or sets the property object.
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

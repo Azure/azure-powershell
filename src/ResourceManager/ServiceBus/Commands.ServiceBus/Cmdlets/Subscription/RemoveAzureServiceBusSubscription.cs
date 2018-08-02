@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// </summary>
     [Cmdlet("Remove","ServiceBusSubscription", DefaultParameterSetName = SubscriptionPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceBusSubscription")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = SubscriptionPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         }
     }
 }
+

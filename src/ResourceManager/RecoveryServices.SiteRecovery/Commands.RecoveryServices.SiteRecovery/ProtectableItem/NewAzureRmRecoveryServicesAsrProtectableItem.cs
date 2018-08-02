@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRProtectableItem")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrProtectableItem")]
+#endif
     {
         #region Public Parameters
 
@@ -124,3 +127,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion Local Parameters
     }
 }
+

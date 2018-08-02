@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// </summary>
     [Cmdlet("New","MapsAccountKey", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), OutputType(typeof(MapsAccountKeys))]
     public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmMapsAccountKey")]
+#endif
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+

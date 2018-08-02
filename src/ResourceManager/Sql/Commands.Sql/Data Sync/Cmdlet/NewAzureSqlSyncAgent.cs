@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("New","SqlSyncAgent", SupportsShouldProcess = true,DefaultParameterSetName = SyncDatabaseComponentSet,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentModel))]
     public class NewAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlSyncAgent")]
+#endif
     {
         /// <summary>
         /// Parameter set name for sync database resource ID
@@ -168,3 +171,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

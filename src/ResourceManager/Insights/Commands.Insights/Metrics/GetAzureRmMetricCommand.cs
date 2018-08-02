@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// </summary>
     [Cmdlet("Get","Metric", DefaultParameterSetName = GetAzureRmAMetricParamGroup), OutputType(typeof(PSMetric))]
     public class GetAzureRmMetricCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMetric")]
+#endif
     {
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
         internal const string GetAzureRmAMetricFullParamGroup = "GetWithFullParameters";
@@ -178,3 +181,4 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         }
     }
 }
+

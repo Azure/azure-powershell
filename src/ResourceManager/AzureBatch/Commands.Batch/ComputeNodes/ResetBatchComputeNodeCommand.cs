@@ -20,8 +20,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Reset","AzureBatchComputeNode", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
+    [Cmdlet("Reset", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNode", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
     public class ResetBatchComputeNodeCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Reset-AzureBatchComputeNode")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

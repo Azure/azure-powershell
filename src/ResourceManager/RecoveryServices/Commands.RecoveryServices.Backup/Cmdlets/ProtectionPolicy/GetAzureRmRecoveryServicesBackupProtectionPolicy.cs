@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupProtectionPolicy", DefaultParameterSetName = NoParamSet),OutputType(typeof(PolicyBase))]
     public class GetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupProtectionPolicy")]
+#endif
     {
         protected const string PolicyNameParamSet = "PolicyNameParamSet";
         protected const string WorkloadParamSet = "WorkloadParamSet";
@@ -176,3 +179,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

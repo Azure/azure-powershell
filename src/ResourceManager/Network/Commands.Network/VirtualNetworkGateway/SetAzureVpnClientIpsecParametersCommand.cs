@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VpnClientIpsecParameter",DefaultParameterSetName = "ByFactoryName",SupportsShouldProcess = true),OutputType(typeof(PSVpnClientIPsecParameters))]
     public class SetAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVpnClientIpsecParameter")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -97,3 +100,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

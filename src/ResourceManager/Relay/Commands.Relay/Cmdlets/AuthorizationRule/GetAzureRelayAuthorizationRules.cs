@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// </summary>
     [Cmdlet("Get","RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(AuthorizationRuleAttributes))]
     public class GetAzureRelayAuthorizationRule : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRelayAuthorizationRule")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -124,3 +127,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         }
     }
 }
+

@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet("Get","VMDiskEncryptionStatus"),OutputType(typeof(AzureDiskEncryptionExtensionContext))]
     public class GetAzureDiskEncryptionStatusCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMDiskEncryptionStatus")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -592,3 +595,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+

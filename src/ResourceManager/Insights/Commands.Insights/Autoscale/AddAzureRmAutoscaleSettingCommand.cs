@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// </summary>
     [Cmdlet("Add","AutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmAutoscaleSetting")]
+#endif
     {
         internal const string AddAzureRmAutoscaleSettingCreateParamGroup = "CreateAutoscaleSetting";
         internal const string AddAzureRmAutoscaleSettingUpdateParamGroup = "UpdateAutoscaleSetting";
@@ -166,3 +169,4 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+

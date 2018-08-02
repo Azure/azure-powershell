@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// </summary>
     [Cmdlet("Remove","DiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDiagnosticSetting")]
+#endif
     {
         /// <summary>
         /// This is a temporary constant to provide backwards compatibility
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
     }
 }
+

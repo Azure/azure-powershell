@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRTestFailoverJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrTestFailoverJob : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureRmRecoveryServicesAsrTestFailoverJob")]
+#endif
     {
         /// <summary>
         ///     Gets or sets an recovery plan object.
@@ -520,3 +523,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion local parameters
     }
 }
+

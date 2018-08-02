@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Remove","WebApp", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmWebApp")]
+#endif
     {
 
         //always delete the slots, 
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

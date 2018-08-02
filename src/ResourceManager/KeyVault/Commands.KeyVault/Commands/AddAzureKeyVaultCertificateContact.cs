@@ -27,9 +27,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Adds a given certificate contact to Key Vault for certificate management
     /// </summary>
-    [Cmdlet("Add","AzureKeyVaultCertificateContact",SupportsShouldProcess = true,DefaultParameterSetName = InteractiveParameterSet)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateContact", SupportsShouldProcess = true,DefaultParameterSetName = InteractiveParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class AddAzureKeyVaultCertificateContact : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureKeyVaultCertificateContact")]
+#endif
     {
         #region Parameter Set Names
 
@@ -146,3 +149,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

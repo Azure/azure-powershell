@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VMCustomScriptExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMCustomScriptExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMCustomScriptExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.Compute
 
     }
 }
+

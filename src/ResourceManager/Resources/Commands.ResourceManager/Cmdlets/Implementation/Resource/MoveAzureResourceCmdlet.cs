@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Move","Resource", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class MoveAzureResourceCommand : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Move-AzureRmResource")]
+#endif
     {
         /// <summary>
         /// Caches the current resource ids to get all resource ids in the pipeline
@@ -175,3 +178,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

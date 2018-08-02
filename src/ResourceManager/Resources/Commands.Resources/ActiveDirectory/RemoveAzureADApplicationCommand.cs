@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Remove","ADApplication", DefaultParameterSetName = ParameterSet.ObjectId, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmADApplication")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The application object id.")]
         public Guid ObjectId { get; set; }
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

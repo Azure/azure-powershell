@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","PublicIpAddress", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmPublicIpAddress")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -69,3 +72,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

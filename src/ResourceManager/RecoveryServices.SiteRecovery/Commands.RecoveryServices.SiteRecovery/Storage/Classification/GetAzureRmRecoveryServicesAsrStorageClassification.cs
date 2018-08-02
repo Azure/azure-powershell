@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRStorageClassification")]
     [OutputType(typeof(ASRStorageClassification))]
     public class GetAzureRmRecoveryServicesAsrStorageClassification : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrStorageClassification")]
+#endif
     {
         /// <summary>
         ///     Gets or sets name of classification.
@@ -124,3 +127,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

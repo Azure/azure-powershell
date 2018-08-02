@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// </summary>
     [Cmdlet("Remove","MapsAccount", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureMapsAccount : MapsAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmMapsAccount")]
+#endif
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -113,3 +116,4 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+

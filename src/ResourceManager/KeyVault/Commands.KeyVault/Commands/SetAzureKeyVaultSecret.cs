@@ -20,9 +20,12 @@ using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Set","AzureKeyVaultSecret",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultSecret", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
     public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureKeyVaultSecret")]
+#endif
     {
         #region Parameter Set Names
 
@@ -131,3 +134,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

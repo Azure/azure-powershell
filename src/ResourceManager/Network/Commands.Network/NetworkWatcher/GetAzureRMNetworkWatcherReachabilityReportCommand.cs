@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","NetworkWatcherReachabilityReport", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAzureReachabilityReport))]
     public partial class GetAzureRMNetworkWatcherReachabilityReport : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRMNetworkWatcherReachabilityReport")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -191,3 +194,4 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+

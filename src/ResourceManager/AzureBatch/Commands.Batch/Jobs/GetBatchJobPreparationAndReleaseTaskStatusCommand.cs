@@ -19,8 +19,12 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get","AzureBatchJobPreparationAndReleaseTaskStatus", DefaultParameterSetName = Constants.IdParameterSet),OutputType(typeof(PSJobPreparationAndReleaseTaskExecutionInformation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJobPreparationAndReleaseTaskStatus", DefaultParameterSetName = Constants.IdParameterSet),
+        OutputType(typeof(PSJobPreparationAndReleaseTaskExecutionInformation))]
     public class GetBatchJobPreparationAndReleaseTaskStatusCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureBatchJobPreparationAndReleaseTaskStatus")]
+#endif
     {
         [Parameter(Position = 0,
             ParameterSetName = Constants.IdParameterSet,
@@ -75,3 +79,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

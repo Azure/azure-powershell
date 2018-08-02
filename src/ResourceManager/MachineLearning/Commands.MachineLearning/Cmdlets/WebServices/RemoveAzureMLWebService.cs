@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.MachineLearning
     [Cmdlet("Remove","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLWebService : WebServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmMlWebService")]
+#endif
     {
         protected const string RemoveByNameGroupParameterSet = "RemoveByNameAndResourceGroup";
         protected const string RemoveByObjectParameterSet = "RemoveByObject";
@@ -91,3 +94,4 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+

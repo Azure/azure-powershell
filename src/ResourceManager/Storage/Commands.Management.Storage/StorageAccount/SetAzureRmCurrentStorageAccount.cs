@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Set","CurrentStorageAccount", DefaultParameterSetName = ResourceNameParameterSet),OutputType(typeof(string))]
     public class SetAzureRmCurrentStorageAccount : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmCurrentStorageAccount")]
+#endif
     {
         private const string StorageContextParameterSet = "UsingStorageContext";
         private const string ResourceNameParameterSet = "UsingResourceGroupAndNameParameterSet";
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

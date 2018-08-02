@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Set-AzureRmRecoveryServicesAsrVaultSettings")]
     [OutputType(typeof(ASRVaultSettings))]
     public class SetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRecoveryServicesAsrVaultContext")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the Recovery Services vault object corresponding to the Recovery Services vault.
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

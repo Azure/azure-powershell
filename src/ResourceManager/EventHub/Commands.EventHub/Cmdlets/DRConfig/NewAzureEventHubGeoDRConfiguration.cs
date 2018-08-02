@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// </summary>
     [Cmdlet("New","EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmEventHubGeoDRConfiguration")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -99,3 +102,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         }
     }
 }
+

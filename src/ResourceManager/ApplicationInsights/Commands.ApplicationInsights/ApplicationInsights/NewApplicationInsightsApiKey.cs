@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("New","ApplicationInsightsApiKey", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSApiKey))]
     public class NewAzureApplicationInsightsApiKeyCommand : ApplicationInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationInsightsApiKey")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -117,3 +120,4 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Cmdlet("New","ApiManagementSystemCertificate")]
     [OutputType(typeof(PsApiManagementSystemCertificate))]
     public class NewAzureApiManagementSystemCertificate : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementSystemCertificate")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "Certificate StoreName")]        
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

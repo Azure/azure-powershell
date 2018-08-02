@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Wait","HDInsightJob"),OutputType(typeof(AzureHDInsightJob))]
     public class WaitAzureHDInsightJobCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Wait-AzureRmHDInsightJob")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

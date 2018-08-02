@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayAuthenticationCertificate"),OutputType(typeof(PSApplicationGatewayAuthenticationCertificate))]
     public class GetAzureApplicationGatewayAuthenticationCertificateCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayAuthenticationCertificate")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

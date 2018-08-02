@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Set","BatchApplication"), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplication"), OutputType(typeof(void))]
     public class SetBatchApplicationCommand : BatchCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmBatchApplication")]
+#endif
     {
         private static string mamlCall = "SetApplication";
 
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

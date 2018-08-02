@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("New","ApplicationInsightsContinuousExport", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSExportConfiguration))]
     public class NewAzureApplicationInsightsContinuousExportCommand : ApplicationInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationInsightsContinuousExport")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -148,3 +151,4 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+

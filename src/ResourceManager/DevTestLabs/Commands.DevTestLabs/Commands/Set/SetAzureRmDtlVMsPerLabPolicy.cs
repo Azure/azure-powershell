@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DevTestLabs
     [Cmdlet("Set","DtlVMsPerLabPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSPolicy))]
     public class SetAzureRmDtlVMsPerLabPolicy : DtlPolicyCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmDtlVMsPerLabPolicy")]
+#endif
     {
         protected override string PolicyName
         {
@@ -129,3 +132,4 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+

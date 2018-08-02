@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("New","IntegrationAccountSchema", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountSchema))]
     public class NewAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmIntegrationAccountSchema")]
+#endif
     {
 
         #region Defaults
@@ -126,3 +129,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

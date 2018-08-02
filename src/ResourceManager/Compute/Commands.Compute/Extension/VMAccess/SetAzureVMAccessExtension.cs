@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Set","VMAccessExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMAccessExtensionCommand : SetAzureVMExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMAccessExtension")]
+#endif
     {
         private const string userNameKey = "UserName";
         private const string passwordKey = "Password";
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

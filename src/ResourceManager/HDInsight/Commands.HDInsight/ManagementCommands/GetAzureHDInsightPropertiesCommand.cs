@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get","HDInsightProperties"),OutputType(typeof(CapabilitiesResponse))]
     public class GetAzureHDInsightPropertiesCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightProperties")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -41,3 +44,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

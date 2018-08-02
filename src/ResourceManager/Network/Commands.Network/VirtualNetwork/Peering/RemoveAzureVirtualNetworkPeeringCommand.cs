@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VirtualNetworkPeering", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVirtualNetworkPeering")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

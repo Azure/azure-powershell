@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("New","DiskUpdateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDiskUpdate))]
     public partial class NewAzureRmDiskUpdateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDiskUpdateConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -142,3 +145,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

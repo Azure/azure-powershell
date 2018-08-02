@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Get","ApiManagementUserSsoUrl")]
     [OutputType(typeof(string))]
     public class GetAzureApiManagementUserSsoUrl : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagementUserSsoUrl")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -44,3 +47,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

@@ -21,8 +21,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("New","BatchAccount"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount"), OutputType(typeof(BatchAccountContext))]
     public class NewBatchAccountCommand : BatchCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmBatchAccount")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to create.")]
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

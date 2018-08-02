@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Remove","DataFactoryDataset", DefaultParameterSetName = ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryDatasetCommand : DatasetContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryDataset")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

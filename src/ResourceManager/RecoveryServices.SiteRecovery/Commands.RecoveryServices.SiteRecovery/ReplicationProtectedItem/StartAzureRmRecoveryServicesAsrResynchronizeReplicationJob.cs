@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRResyncJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrResynchronizeReplicationJob : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureRmRecoveryServicesAsrResynchronizeReplicationJob")]
+#endif
     {
         /// <summary>
         ///     Gets or sets resource Id of replication protected item to resynchronize.
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion Local Parameters
     }
 }
+

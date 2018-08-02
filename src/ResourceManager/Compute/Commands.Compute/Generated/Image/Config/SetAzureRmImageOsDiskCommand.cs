@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set","ImageOsDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class SetAzureRmImageOsDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmImageOsDisk")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -233,3 +236,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

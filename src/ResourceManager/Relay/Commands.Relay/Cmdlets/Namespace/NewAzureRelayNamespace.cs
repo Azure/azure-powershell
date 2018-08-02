@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// </summary>
     [Cmdlet("New","RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(RelayNamespaceAttributes))]
     public class NewAzureRelayNamespace : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRelayNamespace")]
+#endif
     {
         /// <summary>
         /// Name of the resource group.
@@ -86,3 +89,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+

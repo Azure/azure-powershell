@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("Get","IotHubRegistryStatistic"), OutputType(typeof(PSIotHubRegistryStatistics))]
     public class GetAzureRmIotHubRegistryStatistic : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubRegistryStatistic")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

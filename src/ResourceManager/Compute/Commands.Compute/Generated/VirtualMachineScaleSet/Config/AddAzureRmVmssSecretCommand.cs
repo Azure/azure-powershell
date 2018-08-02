@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Add","VmssSecret", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVmssSecret")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -94,3 +97,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

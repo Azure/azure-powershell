@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","ApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
     public partial class GetAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationSecurityGroup")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -93,3 +96,4 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+

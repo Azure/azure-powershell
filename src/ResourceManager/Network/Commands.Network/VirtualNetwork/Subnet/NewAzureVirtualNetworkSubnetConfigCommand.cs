@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSubnet))]
     public class NewAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
+#if NETSTANDARD
+    [Alias("New-AzureRmVirtualNetworkSubnetConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

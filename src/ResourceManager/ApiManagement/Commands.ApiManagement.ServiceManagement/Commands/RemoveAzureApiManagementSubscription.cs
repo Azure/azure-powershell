@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Remove","ApiManagementSubscription", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementSubscription : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementSubscription")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

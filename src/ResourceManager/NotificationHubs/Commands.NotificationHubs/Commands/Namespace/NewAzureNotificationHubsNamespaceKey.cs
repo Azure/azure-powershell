@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
     [Cmdlet("New","NotificationHubsNamespaceKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
     public class NewAzureNotificationHubsNamespaceKey : AzureNotificationHubsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmNotificationHubsNamespaceKey")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("New","ContainerRegistryReplication", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryReplication))]
     public class NewAzureContainerRegistryReplication : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmContainerRegistryReplication")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -92,3 +95,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

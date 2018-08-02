@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("Set","IntegrationAccountSchema", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountSchema))]
     public class UpdateAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmIntegrationAccountSchema")]
+#endif
     {
 
         #region Defaults
@@ -170,3 +173,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

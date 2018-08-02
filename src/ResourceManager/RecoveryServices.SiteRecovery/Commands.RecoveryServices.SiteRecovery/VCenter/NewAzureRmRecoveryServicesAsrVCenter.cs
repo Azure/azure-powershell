@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
     public class NewAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrvCenter")]
+#endif
     {
         /// <summary>
         ///     Gets or sets fabric corresponding to the Configuration server.
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

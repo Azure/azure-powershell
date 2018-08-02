@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCircuitConnectionConfig"), OutputType(typeof(PSExpressRouteCircuitConnection))]
     public class GetAzureExpressRouteCircuitConnectionConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitConnectionConfig")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

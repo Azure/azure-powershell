@@ -29,6 +29,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [Cmdlet("Set","AzureStorageCORSRule"),OutputType(typeof(PSCorsRule))]
     public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureStorageCORSRule")]
+#endif
     {
         private const string InvalidXMLNodeValueError = "InvalidXmlNodeValue";
         private const string InvalidXMLDocError = "InvalidXmlDocument";
@@ -119,3 +122,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+

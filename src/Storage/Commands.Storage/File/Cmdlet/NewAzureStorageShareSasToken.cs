@@ -26,6 +26,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
     [Cmdlet("New","AzureStorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureStorageShareSASToken")]
+#endif
     {
         /// <summary>
         /// Sas permission parameter set name
@@ -151,3 +154,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

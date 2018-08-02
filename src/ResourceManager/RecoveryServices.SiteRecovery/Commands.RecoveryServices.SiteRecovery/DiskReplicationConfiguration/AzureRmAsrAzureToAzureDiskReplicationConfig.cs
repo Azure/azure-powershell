@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("New-ASRAzureToAzureDiskReplicationConfig")]
     [OutputType(typeof(ASRAzuretoAzureDiskReplicationConfig))]
     public class AzureRmAsrAzureToAzureDiskReplicationConfig : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig")]
+#endif
     {
         #region Parameters
 
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

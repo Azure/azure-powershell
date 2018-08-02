@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.DevTestLabs
     [Cmdlet("Get","DtlAllowedVMSizesPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSPolicy))]
     public class GetAzureRmDtlAllowedVMSizesPolicy : DevTestLabsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDtlAllowedVMSizesPolicy")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+

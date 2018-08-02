@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Update-AzureRmIoTDps")]
     [OutputType(typeof(PSProvisioningServiceDescription))]
     public class UpdateAzureRmIoTDeviceProvisioningService : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmIoTDeviceProvisioningService")]
+#endif
     {
         private const string InputObjectUpdateParameterSet = "InputObjectUpdateSet";
         private const string InputObjectCreateUpdateParameterSet = "InputObjectCreateUpdateSet";
@@ -221,3 +224,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

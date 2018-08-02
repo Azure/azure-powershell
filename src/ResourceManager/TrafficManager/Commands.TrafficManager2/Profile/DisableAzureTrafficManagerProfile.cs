@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Disable","TrafficManagerProfile", SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class DisableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
+#if NETSTANDARD
+    [Alias("Disable-AzureRmTrafficManagerProfile")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+

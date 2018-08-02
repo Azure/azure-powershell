@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Remove-AzureRmIoTDpsHub")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIoTDeviceProvisioningServiceLinkedHub")]
+#endif
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -114,3 +117,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

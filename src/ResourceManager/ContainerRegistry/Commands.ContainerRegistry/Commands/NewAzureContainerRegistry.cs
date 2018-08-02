@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("New","ContainerRegistry", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class NewAzureContainerRegistry : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmContainerRegistry")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -112,3 +115,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayAuthenticationCertificate")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

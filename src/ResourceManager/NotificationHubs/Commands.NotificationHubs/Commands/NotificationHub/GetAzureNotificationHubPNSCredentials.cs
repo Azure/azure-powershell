@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
     [Cmdlet("Get","NotificationHubPNSCredentials"), OutputType(typeof(NotificationHubAttributes))]
     public class GetAzureNotificationHubPNSCredentials : AzureNotificationHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmNotificationHubPNSCredentials")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+

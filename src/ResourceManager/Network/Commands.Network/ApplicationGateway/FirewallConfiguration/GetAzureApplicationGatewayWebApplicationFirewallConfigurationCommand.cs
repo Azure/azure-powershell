@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayWebApplicationFirewallConfiguration"),OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
     public class GetAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayWebApplicationFirewallConfiguration")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

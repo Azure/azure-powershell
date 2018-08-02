@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayBackendHttpSettingsCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayBackendHttpSettings")]
+#endif
     {
         [Parameter(
                Mandatory = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

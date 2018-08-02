@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsWindowsEventDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsWindowsEventDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsWindowsEventDataSource")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -92,3 +95,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

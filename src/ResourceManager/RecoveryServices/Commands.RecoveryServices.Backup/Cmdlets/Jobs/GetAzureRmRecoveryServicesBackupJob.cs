@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupJob"),OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupJob")]
+#endif
     {
         /// <summary>
         /// Filter value for status of job.
@@ -172,3 +175,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

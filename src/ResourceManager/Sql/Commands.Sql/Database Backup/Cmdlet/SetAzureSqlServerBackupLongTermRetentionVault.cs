@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServerBackupLongTermRetentionVault",SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
     public class SetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerBackupLongTermRetentionVault")]
+#endif
     {
         /// <summary>
         /// Gets or sets the vault resource ID
@@ -89,3 +92,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

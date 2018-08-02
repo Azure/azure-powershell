@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Test","LogicApp"), OutputType(typeof(void))]
     public class ValidateAzureLogicApp : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Test-AzureRmLogicApp")]
+#endif
     {
         #region private Variables
 
@@ -130,3 +133,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

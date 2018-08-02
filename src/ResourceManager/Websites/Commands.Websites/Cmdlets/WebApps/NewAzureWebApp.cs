@@ -46,6 +46,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("New","WebApp", DefaultParameterSetName = SimpleParameterSet, SupportsShouldProcess = true), OutputType(typeof(Site))]
     public class NewAzureWebAppCmdlet : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("New-AzureRmWebApp")]
+#endif
     {
         const string CopyWebAppParameterSet = "WebAppParameterSet";
         const string SimpleParameterSet = "SimpleParameterSet";
@@ -418,3 +421,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

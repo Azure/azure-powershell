@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","LogicAppTriggerHistory"), OutputType(typeof(WorkflowTriggerHistory))]
     public class GetAzureLogicAppTriggerHistoryCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicAppTriggerHistory")]
+#endif
     {
 
         #region Input Parameters
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

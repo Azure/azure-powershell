@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [Cmdlet("Add","MlWebServiceRegionalProperty",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
     public class AddAzureMLWebServiceRegionalProperty : WebServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmMlWebServiceRegionalProperty")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+

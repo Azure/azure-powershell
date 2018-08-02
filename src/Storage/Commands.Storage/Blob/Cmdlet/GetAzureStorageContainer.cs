@@ -31,6 +31,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     [Cmdlet("Get","AzureStorageContainer", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageContainer))]
     [Alias("Get-AzureStorageContainerAcl")]
     public class GetAzureStorageContainerCommand : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureStorageContainer")]
+#endif
     {
         /// <summary>
         /// Default parameter set name
@@ -271,3 +274,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+

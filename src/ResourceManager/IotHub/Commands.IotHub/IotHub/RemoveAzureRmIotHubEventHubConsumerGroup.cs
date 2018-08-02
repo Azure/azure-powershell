@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Remove","IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Remove-AzureRmIotHubEHCG")]
     public class RemoveAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIotHubEventHubConsumerGroup")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
+

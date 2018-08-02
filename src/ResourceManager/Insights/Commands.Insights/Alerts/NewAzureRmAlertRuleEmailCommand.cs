@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// </summary>
     [Cmdlet("New","AlertRuleEmail"), OutputType(typeof(Management.Monitor.Management.Models.RuleEmailAction))]
     public class NewAzureRmAlertRuleEmailCommand : MonitorCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmAlertRuleEmail")]
+#endif
     {
         /// <summary>
         /// Gets or sets the CustomEmails list of the action. A comma-separated list of e-mail addresses
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+

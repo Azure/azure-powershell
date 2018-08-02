@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Export","DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Export-AdlStoreItem")]
     public class ExportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Export-AzureRmDataLakeStoreItem")]
+#endif
     {
         // define parameter sets.
         internal const string BaseParameterSetName = "NoDiagnosticLogging";
@@ -137,3 +140,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Test","StreamAnalyticsFunction"), OutputType(typeof(bool))]
     public class TestAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
+#if NETSTANDARD
+    [Alias("Test-AzureRmStreamAnalyticsFunction")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+

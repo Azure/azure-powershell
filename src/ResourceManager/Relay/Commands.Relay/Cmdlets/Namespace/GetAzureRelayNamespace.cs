@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// </summary>
     [Cmdlet("Get","RelayNamespace"), OutputType(typeof(RelayNamespaceAttributes))]
     public class GetAzureRmRelayNamespace : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRelayNamespace")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+

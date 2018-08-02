@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Set","OperationalInsightsDataSource", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class SetAzureOperationalInsightsDataSourceCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmOperationalInsightsDataSource")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The existing data source to update.")]
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

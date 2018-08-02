@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRvCenter")]
     [OutputType(typeof(ASRvCenter))]
     public class GetAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrvCenter")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the resourceId of vCenter.
@@ -126,3 +129,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

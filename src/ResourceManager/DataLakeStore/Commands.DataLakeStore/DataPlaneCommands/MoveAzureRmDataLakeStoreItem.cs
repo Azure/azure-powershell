@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Move","DataLakeStoreItem", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Move-AdlStoreItem")]
     public class MoveAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Move-AzureRmDataLakeStoreItem")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

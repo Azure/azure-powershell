@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
 {
     [Cmdlet("Get","ConsumptionUsageDetail", DefaultParameterSetName = Constants.ParameterSetNames.SubscriptionItemParameterSet), OutputType(typeof(PSUsageDetail))]
     public class GetAzureRmConsumptionUsageDetail : AzureConsumptionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionUsageDetail")]
+#endif
     {
         const int MaxNumberToFetch = 1000;
 
@@ -251,3 +254,4 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.UsageDetails
         }
     }
 }
+

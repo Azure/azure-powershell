@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Start","AutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfigurationDeployment))]
     public class StartAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmAutomationDscNodeConfigurationDeployment")]
+#endif
     {
 
         /// <summary>
@@ -111,3 +114,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Remove-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#endif
     {
         /// <summary>
         ///     Job Response
@@ -130,3 +133,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

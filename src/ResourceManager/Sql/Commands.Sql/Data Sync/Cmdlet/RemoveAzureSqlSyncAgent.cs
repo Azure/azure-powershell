@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlSyncAgent", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncAgentModel))]
     public class RemoveAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlSyncAgent")]
+#endif
     {
         /// <summary>
         /// Gets or sets the sync agent name
@@ -91,3 +94,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ExpressRouteCircuitPeeringConfig"), OutputType(typeof(PSExpressRouteCircuit))]
     public class RemoveAzureExpressRouteCircuitPeeringConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmExpressRouteCircuitPeeringConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -97,3 +100,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

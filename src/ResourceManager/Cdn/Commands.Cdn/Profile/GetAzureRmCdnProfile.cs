@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// </summary>
     [Cmdlet("Get","CdnProfile"), OutputType(typeof(PSProfile))]
     public class GetAzureRmCdnProfile : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnProfile")]
+#endif
     {
         /// <summary>
         /// Gets or sets the profile name.
@@ -102,3 +105,4 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+

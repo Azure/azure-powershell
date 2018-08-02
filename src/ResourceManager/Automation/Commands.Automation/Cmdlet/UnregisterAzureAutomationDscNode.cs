@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Unregister","AutomationDscNode", SupportsShouldProcess = true)]
     [OutputType(typeof(DscNode))]
     public class UnregisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Unregister-AzureRmAutomationDscNode")]
+#endif
     {
         /// <summary> 
         /// Gets or sets the node id. 
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

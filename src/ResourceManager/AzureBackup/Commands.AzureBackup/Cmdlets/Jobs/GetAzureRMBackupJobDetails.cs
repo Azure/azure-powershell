@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Get","BackupJobDetails", DefaultParameterSetName = "JobsFiltersSet"), OutputType(typeof(AzureRMBackupJobDetails))]
     public class GetAzureRMBackupJobDetils : AzureBackupCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmBackupJobDetails")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.Vault, ParameterSetName = "IdFiltersSet")]
         [ValidateNotNull]
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

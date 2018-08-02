@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("Restore","SqlDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlDatabaseModel))]
     public class RestoreAzureRmSqlDatabase
+#if NETSTANDARD
+    [Alias("Restore-AzureRmSqlDatabase")]
+#endif
         : AzureSqlCmdletBase<Database.Model.AzureSqlDatabaseModel, AzureSqlDatabaseBackupAdapter>
     {
         private const string FromPointInTimeBackupSetName = "FromPointInTimeBackup";
@@ -357,3 +360,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

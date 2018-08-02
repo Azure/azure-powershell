@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("Set","DnsRecordSet", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(DnsRecordSet))]
     public class SetAzureDnsRecordSet : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDnsRecordSet")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The record set in which to add the record.")]
         [ValidateNotNullOrEmpty]
@@ -59,3 +62,4 @@ namespace Microsoft.Azure.Commands.Dns
             }
     }
     }
+

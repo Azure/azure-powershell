@@ -21,8 +21,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet("Enable","DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Enable-AzureRmDataCollection")]
+#endif
     {
         protected override void BeginProcessing()
         {
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+

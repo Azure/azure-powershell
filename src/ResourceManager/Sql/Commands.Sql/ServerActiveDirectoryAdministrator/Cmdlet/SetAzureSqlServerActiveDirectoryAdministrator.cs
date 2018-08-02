@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
     public class SetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerActiveDirectoryAdministrator")]
+#endif
     {
         /// <summary>
         /// Azure Active Directory display name for a user or group
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         }
     }
 }
+

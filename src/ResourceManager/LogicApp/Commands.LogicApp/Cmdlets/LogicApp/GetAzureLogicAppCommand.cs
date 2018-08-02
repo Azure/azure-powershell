@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","LogicApp"), OutputType(typeof(Workflow), typeof(WorkflowVersion))]
     public class GetAzureLogicAppCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicApp")]
+#endif
     {
 
         #region Input Paramters
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

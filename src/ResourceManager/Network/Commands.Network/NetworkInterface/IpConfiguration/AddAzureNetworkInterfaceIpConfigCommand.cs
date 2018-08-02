@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","NetworkInterfaceIpConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkInterface))]
     public class AddAzureNetworkInterfaceIpConfigCommand : AzureNetworkInterfaceIpConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmNetworkInterfaceIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -167,3 +170,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

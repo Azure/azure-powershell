@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Get","DataLakeStoreItemOwner"), OutputType(typeof(string))]
     [Alias("Get-AdlStoreItemOwner")]
     public class GetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreItemOwner")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

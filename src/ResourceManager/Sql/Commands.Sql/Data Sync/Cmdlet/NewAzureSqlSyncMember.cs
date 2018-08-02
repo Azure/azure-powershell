@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("New","SqlSyncMember", SupportsShouldProcess = true,DefaultParameterSetName = AzureSqlSet,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
     public class NewAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlSyncMember")]
+#endif
     {
         /// <summary>
         /// Parameter set name for Azure Sql Database
@@ -231,3 +234,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

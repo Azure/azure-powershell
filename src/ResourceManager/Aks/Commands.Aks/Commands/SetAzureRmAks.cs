@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Aks
     [Cmdlet("Set","Aks", DefaultParameterSetName = DefaultParamSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSKubernetesCluster))]
     public class SetAzureRmAks : CreateOrUpdateKubeBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmAks")]
+#endif
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string InputObjectParameterSet = "InputObjectParameterSet";
@@ -186,3 +189,4 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class SetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetwork")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

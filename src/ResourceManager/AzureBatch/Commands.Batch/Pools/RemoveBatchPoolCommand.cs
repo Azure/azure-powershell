@@ -20,8 +20,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Remove","AzureBatchPool", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPool", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveBatchPoolCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureBatchPool")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the pool to delete.")]
@@ -42,3 +45,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Set","AutomationConnectionFieldValue", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
     [OutputType(typeof(Connection))]
     public class SetAzureAutomationConnectionFieldValue : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationConnectionFieldValue")]
+#endif
     {
         /// <summary>
         /// Gets or sets the connection name.
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

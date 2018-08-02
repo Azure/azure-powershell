@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","NetworkInterface", SupportsShouldProcess = true,DefaultParameterSetName = "SetByIpConfigurationResource"), OutputType(typeof(PSNetworkInterface))]
     public class NewAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmNetworkInterface")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -436,3 +439,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// </summary>
     [Cmdlet("Get","EventHubConsumerGroup"), OutputType(typeof(PSConsumerGroupAttributes))]
     public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmEventHubConsumerGroup")]
+#endif
     {
 
         /// <summary>
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         }
     }
 }
+

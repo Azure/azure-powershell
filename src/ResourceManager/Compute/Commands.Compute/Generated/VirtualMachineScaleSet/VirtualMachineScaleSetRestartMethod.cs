@@ -118,6 +118,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Restart","Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RestartAzureRmVmss : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Restart-AzureRmVmss")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -173,3 +176,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Remove","HDInsightCluster"),OutputType(typeof(ClusterGetResponse))]
     public class RemoveAzureHDInsightCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmHDInsightCluster")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

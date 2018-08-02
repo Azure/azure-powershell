@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupJobDetails",DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
     public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesBackupJobDetails")]
+#endif
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Remove","LogicApp", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureLogicAppCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmLogicApp")]
+#endif
     {
 
         #region Input Paramters
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

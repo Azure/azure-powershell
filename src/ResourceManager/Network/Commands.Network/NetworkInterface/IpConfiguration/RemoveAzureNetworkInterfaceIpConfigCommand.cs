@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterface))]
     public class RemoveAzureNetworkInterfaceIpConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkInterfaceIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

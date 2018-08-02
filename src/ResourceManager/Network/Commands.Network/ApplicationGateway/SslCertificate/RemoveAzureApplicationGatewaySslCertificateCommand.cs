@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewaySslCertificateCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewaySslCertificate")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

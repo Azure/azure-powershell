@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 {
     [Cmdlet("Reset","PowerBIWorkspaceCollectionAccessKeys", SupportsShouldProcess = true), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
     public class ResetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Reset-AzureRmPowerBIWorkspaceCollectionAccessKeys")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+

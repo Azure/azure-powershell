@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Remove","OperationalInsightsDataSource", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(void))]
     public class RemoveAzureOperationalInsightsDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmOperationalInsightsDataSource")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

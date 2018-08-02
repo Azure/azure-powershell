@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Remove","WebAppBackup"), OutputType(typeof(BackupItem))]
     public class RemoveAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmWebAppBackup")]
+#endif
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The id of the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -35,3 +38,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

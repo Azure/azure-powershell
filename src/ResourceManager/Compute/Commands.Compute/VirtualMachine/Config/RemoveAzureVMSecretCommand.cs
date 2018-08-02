@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Remove","VMSecret",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
     public class RemoveAzureVMSecretCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMSecret")]
+#endif
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

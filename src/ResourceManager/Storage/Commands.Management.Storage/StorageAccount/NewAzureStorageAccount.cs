@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("New","StorageAccount"), OutputType(typeof(PSStorageAccount))]
     public class NewAzureStorageAccountCommand : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmStorageAccount")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -201,3 +204,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

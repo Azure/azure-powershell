@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 {
     [Cmdlet("Get","PowerBIWorkspace"), OutputType(typeof(PSWorkspace))]
     public class GetWorkspace : WorkspaceCollectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmPowerBIWorkspace")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+

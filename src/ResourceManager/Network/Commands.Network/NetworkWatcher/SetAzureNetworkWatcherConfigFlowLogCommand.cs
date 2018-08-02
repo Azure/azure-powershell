@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","NetworkWatcherConfigFlowLog", SupportsShouldProcess = true, DefaultParameterSetName = SetFlowlogByResourceWithoutTA), OutputType(typeof(PSFlowLog))]
     public class SetAzureNetworkWatcherConfigFlowLogCommand : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmNetworkWatcherConfigFlowLog")]
+#endif
     {
         private const string SetFlowlogByResourceWithTAByResource = "SetFlowlogByResourceWithTAByResource";
         private const string SetFlowlogByResourceWithTAByDetails = "SetFlowlogByResourceWithTAByDetails";
@@ -357,3 +360,4 @@ namespace Microsoft.Azure.Commands.Network
 
     }
 }
+

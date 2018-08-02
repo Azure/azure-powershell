@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
     [Cmdlet("Remove","CdnCustomDomain",DefaultParameterSetName = FieldsParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RemoveAzureRmCdnCustomDomain : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmCdnCustomDomain")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
@@ -91,3 +94,4 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         }
     }
 }
+

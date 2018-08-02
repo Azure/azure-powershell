@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("New","PolicySetDefinition", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
     public class NewAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmPolicySetDefinition")]
+#endif
     {
         /// <summary>
         /// Gets or sets the new policy set definition name parameter.
@@ -150,3 +153,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

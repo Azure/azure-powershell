@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Compute
     [OutputType(typeof(PSVirtualMachineExtensionImage))]
     [OutputType(typeof(PSVirtualMachineExtensionImageDetails))]
     public class GetAzureVMExtensionImageCommand : VirtualMachineExtensionImageBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMExtensionImage")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
@@ -105,3 +108,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

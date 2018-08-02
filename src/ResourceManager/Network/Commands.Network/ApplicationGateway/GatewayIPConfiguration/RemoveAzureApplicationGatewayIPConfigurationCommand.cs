@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayIPConfigurationCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayIPConfiguration")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

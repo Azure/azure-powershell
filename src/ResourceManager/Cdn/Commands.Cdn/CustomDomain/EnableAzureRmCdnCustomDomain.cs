@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
     [Cmdlet("Enable","CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class EnableAzureRmCdnCustomDomain : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureRmCdnCustomDomain")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         }
     }
 }
+

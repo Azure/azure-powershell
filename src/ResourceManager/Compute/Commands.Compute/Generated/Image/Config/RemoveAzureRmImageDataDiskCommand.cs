@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Remove","ImageDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class RemoveAzureRmImageDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmImageDataDisk")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

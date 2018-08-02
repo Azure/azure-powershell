@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// </summary>
     [Cmdlet("Get","Log"), OutputType(typeof(PSEventData))]
     public class GetAzureRmLogCommand : LogsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmLog")]
+#endif
     {
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
@@ -118,3 +121,4 @@ namespace Microsoft.Azure.Commands.Insights.Events
         }
     }
 }
+

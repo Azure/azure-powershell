@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get","AzureBatchNodeFile", DefaultParameterSetName = ComputeNodeAndIdParameterSet),OutputType(typeof(PSNodeFile))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchNodeFile", DefaultParameterSetName = ComputeNodeAndIdParameterSet),OutputType(typeof(PSNodeFile))]
     public class GetBatchNodeFileCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureBatchNodeFile")]
+#endif
     {
         internal const string TaskAndIdParameterSet = "Task_Id";
         internal const string TaskAndODataParameterSet = "Task_ODataFilter";
@@ -116,3 +119,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

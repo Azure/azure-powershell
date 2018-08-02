@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet("Get","WebAppSlotPublishingProfile")]
     [OutputType(typeof(string))]
     public class GetAzureWebAppSlotPublishingProfileCmdlet : WebAppSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppSlotPublishingProfile")]
+#endif
     {
         private const string DefaultFormat = "WebDeploy";
 
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricNode", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class RemoveAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceFabricNode")]
+#endif
     {
         private int toRemoveNode;
 
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+

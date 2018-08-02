@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
     [Cmdlet("New","RedisCachePatchSchedule", SupportsShouldProcess = true), OutputType(typeof(PSScheduleEntry))]
     public class NewAzureRedisCachePatchSchedule : RedisCacheCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRedisCachePatchSchedule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+

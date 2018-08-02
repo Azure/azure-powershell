@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Remove-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrNetworkMapping")]
+#endif
     {
         /// <summary>
         ///     Gets or sets network mapping object corresponding to the ASR network mapping to be deleted.
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

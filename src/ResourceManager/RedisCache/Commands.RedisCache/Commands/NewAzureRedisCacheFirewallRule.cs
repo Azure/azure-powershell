@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
     [Cmdlet("New","RedisCacheFirewallRule", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSRedisFirewallRule))]
     public class NewAzureRedisCacheFirewallRule : RedisCacheCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmRedisCacheFirewallRule")]
+#endif
     {
         private const string NormalParameterSet = "NormalParameterSet";
         private const string InputObjectParameterSet = "RedisCacheAttributesObject";
@@ -106,3 +109,4 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+

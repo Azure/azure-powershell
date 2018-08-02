@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
     /// </summary>
     [Cmdlet("Get","PolicyEvent", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyEvent))]
     public class GetAzureRmPolicyEvent : PolicyInsightsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmPolicyEvent")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = ParameterHelpMessages.ManagementGroupName)]
         [ValidateNotNullOrEmpty]
@@ -224,3 +227,4 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         }
     }
 }
+

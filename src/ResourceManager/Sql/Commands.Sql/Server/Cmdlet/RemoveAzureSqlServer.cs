@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlServer", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class RemoveAzureSqlServer : AzureSqlServerCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServer")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -90,3 +93,4 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+

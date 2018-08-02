@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// </summary>
     [Cmdlet("Get","ServiceBusRule"), OutputType(typeof(PSRulesAttributes))]
     public class GetAzureRmServiceBusRule : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusRule")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -82,3 +85,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         }
     }
 }
+

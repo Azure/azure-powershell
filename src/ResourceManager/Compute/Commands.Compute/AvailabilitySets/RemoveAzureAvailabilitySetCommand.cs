@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","AvailabilitySet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmAvailabilitySet")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

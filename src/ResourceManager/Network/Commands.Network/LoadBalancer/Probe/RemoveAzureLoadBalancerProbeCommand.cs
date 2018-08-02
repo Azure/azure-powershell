@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmLoadBalancerProbeConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

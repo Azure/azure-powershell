@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet("Add","VMAdditionalUnattendContent"),OutputType(typeof(PSVirtualMachine))]
     public class NewAzureAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVMAdditionalUnattendContent")]
+#endif
     {
         private const ComponentNames defaultComponentName = ComponentNames.MicrosoftWindowsShellSetup;
         private const PassNames defaultPassName = PassNames.OobeSystem;
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

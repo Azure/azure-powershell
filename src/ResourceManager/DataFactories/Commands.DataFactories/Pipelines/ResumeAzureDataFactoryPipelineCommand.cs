@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Resume","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class ResumeAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Resume-AzureRmDataFactoryPipeline")]
+#endif
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -50,3 +53,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

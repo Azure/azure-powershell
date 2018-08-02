@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
     public class GetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGateway")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

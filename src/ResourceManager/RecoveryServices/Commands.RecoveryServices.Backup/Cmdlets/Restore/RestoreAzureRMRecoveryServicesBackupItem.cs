@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Restore","RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class RestoreAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Restore-AzureRmRecoveryServicesBackupItem")]
+#endif
     {
         /// <summary>
         /// Location of the Recovery Services Vault.
@@ -152,3 +155,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

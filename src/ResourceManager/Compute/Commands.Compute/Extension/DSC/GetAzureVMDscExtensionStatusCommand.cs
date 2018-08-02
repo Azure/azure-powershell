@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// </summary>
     [Cmdlet("Get","VMDscExtensionStatus"),OutputType(typeof(PSVirtualMachineInstanceView))]
     public class GetAzureVMDscExtensionStatusCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMDscExtensionStatus")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

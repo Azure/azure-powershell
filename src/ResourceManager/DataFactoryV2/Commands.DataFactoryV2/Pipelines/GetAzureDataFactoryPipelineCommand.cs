@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSPipeline))]
     public class GetAzureDataFactoryPipelineCommand : DataFactoryContextBaseGetCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2Pipeline")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpPipelineName)]
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

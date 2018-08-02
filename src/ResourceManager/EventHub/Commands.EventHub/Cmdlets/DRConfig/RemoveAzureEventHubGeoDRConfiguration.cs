@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// </summary>
     [Cmdlet("Remove","EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmEventHubGeoDRConfiguration")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -111,3 +114,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         }
     }
 }
+

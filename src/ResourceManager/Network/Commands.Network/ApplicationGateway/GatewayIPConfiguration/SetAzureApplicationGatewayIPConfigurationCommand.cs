@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayIPConfiguration")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Remove-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class RemoveAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the name of the recovery plan to be deleted.
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

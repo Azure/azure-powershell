@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Get","VMImageOffer")]
     [OutputType(typeof(PSVirtualMachineImageOffer))]
     public class GetAzureVMImageOfferCommand : VirtualMachineImageBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMImageOffer")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

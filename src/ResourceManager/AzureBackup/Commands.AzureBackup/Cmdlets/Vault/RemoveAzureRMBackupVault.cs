@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Remove","BackupVault", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureRMBackupVault : AzureBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmBackupVault")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm deletion of vault")]
         public SwitchParameter Force { get; set; }
@@ -45,3 +48,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

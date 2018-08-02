@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("New","ADApplication", DefaultParameterSetName = ParameterSet.ApplicationWithoutCredential, SupportsShouldProcess = true), OutputType(typeof(PSADApplication))]
     public class NewAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmADApplication")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationWithoutCredential,
             HelpMessage = "The display name for the application.")]
@@ -186,3 +189,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

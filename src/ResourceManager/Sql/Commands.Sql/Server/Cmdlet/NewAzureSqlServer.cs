@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// </summary>
     [Cmdlet("New","SqlServer",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerModel))]
     public class NewAzureSqlServer : AzureSqlServerCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlServer")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -152,3 +155,4 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+

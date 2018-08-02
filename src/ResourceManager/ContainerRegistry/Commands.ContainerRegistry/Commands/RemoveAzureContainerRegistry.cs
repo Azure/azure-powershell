@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Remove","ContainerRegistry", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureContainerRegistry : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContainerRegistry")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -74,3 +77,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

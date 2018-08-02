@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayRequestRoutingRule"),OutputType(typeof(PSApplicationGatewayRequestRoutingRule))]
     public class GetAzureApplicationGatewayRequestRoutingRuleCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayRequestRoutingRule")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

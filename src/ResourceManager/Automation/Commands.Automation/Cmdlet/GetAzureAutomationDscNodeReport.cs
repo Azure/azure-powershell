@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationDscNodeReport", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscNode))]
     public class GetAzureAutomationDscNodeReport : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationDscNodeReport")]
+#endif
     {
         /// <summary>
         /// True to get latest the dsc report; false otherwise.
@@ -107,3 +110,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

@@ -22,9 +22,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// The Remove-AzureKeyVaultCertificate cmdlet deletes a certificate in an Azure Key Vault. 
     /// </summary>
-    [Cmdlet("Remove","AzureKeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameAndNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameAndNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultCertificate))]
     public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureKeyVaultCertificate")]
+#endif
     {
         #region Parameter Set Names
 
@@ -134,3 +137,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

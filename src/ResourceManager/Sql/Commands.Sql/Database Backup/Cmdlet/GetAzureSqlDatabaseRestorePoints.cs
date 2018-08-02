@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [Cmdlet("Get","SqlDatabaseRestorePoints", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
     public class GetAzureSqlDatabaseRestorePoints : AzureSqlDatabaseRestorePointCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseRestorePoints")]
+#endif
     {
         /// <summary>
         /// Get the entities from the service
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

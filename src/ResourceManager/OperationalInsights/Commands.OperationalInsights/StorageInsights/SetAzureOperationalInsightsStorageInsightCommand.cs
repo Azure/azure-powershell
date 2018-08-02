@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Set","OperationalInsightsStorageInsight", DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
     public class SetAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmOperationalInsightsStorageInsight")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the storage insight.")]
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Add","ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApiManagementRegion")]
+#endif
     {
         [Parameter(
           ValueFromPipeline = true,
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

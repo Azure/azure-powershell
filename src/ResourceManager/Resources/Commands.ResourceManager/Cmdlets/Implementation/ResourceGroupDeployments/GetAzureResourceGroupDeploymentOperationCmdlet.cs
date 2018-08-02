@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Get","ResourceGroupDeploymentOperation"), OutputType(typeof(PSObject))]
     public class GetAzureResourceGroupDeploymentOperationCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmResourceGroupDeploymentOperation")]
+#endif
     {
         /// <summary>
         /// Gets or sets the deployment name parameter.
@@ -122,3 +125,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

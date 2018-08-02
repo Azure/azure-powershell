@@ -136,6 +136,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","Snapshot", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSSnapshot))]
     public partial class GetAzureRmSnapshot : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmSnapshot")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -212,3 +215,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string SnapshotName { get; set; }
     }
 }
+

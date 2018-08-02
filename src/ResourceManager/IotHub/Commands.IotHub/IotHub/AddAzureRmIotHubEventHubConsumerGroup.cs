@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Add","IotHubEventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(string))]
     [Alias("Add-AzureRmIotHubEHCG")]
     public class AddAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmIotHubEventHubConsumerGroup")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
+

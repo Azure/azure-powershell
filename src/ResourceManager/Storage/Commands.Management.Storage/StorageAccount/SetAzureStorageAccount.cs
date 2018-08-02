@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// </summary>
     [Cmdlet("Set","StorageAccount", SupportsShouldProcess = true, DefaultParameterSetName = StorageEncryptionParameterSet), OutputType(typeof(PSStorageAccount))]
     public class SetAzureStorageAccountCommand : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmStorageAccount")]
+#endif
     {
 
         /// <summary>
@@ -265,3 +268,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

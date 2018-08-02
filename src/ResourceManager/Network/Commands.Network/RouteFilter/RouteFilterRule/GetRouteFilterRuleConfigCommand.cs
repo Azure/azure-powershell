@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Get","RouteFilterRuleConfig"), OutputType(typeof(PSRouteFilterRule))]
     public class GetRouteFilterRuleConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRouteFilterRuleConfig")]
+#endif
     {
         [Parameter(
            Mandatory = false,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
 
     }
 }
+

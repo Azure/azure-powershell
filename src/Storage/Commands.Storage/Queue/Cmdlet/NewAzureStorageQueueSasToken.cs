@@ -24,6 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     [Cmdlet("New","AzureStorageQueueSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageQueueSasTokenCommand : StorageQueueBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureStorageQueueSASToken")]
+#endif
     {
         /// <summary>
         /// Sas permission parameter set name
@@ -140,3 +143,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         }
     }
 }
+

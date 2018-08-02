@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// </summary>
     [Cmdlet("Get","DiagnosticSetting"), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class GetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDiagnosticSetting")]
+#endif
     {
 
         #region Parameters declarations
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
     }
 }
+

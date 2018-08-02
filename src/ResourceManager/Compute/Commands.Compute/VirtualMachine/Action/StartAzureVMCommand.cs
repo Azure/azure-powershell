@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Start","VM", DefaultParameterSetName = ResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
     public class StartAzureVMCommand : VirtualMachineActionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmVM")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -50,3 +53,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

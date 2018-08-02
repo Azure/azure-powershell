@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network
  {			
      [Cmdlet("Get","ExpressRouteCircuitRouteTable"),OutputType(typeof(PSExpressRouteCircuitRoutesTable))]
      public class GetAzureRmExpressRouteCircuitRouteTable : NetworkBaseCmdlet		
+#if NETSTANDARD
+    [Alias("Get-AzureRmExpressRouteCircuitRouteTable")]
+#endif
      {		
          [Parameter(		
              Mandatory = true,		
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.Network
      }		
  		
  }
+

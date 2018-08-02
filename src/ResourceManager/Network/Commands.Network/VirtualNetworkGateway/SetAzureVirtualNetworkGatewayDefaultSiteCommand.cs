@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkGatewayDefaultSite"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class SetAzureVirtualNetworkGatewayDefaultSiteCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetworkGatewayDefaultSite")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","RouteTable"), OutputType(typeof(PSRouteTable))]
     public partial class GetAzureRmRouteTable : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRouteTable")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("New","ApiManagementBackendProxy")]
     [OutputType(typeof(PsApiManagementBackendProxy))]
     public class NewAzureApiManagementBackendProxy : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementBackendProxy")]
+#endif
     {
         [Parameter(
            ValueFromPipelineByPropertyName = false,
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

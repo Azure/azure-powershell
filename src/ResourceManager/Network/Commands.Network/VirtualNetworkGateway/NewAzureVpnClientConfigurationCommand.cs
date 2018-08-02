@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","VpnClientConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSVpnProfile))]
     public class NewAzureVpnClientConfigurationCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVpnClientConfiguration")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -163,3 +166,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

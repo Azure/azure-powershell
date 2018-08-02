@@ -14,6 +14,9 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
     [Cmdlet("New","UserAssignedIdentity", SupportsShouldProcess = true)]
     [OutputType(typeof (PsUserAssignedIdentity))]
     public class NewAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmUserAssignedIdentity")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+

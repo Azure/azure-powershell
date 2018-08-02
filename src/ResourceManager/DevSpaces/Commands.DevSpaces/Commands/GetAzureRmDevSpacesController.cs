@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
     [Cmdlet("Get","DevSpacesController", DefaultParameterSetName = ListDevSpacesControllerParameterSet)]
     [OutputType(typeof(PSController))]
     public class GetAzureRmDevSpacesController : DevSpacesCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDevSpacesController")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+

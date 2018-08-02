@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
     [Cmdlet("Get","MarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet), OutputType(typeof(PSAgreementTerms))]
     public class GetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMarketplaceTerms")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "Publisher identifier string of image being deployed.", ParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -45,3 +48,4 @@ namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
         }
     }
 }
+

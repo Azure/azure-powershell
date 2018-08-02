@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("New","ServiceFabricCluster", SupportsShouldProcess = true, DefaultParameterSetName = ByDefaultArmTemplate),OutputType(typeof(PSDeploymentResult))]
     public class NewAzureRmServiceFabricCluster : ServiceFabricClusterCertificateCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmServiceFabricCluster")]
+#endif
     {
         public const string WindowsTemplateRelativePath = @"Template\Windows";
         public const string LinuxTemplateRelativePath = @"Template\Linux";
@@ -1059,3 +1062,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+

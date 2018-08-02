@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class GetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkSecurityGroup")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -99,3 +102,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

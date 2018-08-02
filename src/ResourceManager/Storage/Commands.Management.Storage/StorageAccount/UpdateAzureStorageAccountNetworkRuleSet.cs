@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Update","StorageAccountNetworkRuleSet", SupportsShouldProcess = true), OutputType(typeof(PSNetworkRuleSet))]
     public class UpdateAzureStorageAccountRuleSetCommand : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmStorageAccountNetworkRuleSet")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -180,3 +183,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","PacketCaptureFilterConfig"),OutputType(typeof(PSPacketCaptureFilter))]
     public class NewPacketCaptureFilterCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmPacketCaptureFilterConfig")]
+#endif
     {
         [Parameter(
              Mandatory = false,
@@ -82,3 +85,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// </summary>
     [Cmdlet("Set","EventHubGeoDRConfigurationBreakPair", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureEventHubGeoDRConfigurationBreakPair : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventHubGeoDRConfigurationBreakPair")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         }
     }
 }
+

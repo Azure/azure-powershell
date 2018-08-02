@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayBackendHttpSettings"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayBackendHttpSettingsCommand : AzureApplicationGatewayBackendHttpSettingsBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayBackendHttpSettings")]
+#endif
     {
         [Parameter(
                  Mandatory = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

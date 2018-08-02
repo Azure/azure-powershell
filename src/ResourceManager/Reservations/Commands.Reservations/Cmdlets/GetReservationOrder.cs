@@ -9,6 +9,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Get","ReservationOrder"), OutputType(typeof(PSReservationOrderPage), typeof(PSReservationOrder))]
     public class GetReservationOrder : AzureReservationsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmReservationOrder")]
+#endif
     {
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
@@ -34,3 +37,4 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+

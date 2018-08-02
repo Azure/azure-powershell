@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     [Cmdlet("Get","CdnProfileSupportedOptimizationType", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOptimizationType))]
     public class GetAzureRmCdnProfileSupportedOptimizationType : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnProfileSupportedOptimizationType")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+

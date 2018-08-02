@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Set-ASRAlertSetting")]
     [OutputType(typeof(ASRAlertSetting))]
     public class SetAzureRmRecoveryServicesAsrAlertSetting : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRecoveryServicesAsrAlertSetting")]
+#endif
     {
         /// <summary>
         ///     Switch paramter specifies enable notification to subscription owner.
@@ -169,3 +172,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

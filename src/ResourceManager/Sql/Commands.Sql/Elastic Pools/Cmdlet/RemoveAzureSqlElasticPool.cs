@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet("Remove","SqlElasticPool",SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolModel))]
     public class RemoveAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlElasticPool")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the ElasticPool to remove.
@@ -88,3 +91,4 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("New","AutomationCertificate", DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName)]
     [OutputType(typeof(CertificateInfo))]
     public class NewAzureAutomationCertificate : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationCertificate")]
+#endif
     {
         /// <summary>
         /// Gets or sets the certificate name.
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

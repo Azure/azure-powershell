@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","LocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
     public class SetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmLocalNetworkGateway")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -110,3 +113,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Set","WebApp"), OutputType(typeof(Site))]
     public class SetAzureWebAppCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmWebApp")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSet1Name, Position = 2, Mandatory = false, HelpMessage = "The name of the app service plan eg: Default1.")]
         public string AppServicePlan { get; set; }
@@ -212,3 +215,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

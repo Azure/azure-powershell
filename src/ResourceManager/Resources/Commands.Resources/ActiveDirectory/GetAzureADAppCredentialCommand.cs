@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Get","ADAppCredential", DefaultParameterSetName = ParameterSet.ApplicationObjectId), OutputType(typeof(PSADCredential))]
     public class GetAzureADAppCredentialCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmADAppCredential")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

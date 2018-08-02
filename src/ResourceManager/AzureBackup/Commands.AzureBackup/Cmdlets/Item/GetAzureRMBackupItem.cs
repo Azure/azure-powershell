@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Get","BackupItem"), OutputType(typeof(AzureRMBackupItem))]
     public class GetAzureRMBackupItem : AzureBackupContainerCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmBackupItem")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ProtectionStatus)]
         [ValidateSet("Protected", "Protecting", "NotProtected")]
@@ -137,3 +140,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 
     }
 }
+

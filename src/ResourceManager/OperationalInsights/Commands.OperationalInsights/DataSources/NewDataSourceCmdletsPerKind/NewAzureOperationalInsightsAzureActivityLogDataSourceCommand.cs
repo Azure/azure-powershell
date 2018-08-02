@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
     [Cmdlet("New","OperationalInsightsAzureActivityLogDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     [Alias("New-AzureRmOperationalInsightsAzureAuditDataSource")]
     public class NewAzureOperationalInsightsAzureActivityLogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsAzureActivityLogDataSource")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

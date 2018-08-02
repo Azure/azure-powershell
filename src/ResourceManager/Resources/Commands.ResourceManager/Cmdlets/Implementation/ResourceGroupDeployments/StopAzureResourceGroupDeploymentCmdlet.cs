@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Stop","ResourceGroupDeployment", SupportsShouldProcess = true, DefaultParameterSetName = StopAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(bool))]
     public class StopAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmResourceGroupDeployment")]
+#endif
     {
         /// <summary>
         /// The deployment Id parameter set.
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
     [Cmdlet("Remove","DevSpacesController", DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmDevSpacesController : DevSpacesCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDevSpacesController")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VirtualNetworkGatewayConnection", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVirtualNetworkGatewayConnection")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

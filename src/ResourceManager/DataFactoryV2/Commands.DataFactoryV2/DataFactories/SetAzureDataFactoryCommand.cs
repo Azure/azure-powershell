@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
     [Cmdlet("Set","DataFactoryV2", SupportsShouldProcess = true), OutputType(typeof(PSDataFactory))]
     [Alias(VerbsCommon.New + "-" + Constants.DataFactory)]
     public class SetAzureDataFactoryCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataFactoryV2")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpResourceGroup)]
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

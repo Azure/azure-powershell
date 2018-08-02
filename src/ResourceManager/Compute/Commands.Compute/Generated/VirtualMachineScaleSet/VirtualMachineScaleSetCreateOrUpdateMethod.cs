@@ -115,6 +115,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("New","Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVmss")]
+#endif
     {
         public const string SimpleParameterSet = "SimpleParameterSet";
 
@@ -179,3 +182,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

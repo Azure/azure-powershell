@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Set","AutomationWebhook")]
     [OutputType(typeof(Webhook))]
     public class SetAzureAutomationWebhook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmAutomationWebhook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the Webhook name.
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

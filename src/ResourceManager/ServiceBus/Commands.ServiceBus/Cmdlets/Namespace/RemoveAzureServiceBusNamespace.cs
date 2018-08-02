@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// </summary>
     [Cmdlet("Remove","ServiceBusNamespace", DefaultParameterSetName = NamespacePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceBusNamespace")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespacePropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+

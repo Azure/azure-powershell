@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2IntegrationRuntimeMetric",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntimeMetrics))]
     public class GetAzureDataFactoryIntegrationRuntimeMetricCommand : IntegrationRuntimeCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2IntegrationRuntimeMetric")]
+#endif
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -36,3 +39,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

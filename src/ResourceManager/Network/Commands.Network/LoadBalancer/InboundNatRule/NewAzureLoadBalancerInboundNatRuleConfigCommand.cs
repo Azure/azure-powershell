@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","LoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSInboundNatRule))]
     public class NewAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
+#if NETSTANDARD
+    [Alias("New-AzureRmLoadBalancerInboundNatRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

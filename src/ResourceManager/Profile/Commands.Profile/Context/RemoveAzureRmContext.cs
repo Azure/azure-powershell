@@ -22,9 +22,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet("Remove","Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class RemoveAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("Remove-AzureRmContext")]
+#endif
     {
         const string NamedContextParameterSet = "RemoveByName", InputObjectParameterSet = "RemoveByInputObject";
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
@@ -89,3 +92,4 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+

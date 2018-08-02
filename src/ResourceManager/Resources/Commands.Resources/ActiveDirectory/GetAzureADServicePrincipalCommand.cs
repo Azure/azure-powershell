@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Get","ADServicePrincipal", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADServicePrincipal))]
     public class GetAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmADServicePrincipal")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "The service principal search string.")]
@@ -105,3 +108,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

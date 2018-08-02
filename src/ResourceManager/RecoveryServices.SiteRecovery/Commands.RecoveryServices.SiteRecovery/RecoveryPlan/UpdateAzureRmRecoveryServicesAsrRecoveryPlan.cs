@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Update-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
     public class UpdateAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmRecoveryServicesAsrRecoveryPlan")]
+#endif
     {
         /// <summary>
         ///     Gets or sets Name of the Recovery Plan object,
@@ -214,3 +217,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

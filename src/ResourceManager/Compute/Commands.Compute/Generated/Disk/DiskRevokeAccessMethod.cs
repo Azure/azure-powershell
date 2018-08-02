@@ -99,6 +99,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Revoke","DiskAccess", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RevokeAzureRmDiskAccess : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Revoke-AzureRmDiskAccess")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

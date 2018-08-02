@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("New","ApiManagementContext"), OutputType(typeof(PsApiManagementContext))]
     public class NewAzureApiManagementContext : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementContext")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

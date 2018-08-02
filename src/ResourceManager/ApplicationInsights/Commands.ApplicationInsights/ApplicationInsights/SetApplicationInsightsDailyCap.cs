@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("Set","ApplicationInsightsDailyCap", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
     public class SetApplicationInsightsDailyCapCommand : ApplicationInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationInsightsDailyCap")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -126,3 +129,4 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+

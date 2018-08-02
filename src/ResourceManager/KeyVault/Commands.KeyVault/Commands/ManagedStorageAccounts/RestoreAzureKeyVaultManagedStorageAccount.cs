@@ -24,9 +24,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Restores the managed storage account from a backup file into a vault 
     /// </summary>
-    [Cmdlet("Restore","AzureKeyVaultManagedStorageAccount",SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
+    [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccount", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
     public class RestoreAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Restore-AzureKeyVaultManagedStorageAccount")]
+#endif
     {
         #region Parameter Set Names
 
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

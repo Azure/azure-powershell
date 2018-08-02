@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGateway", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class NewAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGateway")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -301,3 +304,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

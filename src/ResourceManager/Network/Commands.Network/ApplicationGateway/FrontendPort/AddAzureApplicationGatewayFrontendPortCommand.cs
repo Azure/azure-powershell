@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewayFrontendPort")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

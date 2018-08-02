@@ -18,9 +18,12 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Enable","AzureBatchTask", SupportsShouldProcess = true), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchTask", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Reactivate-AzureBatchTask")]
     public class EnableBatchTaskCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureBatchTask")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true, 
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to reactivate.")]
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

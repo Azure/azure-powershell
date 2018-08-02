@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     [Cmdlet("Get","SqlDatabaseImportExportStatus", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseImportExportStatusModel))]
     public class GetAzureSqlDatabaseImportExportStatus : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseImportExportStatus")]
+#endif
     {
         /// <summary>
         /// Gets or sets the operation status link
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
     }
 }
+

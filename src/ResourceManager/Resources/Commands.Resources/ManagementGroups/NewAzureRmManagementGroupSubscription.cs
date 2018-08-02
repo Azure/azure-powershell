@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// </summary>
     [Cmdlet("New","ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmManagementGroupSubscription")]
+#endif
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         }
     }
 }
+

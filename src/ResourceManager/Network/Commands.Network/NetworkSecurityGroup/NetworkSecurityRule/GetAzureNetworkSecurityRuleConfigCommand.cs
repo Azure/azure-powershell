@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkSecurityRuleConfig"), OutputType(typeof(PSSecurityRule))]
     public class GetAzureNetworkSecurityRuleConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkSecurityRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMPlan"),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMPlanCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMPlan")]
+#endif
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

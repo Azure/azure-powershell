@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","NetworkUsage"), OutputType(typeof(PSUsage))]
     public partial class GetAzureRmNetworkUsage : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkUsage")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+

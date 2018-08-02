@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Register","AutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(JobSchedule))]
     public class RegisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Register-AzureRmAutomationScheduledRunbook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the runbook name
@@ -74,3 +77,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

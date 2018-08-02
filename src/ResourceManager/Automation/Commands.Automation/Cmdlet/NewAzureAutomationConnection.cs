@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("New","AutomationConnection", DefaultParameterSetName = AutomationCmdletParameterSets.ByConnectionName)]
     [OutputType(typeof(Connection))]
     public class NewAzureAutomationConnection : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationConnection")]
+#endif
     {
 
         /// <summary>
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

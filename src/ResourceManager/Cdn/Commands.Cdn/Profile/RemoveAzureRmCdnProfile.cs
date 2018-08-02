@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     [Cmdlet("Remove","CdnProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmCdnProfile : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmCdnProfile")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the Azure CDN profile.")]
         [ValidateNotNullOrEmpty]
@@ -98,3 +101,4 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+

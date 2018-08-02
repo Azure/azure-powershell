@@ -25,6 +25,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     [Cmdlet("Remove","AzureStorageQueueStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageQueueStoredAccessPolicyCommand : StorageQueueBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureStorageQueueStoredAccessPolicy")]
+#endif
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -115,3 +118,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
 
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Submit","DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
     [Alias("Submit-AdlJob")]
     public class SubmitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Submit-AzureRmDataLakeAnalyticsJob")]
+#endif
     {
         internal const string USqlJobWithScriptPath = "SubmitUSqlJobWithScriptPath";
         internal const string USqlJobParameterSetName = "SubmitUSqlJob";
@@ -635,3 +638,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet("Set","VMBackupExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBackupExtension : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMBackupExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [Cmdlet("Set","AzureStorageServiceLoggingProperty"),OutputType(typeof(StorageClient.LoggingProperties))]
     public class SetAzureStorageServiceLoggingCommand : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureStorageServiceLoggingProperty")]
+#endif
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
@@ -182,3 +185,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+

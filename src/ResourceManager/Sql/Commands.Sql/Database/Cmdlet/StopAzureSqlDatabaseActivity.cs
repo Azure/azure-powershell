@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet("Stop","SqlDatabaseActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseActivityModel))]
     public class StopAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmSqlDatabaseActivity")]
+#endif
     {
         /// <summary>
         /// Gets database activity in an Elastic Pool
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
     }
 }
+

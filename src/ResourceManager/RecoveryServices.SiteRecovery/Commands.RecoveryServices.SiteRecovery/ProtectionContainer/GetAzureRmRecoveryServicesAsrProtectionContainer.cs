@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRProtectionContainer")]
     [OutputType(typeof(ASRProtectionContainer))]
     public class GetAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrProtectionContainer")]
+#endif
     {
         /// <summary>
         ///     Gets or sets ID of the Protection Container.
@@ -304,3 +307,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

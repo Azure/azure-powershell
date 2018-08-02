@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// </summary>
     [Cmdlet("Complete","ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class CompleteAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Complete-AzureRmServiceBusMigration")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Get","BackupContainer"), OutputType(typeof(AzureRMBackupContainer))]
     public class GetAzureRMBackupContainer : AzureBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmBackupContainer")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

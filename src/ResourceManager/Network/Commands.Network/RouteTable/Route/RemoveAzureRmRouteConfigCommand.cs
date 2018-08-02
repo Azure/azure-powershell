@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","RouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public partial class RemoveAzureRmRouteConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRouteConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

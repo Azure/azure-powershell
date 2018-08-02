@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AutomationCertificate", SupportsShouldProcess = true,DefaultParameterSetName = AutomationCmdletParameterSets.ByCertificateName), OutputType(typeof(void))]
     public class RemoveAzureAutomationCertificate : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmAutomationCertificate")]
+#endif
     {
         /// <summary>
         /// Gets or sets the certificate name.
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

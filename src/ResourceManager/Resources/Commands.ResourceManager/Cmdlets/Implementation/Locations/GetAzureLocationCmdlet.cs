@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Get","Location"), OutputType(typeof(PSResourceProviderLocation))]
     public class GetAzureLocationCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmLocation")]
+#endif
     {
         /// <summary>
         /// Executes the cmdlet
@@ -100,3 +103,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

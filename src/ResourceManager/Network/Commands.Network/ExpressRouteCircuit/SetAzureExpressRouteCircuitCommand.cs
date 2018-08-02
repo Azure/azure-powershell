@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
     public class SetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmExpressRouteCircuit")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

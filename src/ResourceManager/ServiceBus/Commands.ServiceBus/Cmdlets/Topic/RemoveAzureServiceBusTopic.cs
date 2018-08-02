@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// </summary>
     [Cmdlet("Remove","ServiceBusTopic", DefaultParameterSetName = TopicPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusTopic : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceBusTopic")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = TopicPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -86,3 +89,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         }
     }
 }
+

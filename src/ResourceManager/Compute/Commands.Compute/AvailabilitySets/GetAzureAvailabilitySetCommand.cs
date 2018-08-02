@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Get","AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
     public class GetAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAvailabilitySet")]
+#endif
     {
         [Parameter(
            Mandatory = false,
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

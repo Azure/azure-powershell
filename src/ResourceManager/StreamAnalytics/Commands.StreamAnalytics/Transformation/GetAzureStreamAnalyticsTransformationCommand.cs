@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Get","StreamAnalyticsTransformation"), OutputType(typeof(PSTransformation))]
     public class GetAzureStreamAnalyticsTransformationCommand : StreamAnalyticsResourceProviderBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmStreamAnalyticsTransformation")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+

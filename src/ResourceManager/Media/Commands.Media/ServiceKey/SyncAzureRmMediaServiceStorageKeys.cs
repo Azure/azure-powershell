@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// </summary>
     [Cmdlet("Sync","MediaServiceStorageKeys", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
+#if NETSTANDARD
+    [Alias("Sync-AzureRmMediaServiceStorageKeys")]
+#endif
     {
         private const string SyncMediaServiceStorageKeysWhatIfMessage = "Sync MediaService storage keys";
 
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         }
     }
 }
+

@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// </summary>
     [Cmdlet("Get","AzureStorageShareStoredAccessPolicy"), OutputType(typeof(SharedAccessFilePolicy))]
     public class GetAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureStorageShareStoredAccessPolicy")]
+#endif
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -86,3 +89,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

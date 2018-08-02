@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Add","DataLakeStoreItemContent"), OutputType(typeof(bool))]
     [Alias("Add-AdlStoreItemContent")]
     public class AddAzureDataLakeStoreItemContent : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmDataLakeStoreItemContent")]
+#endif
     {
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -53,3 +56,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

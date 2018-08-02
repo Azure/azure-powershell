@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Resume","AutomationJob"), OutputType(typeof(void))]
     public class ResumeAzureAutomationJob : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Resume-AzureRmAutomationJob")]
+#endif
     {
         /// <summary> 
         /// Gets or sets the job id. 
@@ -42,3 +45,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

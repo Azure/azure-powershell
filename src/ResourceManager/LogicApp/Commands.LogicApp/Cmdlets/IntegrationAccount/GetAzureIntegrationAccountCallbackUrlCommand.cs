@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("Get","IntegrationAccountCallbackUrl")]
     [OutputType(typeof(CallbackUrl))]
     public class GetAzureIntegrationAccountCallbackUrlCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIntegrationAccountCallbackUrl")]
+#endif
     {
 
         #region Input Parameters
@@ -69,3 +72,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

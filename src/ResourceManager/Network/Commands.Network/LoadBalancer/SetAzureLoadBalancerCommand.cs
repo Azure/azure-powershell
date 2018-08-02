@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","LoadBalancer"), OutputType(typeof(PSLoadBalancer))]
     public class SetAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmLoadBalancer")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

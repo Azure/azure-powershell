@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias(
         "Import-ASRVaultSettingsFile")]
     public class ImportAzureRmRecoveryServicesAsrVaultSettingsFile : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Import-AzureRmRecoveryServicesAsrVaultSettingsFile")]
+#endif
     {
         /// <summary>
         ///     Gets or sets path to the Azure RecoveryServices Vault Settings file. This file can be
@@ -160,3 +163,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

@@ -99,6 +99,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Start","VmssRollingOSUpgrade", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class StartAzureRmVmssRollingOSUpgrade : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmVmssRollingOSUpgrade")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

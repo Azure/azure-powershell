@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewaySslPolicy")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -37,3 +40,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New","HDInsightSqoopJobDefinition"),OutputType(typeof(AzureHDInsightSqoopJobDefinition))]
     public class NewAzureHDInsightSqoopJobDefinitionCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmHDInsightSqoopJobDefinition")]
+#endif
     {
         private AzureHDInsightSqoopJobDefinition job;
 
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

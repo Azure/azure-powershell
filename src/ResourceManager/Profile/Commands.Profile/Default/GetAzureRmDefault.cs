@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Commands.Profile.Default
     /// <summary>
     /// Cmdlet to get default options. 
     /// </summary>
-    [Cmdlet("Get","Default", DefaultParameterSetName = ResourceGroupParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Default", DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSResourceGroup))]
     public class GetAzureRMDefaultCommand : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDefault")]
+#endif
     {
         private const string ResourceGroupParameterSet = "ResourceGroup";
 
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Profile.Default
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// </summary>
     [Cmdlet("Get","EventHubNamespace"), OutputType(typeof(PSNamespaceAttributes))]
     public class GetAzureRmEventHubNamespace : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmEventHubNamespace")]
+#endif
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -59,3 +62,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         }
     }
 }
+

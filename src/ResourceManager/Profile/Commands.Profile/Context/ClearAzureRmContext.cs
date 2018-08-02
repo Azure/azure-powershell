@@ -24,9 +24,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet("Clear","Context", SupportsShouldProcess = true)]
+    [Cmdlet("Clear", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class ClearAzureRmContext : AzureContextModificationCmdlet
+#if NETSTANDARD
+    [Alias("Clear-AzureRmContext")]
+#endif
     {
         [Parameter(Mandatory = false, HelpMessage = "Return a value indicating success or failure")]
         public SwitchParameter PassThru { get; set; }
@@ -112,3 +115,4 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+

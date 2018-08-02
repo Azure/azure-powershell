@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
     [Cmdlet("Set","ConsumptionBudget", DefaultParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSBudget))]
     public class SetAzureRmConsumptionBudget : AzureConsumptionCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmConsumptionBudget")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
         [Parameter(ParameterSetName = ParameterSetNames.NotificationItemParameterSet, Mandatory = true, HelpMessage = HelpMessages.Name)]
@@ -299,3 +302,4 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Budget
         }
     }
 }
+

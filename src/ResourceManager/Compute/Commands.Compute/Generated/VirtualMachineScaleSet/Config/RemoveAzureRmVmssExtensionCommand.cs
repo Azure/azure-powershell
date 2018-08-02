@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Remove","VmssExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class RemoveAzureRmVmssExtensionCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVmssExtension")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

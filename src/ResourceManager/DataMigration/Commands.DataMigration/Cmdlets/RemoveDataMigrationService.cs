@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [OutputType(typeof(bool))]
     [Alias("Remove-AzureRmDms")]
     public class RemoveDataMigrationService : DataMigrationCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataMigrationService")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

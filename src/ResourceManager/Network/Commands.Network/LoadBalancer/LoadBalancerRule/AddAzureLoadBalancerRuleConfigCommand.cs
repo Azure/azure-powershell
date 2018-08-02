@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmLoadBalancerRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

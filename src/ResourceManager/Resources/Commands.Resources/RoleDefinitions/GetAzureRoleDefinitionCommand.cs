@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// </summary>
     [Cmdlet("Get","RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRoleDefinition")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+

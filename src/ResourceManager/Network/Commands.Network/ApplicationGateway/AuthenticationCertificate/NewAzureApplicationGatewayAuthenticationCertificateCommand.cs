@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewayAuthenticationCertificate))]
     public class NewAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
+#if NETSTANDARD
+    [Alias("New-AzureRmApplicationGatewayAuthenticationCertificate")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -30,3 +33,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
     [Cmdlet("Update","DevSpacesController", DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSController))]
     public class UpdateAzureRmDevSpacesController : DevSpacesCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmDevSpacesController")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+

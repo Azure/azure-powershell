@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set","DiskImageReference", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class SetAzureRmDiskImageReferenceCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDiskImageReference")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

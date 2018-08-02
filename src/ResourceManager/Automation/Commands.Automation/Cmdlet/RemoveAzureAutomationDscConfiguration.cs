@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AutomationDscConfiguration", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmAutomationDscConfiguration")]
+#endif
     {
         /// <summary>
         /// Gets or sets the Configuration name.
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

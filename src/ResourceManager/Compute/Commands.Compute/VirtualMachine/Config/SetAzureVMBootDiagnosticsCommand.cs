@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMBootDiagnostics"),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMBootDiagnosticsCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMBootDiagnostics")]
+#endif
     {
         private const string EnableParameterSet = "EnableBootDiagnostics";
         private const string DisableParameterSet = "DisableBootDiagnostics";
@@ -137,3 +140,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

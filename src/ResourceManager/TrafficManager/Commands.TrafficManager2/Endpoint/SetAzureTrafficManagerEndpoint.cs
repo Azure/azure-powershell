@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Set","TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class SetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmTrafficManagerEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The endpoint.")]
         [ValidateNotNullOrEmpty]
@@ -35,3 +38,4 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+

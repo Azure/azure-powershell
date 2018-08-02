@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
 {
     [Cmdlet("Remove","PowerBIWorkspaceCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmPowerBIWorkspaceCollection")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+

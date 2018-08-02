@@ -17,8 +17,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Enable","AzureBatchJob"), OutputType(typeof(void))]
+    [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJob"), OutputType(typeof(void))]
     public class EnableBatchJobCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureBatchJob")]
+#endif
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the job to enable.")]
@@ -31,3 +34,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

@@ -80,6 +80,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","ComputeResourceSku", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSResourceSku))]
     public partial class GetAzureRmComputeResourceSku : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmComputeResourceSku")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

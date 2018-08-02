@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Start-ASRSwitchProcessServerJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrSwitchProcessServerJob : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureRmRecoveryServicesAsrSwitchProcessServerJob")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the fabric corresponding to the Configuration Server.
@@ -144,3 +147,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkSecurityGroup")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
 {
     [Cmdlet("Wait","BackupJob"), OutputType(typeof(AzureRMBackupJob))]
     public class WaitAzureRMBackupJob : AzureBackupCmdletBase
+#if NETSTANDARD
+    [Alias("Wait-AzureRmBackupJob")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.WaitJobFilterJobHelpMessage, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -154,3 +157,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

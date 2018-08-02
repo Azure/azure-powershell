@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get","HDInsightScriptActionHistory"),OutputType(typeof(AzureHDInsightRuntimeScriptActionDetail))]
     public class GetAzureHDInsightScriptActionHistory : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmHDInsightScriptActionHistory")]
+#endif
     {
         #region Input Parameter Definitions
         [Parameter(
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

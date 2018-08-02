@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRUnplannedFailoverJob")]
     [OutputType(typeof(ASRJob))]
     public class StartAzureRmRecoveryServicesAsrUnplannedFailoverJob : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureRmRecoveryServicesAsrUnplannedFailoverJob")]
+#endif
     {
         /// <summary>
         ///     Gets or sets an ASR recovery plan object.
@@ -515,3 +518,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     }
 
 }
+

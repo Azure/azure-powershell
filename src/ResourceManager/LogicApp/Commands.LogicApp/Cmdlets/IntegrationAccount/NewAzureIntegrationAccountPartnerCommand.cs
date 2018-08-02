@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     [Cmdlet("New","IntegrationAccountPartner", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountPartner))]
     public class NewAzureIntegrationAccountPartnerCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmIntegrationAccountPartner")]
+#endif
     {
 
         #region Defaults
@@ -111,3 +114,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

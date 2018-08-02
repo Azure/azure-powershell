@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
     [Cmdlet("Disable","VMDiskEncryption",SupportsShouldProcess =  true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class DisableAzureDiskEncryptionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Disable-AzureRmVMDiskEncryption")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -355,3 +358,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+

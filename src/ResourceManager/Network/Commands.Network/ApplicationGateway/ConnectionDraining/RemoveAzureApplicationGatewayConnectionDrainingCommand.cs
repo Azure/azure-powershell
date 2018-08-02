@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayConnectionDraining"), OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class RemoveAzureApplicationGatewayConnectionDrainingCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayConnectionDraining")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -36,3 +39,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

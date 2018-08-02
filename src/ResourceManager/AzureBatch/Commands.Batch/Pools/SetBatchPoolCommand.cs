@@ -18,8 +18,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Set","AzureBatchPool"), OutputType(typeof(void))]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPool"), OutputType(typeof(void))]
     public class SetBatchPoolCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureBatchPool")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The PSCloudPool object with changes to commit to the Batch Service.")]
@@ -32,3 +35,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

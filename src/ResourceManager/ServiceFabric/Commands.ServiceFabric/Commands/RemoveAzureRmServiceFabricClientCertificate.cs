@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricClientCertificate", SupportsShouldProcess = true),OutputType(typeof (PSCluster))]
     public class RemoveAzureRmServiceFabricClientCertificate : ServiceFabricClientCertificateBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceFabricClientCertificate")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -141,3 +144,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+

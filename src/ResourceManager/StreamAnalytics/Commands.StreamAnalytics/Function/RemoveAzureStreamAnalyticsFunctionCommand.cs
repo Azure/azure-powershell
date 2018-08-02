@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Remove","StreamAnalyticsFunction", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureStreamAnalyticsFunctionCommand : StreamAnalyticsResourceProviderBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmStreamAnalyticsFunction")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+

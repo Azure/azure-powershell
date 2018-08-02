@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Remove","ADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.Explicit), OutputType(typeof(bool))]
     public class RemoveAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmADGroupMember")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The object id of the member(s) to remove.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object id of the member(s) to remove.")]
@@ -100,3 +103,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

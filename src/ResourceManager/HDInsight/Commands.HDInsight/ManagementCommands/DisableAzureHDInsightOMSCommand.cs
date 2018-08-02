@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight
     [Alias("Disable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
     public class DisableAzureHDInsightOMSCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Disable-AzureRmHDInsightOperationsManagementSuite")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// </summary>
     [Cmdlet("New","CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class NewAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmCognitiveServicesAccount")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -128,3 +131,4 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+

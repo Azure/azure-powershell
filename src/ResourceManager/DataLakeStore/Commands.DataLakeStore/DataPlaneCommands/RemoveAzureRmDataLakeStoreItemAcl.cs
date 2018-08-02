@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Remove","DataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof (bool))]
     [Alias("Remove-AdlStoreItemAcl")]
     public class RemoveAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataLakeStoreItemAcl")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

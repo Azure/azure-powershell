@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayBackendHealth"), OutputType(typeof(PSApplicationGatewayBackendHealth))]
     public class GetAzureApplicationGatewayBackendHealthCommand : ApplicationGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayBackendHealth")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

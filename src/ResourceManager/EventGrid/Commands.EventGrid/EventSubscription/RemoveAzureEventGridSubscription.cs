@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Remove","EventGridSubscription",DefaultParameterSetName = ResourceGroupNameParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmEventGridSubscription")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -117,3 +120,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

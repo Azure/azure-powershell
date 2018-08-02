@@ -99,6 +99,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Remove","Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class RemoveAzureRmDisk : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDisk")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -155,3 +158,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

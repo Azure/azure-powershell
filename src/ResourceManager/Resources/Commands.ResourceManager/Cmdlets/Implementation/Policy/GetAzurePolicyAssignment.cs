@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Get","PolicyAssignment", DefaultParameterSetName = PolicyCmdletBase.DefaultParameterSet), OutputType(typeof(PSObject))]
     public class GetAzurePolicyAssignmentCmdlet : PolicyCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmPolicyAssignment")]
+#endif
     {
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
@@ -188,3 +191,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("Get","DnsZone", DefaultParameterSetName = "Default"), OutputType(typeof(DnsZone))]
     public class GetAzureDnsZone : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDnsZone")]
+#endif
     {
         private const string ParameterSetResourceGroup = "ResourceGroup";
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSetResourceGroup, HelpMessage = "The full name of the zone (without a terminating dot).")]
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+

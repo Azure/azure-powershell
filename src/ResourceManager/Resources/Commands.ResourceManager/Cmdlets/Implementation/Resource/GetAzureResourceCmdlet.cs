@@ -37,6 +37,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Get","Resource", DefaultParameterSetName = ByTagNameValueParameterSet), OutputType(typeof(PSResource))]
     public sealed class GetAzureResourceCmdlet : ResourceManagerCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmResource")]
+#endif
     {
         public const string ByResourceIdParameterSet = "ByResourceId";
         public const string ByTagObjectParameterSet = "ByTagObjectParameterSet";
@@ -679,3 +682,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

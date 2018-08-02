@@ -114,6 +114,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Invoke","VMRunCommand", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSRunCommandResult))]
     public partial class InvokeAzureRmVMRunCommand : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmVMRunCommand")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -205,3 +208,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

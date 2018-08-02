@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Add","VmssDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVmssDataDisk")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -128,3 +131,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

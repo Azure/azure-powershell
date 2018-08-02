@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
     /// </summary>
     [Cmdlet("Remove","StorageAccount", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureStorageAccountCommand : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmStorageAccount")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

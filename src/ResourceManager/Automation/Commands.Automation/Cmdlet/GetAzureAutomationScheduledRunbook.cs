@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationScheduledRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(JobSchedule))]
     public class GetAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationScheduledRunbook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the job id.
@@ -119,3 +122,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

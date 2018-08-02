@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// </summary>
     [Cmdlet("Set","SchedulerStorageQueueJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
     public class UpdateAzureSchedulerStorageQueueJobCommand : JobBaseCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("Set-AzureRmSchedulerStorageQueueJob")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
         [ResourceGroupCompleter]
@@ -156,3 +159,4 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+

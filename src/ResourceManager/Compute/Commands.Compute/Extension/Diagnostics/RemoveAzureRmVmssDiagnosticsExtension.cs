@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VmssDiagnosticsExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVmssDiagnosticsExtension")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// </summary>
     [Cmdlet("Set","CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
     public class SetAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmCognitiveServicesAccount")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -125,3 +128,4 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Start","NetworkWatcherConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"),OutputType(typeof(bool))]
     public class StartAzureNetworkWatcherConnectionMonitorCommand : ConnectionMonitorBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmNetworkWatcherConnectionMonitor")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -156,3 +159,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

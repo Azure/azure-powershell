@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Get","VMSize", DefaultParameterSetName = ListVirtualMachineSizeParamSet)]
     [OutputType(typeof(PSVirtualMachineSize))]
     public class GetAzureVMSizeCommand : VirtualMachineSizeBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVMSize")]
+#endif
     {
         protected const string ListVirtualMachineSizeParamSet = "ListVirtualMachineSizeParamSet";
         protected const string ListAvailableSizesForAvailabilitySet = "ListAvailableSizesForAvailabilitySet";
@@ -113,3 +116,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRRecoveryPoint")]
     [OutputType(typeof(ASRRecoveryPoint))]
     public class GetAzureRmRecoveryServicesAsrRecoveryPoint : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrRecoveryPoint")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the name of the recovery point to get.
@@ -157,3 +160,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

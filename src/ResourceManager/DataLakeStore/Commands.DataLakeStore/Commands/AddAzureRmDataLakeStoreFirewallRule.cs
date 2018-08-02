@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Add","DataLakeStoreFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreFirewallRule))]
     [Alias("Add-AdlStoreFirewallRule")]
     public class AddAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmDataLakeStoreFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to add the firewall rule to")]
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [Cmdlet("Export","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(string))]
     public class ExportWebServiceDefinition : WebServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Export-AzureRmMlWebService")]
+#endif
     {
         private const string ExportToFileParamSet = "ExportToFile";
         private const string ExportToStringParamSet = "ExportToJSON";
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+

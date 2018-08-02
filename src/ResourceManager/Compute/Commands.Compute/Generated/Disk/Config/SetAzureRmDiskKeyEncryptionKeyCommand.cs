@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set","DiskKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
     public partial class SetAzureRmDiskKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDiskKeyEncryptionKey")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

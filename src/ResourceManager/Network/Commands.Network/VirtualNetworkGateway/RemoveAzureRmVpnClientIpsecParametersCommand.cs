@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VpnClientIpsecParameter", DefaultParameterSetName = "ByFactoryName", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVpnClientIpsecParametersCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVpnClientIpsecParameter")]
+#endif
     {
         [Parameter(
             ParameterSetName = ParameterSetNames.ByFactoryName,
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

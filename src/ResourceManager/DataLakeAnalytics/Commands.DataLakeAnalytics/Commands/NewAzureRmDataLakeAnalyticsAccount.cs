@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("New","DataLakeAnalyticsAccount"), OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("New-AdlAnalyticsAccount")]
     public class NewAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmDataLakeAnalyticsAccount")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the account.")]
@@ -126,3 +129,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

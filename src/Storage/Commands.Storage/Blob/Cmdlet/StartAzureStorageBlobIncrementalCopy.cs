@@ -33,6 +33,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// </summary>
     [Cmdlet("Start","AzureStorageBlobIncrementalCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerParameterSet),OutputType(typeof(AzureStorageBlob))]
     public class StartAzureStorageBlobIncrementalCopy : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureStorageBlobIncrementalCopy")]
+#endif
     {
         private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";
 
@@ -464,3 +467,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+

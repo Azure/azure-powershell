@@ -27,6 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AzureStorageShareStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
     public class RemoveAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureStorageShareStoredAccessPolicy")]
+#endif
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -97,3 +100,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

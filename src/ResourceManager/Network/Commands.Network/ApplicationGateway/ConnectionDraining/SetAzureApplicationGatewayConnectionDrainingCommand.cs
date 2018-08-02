@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayConnectionDraining"),OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class SetAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayConnectionDraining")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -42,3 +45,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

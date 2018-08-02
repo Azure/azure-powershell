@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Import-AzureRmApiManagementHostnameCertificate")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

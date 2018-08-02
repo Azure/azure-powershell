@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Get","ADApplication", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADApplication))]
     public class GetAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmADApplication")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectId, HelpMessage = "The application object id.")]
         [ValidateGuidNotEmpty]
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

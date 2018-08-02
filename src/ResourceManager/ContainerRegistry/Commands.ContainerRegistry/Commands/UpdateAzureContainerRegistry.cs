@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Update","ContainerRegistry", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistry))]
     public class UpdateAzureContainerRegistry : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmContainerRegistry")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = EnableAdminUserByResourceNameParameterSet, HelpMessage = "Resource Group Name.")]
@@ -110,3 +113,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Microsoft.Azure.Commands.Automation.Model.Job))]
     public class GetAzureAutomationJob : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationJob")]
+#endif
     {
         /// <summary> 
         /// Gets or sets the job id. 
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

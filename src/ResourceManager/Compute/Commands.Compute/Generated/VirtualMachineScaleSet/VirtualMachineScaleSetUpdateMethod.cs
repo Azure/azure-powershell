@@ -119,6 +119,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Update","Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class UpdateAzureRmVmss : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmVmss")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -1489,3 +1492,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

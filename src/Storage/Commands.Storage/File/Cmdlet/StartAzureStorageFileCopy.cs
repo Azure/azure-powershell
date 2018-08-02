@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Start","AzureStorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureStorageFileCopy")]
+#endif
     {
         private const string ContainerNameParameterSet = "ContainerName";
         private const string ContainerParameterSet = "ContainerInstance";
@@ -387,3 +390,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

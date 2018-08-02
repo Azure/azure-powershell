@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 
     [Cmdlet("New","SearchService", SupportsShouldProcess = true), OutputType(typeof(PSSearchService))]
     public class NewSearchServiceCommand : SearchServiceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmSearchService")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -102,3 +105,4 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+

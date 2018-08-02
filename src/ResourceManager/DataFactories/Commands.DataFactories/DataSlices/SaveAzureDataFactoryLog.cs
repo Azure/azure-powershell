@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Save","DataFactoryLog", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSRunLogInfo))]
     public class SaveAzureDataFactoryLog : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Save-AzureRmDataFactoryLog")]
+#endif
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory object.")]
@@ -144,3 +147,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

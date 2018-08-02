@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayHttpListener")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

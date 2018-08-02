@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayBackendHttpSettings"),OutputType(typeof(PSApplicationGatewayBackendHttpSettings))]
     public class GetAzureApplicationGatewayBackendHttpSettings : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayBackendHttpSettings")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

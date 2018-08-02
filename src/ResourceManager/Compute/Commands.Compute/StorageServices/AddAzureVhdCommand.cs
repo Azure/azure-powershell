@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     /// </summary>
     [Cmdlet("Add","Vhd"), OutputType(typeof(VhdUploadContext))]
     public class AddAzureVhdCommand : ComputeClientBaseCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVhd")]
+#endif
     {
         private const int DefaultNumberOfUploaderThreads = 8;
 
@@ -195,3 +198,4 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         }
     }
 }
+

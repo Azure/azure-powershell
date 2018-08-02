@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.ManagementPartner
 {
     [Cmdlet("Get","ManagementPartner"), OutputType(typeof(PSManagementPartner))]
     public class GetManagementPartner : AzureManagementPartnerCmdletsBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmManagementPartner")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = false)]
         public string PartnerId { get; set; }
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         }
     }
 }
+

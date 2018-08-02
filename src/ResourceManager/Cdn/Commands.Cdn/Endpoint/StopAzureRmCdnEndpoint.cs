@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Stop","CdnEndpoint", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class StopAzureRmCdnEndpoint : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmCdnEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

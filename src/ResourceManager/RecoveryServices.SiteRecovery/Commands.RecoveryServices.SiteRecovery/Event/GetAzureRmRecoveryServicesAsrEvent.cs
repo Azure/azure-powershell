@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASREvent")]
     [OutputType(typeof(ASREvent))]
     public class GetAzureRmRecoveryServicesAsrEvents : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrEvent")]
+#endif
     {
         /// <summary>
         ///     Gets or sets Resource Id.
@@ -203,3 +206,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

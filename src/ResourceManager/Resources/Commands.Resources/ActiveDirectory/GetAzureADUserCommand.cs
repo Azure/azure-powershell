@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Get","ADUser", DefaultParameterSetName = ParameterSet.Empty, SupportsPaging = true), OutputType(typeof(PSADUser))]
     public class GetAzureADUserCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmADUser")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.SearchString,
             HelpMessage = "Used to find users that begin with the provided string.")]
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

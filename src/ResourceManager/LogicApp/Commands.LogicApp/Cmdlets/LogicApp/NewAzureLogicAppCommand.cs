@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("New","LogicApp", SupportsShouldProcess = true), OutputType(typeof(object))]
     public class NewAzureLogicAppCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmLogicApp")]
+#endif
     {
         #region private Variables
 
@@ -129,3 +132,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

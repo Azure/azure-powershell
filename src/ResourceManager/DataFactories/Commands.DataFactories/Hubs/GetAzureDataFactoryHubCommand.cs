@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactoryHub", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSHub))]
     public class GetAzureDataFactoryHubCommand : HubContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryHub")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub name.")]
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

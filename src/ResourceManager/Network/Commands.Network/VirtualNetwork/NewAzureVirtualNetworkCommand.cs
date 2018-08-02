@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","VirtualNetwork", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetwork))]
     public class NewAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVirtualNetwork")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -157,3 +160,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

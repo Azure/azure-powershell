@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LocalNetworkGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmLocalNetworkGateway")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

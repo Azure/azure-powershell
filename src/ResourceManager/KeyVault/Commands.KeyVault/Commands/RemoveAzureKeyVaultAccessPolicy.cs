@@ -22,9 +22,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Remove","KeyVaultAccessPolicy",SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
     public class RemoveAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmKeyVaultAccessPolicy")]
+#endif
     {
         #region Parameter Set Names
 
@@ -361,3 +364,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

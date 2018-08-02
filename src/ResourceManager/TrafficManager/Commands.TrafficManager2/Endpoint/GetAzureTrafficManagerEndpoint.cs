@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Get","TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
     public class GetAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmTrafficManagerEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+

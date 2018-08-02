@@ -24,6 +24,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
     [Cmdlet("New","AzureStorageBlobSASToken", DefaultParameterSetName = BlobNamePipelineParmeterSetWithPermission), OutputType(typeof(String))]
     public class NewAzureStorageBlobSasTokenCommand : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureStorageBlobSASToken")]
+#endif
     {
         /// <summary>
         /// container pipeline paremeter set name with permission
@@ -214,3 +217,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+

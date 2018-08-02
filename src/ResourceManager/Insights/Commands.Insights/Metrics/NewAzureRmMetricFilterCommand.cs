@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// </summary>
     [Cmdlet("New","MetricFilter"), OutputType(typeof(string))]
     public class NewAzureRmMetricFilterCommand : MonitorCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmMetricFilter")]
+#endif
     {
         /// <summary>
         /// Gets or sets the Dimension
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     [Cmdlet("Get","AzureStorageFileCopyState")]
     [OutputType(typeof(CloudFile))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureStorageFileCopyState")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -246,3 +249,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

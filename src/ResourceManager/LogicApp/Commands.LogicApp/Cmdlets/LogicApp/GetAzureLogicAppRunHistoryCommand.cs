@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","LogicAppRunHistory"), OutputType(typeof(WorkflowRun))]
     public class AzureLogicAppRunHistoryCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicAppRunHistory")]
+#endif
     {
 
         #region Input Parameters
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

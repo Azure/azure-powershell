@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AutomationWebhook", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureAutomationWebhook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmAutomationWebhook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the Webhook name.
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

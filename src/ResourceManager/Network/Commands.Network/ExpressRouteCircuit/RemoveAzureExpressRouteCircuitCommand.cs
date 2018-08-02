@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ExpressRouteCircuit", SupportsShouldProcess =  true), OutputType(typeof(bool))]
     public class RemoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmExpressRouteCircuit")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

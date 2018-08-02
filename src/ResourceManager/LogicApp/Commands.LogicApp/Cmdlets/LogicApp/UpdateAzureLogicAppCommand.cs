@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Set","LogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof(object))]
     public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmLogicApp")]
+#endif
     {
         #region private Variables
 
@@ -189,3 +192,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

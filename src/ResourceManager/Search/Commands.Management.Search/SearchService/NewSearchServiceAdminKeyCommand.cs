@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("New","SearchAdminKey", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
     public class NewSearchServiceAdminKeyCommand : SearchServiceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmSearchAdminKey")]
+#endif
     {
         [Parameter(
            Position = 0,
@@ -99,3 +102,4 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+

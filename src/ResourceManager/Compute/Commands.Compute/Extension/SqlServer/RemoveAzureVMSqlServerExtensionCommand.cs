@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VMSqlServerExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMSqlServerExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.Compute
 
     }
 }
+

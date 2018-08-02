@@ -11,6 +11,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Get","ReservationCatalog"), OutputType(typeof(PSCatalog))]
     public class GetCatalog : AzureReservationsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmReservationCatalog")]
+#endif
     {
         [Parameter(Mandatory = false)]
         [ValidateNotNull]
@@ -45,3 +48,4 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+

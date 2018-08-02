@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("New","ADUser", SupportsShouldProcess = true), OutputType(typeof(PSADUser))]
     public class NewAzureADUserCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmADUser")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The display name for the user.")]
         [ValidateNotNullOrEmpty]
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

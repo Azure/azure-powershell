@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","PublicIpTag", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpTag))]
     public class NewAzurePublicIpTagCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmPublicIpTag")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

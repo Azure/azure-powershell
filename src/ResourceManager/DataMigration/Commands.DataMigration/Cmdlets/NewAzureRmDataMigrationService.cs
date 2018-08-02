@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Cmdlet("New","DataMigrationService", SupportsShouldProcess = true), OutputType(typeof(PSDataMigrationService))]
     [Alias("New-AzureRmDms")]
     public sealed class NewAzureRmDataMigrationService : DataMigrationCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataMigrationService")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -107,3 +110,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

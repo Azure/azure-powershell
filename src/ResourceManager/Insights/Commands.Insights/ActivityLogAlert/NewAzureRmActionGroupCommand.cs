@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// </summary>
     [Cmdlet("New","ActionGroup"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertActionGroup))]
     public class NewAzureRmActionGroupCommand : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmActionGroup")]
+#endif
     {
         #region Cmdlet parameters
 
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         }
     }
 }
+

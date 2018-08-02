@@ -19,9 +19,12 @@ using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet("Update","AzureKeyVaultManagedStorageAccountKey",DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccountKey", DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
     public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureKeyVaultManagedStorageAccountKey")]
+#endif
     {
         #region Parameter Set Names
 
@@ -103,3 +106,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

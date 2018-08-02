@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// </summary>
     [Cmdlet("Set","EventHub", SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class SetAzureEventHub : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventHub")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         }
     }
 }
+

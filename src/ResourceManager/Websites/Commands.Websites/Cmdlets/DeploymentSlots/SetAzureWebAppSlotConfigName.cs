@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
 {
     [Cmdlet("Set","WebAppSlotConfigName"), OutputType(typeof(SlotConfigNamesResource))]
     public class SetAzureWebAppSlotConfigName : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmWebAppSlotConfigName")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = false, HelpMessage = "Names of app settings that need to marked as slot settings", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

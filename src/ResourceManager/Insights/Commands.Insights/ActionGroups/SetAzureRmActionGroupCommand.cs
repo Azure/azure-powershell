@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     [Cmdlet("Set","ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(PSActionGroupResource))]
     public class SetAzureRmActionGroupCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmActionGroup")]
+#endif
     {
         private const string ByPropertyName = "ByPropertyName";
 
@@ -168,3 +171,4 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         }
     }
 }
+

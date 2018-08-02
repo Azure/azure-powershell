@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Stop","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSTrigger))]
     public class StopAzureDataFactoryTriggerCommand : DataFactoryContextActionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmDataFactoryV2Trigger")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
     /// </summary>
     [Cmdlet("Suspend","SqlDatabase", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
     public class SuspendAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
+#if NETSTANDARD
+    [Alias("Suspend-AzureRmSqlDatabase")]
+#endif
     {
         /// <summary>
         /// Get the entities from the service
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         }
     }
 }
+

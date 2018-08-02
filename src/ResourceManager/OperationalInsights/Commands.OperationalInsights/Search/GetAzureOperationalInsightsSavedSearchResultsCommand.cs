@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Get","OperationalInsightsSavedSearchResults"), OutputType(typeof(PSSearchGetSearchResultsResponse))]
     public class GetAzureOperationalInsightsSavedSearchResultsCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsSavedSearchResults")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -45,3 +48,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+

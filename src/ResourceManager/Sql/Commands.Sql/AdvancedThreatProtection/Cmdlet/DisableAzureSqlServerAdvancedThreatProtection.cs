@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
     /// </summary>
     [Cmdlet("Disable","SqlServerAdvancedThreatProtection", SupportsShouldProcess = true), OutputType(typeof(ServerAdvancedThreatProtectionPolicyModel))]
     public class DisableAzureSqlServerAdvancedThreatProtection : SqlServerAdvancedThreatProtectionCmdletBase
+#if NETSTANDARD
+    [Alias("Disable-AzureRmSqlServerAdvancedThreatProtection")]
+#endif
     {
         /// <summary>
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
@@ -36,3 +39,4 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         }
     }
 }
+

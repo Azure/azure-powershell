@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// </summary>
     [Cmdlet("New","AppServicePlan"), OutputType(typeof(AppServicePlan))]
     public class NewAzureAppServicePlanCmdlet : AppServicePlanBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAppServicePlan")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "The location of the app service plan.")]
         [LocationCompleter("Microsoft.Web/serverfarms")]
@@ -95,3 +98,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         }
     }
 }
+

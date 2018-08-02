@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     [Cmdlet("Stop","AutomationDscNodeConfigurationDeployment", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByJobId), OutputType(typeof(bool))]
     public class StopAzureAutomationDscNodeConfigurationDeployment : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Stop-AzureRmAutomationDscNodeConfigurationDeployment")]
+#endif
     {
         /// <summary>
         /// Gets or sets the configuration name.
@@ -99,3 +102,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

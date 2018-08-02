@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Get","WebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
     public class GetAzureWebAppBackupCmdlet : WebAppOptionalSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppBackup")]
+#endif
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The id of the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -35,3 +38,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

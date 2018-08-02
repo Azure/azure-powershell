@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Get","WebAppCertificate")]
     [OutputType(typeof(Certificate))]
     public class GetAzureWebAppCertificate : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppCertificate")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -37,3 +40,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

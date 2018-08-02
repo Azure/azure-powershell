@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet("Remove","SqlServerCommunicationLink",SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class RemoveAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerCommunicationLink")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the server communication link to remove.
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         }
     }
 }
+

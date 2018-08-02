@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
     /// </summary>
     [Cmdlet("New","SqlServerCommunicationLink",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
     public class NewAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlServerCommunicationLink")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the server communication link to create.
@@ -116,3 +119,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         }
     }
 }
+

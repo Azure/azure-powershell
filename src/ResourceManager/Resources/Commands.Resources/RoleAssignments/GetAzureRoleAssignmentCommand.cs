@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// </summary>
     [Cmdlet("Get","RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
     public class GetAzureRoleAssignmentCommand : ResourcesBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmRoleAssignment")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId,
             HelpMessage = "The user or group object id.")]
@@ -248,3 +251,4 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+

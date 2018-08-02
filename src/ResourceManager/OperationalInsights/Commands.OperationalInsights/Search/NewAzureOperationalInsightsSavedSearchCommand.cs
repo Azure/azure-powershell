@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(HttpStatusCode))]
     public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsSavedSearch")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+

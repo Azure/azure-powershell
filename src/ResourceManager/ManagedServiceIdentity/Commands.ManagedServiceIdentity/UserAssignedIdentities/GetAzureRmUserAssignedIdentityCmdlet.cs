@@ -9,6 +9,9 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
     [Cmdlet("Get","UserAssignedIdentity", DefaultParameterSetName = Constants.SubscriptionParameterSet)]
     [OutputType(typeof (PsUserAssignedIdentity))]
     public class GetAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmUserAssignedIdentity")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+

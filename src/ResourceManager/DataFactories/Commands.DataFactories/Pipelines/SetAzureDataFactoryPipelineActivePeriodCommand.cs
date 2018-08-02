@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Set","DataFactoryPipelineActivePeriod", DefaultParameterSetName = ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureDataFactoryPipelineActivePeriodCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDataFactoryPipelineActivePeriod")]
+#endif
     {
         private DateTime _endDateTime;
 
@@ -98,3 +101,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

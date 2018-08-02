@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 
     [Cmdlet("Get","NotificationHub"), OutputType(typeof(NotificationHubAttributes))]
     public class GetAzureNotificationHub : AzureNotificationHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmNotificationHub")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+

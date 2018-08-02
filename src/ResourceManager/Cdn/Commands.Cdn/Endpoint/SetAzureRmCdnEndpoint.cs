@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Set","CdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(PSEndpoint))]
     public class SetAzureRmCdnEndpoint : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmCdnEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The CDN endpoint object.")]
         [ValidateNotNull]
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

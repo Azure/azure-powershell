@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Get","CdnSubscriptionResourceUsage"), OutputType(typeof(PSResourceUsage))]
     public class GetAzureRmCdnSubscriptionResourceUsage : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmCdnSubscriptionResourceUsage")]
+#endif
     {
 
         public override void ExecuteCmdlet()
@@ -35,3 +38,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("New","ImageConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
     public partial class NewAzureRmImageConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmImageConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -128,3 +131,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

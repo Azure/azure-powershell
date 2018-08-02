@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     [Cmdlet("Get","SqlServerUpgrade", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerUpgradeModel))]
     public class GetAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerUpgrade")]
+#endif
     {
         /// <summary>
         /// Gets a server upgrade from the service.
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         }
     }
 }
+

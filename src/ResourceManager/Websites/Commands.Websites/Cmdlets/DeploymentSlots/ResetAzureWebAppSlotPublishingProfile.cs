@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Reset","WebAppSlotPublishingProfile"), OutputType(typeof(string))]
     public class ResetAzureWebAppPSlotublishingProfileCmdlet : WebAppSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Reset-AzureRmWebAppSlotPublishingProfile")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -31,3 +34,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

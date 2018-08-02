@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// </summary>
     [Cmdlet("New","AlertRuleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.RuleWebhookAction))]
     public class NewAzureRmAlertRuleWebhookCommand : MonitorCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmAlertRuleWebhook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the ServiceUri of the action
@@ -65,3 +68,4 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+

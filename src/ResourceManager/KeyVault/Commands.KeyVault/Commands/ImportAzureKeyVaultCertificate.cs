@@ -32,9 +32,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// importing an existing certificate package file that contains both the 
     /// certificate and private key (example: PFX or P12 files).
     /// </summary>
-    [Cmdlet("Import","AzureKeyVaultCertificate",SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
+    [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
     public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Import-AzureKeyVaultCertificate")]
+#endif
     {
         #region Parameter Set Names
 
@@ -200,3 +203,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

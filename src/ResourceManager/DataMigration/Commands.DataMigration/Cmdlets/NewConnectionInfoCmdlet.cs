@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Cmdlet("New","DataMigrationConnectionInfo"), OutputType(typeof(ConnectionInfo))]
     [Alias("New-AzureRmDmsConnInfo")]
     public class NewConnectionInfoCmdlet : DataMigrationCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("New-AzureRmDataMigrationConnectionInfo")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

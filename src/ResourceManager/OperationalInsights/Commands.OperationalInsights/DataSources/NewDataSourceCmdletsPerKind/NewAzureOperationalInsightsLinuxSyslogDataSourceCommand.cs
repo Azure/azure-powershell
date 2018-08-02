@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsLinuxSyslogDataSource", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class NewAzureOperationalInsightsLinuxSyslogDataSourceCommand : NewAzureOperationalInsightsDataSourceBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmOperationalInsightsLinuxSyslogDataSource")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

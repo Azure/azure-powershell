@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
     [Cmdlet("New","MlOpCluster", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationalizationCluster))]
     public class NewAzureRmMlOpCluster : MachineLearningComputeCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmMlOpCluster")]
+#endif
     {
         protected const string CreateFromObjectParameterSet = "CreateWithInputObject";
 
@@ -260,3 +263,4 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+

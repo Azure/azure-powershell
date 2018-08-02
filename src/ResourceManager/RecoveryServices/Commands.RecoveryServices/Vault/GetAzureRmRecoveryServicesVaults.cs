@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [Cmdlet("Get","RecoveryServicesVault")]
     [OutputType(typeof(ARSVault))]
     public class GetAzureRmRecoveryServicesVaults : RecoveryServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesVault")]
+#endif
     {
         #region Parameters
         /// <summary>
@@ -118,3 +121,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
     }
 }
+

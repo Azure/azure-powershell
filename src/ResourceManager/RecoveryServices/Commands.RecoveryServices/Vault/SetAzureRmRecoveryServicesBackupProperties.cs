@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet("Set","RecoveryServicesBackupProperties", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class SetAzureRmRecoveryServicesBackupProperties : RecoveryServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRecoveryServicesBackupProperties")]
+#endif
     {
         #region Parameters
         /// <summary>
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
     [Cmdlet("Get","RedisCacheFirewallRule"), OutputType(typeof(PSRedisFirewallRule))]
     public class GetAzureRedisCacheFirewallRule : RedisCacheCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRedisCacheFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group in which cache exists.")]
         [ResourceGroupCompleter]
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+

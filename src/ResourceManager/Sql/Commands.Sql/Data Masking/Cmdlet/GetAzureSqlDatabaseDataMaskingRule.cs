@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlDatabaseDataMaskingRule", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingRuleModel))]
     public class GetAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseDataMaskingRule")]
+#endif
     {
         /// <summary>
         /// Gets or sets the schema name
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("New","VMDataDisk",DefaultParameterSetName = NormalDiskParameterSet),OutputType(typeof(PSVirtualMachineDataDisk))]
     public class NewAzureVMDataDiskCommand : ComputeClientBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVMDataDisk")]
+#endif
     {
         private const string NormalDiskParameterSet = "NormalDiskParameterSetName";
         private const string ManagedDiskParameterSet = "ManagedDiskParameterSetName";
@@ -146,3 +149,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

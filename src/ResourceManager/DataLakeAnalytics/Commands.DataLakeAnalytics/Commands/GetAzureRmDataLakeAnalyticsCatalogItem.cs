@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Get","DataLakeAnalyticsCatalogItem"),OutputType(typeof(CatalogItem))]
     [Alias("Get-AdlCatalogItem")]
     public class GetAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeAnalyticsCatalogItem")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The account name to retrieve the catalog item(s) from.")]
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

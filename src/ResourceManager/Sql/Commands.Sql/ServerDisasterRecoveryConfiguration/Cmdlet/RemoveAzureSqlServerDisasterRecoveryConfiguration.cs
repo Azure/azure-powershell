@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
 {
     [Cmdlet("Remove","SqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
     public class RemoveAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerDisasterRecoveryConfiguration")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the Server Disaster Recovery Configuration to remove.
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Grant","HDInsightHttpServicesAccess"),OutputType(typeof(HttpConnectivitySettings))]
     public class GrantAzureHDInsightHttpServicesAccessCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Grant-AzureRmHDInsightHttpServicesAccess")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Remove","DataFactoryHub", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureDataFactoryHubCommand : HubContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactoryHub")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub name.")]
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

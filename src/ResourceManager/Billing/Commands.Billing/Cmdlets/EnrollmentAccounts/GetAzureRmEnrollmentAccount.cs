@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
 {
     [Cmdlet("Get","EnrollmentAccount", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
     public class GetAzureRmEnrollmentAccount : AzureBillingCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmEnrollmentAccount")]
+#endif
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "ObjectId of the enrollment account to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -50,3 +53,4 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.EnrollmentAccounts
         }
     }
 }
+

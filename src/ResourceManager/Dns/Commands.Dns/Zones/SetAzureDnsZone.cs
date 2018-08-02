@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("Set","DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = FieldsIdsParameterSetName), OutputType(typeof(DnsZone))]
     public class SetAzureDnsZone : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmDnsZone")]
+#endif
     {
         private const string FieldsIdsParameterSetName = "Fields";
         private const string FieldsObjectsParameterSetName = "FieldsObjects";
@@ -147,3 +150,4 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+

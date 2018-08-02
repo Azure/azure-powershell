@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Set-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
     public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
@@ -453,3 +456,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

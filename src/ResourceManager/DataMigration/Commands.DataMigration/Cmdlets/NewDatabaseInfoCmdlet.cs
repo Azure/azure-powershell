@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Cmdlet("New","DataMigrationDatabaseInfo"), OutputType(typeof(DatabaseInfo))]
     [Alias("New-AzureRmDmsDBInfo")]
     public class NewDatabaseInfoCmdlet : DataMigrationCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataMigrationDatabaseInfo")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -44,3 +47,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

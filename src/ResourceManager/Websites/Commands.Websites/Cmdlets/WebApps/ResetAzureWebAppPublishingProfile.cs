@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Reset","WebAppPublishingProfile"), OutputType(typeof(string))]
     public class ResetAzureWebAppPublishingProfileCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Reset-AzureRmWebAppPublishingProfile")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -31,3 +34,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

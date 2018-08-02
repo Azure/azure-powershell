@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Disable","OperationalInsightsIISLogCollection", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
     public class DisableAzureOperationalInsightsIISLogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
+#if NETSTANDARD
+    [Alias("Disable-AzureRmOperationalInsightsIISLogCollection")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

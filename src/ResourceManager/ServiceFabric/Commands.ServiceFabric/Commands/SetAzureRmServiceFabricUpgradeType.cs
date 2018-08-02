@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Set","ServiceFabricUpgradeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class SetAzureRmServiceFabricUpgradeType : ServiceFabricClusterCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceFabricUpgradeType")]
+#endif
     {
         private const string AutomaticSet = "Automatic";
         private const string ManualSet = "Manual";
@@ -74,3 +77,4 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+

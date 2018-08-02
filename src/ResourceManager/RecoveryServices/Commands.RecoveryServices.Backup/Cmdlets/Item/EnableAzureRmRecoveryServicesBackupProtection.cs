@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Enable","RecoveryServicesBackupProtection",DefaultParameterSetName = AzureVMComputeParameterSet, SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class EnableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureRmRecoveryServicesBackupProtection")]
+#endif
     {
         internal const string AzureVMClassicComputeParameterSet = "AzureVMClassicComputeEnableProtection";
         internal const string AzureVMComputeParameterSet = "AzureVMComputeEnableProtection";
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

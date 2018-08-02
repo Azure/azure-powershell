@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayUrlPathMapConfig"),OutputType(typeof(PSApplicationGatewayUrlPathMap))]
     public class GetAzureApplicationGatewayUrlPathMapConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayUrlPathMapConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

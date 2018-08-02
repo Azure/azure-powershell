@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     [Cmdlet("Set","VMDscExtension",SupportsShouldProcess = true,DefaultParameterSetName = AzureBlobDscExtensionParamSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVMDscExtension")]
+#endif
     {
         protected const string AzureBlobDscExtensionParamSet = "AzureBlobDscExtension";
 
@@ -503,3 +506,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+

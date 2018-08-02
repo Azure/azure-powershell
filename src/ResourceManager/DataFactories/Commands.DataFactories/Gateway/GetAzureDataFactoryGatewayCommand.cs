@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactoryGateway", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
     public class GetAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryGateway")]
+#endif
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
 HelpMessage = "The data factory object.")]
@@ -66,3 +69,4 @@ HelpMessage = "The data factory object.")]
         }
     }
 }
+

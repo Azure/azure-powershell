@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("New","DataFactoryV2IntegrationRuntimeKey",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSIntegrationRuntimeKeys))]
     public class NewAzureDataFactoryIntegrationRuntimeKeyCommand : IntegrationRuntimeCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryV2IntegrationRuntimeKey")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Get","NetworkWatcherNextHop", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNextHopResult))]
 
     public class GetAzureNetworkWatcherNextHopCommand : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkWatcherNextHop")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -130,3 +133,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

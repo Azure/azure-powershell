@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <remarks>
     /// The cmdlet returns the path of the newly created backup file.
     /// </remarks>
-    [Cmdlet("Backup","AzureKeyVaultManagedStorageAccount",SupportsShouldProcess = true,DefaultParameterSetName = ByStorageAccountNameParameterSet)]
+    [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccount", SupportsShouldProcess = true,DefaultParameterSetName = ByStorageAccountNameParameterSet)]
     [OutputType(typeof(String))]
     public class BackupAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Backup-AzureKeyVaultManagedStorageAccount")]
+#endif
     {
         #region parameter sets
 
@@ -123,3 +126,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

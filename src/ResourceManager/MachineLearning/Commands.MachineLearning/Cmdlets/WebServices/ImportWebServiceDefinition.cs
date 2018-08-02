@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
     [Cmdlet("Import","MlWebService")]
     [OutputType(typeof(WebService))]
     public class ImportWebServiceDefinition : WebServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Import-AzureRmMlWebService")]
+#endif
     {
         private const string ImportFromFileParamSet = "ImportFromJSONFile";
         private const string ImportFromStringParamSet = "ImportFromJSONString.";
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+

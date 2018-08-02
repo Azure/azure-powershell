@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesVault", SupportsShouldProcess = true),OutputType(typeof(VaultOperationOutput))]
     public class RemoveAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmRecoveryServicesVault")]
+#endif
     {
         #region Parameters
 
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
     }
 }
+

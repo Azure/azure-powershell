@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Backup","RecoveryServicesBackupItem", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
     public class BackupAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Backup-AzureRmRecoveryServicesBackupItem")]
+#endif
     {
         /// <summary>
         /// The protected item on which backup has to be triggered.
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

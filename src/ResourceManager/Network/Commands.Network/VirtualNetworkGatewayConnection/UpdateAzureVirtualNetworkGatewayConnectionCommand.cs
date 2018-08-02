@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkGatewayConnection", SupportsShouldProcess = true),OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class SetAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetworkGatewayConnection")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

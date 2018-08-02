@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Removes a given certificate contact from Key Vault for certificate management
     /// </summary>
-    [Cmdlet("Remove","AzureKeyVaultCertificateContact",SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateContact", SupportsShouldProcess = true, DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateContact))]
     public class RemoveAzureKeyVaultCertificateContact : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureKeyVaultCertificateContact")]
+#endif
     {
         #region Parameter Set Names
 
@@ -136,3 +139,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

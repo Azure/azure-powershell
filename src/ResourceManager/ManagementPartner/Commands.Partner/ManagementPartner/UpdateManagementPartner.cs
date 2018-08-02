@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ManagementPartner
 {
     [Cmdlet("Update","ManagementPartner", SupportsShouldProcess = true),OutputType(typeof(PSManagementPartner))]
     public class UpdateManagementPartner : AzureManagementPartnerCmdletsBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmManagementPartner")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The management partner id")]
         [ValidateNotNull]
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.ManagementPartner
         }
     }
 }
+

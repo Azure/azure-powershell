@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlServerKeyVaultKey", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
     public class RemoveAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerKeyVaultKey")]
+#endif
     {
         /// <summary>
         /// Gets or sets the KeyId of the Azure Key Vault Key
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         }
     }
 }
+

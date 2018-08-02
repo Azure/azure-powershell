@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Remove","ApiManagementCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureApiManagementCertificate : AzureApiManagementRemoveCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApiManagementCertificate")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

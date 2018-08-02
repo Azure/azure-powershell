@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
     public class RemoveAzureApplicationGatewayUrlPathMapConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmApplicationGatewayUrlPathMapConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

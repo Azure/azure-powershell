@@ -10,6 +10,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Stop","AzureStorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class StopAzureStorageFileCopyCommand : AzureStorageFileCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureStorageFileCopy")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -128,3 +131,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+

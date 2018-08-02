@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Remove","TrafficManagerEndpoint", SupportsShouldProcess = true),OutputType(typeof(bool))]
     public class RemoveAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmTrafficManagerEndpoint")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+

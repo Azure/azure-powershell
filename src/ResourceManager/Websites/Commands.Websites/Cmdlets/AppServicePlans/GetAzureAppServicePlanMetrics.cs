@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Get","AppServicePlanMetrics")]
     [OutputType(typeof(ResourceMetric))]
     public class GetAzureAppServicePlanMetricsCmdlet : AppServicePlanBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAppServicePlanMetrics")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = "Names of web app metrics")]
         [ValidateNotNullOrEmpty]
@@ -53,3 +56,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

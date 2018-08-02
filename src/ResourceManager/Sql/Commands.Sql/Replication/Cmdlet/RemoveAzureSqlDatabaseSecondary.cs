@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
 {
     [Cmdlet("Remove","SqlDatabaseSecondary", SupportsShouldProcess = true), OutputType(typeof(AzureReplicationLinkModel))]
     public class RemoveAzureSqlDatabaseSecondary : AzureSqlDatabaseSecondaryCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlDatabaseSecondary")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the primary Azure SQL Database with the replication link to remove.
@@ -82,3 +85,4 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","VirtualNetworkGatewayIpConfig", SupportsShouldProcess = true), OutputType(typeof(PSVirtualNetworkGateway))]
     public class AddAzureVirtualNetworkGatewayIpConfigCommand : AzureVirtualNetworkGatewayIpConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmVirtualNetworkGatewayIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -94,3 +97,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

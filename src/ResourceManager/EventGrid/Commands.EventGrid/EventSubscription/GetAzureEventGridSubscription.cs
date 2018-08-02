@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Get","EventGridSubscription",DefaultParameterSetName = EventSubscriptionTopicNameParameterSet),OutputType(typeof(PSEventSubscription))]
     public class GetAzureRmEventGridSubscription : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmEventGridSubscription")]
+#endif
     {
         [Parameter(Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -259,3 +262,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

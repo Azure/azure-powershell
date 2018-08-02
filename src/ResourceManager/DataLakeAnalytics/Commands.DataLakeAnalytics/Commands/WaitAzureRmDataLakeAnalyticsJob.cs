@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Wait","DataLakeAnalyticsJob"), OutputType(typeof(JobInformation))]
     [Alias("Wait-AdlJob")]
     public class WaitAzureDataLakeAnalyticsJob : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Wait-AzureRmDataLakeAnalyticsJob")]
+#endif
     {
         private int _waitIntervalInSeconds = 5;
 
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

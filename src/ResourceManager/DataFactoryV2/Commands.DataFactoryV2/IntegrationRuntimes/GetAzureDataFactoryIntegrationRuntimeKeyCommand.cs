@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2IntegrationRuntimeKey",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSIntegrationRuntimeKeys))]
     public class GetAzureDataFactoryIntegrationRuntimeKeyCommand : IntegrationRuntimeCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2IntegrationRuntimeKey")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -34,3 +37,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Add","VmssAdditionalUnattendContent", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssAdditionalUnattendContentCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVmssAdditionalUnattendContent")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

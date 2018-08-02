@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("New","ApiManagementVirtualNetwork"), OutputType(typeof(PsApiManagementVirtualNetwork))]
     public class NewAzureApiManagementVirtualNetwork : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmApiManagementVirtualNetwork")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

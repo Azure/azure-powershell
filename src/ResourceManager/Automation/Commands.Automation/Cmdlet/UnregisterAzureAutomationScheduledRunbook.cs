@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Unregister","AutomationScheduledRunbook", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByJobScheduleId), OutputType(typeof(void))]
     public class UnregisterAzureAutomationScheduledRunbook : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Unregister-AzureRmAutomationScheduledRunbook")]
+#endif
     {
         /// <summary>
         /// Gets or sets the runbook Id
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

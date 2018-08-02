@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Restart","WebApp"), OutputType(typeof(Site))]
     public class RestartAzureWebAppCmdlet : WebAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Restart-AzureRmWebApp")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("Get","SearchAdminKeyPair", DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(PSSearchAdminKey))]
     public class GetSearchServiceAdminKeyPairCommand : SearchServiceBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmSearchAdminKeyPair")]
+#endif
     {
         [Parameter(
           Position = 0,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+

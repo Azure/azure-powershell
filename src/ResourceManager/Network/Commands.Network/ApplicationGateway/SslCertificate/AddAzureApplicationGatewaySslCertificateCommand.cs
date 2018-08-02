@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewaySslCertificate"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewaySslCertificateCommand : AzureApplicationGatewaySslCertificateBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewaySslCertificate")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -35,6 +35,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [Cmdlet("Get","RecoveryServicesVaultSettingsFile")]
     [OutputType(typeof(VaultSettingsFilePath))]
     public class GetAzureRmRecoveryServicesVaultSettingsFile : RecoveryServicesCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesVaultSettingsFile")]
+#endif
     {
         /// <summary>
         /// Expiry in hours for generated certificate.
@@ -497,3 +500,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #endregion
     }
 }
+

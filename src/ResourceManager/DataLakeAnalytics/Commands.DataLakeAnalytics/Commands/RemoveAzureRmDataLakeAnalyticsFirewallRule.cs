@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Remove","DataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsFirewallRule")]
     public class RemoveAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataLakeAnalyticsFirewallRule")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Analytics account to remove the firewall rule from")]
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Grant","HDInsightRdpServicesAccess"),OutputType(typeof(void))]
     public class GrantAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Grant-AzureRmHDInsightRdpServicesAccess")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

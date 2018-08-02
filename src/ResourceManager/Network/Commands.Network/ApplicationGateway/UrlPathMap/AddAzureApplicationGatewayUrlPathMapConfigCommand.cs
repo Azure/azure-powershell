@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewayUrlPathMapConfig")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

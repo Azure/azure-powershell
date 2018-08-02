@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("New","WebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
     public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("New-AzureRmWebAppSSLBinding")]
+#endif
     {
         const string CertNamePostFixSeparator = "_";
         const string ParameterSet1Name = "S1";
@@ -173,3 +176,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+

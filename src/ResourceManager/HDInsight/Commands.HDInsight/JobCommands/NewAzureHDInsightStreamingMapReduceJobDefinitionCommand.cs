@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New","HDInsightStreamingMapReduceJobDefinition"),OutputType(typeof(AzureHDInsightStreamingMapReduceJobDefinition))]
     public class NewAzureHDInsightStreamingMapReduceJobDefinitionCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmHDInsightStreamingMapReduceJobDefinition")]
+#endif
     {
         private AzureHDInsightStreamingMapReduceJobDefinition job;
 
@@ -121,3 +124,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

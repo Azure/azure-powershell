@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Invoke","DataFactoryV2Pipeline", DefaultParameterSetName = ParameterSetNames.ByFactoryNameByParameterFile,SupportsShouldProcess = true), OutputType(typeof(PSPipeline))]
     public class InvokeAzureDataFactoryPipelineCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Invoke-AzureRmDataFactoryV2Pipeline")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByPipelineObjectByParameterFile, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpFactoryObject)]
@@ -119,3 +122,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

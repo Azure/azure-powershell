@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlDatabaseTransparentDataEncryption", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseTransparentDataEncryptionModel))]
     public class SetAzureSqlDatabaseTransparentDataEncryption : AzureSqlDatabaseTransparentDataEncryptionCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlDatabaseTransparentDataEncryption")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql Database Transparent Data Encryption
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         }
     }
 }
+

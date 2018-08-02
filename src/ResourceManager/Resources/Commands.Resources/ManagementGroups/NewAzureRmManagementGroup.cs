@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// </summary>
     [Cmdlet("New","ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
     public class NewAzureRmManagementGroup : AzureManagementGroupsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmManagementGroup")]
+#endif
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, Mandatory = true, HelpMessage = Constants.HelpMessages.GroupName, Position = 0)]
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupParameterSet, Mandatory = true,
@@ -87,3 +90,4 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         }
     }
 }
+

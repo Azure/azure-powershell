@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Get","IotHubEventHubConsumerGroup"), OutputType(typeof(PSEventHubConsumerGroupInfo))]
     [Alias("Get-AzureRmIotHubEHCG")]
     public class GetAzureRmIotHubEventHubConsumerGroup : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubEventHubConsumerGroup")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         private const string OperationsMonitoringEventsEndpointName = "operationsMonitoringEvents";
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("New","DataFactoryGateway", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
     public class NewAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryGateway")]
+#endif
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
 HelpMessage = "The data factory object.")]
@@ -81,3 +84,4 @@ HelpMessage = "The data factory object.")]
         }
     }
 }
+

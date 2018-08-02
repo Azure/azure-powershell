@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlElasticPool", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium, DefaultParameterSetName = DtuPoolParameterSet), OutputType(typeof(AzureSqlElasticPoolModel))]
     public class SetAzureSqlElasticPool : AzureSqlElasticPoolCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlElasticPool")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the Azure SQL Database ElasticPool
@@ -265,3 +268,4 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         }
     }
 }
+

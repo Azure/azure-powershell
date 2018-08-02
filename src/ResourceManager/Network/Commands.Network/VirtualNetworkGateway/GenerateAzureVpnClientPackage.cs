@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VpnClientPackage"), OutputType(typeof(string))]
     public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVpnClientPackage")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -72,3 +75,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

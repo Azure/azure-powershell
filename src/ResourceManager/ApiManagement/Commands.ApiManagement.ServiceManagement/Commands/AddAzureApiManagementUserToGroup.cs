@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Add","ApiManagementUserToGroup")]
     [OutputType(typeof(bool))]
     public class AddAzureApiManagementUserToGroup : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApiManagementUserToGroup")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

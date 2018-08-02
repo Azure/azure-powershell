@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     [Cmdlet("Get","WebAppSlot")]
     [OutputType(typeof(Site))]
     public class GetAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebAppSlot")]
+#endif
     {
         protected const string ParameterSet1Name = "S1";
         protected const string ParameterSet2Name = "S2";
@@ -75,3 +78,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

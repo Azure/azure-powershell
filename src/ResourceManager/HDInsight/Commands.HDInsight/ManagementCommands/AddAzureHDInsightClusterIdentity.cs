@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
 {
     [Cmdlet("Add","HDInsightClusterIdentity",DefaultParameterSetName = CertificateFilePathSet),OutputType(typeof(AzureHDInsightConfig))]
     public class AddAzureHDInsightClusterIdentity : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmHDInsightClusterIdentity")]
+#endif
     {
         private const string CertificateFilePathSet = "CertificateFilePath";
         private const string CertificateFileContentsSet = "CertificateFileContents";
@@ -89,3 +92,4 @@ namespace Microsoft.Azure.Commands.HDInsight.ManagementCommands
         }
     }
 }
+

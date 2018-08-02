@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("New","AutomationAccount")]
     [OutputType(typeof(AutomationAccount))]
     public class NewAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationAccount")]
+#endif
     {
         /// <summary>
         /// The automation client.
@@ -98,3 +101,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("New","StreamAnalyticsInput", SupportsShouldProcess = true), OutputType(typeof(PSInput))]
     public class NewAzureStreamAnalyticsInputCommand : StreamAnalyticsResourceProviderBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmStreamAnalyticsInput")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -84,3 +87,4 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Set","HDInsightClusterSize"),OutputType(typeof(Cluster))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmHDInsightClusterSize")]
+#endif
     {
         private ClusterResizeParameters resizeParams;
         #region Input Parameter Definitions
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+

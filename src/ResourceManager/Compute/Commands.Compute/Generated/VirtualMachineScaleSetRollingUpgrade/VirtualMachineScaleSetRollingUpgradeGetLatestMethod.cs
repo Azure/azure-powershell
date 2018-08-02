@@ -100,6 +100,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","VmssRollingUpgrade", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSRollingUpgradeStatusInfo))]
     public partial class GetAzureRmVmssRollingUpgrade : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVmssRollingUpgrade")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -133,3 +136,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string VMScaleSetName { get; set; }
     }
 }
+

@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Add","VmssSshPublicKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
     public partial class AddAzureRmVmssSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("Add-AzureRmVmssSshPublicKey")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+

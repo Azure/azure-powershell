@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("New","BackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupProtectionPolicy))]
     public class NewAzureRMBackupProtectionPolicy : AzureBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmBackupProtectionPolicy")]
+#endif
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
         protected const string DailyScheduleParamSet = "DailyScheduleParamSet";
@@ -94,3 +97,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     }
 
 }
+

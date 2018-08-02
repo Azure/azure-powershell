@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
     [Cmdlet("Remove","VMBackup")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMBackup : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMBackup")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureVMBackup
         }
     }
 }
+

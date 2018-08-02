@@ -17,8 +17,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Disable","AzureBatchJobSchedule"), OutputType(typeof(void))]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJobSchedule"), OutputType(typeof(void))]
     public class DisableBatchJobScheduleCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Disable-AzureBatchJobSchedule")]
+#endif
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the job schedule to disable.")]
@@ -31,3 +34,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

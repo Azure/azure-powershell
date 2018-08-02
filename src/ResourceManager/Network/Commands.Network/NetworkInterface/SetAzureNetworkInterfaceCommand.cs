@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","NetworkInterface"), OutputType(typeof(PSNetworkInterface))]
     public class SetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmNetworkInterface")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

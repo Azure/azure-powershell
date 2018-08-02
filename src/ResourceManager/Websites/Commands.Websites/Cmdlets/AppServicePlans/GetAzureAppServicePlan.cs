@@ -36,6 +36,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
     /// </summary>
     [Cmdlet("Get","AppServicePlan"), OutputType(typeof(AppServicePlan))]
     public class GetAppServicePlanCmdlet : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAppServicePlan")]
+#endif
     {
         private const string ParameterSet1 = "S1";
         private const string ParameterSet2 = "S2";
@@ -211,3 +214,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.AppServicePlans
         }
     }
 }
+

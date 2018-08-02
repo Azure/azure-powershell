@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VMDiagnosticsExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMDiagnosticsExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -92,3 +95,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

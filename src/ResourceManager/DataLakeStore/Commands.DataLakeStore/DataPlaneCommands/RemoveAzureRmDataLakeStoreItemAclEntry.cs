@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Remove","DataLakeStoreItemAclEntry", SupportsShouldProcess = true,DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreItemAclEntry")]
     public class RemoveAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataLakeStoreItemAclEntry")]
+#endif
     {
         internal const string BaseParameterSetName = "RemoveByACLObject";
         internal const string SpecificAceParameterSetName = "RemoveSpecificACE";
@@ -126,3 +129,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

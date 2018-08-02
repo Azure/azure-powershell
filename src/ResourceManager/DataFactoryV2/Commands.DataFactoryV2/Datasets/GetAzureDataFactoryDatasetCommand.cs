@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSDataset))]
     public class GetAzureDataFactoryDatasetCommand : DataFactoryContextBaseGetCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2Dataset")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpDatasetName)]
@@ -62,3 +65,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

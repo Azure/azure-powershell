@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
     public class AddAzureApplicationGatewayProbeConfigCommand : AzureApplicationGatewayProbeConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmApplicationGatewayProbeConfig")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

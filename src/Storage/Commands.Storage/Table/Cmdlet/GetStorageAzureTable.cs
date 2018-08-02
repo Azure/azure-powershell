@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// </summary>
     [Cmdlet("Get","AzureStorageTable", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageTable))]
     public class GetAzureStorageTableCommand : StorageCloudTableCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureStorageTable")]
+#endif
     {
         /// <summary>
         /// default parameter set name
@@ -175,3 +178,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+

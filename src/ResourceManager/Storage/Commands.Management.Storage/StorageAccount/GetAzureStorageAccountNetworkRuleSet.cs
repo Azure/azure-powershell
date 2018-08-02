@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get","StorageAccountNetworkRuleSet"), OutputType(typeof(PSNetworkRuleSet))]
     public class GetAzureStorageAccountNetworkRuleSetCommand : StorageAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmStorageAccountNetworkRuleSet")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -59,3 +62,4 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+

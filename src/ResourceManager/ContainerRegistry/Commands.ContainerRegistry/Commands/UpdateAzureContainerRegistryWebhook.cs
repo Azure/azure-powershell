@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Update","ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
     public class UpdateAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmContainerRegistryWebhook")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [ValidateNotNullOrEmpty]
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("Update","SqlSyncGroup", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class UpdateAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmSqlSyncGroup")]
+#endif
     {
         /// <summary>
         /// Gets or sets the sync group name
@@ -122,3 +125,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

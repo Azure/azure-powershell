@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// </summary>
     [Cmdlet("Set","EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class SetAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventHubAuthorizationRule")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -113,3 +116,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
     }
 }
+

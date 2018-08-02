@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Set","BackupProtectionPolicy", DefaultParameterSetName = NoScheduleParamSet), OutputType(typeof(AzureRMBackupJob))]
     public class SetAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmBackupProtectionPolicy")]
+#endif
     {
         protected const string WeeklyScheduleParamSet = "WeeklyScheduleParamSet";
         protected const string DailyScheduleParamSet = "DailyScheduleParamSet";
@@ -156,3 +159,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

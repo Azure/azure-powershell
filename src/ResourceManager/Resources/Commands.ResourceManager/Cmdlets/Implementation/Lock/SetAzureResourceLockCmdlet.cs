@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Set","ResourceLock", SupportsShouldProcess = true, DefaultParameterSetName = ResourceLockManagementCmdletBase.ScopeLevelLock), OutputType(typeof(PSObject))]
     public class SetAzureResourceLockCmdlet : NewAzureResourceLockCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmResourceLock")]
+#endif
     {
         /// <summary>
         /// Gets the action message.
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+

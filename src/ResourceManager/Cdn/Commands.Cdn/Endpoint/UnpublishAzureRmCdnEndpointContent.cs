@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Unpublish","CdnEndpointContent", SupportsShouldProcess = true, DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(bool))]
     public class UnpublishAzureRmCdnEndpointContent : AzureCdnCmdletBase
+#if NETSTANDARD
+    [Alias("Unpublish-AzureRmCdnEndpointContent")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+

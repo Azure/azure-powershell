@@ -20,8 +20,12 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Start","AzureBatchComputeNodeServiceLogUpload",SupportsShouldProcess = true,DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogUpload),OutputType(typeof(PSStartComputeNodeServiceLogUploadResult))]
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeServiceLogUpload", SupportsShouldProcess = true,DefaultParameterSetName = Constants.AzureBatchComputeNodeServiceLogUpload),
+        OutputType(typeof(PSStartComputeNodeServiceLogUploadResult))]
     public class StartBatchComputeNodeServiceLogUploadCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Start-AzureBatchComputeNodeServiceLogUpload")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -67,3 +71,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

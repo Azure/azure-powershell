@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Stop-ASRJob")]
     [OutputType(typeof(ASRJob))]
     public class StopAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmRecoveryServicesAsrJob")]
+#endif
     {
         /// <summary>
         ///     Gets or sets Job ID.
@@ -88,3 +91,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("New","EventGridTopicKey", DefaultParameterSetName = TopicNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(TopicSharedAccessKeys))]
     public class NewAzureEventGridTopicKey : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmEventGridTopicKey")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -107,3 +110,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

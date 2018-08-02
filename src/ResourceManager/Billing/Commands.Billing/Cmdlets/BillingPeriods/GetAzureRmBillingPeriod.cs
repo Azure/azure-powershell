@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
 {
     [Cmdlet("Get","BillingPeriod", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSBillingPeriod))]
     public class GetAzureRmBillingPeriod : AzureBillingCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmBillingPeriod")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "Name of a specific billing period to get.", ParameterSetName = Constants.ParameterSetNames.SingleItemParameterSet)]
         [ValidateNotNullOrEmpty]
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.BillingPeriods
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Reset","VirtualNetworkGateway"), OutputType(typeof(PSVirtualNetworkGateway))]
     public class ResetAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Reset-AzureRmVirtualNetworkGateway")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

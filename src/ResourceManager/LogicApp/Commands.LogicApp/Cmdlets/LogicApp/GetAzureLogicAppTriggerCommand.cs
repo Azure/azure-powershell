@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","LogicAppTrigger"), OutputType(typeof(WorkflowTrigger))]
     public class GetAzureLogicAppTriggerCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicAppTrigger")]
+#endif
     {
 
         #region Input Parameters
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

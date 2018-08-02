@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Start","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSTrigger))]
     public class StartAzureDataFactoryTriggerCommand : DataFactoryContextActionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Start-AzureRmDataFactoryV2Trigger")]
+#endif
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]
@@ -61,3 +64,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

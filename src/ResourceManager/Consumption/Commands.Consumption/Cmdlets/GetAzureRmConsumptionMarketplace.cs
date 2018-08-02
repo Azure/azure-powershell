@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 {
     [Cmdlet("Get","ConsumptionMarketplace"), OutputType(typeof(PSMarketplace))]
     public class GetAzureRmConsumptionMarketplace : AzureConsumptionCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmConsumptionMarketplace")]
+#endif
     {
         private const int MaxNumberToFetch = 1000;
 
@@ -202,3 +205,4 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         }
     }
 }
+

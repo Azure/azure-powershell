@@ -18,6 +18,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Update","Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
     public class PatchReservation : AzureReservationsCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmReservation")]
+#endif
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
@@ -144,3 +147,4 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+

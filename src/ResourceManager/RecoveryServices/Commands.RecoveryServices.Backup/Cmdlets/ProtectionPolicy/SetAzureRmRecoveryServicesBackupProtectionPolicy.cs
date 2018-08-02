@@ -31,6 +31,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// </summary>
     [Cmdlet("Set","RecoveryServicesBackupProtectionPolicy",SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmRecoveryServicesBackupProtectionPolicy")]
+#endif
     {
         /// <summary>
         /// Policy object to be modified
@@ -154,3 +157,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+

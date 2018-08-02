@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     [Cmdlet("Switch","SqlDatabaseFailoverGroup",ConfirmImpact = ConfirmImpact.Medium, SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class SwitchAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
+#if NETSTANDARD
+    [Alias("Switch-AzureRmSqlDatabaseFailoverGroup")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+

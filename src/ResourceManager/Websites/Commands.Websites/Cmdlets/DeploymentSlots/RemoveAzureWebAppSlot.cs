@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Remove","WebAppSlot", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmWebAppSlot")]
+#endif
     {
         //always delete the slots, 
         private bool deleteSlotsByDefault = true;
@@ -51,3 +54,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+

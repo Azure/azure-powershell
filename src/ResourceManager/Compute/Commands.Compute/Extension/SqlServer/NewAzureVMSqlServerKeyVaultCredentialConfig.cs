@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet("New","VMSqlServerKeyVaultCredentialConfig",SupportsShouldProcess = true),OutputType(typeof(KeyVaultCredentialSettings))]
     public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVMSqlServerKeyVaultCredentialConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

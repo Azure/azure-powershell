@@ -25,9 +25,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Create a new key vault.
     /// </summary>
-    [Cmdlet("New","KeyVault",SupportsShouldProcess = true)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVault", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVault))]
     public class NewAzureKeyVault : KeyVaultManagementCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmKeyVault")]
+#endif
     {
         #region Input Parameter Definitions
 
@@ -174,3 +177,4 @@ namespace Microsoft.Azure.Commands.KeyVault
 
     }
 }
+

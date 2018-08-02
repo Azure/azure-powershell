@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmApiManagementDeployment")]
+#endif
     {
         internal const string FromPsApiManagementInstanceSetName = "UpdateFromPsApiManagementInstance";
         internal const string DefaultParameterSetName = "UpdateSpecificService";
@@ -121,3 +124,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

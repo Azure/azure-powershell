@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
     [Cmdlet("Get","SqlServerServiceObjective", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerServiceObjectiveModel))]
     public class GetAzureSqlServerServiceObjective : AzureSqlServerServiceObjectiveCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerServiceObjective")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of service objective.
@@ -79,3 +82,4 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Cmdlet
         }
     }
 }
+

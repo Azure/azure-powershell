@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Suspend","AutomationJob"), OutputType(typeof(void))]
     public class SuspendAzureAutomationJob : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Suspend-AzureRmAutomationJob")]
+#endif
     {
         /// <summary> 
         /// Gets or sets the job id. 
@@ -42,3 +45,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

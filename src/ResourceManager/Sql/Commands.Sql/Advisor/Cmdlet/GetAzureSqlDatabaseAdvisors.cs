@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     [Cmdlet("Get","SqlDatabaseAdvisor")]
     [OutputType(typeof(AzureSqlDatabaseAdvisorModel))]
     public class GetAzureSqlDatabaseAdvisor : AzureSqlDatabaseAdvisorCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseAdvisor")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         }
     }
 }
+

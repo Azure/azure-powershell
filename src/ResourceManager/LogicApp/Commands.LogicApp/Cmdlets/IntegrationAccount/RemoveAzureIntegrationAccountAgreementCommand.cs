@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Remove","IntegrationAccountAgreement", SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureIntegrationAccountAgreementCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIntegrationAccountAgreement")]
+#endif
     {
 
         #region Input Paramters
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

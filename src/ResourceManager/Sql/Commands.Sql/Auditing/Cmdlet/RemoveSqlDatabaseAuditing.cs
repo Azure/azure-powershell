@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     [Cmdlet("Remove","SqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlDatabaseAuditing' command to configure Blob auditing.", false)]
     public class RemoveSqlDatabaseAuditing : SqlDatabaseAuditingCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlDatabaseAuditing")]
+#endif
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         }
     }
 }
+

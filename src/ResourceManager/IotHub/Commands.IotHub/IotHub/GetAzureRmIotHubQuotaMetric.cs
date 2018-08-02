@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Get","IotHubQuotaMetric")]
     [OutputType(typeof(PSIotHubQuotaMetric))]
     public class GetAzureRmIotHubQuotaMetric : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmIotHubQuotaMetric")]
+#endif
     {
 
         [Parameter(
@@ -51,3 +54,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

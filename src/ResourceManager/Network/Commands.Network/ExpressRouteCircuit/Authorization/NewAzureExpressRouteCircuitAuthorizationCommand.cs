@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
     public class NewAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
+#if NETSTANDARD
+    [Alias("New-AzureRmExpressRouteCircuitAuthorization")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -37,3 +40,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

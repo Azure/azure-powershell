@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationRegistrationInfo")]
     [OutputType(typeof(AgentRegistration))]
     public class GetAzureAutomationRegistrationInfo : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationRegistrationInfo")]
+#endif
     {
         /// <summary>
         /// Execute this cmdlet.
@@ -46,3 +49,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
     }
 }
+

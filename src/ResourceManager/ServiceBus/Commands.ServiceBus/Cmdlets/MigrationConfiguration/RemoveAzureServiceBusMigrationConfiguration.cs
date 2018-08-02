@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// </summary>
     [Cmdlet("Remove","ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmServiceBusMigration")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         }
     }
 }
+

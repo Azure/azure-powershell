@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Get","AzureBatchSubtask", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSSubtaskInformation))]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchSubtask", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSSubtaskInformation))]
     public class GetBatchSubtaskCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureBatchSubtask")]
+#endif
     {
         private int maxCount = Constants.DefaultMaxCount;
 
@@ -60,3 +63,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

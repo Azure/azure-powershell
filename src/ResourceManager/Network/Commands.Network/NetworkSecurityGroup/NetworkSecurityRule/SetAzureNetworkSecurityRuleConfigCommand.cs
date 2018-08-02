@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","NetworkSecurityRuleConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSNetworkSecurityGroup))]
     public class SetAzureNetworkSecurityRuleConfigCommand : AzureNetworkSecurityRuleConfigBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmNetworkSecurityRuleConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

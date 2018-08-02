@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Resources
     /// </summary>
     [Cmdlet("Set","RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
     public class SetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmRoleDefinition")]
+#endif
     {
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.InputFile, HelpMessage = "File name containing a single role definition.")]
@@ -68,3 +71,4 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+

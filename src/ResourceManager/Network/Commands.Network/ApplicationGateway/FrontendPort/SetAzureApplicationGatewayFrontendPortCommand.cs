@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayFrontendPort"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewayFrontendPortCommand : AzureApplicationGatewayFrontendPortBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApplicationGatewayFrontendPort")]
+#endif
     {
 
         [Parameter(
@@ -49,3 +52,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

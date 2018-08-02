@@ -28,6 +28,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// </summary>
     [Cmdlet("New","AzureStorageContainer"),OutputType(typeof(AzureStorageContainer))]
     public class NewAzureStorageContainerCommand : StorageCloudBlobCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureStorageContainer")]
+#endif
     {
         [Alias("N", "Container")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container name",
@@ -104,3 +107,4 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+

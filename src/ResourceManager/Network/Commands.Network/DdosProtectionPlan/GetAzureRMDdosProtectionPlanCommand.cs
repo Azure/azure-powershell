@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","DdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
     public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDdosProtectionPlan")]
+#endif
     {
         internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";
         internal const string ListParameterSet = "List";
@@ -96,3 +99,4 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+

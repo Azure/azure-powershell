@@ -118,6 +118,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Set","Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
     public partial class SetAzureRmVmss : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVmss")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -207,3 +210,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+

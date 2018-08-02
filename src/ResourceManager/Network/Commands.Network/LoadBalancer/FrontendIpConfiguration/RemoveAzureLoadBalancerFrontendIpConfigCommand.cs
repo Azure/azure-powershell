@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LoadBalancerFrontendIpConfig"), OutputType(typeof(PSLoadBalancer))]
     public class RemoveAzureLoadBalancerFrontendIpConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmLoadBalancerFrontendIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Update","EventGridSubscription",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet),OutputType(typeof(PSEventSubscription))]
     public class UpdateAzureEventGridSubscription : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("Update-AzureRmEventGridSubscription")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -256,3 +259,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

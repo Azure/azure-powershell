@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Set","ApiManagement", SupportsShouldProcess = true), OutputType(typeof(PsApiManagement))]
     public class SetAzureApiManagement : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagement")]
+#endif
     {
         [Parameter(
             ValueFromPipeline = true,
@@ -56,3 +59,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

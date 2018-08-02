@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// </summary>
     [Cmdlet("Set","ServiceBusGeoDRConfigurationFailOver", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class SetAzureServiceBusGeoDRConfigurationFailOver : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceBusGeoDRConfigurationFailOver")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         }
     }
 }
+

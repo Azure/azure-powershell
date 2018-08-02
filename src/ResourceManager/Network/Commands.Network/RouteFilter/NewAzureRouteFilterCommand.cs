@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("New","RouteFilter", SupportsShouldProcess = true),OutputType(typeof(PSRouteFilter))]
     public class NewAzureRouteFilterCommand : RouteFilterBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmRouteFilter")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -113,3 +116,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlServerFirewallRule", SupportsShouldProcess = true), OutputType(typeof(Model.AzureSqlServerFirewallRuleModel))]
     public class RemoveAzureSqlServerFirewallRule : AzureSqlServerFirewallRuleCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmSqlServerFirewallRule")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the firewall rule to remove
@@ -90,3 +93,4 @@ namespace Microsoft.Azure.Commands.Sql.FirewallRule.Cmdlet
         }
     }
 }
+

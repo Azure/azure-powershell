@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlSyncAgentLinkedDatabase",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncAgentLinkedDatabaseModel))]
     public class GetAzureSqlSyncAgentSqlServerDatabase : AzureSqlCmdletBase<IEnumerable<AzureSqlSyncAgentLinkedDatabaseModel>, AzureSqlDataSyncAdapter>
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlSyncAgentLinkedDatabase")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

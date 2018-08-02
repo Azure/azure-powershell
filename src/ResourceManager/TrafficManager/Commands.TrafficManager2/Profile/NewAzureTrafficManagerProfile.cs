@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.TrafficManager
 
     [Cmdlet("New","TrafficManagerProfile"), OutputType(typeof(TrafficManagerProfile))]
     public class NewAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmTrafficManagerProfile")]
+#endif
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -132,3 +135,4 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+

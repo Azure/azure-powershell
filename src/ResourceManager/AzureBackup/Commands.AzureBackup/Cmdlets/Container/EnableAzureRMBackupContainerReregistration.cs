@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Enable","BackupContainerReregistration"), OutputType(typeof(void))]
     public class EnableAzureRMBackupContainerReregistration : AzureBackupContainerCmdletBase
+#if NETSTANDARD
+    [Alias("Enable-AzureRmBackupContainerReregistration")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -47,3 +50,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.RedisCache
 
     [Cmdlet("Get","RedisCacheKey"), OutputType(typeof(RedisAccessKeys))]
     public class GetAzureRedisCacheKey : RedisCacheCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRedisCacheKey")]
+#endif
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+

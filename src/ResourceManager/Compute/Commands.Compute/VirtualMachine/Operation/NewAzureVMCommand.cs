@@ -52,6 +52,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("New","VM",SupportsShouldProcess = true,DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVM")]
+#endif
     {
         public const string DefaultParameterSet = "DefaultParameterSet";
         public const string SimpleParameterSet = "SimpleParameterSet";
@@ -771,3 +774,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

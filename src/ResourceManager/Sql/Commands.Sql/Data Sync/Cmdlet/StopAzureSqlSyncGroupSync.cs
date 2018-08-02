@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("Stop","SqlSyncGroupSync", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class StopAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmSqlSyncGroupSync")]
+#endif
     {
         /// <summary>
         /// Gets or sets the sync group name
@@ -69,3 +72,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
     [Cmdlet("Get","ContainerRegistryReplication", DefaultParameterSetName = ListReplicationByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryReplication))]
     public class GetAzureContainerRegistryReplication : ContainerRegistryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerRegistryReplication")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowReplicationByNameResourceGroupParameterSet, HelpMessage = "Container Registry Replication Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowReplicationByRegistryObjectParameterSet, HelpMessage = "Container Registry Replication Name.")]
@@ -111,3 +114,4 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+

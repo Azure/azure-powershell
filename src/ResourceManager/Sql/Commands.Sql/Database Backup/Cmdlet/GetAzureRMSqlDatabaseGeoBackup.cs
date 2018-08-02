@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     [Cmdlet("Get","SqlDatabaseGeoBackup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDatabaseGeoBackupModel))]
     public class GetAzureRMSqlDatabaseGeoBackup : AzureSqlDatabaseGeoBackupCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseGeoBackup")]
+#endif
     {
         /// <summary>
         /// Get the entities from the service
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+

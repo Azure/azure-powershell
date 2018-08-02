@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VirtualNetwork", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVirtualNetwork")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -67,3 +70,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

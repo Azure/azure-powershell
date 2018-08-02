@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     [Cmdlet("Save","ApiManagementTenantGitConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperationResult))]
     public class SaveAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Save-AzureRmApiManagementTenantGitConfiguration")]
+#endif
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+

@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Commands.Compute
     /// </summary>
     [Cmdlet("New","VMSqlServerAutoBackupConfig",DefaultParameterSetName = StorageUriParamSetName),OutputType(typeof(AutoBackupSettings))]
     public class NewAzureVMSqlServerAutoBackupConfigCommand : AzureRMCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmVMSqlServerAutoBackupConfig")]
+#endif
     {
         protected const string StorageContextParamSetName = "StorageContextSqlServerAutoBackup";
         protected const string StorageUriParamSetName = "StorageUriSqlServerAutoBackup";
@@ -283,3 +286,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

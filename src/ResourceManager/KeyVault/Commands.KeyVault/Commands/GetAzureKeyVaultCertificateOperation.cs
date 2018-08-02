@@ -20,9 +20,12 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Gets the status of the certificate operation
     /// </summary>
-    [Cmdlet("Get","AzureKeyVaultCertificateOperation",DefaultParameterSetName = ByNameParameterSet)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateOperation", DefaultParameterSetName = ByNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class GetAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureKeyVaultCertificateOperation")]
+#endif
     {
         #region Parameter Set Names
 
@@ -85,3 +88,4 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+

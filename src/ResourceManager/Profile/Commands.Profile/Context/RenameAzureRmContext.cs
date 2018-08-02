@@ -22,9 +22,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet("Rename","Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
+    [Cmdlet("Rename", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
     public class RenameAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("Rename-AzureRmContext")]
+#endif
     {
         const string SourceParameterName = "SourceName", TargetParameterName = "TargetName", InputObjectParameterSet = "RenameByInputObject", NameParameterSet = "RenameByName";
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
@@ -105,3 +108,4 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+

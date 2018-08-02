@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     [Cmdlet("New","DataMigrationProject", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProject))]
     [Alias("New-AzureRmDmsProject")]
     public class NewProjectCmdlet : DataMigrationCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataMigrationProject")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -159,3 +162,4 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+

@@ -40,6 +40,9 @@ namespace Microsoft.Azure.Commands.Network
 
     [Cmdlet("Set","RouteTable", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
     public class SetAzureRouteTableCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmRouteTable")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -90,3 +93,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

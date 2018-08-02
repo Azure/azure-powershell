@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Get","StreamAnalyticsQuota"), OutputType(typeof(PSQuota))]
     public class GetAzureStreamAnalyticsQuotasCommand : StreamAnalyticsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmStreamAnalyticsQuota")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the azure stream analytics quota.")]
         [LocationCompleter("Microsoft.StreamAnalytics/locations")]
@@ -40,3 +43,4 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+

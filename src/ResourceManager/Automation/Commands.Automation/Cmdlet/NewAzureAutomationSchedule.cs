@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("New","AutomationSchedule", DefaultParameterSetName = AutomationCmdletParameterSets.ByDaily)]
     [OutputType(typeof(Schedule))]
     public class NewAzureAutomationSchedule : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmAutomationSchedule")]
+#endif
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NewAzureAutomationSchedule"/> class.
@@ -314,3 +317,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         LastDay = -1
     }
 }
+

@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2IntegrationRuntimeNode",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName),OutputType(typeof(PSManagedIntegrationRuntimeNode), typeof(PSSelfHostedIntegrationRuntimeNode))]
     public class GetAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataFactoryV2IntegrationRuntimeNode")]
+#endif
     {
         [Parameter(Mandatory = true,
             HelpMessage = Constants.HelpIntegrationRuntimeNodeName)]
@@ -103,3 +106,4 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+

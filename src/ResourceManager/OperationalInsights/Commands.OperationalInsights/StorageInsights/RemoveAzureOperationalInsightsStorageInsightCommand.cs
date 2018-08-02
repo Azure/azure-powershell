@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Remove","OperationalInsightsStorageInsight", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(void))]
     public class RemoveAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmOperationalInsightsStorageInsight")]
+#endif
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that containts the storage insight.")]
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

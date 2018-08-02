@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// </summary>
     [Cmdlet("Get","ServiceBusSubscription"), OutputType(typeof(PSSubscriptionAttributes))]
     public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmServiceBusSubscription")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         }
     }
 }
+

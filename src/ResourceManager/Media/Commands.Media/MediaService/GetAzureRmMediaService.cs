@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// </summary>
     [Cmdlet("Get","MediaService"), OutputType(typeof(PSMediaService))]
     public class GetAzureRmMediaService : AzureMediaServiceCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmMediaService")]
+#endif
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
@@ -80,3 +83,4 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+

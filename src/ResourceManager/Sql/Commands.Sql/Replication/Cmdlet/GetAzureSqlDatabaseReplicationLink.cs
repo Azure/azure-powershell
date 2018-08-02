@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     [Cmdlet("Get","SqlDatabaseReplicationLink",DefaultParameterSetName = ByDatabaseName,ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureReplicationLinkModel))]
     public class GetAzureSqlDatabaseReplicationLink : AzureSqlDatabaseSecondaryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseReplicationLink")]
+#endif
     {
         /// <summary>
         /// ParameterSet to get all Replication Links for a given Azure SQL Database
@@ -103,3 +106,4 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
     }
 }
+

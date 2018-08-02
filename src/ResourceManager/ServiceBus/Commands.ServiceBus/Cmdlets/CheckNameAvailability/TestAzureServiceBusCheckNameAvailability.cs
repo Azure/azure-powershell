@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// </summary>
     [Cmdlet("Test","ServiceBusName"), OutputType(typeof(PSCheckNameAvailabilityResultAttributes))]
     public class TestAzureServiceBusCheckNameAvailability : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Test-AzureRmServiceBusName")]
+#endif
     {
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [Alias("ResourceGroup")]
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+

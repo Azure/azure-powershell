@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Test","NetworkWatcherIPFlow", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSIPFlowVerifyResult))]
 
     public class TestAzureNetworkWatcherIPFlowCommand : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Test-AzureRmNetworkWatcherIPFlow")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -162,3 +165,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

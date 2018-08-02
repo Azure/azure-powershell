@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
     [Cmdlet("Get","SqlServerDisasterRecoveryConfiguration",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
     public class GetAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlServerDisasterRecoveryConfiguration")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the Server Disaster Recovery Configuration to use.
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+

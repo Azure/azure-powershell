@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
     /// </summary>
     [Cmdlet("New","SqlServerDisasterRecoveryConfiguration",ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
     public class NewAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmSqlServerDisasterRecoveryConfiguration")]
+#endif
     {
         /// <summary>
         /// Gets or sets the Virtual Endpoint name of the Server Disaster Recovery Configuration to create.
@@ -131,3 +134,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+

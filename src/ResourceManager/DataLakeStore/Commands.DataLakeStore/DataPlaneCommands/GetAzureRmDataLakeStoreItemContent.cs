@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataLakeStore
     [Cmdlet("Get","DataLakeStoreItemContent", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(byte), typeof(string))]
     [Alias("Get-AdlStoreItemContent")]
     public class GetAzureDataLakeStoreContent : DataLakeStoreFileSystemCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmDataLakeStoreItemContent")]
+#endif
     {
         internal const string BaseParameterSetName = "PreviewFileContent";
         internal const string HeadRowParameterSetName = "PreviewFileRowsFromHead";
@@ -156,3 +159,4 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+

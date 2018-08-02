@@ -30,6 +30,9 @@ namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","VirtualNetworkAvailableEndpointService"), OutputType(typeof(PSEndpointServiceResult))]
     public partial class GetAzureRMVirtualNetworkAvailableEndpointServiceCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetworkAvailableEndpointService")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -53,3 +56,4 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+

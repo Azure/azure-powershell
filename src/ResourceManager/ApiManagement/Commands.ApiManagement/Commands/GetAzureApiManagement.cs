@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("Get","ApiManagement", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PsApiManagement))]
     public class GetAzureApiManagement : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmApiManagement")]
+#endif
     {
         internal const string BaseParameterSetName = "GetBySubscription";
         internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
@@ -64,3 +67,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

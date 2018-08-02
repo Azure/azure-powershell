@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Get","AutomationJobOutputRecord")]
     [OutputType(typeof(JobStreamRecord))]
     public class GetAzureAutomationJobOutputRecord : AzureAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmAutomationJobOutputRecord")]
+#endif
     {
         /// <summary>  
         /// Gets or sets the job id  
@@ -51,3 +54,4 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+

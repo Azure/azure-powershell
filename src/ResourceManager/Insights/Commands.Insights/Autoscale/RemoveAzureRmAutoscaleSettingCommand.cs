@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// </summary>
     [Cmdlet("Remove","AutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmAutoscaleSettingCommand : ManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Remove-AzureRmAutoscaleSetting")]
+#endif
     {
         internal const string RemoveAzureRmAutoscaleSettingParamGroup = "RemoveAutoscaleSetting";
 
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+

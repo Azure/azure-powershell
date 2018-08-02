@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Get","OperationalInsightsLinkTargets"), OutputType(typeof(PSAccount))]
     public class GetAzureOperationalInsightsLinkTargetsCommand : OperationalInsightsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmOperationalInsightsLinkTargets")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -27,3 +30,4 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+

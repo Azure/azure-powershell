@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkInterfaceIpConfig"), OutputType(typeof(PSNetworkInterfaceIPConfiguration))]
     public class GetAzureNetworkInterfaceIpConfigCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmNetworkInterfaceIpConfig")]
+#endif
     {
         [Parameter(
             Mandatory = false,
@@ -55,3 +58,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// </summary>
     [Cmdlet("Get","CognitiveServicesAccountSkus"), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesSkus))]
     public class GetAzureCognitiveServicesAccountSkusCommand : CognitiveServicesAccountBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmCognitiveServicesAccountSkus")]
+#endif
     {
         [Parameter(
             Position = 0,
@@ -58,3 +61,4 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+

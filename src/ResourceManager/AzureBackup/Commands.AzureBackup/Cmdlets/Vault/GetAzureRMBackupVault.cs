@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Get","BackupVault"), OutputType(typeof(AzureRMBackupVault))]
     public class GetAzureRMBackupVault : AzureBackupCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmBackupVault")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
         [ResourceGroupCompleter()]
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ExpressRouteCircuitConnectionConfig", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCircuit))]
     public class AddAzureExpressRouteCircuitConnectionConfigCommand : AzureExpressRouteCircuitConnectionConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmExpressRouteCircuitConnectionConfig")]
+#endif
     {
         [Parameter(
             Position = 0, 
@@ -73,3 +76,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

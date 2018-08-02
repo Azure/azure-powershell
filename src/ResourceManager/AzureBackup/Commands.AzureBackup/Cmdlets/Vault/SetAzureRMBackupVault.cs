@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// </summary>
     [Cmdlet("Set","BackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
     public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmBackupVault")]
+#endif
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+

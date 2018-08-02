@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Alias("Remove-AzureRmIoTDpsAccessPolicy")]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmIoTDeviceProvisioningServiceAccessPolicy : IotDpsBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIoTDeviceProvisioningServiceAccessPolicy")]
+#endif
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+

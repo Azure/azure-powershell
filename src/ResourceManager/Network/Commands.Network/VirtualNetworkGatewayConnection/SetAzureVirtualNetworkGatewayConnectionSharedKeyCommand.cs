@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true),OutputType(typeof(string))]
     public class NewAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Set-AzureRmVirtualNetworkGatewayConnectionSharedKey")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -83,3 +86,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

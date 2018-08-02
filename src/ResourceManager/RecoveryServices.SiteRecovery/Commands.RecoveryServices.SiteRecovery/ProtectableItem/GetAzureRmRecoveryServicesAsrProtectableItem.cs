@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Alias("Get-ASRProtectableItem")]
     [OutputType(typeof(ASRProtectableItem))]
     public class GetAzureRmRecoveryServicesAsrProtectableItem : SiteRecoveryCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmRecoveryServicesAsrProtectableItem")]
+#endif
     {
         /// <summary>
         ///     Gets or sets the name of the ASR protectable item.
@@ -209,3 +212,4 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+

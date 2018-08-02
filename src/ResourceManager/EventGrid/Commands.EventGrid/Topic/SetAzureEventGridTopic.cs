@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Set","EventGridTopic", SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
     public class SetAzureEventGridTopic : AzureEventGridCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmEventGridTopic")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -120,3 +123,4 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+

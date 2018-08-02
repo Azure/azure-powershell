@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// </summary>
     [Cmdlet("Stop","SqlDatabaseExecuteIndexRecommendation",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
     public class StopAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmSqlDatabaseExecuteIndexRecommendation")]
+#endif
     {
         /// <summary>
         /// Update model state
@@ -48,3 +51,4 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         }
     }
 }
+

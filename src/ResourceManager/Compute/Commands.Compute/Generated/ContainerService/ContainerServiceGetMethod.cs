@@ -136,6 +136,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","ContainerService", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSContainerService))]
     public partial class GetAzureRmContainerService : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmContainerService")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -211,3 +214,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Name { get; set; }
     }
 }
+

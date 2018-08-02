@@ -150,6 +150,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     [Cmdlet("Get","Image", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSImage))]
     public partial class GetAzureRmImage : ComputeAutomationBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmImage")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -233,3 +236,4 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Expand { get; set; }
     }
 }
+

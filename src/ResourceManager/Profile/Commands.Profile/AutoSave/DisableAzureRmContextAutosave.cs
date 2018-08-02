@@ -23,9 +23,12 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile.Context
 {
-    [Cmdlet("Disable","ContextAutosave", SupportsShouldProcess = true)]
+    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosave", SupportsShouldProcess = true)]
     [OutputType(typeof(ContextAutosaveSettings))]
     public class DisableAzureRmContextAutosave : AzureContextModificationCmdlet
+#if NETSTANDARD
+    [Alias("Disable-AzureRmContextAutosave")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -93,3 +96,4 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+

@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// </summary>
     [Cmdlet("Set","ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
     public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmServiceBusNamespace")]
+#endif
     {
         /// <summary>
         /// Name of the resource group.
@@ -88,3 +91,4 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+

@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// </summary>
     [Cmdlet("Add","SqlDatabaseToFailoverGroup",ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class AddAzureSqlDatabaseToFailoverGroup : AzureSqlFailoverGroupCmdletBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmSqlDatabaseToFailoverGroup")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -157,3 +160,4 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+

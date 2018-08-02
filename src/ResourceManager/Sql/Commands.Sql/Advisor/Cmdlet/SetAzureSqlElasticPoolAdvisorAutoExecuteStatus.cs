@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlElasticPoolAdvisorAutoExecuteStatus",SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolAdvisorModel))]
     public class SetAzureSqlElasticPoolAdvisorAutoExecuteStatus : AzureSqlElasticPoolAdvisorCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlElasticPoolAdvisorAutoExecuteStatus")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
@@ -104,3 +107,4 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         }
     }
 }
+

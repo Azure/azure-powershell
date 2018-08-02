@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
     [Cmdlet("Add","SqlManagedInstanceTransparentDataEncryptionCertificate", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class AddAzureRmSqlManagedInstanceTransparentDataEncryptionCertificate : AzureSqlCmdletBase<IEnumerable<AzureRmSqlManagedInstanceTransparentDataEncryptionCertificateModel>, AzureSqlDatabaseTransparentDataEncryptionArmAdapter>
+#if NETSTANDARD
+    [Alias("Add-AzureRmSqlManagedInstanceTransparentDataEncryptionCertificate")]
+#endif
     {
         /// <summary>
         /// Parameter sets
@@ -143,3 +146,4 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Cmdlet
         protected override bool WriteResult() { return PassThru; }
     }
 }
+

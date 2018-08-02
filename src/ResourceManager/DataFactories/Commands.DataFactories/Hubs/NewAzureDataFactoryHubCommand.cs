@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("New","DataFactoryHub", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSHub))]
     public class NewAzureDataFactoryHubCommand : HubContextBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDataFactoryHub")]
+#endif
     {
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The hub name.")]
@@ -70,3 +73,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

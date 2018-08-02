@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
     public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmVirtualNetwork")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -99,3 +102,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

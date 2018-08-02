@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Remove","ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(bool))]
     public class RemoveAzureADUserCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmADUser")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPNOrObjectId, HelpMessage = "The userPrincipalName or ObjectId of the user to be deleted.")]
         [ValidateNotNullOrEmpty]
@@ -91,3 +94,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

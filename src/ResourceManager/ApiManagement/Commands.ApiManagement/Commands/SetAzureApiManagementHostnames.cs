@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
     public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmApiManagementHostnames")]
+#endif
     {
         internal const string FromPsApiManagementInstanceSetName = "SetFromPsApiManagementInstance";
         internal const string DefaultParameterSetName = "SetSpecificService";
@@ -102,3 +105,4 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+

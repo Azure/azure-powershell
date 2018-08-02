@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     [Cmdlet("Remove","IotHubKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
     public class RemoveAzureRmIotHubKey : IotHubBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmIotHubKey")]
+#endif
     {
 
         [Parameter(
@@ -81,3 +84,4 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+

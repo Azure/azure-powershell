@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServerRecommendedActionState",SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerRecommendedActionModel))]
     public class SetAzureSqlServerRecommendedActionState : AzureSqlServerRecommendedActionCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerRecommendedActionState")]
+#endif
     {
         /// <summary>
         /// Gets or sets the name of the recommended action.
@@ -108,3 +111,4 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         }
     }
 }
+

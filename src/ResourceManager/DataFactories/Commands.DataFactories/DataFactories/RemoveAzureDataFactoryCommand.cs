@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Remove","DataFactory", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveAzureDataFactoryCommand : DataFactoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmDataFactory")]
+#endif
     {
         [Parameter(ParameterSetName = ByFactoryName, Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -78,3 +81,4 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+

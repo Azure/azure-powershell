@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Update","AvailabilitySet", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAvailabilitySet))]
     public class UpdateAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmAvailabilitySet")]
+#endif
     {
         private const string SkuParameterSetName = "SkuParameterSet";
         private const string ManagedParamterSetName = "ManagedParamterSet";
@@ -109,3 +112,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

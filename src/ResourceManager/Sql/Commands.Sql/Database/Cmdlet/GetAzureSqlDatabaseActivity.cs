@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
     [Cmdlet("Get","SqlDatabaseActivity", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseActivityModel))]
     public class GetAzureSqlDatabaseActivity : AzureSqlDatabaseActivityCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlDatabaseActivity")]
+#endif
     {
         /// <summary>
         /// Gets database activity in an Elastic Pool
@@ -52,3 +55,4 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
     }
 }
+

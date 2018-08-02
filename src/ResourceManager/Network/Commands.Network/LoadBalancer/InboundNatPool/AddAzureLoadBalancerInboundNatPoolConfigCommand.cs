@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSLoadBalancer))]
     public class AddAzureLoadBalancerInboundNatPoolConfigCommand : AzureLoadBalancerInboundNatPoolConfigBase
+#if NETSTANDARD
+    [Alias("Add-AzureRmLoadBalancerInboundNatPoolConfig")]
+#endif
     {
         [Parameter(
             Mandatory = true,
@@ -71,3 +74,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

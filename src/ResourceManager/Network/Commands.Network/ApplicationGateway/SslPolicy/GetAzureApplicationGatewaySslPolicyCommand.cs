@@ -19,6 +19,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
     public class GetAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewaySslPolicy")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -33,3 +36,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

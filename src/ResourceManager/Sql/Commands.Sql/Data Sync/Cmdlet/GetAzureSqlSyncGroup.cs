@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlSyncGroup",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupModel))]
     public class GetAzureSqlSyncGroup : AzureSqlSyncGroupCmdletBase
+#if NETSTANDARD
+    [Alias("Get-AzureRmSqlSyncGroup")]
+#endif
     {
         /// <summary>
         /// Gets or sets the sync group name
@@ -66,3 +69,4 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+

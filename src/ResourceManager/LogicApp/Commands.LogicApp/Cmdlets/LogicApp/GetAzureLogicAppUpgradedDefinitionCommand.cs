@@ -23,6 +23,9 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","LogicAppUpgradedDefinition"), OutputType(typeof(object))]
     public class GetAzureLogicAppUpgradedDefinitionCommand : LogicAppBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmLogicAppUpgradedDefinition")]
+#endif
     {
 
         #region Input Paramters
@@ -54,3 +57,4 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+

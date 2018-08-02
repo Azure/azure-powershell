@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Remove","VMExtension", SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class RemoveAzureVMExtensionCommand : VirtualMachineExtensionBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVMExtension")]
+#endif
     {
         [Parameter(
            Mandatory = true,
@@ -77,3 +80,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkWatcher", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmNetworkWatcher")]
+#endif
     {
         [Parameter(
              Mandatory = true,
@@ -101,3 +104,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

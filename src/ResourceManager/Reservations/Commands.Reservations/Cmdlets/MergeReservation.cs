@@ -11,6 +11,9 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Merge","Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
     public class MergeReservation : AzureReservationsCmdletBase
+#if NETSTANDARD
+    [Alias("Merge-AzureRmReservation")]
+#endif
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet, 
             Mandatory = true)]
@@ -57,3 +60,4 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+

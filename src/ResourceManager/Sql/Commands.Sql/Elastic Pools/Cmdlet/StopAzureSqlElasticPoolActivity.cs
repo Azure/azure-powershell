@@ -20,6 +20,9 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet("Stop","SqlElasticPoolActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolActivityModel))]
     public class StopAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
+#if NETSTANDARD
+    [Alias("Stop-AzureRmSqlElasticPoolActivity")]
+#endif
     {
         /// <summary>
         ///  Defines whether the cmdlets will successfully returned at the end of its execution
@@ -63,3 +66,4 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         protected override bool WriteResult() { return PassThru; }
     } 
 }
+

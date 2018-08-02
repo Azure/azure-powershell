@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     [Cmdlet("Update","ADApplication", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams), OutputType(typeof(PSADApplication))]
     [Alias("Set-AzureRmADApplication")]
     public class UpdateAzureADApplicationCommand : ActiveDirectoryBaseCmdlet
+#if NETSTANDARD
+    [Alias("Update-AzureRmADApplication")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ApplicationObjectIdWithUpdateParams, HelpMessage = "The application object id.")]
         [ValidateNotNullOrEmpty]
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+

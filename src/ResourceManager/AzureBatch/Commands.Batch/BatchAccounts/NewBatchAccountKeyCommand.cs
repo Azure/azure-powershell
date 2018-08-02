@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("New","BatchAccountKey"), OutputType(typeof(BatchAccountContext))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKey"), OutputType(typeof(BatchAccountContext))]
     public class RegenBatchAccountKeyCommand : BatchCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmBatchAccountKey")]
+#endif
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to regenerate the specified key for.")]
@@ -59,3 +62,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

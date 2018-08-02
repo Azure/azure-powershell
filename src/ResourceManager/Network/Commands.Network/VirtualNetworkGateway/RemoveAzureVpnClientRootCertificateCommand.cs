@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VpnClientRootCertificate"), OutputType(typeof(bool))]
     public class RemoveAzureVpnClientRootCertificateCommand : VirtualNetworkGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Remove-AzureRmVpnClientRootCertificate")]
+#endif
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -93,3 +96,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// </summary>
     [Cmdlet("New","WcfRelay", SupportsShouldProcess = true), OutputType(typeof(WcfRelayAttributes))]
     public class NewAzureRmWcfRelay : AzureRelayCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmWcfRelay")]
+#endif
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -115,3 +118,4 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
         }
     }
 }
+

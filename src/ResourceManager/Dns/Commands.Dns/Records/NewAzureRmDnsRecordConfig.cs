@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Dns
     /// </summary>
     [Cmdlet("New","DnsRecordConfig"), OutputType(typeof(DnsRecordBase))]
     public class NewAzureRmDnsRecordConfig : DnsBaseCmdlet
+#if NETSTANDARD
+    [Alias("New-AzureRmDnsRecordConfig")]
+#endif
     {
         private const string ParameterSetA = "A";
         private const string ParameterSetAaaa = "Aaaa";
@@ -166,3 +169,4 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+

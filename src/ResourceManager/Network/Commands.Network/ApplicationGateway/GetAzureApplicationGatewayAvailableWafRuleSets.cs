@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Get","ApplicationGatewayAvailableWafRuleSets"), OutputType(typeof(PSApplicationGatewayAvailableWafRuleSetsResult))]
     [Alias("List-AzureRmApplicationGatewayAvailableWafRuleSets")]
     public class GetAzureApplicationGatewayAvailableWafRuleSets : ApplicationGatewayBaseCmdlet
+#if NETSTANDARD
+    [Alias("Get-AzureRmApplicationGatewayAvailableWafRuleSets")]
+#endif
     {
         public override void ExecuteCmdlet()
         {
@@ -38,3 +41,4 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+

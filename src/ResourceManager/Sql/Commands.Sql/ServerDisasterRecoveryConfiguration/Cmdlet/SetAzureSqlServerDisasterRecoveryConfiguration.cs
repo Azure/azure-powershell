@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
     /// </summary>
     [Cmdlet("Set","SqlServerDisasterRecoveryConfiguration", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationModel))]
     public class SetAzureSqlServerDisasterRecoveryConfiguration : AzureSqlServerDisasterRecoveryConfigurationCmdletBase
+#if NETSTANDARD
+    [Alias("Set-AzureRmSqlServerDisasterRecoveryConfiguration")]
+#endif
     {
 
         internal const string ByFailoverParams = "ByFailoverParams";
@@ -129,3 +132,4 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+

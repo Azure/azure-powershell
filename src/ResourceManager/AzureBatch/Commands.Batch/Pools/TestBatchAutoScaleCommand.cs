@@ -19,8 +19,11 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet("Test","AzureBatchAutoScale"), OutputType(typeof(PSAutoScaleRun))]
+    [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchAutoScale"), OutputType(typeof(PSAutoScaleRun))]
     public class TestBatchAutoScaleCommand : BatchObjectModelCmdletBase
+#if NETSTANDARD
+    [Alias("Test-AzureBatchAutoScale")]
+#endif
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool to evaluate the autoscale formula on.")]
@@ -39,3 +42,4 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+

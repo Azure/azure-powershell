@@ -24,6 +24,9 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// </summary>
     [Cmdlet("New","EventHubKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
     public class NewAzureEventhubKey : AzureEventHubsCmdletBase
+#if NETSTANDARD
+    [Alias("New-AzureRmEventHubKey")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -76,3 +79,4 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
     }
 }
+

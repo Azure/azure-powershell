@@ -28,6 +28,9 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// </summary>
     [Cmdlet("New","SchedulerHttpJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
     public class NewAzureSchedulerHttpJobCommand : JobBaseCmdlet, IDynamicParameters
+#if NETSTANDARD
+    [Alias("New-AzureRmSchedulerHttpJob")]
+#endif
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
         [ResourceGroupCompleter]
@@ -218,3 +221,4 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+

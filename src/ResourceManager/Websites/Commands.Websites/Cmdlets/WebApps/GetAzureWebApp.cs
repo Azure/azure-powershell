@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     [Cmdlet("Get","WebApp")]
     [OutputType(typeof(Site))]
     public class GetAzureWebAppCmdlet : WebAppBaseClientCmdLet
+#if NETSTANDARD
+    [Alias("Get-AzureRmWebApp")]
+#endif
     {
         private const string ParameterSet1 = "S1";
         private const string ParameterSet2 = "S2";
@@ -224,3 +227,4 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
