@@ -117,7 +117,7 @@ function New-AzsOffer {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         if ($PSBoundParameters.ContainsKey('State')) {
             Write-Warning -Message "The parameter State will be deprecated in a future release. The State will default to the value of Private"

@@ -81,7 +81,7 @@ function Get-AzsInfrastructureShare {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         $NewServiceClient_params = @{
             FullClientTypeName = 'Microsoft.AzureStack.Management.Fabric.Admin.FabricAdminClient'

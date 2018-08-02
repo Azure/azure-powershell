@@ -90,7 +90,7 @@ Changes may cause incorrect behavior and will be lost if the code is regenerated
 
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport    = 'Get-AzsBackupLocation', 'Get-AzsBackup', 'Restore-AzsBackup',
-    'Set-AzsBackupShare', 'Start-AzsBackup', "New-EncryptionKeyBase64"
+    'Set-AzsBackupShare', 'Start-AzsBackup', "New-AzsEncryptionKeyBase64"
 
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
     CmdletsToExport      = @()
