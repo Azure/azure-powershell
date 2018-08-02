@@ -89,12 +89,6 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "IdleTimeoutInMinutes")]
-        public int IdleTimeoutInMinutes { get; set; }
-
-        [Parameter(
-            Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
         public List<string> Zone { get; set; }
@@ -145,11 +139,6 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(this.Sku))
             {
                 publicIpPrefix.Sku.Name = this.Sku;
-            }
-
-            if (this.IdleTimeoutInMinutes > 0)
-            {
-                publicIpPrefix.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
             if (this.IpTag != null && this.IpTag.Count > 0)
