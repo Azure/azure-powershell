@@ -58,7 +58,8 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Azure.Management.Network, Version=19.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.19.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.Azure.Management.Network.20.1.0-preview\lib\net452\Microsoft.Azure.Management.Network.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -243,6 +244,9 @@
     <Compile Include="Models\PSExpressRouteCrossConnection.cs" />
     <Compile Include="Models\PSExpressRouteCrossConnectionPeering.cs" />
     <Compile Include="Models\PSNetworkWatcherProtocolConfiguration.cs" />
+    <Compile Include="Models\PSPublicIpPrefix.cs" />
+    <Compile Include="Models\PSPublicIpPrefixSku.cs" />
+    <Compile Include="Models\PSPublicIpPrefixTag.cs" />
     <Compile Include="Models\PSServiceEndpoint.cs" />
     <Compile Include="Models\PSLoadBalancerSku.cs" />
     <Compile Include="Models\PSPublicIpAddressSku.cs" />
@@ -414,6 +418,11 @@
     <Compile Include="NetworkWatcher\GetAzureRMNetworkWatcherReachabilityReportCommand.cs" />
     <Compile Include="ProviderWideCmdlets\GetAzureExpressRouteServiceProviderCommand.cs" />
     <Compile Include="Models\PSApplicationSecurityGroup.cs" />
+    <Compile Include="PublicIpPrefix\GetAzurePublicIpPrefixCommand.cs" />
+    <Compile Include="PublicIpPrefix\NewAzurePublicIpPrefixCommand.cs" />
+    <Compile Include="PublicIpPrefix\PublicIpPrefixBaseCmdlet.cs" />
+    <Compile Include="PublicIpPrefix\RemoveAzurePublicIpPrefixCommand.cs" />
+    <Compile Include="PublicIpPrefix\SetAzurePublicIpPrefixCommand.cs" />
     <Compile Include="RouteTable\GetAzureRMRouteTableCommand.cs" />
     <Compile Include="RouteTable\NewAzureRMRouteTableCommand.cs" />
     <Compile Include="RouteTable\RemoveAzureRMRouteTableCommand.cs" />
