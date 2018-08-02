@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Current Release
+* Use default location in the `DiskFileParameterSet` of New-AzureRmVm if no Location is specified.
 * Fix parameter description in Save-AzureRmVMImage
 
 ## Version 5.4.0

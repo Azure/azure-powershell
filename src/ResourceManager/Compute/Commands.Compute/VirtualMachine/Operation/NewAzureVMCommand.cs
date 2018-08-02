@@ -352,6 +352,7 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             var parameters = new Parameters(this, client);
+            Location = Location ?? parameters.DefaultLocation;
 
             if (DiskFile != null)
             {
