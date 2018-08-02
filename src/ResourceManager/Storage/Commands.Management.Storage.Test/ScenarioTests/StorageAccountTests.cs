@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStorageAccount()
         {
-            var password = "pass";
+            var password = "P@$$w0rd";
             TestController.NewInstance.RunPsTest(_logger, "Test-StorageAccount");
         }
 
