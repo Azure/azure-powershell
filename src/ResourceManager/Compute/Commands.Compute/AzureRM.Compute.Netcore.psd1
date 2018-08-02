@@ -58,7 +58,6 @@ RequiredAssemblies = '.\AutoMapper.dll',
     '.\Microsoft.Azure.Commands.Common.Strategies.4.dll', 
     '.\Microsoft.Azure.Management.Compute.dll', 
     '.\Microsoft.Azure.Management.KeyVault.dll', 
-    '.\Microsoft.Azure.Management.Network.dll', 
     '.\Microsoft.Azure.Management.Storage.dll', 
     '.\Microsoft.WindowsAzure.Storage.dll'
 

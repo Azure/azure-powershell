@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Compute
                 cfg.CreateMap<AzureOperationResponse<FROM.AvailabilitySet>, TO.PSAvailabilitySet>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
-                cfg.CreateMap<AzureOperationResponse<IEnumerable<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
+                cfg.CreateMap<AzureOperationResponse<IPage<FROM.AvailabilitySet>>, TO.PSAvailabilitySet>()
                     .ForMember(c => c.StatusCode, o => o.MapFrom(r => r.Response.StatusCode));
 
                 // VirtualMachine => PSVirtualMachine
