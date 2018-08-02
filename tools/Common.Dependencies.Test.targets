@@ -65,17 +65,20 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup Condition="Exists('$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools')">
-    <None Include="$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\Assert.ps1">
+  <PropertyGroup>
+    <ScenarioTestPs1Path>$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\</ScenarioTestPs1Path>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('$(ScenarioTestPs1Path)')">
+    <None Include="$(ScenarioTestPs1Path)Assert.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\Common.ps1">
+    <None Include="$(ScenarioTestPs1Path)Common.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\AzureRM.Resources.ps1">
+    <None Include="$(ScenarioTestPs1Path)AzureRM.Resources.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="$(LibraryNugetPackageFolder)\Microsoft.Azure.PowerShell.ScenarioTest.ResourceManager.1.0.0-preview\tools\AzureRM.Storage.ps1">
+    <None Include="$(ScenarioTestPs1Path)AzureRM.Storage.ps1">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
