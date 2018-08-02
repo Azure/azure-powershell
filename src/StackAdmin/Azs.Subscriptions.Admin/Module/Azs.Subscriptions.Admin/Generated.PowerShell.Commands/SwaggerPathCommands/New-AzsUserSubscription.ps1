@@ -108,11 +108,11 @@ function New-AzsUserSubscription {
 
     Process {
 
-        $ErrorActionPreference = 'Stop'
+
 
         # Use defaults so that can be documented
         if (-not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters.Add("SubscriptionId", $SubscriptionId) 
+            $PSBoundParameters.Add("SubscriptionId", $SubscriptionId)
         }
         if (-not $PSBoundParameters.ContainsKey('RoutingResourceManagerType')) {
             $PSBoundParameters.Add("RoutingResourceManagerType", $RoutingResourceManagerType)
@@ -120,7 +120,7 @@ function New-AzsUserSubscription {
         if (-not $PSBoundParameters.ContainsKey('State')) {
             $PSBoundParameters.Add("State", $State)
         }
-        
+
         if ($PSCmdlet.ShouldProcess("$SubscriptionId", "Create a new user subscription")) {
 
             # Validate this resource does not exist.
