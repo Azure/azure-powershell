@@ -66,7 +66,7 @@ RequiredAssemblies = '.\Microsoft.Azure.Management.Analysis.dll'
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll')
+NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll', '.\Microsoft.Azure.Commands.AnalysisServices.Dataplane.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -76,7 +76,10 @@ CmdletsToExport = 'Resume-AnalysisServicesServer', 'Suspend-AnalysisServicesServ
                'Get-AnalysisServicesServer', 'Remove-AnalysisServicesServer', 
                'Set-AnalysisServicesServer', 'Test-AnalysisServicesServer', 
                'New-AnalysisServicesServer', 'New-AnalysisServicesFirewallRule', 
-               'New-AnalysisServicesFirewallConfig'
+               'New-AnalysisServicesFirewallConfig', 'Add-AnalysisServicesAccount', 
+               'Restart-AnalysisServicesInstance', 
+               'Export-AnalysisServicesInstanceLog', 
+               'Sync-AnalysisServicesInstance'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -92,7 +95,10 @@ AliasesToExport = 'Resume-AzureRmAnalysisServicesServer',
                'New-AzureRmAnalysisServicesFirewallRule', 
                'New-AzureRmAnalysisServicesFirewallConfig', 'Resume-AzureAs', 
                'Suspend-AzureAs', 'Get-AzureAs', 'Remove-AzureAs', 'Set-AzureAs', 
-               'Test-AzureAs', 'New-AzureAs'
+               'Test-AzureAs', 'New-AzureAs', 'Add-AzureAnalysisServicesAccount', 
+               'Restart-AzureAnalysisServicesInstance', 
+               'Export-AzureAnalysisServicesInstanceLog', 
+               'Sync-AzureAnalysisServicesInstance'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

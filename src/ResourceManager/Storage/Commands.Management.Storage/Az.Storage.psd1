@@ -51,24 +51,30 @@ PowerShellVersion = '5.1'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; }, 
-               @{ModuleName = 'Azure.Storage.Netcore'; ModuleVersion = '0.13.1'; })
+RequiredModules = @(@{ModuleName = 'AzureRM.Profile.Netcore'; ModuleVersion = '0.13.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll'
+RequiredAssemblies = '.\Microsoft.Azure.Management.Storage.dll', 
+               '.\Microsoft.WindowsAzure.Storage.dll', 
+               '.\Microsoft.WindowsAzure.Storage.DataMovement.dll', 
+               '.\Microsoft.Azure.KeyVault.Core.dll', 
+               '.\Microsoft.WindowsAzure.Management.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
 
 # Type files (.ps1xml) to be loaded when importing this module
-# TypesToProcess = @()
+TypesToProcess = '.\Microsoft.WindowsAzure.Commands.Storage.Types.ps1xml'
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml'
+FormatsToProcess = '.\Microsoft.Azure.Commands.Management.Storage.format.ps1xml',
+               '.\Microsoft.WindowsAzure.Commands.Storage.format.ps1xml', 
+               '.\Microsoft.WindowsAzure.Commands.Storage.generated.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
 NestedModules = @('.\Microsoft.Azure.Commands.Management.Storage.dll', 
-               '.\Microsoft.WindowsAzure.Storage.dll')
+               '.\Microsoft.WindowsAzure.Storage.dll',
+               '.\Microsoft.WindowsAzure.Commands.Storage.dll')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @()
@@ -80,7 +86,53 @@ CmdletsToExport = 'Get-StorageAccount', 'Get-StorageAccountKey', 'New-StorageAcc
                'Get-StorageAccountNameAvailability', 'Get-StorageUsage', 
                'Update-StorageAccountNetworkRuleSet', 
                'Get-StorageAccountNetworkRuleSet', 'Add-StorageAccountNetworkRule', 
-               'Remove-StorageAccountNetworkRule'
+               'Remove-StorageAccountNetworkRule', 'Get-StorageTable', 'New-StorageTableSASToken', 
+               'New-StorageTableStoredAccessPolicy', 'New-StorageTable', 
+               'Remove-StorageTableStoredAccessPolicy', 
+               'Remove-StorageTable', 
+               'Get-StorageTableStoredAccessPolicy', 
+               'Set-StorageTableStoredAccessPolicy', 'Get-StorageQueue', 
+               'New-StorageQueue', 'Remove-StorageQueue', 
+               'Get-StorageQueueStoredAccessPolicy', 
+               'New-StorageQueueSASToken', 
+               'New-StorageQueueStoredAccessPolicy', 
+               'Remove-StorageQueueStoredAccessPolicy', 
+               'Set-StorageQueueStoredAccessPolicy', 'Get-StorageFile', 
+               'Get-StorageFileContent', 'Get-StorageFileCopyState', 
+               'Get-StorageShare', 'Get-StorageShareStoredAccessPolicy', 
+               'New-StorageDirectory', 'New-StorageFileSASToken', 
+               'New-StorageShare', 'New-StorageShareSASToken', 
+               'New-StorageShareStoredAccessPolicy', 
+               'Remove-StorageDirectory', 'Remove-StorageFile', 
+               'Remove-StorageShare', 
+               'Remove-StorageShareStoredAccessPolicy', 
+               'Set-StorageFileContent', 'Set-StorageShareQuota', 
+               'Set-StorageShareStoredAccessPolicy', 
+               'Start-StorageFileCopy', 'Stop-StorageFileCopy', 
+               'New-StorageAccountSASToken', 'Set-StorageCORSRule', 
+               'Get-StorageCORSRule', 
+               'Get-StorageServiceLoggingProperty', 
+               'Get-StorageServiceMetricsProperty', 
+               'Remove-StorageCORSRule', 
+               'Set-StorageServiceLoggingProperty', 
+               'Set-StorageServiceMetricsProperty', 'New-StorageContext', 
+               'Set-StorageContainerAcl', 'Remove-StorageBlob', 
+               'Set-StorageBlobContent', 'Get-StorageBlob', 
+               'Get-StorageBlobContent', 'Get-StorageBlobCopyState', 
+               'Get-StorageContainer', 
+               'Get-StorageContainerStoredAccessPolicy', 
+               'New-StorageBlobSASToken', 'New-StorageContainer', 
+               'New-StorageContainerSASToken', 
+               'New-StorageContainerStoredAccessPolicy', 
+               'Remove-StorageContainer', 
+               'Remove-StorageContainerStoredAccessPolicy', 
+               'Set-StorageContainerStoredAccessPolicy', 
+               'Start-StorageBlobCopy', 
+               'Start-StorageBlobIncrementalCopy', 
+               'Stop-StorageBlobCopy', 'Update-StorageServiceProperty', 
+               'Get-StorageServiceProperty', 
+               'Enable-StorageDeleteRetentionPolicy', 
+               'Disable-StorageDeleteRetentionPolicy'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -95,7 +147,57 @@ AliasesToExport = 'Get-AzureRmStorageAccount', 'Get-AzureRmStorageAccountKey',
                'Update-AzureRmStorageAccountNetworkRuleSet', 
                'Get-AzureRmStorageAccountNetworkRuleSet', 
                'Add-AzureRmStorageAccountNetworkRule', 
-               'Remove-AzureRmStorageAccountNetworkRule'
+               'Remove-AzureRmStorageAccountNetworkRule', 'Get-AzureStorageTable', 
+               'New-AzureStorageTableSASToken', 
+               'New-AzureStorageTableStoredAccessPolicy', 'New-AzureStorageTable', 
+               'Remove-AzureStorageTableStoredAccessPolicy', 
+               'Remove-AzureStorageTable', 
+               'Get-AzureStorageTableStoredAccessPolicy', 
+               'Set-AzureStorageTableStoredAccessPolicy', 'Get-AzureStorageQueue', 
+               'New-AzureStorageQueue', 'Remove-AzureStorageQueue', 
+               'Get-AzureStorageQueueStoredAccessPolicy', 
+               'New-AzureStorageQueueSASToken', 
+               'New-AzureStorageQueueStoredAccessPolicy', 
+               'Remove-AzureStorageQueueStoredAccessPolicy', 
+               'Set-AzureStorageQueueStoredAccessPolicy', 'Get-AzureStorageFile', 
+               'Get-AzureStorageFileContent', 'Get-AzureStorageFileCopyState', 
+               'Get-AzureStorageShare', 'Get-AzureStorageShareStoredAccessPolicy', 
+               'New-AzureStorageDirectory', 'New-AzureStorageFileSASToken', 
+               'New-AzureStorageShare', 'New-AzureStorageShareSASToken', 
+               'New-AzureStorageShareStoredAccessPolicy', 
+               'Remove-AzureStorageDirectory', 'Remove-AzureStorageFile', 
+               'Remove-AzureStorageShare', 
+               'Remove-AzureStorageShareStoredAccessPolicy', 
+               'Set-AzureStorageFileContent', 'Set-AzureStorageShareQuota', 
+               'Set-AzureStorageShareStoredAccessPolicy', 
+               'Start-AzureStorageFileCopy', 'Stop-AzureStorageFileCopy', 
+               'New-AzureStorageAccountSASToken', 'Set-AzureStorageCORSRule', 
+               'Get-AzureStorageCORSRule', 
+               'Get-AzureStorageServiceLoggingProperty', 
+               'Get-AzureStorageServiceMetricsProperty', 
+               'Remove-AzureStorageCORSRule', 
+               'Set-AzureStorageServiceLoggingProperty', 
+               'Set-AzureStorageServiceMetricsProperty', 'New-AzureStorageContext', 
+               'Set-AzureStorageContainerAcl', 'Remove-AzureStorageBlob', 
+               'Set-AzureStorageBlobContent', 'Get-AzureStorageBlob', 
+               'Get-AzureStorageBlobContent', 'Get-AzureStorageBlobCopyState', 
+               'Get-AzureStorageContainer', 
+               'Get-AzureStorageContainerStoredAccessPolicy', 
+               'New-AzureStorageBlobSASToken', 'New-AzureStorageContainer', 
+               'New-AzureStorageContainerSASToken', 
+               'New-AzureStorageContainerStoredAccessPolicy', 
+               'Remove-AzureStorageContainer', 
+               'Remove-AzureStorageContainerStoredAccessPolicy', 
+               'Set-AzureStorageContainerStoredAccessPolicy', 
+               'Start-AzureStorageBlobCopy', 
+               'Start-AzureStorageBlobIncrementalCopy', 
+               'Stop-AzureStorageBlobCopy', 'Update-AzureStorageServiceProperty', 
+               'Get-AzureStorageServiceProperty', 
+               'Enable-AzureStorageDeleteRetentionPolicy', 
+               'Disable-AzureStorageDeleteRetentionPolicy', 
+               'Get-AzureStorageContainerAcl', 'Start-CopyAzureStorageBlob', 
+               'Stop-CopyAzureStorageBlob', 'Enable-AzureStorageSoftDelete', 
+               'Disable-AzureStorageSoftDelete'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()

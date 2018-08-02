@@ -72,15 +72,15 @@ NestedModules = @('.\Microsoft.Azure.Commands.AnalysisServices.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Resume-AnalysisServicesServer', 
-               'Suspend-AnalysisServicesServer', 
-               'Get-AnalysisServicesServer', 
-               'Remove-AnalysisServicesServer', 
-               'Set-AnalysisServicesServer', 
-               'Test-AnalysisServicesServer', 
-               'New-AnalysisServicesServer', 
-               'New-AnalysisServicesFirewallRule', 
-               'New-AnalysisServicesFirewallConfig'
+CmdletsToExport = 'Resume-AzureRmAnalysisServicesServer', 
+               'Suspend-AzureRmAnalysisServicesServer', 
+               'Get-AzureRmAnalysisServicesServer', 
+               'Remove-AzureRmAnalysisServicesServer', 
+               'Set-AzureRmAnalysisServicesServer', 
+               'Test-AzureRmAnalysisServicesServer', 
+               'New-AzureRmAnalysisServicesServer', 
+               'New-AzureRmAnalysisServicesFirewallRule', 
+               'New-AzureRmAnalysisServicesFirewallConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -135,7 +135,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-DefaultCommandPrefix = 'AzureRM'
+# DefaultCommandPrefix = ''
 
 }
 

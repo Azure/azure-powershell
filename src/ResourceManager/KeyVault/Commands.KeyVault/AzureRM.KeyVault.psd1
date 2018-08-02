@@ -91,10 +91,10 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertifica
                'Remove-AzureKeyVaultCertificateIssuer', 
                'Remove-AzureKeyVaultCertificateOperation', 
                'Set-AzureKeyVaultCertificateIssuer', 
-               'Set-AzureKeyVaultCertificatePolicy', 'Get-KeyVault', 
-               'New-KeyVault', 'Remove-KeyVault', 
-               'Undo-KeyVaultRemoval', 'Remove-KeyVaultAccessPolicy', 
-               'Set-KeyVaultAccessPolicy', 'Backup-AzureKeyVaultKey', 
+               'Set-AzureKeyVaultCertificatePolicy', 'Get-AzureRmKeyVault', 
+               'New-AzureRmKeyVault', 'Remove-AzureRmKeyVault', 
+               'Undo-AzureRmKeyVaultRemoval', 'Remove-AzureRmKeyVaultAccessPolicy', 
+               'Set-AzureRmKeyVaultAccessPolicy', 'Backup-AzureKeyVaultKey', 
                'Get-AzureKeyVaultKey', 'Get-AzureKeyVaultSecret', 
                'Undo-AzureKeyVaultKeyRemoval', 'Undo-AzureKeyVaultSecretRemoval', 
                'Add-AzureKeyVaultKey', 'Remove-AzureKeyVaultKey', 
@@ -175,7 +175,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-DefaultCommandPrefix = 'AzureRM'
+# DefaultCommandPrefix = ''
 
 }
 
