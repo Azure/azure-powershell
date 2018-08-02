@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGatewayRedirectConfiguration))]
+    [Cmdlet("New","ApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGatewayRedirectConfiguration))]
     public class NewAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
     {
         public override void ExecuteCmdlet()

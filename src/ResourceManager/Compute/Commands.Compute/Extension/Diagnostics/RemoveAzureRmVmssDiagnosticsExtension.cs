@@ -20,11 +20,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Remove,
-        ProfileNouns.VirtualMachineScaleSetDiagnosticsExtension,
-        SupportsShouldProcess = true
-        )]
+    [Cmdlet("Remove","VmssDiagnosticsExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
     public class RemoveAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {

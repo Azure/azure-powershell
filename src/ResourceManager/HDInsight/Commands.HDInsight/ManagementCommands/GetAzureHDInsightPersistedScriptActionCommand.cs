@@ -22,9 +22,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightPersistedScriptAction),
-    OutputType(typeof(AzureHDInsightRuntimeScriptAction))]
+    [Cmdlet("Get","HDInsightPersistedScriptAction"),OutputType(typeof(AzureHDInsightRuntimeScriptAction))]
     public class GetAzureHDInsightPersistedScriptAction : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

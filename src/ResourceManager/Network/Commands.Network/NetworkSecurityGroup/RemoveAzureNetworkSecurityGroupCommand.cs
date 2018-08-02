@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmNetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("Remove","NetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]

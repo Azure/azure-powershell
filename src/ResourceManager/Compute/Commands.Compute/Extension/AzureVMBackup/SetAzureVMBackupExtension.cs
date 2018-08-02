@@ -21,9 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.AzureVMBackupExtension)]
+    [Cmdlet("Set","VMBackupExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureVMBackupExtension : VirtualMachineExtensionBaseCmdlet
     {

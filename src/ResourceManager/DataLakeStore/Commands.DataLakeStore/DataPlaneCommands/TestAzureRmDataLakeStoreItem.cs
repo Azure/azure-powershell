@@ -18,7 +18,7 @@ using Microsoft.Azure.DataLake.Store;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreItem"), OutputType(typeof(bool))]
+    [Cmdlet("Test","DataLakeStoreItem"), OutputType(typeof(bool))]
     [Alias("Test-AdlStoreItem")]
     public class TestAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {

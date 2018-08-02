@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsDiagnostic.Test, "AzureRmDataLakeStoreAccount"), OutputType(typeof(bool))]
+    [Cmdlet("Test","DataLakeStoreAccount"), OutputType(typeof(bool))]
     [Alias("Test-AdlStore")]
     public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

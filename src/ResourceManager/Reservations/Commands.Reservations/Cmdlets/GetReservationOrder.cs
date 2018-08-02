@@ -7,7 +7,7 @@ using Microsoft.Azure.Management.Reservations.Models;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmReservationOrder"), OutputType(typeof(PSReservationOrderPage), typeof(PSReservationOrder))]
+    [Cmdlet("Get","ReservationOrder"), OutputType(typeof(PSReservationOrderPage), typeof(PSReservationOrder))]
     public class GetReservationOrder : AzureReservationsCmdletBase
     {
         [Parameter(Mandatory = false)]

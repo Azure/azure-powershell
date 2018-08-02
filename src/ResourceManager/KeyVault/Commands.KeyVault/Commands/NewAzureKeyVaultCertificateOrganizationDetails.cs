@@ -21,8 +21,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// <summary>
     /// New-AzureKeyVaultOrganizationDetails creates an in-memory organization details object
     /// </summary>
-    [Cmdlet(VerbsCommon.New, CmdletNoun.AzureKeyVaultCertificateOrganizationDetails,
-        SupportsShouldProcess = true)]
+    [Cmdlet("New","AzureKeyVaultCertificateOrganizationDetails",SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
     public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {

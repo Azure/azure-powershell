@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Get-AzureRmContainerGroupLogs
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerInstanceLogNoun, DefaultParameterSetName = GetContainerInstanceLogByNamesParamSet)]
+    [Cmdlet("Get","ContainerInstanceLog", DefaultParameterSetName = GetContainerInstanceLogByNamesParamSet)]
     [OutputType(typeof(string))]
     public class GetAzureContainerInstanceLogCommand : ContainerInstanceCmdletBase
     {

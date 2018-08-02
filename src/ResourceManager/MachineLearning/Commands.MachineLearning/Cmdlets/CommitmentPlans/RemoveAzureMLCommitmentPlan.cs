@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using Common.Authentication.Abstractions;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Remove, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
     public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {

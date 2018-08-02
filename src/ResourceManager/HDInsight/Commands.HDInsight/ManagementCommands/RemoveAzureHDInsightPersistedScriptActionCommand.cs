@@ -18,9 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(VerbsCommon.Remove,
-        Constants.CommandNames.AzureHDInsightPersistedScriptAction),
-    OutputType(typeof(void))]
+    [Cmdlet("Remove","HDInsightPersistedScriptAction"),OutputType(typeof(void))]
     public class RemoveAzureHDInsightPersistedScriptActionCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

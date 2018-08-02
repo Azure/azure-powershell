@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGatewayUrlPathMap))]
+    [Cmdlet("New","ApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGatewayUrlPathMap))]
     public class NewAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
     {
         public override void ExecuteCmdlet()

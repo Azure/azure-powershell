@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Updates the integration account map.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmIntegrationAccountMap", SupportsShouldProcess = true)]
+    [Cmdlet("Set","IntegrationAccountMap", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountMap))]
     public class UpdateAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {

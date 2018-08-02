@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Set, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
+    [Cmdlet("Set","ApplicationGatewaySku"), OutputType(typeof(PSApplicationGateway))]
     public class SetAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         [Parameter(

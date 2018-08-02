@@ -24,7 +24,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Security.Permissions;
     using System.Threading.Tasks;
 
-    [Cmdlet(VerbsCommon.Get, StorageNouns.TableStoredAccessPolicy), OutputType(typeof(SharedAccessTablePolicy))]
+    [Cmdlet("Get","AzureStorageTableStoredAccessPolicy"), OutputType(typeof(SharedAccessTablePolicy))]
     public class GetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]

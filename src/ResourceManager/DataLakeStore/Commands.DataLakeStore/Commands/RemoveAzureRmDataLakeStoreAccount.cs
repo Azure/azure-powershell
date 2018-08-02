@@ -19,8 +19,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Remove, "AzureRmDataLakeStoreAccount", SupportsShouldProcess=true), 
-        OutputType(typeof(bool))]
+    [Cmdlet("Remove","DataLakeStoreAccount", SupportsShouldProcess=true), OutputType(typeof(bool))]
     [Alias("Remove-AdlStore")]
     public class RemoveAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

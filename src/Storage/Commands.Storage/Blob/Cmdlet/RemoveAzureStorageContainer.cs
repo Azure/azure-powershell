@@ -26,8 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// <summary>
     /// remove specified azure container
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, StorageNouns.Container, SupportsShouldProcess = true),
-        OutputType(typeof(Boolean))]
+    [Cmdlet("Remove","AzureStorageContainer", SupportsShouldProcess = true),OutputType(typeof(Boolean))]
     public class RemoveAzureStorageContainerCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]

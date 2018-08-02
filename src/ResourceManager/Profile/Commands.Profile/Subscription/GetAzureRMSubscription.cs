@@ -23,8 +23,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmSubscription", DefaultParameterSetName = ListByIdInTenantParameterSet),
-        OutputType(typeof(PSAzureSubscription))]
+    [Cmdlet("Get","Subscription", DefaultParameterSetName = ListByIdInTenantParameterSet),OutputType(typeof(PSAzureSubscription))]
     public class GetAzureRMSubscriptionCommand : AzureRmLongRunningCmdlet
     {
         public const string ListByIdInTenantParameterSet = "ListByIdInTenant";

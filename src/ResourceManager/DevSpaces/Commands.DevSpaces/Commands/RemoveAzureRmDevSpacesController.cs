@@ -22,7 +22,7 @@ using Microsoft.Azure.Management.DevSpaces;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
-    [Cmdlet(VerbsCommon.Remove, DevSpacesControllerNoun, DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Remove","DevSpacesController", DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
     public class RemoveAzureRmDevSpacesController : DevSpacesCmdletBase
     {

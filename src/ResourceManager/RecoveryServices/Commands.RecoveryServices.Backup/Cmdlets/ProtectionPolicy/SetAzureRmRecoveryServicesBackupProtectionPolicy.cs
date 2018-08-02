@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Update existing protection policy in the recovery services vault
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmRecoveryServicesBackupProtectionPolicy",
-        SupportsShouldProcess = true), OutputType(typeof(JobBase))]
+    [Cmdlet("Set","RecoveryServicesBackupProtectionPolicy",SupportsShouldProcess = true), OutputType(typeof(JobBase))]
     public class SetAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         /// <summary>

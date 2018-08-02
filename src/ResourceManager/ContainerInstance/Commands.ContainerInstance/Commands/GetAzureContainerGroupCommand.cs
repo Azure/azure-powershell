@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.ContainerInstance
     /// <summary>
     /// Get-AzureRmContainerGroup.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, ContainerGroupNoun, DefaultParameterSetName = ListContainerGroupParamSet)]
+    [Cmdlet("Get","ContainerGroup", DefaultParameterSetName = ListContainerGroupParamSet)]
     [OutputType(typeof(PSContainerGroup))]
     public class GetAzureContainerGroupCommand : ContainerInstanceCmdletBase
     {

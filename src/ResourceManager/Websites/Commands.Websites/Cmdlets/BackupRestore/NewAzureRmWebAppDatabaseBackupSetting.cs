@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// <summary>
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmWebAppDatabaseBackupSetting"), OutputType(typeof(DatabaseBackupSetting))]
+    [Cmdlet("New","WebAppDatabaseBackupSetting"), OutputType(typeof(DatabaseBackupSetting))]
     public class NewAzureRmWebAppDatabaseBackupSetting : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the database.",

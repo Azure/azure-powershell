@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsCommon.Get, ContainerRegistryNoun, DefaultParameterSetName = ListRegistriesParameterSet)]
+    [Cmdlet("Get","ContainerRegistry", DefaultParameterSetName = ListRegistriesParameterSet)]
     [OutputType(typeof(PSContainerRegistry))]
     public class GetAzureContainerRegistry : ContainerRegistryCmdletBase
     {

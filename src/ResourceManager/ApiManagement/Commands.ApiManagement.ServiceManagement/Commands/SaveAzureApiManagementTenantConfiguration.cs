@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsData.Save, Constants.ApiManagementTenantGitConfiguration, SupportsShouldProcess = true)]
+    [Cmdlet("Save","ApiManagementTenantGitConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperationResult))]
     public class SaveAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
     {

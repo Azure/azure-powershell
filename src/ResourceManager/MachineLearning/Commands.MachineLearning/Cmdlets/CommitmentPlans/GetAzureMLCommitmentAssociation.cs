@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.MachineLearning
 {
 
-    [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentAssociationCommandletSuffix)]
+    [Cmdlet("Get","MlCommitmentAssociation")]
     [OutputType(typeof(CommitmentPlan))]
     public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {

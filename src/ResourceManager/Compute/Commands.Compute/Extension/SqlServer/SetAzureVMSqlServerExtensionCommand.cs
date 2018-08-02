@@ -24,9 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Compute
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.VirtualMachineSqlServerExtension)]
+    [Cmdlet("Set","VMSqlServerExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
     public class SetAzureSqlServerExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {

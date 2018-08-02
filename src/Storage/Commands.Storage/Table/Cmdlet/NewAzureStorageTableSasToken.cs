@@ -22,7 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Management.Automation;
     using System.Security.Permissions;
 
-    [Cmdlet(VerbsCommon.New, StorageNouns.TableSas), OutputType(typeof(String))]
+    [Cmdlet("New","AzureStorageTableSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
     {
         /// <summary>

@@ -9,7 +9,7 @@ using Microsoft.Azure.Management.Reservations;
 
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmReservationOrderId"), OutputType(typeof(AppliedReservations))]
+    [Cmdlet("Get","ReservationOrderId"), OutputType(typeof(AppliedReservations))]
     public class GetReservationOrderId : AzureReservationsCmdletBase
     {
 

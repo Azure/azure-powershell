@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(PSApplicationSecurityGroup))]
+    [Cmdlet("New","ApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(PSApplicationSecurityGroup))]
     public partial class NewAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(

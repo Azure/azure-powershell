@@ -22,7 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Batch
 {
-    [Cmdlet(VerbsCommon.New, Constants.AzureRmBatchApplication)]
+    [Cmdlet("New","BatchApplication")]
     [OutputType(typeof(PSApplication))]
     public class NewBatchApplicationCommand : BatchCmdletBase
     {

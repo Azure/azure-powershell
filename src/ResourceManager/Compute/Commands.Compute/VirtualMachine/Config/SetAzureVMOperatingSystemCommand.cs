@@ -26,12 +26,7 @@ namespace Microsoft.Azure.Commands.Compute
     /// <summary>
     /// Setup the virtual machine's OS profile.
     /// </summary>
-    [Cmdlet(
-        VerbsCommon.Set,
-        ProfileNouns.OperatingSystem,
-        DefaultParameterSetName = WindowsParamSet),
-    OutputType(
-        typeof(PSVirtualMachine))]
+    [Cmdlet("Set","VMOperatingSystem",DefaultParameterSetName = WindowsParamSet),OutputType(typeof(PSVirtualMachine))]
     public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "Windows";

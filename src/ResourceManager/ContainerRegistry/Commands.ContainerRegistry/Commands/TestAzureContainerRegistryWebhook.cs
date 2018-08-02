@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ContainerRegistry
 {
-    [Cmdlet(VerbsDiagnostic.Test, ContainerRegistryWebhookNoun, DefaultParameterSetName = ResourceIdParameterSet)]
+    [Cmdlet("Test","ContainerRegistryWebhook", DefaultParameterSetName = ResourceIdParameterSet)]
     [OutputType(typeof(PSContainerRegistryEventInfo))]
     public class TestAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {

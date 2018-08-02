@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
+    [Cmdlet("New","ApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
     public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         public override void ExecuteCmdlet()

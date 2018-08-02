@@ -24,7 +24,7 @@ using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmAnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
+    [Cmdlet("New","AnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
     public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {       
         [Parameter(Mandatory = false,

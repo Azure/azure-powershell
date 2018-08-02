@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System.Collections;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.New, "AzureRmApiManagementBackendServiceFabric")]
+    [Cmdlet("New","ApiManagementBackendServiceFabric")]
     [OutputType(typeof(PsApiManagementServiceFabric))]
     public class NewAzureApiManagementBackendServiceFabric : AzureApiManagementCmdletBase
     {

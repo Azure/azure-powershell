@@ -18,7 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Set, Constants.ApiManagementProduct)]
+    [Cmdlet("Set","ApiManagementProduct")]
     [OutputType(typeof(PsApiManagementProduct))]
     public class SetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {

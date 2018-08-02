@@ -17,7 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeStoreItemOwner"), OutputType(typeof(string))]
+    [Cmdlet("Get","DataLakeStoreItemOwner"), OutputType(typeof(string))]
     [Alias("Get-AdlStoreItemOwner")]
     public class GetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {

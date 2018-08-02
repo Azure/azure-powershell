@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// <summary>
     /// Creates a new integration account 
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmIntegrationAccount", SupportsShouldProcess = true)]
+    [Cmdlet("New","IntegrationAccount", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccount))]
     public class NewAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {

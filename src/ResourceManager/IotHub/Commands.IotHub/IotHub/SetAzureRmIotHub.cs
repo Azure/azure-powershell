@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using Microsoft.Azure.Management.IotHub.Models;
     using ResourceManager.Common.ArgumentCompleters;
 
-    [Cmdlet(VerbsCommon.Set, "AzureRmIotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
+    [Cmdlet("Set","IotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
     public class SetAzureRmIotHub : IotHubBaseCmdlet
     {

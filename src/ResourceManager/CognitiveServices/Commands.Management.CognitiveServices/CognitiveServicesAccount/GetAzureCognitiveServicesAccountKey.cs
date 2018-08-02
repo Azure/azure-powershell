@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// <summary>
     /// Get Account Keys for Cognitive Services Account
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, CognitiveServicesAccountKeyNounStr), OutputType(typeof(PSCognitiveServicesAccountKeys))]
+    [Cmdlet("Get","CognitiveServicesAccountKey"), OutputType(typeof(PSCognitiveServicesAccountKeys))]
     public class GetAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(

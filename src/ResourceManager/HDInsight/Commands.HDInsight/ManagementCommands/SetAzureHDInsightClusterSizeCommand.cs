@@ -21,11 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Set,
-        Constants.CommandNames.AzureHDInsightClusterSize),
-    OutputType(
-        typeof(Cluster))]
+    [Cmdlet("Set","HDInsightClusterSize"),OutputType(typeof(Cluster))]
     public class SetAzureHDInsightClusterSizeCommand : HDInsightCmdletBase
     {
         private ClusterResizeParameters resizeParams;

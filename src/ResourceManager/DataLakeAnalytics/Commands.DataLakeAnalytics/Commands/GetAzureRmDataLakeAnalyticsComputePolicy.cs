@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmDataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
+    [Cmdlet("Get","DataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
     [Alias("Get-AdlAnalyticsComputePolicy")]
     public class GetAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {

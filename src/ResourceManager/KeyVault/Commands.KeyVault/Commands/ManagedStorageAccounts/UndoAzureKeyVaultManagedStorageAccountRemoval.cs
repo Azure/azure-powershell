@@ -17,9 +17,7 @@ using Microsoft.Azure.Commands.KeyVault.Models;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
-    [Cmdlet(VerbsCommon.Undo, "AzureKeyVaultManagedStorageAccountRemoval",
-        SupportsShouldProcess = true,
-        DefaultParameterSetName = DefaultParameterSet)]
+    [Cmdlet("Undo","AzureKeyVaultManagedStorageAccountRemoval",SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultManagedStorageAccount))]
     public class UndoAzureKeyVaultManagedStorageAccountRemoval : KeyVaultCmdletBase
     {

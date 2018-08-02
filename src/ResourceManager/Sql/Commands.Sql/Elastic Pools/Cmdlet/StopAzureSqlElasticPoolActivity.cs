@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
-    [Cmdlet(VerbsLifecycle.Stop, "AzureRmSqlElasticPoolActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolActivityModel))]
+    [Cmdlet("Stop","SqlElasticPoolActivity", SupportsShouldProcess = true), OutputType(typeof(AzureSqlElasticPoolActivityModel))]
     public class StopAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
     {
         /// <summary>

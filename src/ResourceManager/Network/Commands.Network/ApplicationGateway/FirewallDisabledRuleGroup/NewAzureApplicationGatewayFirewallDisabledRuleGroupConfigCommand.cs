@@ -17,8 +17,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig"), 
-        OutputType(typeof(PSApplicationGatewayFirewallDisabledRuleGroup))]
+    [Cmdlet("New","ApplicationGatewayFirewallDisabledRuleGroupConfig"), OutputType(typeof(PSApplicationGatewayFirewallDisabledRuleGroup))]
     public class NewAzureApplicationGatewayFirewallDisabledRuleGroupConfigCommand : AzureApplicationGatewayFirewallDisabledRuleGroupConfigBase
     {
         public override void ExecuteCmdlet()

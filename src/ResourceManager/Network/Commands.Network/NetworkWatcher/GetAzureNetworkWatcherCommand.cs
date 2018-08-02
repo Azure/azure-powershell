@@ -22,7 +22,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcher"), OutputType(typeof(PSNetworkWatcher))]
+    [Cmdlet("Get","NetworkWatcher"), OutputType(typeof(PSNetworkWatcher))]
 
     public class GetAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
     {

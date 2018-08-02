@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,7 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmVirtualNetworkGatewayConnection", SupportsShouldProcess = true,
-        DefaultParameterSetName = "SetByResource"),
-        OutputType(typeof(PSVirtualNetworkGatewayConnection))]
+    [Cmdlet("New","VirtualNetworkGatewayConnection", SupportsShouldProcess = true,DefaultParameterSetName = "SetByResource"),OutputType(typeof(PSVirtualNetworkGatewayConnection))]
     public class NewAzureVirtualNetworkGatewayConnectionCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]

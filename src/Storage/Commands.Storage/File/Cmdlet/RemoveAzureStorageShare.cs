@@ -20,11 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
 
-    [Cmdlet(
-        VerbsCommon.Remove,
-        Constants.ShareCmdletName,
-        DefaultParameterSetName = Constants.ShareNameParameterSetName,
-        SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
+    [Cmdlet("Remove","AzureStorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(CloudFileShare))]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(

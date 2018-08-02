@@ -1,4 +1,4 @@
-// 
+﻿// 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network.Automation
 {
-    [Cmdlet(VerbsCommon.Get, "AzureRmNetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAvailableProvidersList))]
+    [Cmdlet("Get","NetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAvailableProvidersList))]
     public class GetAzureRmNetworkWatcherAvailableProviders : NetworkWatcherBaseCmdlet
     {
         [Parameter(

@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// <summary>
     /// Regnerate Maps Account Key (Primary or Secondary)
     /// </summary>
-    [Cmdlet(VerbsCommon.New, MapsAccountKeyNounStr, SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), 
-     OutputType(typeof(MapsAccountKeys))]
+    [Cmdlet("New","MapsAccountKey", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), OutputType(typeof(MapsAccountKeys))]
     public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";

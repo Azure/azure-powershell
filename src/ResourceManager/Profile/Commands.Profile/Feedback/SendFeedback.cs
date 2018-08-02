@@ -21,7 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Profile
 {
-    [Cmdlet(VerbsCommunications.Send, "Feedback"), OutputType(typeof(void))]
+    [Cmdlet("Send","Feedback"), OutputType(typeof(void))]
     public class SendFeedbackCommand : AzureRMCmdlet
     {
         private const string _eventName = "feedback";

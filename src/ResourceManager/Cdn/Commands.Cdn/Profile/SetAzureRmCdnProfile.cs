@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// <summary>
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
-    [Cmdlet(VerbsCommon.Set, "AzureRmCdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
+    [Cmdlet("Set","CdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
     public class SetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>

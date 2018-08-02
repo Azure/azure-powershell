@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Job object for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Get, "AzureRmAutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get","AutomationJob", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Microsoft.Azure.Commands.Automation.Model.Job))]
     public class GetAzureAutomationJob : AzureAutomationBaseCmdlet
     {

@@ -24,7 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.DataLakeStore
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmDataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
+    [Cmdlet("New","DataLakeStoreAccount", DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("New-AdlStore")]
     public class NewAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {

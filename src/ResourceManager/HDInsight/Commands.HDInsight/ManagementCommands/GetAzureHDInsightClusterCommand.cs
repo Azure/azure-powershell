@@ -21,11 +21,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.HDInsight
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        Constants.CommandNames.AzureHDInsightCluster),
-    OutputType(
-        typeof(AzureHDInsightCluster))]
+    [Cmdlet("Get","HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster))]
     public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions

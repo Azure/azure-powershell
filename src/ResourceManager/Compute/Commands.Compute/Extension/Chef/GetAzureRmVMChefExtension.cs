@@ -24,11 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.Compute.Extension.Chef
 {
-    [Cmdlet(
-        VerbsCommon.Get,
-        ProfileNouns.VirtualMachineChefExtension),
-    OutputType(
-        typeof(PSVirtualMachineExtension))]
+    [Cmdlet("Get","VMChefExtension"),OutputType(typeof(PSVirtualMachineExtension))]
     public class GetAzureRmVMChefExtension : VirtualMachineExtensionBaseCmdlet
     {
         private string ExtensionDefaultPublisher = "Chef.Bootstrap.WindowsAzure";

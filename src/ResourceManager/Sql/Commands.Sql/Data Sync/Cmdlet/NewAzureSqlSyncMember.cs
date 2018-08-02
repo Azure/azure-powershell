@@ -27,9 +27,7 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// <summary>
     /// Cmdlet to create a new sync member
     /// </summary>
-    [Cmdlet(VerbsCommon.New, "AzureRmSqlSyncMember", SupportsShouldProcess = true,
-        DefaultParameterSetName = AzureSqlSet,
-        ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
+    [Cmdlet("New","SqlSyncMember", SupportsShouldProcess = true,DefaultParameterSetName = AzureSqlSet,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
     public class NewAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
     {
         /// <summary>

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     using System;
     using System.Management.Automation;
 
-    [Cmdlet(VerbsCommon.Get, "UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
+    [Cmdlet("Get","UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
     public class GetUsageAggregatesCommand : AzureRMCmdlet
     {
         private UsageAggregationManagementClient _theClient;

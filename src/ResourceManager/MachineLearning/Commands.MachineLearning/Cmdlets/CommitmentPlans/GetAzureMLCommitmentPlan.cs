@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.MachineLearning
     using ResourceManager.Common.ArgumentCompleters;
     using Rest.Azure;
 
-    [Cmdlet(VerbsCommon.Get, CommitmentPlansCmdletBase.CommitmentPlanCommandletSuffix)]
+    [Cmdlet("Get","MlCommitmentPlan")]
     [OutputType(typeof(CommitmentPlan))]
     public class GetAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {

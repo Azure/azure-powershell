@@ -24,7 +24,7 @@ using Microsoft.Azure.Management.DevSpaces.Models;
 
 namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
-    [Cmdlet(VerbsData.Update, DevSpacesControllerNoun, DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
+    [Cmdlet("Update","DevSpacesController", DefaultParameterSetName = DevSpacesControllerNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSController))]
     public class UpdateAzureRmDevSpacesController : DevSpacesCmdletBase
     {
