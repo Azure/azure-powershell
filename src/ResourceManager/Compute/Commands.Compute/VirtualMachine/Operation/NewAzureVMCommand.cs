@@ -352,7 +352,7 @@ namespace Microsoft.Azure.Commands.Compute
             SecurityGroupName = SecurityGroupName ?? Name;
 
             var parameters = new Parameters(this, client);
-            Location = Location ?? parameters.DefaultLocation;
+
 
             if (DiskFile != null)
             {
@@ -361,6 +361,7 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
+                    Location = Location ?? parameters.DefaultLocation;
                     var st0 = resourceClient.ResourceGroups.CreateOrUpdate(
                         ResourceGroupName,
                         new ResourceGroup
