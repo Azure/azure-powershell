@@ -85,7 +85,10 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
                 Name,
                 () =>
                 {
-                    SearchClient.Services.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).Wait();
+                    CatchThrowInnerException(() =>
+                    {
+                        SearchClient.Services.DeleteWithHttpMessagesAsync(ResourceGroupName, Name).Wait();
+                    });
 
                     if (PassThru)
                     {
