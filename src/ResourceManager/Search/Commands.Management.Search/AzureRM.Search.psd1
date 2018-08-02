@@ -72,15 +72,15 @@ NestedModules = @('.\Microsoft.Azure.Commands.Management.Search.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmSearchService',
-				  'Get-AzureRmSearchService',
-				  'Set-AzureRmSearchService',
-				  'Remove-AzureRmSearchService',
-				  'Get-AzureRmSearchAdminKeyPair',
-				  'New-AzureRmSearchAdminKey',
-				  'Get-AzureRmSearchQueryKey',
-				  'New-AzureRmSearchQueryKey',
-				  'Remove-AzureRmSearchQueryKey'
+CmdletsToExport = 'New-SearchService',
+				  'Get-SearchService',
+				  'Set-SearchService',
+				  'Remove-SearchService',
+				  'Get-SearchAdminKeyPair',
+				  'New-SearchAdminKey',
+				  'Get-SearchQueryKey',
+				  'New-SearchQueryKey',
+				  'Remove-SearchQueryKey'
 
 # Variables to export from this module
 # VariablesToExport = '*'
@@ -128,6 +128,6 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }

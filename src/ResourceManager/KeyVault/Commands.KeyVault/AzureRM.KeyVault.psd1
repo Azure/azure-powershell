@@ -91,10 +91,10 @@ CmdletsToExport = 'Add-AzureKeyVaultCertificate', 'Update-AzureKeyVaultCertifica
                'Remove-AzureKeyVaultCertificateIssuer', 
                'Remove-AzureKeyVaultCertificateOperation', 
                'Set-AzureKeyVaultCertificateIssuer', 
-               'Set-AzureKeyVaultCertificatePolicy', 'Get-AzureRmKeyVault', 
-               'New-AzureRmKeyVault', 'Remove-AzureRmKeyVault', 
-               'Undo-AzureRmKeyVaultRemoval', 'Remove-AzureRmKeyVaultAccessPolicy', 
-               'Set-AzureRmKeyVaultAccessPolicy', 'Backup-AzureKeyVaultKey', 
+               'Set-AzureKeyVaultCertificatePolicy', 'Get-KeyVault', 
+               'New-KeyVault', 'Remove-KeyVault', 
+               'Undo-KeyVaultRemoval', 'Remove-KeyVaultAccessPolicy', 
+               'Set-KeyVaultAccessPolicy', 'Backup-AzureKeyVaultKey', 
                'Get-AzureKeyVaultKey', 'Get-AzureKeyVaultSecret', 
                'Undo-AzureKeyVaultKeyRemoval', 'Undo-AzureKeyVaultSecretRemoval', 
                'Add-AzureKeyVaultKey', 'Remove-AzureKeyVaultKey', 
@@ -155,7 +155,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Fix piping issue in Set-AzureRmKeyVaultAccessPolicy
+        ReleaseNotes = '* Fix piping issue in Set-KeyVaultAccessPolicy
 * Updated help files to include full parameter types and correct input/output types.'
 
         # Prerelease string of this module
@@ -175,7 +175,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

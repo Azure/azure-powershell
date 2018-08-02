@@ -72,35 +72,35 @@ NestedModules = @('.\Microsoft.Azure.Commands.ServiceBus.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmServiceBusNamespace', 'Get-AzureRmServiceBusNamespace', 
-               'Set-AzureRmServiceBusNamespace', 
-               'Remove-AzureRmServiceBusNamespace', 'New-AzureRmServiceBusQueue', 
-               'Get-AzureRmServiceBusQueue', 'Set-AzureRmServiceBusQueue', 
-               'Remove-AzureRmServiceBusQueue', 'New-AzureRmServiceBusTopic', 
-               'Get-AzureRmServiceBusTopic', 'Set-AzureRmServiceBusTopic', 
-               'Remove-AzureRmServiceBusTopic', 
-               'New-AzureRmServiceBusSubscription', 
-               'Get-AzureRmServiceBusSubscription', 
-               'Set-AzureRmServiceBusSubscription', 
-               'Remove-AzureRmServiceBusSubscription', 
-               'New-AzureRmServiceBusAuthorizationRule', 
-               'Get-AzureRmServiceBusAuthorizationRule', 
-               'Set-AzureRmServiceBusAuthorizationRule', 
-               'Remove-AzureRmServiceBusAuthorizationRule', 
-               'New-AzureRmServiceBusKey', 'Get-AzureRmServiceBusKey', 
-               'Get-AzureRmServiceBusOperation', 'New-AzureRmServiceBusRule', 
-               'Get-AzureRmServiceBusRule', 'Set-AzureRmServiceBusRule', 
-               'Remove-AzureRmServiceBusRule', 
-               'New-AzureRmServiceBusGeoDRConfiguration', 
-               'Get-AzureRmServiceBusGeoDRConfiguration', 
-               'Remove-AzureRmServiceBusGeoDRConfiguration', 
-               'Set-AzureRmServiceBusGeoDRConfigurationBreakPair', 
-               'Set-AzureRmServiceBusGeoDRConfigurationFailOver', 
-               'Test-AzureRmServiceBusName', 'Get-AzureRmServiceBusMigration', 
-               'Stop-AzureRmServiceBusMigration', 
-               'Start-AzureRmServiceBusMigration', 
-               'Complete-AzureRmServiceBusMigration', 
-               'Remove-AzureRmServiceBusMigration'
+CmdletsToExport = 'New-ServiceBusNamespace', 'Get-ServiceBusNamespace', 
+               'Set-ServiceBusNamespace', 
+               'Remove-ServiceBusNamespace', 'New-ServiceBusQueue', 
+               'Get-ServiceBusQueue', 'Set-ServiceBusQueue', 
+               'Remove-ServiceBusQueue', 'New-ServiceBusTopic', 
+               'Get-ServiceBusTopic', 'Set-ServiceBusTopic', 
+               'Remove-ServiceBusTopic', 
+               'New-ServiceBusSubscription', 
+               'Get-ServiceBusSubscription', 
+               'Set-ServiceBusSubscription', 
+               'Remove-ServiceBusSubscription', 
+               'New-ServiceBusAuthorizationRule', 
+               'Get-ServiceBusAuthorizationRule', 
+               'Set-ServiceBusAuthorizationRule', 
+               'Remove-ServiceBusAuthorizationRule', 
+               'New-ServiceBusKey', 'Get-ServiceBusKey', 
+               'Get-ServiceBusOperation', 'New-ServiceBusRule', 
+               'Get-ServiceBusRule', 'Set-ServiceBusRule', 
+               'Remove-ServiceBusRule', 
+               'New-ServiceBusGeoDRConfiguration', 
+               'Get-ServiceBusGeoDRConfiguration', 
+               'Remove-ServiceBusGeoDRConfiguration', 
+               'Set-ServiceBusGeoDRConfigurationBreakPair', 
+               'Set-ServiceBusGeoDRConfigurationFailOver', 
+               'Test-ServiceBusName', 'Get-ServiceBusMigration', 
+               'Stop-ServiceBusMigration', 
+               'Start-ServiceBusMigration', 
+               'Complete-ServiceBusMigration', 
+               'Remove-ServiceBusMigration'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -158,7 +158,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

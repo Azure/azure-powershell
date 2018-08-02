@@ -72,20 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.DataMigration.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmDataMigrationDatabaseInfo', 
-               'New-AzureRmDataMigrationConnectionInfo', 
-               'New-AzureRmDataMigrationProject', 
-               'Remove-AzureRmDataMigrationProject', 
-               'Get-AzureRmDataMigrationProject', 
-               'Get-AzureRmDataMigrationService', 
-               'New-AzureRmDataMigrationService', 
-               'Remove-AzureRmDataMigrationService', 
-               'New-AzureRmDataMigrationTask', 'Get-AzureRmDataMigrationTask', 
-               'Remove-AzureRmDataMigrationTask', 
-               'Start-AzureRmDataMigrationService', 
-               'Stop-AzureRmDataMigrationService', 'Stop-AzureRmDataMigrationTask', 
-               'New-AzureRmDataMigrationSelectedDB', 
-               'New-AzureRmDataMigrationFileShare'
+CmdletsToExport = 'New-DataMigrationDatabaseInfo', 
+               'New-DataMigrationConnectionInfo', 
+               'New-DataMigrationProject', 
+               'Remove-DataMigrationProject', 
+               'Get-DataMigrationProject', 
+               'Get-DataMigrationService', 
+               'New-DataMigrationService', 
+               'Remove-DataMigrationService', 
+               'New-DataMigrationTask', 'Get-DataMigrationTask', 
+               'Remove-DataMigrationTask', 
+               'Start-DataMigrationService', 
+               'Stop-DataMigrationService', 'Stop-DataMigrationTask', 
+               'New-DataMigrationSelectedDB', 
+               'New-DataMigrationFileShare'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -145,7 +145,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

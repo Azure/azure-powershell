@@ -76,14 +76,14 @@ NestedModules = @('.\Microsoft.Azure.Commands.Batch.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount', 
-               'Get-AzureRmBatchAccountKeys', 'New-AzureRmBatchAccount', 
-               'New-AzureRmBatchAccountKey', 'Set-AzureRmBatchAccount', 
-               'New-AzureRmBatchApplicationPackage', 'Get-AzureBatchJobStatistics', 
-               'Remove-AzureRmBatchApplication', 
-               'Remove-AzureRmBatchApplicationPackage', 
-               'Get-AzureRmBatchApplicationPackage', 'Get-AzureRmBatchApplication', 
-               'Set-AzureRmBatchApplication', 'New-AzureRmBatchApplication', 
+CmdletsToExport = 'Remove-BatchAccount', 'Get-BatchAccount', 
+               'Get-BatchAccountKeys', 'New-BatchAccount', 
+               'New-BatchAccountKey', 'Set-BatchAccount', 
+               'New-BatchApplicationPackage', 'Get-AzureBatchJobStatistics', 
+               'Remove-BatchApplication', 
+               'Remove-BatchApplicationPackage', 
+               'Get-BatchApplicationPackage', 'Get-BatchApplication', 
+               'Set-BatchApplication', 'New-BatchApplication', 
                'Get-AzureBatchCertificate', 'Remove-AzureBatchCertificate', 
                'New-AzureBatchCertificate', 'Stop-AzureBatchCertificateDeletion', 
                'Disable-AzureBatchComputeNodeScheduling', 
@@ -105,7 +105,7 @@ CmdletsToExport = 'Remove-AzureRmBatchAccount', 'Get-AzureRmBatchAccount',
                'New-AzureBatchPool', 'Remove-AzureBatchPool', 'Set-AzureBatchPool', 
                'Set-AzureBatchPoolOSVersion', 'Start-AzureBatchPoolResize', 
                'Stop-AzureBatchPoolResize', 'Test-AzureBatchAutoScale', 
-               'Get-AzureRmBatchLocationQuotas', 'Get-AzureBatchSubtask', 
+               'Get-BatchLocationQuotas', 'Get-AzureBatchSubtask', 
                'Get-AzureBatchTask', 'New-AzureBatchTask', 'Remove-AzureBatchTask', 
                'New-AzureBatchComputeNodeUser', 'Remove-AzureBatchComputeNodeUser', 
                'Enable-AzureBatchTask', 'Set-AzureBatchTask', 'Stop-AzureBatchTask', 
@@ -166,7 +166,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

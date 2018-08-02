@@ -72,25 +72,25 @@ NestedModules = @('.\Microsoft.Azure.Commands.Insights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmMetricDefinition', 'Get-AzureRmMetric', 
-               'Remove-AzureRmLogProfile', 'Get-AzureRmLogProfile', 
-               'Add-AzureRmLogProfile', 'Get-AzureRmLog', 
-               'Set-AzureRmDiagnosticSetting', 'Get-AzureRmDiagnosticSetting', 
-               'Remove-AzureRmDiagnosticSetting', 
-               'New-AzureRmAutoscaleNotification', 'New-AzureRmAutoscaleProfile', 
-               'New-AzureRmAutoscaleRule', 'Add-AzureRmAutoscaleSetting', 
-               'Get-AzureRmAutoscaleHistory', 'Get-AzureRmAutoscaleSetting', 
-               'New-AzureRmAutoscaleWebhook', 'Remove-AzureRmAutoscaleSetting', 
-               'Add-AzureRmMetricAlertRule', 'Add-AzureRmWebtestAlertRule', 
-               'Get-AzureRmAlertHistory', 'Get-AzureRmAlertRule', 
-               'New-AzureRmAlertRuleEmail', 'New-AzureRmAlertRuleWebhook', 
-               'Remove-AzureRmAlertRule', 'Set-AzureRmActivityLogAlert', 
-               'Get-AzureRmActivityLogAlert', 'New-AzureRmActionGroup', 
-               'New-AzureRmActivityLogAlertCondition', 
-               'Enable-AzureRmActivityLogAlert', 'Disable-AzureRmActivityLogAlert', 
-               'Remove-AzureRmActivityLogAlert', 'New-AzureRmActionGroupReceiver', 
-               'Set-AzureRmActionGroup', 'Get-AzureRmActionGroup', 
-               'Remove-AzureRmActionGroup', 'New-AzureRmMetricFilter'
+CmdletsToExport = 'Get-MetricDefinition', 'Get-Metric', 
+               'Remove-LogProfile', 'Get-LogProfile', 
+               'Add-LogProfile', 'Get-Log', 
+               'Set-DiagnosticSetting', 'Get-DiagnosticSetting', 
+               'Remove-DiagnosticSetting', 
+               'New-AutoscaleNotification', 'New-AutoscaleProfile', 
+               'New-AutoscaleRule', 'Add-AutoscaleSetting', 
+               'Get-AutoscaleHistory', 'Get-AutoscaleSetting', 
+               'New-AutoscaleWebhook', 'Remove-AutoscaleSetting', 
+               'Add-MetricAlertRule', 'Add-WebtestAlertRule', 
+               'Get-AlertHistory', 'Get-AlertRule', 
+               'New-AlertRuleEmail', 'New-AlertRuleWebhook', 
+               'Remove-AlertRule', 'Set-ActivityLogAlert', 
+               'Get-ActivityLogAlert', 'New-ActionGroup', 
+               'New-ActivityLogAlertCondition', 
+               'Enable-ActivityLogAlert', 'Disable-ActivityLogAlert', 
+               'Remove-ActivityLogAlert', 'New-ActionGroupReceiver', 
+               'Set-ActionGroup', 'Get-ActionGroup', 
+               'Remove-ActionGroup', 'New-MetricFilter'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -171,7 +171,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

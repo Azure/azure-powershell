@@ -76,20 +76,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.RedisCache.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Remove-AzureRmRedisCachePatchSchedule', 
-               'New-AzureRmRedisCacheScheduleEntry', 
-               'Get-AzureRmRedisCachePatchSchedule', 
-               'New-AzureRmRedisCachePatchSchedule', 'Reset-AzureRmRedisCache', 
-               'Export-AzureRmRedisCache', 'Import-AzureRmRedisCache', 
-               'Remove-AzureRmRedisCacheDiagnostics', 
-               'Set-AzureRmRedisCacheDiagnostics', 'Set-AzureRmRedisCache', 
-               'New-AzureRmRedisCacheKey', 'Get-AzureRmRedisCacheKey', 
-               'Get-AzureRmRedisCache', 'Remove-AzureRmRedisCache', 
-               'New-AzureRmRedisCache', 'New-AzureRmRedisCacheLink', 
-               'Remove-AzureRmRedisCacheLink', 'Get-AzureRmRedisCacheLink', 
-               'New-AzureRmRedisCacheFirewallRule', 
-               'Remove-AzureRmRedisCacheFirewallRule', 
-               'Get-AzureRmRedisCacheFirewallRule'
+CmdletsToExport = 'Remove-RedisCachePatchSchedule', 
+               'New-RedisCacheScheduleEntry', 
+               'Get-RedisCachePatchSchedule', 
+               'New-RedisCachePatchSchedule', 'Reset-RedisCache', 
+               'Export-RedisCache', 'Import-RedisCache', 
+               'Remove-RedisCacheDiagnostics', 
+               'Set-RedisCacheDiagnostics', 'Set-RedisCache', 
+               'New-RedisCacheKey', 'Get-RedisCacheKey', 
+               'Get-RedisCache', 'Remove-RedisCache', 
+               'New-RedisCache', 'New-RedisCacheLink', 
+               'Remove-RedisCacheLink', 'Get-RedisCacheLink', 
+               'New-RedisCacheFirewallRule', 
+               'Remove-RedisCacheFirewallRule', 
+               'Get-RedisCacheFirewallRule'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -143,7 +143,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

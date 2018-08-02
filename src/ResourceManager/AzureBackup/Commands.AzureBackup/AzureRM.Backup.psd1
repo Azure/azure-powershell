@@ -74,22 +74,22 @@ NestedModules = @('.\Microsoft.Azure.Commands.AzureBackup.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Backup-AzureRmBackupItem', 
-               'Enable-AzureRmBackupContainerReregistration', 
-               'Get-AzureRmBackupContainer', 'Register-AzureRmBackupContainer', 
-               'Unregister-AzureRmBackupContainer', 
-               'Enable-AzureRmBackupProtection', 'Get-AzureRmBackupItem', 
-               'Get-AzureRmBackupJob', 'Get-AzureRmBackupJobDetails', 
-               'Stop-AzureRmBackupJob', 'Wait-AzureRmBackupJob', 
-               'Get-AzureRmBackupProtectionPolicy', 
-               'New-AzureRmBackupProtectionPolicy', 
-               'New-AzureRmBackupRetentionPolicyObject', 
-               'Remove-AzureRmBackupProtectionPolicy', 
-               'Set-AzureRmBackupProtectionPolicy', 
-               'Get-AzureRmBackupRecoveryPoint', 'Restore-AzureRmBackupItem', 
-               'Get-AzureRmBackupVaultCredentials', 'Get-AzureRmBackupVault', 
-               'New-AzureRmBackupVault', 'Remove-AzureRmBackupVault', 
-               'Set-AzureRmBackupVault', 'Disable-AzureRmBackupProtection'
+CmdletsToExport = 'Backup-BackupItem', 
+               'Enable-BackupContainerReregistration', 
+               'Get-BackupContainer', 'Register-BackupContainer', 
+               'Unregister-BackupContainer', 
+               'Enable-BackupProtection', 'Get-BackupItem', 
+               'Get-BackupJob', 'Get-BackupJobDetails', 
+               'Stop-BackupJob', 'Wait-BackupJob', 
+               'Get-BackupProtectionPolicy', 
+               'New-BackupProtectionPolicy', 
+               'New-BackupRetentionPolicyObject', 
+               'Remove-BackupProtectionPolicy', 
+               'Set-BackupProtectionPolicy', 
+               'Get-BackupRecoveryPoint', 'Restore-BackupItem', 
+               'Get-BackupVaultCredentials', 'Get-BackupVault', 
+               'New-BackupVault', 'Remove-BackupVault', 
+               'Set-BackupVault', 'Disable-BackupProtection'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -143,7 +143,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

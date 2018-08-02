@@ -72,20 +72,20 @@ NestedModules = @('.\Microsoft.Azure.Commands.Scheduler.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmSchedulerJobCollection', 
-               'Enable-AzureRmSchedulerJobCollection', 
-               'Get-AzureRmSchedulerJobCollection', 'Get-AzureRmSchedulerJob', 
-               'Get-AzureRmSchedulerJobHistory', 
-               'New-AzureRmSchedulerJobCollection', 'New-AzureRmSchedulerHttpJob', 
-               'New-AzureRmSchedulerServiceBusQueueJob', 
-               'New-AzureRmSchedulerServiceBusTopicJob', 
-               'New-AzureRmSchedulerStorageQueueJob', 
-               'Remove-AzureRmSchedulerJobCollection', 
-               'Remove-AzureRmSchedulerJob', 'Set-AzureRmSchedulerHttpJob', 
-               'Set-AzureRmSchedulerJobCollection', 
-               'Set-AzureRmSchedulerServiceBusQueueJob', 
-               'Set-AzureRmSchedulerServiceBusTopicJob', 
-               'Set-AzureRmSchedulerStorageQueueJob'
+CmdletsToExport = 'Disable-SchedulerJobCollection', 
+               'Enable-SchedulerJobCollection', 
+               'Get-SchedulerJobCollection', 'Get-SchedulerJob', 
+               'Get-SchedulerJobHistory', 
+               'New-SchedulerJobCollection', 'New-SchedulerHttpJob', 
+               'New-SchedulerServiceBusQueueJob', 
+               'New-SchedulerServiceBusTopicJob', 
+               'New-SchedulerStorageQueueJob', 
+               'Remove-SchedulerJobCollection', 
+               'Remove-SchedulerJob', 'Set-SchedulerHttpJob', 
+               'Set-SchedulerJobCollection', 
+               'Set-SchedulerServiceBusQueueJob', 
+               'Set-SchedulerServiceBusTopicJob', 
+               'Set-SchedulerStorageQueueJob'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -139,7 +139,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

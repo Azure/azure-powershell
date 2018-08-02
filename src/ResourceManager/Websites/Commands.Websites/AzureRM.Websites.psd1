@@ -73,29 +73,29 @@ NestedModules = @('.\Microsoft.Azure.Commands.Websites.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmAppServicePlan', 'Set-AzureRmAppServicePlan', 
-               'New-AzureRmAppServicePlan', 'Remove-AzureRmAppServicePlan', 
-               'Get-AzureRmWebAppSlot', 'Get-AzureRmWebAppSlotConfigName', 
-               'Get-AzureRmWebAppSlotMetrics', 
-               'Get-AzureRmWebAppSlotPublishingProfile', 'New-AzureRmWebAppSlot', 
-               'Remove-AzureRmWebAppSlot', 
-               'Reset-AzureRmWebAppSlotPublishingProfile', 
-               'Restart-AzureRmWebAppSlot', 'Set-AzureRmWebAppSlot', 
-               'Set-AzureRmWebAppSlotConfigName', 'Start-AzureRmWebAppSlot', 
-               'Stop-AzureRmWebAppSlot', 'Switch-AzureRmWebAppSlot', 
-               'New-AzureRmWebAppDatabaseBackupSetting', 
-               'Restore-AzureRmWebAppBackup', 'Get-AzureRmAppServicePlanMetrics', 
-               'Get-AzureRmWebAppCertificate', 'Get-AzureRmWebAppSSLBinding', 
-               'New-AzureRmWebAppSSLBinding', 'Remove-AzureRmWebAppSSLBinding', 
-               'Edit-AzureRmWebAppBackupConfiguration', 'Get-AzureRmWebAppBackup', 
-               'Get-AzureRmWebAppBackupConfiguration', 
-               'Get-AzureRmWebAppBackupList', 'Get-AzureRmWebAppMetrics', 
-               'Get-AzureRmWebAppPublishingProfile', 'Get-AzureRmWebApp', 
-               'New-AzureRmWebAppBackup', 'Remove-AzureRmWebApp', 
-               'New-AzureRmWebApp', 'Remove-AzureRmWebAppBackup', 
-               'Reset-AzureRmWebAppPublishingProfile', 'Restart-AzureRmWebApp', 
-               'Set-AzureRmWebApp', 'Start-AzureRmWebApp', 'Stop-AzureRmWebApp', 
-               'Get-AzureRmWebAppSnapshot', 'Restore-AzureRmWebAppSnapshot'
+CmdletsToExport = 'Get-AppServicePlan', 'Set-AppServicePlan', 
+               'New-AppServicePlan', 'Remove-AppServicePlan', 
+               'Get-WebAppSlot', 'Get-WebAppSlotConfigName', 
+               'Get-WebAppSlotMetrics', 
+               'Get-WebAppSlotPublishingProfile', 'New-WebAppSlot', 
+               'Remove-WebAppSlot', 
+               'Reset-WebAppSlotPublishingProfile', 
+               'Restart-WebAppSlot', 'Set-WebAppSlot', 
+               'Set-WebAppSlotConfigName', 'Start-WebAppSlot', 
+               'Stop-WebAppSlot', 'Switch-WebAppSlot', 
+               'New-WebAppDatabaseBackupSetting', 
+               'Restore-WebAppBackup', 'Get-AppServicePlanMetrics', 
+               'Get-WebAppCertificate', 'Get-WebAppSSLBinding', 
+               'New-WebAppSSLBinding', 'Remove-WebAppSSLBinding', 
+               'Edit-WebAppBackupConfiguration', 'Get-WebAppBackup', 
+               'Get-WebAppBackupConfiguration', 
+               'Get-WebAppBackupList', 'Get-WebAppMetrics', 
+               'Get-WebAppPublishingProfile', 'Get-WebApp', 
+               'New-WebAppBackup', 'Remove-WebApp', 
+               'New-WebApp', 'Remove-WebAppBackup', 
+               'Reset-WebAppPublishingProfile', 'Restart-WebApp', 
+               'Set-WebApp', 'Start-WebApp', 'Stop-WebApp', 
+               'Get-WebAppSnapshot', 'Restore-WebAppSnapshot'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -149,7 +149,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

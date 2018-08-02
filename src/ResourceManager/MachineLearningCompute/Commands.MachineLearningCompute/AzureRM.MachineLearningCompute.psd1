@@ -72,10 +72,10 @@ NestedModules = @('.\Microsoft.Azure.Commands.MachineLearningCompute.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmMlOpCluster', 'Get-AzureRmMlOpClusterKey', 
-               'Test-AzureRmMlOpClusterSystemServicesUpdateAvailability', 
-               'Update-AzureRmMlOpClusterSystemService', 'New-AzureRmMlOpCluster', 
-               'Remove-AzureRmMlOpCluster', 'Set-AzureRmMlOpCluster'
+CmdletsToExport = 'Get-MlOpCluster', 'Get-MlOpClusterKey', 
+               'Test-MlOpClusterSystemServicesUpdateAvailability', 
+               'Update-MlOpClusterSystemService', 'New-MlOpCluster', 
+               'Remove-MlOpCluster', 'Set-MlOpCluster'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -129,7 +129,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

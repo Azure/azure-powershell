@@ -99,18 +99,18 @@ NestedModules = @('.\Microsoft.Azure.Commands.Profile.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Disable-AzureRmDataCollection', 'Disable-AzureRmContextAutosave', 
-               'Enable-AzureRmDataCollection', 'Enable-AzureRmContextAutosave', 
-               'Remove-AzureRmEnvironment', 'Get-AzureRmEnvironment', 
-               'Set-AzureRmEnvironment', 'Add-AzureRmEnvironment', 
-               'Get-AzureRmSubscription', 'Connect-AzureRmAccount', 
-               'Get-AzureRmContext', 'Set-AzureRmContext', 'Import-AzureRmContext', 
-               'Save-AzureRmContext', 'Get-AzureRmTenant', 'Send-Feedback', 
-               'Resolve-AzureRmError', 'Select-AzureRmContext', 
-               'Rename-AzureRmContext', 'Remove-AzureRmContext', 
-               'Clear-AzureRmContext', 'Disconnect-AzureRmAccount', 
-               'Get-AzureRmContextAutosaveSetting', 'Set-AzureRmDefault', 
-               'Get-AzureRmDefault', 'Clear-AzureRmDefault'
+CmdletsToExport = 'Disable-DataCollection', 'Disable-ContextAutosave', 
+               'Enable-DataCollection', 'Enable-ContextAutosave', 
+               'Remove-Environment', 'Get-Environment', 
+               'Set-Environment', 'Add-Environment', 
+               'Get-Subscription', 'Connect-Account', 
+               'Get-Context', 'Set-Context', 'Import-Context', 
+               'Save-Context', 'Get-Tenant', 'Send-Feedback', 
+               'Resolve-Error', 'Select-Context', 
+               'Rename-Context', 'Remove-Context', 
+               'Clear-Context', 'Disconnect-Account', 
+               'Get-ContextAutosaveSetting', 'Set-Default', 
+               'Get-Default', 'Clear-Default'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -168,7 +168,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

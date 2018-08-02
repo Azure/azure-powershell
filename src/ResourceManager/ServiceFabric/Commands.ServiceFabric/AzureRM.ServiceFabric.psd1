@@ -74,21 +74,21 @@ NestedModules = @('.\Microsoft.Azure.Commands.ServiceFabric.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Add-AzureRmServiceFabricApplicationCertificate', 
-               'Add-AzureRmServiceFabricClientCertificate', 
-               'Add-AzureRmServiceFabricClusterCertificate', 
-               'Add-AzureRmServiceFabricNode', 'Add-AzureRmServiceFabricNodeType', 
-               'Get-AzureRmServiceFabricCluster', 
-               'New-AzureRmServiceFabricCluster', 
-               'Remove-AzureRmServiceFabricClientCertificate', 
-               'Remove-AzureRmServiceFabricClusterCertificate', 
-               'Remove-AzureRmServiceFabricNode', 
-               'Remove-AzureRmServiceFabricNodeType', 
-               'Remove-AzureRmServiceFabricSetting', 
-               'Set-AzureRmServiceFabricSetting', 
-               'Set-AzureRmServiceFabricUpgradeType', 
-               'Update-AzureRmServiceFabricDurability', 
-               'Update-AzureRmServiceFabricReliability'
+CmdletsToExport = 'Add-ServiceFabricApplicationCertificate', 
+               'Add-ServiceFabricClientCertificate', 
+               'Add-ServiceFabricClusterCertificate', 
+               'Add-ServiceFabricNode', 'Add-ServiceFabricNodeType', 
+               'Get-ServiceFabricCluster', 
+               'New-ServiceFabricCluster', 
+               'Remove-ServiceFabricClientCertificate', 
+               'Remove-ServiceFabricClusterCertificate', 
+               'Remove-ServiceFabricNode', 
+               'Remove-ServiceFabricNodeType', 
+               'Remove-ServiceFabricSetting', 
+               'Set-ServiceFabricSetting', 
+               'Set-ServiceFabricUpgradeType', 
+               'Update-ServiceFabricDurability', 
+               'Update-ServiceFabricReliability'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -142,7 +142,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

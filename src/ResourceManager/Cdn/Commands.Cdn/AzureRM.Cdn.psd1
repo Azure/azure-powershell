@@ -72,23 +72,23 @@ NestedModules = @('.\Microsoft.Azure.Commands.Cdn.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmCdnProfile', 'Get-AzureRmCdnProfileSsoUrl', 
-               'New-AzureRmCdnProfile', 'Remove-AzureRmCdnProfile', 
-               'Set-AzureRmCdnProfile', 'Get-AzureRmCdnOrigin', 
-               'Set-AzureRmCdnOrigin', 'Get-AzureRmCdnEndpointNameAvailability', 
-               'Get-AzureRmCdnEndpoint', 'Publish-AzureRmCdnEndpointContent', 
-               'New-AzureRmCdnEndpoint', 'Unpublish-AzureRmCdnEndpointContent', 
-               'Remove-AzureRmCdnEndpoint', 'Set-AzureRmCdnEndpoint', 
-               'Start-AzureRmCdnEndpoint', 'Stop-AzureRmCdnEndpoint', 
-               'Test-AzureRmCdnCustomDomain', 'Get-AzureRmCdnCustomDomain', 
-               'New-AzureRmCdnCustomDomain', 'Remove-AzureRmCdnCustomDomain', 
-               'Enable-AzureRmCdnCustomDomain', 'Disable-AzureRmCdnCustomDomain', 
-               'Get-AzureRmCdnProfileResourceUsage', 
-               'Confirm-AzureRmCdnEndpointProbeUrl', 
-               'Get-AzureRmCdnEndpointResourceUsage', 
-               'Get-AzureRmCdnProfileSupportedOptimizationType', 
-               'Get-AzureRmCdnSubscriptionResourceUsage', 
-               'Get-AzureRmCdnEdgeNodes'
+CmdletsToExport = 'Get-CdnProfile', 'Get-CdnProfileSsoUrl', 
+               'New-CdnProfile', 'Remove-CdnProfile', 
+               'Set-CdnProfile', 'Get-CdnOrigin', 
+               'Set-CdnOrigin', 'Get-CdnEndpointNameAvailability', 
+               'Get-CdnEndpoint', 'Publish-CdnEndpointContent', 
+               'New-CdnEndpoint', 'Unpublish-CdnEndpointContent', 
+               'Remove-CdnEndpoint', 'Set-CdnEndpoint', 
+               'Start-CdnEndpoint', 'Stop-CdnEndpoint', 
+               'Test-CdnCustomDomain', 'Get-CdnCustomDomain', 
+               'New-CdnCustomDomain', 'Remove-CdnCustomDomain', 
+               'Enable-CdnCustomDomain', 'Disable-CdnCustomDomain', 
+               'Get-CdnProfileResourceUsage', 
+               'Confirm-CdnEndpointProbeUrl', 
+               'Get-CdnEndpointResourceUsage', 
+               'Get-CdnProfileSupportedOptimizationType', 
+               'Get-CdnSubscriptionResourceUsage', 
+               'Get-CdnEdgeNodes'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -142,7 +142,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

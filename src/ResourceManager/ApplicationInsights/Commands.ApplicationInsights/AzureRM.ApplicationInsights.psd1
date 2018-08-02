@@ -72,17 +72,17 @@ NestedModules = @('.\Microsoft.Azure.Commands.ApplicationInsights.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzureRmApplicationInsights', 'New-AzureRmApplicationInsights', 
-               'Remove-AzureRmApplicationInsights', 
-               'Set-AzureRmApplicationInsightsPricingPlan', 
-               'Set-AzureRmApplicationInsightsDailyCap', 
-               'Get-AzureRmApplicationInsightsContinuousExport', 
-               'Set-AzureRmApplicationInsightsContinuousExport', 
-               'New-AzureRmApplicationInsightsContinuousExport', 
-               'Remove-AzureRmApplicationInsightsContinuousExport', 
-               'Get-AzureRmApplicationInsightsApiKey', 
-               'New-AzureRmApplicationInsightsApiKey', 
-               'Remove-AzureRmApplicationInsightsApiKey'
+CmdletsToExport = 'Get-ApplicationInsights', 'New-ApplicationInsights', 
+               'Remove-ApplicationInsights', 
+               'Set-ApplicationInsightsPricingPlan', 
+               'Set-ApplicationInsightsDailyCap', 
+               'Get-ApplicationInsightsContinuousExport', 
+               'Set-ApplicationInsightsContinuousExport', 
+               'New-ApplicationInsightsContinuousExport', 
+               'Remove-ApplicationInsightsContinuousExport', 
+               'Get-ApplicationInsightsApiKey', 
+               'New-ApplicationInsightsApiKey', 
+               'Remove-ApplicationInsightsApiKey'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -136,7 +136,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 

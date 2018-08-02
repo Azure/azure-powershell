@@ -72,21 +72,21 @@ NestedModules = @('.\Microsoft.Azure.Commands.ContainerRegistry.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzureRmContainerRegistry', 'Get-AzureRmContainerRegistry', 
-               'Update-AzureRmContainerRegistry', 
-               'Remove-AzureRmContainerRegistry', 
-               'Get-AzureRmContainerRegistryCredential', 
-               'Update-AzureRmContainerRegistryCredential', 
-               'Test-AzureRmContainerRegistryNameAvailability', 
-               'Get-AzureRmContainerRegistryReplication', 
-               'New-AzureRmContainerRegistryReplication', 
-               'Remove-AzureRmContainerRegistryReplication', 
-               'New-AzureRmContainerRegistryWebhook', 
-               'Get-AzureRmContainerRegistryWebhook', 
-               'Update-AzureRmContainerRegistryWebhook', 
-               'Test-AzureRmContainerRegistryWebhook', 
-               'Remove-AzureRmContainerRegistryWebhook', 
-               'Get-AzureRmContainerRegistryWebhookEvent'
+CmdletsToExport = 'New-ContainerRegistry', 'Get-ContainerRegistry', 
+               'Update-ContainerRegistry', 
+               'Remove-ContainerRegistry', 
+               'Get-ContainerRegistryCredential', 
+               'Update-ContainerRegistryCredential', 
+               'Test-ContainerRegistryNameAvailability', 
+               'Get-ContainerRegistryReplication', 
+               'New-ContainerRegistryReplication', 
+               'Remove-ContainerRegistryReplication', 
+               'New-ContainerRegistryWebhook', 
+               'Get-ContainerRegistryWebhook', 
+               'Update-ContainerRegistryWebhook', 
+               'Test-ContainerRegistryWebhook', 
+               'Remove-ContainerRegistryWebhook', 
+               'Get-ContainerRegistryWebhookEvent'
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -140,7 +140,7 @@ PrivateData = @{
 # HelpInfoURI = ''
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
-# DefaultCommandPrefix = ''
+DefaultCommandPrefix = 'AzureRM'
 
 }
 
