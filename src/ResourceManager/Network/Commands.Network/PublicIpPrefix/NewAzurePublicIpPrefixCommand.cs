@@ -1,6 +1,4 @@
-
-
-// ----------------------------------------------------------------------------------
+﻿// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,21 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using AutoMapper;
-using Microsoft.Azure.Commands.Network.Models;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
-using Microsoft.Azure.Management.Network;
-using System.Collections;
-using System.Collections.Generic;
-using System.Management.Automation;
-using MNM = Microsoft.Azure.Management.Network.Models;
-
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpAddress", SupportsShouldProcess = true),
-        OutputType(typeof(PSPublicIpAddress))]
-    public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
+    using AutoMapper;
+    using Microsoft.Azure.Commands.Network.Models;
+    using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+    using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+    using Microsoft.Azure.Management.Network;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Management.Automation;
+    using MNM = Microsoft.Azure.Management.Network.Models;
+
+    [Cmdlet(VerbsCommon.New, "AzureRmPublicIpPrefix", SupportsShouldProcess = true), OutputType(typeof(PSPublicIpPrefix))]
+
+    public class NewAzurePublicIpPrefixCommand : PublicIpPrefixBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -49,18 +47,17 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The public IP address location.")]
-        [LocationCompleter("Microsoft.Network/publicIPAddresses")]
+            HelpMessage = "The public IP prefix location.")]
+        [LocationCompleter("Microsoft.Network/publicIPPrefixes")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The public IP Sku name.")]
+            HelpMessage = "The public IP Prefix Sku name.")]
         [ValidateNotNullOrEmpty]
         [ValidateSet(
-            MNM.PublicIPAddressSkuName.Basic,
             MNM.PublicIPAddressSkuName.Standard,
             IgnoreCase = true)]
         public string Sku { get; set; }
@@ -68,13 +65,10 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The public IP address allocation method.")]
+            HelpMessage = "The PublicIPPrefix length")]
         [ValidateNotNullOrEmpty]
-        [ValidateSet(
-            MNM.IPAllocationMethod.Dynamic,
-            MNM.IPAllocationMethod.Static,
-            IgnoreCase = true)]
-        public string AllocationMethod { get; set; }
+        [ValidateRange((ushort)21, (ushort)31)]
+        public ushort PrefixLength { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -90,26 +84,8 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Domain Name label.")]
-        public string DomainNameLabel { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "IpTag List.")]
-        public List<PSPublicIpTag> IpTag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The PublicIpPrefix to use for Public IP address")]
-        public PSPublicIpPrefix PublicIpPrefix { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Reverse FQDN.")]
-        public string ReverseFqdn { get; set; }
+        public List<PSPublicIpPrefixTag> IpTag { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -121,7 +97,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "A list of availability zones denoting the IP allocated for the resource needs to come from.",
             ValueFromPipelineByPropertyName = true)]
-            public List<string> Zone { get; set; }
+        public List<string> Zone { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -141,7 +117,7 @@ namespace Microsoft.Azure.Commands.Network
         {
             base.Execute();
             WriteWarning("The output object type of this cmdlet will be modified in a future release.");
-            var present = this.IsPublicIpAddressPresent(this.ResourceGroupName, this.Name);
+            var present = this.IsPublicIpPrefixPresent(this.ResourceGroupName, this.Name);
             ConfirmAction(
                 Force.IsPresent,
                 string.Format(Properties.Resources.OverwritingResource, Name),
@@ -149,55 +125,47 @@ namespace Microsoft.Azure.Commands.Network
                 Name,
                 () =>
                 {
-                    var publicIp = CreatePublicIpAddress();
-                    WriteObject(publicIp);
+                    var publicIpPrefix = CreatePublicIpPrefix();
+                    WriteObject(publicIpPrefix);
                 },
                 () => present);
         }
 
-        private PSPublicIpAddress CreatePublicIpAddress()
+        private PSPublicIpPrefix CreatePublicIpPrefix()
         {
-            var publicIp = new PSPublicIpAddress();
-            publicIp.Name = this.Name;
-            publicIp.Location = this.Location;
-            publicIp.PublicIpAllocationMethod = this.AllocationMethod;
-            publicIp.PublicIpAddressVersion = this.IpAddressVersion;
-            publicIp.Zones = this.Zone;
-            publicIp.PublicIpPrefix = this.PublicIpPrefix;
+            var publicIpPrefix = new PSPublicIpPrefix();
+            publicIpPrefix.Name = this.Name;
+            publicIpPrefix.Location = this.Location;
+            publicIpPrefix.PublicIpAddressVersion = this.IpAddressVersion;
+            publicIpPrefix.Zones = this.Zone;
+            publicIpPrefix.PrefixLength = this.PrefixLength;
 
+            publicIpPrefix.Sku = new PSPublicIpPrefixSku();
+            publicIpPrefix.Sku.Name = MNM.PublicIPAddressSkuName.Standard;
             if (!string.IsNullOrEmpty(this.Sku))
             {
-                publicIp.Sku = new PSPublicIpAddressSku();
-                publicIp.Sku.Name = this.Sku;
+                publicIpPrefix.Sku.Name = this.Sku;
             }
 
             if (this.IdleTimeoutInMinutes > 0)
             {
-                publicIp.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
-            }
-
-            if (!string.IsNullOrEmpty(this.DomainNameLabel))
-            {
-                publicIp.DnsSettings = new PSPublicIpAddressDnsSettings();
-                publicIp.DnsSettings.DomainNameLabel = this.DomainNameLabel;
-                publicIp.DnsSettings.ReverseFqdn = this.ReverseFqdn;
+                publicIpPrefix.IdleTimeoutInMinutes = this.IdleTimeoutInMinutes;
             }
 
             if (this.IpTag != null && this.IpTag.Count > 0)
             {
-                publicIp.IpTags = this.IpTag;
+                publicIpPrefix.IpTags = this.IpTag;
             }
 
-            var publicIpModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPAddress>(publicIp);
+            var theModel = NetworkResourceManagerProfile.Mapper.Map<MNM.PublicIPPrefix>(publicIpPrefix);
 
-            publicIpModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
+            theModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
-            this.PublicIpAddressClient.CreateOrUpdate(this.ResourceGroupName, this.Name, publicIpModel);
+            this.PublicIpPrefixClient.CreateOrUpdate(this.ResourceGroupName, this.Name, theModel);
 
-            var getPublicIp = this.GetPublicIpAddress(this.ResourceGroupName, this.Name);
+            var getPublicIpPrefix = this.GetPublicIpPrefix(this.ResourceGroupName, this.Name);
 
-            return getPublicIp;
+            return getPublicIpPrefix;
         }
     }
 }
-

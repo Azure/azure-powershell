@@ -2,90 +2,57 @@
 external help file: Microsoft.Azure.Commands.Network.dll-Help.xml
 Module Name: AzureRM.Network
 ms.assetid: 8D84F81A-F6B5-413D-B349-50947FCD5CFC
-online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermpublicipaddress
+online version: https://docs.microsoft.com/en-us/powershell/module/azurerm.network/new-azurermpublicipprefix
 schema: 2.0.0
 ---
 
-# New-AzureRmPublicIpAddress
+# New-AzureRmPublicIpPrefix
 
 ## SYNOPSIS
-Creates a public IP address.
+Creates a public IP prefix.
 
 ## SYNTAX
 
 ```
-New-AzureRmPublicIpAddress [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
- -AllocationMethod <String> [-IpAddressVersion <String>] [-DomainNameLabel <String>]
+New-AzureRmPublicIpPrefix [-Name <String>] -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
+ -PrefixLength <Int32> [-IpAddressVersion <String>]
  [-IpTag <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.PSPublicIpTag]>]
- [-PublicIpPrefix <Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix>]
- [-ReverseFqdn <String>] [-IdleTimeoutInMinutes <Int32>]
+ [-IdleTimeoutInMinutes <Int32>]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-Tag <Hashtable>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzureRmPublicIpAddress** cmdlet creates a public IP address.
+The **New-AzureRmPublicIpPrefix** cmdlet creates a public IP prefix.
 
 ## EXAMPLES
 
-### 1: Create a new public IP address
+### 1: Create a new public IP prefix
 ```
-$publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
-```
-
-This command creates a new public IP address resource.A DNS record is created for
-$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
-public IP address is immediately allocated to this resource as the -AllocationMethod is specified
-as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
-start (or create) the associated resource (like a VM or load balancer).
-
-### 2: Create a public IP address with a reverse FQDN
-```
-$publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -ReverseFqdn $customFqdn
+$publicIpPrefix = New-AzureRmPublicIpPrefix -Name $publicIpPrefixName -ResourceGroupName $rgName -PrefixLength 30 -Location $location
 ```
 
-This command creates a new public IP address resource. With the -ReverseFqdn parameter, Azure
-creates a DNS PTR record (reverse-lookup) for the public IP address allocated to this resource,
-pointing to the $customFqdn specified in the command. As a pre-requisite, the $customFqdn (say
-webapp.contoso.com) should have a DNS CNAME record (forward-lookup) pointing to
-$dnsPrefix.$location.cloudapp.azure.com.
+This command creates a new public IP prefix resource.
 
-### 3: Create a new public IP address with IpTag
+### 3: Create a new public IP prefix with IpTag
 ```
 $ipTag = New-AzureRmPublicIpTag -IpTagType "FirstPartyUsage" -Tag "/Sql"
-$publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location -IpTags ipTag
+$publicIpPrefix = New-AzureRmPublicIpPrefix -Name $publicIpPrefixName -ResourceGroupName $rgName -PrefixLength 30 -Location $location -IpTags ipTag
 ```
 
-This command creates a new public IP address resource.A DNS record is created for
-$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
-public IP address is immediately allocated to this resource as the -AllocationMethod is specified
-as 'Static'. If it is specified as 'Dynamic', a public IP address gets allocated only when you
-start (or create) the associated resource (like a VM or load balancer). An Iptag is used to 
-specific the Tags associated with resource. Iptag can be specified using New-AzureRmPublicIpTag
-and passed as input through -IpTags.
-
-### 4: Create a new public IP address from a Prefix
-```
-$publicIp = New-AzureRmPublicIpAddress -Name $publicIpName -ResourceGroupName $rgName -AllocationMethod Static -DomainNameLabel $dnsPrefix -Location $location
--PublicIpPrefix publicIpPrefix -Sku Standard
-```
-
-This command creates a new public IP address resource. A DNS record is created for
-$dnsPrefix.$location.cloudapp.azure.com pointing to the public IP address of this resource. A
-public IP address is immediately allocated to this resource from the publicIpPrefix specified.
-This option is only supported for the 'Standard' Sku and 'Static' AllocationMethod.
+This command creates a new public IP prefix resource. An Iptag is used to specific the Tags associated with resource. Iptag can be specified using New-AzureRmPublicIpTag and passed as input through -IpTags.
 
 ## PARAMETERS
 
-### -AllocationMethod
-Specifies the method with which to allocate the public IP address.
-The acceptable values for this parameter are: Static or Dynamic.
+### -PrefixLength
+Specifies the length of the prefix.
+The acceptable values for this parameter are between: 21 and 31 inclusive.
 
 ```yaml
-Type: System.String
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-Accepted values: Dynamic, Static
+Accepted range: 21,31
 
 Required: True
 Position: Named
@@ -124,21 +91,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DomainNameLabel
-Specifies the relative DNS name for a public IP address.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Force
 Forces the command to run without asking for user confirmation.
 
@@ -170,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -IpAddressVersion
-Specifies the version of the IP address.
+Specifies the version of the IP prefix.
 
 ```yaml
 Type: System.String
@@ -201,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Specifies the region in which to create a public IP address.
+Specifies the region in which to create a public IP prefix.
 
 ```yaml
 Type: System.String
@@ -215,23 +167,8 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -PublicIpPrefix
-Specifies the PSPublicIpPrefix from which to allocate the public IP address.
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Name
-Specifies the name of the public IP address that this cmdlet creates.
+Specifies the name of the public IP prefix that this cmdlet creates.
 
 ```yaml
 Type: System.String
@@ -246,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group in which to create a public IP address.
+Specifies the name of the resource group in which to create a public IP prefix.
 
 ```yaml
 Type: System.String
@@ -260,29 +197,14 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ReverseFqdn
-Specifies a reverse fully qualified domain name (FQDN).
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Sku
-The public IP Sku name.
+The public IP prefix Sku name.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Basic, Standard
+Accepted values: Standard
 
 Required: False
 Position: Named
@@ -364,14 +286,14 @@ This cmdlet does not accept any input.
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSPublicIpAddress
+### Microsoft.Azure.Commands.Network.Models.PSPublicIpPrefix
 
 ## NOTES
 
 ## RELATED LINKS
 
-[Get-AzureRmPublicIpAddress](./Get-AzureRmPublicIpAddress.md)
+[Get-AzureRmPublicIpPrefix](./Get-AzureRmPublicIpPrefix.md)
 
-[Remove-AzureRmPublicIpAddress](./Remove-AzureRmPublicIpAddress.md)
+[Remove-AzureRmPublicIpPrefix](./Remove-AzureRmPublicIpPrefix.md)
 
-[Set-AzureRmPublicIpAddress](./Set-AzureRmPublicIpAddress.md)
+[Set-AzureRmPublicIpPrefix](./Set-AzureRmPublicIpPrefix.md)
