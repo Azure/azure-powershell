@@ -549,10 +549,22 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             return encryptionStatus;
         }
 
+        private bool isNativeDiskVM(VirtualMachine vm)
+        {
+            return vm.StorageProfile.OsDisk.Vhd != null && vm.StorageProfile.OsDisk.Vhd.Uri != null;
+        }
+
         private AzureDiskEncryptionStatusContext getStatusSinglePass(VirtualMachine vm)
         {
             // First get extension status from disk instance view
             AzureDiskEncryptionStatusContext status = this.GetStatusFromInstanceView(vm);
+
+            // Get Data Disk status from extension for Native Disk VMs
+            if (isNativeDiskVM(vm))
+            {
+                // We use logic that's otherwise only used for Windows VMs in Dual Pass
+                status.DataVolumesEncrypted = this.AreWindowsDataVolumesEncryptedDualPass(vm);
+            }
 
             // Get the extension status message
             try
@@ -567,18 +579,18 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
             // While this is enough for Windows, we may need more information for Linux from the extension substatus
             if (vm.StorageProfile.OsDisk.OsType == OperatingSystemTypes.Linux)
             {
-                Dictionary<string, string> encryptionStatusParsed = null;
                 try
                 {
+                    Dictionary<string, string> encryptionStatusParsed = null;
                     string encryptionStatusJson = GetExtensionStatusMessage(vm, returnSubstatusMessage: true);
                     encryptionStatusParsed = JsonConvert.DeserializeObject<Dictionary<string, string>>(encryptionStatusJson);
+                    status.OsVolumeEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultOsKey]);
+                    status.DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultDataKey]);
                 }
                 catch (KeyNotFoundException)
                 {
                     ;// Do nothing
                 }
-                status.OsVolumeEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultOsKey]);
-                status.DataVolumesEncrypted = (EncryptionStatus)Enum.Parse(typeof(EncryptionStatus), encryptionStatusParsed[AzureDiskEncryptionExtensionConstants.encryptionResultDataKey]);
             }
 
             return status;
