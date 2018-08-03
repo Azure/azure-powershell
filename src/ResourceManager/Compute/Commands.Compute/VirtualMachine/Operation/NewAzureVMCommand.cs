@@ -353,6 +353,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var parameters = new Parameters(this, client);
 
+
             if (DiskFile != null)
             {
                 var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
@@ -360,6 +361,7 @@ namespace Microsoft.Azure.Commands.Compute
                     AzureEnvironment.Endpoint.ResourceManager);
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
                 {
+                    Location = Location ?? parameters.DefaultLocation;
                     var st0 = resourceClient.ResourceGroups.CreateOrUpdate(
                         ResourceGroupName,
                         new ResourceGroup

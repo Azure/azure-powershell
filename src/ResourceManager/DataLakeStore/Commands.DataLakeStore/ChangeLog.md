@@ -21,6 +21,7 @@
 * Fix debugging when DebugPreference is set from powershell command line
 * Update example for Set-AzureRmDataLakeStoreItemAcl
 * Updated to the latest version of the Azure ClientRuntime.
+* Update example for Set-AzureRmDataLakeStoreItemAclEntry
 
 ## Version 6.1.1
 * Updated all help files to include full parameter types and correct input/output types.
