@@ -50,6 +50,17 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
+  <PropertyGroup>
+    <ScenarioTestPs1Path>$(LibraryRoot)\src\Common\Commands.ScenarioTests.Common\</ScenarioTestPs1Path>
+  </PropertyGroup>
+  <ItemGroup Condition="Exists('$(ScenarioTestPs1Path)')">
+    <None Include="$(ScenarioTestPs1Path)Assert.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="$(ScenarioTestPs1Path)Common.ps1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
