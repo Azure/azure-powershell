@@ -21,7 +21,7 @@ function Test-RoleDefinitionCreateTests
     # Setup
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role'
-    New-AzureRmRoleDefinitionWithId -InputFile .\Resources\NewRoleDefinition.json -RoleDefinitionId ee78fa8a-3cdd-418e-a4d8-949b57a33dcd
+    New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\NewRoleDefinition.json" -RoleDefinitionId ee78fa8a-3cdd-418e-a4d8-949b57a33dcd
 
     $rd = Get-AzureRmRoleDefinition -Name $rdName
     Assert-AreEqual "Test role" $rd.Description
@@ -70,7 +70,7 @@ function Test-RdNegativeScenarios
     $badIdException = "Cannot find role definition with id '" + $rdId + "'."
 
     # Throws on trying to update the a role that does not exist
-    Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json } $badIdException
+    Assert-Throws { Set-AzureRmRoleDefinition -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" } $badIdException
 
     # Role Defintion not provided.
     $roleDefNotProvided = "Parameter set cannot be resolved using the specified named parameters."
@@ -84,7 +84,7 @@ function Test-RdNegativeScenarios
     # Role not provided.
     $roleDefNotProvided = "Cannot validate argument on parameter 'Role'. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again."
     Assert-Throws { Set-AzureRmRoleDefinition -Role $rdNull } $roleDefNotProvided
-    Assert-Throws { Set-AzureRmRoleDefinition -InputFile .\Resources\RoleDefinition.json -Role $rd } $roleDefNotProvided
+    Assert-Throws { Set-AzureRmRoleDefinition -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" -Role $rd } $roleDefNotProvided
 
     #TODO add check for valid input file and valid role
 
@@ -103,7 +103,7 @@ function Test-RDPositiveScenarios
     # Setup
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
-    $rd = New-AzureRmRoleDefinitionWithId -InputFile .\Resources\RoleDefinition.json -RoleDefinitionId 0a0e83bc-50b9-4c4d-b2c2-3f41e1a8baf2
+    $rd = New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" -RoleDefinitionId 0a0e83bc-50b9-4c4d-b2c2-3f41e1a8baf2
     $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     # Update the role definition with action that was created in the step above.
@@ -129,7 +129,7 @@ function Test-RDUpdate
 
     # Create a role definition with Name rdNamme.
     $rdName = 'Another tests role'
-    $rd = New-AzureRmRoleDefinitionWithId -InputFile .\Resources\RoleDefinition.json -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
+    $rd = New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     # Update the role definition with action that was created in the step above.
@@ -158,7 +158,7 @@ function Test-RDCreateFromFile
     $badScopeException = "Exception calling `"ExecuteCmdlet`" with `"0`" argument(s): `"Scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/ResourceGroups' should have even number of parts.`""
 	try
 	{
-	    $rd = New-AzureRmRoleDefinitionWithId -InputFile .\Resources\InvalidRoleDefinition.json -RoleDefinitionId 4482e4d1-8757-4d67-b3c1-5c8ccee3fdcc
+	    $rd = New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\InvalidRoleDefinition.json" -RoleDefinitionId 4482e4d1-8757-4d67-b3c1-5c8ccee3fdcc
 		Assert-AreEqual "This assertion shouldn't be hit'" "New-AzureRmRoleDefinition should've thrown an exception"
 	}
 	catch
@@ -280,7 +280,7 @@ function Test-RoleDefinitionDataActionsCreateTests
     # Setup
     # Basic positive case - read from file
     $rdName = 'CustomRole Tests Role New'
-    New-AzureRmRoleDefinitionWithId -InputFile .\Resources\DataActionsRoleDefinition.json -RoleDefinitionId e3efe8c9-d9ae-4f0e-838d-57ce43068a13
+    New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\DataActionsRoleDefinition.json" -RoleDefinitionId e3efe8c9-d9ae-4f0e-838d-57ce43068a13
 
     $rd = Get-AzureRmRoleDefinition -Name $rdName
     Assert-AreEqual "Test role" $rd.Description
@@ -322,7 +322,7 @@ function Test-RDGetCustomRoles
     # Setup
     # Basic positive case - read from file
     $rdName = 'Another tests role'
-    $rd = New-AzureRmRoleDefinitionWithId -InputFile .\Resources\RoleDefinition.json -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
+    $rd = New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     $roles = Get-AzureRmRoleDefinition -Custom
@@ -437,7 +437,7 @@ function Test-RDDataActionsNegativeTestCases
     # Setup
     # Basic positive case - read from file
     $rdName = 'Another tests role'
-    $rd = New-AzureRmRoleDefinitionWithId -InputFile .\Resources\RoleDefinition.json -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
+    $rd = New-AzureRmRoleDefinitionWithId -InputFile "$TestOutputRoot\Resources\RoleDefinition.json" -RoleDefinitionId 3d95b97a-5745-4c39-950c-0b608dea635f
     $rd = Get-AzureRmRoleDefinition -Name $rdName
 
     $createdRole = Get-AzureRmRoleDefinition -Name $rdName

@@ -122,6 +122,7 @@ function Test-SsisAzure-IntegrationRuntime
         }
 
         if ($catalogAdminPassword -eq $null){
+		    <#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine", Justification="Fake password to resource that has been deleted.")]#>
             $catalogAdminPassword = 'fakepassord'
         }
 
