@@ -20,10 +20,18 @@ function Initialize-Mappings
     Get-ChildItem -Path $Script:RootPath -Directory | where { $_.Name -ne "src" } | % { $Mappings[$_.Name] = @() }
     Get-ChildItem -Path $Script:SrcPath -File | % { $Mappings["src/$_.Name"] = @() }
 
-    $PathsToIgnore | % { $Mappings[$_] = @() }
     if ($CustomMappings -ne $null)
     {
         $CustomMappings.GetEnumerator() | % { $Mappings[$_.Name] = $_.Value }
+    }
+
+    if ($PathsToIgnore -ne $null)
+    {
+        foreach ($Path in $PathsToIgnore)
+        {
+            $Mappings[$Path] = $null
+            $Mappings.Remove($Path)
+        }
     }
 
     return $Mappings
@@ -214,7 +222,8 @@ function Create-ModuleMappings
 {
     $PathsToIgnore = @(
         "src/Common",
-        "src/ResourceManager/Common"
+        "src/ResourceManager/Common",
+        "tools"
     )
 
     $CustomMappings = @{
@@ -245,11 +254,13 @@ Creates the SolutionMappings.json file used during the build to filter the build
 #>
 function Create-SolutionMappings
 {
-    $PathsToIgnore = @()
-    $CustomMappings = @{
-        "src/Common" =                 @( ".\src\ResourceManager\Profile\Profile.sln" );
-        "src/ResourceManager/Common" = @( ".\src\ResourceManager\Profile\Profile.sln" );
-    }
+    $PathsToIgnore = @(
+        "src/Common",
+        "src/ResourceManager/Common",
+        "tools"
+    )
+
+    $CustomMappings = @{}
 
     $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
     foreach ($ServiceFolder in $Script:ServiceFolders)
@@ -321,16 +332,18 @@ function Create-TestMappings
         [hashtable]$SolutionMappings
     )
 
-    $PathsToIgnore = @()
+    $PathsToIgnore = @(
+        "src/Common",
+        "src/ResourceManager/Common",
+        "tools"
+    )
     $CustomMappings = @{
         "src/Common/Commands.Common.Authentication.Test" = @( ".\src\Common\Commands.Common.Authentication.Test\bin\Debug\Microsoft.Azure.Commands.Common.Authentication.Test.dll" );
         "tools/BuildPackagesTask" =                        @( ".\tools\BuildPackagesTask\Microsoft.Azure.Build.Tasks.Test\bin\Debug\Microsoft.Azure.Build.Tasks.Test.dll" );
         "tools/RepoTasks" =                                @( ".\tools\RepoTasks\RepoTasks.Cmdlets.Tests\bin\Debug\RepoTasks.Cmdlets.Tests.dll" );
-        "tools/StaticAnalysis" =                           @( ".\tools\StaticAnalysis\StaticAnalysis.Test\bin\Debug\StaticAnalysis.Test.dll" );
     }
 
     $Mappings = Initialize-Mappings -PathsToIgnore $PathsToIgnore -CustomMappings $CustomMappings
-    $Mappings.Remove("tools")
 
     $TestDllMappings = [ordered]@{}
     foreach ($ServiceFolder in $Script:ServiceFolders)
