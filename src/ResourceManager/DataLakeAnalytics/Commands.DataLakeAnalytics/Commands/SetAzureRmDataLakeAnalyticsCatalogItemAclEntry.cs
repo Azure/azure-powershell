@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
     [Cmdlet("Set","DataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserCatalogParameterSetName, SupportsShouldProcess = true),OutputType(typeof(PSDataLakeAnalyticsAcl))]
     [Alias("Set-AdlCatalogItemAclEntry")]
-    public class SetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeAnalyticsCatalogItemAclEntry")]
 #endif
+    public class SetAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
         private const string UserCatalogParameterSetName = "SetCatalogAclEntryForUser";
         private const string UserCatalogItemParameterSetName = "SetCatalogItemAclEntryForUser";
@@ -221,4 +221,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         }
     }
 }
+
 

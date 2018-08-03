@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMAccessExtension"),OutputType(typeof(VirtualMachineAccessExtensionContext))]
-    public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMAccessExtension")]
 #endif
+    public class GetAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

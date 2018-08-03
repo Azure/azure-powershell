@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMDiagnosticsExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVMDiagnosticsExtension")]
 #endif
+    public class SetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         private Hashtable publicConfiguration;
         private Hashtable privateConfiguration;
@@ -308,4 +308,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

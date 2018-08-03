@@ -31,10 +31,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","NetworkWatcherReachabilityProvidersList", DefaultParameterSetName = "SetByName"), OutputType(typeof(PSAvailableProvidersList))]
-    public class GetAzureRmNetworkWatcherAvailableProviders : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmNetworkWatcherReachabilityProvidersList")]
 #endif
+    public class GetAzureRmNetworkWatcherAvailableProviders : NetworkWatcherBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -142,4 +142,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
 

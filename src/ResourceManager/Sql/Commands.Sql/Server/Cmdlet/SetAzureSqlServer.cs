@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// Defines the Get-AzureRmSqlServer cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServer", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(Model.AzureSqlServerModel))]
-    public class SetAzureSqlServer : AzureSqlServerCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlServer")]
 #endif
+    public class SetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -118,4 +118,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+
 

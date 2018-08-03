@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlServer", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerModel))]
-    public class GetAzureSqlServer : AzureSqlServerCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServer")]
 #endif
+    public class GetAzureSqlServer : AzureSqlServerCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the resource group to use.
@@ -106,4 +106,5 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         }
     }
 }
+
 

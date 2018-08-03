@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// Creates new service bus queue job.
     /// </summary>
     [Cmdlet("New","SchedulerServiceBusQueueJob", SupportsShouldProcess = true), OutputType(typeof(PSSchedulerJobDefinition))]
-    public class NewAzureSchedulerServiceBusQueueCommand : JobBaseCmdlet, IDynamicParameters
 #if NETSTANDARD
     [Alias("New-AzureRmSchedulerServiceBusQueueJob")]
 #endif
+    public class NewAzureSchedulerServiceBusQueueCommand : JobBaseCmdlet, IDynamicParameters
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
         [ResourceGroupCompleter]
@@ -176,4 +176,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
 

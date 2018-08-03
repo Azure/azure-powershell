@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// Regnerate Maps Account Key (Primary or Secondary)
     /// </summary>
     [Cmdlet("New","MapsAccountKey", SupportsShouldProcess = true, DefaultParameterSetName = NameParameterSet), OutputType(typeof(MapsAccountKeys))]
-    public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmMapsAccountKey")]
 #endif
+    public class NewAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -123,4 +123,5 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+
 

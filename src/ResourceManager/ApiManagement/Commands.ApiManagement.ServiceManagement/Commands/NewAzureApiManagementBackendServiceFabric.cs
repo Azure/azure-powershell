@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("New","ApiManagementBackendServiceFabric")]
     [OutputType(typeof(PsApiManagementServiceFabric))]
-    public class NewAzureApiManagementBackendServiceFabric : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmApiManagementBackendServiceFabric")]
 #endif
+    public class NewAzureApiManagementBackendServiceFabric : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

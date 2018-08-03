@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Deletes an existing protection policy from the recovery services vault
     /// </summary>
     [Cmdlet("Remove","RecoveryServicesBackupProtectionPolicy", SupportsShouldProcess = true,DefaultParameterSetName = PolicyNameParameterSet), OutputType(typeof(PolicyBase))]
-    public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRecoveryServicesBackupProtectionPolicy")]
 #endif
+    public class RemoveAzureRmRecoveryServicesBackupProtectionPolicy : RSBackupVaultCmdletBase
     {
         internal const string PolicyNameParameterSet = "PolicyName";
         internal const string PolicyObjectParameterSet = "PolicyObject";
@@ -103,4 +103,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

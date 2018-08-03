@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// </summary>
     [Cmdlet("Remove","ActionGroup", DefaultParameterSetName = ByPropertyName, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmActionGroupCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmActionGroup")]
 #endif
+    public class RemoveAzureRmActionGroupCommand : ManagementCmdletBase
     {
         private const string ByPropertyName = "ByPropertyName";
 
@@ -109,4 +109,5 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         }
     }
 }
+
 

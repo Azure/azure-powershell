@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
     /// 'Remove-AzureRmWcfRelay' Cmdlet removes the specified WcfRelay
     /// </summary>
     [Cmdlet("Remove","WcfRelay", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureWcfRelay : AzureRelayCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmWcfRelay")]
 #endif
+    public class RemoveAzureWcfRelay : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.WcfRelay
         }
     }
 }
+
 

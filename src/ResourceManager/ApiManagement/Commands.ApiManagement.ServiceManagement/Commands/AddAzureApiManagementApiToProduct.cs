@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Add","ApiManagementApiToProduct")]
     [OutputType(typeof(bool))]
-    public class AddAzureApiManagementApiToProduct : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureRmApiManagementApiToProduct")]
 #endif
+    public class AddAzureApiManagementApiToProduct : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkInterface", DefaultParameterSetName = "NoExpandStandAloneNic"), OutputType(typeof(PSNetworkInterface))]
-    public class GetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmNetworkInterface")]
 #endif
+    public class GetAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -187,4 +187,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Environment")]
     [OutputType(typeof(PSAzureEnvironment))]
-    public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmEnvironment")]
 #endif
+    public class GetAzureRMEnvironmentCommand : AzureRMCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The environment name")]
         public string Name { get; set; }
@@ -49,4 +49,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

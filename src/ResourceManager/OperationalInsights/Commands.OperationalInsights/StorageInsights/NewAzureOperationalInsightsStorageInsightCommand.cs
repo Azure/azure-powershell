@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsStorageInsight", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSStorageInsight))]
-    public class NewAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmOperationalInsightsStorageInsight")]
 #endif
+    public class NewAzureOperationalInsightsStorageInsightCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the storage insight.")]
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
 

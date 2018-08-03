@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
     [Cmdlet("New","ApiManagementCustomHostnameConfiguration", DefaultParameterSetName = "NoChangeCertificate")]
     [OutputType(typeof(PsApiManagementCustomHostNameConfiguration))]
-    public class NewAzureApiManagementCustomHostnameConfiguration : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmApiManagementCustomHostnameConfiguration")]
 #endif
+    public class NewAzureApiManagementCustomHostnameConfiguration : AzureRMCmdlet
     {
         private const string NoChangeCertificate = "NoChangeCertificate";
         private const string SslCertificateFromFile = "SslCertificateFromFile";
@@ -132,4 +132,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

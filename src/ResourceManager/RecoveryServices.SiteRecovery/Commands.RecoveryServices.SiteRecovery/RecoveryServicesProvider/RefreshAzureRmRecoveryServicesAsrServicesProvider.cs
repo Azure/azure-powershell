@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Update","RecoveryServicesAsrServicesProvider",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Update-ASRServicesProvider")]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmRecoveryServicesAsrServicesProvider")]
 #endif
+    public class UpdateAzureRmRecoveryServicesAsrServicesProvider : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the Recovery Services Provider object 
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("New","DataMigrationSelectedDB", DefaultParameterSetName = SqlServerSqlDbParameterSet), OutputType(typeof(MigrateSqlServerSqlDbDatabaseInput))]
     [Alias("New-AzureRmDmsSelectedDB")]
-    public class NewDataMigrationSelectedDB : DataMigrationCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDataMigrationSelectedDB")]
 #endif
+    public class NewDataMigrationSelectedDB : DataMigrationCmdlet
     {
         private const string SqlServerSqlDbParameterSet = "MigrateSqlServerSqlDb";
         private const string SqlServerSqlDbMiParameterSet = "MigrateSqlServerSqlDbMi";
@@ -120,4 +120,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
 

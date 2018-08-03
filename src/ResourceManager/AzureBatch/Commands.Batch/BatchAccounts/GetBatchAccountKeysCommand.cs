@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccountKeys"), OutputType(typeof(BatchAccountContext))]
-    public class GetBatchAccountKeysCommand : BatchCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBatchAccountKeys")]
 #endif
+    public class GetBatchAccountKeysCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to query keys for.")]
@@ -46,4 +46,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

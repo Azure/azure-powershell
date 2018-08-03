@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
     /// Disable Azure Backup protection
     /// </summary>
     [Cmdlet("Disable","BackupProtection", SupportsShouldProcess = true), OutputType(typeof(AzureRMBackupJob))]
-    public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
 #if NETSTANDARD
     [Alias("Disable-AzureRmBackupProtection")]
 #endif
+    public class DisableAzureRMBackupProtection : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RemoveProtectionOption)]
         public SwitchParameter RemoveRecoveryPoints
@@ -85,4 +85,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets.DataSource
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
     [Cmdlet("Remove","PowerBIWorkspaceCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmPowerBIWorkspaceCollection")]
 #endif
+    public class RemoveWorkspaceCollection : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+
 

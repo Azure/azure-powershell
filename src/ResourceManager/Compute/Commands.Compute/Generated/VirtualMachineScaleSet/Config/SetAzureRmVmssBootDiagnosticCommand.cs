@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set","VmssBootDiagnostic", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
-    public partial class SetAzureRmVmssBootDiagnosticCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVmssBootDiagnostic")]
 #endif
+    public partial class SetAzureRmVmssBootDiagnosticCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -109,4 +109,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

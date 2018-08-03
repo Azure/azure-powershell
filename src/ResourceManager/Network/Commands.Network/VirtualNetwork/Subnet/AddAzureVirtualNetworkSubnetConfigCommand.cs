@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","VirtualNetworkSubnetConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSVirtualNetwork))]
-    public class AddAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
 #if NETSTANDARD
     [Alias("Add-AzureRmVirtualNetworkSubnetConfig")]
 #endif
+    public class AddAzureVirtualNetworkSubnetConfigCommand : AzureVirtualNetworkSubnetConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -97,4 +97,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

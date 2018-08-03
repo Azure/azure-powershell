@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("Set","IotHub", DefaultParameterSetName = "UpdateSku", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
-    public class SetAzureRmIotHub : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmIotHub")]
 #endif
+    public class SetAzureRmIotHub : IotHubBaseCmdlet
     {
         const string UpdateSkuParameterSet = "UpdateSku";
         const string UpdateEventHubEndpointPropertiesParameterSet = "UpdateEventHubEndpointProperties";
@@ -260,4 +260,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

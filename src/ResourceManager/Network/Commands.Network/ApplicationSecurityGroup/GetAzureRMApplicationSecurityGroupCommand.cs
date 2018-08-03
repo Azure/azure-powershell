@@ -36,10 +36,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","ApplicationSecurityGroup"), OutputType(typeof(PSApplicationSecurityGroup))]
-    public partial class GetAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationSecurityGroup")]
 #endif
+    public partial class GetAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
 

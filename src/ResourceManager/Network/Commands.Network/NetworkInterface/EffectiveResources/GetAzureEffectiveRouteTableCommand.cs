@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","EffectiveRouteTable"), OutputType(typeof(PSEffectiveRoute))]
-    public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmEffectiveRouteTable")]
 #endif
+    public class GetAzureEffectiveRouteTableCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

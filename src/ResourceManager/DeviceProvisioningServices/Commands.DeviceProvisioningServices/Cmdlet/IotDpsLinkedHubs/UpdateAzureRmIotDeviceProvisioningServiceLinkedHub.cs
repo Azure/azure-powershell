@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
     [Cmdlet("Update","IoTDeviceProvisioningServiceLinkedHub", DefaultParameterSetName = ResourceParameterSet, SupportsShouldProcess = true)]
     [Alias("Update-AzureRmIoTDpsHub")]
     [OutputType(typeof(PSIotHubDefinitionDescription))]
-    public class UpdateAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmIoTDeviceProvisioningServiceLinkedHub")]
 #endif
+    public class UpdateAzureRmIoTDeviceProvisioningServiceLinkedHub : IotDpsBaseCmdlet
     {
         private const string ResourceIdParameterSet = "ResourceIdSet";
         private const string ResourceParameterSet = "ResourceSet";
@@ -133,4 +133,5 @@ namespace Microsoft.Azure.Commands.Management.DeviceProvisioningServices
         }
     }
 }
+
 

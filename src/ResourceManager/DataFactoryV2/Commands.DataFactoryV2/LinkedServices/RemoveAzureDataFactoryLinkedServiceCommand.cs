@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove","DataFactoryV2LinkedService", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureDataFactoryLinkedServiceCommand : DataFactoryContextActionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataFactoryV2LinkedService")]
 #endif
+    public class RemoveAzureDataFactoryLinkedServiceCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,
             HelpMessage = Constants.HelpLinkedServiceName)]
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

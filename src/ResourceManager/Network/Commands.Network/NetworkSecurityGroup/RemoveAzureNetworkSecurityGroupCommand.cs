@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmNetworkSecurityGroup")]
 #endif
+    public class RemoveAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

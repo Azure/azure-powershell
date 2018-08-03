@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Remove","RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Remove-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRecoveryServicesAsrvCenter")]
 #endif
+    public class RemoveAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the resourceId of vCenter to remove.
@@ -114,4 +114,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

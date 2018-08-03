@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","IntegrationAccountGeneratedIcn")]
     [OutputType(typeof(IntegrationAccountControlNumber))]
-    public class GetAzureIntegrationAccountGeneratedIcnCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmIntegrationAccountGeneratedIcn")]
 #endif
+    public class GetAzureIntegrationAccountGeneratedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Parameters
 
@@ -94,4 +94,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

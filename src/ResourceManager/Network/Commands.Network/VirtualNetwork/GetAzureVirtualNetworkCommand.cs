@@ -23,10 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VirtualNetwork"), OutputType(typeof(PSVirtualNetwork))]
-    public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVirtualNetwork")]
 #endif
+    public class GetAzureVirtualNetworkCommand : VirtualNetworkBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Revoke","HDInsightRdpServicesAccess"),OutputType(typeof(void))]
-    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("Revoke-AzureRmHDInsightRdpServicesAccess")]
 #endif
+    public class RevokeAzureHDInsightRdpServicesAccessCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

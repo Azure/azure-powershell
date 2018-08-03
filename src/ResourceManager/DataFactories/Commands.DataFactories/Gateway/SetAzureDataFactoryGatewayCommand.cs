@@ -21,10 +21,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Set","DataFactoryGateway", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataFactoryGateway))]
-    public class SetAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmDataFactoryGateway")]
 #endif
+    public class SetAzureDataFactoryGatewayCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
 HelpMessage = "The data factory object.")]
@@ -69,4 +69,5 @@ HelpMessage = "The data factory object.")]
         }
     }
 }
+
 

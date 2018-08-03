@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
     /// </summary>
     [Cmdlet("New","ActionGroupReceiver", DefaultParameterSetName = NewEmailReceiver)]
     [OutputType(typeof(PSActionGroupReceiverBase))]
-    public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmActionGroupReceiver")]
 #endif
+    public class NewAzureRmActionGroupReceiverCommand : AzureRMCmdlet
     {
         private const string NewEmailReceiver = "NewEmailReceiver";
 
@@ -114,4 +114,5 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         }
     }
 }
+
 

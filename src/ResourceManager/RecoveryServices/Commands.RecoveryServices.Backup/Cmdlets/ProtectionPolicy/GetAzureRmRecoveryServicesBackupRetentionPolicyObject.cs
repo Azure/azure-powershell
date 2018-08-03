@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// and fed to other cmdlets which accept it.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupRetentionPolicyObject"),OutputType(typeof(RetentionPolicyBase))]
-    public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesBackupRetentionPolicyObject")]
 #endif
+    public class GetAzureRmRecoveryServicesBackupRetentionPolicyObject : RecoveryServicesBackupCmdletBase
     {
         /// <summary>
         /// Workload type of the policy to be created.
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

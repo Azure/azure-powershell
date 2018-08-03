@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
     [Cmdlet("Get","EventHub"), OutputType(typeof(PSEventHubAttributes))]
-    public class GetAzureRmEventHub : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmEventHub")]
 #endif
+    public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         }
     }
 }
+
 

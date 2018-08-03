@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("New","AutomationKey")]
     [OutputType(typeof(AgentRegistration))]
-    public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmAutomationKey")]
 #endif
+    public class NewAzureAutomationKey : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the KeyType.
@@ -46,4 +46,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

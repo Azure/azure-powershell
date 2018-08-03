@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
     [Cmdlet("Remove","NotificationHubsNamespaceAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmNotificationHubsNamespaceAuthorizationRules")]
 #endif
+    public class RemoveAzureNotificationHubsNamespaceAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         }
     }
 }
+
 

@@ -135,10 +135,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Get","Disk", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSDisk))]
-    public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDisk")]
 #endif
+    public partial class GetAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -215,4 +215,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string DiskName { get; set; }
     }
 }
+
 

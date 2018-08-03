@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Test","DataLakeAnalyticsCatalogItem"), OutputType(typeof(bool))]
     [Alias("Test-AdlCatalogItem")]
-    public class TestAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmDataLakeAnalyticsCatalogItem")]
 #endif
+    public class TestAzureDataLakeAnalyticsCatalogItem : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The account name to retrieve the catalog item(s) from.")]
@@ -48,4 +48,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

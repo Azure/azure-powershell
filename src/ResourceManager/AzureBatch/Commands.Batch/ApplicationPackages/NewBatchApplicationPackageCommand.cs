@@ -21,10 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplicationPackage", DefaultParameterSetName = UploadAndActivateSet), OutputType(typeof(PSApplicationPackage))]
-    public class NewBatchApplicationPackageCommand : BatchCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmBatchApplicationPackage")]
 #endif
+    public class NewBatchApplicationPackageCommand : BatchCmdletBase
     {
         internal const string ActivateOnlySet = "ActivateOnly";
         internal const string UploadAndActivateSet = "UploadAndActivate";
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -29,10 +29,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","VirtualNetworkGateway",SupportsShouldProcess = true,DefaultParameterSetName = VirtualNetworkGatewayParameterSets.Default),OutputType(typeof(PSVirtualNetworkGateway))]
-    public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmVirtualNetworkGateway")]
 #endif
+    public class NewAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -411,4 +411,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

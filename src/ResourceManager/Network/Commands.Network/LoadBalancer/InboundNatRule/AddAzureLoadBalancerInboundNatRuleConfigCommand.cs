@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerInboundNatRuleConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class AddAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
 #if NETSTANDARD
     [Alias("Add-AzureRmLoadBalancerInboundNatRuleConfig")]
 #endif
+    public class AddAzureLoadBalancerInboundNatRuleConfigCommand : AzureLoadBalancerInboundNatRuleConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

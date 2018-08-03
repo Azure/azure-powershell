@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("New","RecoveryServicesAsrPolicy",DefaultParameterSetName = ASRParameterSets.HyperVToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRPolicy")]
     [OutputType(typeof(ASRJob))]
-    public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesAsrPolicy")]
 #endif
+    public class NewAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///    Switch parameter specifying that the replication policy being created will be used 
@@ -588,4 +588,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

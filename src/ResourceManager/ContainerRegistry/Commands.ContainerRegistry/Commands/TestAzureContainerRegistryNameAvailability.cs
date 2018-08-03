@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Test","ContainerRegistryNameAvailability")]
     [OutputType(typeof(RegistryNameStatus))]
-    public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmContainerRegistryNameAvailability")]
 #endif
+    public class TestAzureContainerRegistryNameAvailability : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Container Registry Name.")]
         [Alias(ContainerRegistryNameAlias, RegistryNameAlias, ResourceNameAlias)]
@@ -35,4 +35,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
 

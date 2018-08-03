@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     [Cmdlet("Get","CdnProfileResourceUsage", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSResourceUsage))]
-    public class GetAzureRmCdnProfileResourceUsage : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnProfileResourceUsage")]
 #endif
+    public class GetAzureRmCdnProfileResourceUsage : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet("Update","ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
-    public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmApiManagementRegion")]
 #endif
+    public class UpdateAzureApiManagementRegion : AzureApiManagementCmdletBase
     {
         [Parameter(
           ValueFromPipeline = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

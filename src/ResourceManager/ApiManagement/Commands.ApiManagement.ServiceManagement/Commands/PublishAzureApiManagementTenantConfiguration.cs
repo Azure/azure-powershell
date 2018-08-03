@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Publish","ApiManagementTenantGitConfiguration", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementOperationResult))]
-    public class PublishAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Publish-AzureRmApiManagementTenantGitConfiguration")]
 #endif
+    public class PublishAzureApiManagementTenantConfiguration : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

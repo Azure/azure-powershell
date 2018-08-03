@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
 {
     [Cmdlet("Get","SqlDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModel))]
-    public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabase")]
 #endif
+    public class GetAzureSqlDatabase : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlDatabaseModel>>
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Cmdlet
         }
     }
 }
+
 

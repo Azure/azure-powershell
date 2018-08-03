@@ -25,10 +25,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","NetworkWatcher", SupportsShouldProcess = true),OutputType(typeof(PSNetworkWatcher))]
-    public class NewAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmNetworkWatcher")]
 #endif
+    public class NewAzureNetworkWatcherCommand : NetworkWatcherBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -101,4 +101,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

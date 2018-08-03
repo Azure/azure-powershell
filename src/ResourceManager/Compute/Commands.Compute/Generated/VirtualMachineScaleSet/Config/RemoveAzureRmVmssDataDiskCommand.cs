@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Remove","VmssDataDisk", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
-    public partial class RemoveAzureRmVmssDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVmssDataDisk")]
 #endif
+    public partial class RemoveAzureRmVmssDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Start-ASRCommitFailover",
         "Start-ASRCommitFailoverJob")]
     [OutputType(typeof(ASRJob))]
-    public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Start-AzureRmRecoveryServicesAsrCommitFailoverJob")]
 #endif
+    public class StartAzureRmRecoveryServicesAsrCommitFailoverJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets recovery plan object corresponding to recovery plan to be failovered .
@@ -199,4 +199,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
 

@@ -19,10 +19,10 @@ using Microsoft.Azure.Commands.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApplicationGatewaySslPolicy")]
 #endif
+    public class SetAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         [Parameter(
              Mandatory = true,
@@ -40,4 +40,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

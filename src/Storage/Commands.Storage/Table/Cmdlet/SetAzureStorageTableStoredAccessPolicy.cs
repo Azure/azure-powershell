@@ -24,10 +24,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Security.Permissions;
 
     [Cmdlet("Set","AzureStorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
-    public class SetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureStorageTableStoredAccessPolicy")]
 #endif
+    public class SetAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -124,4 +124,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
 

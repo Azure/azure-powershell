@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Publish","AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByRunbookName)]
     [OutputType(typeof(Runbook))]
-    public class PublishAzureAutomationRunbook : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Publish-AzureRmAutomationRunbook")]
 #endif
+    public class PublishAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
@@ -49,4 +49,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

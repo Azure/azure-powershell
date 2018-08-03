@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Set","DataLakeStoreItemOwner", SupportsShouldProcess = true),OutputType(typeof(bool))]
     [Alias("Set-AdlStoreItemOwner")]
-    public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeStoreItemOwner")]
 #endif
+    public class SetAzureDataLakeStoreItemOwner : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -85,4 +85,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

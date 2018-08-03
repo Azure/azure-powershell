@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "New-ASRRP",
         "New-ASRRecoveryPlan")]
     [OutputType(typeof(ASRJob))]
-    public class NewAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
+    public class NewAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets failover deployment model
@@ -345,4 +345,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

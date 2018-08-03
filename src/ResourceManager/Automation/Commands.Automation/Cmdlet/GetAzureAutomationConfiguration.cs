@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Get","AutomationDscConfiguration", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DscConfiguration))]
-    public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmAutomationDscConfiguration")]
 #endif
+    public class GetAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the configuration name.
@@ -71,4 +71,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

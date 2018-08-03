@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount"), OutputType(typeof(BatchAccountContext))]
-    public class GetBatchAccountCommand : BatchCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBatchAccount")]
 #endif
+    public class GetBatchAccountCommand : BatchCmdletBase
     {
         [Alias("Name")]
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true)]
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

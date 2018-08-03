@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// this commandlet will let you Create Eventhub namespace.
     /// </summary>
     [Cmdlet("New","EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
-    public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmEventHubNamespace")]
 #endif
+    public class NewAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         /// <summary>
         /// Name of the resource group.
@@ -108,4 +108,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         }
     }
 }
+
 

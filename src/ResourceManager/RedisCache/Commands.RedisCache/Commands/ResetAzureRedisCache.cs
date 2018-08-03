@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Reset","RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class ResetAzureRedisCache : RedisCacheCmdletBase
 #if NETSTANDARD
     [Alias("Reset-AzureRmRedisCache")]
 #endif
+    public class ResetAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
 

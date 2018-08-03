@@ -133,10 +133,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Get","VmssVM", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSVirtualMachineScaleSetVM))]
-    public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVmssVM")]
 #endif
+    public partial class GetAzureRmVmssVM : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -226,4 +226,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter InstanceView { get; set; }
     }
 }
+
 

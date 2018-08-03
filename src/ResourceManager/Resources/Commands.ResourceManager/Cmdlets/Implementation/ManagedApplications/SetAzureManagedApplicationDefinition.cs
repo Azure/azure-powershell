@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the managed application definition.
     /// </summary>
     [Cmdlet("Set","ManagedApplicationDefinition", DefaultParameterSetName = SetAzureManagedApplicationDefinitionCmdlet.ManagedApplicationDefinitionNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class SetAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmManagedApplicationDefinition")]
 #endif
+    public class SetAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
         /// The managed application Id parameter set.
@@ -184,4 +184,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

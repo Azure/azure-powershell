@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("New-AzureAs")]
-    public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmAnalysisServicesServer")]
 #endif
+    public class NewAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of resource group under which you want to create the server.")]
@@ -157,4 +157,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

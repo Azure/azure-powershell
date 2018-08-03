@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Set","IntegrationAccountCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountCertificate))]
-    public class UpdateAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmIntegrationAccountCertificate")]
 #endif
+    public class UpdateAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
@@ -152,4 +152,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

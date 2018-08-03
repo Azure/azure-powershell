@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmLoadBalancerProbeConfig")]
 #endif
+    public class RemoveAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -51,4 +51,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

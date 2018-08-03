@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     [Cmdlet("Get","SqlDatabaseFailoverGroup")]
     [OutputType(typeof(AzureSqlFailoverGroupModel))]
-    public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseFailoverGroup")]
 #endif
+    public class GetAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
 

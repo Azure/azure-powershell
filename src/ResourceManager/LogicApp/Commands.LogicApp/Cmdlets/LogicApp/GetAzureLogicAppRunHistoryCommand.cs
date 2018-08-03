@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Creates a new LogicApp workflow 
     /// </summary>
     [Cmdlet("Get","LogicAppRunHistory"), OutputType(typeof(WorkflowRun))]
-    public class AzureLogicAppRunHistoryCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmLogicAppRunHistory")]
 #endif
+    public class AzureLogicAppRunHistoryCommand : LogicAppBaseCmdlet
     {
 
         #region Input Parameters
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

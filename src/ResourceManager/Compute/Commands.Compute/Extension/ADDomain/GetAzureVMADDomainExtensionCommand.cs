@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute
     [Cmdlet("Get","VMADDomainExtension")]
     [OutputType(
         typeof(VirtualMachineADDomainExtensionContext))]
-    public class GetAzureVMADDomainExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMADDomainExtension")]
 #endif
+    public class GetAzureVMADDomainExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -103,4 +103,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

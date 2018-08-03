@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you delete an Azure web app
     /// </summary>
     [Cmdlet("Remove","WebApp", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmWebApp")]
 #endif
+    public class RemoveAzureWebAppCmdlet : WebAppBaseCmdlet
     {
 
         //always delete the slots, 
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

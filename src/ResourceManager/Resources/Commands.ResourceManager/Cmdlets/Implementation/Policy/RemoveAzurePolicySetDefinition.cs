@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Removes the policy set definition.
     /// </summary>
     [Cmdlet("Remove","PolicySetDefinition", SupportsShouldProcess = true, DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(bool))]
-    public class RemoveAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmPolicySetDefinition")]
 #endif
+    public class RemoveAzurePolicySetDefinitionCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the policy set definition name parameter.
@@ -123,4 +123,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

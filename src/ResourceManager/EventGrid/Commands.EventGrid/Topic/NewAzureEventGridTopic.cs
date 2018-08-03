@@ -23,10 +23,10 @@ using Microsoft.Azure.Management.EventGrid.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("New","EventGridTopic",SupportsShouldProcess = true,DefaultParameterSetName = TopicNameParameterSet),OutputType(typeof(PSTopic))]
-    public class NewAzureEventGridTopic : AzureEventGridCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmEventGridTopic")]
 #endif
+    public class NewAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -84,4 +84,5 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Export","AutomationDscNodeReportContent", SupportsShouldProcess = true,DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
-    public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Export-AzureRmAutomationDscNodeReportContent")]
 #endif
+    public class ExportAzureAutomationDscNodeReportContent : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to overwrite the existing node report; false otherwise.
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

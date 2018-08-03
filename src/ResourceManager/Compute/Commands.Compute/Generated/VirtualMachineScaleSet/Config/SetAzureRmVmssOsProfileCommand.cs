@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set","VmssOsProfile", SupportsShouldProcess = true)]
     [OutputType(typeof(PSVirtualMachineScaleSet))]
-    public partial class SetAzureRmVmssOsProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVmssOsProfile")]
 #endif
+    public partial class SetAzureRmVmssOsProfileCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -354,4 +354,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

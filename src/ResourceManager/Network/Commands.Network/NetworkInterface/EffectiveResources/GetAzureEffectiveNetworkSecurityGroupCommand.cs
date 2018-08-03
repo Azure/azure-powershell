@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","EffectiveNetworkSecurityGroup"), OutputType(typeof(PSEffectiveNetworkSecurityGroup))]
-    public class GetAzureEffectiveNetworkSecurityGroupCommand : NetworkInterfaceBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmEffectiveNetworkSecurityGroup")]
 #endif
+    public class GetAzureEffectiveNetworkSecurityGroupCommand : NetworkInterfaceBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

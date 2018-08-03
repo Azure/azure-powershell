@@ -23,10 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Stop","NetworkWatcherPacketCapture", SupportsShouldProcess = true, DefaultParameterSetName = "SetByResource"), OutputType(typeof(bool))]
-    public class StopAzureNetworkWatcherPacketCaptureCommand : PacketCaptureBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmNetworkWatcherPacketCapture")]
 #endif
+    public class StopAzureNetworkWatcherPacketCaptureCommand : PacketCaptureBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

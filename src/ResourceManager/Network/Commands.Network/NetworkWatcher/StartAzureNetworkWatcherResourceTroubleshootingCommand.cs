@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Start","NetworkWatcherResourceTroubleshooting", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSTroubleshootingResult))]
 
-    public class StartAzureNetworkWatcherResourceTroubleshootingCommand : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmNetworkWatcherResourceTroubleshooting")]
 #endif
+    public class StartAzureNetworkWatcherResourceTroubleshootingCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -128,4 +128,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

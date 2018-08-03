@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
-    public class RestoreAzureKeyVaultCertificate : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Restore-AzureKeyVaultCertificate")]
 #endif
+    public class RestoreAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

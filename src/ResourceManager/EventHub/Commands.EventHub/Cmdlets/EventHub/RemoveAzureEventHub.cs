@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// 'Remove-AzureRmEventHub' Cmdlet removes the specified EventHub
     /// </summary>
     [Cmdlet("Remove","EventHub", DefaultParameterSetName = EventhubDefaultParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureEventHub : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmEventHub")]
 #endif
+    public class RemoveAzureEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = EventhubDefaultParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         }
     }
 }
+
 

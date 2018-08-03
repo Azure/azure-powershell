@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet("Test","MlOpClusterSystemServicesUpdateAvailability")]
     [OutputType(typeof(PSCheckSystemServicesUpdatesAvailableResponse))]
-    public class TestAzureRmOpClusterSystemServicesUpdateAvailability : MachineLearningComputeCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmMlOpClusterSystemServicesUpdateAvailability")]
 #endif
+    public class TestAzureRmOpClusterSystemServicesUpdateAvailability : MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet = "TestByNameAndResourceGroup";
 
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+
 

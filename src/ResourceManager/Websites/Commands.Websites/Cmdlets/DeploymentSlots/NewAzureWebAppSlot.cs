@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you create a new Azure Web app slot using ARM APIs
     /// </summary>
     [Cmdlet("New","WebAppSlot"), OutputType(typeof(Site))]
-    public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
 #if NETSTANDARD
     [Alias("New-AzureRmWebAppSlot")]
 #endif
+    public class NewAzureWebAppSlotCmdlet : WebAppBaseClientCmdLet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
@@ -97,4 +97,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+
 

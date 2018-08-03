@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
     [Cmdlet("Get","MlCommitmentAssociation")]
     [OutputType(typeof(CommitmentPlan))]
-    public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmMlCommitmentAssociation")]
 #endif
+    public class GetAzureMLCommitmentAssociation : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment association.")]
         [ResourceGroupCompleter]
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
 

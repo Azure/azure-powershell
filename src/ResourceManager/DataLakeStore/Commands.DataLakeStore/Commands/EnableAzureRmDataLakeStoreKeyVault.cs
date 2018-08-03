@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Enable","DataLakeStoreKeyVault", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Enable-AdlStoreKeyVault")]
-    public class EnableAzureDataLakeStoreKeyVault : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Enable-AzureRmDataLakeStoreKeyVault")]
 #endif
+    public class EnableAzureDataLakeStoreKeyVault : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to enable the Key Vault for")]
@@ -47,4 +47,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

@@ -37,10 +37,10 @@ using Microsoft.Azure.Management.Storage.Version2017_10_01;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Add","ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class AddAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureRmServiceFabricNodeType")]
 #endif
+    public class AddAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         private const string LoadBalancerIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}";
         private const string BackendAddressIdFormat = "/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/loadBalancers/{2}/backendAddressPools/{3}";
@@ -637,4 +637,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

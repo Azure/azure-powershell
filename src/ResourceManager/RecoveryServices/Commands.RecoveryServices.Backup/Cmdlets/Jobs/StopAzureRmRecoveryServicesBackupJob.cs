@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// The job may not cancel successfully. The cmdlet will ensure that the service is notified that a cancellation has been triggered.
     /// </summary>
     [Cmdlet("Stop","RecoveryServicesBackupJob", DefaultParameterSetName = JobFilterSet,SupportsShouldProcess = true), OutputType(typeof(JobBase))]
-    public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureRmRecoveryServicesBackupJob")]
 #endif
+    public class StopAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

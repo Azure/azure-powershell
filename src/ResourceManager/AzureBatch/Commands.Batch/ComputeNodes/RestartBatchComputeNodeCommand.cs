@@ -21,10 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNode", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
-    public class RestartBatchComputeNodeCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Restart-AzureBatchComputeNode")]
 #endif
+    public class RestartBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

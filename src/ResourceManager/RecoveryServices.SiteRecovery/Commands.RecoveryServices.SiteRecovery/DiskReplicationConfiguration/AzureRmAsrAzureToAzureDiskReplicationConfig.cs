@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("New","RecoveryServicesAsrAzureToAzureDiskReplicationConfig",DefaultParameterSetName = ASRParameterSets.AzureToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRAzureToAzureDiskReplicationConfig")]
     [OutputType(typeof(ASRAzuretoAzureDiskReplicationConfig))]
-    public class AzureRmAsrAzureToAzureDiskReplicationConfig : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig")]
 #endif
+    public class AzureRmAsrAzureToAzureDiskReplicationConfig : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

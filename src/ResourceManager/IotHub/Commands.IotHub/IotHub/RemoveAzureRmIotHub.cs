@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Remove","IotHub", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureRmIotHub : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmIotHub")]
 #endif
+    public class RemoveAzureRmIotHub : IotHubBaseCmdlet
     {
 
         [Parameter(
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

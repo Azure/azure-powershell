@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ExpressRouteCircuitAuthorization"), OutputType(typeof(PSExpressRouteCircuitAuthorization))]
-    public class NewAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
 #if NETSTANDARD
     [Alias("New-AzureRmExpressRouteCircuitAuthorization")]
 #endif
+    public class NewAzureExpressRouteCircuitAuthorizationCommand : AzureExpressRouteCircuitAuthorizationBase
     {
         [Parameter(
             Mandatory = true,
@@ -40,4 +40,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

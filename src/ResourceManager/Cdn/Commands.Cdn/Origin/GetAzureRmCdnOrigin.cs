@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Origin
 {
     [Cmdlet("Get","CdnOrigin", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSOrigin))]
-    public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnOrigin")]
 #endif
+    public class GetAzureRmCdnOrigin : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN origin name.")]
         [ValidateNotNullOrEmpty]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.Cdn.Origin
         }
     }
 }
+
 

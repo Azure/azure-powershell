@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayBackendAddressPool", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApplicationGatewayBackendAddressPool")]
 #endif
+    public class SetAzureApplicationGatewayBackendAddressPoolCommand : AzureApplicationGatewayBackendAddressPoolBase
     {
         [Parameter(
              Mandatory = true,
@@ -54,4 +54,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

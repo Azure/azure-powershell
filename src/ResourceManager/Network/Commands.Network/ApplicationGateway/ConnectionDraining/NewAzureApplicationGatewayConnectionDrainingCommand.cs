@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayConnectionDraining"),OutputType(typeof(PSApplicationGatewayConnectionDraining))]
-    public class NewAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayConnectionDraining")]
 #endif
+    public class NewAzureApplicationGatewayConnectionDrainingCommand : AzureApplicationGatewayConnectionDrainingBase
     {
         public override void ExecuteCmdlet()
         {
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

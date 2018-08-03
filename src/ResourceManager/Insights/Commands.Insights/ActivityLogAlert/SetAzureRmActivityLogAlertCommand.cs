@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// Create or update an Activity Log Alert
     /// </summary>
     [Cmdlet("Set","ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
-    public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmActivityLogAlert")]
 #endif
+    public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string SetActivityLogAlertDefaultParamGroup = "SetByNameAndResourceGroup";
         internal const string SetActivityLogAlertFromPipeParamGroup = "SetByInputObject";
@@ -263,4 +263,5 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         }
     }
 }
+
 

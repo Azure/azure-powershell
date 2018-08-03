@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Set","ApiManagementUser")]
     [OutputType(typeof(PsApiManagementUser))]
-    public class SetAzureApiManagementUser : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApiManagementUser")]
 #endif
+    public class SetAzureApiManagementUser : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -97,4 +97,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

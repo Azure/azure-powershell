@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
     [Cmdlet("Get","CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSCustomDomain))]
-    public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnCustomDomain")]
 #endif
+    public class GetAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN custom domain name.")]
         [ValidateNotNullOrEmpty]
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         }
     }
 }
+
 

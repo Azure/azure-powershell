@@ -21,10 +21,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Enable","TrafficManagerProfile"), OutputType(typeof(bool))]
-    public class EnableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
 #if NETSTANDARD
     [Alias("Enable-AzureRmTrafficManagerProfile")]
 #endif
+    public class EnableAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
 

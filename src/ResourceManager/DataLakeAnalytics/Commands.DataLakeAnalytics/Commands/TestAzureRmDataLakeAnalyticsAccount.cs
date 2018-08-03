@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Test","DataLakeAnalyticsAccount"), OutputType(typeof(bool))]
     [Alias("Test-AdlAnalyticsAccount")]
-    public class TestAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmDataLakeAnalyticsAccount")]
 #endif
+    public class TestAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of a specific account.")]
@@ -42,4 +42,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

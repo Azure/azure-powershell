@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Backup","ApiManagement"), OutputType(typeof(PsApiManagement))]
-    public class BackupAzureApiManagement : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Backup-AzureRmApiManagement")]
 #endif
+    public class BackupAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -85,4 +85,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

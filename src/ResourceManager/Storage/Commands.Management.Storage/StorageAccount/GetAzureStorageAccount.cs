@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get","StorageAccount"), OutputType(typeof(PSStorageAccount))]
-    public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmStorageAccount")]
 #endif
+    public class GetAzureStorageAccountCommand : StorageAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
 

@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     [Cmdlet("Get","RecoveryServicesBackupProperty")]
     [Alias("Get-AzureRmRecoveryServicesBackupProperties")]
     [OutputType(typeof(ASRVaultBackupProperties))]
-    public class GetAzureRmRecoveryServicesBackupProperty : RecoveryServicesCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesBackupProperty")]
 #endif
+    public class GetAzureRmRecoveryServicesBackupProperty : RecoveryServicesCmdletBase
     {
         #region Parameters
 
@@ -65,4 +65,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
     }
 }
+
 

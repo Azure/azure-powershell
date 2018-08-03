@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkWatcherFlowLogStatus", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSFlowLog))]
 
-    public class GetAzureNetworkWatcherFlowLogStatusCommand : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmNetworkWatcherFlowLogStatus")]
 #endif
+    public class GetAzureNetworkWatcherFlowLogStatusCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -115,4 +115,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

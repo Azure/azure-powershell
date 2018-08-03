@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateIssuer", SupportsShouldProcess = true,DefaultParameterSetName = ExpandedParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
-    public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureKeyVaultCertificateIssuer")]
 #endif
+    public class SetAzureKeyVaultCertificateIssuer : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -158,4 +158,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

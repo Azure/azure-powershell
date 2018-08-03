@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("Get","ApplicationInsights", DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSApplicationInsightsComponent))]
-    public class GetApplicationInsightsCommand : ApplicationInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationInsights")]
 #endif
+    public class GetApplicationInsightsCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -128,4 +128,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
 

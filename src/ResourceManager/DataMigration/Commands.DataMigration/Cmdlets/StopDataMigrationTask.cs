@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("Stop","DataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Stop-AzureRmDmsTask")]
-    public class StopDataMigrationTask : DataMigrationCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmDataMigrationTask")]
 #endif
+    public class StopDataMigrationTask : DataMigrationCmdlet
     {
         [Parameter(
          Position = 0,
@@ -119,4 +119,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// 'New-AzureRmServicebusGeoDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
     [Cmdlet("New","ServiceBusGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceBusDRConfigurationAttributes))]
-    public class NewAzureRmEventHubGeoDRConfiguration : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmServiceBusGeoDRConfiguration")]
 #endif
+    public class NewAzureRmEventHubGeoDRConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -103,4 +103,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         }
     }
 }
+
 

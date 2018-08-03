@@ -27,10 +27,10 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricNodeType", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmServiceFabricNodeType")]
 #endif
+    public class RemoveAzureRmServiceFabricNodeType : ServiceFabricNodeTypeCmdletBase
     {
         /// <summary>
         /// Resource group name
@@ -115,4 +115,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

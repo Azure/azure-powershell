@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set","DataFactoryV2LinkedService", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(PSLinkedService))]
     [Alias(VerbsCommon.New + "-" + Constants.LinkedService)]
-    public class SetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseSetCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmDataFactoryV2LinkedService")]
 #endif
+    public class SetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpLinkedServiceName)]
@@ -53,4 +53,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

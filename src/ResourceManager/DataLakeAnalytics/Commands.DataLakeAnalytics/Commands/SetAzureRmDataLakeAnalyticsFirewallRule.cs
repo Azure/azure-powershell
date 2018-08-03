@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Set","DataLakeAnalyticsFirewallRule", SupportsShouldProcess = true), OutputType(typeof(DataLakeAnalyticsFirewallRule))]
     [Alias("Set-AdlAnalyticsFirewallRule")]
-    public class SetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeAnalyticsFirewallRule")]
 #endif
+    public class SetAzureRmDataLakeAnalyticsFirewallRule : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Analytics account to update the firewall rule in")]
@@ -74,4 +74,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

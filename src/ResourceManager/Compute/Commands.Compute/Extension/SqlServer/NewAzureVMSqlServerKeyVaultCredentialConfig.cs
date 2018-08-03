@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Compute
     /// Helper cmdlet to construct instance of SQL Credential AKV based settings class
     /// </summary>
     [Cmdlet("New","VMSqlServerKeyVaultCredentialConfig",SupportsShouldProcess = true),OutputType(typeof(KeyVaultCredentialSettings))]
-    public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmVMSqlServerKeyVaultCredentialConfig")]
 #endif
+    public class NewAzureVMSqlServerKeyVaultCredentialConfigCommand : PSCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

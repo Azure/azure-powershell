@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultNetworkRule", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameParameterSet)]
     [OutputType(typeof(PSKeyVault))]
-    public class AddAzureKeyVaultNetworkRule : KeyVaultNetworkRuleSetBase
 #if NETSTANDARD
     [Alias("Add-AzureRmKeyVaultNetworkRule")]
 #endif
+    public class AddAzureKeyVaultNetworkRule : KeyVaultNetworkRuleSetBase
     {
         private const string ByVaultNameParameterSet = "ByVaultName";
         private const string ByInputObjectParameterSet = "ByInputObject";
@@ -158,4 +158,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

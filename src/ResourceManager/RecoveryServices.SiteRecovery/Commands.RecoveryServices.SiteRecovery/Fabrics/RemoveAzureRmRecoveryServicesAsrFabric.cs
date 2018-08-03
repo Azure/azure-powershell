@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Remove","RecoveryServicesAsrFabric",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Remove-ASRFabric")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRecoveryServicesAsrFabric")]
 #endif
+    public class RemoveAzureRmRecoveryServicesAsrFabric : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the fabric object corresponding to the fabric to be deleted.
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2LinkedService", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSLinkedService))]
-    public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseGetCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataFactoryV2LinkedService")]
 #endif
+    public class GetAzureDataFactoryLinkedServiceCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpLinkedServiceName)]
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

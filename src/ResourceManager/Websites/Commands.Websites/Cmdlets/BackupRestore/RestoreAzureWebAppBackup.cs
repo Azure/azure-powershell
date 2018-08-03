@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
     /// Restores an Azure Web App backup
     /// </summary>
     [Cmdlet("Restore","WebAppBackup"), OutputType(typeof(void))]
-    public class RestoreAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("Restore-AzureRmWebAppBackup")]
 #endif
+    public class RestoreAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.BackupRestore
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Saves the deployment template to a file on disk.
     /// </summary>
     [Cmdlet("Save","ResourceGroupDeploymentTemplate", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class SaveAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
 #if NETSTANDARD
     [Alias("Save-AzureRmResourceGroupDeploymentTemplate")]
 #endif
+    public class SaveAzureResourceGroupDeploymentTemplateCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// Gets or sets the resource group name parameter.
@@ -121,4 +121,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

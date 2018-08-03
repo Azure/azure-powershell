@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// </summary>
     [Cmdlet("Get","DataMigrationService", DefaultParameterSetName = ResourceGroupSet), OutputType(typeof(PSDataMigrationService))]
     [Alias("Get-AzureRmDms")]
-    public class GetAzureDataMigrationService : DataMigrationCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataMigrationService")]
 #endif
+    public class GetAzureDataMigrationService : DataMigrationCmdlet
     {
         private const string ResourceGroupSet = "ResourceGroupSet";
         private const string ServiceNameGroupSet = "ServiceNameGroupSet";
@@ -106,4 +106,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
 

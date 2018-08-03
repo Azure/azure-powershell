@@ -25,10 +25,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","VpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
-    public class AddAzureVpnClientRevokedCertificateCommand : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmVpnClientRevokedCertificate")]
 #endif
+    public class AddAzureVpnClientRevokedCertificateCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

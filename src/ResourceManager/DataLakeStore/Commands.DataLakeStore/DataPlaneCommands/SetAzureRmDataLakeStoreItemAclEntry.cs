@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Set","DataLakeStoreItemAclEntry", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAclEntry")]
-    public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeStoreItemAclEntry")]
 #endif
+    public class SetAzureDataLakeStoreItemAclEntry : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "SetByACLObject";
         internal const string SpecificAceParameterSetName = "SetSpecificACE";
@@ -145,4 +145,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

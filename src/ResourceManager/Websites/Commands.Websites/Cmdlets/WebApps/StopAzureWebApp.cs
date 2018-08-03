@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you stop an Azure Web app
     /// </summary>
     [Cmdlet("Stop","WebApp"), OutputType(typeof(Site))]
-    public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmWebApp")]
 #endif
+    public class StopAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

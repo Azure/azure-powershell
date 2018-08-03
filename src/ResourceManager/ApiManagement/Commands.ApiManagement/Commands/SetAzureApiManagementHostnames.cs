@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
-    public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApiManagementHostnames")]
 #endif
+    public class SetAzureApiManagementHostnames : AzureApiManagementCmdletBase
     {
         internal const string FromPsApiManagementInstanceSetName = "SetFromPsApiManagementInstance";
         internal const string DefaultParameterSetName = "SetSpecificService";
@@ -105,4 +105,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

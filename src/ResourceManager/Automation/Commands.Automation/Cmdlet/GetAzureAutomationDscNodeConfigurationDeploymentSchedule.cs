@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     [Cmdlet("Get","AutomationDscNodeConfigurationDeploymentSchedule",DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfigurationDeploymentSchedule))]
-    public class GetAzureAutomationDscNodeConfigurationDeploymentSchedule : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmAutomationDscNodeConfigurationDeploymentSchedule")]
 #endif
+    public class GetAzureAutomationDscNodeConfigurationDeploymentSchedule : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the job schedule id.
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

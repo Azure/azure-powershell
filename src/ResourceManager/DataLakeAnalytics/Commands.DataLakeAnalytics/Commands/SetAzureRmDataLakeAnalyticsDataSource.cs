@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Set","DataLakeAnalyticsDataSource"), OutputType(typeof(void))]
     [Alias("Set-AdlAnalyticsDataSource")]
-    public class SetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeAnalyticsDataSource")]
 #endif
+    public class SetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true, 
             HelpMessage = "Name of the account to update the data source in.")]
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
     /// Defines the AzureRmSqlDatabaseImport cmdlet
     /// </summary>
     [Cmdlet("New","SqlDatabaseImport", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseImportExportBaseModel))]
-    public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmSqlDatabaseImport")]
 #endif
+    public class NewAzureSqlDatabaseImport : ImportExportCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database to use.
@@ -115,4 +115,5 @@ namespace Microsoft.Azure.Commands.Sql.ImportExport.Cmdlet
         }
     }
 }
+
 

@@ -119,10 +119,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Get","VMRunCommandDocument", DefaultParameterSetName = "DefaultParameter")]
     [OutputType(typeof(PSRunCommandDocument))]
-    public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMRunCommandDocument")]
 #endif
+    public partial class GetAzureRmVMRunCommandDocument : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -178,4 +178,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CommandId { get; set; }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlServerKeyVaultKey", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerKeyVaultKeyModel))]
-    public class GetAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerKeyVaultKey")]
 #endif
+    public class GetAzureSqlServerKeyVaultKey : AzureSqlServerKeyVaultKeyCmdletBase
     {
         /// <summary>
         /// Gets or sets the KeyId of the Azure Key Vault Key
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerKeyVaultKey.Cmdlet
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsAccount", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSDataLakeAnalyticsAccount))]
     [Alias("Get-AdlAnalyticsAccount")]
-    public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeAnalyticsAccount")]
 #endif
+    public class GetAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInSubscription";
         internal const string ResourceGroupParameterSetName = "GetByResourceGroup";
@@ -65,4 +65,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given EventHub Authorization Rule
     /// </summary>
     [Cmdlet("New","EventHubKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
-    public class NewAzureEventhubKey : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmEventHubKey")]
 #endif
+    public class NewAzureEventhubKey : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
     }
 }
+
 

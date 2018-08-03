@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Compute
     /// Setup the virtual machine's OS profile.
     /// </summary>
     [Cmdlet("Set","VMOperatingSystem",DefaultParameterSetName = WindowsParamSet),OutputType(typeof(PSVirtualMachine))]
-    public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVMOperatingSystem")]
 #endif
+    public class SetAzureVMOperatingSystemCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         protected const string WindowsParamSet = "Windows";
         protected const string WinRmHttpsParamSet = "WindowsWinRmHttps";
@@ -327,4 +327,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

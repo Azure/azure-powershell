@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// Returns the auditing settings of a specific database.
     /// </summary>
     [Cmdlet("Get","SqlDatabaseAuditing", SupportsShouldProcess = true), OutputType(typeof(DatabaseBlobAuditingSettingsModel))]
-    public class GetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseAuditing")]
 #endif
+    public class GetAzureSqlDatabaseAuditing : SqlDatabaseAuditingSettingsCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         }
     }
 }
+
 

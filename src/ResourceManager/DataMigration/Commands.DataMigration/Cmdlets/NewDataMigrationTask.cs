@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
     /// </summary>
     [Cmdlet("New","DataMigrationTask", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSProjectTask))]
     [Alias("New-AzureRmDmsTask")]
-    public class NewDataMigrationTask : DataMigrationCmdlet, IDynamicParameters
 #if NETSTANDARD
     [Alias("New-AzureRmDataMigrationTask")]
 #endif
+    public class NewDataMigrationTask : DataMigrationCmdlet, IDynamicParameters
     {
         [Parameter(
           Position = 0,
@@ -187,4 +187,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet("Update","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
-    public class UpdateAzureMLWebService : WebServicesCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmMlWebService")]
 #endif
+    public class UpdateAzureMLWebService : WebServicesCmdletBase
     {
         protected const string UpdateFromArgumentsParameterSet = "UpdateFromParameters";
         protected const string UpdateFromObjectParameterSet = "UpdateFromObject";
@@ -205,4 +205,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
 

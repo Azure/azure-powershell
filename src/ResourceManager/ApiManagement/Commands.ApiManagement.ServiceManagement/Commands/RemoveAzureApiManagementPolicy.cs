@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Remove","ApiManagementPolicy", SupportsShouldProcess = true, DefaultParameterSetName = TenantLevel)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureApiManagementPolicy : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmApiManagementPolicy")]
 #endif
+    public class RemoveAzureApiManagementPolicy : AzureApiManagementCmdletBase
     {
         private const string TenantLevel = "RemoveTenantLevel";
         private const string ProductLevel = "RemoveProductLevel";
@@ -114,4 +114,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

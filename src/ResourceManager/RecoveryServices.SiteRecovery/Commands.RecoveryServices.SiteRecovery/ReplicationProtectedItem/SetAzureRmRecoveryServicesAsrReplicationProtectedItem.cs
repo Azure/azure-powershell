@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Set","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias("Set-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
-    public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
 #endif
+    public class SetAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the input object to the cmdlet: The ASR replication protected item object corresponding to the replication protected item to update.
@@ -456,4 +456,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

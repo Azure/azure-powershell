@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Update","ContainerRegistryCredential", DefaultParameterSetName = NameResourceGroupParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerRegistryCredential))]
-    public class UpdateAzureContainerRegistryCredential : ContainerRegistryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmContainerRegistryCredential")]
 #endif
+    public class UpdateAzureContainerRegistryCredential : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = NameResourceGroupParameterSet, HelpMessage = "Resource Group Name.")]
         [ResourceGroupCompleter()]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
 

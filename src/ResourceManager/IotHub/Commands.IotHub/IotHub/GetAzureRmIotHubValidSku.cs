@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get","IotHubValidSku"), OutputType(typeof(PSIotHubSkuDescription))]
-    public class GetAzureRmIotHubValidSku : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmIotHubValidSku")]
 #endif
+    public class GetAzureRmIotHubValidSku : IotHubBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -52,4 +52,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Gets a Credential for automation.
     /// </summary>
     [Cmdlet("Resume","AutomationJob"), OutputType(typeof(void))]
-    public class ResumeAzureAutomationJob : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Resume-AzureRmAutomationJob")]
 #endif
+    public class ResumeAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 
         /// Gets or sets the job id. 
@@ -45,4 +45,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

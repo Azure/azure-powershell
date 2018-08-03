@@ -22,10 +22,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("New","DataFactory", SupportsShouldProcess = true),OutputType(typeof(PSDataFactory))]
-    public class NewAzureDataFactoryCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDataFactory")]
 #endif
+    public class NewAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory name.")]
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

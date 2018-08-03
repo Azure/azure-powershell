@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","IntegrationAccountSchema")]
     [OutputType(typeof(IntegrationAccountSchema))]
-    public class GetAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmIntegrationAccountSchema")]
 #endif
+    public class GetAzureIntegrationAccountSchemaCommand : LogicAppBaseCmdlet
     {
 
         #region Input Parameters
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
-    public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureKeyVaultCertificate")]
 #endif
+    public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

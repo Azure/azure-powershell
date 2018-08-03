@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
 {
     [Cmdlet("Remove","MlOpCluster", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersParameterSet)]
     [OutputType(typeof(void))]
-    public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmMlOpCluster")]
 #endif
+    public class RemoveAzureRmMlOpCluster : MachineLearningComputeCmdletBase
     {
         protected const string CmdletParametersParameterSet = "RemoveByNameAndResourceGroup";
 
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.MachineLearningCompute.Cmdlets
         }
     }
 }
+
 

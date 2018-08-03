@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Adds a user to a group.
     /// </summary>
     [Cmdlet("Add","ADGroupMember", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.MemberObjectIdWithGroupObjectId), OutputType(typeof(bool))]
-    public class AddAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmADGroupMember")]
 #endif
+    public class AddAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupDisplayName, HelpMessage = "The object id of the member(s) to add to the group.")]
         [Parameter(Mandatory = true, ParameterSetName = ParameterSet.MemberObjectIdWithGroupObject, HelpMessage = "The object id of the member(s) to add to the group.")]
@@ -109,4 +109,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
 

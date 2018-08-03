@@ -22,10 +22,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeUser", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureBatchComputeNodeUser")]
 #endif
+    public class RemoveBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -54,4 +54,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

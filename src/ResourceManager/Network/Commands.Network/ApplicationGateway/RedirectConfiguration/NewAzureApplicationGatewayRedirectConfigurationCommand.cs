@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGatewayRedirectConfiguration))]
-    public class NewAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayRedirectConfiguration")]
 #endif
+    public class NewAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
     {
         public override void ExecuteCmdlet()
         {
@@ -30,4 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the managed application.
     /// </summary>
     [Cmdlet("New","ManagedApplication", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmManagedApplication")]
 #endif
+    public class NewAzureManagedApplicationCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
         /// Gets or sets the managed application name parameter.
@@ -171,4 +171,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

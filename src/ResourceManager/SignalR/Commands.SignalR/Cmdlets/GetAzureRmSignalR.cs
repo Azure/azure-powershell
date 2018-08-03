@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("Get","SignalR", DefaultParameterSetName = ListSignalRServiceParameterSet)]
     [OutputType(typeof(PSSignalRResource))]
-    public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
 #if NETSTANDARD
     [Alias("Get-AzureRmSignalR")]
 #endif
+    public class GetAzureRmSignalR : SignalRCmdletBase, IWithResourceId
     {
         [Parameter(
             Mandatory = false,
@@ -89,4 +89,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
 

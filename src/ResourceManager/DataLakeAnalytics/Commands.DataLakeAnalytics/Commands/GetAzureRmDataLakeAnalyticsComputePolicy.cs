@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsComputePolicy"), OutputType(typeof(PSDataLakeAnalyticsComputePolicy))]
     [Alias("Get-AdlAnalyticsComputePolicy")]
-    public class GetAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeAnalyticsComputePolicy")]
 #endif
+    public class GetAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which you the account exists. Optional and will attempt to discover if not provided.")]
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

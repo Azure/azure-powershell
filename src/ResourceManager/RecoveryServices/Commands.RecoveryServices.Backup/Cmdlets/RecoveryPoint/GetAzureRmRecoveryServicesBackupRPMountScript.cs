@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Get script to mount recovery point of an item for item level recovery.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupRPMountScript",SupportsShouldProcess = true), OutputType(typeof(RPMountScriptDetails))]
-    public class GetAzureRmRecoveryServicesBackupRPMountScript : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesBackupRPMountScript")]
 #endif
+    public class GetAzureRmRecoveryServicesBackupRPMountScript : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Recovery point of the item to be explored
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

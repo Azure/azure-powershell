@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPoolNodeCounts", DefaultParameterSetName = Constants.AzureBatchPoolNodeCounts),
         OutputType(typeof(PSPoolNodeCounts))]
-    public class GetBatchPoolNodeCountsCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchPoolNodeCounts")]
 #endif
+    public class GetBatchPoolNodeCountsCommand : BatchObjectModelCmdletBase
     {
         private const int defaultMaxCount = 10;
 
@@ -54,4 +54,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

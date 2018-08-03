@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("Remove","ApplicationInsightsContinuousExport", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveApplicationInsightsComponentContinuousExport : ApplicationInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmApplicationInsightsContinuousExport")]
 #endif
+    public class RemoveApplicationInsightsComponentContinuousExport : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -110,4 +110,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
 

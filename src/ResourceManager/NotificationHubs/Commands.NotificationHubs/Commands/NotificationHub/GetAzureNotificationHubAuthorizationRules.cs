@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
     [Cmdlet("Get","NotificationHubAuthorizationRules"), OutputType(typeof(SharedAccessAuthorizationRuleAttributes))]
-    public class GetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmNotificationHubAuthorizationRules")]
 #endif
+    public class GetAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Set","EventGridTopic", SupportsShouldProcess = true, DefaultParameterSetName = TopicNameParameterSet), OutputType(typeof(PSTopic))]
-    public class SetAzureEventGridTopic : AzureEventGridCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmEventGridTopic")]
 #endif
+    public class SetAzureEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -123,4 +123,5 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+
 

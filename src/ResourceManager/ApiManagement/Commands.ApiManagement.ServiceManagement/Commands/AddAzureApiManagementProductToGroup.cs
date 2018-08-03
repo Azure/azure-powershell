@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Add","ApiManagementProductToGroup")]
     [OutputType(typeof(bool))]
-    public class AddAzureApiManagementProductToGroup : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureRmApiManagementProductToGroup")]
 #endif
+    public class AddAzureApiManagementProductToGroup : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

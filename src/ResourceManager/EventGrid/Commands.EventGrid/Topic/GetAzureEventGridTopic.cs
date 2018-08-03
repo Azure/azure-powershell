@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.EventGrid
     /// <para> If Topic name not provided, list of Topics will be returned</para>
     /// </summary>
     [Cmdlet("Get","EventGridTopic",DefaultParameterSetName = ResourceGroupNameParameterSet),OutputType(typeof(PSTopic), typeof(PSTopicListInstance))]
-    public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmEventGridTopic")]
 #endif
+    public class GetAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -123,4 +123,5 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+
 

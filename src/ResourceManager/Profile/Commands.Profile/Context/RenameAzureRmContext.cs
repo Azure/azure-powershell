@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 {
     [Cmdlet("Rename", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
-    public class RenameAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
 #if NETSTANDARD
     [Alias("Rename-AzureRmContext")]
 #endif
+    public class RenameAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
         const string SourceParameterName = "SourceName", TargetParameterName = "TargetName", InputObjectParameterSet = "RenameByInputObject", NameParameterSet = "RenameByName";
         [Parameter(Mandatory = true, ParameterSetName = InputObjectParameterSet, ValueFromPipeline = true, HelpMessage = "A context object, normally passed through the pipeline.")]
@@ -108,4 +108,5 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+
 

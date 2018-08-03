@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// Cmdlet to remove Azure Sql Databases from a Failover Group
     /// </summary>
     [Cmdlet("Remove","SqlDatabaseFromFailoverGroup",ConfirmImpact = ConfirmImpact.Medium,SupportsShouldProcess = true), OutputType(typeof(AzureSqlFailoverGroupModel))]
-    public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmSqlDatabaseFromFailoverGroup")]
 #endif
+    public class RemoveAzureSqlDatabaseFromFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -178,4 +178,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
 

@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet("Get","ApiManagementSsoToken"), OutputType(typeof(string))]
-    public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmApiManagementSsoToken")]
 #endif
+    public class GetAzureApiManagementSsoToken : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -46,4 +46,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

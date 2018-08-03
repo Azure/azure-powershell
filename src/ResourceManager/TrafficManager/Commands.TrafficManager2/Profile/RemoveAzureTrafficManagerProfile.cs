@@ -21,10 +21,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Remove","TrafficManagerProfile", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmTrafficManagerProfile")]
 #endif
+    public class RemoveAzureTrafficManagerProfile : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the profile.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
 

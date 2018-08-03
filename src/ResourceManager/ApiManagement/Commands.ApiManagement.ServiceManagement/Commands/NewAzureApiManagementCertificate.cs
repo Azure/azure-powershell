@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("New","ApiManagementCertificate", DefaultParameterSetName = FromFile)]
     [OutputType(typeof(PsApiManagementCertificate))]
-    public class NewAzureApiManagementCertificate : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmApiManagementCertificate")]
 #endif
+    public class NewAzureApiManagementCertificate : AzureApiManagementCmdletBase
     {
         private const string FromFile = "LoadFromFile";
         private const string Raw = "Raw";
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Set","IntegrationAccountReceivedIcn", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccountControlNumber))]
-    public class UpdateAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmIntegrationAccountReceivedIcn")]
 #endif
+    public class UpdateAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Paramters
 
@@ -125,4 +125,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

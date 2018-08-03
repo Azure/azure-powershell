@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ImportCertificateFromFileParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificate))]
-    public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Import-AzureKeyVaultCertificate")]
 #endif
+    public class ImportAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -203,4 +203,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

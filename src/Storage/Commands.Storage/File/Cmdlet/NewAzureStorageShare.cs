@@ -18,10 +18,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using WindowsAzure.Storage.File;
 
     [Cmdlet("New","AzureStorageShare", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileShare))]
-    public class NewAzureStorageShare : AzureStorageFileCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageShare")]
 #endif
+    public class NewAzureStorageShare : AzureStorageFileCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -45,4 +45,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

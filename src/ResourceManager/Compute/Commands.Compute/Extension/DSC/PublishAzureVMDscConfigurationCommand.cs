@@ -16,10 +16,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// Set-AzureRmVMDscExtension cmdlet.
     /// </summary>
     [Cmdlet("Publish","VMDscConfiguration",SupportsShouldProcess = true,DefaultParameterSetName = UploadArchiveParameterSetName),OutputType(typeof(String))]
-    public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletCommonBase
 #if NETSTANDARD
     [Alias("Publish-AzureRmVMDscConfiguration")]
 #endif
+    public class PublishAzureVMDscConfigurationCommand : DscExtensionPublishCmdletCommonBase
     {
         private const string CreateArchiveParameterSetName = "CreateArchive";
         private const string UploadArchiveParameterSetName = "UploadArchive";
@@ -203,4 +203,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+
 

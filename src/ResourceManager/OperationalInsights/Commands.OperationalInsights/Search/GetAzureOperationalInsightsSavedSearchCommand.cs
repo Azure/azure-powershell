@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Get","OperationalInsightsSavedSearch"), OutputType(typeof(PSSearchListSavedSearchResponse), typeof(PSSearchGetSavedSearchResponse))]
-    public class GetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmOperationalInsightsSavedSearch")]
 #endif
+    public class GetAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
 

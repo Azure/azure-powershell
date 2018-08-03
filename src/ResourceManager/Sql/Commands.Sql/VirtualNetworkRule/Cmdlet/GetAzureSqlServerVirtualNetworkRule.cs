@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
     /// Defines the Get-AzureRmSqlServerVirtualNetworkRule cmdlet
     /// </summary>
     [Cmdlet("Get","SqlServerVirtualNetworkRule"),OutputType(typeof(Model.AzureSqlServerVirtualNetworkRuleModel))]
-    public class GetAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerVirtualNetworkRule")]
 #endif
+    public class GetAzureSqlServerVirtualNetworkRule : AzureSqlServerVirtualNetworkRuleCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the Azure Sql Server Virtual Network Rule
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.Sql.VirtualNetworkRule.Cmdlet
         }
     }
 }
+
 

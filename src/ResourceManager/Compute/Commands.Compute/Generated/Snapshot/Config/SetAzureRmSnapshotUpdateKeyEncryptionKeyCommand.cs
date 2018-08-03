@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("Set","SnapshotUpdateKeyEncryptionKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshotUpdate))]
-    public partial class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmSnapshotUpdateKeyEncryptionKey")]
 #endif
+    public partial class SetAzureRmSnapshotUpdateKeyEncryptionKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

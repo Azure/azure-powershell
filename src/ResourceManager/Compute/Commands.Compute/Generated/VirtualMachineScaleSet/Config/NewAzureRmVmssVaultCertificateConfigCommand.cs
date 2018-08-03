@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New","VmssVaultCertificateConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VaultCertificate))]
-    public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmVmssVaultCertificateConfig")]
 #endif
+    public partial class NewAzureRmVmssVaultCertificateConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

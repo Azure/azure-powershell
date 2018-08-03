@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
     /// Cmdlet to pause a Azure SQL Data Warehouse database.
     /// </summary>
     [Cmdlet("Suspend","SqlDatabase", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
-    public class SuspendAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
 #if NETSTANDARD
     [Alias("Suspend-AzureRmSqlDatabase")]
 #endif
+    public class SuspendAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         }
     }
 }
+
 

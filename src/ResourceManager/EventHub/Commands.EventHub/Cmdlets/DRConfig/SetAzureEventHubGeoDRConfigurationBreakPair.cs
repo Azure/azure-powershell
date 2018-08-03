@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// 'Set-AzureRmEventHubDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
     /// </summary>
     [Cmdlet("Set","EventHubGeoDRConfigurationBreakPair", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class SetAzureEventHubGeoDRConfigurationBreakPair : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmEventHubGeoDRConfigurationBreakPair")]
 #endif
+    public class SetAzureEventHubGeoDRConfigurationBreakPair : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         }
     }
 }
+
 

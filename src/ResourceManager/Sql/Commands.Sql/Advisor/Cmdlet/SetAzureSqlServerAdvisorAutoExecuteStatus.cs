@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// Defines the Set-AzureRmSqlServerAdvisorAutoExecuteStatus cmdlet
     /// </summary>
     [Cmdlet("Set","SqlServerAdvisorAutoExecuteStatus",SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerAdvisorModel))]
-    public class SetAzureSqlServerAdvisorAutoExecuteStatus : AzureSqlServerAdvisorCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlServerAdvisorAutoExecuteStatus")]
 #endif
+    public class SetAzureSqlServerAdvisorAutoExecuteStatus : AzureSqlServerAdvisorCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
@@ -106,4 +106,5 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         }
     }
 }
+
 

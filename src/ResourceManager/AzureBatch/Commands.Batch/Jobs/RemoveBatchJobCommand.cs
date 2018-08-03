@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJob", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveBatchJobCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureBatchJob")]
 #endif
+    public class RemoveBatchJobCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the job to delete.")]
@@ -43,4 +43,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

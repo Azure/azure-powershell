@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Remove","DataLakeStoreAccount", SupportsShouldProcess=true), OutputType(typeof(bool))]
     [Alias("Remove-AdlStore")]
-    public class RemoveAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeStoreAccount")]
 #endif
+    public class RemoveAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of account to be removed.")]
@@ -66,4 +66,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

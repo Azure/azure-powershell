@@ -24,10 +24,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Start","StreamAnalyticsJob"), OutputType(typeof(bool))]
-    public class StartAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmStreamAnalyticsJob")]
 #endif
+    public class StartAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+
 

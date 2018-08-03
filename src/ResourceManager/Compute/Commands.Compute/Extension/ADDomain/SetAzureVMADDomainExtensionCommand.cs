@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMADDomainExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMADDomainExtensionCommand : SetAzureVMExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVMADDomainExtension")]
 #endif
+    public class SetAzureVMADDomainExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         private const string nameKey = "Name";
         private const string ouPathKey = "OUPath";
@@ -131,4 +131,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

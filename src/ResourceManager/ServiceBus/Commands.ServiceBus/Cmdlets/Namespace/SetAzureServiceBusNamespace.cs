@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
     /// 'Set-AzureRmServiceBusNamespace' Cmdlet updates the specified ServiceBus Namespace
     /// </summary>
     [Cmdlet("Set","ServiceBusNamespace", SupportsShouldProcess = true), OutputType(typeof(PSNamespaceAttributes))]
-    public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmServiceBusNamespace")]
 #endif
+    public class SetAzureRmServiceBusNamespace : AzureServiceBusCmdletBase
     {
         /// <summary>
         /// Name of the resource group.
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         }
     }
 }
+
 

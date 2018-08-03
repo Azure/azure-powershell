@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Get","ApiManagementTenantSyncState")]
     [OutputType(typeof(PsApiManagementTenantConfigurationSyncState))]
-    public class GetAzureApiManagementTenantSyncState : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmApiManagementTenantSyncState")]
 #endif
+    public class GetAzureApiManagementTenantSyncState : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

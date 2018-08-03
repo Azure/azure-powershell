@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("Get","Aks", DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(PSKubernetesCluster))]
-    public class GetAzureRmAks : KubeCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmAks")]
 #endif
+    public class GetAzureRmAks : KubeCmdletBase
     {
         private const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         private const string NameParameterSet = "NameParameterSet";
@@ -101,4 +101,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
 

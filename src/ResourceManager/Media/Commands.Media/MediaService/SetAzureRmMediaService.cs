@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// Update a media service.
     /// </summary>
     [Cmdlet("Set","MediaService", SupportsShouldProcess = true), OutputType(typeof(PSMediaService))]
-    public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmMediaService")]
 #endif
+    public class SetAzureRmMediaService : AzureMediaServiceCmdletBase
     {
         private const string SetMediaServiceWhatIfMessage = "Set MediaService ";
 
@@ -139,4 +139,5 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateOperation", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
-    public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureKeyVaultCertificateOperation")]
 #endif
+    public class StopAzureKeyVaultCertificateOperation : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -107,4 +107,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

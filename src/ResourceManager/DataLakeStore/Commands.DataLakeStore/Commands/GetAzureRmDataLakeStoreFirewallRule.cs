@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreFirewallRule"), OutputType(typeof(DataLakeStoreFirewallRule))]
     [Alias("Get-AdlStoreFirewallRule")]
-    public class GetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeStoreFirewallRule")]
 #endif
+    public class GetAzureRmDataLakeStoreFirewallRule : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to get the firewall rule from")]
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

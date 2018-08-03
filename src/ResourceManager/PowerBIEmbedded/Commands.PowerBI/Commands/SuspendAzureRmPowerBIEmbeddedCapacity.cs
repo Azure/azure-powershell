@@ -24,10 +24,10 @@ using Microsoft.Azure.Management.PowerBIDedicated.Models;
 namespace Microsoft.Azure.Commands.PowerBI
 {
     [Cmdlet("Suspend","PowerBIEmbeddedCapacity", SupportsShouldProcess = true, DefaultParameterSetName = CmdletParametersSet),OutputType(typeof(PSPowerBIEmbeddedCapacity))]
-    public class SuspendAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
 #if NETSTANDARD
     [Alias("Suspend-AzureRmPowerBIEmbeddedCapacity")]
 #endif
+    public class SuspendAzurePowerBIEmbeddedCapacity : PowerBICmdletBase
     {
         protected const string CmdletParametersSet = "ByNameAndResourceGroup";
         protected const string ObjectParameterSet = "ByInputObject";
@@ -106,4 +106,5 @@ namespace Microsoft.Azure.Commands.PowerBI
         }
     }
 }
+
 

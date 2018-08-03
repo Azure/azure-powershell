@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Removes the integration account map. 
     /// </summary>
     [Cmdlet("Remove","IntegrationAccountMap", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmIntegrationAccountMap")]
 #endif
+    public class RemoveAzureIntegrationAccountMapCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

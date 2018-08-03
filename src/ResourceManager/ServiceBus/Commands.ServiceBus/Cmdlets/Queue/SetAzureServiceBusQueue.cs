@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// 'Set-AzureRmServiceBusQueue' Cmdlet updates the specified Queue
     /// </summary>
     [Cmdlet("Set","ServiceBusQueue", SupportsShouldProcess = true), OutputType(typeof(PSQueueAttributes))]
-    public class SetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmServiceBusQueue")]
 #endif
+    public class SetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -66,4 +66,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         }
     }
 }
+
 

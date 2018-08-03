@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollection
 {
     [Cmdlet("Get","PowerBIWorkspaceCollectionAccessKeys"), OutputType(typeof(PSWorkspaceCollectionAccessKey))]
-    public class GetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmPowerBIWorkspaceCollectionAccessKeys")]
 #endif
+    public class GetWorkspaceCollectionAccessKeys : WorkspaceCollectionBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -50,4 +50,5 @@ namespace Microsoft.Azure.Commands.Management.PowerBIEmbedded.WorkspaceCollectio
         }
     }
 }
+
 

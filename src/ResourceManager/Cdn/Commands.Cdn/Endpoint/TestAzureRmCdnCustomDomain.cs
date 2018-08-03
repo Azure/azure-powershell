@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Test","CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSValidateCustomDomainOutput))]
     [Alias("Validate-AzureRmCdnCustomDomain")]
-    public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmCdnCustomDomain")]
 #endif
+    public class TestAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -71,4 +71,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
 

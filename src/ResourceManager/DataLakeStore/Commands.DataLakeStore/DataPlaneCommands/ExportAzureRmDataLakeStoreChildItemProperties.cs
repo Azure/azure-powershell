@@ -5,10 +5,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Export","DataLakeStoreChildItemProperties", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Export-AdlStoreChildItemProperties")]
-    public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Export-AzureRmDataLakeStoreChildItemProperties")]
 #endif
+    public class ExportAzureRmDataLakeStoreChildItemProperties : DataLakeStoreFileSystemCmdletBase
     {
         internal const string BaseParameterSetName = "GetDiskUsage";
         internal const string GetAclParameterSetName = "GetAclDump";
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 
     }
 }
+
 

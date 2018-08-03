@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Get AD groups members.
     /// </summary>
     [Cmdlet("Get","ADGroupMember", DefaultParameterSetName = ParameterSet.ObjectId, SupportsPaging = true), OutputType(typeof(PSADObject))]
-    public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmADGroupMember")]
 #endif
+    public class GetAzureADGroupMemberCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "Object Id of the group.")]
         [ValidateNotNullOrEmpty]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
 

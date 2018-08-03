@@ -29,10 +29,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","VirtualNetworkAvailableEndpointService"), OutputType(typeof(PSEndpointServiceResult))]
-    public partial class GetAzureRMVirtualNetworkAvailableEndpointServiceCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVirtualNetworkAvailableEndpointService")]
 #endif
+    public partial class GetAzureRMVirtualNetworkAvailableEndpointServiceCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
 

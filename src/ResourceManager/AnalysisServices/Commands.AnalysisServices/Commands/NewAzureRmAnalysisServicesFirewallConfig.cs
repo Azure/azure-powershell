@@ -25,10 +25,10 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesFirewallConfig"), OutputType(typeof(PsAzureAnalysisServicesFirewallConfig))]
-    public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmAnalysisServicesFirewallConfig")]
 #endif
+    public class NewAzureRmAnalysisServicesFirewallConfig : AnalysisServicesCmdletBase
     {       
         [Parameter(Mandatory = false,
             HelpMessage = "Option to enable PowerBI service")]
@@ -45,4 +45,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

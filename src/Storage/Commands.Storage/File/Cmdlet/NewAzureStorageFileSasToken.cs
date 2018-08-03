@@ -25,10 +25,10 @@ using System.Security.Permissions;
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("New","AzureStorageFileSASToken"), OutputType(typeof(String))]
-    public class NewAzureStorageFileSasToken : AzureStorageFileCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageFileSASToken")]
 #endif
+    public class NewAzureStorageFileSasToken : AzureStorageFileCmdletBase
     {
         /// <summary>
         /// Sas permission with share name and path parameter set name
@@ -223,4 +223,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

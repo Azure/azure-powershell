@@ -21,10 +21,10 @@ using System.Net;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(HttpStatusCode))]
-    public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmOperationalInsightsSavedSearch")]
 #endif
+    public class NewAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
 

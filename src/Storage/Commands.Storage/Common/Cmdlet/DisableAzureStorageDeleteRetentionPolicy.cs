@@ -25,10 +25,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// </summary>
     [Cmdlet("Disable","AzureStorageDeleteRetentionPolicy", SupportsShouldProcess = true),OutputType(typeof(PSDeleteRetentionPolicy))]
     [Alias("Disable-AzureStorageSoftDelete")]
-    public class DisableAzureStorageServiceDeleteRetentionPolicyCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Disable-AzureStorageDeleteRetentionPolicy")]
 #endif
+    public class DisableAzureStorageServiceDeleteRetentionPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Display DeleteRetentionPolicyProperties")]
         public SwitchParameter PassThru { get; set; }
@@ -83,4 +83,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
 

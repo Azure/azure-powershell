@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Add","HDInsightSecurityProfile",SupportsShouldProcess = true),OutputType(typeof(AzureHDInsightSecurityProfile))]
-    public class AddAzureHDInsightSecurityProfile : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureRmHDInsightSecurityProfile")]
 #endif
+    public class AddAzureHDInsightSecurityProfile : HDInsightCmdletBase
     {
         private readonly AzureHDInsightSecurityProfile _securityProfile;
 
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

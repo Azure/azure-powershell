@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
     /// <para> If Queue name not provided, list of Queue will be returned</para>
     /// </summary>
     [Cmdlet("Get","ServiceBusQueue"), OutputType(typeof(PSQueueAttributes))]
-    public class GetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmServiceBusQueue")]
 #endif
+    public class GetAzureRmServiceBusQueue : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         }
     }
 }
+
 

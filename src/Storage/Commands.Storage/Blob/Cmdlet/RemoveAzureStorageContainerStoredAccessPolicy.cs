@@ -26,10 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// create a new azure container
     /// </summary>
     [Cmdlet("Remove","AzureStorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
-    public class RemoveAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureStorageContainerStoredAccessPolicy")]
 #endif
+    public class RemoveAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -118,4 +118,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
 

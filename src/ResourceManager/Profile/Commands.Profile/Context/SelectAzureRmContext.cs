@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 {
     [Cmdlet("Select", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = InputObjectParameterSet)]
     [OutputType(typeof(PSAzureContext))]
-    public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
 #if NETSTANDARD
     [Alias("Select-AzureRmContext")]
 #endif
+    public class SelectAzureRmContext : AzureContextModificationCmdlet, IDynamicParameters
     {
         public const string InputObjectParameterSet = "SelectByInputObject";
         public const string ContextNameParameterSet = "SelectByName";
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+
 

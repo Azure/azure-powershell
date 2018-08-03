@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New","DiskConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
-    public partial class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDiskConfig")]
 #endif
+    public partial class NewAzureRmDiskConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -232,4 +232,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

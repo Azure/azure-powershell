@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccountKey", DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSKeyVaultManagedStorageAccount ) )]
-    public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureKeyVaultManagedStorageAccountKey")]
 #endif
+    public class UpdateAzureKeyVaultManagedStorageAccountKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -106,4 +106,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJobSchedule", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudJobSchedule))]
-    public class GetBatchJobScheduleCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchJobSchedule")]
 #endif
+    public class GetBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

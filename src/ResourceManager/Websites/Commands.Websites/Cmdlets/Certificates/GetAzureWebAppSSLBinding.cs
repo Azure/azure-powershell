@@ -18,10 +18,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// </summary>
     [Cmdlet("Get","WebAppSSLBinding")]
     [OutputType(typeof(HostNameSslState))]
-    public class GetAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmWebAppSSLBinding")]
 #endif
+    public class GetAzureWebAppSSLBinding : WebAppSSLBindingBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = false, HelpMessage = "The name of the host name.")]
         [ValidateNotNullOrEmpty]
@@ -35,4 +35,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

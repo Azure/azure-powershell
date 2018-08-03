@@ -22,10 +22,10 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2ActivityRun", DefaultParameterSetName = ParameterSetNames.ByFactoryName),OutputType(typeof(PSActivityRun))]
-    public class GetAzureDataFactoryActivityRunCommand : DataFactoryContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataFactoryV2ActivityRun")]
 #endif
+    public class GetAzureDataFactoryActivityRunCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryObject, Position = 1, Mandatory = true,
             HelpMessage = Constants.HelpPipelineRunId)]
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

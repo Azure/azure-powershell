@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Stop","VmssRollingUpgrade", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class StopAzureRmVmssRollingUpgrade : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmVmssRollingUpgrade")]
 #endif
+    public partial class StopAzureRmVmssRollingUpgrade : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -161,4 +161,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

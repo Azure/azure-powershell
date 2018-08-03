@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","LoadBalancerProbeConfig"), OutputType(typeof(PSProbe))]
-    public class GetAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmLoadBalancerProbeConfig")]
 #endif
+    public class GetAzureLoadBalancerProbeCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

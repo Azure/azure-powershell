@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Import","DataLakeStoreItem", SupportsShouldProcess = true, DefaultParameterSetName = BaseParameterSetName), OutputType(typeof(string))]
     [Alias("Import-AdlStoreItem")]
-    public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Import-AzureRmDataLakeStoreItem")]
 #endif
+    public class ImportAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         // define parameter sets.
         internal const string BaseParameterSetName = "NoDiagnosticLogging";
@@ -153,4 +153,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

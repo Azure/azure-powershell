@@ -23,10 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCircuit"), OutputType(typeof(PSExpressRouteCircuit))]
-    public class GetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmExpressRouteCircuit")]
 #endif
+    public class GetAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

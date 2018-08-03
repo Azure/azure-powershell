@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","PublicIpAddress", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmPublicIpAddress")]
 #endif
+    public class RemoveAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("New","IotHubImportDevices", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHubJobResponse))]
-    public class NewAzureRmIotHubImportDevices : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmIotHubImportDevices")]
 #endif
+    public class NewAzureRmIotHubImportDevices : IotHubBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

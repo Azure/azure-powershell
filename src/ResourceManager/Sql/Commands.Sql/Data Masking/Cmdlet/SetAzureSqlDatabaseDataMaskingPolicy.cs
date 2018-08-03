@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// Sets the data masking policy properties for a specific database.
     /// </summary>
     [Cmdlet("Set","SqlDatabaseDataMaskingPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingPolicyModel))]
-    public class SetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlDatabaseDataMaskingPolicy")]
 #endif
+    public class SetAzureSqlDatabaseDataMaskingPolicy : SqlDatabaseDataMaskingPolicyCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         }
     }
 }
+
 

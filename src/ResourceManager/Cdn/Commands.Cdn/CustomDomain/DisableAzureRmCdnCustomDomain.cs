@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.CustomDomain
 {
     [Cmdlet("Disable","CdnCustomDomain", DefaultParameterSetName = FieldsParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class DisableAzureRmCdnCustomDomain : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Disable-AzureRmCdnCustomDomain")]
 #endif
+    public class DisableAzureRmCdnCustomDomain : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN custom domain display name.")]
         [ValidateNotNullOrEmpty]
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.Cdn.CustomDomain
         }
     }
 }
+
 

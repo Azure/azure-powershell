@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", DefaultParameterSetName = GetSingleParameterSet)]
     [OutputType(typeof(PSAzureContext))]
-    public class GetAzureRMContextCommand : AzureRMCmdlet, IDynamicParameters
 #if NETSTANDARD
     [Alias("Get-AzureRmContext")]
 #endif
+    public class GetAzureRMContextCommand : AzureRMCmdlet, IDynamicParameters
     {
         public const string ListAllParameterSet = "ListAllContexts", GetSingleParameterSet = "GetSingleContext";
         /// <summary>
@@ -135,4 +135,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

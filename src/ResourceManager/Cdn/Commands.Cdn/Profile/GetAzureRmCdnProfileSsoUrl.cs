@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Profile
 {
     [Cmdlet("Get","CdnProfileSsoUrl", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSSsoUri))]
-    public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnProfileSsoUrl")]
 #endif
+    public class GetAzureRmCdnProfileSsoUrl : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "The name of the profile.")]
         [ValidateNotNullOrEmpty]
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+
 

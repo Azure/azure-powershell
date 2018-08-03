@@ -21,10 +21,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Test","PrivateIPAddressAvailability"), OutputType(typeof(PSIPAddressAvailabilityResult))]
-    public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Test-AzureRmPrivateIPAddressAvailability")]
 #endif
+    public class TestAzurePrivateIPAddressAvailabilityCmdlet : VirtualNetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

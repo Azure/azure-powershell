@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
     [Cmdlet("Get","MlWebServiceKeys")]
     [OutputType(typeof(WebServiceKeys))]
-    public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmMlWebServiceKeys")]
 #endif
+    public class GetAzureMLWebServiceKeys : WebServicesCmdletBase
     {
         private const string GetKeysByGroupAndName = "GetByNameAndResourceGroup";
         private const string GetKeysByInstance = "GetByInstance";
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+
 

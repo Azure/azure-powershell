@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Media.MediaService
     /// Create a storage config for creating a media service.
     /// </summary>
     [Cmdlet("New","MediaServiceStorageConfig", SupportsShouldProcess = true), OutputType(typeof(PSStorageAccount))]
-    public class NewAzureRmMediaServiceStorageConfig : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmMediaServiceStorageConfig")]
 #endif
+    public class NewAzureRmMediaServiceStorageConfig : AzureRMCmdlet
     {
         private const string MediaServiceStorageConfigStr = "AzureRmMediaServiceStorageConfig";
         private const string NewMediaServiceStorageConfigWhatIfMessage = "New media service storage config ";
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.Media.MediaService
         }
     }
 }
+
 

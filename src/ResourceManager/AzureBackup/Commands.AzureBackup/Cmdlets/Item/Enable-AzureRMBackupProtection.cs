@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Enable Azure Backup protection
     /// </summary>
     [Cmdlet("Enable","BackupProtection"), OutputType(typeof(AzureRMBackupJob))]
-    public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
 #if NETSTANDARD
     [Alias("Enable-AzureRmBackupProtection")]
 #endif
+    public class EnableAzureRMBackupProtection : AzureRMBackupItemCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.PolicyObject)]
         [ValidateNotNullOrEmpty]
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

@@ -34,10 +34,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","VirtualNetworkUsageList"), OutputType(typeof(PSVirtualNetworkUsage))]
-    public partial class GetAzureRmVirtualNetworkUsageList : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVirtualNetworkUsageList")]
 #endif
+    public partial class GetAzureRmVirtualNetworkUsageList : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
 

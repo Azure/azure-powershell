@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchAutoScale"), OutputType(typeof(void))]
-    public class DisableBatchAutoScaleCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Disable-AzureBatchAutoScale")]
 #endif
+    public class DisableBatchAutoScaleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool to disable automatic scaling on.")]
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

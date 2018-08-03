@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Used to set RecoveryServices Vault Context
     /// </summary>
     [Cmdlet("Set","RecoveryServicesVaultContext"), OutputType(typeof(void))]
-    public class SetAzureRmRecoveryServicesVaultContext : RecoveryServicesCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmRecoveryServicesVaultContext")]
 #endif
+    public class SetAzureRmRecoveryServicesVaultContext : RecoveryServicesCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true)]
         [ValidateNotNullOrEmpty]
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

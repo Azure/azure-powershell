@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [Cmdlet("Start","AutomationRunbook", DefaultParameterSetName = AutomationCmdletParameterSets.ByAsynchronousReturnJob)]
     [OutputType(typeof(Job), ParameterSetName = new[] { AutomationCmdletParameterSets.ByAsynchronousReturnJob })]
     [OutputType(typeof(PSObject), ParameterSetName = new[] { AutomationCmdletParameterSets.BySynchronousReturnJobOutput })]
-    public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmAutomationRunbook")]
 #endif
+    public class StartAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to wait for job output
@@ -162,4 +162,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

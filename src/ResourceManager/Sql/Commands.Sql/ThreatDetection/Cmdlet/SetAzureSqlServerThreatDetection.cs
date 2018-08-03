@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// Sets the auditing policy properties for a specific database.
     /// </summary>
     [Cmdlet("Set","SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
-    public class SetAzureSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlServerThreatDetectionPolicy")]
 #endif
+    public class SetAzureSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Set","DataLakeStoreItemAcl", SupportsShouldProcess = true), OutputType(typeof(DataLakeStoreItemAce))]
     [Alias("Set-AdlStoreItemAcl")]
-    public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeStoreItemAcl")]
 #endif
+    public class SetAzureDataLakeStoreItemAcl : DataLakeStoreFileSystemCmdletBase
     {
 
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

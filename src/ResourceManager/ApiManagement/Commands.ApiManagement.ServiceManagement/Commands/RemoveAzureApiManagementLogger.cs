@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Remove","ApiManagementLogger", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureApiManagementLogger : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmApiManagementLogger")]
 #endif
+    public class RemoveAzureApiManagementLogger : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

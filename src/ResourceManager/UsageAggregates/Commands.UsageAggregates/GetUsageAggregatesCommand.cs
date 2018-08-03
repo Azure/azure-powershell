@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.UsageAggregates
     using System.Management.Automation;
 
     [Cmdlet("Get","UsageAggregates"), OutputType(typeof(UsageAggregationGetResponse))]
-    public class GetUsageAggregatesCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Get-UsageAggregates")]
 #endif
+    public class GetUsageAggregatesCommand : AzureRMCmdlet
     {
         private UsageAggregationManagementClient _theClient;
         private AggregationGranularity _aggregationGranularity = AggregationGranularity.Daily;
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.UsageAggregates
 
     }
 }
+
 

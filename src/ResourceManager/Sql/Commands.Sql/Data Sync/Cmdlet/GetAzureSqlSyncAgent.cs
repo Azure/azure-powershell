@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to get information of specified sync agent or list all the sync agents under a specified resource group
     /// </summary>
     [Cmdlet("Get","SqlSyncAgent",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncAgentModel))]
-    public class GetAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlSyncAgent")]
 #endif
+    public class GetAzureSqlSyncAgent : AzureSqlSyncAgentCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync agent name
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
 

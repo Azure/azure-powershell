@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Remove","ApiManagementAuthorizationServer", SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureApiManagementAuthorizationServer : AzureApiManagementRemoveCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmApiManagementAuthorizationServer")]
 #endif
+    public class RemoveAzureApiManagementAuthorizationServer : AzureApiManagementRemoveCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

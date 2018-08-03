@@ -23,10 +23,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Remove","StreamAnalyticsJob", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmStreamAnalyticsJob")]
 #endif
+    public class RemoveAzureStreamAnalyticsJobCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The azure stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+
 

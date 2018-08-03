@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewaySslPolicy", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGatewaySslPolicy))]
-    public class NewAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewaySslPolicy")]
 #endif
+    public class NewAzureApplicationGatewaySslPolicyCommand : AzureApplicationGatewaySslPolicyBase
     {
         public override void ExecuteCmdlet()
         {
@@ -34,4 +34,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

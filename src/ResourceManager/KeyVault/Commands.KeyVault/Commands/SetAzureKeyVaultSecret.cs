@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultSecret", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureKeyVaultSecret")]
 #endif
+    public class SetAzureKeyVaultSecret : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -134,4 +134,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

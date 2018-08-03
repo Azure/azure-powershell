@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 { 
     [Cmdlet("Set","DataLakeAnalyticsCatalogCredential",SupportsShouldProcess = true,DefaultParameterSetName = HostAndPortParameterSetName),OutputType(typeof(USqlCredential))]
     [Alias("Set-AdlCatalogCredential")]
-    public class SetAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeAnalyticsCatalogCredential")]
 #endif
+    public class SetAzureDataLakeAnalyticsCatalogCredential : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "SetByFullURI";
         internal const string HostAndPortParameterSetName = "SetByHostNameAndPort";
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

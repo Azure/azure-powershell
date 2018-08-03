@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewaySslPolicy"), OutputType(typeof(PSApplicationGatewaySslPolicy))]
-    public class GetAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGatewaySslPolicy")]
 #endif
+    public class GetAzureApplicationGatewaySslPolicyCommand : NetworkBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

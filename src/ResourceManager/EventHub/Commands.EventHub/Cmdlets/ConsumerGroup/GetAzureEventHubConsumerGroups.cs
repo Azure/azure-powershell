@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>
     [Cmdlet("Get","EventHubConsumerGroup"), OutputType(typeof(PSConsumerGroupAttributes))]
-    public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmEventHubConsumerGroup")]
 #endif
+    public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
 
         /// <summary>
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         }
     }
 }
+
 

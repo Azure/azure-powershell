@@ -28,10 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// Define cmdlet to set azure storage CORS rules to service, it will overwrite all of the CORS rules in the service.
     /// </summary>
     [Cmdlet("Set","AzureStorageCORSRule"),OutputType(typeof(PSCorsRule))]
-    public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureStorageCORSRule")]
 #endif
+    public class SetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         private const string InvalidXMLNodeValueError = "InvalidXmlNodeValue";
         private const string InvalidXMLDocError = "InvalidXmlDocument";
@@ -122,4 +122,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
 

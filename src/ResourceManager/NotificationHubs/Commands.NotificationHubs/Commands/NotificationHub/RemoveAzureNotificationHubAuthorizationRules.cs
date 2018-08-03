@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
     [Cmdlet("Remove","NotificationHubAuthorizationRules", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmNotificationHubAuthorizationRules")]
 #endif
+    public class RemoveAzureNotificationHubAuthorizationRules : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
 

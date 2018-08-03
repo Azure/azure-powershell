@@ -36,10 +36,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultKey", SupportsShouldProcess = true,DefaultParameterSetName = InteractiveCreateParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
-    public class AddAzureKeyVaultKey : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Add-AzureKeyVaultKey")]
 #endif
+    public class AddAzureKeyVaultKey : KeyVaultCmdletBase
     {
 
         #region Parameter Set Names
@@ -288,4 +288,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

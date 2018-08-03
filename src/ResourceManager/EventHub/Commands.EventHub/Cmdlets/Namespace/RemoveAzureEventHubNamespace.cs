@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// 'Remove-AzureRmEventHubNamespace' Cmdlet deletes the specified Eventhub Namespace
     /// </summary>
     [Cmdlet("Remove","EventHubNamespace", DefaultParameterSetName = NamespaceParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureRmEventHubNamespace : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmEventHubNamespace")]
 #endif
+    public class RemoveAzureRmEventHubNamespace : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         }
     }
 }
+
 

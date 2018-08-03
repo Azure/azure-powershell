@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsJobPipeline", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSJobPipelineInformation))]
     [Alias("Get-AdlJobPipeline")]
-    public class GetAzureDataLakeAnalyticsJobPipeline : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeAnalyticsJobPipeline")]
 #endif
+    public class GetAzureDataLakeAnalyticsJobPipeline : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInAccount";
         internal const string JobInfoParameterSetName = "GetBySpecificJobPipeline";
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

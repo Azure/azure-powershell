@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove","DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureDataFactoryCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataFactoryV2")]
 #endif
+    public class RemoveAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true,
             HelpMessage = Constants.HelpResourceGroup)]
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

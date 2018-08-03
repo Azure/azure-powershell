@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Get","ApiManagementProduct", DefaultParameterSetName = GetAllProducts)]
     [OutputType(typeof(PsApiManagementProduct))]
-    public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmApiManagementProduct")]
 #endif
+    public class GetAzureApiManagementProduct : AzureApiManagementCmdletBase
     {
         private const string GetAllProducts = "GetAllProducts";
         private const string GetById = "GetByProductId";
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

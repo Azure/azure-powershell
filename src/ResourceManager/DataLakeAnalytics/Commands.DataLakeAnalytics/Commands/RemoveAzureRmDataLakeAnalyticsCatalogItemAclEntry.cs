@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
 {
     [Cmdlet("Remove","DataLakeAnalyticsCatalogItemAclEntry", DefaultParameterSetName = UserCatalogParameterSetName, SupportsShouldProcess = true),OutputType(typeof(bool))]
     [Alias("Remove-AdlCatalogItemAclEntry")]
-    public class RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeAnalyticsCatalogItemAclEntry")]
 #endif
+    public class RemoveAzureRmDataLakeAnalyticsCatalogItemAclEntry : DataLakeAnalyticsCmdletBase
     {
         private const string UserCatalogParameterSetName = "RemoveCatalogAclEntryForUser";
         private const string UserCatalogItemParameterSetName = "RemoveCatalogItemAclEntryForUser";
@@ -122,4 +122,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics.Commands
         }
     }
 }
+
 

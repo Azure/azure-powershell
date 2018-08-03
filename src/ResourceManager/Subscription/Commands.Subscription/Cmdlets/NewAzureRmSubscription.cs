@@ -30,10 +30,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Subscription.Cmdlets
 {
     [Cmdlet("New","Subscription", SupportsShouldProcess = true), OutputType(typeof(PSAzureSubscription))]
-    public class NewAzureRmSubscription : AzureRmLongRunningCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmSubscription")]
 #endif
+    public class NewAzureRmSubscription : AzureRmLongRunningCmdlet
     {
         private ActiveDirectoryClient _activeDirectoryClient;
         private ISubscriptionClient _subscriptionClient;
@@ -155,4 +155,5 @@ namespace Microsoft.Azure.Commands.Subscription.Cmdlets
         }
     }
 }
+
 

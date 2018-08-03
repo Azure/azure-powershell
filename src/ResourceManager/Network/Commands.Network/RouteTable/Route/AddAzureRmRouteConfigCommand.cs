@@ -34,10 +34,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","RouteConfig", SupportsShouldProcess = true), OutputType(typeof(PSRouteTable))]
-    public partial class AddAzureRmRouteConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmRouteConfig")]
 #endif
+    public partial class AddAzureRmRouteConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -97,4 +97,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

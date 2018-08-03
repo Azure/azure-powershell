@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "New-AzureRmApiManagementCustomHostnameConfiguration cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
-    public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmApiManagementHostnameConfiguration")]
 #endif
+    public class NewAzureApiManagementHostnameConfiguration : AzureRMCmdlet
     {
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

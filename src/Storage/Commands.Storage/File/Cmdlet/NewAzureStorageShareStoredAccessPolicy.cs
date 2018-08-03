@@ -27,10 +27,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     /// create a new stored access policy to a specific azure share.
     /// </summary>
     [Cmdlet("New","AzureStorageShareStoredAccessPolicy", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(String))]
-    public class NewAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageShareStoredAccessPolicy")]
 #endif
+    public class NewAzureStorageShareStoredAccessPolicy : AzureStorageFileCmdletBase
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -107,4 +107,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

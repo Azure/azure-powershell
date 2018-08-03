@@ -23,10 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Disable","OperationalInsightsLinuxPerformanceCollection", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
-    public class DisableAzureOperationalInsightsLinuxPerformanceCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
 #if NETSTANDARD
     [Alias("Disable-AzureRmOperationalInsightsLinuxPerformanceCollection")]
 #endif
+    public class DisableAzureOperationalInsightsLinuxPerformanceCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
 

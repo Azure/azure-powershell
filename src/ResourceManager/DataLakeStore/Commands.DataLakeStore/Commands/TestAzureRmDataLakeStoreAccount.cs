@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Test","DataLakeStoreAccount"), OutputType(typeof(bool))]
     [Alias("Test-AdlStore")]
-    public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmDataLakeStoreAccount")]
 #endif
+    public class TestAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of a specific account.")]
@@ -42,4 +42,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

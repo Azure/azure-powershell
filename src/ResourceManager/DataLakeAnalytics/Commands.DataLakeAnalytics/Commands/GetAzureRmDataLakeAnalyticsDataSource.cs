@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsDataSource", DefaultParameterSetName = ListStorageParameterSetName), OutputType(typeof(PSStorageAccountInfo), typeof(PSDataLakeStoreAccountInfo), typeof(AdlDataSource))]
     [Alias("Get-AdlAnalyticsDataSource")]
-    public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeAnalyticsDataSource")]
 #endif
+    public class GetAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "GetDataLakeStoreAccount";
         internal const string BlobParameterSetName = "GetBlobStorageAccount";
@@ -88,4 +88,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

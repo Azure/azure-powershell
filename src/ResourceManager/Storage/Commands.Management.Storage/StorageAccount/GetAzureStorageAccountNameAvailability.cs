@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
 {
     [Cmdlet("Get","StorageAccountNameAvailability"), OutputType(typeof(CheckNameAvailabilityResult))]
-    public class GetAzureStorageAccountNameAvailability : StorageAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmStorageAccountNameAvailability")]
 #endif
+    public class GetAzureStorageAccountNameAvailability : StorageAccountBaseCmdlet
     {
         [Parameter(
             Position = 1,
@@ -41,4 +41,5 @@ namespace Microsoft.Azure.Commands.Management.Storage.StorageAccount
         }
     }
 }
+
 

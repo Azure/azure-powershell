@@ -18,10 +18,10 @@ using Microsoft.Azure.Commands.Profile.Properties;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class DisableAzureRmDataCollectionCommand : EnableAzureRmDataCollectionCommand
 #if NETSTANDARD
     [Alias("Disable-AzureRmDataCollection")]
 #endif
+    public class DisableAzureRmDataCollectionCommand : EnableAzureRmDataCollectionCommand
     {
         public override void ExecuteCmdlet()
         {
@@ -32,4 +32,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

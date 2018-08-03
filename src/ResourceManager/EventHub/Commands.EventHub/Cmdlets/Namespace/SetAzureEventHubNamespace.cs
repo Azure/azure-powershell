@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// 'Set-AzureRmEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
     [Cmdlet("Set","EventHubNamespace", SupportsShouldProcess = true, DefaultParameterSetName = NamespaceParameterSet), OutputType(typeof(PSNamespaceAttributes))]
-    public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmEventHubNamespace")]
 #endif
+    public class SetAzureEventHubNamespace : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name.")]
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         }
     }
 }
+
 

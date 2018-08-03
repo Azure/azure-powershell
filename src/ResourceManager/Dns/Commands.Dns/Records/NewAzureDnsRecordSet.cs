@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// Creates a new record set.
     /// </summary>
     [Cmdlet("New","DnsRecordSet", SupportsShouldProcess = true),OutputType(typeof(DnsRecordSet))]
-    public class NewAzureDnsRecordSet : DnsBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDnsRecordSet")]
 #endif
+    public class NewAzureDnsRecordSet : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the records inthis record set (relative to the name of the zone and without a terminating dot).")]
         [ValidateNotNullOrEmpty]
@@ -122,4 +122,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
 

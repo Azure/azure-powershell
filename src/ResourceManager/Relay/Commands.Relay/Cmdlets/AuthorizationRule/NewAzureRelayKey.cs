@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// 'New-AzureRmRelayKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given WcfRelay Authorization Rule
     /// </summary>
     [Cmdlet("New","RelayKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(AuthorizationRuleKeysAttributes))]
-    public class NewAzureRmRelayKey : AzureRelayCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRelayKey")]
 #endif
+    public class NewAzureRmRelayKey : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -105,4 +105,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         }
     }
 }
+
 

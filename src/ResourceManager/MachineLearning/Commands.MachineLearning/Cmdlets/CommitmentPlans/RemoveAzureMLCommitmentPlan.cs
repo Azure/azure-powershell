@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
     [Cmdlet("Remove","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmMlCommitmentPlan")]
 #endif
+    public class RemoveAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         protected const string RemoveByNameGroupParameterSet = "RemoveByNameAndResourceGroup";
         protected const string RemoveByObjectParameterSet = "RemoveByObject";
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
 

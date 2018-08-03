@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// A cmdlet that creates a new azure resource.
     /// </summary>
     [Cmdlet("Set","Resource", SupportsShouldProcess = true, DefaultParameterSetName = ResourceManipulationCmdletBase.ResourceIdParameterSet), OutputType(typeof(PSObject))]
-    public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmResource")]
 #endif
+    public sealed class SetAzureResourceCmdlet : ResourceManipulationCmdletBase
     {
         /// <summary>
         /// The object representation of the resource to update.
@@ -251,4 +251,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

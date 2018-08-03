@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMExtension",DefaultParameterSetName = SettingsParamSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVMExtension")]
 #endif
+    public class SetAzureVMExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SettingStringParamSet = "SettingString";
         protected const string SettingsParamSet = "Settings";
@@ -121,4 +121,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

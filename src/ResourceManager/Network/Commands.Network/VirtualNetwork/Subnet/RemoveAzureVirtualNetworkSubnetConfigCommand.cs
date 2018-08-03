@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VirtualNetworkSubnetConfig"), OutputType(typeof(PSVirtualNetwork))]
-    public class RemoveAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVirtualNetworkSubnetConfig")]
 #endif
+    public class RemoveAzureVirtualNetworkSubnetConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -52,4 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

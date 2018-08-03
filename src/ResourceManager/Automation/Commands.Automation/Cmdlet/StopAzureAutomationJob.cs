@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Gets a Credential for automation.
     /// </summary>
     [Cmdlet("Stop","AutomationJob"), OutputType(typeof(void))]
-    public class StopAzureAutomationJob : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmAutomationJob")]
 #endif
+    public class StopAzureAutomationJob : AzureAutomationBaseCmdlet
     {
         /// <summary> 
         /// Gets or sets the job id. 
@@ -45,4 +45,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

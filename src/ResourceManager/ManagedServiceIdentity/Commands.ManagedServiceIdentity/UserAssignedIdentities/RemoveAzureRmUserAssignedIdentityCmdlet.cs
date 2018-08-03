@@ -9,10 +9,10 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
 {
     [Cmdlet("Remove","UserAssignedIdentity", DefaultParameterSetName = Constants.ResourceGroupAndNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmUserAssignedIdentity")]
 #endif
+    public class RemoveAzureRmUserAssignedIdentityCmdlet : MsiBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -97,4 +97,5 @@ namespace Microsoft.Azure.Commands.ManagedServiceIdentity.UserAssignedIdentities
         }
     }
 }
+
 

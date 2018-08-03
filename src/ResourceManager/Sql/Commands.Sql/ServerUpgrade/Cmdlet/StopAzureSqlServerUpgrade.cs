@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     /// </summary>
     [CmdletDeprecation(ChangeDescription = "All Azure SQL DB Servers now have version 12.0 so there is nothing to upgrade.")]
     [Cmdlet("Stop","SqlServerUpgrade", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerUpgradeModel))]
-    public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
 #if NETSTANDARD
     [Alias("Stop-AzureRmSqlServerUpgrade")]
 #endif
+    public class StopAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeModel>
     {
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -88,4 +88,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         }
     }
 }
+
 

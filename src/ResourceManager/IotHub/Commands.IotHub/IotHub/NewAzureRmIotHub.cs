@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("New","IotHub", SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
-    public class NewAzureRmIotHub : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmIotHub")]
 #endif
+    public class NewAzureRmIotHub : IotHubBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

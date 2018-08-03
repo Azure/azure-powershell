@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Gets the callback URL for a trigger in a workflow
     /// </summary>
     [Cmdlet("Test","LogicApp"), OutputType(typeof(void))]
-    public class ValidateAzureLogicApp : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Test-AzureRmLogicApp")]
 #endif
+    public class ValidateAzureLogicApp : LogicAppBaseCmdlet
     {
         #region private Variables
 
@@ -133,4 +133,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet("Get","SqlElasticPoolDatabase", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlDatabaseModel))]
-    public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlElasticPoolDatabase")]
 #endif
+    public class GetAzureSqlElasticPoolDatabase : AzureSqlElasticPoolCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the ElasticPool to use.
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         }
     }
 }
+
 

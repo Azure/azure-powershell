@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
 {
     [Cmdlet("Get","SqlServerCommunicationLink",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true),OutputType(typeof(AzureSqlServerCommunicationLinkModel))]
-    public class GetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerCommunicationLink")]
 #endif
+    public class GetAzureSqlServerCommunicationLink : AzureSqlServerCommunicationLinkCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the server communication link to use.
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerCommunicationLink.Cmdlet
         }
     }
 }
+
 

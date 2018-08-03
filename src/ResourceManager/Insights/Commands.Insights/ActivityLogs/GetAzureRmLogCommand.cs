@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Insights.Events
     /// Get the list of events for at a subscription level.
     /// </summary>
     [Cmdlet("Get","Log"), OutputType(typeof(PSEventData))]
-    public class GetAzureRmLogCommand : LogsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmLog")]
 #endif
+    public class GetAzureRmLogCommand : LogsCmdletBase
     {
         /// <summary>
         /// Gets or sets the starttime parameter of the cmdlet
@@ -121,4 +121,5 @@ namespace Microsoft.Azure.Commands.Insights.Events
         }
     }
 }
+
 

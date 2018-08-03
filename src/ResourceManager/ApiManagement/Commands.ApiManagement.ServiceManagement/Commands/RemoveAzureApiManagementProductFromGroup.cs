@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Remove","ApiManagementProductFromGroup")]
     [OutputType(typeof(bool))]
-    public class RemoveAzureApiManagementProductFromGroup : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmApiManagementProductFromGroup")]
 #endif
+    public class RemoveAzureApiManagementProductFromGroup : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

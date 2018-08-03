@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByCertificateNameParameterSet)]
     [OutputType(typeof(String))]
-    public class BackupAzureKeyVaultCertificate : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Backup-AzureKeyVaultCertificate")]
 #endif
+    public class BackupAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region parameter sets
 
@@ -127,4 +127,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Update","RecoveryServicesAsrProtectionDirection",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Update-ASRProtectionDirection")]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmRecoveryServicesAsrProtectionDirection")]
 #endif
+    public class UpdateAzureRmRecoveryServicesAsrProtection : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///    Switch Paramter to update replication direction from Azure to Vmware.
@@ -667,4 +667,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
 

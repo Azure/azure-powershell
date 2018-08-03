@@ -25,10 +25,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
-    public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmExpressRouteCircuit")]
 #endif
+    public class NewAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -180,4 +180,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

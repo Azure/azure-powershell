@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
 {
     [Cmdlet("Add","VmssDiagnosticsExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(VirtualMachineScaleSet))]
-    public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmVmssDiagnosticsExtension")]
 #endif
+    public class AddAzureRmVmssDiagnosticsExtension : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         private string extensionName = DiagnosticsExtensionConstants.ExtensionDefaultName;
         private string version = "1.7";
@@ -181,4 +181,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.Diagnostics
         }
     }
 }
+
 

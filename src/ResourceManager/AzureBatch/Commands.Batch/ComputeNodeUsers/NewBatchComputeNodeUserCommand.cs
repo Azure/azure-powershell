@@ -23,10 +23,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeUser"), OutputType(typeof(void))]
-    public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureBatchComputeNodeUser")]
 #endif
+    public class NewBatchComputeNodeUserCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool containing the compute node to create the user on.")]
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

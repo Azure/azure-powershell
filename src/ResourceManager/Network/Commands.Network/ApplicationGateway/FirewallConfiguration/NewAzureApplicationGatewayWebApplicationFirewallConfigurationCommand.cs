@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayWebApplicationFirewallConfiguration", SupportsShouldProcess = true),OutputType(typeof(PSApplicationGatewayWebApplicationFirewallConfiguration))]
-    public class NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayWebApplicationFirewallConfiguration")]
 #endif
+    public class NewAzureApplicationGatewayWebApplicationFirewallConfigurationCommand : AzureApplicationGatewayWebApplicationFirewallConfigurationBase
     {
         public override void ExecuteCmdlet()
         {
@@ -43,4 +43,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

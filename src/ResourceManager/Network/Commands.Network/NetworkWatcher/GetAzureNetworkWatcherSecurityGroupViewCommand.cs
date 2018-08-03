@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","NetworkWatcherSecurityGroupView", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSSecurityGroupViewResult))]
 
-    public class GetAzureNeyworkWatcherSecurityGroupViewCommand : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmNetworkWatcherSecurityGroupView")]
 #endif
+    public class GetAzureNeyworkWatcherSecurityGroupViewCommand : NetworkWatcherBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -169,4 +169,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

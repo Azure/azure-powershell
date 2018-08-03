@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Set","ApiManagementSubscription")]
     [OutputType(typeof(PsApiManagementSubscription))]
-    public class SetAzureApiManagementSubscription : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApiManagementSubscription")]
 #endif
+    public class SetAzureApiManagementSubscription : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

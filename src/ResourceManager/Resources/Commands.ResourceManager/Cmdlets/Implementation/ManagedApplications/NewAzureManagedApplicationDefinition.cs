@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Creates the managed application definition.
     /// </summary>
     [Cmdlet("New","ManagedApplicationDefinition", SupportsShouldProcess = true), OutputType(typeof(PSObject))]
-    public class NewAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmManagedApplicationDefinition")]
 #endif
+    public class NewAzureManagedApplicationDefinitionCmdlet : ManagedApplicationCmdletBase
     {
         /// <summary>
         /// Gets or sets the managed application definition name parameter.
@@ -200,4 +200,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

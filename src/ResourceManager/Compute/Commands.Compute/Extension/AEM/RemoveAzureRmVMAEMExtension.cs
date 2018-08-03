@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Remove","VMAEMExtension")]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVMAEMExtension")]
 #endif
+    public class RemoveAzureRmVMAEMExtension : VirtualMachineExtensionBaseCmdlet
     {
         private AEMHelper _Helper = null;
 
@@ -122,4 +122,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

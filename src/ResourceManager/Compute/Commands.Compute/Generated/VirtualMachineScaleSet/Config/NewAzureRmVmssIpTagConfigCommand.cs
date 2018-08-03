@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New","VmssIpTagConfig")]
     [OutputType(typeof(Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetIpTag))]
-    public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmVmssIpTagConfig")]
 #endif
+    public partial class NewAzureRmVmssIpTagConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -65,4 +65,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

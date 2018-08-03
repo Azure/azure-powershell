@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Set","ApiManagementTenantAccess")]
     [OutputType(typeof(PsApiManagementAccessInformation))]
-    public class SetAzureRmApiManagementTenantAccess : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApiManagementTenantAccess")]
 #endif
+    public class SetAzureRmApiManagementTenantAccess : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

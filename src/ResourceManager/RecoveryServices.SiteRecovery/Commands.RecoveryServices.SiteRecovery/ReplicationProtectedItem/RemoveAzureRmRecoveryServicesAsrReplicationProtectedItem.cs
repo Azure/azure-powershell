@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Remove","RecoveryServicesAsrReplicationProtectedItem",DefaultParameterSetName = ASRParameterSets.DisableDR,SupportsShouldProcess = true)]
     [Alias("Remove-ASRReplicationProtectedItem")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRecoveryServicesAsrReplicationProtectedItem")]
 #endif
+    public class RemoveAzureRmRecoveryServicesAsrReplicationProtectedItem : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Job Response
@@ -133,4 +133,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AutomationVariable", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmAutomationVariable")]
 #endif
+    public class RemoveAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the variable name.
@@ -53,4 +53,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

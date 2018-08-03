@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("Get","SqlDatabaseGeoBackupPolicy")]
     [OutputType(typeof(AzureSqlDatabaseGeoBackupPolicyModel))]
-    public class GetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseGeoBackupPolicy")]
 #endif
+    public class GetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
 

@@ -20,6 +20,7 @@ function ConvertTo-Vhd
 {
     [CmdletBinding(SupportsShouldProcess = $true)]
     [OutputType([System.Management.Automation.PathInfo])]
+    [Alias("ConvertTo-AzureRMVhd")]
     param
     (
         [Parameter(ParameterSetName = 'Hyper-V', Mandatory = $true)]

@@ -23,10 +23,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("New","DataFactoryEncryptValue", DefaultParameterSetName = ByFactoryName), OutputType(typeof(string))]
-    public class NewAzureDataFactoryEncryptValueCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDataFactoryEncryptValue")]
 #endif
+    public class NewAzureDataFactoryEncryptValueCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory object.")]
@@ -110,4 +110,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

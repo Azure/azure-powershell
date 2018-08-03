@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
 {
     [Cmdlet("Remove","VMDiskEncryptionExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVMDiskEncryptionExtension")]
 #endif
+    public class RemoveAzureDiskEncryptionExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.AzureDiskEncryption
         }
     }
 }
+
 

@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Switch","WebAppSlot", SupportsShouldProcess = true), OutputType(typeof(void))]
     [Alias("Swap-AzureRmWebAppSlot")]
-    public class SwitchAzureWebAppSlot : WebAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Switch-AzureRmWebAppSlot")]
 #endif
+    public class SwitchAzureWebAppSlot : WebAppBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Name of the source slot.")]
         [ValidateNotNullOrEmpty]
@@ -131,4 +131,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+
 

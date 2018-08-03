@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using WindowsAzure.Commands.Storage.Adapters;
 
     [Cmdlet("Restore","ApiManagement"), OutputType(typeof(PsApiManagement))]
-    public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Restore-AzureRmApiManagement")]
 #endif
+    public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -89,4 +89,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

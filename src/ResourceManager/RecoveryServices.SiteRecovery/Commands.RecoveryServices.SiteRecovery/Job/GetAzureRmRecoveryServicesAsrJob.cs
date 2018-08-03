@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get","RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASRJob")]
     [OutputType(typeof(ASRJob))]
-    public class GetAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrJob")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets the details of the specified ASR job or the list of recent ASR jobs in the Recovery Services vault.
@@ -196,4 +196,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

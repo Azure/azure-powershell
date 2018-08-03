@@ -22,10 +22,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.StreamAnalytics
 {
     [Cmdlet("Get","StreamAnalyticsDefaultFunctionDefinition"), OutputType(typeof(PSFunction))]
-    public class GetAzureStreamAnalyticsFunctionDefaultDefinitionCommand : StreamAnalyticsResourceProviderBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmStreamAnalyticsDefaultFunctionDefinition")]
 #endif
+    public class GetAzureStreamAnalyticsFunctionDefaultDefinitionCommand : StreamAnalyticsResourceProviderBaseCmdlet
     {
         [Parameter(Position = 1, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The stream analytics job name.")]
         [ValidateNotNullOrEmpty]
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.StreamAnalytics
         }
     }
 }
+
 

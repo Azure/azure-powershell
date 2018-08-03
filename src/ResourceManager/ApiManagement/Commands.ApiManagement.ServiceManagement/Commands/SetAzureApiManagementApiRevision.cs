@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Set","ApiManagementApiRevision",DefaultParameterSetName = ExpandedParameterSet,SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApi), ParameterSetName = new[] { ExpandedParameterSet, ByInputObjectParameterSet })]
-    public class SetAzureApiManagementApiRevision : SetAzureApiManagementApi
 #if NETSTANDARD
     [Alias("Set-AzureRmApiManagementApiRevision")]
 #endif
+    public class SetAzureApiManagementApiRevision : SetAzureApiManagementApi
     {   
         [Parameter(
             ParameterSetName = ExpandedParameterSet,
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

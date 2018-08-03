@@ -26,10 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
     /// Show azure storage CORS rule properties
     /// </summary>
     [Cmdlet("Get","AzureStorageCORSRule"),OutputType(typeof(PSCorsRule))]
-    public class GetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureStorageCORSRule")]
 #endif
+    public class GetAzureStorageCORSRuleCommand : StorageCloudBlobCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, HelpMessage = GetAzureStorageServiceLoggingCommand.ServiceTypeHelpMessage)]
         public StorageServiceType ServiceType { get; set; }
@@ -51,4 +51,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         }
     }
 }
+
 

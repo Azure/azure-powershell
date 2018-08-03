@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayProbeConfig"),OutputType(typeof(PSApplicationGatewayProbe))]
-    public class GetAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGatewayProbeConfig")]
 #endif
+    public class GetAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

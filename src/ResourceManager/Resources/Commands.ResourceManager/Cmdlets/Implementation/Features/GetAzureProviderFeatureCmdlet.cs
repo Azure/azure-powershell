@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// </summary>
     [Cmdlet("Get","ProviderFeature", DefaultParameterSetName = GetAzureProviderFeatureCmdlet.ListAvailableParameterSet)]
     [OutputType(typeof(PSProviderFeature))]
-    public class GetAzureProviderFeatureCmdlet : ProviderFeatureCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmProviderFeature")]
 #endif
+    public class GetAzureProviderFeatureCmdlet : ProviderFeatureCmdletBase
     {
         /// <summary>
         /// The filter unregistered parameter set
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

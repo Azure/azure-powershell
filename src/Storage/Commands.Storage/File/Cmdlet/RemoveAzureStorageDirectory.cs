@@ -19,10 +19,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
 
     [Cmdlet("Remove","AzureStorageDirectory",SupportsShouldProcess = true,DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(CloudFileDirectory))]
-    public class RemoveAzureStorageDirectory : AzureStorageFileCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureStorageDirectory")]
 #endif
+    public class RemoveAzureStorageDirectory : AzureStorageFileCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -111,4 +111,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

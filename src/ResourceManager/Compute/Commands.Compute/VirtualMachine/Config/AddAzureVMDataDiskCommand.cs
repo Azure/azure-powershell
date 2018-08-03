@@ -23,10 +23,10 @@ using Microsoft.Azure.Management.Compute.Models;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Add","VMDataDisk",DefaultParameterSetName = VmNormalDiskParameterSet),OutputType(typeof(CM.PSVirtualMachine), typeof (PSVirtualMachineScaleSetVM))]
-    public class AddAzureVMDataDiskCommand : ComputeClientBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmVMDataDisk")]
 #endif
+    public class AddAzureVMDataDiskCommand : ComputeClientBaseCmdlet
     {
         protected const string VmNormalDiskParameterSet = "VmNormalDiskParameterSetName";
         protected const string VmManagedDiskParameterSet = "VmManagedDiskParameterSetName";
@@ -276,4 +276,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

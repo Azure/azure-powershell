@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
     /// Defines the New-AzureRmCdnProfile cmdlet.
     /// </summary>
     [Cmdlet("Set","CdnProfile", SupportsShouldProcess = true), OutputType(typeof(PSProfile))]
-    public class SetAzureRmCdnProfile : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmCdnProfile")]
 #endif
+    public class SetAzureRmCdnProfile : AzureCdnCmdletBase
     {
         /// <summary>
         /// Gets or sets the profile to update.
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Cdn.Profile
         }
     }
 }
+
 

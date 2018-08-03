@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
     [Cmdlet("Get","SqlServerActiveDirectoryAdministrator",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
-    public class GetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerActiveDirectoryAdministrator")]
 #endif
+    public class GetAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         }
     }
 }
+
 

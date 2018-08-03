@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New","HDInsightClusterConfig"),OutputType(typeof(AzureHDInsightConfig))]
-    public class NewAzureHDInsightClusterConfigCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmHDInsightClusterConfig")]
 #endif
+    public class NewAzureHDInsightClusterConfigCommand : HDInsightCmdletBase
     {
         private readonly AzureHDInsightConfig _config;
 
@@ -157,4 +157,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

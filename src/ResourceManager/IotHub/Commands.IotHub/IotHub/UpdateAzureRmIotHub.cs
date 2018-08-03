@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("Update","IotHub", DefaultParameterSetName = ResourceUpdateParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSIotHub))]
-    public class UpdateAzureRmIotHub : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmIotHub")]
 #endif
+    public class UpdateAzureRmIotHub : IotHubBaseCmdlet
     {
         private const string ResourceUpdateParameterSet = "ResourceUpdateSet";
 
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

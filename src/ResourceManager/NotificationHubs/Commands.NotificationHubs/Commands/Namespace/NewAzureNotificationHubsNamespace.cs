@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
 
     [Cmdlet("New","NotificationHubsNamespace", SupportsShouldProcess = true), OutputType(typeof(NamespaceAttributes))]
-    public class NewAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmNotificationHubsNamespace")]
 #endif
+    public class NewAzureNotificationHubsNamespace : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","DdosProtectionPlan", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public partial class RemoveAzureRmDdosProtectionPlan : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmDdosProtectionPlan")]
 #endif
+    public partial class RemoveAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

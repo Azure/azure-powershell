@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayFirewallDisabledRuleGroupConfig"), OutputType(typeof(PSApplicationGatewayFirewallDisabledRuleGroup))]
-    public class NewAzureApplicationGatewayFirewallDisabledRuleGroupConfigCommand : AzureApplicationGatewayFirewallDisabledRuleGroupConfigBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayFirewallDisabledRuleGroupConfig")]
 #endif
+    public class NewAzureApplicationGatewayFirewallDisabledRuleGroupConfigCommand : AzureApplicationGatewayFirewallDisabledRuleGroupConfigBase
     {
         public override void ExecuteCmdlet()
         {
@@ -30,4 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsAccount", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsAccount")]
-    public class RemoveAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeAnalyticsAccount")]
 #endif
+    public class RemoveAzureDataLakeAnalyticsAccount : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of account to be removed.")]
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

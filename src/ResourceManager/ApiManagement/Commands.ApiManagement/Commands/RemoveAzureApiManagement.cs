@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
 
     [Cmdlet("Remove","ApiManagement", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmApiManagement")]
 #endif
+    public class RemoveAzureApiManagement : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

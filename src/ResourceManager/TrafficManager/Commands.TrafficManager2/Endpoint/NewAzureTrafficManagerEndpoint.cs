@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.TrafficManager
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("New","TrafficManagerEndpoint"), OutputType(typeof(TrafficManagerEndpoint))]
-    public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmTrafficManagerEndpoint")]
 #endif
+    public class NewAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.")]
         [ValidateNotNullOrEmpty]
@@ -123,4 +123,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
 

@@ -23,10 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","NetworkSecurityGroup"), OutputType(typeof(PSNetworkSecurityGroup))]
-    public class SetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmNetworkSecurityGroup")]
 #endif
+    public class SetAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

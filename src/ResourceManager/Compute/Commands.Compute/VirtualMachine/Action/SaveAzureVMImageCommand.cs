@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Save","VMImage", DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
 #if NETSTANDARD
     [Alias("Save-AzureRmVMImage")]
 #endif
+    public class SaveAzureVMImageCommand : VirtualMachineActionBaseCmdlet
     {
         [Alias("VMName")]
         [Parameter(
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

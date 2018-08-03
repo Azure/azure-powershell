@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New","ContainerServiceConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
-    public partial class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmContainerServiceConfig")]
 #endif
+    public partial class NewAzureRmContainerServiceConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -282,4 +282,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

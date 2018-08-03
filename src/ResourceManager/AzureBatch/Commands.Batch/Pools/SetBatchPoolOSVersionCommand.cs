@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPoolOSVersion"), OutputType(typeof(void))]
-    public class SetBatchPoolOSVersionCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureBatchPoolOSVersion")]
 #endif
+    public class SetBatchPoolOSVersionCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipeline = true, ValueFromPipelineByPropertyName = true,
             Mandatory = true, HelpMessage = "The id of the pool.")]
@@ -43,4 +43,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

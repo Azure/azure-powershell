@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchAccount"), OutputType(typeof(BatchAccountContext))]
-    public class SetBatchAccountCommand : BatchCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmBatchAccount")]
 #endif
+    public class SetBatchAccountCommand : BatchCmdletBase
     {
         [Parameter(Mandatory = true, Position = 0, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the Batch service account to update.")]
@@ -51,4 +51,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -19,10 +19,10 @@ using Microsoft.Azure.Commands.Sql.DataSync.Model;
 namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
 {
     [Cmdlet("Get","SqlSyncSchema",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncFullSchemaModel))]
-    public class GetAzureSqlSyncSchema : AzureSqlSyncSchemaCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlSyncSchema")]
 #endif
+    public class GetAzureSqlSyncSchema : AzureSqlSyncSchemaCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -48,4 +48,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
 

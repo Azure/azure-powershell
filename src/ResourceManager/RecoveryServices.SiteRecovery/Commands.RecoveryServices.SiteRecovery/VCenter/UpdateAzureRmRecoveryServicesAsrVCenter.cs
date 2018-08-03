@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Update","RecoveryServicesAsrvCenter",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Update-ASRvCenter")]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmRecoveryServicesAsrvCenter")]
 #endif
+    public class UpdateAzureRmRecoveryServicesAsrvCenter : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the resourceId of vCenter to be updated.
@@ -146,4 +146,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
 

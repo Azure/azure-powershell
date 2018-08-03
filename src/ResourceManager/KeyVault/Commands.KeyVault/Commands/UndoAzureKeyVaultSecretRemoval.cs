@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Undo", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultSecretRemoval", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultSecret))]
-    public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Undo-AzureKeyVaultSecretRemoval")]
 #endif
+    public class UndoAzureKeyVaultSecretRemoval : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -84,4 +84,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

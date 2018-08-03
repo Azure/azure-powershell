@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCrossConnectionPeering"), OutputType(typeof(PSExpressRouteCrossConnectionPeering))]
-    public partial class GetAzureRmExpressRouteCrossConnectionPeering : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmExpressRouteCrossConnectionPeering")]
 #endif
+    public partial class GetAzureRmExpressRouteCrossConnectionPeering : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

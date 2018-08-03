@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("Remove","ApplicationInsights", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(bool))]
-    public class RemoveApplicationInsightsComponent : ApplicationInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmApplicationInsights")]
 #endif
+    public class RemoveApplicationInsightsComponent : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
 

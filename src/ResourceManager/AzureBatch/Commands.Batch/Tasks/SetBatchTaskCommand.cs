@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchTask"), OutputType(typeof(void))]
-    public class SetBatchTaskCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureBatchTask")]
 #endif
+    public class SetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The PSCloudTask object with changes to commit to the Batch Service.")]
@@ -35,4 +35,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

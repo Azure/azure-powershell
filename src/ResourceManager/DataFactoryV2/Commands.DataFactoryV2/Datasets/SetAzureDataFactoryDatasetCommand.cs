@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Set","DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(PSDataset))]
     [Alias(VerbsCommon.New + "-" + Constants.Dataset)]
-    public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmDataFactoryV2Dataset")]
 #endif
+    public class SetAzureDataFactoryDatasetCommand : DataFactoryContextBaseSetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpDatasetName)]
@@ -54,4 +54,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

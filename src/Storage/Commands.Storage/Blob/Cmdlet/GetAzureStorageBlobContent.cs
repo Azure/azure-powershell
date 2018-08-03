@@ -27,10 +27,10 @@ using System.Threading.Tasks;
 namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 {
     [Cmdlet("Get","AzureStorageBlobContent", SupportsShouldProcess = true, DefaultParameterSetName = ManualParameterSet),OutputType(typeof(AzureStorageBlob))]
-    public class GetAzureStorageBlobContentCommand : StorageDataMovementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureStorageBlobContent")]
 #endif
+    public class GetAzureStorageBlobContentCommand : StorageDataMovementCmdletBase
     {
         /// <summary>
         /// manually set the name parameter
@@ -315,4 +315,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Remove","DataFactoryV2Dataset", DefaultParameterSetName = ParameterSetNames.ByFactoryName,SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureDataFactoryDatasetCommand : DataFactoryContextActionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataFactoryV2Dataset")]
 #endif
+    public class RemoveAzureDataFactoryDatasetCommand : DataFactoryContextActionBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true,
             HelpMessage = Constants.HelpDatasetName)]
@@ -71,4 +71,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

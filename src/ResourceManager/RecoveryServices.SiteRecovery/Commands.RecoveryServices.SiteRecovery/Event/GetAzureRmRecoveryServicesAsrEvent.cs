@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get","RecoveryServicesAsrEvent",DefaultParameterSetName = ASRParameterSets.ByParam)]
     [Alias("Get-ASREvent")]
     [OutputType(typeof(ASREvent))]
-    public class GetAzureRmRecoveryServicesAsrEvents : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrEvent")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrEvents : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets Resource Id.
@@ -206,4 +206,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

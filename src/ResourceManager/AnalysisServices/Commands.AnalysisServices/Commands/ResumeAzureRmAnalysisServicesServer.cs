@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Resume", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true),OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Resume-AzureAs")]
-    public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("Resume-AzureRmAnalysisServicesServer")]
 #endif
+    public class ResumeAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(Position = 1, ValueFromPipelineByPropertyName = true,
             Mandatory = false, HelpMessage = "Name of resource group under which to retrieve the server.")]
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

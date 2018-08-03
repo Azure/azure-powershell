@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayIPConfiguration"), OutputType(typeof(PSApplicationGatewayIPConfiguration))]
-    public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayIPConfiguration")]
 #endif
+    public class NewAzureApplicationGatewayIPConfigurationCommand : AzureApplicationGatewayIPConfigurationBase
     {
         public override void ExecuteCmdlet()
         {
@@ -30,4 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

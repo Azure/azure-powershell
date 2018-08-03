@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerProbeConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class AddAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
 #if NETSTANDARD
     [Alias("Add-AzureRmLoadBalancerProbeConfig")]
 #endif
+    public class AddAzureLoadBalancerProbeConfigCommand : AzureLoadBalancerProbeConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

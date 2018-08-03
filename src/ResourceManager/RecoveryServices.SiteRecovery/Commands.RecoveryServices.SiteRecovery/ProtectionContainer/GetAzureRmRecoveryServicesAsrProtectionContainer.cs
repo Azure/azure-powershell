@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get","RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.ByFabricObject)]
     [Alias("Get-ASRProtectionContainer")]
     [OutputType(typeof(ASRProtectionContainer))]
-    public class GetAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrProtectionContainer")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets ID of the Protection Container.
@@ -307,4 +307,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
     /// Gets policy states
     /// </summary>
     [Cmdlet("Get","PolicyState", DefaultParameterSetName = ParameterSetNames.SubscriptionScope), OutputType(typeof(PolicyState))]
-    public class GetAzureRmPolicyState : PolicyInsightsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmPolicyState")]
 #endif
+    public class GetAzureRmPolicyState : PolicyInsightsCmdletBase
     {
         [Parameter(ParameterSetName = ParameterSetNames.ManagementGroupScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
         [Parameter(ParameterSetName = ParameterSetNames.SubscriptionScope, Mandatory = false, HelpMessage = ParameterHelpMessages.All)]
@@ -249,4 +249,5 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
         }
     }
 }
+
 

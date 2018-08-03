@@ -20,10 +20,10 @@ using System;
 namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("Remove","SqlDatabaseRestorePoint", SupportsShouldProcess = true),OutputType(typeof(AzureSqlDatabaseRestorePointModel))]
-    public class RemoveAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmSqlDatabaseRestorePoint")]
 #endif
+    public class RemoveAzureSqlDatabaseRestorePoint : AzureSqlDatabaseRestorePointCmdletBase
     {
         /// <summary>
         /// Gets or sets the restore point create time.
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
 

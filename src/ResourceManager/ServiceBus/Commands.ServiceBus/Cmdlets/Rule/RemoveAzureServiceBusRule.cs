@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// 'Remove-AzureRmServiceBusRule' Cmdlet removes the specified Rule
     /// </summary>
     [Cmdlet("Remove","ServiceBusRule", DefaultParameterSetName = RuleResourceParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmServiceBusRule")]
 #endif
+    public class RemoveAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = RuleResourceParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -110,4 +110,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         }
     }
 }
+
 

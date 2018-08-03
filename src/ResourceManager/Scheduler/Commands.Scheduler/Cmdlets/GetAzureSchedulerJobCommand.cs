@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// Gets jobs info.
     /// </summary>
     [Cmdlet("Get","SchedulerJob"), OutputType(typeof(PSSchedulerJobDefinition))]
-    public class GetAzureSchedulerJobCommand : SchedulerBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmSchedulerJob")]
 #endif
+    public class GetAzureSchedulerJobCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job.")]
         [ResourceGroupCompleter]
@@ -60,4 +60,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
 

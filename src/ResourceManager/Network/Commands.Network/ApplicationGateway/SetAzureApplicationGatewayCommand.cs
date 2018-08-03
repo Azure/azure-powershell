@@ -23,10 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmApplicationGateway")]
 #endif
+    public class SetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

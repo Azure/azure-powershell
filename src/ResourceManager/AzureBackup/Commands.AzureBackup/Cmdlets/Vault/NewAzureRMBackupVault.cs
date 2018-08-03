@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Command to create an azure backup vault in a subscription
     /// </summary>
     [Cmdlet("New","BackupVault"), OutputType(typeof(AzureRMBackupVault))]
-    public class NewAzureRMBackupVault : AzureBackupCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmBackupVault")]
 #endif
+    public class NewAzureRMBackupVault : AzureBackupCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.ResourceGroupName)]
         [ResourceGroupCompleter()]
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

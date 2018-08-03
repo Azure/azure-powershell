@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
     /// 'Set-AzureRmServicebusGeoDRConfigurationBreakPair' Cmdlet disables the Disaster Recovery and stops replicating changes from primary to secondary namespace
     /// </summary>
     [Cmdlet("Set","ServiceBusGeoDRConfigurationBreakPair", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class SetAzureServiceBusGeoDRConfigurationBreakPair : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmServiceBusGeoDRConfigurationBreakPair")]
 #endif
+    public class SetAzureServiceBusGeoDRConfigurationBreakPair : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = GeoDRParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -111,4 +111,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         }
     }
 }
+
 

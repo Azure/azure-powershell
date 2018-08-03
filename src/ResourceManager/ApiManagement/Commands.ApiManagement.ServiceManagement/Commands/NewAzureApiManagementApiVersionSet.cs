@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("New","ApiManagementApiVersionSet", SupportsShouldProcess = true)]
     [OutputType(typeof(PsApiManagementApiVersionSet))]
-    public class NewAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmApiManagementApiVersionSet")]
 #endif
+    public class NewAzureApiManagementApiVersionSet : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipeline = true,
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
-    public class GetAzureVpnClientRevokedCertificates : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVpnClientRevokedCertificate")]
 #endif
+    public class GetAzureVpnClientRevokedCertificates : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

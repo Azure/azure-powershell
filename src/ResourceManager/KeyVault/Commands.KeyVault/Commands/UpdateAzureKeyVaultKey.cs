@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     [Alias("Set-AzureKeyVaultKey", "Set-AzureKeyVaultKeyAttribute")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultKey", SupportsShouldProcess = true,DefaultParameterSetName = DefaultParameterSet)]
     [OutputType(typeof(PSKeyVaultKey))]
-    public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureKeyVaultKey")]
 #endif
+    public class UpdateAzureKeyVaultKey : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -145,4 +145,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ using Microsoft.Azure.Management.Network;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ExpressRouteCrossConnectionPeering", DefaultParameterSetName = "SetByResource", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
-    public class AddAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
 #if NETSTANDARD
     [Alias("Add-AzureRmExpressRouteCrossConnectionPeering")]
 #endif
+    public class AddAzureRMExpressRouteCrossConnectionPeeringCommand : AzureRMExpressRouteCrossConnectionPeeringBase
     {
         [Parameter(
             Mandatory = true,
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

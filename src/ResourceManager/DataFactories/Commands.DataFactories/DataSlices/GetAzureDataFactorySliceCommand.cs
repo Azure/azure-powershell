@@ -23,10 +23,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactorySlice", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataSlice))]
-    public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataFactorySlice")]
 #endif
+    public class GetAzureDataFactorySliceCommand : DataSliceContextBaseCmdlet
     {
         [Parameter(Position = 4, Mandatory = false, HelpMessage = "The data slice range end time.")]
         public DateTime EndDateTime
@@ -85,4 +85,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

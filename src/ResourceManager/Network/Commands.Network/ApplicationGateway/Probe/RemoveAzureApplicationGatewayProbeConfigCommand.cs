@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationGatewayProbeConfig"), OutputType(typeof(PSApplicationGateway))]
-    public class RemoveAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmApplicationGatewayProbeConfig")]
 #endif
+    public class RemoveAzureApplicationGatewayProbeConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -52,4 +52,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

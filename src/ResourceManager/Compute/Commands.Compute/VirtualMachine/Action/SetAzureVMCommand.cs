@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VM", DefaultParameterSetName = GeneralizeResourceGroupNameParameterSet)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class SetAzureVMCommand : VirtualMachineBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVM")]
 #endif
+    public class SetAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string GeneralizeResourceGroupNameParameterSet = "GeneralizeResourceGroupNameParameterSetName";
         protected const string RedeployResourceGroupNameParameterSet = "RedeployResourceGroupNameParameterSetName";
@@ -135,4 +135,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

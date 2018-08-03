@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmLoadBalancer")]
 #endif
+    public class RemoveAzureLoadBalancerCommand : LoadBalancerBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

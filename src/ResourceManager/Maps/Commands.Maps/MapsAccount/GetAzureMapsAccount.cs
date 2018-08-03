@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// Get Maps Account by name, all accounts under resource group or all accounts under the subscription
     /// </summary>
     [Cmdlet("Get","MapsAccount", DefaultParameterSetName = ResourceGroupParameterSet), OutputType(typeof(PSMapsAccount))]
-    public class GetAzureMapsAccount : MapsAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmMapsAccount")]
 #endif
+    public class GetAzureMapsAccount : MapsAccountBaseCmdlet
     {
         protected const string ResourceGroupParameterSet = "ResourceGroupParameterSet";
         protected const string AccountNameParameterSet = "AccountNameParameterSet";
@@ -110,4 +110,5 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+
 

@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Remove","Snapshot", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class RemoveAzureRmSnapshot : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmSnapshot")]
 #endif
+    public partial class RemoveAzureRmSnapshot : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -158,4 +158,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

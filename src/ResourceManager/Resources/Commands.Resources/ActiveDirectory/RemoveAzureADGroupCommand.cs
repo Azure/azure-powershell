@@ -23,10 +23,10 @@ using ProjectResources = Microsoft.Azure.Commands.Resources.Properties.Resources
 namespace Microsoft.Azure.Commands.ActiveDirectory
 {
     [Cmdlet("Remove","ADGroup", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ObjectId), OutputType(typeof(bool))]
-    public class RemoveAzureADGroupCommand : ActiveDirectoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmADGroup")]
 #endif
+    public class RemoveAzureADGroupCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The object id of the group to be removed.")]
         [ValidateNotNullOrEmpty]
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of Azure Recovery Points
     /// </summary>
     [Cmdlet("Get","BackupRecoveryPoint"), OutputType(typeof(AzureRMBackupRecoveryPoint))]
-    public class GetAzureRMBackupRecoveryPoint : AzureRMBackupDSCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBackupRecoveryPoint")]
 #endif
+    public class GetAzureRMBackupRecoveryPoint : AzureRMBackupDSCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.RecoveryPointId)]
         [ValidateNotNullOrEmpty]
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
     /// 'Test-AzureRmEventHubName' Cmdlet Check Availability of the NameSpace Name and DRConfig name
     /// </summary>
     [Cmdlet("Test","EventHubName", DefaultParameterSetName = NamespaceCheckNameAvailabilityParameterSet), OutputType(typeof(PSCheckNameAvailabilityResultAttributes))]
-    public class TestAzureEventhubCheckNameAvailability : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmEventHubName")]
 #endif
+    public class TestAzureEventhubCheckNameAvailability : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = AliasCheckNameAvailabilityParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         }
     }
 }
+
 

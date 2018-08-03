@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Add an Alert rule
     /// </summary>
     [Cmdlet("Add","MetricAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
-    public class AddAzureRmMetricAlertRuleCommand : AddAzureRmAlertRuleCommandBase
 #if NETSTANDARD
     [Alias("Add-AzureRmMetricAlertRule")]
 #endif
+    public class AddAzureRmMetricAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
         /// Gets or sets the time window size of the threshold condition
@@ -115,4 +115,5 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+
 

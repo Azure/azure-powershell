@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VirtualNetworkGatewayAdvertisedRoute"), OutputType(typeof(PSGatewayRoute))]
-    public class GetVirtualNetworkGatewayAdvertisedRouteCommand : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVirtualNetworkGatewayAdvertisedRoute")]
 #endif
+    public class GetVirtualNetworkGatewayAdvertisedRouteCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

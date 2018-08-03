@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsDataSource",SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsDataSource")]
-    public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeAnalyticsDataSource")]
 #endif
+    public class RemoveAzureDataLakeAnalyticsDataSource : DataLakeAnalyticsCmdletBase
     {
         internal const string DataLakeParameterSetName = "RemoveDataLakeStorageAccount";
         internal const string BlobParameterSetName = "RemoveBlobStorageAccount";
@@ -111,4 +111,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Get-ASRVaultContext",
         "Get-ASRVaultSettings"
         )]
-    public class GetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrVaultContext")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrVaultSettings : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     ProcessRecord of the command.
@@ -42,4 +42,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

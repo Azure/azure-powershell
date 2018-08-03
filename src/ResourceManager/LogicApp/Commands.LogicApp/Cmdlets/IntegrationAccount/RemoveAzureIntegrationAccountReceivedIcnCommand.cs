@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     /// <remarks>As the underlying resource provider does not return the deleted entity, there is no output to this cmdlet and no PassThru parameter either.</remarks>
     [Cmdlet("Remove","IntegrationAccountReceivedIcn", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmIntegrationAccountReceivedIcn")]
 #endif
+    public class RemoveAzureIntegrationAccountReceivedIcnCommand : LogicAppBaseCmdlet
     {
         #region Input Paramters
 
@@ -94,4 +94,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

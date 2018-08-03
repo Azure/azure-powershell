@@ -26,10 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     /// create an new azure table
     /// </summary>
     [Cmdlet("New","AzureStorageTable"),OutputType(typeof(AzureStorageTable))]
-    public class NewAzureStorageTableCommand : StorageCloudTableCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageTable")]
 #endif
+    public class NewAzureStorageTableCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Table")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Table name",
@@ -90,4 +90,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
 

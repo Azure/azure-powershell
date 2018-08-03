@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Restore Azure Backup Item
     /// </summary>
     [Cmdlet("Restore","BackupItem"), OutputType(typeof(AzureRMBackupJob))]
-    public class RestoreAzureRMBackupItem : AzureBackupRestoreBase
 #if NETSTANDARD
     [Alias("Restore-AzureRmBackupItem")]
 #endif
+    public class RestoreAzureRMBackupItem : AzureBackupRestoreBase
     {
         [Parameter(Position = 1, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.StorageAccountName)]
         [ValidateNotNullOrEmpty]
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","VirtualNetworkGateway", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVirtualNetworkGateway")]
 #endif
+    public class RemoveAzureVirtualNetworkGatewayCommand : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Microsoft.Azure.Commands.RedisCache.Models;
 
     [Cmdlet("New","RedisCacheScheduleEntry"), OutputType(typeof(PSScheduleEntry))]
-    public class NewAzureRedisCacheScheduleEntry : RedisCacheCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRedisCacheScheduleEntry")]
 #endif
+    public class NewAzureRedisCacheScheduleEntry : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Day of week for which want to create schedule entry")]
         [ValidateSet("Everyday", "Weekend", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday", IgnoreCase = true)]      
@@ -46,4 +46,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
 

@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Stop", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchTask"), OutputType(typeof(void))]
-    public class StopBatchTaskCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureBatchTask")]
 #endif
+    public class StopBatchTaskCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             ValueFromPipelineByPropertyName = true, HelpMessage = "The id of the job containing the task to terminate.")]
@@ -47,4 +47,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
     /// Returns the secure connection policy of a specific database.
     /// </summary>
     [Cmdlet("Get","SqlDatabaseSecureConnectionPolicy", SupportsShouldProcess = true), OutputType(typeof(DatabaseSecureConnectionPolicyModel))]
-    public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseSecureConnectionPolicy")]
 #endif
+    public class GetAzureSqlDatabaseSecureConnectionPolicy : SqlDatabaseSecureConnectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.Sql.SecureConnection.Cmdlet
         }
     }
 }
+
 

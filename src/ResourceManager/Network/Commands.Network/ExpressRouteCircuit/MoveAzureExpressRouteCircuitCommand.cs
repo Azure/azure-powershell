@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Network
     using System.Collections;
 
     [Cmdlet("Move","ExpressRouteCircuit", SupportsShouldProcess = true),OutputType(typeof(PSExpressRouteCircuit))]
-    public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
 #if NETSTANDARD
     [Alias("Move-AzureRmExpressRouteCircuit")]
 #endif
+    public class MoveAzureExpressRouteCircuitCommand : ExpressRouteCircuitBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

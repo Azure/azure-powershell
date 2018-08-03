@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// according to the filters passed via the cmdlet parameters.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupItem",DefaultParameterSetName = GetItemsForContainerParamSet), OutputType(typeof(ItemBase))]
-    public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesBackupItem")]
 #endif
+    public class GetAzureRmRecoveryServicesBackupItem : RSBackupVaultCmdletBase
     {
         internal const string GetItemsForContainerParamSet = "GetItemsForContainer";
         internal const string GetItemsForVaultParamSet = "GetItemsForVault";
@@ -141,4 +141,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

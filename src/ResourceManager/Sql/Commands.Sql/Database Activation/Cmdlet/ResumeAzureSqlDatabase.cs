@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
     /// Cmdlet to resume a paused Azure SQL Data Warehouse database.
     /// </summary>
     [Cmdlet("Resume","SqlDatabase", SupportsShouldProcess = true), OutputType(typeof(AzureSqlDatabaseModel))]
-    public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
 #if NETSTANDARD
     [Alias("Resume-AzureRmSqlDatabase")]
 #endif
+    public class ResumeAzureSqlDatabase : AzureSqlDatabaseActivationCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Sql.DatabaseActivation.Cmdlet
         }
     }
 }
+
 

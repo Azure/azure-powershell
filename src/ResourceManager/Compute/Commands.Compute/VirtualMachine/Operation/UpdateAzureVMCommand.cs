@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Update","VM",SupportsShouldProcess = true,DefaultParameterSetName = ResourceGroupNameParameterSet)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmVM")]
 #endif
+    public class UpdateAzureVMCommand : VirtualMachineBaseCmdlet
     {
         private const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSetName";
         private const string IdParameterSet = "IdParameterSetName";
@@ -167,4 +167,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

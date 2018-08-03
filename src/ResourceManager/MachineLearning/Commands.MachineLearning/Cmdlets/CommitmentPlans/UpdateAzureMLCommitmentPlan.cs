@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
 
     [Cmdlet("Update","MlCommitmentPlan", SupportsShouldProcess = true)]
     [OutputType(typeof(CommitmentPlan))]
-    public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmMlCommitmentPlan")]
 #endif
+    public class UpdateAzureMLCommitmentPlan : CommitmentPlansCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the resource group for the Azure ML commitment plan.")]
         [ResourceGroupCompleter]
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
 

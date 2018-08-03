@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Storage
 {
     [Cmdlet("Get","StorageAccountKey"), OutputType(typeof(StorageAccountKey))]
-    public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmStorageAccountKey")]
 #endif
+    public class GetAzureStorageAccountKeyCommand : StorageAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
 

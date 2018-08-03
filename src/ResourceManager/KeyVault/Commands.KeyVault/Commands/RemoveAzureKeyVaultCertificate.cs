@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificate", SupportsShouldProcess = true,DefaultParameterSetName = ByVaultNameAndNameParameterSet)]
     [OutputType(typeof(PSDeletedKeyVaultCertificate))]
-    public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureKeyVaultCertificate")]
 #endif
+    public class RemoveAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -137,4 +137,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

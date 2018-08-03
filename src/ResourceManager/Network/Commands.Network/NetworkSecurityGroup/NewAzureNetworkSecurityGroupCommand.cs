@@ -25,10 +25,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","NetworkSecurityGroup", SupportsShouldProcess = true),OutputType(typeof(PSNetworkSecurityGroup))]
-    public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmNetworkSecurityGroup")]
 #endif
+    public class NewAzureNetworkSecurityGroupCommand : NetworkSecurityGroupBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -116,4 +116,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("New","IntegrationAccount", SupportsShouldProcess = true)]
     [OutputType(typeof(IntegrationAccount))]
-    public class NewAzureIntegrationAccountCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmIntegrationAccount")]
 #endif
+    public class NewAzureIntegrationAccountCommand : LogicAppBaseCmdlet
     {
 
         #region Input Parameters
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

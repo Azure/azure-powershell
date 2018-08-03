@@ -24,10 +24,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Start","DataFactoryV2IntegrationRuntime",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSManagedIntegrationRuntimeStatus))]
-    public class StartAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmDataFactoryV2IntegrationRuntime")]
 #endif
+    public class StartAzureDataFactoryIntegrationRuntimeCommand : IntegrationRuntimeCmdlet
     {
         [Parameter(Mandatory = false,
             HelpMessage = Constants.HelpDontAskConfirmation)]
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

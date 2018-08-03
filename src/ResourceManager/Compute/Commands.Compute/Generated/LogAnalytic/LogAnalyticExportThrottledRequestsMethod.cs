@@ -171,10 +171,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Export","LogAnalyticThrottledRequests", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
-    public partial class ExportAzureRmLogAnalyticThrottledRequests : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Export-AzureRmLogAnalyticThrottledRequests")]
 #endif
+    public partial class ExportAzureRmLogAnalyticThrottledRequests : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -245,4 +245,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

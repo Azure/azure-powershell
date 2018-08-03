@@ -26,10 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Threading.Tasks;
 
     [Cmdlet("Get","AzureStorageBlobCopyState", DefaultParameterSetName = NameParameterSet),OutputType(typeof(AzureStorageBlob))]
-    public class GetAzureStorageBlobCopyState : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureStorageBlobCopyState")]
 #endif
+    public class GetAzureStorageBlobCopyState : StorageCloudBlobCmdletBase
     {
         /// <summary>
         /// Blob Pipeline parameter set name
@@ -321,4 +321,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
 

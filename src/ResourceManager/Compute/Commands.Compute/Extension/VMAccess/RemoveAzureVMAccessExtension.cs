@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Remove","VMAccessExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVMAccessExtension")]
 #endif
+    public class RemoveAzureVMAccessExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -78,4 +78,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

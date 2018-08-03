@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// Removes the service principal.
     /// </summary>
     [Cmdlet("Remove","ADServicePrincipal", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.ObjectId),OutputType(typeof(PSADServicePrincipal))]
-    public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmADServicePrincipal")]
 #endif
+    public class RemoveAzureADServicePrincipalCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ObjectId, HelpMessage = "The service principal object id.")]
         [ValidateNotNullOrEmpty]
@@ -118,4 +118,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
 

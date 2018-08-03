@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.MachineLearning
 {
     [Cmdlet("Get","MlWebService")]
     [OutputType(typeof(WebService))]
-    public class GetAzureMLWebService : WebServicesCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmMlWebService")]
 #endif
+    public class GetAzureMLWebService : WebServicesCmdletBase
     {
         [Parameter(
             Mandatory = false, 
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.MachineLearning
         }
     }
 }
+
 

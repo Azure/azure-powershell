@@ -21,10 +21,10 @@ using Microsoft.Azure.Management.ServiceFabric.Models;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricSetting", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmServiceFabricSetting")]
 #endif
+    public class RemoveAzureRmServiceFabricSetting : ServiceFabricSettingsCmdletBase
     {
         public override string Value { get; set; }
 
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

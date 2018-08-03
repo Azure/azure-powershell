@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you stop an Azure Web app slot
     /// </summary>
     [Cmdlet("Stop","WebAppSlot"), OutputType(typeof(Site))]
-    public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmWebAppSlot")]
 #endif
+    public class StopAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+
 

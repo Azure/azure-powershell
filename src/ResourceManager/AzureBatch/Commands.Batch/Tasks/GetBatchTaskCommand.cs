@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchTask", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCloudTask))]
-    public class GetBatchTaskCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchTask")]
 #endif
+    public class GetBatchTaskCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
@@ -85,4 +85,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

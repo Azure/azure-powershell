@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet("Get","DtlAutoStartPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSSchedule))]
-    public class GetAzureRmDtlAutoStartPolicy : DevTestLabsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDtlAutoStartPolicy")]
 #endif
+    public class GetAzureRmDtlAutoStartPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()
         {
@@ -35,4 +35,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
 

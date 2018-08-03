@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// 'Remove-AzureRmRelayAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
     [Cmdlet("Remove","EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmEventHubAuthorizationRule")]
 #endif
+    public class RemoveAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -89,4 +89,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
     }
 }
+
 

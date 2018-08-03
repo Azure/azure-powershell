@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Removes the policy assignment.
     /// </summary>
     [Cmdlet("Remove","PolicyAssignment", SupportsShouldProcess = true, DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(bool))]
-    public class RemoveAzurePolicyAssignmentCmdlet : PolicyCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmPolicyAssignment")]
 #endif
+    public class RemoveAzurePolicyAssignmentCmdlet : PolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the policy assignment name parameter.
@@ -105,4 +105,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

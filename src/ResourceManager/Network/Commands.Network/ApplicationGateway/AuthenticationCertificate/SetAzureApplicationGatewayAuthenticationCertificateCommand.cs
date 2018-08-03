@@ -21,10 +21,10 @@ using System.Security.Cryptography.X509Certificates;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ApplicationGatewayAuthenticationCertificate", SupportsShouldProcess = true), OutputType(typeof(PSApplicationGateway))]
-    public class SetAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
 #if NETSTANDARD
     [Alias("Set-AzureRmApplicationGatewayAuthenticationCertificate")]
 #endif
+    public class SetAzureApplicationGatewayAuthenticationCertificateCommand : AzureApplicationGatewayAuthenticationCertificateBase
     {
         [Parameter(
              Mandatory = true,
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

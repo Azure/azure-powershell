@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Test","DataLakeStoreItem"), OutputType(typeof(bool))]
     [Alias("Test-AdlStoreItem")]
-    public class TestAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmDataLakeStoreItem")]
 #endif
+    public class TestAzureDataLakeStoreItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The DataLakeStore account to execute the filesystem operation in")]
@@ -71,4 +71,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

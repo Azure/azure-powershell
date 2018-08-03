@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Profile.Context
 {
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ContextAutosave", SupportsShouldProcess = true)]
     [OutputType(typeof(ContextAutosaveSettings))]
-    public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
 #if NETSTANDARD
     [Alias("Enable-AzureRmContextAutosave")]
 #endif
+    public class EnableAzureRmContextAutosave : AzureContextModificationCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -141,4 +141,5 @@ namespace Microsoft.Azure.Commands.Profile.Context
         }
     }
 }
+
 

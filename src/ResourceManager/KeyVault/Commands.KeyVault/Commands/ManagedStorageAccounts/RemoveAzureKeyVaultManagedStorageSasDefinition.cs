@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageSasDefinition", DefaultParameterSetName = ByDefinitionNameParameterSet, SupportsShouldProcess = true)]
     [OutputType( typeof( PSDeletedKeyVaultManagedStorageSasDefinition ) )]
-    public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureKeyVaultManagedStorageSasDefinition")]
 #endif
+    public class RemoveAzureKeyVaultSasDefinition : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -113,4 +113,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

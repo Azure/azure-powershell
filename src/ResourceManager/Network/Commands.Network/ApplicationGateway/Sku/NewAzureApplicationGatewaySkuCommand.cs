@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
-    public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewaySku")]
 #endif
+    public class NewAzureApplicationGatewaySkuCommand : AzureApplicationGatewaySkuBase
     {
         public override void ExecuteCmdlet()
         {
@@ -38,4 +38,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

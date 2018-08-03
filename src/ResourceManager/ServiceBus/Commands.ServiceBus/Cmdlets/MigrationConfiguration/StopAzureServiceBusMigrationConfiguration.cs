@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
     /// 'Stop-AzureRmServiceBusMigration' Cmdlet disables the Migration and stops replicating changes from standard to premium
     /// </summary>
     [Cmdlet("Stop","ServiceBusMigration", DefaultParameterSetName = MigrationConfigurationParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class StopAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureRmServiceBusMigration")]
 #endif
+    public class StopAzureServiceBusMigrationConfiguration : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = MigrationConfigurationParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [ValidateNotNullOrEmpty]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         }
     }
 }
+
 

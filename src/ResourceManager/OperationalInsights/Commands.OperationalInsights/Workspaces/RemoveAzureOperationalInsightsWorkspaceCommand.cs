@@ -21,10 +21,10 @@ using System.Net;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Remove","OperationalInsightsWorkspace", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmOperationalInsightsWorkspace")]
 #endif
+    public class RemoveAzureOperationalInsightsWorkspaceCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
 

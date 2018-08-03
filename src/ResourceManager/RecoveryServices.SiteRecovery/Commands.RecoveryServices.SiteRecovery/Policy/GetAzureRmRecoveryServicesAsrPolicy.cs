@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Get","RecoveryServicesAsrPolicy",DefaultParameterSetName = ASRParameterSets.Default)]
     [Alias("Get-ASRPolicy")]
     [OutputType(typeof(ASRPolicy))]
-    public class GetAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrPolicy")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrPolicy : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the name of the ASR replication policy.
@@ -173,4 +173,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

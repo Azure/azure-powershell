@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNodeScheduling", DefaultParameterSetName = Constants.IdParameterSet), OutputType(typeof(void))]
-    public class EnableBatchComputeNodeSchedulingCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Enable-AzureBatchComputeNodeScheduling")]
 #endif
+    public class EnableBatchComputeNodeSchedulingCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, ParameterSetName = Constants.IdParameterSet, Mandatory = true,
             HelpMessage = "The id of the pool that contains the compute node.")]
@@ -47,4 +47,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

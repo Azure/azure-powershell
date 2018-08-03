@@ -22,10 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true),OutputType(typeof(string))]
-    public class NewAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVirtualNetworkGatewayConnectionSharedKey")]
 #endif
+    public class NewAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
 {
     [Cmdlet("Get","SqlDatabaseUpgradeHint", ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(RecommendedDatabaseProperties))]
-    public class GetAzureSqlDatabaseUpgradeHint : AzureSqlCmdletBase<IEnumerable<RecommendedDatabaseProperties>, AzureSqlServiceTierAdvisorAdapter>
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseUpgradeHint")]
 #endif
+    public class GetAzureSqlDatabaseUpgradeHint : AzureSqlCmdletBase<IEnumerable<RecommendedDatabaseProperties>, AzureSqlServiceTierAdvisorAdapter>
     {
         /// <summary>
         /// Gets or sets the name of the server.
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Cmdlet
         }
     }
 }
+
 

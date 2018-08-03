@@ -12,10 +12,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Get Usages for Cognitive Services Account
     /// </summary>
     [Cmdlet("Get","CognitiveServicesAccountUsage", DefaultParameterSetName = "ResourceNameParameterSet"),OutputType(typeof(PSCognitiveServicesUsage))]
-    public class GetAzureCognitiveServicesAccountUsageCommand : CognitiveServicesAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmCognitiveServicesAccountUsage")]
 #endif
+    public class GetAzureCognitiveServicesAccountUsageCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+
 

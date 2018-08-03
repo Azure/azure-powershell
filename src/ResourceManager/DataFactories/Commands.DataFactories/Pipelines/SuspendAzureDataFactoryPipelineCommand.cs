@@ -21,10 +21,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Suspend","DataFactoryPipeline", DefaultParameterSetName = ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Suspend-AzureRmDataFactoryPipeline")]
 #endif
+    public class SuspendAzureDataFactoryPipelineCommand : PipelineContextBaseCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -53,4 +53,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

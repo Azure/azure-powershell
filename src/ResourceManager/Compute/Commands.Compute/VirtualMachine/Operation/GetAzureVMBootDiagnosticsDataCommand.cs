@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMBootDiagnosticsData", DefaultParameterSetName = WindowsParamSet)]
     [OutputType(typeof(PSVirtualMachine), typeof(PSVirtualMachineInstanceView))]
-    public class GetAzureVMBootDiagnosticsDataCommand : VirtualMachineBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMBootDiagnosticsData")]
 #endif
+    public class GetAzureVMBootDiagnosticsDataCommand : VirtualMachineBaseCmdlet
     {
         private const string WindowsParamSet = "WindowsParamSet";
         private const string LinuxParamSet = "LinuxParamSet";
@@ -187,4 +187,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

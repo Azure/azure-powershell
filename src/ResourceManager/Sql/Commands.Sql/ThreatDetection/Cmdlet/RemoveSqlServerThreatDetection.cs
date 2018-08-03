@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// </summary>
     [Cmdlet("Remove","SqlServerThreatDetectionPolicy", SupportsShouldProcess = true), OutputType(typeof(ServerThreatDetectionPolicyModel))]
 
-    public class AzureRmSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmSqlServerThreatDetectionPolicy")]
 #endif
+    public class AzureRmSqlServerThreatDetection : SqlServerThreatDetectionCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -51,4 +51,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+
 

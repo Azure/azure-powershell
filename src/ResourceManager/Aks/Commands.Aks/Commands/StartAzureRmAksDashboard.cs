@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("Start","AksDashboard", DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(KubeTunnelJob))]
-    public class StartAzureRmAksDashboard : KubeCmdletBase
 #if NETSTANDARD
     [Alias("Start-AzureRmAksDashboard")]
 #endif
+    public class StartAzureRmAksDashboard : KubeCmdletBase
     {
 
         private const string IdParameterSet = "IdParameterSet";
@@ -334,4 +334,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
 

@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("New","Disk", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSDisk))]
-    public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDisk")]
 #endif
+    public partial class NewAzureRmDisk : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -165,4 +165,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

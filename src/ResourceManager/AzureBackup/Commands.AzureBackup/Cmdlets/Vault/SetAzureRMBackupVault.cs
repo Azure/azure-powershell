@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Command to update an azure backup vault in a subscription.
     /// </summary>
     [Cmdlet("Set","BackupVault"), OutputType(typeof(CmdletModel.AzureRMBackupVault))]
-    public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmBackupVault")]
 #endif
+    public class SetAzureRMBackupVault : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.StorageType)]
         public AzureBackupVaultStorageType Storage { get; set; }
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

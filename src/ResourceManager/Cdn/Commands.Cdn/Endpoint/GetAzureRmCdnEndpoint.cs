@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Get","CdnEndpoint", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSEndpoint))]
-    public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnEndpoint")]
 #endif
+    public class GetAzureRmCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
 

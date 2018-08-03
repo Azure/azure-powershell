@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMUsage")]
     [OutputType(typeof(PSUsage))]
-    public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMUsage")]
 #endif
+    public class GetAzureVMUsageCommand : VirtualMachineUsageBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -60,4 +60,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

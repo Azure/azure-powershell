@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Remove a protection policy
     /// </summary>
     [Cmdlet("Remove","BackupProtectionPolicy", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmBackupProtectionPolicy")]
 #endif
+    public class RemoveAzureRMBackupProtectionPolicy : AzureBackupPolicyCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Don't ask for confirmation.")]
         public SwitchParameter Force { get; set; }
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

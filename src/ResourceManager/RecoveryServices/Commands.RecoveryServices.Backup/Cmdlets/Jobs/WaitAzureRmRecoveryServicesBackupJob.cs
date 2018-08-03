@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Waits for the given job to finish its operation and returns the corresponding job object.
     /// </summary>
     [Cmdlet("Wait","RecoveryServicesBackupJob"), OutputType(typeof(JobBase))]
-    public class WaitAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Wait-AzureRmRecoveryServicesBackupJob")]
 #endif
+    public class WaitAzureRmRecoveryServicesBackupJob : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// Job or List of jobs until end of which the cmdlet should wait.
@@ -190,4 +190,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

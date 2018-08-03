@@ -23,10 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
 {
     [Cmdlet("Get","BillingInvoice", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet), OutputType(typeof(PSInvoice))]
-    public class GetAzureRmBillingInvoice : AzureBillingCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBillingInvoice")]
 #endif
+    public class GetAzureRmBillingInvoice : AzureBillingCmdletBase
     {
         const string DownloadUrlExpand = "downloadUrl";
 
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.Billing.Cmdlets.Invoices
         }
     }
 }
+
 

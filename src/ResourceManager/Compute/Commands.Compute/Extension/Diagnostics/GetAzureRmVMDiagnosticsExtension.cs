@@ -25,10 +25,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMDiagnosticsExtension"),OutputType(typeof(PSVirtualMachineExtension))]
-    public class GetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMDiagnosticsExtension")]
 #endif
+    public class GetAzureRmVMDiagnosticsExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -111,4 +111,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

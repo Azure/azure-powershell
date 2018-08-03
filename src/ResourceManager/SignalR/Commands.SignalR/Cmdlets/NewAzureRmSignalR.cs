@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("New","SignalR", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSignalRResource))]
-    public sealed class NewAzureRmSignalR : SignalRCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmSignalR")]
 #endif
+    public sealed class NewAzureRmSignalR : SignalRCmdletBase
     {
         private const string DefaultSku = "Basic_DS2";
 
@@ -141,4 +141,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
 {
     [Cmdlet("Start","DataMigrationService", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Start-AzureRmDmsService")]
-    public class StartDataMigrationService : DataMigrationCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmDataMigrationService")]
 #endif
+    public class StartDataMigrationService : DataMigrationCmdlet
     {
         [Parameter(
             Position = 0,
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         }
     }
 }
+
 

@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
     /// Removes a named diagnostic setting or disables the setting called 'service' if the name argument is not present or if is 'service'.
     /// </summary>
     [Cmdlet("Remove","DiagnosticSetting", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDiagnosticSetting")]
 #endif
+    public class RemoveAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {
         /// <summary>
         /// This is a temporary constant to provide backwards compatibility
@@ -150,4 +150,5 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         }
     }
 }
+
 

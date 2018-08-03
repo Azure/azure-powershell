@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to trigger data synchronization of a sync group
     /// </summary>
     [Cmdlet("Start","SqlSyncGroupSync", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncGroupModel))]
-    public class StartAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
 #if NETSTANDARD
     [Alias("Start-AzureRmSqlSyncGroupSync")]
 #endif
+    public class StartAzureRmSqlSyncGroupSync : AzureSqlSyncGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync group name
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
 

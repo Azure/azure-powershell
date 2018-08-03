@@ -26,10 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ExpressRouteCircuitRouteTableSummary"), OutputType(typeof(PSExpressRouteCircuitRoutesTableSummary))]
-    public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmExpressRouteCircuitRouteTableSummary")]
 #endif
+    public class GetAzureRmExpressRouteCircuitRouteTableSummaryCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.Network
     }
 
 }
+
 

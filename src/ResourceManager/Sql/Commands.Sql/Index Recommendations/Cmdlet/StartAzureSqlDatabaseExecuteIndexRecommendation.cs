@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
     /// Defines the Start-AzureRmSqlDatabaseExecuteIndexRecommendation cmdlet
     /// </summary>
     [Cmdlet("Start","SqlDatabaseExecuteIndexRecommendation",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(IndexRecommendation))]
-    public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
 #if NETSTANDARD
     [Alias("Start-AzureRmSqlDatabaseExecuteIndexRecommendation")]
 #endif
+    public class StartAzureSqlDatabaseExecuteIndexRecommendation : AzureSqlDatabaseExecuteIndexRecommendationCmdletBase
     {
         /// <summary>
         /// Update model state
@@ -46,4 +46,5 @@ namespace Microsoft.Azure.Commands.Sql.Cmdlet
         }
     }
 }
+
 

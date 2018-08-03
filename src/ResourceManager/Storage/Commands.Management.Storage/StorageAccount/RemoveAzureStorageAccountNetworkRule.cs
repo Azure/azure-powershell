@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Management.Storage
     [Cmdlet("Remove","StorageAccountNetworkRule", SupportsShouldProcess = true, DefaultParameterSetName = NetWorkRuleStringParameterSet)]
     [OutputType(typeof(PSVirtualNetworkRule), ParameterSetName = new string[] { NetWorkRuleStringParameterSet, NetworkRuleObjectParameterSet })]
     [OutputType(typeof(PSIpRule), ParameterSetName = new string[] { IpRuleStringParameterSet, IpRuleObjectParameterSet })]
-    public class RemoveAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmStorageAccountNetworkRule")]
 #endif
+    public class RemoveAzureStorageAccountNetworkRuleCommand : StorageAccountBaseCmdlet
     {
         /// <summary>
         /// NetWorkRule in String parameter set name
@@ -220,4 +220,5 @@ namespace Microsoft.Azure.Commands.Management.Storage
         }
     }
 }
+
 

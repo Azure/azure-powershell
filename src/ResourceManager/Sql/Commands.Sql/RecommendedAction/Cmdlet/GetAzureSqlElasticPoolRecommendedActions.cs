@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlElasticPoolRecommendedAction")]
     [OutputType(typeof(AzureSqlElasticPoolRecommendedActionModel))]
-    public class GetAzureSqlElasticPoolRecommendedAction : AzureSqlElasticPoolRecommendedActionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlElasticPoolRecommendedAction")]
 #endif
+    public class GetAzureSqlElasticPoolRecommendedAction : AzureSqlElasticPoolRecommendedActionCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the recommended action.
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         }
     }
 }
+
 

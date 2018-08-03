@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 {
     [Cmdlet("Get","ContainerRegistryWebhook", DefaultParameterSetName = ListWebhookByNameResourceGroupParameterSet)]
     [OutputType(typeof(PSContainerRegistryWebhook))]
-    public class GetAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmContainerRegistryWebhook")]
 #endif
+    public class GetAzureContainerRegistryWebhook : ContainerRegistryCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowWebhookByNameResourceGroupParameterSet, HelpMessage = "Webhook Name.")]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ShowWebhookByRegistryObjectParameterSet, HelpMessage = "Webhook Name.")]
@@ -136,4 +136,5 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         }
     }
 }
+
 

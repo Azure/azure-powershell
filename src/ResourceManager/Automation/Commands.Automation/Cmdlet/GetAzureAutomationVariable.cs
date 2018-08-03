@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Get","AutomationVariable", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Variable))]
-    public class GetAzureAutomationVariable : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmAutomationVariable")]
 #endif
+    public class GetAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the variable name.
@@ -66,4 +66,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

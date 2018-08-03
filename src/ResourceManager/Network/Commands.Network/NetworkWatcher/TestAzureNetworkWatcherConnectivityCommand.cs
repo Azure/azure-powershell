@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Test","NetworkWatcherConnectivity", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSConnectivityInformation))]
 
-    public class TestAzureNetworkWatcherConnectivity : NetworkWatcherBaseCmdlet
 #if NETSTANDARD
     [Alias("Test-AzureRmNetworkWatcherConnectivity")]
 #endif
+    public class TestAzureNetworkWatcherConnectivity : NetworkWatcherBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -168,4 +168,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

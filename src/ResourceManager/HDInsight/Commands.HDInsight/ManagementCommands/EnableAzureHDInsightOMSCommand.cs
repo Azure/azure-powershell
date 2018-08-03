@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.HDInsight
     [Cmdlet("Enable","HDInsightOperationsManagementSuite",SupportsShouldProcess = true)]
     [Alias("Enable-AzureRmHDInsightOMS")]
     [OutputType(typeof(OperationResource))]
-    public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("Enable-AzureRmHDInsightOperationsManagementSuite")]
 #endif
+    public class EnableAzureHDInsightOMSCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

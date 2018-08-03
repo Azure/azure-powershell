@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Updates a LogicApp workflow 
     /// </summary>
     [Cmdlet("Set","LogicApp", SupportsShouldProcess = true, DefaultParameterSetName = "Consumption"), OutputType(typeof(object))]
-    public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmLogicApp")]
 #endif
+    public class UpdateAzureLogicAppCommand : LogicAppBaseCmdlet
     {
         #region private Variables
 
@@ -192,4 +192,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

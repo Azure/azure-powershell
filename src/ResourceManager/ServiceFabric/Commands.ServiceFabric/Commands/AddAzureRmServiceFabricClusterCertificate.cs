@@ -27,10 +27,10 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Add","ServiceFabricClusterCertificate", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class AddAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCertificateCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmServiceFabricClusterCertificate")]
 #endif
+    public class AddAzureRmServiceFabricClusterCertificate : ServiceFabricClusterCertificateCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -103,4 +103,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     /// create a new azure container
     /// </summary>
     [Cmdlet("Set","AzureStorageContainerStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(String))]
-    public class SetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureStorageContainerStoredAccessPolicy")]
 #endif
+    public class SetAzureStorageContainerStoredAccessPolicyCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -124,4 +124,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
 

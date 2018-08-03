@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "BatchApplication")]
     [OutputType(typeof(PSApplication))]
-    public class NewBatchApplicationCommand : BatchCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmBatchApplication")]
 #endif
+    public class NewBatchApplicationCommand : BatchCmdletBase
     {
         [Parameter(Position = 0, ValueFromPipelineByPropertyName = true, Mandatory = true,
             HelpMessage = "Specifies the name of the Batch account.")]
@@ -58,4 +58,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -23,10 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using System.Security.Permissions;
 
     [Cmdlet("New","AzureStorageContainerSASToken"), OutputType(typeof(String))]
-    public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageContainerSASToken")]
 #endif
+    public class NewAzureStorageContainerSasTokenCommand : StorageCloudBlobCmdletBase
     {
         /// <summary>
         /// Sas permission parameter set name
@@ -149,4 +149,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
     }
 }
+
 

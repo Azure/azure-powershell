@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Set","AutomationDscNode", SupportsShouldProcess = true)]
     [OutputType(typeof(DscNode))]
-    public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmAutomationDscNode")]
 #endif
+    public class SetAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to overwrite the existing configuration; false otherwise.
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

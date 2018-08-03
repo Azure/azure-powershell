@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
     /// <para> If WcfRelayHybridConnections name not provided, list of WcfRelayHybridConnections will be returned</para>
     /// </summary>
     [Cmdlet("Get","RelayHybridConnection"), OutputType(typeof(HybridConnectionAttibutes))]
-    public class GetAzureRmRelayHybridConnection : AzureRelayCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRelayHybridConnection")]
 #endif
+    public class GetAzureRmRelayHybridConnection : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.HybridConnections
         }
     }
 }
+
 

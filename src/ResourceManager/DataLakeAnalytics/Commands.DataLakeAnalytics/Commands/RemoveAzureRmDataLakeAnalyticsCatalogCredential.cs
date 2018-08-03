@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsCatalogCredential", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlCatalogCredential")]
-    public class RemoveAzureDataLakeAnalyticsCredential : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeAnalyticsCatalogCredential")]
 #endif
+    public class RemoveAzureDataLakeAnalyticsCredential : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The account name that contains the catalog to remove the credential from.")]
@@ -103,4 +103,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

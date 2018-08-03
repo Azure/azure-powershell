@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Update a Cognitive Services Account (change SKU, Tags)
     /// </summary>
     [Cmdlet("Set","CognitiveServicesAccount", SupportsShouldProcess = true), OutputType(typeof(CognitiveServicesModels.PSCognitiveServicesAccount))]
-    public class SetAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmCognitiveServicesAccount")]
 #endif
+    public class SetAzureCognitiveServicesAccountCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -128,4 +128,5 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+
 

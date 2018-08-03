@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayAvailableSslOptions"), OutputType(typeof(PSApplicationGatewayAvailableSslOptions))]
     [Alias("List-AzureRmApplicationGatewayAvailableSslOptions")]
-    public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGatewayAvailableSslOptions")]
 #endif
+    public class GetAzureApplicationGatewayAvailableSslOptions : ApplicationGatewayBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -40,4 +40,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

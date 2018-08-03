@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// Remove a Module for automation.
     /// </summary>
     [Cmdlet("Remove","AutomationModule", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName), OutputType(typeof(void))]
-    public class RemoveAzureAutomationModule : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmAutomationModule")]
 #endif
+    public class RemoveAzureAutomationModule : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the module name.
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

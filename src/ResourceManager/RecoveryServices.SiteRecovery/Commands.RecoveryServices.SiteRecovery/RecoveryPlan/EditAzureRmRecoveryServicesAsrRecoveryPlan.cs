@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Edit-ASRRP",
         "Edit-ASRRecoveryPlan")]
     [OutputType(typeof(ASRRecoveryPlan))]
-    public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Edit-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
+    public class EditAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the ASR recovery plan object to be edited
@@ -263,4 +263,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

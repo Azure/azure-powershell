@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreTrustedIdProvider"), OutputType(typeof(DataLakeStoreTrustedIdProvider))]
     [Alias("Get-AdlStoreTrustedIdProvider")]
-    public class GetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeStoreTrustedIdProvider")]
 #endif
+    public class GetAzureRmDataLakeStoreTrustedIdProvider : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to update the trusted identity provider in")]
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

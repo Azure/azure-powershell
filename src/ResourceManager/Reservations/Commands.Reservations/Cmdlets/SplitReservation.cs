@@ -12,10 +12,10 @@ using Microsoft.Azure.Commands.Reservations.Models;
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Split","Reservation", DefaultParameterSetName = Constants.ParameterSetNames.CommandParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSReservation))]
-    public class SplitReservation : AzureReservationsCmdletBase
 #if NETSTANDARD
     [Alias("Split-AzureRmReservation")]
 #endif
+    public class SplitReservation : AzureReservationsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.CommandParameterSet,
             Mandatory = true)]
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+
 

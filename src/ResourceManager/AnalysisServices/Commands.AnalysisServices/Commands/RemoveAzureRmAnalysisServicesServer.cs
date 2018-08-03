@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Remove-AzureAs")]
-    public class RemoveAnalysisServicesServer : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmAnalysisServicesServer")]
 #endif
+    public class RemoveAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of server to be removed.")]
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

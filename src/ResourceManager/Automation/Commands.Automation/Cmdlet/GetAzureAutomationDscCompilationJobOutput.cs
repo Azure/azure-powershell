@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Get","AutomationDscCompilationJobOutput")]
     [OutputType(typeof(JobStream))]
-    public class GetAzureAutomationDscCompilationJobOutput : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmAutomationDscCompilationJobOutput")]
 #endif
+    public class GetAzureAutomationDscCompilationJobOutput : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the job id
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

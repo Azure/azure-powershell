@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Get","DataLakeStoreChildItem"), OutputType(typeof(DataLakeStoreItem))]
     [Alias("Get-AdlStoreChildItem")]
-    public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeStoreChildItem")]
 #endif
+    public class GetAzureDataLakeStoreChildItem : DataLakeStoreFileSystemCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to execute the filesystem operation in")]
@@ -47,4 +47,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

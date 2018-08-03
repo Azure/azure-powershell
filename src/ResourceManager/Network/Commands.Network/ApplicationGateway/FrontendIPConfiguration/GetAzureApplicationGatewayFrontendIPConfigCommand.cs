@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewayFrontendIPConfig"),OutputType(typeof(PSApplicationGatewayFrontendIPConfiguration))]
-    public class GetAzureApplicationGatewayFrontendIPConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGatewayFrontendIPConfig")]
 #endif
+    public class GetAzureApplicationGatewayFrontendIPConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -58,4 +58,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

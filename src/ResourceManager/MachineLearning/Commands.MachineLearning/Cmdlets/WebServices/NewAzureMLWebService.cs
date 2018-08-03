@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
 {
     [Cmdlet("New","MlWebService",SupportsShouldProcess = true)]
     [OutputType(typeof(WebService))]
-    public class NewAzureMLWebService : WebServicesCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmMlWebService")]
 #endif
+    public class NewAzureMLWebService : WebServicesCmdletBase
     {
         protected const string CreateFromFileParameterSet = "CreateFromFile";
         protected const string CreateFromObjectParameterSet = "CreateFromInstance";
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.MachineLearning.Cmdlets
         }
     }
 }
+
 

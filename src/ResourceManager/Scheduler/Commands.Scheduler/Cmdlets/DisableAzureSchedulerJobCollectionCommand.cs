@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// Disables job collection.
     /// </summary>
     [Cmdlet("Disable","SchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(string))]
-    public class DisableAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
 #if NETSTANDARD
     [Alias("Disable-AzureRmSchedulerJobCollection")]
 #endif
+    public class DisableAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job collection.")]
         [ResourceGroupCompleter]
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// 'Remove-AzureRmEventHubConsumerGroup' deletes the specifed Consumer Group
     /// </summary>
     [Cmdlet("Remove","EventHubConsumerGroup", DefaultParameterSetName = ConsumergroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureRmEventHubConsumerGroupp : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmEventHubConsumerGroup")]
 #endif
+    public class RemoveAzureRmEventHubConsumerGroupp : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = ConsumergroupPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         }
     }
 }
+
 

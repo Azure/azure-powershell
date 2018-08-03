@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet("Remove","EventGridTopic",DefaultParameterSetName = TopicNameParameterSet,SupportsShouldProcess = true),OutputType(typeof(bool))]
-    public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmEventGridTopic")]
 #endif
+    public class RemoveAzureRmEventGridTopic : AzureEventGridCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -94,4 +94,5 @@ namespace Microsoft.Azure.Commands.EventGrid
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","NetworkInterface", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmNetworkInterface")]
 #endif
+    public class RemoveAzureNetworkInterfaceCommand : NetworkInterfaceBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

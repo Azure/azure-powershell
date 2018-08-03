@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("Set","ApplicationInsightsPricingPlan", DefaultParameterSetName = ComponentNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSPricingPlan))]
-    public class SetApplicationInsightsPricingPlanCommand : ApplicationInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmApplicationInsightsPricingPlan")]
 #endif
+    public class SetApplicationInsightsPricingPlanCommand : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -154,4 +154,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
 

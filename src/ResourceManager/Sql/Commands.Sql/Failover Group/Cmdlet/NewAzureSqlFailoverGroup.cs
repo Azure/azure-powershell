@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
     [Cmdlet("New","SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
-    public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmSqlDatabaseFailoverGroup")]
 #endif
+    public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the server to use.
@@ -157,4 +157,5 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you Start an Azure Web app
     /// </summary>
     [Cmdlet("Start","WebApp"), OutputType(typeof(Site))]
-    public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmWebApp")]
 #endif
+    public class StartAzureWebAppCmdlet : WebAppBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

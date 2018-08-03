@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
-    public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmApiManagementDeployment")]
 #endif
+    public class UpdateAzureApiManagementDeployment : AzureApiManagementCmdletBase
     {
         internal const string FromPsApiManagementInstanceSetName = "UpdateFromPsApiManagementInstance";
         internal const string DefaultParameterSetName = "UpdateSpecificService";
@@ -124,4 +124,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

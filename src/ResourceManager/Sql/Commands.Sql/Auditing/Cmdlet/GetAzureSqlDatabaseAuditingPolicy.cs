@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlDatabaseAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Get-AzureRmSqlDatabaseAuditing' command to get Blob auditing settings.", false)]
-    public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseAuditingPolicy")]
 #endif
+    public class GetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
@@ -38,4 +38,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         }
     }
 }
+
 

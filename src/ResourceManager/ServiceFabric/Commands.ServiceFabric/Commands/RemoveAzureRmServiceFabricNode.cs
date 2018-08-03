@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Remove","ServiceFabricNode", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class RemoveAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmServiceFabricNode")]
 #endif
+    public class RemoveAzureRmServiceFabricNode : UpdateAzureRmServiceFabricNodeBase
     {
         private int toRemoveNode;
 
@@ -57,4 +57,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

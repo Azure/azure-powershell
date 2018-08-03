@@ -28,10 +28,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
     /// set access level for specified container
     /// </summary>
     [Cmdlet("Set","AzureStorageContainerAcl"),OutputType(typeof(AzureStorageContainer))]
-    public class SetAzureStorageContainerAclCommand : StorageCloudBlobCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureStorageContainerAcl")]
 #endif
+    public class SetAzureStorageContainerAclCommand : StorageCloudBlobCmdletBase
     {
         [Alias("N", "Container")]
         [Parameter(Position = 0, Mandatory = true, HelpMessage = "Container Name",
@@ -115,4 +115,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Cmdlet
         }
     }
 }
+
 

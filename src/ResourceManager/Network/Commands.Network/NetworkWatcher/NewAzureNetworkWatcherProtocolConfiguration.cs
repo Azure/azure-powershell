@@ -25,10 +25,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network.NetworkWatcher
 {
     [Cmdlet("New","NetworkWatcherProtocolConfiguration"),OutputType(typeof(PSNetworkWatcherProtocolConfiguration))]
-    public class NewAzureNetworkWatcherProtocolConfiguration : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmNetworkWatcherProtocolConfiguration")]
 #endif
+    public class NewAzureNetworkWatcherProtocolConfiguration : NetworkBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher
         }
     }
 }
+
 

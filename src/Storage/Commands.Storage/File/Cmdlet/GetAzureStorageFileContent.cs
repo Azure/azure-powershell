@@ -27,10 +27,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
     [Cmdlet("Get","AzureStorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(CloudFile))]
-    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureStorageFileContent")]
 #endif
+    public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
            Position = 0,
@@ -199,4 +199,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

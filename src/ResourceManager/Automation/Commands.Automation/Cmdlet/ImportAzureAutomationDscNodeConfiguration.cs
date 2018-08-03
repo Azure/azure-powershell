@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Import","AutomationDscNodeConfiguration", SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(NodeConfiguration))]
-    public class ImportAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Import-AzureRmAutomationDscNodeConfiguration")]
 #endif
+    public class ImportAzureAutomationDscNodeConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to overwrite the existing configuration; false otherwise.
@@ -124,4 +124,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

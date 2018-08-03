@@ -29,10 +29,10 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Update","ServiceFabricDurability", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmServiceFabricDurability")]
 #endif
+    public class UpdateAzureRmServiceFabricDurability : ServiceFabricClusterCmdlet
     {
         private readonly HashSet<string> skusSupportGoldDurability = 
             new HashSet<string>(StringComparer.OrdinalIgnoreCase) {"Standard_D15_v2", "Standard_G5"};
@@ -170,4 +170,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

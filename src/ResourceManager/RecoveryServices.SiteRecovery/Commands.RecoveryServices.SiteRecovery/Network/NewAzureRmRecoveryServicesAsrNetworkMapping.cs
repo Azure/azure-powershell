@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("New","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToEnterprise,SupportsShouldProcess = true)]
     [Alias("New-ASRNetworkMapping")]
     [OutputType(typeof(ASRJob))]
-    public class NewAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesAsrNetworkMapping")]
 #endif
+    public class NewAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///    Switch parameter specifying that the network mapping being created will be used 
@@ -224,4 +224,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

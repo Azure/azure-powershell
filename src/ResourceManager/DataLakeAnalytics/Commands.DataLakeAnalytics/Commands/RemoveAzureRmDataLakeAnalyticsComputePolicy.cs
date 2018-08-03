@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Remove","DataLakeAnalyticsComputePolicy", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlAnalyticsComputePolicy")]
-    public class RemoveAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeAnalyticsComputePolicy")]
 #endif
+    public class RemoveAzureDataLakeAnalyticsComputePolicy : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false,
             HelpMessage = "Name of resource group under which you the account exists. Optional and will attempt to discover if not provided.")]
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

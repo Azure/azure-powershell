@@ -24,10 +24,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Security.Permissions;
 
     [Cmdlet("Remove","AzureStorageTableStoredAccessPolicy", SupportsShouldProcess = true), OutputType(typeof(Boolean))]
-    public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureStorageTableStoredAccessPolicy")]
 #endif
+    public class RemoveAzureStorageTableStoredAccessPolicyCommand : StorageCloudTableCmdletBase
     {
         [Alias("N", "Name")]
         [Parameter(Position = 0, Mandatory = true,
@@ -116,4 +116,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
 

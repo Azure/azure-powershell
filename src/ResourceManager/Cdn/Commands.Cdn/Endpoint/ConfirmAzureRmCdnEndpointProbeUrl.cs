@@ -23,10 +23,10 @@ using Microsoft.Azure.Management.Cdn.Models;
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Confirm","CdnEndpointProbeURL"), OutputType(typeof(PSValidateProbeOutput))]
-    public class ConfirmAzureRmCdnEndpointProbeUrl : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Confirm-AzureRmCdnEndpointProbeURL")]
 #endif
+    public class ConfirmAzureRmCdnEndpointProbeUrl : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "Proposed probe URL name to validate.")]
         [ValidateNotNullOrEmpty]
@@ -41,4 +41,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
 

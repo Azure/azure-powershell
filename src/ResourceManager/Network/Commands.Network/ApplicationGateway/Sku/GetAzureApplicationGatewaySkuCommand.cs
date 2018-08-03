@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGatewaySku"), OutputType(typeof(PSApplicationGatewaySku))]
-    public class GetAzureApplicationGatewaySkuCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGatewaySku")]
 #endif
+    public class GetAzureApplicationGatewaySkuCommand : NetworkBaseCmdlet
     {
         [Parameter(
              Mandatory = true,
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Stop","DataFactoryV2PipelineRun", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class StopAzureDataFactoryPipelineRunCommand : DataFactoryContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Stop-AzureRmDataFactoryV2PipelineRun")]
 #endif
+    public class StopAzureDataFactoryPipelineRunCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByInputObject, Position = 0, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = Constants.HelpPipelineRun)]
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

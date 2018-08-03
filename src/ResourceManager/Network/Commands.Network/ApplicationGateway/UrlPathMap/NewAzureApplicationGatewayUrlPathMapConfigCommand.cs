@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","ApplicationGatewayUrlPathMapConfig"), OutputType(typeof(PSApplicationGatewayUrlPathMap))]
-    public class NewAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationGatewayUrlPathMapConfig")]
 #endif
+    public class NewAzureApplicationGatewayUrlPathMapConfigCommand : AzureApplicationGatewayUrlPathMapConfigBase
     {
         public override void ExecuteCmdlet()
         {
@@ -30,4 +30,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

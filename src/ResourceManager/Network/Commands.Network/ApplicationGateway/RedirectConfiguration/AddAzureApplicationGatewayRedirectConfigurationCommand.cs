@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewayRedirectConfiguration"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
 #if NETSTANDARD
     [Alias("Add-AzureRmApplicationGatewayRedirectConfiguration")]
 #endif
+    public class AddAzureApplicationGatewayRedirectConfigurationCommand : AzureApplicationGatewayRedirectConfigurationBase
     {
         [Parameter(
              Mandatory = true,
@@ -50,4 +50,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

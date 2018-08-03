@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Get an existing resource.
     /// </summary>
     [Cmdlet("Get","ResourceProvider", DefaultParameterSetName = GetAzureProviderCmdlet.ListAvailableParameterSet), OutputType(typeof(PSResourceProvider))]
-    public class GetAzureProviderCmdlet : ResourceManagerCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmResourceProvider")]
 #endif
+    public class GetAzureProviderCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The individual provider parameter set name
@@ -160,4 +160,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

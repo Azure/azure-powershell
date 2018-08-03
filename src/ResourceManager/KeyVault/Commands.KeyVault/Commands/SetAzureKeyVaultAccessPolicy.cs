@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.KeyVault
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "KeyVaultAccessPolicy", SupportsShouldProcess = true,DefaultParameterSetName = ByUserPrincipalName)]
     [OutputType(typeof(PSKeyVault))]
-    public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmKeyVaultAccessPolicy")]
 #endif
+    public class SetAzureKeyVaultAccessPolicy : KeyVaultManagementCmdletBase
     {
         #region Parameter Set Names
 
@@ -582,4 +582,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

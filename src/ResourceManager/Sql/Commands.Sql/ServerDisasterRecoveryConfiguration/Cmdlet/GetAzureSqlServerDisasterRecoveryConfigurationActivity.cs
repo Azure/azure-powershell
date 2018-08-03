@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
 {
     [Cmdlet("Get","SqlServerDisasterRecoveryConfigurationActivity",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerDisasterRecoveryConfigurationActivityModel))]
-    public class GetAzureSqlServerDisasterRecoveryConfigurationActivity : AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerDisasterRecoveryConfigurationActivity")]
 #endif
+    public class GetAzureSqlServerDisasterRecoveryConfigurationActivity : AzureSqlServerDisasterRecoveryConfigurationActivityCmdletBase
     {
         /// <summary>
         /// Gets Server Disaster Recovery Configuration activity
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDisasterRecoveryConfiguration.Cmdle
         }
     }
 }
+
 

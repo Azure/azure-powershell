@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Remove","Vmss", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSOperationStatusResponse))]
-    public partial class RemoveAzureRmVmss : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVmss")]
 #endif
+    public partial class RemoveAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -201,4 +201,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

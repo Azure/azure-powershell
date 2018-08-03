@@ -22,10 +22,10 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Update","DataFactoryV2", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(PSDataFactory))]
-    public class UpdateAzureDataFactoryCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmDataFactoryV2")]
 #endif
+    public class UpdateAzureDataFactoryCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 0, Mandatory = true,
             HelpMessage = Constants.HelpResourceGroup)]
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

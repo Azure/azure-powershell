@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Updates an existing resource group.
     /// </summary>
     [Cmdlet("Set","ResourceGroup", DefaultParameterSetName = ResourceGroupNameParameterSet), OutputType(typeof(PSResourceGroup))]
-    public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmResourceGroup")]
 #endif
+    public class SetAzureResourceGroupCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// List resources group by name parameter set.
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

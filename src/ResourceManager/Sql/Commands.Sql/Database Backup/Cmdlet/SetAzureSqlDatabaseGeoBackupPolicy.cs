@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
     /// Cmdlet to create or update a new Azure Sql Database geo backup policy
     /// </summary>
     [Cmdlet("Set","SqlDatabaseGeoBackupPolicy",SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlDatabaseGeoBackupPolicyModel))]
-    public class SetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlDatabaseGeoBackupPolicy")]
 #endif
+    public class SetAzureSqlDatabaseGeoBackupPolicy : AzureSqlDatabaseGeoBackupPolicyCmdletBase
     {
         /// <summary>
         /// Gets or sets the geo backup policy state
@@ -89,4 +89,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
 

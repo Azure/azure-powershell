@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Dns
     /// Deletes an existing zone.
     /// </summary>
     [Cmdlet("Remove","DnsZone", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.High),OutputType(typeof(bool))]
-    public class RemoveAzureDnsZone : DnsBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmDnsZone")]
 #endif
+    public class RemoveAzureDnsZone : DnsBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The full name of the zone (without a terminating dot).", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.Dns
         }
     }
 }
+
 

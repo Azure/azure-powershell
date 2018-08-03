@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Get","IotHubRegistryStatistic"), OutputType(typeof(PSIotHubRegistryStatistics))]
-    public class GetAzureRmIotHubRegistryStatistic : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmIotHubRegistryStatistic")]
 #endif
+    public class GetAzureRmIotHubRegistryStatistic : IotHubBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -52,4 +52,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

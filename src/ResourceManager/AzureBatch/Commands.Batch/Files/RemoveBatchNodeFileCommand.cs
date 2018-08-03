@@ -21,10 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchNodeFile", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveBatchNodeFileCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureBatchNodeFile")]
 #endif
+    public class RemoveBatchNodeFileCommand : BatchObjectModelCmdletBase
     {
         internal const string TaskParameterSet = "Task";
         internal const string ComputeNodeParameterSet = "ComputeNode";
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("New","AvailabilitySet")]
     [OutputType(typeof(PSAvailabilitySet))]
-    public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmAvailabilitySet")]
 #endif
+    public class NewAzureAvailabilitySetCommand : AvailabilitySetBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -125,4 +125,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

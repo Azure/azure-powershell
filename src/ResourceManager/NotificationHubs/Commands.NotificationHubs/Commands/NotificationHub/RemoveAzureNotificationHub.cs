@@ -19,10 +19,10 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
 {
 
     [Cmdlet("Remove","NotificationHub", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmNotificationHub")]
 #endif
+    public class RemoveAzureNotificationHub : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.NotificationHub
         }
     }
 }
+
 

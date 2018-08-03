@@ -23,10 +23,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","ApplicationGateway"), OutputType(typeof(PSApplicationGateway))]
-    public class GetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmApplicationGateway")]
 #endif
+    public class GetAzureApplicationGatewayCommand : ApplicationGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

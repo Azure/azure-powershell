@@ -26,10 +26,10 @@ using Microsoft.Rest.Azure.OData;
 namespace Microsoft.Azure.Commands.Consumption.Cmdlets
 {
     [Cmdlet("Get","ConsumptionMarketplace"), OutputType(typeof(PSMarketplace))]
-    public class GetAzureRmConsumptionMarketplace : AzureConsumptionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmConsumptionMarketplace")]
 #endif
+    public class GetAzureRmConsumptionMarketplace : AzureConsumptionCmdletBase
     {
         private const int MaxNumberToFetch = 1000;
 
@@ -205,4 +205,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets
         }
     }
 }
+
 

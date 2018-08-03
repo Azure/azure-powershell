@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","LocalNetworkGateway"), OutputType(typeof(PSLocalNetworkGateway))]
-    public class GetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmLocalNetworkGateway")]
 #endif
+    public class GetAzureLocalNetworkGatewayCommand : LocalNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

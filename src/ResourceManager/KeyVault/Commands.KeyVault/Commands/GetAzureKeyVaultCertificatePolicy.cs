@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificatePolicy", DefaultParameterSetName = ByVaultAndCertNameParameterSet)]
     [OutputType(typeof(PSKeyVaultCertificatePolicy))]
-    public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureKeyVaultCertificatePolicy")]
 #endif
+    public class GetAzureKeyVaultCertificatePolicy : KeyVaultCmdletBase
     {
         #region Parameter Set Names
 
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         }
     }
 }
+
 

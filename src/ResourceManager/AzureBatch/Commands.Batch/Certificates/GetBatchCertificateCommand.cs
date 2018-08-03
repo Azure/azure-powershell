@@ -19,10 +19,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchCertificate", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSCertificate))]
-    public class GetBatchCertificateCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchCertificate")]
 #endif
+    public class GetBatchCertificateCommand : BatchObjectModelCmdletBase
     {
         internal const string ThumbprintParameterSet = "Thumbprint";
         private int maxCount = Constants.DefaultMaxCount;
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

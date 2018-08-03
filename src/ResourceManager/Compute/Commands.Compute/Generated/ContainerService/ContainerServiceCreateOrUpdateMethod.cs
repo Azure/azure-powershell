@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("New","ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
-    public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmContainerService")]
 #endif
+    public partial class NewAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -166,10 +166,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Update","ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSContainerService))]
-    public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmContainerService")]
 #endif
+    public partial class UpdateAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -217,5 +217,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+
 
 

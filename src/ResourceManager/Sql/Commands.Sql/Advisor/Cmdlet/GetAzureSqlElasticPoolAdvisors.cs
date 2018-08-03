@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlElasticPoolAdvisor")]
     [OutputType(typeof(AzureSqlElasticPoolAdvisorModel))]
-    public class GetAzureSqlElasticPoolAdvisor : AzureSqlElasticPoolAdvisorCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlElasticPoolAdvisor")]
 #endif
+    public class GetAzureSqlElasticPoolAdvisor : AzureSqlElasticPoolAdvisorCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the advisor.
@@ -88,4 +88,5 @@ namespace Microsoft.Azure.Commands.Sql.Advisor.Cmdlet
         }
     }
 }
+
 

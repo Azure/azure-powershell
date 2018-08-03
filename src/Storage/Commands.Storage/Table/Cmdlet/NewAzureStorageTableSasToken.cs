@@ -23,10 +23,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
     using System.Security.Permissions;
 
     [Cmdlet("New","AzureStorageTableSASToken"), OutputType(typeof(String))]
-    public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureStorageTableSASToken")]
 #endif
+    public class NewAzureStorageTableSasTokenCommand : StorageCloudTableCmdletBase
     {
         /// <summary>
         /// Sas permission parameter set name
@@ -184,4 +184,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Table.Cmdlet
         }
     }
 }
+
 

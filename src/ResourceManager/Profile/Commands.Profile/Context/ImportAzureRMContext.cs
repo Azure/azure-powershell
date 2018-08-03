@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// Selects Microsoft Azure profile.
     /// </summary>
     [Cmdlet("Import", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Context", SupportsShouldProcess = true, DefaultParameterSetName = ProfileFromDiskParameterSet), OutputType(typeof(PSAzureProfile))]
-    public class ImportAzureRMContextCommand : AzureContextModificationCmdlet
 #if NETSTANDARD
     [Alias("Import-AzureRmContext")]
 #endif
+    public class ImportAzureRMContextCommand : AzureContextModificationCmdlet
     {
         internal const string InMemoryProfileParameterSet = "InMemoryProfile";
         internal const string ProfileFromDiskParameterSet = "ProfileFromDisk";
@@ -112,4 +112,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

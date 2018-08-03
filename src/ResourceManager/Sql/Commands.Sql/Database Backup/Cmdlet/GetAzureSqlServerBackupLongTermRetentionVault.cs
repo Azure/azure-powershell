@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("Get","SqlServerBackupLongTermRetentionVault", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlServerBackupLongTermRetentionVaultModel))]
-    public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerBackupLongTermRetentionVault")]
 #endif
+    public class GetAzureSqlServerBackupLongTermRetentionVault : AzureSqlServerBackupLongTermRetentionVaultCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
 

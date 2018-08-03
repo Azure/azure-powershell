@@ -28,10 +28,10 @@ using Microsoft.Azure.Commands.Common.Compute.Version_2018_04;
 namespace Microsoft.Azure.Commands.ServiceFabric.Commands
 {
     [Cmdlet("Update","ServiceFabricReliability", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
-    public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmServiceFabricReliability")]
 #endif
+    public class UpdateAzureRmServiceFabricReliability : ServiceFabricClusterCmdlet
     {
         /// <summary>
         /// Resource group name
@@ -133,4 +133,5 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Commands
         }
     }
 }
+
 

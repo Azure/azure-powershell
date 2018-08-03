@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Remove","DataLakeStoreTrustedIdProvider", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Remove-AdlStoreTrustedIdProvider")]
-    public class RemoveAzureRmDataLakeStoreAccountTrustedIdProvider : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmDataLakeStoreTrustedIdProvider")]
 #endif
+    public class RemoveAzureRmDataLakeStoreAccountTrustedIdProvider : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "The Data Lake Store account to remove the trusted identity provider from")]
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

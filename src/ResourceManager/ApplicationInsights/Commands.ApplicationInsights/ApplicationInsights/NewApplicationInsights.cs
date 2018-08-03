@@ -23,10 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.ApplicationInsights
 {
     [Cmdlet("New","ApplicationInsights", SupportsShouldProcess = true), OutputType(typeof(PSApplicationInsightsComponent))]
-    public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmApplicationInsights")]
 #endif
+    public class NewAzureApplicationInsights : ApplicationInsightsBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -130,4 +130,5 @@ namespace Microsoft.Azure.Commands.ApplicationInsights
         }
     }
 }
+
 

@@ -38,10 +38,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
     [Cmdlet("Sync", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureAnalysisServicesInstance", SupportsShouldProcess = true)]
     [Alias("Sync-AzureAsInstance")]
     [OutputType(typeof(ScaleOutServerDatabaseSyncDetails))]
-    public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
 #if NETSTANDARD
     [Alias("Sync-AzureAnalysisServicesInstance")]
 #endif
+    public class SynchronizeAzureAzureAnalysisServer : AzurePSCmdlet
     {
         private static TimeSpan DefaultPollingInterval = TimeSpan.FromSeconds(30);
 
@@ -496,4 +496,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices.Dataplane
         }
     }
 }
+
 

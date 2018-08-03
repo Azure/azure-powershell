@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("Remove","SearchService", SupportsShouldProcess = true, DefaultParameterSetName = ResourceNameParameterSetName), OutputType(typeof(bool))]
-    public class RemoveSearchServiceCommand : SearchServiceBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmSearchService")]
 #endif
+    public class RemoveSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
 

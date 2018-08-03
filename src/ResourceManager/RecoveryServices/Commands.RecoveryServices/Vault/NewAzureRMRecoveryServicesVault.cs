@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
     /// Used to initiate a vault create operation.
     /// </summary>
     [Cmdlet("New","RecoveryServicesVault", SupportsShouldProcess = true),OutputType(typeof(ARSVault))]
-    public class NewAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesVault")]
 #endif
+    public class NewAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region Parameters
 
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         }
     }
 }
+
 

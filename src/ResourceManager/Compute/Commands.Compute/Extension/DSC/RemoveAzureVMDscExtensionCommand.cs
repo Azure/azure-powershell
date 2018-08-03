@@ -17,10 +17,10 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
     /// </summary>
     [Cmdlet("Remove","VMDscExtension",SupportsShouldProcess = true)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVMDscExtension")]
 #endif
+    public class RemoveAzureVMDscExtensionCommand : VirtualMachineExtensionBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.Compute.Extension.DSC
         }
     }
 }
+
 

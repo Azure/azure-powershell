@@ -23,10 +23,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Disable","OperationalInsightsLinuxCustomLogCollection", SupportsShouldProcess = true,DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSDataSource))]
-    public class DisableAzureOperationalInsightsLinuxCustomLogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
 #if NETSTANDARD
     [Alias("Disable-AzureRmOperationalInsightsLinuxCustomLogCollection")]
 #endif
+    public class DisableAzureOperationalInsightsLinuxCustomLogCollectionCommand : AzureOperationalInsightsDataSourceBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceObject, Mandatory = true, ValueFromPipeline = true,
             HelpMessage = "The workspace that will contain the data source.")]
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         }
     }
 }
+
 

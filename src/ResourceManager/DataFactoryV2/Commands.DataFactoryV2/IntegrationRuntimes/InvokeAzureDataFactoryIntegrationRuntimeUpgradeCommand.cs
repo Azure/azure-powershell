@@ -21,10 +21,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Invoke","DataFactoryV2IntegrationRuntimeUpgrade",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class InvokeAzureDataFactoryIntegrationRuntimeUpgradeCommand : IntegrationRuntimeCmdlet
 #if NETSTANDARD
     [Alias("Invoke-AzureRmDataFactoryV2IntegrationRuntimeUpgrade")]
 #endif
+    public class InvokeAzureDataFactoryIntegrationRuntimeUpgradeCommand : IntegrationRuntimeCmdlet
     {
         [EnvironmentPermission(SecurityAction.Demand, Unrestricted = true)]
         public override void ExecuteCmdlet()
@@ -50,4 +50,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

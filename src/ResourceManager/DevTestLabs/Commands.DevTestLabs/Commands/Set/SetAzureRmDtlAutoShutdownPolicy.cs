@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet("Set","DtlAutoShutdownPolicy",HelpUri = Constants.DevTestLabsHelpUri,DefaultParameterSetName = ParameterSetEnable,SupportsShouldProcess = true)]
     [OutputType(typeof(PSSchedule))]
-    public class SetAzureRmDtlAutoShutdownPolicy : DtlPolicyCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDtlAutoShutdownPolicy")]
 #endif
+    public class SetAzureRmDtlAutoShutdownPolicy : DtlPolicyCmdletBase
     {
         protected override string PolicyName
         {
@@ -132,4 +132,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
 

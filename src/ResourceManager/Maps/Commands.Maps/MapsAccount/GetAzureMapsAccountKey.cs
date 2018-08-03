@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
     /// Get Account Keys for Maps Account
     /// </summary>
     [Cmdlet("Get","MapsAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSMapsAccountKeys))]
-    public class GetAzureMapsAccountKey : MapsAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmMapsAccountKey")]
 #endif
+    public class GetAzureMapsAccountKey : MapsAccountBaseCmdlet
     {
         protected const string NameParameterSet = "NameParameterSet";
         protected const string ResourceIdParameterSet = "ResourceIdParameterSet";
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.Maps.MapsAccount
         }
     }
 }
+
 

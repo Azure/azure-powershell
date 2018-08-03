@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// Creates new role assignment.
     /// </summary>
     [Cmdlet("New","RoleAssignment", DefaultParameterSetName = ParameterSet.Empty), OutputType(typeof(PSRoleAssignment))]
-    public class NewAzureRoleAssignmentCommand : ResourcesBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmRoleAssignment")]
 #endif
+    public class NewAzureRoleAssignmentCommand : ResourcesBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.ResourceGroupWithObjectId,
             HelpMessage = "The user or group object id.")]
@@ -183,4 +183,5 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+
 

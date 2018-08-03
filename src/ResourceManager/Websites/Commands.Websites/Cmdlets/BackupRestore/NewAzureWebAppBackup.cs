@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// Creates a backup of an Azure Web App
     /// </summary>
     [Cmdlet("New","WebAppBackup"), OutputType(typeof(AzureWebAppBackup))]
-    public class NewAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmWebAppBackup")]
 #endif
+    public class NewAzureWebAppBackup : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -51,4 +51,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

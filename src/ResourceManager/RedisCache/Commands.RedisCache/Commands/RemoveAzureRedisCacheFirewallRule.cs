@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Models;
 
     [Cmdlet("Remove","RedisCacheFirewallRule", DefaultParameterSetName = NormalParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRedisCacheFirewallRule : RedisCacheCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRedisCacheFirewallRule")]
 #endif
+    public class RemoveAzureRedisCacheFirewallRule : RedisCacheCmdletBase
     {
         private const string NormalParameterSet = "NormalParameterSet";
         private const string InputObjectParameterSet = "PSRedisFirewallRuleObject";
@@ -74,4 +74,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
 

@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 	/// </summary>
 	[Cmdlet("Set","SqlServerDnsAlias",SupportsShouldProcess = true)]
 	[OutputType(typeof(Model.AzureSqlServerDnsAliasModel))]
-	public class SetAzureSqlServerDnsAlias : AzureSqlCmdletBase<IEnumerable<AzureSqlServerDnsAliasModel>, AzureSqlServerDnsAliasAdapter>
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlServerDnsAlias")]
 #endif
+	public class SetAzureSqlServerDnsAlias : AzureSqlCmdletBase<IEnumerable<AzureSqlServerDnsAliasModel>, AzureSqlServerDnsAliasAdapter>
 	{
 		/// <summary>
 		/// Template to generate the Server Dns Alias Id
@@ -146,4 +146,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerDnsAlias.Cmdlet
 		}
 	}
 }
+
 

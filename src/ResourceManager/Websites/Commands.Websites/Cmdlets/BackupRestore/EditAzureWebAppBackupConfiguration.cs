@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// Modifies the automatic backup configuration for an Azure Web App
     /// </summary>
     [Cmdlet("Edit","WebAppBackupConfiguration"), OutputType(typeof(AzureWebAppBackupConfiguration))]
-    public class EditAzureWebAppBackupConfiguration : WebAppOptionalSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("Edit-AzureRmWebAppBackupConfiguration")]
 #endif
+    public class EditAzureWebAppBackupConfiguration : WebAppOptionalSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "The SAS URL for the Azure Storage container used to store the backup.", ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

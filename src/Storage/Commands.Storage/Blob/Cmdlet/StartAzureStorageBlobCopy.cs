@@ -36,10 +36,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
     [Cmdlet("Start","AzureStorageBlobCopy", SupportsShouldProcess = true, DefaultParameterSetName = ContainerNameParameterSet),OutputType(typeof(AzureStorageBlob))]
     [Alias("Start-CopyAzureStorageBlob")]
-    public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
 #if NETSTANDARD
     [Alias("Start-AzureStorageBlobCopy")]
 #endif
+    public class StartAzureStorageBlobCopy : StorageDataMovementCmdletBase, IModuleAssemblyInitializer
     {
         private const string BlobTypeMismatch = "Blob type of the blob reference doesn't match blob type of the blob.";
 
@@ -697,4 +697,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an AutoscaleNotification
     /// </summary>
     [Cmdlet("New","AutoscaleNotification"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleNotification))]
-    public class NewAzureRmAutoscaleNotificationCommand : MonitorCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmAutoscaleNotification")]
 #endif
+    public class NewAzureRmAutoscaleNotificationCommand : MonitorCmdletBase
     {
         private const string Operation = "Scale";
 
@@ -88,4 +88,5 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+
 

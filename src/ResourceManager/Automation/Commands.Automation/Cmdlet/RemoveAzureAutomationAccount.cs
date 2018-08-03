@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Remove","AutomationAccount", SupportsShouldProcess = true)]
     [OutputType(typeof(AutomationAccount))]
-    public class RemoveAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmAutomationAccount")]
 #endif
+    public class RemoveAzureAutomationAccount : ResourceManager.Common.AzureRMCmdlet
     {
         /// <summary>
         /// The automation client.
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

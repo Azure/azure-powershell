@@ -10,10 +10,10 @@ using Microsoft.Azure.Management.Reservations;
 namespace Microsoft.Azure.Commands.Reservations.Cmdlets
 {
     [Cmdlet("Get","ReservationOrderId"), OutputType(typeof(AppliedReservations))]
-    public class GetReservationOrderId : AzureReservationsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmReservationOrderId")]
 #endif
+    public class GetReservationOrderId : AzureReservationsCmdletBase
     {
 
         [Parameter(Mandatory = false)]
@@ -35,4 +35,5 @@ namespace Microsoft.Azure.Commands.Reservations.Cmdlets
         }
     }
 }
+
 

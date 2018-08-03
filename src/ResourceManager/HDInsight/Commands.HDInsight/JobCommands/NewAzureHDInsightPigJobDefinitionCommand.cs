@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("New","HDInsightPigJobDefinition"),OutputType(typeof(AzureHDInsightPigJobDefinition))]
-    public class NewAzureHDInsightPigJobDefinitionCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmHDInsightPigJobDefinition")]
 #endif
+    public class NewAzureHDInsightPigJobDefinitionCommand : HDInsightCmdletBase
     {
         private AzureHDInsightPigJobDefinition job;
 
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

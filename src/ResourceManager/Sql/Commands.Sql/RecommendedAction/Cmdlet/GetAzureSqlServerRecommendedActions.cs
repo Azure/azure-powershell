@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
     /// </summary>
     [Cmdlet("Get","SqlServerRecommendedAction")]
     [OutputType(typeof(AzureSqlServerRecommendedActionModel))]
-    public class GetAzureSqlServerRecommendedAction : AzureSqlServerRecommendedActionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlServerRecommendedAction")]
 #endif
+    public class GetAzureSqlServerRecommendedAction : AzureSqlServerRecommendedActionCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the recommended action.
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedAction.Cmdlet
         }
     }
 }
+
 

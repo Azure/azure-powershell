@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// Creates a new LogicApp workflow 
     /// </summary>
     [Cmdlet("Start","LogicApp", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RunAzureLogicAppCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmLogicApp")]
 #endif
+    public class RunAzureLogicAppCommand : LogicAppBaseCmdlet
     {
 
         #region Input Paramters
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

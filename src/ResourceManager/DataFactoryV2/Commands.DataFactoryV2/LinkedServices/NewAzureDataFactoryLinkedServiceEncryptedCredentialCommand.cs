@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Properties;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("New","DataFactoryV2LinkedServiceEncryptedCredential", DefaultParameterSetName = ParameterSetNames.ByFactoryName, SupportsShouldProcess = true),OutputType(typeof(string))]
-    public class NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand : DataFactoryContextBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential")]
 #endif
+    public class NewAzureDataFactoryLinkedServiceEncryptedCredentialCommand : DataFactoryContextBaseCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpIntegrationRuntimeName)]
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

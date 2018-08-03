@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VpnClientRootCertificate"), OutputType(typeof(PSVpnClientRootCertificate))]
-    public class GetAzureVpnClientRootCertificates : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVpnClientRootCertificate")]
 #endif
+    public class GetAzureVpnClientRootCertificates : VirtualNetworkGatewayBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

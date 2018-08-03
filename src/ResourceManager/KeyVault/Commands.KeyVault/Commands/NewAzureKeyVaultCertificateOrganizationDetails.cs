@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
     /// </summary>
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultCertificateOrganizationDetails", SupportsShouldProcess = true)]
     [OutputType(typeof(PSKeyVaultCertificateOrganizationDetails))]
-    public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureKeyVaultCertificateOrganizationDetails")]
 #endif
+    public class NewAzureKeyVaultCertificateOrganizationDetails : KeyVaultCmdletBase
     {
         #region Input Parameter Definitions
         /// <summary>
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         }
     }
 }
+
 

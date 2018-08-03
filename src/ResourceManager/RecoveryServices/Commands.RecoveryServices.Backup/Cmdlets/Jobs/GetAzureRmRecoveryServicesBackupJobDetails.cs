@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Gets detailed information about a particular job.
     /// </summary>
     [Cmdlet("Get","RecoveryServicesBackupJobDetails",DefaultParameterSetName = JobFilterSet), OutputType(typeof(JobBase))]
-    public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesBackupJobDetails")]
 #endif
+    public class GetAzureRmRecoveryServicesBackupJobDetails : RSBackupVaultCmdletBase
     {
         protected const string IdFilterSet = "IdFilterSet";
         protected const string JobFilterSet = "JobFilterSet";
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

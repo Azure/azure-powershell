@@ -33,10 +33,10 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
     /// Uploads a vhd as fixed disk format vhd to a blob in Microsoft Azure Storage
     /// </summary>
     [Cmdlet("Add","Vhd"), OutputType(typeof(VhdUploadContext))]
-    public class AddAzureVhdCommand : ComputeClientBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmVhd")]
 #endif
+    public class AddAzureVhdCommand : ComputeClientBaseCmdlet
     {
         private const int DefaultNumberOfUploaderThreads = 8;
 
@@ -198,4 +198,5 @@ namespace Microsoft.Azure.Commands.Compute.StorageServices
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Resume","RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias("Resume-ASRJob")]
     [OutputType(typeof(ASRJob))]
-    public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Resume-AzureRmRecoveryServicesAsrJob")]
 #endif
+    public class ResumeAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets Job ID.
@@ -121,4 +121,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

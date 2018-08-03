@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Get an Alert rule
     /// </summary>
     [Cmdlet("Get","AlertRule"), OutputType(typeof(PSAlertRule))]
-    public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmAlertRule")]
 #endif
+    public class GetAzureRmAlertRuleCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAlertRuleParamGroup = "GetByResourceGroup";
         internal const string GetAzureRmAlertRuleWithNameParamGroup = "GetByName";
@@ -142,4 +142,5 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+
 

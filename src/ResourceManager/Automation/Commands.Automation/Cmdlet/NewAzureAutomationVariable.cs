@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("New","AutomationVariable")]
     [OutputType(typeof(Variable))]
-    public class NewAzureAutomationVariable : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmAutomationVariable")]
 #endif
+    public class NewAzureAutomationVariable : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the variable name.
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

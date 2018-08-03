@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.Profile
     /// </summary>
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Environment", SupportsShouldProcess=true)]
     [OutputType(typeof(PSAzureEnvironment))]
-    public class RemoveAzureRMEnvironmentCommand : AzureContextModificationCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmEnvironment")]
 #endif
+    public class RemoveAzureRMEnvironmentCommand : AzureContextModificationCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The environment name")]
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

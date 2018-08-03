@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// Filters resource group deployments.
     /// </summary>
     [Cmdlet("Get","ResourceGroupDeployment", DefaultParameterSetName = GetAzureResourceGroupDeploymentCmdlet.DeploymentNameParameterSet), OutputType(typeof(PSResourceGroupDeployment))]
-    public class GetAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmResourceGroupDeployment")]
 #endif
+    public class GetAzureResourceGroupDeploymentCmdlet : ResourceManagerCmdletBase
     {
         /// <summary>
         /// The deployment Id parameter set.
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchJobSchedule"), OutputType(typeof(void))]
-    public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureBatchJobSchedule")]
 #endif
+    public class NewBatchJobScheduleCommand : BatchObjectModelCmdletBase
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The id of the job schedule to create.")]
@@ -61,4 +61,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

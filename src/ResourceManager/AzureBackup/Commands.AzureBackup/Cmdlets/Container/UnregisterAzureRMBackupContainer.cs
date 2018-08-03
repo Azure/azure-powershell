@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet("Unregister","BackupContainer", SupportsShouldProcess = true), OutputType(typeof(AzureRMBackupJob))]
-    public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
 #if NETSTANDARD
     [Alias("Unregister-AzureRmBackupContainer")]
 #endif
+    public class UnregisterAzureRMBackupContainer : AzureBackupContainerCmdletBase
     {
         [Parameter(Position = 1, Mandatory = false, HelpMessage = "Confirm unregistration and deletion of server")]
         public SwitchParameter Force { get; set; }
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","ApplicationGatewayHttpListener"), OutputType(typeof(PSApplicationGateway))]
-    public class AddAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
 #if NETSTANDARD
     [Alias("Add-AzureRmApplicationGatewayHttpListener")]
 #endif
+    public class AddAzureApplicationGatewayHttpListenerCommand : AzureApplicationGatewayHttpListenerBase
     {
         [Parameter(
              Mandatory = true,
@@ -50,4 +50,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DevTestLabs
 {
     [Cmdlet("Get","DtlVMsPerLabPolicy",HelpUri = Constants.DevTestLabsHelpUri)]
     [OutputType(typeof(PSPolicy))]
-    public class GetAzureRmDtlVMsPerLabPolicy : DevTestLabsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDtlVMsPerLabPolicy")]
 #endif
+    public class GetAzureRmDtlVMsPerLabPolicy : DevTestLabsCmdletBase
     {
         public override void ExecuteCmdlet()
         {
@@ -37,4 +37,5 @@ namespace Microsoft.Azure.Commands.DevTestLabs
         }
     }
 }
+
 

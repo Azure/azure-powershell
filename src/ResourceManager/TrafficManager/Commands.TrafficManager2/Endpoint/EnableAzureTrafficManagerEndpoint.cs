@@ -21,10 +21,10 @@ using ProjectResources = Microsoft.Azure.Commands.TrafficManager.Properties.Reso
 namespace Microsoft.Azure.Commands.TrafficManager
 {
     [Cmdlet("Enable","TrafficManagerEndpoint"), OutputType(typeof(bool))]
-    public class EnableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
 #if NETSTANDARD
     [Alias("Enable-AzureRmTrafficManagerEndpoint")]
 #endif
+    public class EnableAzureTrafficManagerEndpoint : TrafficManagerBaseCmdlet
     {
         [Parameter(Mandatory = true, HelpMessage = "The name of the endpoint.", ParameterSetName = "Fields")]
         [ValidateNotNullOrEmpty]
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.TrafficManager
         }
     }
 }
+
 

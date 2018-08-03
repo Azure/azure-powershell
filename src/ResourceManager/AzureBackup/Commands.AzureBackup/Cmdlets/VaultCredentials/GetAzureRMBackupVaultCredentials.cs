@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Command to download an azure backup vault's credentials.
     /// </summary>
     [Cmdlet("Get","BackupVaultCredentials"), OutputType(typeof(string))]
-    public class GetAzureRMBackupVaultCredentials : AzureBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBackupVaultCredentials")]
 #endif
+    public class GetAzureRMBackupVaultCredentials : AzureBackupVaultCmdletBase
     {
         [Parameter(Position = 2, Mandatory = true, HelpMessage = AzureBackupCmdletHelpMessage.TargetLocation)]
         [ValidateNotNullOrEmpty]
@@ -214,4 +214,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

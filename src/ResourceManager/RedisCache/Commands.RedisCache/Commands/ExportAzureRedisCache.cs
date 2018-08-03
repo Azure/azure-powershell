@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Export","RedisCache", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class ExportAzureRedisCache : RedisCacheCmdletBase
 #if NETSTANDARD
     [Alias("Export-AzureRmRedisCache")]
 #endif
+    public class ExportAzureRedisCache : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = false, HelpMessage = "Name of resource group under which cache exists.")]
         [ResourceGroupCompleter]
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
 

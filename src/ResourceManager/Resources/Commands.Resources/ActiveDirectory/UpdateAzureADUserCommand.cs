@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
     /// </summary>
     [Cmdlet("Update","ADUser", SupportsShouldProcess = true, DefaultParameterSetName = ParameterSet.UPNOrObjectId), OutputType(typeof(PSADUser))]
     [Alias("Set-AzureRmADUser")]
-    public class UpdateAzureADUserCommand : ActiveDirectoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmADUser")]
 #endif
+    public class UpdateAzureADUserCommand : ActiveDirectoryBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.UPNOrObjectId, HelpMessage = "The userPrincipalName or ObjectId of the user to be updated.")]
         [ValidateNotNullOrEmpty]
@@ -116,4 +116,5 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
         }
     }
 }
+
 

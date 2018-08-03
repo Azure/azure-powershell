@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create an WebhookNotification
     /// </summary>
     [Cmdlet("New","AutoscaleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.WebhookNotification))]
-    public class NewAzureRmAutoscaleWebhookCommand : MonitorCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmAutoscaleWebhook")]
 #endif
+    public class NewAzureRmAutoscaleWebhookCommand : MonitorCmdletBase
     {
         /// <summary>
         /// Gets or sets the ServiceUri of the notification
@@ -68,4 +68,5 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
         }
     }
 }
+
 

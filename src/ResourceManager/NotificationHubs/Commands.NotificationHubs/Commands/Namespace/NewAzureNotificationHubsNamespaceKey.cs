@@ -20,10 +20,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
 {
     [Cmdlet("New","NotificationHubsNamespaceKey", SupportsShouldProcess = true), OutputType(typeof(ResourceListKeys))]
-    public class NewAzureNotificationHubsNamespaceKey : AzureNotificationHubsCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmNotificationHubsNamespaceKey")]
 #endif
+    public class NewAzureNotificationHubsNamespaceKey : AzureNotificationHubsCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.NotificationHubs.Commands.Namespace
         }
     }
 }
+
 

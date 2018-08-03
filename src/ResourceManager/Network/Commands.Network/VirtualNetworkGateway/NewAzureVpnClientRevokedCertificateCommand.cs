@@ -18,10 +18,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("New","VpnClientRevokedCertificate"), OutputType(typeof(PSVpnClientRevokedCertificate))]
-    public class NewAzureVpnClientRevokedCertificateCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmVpnClientRevokedCertificate")]
 #endif
+    public class NewAzureVpnClientRevokedCertificateCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -48,4 +48,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
     /// Get list of containers
     /// </summary>
     [Cmdlet("Get","BackupContainer"), OutputType(typeof(AzureRMBackupContainer))]
-    public class GetAzureRMBackupContainer : AzureBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmBackupContainer")]
 #endif
+    public class GetAzureRMBackupContainer : AzureBackupVaultCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = AzureBackupCmdletHelpMessage.ManagedResourceName)]
         [ValidateNotNullOrEmpty]
@@ -150,4 +150,5 @@ namespace Microsoft.Azure.Commands.AzureBackup.Cmdlets
         }
     }
 }
+
 

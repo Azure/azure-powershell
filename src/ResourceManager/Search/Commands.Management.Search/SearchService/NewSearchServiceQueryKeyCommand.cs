@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("New","SearchQueryKey", DefaultParameterSetName = ResourceNameParameterSetName, SupportsShouldProcess = true), OutputType(typeof(PSSearchQueryKey))]
-    public class NewSearchServiceQueryKeyCommand : SearchServiceBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmSearchQueryKey")]
 #endif
+    public class NewSearchServiceQueryKeyCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
 

@@ -29,10 +29,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network.Automation
 {
     [Cmdlet("Get","DdosProtectionPlan"), OutputType(typeof(PSDdosProtectionPlan))]
-    public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDdosProtectionPlan")]
 #endif
+    public partial class GetAzureRmDdosProtectionPlan : NetworkBaseCmdlet
     {
         internal const string GetByNameGroupParameterSet = "GetByNameAndGroup";
         internal const string ListParameterSet = "List";
@@ -99,4 +99,5 @@ namespace Microsoft.Azure.Commands.Network.Automation
         }
     }
 }
+
 

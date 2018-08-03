@@ -25,10 +25,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
     [Cmdlet("Set","AzureStorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(CloudFile))]
-    public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureStorageFileContent")]
 #endif
+    public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase
     {
         [Parameter(
            Position = 0,
@@ -204,4 +204,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         }
     }
 }
+
 

@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// </remarks>
     [Cmdlet("Backup", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureKeyVaultManagedStorageAccount", SupportsShouldProcess = true,DefaultParameterSetName = ByStorageAccountNameParameterSet)]
     [OutputType(typeof(String))]
-    public class BackupAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
 #if NETSTANDARD
     [Alias("Backup-AzureKeyVaultManagedStorageAccount")]
 #endif
+    public class BackupAzureKeyVaultManagedStorageAccount : KeyVaultCmdletBase
     {
         #region parameter sets
 
@@ -126,4 +126,5 @@ namespace Microsoft.Azure.Commands.KeyVault
         }
     }
 }
+
 

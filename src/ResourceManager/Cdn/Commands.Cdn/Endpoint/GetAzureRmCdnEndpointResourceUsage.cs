@@ -25,10 +25,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Get","CdnEndpointResourceUsage", DefaultParameterSetName = FieldsParameterSet), OutputType(typeof(PSResourceUsage))]
-    public class GetAzureRmCdnEndpointResourceUsage : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmCdnEndpointResourceUsage")]
 #endif
+    public class GetAzureRmCdnEndpointResourceUsage : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = false, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
         }
     }
 }
+
 

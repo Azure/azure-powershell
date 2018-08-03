@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Get","DataLakeAnalyticsJobRecurrence", DefaultParameterSetName = BaseParameterSetName),OutputType(typeof(PSJobRecurrenceInformation))]
     [Alias("Get-AdlJobRecurrence")]
-    public class GetAzureDataLakeAnalyticsJobRecurrence : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmDataLakeAnalyticsJobRecurrence")]
 #endif
+    public class GetAzureDataLakeAnalyticsJobRecurrence : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "GetAllInAccount";
         internal const string JobInfoParameterSetName = "GetBySpecificJobRecurrence";
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// </summary>
     [Cmdlet("Get","WebAppSlotMetrics")]
     [OutputType(typeof(ResourceMetric))]
-    public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmWebAppSlotMetrics")]
 #endif
+    public class GetAzureWebAppSlotMetricsCmdlet : WebAppSlotBaseCmdlet
     {
         [Parameter(Position = 3, Mandatory = true, HelpMessage = "Names of web app metrics")]
         [ValidateNotNullOrEmpty]
@@ -56,4 +56,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+
 

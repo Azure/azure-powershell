@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
     /// </summary>
     [CmdletDeprecation(ChangeDescription = "All Azure SQL DB Servers now have version 12.0 so there is nothing to upgrade.")]
     [Cmdlet("Start","SqlServerUpgrade",ConfirmImpact = ConfirmImpact.Low), OutputType(typeof(AzureSqlServerUpgradeStartModel))]
-    public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>
 #if NETSTANDARD
     [Alias("Start-AzureRmSqlServerUpgrade")]
 #endif
+    public class StartAzureSqlServerUpgrade : AzureSqlServerUpgradeCmdletBase<AzureSqlServerUpgradeStartModel>
     {
         /// <summary>
         /// Gets or sets the server version
@@ -143,4 +143,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerUpgrade.Cmdlet
         }
     }
 }
+
 

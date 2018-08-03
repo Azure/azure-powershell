@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Stop","RecoveryServicesAsrJob",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias("Stop-ASRJob")]
     [OutputType(typeof(ASRJob))]
-    public class StopAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureRmRecoveryServicesAsrJob")]
 #endif
+    public class StopAzureRmRecoveryServicesAsrJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets Job ID.
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

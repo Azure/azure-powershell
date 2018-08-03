@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Get","AutomationDscOnboardingMetaconfig", SupportsShouldProcess = true)]
     [OutputType(typeof(DscOnboardingMetaconfig))]
-    public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmAutomationDscOnboardingMetaconfig")]
 #endif
+    public class GetAzureAutomationDscOnboardingMetaconfig : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to overwrite the existing meta.mof; false otherwise.
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

@@ -113,10 +113,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("New","Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
-    public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmImage")]
 #endif
+    public partial class NewAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -167,10 +167,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Update","Image", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSImage))]
-    public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmImage")]
 #endif
+    public partial class UpdateAzureRmImage : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -219,5 +219,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
+
 
 

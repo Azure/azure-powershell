@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Export","AutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(DirectoryInfo))]
-    public class ExportAzureAutomationRunbook : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Export-AzureRmAutomationRunbook")]
 #endif
+    public class ExportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the runbook name
@@ -95,4 +95,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

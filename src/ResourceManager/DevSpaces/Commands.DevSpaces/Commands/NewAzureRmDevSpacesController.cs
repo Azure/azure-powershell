@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
 {
     [Cmdlet("New","DevSpacesController", SupportsShouldProcess = true)]
     [OutputType(typeof(PSController))]
-    public class NewAzureRmDevSpacesController : DevSpacesCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmDevSpacesController")]
 #endif
+    public class NewAzureRmDevSpacesController : DevSpacesCmdletBase
     {
         [Parameter(
             Position = 0,
@@ -114,4 +114,5 @@ namespace Microsoft.Azure.Commands.DevSpaces.Commands
         }
     }
 }
+
 

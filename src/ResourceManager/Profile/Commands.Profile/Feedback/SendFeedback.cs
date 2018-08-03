@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet("Send","Feedback"), OutputType(typeof(void))]
-    public class SendFeedbackCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Send-Feedback")]
 #endif
+    public class SendFeedbackCommand : AzureRMCmdlet
     {
         private const string _eventName = "feedback";
 
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

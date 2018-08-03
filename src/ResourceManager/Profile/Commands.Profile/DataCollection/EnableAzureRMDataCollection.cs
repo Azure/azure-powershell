@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Profile
 {
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DataCollection", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Enable-AzureRmDataCollection")]
 #endif
+    public class EnableAzureRmDataCollectionCommand : AzureRMCmdlet
     {
         protected override void BeginProcessing()
         {
@@ -52,4 +52,5 @@ namespace Microsoft.Azure.Commands.Profile
         }
     }
 }
+
 

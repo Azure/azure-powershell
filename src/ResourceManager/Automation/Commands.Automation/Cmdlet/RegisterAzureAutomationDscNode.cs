@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Register","AutomationDscNode"), OutputType(typeof(void))]
     // [OutputType(typeof(DscNode))]
-    public class RegisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Register-AzureRmAutomationDscNode")]
 #endif
+    public class RegisterAzureAutomationDscNode : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to reboot the node if needed. False otherwise.
@@ -191,4 +191,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

@@ -185,10 +185,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Export","LogAnalyticRequestRateByInterval", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(PSLogAnalyticsOperationResult))]
-    public partial class ExportAzureRmLogAnalyticRequestRateByInterval : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Export-AzureRmLogAnalyticRequestRateByInterval")]
 #endif
+    public partial class ExportAzureRmLogAnalyticRequestRateByInterval : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -266,4 +266,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

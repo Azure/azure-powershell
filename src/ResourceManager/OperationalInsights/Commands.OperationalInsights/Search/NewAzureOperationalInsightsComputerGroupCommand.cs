@@ -21,10 +21,10 @@ using System.Net;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("New","OperationalInsightsComputerGroup", SupportsShouldProcess = true), OutputType(typeof(HttpStatusCode))]
-    public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmOperationalInsightsComputerGroup")]
 #endif
+    public class NewAzureOperationalInsightsComputerGroupCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -82,4 +82,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
 

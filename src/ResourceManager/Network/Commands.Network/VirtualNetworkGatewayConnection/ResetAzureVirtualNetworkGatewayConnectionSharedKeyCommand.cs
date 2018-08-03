@@ -22,10 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Reset","VirtualNetworkGatewayConnectionSharedKey", SupportsShouldProcess = true),OutputType(typeof(string))]
-    public class ResetAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
 #if NETSTANDARD
     [Alias("Reset-AzureRmVirtualNetworkGatewayConnectionSharedKey")]
 #endif
+    public class ResetAzureVirtualNetworkGatewayConnectionSharedKeyCommand : VirtualNetworkGatewayConnectionBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

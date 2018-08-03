@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Management.IotHub
 
     [Cmdlet("Add","IotHubKey", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSharedAccessSignatureAuthorizationRule))]
-    public class AddAzureRmIotHubKey : IotHubBaseCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmIotHubKey")]
 #endif
+    public class AddAzureRmIotHubKey : IotHubBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.Management.IotHub
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
 {
     [Cmdlet("Get","SqlElasticPoolActivity", SupportsShouldProcess = true,ConfirmImpact = ConfirmImpact.None)]
     [OutputType(typeof(AzureSqlElasticPoolActivityModel))]
-    public class GetAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlElasticPoolActivity")]
 #endif
+    public class GetAzureSqlElasticPoolActivity : AzureSqlElasticPoolActivityCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -55,4 +55,5 @@ namespace Microsoft.Azure.Commands.Sql.ElasticPool.Cmdlet
         }
     }
 }
+
 

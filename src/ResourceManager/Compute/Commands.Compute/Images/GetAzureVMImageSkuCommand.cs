@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Get","VMImageSku")]
     [OutputType(typeof(PSVirtualMachineImageSku))]
-    public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVMImageSku")]
 #endif
+    public class GetAzureVMImageSkuCommand : VirtualMachineImageBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true), ValidateNotNullOrEmpty, LocationCompleter("Microsoft.Compute/locations/publishers")]
         public string Location { get; set; }
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

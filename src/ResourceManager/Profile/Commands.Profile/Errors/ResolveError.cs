@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Profile.Errors
     [OutputType(typeof(AzureErrorRecord))]
     [OutputType(typeof(AzureExceptionRecord))]
     [OutputType(typeof(AzureRestExceptionRecord))]
-    public class ResolveError : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Resolve-AzureRmError")]
 #endif
+    public class ResolveError : AzureRMCmdlet
     {
         public const string AnyErrorParameterSet = "AnyErrorParameterSet";
         public const string LastErrorParameterSet = "LastErrorParameterSet";
@@ -140,4 +140,5 @@ namespace Microsoft.Azure.Commands.Profile.Errors
         }
     }
 }
+
 

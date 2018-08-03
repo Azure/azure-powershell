@@ -30,10 +30,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
     /// this commandlet will let you create a new Azure Web app using ARM APIs
     /// </summary>
     [Cmdlet("New","WebAppSSLBinding"), OutputType(typeof(HostNameSslState))]
-    public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
 #if NETSTANDARD
     [Alias("New-AzureRmWebAppSSLBinding")]
 #endif
+    public class NewAzureWebAppSSLBinding : WebAppBaseClientCmdLet
     {
         const string CertNamePostFixSeparator = "_";
         const string ParameterSet1Name = "S1";
@@ -176,4 +176,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Get","OperationalInsightsSearchResults"), OutputType(typeof(PSSearchGetSearchResultsResponse))]
-    public class GetAzureOperationalInsightsSearchResultsCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmOperationalInsightsSearchResults")]
 #endif
+    public class GetAzureOperationalInsightsSearchResultsCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The name of the resource group that contains the workspace.")]
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
 

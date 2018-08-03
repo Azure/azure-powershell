@@ -24,10 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","ExpressRouteCrossConnection", SupportsShouldProcess = true), OutputType(typeof(PSExpressRouteCrossConnection))]
-    public class SetAzureRMExpressRouteCrossConnectionCommand : ExpressRouteCrossConnectionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmExpressRouteCrossConnection")]
 #endif
+    public class SetAzureRMExpressRouteCrossConnectionCommand : ExpressRouteCrossConnectionBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -160,4 +160,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

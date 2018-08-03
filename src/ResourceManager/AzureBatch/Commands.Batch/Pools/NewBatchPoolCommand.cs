@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchPool", DefaultParameterSetName = CloudServiceTargetDedicatedParameterSet, SupportsShouldProcess=true), 
         OutputType(typeof(void))]
-    public class NewBatchPoolCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureBatchPool")]
 #endif
+    public class NewBatchPoolCommand : BatchObjectModelCmdletBase
     {
         internal const string CloudServiceTargetDedicatedParameterSet = "CloudServiceAndTargetDedicated";
         internal const string CloudServiceAutoScaleParameterSet = "CloudServiceAndAutoScale";
@@ -156,4 +156,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

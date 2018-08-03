@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
 {
     [Cmdlet("Stop","DataLakeAnalyticsJob", SupportsShouldProcess = true), OutputType(typeof(bool))]
     [Alias("Stop-AdlJob")]
-    public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Stop-AzureRmDataLakeAnalyticsJob")]
 #endif
+    public class StopAzureDataLakeAnalyticsJobInfo : DataLakeAnalyticsCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the Data Lake Analytics account name under which want to stop the job.")]
@@ -64,4 +64,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

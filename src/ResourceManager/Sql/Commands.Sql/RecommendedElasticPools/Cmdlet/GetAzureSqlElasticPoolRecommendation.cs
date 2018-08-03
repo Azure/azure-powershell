@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
 {
     [Cmdlet("Get","SqlElasticPoolRecommendation",ConfirmImpact = ConfirmImpact.None, SupportsShouldProcess = true)]
     [OutputType(typeof(UpgradeRecommendedElasticPoolProperties))]
-    public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlElasticPoolRecommendation")]
 #endif
+    public class GetAzureSqlElasticPoolRecommendation : AzureSqlCmdletBase<IEnumerable<UpgradeRecommendedElasticPoolProperties>, AzureSqlElasticPoolRecommendationAdapter>
     {
 
         /// <summary>
@@ -60,4 +60,5 @@ namespace Microsoft.Azure.Commands.Sql.RecommendedElasticPools.Cmdlet
         }
     }
 }
+
 

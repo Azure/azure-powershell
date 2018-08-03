@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
     /// </summary>
     [Cmdlet("Set","SqlDatabaseAuditingPolicy", SupportsShouldProcess = true), OutputType(typeof(AuditingPolicyModel))]
     [Obsolete("Note that Table auditing is deprecated and this command will be removed in a future release. Please use the 'Set-AzureRmSqlDatabaseAuditing' command to configure Blob auditing.", false)]
-    public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmSqlDatabaseAuditingPolicy")]
 #endif
+    public class SetAzureSqlDatabaseAuditingPolicy : SqlDatabaseAuditingCmdletBase
     {
         /// <summary>
         /// Gets or sets the name of the database server to use.
@@ -212,4 +212,5 @@ namespace Microsoft.Azure.Commands.Sql.Auditing.Cmdlet
         }
     }
 }
+
 

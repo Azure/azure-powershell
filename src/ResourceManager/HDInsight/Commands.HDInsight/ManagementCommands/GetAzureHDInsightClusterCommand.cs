@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Get","HDInsightCluster"),OutputType(typeof(AzureHDInsightCluster))]
-    public class GetAzureHDInsightCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmHDInsightCluster")]
 #endif
+    public class GetAzureHDInsightCommand : HDInsightCmdletBase
     {
         #region Input Parameter Definitions
 
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

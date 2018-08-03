@@ -22,10 +22,10 @@ using System.Net;
 namespace Microsoft.Azure.Commands.Management.Search.SearchService
 {
     [Cmdlet("Get","SearchService", DefaultParameterSetName = ResourceGroupParameterSetName), OutputType(typeof(Models.PSSearchService))]
-    public class GetSearchServiceCommand : SearchServiceBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmSearchService")]
 #endif
+    public class GetSearchServiceCommand : SearchServiceBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.Management.Search.SearchService
         }
     }
 }
+
 

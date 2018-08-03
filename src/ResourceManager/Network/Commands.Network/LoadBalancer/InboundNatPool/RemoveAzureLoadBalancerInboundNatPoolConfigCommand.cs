@@ -19,10 +19,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","LoadBalancerInboundNatPoolConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class RemoveAzureLoadBalancerInboundNatPoolConfigCommand : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmLoadBalancerInboundNatPoolConfig")]
 #endif
+    public class RemoveAzureLoadBalancerInboundNatPoolConfigCommand : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -51,4 +51,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

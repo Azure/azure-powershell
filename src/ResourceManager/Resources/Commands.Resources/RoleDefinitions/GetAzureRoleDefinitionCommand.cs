@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// Get the available role Definitions for certain resource types.
     /// </summary>
     [Cmdlet("Get","RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
-    public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmRoleDefinition")]
 #endif
+    public class GetAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionName, HelpMessage = "Role definition name. For e.g. Reader, Contributor, Virtual Machine Contributor.")]
         [ValidateNotNullOrEmpty]
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+
 

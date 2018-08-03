@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// 'New-AzureRmEventHub' Cmdlet creates a new EventHub
     /// </summary>
     [Cmdlet("New","EventHub", DefaultParameterSetName = EventhubPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
-    public class NewAzureRmEventHub : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmEventHub")]
 #endif
+    public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         }
     }
 }
+
 

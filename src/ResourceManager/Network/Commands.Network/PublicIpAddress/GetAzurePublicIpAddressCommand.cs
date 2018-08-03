@@ -24,10 +24,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","PublicIpAddress", DefaultParameterSetName = "NoExpandStandAloneIp"), OutputType(typeof(PSPublicIpAddress))]
-    public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmPublicIpAddress")]
 #endif
+    public class GetAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
         [Alias("ResourceName")]
         [Parameter(
@@ -231,4 +231,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

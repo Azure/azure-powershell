@@ -26,10 +26,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Cdn.Endpoint
 {
     [Cmdlet("Remove","CdnEndpoint", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmCdnEndpoint")]
 #endif
+    public class RemoveAzureCdnEndpoint : AzureCdnCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = FieldsParameterSet, HelpMessage = "Azure CDN endpoint name.")]
         [ValidateNotNullOrEmpty]
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.Cdn.Endpoint
 
     }
 }
+
 

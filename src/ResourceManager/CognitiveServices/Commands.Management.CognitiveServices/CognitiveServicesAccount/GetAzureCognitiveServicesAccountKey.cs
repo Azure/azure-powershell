@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
     /// Get Account Keys for Cognitive Services Account
     /// </summary>
     [Cmdlet("Get","CognitiveServicesAccountKey"), OutputType(typeof(PSCognitiveServicesAccountKeys))]
-    public class GetAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmCognitiveServicesAccountKey")]
 #endif
+    public class GetAzureCognitiveServicesAccountKeyCommand : CognitiveServicesAccountBaseCmdlet
     {
         [Parameter(
             Position = 0,
@@ -62,4 +62,5 @@ namespace Microsoft.Azure.Commands.Management.CognitiveServices
         }
     }
 }
+
 

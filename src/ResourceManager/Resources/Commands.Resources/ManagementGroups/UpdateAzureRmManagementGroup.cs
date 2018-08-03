@@ -21,10 +21,10 @@ using Microsoft.Azure.Management.ManagementGroups.Models;
 namespace Microsoft.Azure.Commands.Resources.ManagementGroups
 {
     [Cmdlet("Update","ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroup))]
-    public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmManagementGroup")]
 #endif
+    public class UpdateAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         [Parameter(ParameterSetName = Constants.ParameterSetNames.ParentGroupAndManagementGroupParameterSet, Mandatory = true,
             HelpMessage = Constants.HelpMessages.InputObject, ValueFromPipeline = true)]
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         }
     }
 }
+
 

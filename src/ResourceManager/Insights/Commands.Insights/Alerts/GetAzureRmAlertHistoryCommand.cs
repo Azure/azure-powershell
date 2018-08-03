@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Get the history of events related to an Alert rule
     /// </summary>
     [Cmdlet("Get","AlertHistory"), OutputType(typeof(PSEventData))]
-    public class GetAzureRmAlertHistoryCommand : LogsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmAlertHistory")]
 #endif
+    public class GetAzureRmAlertHistoryCommand : LogsCmdletBase
     {
         private static readonly TimeSpan DefaultQueryTimeRange = TimeSpan.FromHours(24);
 
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+
 

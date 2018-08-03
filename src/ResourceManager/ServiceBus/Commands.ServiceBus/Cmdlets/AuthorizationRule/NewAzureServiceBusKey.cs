@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// 'New-AzureRmServiceBusKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given ServiceBus Namespace/Queue/Topic Authorization Rule
     /// </summary>
     [Cmdlet("New","ServiceBusKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
-    public class NewAzureServiceBusKey : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmServiceBusKey")]
 #endif
+    public class NewAzureServiceBusKey : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -93,4 +93,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
     }
 }
+
 

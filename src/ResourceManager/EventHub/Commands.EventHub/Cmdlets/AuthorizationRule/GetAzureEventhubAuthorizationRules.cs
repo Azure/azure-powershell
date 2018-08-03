@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
     [Cmdlet("Get","EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
-    public class GetAzureEventHubAuthorizationRule : AzureEventHubsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmEventHubAuthorizationRule")]
 #endif
+    public class GetAzureEventHubAuthorizationRule : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -107,4 +107,5 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         }
     }
 }
+
 

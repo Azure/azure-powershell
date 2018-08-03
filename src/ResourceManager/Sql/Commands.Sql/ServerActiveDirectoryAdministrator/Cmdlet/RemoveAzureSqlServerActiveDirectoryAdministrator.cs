@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
 {
     [Cmdlet("Remove","SqlServerActiveDirectoryAdministrator", SupportsShouldProcess = true), OutputType(typeof(AzureSqlServerActiveDirectoryAdministratorModel))]
-    public class RemoveAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmSqlServerActiveDirectoryAdministrator")]
 #endif
+    public class RemoveAzureSqlServerActiveDirectoryAdministrator : AzureSqlServerActiveDirectoryAdministratorCmdletBase
     {
         /// <summary>
         /// Defines whether it is ok to skip the requesting of rule removal confirmation
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Sql.ServerActiveDirectoryAdministrator.Cmdlet
         }
     }
 }
+
 

@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// Returns the corresponding job created in the service to track this operation.
     /// </summary>
     [Cmdlet("Disable","RecoveryServicesBackupProtection", SupportsShouldProcess = true),OutputType(typeof(JobBase))]
-    public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
 #if NETSTANDARD
     [Alias("Disable-AzureRmRecoveryServicesBackupProtection")]
 #endif
+    public class DisableAzureRmRecoveryServicesBackupProtection : RSBackupVaultCmdletBase
     {
         /// <summary>
         /// The protected item whose protection needs to be disabled.
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         }
     }
 }
+
 

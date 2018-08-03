@@ -22,10 +22,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Set","DataFactorySliceStatus", DefaultParameterSetName = ByFactoryName), OutputType(typeof(bool))]
-    public class SetAzureDataFactorySliceStatusCommand : DataSliceContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmDataFactorySliceStatus")]
 #endif
+    public class SetAzureDataFactorySliceStatusCommand : DataSliceContextBaseCmdlet
     {
         private string _updateType = "Individual";
 
@@ -96,4 +96,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

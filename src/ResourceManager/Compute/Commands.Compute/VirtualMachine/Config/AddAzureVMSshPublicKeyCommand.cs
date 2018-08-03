@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Compute
     /// Add an Ssh Public Key object to VM
     /// </summary>
     [Cmdlet("Add","VMSshPublicKey"),OutputType(typeof(PSVirtualMachine))]
-    public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Add-AzureRmVMSshPublicKey")]
 #endif
+    public class NewAzureSshPublicKeyCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -91,4 +91,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// Get-AzureRmManagementGroup Cmdlet
     /// </summary>
     [Cmdlet("Get","ManagementGroup", DefaultParameterSetName = Constants.ParameterSetNames.ListParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupInfo), typeof(PSManagementGroup))]
-    public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmManagementGroup")]
 #endif
+    public class GetAzureRmManagementGroup : AzureManagementGroupsCmdletBase
     {
         /// <summary>
         /// Get-AzureRmManagementGroup Cmdlet
@@ -70,4 +70,5 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
         }
     }
 }
+
 

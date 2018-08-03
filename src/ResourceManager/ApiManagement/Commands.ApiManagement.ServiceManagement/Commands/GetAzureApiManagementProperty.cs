@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
 
     [Cmdlet("Get","ApiManagementProperty", DefaultParameterSetName = GetAll)]
     [OutputType(typeof(PsApiManagementProperty))]
-    public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmApiManagementProperty")]
 #endif
+    public class GetAzureApiManagementProperty : AzureApiManagementCmdletBase
     {
         private const string GetAll = "GetAllProperties";
         private const string GetById = "GetByPropertyId";
@@ -88,4 +88,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Commands
         }
     }
 }
+
 

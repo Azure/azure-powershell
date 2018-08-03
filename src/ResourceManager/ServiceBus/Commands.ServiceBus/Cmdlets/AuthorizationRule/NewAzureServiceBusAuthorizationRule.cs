@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// 'New-AzureRmServiceBusAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
     [Cmdlet("New","ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
-    public class NewAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmServiceBusAuthorizationRule")]
 #endif
+    public class NewAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
     }
 }
+
 

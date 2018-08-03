@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
     /// Create new job collection.
     /// </summary>
     [Cmdlet("New","SchedulerJobCollection", SupportsShouldProcess = true), OutputType(typeof(PSJobCollectionDefinition))]
-    public class NewAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmSchedulerJobCollection")]
 #endif
+    public class NewAzureSchedulerJobCollectionCommand : SchedulerBaseCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The targeted resource group for job collection.")]
         [ResourceGroupCompleter]
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.Scheduler.Cmdlets
 
     }
 }
+
 

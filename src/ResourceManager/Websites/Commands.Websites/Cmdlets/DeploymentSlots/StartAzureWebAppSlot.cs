@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
     /// this commandlet will let you Start an Azure Web app slot
     /// </summary>
     [Cmdlet("Start","WebAppSlot"), OutputType(typeof(Site))]
-    public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
 #if NETSTANDARD
     [Alias("Start-AzureRmWebAppSlot")]
 #endif
+    public class StartAzureWebAppSlotCmdlet : WebAppSlotBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
         }
     }
 }
+
 

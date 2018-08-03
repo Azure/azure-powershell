@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Export","AutomationDscConfiguration", SupportsShouldProcess = true,DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(DirectoryInfo))]
-    public class ExportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Export-AzureRmAutomationDscConfiguration")]
 #endif
+    public class ExportAzureAutomationDscConfiguration : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// True to overwrite the existing dsc configuration; false otherwise.
@@ -102,4 +102,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

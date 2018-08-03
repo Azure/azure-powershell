@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer", SupportsShouldProcess = true, DefaultParameterSetName = ParamSetDefault), OutputType(typeof(AzureAnalysisServicesServer))]
     [Alias("Set-AzureAs")]
-    public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmAnalysisServicesServer")]
 #endif
+    public class SetAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         private const string ParamSetDefault = "Default";
         private const string ParamSetDisableBackup = "DisableBackup";
@@ -176,4 +176,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

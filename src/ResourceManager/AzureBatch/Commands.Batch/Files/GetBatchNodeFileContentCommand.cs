@@ -21,10 +21,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchNodeFileContent"), OutputType(typeof(void))]
-    public class GetBatchNodeFileContentCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchNodeFileContent")]
 #endif
+    public class GetBatchNodeFileContentCommand : BatchObjectModelCmdletBase
     {
         internal const string TaskAndIdAndPathParameterSet = "Task_Id_Path";
         internal const string TaskAndIdAndStreamParameterSet = "Task_Id_Stream";
@@ -130,4 +130,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

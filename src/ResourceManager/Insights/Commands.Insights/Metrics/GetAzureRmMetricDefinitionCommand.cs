@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definitions for a resource.
     /// </summary>
     [Cmdlet("Get","MetricDefinition"), OutputType(typeof(PSMetricDefinition))]
-    public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmMetricDefinition")]
 #endif
+    public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>
         /// Gets or sets the ResourceId parameter of the cmdlet
@@ -87,4 +87,5 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         }
     }
 }
+
 

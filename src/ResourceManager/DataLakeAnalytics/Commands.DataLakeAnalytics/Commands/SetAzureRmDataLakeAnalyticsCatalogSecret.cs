@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
     [Cmdlet("Set","DataLakeAnalyticsCatalogSecret"), OutputType(typeof(USqlSecret))]
     [Alias("Set-AdlCatalogSecret")]
     [Obsolete("Catalog secrets are being deprecated in a future release. Please use Set-AzureRmDataLakeAnalyticsCatalogCredential directly instead.")]
-    public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeAnalyticsCatalogSecret")]
 #endif
+    public class SetAzureDataLakeAnalyticsCatalogSecret : DataLakeAnalyticsCmdletBase
     {
         internal const string BaseParameterSetName = "SetByFullUri";
         internal const string HostAndPortParameterSetName = "SetByHostNameAndPort";
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.DataLakeAnalytics
         }
     }
 }
+
 

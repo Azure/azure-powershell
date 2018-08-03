@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// Remove an activity log alert.
     /// </summary>
     [Cmdlet("Remove","ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmActivityLogAlertCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmActivityLogAlert")]
 #endif
+    public class RemoveAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {
         internal const string RemoveActivityLogAlertDefaultParamGroup = "RemoveByNameAndResourceGroup";
         internal const string RemoveActivityLogAlertFromPipeParamGroup = "RemoveByInputObject";
@@ -105,4 +105,5 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         }
     }
 }
+
 

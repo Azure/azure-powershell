@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Aks
 {
     [Cmdlet("Remove","Aks", SupportsShouldProcess = true, DefaultParameterSetName = GroupNameParameterSet)]
     [OutputType(typeof(bool))]
-    public class RemoveAzureRmAks : KubeCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmAks")]
 #endif
+    public class RemoveAzureRmAks : KubeCmdletBase
     {
         private const string IdParameterSet = "IdParameterSet";
         private const string GroupNameParameterSet = "GroupNameParameterSet";
@@ -126,4 +126,5 @@ namespace Microsoft.Azure.Commands.Aks
         }
     }
 }
+
 

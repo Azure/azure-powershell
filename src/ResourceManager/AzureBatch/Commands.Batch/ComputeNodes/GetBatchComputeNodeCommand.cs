@@ -20,10 +20,10 @@ using Constants = Microsoft.Azure.Commands.Batch.Utils.Constants;
 namespace Microsoft.Azure.Commands.Batch
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzurePrefix + "AzureBatchComputeNode", DefaultParameterSetName = Constants.ODataFilterParameterSet),OutputType(typeof(PSComputeNode))]
-    public class GetBatchComputeNodeCommand : BatchObjectModelCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureBatchComputeNode")]
 #endif
+    public class GetBatchComputeNodeCommand : BatchObjectModelCmdletBase
     {
         private int maxCount = Constants.DefaultMaxCount;
 
@@ -79,4 +79,5 @@ namespace Microsoft.Azure.Commands.Batch
         }
     }
 }
+
 

@@ -20,10 +20,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Add","LoadBalancerRuleConfig"), OutputType(typeof(PSLoadBalancer))]
-    public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
 #if NETSTANDARD
     [Alias("Add-AzureRmLoadBalancerRuleConfig")]
 #endif
+    public class AddAzureLoadBalancerRuleConfigCommand : AzureLoadBalancerRuleConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -98,4 +98,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

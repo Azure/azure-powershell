@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     [Obsolete("This cmdlet has been marked for deprecation in an upcoming release. Please use the " +
         "Set-AzureRmApiManagement cmdlet from the AzureRM.ApiManagement module instead.",
         false)]
-    public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
 #if NETSTANDARD
     [Alias("Import-AzureRmApiManagementHostnameCertificate")]
 #endif
+    public class ImportAzureApiManagementHostnameCertificate : AzureApiManagementCmdletBase
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         }
     }
 }
+
 

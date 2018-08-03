@@ -21,10 +21,10 @@ using Microsoft.Azure.Commands.DataFactoryV2.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Get","DataFactoryV2Trigger", DefaultParameterSetName = ParameterSetNames.ByFactoryName), OutputType(typeof(PSTrigger))]
-    public class GetAzureDataFactoryTriggerCommand : DataFactoryContextBaseGetCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataFactoryV2Trigger")]
 #endif
+    public class GetAzureDataFactoryTriggerCommand : DataFactoryContextBaseGetCmdlet
     {
         [Parameter(ParameterSetName = ParameterSetNames.ByFactoryName, Position = 2, Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = Constants.HelpTriggerName)]
@@ -65,4 +65,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

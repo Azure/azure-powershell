@@ -22,10 +22,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.OperationalInsights
 {
     [Cmdlet("Remove","OperationalInsightsSavedSearch", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmOperationalInsightsSavedSearch")]
 #endif
+    public class RemoveAzureOperationalInsightsSavedSearchCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.OperationalInsights
 
     }
 }
+
 

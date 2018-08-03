@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Remove","RecoveryServicesAsrProtectionContainer",DefaultParameterSetName = ASRParameterSets.ByObject,SupportsShouldProcess = true)]
     [Alias("Remove-ASRProtectionContainer")]
     [OutputType(typeof(ASRJob))]
-    public class RemoveAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRecoveryServicesAsrProtectionContainer")]
 #endif
+    public class RemoveAzureRmRecoveryServicesAsrProtectionContainer : SiteRecoveryCmdletBase
     {
         #region Parameters
 
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

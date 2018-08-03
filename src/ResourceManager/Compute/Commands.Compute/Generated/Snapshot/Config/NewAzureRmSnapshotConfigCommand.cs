@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 {
     [Cmdlet("New","SnapshotConfig", SupportsShouldProcess = true)]
     [OutputType(typeof(PSSnapshot))]
-    public partial class NewAzureRmSnapshotConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmSnapshotConfig")]
 #endif
+    public partial class NewAzureRmSnapshotConfigCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Parameter(
             Mandatory = false,
@@ -226,4 +226,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         }
     }
 }
+
 

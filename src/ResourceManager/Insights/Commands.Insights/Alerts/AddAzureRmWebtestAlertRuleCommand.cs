@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
     /// Add an Alert rule
     /// </summary>
     [Cmdlet("Add","WebtestAlertRule", SupportsShouldProcess = true), OutputType(typeof(PSAddAlertRuleOperationResponse))]
-    public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
 #if NETSTANDARD
     [Alias("Add-AzureRmWebtestAlertRule")]
 #endif
+    public class AddAzureRmWebtestAlertRuleCommand : AddAzureRmAlertRuleCommandBase
     {
         /// <summary>
         /// Gets or sets the metric name of the condition
@@ -104,4 +104,5 @@ namespace Microsoft.Azure.Commands.Insights.Alerts
         }
     }
 }
+
 

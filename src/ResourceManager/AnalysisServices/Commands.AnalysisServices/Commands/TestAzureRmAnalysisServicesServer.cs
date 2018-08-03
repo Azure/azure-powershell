@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.AnalysisServices
 {
     [Cmdlet("Test", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AnalysisServicesServer"), OutputType(typeof(bool))]
     [Alias("Test-AzureAs")]
-    public class TestAzureAnalysisServicesServer : AnalysisServicesCmdletBase
 #if NETSTANDARD
     [Alias("Test-AzureRmAnalysisServicesServer")]
 #endif
+    public class TestAzureAnalysisServicesServer : AnalysisServicesCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of a specific server.")]
@@ -45,4 +45,5 @@ namespace Microsoft.Azure.Commands.AnalysisServices
         }
     }
 }
+
 

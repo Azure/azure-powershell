@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
     /// Synchronizes storage account keys for a storage account associated with the Media Service.
     /// </summary>
     [Cmdlet("Sync","MediaServiceStorageKeys", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
 #if NETSTANDARD
     [Alias("Sync-AzureRmMediaServiceStorageKeys")]
 #endif
+    public class SyncAzureRmMediaServiceStorageKeys : AzureMediaServiceCmdletBase
     {
         private const string SyncMediaServiceStorageKeysWhatIfMessage = "Sync MediaService storage keys";
 
@@ -90,4 +90,5 @@ namespace Microsoft.Azure.Commands.Media.ServiceKey
         }
     }
 }
+
 

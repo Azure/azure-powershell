@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
     [Cmdlet("Get","ServiceBusSubscription"), OutputType(typeof(PSSubscriptionAttributes))]
-    public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmServiceBusSubscription")]
 #endif
+    public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
@@ -81,4 +81,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         }
     }
 }
+
 

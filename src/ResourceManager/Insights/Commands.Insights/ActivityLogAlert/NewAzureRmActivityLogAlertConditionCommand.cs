@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// Create an Activity Log Alert condition
     /// </summary>
     [Cmdlet("New","ActivityLogAlertCondition"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertLeafCondition))]
-    public class NewAzureRmActivityLogAlertConditionCommand : AzureRMCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmActivityLogAlertCondition")]
 #endif
+    public class NewAzureRmActivityLogAlertConditionCommand : AzureRMCmdlet
     {
         #region Cmdlet parameters
 
@@ -59,4 +59,5 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
         }
     }
 }
+
 

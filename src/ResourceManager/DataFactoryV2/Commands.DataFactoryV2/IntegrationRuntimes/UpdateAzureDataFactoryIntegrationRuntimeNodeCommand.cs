@@ -23,10 +23,10 @@ using Microsoft.Azure.Management.DataFactory.Models;
 namespace Microsoft.Azure.Commands.DataFactoryV2
 {
     [Cmdlet("Update","DataFactoryV2IntegrationRuntimeNode",DefaultParameterSetName = ParameterSetNames.ByIntegrationRuntimeName,SupportsShouldProcess = true),OutputType(typeof(PSSelfHostedIntegrationRuntimeNode))]
-    public class UpdateAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
 #if NETSTANDARD
     [Alias("Update-AzureRmDataFactoryV2IntegrationRuntimeNode")]
 #endif
+    public class UpdateAzureDataFactoryIntegrationRuntimeNodeCommand : IntegrationRuntimeContextBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
         }
     }
 }
+
 

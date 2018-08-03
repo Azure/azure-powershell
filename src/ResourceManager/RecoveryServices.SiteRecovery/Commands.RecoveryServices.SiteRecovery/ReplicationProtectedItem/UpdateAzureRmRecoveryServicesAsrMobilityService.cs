@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Update","RecoveryServicesAsrMobilityService",DefaultParameterSetName = ASRParameterSets.Default,SupportsShouldProcess = true)]
     [Alias("Update-ASRMobilityService")]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmRecoveryServicesAsrMobilityService")]
 #endif
+    public class UpdateAzureRmRecoveryServicesAsrMobilityService : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets te run as account ID to be used to push the update.
@@ -144,4 +144,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
 

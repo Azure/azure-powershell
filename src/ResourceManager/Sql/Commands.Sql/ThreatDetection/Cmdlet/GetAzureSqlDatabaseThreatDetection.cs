@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
     /// Returns the auditing policy of a specific database.
     /// </summary>
     [Cmdlet("Get","SqlDatabaseThreatDetectionPolicy", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDatabaseThreatDetectionPolicy")]
 #endif
+    public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
         /// No sending is needed as this is a Get cmdlet
@@ -36,4 +36,5 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         }
     }
 }
+
 

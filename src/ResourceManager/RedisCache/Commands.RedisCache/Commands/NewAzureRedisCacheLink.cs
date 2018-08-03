@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RedisCache
     using Rest.Azure;
 
     [Cmdlet("New","RedisCacheLink", SupportsShouldProcess = true), OutputType(typeof(PSRedisLinkedServer))]
-    public class NewAzureRedisCacheLink : RedisCacheCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRedisCacheLink")]
 #endif
+    public class NewAzureRedisCacheLink : RedisCacheCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Mandatory = true, HelpMessage = "Name of primary redis cache in link.")]
         [ValidateNotNullOrEmpty]
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.RedisCache
         }
     }
 }
+
 

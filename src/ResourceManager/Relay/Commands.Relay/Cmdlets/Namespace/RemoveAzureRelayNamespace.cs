@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
     /// 'Remove-AzureRmRelayNamespace' Cmdlet deletes the specified Relay Namespace
     /// </summary>
     [Cmdlet("Remove","RelayNamespace", SupportsShouldProcess = true), OutputType(typeof(void))]
-    public class RemoveAzureRmRelayNamespace : AzureRelayCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRelayNamespace")]
 #endif
+    public class RemoveAzureRmRelayNamespace : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -54,4 +54,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands.Namespace
         }
     }
 }
+
 

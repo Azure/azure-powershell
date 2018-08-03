@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
 {
     [Cmdlet("Get","SqlDeletedDatabaseBackup", SupportsShouldProcess = true)]
     [OutputType(typeof(AzureSqlDeletedDatabaseBackupModel))]
-    public class GetAzureRMSqlDeletedDatabaseBackup : AzureSqlDeletedDatabaseBackupCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlDeletedDatabaseBackup")]
 #endif
+    public class GetAzureRMSqlDeletedDatabaseBackup : AzureSqlDeletedDatabaseBackupCmdletBase
     {
         /// <summary>
         /// Get the entities from the service
@@ -76,4 +76,5 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Cmdlet
         }
     }
 }
+
 

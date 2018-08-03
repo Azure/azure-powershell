@@ -23,10 +23,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Set","VirtualNetworkPeering"), OutputType(typeof(PSVirtualNetworkPeering))]
-    public class SetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
 #if NETSTANDARD
     [Alias("Set-AzureRmVirtualNetworkPeering")]
 #endif
+    public class SetAzureVirtualNetworkPeeringCommand : VirtualNetworkPeeringBase
     {
         [Parameter(
             Mandatory = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

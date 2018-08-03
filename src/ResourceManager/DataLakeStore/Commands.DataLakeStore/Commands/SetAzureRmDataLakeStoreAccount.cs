@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.DataLakeStore
 {
     [Cmdlet("Set","DataLakeStoreAccount"), OutputType(typeof(PSDataLakeStoreAccount))]
     [Alias("Set-AdlStore")]
-    public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
 #if NETSTANDARD
     [Alias("Set-AzureRmDataLakeStoreAccount")]
 #endif
+    public class SetAzureDataLakeStoreAccount : DataLakeStoreCmdletBase
     {
         [Parameter(ValueFromPipelineByPropertyName = true, Position = 0, Mandatory = true,
             HelpMessage = "Name of the account.")]
@@ -149,4 +149,5 @@ namespace Microsoft.Azure.Commands.DataLakeStore
         }
     }
 }
+
 

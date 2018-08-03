@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
 {
     [Cmdlet("New","SignalRKey", SupportsShouldProcess = true, DefaultParameterSetName = ResourceGroupParameterSet)]
     [OutputType(typeof(bool))]
-    public class NewAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
 #if NETSTANDARD
     [Alias("New-AzureRmSignalRKey")]
 #endif
+    public class NewAzureRmSignalRKey : SignalRCmdletBase, IWithInputObject, IWithResourceId
     {
         [Parameter(
             Mandatory = false,
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.SignalR.Cmdlets
         }
     }
 }
+
 

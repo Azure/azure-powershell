@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Restart","VM", DefaultParameterSetName = RestartResourceGroupNameParameterSet, SupportsShouldProcess = true)]
     [OutputType(typeof(PSComputeLongRunningOperation))]
-    public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
 #if NETSTANDARD
     [Alias("Restart-AzureRmVM")]
 #endif
+    public class RestartAzureVMCommand : VirtualMachineBaseCmdlet
     {
         protected const string RestartResourceGroupNameParameterSet = "RestartResourceGroupNameParameterSetName";
         protected const string PerformMaintenanceResourceGroupNameParameterSet = "PerformMaintenanceResourceGroupNameParameterSetName";
@@ -130,4 +130,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.HDInsight
 {
     [Cmdlet("Invoke","HDInsightHiveJob"),OutputType(typeof(string))]
-    public class InvokeHiveCommand : HDInsightCmdletBase
 #if NETSTANDARD
     [Alias("Invoke-AzureRmHDInsightHiveJob")]
 #endif
+    public class InvokeHiveCommand : HDInsightCmdletBase
     {
         private readonly NewAzureHDInsightHiveJobDefinitionCommand hiveJobDefinitionCommand;
 
@@ -185,4 +185,5 @@ namespace Microsoft.Azure.Commands.HDInsight
         }
     }
 }
+
 

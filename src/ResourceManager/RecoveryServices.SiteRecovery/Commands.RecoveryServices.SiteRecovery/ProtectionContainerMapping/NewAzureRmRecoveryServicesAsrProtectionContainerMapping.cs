@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("New","RecoveryServicesAsrProtectionContainerMapping",DefaultParameterSetName = ASRParameterSets.EnterpriseToAzure,SupportsShouldProcess = true)]
     [Alias("New-ASRProtectionContainerMapping")]
     [OutputType(typeof(ASRJob))]
-    public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmRecoveryServicesAsrProtectionContainerMapping")]
 #endif
+    public class NewAzureRmRecoveryServicesAsrProtectionContainerMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the name of the Protection Container mapping.
@@ -192,4 +192,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     /// 'Remove-AzureRmServiceBusAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
     [Cmdlet("Remove","ServiceBusAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmServiceBusAuthorizationRule")]
 #endif
+    public class RemoveAzureServiceBusAuthorizationRule : AzureServiceBusCmdletBase
     {
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
@@ -118,4 +118,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
     }
 }
+
 

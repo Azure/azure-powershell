@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Relay.Commands
     /// 'Remove-AzureRmRelayAuthorizationRule' Cmdlet removes/deletes AuthorizationRule
     /// </summary>
     [Cmdlet("Remove","RelayAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public class RemoveAzureRelayAuthorizationRule : AzureRelayCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmRelayAuthorizationRule")]
 #endif
+    public class RemoveAzureRelayAuthorizationRule : AzureRelayCmdletBase
     {
         [Parameter(Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -122,4 +122,5 @@ namespace Microsoft.Azure.Commands.Relay.Commands
         }
     }
 }
+
 

@@ -22,10 +22,10 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","VpnClientPackage"), OutputType(typeof(string))]
-    public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmVpnClientPackage")]
 #endif
+    public class GetAzureVpnClientPackage : VirtualNetworkGatewayBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -75,4 +75,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

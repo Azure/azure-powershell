@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// </summary>
     [Cmdlet("Import","AutomationRunbook", SupportsShouldProcess = true)]
     [OutputType(typeof(Runbook))]
-    public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Import-AzureRmAutomationRunbook")]
 #endif
+    public class ImportAzureAutomationRunbook : AzureAutomationBaseCmdlet
     {
 
         /// <summary>
@@ -124,4 +124,5 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         }
     }
 }
+
 

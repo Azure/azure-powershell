@@ -24,10 +24,10 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
     /// Removes a data masking rule from a given database
     /// </summary>
     [Cmdlet("Remove","SqlDatabaseDataMaskingRule", SupportsShouldProcess = true), OutputType(typeof(DatabaseDataMaskingRuleModel))]
-    public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmSqlDatabaseDataMaskingRule")]
 #endif
+    public class RemoveAzureSqlDatabaseDataMaskingRule : SqlDatabaseDataMaskingRuleCmdletBase
     {
         /// <summary>
         ///  Defines whether the cmdlets will output the model object at the end of its execution
@@ -69,4 +69,5 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         protected override bool WriteResult() { return PassThru; }
     }
 }
+
 

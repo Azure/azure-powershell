@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
 {
     [Cmdlet("Get","ConsumptionReservationDetail")]
     [OutputType(typeof(PSReservationDetail))]
-    public class GetAzureRmConsumptionReservationDetail : AzureConsumptionCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmConsumptionReservationDetail")]
 #endif
+    public class GetAzureRmConsumptionReservationDetail : AzureConsumptionCmdletBase
     {
         [Parameter(Mandatory = true, HelpMessage = "The start data (YYYY-MM-DD in UTC) of the reservation detail.")]
         [ValidateNotNullOrEmpty]
@@ -80,4 +80,5 @@ namespace Microsoft.Azure.Commands.Consumption.Cmdlets.Reservation
         }
     }
 }
+
 

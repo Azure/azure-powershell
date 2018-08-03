@@ -33,10 +33,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Remove","ApplicationSecurityGroup", SupportsShouldProcess = true), OutputType(typeof(bool))]
-    public partial class RemoveAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmApplicationSecurityGroup")]
 #endif
+    public partial class RemoveAzureRmApplicationSecurityGroup : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -83,4 +83,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

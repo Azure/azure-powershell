@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to update an existing sync member
     /// </summary>
     [Cmdlet("Update","SqlSyncMember", SupportsShouldProcess = true, ConfirmImpact = ConfirmImpact.Medium), OutputType(typeof(AzureSqlSyncMemberModel))]
-    public class UpdateAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmSqlSyncMember")]
 #endif
+    public class UpdateAzureSqlSyncMember : AzureSqlSyncMemberCmdletBase
     {
         /// <summary>
         /// Gets or sets the sync member name
@@ -94,4 +94,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
 

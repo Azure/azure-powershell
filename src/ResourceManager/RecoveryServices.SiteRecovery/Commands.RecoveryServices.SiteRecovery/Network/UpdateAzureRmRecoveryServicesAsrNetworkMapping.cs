@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// </summary>
     [Cmdlet("Update","RecoveryServicesAsrNetworkMapping",DefaultParameterSetName = ASRParameterSets.ByNetworkObject,SupportsShouldProcess = true)]
     [OutputType(typeof(ASRJob))]
-    public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Update-AzureRmRecoveryServicesAsrNetworkMapping")]
 #endif
+    public class UpdateAzureRmRecoveryServicesAsrNetworkMapping : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the ASR network mapping object corresponding to the ASR network mapping to be updated 
@@ -190,4 +190,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

@@ -31,10 +31,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         "Get-ASRRP",
         "Get-ASRRecoveryPlan")]
     [OutputType(typeof(ASRRecoveryPlan))]
-    public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Get-AzureRmRecoveryServicesAsrRecoveryPlan")]
 #endif
+    public class GetAzureRmRecoveryServicesAsrRecoveryPlan : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets the name of the recovery plan to get.
@@ -244,4 +244,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         }
     }
 }
+
 

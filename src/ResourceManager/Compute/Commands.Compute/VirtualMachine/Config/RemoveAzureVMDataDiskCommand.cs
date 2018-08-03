@@ -21,10 +21,10 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Remove","VMDataDisk",SupportsShouldProcess = true),OutputType(typeof(PSVirtualMachine))]
-    public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmVMDataDisk")]
 #endif
+    public class RemoveAzureVMDataDiskCommand : Microsoft.Azure.Commands.ResourceManager.Common.AzureRMCmdlet
     {
         [Alias("VMProfile")]
         [Parameter(
@@ -77,4 +77,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

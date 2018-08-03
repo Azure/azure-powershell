@@ -27,10 +27,10 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
     /// Cmdlet to get synchronization log of  a specified sync group
     /// </summary>
     [Cmdlet("Get","SqlSyncGroupLog",ConfirmImpact = ConfirmImpact.None), OutputType(typeof(AzureSqlSyncGroupLogModel))]
-    public class GetAzureSqlSyncGroupLog : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlSyncGroupLogModel>, AzureSqlDataSyncAdapter>
 #if NETSTANDARD
     [Alias("Get-AzureRmSqlSyncGroupLog")]
 #endif
+    public class GetAzureSqlSyncGroupLog : AzureSqlDatabaseCmdletBase<IEnumerable<AzureSqlSyncGroupLogModel>, AzureSqlDataSyncAdapter>
     {
         /// <summary>
         /// Gets or sets the sync group name
@@ -100,4 +100,5 @@ namespace Microsoft.Azure.Commands.Sql.DataSync.Cmdlet
         }
     }
 }
+
 

@@ -98,10 +98,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
     [Cmdlet("Remove","ContainerService", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
     [OutputType(typeof(void))]
-    public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
 #if NETSTANDARD
     [Alias("Remove-AzureRmContainerService")]
 #endif
+    public partial class RemoveAzureRmContainerService : ComputeAutomationBaseCmdlet
     {
         public override void ExecuteCmdlet()
         {
@@ -157,4 +157,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public SwitchParameter AsJob { get; set; }
     }
 }
+
 

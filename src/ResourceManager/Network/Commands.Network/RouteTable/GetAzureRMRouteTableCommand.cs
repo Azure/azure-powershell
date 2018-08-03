@@ -39,10 +39,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 namespace Microsoft.Azure.Commands.Network
 {
     [Cmdlet("Get","RouteTable"), OutputType(typeof(PSRouteTable))]
-    public partial class GetAzureRmRouteTable : NetworkBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmRouteTable")]
 #endif
+    public partial class GetAzureRmRouteTable : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
@@ -118,4 +118,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

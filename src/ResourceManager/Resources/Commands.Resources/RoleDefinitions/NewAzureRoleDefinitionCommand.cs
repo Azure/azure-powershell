@@ -26,10 +26,10 @@ namespace Microsoft.Azure.Commands.Resources
     /// Creates a new role definition.
     /// </summary>
     [Cmdlet("New","RoleDefinition"), OutputType(typeof(PSRoleDefinition))]
-    public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
 #if NETSTANDARD
     [Alias("New-AzureRmRoleDefinition")]
 #endif
+    public class NewAzureRoleDefinitionCommand : ResourcesBaseCmdlet
     {
         [ValidateNotNullOrEmpty]
         [Parameter(Position = 0, Mandatory = true, ParameterSetName = ParameterSet.InputFile, HelpMessage = "File name containing a single role definition.")]
@@ -73,4 +73,5 @@ namespace Microsoft.Azure.Commands.Resources
         }
     }
 }
+
 

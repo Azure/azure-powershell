@@ -29,10 +29,10 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
     /// Cmdlet to create a new Azure SQL Database Copy
     /// </summary>
     [Cmdlet("New","SqlDatabaseCopy", ConfirmImpact = ConfirmImpact.Low, SupportsShouldProcess = true, DefaultParameterSetName = DtuDatabaseParameterSet), OutputType(typeof(AzureSqlDatabaseCopyModel))]
-    public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
 #if NETSTANDARD
     [Alias("New-AzureRmSqlDatabaseCopy")]
 #endif
+    public class NewAzureSqlDatabaseCopy : AzureSqlDatabaseCopyCmdletBase
     {
         private const string DtuDatabaseParameterSet = "DtuBasedDatabase";
         private const string VcoreDatabaseParameterSet = "VcoreBasedDatabase";
@@ -241,4 +241,5 @@ namespace Microsoft.Azure.Commands.Sql.Replication.Cmdlet
         }
     }
 }
+
 

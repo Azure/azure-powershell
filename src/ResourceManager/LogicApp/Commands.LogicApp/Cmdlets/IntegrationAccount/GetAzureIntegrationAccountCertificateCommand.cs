@@ -25,10 +25,10 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
     /// </summary>
     [Cmdlet("Get","IntegrationAccountCertificate")]
     [OutputType(typeof(IntegrationAccountCertificate))]
-    public class GetAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmIntegrationAccountCertificate")]
 #endif
+    public class GetAzureIntegrationAccountCertificateCommand : LogicAppBaseCmdlet
     {
 
         #region Input Parameters
@@ -67,4 +67,5 @@ namespace Microsoft.Azure.Commands.LogicApp.Cmdlets
         }
     }
 }
+
 

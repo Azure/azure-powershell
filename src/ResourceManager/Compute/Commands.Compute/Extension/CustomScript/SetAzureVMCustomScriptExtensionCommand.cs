@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Commands.Compute
 {
     [Cmdlet("Set","VMCustomScriptExtension",SupportsShouldProcess = true,DefaultParameterSetName = SetCustomScriptExtensionByContainerBlobsParamSetName)]
     [OutputType(typeof(PSAzureOperationResponse))]
-    public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet
 #if NETSTANDARD
     [Alias("Set-AzureRmVMCustomScriptExtension")]
 #endif
+    public class SetAzureVMCustomScriptExtensionCommand : SetAzureVMExtensionBaseCmdlet
     {
         protected const string SetCustomScriptExtensionByContainerBlobsParamSetName = "SetCustomScriptExtensionByContainerAndFileNames";
         protected const string SetCustomScriptExtensionByUrisParamSetName = "SetCustomScriptExtensionByUriLinks";
@@ -262,4 +262,5 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+
 

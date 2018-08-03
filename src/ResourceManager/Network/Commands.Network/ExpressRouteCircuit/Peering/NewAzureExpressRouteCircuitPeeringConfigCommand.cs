@@ -21,10 +21,10 @@ namespace Microsoft.Azure.Commands.Network
     using System.Linq;
 
     [Cmdlet("New","ExpressRouteCircuitPeeringConfig", DefaultParameterSetName = "SetByResource"), OutputType(typeof(PSPeering))]
-    public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
 #if NETSTANDARD
     [Alias("New-AzureRmExpressRouteCircuitPeeringConfig")]
 #endif
+    public class NewAzureExpressRouteCircuitPeeringConfigCommand : AzureExpressRouteCircuitPeeringConfigBase
     {
         [Parameter(
             Mandatory = true,
@@ -72,4 +72,5 @@ namespace Microsoft.Azure.Commands.Network
         }
     }
 }
+
 

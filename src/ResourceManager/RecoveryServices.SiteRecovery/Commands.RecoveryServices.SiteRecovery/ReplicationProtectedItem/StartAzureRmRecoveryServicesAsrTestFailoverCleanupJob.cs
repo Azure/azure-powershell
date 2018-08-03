@@ -23,10 +23,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     [Cmdlet("Start","RecoveryServicesAsrTestFailoverCleanupJob",DefaultParameterSetName = ASRParameterSets.ByRPIObject,SupportsShouldProcess = true)]
     [Alias("Start-ASRTestFailoverCleanupJob")]
     [OutputType(typeof(ASRJob))]
-    public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase
 #if NETSTANDARD
     [Alias("Start-AzureRmRecoveryServicesAsrTestFailoverCleanupJob")]
 #endif
+    public class StartAzureRmRecoveryServicesAsrTestFailoverCleanupJob : SiteRecoveryCmdletBase
     {
         /// <summary>
         ///     Gets or sets resource Id of replication protected item / recovery plan for cleaningup test failover.
@@ -210,4 +210,5 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         #endregion
     }
 }
+
 

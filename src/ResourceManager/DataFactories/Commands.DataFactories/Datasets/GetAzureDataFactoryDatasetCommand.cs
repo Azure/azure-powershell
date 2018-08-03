@@ -23,10 +23,10 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.DataFactories
 {
     [Cmdlet("Get","DataFactoryDataset", DefaultParameterSetName = ByFactoryName), OutputType(typeof(PSDataset))]
-    public class GetAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
 #if NETSTANDARD
     [Alias("Get-AzureRmDataFactoryDataset")]
 #endif
+    public class GetAzureDataFactoryDatasetCommand : DataFactoryBaseCmdlet
     {
         [Parameter(ParameterSetName = ByFactoryObject, Position = 0, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The data factory object.")]
@@ -86,4 +86,5 @@ namespace Microsoft.Azure.Commands.DataFactories
         }
     }
 }
+
 

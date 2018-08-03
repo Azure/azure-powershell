@@ -22,10 +22,10 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
     /// Removes the log profile.
     /// </summary>
     [Cmdlet("Remove","LogProfile", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
-    public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
 #if NETSTANDARD
     [Alias("Remove-AzureRmLogProfile")]
 #endif
+    public class RemoveAzureRmLogProfileCommand : ManagementCmdletBase
     {
         #region Parameters declarations
 
@@ -63,4 +63,5 @@ namespace Microsoft.Azure.Commands.Insights.LogProfiles
         }
     }
 }
+
 
