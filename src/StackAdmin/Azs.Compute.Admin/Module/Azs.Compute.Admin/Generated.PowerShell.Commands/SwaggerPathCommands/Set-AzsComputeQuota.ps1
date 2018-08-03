@@ -96,7 +96,7 @@ function Set-AzsComputeQuota {
     }
 
     Process {
-        $ErrorActionPreference = 'Stop'
+
 
         $NewQuota = $null
 
