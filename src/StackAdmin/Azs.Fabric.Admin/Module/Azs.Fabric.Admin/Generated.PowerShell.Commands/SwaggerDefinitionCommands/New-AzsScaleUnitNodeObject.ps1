@@ -17,21 +17,21 @@ Licensed under the MIT License. See License.txt in the project root for license 
     Computer name of the physical machine.
 
 #>
-function New-ScaleOutScaleUnitParametersObject
+function New-AzsScaleUnitNodeObject
 {
-    param(    
+    param(
         [Parameter(Mandatory = $false)]
         [string]
         $BMCIPv4Address,
-    
+
         [Parameter(Mandatory = $false)]
         [string]
         $ComputerName
     )
-    
+
     $Object = New-Object -TypeName Microsoft.AzureStack.Management.Fabric.Admin.Models.ScaleOutScaleUnitParameters
 
-    $PSBoundParameters.GetEnumerator() | ForEach-Object { 
+    $PSBoundParameters.GetEnumerator() | ForEach-Object {
         if(Get-Member -InputObject $Object -Name $_.Key -MemberType Property)
         {
             $Object.$($_.Key) = $_.Value

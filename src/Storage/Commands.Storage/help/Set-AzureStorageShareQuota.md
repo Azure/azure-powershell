@@ -110,6 +110,7 @@ Accept wildcard characters: False
 
 ### -Quota
 Specifies the quota value in gigabytes (GB).
+See the quota limitation in https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits#azure-files-limits. 
 
 ```yaml
 Type: System.Int32

@@ -5,7 +5,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 
 <#
 .SYNOPSIS
-	
+
 
 .DESCRIPTION
 	Move subscriptions between delegated provider offers. This process will only perform a rebranding,
@@ -36,7 +36,7 @@ Licensed under the MIT License. See License.txt in the project root for license 
 function Move-AzsSubscription
 {
 	[CmdletBinding(DefaultParameterSetName='Subscriptions_MoveSubscriptions')]
-	param(    
+	param(
 		[Parameter(Mandatory = $false)]
 		[System.String]
 		$DestinationDelegatedProviderOffer = $null,
@@ -51,7 +51,7 @@ function Move-AzsSubscription
 		$AsJob
 	)
 
-	Begin 
+	Begin
 	{
 		Initialize-PSSwaggerDependencies -Azure
 		$tracerObject = $null
@@ -64,8 +64,8 @@ function Move-AzsSubscription
 	}
 
 	Process {
-	
-	$ErrorActionPreference = 'Stop'
+
+
 
 	$NewServiceClient_params = @{
 		FullClientTypeName = 'Microsoft.AzureStack.Management.Subscriptions.Admin.SubscriptionsAdminClient'
@@ -73,14 +73,14 @@ function Move-AzsSubscription
 
 	$GlobalParameterHashtable = @{}
 	$NewServiceClient_params['GlobalParameterHashtable'] = $GlobalParameterHashtable
-	 
+
 	$GlobalParameterHashtable['SubscriptionId'] = $null
 	if($PSBoundParameters.ContainsKey('SubscriptionId')) {
 		$GlobalParameterHashtable['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
 	}
 
 	$MoveSubscriptionsDefinition = New-MoveSubscriptionsDefinitionObject -Resources $ResourceId -TargetDelegatedProviderOffer $DestinationDelegatedProviderOffer
-	
+
 	$SubscriptionsAdminClient = New-ServiceClient @NewServiceClient_params
 
 	if ('Subscriptions_MoveSubscriptions' -eq $PsCmdlet.ParameterSetName) {
@@ -95,7 +95,7 @@ function Move-AzsSubscription
 
 	$PSSwaggerJobScriptBlock = {
 		[CmdletBinding()]
-		param(    
+		param(
 			[Parameter(Mandatory = $true)]
 			[System.Threading.Tasks.Task]
 			$TaskResult,
@@ -109,9 +109,9 @@ function Move-AzsSubscription
 			$GetTaskResult_params = @{
 				TaskResult = $TaskResult
 			}
-			
+
 			Get-TaskResult @GetTaskResult_params
-			
+
 		}
 	}
 
