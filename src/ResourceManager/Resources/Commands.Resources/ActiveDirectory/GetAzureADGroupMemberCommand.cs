@@ -47,12 +47,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.GroupObject))
                 {
-                    GroupObjectId = Guid.Parse(GroupObject.Id);
+                    GroupObjectId = GroupObject.Id;
                 }
                 else if (this.IsParameterBound(c => c.GroupDisplayName))
                 {
                     var targetGroup = ActiveDirectoryClient.GetGroupByDisplayName(GroupDisplayName);
-                    GroupObjectId = Guid.Parse(targetGroup.Id);
+                    GroupObjectId = targetGroup.Id;
                 }
 
                 ADObjectFilterOptions options = new ADObjectFilterOptions

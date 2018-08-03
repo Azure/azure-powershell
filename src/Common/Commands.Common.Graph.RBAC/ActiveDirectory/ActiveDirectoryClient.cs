@@ -244,9 +244,9 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
         public List<PSADObject> ListUserGroups(string principal)
         {
             List<PSADObject> result = new List<PSADObject>();
-            string objectId = GetObjectId(new ADObjectFilterOptions { UPN = principal });
-            PSADObject user = GetADObject(new ADObjectFilterOptions { Id = objectId.ToString() });
-            var groupsIds = GraphClient.Users.GetMemberGroups(objectId.ToString(), new UserGetMemberGroupsParameters());
+            string objectId = GetObjectIdAsString(new ADObjectFilterOptions { UPN = principal });
+            PSADObject user = GetADObject(new ADObjectFilterOptions { Id = objectId });
+            var groupsIds = GraphClient.Users.GetMemberGroups(objectId, new UserGetMemberGroupsParameters());
             var groupsResult = GraphClient.Objects.GetObjectsByObjectIds(new GetObjectsParameters { ObjectIds = groupsIds.ToList() });
             result.AddRange(groupsResult.Select(g => g.ToPSADGroup()));
 
@@ -371,10 +371,11 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
             GraphClient.Groups.RemoveMember(groupObjectId, memberObjectId);
         }
 
-        public string GetObjectId(ADObjectFilterOptions options)
+        public Guid GetObjectId(ADObjectFilterOptions options)
         {
-            string principalId = null;
-            if (options != null && options.Id != null)
+            Guid principalId;
+            if (options != null && options.Id != null
+                && Guid.TryParse(options.Id, out principalId))
             {
                 // do nothing, we have parsed the guid
             }
@@ -392,7 +393,50 @@ namespace Microsoft.Azure.Graph.RBAC.Version1_6.ActiveDirectory
 
             return principalId;
         }
+        public string GetObjectIdAsString(ADObjectFilterOptions options)
+        {
+            Guid principalId;
+            if (options != null && options.Id != null
+                && Guid.TryParse(options.Id, out principalId))
+            {
+                // do nothing, we have parsed the guid
+            }
+            else
+            {
+                PSADObject adObj = GetADObject(options);
 
+                if (adObj == null)
+                {
+                    throw new KeyNotFoundException("The provided information does not map to an AD object id.");
+                }
+
+                principalId = adObj.Id;
+            }
+
+            return principalId.ToString();
+        }
+
+        public string GetAdfsObjectId(ADObjectFilterOptions options)
+        {
+            string principalId = null;
+            if (options != null && options.Id != null)
+            {
+                // do nothing, we have parsed the guid
+            }
+            else
+            {
+                PSADObject adObj = GetADObject(options);
+
+                if (adObj == null)
+                {
+                    throw new KeyNotFoundException("The provided information does not map to an AD object id.");
+                }
+
+                principalId = adObj.AdfsId;
+            }
+
+            return principalId;
+        }
         public void UpdateApplication(Guid appObjectId, ApplicationUpdateParameters parameters)
         {
             GraphClient.Applications.Patch(appObjectId.ToString(), parameters);

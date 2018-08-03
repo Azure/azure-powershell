@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                 : AuthorizationHelper.ConstructFullyQualifiedRoleDefinitionIdFromScopeAndIdAsGuid(scope, parameters.RoleDefinitionId);
             var createParameters = new RoleAssignmentCreateParameters
             {
-                PrincipalId = principalId.ToString(),
+                PrincipalId = principalId,
                 RoleDefinitionId = roleDefinitionId,
                 CanDelegate = parameters.CanDelegate
             };

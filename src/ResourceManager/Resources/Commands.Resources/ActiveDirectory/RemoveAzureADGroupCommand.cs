@@ -49,12 +49,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.InputObject))
                 {
-                    ObjectId = Guid.Parse(InputObject.Id);
+                    ObjectId = InputObject.Id;
                 }
                 else if (this.IsParameterBound(c => c.DisplayName))
                 {
                     var group = ActiveDirectoryClient.GetGroupByDisplayName(DisplayName);
-                    ObjectId = Guid.Parse(group.Id);
+                    ObjectId = group.Id;
                 }
 
                 ConfirmAction(

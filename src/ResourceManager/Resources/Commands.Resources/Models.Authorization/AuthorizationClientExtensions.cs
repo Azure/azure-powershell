@@ -135,8 +135,8 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
             foreach (RoleAssignment assignment in assignments)
             {
                 assignment.RoleDefinitionId = assignment.RoleDefinitionId.GuidFromFullyQualifiedId();
-                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == assignment.PrincipalId) ??
-                    new PSADObject() { Id = assignment.PrincipalId };
+                PSADObject adObject = adObjects.SingleOrDefault(o => o.Id == Guid.Parse(assignment.PrincipalId)) ??
+                                      new PSADObject() { Id = Guid.Parse(assignment.PrincipalId) };
                 PSRoleDefinition roleDefinition = roleDefinitions.SingleOrDefault(r => r.Id == assignment.RoleDefinitionId) ??
                     new PSRoleDefinition() { Id = assignment.RoleDefinitionId };
                 bool delegationFlag = assignment.CanDelegate.HasValue ? (bool)assignment.CanDelegate : false;
@@ -150,7 +150,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
                         SignInName = ((PSADUser)adObject).UserPrincipalName,
-                        ObjectId = Guid.Parse(adObject.Id),
+                        ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
                         CanDelegate = delegationFlag
                     });
@@ -164,7 +164,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        ObjectId = Guid.Parse(adObject.Id),
+                        ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
                         CanDelegate = delegationFlag
                     });
@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        ObjectId = Guid.Parse(adObject.Id),
+                        ObjectId = adObject.Id,
                         ObjectType = adObject.Type,
                         CanDelegate = delegationFlag
                     });
@@ -192,7 +192,7 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
                         RoleDefinitionId = roleDefinition.Id,
                         RoleDefinitionName = roleDefinition.Name,
                         Scope = assignment.Scope,
-                        ObjectId = Guid.Parse(adObject.Id),
+                        ObjectId = adObject.Id,
                         CanDelegate = delegationFlag,
                         ObjectType = DeletedObject
                     });

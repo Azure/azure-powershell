@@ -64,12 +64,12 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.GroupObject))
                 {
-                    GroupObjectId = Guid.Parse(GroupObject.Id);
+                    GroupObjectId = GroupObject.Id;
                 }
                 else if (this.IsParameterBound(c => c.GroupDisplayName))
                 {
                     var group = ActiveDirectoryClient.GetGroupByDisplayName(GroupDisplayName);
-                    GroupObjectId = Guid.Parse(group.Id);
+                    GroupObjectId = group.Id;
 
                 }
 

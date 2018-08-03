@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
             {
                 if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
-                    ObjectId = Guid.Parse(ServicePrincipalObject.Id);
+                    ObjectId = ServicePrincipalObject.Id;
                 }
                 else if (this.IsParameterBound(c => c.ServicePrincipalName))
                 {

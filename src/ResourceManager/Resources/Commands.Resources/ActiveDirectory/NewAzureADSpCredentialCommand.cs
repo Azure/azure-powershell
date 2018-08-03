@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.ActiveDirectory
                 EndDate = StartDate.AddYears(1);
                 if (this.IsParameterBound(c => c.ServicePrincipalObject))
                 {
-                    ObjectId = Guid.Parse(ServicePrincipalObject.Id);
+                    ObjectId = ServicePrincipalObject.Id;
                 }
 
                 if (this.IsParameterBound(c => c.ServicePrincipalName))
