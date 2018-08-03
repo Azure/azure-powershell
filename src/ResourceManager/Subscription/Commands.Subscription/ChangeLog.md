@@ -18,14 +18,10 @@
         - Additional information about change #1
 -->
 ## Current Release
-<<<<<<< HEAD
-* Updated help files to include full parameter types.
 * Updated to the latest version of the Azure ClientRuntime.
-=======
 
 ## Version 0.2.2
 * Updated help files to include full parameter types and correct input/output types.
->>>>>>> 11e022680aff5ee182563839ce924dd7d56032dd
 * Fix bug in example for `New-AzureRmSubscription`
 
 ## Version 0.2.1
